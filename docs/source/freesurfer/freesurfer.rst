@@ -20,11 +20,18 @@ FreeSurfer es un paquete de software que permite analizar imágenes de **resonan
 Este curso te mostrará cómo descargar e instalar FreeSurfer y cómo analizar un conjunto de datos de principio a fin. Aprenderás el vocabulario básico de FreeSurfer y cómo realizar preprocesamiento, edición de volumen y análisis de regiones de interés.
 
 
-.. árbol de toc::
-   :profundidad máxima: 1
+.. toctree::
+   :maxdepth: 1
    :caption: Análisis de principio a fin con FreeSurfer
 
-   FS_Curso Corto/FS_01_Términos Básicos
+   tuto-1
+   tuto-2
+   tuto-3
+   tuto-4
+   tuto-5
+   tuto-6
+
+
    FS_Curso Corto/FS_02_DescargarInstalar
    FS_Curso Corto/FS_03_ReconAll
    FS_Curso Corto/FS_04_ReconAllParallel
