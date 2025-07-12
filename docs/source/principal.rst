@@ -27,22 +27,11 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
 
    instalación/fsl_mac_install
    
-   
-.. árbol de toc::
-    :profundidad máxima: 1
+.. toctree::
+    :maxdepth: 1   
     :caption: Unix para neuroimagenólogos
-    
-    unix/Introducción a Unix
-    unix/Unix_01_Navegación
-    unix/Unix_02_CopiarEliminar
-    unix/Unix_03_Lectura de archivos de texto
-    unix/Unix_04_Variables de Shells
-    unix/Unix_05_ForLoops
-    unix/Unix_06_IfElse
-    unix/Unix_07_Scripting
-    unix/Unix_08_Sed
-    unix/Unix_09_Automatizando el análisis
-    
+
+    linux/index-linux
     
 .. árbol de toc::
     :profundidad máxima: 1
