@@ -28,6 +28,7 @@ El conjunto de datos contiene un grupo de 20 fumadores de cannabis y un grupo de
 El directorio de cada sujeto contiene dos subdirectorios denominados «ses-BL», que indica la sesión de referencia, y «ses-FU», que indica la sesión de seguimiento. Dentro de cada una de estas carpetas hay otro subdirectorio llamado «anat», que contiene el análisis anatómico de esa sesión. Para explorar la organización del conjunto de datos, diríjase al directorio Cannabis y escriba el siguiente comando:
 
 ::
+  :emphasize-lines:
 
   ls sub-112/ses-BL/anat
   
