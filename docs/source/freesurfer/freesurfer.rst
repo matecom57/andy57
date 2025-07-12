@@ -30,25 +30,20 @@ Este curso te mostrará cómo descargar e instalar FreeSurfer y cómo analizar u
    tuto-4
    tuto-5
    tuto-6
+   tuto-7
+   tuto-8
+   tuto-9
+   tuto-10
+   tuto-11
+   tuto-12
+   tuto-13
+   tuto-14
+   apea
+   apeb
+   apec
+   aped
 
 
-   FS_Curso Corto/FS_02_DescargarInstalar
-   FS_Curso Corto/FS_03_ReconAll
-   FS_Curso Corto/FS_04_ReconAllParallel
-   FS_Curso Corto/FS_05_OpenScienceGrid
-   FS_Curso corto/FS_06_Freeview
-   FS_Curso Corto/FS_07_FSGD
-   FS_Curso Corto/FS_08_Análisis de Grupo
-   FS_Curso Corto/FS_09_Corrección de Clúster
-   FS_Curso Corto/FS_10_Análisis de Correlación
-   FS_Curso Corto/FS_11_Análisis de ROI
-   FS_Curso corto/FS_12_Modos de falla
-   FS_Curso Corto/FS_13_Superficie Pial
-   FS_Curso Corto/FS_14_Puntos de Control
-   FS_Curso Corto/Apéndice A_LGI
-   FS_Curso Corto/Apéndice B_PETSurfer
-   FS_ShortCourse/Apéndice C_Anotaciones
-   FS_Curso Corto/Apéndice D_Segmentación de Subcampos
 
 .. nota::
 
