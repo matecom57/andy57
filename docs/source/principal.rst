@@ -66,7 +66,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     :profundidad máxima: 1
     :caption: Surfista libre
     
-    FreeSurfer/FreeSurfer_Introducción
+    freesurfer/freesurfer
     
 .. árbol de toc::
     :profundidad máxima: 1
