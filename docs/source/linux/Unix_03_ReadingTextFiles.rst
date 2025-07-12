@@ -15,13 +15,13 @@ La línea de comandos es útil tanto para visualizar como para manipular archivo
 
 Puedes visualizar el contenido de un archivo usando el comando ``cat``, que significa concatenar. Supongamos que tenemos un archivo en el escritorio llamado myFile.txt, que contiene las palabras del uno al quince (es decir, uno, dos, tres... quince), con cada número en una línea aparte. Usa la línea de comandos para navegar al escritorio y escribe ``cat myFile.txt``. Esto mostrará el contenido del archivo en la línea de comandos. Es similar a usar la interfaz gráfica para hacer doble clic en el archivo de texto y ver su contenido.
 
-.. figura:: Cat_File.png
+.. figure:: Cat_File.png
 
    Uso de la línea de comandos y la interfaz gráfica de usuario para leer el contenido de un archivo de texto. A la izquierda se muestra la línea de comandos con el comando ``cat``, que imprime el contenido en la terminal. A la derecha se muestra el contenido del archivo tras hacer doble clic con el ratón.
 
 Nos referimos a la salida de este comando como **stdout**, o salida estándar. Los comandos que se escriben en la Terminal se llaman **stdin**, o entrada estándar. Esto aborda el concepto de **streams**, o el flujo de información que entra y sale de la línea de comandos, y usaremos estas ideas para mayor flexibilidad al manipular archivos de texto. Por ahora, piense en **stdin** como cualquier cosa que escriba en la Terminal, y en **stdout** como lo que se devuelve si el comando se ejecuta sin errores. Si el comando que escribe genera un error (por ejemplo, porque está mal escrito o porque no se proporcionaron suficientes argumentos), el texto que se muestra en la Terminal se llama **stderr**, o error estándar.
 
-.. figura:: Streams.png
+.. figure:: Streams.png
 
    Ilustración de flujos en Unix. Todo lo que se escribe en la terminal se llama **stdin** y, si se ejecuta sin errores, la salida se llama **stdout**. Si hay un error, la salida se llama **stderr**.
 

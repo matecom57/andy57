@@ -32,7 +32,7 @@ Escribiendo tu primer guión
 
 Una vez descargado TextWrangler, ábrelo y escribe este código en la primera línea, también conocido como **shebang**: ``#!/bin/bash``. Esto significa que el siguiente código debe interpretarse con el shell bash y seguir la sintaxis de bash.
 
-.. figura:: TextWrangler_Shebang.png
+.. figure:: TextWrangler_Shebang.png
 
  Ejemplo de shebang en un archivo editado en TextWrangler. El shebang siempre se escribe en la primera línea del archivo, comenzando con un signo de almohadilla y un signo de exclamación, seguido de una ruta absoluta al shell que se utiliza para interpretar el código.
 
@@ -62,7 +62,7 @@ Comodines
 
 Esto nos lleva a un concepto importante: **Comodines**. Hay dos tipos de comodines que usarás a menudo. El primero es un asterisco, que busca uno o más caracteres. Por ejemplo, navega al directorio de Flanker y escribe ``mkdir sub-100``. Si escribes ``ls -d sub-*`` Devolverá todos los directorios que empiecen por sub-, ya sea sub-01 o sub-100. El comodín asterisco no discrimina si el directorio tiene seis o seiscientos caracteres; los coincidirá y los devolverá todos, siempre que empiecen por ``sub-``. El otro tipo de comodín es el signo de interrogación, que coincide con una sola aparición de cualquier carácter. Si escribes ``ls -d sub-??``, solo devolverá los directorios con dos enteros después del guión; en otras palabras, devolverá desde sub-01 hasta sub-26, pero no sub-100.
 
-.. figura:: Wildcards_Demo.gif
+.. figure:: Wildcards_Demo.gif
 
 
 Manipulación de texto con Awk
@@ -72,7 +72,7 @@ El cuerpo del bucle for contiene algo nuevo: un comando llamado **awk**. Awk es 
 
 Ahora, regresa al directorio que contiene todos los sujetos, elimina el directorio sub-100 y ejecuta el script. Tardará unos instantes y luego creará archivos de sincronización para todos los sujetos. Puedes inspeccionarlos con el comando cat; todos deberían tener un aspecto similar a este:
 
-.. figura:: OnsetFile_Output.png
+.. figure:: OnsetFile_Output.png
 
 Los scripts y comodines ofrecen mayor flexibilidad en el código y pueden ahorrarle incontables horas de trabajo. Imagine escribir cada comando en nuestro script para cada sujeto. Más adelante, usaremos estos scripts para automatizar el análisis de un conjunto de datos completo; para ello, necesitaremos aprender un comando más para manipular texto: el comando sed.
 

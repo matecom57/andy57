@@ -8,7 +8,7 @@
 
 Unix es un sistema operativo, al igual que Macintosh o Windows. La principal diferencia entre Unix y otros sistemas operativos es que utiliza una interfaz de línea de comandos, o **línea de comandos** para abreviar: en lugar de apuntar y hacer clic como en una máquina Windows o Macintosh, se escriben los comandos que se desean ejecutar. La línea de comandos se escribe en una **Terminal**, una ventana donde solo se puede escribir texto. La Terminal emula (es decir, reproduce la función de) una `consola`.`__.
 
-.. figura::Terminal_Example.png
+.. figure::Terminal_Example.png
 
     Los sistemas operativos Macintosh y Linux tienen terminales instaladas. En Macintosh, por ejemplo, haz clic en la lupa del Finder y escribe "Terminal". Al abrirla, deberías ver algo parecido a la ventana de la derecha.
 

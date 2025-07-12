@@ -15,7 +15,7 @@ Ahora que ya te has familiarizado con los comandos de Unix, podemos descargar un
 
 Al descargar e instalar FSL, puede que hayas visto algunas cosas que no entendías del todo. Por ejemplo, si vas a tu directorio personal y escribes "cat.bashrc", verás este bloque de código.
 
-.. figura:: Bash_RC_Contents.png
+.. figure:: Bash_RC_Contents.png
 
 Para entender esto, necesitarás comprender los shells, las rutas y las variables. Empecemos con los **shells**. Piensa en el shell como un entorno donde puedes escribir comandos Unix. O bien, imagínalo como un intérprete que traduce lo que escribes en las operaciones que realiza el ordenador. Usamos un shell en los tutoriales anteriores, pero puede que no lo sepas. Al abrir la terminal, se usa un shell para interpretar lo que escribes. Además, hay muchos shells diferentes, y cada uno tiene una **sintaxis** diferente, es decir, una forma específica en que las palabras de tu comando deben organizarse para que se entiendan correctamente, al igual que la sintaxis de los lenguajes humanos.
 
@@ -27,7 +27,7 @@ Por ejemplo, asignemos el valor 3 a la variable ``x``. Si está en la shell bash
 
 Compare esto con una shell diferente: la t-shell. Cambie su terminal a la t-shell escribiendo ``tcsh`` y presionando Enter. Si escribimos el mismo comando que antes, obtendríamos un error que indica "comando no encontrado". Esto se debe a que la sintaxis para asignar una variable es diferente en la t-shell. Para realizar la misma asignación de variable, debemos escribir ``set x=3``; luego escribir ``echo $x`` para asegurarnos de que se estableció el valor correcto. Si se pierde y desea saber en qué shell se encuentra actualmente, escriba ``echo $0``.
 
-.. figura::AsignaciónDeVariable.gif
+.. figure::AsignaciónDeVariable.gif
 
 
 Ahora mismo estamos en lo que se llama una subshell; inicialmente estábamos en la shell bash y luego cambiamos a una t-shell. Al abrir una nueva terminal, imagínese que esa terminal es el mundo Unix; a este "mundo" lo llamamos **entorno**. Para mantener la variable ``x`` constante sin importar en qué shell estemos, escribiríamos ``export x=3``; en tcsh, escribiríamos ``setenv x 3``. Tenga en cuenta que si establece esta variable global, solo estará disponible para la shell actual y las subshells; si establece una variable global en la subshell actual y luego regresa a una shell anterior, no tendrá acceso a ella. Para salir de la subshell actual y regresar a la shell anterior, escriba ``exit`` y presione Enter.
@@ -36,7 +36,7 @@ Ahora que sabemos qué son las variables, podemos ver cómo se usan en la config
 
 Las rutas permiten usar comandos FSL desde cualquier lugar de la Terminal. FSL, al igual que todos los demás paquetes de software, cuenta con una **biblioteca**, o directorio, que contiene todas las funciones necesarias para ejecutar FSL, como fslinfo, fslmaths, flirt, etc. Para ejecutar estos comandos, necesitamos estar en ese directorio o especificar la ruta absoluta del comando que queremos ejecutar. Para tener la flexibilidad de ejecutar comandos FSL desde cualquier lugar, configuraremos la variable `path` para indicar dónde se encuentra la biblioteca FSL.
 
-.. figura:: FSL_Library.png
+.. figure:: FSL_Library.png
 
   Una vez instalado FSL, escriba ``ls $FSLDIR/bin`` para ver una lista de todos los comandos disponibles (o binarios, de ahí el nombre del directorio) en la biblioteca FSL. Si la ruta está configurada correctamente, puede ejecutar estos comandos desde cualquier lugar de la estructura de directorios.
 
