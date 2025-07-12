@@ -14,13 +14,13 @@ Anotación de una región de interés (ROI)
 
 Primero, abra Freeview haciendo doble clic en el icono en su directorio de FreeSurfer o abriendo una terminal y escribiendo "freeview". Cuando se abra, haga clic en "Archivo -> Cargar volumen" y seleccione la imagen anatómica que desea anotar. Al cargar, debería ver algo como esto:
 
-.. figura:: ApéndiceC_FreeviewLayout.png
+.. figure:: ApéndiceC_FreeviewLayout.png
 
 Para crear nuestra región de interés, haga clic en «Archivo -> Nuevo volumen». Se le pedirá que escriba una etiqueta para la ROI; en este caso, estamos anotando el putamen derecho, así que lo llamaremos «Putamen derecho». Asegúrese de que el menú desplegable que aparece debajo sea la imagen T1 que está anotando; esto garantizará que la ROI tenga la misma resolución y dimensiones que la imagen sobre la que está dibujando, también llamada **Imagen de plantilla**. Haga clic en Aceptar.
 
 Ahora aparecerá una pequeña ventana flotante llamada "Edición de vóxeles", que permanecerá abierta mientras se anote la ROI. El tamaño del pincel se refiere al radio del pincel, en vóxeles, que para la mayoría de las imágenes anatómicas equivale a milímetros. Para regiones más pequeñas y bandas de corteza más delgadas, probablemente debería usar un tamaño de pincel menor. En nuestro ejemplo, cambiaremos el tamaño del pincel a "3". Tenga en cuenta también que en esta ventana hay otras opciones de dibujo, como "Polilínea", "Cable vivo" y "Relleno". Las abordaremos más adelante; por ahora, deje el valor predeterminado "Mano alzada".
 
-.. figura:: ApéndiceC_VoxelEdit.png
+.. figure:: ApéndiceC_VoxelEdit.png
 
 .. nota::
 
@@ -32,19 +32,19 @@ Dibujando la Región
 
 Una vez seleccionada la herramienta de dibujo, puede hacer clic izquierdo en los vóxeles en cualquiera de los paneles de visualización para comenzar a anotarlos. Puede que prefiera un panel de visualización a otro; por ejemplo, si solo desea ver el panel axial, haga clic en el icono de la vista axial en la parte superior de la ventana de Freeview y luego en el cuadrado blanco, que mostrará solo esa vista ortogonal. También puede cambiar el color y la opacidad de su anotación mediante las opciones del panel izquierdo de la interfaz gráfica de Freeview:
 
-.. figura:: ApéndiceC_AxialView.png
+.. figure:: ApéndiceC_AxialView.png
 
 Nota: Puedes acercar o alejar la imagen con el desplazamiento del ratón. También puedes moverte entre secciones adyacentes pulsando las flechas arriba y abajo del teclado.
 
 Ahora, haz clic izquierdo y arrastra para dibujar tu anotación en los vóxeles que crees que pertenecen al Putamen. Continúa con cada corte adyacente hasta que puedas anotar toda la región.
 
-.. figura:: ApéndiceC_Anotación.png
+.. figure:: ApéndiceC_Anotación.png
 
 Cuando termine de dibujar su ROI, puede guardarlo haciendo clic en «Archivo -> Guardar volumen como». Esto lo guardará automáticamente como un archivo «.mgz», que posteriormente podremos convertir al formato NIFTI con el comando «mri_convert».
 
 Puede anotar varias ROI simultáneamente. Por ejemplo, si selecciona "Archivo -> Nuevo volumen" y nombra la nueva ROI "Putamen izquierdo", asegúrese de que esté resaltada en el panel izquierdo de Freeview. Luego, puede elegir un color diferente y anotarla como desee. La ROI resaltada se guardará en el disco al seleccionar "Archivo -> Guardar volumen como".
 
-.. figura:: ApéndiceC_TwoROIs.png
+.. figure:: ApéndiceC_TwoROIs.png
 
 .. nota::
 
@@ -64,7 +64,7 @@ Cálculo del coeficiente de dados
 
 Imagina que eres un anatomista cualificado que quiere anotar manualmente las regiones cerebrales y comparar cómo coinciden tus anotaciones con las generadas automáticamente por FreeSurfer. La técnica más común es calcular el **Coeficiente Dice**, una medida de similitud entre conjuntos. En teoría, los conjuntos pueden ser cualquier cosa: letras, números, etc. Es especialmente adecuado para comparar segmentaciones, ya que se puede calcular la superposición entre ellas. Dadas las segmentaciones A y B, el Coeficiente Dice se calcula como:
 
-.. figura:: ApéndiceC_DiceCoefficient_Equation.png
+.. figure:: ApéndiceC_DiceCoefficient_Equation.png
 
 Donde **D** es el coeficiente de Dice, **A** es el patrón de vóxeles de una de las segmentaciones y **B** es el patrón de vóxeles de la otra segmentación. Otra forma de verlo es comparar la máscara de Putamen que acabamos de crear con el Putamen generado por FreeSurfer:
 
@@ -81,7 +81,7 @@ Donde ``T1.mgz`` se refiere a la imagen anatómica T1 original que proporcionó,
 
 Lo que le da a Dice puntuaciones como las siguientes:
 
-.. figura:: ApéndiceC_DiceScores.png
+.. figure:: ApéndiceC_DiceScores.png
 
 En este caso, sólo anoté a mano algunas de las regiones; las que no fueron anotadas tienen una puntuación Dice de "0".
 

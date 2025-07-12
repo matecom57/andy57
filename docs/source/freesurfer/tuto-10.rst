@@ -8,7 +8,7 @@ Descripción general
 
 La **correlación** cuantifica la covaría entre dos variables. Por ejemplo, si estoy analizando un experimento que mide el coeficiente intelectual (CI) y el grosor cortical de mis sujetos, puedo representar ambas variables en ejes separados de una gráfica. Para cada sujeto, dibujo un punto en la gráfica en la intersección de sus valores de CI y grosor, y luego trazo la línea que mejor se ajuste a los datos. La magnitud de la covariación entre las variables, también conocida como **coeficiente de correlación**, se puede calcular mediante la fórmula que se encuentra `aquí`.`__. (En esa página también puede hacer clic en el botón "Calculadora" para calcular el coeficiente de correlación de un conjunto de datos de muestra). Una correlación positiva significa que, al aumentar una variable, también aumenta la otra; y una correlación negativa representa lo contrario. La magnitud del coeficiente de correlación puede comprobarse para determinar su significancia estadística, al igual que con las pruebas t.
 
-.. figura:: 10_Ejemplo_de_correlación.png
+.. figure:: 10_Ejemplo_de_correlación.png
   :escala: 50%
 
 .. nota::
@@ -17,7 +17,7 @@ La **correlación** cuantifica la covaría entre dos variables. Por ejemplo, si 
   
 Tal como la comparación de grupos en el último tutorial utilizó una prueba t en cada vértice para probar las diferencias entre los grupos, también podemos probar correlaciones significativas en cada vértice entre las mediciones estructurales y las covariables. Puede encontrar una lista de las covariables para el estudio actual en el archivo ``participants.tsv``. Por ejemplo, podríamos querer incluir las covariables ``edad`` y ``línea base total de auditoría`` (los valores en auditoría representan cuántas bebidas por semana toma el sujeto), ya sea para ver cómo se correlacionan con diferentes mediciones estructurales o para hacer una regresión de ellas fuera del modelo. Incluir la edad como covariable, por ejemplo, nos permitiría probar la diferencia entre los grupos mientras controlamos el efecto de la edad; en otras palabras, podríamos decir que las diferencias que observamos en el grosor cortical entre los grupos (por ejemplo) no se deben a la edad, y es más probable que se expliquen por el grupo del sujeto.
 
-.. figura:: 10_Participantes_Ejemplo.png
+.. figure:: 10_Participantes_Ejemplo.png
   
 
 DODS vs. DOSS
@@ -27,7 +27,7 @@ Antes de modelar estas covariables, debemos familiarizarnos con las opciones de 
 
 Las ventajas de DOSS son que se estiman menos parámetros y, por lo tanto, se obtienen más grados de libertad y mayor potencia estadística. Esto probablemente no sea relevante para conjuntos de datos grandes con muchos grados de libertad, pero podría tener un efecto en conjuntos de datos con solo un par de docenas de sujetos y varias covariables. Sin embargo, para la mayoría de los análisis, DODS es la mejor opción: es más flexible y también permite modelar los efectos de interacción. Sea cual sea el modelo que elija, debe utilizar el que considere más adecuado para sus datos.
 
-.. figura:: 10_DODS_DOSS.png
+.. figure:: 10_DODS_DOSS.png
 
 
 .. nota::

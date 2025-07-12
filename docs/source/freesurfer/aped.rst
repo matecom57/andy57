@@ -36,13 +36,13 @@ Una vez terminado esto, podemos ejecutar este comando desde el mismo directorio 
 
 Lo cual, después de unos quince minutos, generará diferentes niveles de granularidad para las segmentaciones, tanto para el hemisferio izquierdo como para el derecho:
 
-.. figura:: ApéndiceD_SegOutput_MRI.png
+.. figure:: ApéndiceD_SegOutput_MRI.png
 
   Resultados de ``segment_subregions`` para el hipocampo y la amígdala. Aquí se muestran las segmentaciones del hemisferio izquierdo, que se encuentran en el directorio ``mri``. El volumen con el esquema de etiquetado más completo es ``lh.hippoAmygLabels.mgz``; el significado de los demás sufijos se puede encontrar en ``esta página``.`__ en la sección "Motivación y descripción general". Los archivos ``lh.amygNucVolumes.txt`` y ``lh.hippoSfVolumes.txt`` contienen las estimaciones de volumen para cada subregión de la amígdala y el hipocampo, respectivamente.
 
 Las segmentaciones se pueden luego visualizar en Freeview cargándolas como volúmenes, junto con el archivo ``brainmask.mgz`` como base:
 
-.. figura:: ApéndiceD_VisualizarSegmentaciones_Freeview.png
+.. figure:: ApéndiceD_VisualizarSegmentaciones_Freeview.png
 
 Ejecución de segment_subregions en un clúster de supercomputación
 *******************************************************
@@ -89,7 +89,7 @@ Este análisis también puede ejecutarse en un clúster de supercomputación uti
 
 Todas las segmentaciones se pueden cargar en Freeview al mismo tiempo:
 
-.. figura:: ApéndiceD_VisualizarTodasLasSegmentaciones.png
+.. figure:: ApéndiceD_VisualizarTodasLasSegmentaciones.png
 
 Se pueden realizar análisis adicionales del ROI extrayendo los datos del archivo de texto correspondiente. Por ejemplo, aquí están los datos del archivo ``rh.amygNucVolumes.txt``, que se pueden cargar fácilmente en una hoja de cálculo como Excel:
 

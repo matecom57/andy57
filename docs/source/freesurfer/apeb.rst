@@ -59,7 +59,7 @@ Esto tardará aproximadamente una hora. Al finalizar, verá una nueva imagen lla
   
 Esto mostrará la imagen anatómica segmentada con el mapa de colores "lut" (tabla de consulta) superpuesto. Al pasar el ratón sobre los diferentes colores, se mostrará cuál corresponde a cada segmentación.
 
-.. figura:: Apéndice_B_gtm_LUT.png
+.. figure:: Apéndice_B_gtm_LUT.png
 
 
 Registro de los datos PET en la imagen anatómica
@@ -85,7 +85,7 @@ El registro conjunto se puede comprobar con ``tkregisterfv``:
   
 Debería ver un contorno claro del límite entre la materia gris y la materia blanca, resaltado en amarillo:
 
-.. figura:: Apéndice_B_corregistro.png
+.. figure:: Apéndice_B_corregistro.png
 
 
 Aplicación de corrección de volumen parcial

@@ -8,7 +8,7 @@ FreeSurfer contiene un amplio conjunto de programas que pueden tardar varias hor
 
 Recon-all significa **reconstrucción**, es decir, la reconstrucción de una superficie cortical bidimensional a partir de un volumen tridimensional. Las imágenes que obtenemos de una resonancia magnética son bloques tridimensionales, y recon-all las transforma en una superficie bidimensional lisa y continua, similar a tomar una bolsa de papel para el almuerzo, arrugada hasta el tamaño de una bolita, y luego soplarla para expandirla como un globo.
 
-.. figura:: 03_Reconstrucción.png
+.. figure:: 03_Reconstrucción.png
 
   El comando recon-all convierte un volumen anatómico tridimensional (mostrado a la izquierda, representado por un corte sagital típico de un volumen) en una superficie bidimensional (derecha). Como verá en el tutorial de Freeview`, FreeSurfer crea varios tipos diferentes de cerebros inflados que puedes usar para visualizar tus resultados.
     
@@ -22,20 +22,20 @@ Antes de explicar cómo usar el comando recon-all, es útil ver ejemplos de lo q
 Esta estimación inicial se refina y se guarda en los archivos **lh.white** y **rh.white**. Este límite se utiliza como base para que recon-all extienda los sensores y busque el borde de la materia gris. Una vez alcanzado este borde, se crea un tercer par de conjuntos de datos: **lh.pial** y **rh.pial**. Estos conjuntos de datos representan la superficie pial, que es como una película de plástico que envuelve el borde de la materia gris. Cada uno de estos conjuntos de datos puede visualizarse como una superficie o en el volumen 3D original mediante :ref:`freeview
     `.
 
-.. figura:: 03_Orig_White_Pial.png
+.. figure:: 03_Orig_White_Pial.png
 
   Una ilustración de cómo recon-all crea diferentes superficies. La estimación original de la ubicación de la interfaz entre la materia blanca y la materia gris (amarilla) se refina para obtener una estimación más precisa (azul). Esta estimación refinada se utiliza para detectar el borde de la materia gris (roja). Estas superficies, tal como se ven en Freeview (el visor de FreeSurfer), se muestran a la derecha.
 
 Una de las ventajas de usar estas superficies es la capacidad de representar, dentro de los surcos, mediciones como las diferencias de grosor cortical o la señal BOLD. En un volumen tridimensional, un solo vóxel puede abarcar dos crestas separadas de materia gris, lo que impide determinar qué parte de la corteza genera la señal observada. Para visualizar con mayor facilidad la ubicación de los mapas de activación a lo largo de las orillas de los surcos y las crestas de las circunvoluciones, los conjuntos de datos de superficie se pueden ampliar para crear los conjuntos de datos **lh.inflated** y **rh.inflated**. (Para un ejemplo de cómo analizar datos de fMRI en una superficie generada por FreeSurfer, consulte este tutorial sobre SUMA).
      `.
 
-.. figura:: 03_Pial_Inflado.png
+.. figure:: 03_Pial_Inflado.png
 
   Una ilustración de cómo convertir el archivo lh.pial en lh.inflated.
   
 Estas superficies infladas pueden volver a inflarse, esta vez formando una esfera. Esta no es una imagen que se usaría para visualizar los resultados; es una imagen normalizada a una imagen plantilla llamada **fsaverage**, un promedio de 40 sujetos, y luego remodelada en una superficie inflada o una superficie pial. Una vez normalizado el mapa de superficie de cada sujeto a esta plantilla, se puede usar un atlas para **parcelar** la corteza en regiones anatómicamente distintas. Recon-all parcelará el cerebro del sujeto según dos atlas: el atlas de Desikan-Killiany y el atlas de Destrieux. El atlas de Destrieux contiene más parcelaciones; la que se utilice para el análisis dependerá de la precisión del análisis que se desee realizar.
 
-.. figura:: 03_FreeSurfer_Atlases.png
+.. figure:: 03_FreeSurfer_Atlases.png
 
   Comparación de los atlas de Desikan-Killiany (izquierda) y Destrieux (derecha). Obsérvese el mayor número de parcelaciones en el atlas de Destrieux en comparación con el de Desikan-Killiany.
 

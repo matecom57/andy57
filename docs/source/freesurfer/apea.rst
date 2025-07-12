@@ -33,7 +33,7 @@ Reemplazar ``
 
 Esto tardará un par de horas. Al finalizar, verás nuevos archivos en el directorio ``surf`` con la extensión ``_lgi``:
 
-.. figura:: ApéndiceA_LGI_Output.png
+.. figure:: ApéndiceA_LGI_Output.png
 
 
 Visualización de los resultados
@@ -47,11 +47,11 @@ Luego puede ver los resultados usando "freeview" con la opción Superposición. 
   
 Lo cual debería mostrarte algo como esto:
 
-.. figura:: ApéndiceA_LGI_Freeview.png
+.. figure:: ApéndiceA_LGI_Freeview.png
 
 La configuración predeterminada es mostrar los resultados de LGI como un mapa de calor; sin embargo, puede resultar más útil mostrarlos como una rueda de color. Haga clic en el botón "Configurar" para abrir una nueva ventana con el rango de intensidad de la superposición. En el panel "Escala de color", seleccione el botón "Rueda de color"; también marque la casilla junto a "Invertir". Esto mostrará las intensidades más altas como más rojas y las más bajas como tonos de azul. También puede mover las flechas verde y roja para encontrar el rango de intensidad que mejor se adapte a sus necesidades.
 
-.. figura:: ApéndiceA_LGI_ColorWheel.png
+.. figure:: ApéndiceA_LGI_ColorWheel.png
 
 
 Análisis del ROI
@@ -65,7 +65,7 @@ Al igual que hicimos con el análisis de ROI para mediciones como espesor y volu
   
 Esto generará un nuevo archivo, ``lh.aparc.pial_lgi.stats``, que contiene los resultados de LGI, medidos en milímetros cuadrados, para cada una de las parcelaciones:
 
-.. figura:: ApéndiceA_LGI_ROI_Stats.png
+.. figure:: ApéndiceA_LGI_ROI_Stats.png
 
 Estos datos pueden luego usarse para realizar comparaciones grupales y correlacionarse con diferencias individuales.
 

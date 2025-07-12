@@ -10,7 +10,7 @@ Cada paquete de software de neuroimagen cuenta con un **visor de datos**, o una 
 
 FreeSurfer cuenta con su propio visor, **Freeview**, que se puede iniciar desde la Terminal escribiendo ``freeview`` y pulsando Intro. Puede cargar imágenes NIFTI al igual que los demás paquetes, y además, puede cargar formatos específicos de FreeSurfer, como datos con extensiones ``.mgz`` e ``.inflated``. La imagen se puede visualizar en tres dimensiones en el Panel de Visualización, o se puede cambiar el diseño para que solo se muestre una dimensión.
 
-.. figura:: 06_Freeview_Example.png
+.. figure:: 06_Freeview_Example.png
 
 
 El panel de control
@@ -27,7 +27,7 @@ Volúmenes y superficies de carga
 
 Freeview permite cargar volúmenes y superficies simultáneamente. Para cargar una superficie, haga clic en «Archivo -> Cargar superficie» y seleccione una imagen en el directorio «surf», como «lh.pial». Esto superpondrá una representación 3D de la superficie en el cuadro tridimensional de la ventana Vista y trazará su contorno en los cuadros ortogonales (es decir, las vistas sagital, axial y coronal). El color de la superficie en las vistas ortogonales se puede cambiar seleccionando un nuevo «Color de borde».
 
-.. figura:: 06_Volúmenes_Superficies_Freeview.png
+.. figure:: 06_Volúmenes_Superficies_Freeview.png
 
 Opciones de Freeview desde la línea de comandos
 *********

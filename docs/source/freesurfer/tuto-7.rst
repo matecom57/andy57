@@ -15,7 +15,7 @@ Hasta ahora hemos revisado los comandos básicos de FreeSurfer: recon-all y free
 En este punto, quizás esté pensando en cómo comparar las mediciones estructurales entre grupos y cómo representar esas diferencias en la superficie cerebral. El procedimiento es similar al análisis fMRI: al igual que comparamos vóxeles en fMRI, comparamos vértices en FreeSurfer. Si los vértices se encuentran en un espacio común, como MNI, podemos calcular las diferencias en el espesor de la materia gris en un vértice específico y comprobar si dicha diferencia es significativa. Esto genera mapas estadísticos que podemos superponer sobre una plantilla cerebral como mapa de superficie.
 
 
-.. figura:: 07_Análisis_de_Grupo_FS.png
+.. figure:: 07_Análisis_de_Grupo_FS.png
   :escala: 50%
   
   Ejemplo de un resultado de análisis de grupo asignado a la plantilla fsaverage. Los colores azules más claros representan estimaciones de contraste más negativas, mientras que los amarillos representan estimaciones de contraste más positivas.
@@ -56,7 +56,7 @@ Creación del archivo FSGD
 El conjunto de datos de Cannabis incluye un archivo llamado ``participants.tsv`` que contiene etiquetas y covariables para cada sujeto: grupo, género, edad, inicio del consumo de cannabis, etc. Para crear un archivo de Descriptor de Grupo de FreeSurfer (FSGD), extraemos las covariables o etiquetas de grupo que nos interesan y las formateamos de forma que FreeSurfer las entienda. El archivo FSGD contendrá las covariables que queremos contrastar, y un archivo de contraste independiente indicará qué covariables contrastar y qué ponderaciones asignarles.
 
 
-.. figura:: 07_Archivo_Participante.png
+.. figure:: 07_Archivo_Participante.png
 
   Captura de pantalla de parte del archivo de participantes que se incluye en el conjunto de datos de cannabis. Nota: HC = Controles Saludables. Más abajo en el archivo de participantes, la etiqueta CB significa Consumidor de Cannabis.
 

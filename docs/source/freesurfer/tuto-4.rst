@@ -8,7 +8,7 @@ Restricciones de tiempo con Recon-All
 
 Como pronto descubrirá, FreeSurfer tarda mucho en procesar un sujeto individual: entre dieciséis y veinticuatro horas en un iMac típico, con algunas variaciones debido a factores como la calidad de los datos de entrada. Para muchos investigadores, este tiempo de espera puede ser prohibitivo, especialmente si el estudio incluye docenas o cientos de sujetos.
 
-.. figura:: 04_Recon_all_Length.png
+.. figure:: 04_Recon_all_Length.png
 
 Una forma de reducir el tiempo que lleva analizar tantos sujetos es ejecutar los análisis en paralelo. Las computadoras modernas suelen tener una unidad central de procesamiento con varios núcleos, que pueden usarse individualmente para diferentes tareas. Para ilustrar qué son los núcleos, imaginemos ocho personas y ocho cocinas, cada una con el tamaño justo para que una persona prepare su comida. En esta analogía, cada núcleo de computadora es una cocina. Ocho personas no caben en una cocina, pero si las demás cocinas se desbloquean y se ponen a disposición, cada persona puede preparar su propia comida en cada habitación.
 
@@ -35,7 +35,7 @@ La primera entrada es el número de núcleos físicos, que es 4; y la segunda en
 
 El comando paralelo no viene de serie con el sistema operativo Macintosh; deberá descargarlo. Es necesario descargar la aplicación Xcode, disponible en la App Store de Macintosh.
 
-.. figura:: 04_AppStore.png
+.. figure:: 04_AppStore.png
 
 Luego tendrás que ir a `este sitio web``__ e instala Homebrew, un gestor de instalación de paquetes. Homebrew te permite instalar paquetes rápidamente mediante la línea de comandos. Por ejemplo, una vez instalado Homebrew, abre una terminal y escribe lo siguiente:
 

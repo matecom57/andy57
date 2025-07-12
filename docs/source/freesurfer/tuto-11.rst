@@ -10,7 +10,7 @@ Además de crear una superficie cortical y calcular las mediciones estructurales
 
 Dentro del directorio "stats" de cada asignatura, hay una tabla correspondiente a las parcelaciones de cada atlas. Por ejemplo, los resultados de la parcelación del hemisferio izquierdo se encuentran en el archivo "lh.aparc.annot" para el atlas de Desikan-Killiany, y en el archivo "lh.aparc.a2009s.annot" para el atlas de Destrieux. La principal diferencia entre ambos es que el atlas de Destrieux contiene más parcelaciones que permiten análisis más detallados.
 
-.. figura:: 11_Atlas_Comparación.png
+.. figure:: 11_Atlas_Comparación.png
 
   Los atlas de Desikan-Killiany y Destrieux, uno junto al otro. Nótese que el atlas de Destrieux contiene más parcelaciones de la corteza.
   

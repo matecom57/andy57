@@ -11,7 +11,7 @@ Los tutoriales anteriores se han centrado en preparar los datos para un análisi
 Si recuerdas un tutorial anterior, recomendé usar la opción ``qcache`` al ejecutar recon-all. Esto generará mapas de espesor, volumen y curvatura con diferentes tamaños de suavizado, como kernels de 0 mm, 10 mm y 25 mm de ancho completo y mitad del máximo. Una de las ventajas del análisis basado en superficies es que permite usar kernels de suavizado mucho más grandes que en los análisis volumétricos, ya que no hay riesgo de suavizado a lo largo de las circunvoluciones. Al ejecutar el análisis de grupo, se puede elegir entre cualquiera de los siguientes tamaños de suavizado:
 
 
-.. figura:: 08_Qcache_Output.png
+.. figure:: 08_Qcache_Output.png
   
   Ejemplo de salida de qcache. Observe cómo las estimaciones de grosor en los sujetos se suavizan gracias al uso de kernels de suavizado grandes.
 
@@ -26,7 +26,7 @@ Creando un archivo de grupo con mris_preproc
 
 Para realizar un análisis de grupo, necesitaremos combinar todos nuestros mapas estructurales individuales en un único conjunto de datos. Esto es similar a combinar volúmenes consecutivos de una resonancia magnética funcional en un único conjunto de datos, como si los volúmenes estuvieran encadenados y dispuestos uno tras otro. (O, dicho de otro modo, las imágenes estructurales se apilan unas sobre otras, como panqueques; o en capas, como nachos. Use la analogía alimentaria que le resulte más útil para recordar este importante punto).
 
-.. figura:: 08_mrispreproc_Concatenación.gif
+.. figure:: 08_mrispreproc_Concatenación.gif
 
 Los datos también se **remuestrean** a la plantilla fsaverage, que se encuentra en el espacio MNI. Siempre que realizamos cualquier tipo de análisis de grupo (comparación de grupos, análisis de la región de interés, etc.), los datos de cada sujeto deben tener las mismas dimensiones y resolución de vóxel. Olvidar el remuestreo suele provocar errores durante este paso. (Esto también aplica al análisis fMRI).
 

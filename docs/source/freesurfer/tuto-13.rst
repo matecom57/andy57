@@ -8,7 +8,7 @@ Desprendimiento del cráneo
 
 Uno de los primeros pasos de preprocesamiento en recon-all es :ref:`**skull-strip**La imagen anatómica. Esto elimina tanto el cráneo como cualquier otra parte de la imagen que no sea materia gris o blanca, como los ojos, el cuello, las orejas y la duramadre, lo que permite a recon-all trazar un límite más preciso de la superficie pial.
 
-.. figura:: 13_SkullStripping_BeforeAfter.png
+.. figure:: 13_SkullStripping_BeforeAfter.png
 
   Imagen anatómica ponderada en T1 antes y después de la extracción del cráneo. A la derecha, el contorno de la superficie pial se traza en rojo.
 
@@ -31,7 +31,7 @@ En nuestro conjunto de datos, el sujeto 117 aún conserva gran parte del cráneo
   
 Esto mostrará la imagen brainmask.mgz con las superficies piales superpuestas. La tira de cráneo de este sujeto no eliminó partes del cráneo frontal ni grandes porciones del cuello, como se muestra a continuación:
 
-.. figura:: 13_sub117_Skull.png
+.. figure:: 13_sub117_Skull.png
 
 Podemos eliminar más del cráneo estableciendo un umbral de cuenca hidrográfica más bajo, como 5. Para ello, navegue hasta el directorio del tema y escriba lo siguiente:
 
@@ -41,7 +41,7 @@ Podemos eliminar más del cráneo estableciendo un umbral de cuenca hidrográfic
   
 Esto creará un nuevo archivo brainmask.mgz, al que ahora se le ha quitado una mayor parte del cráneo. Puede examinar los cambios con el mismo comando freeview mencionado anteriormente.
 
-.. figura:: 13_sub117_wsThresh_5.png
+.. figure:: 13_sub117_wsThresh_5.png
   :escala: 50%
 
 
@@ -77,7 +77,7 @@ Para examinar cuánta duramadre se eliminó, cargue los archivos ``brainmask.mgz
   
 Esto mostrará las regiones extirpadas en fucsia; utilice el control deslizante de superposición para examinar dónde la escisión de la duramadre pudo haber cortado la corteza, como en el área frontal. En este sujeto, la opción de corte longitudinal (gcut) es eficaz para extirpar la duramadre, pero también ha extirpado pequeñas porciones de cerebro.
 
-.. figura:: 13_gcut_sub119.png
+.. figure:: 13_gcut_sub119.png
   :escala: 50%
 
 
@@ -103,7 +103,7 @@ En este ejemplo, volvamos al sujeto 117 (``cd sub-117_ses-BL_T1w``). Cargue la i
   
 En el corte 128 del panel de visualización Coronal, observará que la superficie pial (marcada en rojo) parece incluir partes del cráneo. Nuestro objetivo es eliminar estos vóxeles con la herramienta "Edición de Reconocimiento", cuyo icono en la esquina superior izquierda muestra el contorno de una cabeza con una "R". Asegúrese de que el volumen de la máscara cerebral esté resaltado en la barra lateral y, a continuación, haga clic en el botón "Edición de Reconocimiento" y asegúrese de que la casilla "Edición de Reconocimiento" esté marcada. En el panel de visualización, amplíe la superficie pial que contiene el cráneo, mantenga pulsada la tecla Mayús y, a continuación, haga clic y arrastre para eliminar los vóxeles que se hayan clasificado erróneamente como superficie pial.
 
-.. figura:: 13_PialSurface_Edit.png
+.. figure:: 13_PialSurface_Edit.png
 
   Ejemplo de edición de la superficie pial. El área marcada con el círculo naranja indica una región donde la superficie pial incluye el cráneo; los vóxeles del cráneo deben borrarse durante la edición.
 
@@ -120,7 +120,7 @@ La superficie pial de esta parte del cráneo se mostrará desde los cortes 128 h
 
 Como siempre, revise las superficies regeneradas para asegurarse de que sean una mejora.
 
-.. figura:: 13_PialSurface_Edit_Before_After.png
+.. figure:: 13_PialSurface_Edit_Before_After.png
 
   Ejemplo de la reconstrucción de la superficie antes (panel izquierdo) y después de las ediciones de la superficie pial (panel derecho).
 

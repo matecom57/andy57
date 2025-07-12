@@ -25,7 +25,7 @@ En el sujeto 128, podemos ver bolsas de materia blanca que no son capturadas por
   
 En este caso particular, se han extirpado partes de la corteza frontal. Esto no se debe a una extracción excesiva del cráneo, como podría pensarse; más bien, se ha desidentificado al sujeto mediante la extirpación del rostro, lo que, lamentablemente, también ha eliminado partes del polo frontal.
 
-.. figura:: 14_FaceRemoval.png
+.. figure:: 14_FaceRemoval.png
   :escala: 50%
 
 Sin embargo, intentaremos mejorar las estimaciones de superficie estableciendo puntos de control y juzgar si es mejor o no.
@@ -37,7 +37,7 @@ Cambie a la vista coronal y amplíe la zona frontal del cerebro. Los errores de 
 
 Puede agregar un punto de control haciendo clic con el botón izquierdo del ratón en los vóxeles que parecen pertenecer a la sustancia blanca, pero que no están encapsulados por su superficie. Use la ubicación de los puntos de control con moderación: no los coloque dentro de la línea amarilla ni en vóxeles que sean claramente materia gris. Basta con dos o tres para cubrir un área de tamaño moderado. Recuerde que su influencia también se extenderá a los vóxeles cercanos.
 
-.. figura:: 14_ControlPoints.png
+.. figure:: 14_ControlPoints.png
 
 .. nota::
 
