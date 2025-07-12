@@ -12,7 +12,7 @@ Descripción general
 
 FreeSurfer es un paquete de software que permite analizar imágenes de **resonancia magnética estructural**; en otras palabras, permite cuantificar la cantidad de materia gris y blanca en regiones específicas del cerebro. También permite calcular mediciones como el grosor, la curvatura y el volumen de los diferentes tipos de tejido y correlacionarlas con covariables; o bien, contrastar estas mediciones estructurales entre grupos.
 
-.. figura:: FS_GroupOutput.png
+.. figure:: FS_GroupOutput.png
 
   Ejemplo de un mapa típico a nivel de grupo creado por FreeSurfer. Este mapa se basa en un contraste a nivel de grupo entre dos grupos, donde los colores rojo y azul indican las diferencias en el grosor cortical entre los grupos. Normalmente, estos resultados se representan en cerebros inflados; el gris más oscuro representa los surcos y el gris más claro las circunvoluciones.
   
