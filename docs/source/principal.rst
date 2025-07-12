@@ -62,9 +62,9 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     Curso corto de fMRI/Apéndices de fMRI
     
     
-.. árbol de toc::
-    :profundidad máxima: 1
-    :caption: Surfista libre
+.. toctree::
+    :maxdepth: 1
+    :caption: FreeSurfer
     
     freesurfer/freesurfer
     
