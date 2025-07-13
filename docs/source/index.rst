@@ -51,14 +51,6 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     fsl/Registration_Normalization
     fsl/Checking_Preprocessing
     fsl/Checkpoint
-    fsl/Skull_Stripping
-    fsl/FEAT_GUI
-    fsl/Motion_Correction
-    fsl/Slice_Timing_Correction
-    fsl/Smoothing
-    fsl/Registration_Normalization
-    fsl/Checking_Preprocessing
-    fsl/Checkpoint
     fsl/fMRI_05_1stLevelAnalysis
     fsl/01_Stats_TimeSeries
     fsl/02_Stats_HRF_History

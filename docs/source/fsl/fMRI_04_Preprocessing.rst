@@ -31,18 +31,19 @@ De manera similar, cuando preprocesamos datos fMRI, limpiamos las imágenes trid
 
 Para comenzar a preprocesar los datos del sub-08, lea las siguientes descripciones de cada paso.
 
-.. árbol de toc::
-   :profundidad máxima: 1
+.. toctree::
+   :maxdepth: 1
    :caption: Pasos de preprocesamiento
 
-   Preprocesamiento/Desmontaje de cráneo
-   Preprocesamiento/FEAT_GUI
-   Preprocesamiento/Corrección de movimiento
-   Preprocesamiento/Corrección de sincronización de cortes
-   Preprocesamiento/Suavizado
-   Preprocesamiento/Registro_Normalización
-   Preprocesamiento/Comprobación_Preprocesamiento
-   Preprocesamiento/Punto de control
+   Preprocessing/Skull_Stripping
+   Preprocessing/FEAT_GUI
+   Preprocessing/Motion_Correction
+   Preprocessing/Slice_Timing_Correction
+   Preprocessing/Smoothing
+   Preprocessing/Registration_Normalization
+   Preprocessing/Checking_Preprocessing
+   Preprocessing/Checkpoint
+
 
 ---------
 
