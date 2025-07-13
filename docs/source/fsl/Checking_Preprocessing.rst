@@ -3,7 +3,7 @@
 .. _Comprobando_Preprocesamiento.rst
 
 Capítulo 7: Comprobación de sus datos preprocesados
-^^^^^^^^^^
+===================================================
 
 Al igual que hicimos con las imágenes de cráneo despojado, revisaremos nuestros datos antes y después de procesarlos con la interfaz gráfica de FEAT. Tras hacer clic en el botón "Ir", páginas HTML como la que se muestra a continuación registrarán el progreso de cada paso.
 

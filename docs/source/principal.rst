@@ -33,23 +33,45 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
 
     linux/index-linux
     
-.. árbol de toc::
+.. toctree::
     :profundidad máxima: 1
-    Curso corto de fMRI con FSL
+    :caption:Curso corto de fMRI con FSL
     
-    Curso corto de fMRI/Introducción a fMRI
-    fMRI_Curso corto/fMRI_01_Descarga de datos
-    Curso corto fMRI/fMRI_02_Diseño experimental
-    fMRI_Curso corto/fMRI_03_Mirando los datos
-    Curso corto fMRI/fMRI_04_Preprocesamiento
-    fMRI_Curso corto/fMRI_05_Análisis de primer nivel
-    Curso corto fMRI/fMRI_06_Scripting
-    fMRI_Curso corto/fMRI_07_Análisis de segundo nivel
-    fMRI_Curso corto/fMRI_08_Análisis de tercer nivel
-    Curso corto fMRI/fMRI_09_Análisis de ROI
-    Curso corto de fMRI/Resumen de fMRI 10
-    Curso corto de fMRI/Apéndices de fMRI
-    
+    fsl/fMRI_Intro.rst
+    fsl/fMRI_01_DataDownload.rst
+    fsl/fMRI_02_ExperimentalDesign.rst
+    fsl/fMRI_03_LookingAtTheData.rst
+    fsl/fMRI_04_Preprocessing.rst
+    fsl/Skull_Stripping.rst
+    fsl/FEAT_GUI.rst
+    fsl/Motion_Correction.rst
+    fsl/Slice_Timing_Correction.rst
+    fsl/Smoothing.rst
+    fsl/Registration_Normalization.rst
+    fsl/Checking_Preprocessing.rst
+    fsl/Checkpoint.rst
+    fsl/fMRI_05_1stLevelAnalysis.rst
+    fsl/Skull_Stripping.rst
+    fsl/FEAT_GUI.rst
+    fsl/Motion_Correction.rst
+    fsl/Slice_Timing_Correction.rst
+    fsl/Smoothing.rst
+    fsl/Registration_Normalization.rst
+    fsl/Checking_Preprocessing.rst
+    fsl/Checkpoint.rst
+    fsl/fMRI_05_1stLevelAnalysis.rst
+    fsl/01_Stats_TimeSeries.rst
+    fsl/02_Stats_HRF_History.rst
+    fsl/03_Stats_HRF_Overview.rst
+    fsl/04_Stats_General_Linear_Model.rst
+    fsl/05_Creating_Timing_Files.rst
+    fsl/06_Stats_Running_1stLevel_Analysis.rst
+    fsl/fMRI_06_Scripting.rst
+    fsl/fMRI_07_2ndLevelAnalysis.rst
+    fsl/fMRI_08_3rdLevelAnalysis.rst
+    fsl/fMRI_09_ROIAnalysis.rst
+    fsl/fMRI_10_Summary.rst
+
     
 .. toctree::
     :maxdepth: 1
