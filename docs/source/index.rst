@@ -52,17 +52,17 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     fsl/Checking_Preprocessing
     fsl/Checkpoint
     fsl/fMRI_05_1stLevelAnalysis
-    fsl/01_Stats_TimeSeries
-    fsl/02_Stats_HRF_History
-    fsl/03_Stats_HRF_Overview
-    fsl/04_Stats_General_Linear_Model
-    fsl/05_Creating_Timing_Files
-    fsl/06_Stats_Running_1stLevel_Analysis
-    fsl/fMRI_06_Scripting
-    fsl/fMRI_07_2ndLevelAnalysis
-    fsl/fMRI_08_3rdLevelAnalysis
-    fsl/fMRI_09_ROIAnalysis
-    fsl/fMRI_10_Summary
+    fsl/Statistics/01_Stats_TimeSeries
+    fsl/Statistics/02_Stats_HRF_History
+    fsl/Statistics/03_Stats_HRF_Overview
+    fsl/Statistics/04_Stats_General_Linear_Model
+    fsl/Statistics/05_Creating_Timing_Files
+    fsl/Statistics/06_Stats_Running_1stLevel_Analysis
+    fsl/Statistics/fMRI_06_Scripting
+    fsl/Statistics/fMRI_07_2ndLevelAnalysis
+    fsl/Statistics/fMRI_08_3rdLevelAnalysis
+    fsl/Statistics/fMRI_09_ROIAnalysis
+    fsl/Statistics/fMRI_10_Summary
 
 
     
