@@ -35,7 +35,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     
 .. toctree::
     :maxdepth: 1
-    :caption:Curso corto de fMRI con FSL
+    :caption: Curso corto de fMRI con FSL
     
     fsl/fMRI_Intro
 
