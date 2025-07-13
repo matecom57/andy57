@@ -34,7 +34,7 @@ Esto imprimirá una ruta absoluta a cada directorio FEAT. La opción ``-d`` indi
 
 Esto creará una lista con 52 entradas, una correspondiente a cada ejecución de cada sujeto del estudio. Resalte la lista completa y cópiela presionando "Comando+C". Esto copiará la lista al portapapeles. Luego, regrese a la ventana "Seleccionar datos de entrada" y haga clic en el botón "Pegar". Haga clic en la ventana "Datos de entrada", presione "Ctrl+Y" y haga clic en "Aceptar". Esto pegará la lista de directorios en las filas correspondientes de la ventana "Seleccionar datos de entrada".
 
-.. figura:: 2ndLevelAnalysis_SelectingFEATDirectories.png
+.. figure:: 2ndLevelAnalysis_SelectingFEATDirectories.png
 
   Se puede generar una lista de directorios FEAT en la Terminal mediante una combinación de variables y comodines (A). Al hacer clic en el botón "Pegar" (C), se abrirá la ventana "Datos de entrada", donde se puede pegar la lista de directorios (B).
   
@@ -64,17 +64,17 @@ Dado que simplemente queremos promediar las estimaciones de los parámetros en l
 
 Esto mostrará una ventana con el número de filas que representan el número de estimaciones de parámetros individuales; en nuestro caso, 52. Para el "Número de EV principales", cámbielo a 26, que corresponde al número de sujetos en nuestro conjunto de datos. Luego, cambie los números de cada columna a 1 donde desee obtener el promedio de las estimaciones de parámetros para ese sujeto. En nuestro caso, las dos primeras filas de la columna 1 se cambiarían a 1, las dos siguientes de la columna 2 también, y así sucesivamente.
 
-.. figura:: 2ndLevelAnalysis_GLM_Setup.png
+.. figure:: 2ndLevelAnalysis_GLM_Setup.png
 
   Captura de pantalla de una parte del GLM. Seguirás este mismo patrón para los 26 sujetos.
   
 Cuando haya terminado, haga clic en la pestaña «Contrastes y pruebas F» y cambie el número de «Contrastes» a 26. Cambie todos los números en la diagonal a 1; esto creará una única estimación de contraste para cada sujeto que es el promedio de las estimaciones de parámetros de ese sujeto.
 
-.. figura:: 2ndLevelAnalysis_Contrast_Setup.png
+.. figure:: 2ndLevelAnalysis_Contrast_Setup.png
 
 Cuando haya terminado de configurar el GLM y los contrastes y haga clic en "Listo", debería ver algo como esto:
 
-.. figura:: 2ndLevelAnalysis_Model.png
+.. figure:: 2ndLevelAnalysis_Model.png
 
 Al igual que con el análisis de primer nivel, ignoraremos la pestaña «Estadísticas posteriores» por ahora, ya que no estamos realizando una inferencia de población.
 

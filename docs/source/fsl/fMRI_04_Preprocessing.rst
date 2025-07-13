@@ -23,7 +23,7 @@ Piensa en el preprocesamiento como la limpieza de las imágenes. Al tomar una fo
 * Aumentar la saturación del color;
 *Eliminar sombras.
 
-.. figura:: Antes_Después_De_Edición.png
+.. figure:: Antes_Después_De_Edición.png
 
   Una foto que tomamos con una cámara puede ser oscura, borrosa o con ruido (panel izquierdo). Tras editar la imagen mejorando el contraste, reduciendo el desenfoque y aumentando el brillo, obtenemos una imagen más definida y nítida.
 

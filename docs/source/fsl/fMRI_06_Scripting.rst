@@ -33,7 +33,7 @@ Creando la plantilla
 Al analizar la primera ejecución de ``sub-08``, se creó un directorio llamado ``run1.feat``. Dentro de este directorio, hay varios archivos y subdirectorios. Uno de estos archivos, ``design.fsf``, contiene todo el código transcrito desde la interfaz gráfica de FEAT a un archivo de texto. Este es el código que FSL ejecuta para realizar cada paso de preprocesamiento y modelado. Si abre el archivo design.fsf en un editor de texto y la interfaz gráfica de FEAT que utilizó para crearlo y los compara, podrá ver dónde se escriben en el archivo design.fsf los datos introducidos en la interfaz gráfica de FEAT.
 
 
-.. figura:: FEAT_Design_File.png
+.. figure:: FEAT_Design_File.png
 
 
 Si abre la GUI de FEAT, hace clic en el botón «Cargar» en la parte inferior de la pantalla y selecciona el archivo design.fsf en el directorio run1.feat, cambiará todas las configuraciones a las que había ingresado en la GUI cuando guardó el script.

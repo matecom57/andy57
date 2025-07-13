@@ -28,12 +28,12 @@ Haga clic en la pestaña "Estadísticas". Para un análisis de tercer nivel, uti
 
 La última opción, «Randomise», utiliza un enfoque no paramétrico, válido cuando no se cumplen los supuestos de normalidad. Más adelante, analizaremos por qué esto es apropiado en algunos casos.
 
-.. figura:: 3rdLevelAnalysis_StatsTab.png
+.. figure:: 3rdLevelAnalysis_StatsTab.png
   :escala: 50%
 
 Dado que usamos un diseño simple, podemos crear rápidamente un GLM con el botón "Asistente de configuración del modelo". Ya hemos calculado el contraste para cada sujeto, así que podemos seleccionar "Promedio de un solo grupo". Al hacer clic en "Procesar", debería ver una representación del modelo similar a esta:
 
-.. figura:: 3rdLevelAnalysis_Model.png
+.. figure:: 3rdLevelAnalysis_Model.png
   :escala: 50%
 
 
@@ -44,7 +44,7 @@ Ahora finalmente discutimos la pestaña ``Estadísticas posteriores``. Los únic
 
 Por ejemplo, si dejamos nuestro umbral Z en 3,1 y nuestro umbral p de clúster en 0,05, buscaremos clústeres compuestos por vóxeles que superen individualmente un umbral z de 3,1. FSL realiza simulaciones para ver con qué frecuencia se obtienen clústeres de ciertos tamaños, donde cada uno de sus vóxeles constituyentes supera dicho umbral z, y crea una distribución de tamaños de clúster para esa CDT (similar a lo que ocurre cuando calculamos una distribución t basada en grados de libertad). Los tamaños de clúster que aparecen menos del 5 % del tiempo en las simulaciones para esa CDT se consideran significativos.
 
-.. figura:: 3rdLevelAnalysis_PostStatsTab.png
+.. figure:: 3rdLevelAnalysis_PostStatsTab.png
 
 
 Para la mayoría de los análisis, el valor predeterminado de un análisis de corrección de conglomerados con un CDT de z = 3,1 y un umbral de conglomerados de p = 0,05 es adecuado. Para una comparación detallada de las tasas de falsos positivos entre los diferentes paquetes de software y las distintas configuraciones de corrección de conglomerados, consulte el artículo original de Eklund et al. de 2016.`__; para ver una descripción general en video de algunos problemas potenciales con la corrección de clúster, haga clic `aquí 
@@ -58,14 +58,14 @@ Revisando la salida
 
 En la salida HTML de FEAT, verá la imagen con el estadístico z umbralizado superpuesta a una plantilla de cerebro MNI. Estos cortes axiales ofrecen una visión general rápida de la ubicación de los grupos significativos.
 
-.. figura:: 3rdLevelAnalysis_FEAT_Output.png
+.. figure:: 3rdLevelAnalysis_FEAT_Output.png
 
 
 Para examinar los resultados con más detalle, abra ``fsleyes`` y cargue una plantilla estándar, como ``MNI152_T1_1mm_brain``. A continuación, cargue la imagen ``thresh_zstat1.nii.gz``, ubicada en ``Flanker_3rdLevel_inc-con.gfeat/cope1.feat``. Esta imagen solo muestra los clústeres considerados significativos según los criterios especificados en la pestaña Estadísticas posteriores.
 
 Para que los resultados se vean más nítidos, cambie el esquema de colores a "Rojo-Amarillo" y el valor "Mín." a 3.1. También puede hacer clic en el icono del engranaje y modificar la interpolación para que los resultados se vean más suaves. Por último, haga clic en un grupo en el área de la corteza prefrontal medial dorsal y desactive la cruceta haciendo clic en el icono de la cruceta. (Estas son opciones estéticas y puede modificarlas a su gusto). Después, puede tomar una instantánea de este montaje con el icono de la cámara e incluir la imagen como figura en su manuscrito.
 
-.. figura:: 3rdLevelAnalysis_ThresholdedStatsMontage.png
+.. figure:: 3rdLevelAnalysis_ThresholdedStatsMontage.png
 
   El resultado final: una imagen que muestra los grupos significativos del análisis.
   

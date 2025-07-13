@@ -15,14 +15,14 @@ En este curso, analizaremos un conjunto de datos de fMRI que utilizó la tarea F
      `__ y haga clic en el enlace "todos los datos de los sujetos").
 
 
-.. figura:: OpenNeuro_Flanker.png
+.. figure:: OpenNeuro_Flanker.png
 
     La página de OpenNeuro para el conjunto de datos Flanker incluye un árbol de archivos del conjunto de datos, que incluye las carpetas «anat» (que contiene la imagen anatómica) y «func» (que contiene las imágenes funcionales y las horas de inicio de cada ejecución). Hay archivos adicionales que contienen datos del sujeto, como sexo y edad («participants.tsv») y parámetros de escaneo («task-flanker_bold.json»). Un árbol de directorios estandarizado como este facilita enormemente la creación de scripts, como veremos en un tutorial posterior.
     
     
 Descargue el conjunto de datos haciendo clic en el botón "Descargar" en la parte superior de la página. El conjunto de datos ocupa aproximadamente 2 GB y viene en una carpeta comprimida. Extráigalo haciendo doble clic en la carpeta y luego muévalo a su escritorio.
 
-.. figura:: OpenNeuro_DownloadButton.png
+.. figure:: OpenNeuro_DownloadButton.png
 
 
 Después de haber descargado y descomprimido el conjunto de datos, haga clic en el botón Siguiente para obtener una descripción general de la tarea experimental utilizada en este estudio.

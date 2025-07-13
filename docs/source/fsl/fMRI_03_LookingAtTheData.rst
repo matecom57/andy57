@@ -21,7 +21,7 @@ Ahora que ha descargado el conjunto de datos, veamos cómo se ve. Si el conjunto
 Esto cambiará el nombre de la carpeta a «Flanker» y la colocará en su escritorio.
 
 
-.. figura:: Move_Flanker_Folder.png
+.. figure:: Move_Flanker_Folder.png
 
     Después de descargar el conjunto de datos de Flanker, escriba el comando anterior para moverlo a su escritorio.
     
@@ -30,7 +30,7 @@ Como viste en la página de descarga de datos anteriorEl conjunto de datos tiene
     `__, o estructura de datos de imágenes cerebrales, que facilita la organización y la búsqueda de sus datos.
 
 
-.. figura:: Flanker_DataStructure.png
+.. figure:: Flanker_DataStructure.png
 
     Ejemplo del formato BIDS. Tenga en cuenta que el directorio ``func`` contiene datos funcionales (en este caso, dos ejecuciones de datos funcionales) y los archivos "events.tsv" correspondientes, que contienen **onsets**, o marcas de tiempo que indican qué condición se produjo y a qué hora. Puede abrirlos como archivo de texto o como hoja de cálculo.
 
@@ -50,11 +50,11 @@ Echemos un vistazo a la imagen anatómica en la carpeta "anat" para "sub-08". Na
 Esto abrirá la imagen anatómica en "fsleyes", el visor de imágenes de FSL.
 
 
-.. figura:: anat_firstLook.png
+.. figure:: anat_firstLook.png
 
     La imagen anatómica mostrada en fsleyes. El contraste entre la sustancia gris y la blanca parece bajo, pero esto se debe a que los vasos sanguíneos del cuello (indicados por flechas naranjas) son mucho más brillantes que el resto del cerebro.
     
-.. figura:: anat_changeContrast.png
+.. figure:: anat_changeContrast.png
 
     Esto se puede solucionar modificando los valores en el cuadro de contraste. En este caso, el Máximo se ha reducido a 800, limitando la señal más brillante a ese valor. Esto facilita la visualización del contraste entre los tejidos.
     
@@ -82,7 +82,7 @@ Inspección de las imágenes funcionales
     
 Cuando termine de ver la imagen anatómica, haga clic en "Superposición -> Eliminar todo" en el menú superior de la pantalla. Luego, haga clic en "Archivo -> Agregar desde archivo", navegue al directorio "func" de "sub-08" y seleccione la imagen que termina en "run-1_bold.nii.gz". Esta imagen también se asemeja a un cerebro, pero no está tan claramente definida como la imagen anatómica. Esto se debe a que la **resolución** es menor. Es habitual que un estudio recopile una imagen ponderada en T1 de alta resolución (es decir, anatómica) e imágenes funcionales de menor resolución, en parte porque recopilamos las imágenes funcionales con mayor rapidez.
 
-.. figura:: functional_firstLook.png
+.. figure:: functional_firstLook.png
 
 
 Muchos de los controles de calidad de la imagen funcional son los mismos que los de la imagen anatómica: Preste atención a las manchas extremadamente brillantes o extremadamente oscuras en la sustancia gris o blanca, así como a las distorsiones de la imagen, como estiramientos o deformaciones anormales. Un lugar donde es común observar una ligera distorsión es en la región orbitofrontal del cerebro, justo por encima de los globos oculares. Hay maneras de reducir esta distorsión, pero por ahora la ignoraremos.

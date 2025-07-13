@@ -30,14 +30,14 @@ Una forma de crear una región para nuestro análisis ROI es utilizar un **atlas
 
 FSL ya tiene instalados varios atlas, a los que puede acceder a través del visualizador de FSL. Si hace clic en Configuración -> Orto Vista 1 -> Panel Atlas, se abrirá una nueva ventana llamada "Atlas". Por defecto, se cargarán los atlas corticales y subcorticales Harvard-Oxford. Puede ver cómo el atlas divide el cerebro haciendo clic en el enlace "Mostrar/Ocultar" junto al nombre del atlas. Al vóxel en el centro de la cruz en la ventana de visualización se le asignará una probabilidad de pertenecer a una estructura cerebral.
 
-.. figura:: ROI_Analysis_Atlas_Example.png
+.. figure:: ROI_Analysis_Atlas_Example.png
   :escala: 25%
 
   El atlas cortical de Harvard-Oxford, mostrado en una plantilla cerebral MNI. La ventana del atlas muestra la probabilidad de que el vóxel se encuentre en una región anatómica específica.
   
 Para guardar una de estas regiones como archivo para extraer datos, también conocido como **máscara**, haga clic en el enlace "Mostrar/Ocultar" junto a la región que desea usar como máscara. En nuestro ejemplo, supongamos que queremos usar la circunvolución paracingulada como máscara. Al hacer clic en el enlace, se mostrará esa región superpuesta sobre el cerebro y se cargará como superposición en la ventana Lista de superposiciones. Haga clic en el icono del disco junto a la imagen para guardarla como máscara. Guárdela en el directorio Flanker y llámela "PCG.nii".
 
-.. figura:: Análisis_ROI_Máscara_PCG.png
+.. figure:: Análisis_ROI_Máscara_PCG.png
   :escala: 25%
 
 .. advertencia::
@@ -69,7 +69,7 @@ Mueva el archivo allZstats.nii.gz tres niveles hacia arriba para que se encuentr
   
 Esto imprimirá 26 números, uno por sujeto. Cada número representa la estimación del contraste para ese sujeto, promediada en todos los vóxeles de la máscara.
 
-.. figura:: ROI_Analysis_FSLmeants_output.png
+.. figure:: ROI_Analysis_FSLmeants_output.png
   :escala: 50%
 
   Cada valor de este comando corresponde a la estimación de contraste utilizada en el análisis. Por ejemplo, el primer valor corresponde a la estimación de contraste promedio para Incongruente-Congruente para sub-01, el segundo valor es la estimación de contraste promedio para sub-02, y así sucesivamente. Estos valores se pueden copiar y pegar en un programa estadístico de su elección (como R) para luego ejecutar una prueba t.
@@ -83,11 +83,11 @@ Otra técnica se denomina enfoque de ROI esférico. En este caso, una esfera de 
 
 La siguiente animación muestra la diferencia entre las ROI anatómicas y esféricas:
 
-.. figura:: Análisis_ROI_Anatómico_Esférico.gif
+.. figure:: Análisis_ROI_Anatómico_Esférico.gif
 
 Para crear este ROI, necesitaremos encontrar las coordenadas pico de otro estudio; escojamos al azar un artículo, como Jahn et al., 2016. En la sección Resultados, encontramos que hay un efecto de Conflicto para una tarea de Stroop (un diseño experimental distinto pero relacionado, también destinado a aprovechar el control cognitivo) con una estadística t máxima en las coordenadas MNI 0, 20, 40.
 
-.. figura:: Análisis_de_ROI_Estudio_de_Jahn.png
+.. figure:: Análisis_de_ROI_Estudio_de_Jahn.png
 
 Los siguientes pasos son complicados, así que presta mucha atención a cada uno:
 
