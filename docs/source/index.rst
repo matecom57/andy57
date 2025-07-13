@@ -34,7 +34,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     linux/index-linux
     
 .. toctree::
-    :profundidad máxima: 1
+    :maxdepth: 1
     :caption:Curso corto de fMRI con FSL
     
     fsl/fMRI_Intro
