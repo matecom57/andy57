@@ -42,6 +42,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     fsl/fMRI_02_ExperimentalDesign
     fsl/fMRI_03_LookingAtTheData
     fsl/fMRI_04_Preprocessing
+    fsl/fMRI_05_1stLevelAnalysis
     fsl/Skull_Stripping
     fsl/FEAT_GUI
     fsl/Motion_Correction
@@ -50,7 +51,6 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     fsl/Registration_Normalization
     fsl/Checking_Preprocessing
     fsl/Checkpoint
-    fsl/fMRI_05_1stLevelAnalysis
     fsl/Skull_Stripping
     fsl/FEAT_GUI
     fsl/Motion_Correction
