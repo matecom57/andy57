@@ -38,6 +38,40 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     :caption: Curso corto de fMRI con FSL
     
     fsl/fMRI_Intro
+    fsl/fMRI_01_DataDownload
+    fsl/fMRI_02_ExperimentalDesign
+    fsl/fMRI_03_LookingAtTheData
+    fsl/fMRI_04_Preprocessing
+    fsl/Skull_Stripping
+    fsl/FEAT_GUI
+    fsl/Motion_Correction
+    fsl/Slice_Timing_Correction
+    fsl/Smoothing
+    fsl/Registration_Normalization
+    fsl/Checking_Preprocessing
+    fsl/Checkpoint
+    fsl/fMRI_05_1stLevelAnalysis
+    fsl/Skull_Stripping
+    fsl/FEAT_GUI
+    fsl/Motion_Correction
+    fsl/Slice_Timing_Correction
+    fsl/Smoothing
+    fsl/Registration_Normalization
+    fsl/Checking_Preprocessing
+    fsl/Checkpoint
+    fsl/fMRI_05_1stLevelAnalysis
+    fsl/01_Stats_TimeSeries
+    fsl/02_Stats_HRF_History
+    fsl/03_Stats_HRF_Overview
+    fsl/04_Stats_General_Linear_Model
+    fsl/05_Creating_Timing_Files
+    fsl/06_Stats_Running_1stLevel_Analysis
+    fsl/fMRI_06_Scripting
+    fsl/fMRI_07_2ndLevelAnalysis
+    fsl/fMRI_08_3rdLevelAnalysis
+    fsl/fMRI_09_ROIAnalysis
+    fsl/fMRI_10_Summary
+
 
     
 .. toctree::
