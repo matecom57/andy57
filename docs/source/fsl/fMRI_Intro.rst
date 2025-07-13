@@ -1,8 +1,3 @@
-
-
-.. _Introducción a la fMRI:
-
-============
 Introducción
 ============
 
