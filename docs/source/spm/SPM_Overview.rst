@@ -18,42 +18,25 @@ Descripción general de SPM
 
 Los siguientes tutoriales le mostrarán cómo analizar un conjunto de datos de muestra con SPM. Comenzará aprendiendo los fundamentos del preprocesamiento de fMRI y luego creará un modelo estadístico para estimar la actividad cerebral en respuesta a diferentes condiciones. Tras aprender sobre los resultados a nivel de grupo y cómo programar su análisis, finalizaremos aprendiendo sobre los diferentes tipos de análisis de grupo y cómo realizar análisis de región de interés (ROI).
 
-.. árbol de toc::
-   :profundidad máxima: 1
+.. toctree::
+   :maxdepth: 1
    :caption: Análisis de principio a fin con SPM
 
-   SPM_fMRI_Intro.rst
-   SPM_01_DataDownload.rst
-   SPM_02_Flanker.rst
-   SPM_03_LookingAtData.rst
-   SPM_04_Preprocessing.rst
-   SPM_05_1stLevelAnalysis.rst
-   SPM_06_Scripting.rst
-   SPM_07_SettingTheOrigin.rst
-   SPM_08_GroupAnalysis.rst
-   SPM_09_ROIAnalysis.rst
+   SPM_fMRI_Intro
+   SPM_01_DataDownload
+   SPM_02_Flanker
+   SPM_03_LookingAtData
+   SPM_04_Preprocessing
+   SPM_05_1stLevelAnalysis
+   SPM_06_Scripting
+   SPM_07_SettingTheOrigin
+   SPM_08_GroupAnalysis
+   SPM_Intermezzo_Toolboxes
+   SPM_09_ROIAnalysis
+   SummaryStatistics
+   SPM_PPI
+   AppendixC_ParametricModulation
+   AppendixD_DesignOptimization
 
-SPM_Intermezzo_Toolboxes.rst
-SPM_Overview.rst
-SPM_PPI.rst
-SummaryStatistics.rst
-AppendixC_ParametricModulation.rst
 
-   Curso corto SPM/Introducción a la fMRI SPM
-   SPM_Curso_corto/SPM_01_Descarga de datos
-   SPM_Curso corto/SPM_02_Flanker
-   SPM_Curso corto/SPM_03_Mirando los datos
-   Curso corto SPM/SPM_04_Preprocesamiento
-   SPM_Curso Corto/SPM_05_Análisis de 1er Nivel
-   Curso corto SPM/SPM_06_Scripting
-   SPM_Curso Corto/SPM_07_EstableciendoElOrigen
-   SPM_Curso_corto/SPM_08_Análisis de grupo
-   Cajas de herramientas SPM_Short_Course/SPM_Intermezzo
-   Curso corto SPM/SPM_09_Análisis de ROI
-   SPM_Curso corto/ResumenEstadísticas
-   Curso corto SPM/SPM_PPI
-   Curso corto SPM/Apéndice C: Modulación paramétrica
-   Curso corto SPM/Apéndice D: Optimización del diseño
-
-   
 
