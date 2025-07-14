@@ -31,23 +31,24 @@ Objetivos de este curso
 
 Este curso te enseñará los fundamentos de la difusión: cómo se recopila y cómo se analiza. Aprenderás a realizar análisis basados en fixels para cuantificar la densidad de fibras de materia blanca dentro de cada vóxel y a crear tractogramas mediante tractografía probabilística. Finalmente, aprenderás a crear conectomas y a visualizar la cantidad de fibras que conectan distintas regiones cerebrales.
 
-
-.. árbol de toc::
-   :profundidad máxima: 1
+.. toctree::
+   :maxdepth: 1
    :caption: Pasos de preprocesamiento
+
+   MRtrix_00_Diffusion_Overview
+   MRtrix_01_Download_Install
+   MRtrix_02_DataDownload
+   MRtrix_03_DataFormats
+   MRtrix_04_Preprocessing
+   MRtrix_05_BasisFunctions
+   MRtrix_06_TissueBoundary
+   MRtrix_07_Streamlines
+   MRtrix_08_Connectome
+   MRtrix_09_Scripting
+   MRtrix_10_GroupAnalysis
+   MRtrix_11_FixelBasedAnalysis
+
    
-   MRtrix_Curso/MRtrix_00_Resumen_de_difusión
-   MRtrix_Curso/MRtrix_01_Descargar_Instalar
-   MRtrix_Curso/MRtrix_02_Descarga de datos
-   MRtrix_Curso/MRtrix_03_Formatos de datos
-   MRtrix_Curso/MRtrix_04_Preprocesamiento
-   MRtrix_Curso/MRtrix_05_Funciones básicas
-   MRtrix_Curso/MRtrix_06_Límite del tejido
-   MRtrix_Curso/MRtrix_07_Optimización
-   MRtrix_Curso/MRtrix_08_Conectoma
-   Curso MRtrix/MRtrix_09_Scripting
-   MRtrix_Course/MRtrix_10_GroupAnalysis
-   Curso MRtrix/MRtrix_11_Análisis basado en correcciones
 
    
 

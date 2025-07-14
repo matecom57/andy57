@@ -13,7 +13,7 @@ Para este curso, analizaremos un conjunto de datos de openneuro.org llamado 'BTC
 Para descargar los datos, haga clic en este enlace
     `__ y luego haga clic en el botón ``Descargar``.
 
-.. figura:: 02_Descargar_BTC.png
+.. figure:: 02_Descargar_BTC.png
 
 
 Cuando finalice la descarga, descomprima la carpeta, abra una Terminal y cámbiele el nombre a BTC_preop:

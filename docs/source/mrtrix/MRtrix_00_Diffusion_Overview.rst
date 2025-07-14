@@ -13,7 +13,7 @@ Descripción general
 
 Hasta ahora, este libro ha abordado la técnica de resonancia magnética más popular: la resonancia magnética funcional o fMRI. Estas imágenes funcionales, que miden la señal generada por los cambios en el flujo sanguíneo, suelen ir acompañadas de imágenes estructurales que se adquieren mediante el mismo método básico: los diferentes tipos de tejido cerebral tienen diferentes **tasas de relajación** T1 y T2, que se utilizan para crear imágenes con contraste entre los tejidos. En las exploraciones anatómicas T1, la sustancia blanca es más clara que la sustancia gris, que a su vez es más clara que el líquido cefalorraquídeo; en las exploraciones funcionales T2, las intensidades relativas se invierten.
 
-.. figura:: 00_T1_T2_Intensidades.png
+.. figure:: 00_T1_T2_Intensidades.png
 
   Imágenes típicas ponderadas en T1 (anatómicas) y T2 (funcionales). Observe cómo se invierten las intensidades relativas de los tipos de tejido al pasar de la ponderación en T1 a la ponderación en T2.
   
@@ -25,7 +25,7 @@ La estructura de la sustancia blanca
 
 ¿Por qué la dMRI se centra en los tractos de sustancia blanca? Imagine desmenuzar un palito de queso y luego desmenuzar el cerebro: al igual que el queso, el cerebro tiene direcciones lacrimales preferidas. Estas direcciones corresponden a los tractos de sustancia blanca subyacentes, que son haces densos de neuronas mielinizadas que conectan partes cercanas y distantes del cerebro. Por ejemplo, el fascículo longitudinal inferior conecta las regiones visual y temporal del cerebro, mientras que el fascículo uncinado conecta las regiones temporal y frontal inferior del cerebro. Estos tractos recorren las tres dimensiones del cerebro y pueden discurrir paralelos o cruzarse.
 
-.. figura:: 00_Tract_Examples.png
+.. figure:: 00_Tract_Examples.png
 
   Ilustración de varios tractos principales de sustancia blanca. Figura tomada de Thiebaut et al., 2015.
 
@@ -51,7 +51,7 @@ Por último, y de mayor relevancia para nuestros futuros tutoriales sobre imáge
 
 Albert Einstein combinó todos estos factores (temperatura, tamaño de partícula y viscosidad) en una única ecuación conocida como **Ecuación de Stokes-Einstein**:
 
-.. figura:: 00_Stokes_Einstein_Equation.png
+.. figure:: 00_Stokes_Einstein_Equation.png
 
 El coeficiente de difusión, **D**, aumenta con el aumento de la temperatura (**T**) y disminuye con una mayor viscosidad (simbolizada por eta) y un mayor radio de partícula (**r**). **k** representa la constante de Boltzmann. Este coeficiente de difusión influirá en la adquisición de **imágenes ponderadas por difusión**, tema que abordaremos a continuación.
 
@@ -66,7 +66,7 @@ Quizás recuerde de un curso introductorio de física de resonancia magnética q
 
 En este punto, los espines estarían **desfasados** entre sí; es decir, se procesarían a diferentes velocidades según la parte del campo magnético en la que se encuentren. Dado que los protones están ahora desfasados, llamamos al gradiente que acabamos de aplicar **Gradiente de Desfase**. Si aplicáramos un **Gradiente de Refase** igual y opuesto (es decir, el campo magnético sería más intenso a la izquierda y más débil a la derecha), los espines de los átomos se realinearían. La siguiente figura resume este proceso de gradientes de desfase y refase:
 
-.. figura:: 00_Desfase_Refase_Gradientes.png
+.. figure:: 00_Desfase_Refase_Gradientes.png
 
   Figura de Mori, 2007. Los círculos rojo, verde y azul representan átomos de hidrógeno, y las flechas dentro de los círculos representan la dirección de los espines; imagine que todos se mueven en la misma dirección alrededor de la circunferencia del círculo y a la misma velocidad. Un gradiente de desfase (fila central) es ligeramente más débil a la izquierda y ligeramente más fuerte a la derecha; como resultado, al desactivar el gradiente, los átomos giran desfasados entre sí. Un gradiente de refase aplica entonces un gradiente igual y opuesto, y al final los átomos giran en la misma dirección y a la misma velocidad.
   
@@ -81,24 +81,24 @@ Los gradientes de difusión mencionados anteriormente se generan mediante los si
 
 Estos pueden combinarse en una ecuación para el denominado **valor b**, que se muestra en la figura siguiente. Tenga en cuenta que el valor b es proporcional a la magnitud del gradiente, su duración y el tiempo entre gradientes; si alguno de estos parámetros aumenta, el valor b también aumenta. Por ahora, tenga presente esta ecuación; la abordaremos más adelante cuando analicemos cómo los valores b afectan el contraste de las imágenes ponderadas por difusión.
 
-.. figura:: 00_BValue.png
+.. figure:: 00_BValue.png
 
 Revisando los gradientes: efectos de la difusión
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 En el ejemplo anterior, asumimos que un gradiente de refase reorganizaría los átomos de hidrógeno. Esta suposición es cierta, pero solo si los átomos de hidrógeno no se mueven entre la activación y desactivación de los gradientes de desfase y refase. Si, por el contrario, se mueven —es decir, si se difunden, según los principios del movimiento browniano que analizamos anteriormente—, el gradiente de refase no provocará una realineación de los átomos de hidrógeno. Más bien, su desalineación será proporcional a su grado de difusión entre los gradientes.
 
-.. figura:: 00_Gradientes_Difusión.png
+.. figure:: 00_Gradientes_Difusión.png
 
   Figura de Mori, 2007. El período entre los gradientes, al que nos referiremos como la **fase de mezcla**, permite que los átomos de hidrógeno de diferentes ubicaciones se mezclen. Esto depende de factores como la temperatura ambiente y la constricción del entorno circundante: los átomos de hidrógeno en un espacio relativamente libre (como los ventrículos) se difunden más que aquellos en un espacio más restringido. Al aplicar el gradiente de refase, los átomos giran desfasados entre sí.
 
 El resultado es una imagen de contraste similar a las imágenes funcionales ponderadas en T2 que quizás haya visto antes: existe contraste entre los principales tipos de tejido, como la sustancia blanca y la sustancia gris. Sin embargo, al observarla más de cerca, observamos que la imagen es más oscura en ciertas zonas; esto se debe a la difusión de las moléculas de agua durante la fase de mezcla. Cuando los átomos están desfasados entre sí, la señal se atenúa. (Imagine un grupo de personas empujando un bloque en la misma dirección. La fuerza que ejercen moverá el bloque en la dirección en la que empujan. Si, en cambio, algunas personas empujan lateralmente y otras en la dirección opuesta, el movimiento del bloque se ralentiza o se detiene por completo). En este caso, una mayor *pérdida* de señal implica una mayor difusión, siendo la cantidad de pérdida relativa a una exploración adquirida sin aplicar gradientes de difusión; es decir, relativa a una exploración con un valor b de cero.
 
-.. figura:: 00_Difusión_de_Señal.png
+.. figure:: 00_Difusión_de_Señal.png
 
 La siguiente figura resume lo que hemos analizado hasta ahora. Una imagen ponderada por difusión con un valor b de cero es prácticamente idéntica a una imagen típica ponderada en T2: el LCR es brillante y la materia gris es oscura. A medida que aumentamos los valores b, observamos una mayor pérdida de señal en zonas específicas del cerebro, principalmente en la sustancia blanca. Esto se debe a que el agua dentro de estos tractos de sustancia blanca se difunde principalmente a lo largo de la dirección del tracto, y la imagen generada muestra una señal correspondientemente menor. (Los valores b más altos también hacen que la imagen sea más susceptible a artefactos de imagen, como el movimiento y las corrientes magnéticas llamadas remolinos; los revisaremos en un capítulo posterior sobre preprocesamiento).
 
-.. figura:: 00_bvalues.png
+.. figure:: 00_bvalues.png
 
   Los valores b más altos serán más sensibles para detectar la difusión, pero con el riesgo de generar más ruido y mayor susceptibilidad a los artefactos de vibración.
 
@@ -113,7 +113,7 @@ Hasta ahora, hemos aprendido cómo se aplican los gradientes de difusión y cóm
 
 Supongamos que recopiló 40 imágenes ponderadas por difusión. Supongamos también que el primer volumen se adquirió con un valor b de cero y el resto con valores b de 1000. El archivo bvals tendría 40 entradas, y cada bval correspondería a un volumen individual en la imagen ponderada por difusión. El archivo bvecs, por otro lado, tendría 40 *tripletes* de números que indican la dirección del gradiente de difusión para ese volumen en las direcciones x, y y z. Si conocemos tanto la dirección como la magnitud del gradiente, podemos hacer una estimación razonable de la difusión a lo largo de dicho gradiente, en función de los cambios en la señal adquirida de esos vóxeles.
 
-.. figura:: 00_bvals_bvecs.png
+.. figure:: 00_bvals_bvecs.png
 
   Ejemplo de contenido de los archivos .bvals y .bvecs. La estructura del archivo bvecs es más clara si se importa a una hoja de cálculo; el archivo está formateado para agrupar los números en tripletes. Cada triplete de bvecs corresponde a un único bval.
   
@@ -128,15 +128,15 @@ Esta combinación de bvals y bvecs nos permite construir un **tensor** y ajustar
 
 Aplicados a imágenes ponderadas por difusión, utilizamos estos mismos conceptos para modelar la señal observada en cada vóxel como una combinación de vectores propios y valores propios. Los vectores propios indican la dirección de la difusión y los valores propios representan su magnitud. Retomando el ejemplo de la manguera de jardín, la fuerza del agua tendría un vector propio y un valor propio elevados a lo largo del tubo; de forma similar, podemos modelar la difusión en cada vóxel del cerebro como una combinación de vectores propios y valores propios. Una vez calculada la combinación de valores que mejor representa la señal observada en el vóxel actual, podemos utilizar diversas ecuaciones para calcular las diferentes propiedades de la difusión en ese vóxel. La ecuación más popular para esta **imagen del tensor de difusión** se denomina **Anisotropía Fraccionaria**, o AF. Esta se puede calcular mediante la fórmula:
 
-.. figura:: 00_FA_formula.png
+.. figure:: 00_FA_formula.png
 
 La anisotropía fraccional es la suma ponderada de los valores propios de cada vóxel. Un valor de FA más alto indica una mayor difusión en una de las direcciones, mientras que un valor de FA más bajo indica que la difusión es muy baja o que esta no está restringida y se extiende aleatoriamente en cada dirección (como, por ejemplo, en los ventrículos cerebrales). Si observamos que la difusión es mayor en una de las dimensiones, podemos codificarla por colores según la dirección. En las imágenes de difusión, la convención es representar la difusión en el eje x en rojo, la difusión en el eje y en verde y la difusión en el eje z en azul. La imagen a continuación resume este esquema de codificación por colores.
 
-.. figura:: 00_Eigenvectors.png
+.. figure:: 00_Eigenvectors.png
 
 Ajustar un tensor en cada vóxel permite generar diferentes tipos de mapas de difusión, como mapas de anisotropía fraccional. Para crear estos mapas se puede utilizar la estadística espacial basada en tractos (TBSS), un popular paquete de análisis de difusión FSL. De forma similar al análisis de datos de fMRI, estos mapas se pueden combinar en un mapa de análisis de grupos y extraer datos de las regiones de interés dentro del mapa.
 
-.. figura:: 00_FA_Map.png
+.. figure:: 00_FA_Map.png
 
   Tensores generados por TBSS de FSL. Para obtener una descripción general de cómo analizar un sujeto con este paquete, haga clic aquí.
     `__.
@@ -167,12 +167,12 @@ In order to understand this better, let's revisit how basis functions are used w
 
 De forma similar a los datos ponderados por difusión, adquirimos una señal de difusión en cada vóxel desde diferentes ángulos para obtener una imagen tanto de la dirección de la difusión como de su magnitud. La señal se deconvoluciona posteriormente en un conjunto de fibras individuales orientadas en diferentes direcciones. En lugar de un único número de difusión en cada vóxel, se utiliza la deconvolución esférica para generar una **función de densidad de orientación de la fibra**, o FOD. Esta función se representa como una forma con ejes ovoides; aunque los lóbulos del eje que se carga en la dirección predominante de difusión se alargan y amplían en relación con los demás ejes, se conserva la información sobre la dirección y la intensidad de la difusión a lo largo de estos.
 
-.. figura:: 00_ODF.png
+.. figure:: 00_ODF.png
 
   Se muestra una imagen ponderada por difusión con FOD superpuestos. Si ampliamos una región de la comisura anterior, observamos que los ODF se mueven principalmente de izquierda a derecha (lo que también se representa por su código de color rojo). Observe que los ODF a la derecha del recuadro comienzan a tornarse más verdes, lo que representa el cambio de orientación de un eje principalmente izquierda-derecha a un eje anteroposterior.
   
   
-.. figura:: 00_ODF_2.png
+.. figure:: 00_ODF_2.png
 
   Otra parte de la sustancia blanca muestra FOD que siguen principalmente una orientación anteroposterior; sin embargo, algunas ODF tienen lóbulos que se extienden tanto en dirección anteroposterior como inferosuperior (la inferosuperior se codifica en azul). De esta manera, los FOD pueden representar la orientación de las fibras en múltiples dimensiones.
 

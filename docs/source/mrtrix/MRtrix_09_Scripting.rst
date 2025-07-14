@@ -1,0 +1,253 @@
+
+
+.. _MRtrix_09_Scripting:
+
+=============================
+Tutorial n.° 9 de MRtrix: Creación de scripts
+=============================
+
+--------------
+
+.. nota::
+
+  Esta sección aún está en construcción; ¡vuelva pronto!
+
+Descripción general
+********
+
+Después de preprocesar y configurar un modelo para una sola ejecución con un solo sujeto, deberá realizar los mismos pasos para todas las ejecuciones de todos los sujetos de su conjunto de datos. Esto puede parecer tedioso, pero es factible: solo contamos con cuarenta y dos sujetos y una ejecución de datos de difusión por sujeto. Quizás piense que puede completarse en aproximadamente una semana; y siempre puede asignar la tarea a un par de asistentes de investigación.
+
+Esta actitud es admirable, y si adoptas este enfoque, eventualmente podrás analizar todos los datos. Pero en algún momento te encontrarás con dos problemas:
+
+1. Descubrirá que analizar manualmente cada ejecución no solo es tedioso, sino también propenso a errores, y la probabilidad de cometer un error aumenta significativamente a medida que aumenta el número de ejecuciones a analizar; y
+
+2. Para conjuntos de datos más grandes (por ejemplo, ochenta sujetos con cinco ejecuciones cada uno), este enfoque rápidamente se vuelve impráctico.
+
+Una alternativa es **guionizar** tu análisis. Así como un actor tiene un guion que le dice qué decir, dónde pararse y dónde moverse, tú también puedes escribir un guion que le indique a tu computadora cómo analizar tus conjuntos de datos. Esto tiene la doble ventaja de automatizar tus análisis y permitir analizar conjuntos de datos de cualquier tamaño: el código para analizar dos o doscientos sujetos es prácticamente idéntico.
+
+Primero crearemos una plantilla que contenga el código necesario para analizar una sola ejecución y luego usaremos un bucle for.  ` para automatizar el análisis de todas las ejecuciones. La idea es simple; y aunque el código puede ser difícil de entender al principio, una vez que se familiarice con él, verá cómo puede aplicarlo a cualquier conjunto de datos.
+
+.. nota::
+
+  El siguiente tutorial complementa el tutorial de Unix sobre :ref:`automatizar el análisis
+    "Te recomiendo leer ese capítulo si necesitas repasar los términos de Unix para scripts.
+
+Creando la plantilla
+*********************
+
+La forma más sencilla de programar nuestro análisis sería copiar y pegar todos nuestros comandos en un archivo de texto y ejecutarlo desde la línea de comandos. Esto es básicamente lo que haremos; el único cambio será incluir argumentos que el usuario pueda completar con los archivos necesarios. Luego, podemos ejecutar esto en un bucle para todos los sujetos de nuestro conjunto de datos.
+
+Por ahora, haremos esto para un solo sujeto. Los guiones se escribirán en cuatro partes:
+
+1. El primer script realizará todo el preprocesamiento, desde la eliminación de ruido hasta ``tcksift2``;
+
+2. El segundo script realizará comprobaciones de control de calidad para cada una de las principales salidas de preprocesamiento;
+
+3. El tercer script preprocesará las imágenes estructurales utilizando ``recon-all``; y
+
+4. El último script creará el conectoma.
+
+``recon-all`` no es parte del pipeline de MRtrix *per se* - puedes usar cualquier atlas que desees y no estás restringido a FreeSurfer - pero lo incluiremos como un prerrequisito para crear el conectoma.
+
+.. nota::
+
+  Antes de continuar, descargue el script de preprocesamiento aquí
+     `__. Puedes descargarlo usando ``git`` o haciendo clic en ``Raw``, haciendo clic derecho en cualquier parte de la pantalla resultante y seleccionando "Guardar como". Guárdalo en el directorio ``sub-CON03/ses-preop/dwi``. Las siguientes secciones explicarán la función de cada bloque de código.
+
+
+Guión 1: Preprocesamiento
+^^^^^^^^^^^^^^^^^^^^^^^
+
+El primer script comienza con código ``bash``, que genera un breve manual de ayuda si no se proporcionan los argumentos necesarios. Por ejemplo, el bloque de código al principio del script se ve así:
+
+::
+
+  uso_de_pantalla() {
+    echo "$(nombre base $0) [Difusión sin procesar] [Imagen de fase reversa] [VEC AP] [Valor AP] [VEC PA] [Valor PA] [Anatómico]"
+    echo "Este script utiliza MRtrix para analizar datos de difusión. Requiere 7 argumentos:
+      1) La imagen de difusión bruta;
+      2) La imagen adquirida con la dirección de codificación de fase inversa;
+      3) El archivo bvec para los datos adquiridos en la dirección AP;
+      4) El archivo bval para los datos adquiridos en la dirección AP;
+      5) El archivo bvec para los datos adquiridos en la dirección PA;
+      6) El archivo bval para los datos adquiridos en la dirección PA;
+      7) La imagen anatómica"
+    }
+
+    si [ $# -le 6 ]
+    entonces
+      uso de visualización
+      salida 1
+    fi
+
+  RAW_DWI=$1
+  FASE REV=$2
+  AP_BVEC=$3
+  AP_BVAL=$4
+  PA_BVEC=$5
+  PA_BVAL=$6
+  ANAT=$7
+
+Estos últimos campos, marcados con los números del 1 al 7 precedidos por un símbolo de dólar (``$``), son los **argumentos** que se pasan al script. Deberá introducir los argumentos en el orden exacto en que aparecen; por ejemplo, el comando que usaremos es el siguiente:
+
+::
+
+  bash 01_MRtrix_Preproc_AP_Direction.sh sub-CON03_ses-preop_acq-AP_dwi.nii.gz sub-CON03_ses-preop_acq-PA_dwi.nii.gz \
+  sub-CON03_ses-preop_acq-AP_dwi.bvec sub-CON03_ses-preop_acq-AP_dwi.bval \
+  sub-CON03_ses-preop_acq-PA_dwi.bvec sub-CON03_ses-preop_acq-PA_dwi.bval \
+  ../anat/sub-CON03_ses-preop_T1w.nii.gz
+
+Los dos primeros argumentos especifican las imágenes con codificación de fase primaria e inversa; los cuatro argumentos siguientes apuntan a los archivos .bvec y .bval de las imágenes con codificación de fase primaria e inversa, respectivamente; y el último argumento corresponde a la imagen anatómica. Estos argumentos rellenarán las variables del resto del script, que es básicamente una compilación de todos los comandos utilizados en los capítulos anteriores. Por ejemplo, la variable ``$RAW_DWI`` se reemplazará con el primer argumento proporcionado, ``sub-CON03_ses-preop_acq-AP_dwi.nii.gz``.
+
+Copy and paste this command into your terminal and press enter. While it is running, you can read the rest of the preprocessing script (reproduced here for completeness); review it to see how the variables are placed, and how each of the commands will be executed when we run the entire script:
+
+::
+
+  ########################### STEP 1 ###################################
+  #	        Convert data to .mif format and denoise	   	               #
+  ######################################################################
+
+  # Also consider doing Gibbs denoising (using mrdegibbs). Check your diffusion data for ringing artifacts before deciding whether to use it
+  mrconvert $RAW_DWI raw_dwi.mif -fslgrad $AP_BVEC $AP_BVAL
+  dwidenoise raw_dwi.mif dwi_den.mif -noise noise.mif
+
+  # Extract the b0 images from the diffusion data acquired in the AP direction
+  dwiextract dwi_den.mif - -bzero | mrmath - mean mean_b0_AP.mif -axis 3
+
+  # Extracts the b0 images for diffusion data acquired in the PA direction
+  # The term "fieldmap" is taken from the output from Michigan's fMRI Lab; it is not an actual fieldmap, but rather a collection of b0 images with both PA and AP phase encoding
+  # For the PA_BVEC and PA_BVAL files, they should be in the following format (assuming you extract only one volume):
+  # PA_BVEC: 0 0 0
+  # PA_BVAL: 0
+  mrconvert $FIELDMAP PA.mif # If the PA map contains only 1 image, you will need to add the option "-coord 3 0"
+  mrconvert PA.mif -fslgrad $PA_BVEC $PA_BVAL - | mrmath - mean mean_b0_PA.mif -axis 3
+
+  # Concatenates the b0 images from AP and PA directions to create a paired b0 image
+  mrcat mean_b0_AP.mif mean_b0_PA.mif -axis 3 b0_pair.mif
+
+  # Runs the dwipreproc command, which is a wrapper for eddy and topup. This step takes about 2 hours on an iMac desktop with 8 cores
+  dwifslpreproc dwi_den.mif dwi_den_preproc.mif -nocleanup -pe_dir AP -rpe_pair -se_epi b0_pair.mif -eddy_options " --slm=linear --data_is_shelled"
+
+  # Performs bias field correction. Needs ANTs to be installed in order to use the "ants" option (use "fsl" otherwise)
+  dwibiascorrect ants dwi_den_preproc.mif dwi_den_preproc_unbiased.mif -bias bias.mif
+
+  # Create a mask for future processing steps
+  dwi2mask dwi_den_preproc_unbiased.mif mask.mif
+
+  ########################### STEP 2 ###################################
+  #             Basis function for each tissue type                    #
+  ######################################################################
+
+  # Create a basis function from the subject's DWI data. The "dhollander" function is best used for multi-shell acquisitions; it will estimate different basis functions for each tissue type. For single-shell acquisition, use the "tournier" function instead
+  dwi2response dhollander dwi_den_preproc_unbiased.mif wm.txt gm.txt csf.txt -voxels voxels.mif
+
+  # Performs multishell-multitissue constrained spherical deconvolution, using the basis functions estimated above
+  dwi2fod msmt_csd dwi_den_preproc_unbiased.mif -mask mask.mif wm.txt wmfod.mif gm.txt gmfod.mif csf.txt csffod.mif
+
+  # Creates an image of the fiber orientation densities overlaid onto the estimated tissues (Blue=WM; Green=GM; Red=CSF)
+  # You should see FOD's mostly within the white matter. These can be viewed later with the command "mrview vf.mif -odf.load_sh wmfod.mif"
+  mrconvert -coord 3 0 wmfod.mif - | mrcat csffod.mif gmfod.mif - vf.mif
+
+  # Now normalize the FODs to enable comparison between subjects
+  mtnormalise wmfod.mif wmfod_norm.mif gmfod.mif gmfod_norm.mif csffod.mif csffod_norm.mif -mask mask.mif
+
+
+  ########################### STEP 3 ###################################
+  #            Create a GM/WM boundary for seed analysis               #
+  ######################################################################
+
+  # Convert the anatomical image to .mif format, and then extract all five tissue categories (1=GM; 2=Subcortical GM; 3=WM; 4=CSF; 5=Pathological tissue)
+  mrconvert $ANAT anat.mif
+  5ttgen fsl anat.mif 5tt_nocoreg.mif
+
+  # The following series of commands will take the average of the b0 images (which have the best contrast), convert them and the 5tt image to NIFTI format, and use it for coregistration.
+  dwiextract dwi_den_preproc_unbiased.mif - -bzero | mrmath - mean mean_b0_processed.mif -axis 3
+  mrconvert mean_b0_processed.mif mean_b0_processed.nii.gz
+  mrconvert 5tt_nocoreg.mif 5tt_nocoreg.nii.gz
+
+  # Uses FSL commands fslroi and flirt to create a transformation matrix for regisitration between the tissue map and the b0 images
+  fslroi 5tt_nocoreg.nii.gz 5tt_vol0.nii.gz 0 1 #Extract the first volume of the 5tt dataset (since flirt can only use 3D images, not 4D images)
+  flirt -in mean_b0_processed.nii.gz -ref 5tt_vol0.nii.gz -interp nearestneighbour -dof 6 -omat diff2struct_fsl.mat
+  transformconvert diff2struct_fsl.mat mean_b0_processed.nii.gz 5tt_nocoreg.nii.gz flirt_import diff2struct_mrtrix.txt
+  mrtransform 5tt_nocoreg.mif -linear diff2struct_mrtrix.txt -inverse 5tt_coreg.mif
+
+  #Create a seed region along the GM/WM boundary
+  5tt2gmwmi 5tt_coreg.mif gmwmSeed_coreg.mif
+
+  ########################### STEP 4 ###################################
+  #                 Run the streamline analysis                        #
+  ######################################################################
+
+  # Create streamlines
+  # Note that the "right" number of streamlines is still up for debate. Last I read from the MRtrix documentation,
+  # They recommend about 100 million tracks. Here I use 10 million, if only to save time. Read their papers and then make a decision
+  tckgen -act 5tt_coreg.mif -backtrack -seed_gmwmi gmwmSeed_coreg.mif -nthreads 8 -maxlength 250 -cutoff 0.06 -select 10000000 wmfod_norm.mif tracks_10M.tck
+
+  # Extract a subset of tracks (here, 200 thousand) for ease of visualization
+  tckedit tracks_10M.tck -number 200k smallerTracks_200k.tck
+
+  # Reduce the number of streamlines with tcksift
+  tcksift2 -act 5tt_coreg.mif -out_mu sift_mu.txt -out_coeffs sift_coeffs.txt -nthreads 8 tracks_10M.tck wmfod_norm.mif sift_1M.txt
+  
+Script 2: QA Checks
+^^^^^^^^^^^^^^^^^^^
+
+Just as with the preprocessing script, the QA script contains all of the quality checks that we did in the previous chapters. You can download it `here 
+      `__, and execute it by typing ``bash 02_QC_mrview.sh``. (Make sure it is placed in the folder ``sub-CON03/ses-preop/dwi`` before you run it.) It will use ``mrview`` and ``shview`` to examine the output of each preprocessing step, similar to what we did in a :ref:`previous chapter 
+       ` that examined the results of preprocessing; to proceed to the next QC check, you will need to close the window that is currently open. The contents of the script are reproduced below:
+
+::
+
+  #!/bin/bash
+
+  # These commands are for quality-checking your diffusion data
+
+
+  ### Quality checks for Step 2 ###
+
+  # Views the voxels used for FOD estimation
+  echo "Now viewing the voxels used for FOD estimation (Blue=WM; Green=GM; Red=CSF)"
+  mrview dwi_den_preproc_unbiased.mif -overlay.load voxels.mif
+
+  # Views the response functions for each tissue type. The WM function should flatten out at higher b-values, while the other tissues should remain spherical
+  echo "Now viewing response function for white matter (press right arrow key to view response function for different shells)"
+  shview wm.txt
+  echo "Now viewing response function for grey matter"
+  shview gm.txt
+  echo "Now viewing response function for CSF"
+  shview csf.txt
+
+  # Views the FODs overlaid on the tissue types (Blue=WM; Green=GM; Red=CSF)
+  mrview vf.mif -odf.load_sh wmfod.mif
+
+
+  ### Quality checks for Step 3 ###
+
+  # Check alignment of the 5 tissue types before and after alignment (new alignment in red, old alignment in blue)
+  mrview dwi_den_preproc_unbiased.mif -overlay.load 5tt_nocoreg.mif -overlay.colourmap 2 -overlay.load 5tt_coreg.mif -overlay.colourmap 1
+
+  # Check the seed region (should match up along the GM/WM boundary)
+  mrview dwi_den_preproc_unbiased.mif -overlay.load gmwmSeed_coreg.mif
+
+
+  ### Quality checks for Step 4 ###
+
+  # View the tracks in mrview
+  mrview dwi_den_preproc_unbiased.mif -tractography.load smallerTracks_200k.tck
+  
+Script 3: Recon-all
+^^^^^^^^^^^^^^^^^^^
+
+The FreeSurfer script isn't a separate text file; rather, it is simply two lines of code. If you want to learn more about what these commands do, you can review in the :ref:`FreeSurfer tutorial 
+        
+         `: :: SUBJECTS_DIR=`pwd`; recon-all -i ../anat/sub-CON03_ses-preop_T1w.nii.gz -s sub-CON03_recon -all In which ``sub-CON03`` can be replaced with whichever subject you want to analyze. (Later, we will learn how to replace this in a for-loop). Once recon-all finishes, which may take several hours, you are ready to run the last script. Script 4: Creating the Connectome ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Creating the connectome takes only a few lines of code. For this tutorial, as mentioned above, we will be using FreeSurfer's **Desikan-Killiany** atlas: :: #!/bin/bash SUBJ=$1 #Convert the labels of the FreeSurfer parcellation to a format that MRtrix understands. This requires recon-all to have been run on the subject labelconvert ${SUBJ}_recon/mri/aparc+aseg.mgz $FREESURFER_HOME/FreeSurferColorLUT.txt /usr/local/mrtrix3/share/mrtrix3/labelconvert/fs_default.txt ${SUBJ}_parcels.mif mrtransform ${SUBJ}_parcels.mif -interp nearest -linear diff2struct_mrtrix.txt -inverse -datatype uint32 ${SUBJ}_parcels_coreg.mif #Create a whole-brain connectome, representing the streamlines between each parcellation pair in the atlas (in this case, 84x84). The "symmetric" option will make the lower diagonal the same as the upper diagonal, and the "scale_invnodevol" option will scale the connectome by the inverse of the size of the node tck2connectome -symmetric -zero_diagonal -scale_invnodevol -tck_weights_in sift_1M.txt tracks_10M.tck ${SUBJ}_parcels_coreg.mif ${SUBJ}_parcels_coreg.csv -out_assignment assignments_${SUBJ}_parcels_coreg.csv This script can be downloaded `here 
+         
+          `__. Cópielo en la carpeta ``sub-CON03/ses-preop/dwi`` y ejecútelo escribiendo: :: bash 03_MRtrix_CreateConnectome.sh sub-CON03. Esto creará un archivo .csv que podrá visualizar en Matlab, tal como hicimos en el capítulo anterior. Ejecución de los scripts ******************* Recomiendo ejecutar cada script por separado para comprobar el resultado de cada parte, aunque quizás prefiera combinarlo todo en un único script maestro. En cualquier caso, cuando hayas descargado cada uno de los scripts y los hayas colocado en la carpeta ``BTC_preop``, puedes ejecutar el siguiente bucle for para ejecutar el preprocesamiento para los sujetos 04-08 del grupo control y 02-08 del grupo pacientes (NOTA: Por ahora, omite CON05 y CON06, esos ya los hice): :: for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do cp *.sh ${sub}/ses-preop/dwi; cd ${sub}/ses-preop/dwi; bash 01_MRtrix_Preproc_AP_Direction.sh ${sub}_ses-preop_acq-AP_dwi.nii.gz ${sub}_ses-preop_acq-PA_dwi.nii.gz \ ${sub}_ses-preop_acq-AP_dwi.bvec ${sub}_ses-preop_acq-AP_dwi.bval \ ${sub}_ses-preop_acq-PA_dwi.bvec ${sub}_ses-preop_acq-PA_dwi.bval \ ../anat/${sub}_ses-preop_T1w.nii.gz cd ../../..; done Cuando esto haya terminado, use el mismo bucle para ejecutar las comprobaciones de QA, que se trataron en un capítulo anterior: :: for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do cd ${sub}/ses-preop/dwi; bash 02_QC_mrview.sh; cd ../../..; done Dado que el comando ``tck2connectome`` requiere la salida de recon-all, lo ejecutaremos en un bucle separado: :: for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; Por último, ejecutaremos el comando ``tck2connectome``: :: for sub in sub-CON04 sub-CON05 sub-CON06 sub-CON07 sub-CON08 sub-PAT02 sub-PAT03 sub-PAT05 sub-PAT06 sub-PAT07 sub-PAT08; do cd ${sub}/ses-preop/dwi; bash 03_MRtrix_CreateConnectome.sh $sub cd ../../..; Pasos siguientes ********** Una vez preprocesados los sujetos y realizadas las comprobaciones de calidad, podemos realizar un **análisis de grupo** para comparar las líneas de flujo entre el grupo de control y el grupo de pacientes. Para ver cómo hacerlo, haga clic en el botón "Siguiente".
+         
+        
+       
+      
+     
+    
+   
+

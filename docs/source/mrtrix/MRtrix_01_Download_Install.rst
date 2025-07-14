@@ -25,11 +25,11 @@ Una vez descargado, abra una Terminal y escriba lo siguiente para probar su inst
   
 Esto abrirá el visor de MRtrix. En la siguiente sección, descargaremos los datos de difusión, que puede cargar en el visor haciendo clic en "Archivo -> Abrir" y seleccionando la imagen de difusión. Debería verse así:
 
-.. figura:: 01_SampleImage.png
+.. figure:: 01_SampleImage.png
 
 Intente también escribir uno de los comandos de la biblioteca, como ``mrconvert``, y presione ``Intro``. Si MRtrix se instaló correctamente, debería ver la página de ayuda impresa por defecto cuando no se pasan argumentos al comando:
 
-.. figura:: 01_MRconvert.png
+.. figure:: 01_MRconvert.png
 
 Si ambos funcionan sin errores, estará listo para comenzar a descargar datos de difusión, que abordaremos en el próximo capítulo.
 
