@@ -13,7 +13,7 @@ Descripción general de SPM
 
 `SPM`__ (Mapeo Paramétrico Estadístico) es un paquete de software de análisis fMRI que se ejecuta en `Matlab`__. Además del análisis fMRI, SPM contiene herramientas para realizar morfometría basada en volumen y conectividad efectiva.
 
-.. figura:: spm12_logo.png
+.. figure:: spm12_logo.png
 
 
 Los siguientes tutoriales le mostrarán cómo analizar un conjunto de datos de muestra con SPM. Comenzará aprendiendo los fundamentos del preprocesamiento de fMRI y luego creará un modelo estadístico para estimar la actividad cerebral en respuesta a diferentes condiciones. Tras aprender sobre los resultados a nivel de grupo y cómo programar su análisis, finalizaremos aprendiendo sobre los diferentes tipos de análisis de grupo y cómo realizar análisis de región de interés (ROI).
@@ -21,6 +21,23 @@ Los siguientes tutoriales le mostrarán cómo analizar un conjunto de datos de m
 .. árbol de toc::
    :profundidad máxima: 1
    :caption: Análisis de principio a fin con SPM
+
+   SPM_fMRI_Intro.rst
+   SPM_01_DataDownload.rst
+   SPM_02_Flanker.rst
+   SPM_03_LookingAtData.rst
+   SPM_04_Preprocessing.rst
+   SPM_05_1stLevelAnalysis.rst
+   SPM_06_Scripting.rst
+   SPM_07_SettingTheOrigin.rst
+   SPM_08_GroupAnalysis.rst
+   SPM_09_ROIAnalysis.rst
+
+SPM_Intermezzo_Toolboxes.rst
+SPM_Overview.rst
+SPM_PPI.rst
+SummaryStatistics.rst
+AppendixC_ParametricModulation.rst
 
    Curso corto SPM/Introducción a la fMRI SPM
    SPM_Curso_corto/SPM_01_Descarga de datos

@@ -25,7 +25,7 @@ Desde la interfaz gráfica de usuario de SPM, haga clic en el botón "Especifica
 
 Haga doble clic en el campo "Directorio" y seleccione la carpeta "2ndLevel_Inc-Con" que acaba de crear. Para el campo "Escaneos", navegue al directorio "1stLevel" del sub-01 y seleccione la imagen de contraste "Incongruente-Congruente" ("con_0001.nii"). Navegue a los directorios "1stLevel" de los demás sujetos y seleccione la imagen "con_0001.nii" para cada uno. La animación a continuación muestra un par de maneras de agilizar este proceso. Cuando haya terminado de seleccionar la imagen "con_0001.nii" para los 26 sujetos, haga clic en el botón verde "Ir".
 
-.. figura:: 08_SelectConImages.gif
+.. figure:: 08_SelectConImages.gif
 
 .. nota::
 
@@ -45,7 +45,7 @@ Al igual que con los análisis de primer nivel, ahora podemos ver los resultados
 
 Haga clic en "Definir nuevo contraste...", llámelo "Inc-Con" y asígnele un peso de contraste de "1". Al terminar, debería verse así:
 
-.. figura:: 08_2ndLevel_Inc-Con_Contrast.png
+.. figure:: 08_2ndLevel_Inc-Con_Contrast.png
 
 
 Haga clic en "Aceptar" y, a continuación, en "Listo". Se le harán las mismas preguntas que antes sobre el enmascaramiento, los valores de umbralización del conglomerado y la extensión del conglomerado. Para este análisis de grupo, seleccione lo siguiente:
@@ -61,7 +61,7 @@ Esto establecerá el umbral de la imagen para mostrar únicamente los grupos com
 
 Cuando haya terminado, debería ver un resultado como este, que muestra un grupo significativo en la corteza prefrontal medial dorsal:
 
-.. figura:: 08_GroupLevelResult_Inc-Con.png
+.. figure:: 08_GroupLevelResult_Inc-Con.png
 
 
 Resultados de segundo nivel para incongruentes y congruentes

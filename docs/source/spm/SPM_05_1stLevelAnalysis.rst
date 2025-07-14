@@ -15,7 +15,7 @@ Ahora que la primera ejecución funcional ha sido preprocesada, podemos **ajusta
 
 Después de revisar estos conceptos, estará listo para realizar un análisis de primer nivel. La figura a continuación ilustra cómo ajustaremos un modelo a los datos.
 
-.. figura:: 05_1erNivelAnálisis_Pipeline.png
+.. figure:: 05_1erNivelAnálisis_Pipeline.png
 
    Tras construir un modelo que indica cómo debería ser la respuesta BOLD (A), dicho modelo se ajusta a la serie temporal en cada vóxel (B). El grado de ajuste del modelo (también conocido como **bondad de ajuste**) se puede representar en el cerebro mediante mapas estadísticos, donde las intensidades más brillantes indican un mejor ajuste. Estos mapas estadísticos se pueden umbralizar para mostrar solo los vóxeles con un ajuste estadísticamente significativo (C).
 

@@ -26,7 +26,7 @@ Primero, crearemos archivos de tiempo que contengan los inicios de la apuesta, e
 Puede descargar un script para convertir los tiempos a un formato que SPM entienda haciendo clic aquí
     `__, haciendo clic en el botón ``Raw``, haciendo clic derecho en cualquier parte de la pantalla y seleccionando ``Guardar como``. Guarda el archivo como un script de shell en el directorio ``Gambles``. Una vez descargado, accede a ese directorio con una terminal y ejecuta el script escribiendo ``bash make_FSL_Timings_Gambles.sh``. Deberías ver nueve archivos de texto en cada directorio ``func``:
 
-.. figura:: Apéndice_F_Onsets.png
+.. figure:: Apéndice_F_Onsets.png
 
 Creación del script de preprocesamiento
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

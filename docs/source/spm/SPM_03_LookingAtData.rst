@@ -29,7 +29,7 @@ Como viste en la página de descarga de datos anterior
      `__, o estructura de datos de imágenes cerebrales, que facilita la organización y el análisis de sus datos.
 
 
-.. figura:: 03_Flanker_DataStructure.png
+.. figure:: 03_Flanker_DataStructure.png
 
     Ejemplo del formato BIDS. Tenga en cuenta que el directorio ``func`` contiene datos funcionales (en este caso, dos ejecuciones de datos funcionales) y los archivos "events.tsv" correspondientes, que contienen **onsets**, o marcas de tiempo de qué condición se produjo y a qué hora. Puede abrirlos como archivo de texto o como hoja de cálculo. Los usaremos más adelante al crear nuestro Modelo Lineal General.
     
@@ -63,7 +63,7 @@ Presione Enter para abrir la interfaz gráfica de usuario de SPM. Si hace clic e
   Lo cual expandirá las imágenes y eliminará la extensión ".gz".
 
 
-.. figura:: 03_Inspección_Anatómica.png
+.. figure:: 03_Inspección_Anatómica.png
 
     La imagen anatómica mostrada en el visor SPM en vistas axial, sagital y coronal. Puede cerrar cualquiera de las ventanas si solo desea centrarse en un subconjunto de las vistas.
     
@@ -79,7 +79,7 @@ A medida que continúe inspeccionando la imagen, hay dos cosas que debe tener en
 
 1. Líneas que parecen ondas en un estanque. Estas ondas pueden deberse a que el sujeto se mueve demasiado durante el escaneo y, si son lo suficientemente grandes, pueden provocar fallos en los pasos de preprocesamiento, como la extracción cerebral o la normalización.
 
-.. figura:: 03_Gibbs.png
+.. figure:: 03_Gibbs.png
 
     Crédito de la foto: Sundar Amartur
 
@@ -96,7 +96,7 @@ Cuando haya terminado de ver la imagen anatómica, haga clic nuevamente en el bo
 
 Se mostrará una nueva imagen en las ventanas de visualización ortogonales. Esta imagen también se asemeja a un cerebro, pero no está tan claramente definida como la imagen anatómica. Esto se debe a que la **resolución** es menor. Es habitual que un estudio recopile una imagen ponderada en T1 de alta resolución (es decir, anatómica) e imágenes funcionales de menor resolución, que son de menor resolución en parte debido a su rápida obtención. Una de las disyuntivas en la investigación con imágenes es la que existe entre la resolución espacial y la resolución temporal: las imágenes obtenidas con mayor resolución temporal tendrán menor resolución espacial, y viceversa.
 
-.. figura:: 03_Inspección_Funcional.png
+.. figure:: 03_Inspección_Funcional.png
 
 
 Many of the quality checks for the functional image are the same as with the anatomical image: Watch out for extremely bright or extremely dark spots in the grey or white matter, as well as for image distortions such as abnormal stretching or warping. One place where it is common to see a little bit of distortion is in the orbitofrontal part of the brain, just above the eyeballs. There are ways to `reduce this distortion 
@@ -140,11 +140,11 @@ En este caso, ¿por qué se devuelven 146 respuestas? ¿Cuál de los campos cont
 
 5. Abra la imagen anatómica de sub-08 en el visor de imágenes y haga clic derecho en cualquiera de los tres paneles. Seleccione "Superposición -> Agregar imagen -> Esta imagen" y seleccione el archivo funcional "sub-08_task-flanker_run-1_bold.nii". La imagen funcional se superpondrá a la imagen anatómica y se mostrará en un mapa de calor rojo-naranja, mostrando una alineación inicial relativamente buena entre las imágenes.
 
-.. figura:: 03_ImageOverlay.png
+.. figure:: 03_ImageOverlay.png
 
 Ahora realice el mismo procedimiento para las imágenes anatómicas y funcionales para sub-01, lo que debería darle una figura como la siguiente:
 
-.. figura:: 03_ImageOverlay_sub01.png
+.. figure:: 03_ImageOverlay_sub01.png
 
 ¿Qué observas? Esta desalineación entre las imágenes se abordará en un capítulo posterior sobre :ref:`Establecer el origen
        `.

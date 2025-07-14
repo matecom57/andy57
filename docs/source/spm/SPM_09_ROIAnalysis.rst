@@ -29,7 +29,7 @@ La caja de herramientas WFU PickAtlas que instalaste en el último tutorial` con
 
 Podría pensar que los vóxeles predeterminados de esa región están pintados en una porción de corteza demasiado delgada para capturar adecuadamente su región de interés. En ese caso, puede introducir un número en el campo "DILATE" y hacer clic en los botones "2D" o "3D" para dilatar la máscara según el número de vóxeles que especifique, ya sea en dos o tres dimensiones. Introduzca un valor de "1" y haga clic en "3D"; observe cómo cambia el tamaño y la extensión de la máscara.
 
-.. figura:: 09_WFU_PickAtlas.png
+.. figure:: 09_WFU_PickAtlas.png
 
 .. nota::
 
@@ -79,7 +79,7 @@ Esto devolverá cuatro variables, que representan diferentes partes de la prueba
 	ci: El intervalo de confianza para la estimación del contraste
 	estadísticas: Estadísticas adicionales, incluyendo la estadística t, los grados de libertad y la desviación estándar
 	
-.. figura:: 09_Ttest_results.png
+.. figure:: 09_Ttest_results.png
 
 .. nota::
 
@@ -95,7 +95,7 @@ Otra técnica se denomina enfoque de ROI esférico. En este caso, una esfera de 
 
 La siguiente animación muestra la diferencia entre las ROI anatómicas y esféricas:
 
-.. figura:: 09_ROI_Análisis_Anatómico_Esférico.gif
+.. figure:: 09_ROI_Análisis_Anatómico_Esférico.gif
 
 Para crear este ROI, necesitaremos encontrar las coordenadas pico de otro estudio; escojamos al azar un artículo, como Jahn et al., 2016. En la sección Resultados, encontramos que hay un efecto de Conflicto para una tarea de Stroop (un diseño experimental distinto pero relacionado, también destinado a aprovechar el control cognitivo) con una estadística t máxima en las coordenadas MNI 0, 20, 44.
 
@@ -116,7 +116,7 @@ Para crear una esfera, haga clic en "Definición de ROI -> Construir". En el men
 
 Ahora tenemos un archivo .mat que contiene la información necesaria para construir nuestra ROI esférica. Antes de generar la ROI como archivo NIFTI, haga clic en «Definición de ROI» y seleccione «Ver». Haga clic en el archivo «dACC_Sphere_roi.mat» recién creado y asegúrese de que esté ubicado en la región correcta.
 
-.. figura:: 09_Check_ROI.png
+.. figure:: 09_Check_ROI.png
 
 	Examinando el ROI creado por Marsbar.
 	

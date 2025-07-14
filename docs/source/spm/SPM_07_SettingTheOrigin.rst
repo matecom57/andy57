@@ -15,17 +15,17 @@ Después de que :ref:`escribimos nuestro análisisParece que solo necesitamos ej
 
 Si examina el resultado de cada paso de preprocesamiento cargando las imágenes en el visor de la interfaz gráfica de usuario de SPM, observará que los pasos iniciales de preprocesamiento, como la realineación y la corrección de la temporización de corte, parecen haberse ejecutado sin errores. Sin embargo, al observar el resultado del corregistro, se observa una anomalía: aunque los datos funcionales parecen normales, la imagen anatómica realineada parece tener las orientaciones invertidas. Al observar el resultado de etapas posteriores, como la normalización o el análisis de primer nivel, este error también se ha propagado a los datos funcionales. Por lo tanto, cualquier resultado que generemos a partir de este análisis carecerá de sentido.
 
-.. figura:: 07_CoregistrationError_Anatomical.png
+.. figure:: 07_CoregistrationError_Anatomical.png
 
   Ejemplo de un fallo de corregistro. La gran distancia entre los orígenes de las exploraciones anatómicas y funcionales provoca una coincidencia inexacta entre las imágenes; la discrepancia es tan extrema que el eje de orientación inferior-superior de la imagen anatómica se invierte.
 
-.. figura:: 07_NormalizationError_Functional.png
+.. figure:: 07_NormalizationError_Functional.png
 
   El error anterior se propaga a las imágenes funcionales. Dado que la imagen anatómica tiene una orientación incorrecta, la normalización entre la imagen anatómica y la plantilla también generará una discrepancia. Estos parámetros de deformación erróneos se aplican a los datos funcionales normalizados que se muestran aquí.
   
 Para ver por qué se produce este error, haga clic en el botón "Comprobar registro" en la interfaz gráfica de usuario de SPM y seleccione la imagen anatómica sin procesar y una de las imágenes funcionales. Los centros de las imágenes están muy alejados, lo que provoca los errores mencionados.
 
-.. figura:: 07_CheckRegAnatFunc.png
+.. figure:: 07_CheckRegAnatFunc.png
 
 Establecer el origen
 ******************
@@ -34,13 +34,13 @@ El problema no reside en los datos en sí, ni en un error del script. Se trata, 
 
 Para ello, haga clic en el botón "Mostrar" y cargue la imagen anatómica sin procesar de la sub-01. (Es posible que deba usar el comando "gunzip" de Matlab para descomprimir la imagen original comprimida antes de poder seleccionarla en la interfaz gráfica de usuario). Tenga en cuenta que si hace clic en el botón "Origen", el origen está lejos de la comisura anterior. Nuestra tarea es corregir estas diferencias de coordenadas para que el origen se establezca en esa estructura.
 
-.. figura:: 07_Orígenes_Anatómicos_Antes.png
+.. figure:: 07_Orígenes_Anatómicos_Antes.png
 
   Al hacer clic en el botón de origen, se observa que este se encuentra lejos del centro de la imagen. Transformaremos la imagen para que el origen se encuentre en la comisura anterior.
   
 Ahora, haga clic y arrastre la cruceta hasta que se sitúe sobre la comisura anterior. Esta delgada banda de fibras de sustancia blanca se encuentra en la base del fórnix, una banda arqueada de sustancia blanca que se extiende hacia abajo desde el cuerpo calloso. La comisura anterior se observa con mayor facilidad en la vista sagital; una vez que haya colocado la cruceta cerca de la comisura anterior, también debería ver una delgada banda de sustancia blanca en las vistas axial y coronal. (En la vista coronal, imagine que los ventrículos son ojos; la comisura anterior se ve entonces como un bigote blanco).
 
-.. figura:: 07_FindingTheAC.png
+.. figure:: 07_FindingTheAC.png
 
 Observe los números en el campo ``mm:``; estos indican la distancia del origen a la cruz en los ejes derecho/izquierdo, anteroposterior e inferior/superior. Usaremos los campos a continuación (``derecha {mm}``, ``adelante {mm}`` y ``arriba {mm}``) para desplazar manualmente el origen a la comisura anterior. Introduzca el opuesto de cada número en el campo ``mm:`` con su campo correspondiente a continuación.
 
@@ -52,7 +52,7 @@ Por ejemplo, si hizo clic en el botón "Origen" y se devolvieron los números "-
   -18.7
   15.1
   
-.. figura:: 07_SettingTheOrigin.png
+.. figure:: 07_SettingTheOrigin.png
 
   Estableciendo el origen en la comisura anterior. Una vez que haya ingresado los números en los campos derecho, delantero y superior, presione "Intro". Para asegurarse de que el nuevo origen esté en la comisura anterior, presione el botón "Origen".
   
@@ -64,7 +64,7 @@ Ahora haremos clic en el botón "Reorientar" para establecer permanentemente est
 
 Ahora verifique de nuevo el registro inicial entre las imágenes anatómicas y funcionales. Los centros de las imágenes, aunque no están perfectamente alineados, ahora están en una posición inicial mucho mejor. Esto aumenta las probabilidades de que el corregistro y, por extensión, la normalización y el modelado de primer nivel, tengan éxito.
 
-.. figura:: 07_CheckUpdatedRegAnatFunc.png
+.. figure:: 07_CheckUpdatedRegAnatFunc.png
 
 
 ¿Debe restablecerse el origen para cada sujeto?

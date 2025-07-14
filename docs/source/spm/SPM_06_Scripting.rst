@@ -51,7 +51,7 @@ Para comenzar, abra la interfaz gráfica de SPM y haga clic en el botón "Lote".
   
 Cuando haya terminado, el panel "Lista de módulos" debería verse así:
 
-.. figura:: 06_ListaMódulos.png
+.. figure:: 06_ListaMódulos.png
 
 Selección y división de archivos
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -60,13 +60,13 @@ Quizás hayas notado dos módulos adicionales que no parecen estar relacionados 
 
 El primero, "Selector de Archivos con Nombre", requiere un nombre de entrada y conjuntos de archivos. Crearemos dos conjuntos de archivos e ingresaremos los archivos "run-1_bold.nii" y "run-2_bold.nii" para cada conjunto. Al llegar al primer módulo de preprocesamiento, Realineación, crearemos dos sesiones e ingresaremos los archivos correspondientes para cada una.
 
-.. figura:: 06_NamedFileSelector.png
+.. figure:: 06_NamedFileSelector.png
 
 El módulo Suavizado solo acepta una sesión de imágenes; en nuestro ejemplo, las imágenes generadas por el módulo Normalización. Dado que el siguiente módulo de preprocesamiento, Especificación del Modelo, requiere un conjunto de archivos independiente para cada sesión, no podemos usar el conjunto de archivos del módulo Suavizado como **dependencia** (se explica con más detalle a continuación). El módulo División de Conjunto de Archivos permite dividir el conjunto de imágenes de salida del módulo Suavizado en dos conjuntos independientes, que luego podemos usar como dependencias en el módulo Especificación del Modelo.
 
 Primero, etiquetamos el nombre del conjunto de archivos como ``run1run2FileSplit`` (este nombre es simplemente una etiqueta de referencia para los módulos posteriores). El conjunto de archivos de entrada son las imágenes suavizadas del módulo Suavizado y, al igual que con el módulo Selector de archivos con nombre, creamos dos conjuntos de archivos de salida. El índice de selección del primero es ``1`` y el del segundo es ``2``. Esto indica al módulo que divida las imágenes suavizadas en dos conjuntos separados, según cómo las etiquetó el módulo Selector de archivos con nombre anterior.
 
-.. figura:: 06_FileSetSplit.png
+.. figure:: 06_FileSetSplit.png
 
 Rellenando los módulos de preprocesamiento
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -75,39 +75,39 @@ Ahora deberá completar cada uno de los campos obligatorios, tal como hicimos en
 
 A medida que avanza, puede que en algún momento se pregunte qué debe introducir en un paso posterior de preprocesamiento si aún no se han creado los datos necesarios. El Editor de Lotes le permite usar **Dependencias** de pasos anteriores, lo que indica que la entrada debe provenir de la salida del paso anterior. Por ejemplo, en el módulo Realinear, si hace clic en el botón "Dependencia" para la primera sesión, puede seleccionar la opción "Selector de archivos con nombre: run1run2Files(1)", y lo mismo para la segunda sesión. Debería verse así una vez completado:
 
-.. figura:: 06_RealignDependency.png
+.. figure:: 06_RealignDependency.png
 
 Y lo mismo con el módulo Slice Timing:
 
-.. figura:: 06_SliceTimingDependency.png
+.. figure:: 06_SliceTimingDependency.png
 
 De igual forma, la Imagen de Referencia del paso de Coregistro puede utilizar la imagen funcional media generada durante la Realineación:
 
-.. figura:: 06_CoregisterDependency.png
+.. figure:: 06_CoregisterDependency.png
 
 A esto le sigue la Segmentación, que utilizará los mismos parámetros que especificamos :ref:`earlier <04_SPM_Segmentation>`:
 
-.. figura:: 06_SegmentDependency.png
+.. figure:: 06_SegmentDependency.png
 
 El paso de preprocesamiento Normalizar requiere tanto los campos Deformación hacia adelante de Segmentación, como también las salidas de Sincronización de corte de las Sesiones 1 y 2 (que puede seleccionar manteniendo presionada la tecla Shift y haciendo clic):
 
-.. figura:: 06_NormaliseDependency.png
+.. figure:: 06_NormaliseDependency.png
 
 El módulo Suavizar utilizará las imágenes generadas por Normalización:
 
-.. figura:: 06_SmoothDependency.png
+.. figure:: 06_SmoothDependency.png
 
 Y el módulo de Especificación del Modelo utilizará las imágenes creadas durante el Suavizado:
 
-.. figura:: 06_ModelSpecificationDependency.png
+.. figure:: 06_ModelSpecificationDependency.png
 
 El módulo Estimación del modelo analiza la salida de datos de la Especificación del modelo:
 
-.. figura:: 06_ModelEstimationDependency.png
+.. figure:: 06_ModelEstimationDependency.png
 
 Y por último, el administrador de contraste cargará el archivo SPM.mat creado por el módulo Estimación del Modelo:
 
-.. figura:: 06_ContrastDependency.png
+.. figure:: 06_ContrastDependency.png
 
 Para el módulo de contraste, seleccionamos la opción "Replicar y escalar". Esto replicará los pesos de contraste en todas las sesiones de ese sujeto y los escalará en proporción inversa al número de sesiones. En este ejemplo, al haber dos sesiones, cada peso de contraste se escalará a 0,5 y -0,5, respectivamente.
 

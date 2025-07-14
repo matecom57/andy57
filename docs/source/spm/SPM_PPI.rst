@@ -89,21 +89,21 @@ Esto creará un vector columna con 274 unos, seguidos de 274 ceros. Estos repres
 
 Finalmente, haga clic en "Regresores múltiples" y cargue el archivo "allMovement_Regressors.txt" que creó anteriormente. Al terminar, la especificación de su modelo debería verse así:
 
-.. figura:: SPM_PPI_ModelSpecification.png
+.. figure:: SPM_PPI_ModelSpecification.png
 
 
 Ahora terminaremos de editar los demás módulos de nuestro lote. Haga clic en "Estimación del modelo" en la ventana izquierda, seleccione "Seleccionar SPM.mat" con el ratón y, a continuación, haga clic en "Dependencia". Seleccione el archivo SPM.mat del paso de especificación del modelo fMRI.
 
-.. figura:: SPM_PPI_ModelEstimation.png
+.. figure:: SPM_PPI_ModelEstimation.png
 
 A continuación, haga clic en el módulo ``Administrador de Contraste``. Nuevamente, resalte ``Seleccionar SPM.mat`` con el mouse y luego haga clic en ``Dependencia``. Elija el archivo SPM.mat del paso de *estimación* del modelo. Luego haga clic en ``Sesiones de Contraste`` y haga clic en ``Nuevo: T-contraste`` para crear tres nuevos T-contrastes. Etiquete el primero como ``Mental``, el segundo como ``Rnd`` y el tercero como ``Mental-Rnd``. Para el contraste Mental, especifique un vector de [1 0]; para el contraste Rnd, especifique un vector de [0 1]. Para el contraste Mental-Rnd, especifique un vector de [1 -1]. Dado que solo hay una ejecución, no necesita Replicar y Escalar los pesos de contraste, pero hacerlo tampoco afectará su análisis.
 
-.. figura:: SPM_PPI_ContrastManager.png
+.. figure:: SPM_PPI_ContrastManager.png
 
 
 Ahora guarde el lote y el script haciendo clic en "Archivo -> Guardar lote y script". Etiquete la salida como "Sample_Concatenated_1stLevel". A continuación, haga clic en el botón verde "Reproducir" en la esquina superior izquierda de la interfaz gráfica para ejecutar el lote. Debería tardar entre 15 y 20 minutos. Al finalizar, la matriz de diseño debería verse como la siguiente:
 
-.. figura:: SPM_PPI_DesignMatrix.png
+.. figure:: SPM_PPI_DesignMatrix.png
 
 
 La interfaz PPI
@@ -115,7 +115,7 @@ Para comenzar, abra la interfaz gráfica de usuario de SPM y haga clic en el bot
 
 Luego verá una ventana que muestra las respuestas hemodinámicas y neuronales estimadas (después de que se haya deconvolucionado la respuesta hemodinámica) y los tiempos de inicio de los bloques de su experimento, convolucionados con la HRF.
 
-.. figura:: SPM_PPI_SummaryPage.png
+.. figure:: SPM_PPI_SummaryPage.png
 
 Esto creará una variable en su espacio de trabajo llamada "PPI". Puede cargarla desde la línea de comandos escribiendo "load PPI". Esto permite usar varios campos de la variable PPI, incluyendo:
 
@@ -152,7 +152,7 @@ En el módulo de especificación del modelo fMRI, configure el modelo como se in
   
 También haga doble clic en "Regresores múltiples" y especifique el archivo allMovement_Regressors.txt. Al terminar, la ventana de especificación del modelo debería verse así:
 
-.. figura:: SPM_PPI_Model_Specification_PPI.png
+.. figure:: SPM_PPI_Model_Specification_PPI.png
 
 Establezca el archivo SPM de estimación del modelo como una dependencia que recurra a la salida del módulo de especificación del modelo fMRI y especifique el archivo SPM en el Gestor de Contraste como la salida de dependencia del módulo de estimación del modelo. En el módulo Gestor de Contraste, cree un contraste T y asígnele el nombre ``dmPFC_PPI_Interaction``. Asígnele un vector de ponderación de ``1``. A continuación, guarde el lote y el script como ``Run_dmPFC_PPI`` en el directorio de resultados, que contiene las carpetas 1stLevel_Concat y PPI. A continuación, pulse el botón verde "Reproducir" para ejecutar el análisis.
   

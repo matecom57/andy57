@@ -23,7 +23,7 @@ A diferencia de AFNI o FSL, SPM puede ejecutarse en cualquier sistema operativo 
 
 Una vez descargado el paquete SPM, colóquelo en su directorio personal. Abra Matlab, haga clic en la pestaña "Inicio" y luego en el botón "Establecer ruta". Seleccione el directorio "spm12" y haga clic en "Agregar con subcarpetas". Haga clic en el botón "Guardar" para asegurarse de que la ruta se configure cada vez que abra Matlab y cierre la ventana.
 
-.. figura:: SPM_SetPath.png
+.. figure:: SPM_SetPath.png
 
 Después de haber establecido la ruta, escriba lo siguiente desde la terminal de Matlab:
 
@@ -33,7 +33,7 @@ Después de haber establecido la ruta, escriba lo siguiente desde la terminal de
   
 Lo cual abrirá la siguiente ventana:
 
-.. figura::Tipo_SPM.png
+.. figure::Tipo_SPM.png
 
 Haga clic en el botón fMRI para abrir la GUI de fMRI de SPM.
 
