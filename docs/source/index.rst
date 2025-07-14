@@ -94,7 +94,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
    :maxdepth: 1
    :caption: Conectividad funcional con la caja de herramientas CONN
     
-   CONN_Overview
+   conn/CONN_Overview
     
 .. árbol de toc::
     :profundidad máxima: 1
@@ -129,13 +129,13 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
    :caption: Conceptos de fMRI
 
    Prácticas/Optimización del Diseño
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Análisis de difusión con MRtrix
+
+   mrtrix/MRtrix_Introduction
     
-.. árbol de toc::
-    :profundidad máxima: 1
-    Análisis de difusión con MRtrix
-    
-    MRtrix/MRtrix_Introducción
-   
 .. árbol de toc::
     :profundidad máxima: 1
     Análisis de ASL
