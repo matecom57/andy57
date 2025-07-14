@@ -29,7 +29,7 @@ Una vez normalizadas las imágenes funcionales, verifique la salida para asegura
 
   La plantilla ``single_subj_T1.nii`` tendrá la resolución espacial más nítida; es decir, podrá ver cada circunvolución y surco individualmente. Sin embargo, visualizar los resultados en esta plantilla puede ser ligeramente engañoso, ya que la anatomía de cada sujeto se ha distorsionado y difuminado; la activación que parece estar en una ubicación específica en la plantilla ``single_subj_T1`` podría no ser tan específica como parece. Por este motivo, se recomienda visualizar la activación en una de las plantillas promediadas o en una imagen promedio que consista en la media de las imágenes anatómicas normalizadas del sujeto. Analizaremos esto con más detalle cuando abordemos el modelado estadístico en el siguiente capítulo.
   
-.. figura:: 04_05_CheckNormalization.gif
+.. figure:: 04_05_CheckNormalization.gif
 
 -----------------
 

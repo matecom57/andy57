@@ -12,7 +12,7 @@ El primer paso del preprocesamiento es realinear las imágenes funcionales. Si c
 
 Al hacer clic en el botón "Realinear (Estimar y Recortar)", se abre una ventana con las opciones para realinear y recortar los datos. La sección "Estimar" se refiere a la estimación del grado de desalineación de cada volumen con respecto a un **volumen de referencia**, y "Recortar" indica que estas estimaciones se utilizarán para ajustar cada volumen a su nivel de referencia. El volumen de referencia se define en el campo "Número de pasadas", que permite especificar si los volúmenes se alinearán con la media de todos los volúmenes o con el primero. Para este tutorial, deje este valor predeterminado y no modifique los demás.
 
-.. figura:: 01_Realign_Menu.png
+.. figure:: 01_Realign_Menu.png
 
   Este menú aparecerá después de hacer clic en el botón "Realinear: Estimar y rebanar".
 
@@ -36,17 +36,17 @@ Haga doble clic en la primera sesión para abrir la ventana de selección de im�
 Sin embargo, notará que se han seleccionado todos los fotogramas de la ejecución 1 y la ejecución 2, aunque solo queremos los fotogramas de la ejecución 1. Podría simplemente hacer clic y arrastrar desde el fotograma 1 hasta el 146 de la ejecución 1, pero se arriesga a incluir otros fotogramas por error. Por otro lado, para restringir la selección de archivos a solo los fotogramas que nos interesan, podemos usar el campo "Filtro". Este campo usa **expresiones regulares**, un tipo de código abreviado para indicar qué caracteres incluir en una cadena. En este caso, a la izquierda de los caracteres ``.*`` que ya están en el campo, escriba ``ejecución 1`` y presione Enter. Esto actualizará la pantalla para mostrar solo los fotogramas que incluyen la cadena ``ejecución 1``. Haga clic y arrastre para seleccionar todas las imágenes, o haga clic derecho en la ventana de selección y haga clic en "Seleccionar todo".
 
 
-.. figura:: 01_SelectFrames.png
+.. figure:: 01_SelectFrames.png
 
   Pantalla de selección de figuras. Si siguió las instrucciones anteriores, la ventana debería verse así. Tenga en cuenta que al introducir la cadena ``1:146`` en el campo ``Fotogramas``, se expandirá automáticamente a ``[1 2 3 4 5 ... 146]``.
   
 Al terminar, haga clic en "Listo". Repita el mismo procedimiento para la segunda sesión, usando el campo "Filtro" para restringir la búsqueda a los fotogramas que contengan la cadena "run-2".
 
-.. figura:: 01_FrameSelect_Run2.png
+.. figure:: 01_FrameSelect_Run2.png
 
 Ahora que ha completado todos los campos marcados con una "<-X", el botón "Reproducir" en la esquina superior izquierda de la pantalla ha cambiado de gris a verde. Haga clic en el botón para comenzar el preprocesamiento de Realineación.
 
-.. figura:: 01_Realign_Demo.gif
+.. figure:: 01_Realign_Demo.gif
 
 
 .. nota::

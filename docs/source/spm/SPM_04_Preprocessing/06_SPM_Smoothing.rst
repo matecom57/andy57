@@ -17,7 +17,7 @@ Es común suavizar los datos funcionales o reemplazar la señal de cada vóxel c
 Es cierto que el suavizado disminuye la resolución espacial de los datos funcionales y, en general, no buscamos una menor resolución. Sin embargo, el suavizado también ofrece ventajas que pueden compensar las desventajas. Por ejemplo, sabemos que los datos de fMRI contienen mucho ruido, y que este suele ser mayor que la señal. Al promediar sobre vóxeles cercanos, podemos cancelar el ruido y mejorar la señal.
 
 
-.. figura:: 05_06_Demo_de_suavizado.gif
+.. figure:: 05_06_Demo_de_suavizado.gif
 
   En esta animación, se aplican dos núcleos de suavizado diferentes (4 mm y 10 mm) a una resonancia magnética funcional. Observe que, al usar núcleos de suavizado más grandes, las imágenes se vuelven más borrosas y los detalles anatómicos se vuelven menos nítidos. También tenga en cuenta que, para simplificar, esta animación utiliza un corte 2D del cerebro para mostrar este paso de preprocesamiento. En datos reales de resonancia magnética funcional, el núcleo se aplicaría en las tres dimensiones.
   
@@ -37,7 +37,7 @@ Comprobación de las imágenes suavizadas
 
 Como antes, usa el botón "Check Reg" para cargar un volumen representativo de la salida que acabas de crear y compáralo con una imagen funcional deformada sin suavizar. ¿Parece que la imagen se ha suavizado al nivel deseado?
 
-.. figura:: 05_06_Salida_suavizada.png
+.. figure:: 05_06_Salida_suavizada.png
 
 
 ---------------

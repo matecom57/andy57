@@ -19,17 +19,17 @@ Después de revisar estos conceptos, estará listo para realizar un análisis de
 
    Tras construir un modelo que indica cómo debería ser la respuesta BOLD (A), dicho modelo se ajusta a la serie temporal en cada vóxel (B). El grado de ajuste del modelo (también conocido como **bondad de ajuste**) se puede representar en el cerebro mediante mapas estadísticos, donde las intensidades más brillantes indican un mejor ajuste. Estos mapas estadísticos se pueden umbralizar para mostrar solo los vóxeles con un ajuste estadísticamente significativo (C).
 
-.. árbol de toc::
-   :profundidad máxima: 1
+.. toctree::
+   :maxdepth: 1
    :caption: Análisis de primer nivel
+
+   SPM_Statistics/SPM_01_Stats_TimeSeries
+   SPM_Statistics/SPM_02_Stats_HRF_History
+   SPM_Statistics/SPM_03_Stats_HRF_Overview
+   SPM_Statistics/SPM_04_Stats_General_Linear_Model
+   SPM_Statistics/SPM_05_Creating_Timing_Files
+   SPM_Statistics/SPM_06_Stats_Running_1stLevel_Analysis
    
-   SPM_Estadísticas/SPM_01_Estadísticas_Series_Tiempo
-   Estadísticas SPM/SPM_02_Estadísticas_Historial_HRF
-   SPM_Estadísticas/SPM_03_Estadísticas_HRF_Resumen
-   SPM_Estadísticas/SPM_04_Estadísticas_General_Modelo_Lineal
-   SPM_Estadísticas/SPM_05_Creación_de_Archivos_de_Cronometraje
-   SPM_Estadísticas/SPM_06_Estadísticas_Ejecución_Análisis_de_1er_Nivel
-   SPM_Estadísticas/SPM_07_Estadísticas_Punto_de_Control_de_1er_Nivel
 
 
 

@@ -16,7 +16,7 @@ A diferencia de una fotografía, donde la imagen completa se toma en un solo ins
 
 Los dos métodos más comunes para crear volúmenes son la adquisición secuencial y la intercalada de cortes. La adquisición secuencial de cortes adquiere cada corte adyacente consecutivamente, ya sea de abajo a arriba o de arriba a abajo. La adquisición intercalada de cortes adquiere cada corte de por medio y luego rellena los espacios vacíos en la segunda pasada. Ambos métodos se ilustran en el video a continuación.
 
-.. figura:: 04_02_SliceTimingCorrection_Demo.gif
+.. figure:: 04_02_SliceTimingCorrection_Demo.gif
 
 
 .. nota::
@@ -83,7 +83,7 @@ Ahora regrese a la ventana del Editor de lotes, haga doble clic en “Número de
 
 Para el TR, introduzca 2; para el TA, siga la fórmula de la ventana de ayuda e introduzca ``2-(2/40)``. Para el orden de corte, introduzca ``[1:2:40 2:2:40]``, y para el corte de referencia, introduzca ``1``. Deje el prefijo del nombre de archivo como está, ya que se añadirá una ``a`` a los archivos generados. Repita el mismo procedimiento para la ejecución 2. Al finalizar, la ventana de preprocesamiento debería verse así:
 
-.. figura:: 04_02_SliceTimingWindow.png
+.. figure:: 04_02_SliceTimingWindow.png
 
 Cuando se hayan corregido los tiempos de corte de las imágenes, estará listo para **corregistrar** los datos funcionales con los datos anatómicos; en otras palabras, alinearemos los dos conjuntos de imágenes lo mejor que podamos.
 

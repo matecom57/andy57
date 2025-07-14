@@ -15,7 +15,7 @@ Aunque el cerebro de la mayoría de las personas es similar (por ejemplo, todos 
 
 Esto se hace **Registrando** y **Normalizando** las imágenes. Tal como doblarías la ropa para que quepa dentro de una maleta, cada cerebro necesita ser transformado para tener el mismo tamaño, forma y dimensiones. Hacemos esto normalizando (o **deformando**) a una **plantilla**. Una plantilla es un cerebro que tiene dimensiones y coordenadas estándar; estándar, porque la mayoría de los investigadores han acordado usarlas al informar sus resultados. De esa manera, si normalizas tus datos a esa plantilla y encuentras un efecto en las coordenadas X=3, Y=20, Z=42, alguien más que haya deformado sus datos a la misma plantilla puede comparar sus resultados con los tuyos. Las dimensiones y coordenadas del cerebro plantilla también se conocen como **espacio estandarizado**.
 
-.. figura:: 04_03_MNI_Template.png
+.. figure:: 04_03_MNI_Template.png
 
   Un ejemplo de una plantilla de uso común, el cerebro :ref:`MNI152`. Este es un promedio de 152 cerebros adultos sanos, que representan la población de la que se extraen la mayoría de los estudios. Si está estudiando otra población, como niños o ancianos, por ejemplo, considere usar una plantilla creada con representantes de esa población. (Pregunta: ¿Por qué está borrosa la plantilla?)
   
@@ -24,7 +24,7 @@ Transformaciones afines
 
 Para deformar las imágenes según una plantilla, usaremos una **transformación afín**. Esta es similar a la transformación de cuerpo rígido descrita anteriormente en Corrección de movimiento, pero añade dos transformaciones más: **zooms** y **cortes**. Mientras que las traslaciones y rotaciones son fáciles de realizar con un objeto cotidiano como un bolígrafo, los zooms y los cortes son más inusuales: los zooms reducen o amplían la imagen, mientras que los cortes toman las esquinas diagonalmente opuestas de la imagen y las estiran. La animación a continuación resume estos cuatro tipos de **transformaciones lineales**.
 
-.. figura:: 04_03_AffineTransformations.gif
+.. figure:: 04_03_AffineTransformations.gif
 
 .. nota:: Al igual que con las transformaciones de cuerpo rígido, los zooms y los cortes tienen tres grados de libertad: puede hacer zoom o cortar una imagen a lo largo del eje x, y o z. En total, entonces, las transformaciones afines tienen doce grados de libertad. Estas también se llaman transformaciones lineales porque una transformación aplicada en una dirección a lo largo de un eje está acompañada por una transformación de igual magnitud en la dirección opuesta. Una traslación de un milímetro *a* la izquierda, por ejemplo, implica que la imagen se ha movido un milímetro *desde* la derecha. Del mismo modo, si una imagen se amplía un milímetro a lo largo del eje z, se amplía un milímetro en ambas direcciones a lo largo de ese eje. Las transformaciones sin estas restricciones se llaman **transformaciones no lineales**. Por ejemplo, una transformación no lineal puede ampliar la imagen en una dirección mientras la encoge en la otra dirección, como cuando se aprieta una esponja. Estos tipos de transformaciones se tratarán más adelante.
 
@@ -44,7 +44,7 @@ Esta alineación entre las imágenes funcionales y anatómicas se denomina **Reg
 3. Una vez que se encuentra la mejor coincidencia, se aplican a las imágenes funcionales las mismas transformaciones que se utilizaron para deformar la imagen anatómica a la plantilla.
 
 
-.. figura:: 04_03_Registro_Normalización_Demo.gif
+.. figure:: 04_03_Registro_Normalización_Demo.gif
 
 -----
 
@@ -63,7 +63,7 @@ Al finalizar, se generará otra ventana con los resultados del corregistro, con 
 
   Abra la imagen anatómica rediseñada con el botón "Mostrar imagen" (es decir, cargue la imagen ``rsub-08_T1w.nii``). ¿Qué observa en la imagen en comparación con la imagen anatómica original? (Sugerencia: Compare los valores en los campos "Dimensiones" y "Tamaño de Vox").
 
-.. figura:: 03_Coregistration_Check.png
+.. figure:: 03_Coregistration_Check.png
 
 
 --------------
