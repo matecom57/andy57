@@ -89,12 +89,12 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     :caption: SPM
 
     spm/SPM_Overview
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Conectividad funcional con la caja de herramientas CONN
     
-.. árbol de toc::
-    :profundidad máxima: 1
-    :caption: Conectividad funcional con la caja de herramientas CONN
-    
-    Conectividad funcional/CONN_Overview
+   CONN_Overview
     
 .. árbol de toc::
     :profundidad máxima: 1
