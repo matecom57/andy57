@@ -84,11 +84,11 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
 
     AFNI/AFNI_Descripción general
     
-.. árbol de toc::
-    :profundidad máxima: 1
+.. toctree::
+    :maxdepth: 1
     :caption: SPM
 
-    SPM/SPM_Descripción general
+    spm/SPM_Overview
     
 .. árbol de toc::
     :profundidad máxima: 1
