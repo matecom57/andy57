@@ -1,0 +1,490 @@
+A
+
+Hi Will,
+
+
+Great to hear that you took some time off for a holiday!
+
+ 
+
+I will email you a link to a OneDrive folder with some sample data and our basis set.
+
+
+Thank you so much for all your help, we really appreciate your support and your work to build FSL-MRS.
+
+ 
+
+Best,
+
+Erin
+
+ 
+
+ 
+
+From: William Clarke <william.clarke@ndcn.ox.ac.uk>
+Sent: Friday, January 6, 2023 8:35 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Cc: MacMillan, Erin <erin.macmillan@ubc.ca>
+Subject: Re: [FSL] FSL-MRS: Limit First Order Phase?
+
+ 
+
+[CAUTION: Non-UBC Email]
+
+Hi Erin,
+
+ 
+
+Sorry for the long delay in replying, I took some time off before Christmas for a holiday and have just returned to the lab.
+
+ 
+
+Thank you for checking those couple of things. I’m sure we can make some tweaks to the fitting code to improve this. Would you be able to send us an example of your data and basis set so we can test against it making any changes?
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Erin L. MacMillan <erin.macmillan@UBC.CA>
+Date: Monday, 2 January 2023 at 18:50
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL-MRS: Limit First Order Phase?
+
+Dear Will and Saad,
+
+Happy New Year!
+
+We are continuing to find that FSL-MRS is imparting a significant first order phase when fitting our data (>20 deg/ppm).
+
+In response to your previous questions:
+
+1. There is not a first order phase on the basis set. This is a basis set for semi-LASER that was simulated with FID-A and converted with the makebasis function in LCModel, all with pretty well default settings. Attached is the output of basis_tools vis.
+
+2. Yes, we have removed the first point in the FID, though it doesn't change the appearance of the real part of the spectrum very much. I suspect that the deviation of the first point from a pure FID is related to some residual water that is out of phase, not to errors in the timing of the pulse sequence that would lead to a first order phase effect.
+
+It would be great if we could place a limit on how much first order phase could be allowed on the basis set.
+
+Please let me know if you need any further info.
+
+Thank you so much for your help,
+Erin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi all,
+
+I ran into this error while running a 2nd level analysis (averaging parameter estimates across runs for each participant):
+
+/bin/cp /var/folders/3c/7wl0zrqn4d9_y5m8ncsj0cch0000gn/T/feat_phee3c4s.fsf design.fsf
+
+/usr/local/fsl/bin/feat_model design
+
+mkdir .files;cp /usr/local/fsl/doc/fsl.css .files;cp -r /usr/local/fsl/doc/images .files/images
+
+/usr/local/fsl/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/local/fsl/bin/feat /Volumes/johezz/SocialRegfMRI/.gfeat/design.fsf -D /Volumes/johezz/SocialRegfMRI/.gfeat -gfeatprep
+Error submitting job - child killed: SIGABRT
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+        -I {
+            incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/local/fsl/bin/feat /Volumes/johezz/SocialRegfMRI/.gfeat/design.fsf -D /Volumes/johezz/SocialRegfMRI/.gfeat -gfeatprep
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+This only comes up for cope3. Is there something amiss with my design.fsf file? How may I fix this? I will appreciate any leads on this. Thank you so much!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Will,
+
+
+Great to hear that you took some time off for a holiday!
+
+ 
+
+I will email you a link to a OneDrive folder with some sample data and our basis set.
+
+
+Thank you so much for all your help, we really appreciate your support and your work to build FSL-MRS.
+
+ 
+
+Best,
+
+Erin
+
+ 
+
+ 
+
+From: William Clarke <william.clarke@ndcn.ox.ac.uk>
+Sent: Friday, January 6, 2023 8:35 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Cc: MacMillan, Erin <erin.macmillan@ubc.ca>
+Subject: Re: [FSL] FSL-MRS: Limit First Order Phase?
+
+ 
+
+[CAUTION: Non-UBC Email]
+
+Hi Erin,
+
+ 
+
+Sorry for the long delay in replying, I took some time off before Christmas for a holiday and have just returned to the lab.
+
+ 
+
+Thank you for checking those couple of things. I’m sure we can make some tweaks to the fitting code to improve this. Would you be able to send us an example of your data and basis set so we can test against it making any changes?
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Erin L. MacMillan <erin.macmillan@UBC.CA>
+Date: Monday, 2 January 2023 at 18:50
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL-MRS: Limit First Order Phase?
+
+Dear Will and Saad,
+
+Happy New Year!
+
+We are continuing to find that FSL-MRS is imparting a significant first order phase when fitting our data (>20 deg/ppm).
+
+In response to your previous questions:
+
+1. There is not a first order phase on the basis set. This is a basis set for semi-LASER that was simulated with FID-A and converted with the makebasis function in LCModel, all with pretty well default settings. Attached is the output of basis_tools vis.
+
+2. Yes, we have removed the first point in the FID, though it doesn't change the appearance of the real part of the spectrum very much. I suspect that the deviation of the first point from a pure FID is related to some residual water that is out of phase, not to errors in the timing of the pulse sequence that would lead to a first order phase effect.
+
+It would be great if we could place a limit on how much first order phase could be allowed on the basis set.
+
+Please let me know if you need any further info.
+
+Thank you so much for your help,
+Erin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello FSL Users,
+
+I came across an error when I used fslmaths in FSL version 6.0.4 to multiply one value of a mask (voxel values that equal 2) by some free water metrics. It works fine for most of my nifti images except for files where the background space in the image is set to 1, while the images that work have the background value set to 0. In the below example, the “problem file” is FW_f.nii.gz
+fslmaths ./mask.nii.gz -thr 2 -uthr 2 -mul ./FW_f.nii.gz ./mask_FW_f.nii.gz
+
+Then that command generates the message:
+./script_name.sh: line 35: 33768 Segmentation fault
+
+That context being given, I have the following questions:
+1. I’m wondering if FSL version 6.0.4 has some sort of expectation that the background of an image should be equal to 0 instead of 1, and if that could raise a “Segmentation fault” warning? (Interestingly, the segmentation appears to still run, but I am not sure how accurate it is given the “Segmentation fault” message.)
+
+2. If this is the case, is there an fslmaths or other FSL command where I can either change all of the voxels that equal 1 to 0, or subtract the value of 1 from all voxels that are equal to 1 in the image while keeping all other values constant?
+
+I searched the archives and could not find a question that matched what I am experiencing.
+
+Thank you,
+M
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi,
+
+A user of mine is still using 5.0.10.  We are seeing that part of their preprocessing stage is suddenly taking 12-14 hours which used to take less than 1, and I'm baffled as to why, as nothing I'm aware of on the machine has changed; I'd love if anyone has any ideas. I don't even really understand what it is spending all this time DOING. 
+
+The process:
+
+/cm/shared/fsl-5.0.10/bin/melodic -i filtered_func_data -o filtered_func_data.ica -v --nobet --bgthreshold=1 --tr=1.500000 -d 0 --mmthresh=0.5 --report --guireport=../../report.html
+
+
+Here are the files it has open:
+
+[root@node5 ~]# ls -l /proc/205635/fd
+total 0
+lr-x------ 1 hleblanc hleblanc 64 Jan 10 20:30 0 -> /dev/null
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 1 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/logs/feat2_pre
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 2 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/logs/feat2_pre
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 3 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/filtered_func_data.ica/log.txt
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 4 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/filtered_func_data.ica/report/00index.html
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 5 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/filtered_func_data.ica/report/log.html
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 6 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/filtered_func_data.ica/report/nav.html
+l-wx------ 1 hleblanc hleblanc 64 Jan 10 20:30 7 -> /data/skohut/data/thc_conditioning/preproc/sub-ss14/ses-12baseline/func/rest.feat/filtered_func_data.ica/report/head.html
+
+
+strace reports it is spending nearly all of its time in munmap:
+
+[root@node5 ~]# timeout 90s strace -cw -p 205635
+strace: Process 205635 attached
+strace: Process 205635 detached
+% time     seconds  usecs/call     calls    errors syscall
+------ ----------- ----------- --------- --------- ----------------
+ 99.88    0.125396       31348         4           munmap
+  0.08    0.000098          24         4           mmap
+  0.04    0.000052          25         2           write
+------ ----------- ----------- --------- --------- ----------------
+100.00    0.125546                    10           total
+
+
+You can see it's doing something, just ... slowly ... e.g.:
+
+[root@node5 ~]# strace  -p 205635
+strace: Process 205635 attached
+munmap(0x2aaabf8a5000, 332759040)       = 0
+mmap(NULL, 332759040, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x2aaabf8a5000
+munmap(0x2aaabf8a5000, 332759040)       = 0
+write(1, "  Step no. 315 change : 0.000163"..., 36) = 36
+write(3, "  Step no. 315 change : 0.000163"..., 36) = 36
+munmap(0x2aab1886a000, 332759040)       = 0
+mmap(NULL, 332759040, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x2aaabf8a5000
+mmap(NULL, 332759040, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x2aab1886a000
+munmap(0x2aaabf8a5000, 332759040)       = 0
+mmap(NULL, 332759040, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x2aaabf8a5000
+^Cstrace: Process 205635 detached
+
+
+Thanks!
+
+
+
+--
+Daniel M. Drucker, Ph.D.
+Director of IT
+McLean Hospital Imaging Center
+Harvard Medical School
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi,
+    Similarly to the other thread, the best place to start is by checking the logs subfolders ( in both the .gfeat and cope3.feat folders ) to see if there are more detailed error messages.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 9 Jan 2023, at 17:20, Jo He <zh2473@COLUMBIA.EDU> wrote:
+
+Hi all,
+
+I ran into this error while running a 2nd level analysis (averaging parameter estimates across runs for each participant):
+
+/bin/cp /var/folders/3c/7wl0zrqn4d9_y5m8ncsj0cch0000gn/T/feat_phee3c4s.fsf design.fsf
+
+/usr/local/fsl/bin/feat_model design
+
+mkdir .files;cp /usr/local/fsl/doc/fsl.css .files;cp -r /usr/local/fsl/doc/images .files/images
+
+/usr/local/fsl/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/local/fsl/bin/feat /Volumes/johezz/SocialRegfMRI/.gfeat/design.fsf -D /Volumes/johezz/SocialRegfMRI/.gfeat -gfeatprep
+Error submitting job - child killed: SIGABRT
+   while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+   switch -- [ lindex $argv $argindex ] {
+
+-I {
+   incr arginde..."
+   (file "/usr/local/fsl/bin/feat" line 312)
+
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/local/fsl/bin/feat /Volumes/johezz/SocialRegfMRI/.gfeat/design.fsf -D /Volumes/johezz/SocialRegfMRI/.gfeat -gfeatprep
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+This only comes up for cope3. Is there something amiss with my design.fsf file? How may I fix this? I will appreciate any leads on this. Thank you so much!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi,
+It might be worth checking the files in the <foo>.feat/logs subfolder to see if there are any further error messages.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 6 Jan 2023, at 20:32, Jo He <zh2473@COLUMBIA.EDU> wrote:
+
+Hi FSL team,
+
+I have an error from running a first level analysis:
+
+child process exited abnormally
+   while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -stats" -b $howlong -h $prestatsID -N feat3_film -l logs "
+   (procedure "firstLevelMaster" line 190)
+   invoked from within
+"firstLevelMaster $session"
+   invoked from within
+"if { $done_something == 0 } {
+
+   if { ! $fmri(inmelodic) } {
+      if { $fmri(level) == 1 } {
+             for { set session 1 } { $session <= $fmri(mult..."
+   (file "/usr/local/fsl-6.0.5.2/bin/feat" line 390)
+
+How can I troubleshoot this error? Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Alberto,
+Can you take a screenshot/photo of the Blue Screen error? Can you also confirm how much RAM your machine has?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Jan 2023, at 11:52, A.G. <alberto.galimberti1@GMAIL.COM> wrote:
+
+Hi everyone,
+I have a problem with installing fsl.
+I would install it from WSL, I followed instructions on the fsl page, all passages are completed but during the processing of the command "python /mnt/c/Users/<WindowsUserName>/Downloads/fslinstaller.py" , the blue screen appears with a system error every time.
+Does my pc (Dell Latitude 7490) not support fsl requirements?
+Thank you in advance
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi Alberto,
+Can you take a screenshot/photo of the Blue Screen error? Can you also confirm how much RAM your machine has?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Jan 2023, at 11:52, A.G. <alberto.galimberti1@GMAIL.COM> wrote:
+
+Hi everyone,
+I have a problem with installing fsl.
+I would install it from WSL, I followed instructions on the fsl page, all passages are completed but during the processing of the command "python /mnt/c/Users/<WindowsUserName>/Downloads/fslinstaller.py" , the blue screen appears with a system error every time.
+Does my pc (Dell Latitude 7490) not support fsl requirements?
+Thank you in advance
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi Alberto,
+Can you take a screenshot/photo of the Blue Screen error? Can you also confirm how much RAM your machine has?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Jan 2023, at 11:52, A.G. <alberto.galimberti1@GMAIL.COM> wrote:
+
+Hi everyone,
+I have a problem with installing fsl.
+I would install it from WSL, I followed instructions on the fsl page, all passages are completed but during the processing of the command "python /mnt/c/Users/<WindowsUserName>/Downloads/fslinstaller.py" , the blue screen appears with a system error every time.
+Does my pc (Dell Latitude 7490) not support fsl requirements?
+Thank you in advance
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+

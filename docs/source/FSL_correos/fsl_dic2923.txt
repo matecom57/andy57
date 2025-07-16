@@ -1,0 +1,388 @@
+Hello,
+
+Thank you so much that was very helpful and solved the problem!
+
+Sincerely,
+
+Sonya Ashikyan, M.A. 
+Cognitive Neuroscience PhD Student
+UCLA Department of Psychology
+M: 818.510.8786, LinkedIn
+Higher Cognition, Language, & Consciousness Laboratory
+Cognitive Neuroscience Laboratory
+
+
+
+The Department of Neuroscience, Imaging and Clinical Sciences of the University of Chieti-Pescara has an open call (deadline January 11 2024) for a motivated postdoctoral researcher for activities related to the PRIN-PNRR project “Multimodal MRI investigation of novel neuroimaging biomarkers of SUDEP risk”.
+
+Research topics will include one or more of the following areas, applied to epileptic patients or other datasets (neurodegenerative, drugs, etc):
+
+- development of pipelines for the preprocessing of fMRI data acquired with advanced techniques (e.g. Multi-Echo fMRI, fast fMRI such as MREG);
+- analysis of simultaneous EEG/fMRI data;
+
+- resting state fMRI connectivity analysis;
+
+- analysis of fMRI data acquired during an autonomic challenge task;
+
+- analysis of structural MRI data.
+
+The position will be for 1 year renewable for an additional year. The net salary will be around 2000 € / month.
+
+Informal expressions of interest can be sent to antonio.ferretti@unich.it
+
+The deadline for applications is 11 January 2024. Formal recruitment procedures for these positions can be found at the following link: https://www.unich.it/ateneo/concorsi-e-gare/assegni-di-ricerca. Please navigate to the section “D.R. n.1886 prot. n.87247 del 04/12/2023 Bando di concorso per il conferimento di n. 13 assegni per la collaborazione ad attività di ricerca.” The relevant position is N.8  in the document scheda_1declaratoria_assegni.pdf (https://www.unich.it/sites/default/files/scheda_1declaratoria_assegni_8.pdf). Applications can be made through the link: https://pica.cineca.it/unich/.
+See also the errata corrige: Decreto nr. 2057 prot.nr. 92686 del 21/12/2023 di RETTIFICA al Decreto nr. 1886 prot. nr.87247 del 04/12/2023 – Bando per il conferimento n. 13 assegni di ricerca limitatamente all’assegno n. 6, n. 7 e n. 8
+
+########################################################################
+
+
+The Department of Neuroscience, Imaging and Clinical Sciences of the University of Chieti-Pescara has an open call (deadline January 11 2024) for a motivated postdoctoral researcher for activities related to the PRIN-PNRR project “Multimodal MRI investigation of novel neuroimaging biomarkers of SUDEP risk”.
+
+Research topics will include one or more of the following areas, applied to epileptic patients or other datasets (neurodegenerative, drugs, etc):
+
+- development of pipelines for the preprocessing of fMRI data acquired with advanced techniques (e.g. Multi-Echo fMRI, fast fMRI such as MREG);
+- analysis of simultaneous EEG/fMRI data;
+
+- resting state fMRI connectivity analysis;
+
+- analysis of fMRI data acquired during an autonomic challenge task;
+
+
+- analysis of structural MRI data.
+
+The position will be for 1 year renewable for an additional year. The net salary will be around 2000 € / month.
+
+Informal expressions of interest can be sent to antonio.ferretti@unich.it  ,
+
+Together with:
+
+- A detailed CV (including a list of publications);
+
+########################################################################
+
+Hello all,
+
+We are excited to announce a new release of DIPY: DIPY 1.8.0 ! This release includes many new features and updates to support the latest Python, Numpy, Scipy and Cython versions. The Pythonic ecosystem is growing fast. Which is great. But please report any issues you may find.
+
+DIPY 1.8.0 (Friday, 13 December 2023) 
+The release 1.8.0 received contributions from 28 developers (the full release notes are at: https://docs.dipy.org/stable/release_notes/release1.8.html). 
+
+Thank you all for your contributions and feedback!
+
+Please click here to check 1.8.0 API changes. 
+
+Highlights of 1.8.0 release include:
+
+	•	Python 3.12.0 support.
+	•	Cython 3.0.0 compatibility.
+	•	Migrated to Meson build system. Setuptools is no more.
+	•	EVAC+ novel DL-based brain extraction method added.
+	•	Parallel Transport Tractography (PTT) 10X faster.
+	•	Many Horizon updates. Fast overlays of many images.
+	•	New Correlation Tensor Imaging (CTI) method added.
+	•	Improved warnings for optional dependencies.
+	•	Large documentation update. New theme/design integration.
+	•	Closed 197 issues and merged 130 pull requests.
+Here is also a reminder of the previous highlights (which was not announced - due to the large changes in the Pythonic ecosystem). 
+
+Highlights of 1.7.0 release include:
+
+	•	NF: BundleWarp - Streamline-based nonlinear registration method for bundles added.
+	•	NF: DKI+ - Diffusion Kurtosis modeling with advanced constraints added.
+	•	NF: Synb0 - Synthetic b0 creation added using deep learning added.
+	•	NF: New Parallel Transport Tractography (PTT) added.
+	•	NF: Fast Streamline Search algorithm added.
+	•	NF: New denoising methods based on 1D CNN added.
+	•	Handle Asymmetric Spherical Functions.
+	•	Large update of DIPY Horizon features.
+	•	Multiple Workflows updated
+	•	Large codebase cleaning.
+	•	Large documentation update. Integration of Sphinx-Gallery.
+	•	Closed 53 issues and merged 34 pull requests.
+To upgrade or install DIPY
+
+Run the following command in your terminal (works across Mac, Linux, Win): 
+
+pip install --upgrade dipy
+
+This version of DIPY depends on nibabel (3.0.0+). 
+For visualization you need FURY (0.9.0+).
+
+Questions or suggestions?
+ 
+For any questions go to our new website at https://dipy.org, or send an e-mail to dipy@python.org  
+We also have an instant messaging service and chat room available at https://gitter.im/dipy/dipy
+Finally, a new discussion forum is available at https://github.com/dipy/dipy/discussions
+
+Have a wonderful time using this new version and please support us by citing DIPY in your papers using the following DOI: 10.3389/fninf.2014.00008  
+
+In addition, registration for the online DIPY workshop 2024 (March 11-15) is open! The workshop will continue equipping you with the skills and knowledge needed to master the latest techniques and tools in structural and diffusion imaging. See the exquisite program and keynote speakers here.
+Register now!
+
+On behalf of the DIPY developers,
+Eleftherios Garyfallidis, Ariel Rokem, Serge Koudoro
+https://dipy.org/contributors
+
+
+Hi Erin,
+ 
+Sorry for not catching this before the holiday. This was cause by a bug in spec2nii and the nifti-mrs package which should now be fixed by updating fsl-mrs. See https://open.win.ox.ac.uk/pages/fsl/fsl_mrs/install.html#option-1-using-conda after the update you should have fsl-mrs 2.1.18 and spec2nii 0.7.2.
+ 
+Best wishes,
+ 
+Will
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK> Date: Tuesday, 19 December 2023 at 16:33 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] FSL_MRS: Reading Old Philips Data
+Hi Erin
+ 
+Not sure if this will actually work as I don’t have your data, but you might want to try either of the two options below:
+ 
+	•	Use the –no_mean flag when running mrs_tools vis
+	•	Change the DIM_DYN tag to None using mrs_tools reshape
+ 
+Cheers
+Saad
+ 
+
+
+Hi,
+
+Happy Holiday! 
+
+I am researching on your logic for motion correction in fsl eddy. I was trying to read essays called A global optimisation method for robust affine registration of brain images which you used on flirt to hope to get some reference. But I did notice some difference between eddy, at least from the part you suggested me earlier on the para_update function inside of eddy_Utils, in which you used derivatives for raw_general_transform. I have never been into the neuroscience area so I don't know if I understand your essay correctly and wether your method in motion correction, specificly for affine transformation is the same for flirt and eddy. 
+
+Also, I wonder if you could help me and give me some advice on how I should understand the code flow and some recommendations on any external resources like articles by you to understand the code logic. Thanks so much!
+
+Best regards,
+Charlotte
+
+
+Hi again,
+ 
+I just wanted to let you know that Im happy to share data – we actually did a scan today with the original sequence and two with optimized PLD LD distributions using oxasl_optpcasl. The latter two were also scanned without Sense since we got artefacts in the original sequence with Sense. There is also a T1 as anatomical reference. However, Christmas is around our doorsteps so it’s understandable if any reply would be delayed.
+ 
+Still I was not able to run basil correctly, even with the optimized seqences it stops at Fabber arterial. Any help would be highly appreciated.
+ 
+Best regards, and happy holidays
+MF
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Markus Fahlström <markus.fahlstrom@UU.SE> Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Date: Saturday, 25 November 2023 at 21:34 To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] Help on FSL Basil
+ 
+Hi Martin,
+ 
+Yes, I can share the dataset including a T1 structural if you prefer. That would be really helpful.
+How do you want to proceed?
+ 
+
+
+Hi Chuyue,
+
+have you looked at the BRATS-challenge?
+
+Cheers,
+Andreas
+
+﻿Am 16.12.23, 07:09 schrieb "FSL - FMRIB's Software Library im Auftrag von Chuyue Zhao" <FSL@JISCMAIL.AC.UK im Auftrag von zhaochuyue21@MAILS.UCAS.AC.CN>:
+
+    Dear Andreas,
+   
+    Thank you for the reply and suggestions. We have collected T1w, T2w, DTI and fMRI data.  So I wonder whether it would be possible to use the information from these different modalities to segment the different brain tissues of a brain tumour patient, e.g. whether it would be possible to use the fibre tracts or FA images obtained from the DTI datas to extract the white matter out.
+   
+    Best regards,
+    Chuyue
+   
+
+Hi Chuyue,
+
+> accurate method or pipeline for segmenting the brain tissue of tumour patients.
+
+Not to my knowledge.
+It is a very tricky thing to do, and different "brain tumors" vary w/r to perifocal edema (T1 hypointense), constrast enhancement, peri- and intratumoral microbleeds, calcifications and cellularity/diffusion characteristics.
+
+> tumour-infested brain tissue
+Just of note: There is data that show that at least some gliomas, for example, are not a localized problem of focal "tumour-infested brain tissue" but more of a system-type disease.
+Even if you do a hemispherectomy in some GBMs, it may recur in the other, initially seemingly healthy hemisphere...
+
+Cheers,
+Andreas
+
+﻿Am 15.12.23, 11:27 schrieb "FSL - FMRIB's Software Library im Auftrag von Chuyue Zhao" <FSL@JISCMAIL.AC.UK im Auftrag von zhaochuyue21@MAILS.UCAS.AC.CN>:
+
+    Dear FSL experts,
+   
+    We collected MRI data from some brain tumour patients and wanted to segment their T1w images to obtain grey and white matter portions. As previous studies have suggested that the original function may still be preserved in tumour-infested brain tissue, we did not use a tumour mask to generate the masked T1w image. We tried using CAT12 for automatic tissue segmentation, but the resulting grey matter tends to encapsulate the tumour-infested white matter region area as well, so I wonder if there is any more accurate method or pipeline for segmenting the brain tissue of tumour patients.
+   
+    Best regards,
+   
+    Chuyue
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+The HCP-A (Aging) dataset has thousands files named with a .nii_2.gz extension, for example:
+
+fmriresults01/HCA9953406_V1_MR/MNINonLinear/Results/rfMRI_REST1_PA/brainmask_fs.2.nii_2.gz
+
+If you try to pass that into FLIRT, you get:
+    Image Exception : #63 :: No image files match: fmriresults01/HCA9953406_V1_MR/MNINonLinear/Results/rfMRI_REST1_PA/brainmask_fs.2.nii_2.gz
+even though the file does exist. HOWEVER, if you rename the file to ...../brainmask_fs.2.nii.gz, and give it that path instead, flirt is happy with it.
+
+It seems that flirt is unwilling to open files with the extension .nii_2.gz.
+
+Is there a workaround to this other than than a kludgy wrapper to rename any such files encountered?
+
+--
+Daniel M. Drucker, Ph.D.
+ddrucker@mclean.harvard.edu
+
+
+Dear Matthew,
+
+I'm aware that it has been some time since this issue was discussed, but I was hoping to seek clarification on a small follow-up question.
+
+We would like to use susan for smoothing after applying a pre-trained version of fix on resting-state data. (We use this pre-trained version because our acquisition parameters are very similar to HCP.)
+Our preprocessing in FEAT excluded smoothing, as the pre-trained fix performed better without it.
+
+Now, I'm wondering  if I should use the raw functional data or the cleaned data (fix output: filtered_func_data_clean) to calculate the parameters for susan.
+
+Additionally, I would like to doublecheck if there are any modifications from Mason's suggestions when applying susan to cleaned data. My plan is to directly apply susan to filtered_func_data_clean (without applying the mask before as done by FEAT and suggested in Step 5). Would you agree with this approach? Is there anything else I might need to consider?
+
+I highly appreciate your time and assistance in this matter. Thank you in advance and all the best,
+
+Madeleine
+
+Hello Bram,
+  We’ve been able to reproduce this bug and are looking into a fix. For now the fslinstaller.py script can be used to install FSL 6.0.7.4 which shouldn’t be affected by this issue.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 27 Dec 2023, at 19:03, Bram Diamond <bramdiamond@GMAIL.COM> wrote:
+
+Hello FSL Experts,
+ 
+I am attempting to create a fieldmap from a dual echo gradient echo scan (2 mag and 1 phase difference) suitable for epi_reg to correct for susceptibility distortion correction dMRI.
+ 
+While following the instructions from fmrib.ox.ac.uk (link1, link2) to run fsl_prepare_fieldmaps with FSL (v6.0.7.6), the terminal outputs -1 and a GUI opens with the title, “FSL Prepare Fieldmap.” I would prefer to run the command in my terminal. Nevertheless, when I manually insert the file paths in the GUI and press “Go,” I get the message “Running script… please wait” and an empty duplicate of the same GUI appears. When I exit the new GUI, the first GUI outputs, “Output from script: -1,” and prompts me to “Dismiss.” My hypothesis is that the fsl_prepare_fieldmaps non-GUI command is somehow incorrectly linked to the GUI command.
+ 
+I am running the following command on macOS 14.0 (Sonoma):
+ 
+fsl_prepare_fieldmap \
+SIEMENS \
+fmap_phase.nii.gz \
+fmap_mag_synthstrip.nii.gz \
+fmap_rads 2.46
+ 
+It appears that fsl_prepare_fieldmap is pointing to Runtcl:
+ 
+which fsl_prepare_fieldmap
+/Users/bramdiamond/fsl/bin/fsl_prepare_fieldmap
+ls -lt /Users/bramdiamond/fsl/bin/fsl_prepare_fieldmap
+lrwxr-xr-x 1 root wheel 6 Dec 27 11:53 /Users/bramdiamond/fsl/bin/fsl_prepare_fieldmap -> Runtcl
+ 
+It appears that the non-GUI version is in …/fsl/share/fsl/bin:
+ 
+ls -l /Users/bramdiamond/fsl/share/fsl/bin/*prepare_fieldmap*
+/Users/bramdiamond/fsl/share/fsl/bin/Fsl_prepare_fieldmap_gui
+/Users/bramdiamond/fsl/share/fsl/bin/fsl_prepare_fieldmap
+ 
+I’ve attempted the same command with the full path to share/fsl/bin/fsl_prepare_fieldmap and I get the same error.
+ 
+I removed and redownloaded FSL using the python installation package. My ~/.bash_profile includes the following:
+ 
+# FSL Setup
+FSLDIR=${HOME}/fsl
+FSL_DIR=${HOME}/fsl
+PATH=${FSLDIR}/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+ 
+I’ve searched the FSL archive and couldn’t find a solution. Does anyone happen to know what I might be doing wrong?
+ 
+Thanks,
+Bram
+ 
+Bram R. Diamond, MS
+Clinical Psychology Doctoral Candidate
+Northwestern University Feinberg School of Medicine
+Mesulam Center for Cognitive Neurology & Alzheimer’s Disease
+300 E. Superior Street | Tarry 8 | Chicago, IL 60611
+www.brain.northwestern.edu
+
+
+Hi all,
+
+I have reached out to a few fMRI labs with no luck so far. I am looking for a lab in the NYC area that can perform EEG-fMRI simultaneous recordings.
+
+I am hoping to facilitate a relationship between the lab and PropheticAI (https://propheticai.co/). If anyone has any leads or questions please send them my way!
+
+Best,
+Luc
+
+########################################################################
+
+
+Hello FSL Experts,
+ 
+I am attempting to create a fieldmap from a dual echo gradient echo scan (2 mag and 1 phase difference) suitable for epi_reg to correct for susceptibility distortion correction dMRI.
+ 
+While following the instructions from fmrib.ox.ac.uk (link1, link2) to run fsl_prepare_fieldmaps with FSL (v6.0.7.6), the terminal outputs -1 and a GUI opens with the title, “FSL Prepare Fieldmap.” I would prefer to run the command in my terminal. Nevertheless, when I manually insert the file paths in the GUI and press “Go,” I get the message “Running script… please wait” and an empty duplicate of the same GUI appears. When I exit the new GUI, the first GUI outputs, “Output from script: -1,” and prompts me to “Dismiss.” My hypothesis is that the fsl_prepare_fieldmaps non-GUI command is somehow incorrectly linked to the GUI command.
+ 
+I am running the following command on macOS 14.0 (Sonoma):
+ 
+fsl_prepare_fieldmap \
+SIEMENS \
+fmap_phase.nii.gz \
+fmap_mag_synthstrip.nii.gz \
+fmap_rads 2.46
+ 
+It appears that fsl_prepare_fieldmap is pointing to Runtcl:
+ 
+which fsl_prepare_fieldmap
+/Users/bramdiamond/fsl/bin/fsl_prepare_fieldmap
+ls -lt /Users/bramdiamond/fsl/bin/fsl_prepare_fieldmap
+lrwxr-xr-x 1 root wheel 6 Dec 27 11:53 /Users/bramdiamond/fsl/bin/fsl_prepare_fieldmap -> Runtcl
+ 
+It appears that the non-GUI version is in …/fsl/share/fsl/bin:
+ 
+ls -l /Users/bramdiamond/fsl/share/fsl/bin/*prepare_fieldmap*
+/Users/bramdiamond/fsl/share/fsl/bin/Fsl_prepare_fieldmap_gui
+/Users/bramdiamond/fsl/share/fsl/bin/fsl_prepare_fieldmap
+ 
+I’ve attempted the same command with the full path to share/fsl/bin/fsl_prepare_fieldmap and I get the same error.
+ 
+I removed and redownloaded FSL using the python installation package. My ~/.bash_profile includes the following:
+ 
+# FSL Setup
+FSLDIR=${HOME}/fsl
+FSL_DIR=${HOME}/fsl
+PATH=${FSLDIR}/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+ 
+I’ve searched the FSL archive and couldn’t find a solution. Does anyone happen to know what I might be doing wrong?
+ 
+Thanks,
+Bram
+ 
+Bram R. Diamond, MS
+Clinical Psychology Doctoral Candidate
+Northwestern University Feinberg School of Medicine
+Mesulam Center for Cognitive Neurology & Alzheimer’s Disease
+300 E. Superior Street | Tarry 8 | Chicago, IL 60611
+www.brain.northwestern.edu
+
+

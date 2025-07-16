@@ -1,0 +1,47 @@
+I seem to be having a similar problem to the one listed here.
+
+When running tbss_1_preproc on my FA.nii.gz files I get an error message and the fslmaths step to write the FA files to the newly created FA folder does not work.
+
+Finding this previous issue I attempted this fix: FSLOUTPUTTYPE=NIFTI; for f in *.nii.gz; do imcp $f $f; done;
+
+Which created the new *.nii files, but which did not solve my problem.
+
+I then tried working through the first parts of the tbss_1_preproc script, as suggested.
+
+running this step
+
+>>$ X=`${FSLDIR}/bin/fslval sub-old69_ses-01_FA.nii dim1`; X=`echo "$X 2 - p" | dc -`
+
+gave me this error
+
+Fatal error: cannot open file: -
+    Function: (main)
+Which matches with the first error I see when I try to run 'tbss_1_preproc' on my FA files.
+
+Breaking this command down,
+
+>>$ X=`${FSLDIR}/bin/fslval sub-old69_ses-01_FA.nii dim1`;
+Gives no error, and
+>>$ echo $X
+works and gives me the value of X as 96.
+
+>>$ X=`echo "$X 2 - p" | dc -`
+however gives me the error message
+
+Fatal error: cannot open file: -
+    Function: (main)
+ 
+So it seems this command is not working as excpected.
+
+I'm on a 2019, 2.4 GHz Quad-Core Intel Core i5 Macbook Pro, running Ventura 13.0.1. with bash 5.1. and python 3.7.7
+
+Any ideas or tips that I can try to get this to work?
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+

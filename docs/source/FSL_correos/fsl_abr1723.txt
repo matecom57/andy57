@@ -1,0 +1,655 @@
+esper,
+
+Thanks for the advice. I will implement it.
+
+To answer your question, the blurring was in the --iout image.
+
+Ken
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+I am trying to extract mean network connectivity of the DMN from dual regression outputs. I have run dual regression stage 1 and 2 on all my subjects. 
+In papers, this step is described as "The subject-specific spatial map was masked by the group mean RSN map and the mean value within this region extracted for each subject".
+However, I am not sure how to do this. From what I can see, the group-mean spatial maps (melodic_IC) are also whole-brain images but not ROIs. Should I use a thresholded version of group IC as mask?
+
+Thank you very much for your response.
+
+Best
+Xinyu
+
+
+
+Hi FSL experts,
+
+I am working with high-resolution rs-fmri data. I am trying to register the bold images to MNI using FSL by
+1.registering bold to T1 using FLIRT
+2.T1 to MNI with FLIRT(dof 9)
+3.T1 to MNI with FNIRT using the transformation from the 2nd step
+4. Applying to warp from the 3rd to the bold images, along with the transformation matrix from the 1st step.
+
+However, I get weird results specifically around the lateral top parts of the cortex after FNIRT, near(ish) to the boundaries, both with the T1 and the bold. Medial and inferior aspects seemed to register fine.
+
+The outputs from the FLIRT (1st and 2nd steps seem fine).
+
+I tried resolving the issue by changing some of the parameters/options and arguments as below. As a reference, I used the default MNI_2mm template configuration file in FSL. However, this did not make much difference. I am aware this configuration file is for 2mm space, however I do not know which parameters would optimize registration into the 1mm space. Does anyone have an idea or have used FNIRT to normalize into 1mm space?
+
+I am using fsl/6.0.5.1. Voxel sizes; bold 1.6 mm iso, and T1 0.73mm iso.
+
+Any help would be appreciated! Thank you!
+
+fnirt --ref=${FSLDIR}/data/standard/MNI152_T1_1mm.nii.gz
+–in=sub-01_T1w.nii.gz
+–aff=T1_to_ref_aff.mat
+–cout=warp_T1_2_mni.nii.gz
+–refmask=MNI152_T1_1mm_brain_mask_dil.nii.gz
+–inmask=sub-01-brain_mask.nii.gz --imprefm=1 --impinm=1
+–imprefval=0 --impinval=0 -
+-subsamp=4,4,2,2,1,1 --miter=5,5,5,5,5,10
+–infwhm=8,6,5,4.5,3,2 --reffwhm=8,6,5,4,2,0
+–lambda=300,150,100,50,40,30 --estint=1,1,1,1,1,0
+–applyrefmask=0,0,0,0,1,1 --applyinmask=1
+–warpres=10,10,10 --ssqlambda=1 --regmod=bending_energy
+–intmod=global_non_linear_with_bias --intorder=5 --biasres=50,50,50
+–biaslambda=10000 --refderiv=0
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello everyone, I had previously asked to get an old FSL version and thanks to your help I was able to find version 5.0.8 with which POSSUM runs without problems, the only detail is that now I want to extend POSSUM to be able to simulate with Spin code echo created by Mark, but when replacing the necessary folders to run Spin echo and trying to compile, errors appear so the 2 new pulses (SE and EPI-SE) cannot be simulated. I would appreciate your help to solve it. I also replaced the .tcl file, so in the GUI I can select the SE, but when simulating, even though an image_abs is created, nothing makes sense. I have tried to compile using the sourcecode of the page, but unfortunately it sends me this message
+/usr/local/fsl/config/default.mk:3: /usr/local/fsl/config/InstalledDir:-llvm14.0.0/systemvars.mk: No such file or directory
+/usr/local/fsl/config/default.mk:4: /usr/local/fsl/config/InstalledDir:-llvm14.0.0/externallibs.mk: No such file or directory
+make: *** No rule to make target `/usr/local/fsl/config/InstalledDir:-llvm14.0.0/externallibs.mk'. Stop.
+Do you have any idea what I could do to make it happen?
+
+########################################################################
+
+
+oh just to say i think you should specify -dof 9 in your flirt call so that you avoid shearing transforms in the registration.
+
+??
+
+
+From: Chidi Ugonna <chidi_ugonna@hotmail.com>
+Sent: Thursday, April 13, 2023 10:20 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+Thanks Abdul,
+So actually funnily enough the slice numbers are the same 🙂 but the x and y dimensions are different. So much for making assumptions.
+Your PArhim_04.nii file has dimensions 96,96,44 (and a larger voxel size of 2.19 x 2.19 x 2.2) while APpepo_04.nii has dimensions 128,128,44
+
+You should probably investigate why this subject is different - I am assuming that this was a misspecification during acquisition but should confirm this.
+
+Assuming that there is nothing else upstream that could have gone wrong then my suggestion is that you register APpepo_04.nii to PArhim_04.nii using flirt:
+
+flirt -in APpepo_04.nii -ref PArhim_.nii  -out newAPpepo_04.nii
+
+and then use newAPpepo_04.nii in place of APpepo_04.nii for subject 04. You could add an if statement in your script to handle this exception/
+
+Ideally you would want to just rescale APpepo_04.nii as regsitering two images with opposing distortions is not ideal. There might be a way to do  this so that APpepo_04.nii has exactly the same dimensions as PArhim_04.nii but I am not sure how to do that conveniently in FSL. Someone with more expertise might be able to provide a better suggestion.
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <A.Dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 9:37 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+I have screenshots of the two outputs attached. 
+
+Best Regards,
+Abdul.
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: 13 April 2023 17:29
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+** THIS MESSAGE ORIGINATED OUTSIDE LOUGHBOROUGH UNIVERSITY **
+
+** Be wary of links or attachments, especially if the email is unsolicited or you don't recognise the sender's email address. **
+
+Hi Abdul,
+Just to confirm the difference between both files is in the number of slices could you run these two commands and post the output for each file:
+
+fslhd -x APpepo_04.nii
+
+fslhd -x PArhim_04.nii
+
+
+
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <A.Dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 9:10 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+Thanks for your suggestions.
+
+The PA_AP_b0_04.nii.gz could not be produced for just this participant; I have this file produced for the other participants.
+
+In case the different number of slices is causing the problem, what should be my first step in fixing it if it is something that can be fixed?
+
+Thank you so much for your help. I greatly appreciate it.
+
+Best Regards,
+Abdul. 
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: 13 April 2023 16:51
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+** THIS MESSAGE ORIGINATED OUTSIDE LOUGHBOROUGH UNIVERSITY **
+
+** Be wary of links or attachments, especially if the email is unsolicited or you don't recognise the sender's email address. **
+
+Hi Abdul,
+Did the fslmerge step work correctly to produce the PA_AP_b0_04.nii.gz file in your $basefolder/04/top_up directory? It looks as if the APpepo_04.nii and PArhim_04.nii may have different number of slices because of this error:
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+
+This might be what is then causing topup to fail?
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <A.Dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 8:14 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+Hi Chidi,
+
+Thanks for your quick response. 
+
+Here is the code extracted from a script I have used for all the participants (it works fine) except this one; I got the error:
+
+# top-up distortion correction
+# merge P>>A (rhimsize) and A>>P (pepolar) images in the top-up directory.
+      cd $basefolder/${subj}/top_up
+      fslmerge -t PA_AP_b0_${subj}.nii.gz PArhim_${subj}.nii APpepo_${subj}.nii
+            
+# run topup
+      echo running topup
+      topup --imain=PA_AP_b0_${subj}.nii.gz --datain=acqparams.txt --config=b02b0.cnf --out=topup_PA_AP_b0_${subj} --iout=topup_PA_AP_b0_iout_${subj} --fout=topup_PA_AP_b0_fout_${subj}
+            
+# apply top-up to the motion corrected functional data (filtered_func_data)
+      echo running applytopup
+      applytopup --imain=$basefolder/${subj}/FEAT_models/${subj}_preproc1.feat/filtered_func_data.nii.gz \
+      --topup=topup_PA_AP_b0_${subj} --datain=acqparams.txt --inindex=1 --method=jac --out=$basefolder/${subj}/food_BOLD/foodBOLD_${subj}_unwarped.nii.gz
+
+Best Regards,
+Abdul.
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: 13 April 2023 16:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+** THIS MESSAGE ORIGINATED OUTSIDE LOUGHBOROUGH UNIVERSITY **
+
+** Be wary of links or attachments, especially if the email is unsolicited or you don't recognise the sender's email address. **
+
+Hi Abdul,
+Would you post the exact command line expression you are using? Can you give some more details about how you obtained APpepo_04.nii?
+Thank you
+Chidi
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <a.dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 7:16 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Top-up error
+ 
+Hi FSL expert,
+
+I would appreciate any advice you could give me on how to resolve the Top-up error; please find the details below:
+
+Top-up error
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+running topup
+Image Exception : #63 :: No image files match: PA_AP_b0
+Image Exception : #22 :: Failed to read volume PA_AP_b0.nii.gz
+Error : No image files match: PA_AP_b0
+
+
+Best regards,
+Abdul.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Abdul,
+Just to confirm the difference between both files is in the number of slices could you run these two commands and post the output for each file:
+
+fslhd -x APpepo_04.nii
+
+fslhd -x PArhim_04.nii
+
+
+
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <A.Dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 9:10 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+Thanks for your suggestions.
+
+The PA_AP_b0_04.nii.gz could not be produced for just this participant; I have this file produced for the other participants.
+
+In case the different number of slices is causing the problem, what should be my first step in fixing it if it is something that can be fixed?
+
+Thank you so much for your help. I greatly appreciate it.
+
+Best Regards,
+Abdul. 
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: 13 April 2023 16:51
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+** THIS MESSAGE ORIGINATED OUTSIDE LOUGHBOROUGH UNIVERSITY **
+
+** Be wary of links or attachments, especially if the email is unsolicited or you don't recognise the sender's email address. **
+
+Hi Abdul,
+Did the fslmerge step work correctly to produce the PA_AP_b0_04.nii.gz file in your $basefolder/04/top_up directory? It looks as if the APpepo_04.nii and PArhim_04.nii may have different number of slices because of this error:
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+
+This might be what is then causing topup to fail?
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <A.Dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 8:14 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+Hi Chidi,
+
+Thanks for your quick response. 
+
+Here is the code extracted from a script I have used for all the participants (it works fine) except this one; I got the error:
+
+# top-up distortion correction
+# merge P>>A (rhimsize) and A>>P (pepolar) images in the top-up directory.
+      cd $basefolder/${subj}/top_up
+      fslmerge -t PA_AP_b0_${subj}.nii.gz PArhim_${subj}.nii APpepo_${subj}.nii
+            
+# run topup
+      echo running topup
+      topup --imain=PA_AP_b0_${subj}.nii.gz --datain=acqparams.txt --config=b02b0.cnf --out=topup_PA_AP_b0_${subj} --iout=topup_PA_AP_b0_iout_${subj} --fout=topup_PA_AP_b0_fout_${subj}
+            
+# apply top-up to the motion corrected functional data (filtered_func_data)
+      echo running applytopup
+      applytopup --imain=$basefolder/${subj}/FEAT_models/${subj}_preproc1.feat/filtered_func_data.nii.gz \
+      --topup=topup_PA_AP_b0_${subj} --datain=acqparams.txt --inindex=1 --method=jac --out=$basefolder/${subj}/food_BOLD/foodBOLD_${subj}_unwarped.nii.gz
+
+Best Regards,
+Abdul.
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: 13 April 2023 16:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+** THIS MESSAGE ORIGINATED OUTSIDE LOUGHBOROUGH UNIVERSITY **
+
+** Be wary of links or attachments, especially if the email is unsolicited or you don't recognise the sender's email address. **
+
+Hi Abdul,
+Would you post the exact command line expression you are using? Can you give some more details about how you obtained APpepo_04.nii?
+Thank you
+Chidi
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <a.dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 7:16 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Top-up error
+ 
+Hi FSL expert,
+
+I would appreciate any advice you could give me on how to resolve the Top-up error; please find the details below:
+
+Top-up error
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+running topup
+Image Exception : #63 :: No image files match: PA_AP_b0
+Image Exception : #22 :: Failed to read volume PA_AP_b0.nii.gz
+Error : No image files match: PA_AP_b0
+
+
+Best regards,
+Abdul.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Abdul,
+Did the fslmerge step work correctly to produce the PA_AP_b0_04.nii.gz file in your $basefolder/04/top_up directory? It looks as if the APpepo_04.nii and PArhim_04.nii may have different number of slices because of this error:
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+
+This might be what is then causing topup to fail?
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <A.Dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 8:14 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+Hi Chidi,
+
+Thanks for your quick response. 
+
+Here is the code extracted from a script I have used for all the participants (it works fine) except this one; I got the error:
+
+# top-up distortion correction
+# merge P>>A (rhimsize) and A>>P (pepolar) images in the top-up directory.
+      cd $basefolder/${subj}/top_up
+      fslmerge -t PA_AP_b0_${subj}.nii.gz PArhim_${subj}.nii APpepo_${subj}.nii
+            
+# run topup
+      echo running topup
+      topup --imain=PA_AP_b0_${subj}.nii.gz --datain=acqparams.txt --config=b02b0.cnf --out=topup_PA_AP_b0_${subj} --iout=topup_PA_AP_b0_iout_${subj} --fout=topup_PA_AP_b0_fout_${subj}
+            
+# apply top-up to the motion corrected functional data (filtered_func_data)
+      echo running applytopup
+      applytopup --imain=$basefolder/${subj}/FEAT_models/${subj}_preproc1.feat/filtered_func_data.nii.gz \
+      --topup=topup_PA_AP_b0_${subj} --datain=acqparams.txt --inindex=1 --method=jac --out=$basefolder/${subj}/food_BOLD/foodBOLD_${subj}_unwarped.nii.gz
+
+Best Regards,
+Abdul.
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: 13 April 2023 16:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Top-up error
+ 
+** THIS MESSAGE ORIGINATED OUTSIDE LOUGHBOROUGH UNIVERSITY **
+
+** Be wary of links or attachments, especially if the email is unsolicited or you don't recognise the sender's email address. **
+
+Hi Abdul,
+Would you post the exact command line expression you are using? Can you give some more details about how you obtained APpepo_04.nii?
+Thank you
+Chidi
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <a.dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 7:16 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Top-up error
+ 
+Hi FSL expert,
+
+I would appreciate any advice you could give me on how to resolve the Top-up error; please find the details below:
+
+Top-up error
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+running topup
+Image Exception : #63 :: No image files match: PA_AP_b0
+Image Exception : #22 :: Failed to read volume PA_AP_b0.nii.gz
+Error : No image files match: PA_AP_b0
+
+
+Best regards,
+Abdul.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Emma,
+Someone with more expertise will need to confirm this but I wonder if the issue is that you ran fsl_anat without the --nocrop parameter - I think using this parameter will ensure that all the structural outputs in the fsl_anat folder are consistent with the original T1 space.
+Best
+Chidi
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Emma <00008fd4374a06cf-dmarc-request@JISCMAIL.AC.UK>
+Sent: Thursday, April 13, 2023 6:28 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] ASL ROI analysis
+ 
+I am currently preprocessing my ASL data with FSL BASIL using the oxford_asl command. Using “fslutils”, I have created a mask of various brain regions from the participants fsl_anat data. However, when I use ‘fslmaths” to mask the binarized mask onto the ASL data (perfusion.nii but i have also tried others: perfusion_var.nii.gz, perfusion_calib.nii.gz), it says that my two images are different sizes.
+ 
+
+########################################################################
+
+
+Hi Abdul,
+Would you post the exact command line expression you are using? Can you give some more details about how you obtained APpepo_04.nii?
+Thank you
+Chidi
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Abdulrahman Dera <a.dera@LBORO.AC.UK>
+Sent: Thursday, April 13, 2023 7:16 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Top-up error
+ 
+Hi FSL expert,
+
+I would appreciate any advice you could give me on how to resolve the Top-up error; please find the details below:
+
+Top-up error
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+running topup
+Image Exception : #63 :: No image files match: PA_AP_b0
+Image Exception : #22 :: Failed to read volume PA_AP_b0.nii.gz
+Error : No image files match: PA_AP_b0
+
+
+Best regards,
+Abdul.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi FSL expert,
+
+I would appreciate any advice you could give me on how to resolve the Top-up error; please find the details below:
+
+Top-up error
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Error in size-match along non-concatenated dimension for input file: APpepo_04.nii
+running topup
+Image Exception : #63 :: No image files match: PA_AP_b0
+Image Exception : #22 :: Failed to read volume PA_AP_b0.nii.gz
+Error : No image files match: PA_AP_b0
+
+
+Best regards,
+Abdul.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+We have  some patient data in which the patient moved quite a bit. We ran back-to-back forward and reverse phase-encode scans, so there was only a few seconds' delay between the scans. If you just run topup on the scans, the resulting images are clearly no well registered to the forward phase-encode scans. I could coregister the images prior to running topup, then coregister the resulting maps to the rest of the data. However, it seems like that would mess up the field map because forward and reverse phase encode directions then become somewhat arbitrary. Are there any recommendations besides just not using topup?
+
+Thanks,
+Ken
+
+########################################################################
+
+
+Dear experts,
+
+I am seeking advice on how to create design and contrast matrices for a contrast analysis while regressing out RT effect. My experiment has 3 conditions, and I am analyzing it within-subject. Currently, my design matrix and contrast matrix are structured as follows:
+
+Design.mat : the first 3 columns represent the 3 conditions, and the 4th column represents RT in ms.
+[1 0 0 890.12
+ 1 0 0 915.54
+ 0 1 0 1002.4
+ 0 1 0 1004.7
+ 0 0 1 942.56
+ 0 0 1 1000.20]
+
+Contrast.con: I’d like to compare condition 1&2 (1st row), 1&3 (2nd row), and 2&3 (3rd row), while controlling for the RT covariate (4th row)
+[1 -1 0 0
+ 1 0 -1 0
+ 0 1 -1 0
+ 0 0 0 1]
+
+To run this analysis, I plan to use the following command line in PALM:
+palm -i beta_sess01.mgh -s lh.surf.gii -d design.mat -t contrast.con -n 1000 -tfce2D -twotail -T -corrcon -zstat -logp -ee -ise -o prefix;
+
+Would this be the correct way to create design and contrast matrices for the analysis? Any help would be greatly appreciated. Thank you!
+
+Best,
+Young
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Please disseminate widely!
+ 
+The Lugo Lab at Columbia University (https://www.columbiapsychiatry.org/research-labs/lugo-lab) is seeking to hire (1) a Spanish speaking research assistant and (2) a postdoctoral research scholar (Spanish language not required).
+ 
+In this lab, we have a passion for understanding how early life shapes neurodevelopment. We are particularly interested in perinatal factors that increase children’s risk for inhibitory control difficulties and early life factors that protect children from risk factors. Our research aims to understand the risk-protective factors that confer resilience to perinatal risk and allow young children and families to thrive, despite facing adversity.
+ 
+We use a number of techniques to answer our research questions, the most common being developmental neuroimaging. We image (via Magnetic Resonance Imaging, or MRI) children’s brains as they grow up, starting in utero and all the way though middle childhood. A lot of our studies image children’s brains when they are babies. We hope that by looking at the brain so early in life, we get to see how prenatal exposures and experiences shape that brain, independently from the influence of the postnatal world. Because we care about the development of early risk and resilience, our studies are longitudinal, and most of them follow pregnant people and their children early in life. We are also use several other measures, including biomarkers, clinical interviews, and behavioral assessments.
+ 
+We have several studies underway, including studies examining the effects of exposure to air pollution, cannabis, adversity, and sleep disorders prenatally. We are strongly committed to understanding risk and resilience in racial and ethnic minoritized communities. Mentoring is also a key mission of the lab, including scholars at all levels (i.e., high school all the way to early career faculty). All lab members are expected to develop an independent research project under the mentorship of the PI (Claudia).
+ 
+We are hiring at the research assistant and postdoctoral research fellow levels.
+ 
+Persons interested in the research assistant position should apply via this link: https://nyspi.applicantpro.com/jobs/2845361.html  (but feel free to get in touch with Claudia.lugo@nyspi.columbia.edu with any questions!).
+ 
+Persons interested in learning more about the postdoctoral research fellow position should contact the PI directly at Claudia.lugo@nyspi.columbia.edu.
+ 
+Claudia Lugo-Candelas
+ 
+ 
+--
+Claudia Lugo-Candelas, PhD *she
+Assistant Professor of Clinical Medical Psychology (in Psychiatry)
+Child and Adolescent Psychiatry
+Columbia University Medical Center/New York State Psychiatric Institute
+ 
+ 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

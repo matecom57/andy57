@@ -1,0 +1,700 @@
+Thanks for the update Shaun. I talked to our HPC cluster admin and apparently they cannot do a an in-place update of FSL subprograms, they can only re-install the whole FSL package. They did this yesterday, but xtract_qc is still presenting the same error so I assume that the re-install did not include the updated xtract_qc. Is there another way to get the xtract_qc updated as part of the installation process of FSL 6.0.7.8?
+
+On Mon, 4 Mar 2024 11:31:29 +0000, Shaun Warrington <Shaun.Warrington1@NOTTINGHAM.AC.UK> wrote:
+
+>Hi Estephan,
+>
+>Sorry about the bug and the delay in responding (I was on leave).
+>
+>I have now resolved the bug and the new version should be released shortly. Please update your FSL and this should be resolved.
+>
+>To update, please run:
+>
+>$FSLDIR/bin/conda update conda libmamba -y --solver=classic
+>
+>And then:
+>
+>update_fsl_package fsl-xtract
+>
+>Thanks,
+>Shaun.
+>
+>-----------------------------------------------------------
+>Shaun Warrington, PhD
+>Research Fellow
+>Computational Neuroimaging Laboratory
+>Sir Peter Mansfield Imaging Centre
+>Mental Health & Clinical Neurosciences, School of Medicine
+>University of Nottingham
+>
+>w: https://swarrington1.github.io/
+>-----------------------------------------------------------
+>
+>
+>From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Estephan J. Moana-Filho <000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>
+>Date: Thursday, 29 February 2024 at 00:38
+>To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+>Subject: [FSL] xtract_qc error
+>[You don't often get email from 000049e41eaf9c30-dmarc-request@jiscmail.ac.uk. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+>
+>Hello, I tried to run xtract_qc on my dataset (n=52) and it showed an error about file not found. I looked at the python code for xtract_qc, and it seems to be an intermediate file created during the processing. Any idea on what is going on? I'm using FSL 6.0.7.8. Thank you. Estephan
+>
+>acn21:~ moana004$ date; xtract_qc -subject_list ${subjs_xtractoutput_folderlist} -out ${output_folder_qc} -thr 0.001 -n_std 2; date
+>Wed Feb 28 16:57:04 CST 2024
+>
+>__  _______ ____      _    ____ _____ ___   ____
+>\ \/ /_   _|  _ \    / \  / ___|_   _/ _ \ / ___|
+> \  /  | | | |_) |  / _ \| |     | || | | | |
+> /  \  | | |  _ <  / ___ \ |___  | || |_| | |___
+>/_/\_\ |_| |_| \_\/_/   \_\____| |_| \__\_\____|
+>
+>
+>Warning: Output folder already exists. Some of the files may be overwritten
+>1 of 52Traceback (most recent call last):
+>  File "/common/software/install/manual/fsl/6.0.7.8/bin/xtract_qc", line 167, in <module>
+>    filecheck_all.loc[ns, :], tract_waytotal_all.loc[ns, :], tract_volume_all.loc[ns, :] = get_metrics(sub_path, sub_out, tracts, thr)
+>                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  File "/common/software/install/manual/fsl/6.0.7.8/bin/xtract_qc", line 142, in get_metrics
+>    np.savetxt(os.path.join(sub_out, 'filecheck'), filecheck, fmt='%i')
+>  File "/common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1556, in savetxt
+>    open(fname, 'wt').close()
+>    ^^^^^^^^^^^^^^^^^
+>FileNotFoundError: [Errno 2] No such file or directory: '/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10001/hcp/10001/T1w/xtract/xtract_qc/filecheck'
+>Wed Feb 28 17:05:04 CST 2024
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL<http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by www.jiscmail.ac.uk<http://www.jiscmail.ac.uk>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>This message and any attachment are intended solely for the addressee and may contain confidential information. If you have received this message in error, please contact the sender and delete the email and attachment. Any views or opinions expressed by the author of this email do not necessarily reflect the views of the University of Nottingham. Email communications with the University of Nottingham may be monitored where permitted by law.
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+
+
+Hi Paul,
+
+After using a different network I have downloaded FSL succes on my Mac. However when I am attempting to run checks to assess if FSL is running correctly, it seems to not be doing so (i logged out then logged back into my terminal). Attached below is the FSL directory in my system at the moment, and my attempts to run some commands which failed. Could you please advise on this? Many thanks, Sean 
+
+
+Yes, oxford_asl adds these ROIs into the region analysis script using the following options:
+
+--roi-native gmmask_pure_cort.nii.gz wmmask_pure_cereb.nii.gz
+
+You can do the same in your manual run, however one slight problem is that these ROIs are saved in the output under different names to the ones used internally in oxford_asl. They are saved as native_space/cortical_gm_roi and native_space/cerebral_wm_roi. If you pass these to the ROI analysis script using --roi-native then you will get the same numbers but the naming (which is derived from the filename) will be different.
+
+So if you really want something identical to what oxford_asl produces you'll have to rename these two files to gmmask_pure_cort and wmmask_pure_cereb and then pass them to the script. Bit of a hassle but it should deliver the same output.
+
+Hope this makes sense
+Martin
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ralf Veit <ralf.veit@UNI-TUEBINGEN.DE>
+Sent: Wednesday, March 6, 2024 4:09 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] oxford_asl_roi_stats
+ 
+[Some people who received this message don't often get email from ralf.veit@uni-tuebingen.de. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+
+Hi Martin,
+
+you are right. I tried both approaches with another project and yielded the same results. There might be an error in my other script (I use GNU parallel to run many subjects in parallel, maybe there is something wrong in scripting).  However, I noticed that the csv files in the oxford_asl approach contain gmmask_pure_cort and wmmask_pure_cereb, which is not present in the oxford_asl_roi_stats approach. This might be problematic when someone extracts values from the csv file in certain rows using both approaches.
+
+Best,
+Ralf
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+This message and any attachment are intended solely for the addressee and may contain confidential information. If you have received this message in error, please contact the sender and delete the email and attachment. Any views or opinions expressed by the author of this email do not necessarily reflect the views of the University of Nottingham. Email communications with the University of Nottingham may be monitored where permitted by law.
+
+Hi Roman,
+
+I can't quite tell from the screenshot, but it looks like you have interpolation enabled, which will cause smoothing across voxels.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 06 March 2024 17:52
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes: incorrect gray level
+ 
+Dear Paul,
+Dear FSL developers,
+
+I noticed that fsleyes sometimes does not show gray (perhaps color in general) correctly.
+Loaded is a NIFTI file with two time points in it. Volume=0 is T1W image, volume=1 is a mask of only 0s and 1s. As you can see on the image, pixel brightness at crosshairs is gray despite value reads 1 and should be white (max of brightness range).
+
+Does this mean that T1W image from volume=0 somehow bleeds through?
+
+Thank you,
+
+Roman
+
+
+
+Dear FSL experts,
+
+I have come across a problem that I am having some difficulty resolving in the DWI dataset I am working with. I would like to have your opinion on it.
+
+Providing a brief overview:
+
+1. My sequence consists of:
+- 1 acquisition of b0 AP (7 volumes)
+- 1 acquisition of b0 PA (2 volumes)
+- 1 acquisition of 1 b0 AP, 32 b1000, and 32 b2000 (65 volumes)
+In my case, I am only using the b0 that was acquired with the other b values for reasons related to the scanner (the separately acquired b0s had different intensities from the other acquired b0).
+
+2. I denoised and preprocessed the data with PCA, Gibbs unringing, topup, and eddy.
+
+3. I calculated a DKIfit, and in some of the subjects, such as the one I am sending attached, there were very high FA values (0.9999, I even found FA values > 1), so I tried to identify the origin of the problem. I went back to the raw data, where I found voxels (coinciding with those with high FA) where the intensity of the b0 volume was higher than the intensity of the b1000, which I found quite strange.
+
+4. I discussed this 'artifact' in the b0 with the scanner technician, who raised the hypothesis that it could be a scanner reconstruction problem, with no clear resolution possible.
+
+Have you ever encountered an error like this? If so, is there any possible solution/correction? I am also attaching the subject's nifti file in case it is useful.
+
+Thank you very much for all your assistance.
+
+Best regards,
+Nelson
+
+ sub-0044_dwi.bval
+ sub-0044_dwi.bvec
+ sub-0044_dwi.nii.gz
+
+
+
+Dear FSL experts,
+
+I have come across a problem that I am having some difficulty resolving in the DWI dataset I am working with. I would like to have your opinion on it.
+
+Providing a brief overview:
+
+1. My sequence consists of:
+- 1 acquisition of b0 AP (7 volumes)
+- 1 acquisition of b0 PA (2 volumes)
+- 1 acquisition of 1 b0 AP, 32 b1000, and 32 b2000 (65 volumes)
+In my case, I am only using the b0 that was acquired with the other b values for reasons related to the scanner (the separately acquired b0s had different intensities from the other acquired b0).
+
+2. I denoised and preprocessed the data with PCA, Gibbs unringing, topup, and eddy.
+
+3. I calculated a DKIfit, and in some of the subjects, such as the one I am sending attached, there were very high FA values (0.9999, I even found FA values > 1), so I tried to identify the origin of the problem. I went back to the raw data, where I found voxels (coinciding with those with high FA) where the intensity of the b0 volume was higher than the intensity of the b1000, which I found quite strange.
+
+4. I discussed this 'artifact' in the b0 with the scanner technician, who raised the hypothesis that it could be a scanner reconstruction problem, with no clear resolution possible.
+
+Have you ever encountered an error like this? If so, is there any possible solution/correction? I am also attaching the subject's nifti file in case it is useful.
+
+Thank you very much for all your assistance.
+
+Best regards,
+Nelson
+
+Hi all!
+
+I hope you are well, and thank you for FSL and a place to ask questions!
+
+I have some quick questions regarding the different ways to go about non-FA TBSS.
+
+First, I know that, with tbss_non_fa, it adapts the tbss_skeleton command for its final component to also have the -a flag for alternative 4D data. That said, when I ran this command for my various parameters:
+
+${FSLDIR}/bin/tbss_skeleton -i mean_FA -p $thresh mean_FA_skeleton_mask_dst ${FSLDIR}/data/standard/LowerCingulum_1mm all_FA all_${ALTIM}_skeletonised -a all_$ALTIM
+
+My outputted skeleton (all_skeletonised) had different numbers of voxels for each subject. For me, it's super important that they have the same number for strong comparisons since I'm performing multi-time point comparisons for the same subject, along with inter-subject comparisons.
+
+Second, I normally run tbss_skeleton with an adaption similar to the post here:  https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=fsl;738f1ede.1306, but I did not see another message beyond that one. I take my other DTI metric data after running the rest of TBSS processing and provide it with all_parameter data per parameter (AD, MD, RD, etc.). This gives me the same skeleton per subject, but the values are VERY different. For example, in the case of RD, my values were much higher with this route compared to the tbss_non_fa route with my all_RD values applied with the -a flag. Furthermore, they were especially high around the ventricles and such.
+
+We also cross-checked those analyses and the parameter data compared to the subject's official parameter maps (non-skeletonised), and doing normal tbss_skeleton but giving it the all_parameter values had different values on the skeleton compared to the values for the same subject on the native parameter map.
+
+Why would these two techniques be so different and provide wildly different values for the same parameter? What makes them different? They do seem to be somewhat on an order of magnitude different, so is there some scaling that's applied?
+
+Further, why doesn't tbss_non_fa keep the same voxels on the skeleton as doing tbss on the FA data normally does?
+
+Our logic for these analyses felt sound, but is there something in the processing code that we're missing that would generate different results?
+
+Finally, what is the search rule mask used for in tbss_skeleton? Should I try a different mask for this, and does it change anything or have a big impact on tbss_skeleton? I have always used the LowerCingulum_1mm, but maybe this is a problem for different data. Should I try to provide a different sort of mask like one for the ventricles?
+
+Thank you so much for your time and any help you can provide. I really appreciate it, and I thank you for your time and for these wonderful tools that I use so often!
+
+Take care,
+Lisette
+
+
+Dear Matthew,
+
+Images with validity masks are all 0s and 1s: 1 in pixels where data is valid, 0 is where data is invalid. Yes, they are subject specific and EV specific.
+
+Perhaps to give artificial example, I have a model:
+
+FA = age + sex + CBF + fMRI
+
+Each subject has 3 images that come from 3 acquisitions with different FOVs. Thus, there are voxels where all 3 are valid. There are voxels where FA and CBF are valid, but fMRI is not and so on. These combinations vary from subject to subject. That is, there are voxels where FA for all subjects and all EVs is valid. There are voxels where FA and EVs are valid but only for some subjects. And there are voxels where some FA/EVs are valid some are not.
+
+Roman
+
+
+Dear Paul,
+Dear FSL developers,
+
+I noticed that fsleyes sometimes does not show gray (perhaps color in general) correctly.
+Loaded is a NIFTI file with two time points in it. Volume=0 is T1W image, volume=1 is a mask of only 0s and 1s. As you can see on the image, pixel brightness at crosshairs is gray despite value reads 1 and should be white (max of brightness range).
+
+Does this mean that T1W image from volume=0 somehow bleeds through?
+
+Thank you,
+
+Roman
+
+
+
+Dear Roman,
+Can you confirm how the validity masks are coded ( e.g. what does 0 and 1 mean ), if they are subject specific, and if the validity is in/exclusive ( e.g. can a brain voxel have any combination of EV1/EV2 validity )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Mar 2024, at 17:16, Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear FSL developers and users,
+
+I would like to use randomise with several (say two) voxel-dependent EV (aka images). Each of them has their validity masks (FOV over which they were measured). As I understand, the design matrix will have two columns for the EVs themselves and two sets of identity matrixes for confounding. For example, if I have 4 subjects:
+
+1 1   1 0 0 0   1 0 0 0
+1 1   0 1 0 0   0 1 0 0
+1 1   0 0 1 0   0 0 1 0
+1 1   0 0 0 1   0 0 0 1
+
+The contrast file would be, for example (I am interested in effects of the two EVs):
+
+1 0   0 0 0 0   0 0 0 0
+0 1   0 0 0 0   0 0 0 0
+
+To supply data to randomise, I will create 4D NIFTI with EV1, a separate 4D NIFTI with EV2 and two separate 4D NIFTIs with the confounding validity masks CONF1 and CONF2.
+
+The call to randomise will then be, and this is the crux of the question:
+
+ransomise --vxf ev1.nii.gz ev2.nii.gz conf1.nii.gz conf2.nii.gz --vxl 1 2 -3 -4
+
+Is the above logic correct?
+
+In other words, the identity matrix in the design that sets up confounding is counted as one when used in --vxl list.
+
+Equivalently, if design matrix first lists confounders and then EVs:
+
+1 0 0 0   1 0 0 0   1 1
+0 1 0 0   0 1 0 0   1 1
+0 0 1 0   0 0 1 0   1 1
+0 0 0 1   0 0 0 1   1 1
+
+the contrast will be
+
+0 0 0 0   0 0 0 0   1 0
+0 0 0 0   0 0 0 0   0 1
+
+and the call:
+
+ransomise --vxf conf1.nii.gz conf2.nii.gz  ev1.nii.gz ev2.nii.gz --vxl -1 -2 3 4
+
+Is that right?
+
+Roman
+
+Hi Martin,
+
+you are right. I tried both approaches with another project and yielded the same results. There might be an error in my other script (I use GNU parallel to run many subjects in parallel, maybe there is something wrong in scripting).  However, I noticed that the csv files in the oxford_asl approach contain gmmask_pure_cort and wmmask_pure_cereb, which is not present in the oxford_asl_roi_stats approach. This might be problematic when someone extracts values from the csv file in certain rows using both approaches.
+
+Best,
+Ralf
+
+########################################################################
+
+Hi Jesper,
+
+ 
+
+Thanks again for looking into this. Have you been able to recreate the issue I was having?
+
+ 
+
+Best,
+
+Bram
+
+ 
+
+From: Bram Diamond <bramdiamond@gmail.com>
+Date: Friday, March 1, 2024 at 2:27 PM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+Here is the eddy command:
+
+Hi Ralf,
+
+I just tried this and got the same results by running the script manually. The command line I used was:
+
+oxford_asl_roi_stats --oxasl-output oxford_asl_output/native_space/ --fslanat T1.anat --output roi_stats_test --add-standard-atlases
+
+Is this the same as what you're doing? And did your oxford_asl run use the same fslanat output?
+
+Only other thing I can think is whether you could be comparing PV corrected results in native_space/pvcorr with non-PVC results in native_space?
+
+Martin
+
+try it!
+https://www.fmrib.ox.ac.uk/datasets/techrep/tr04mw2/tr04mw2.pdf
+
+﻿Am 06.03.24, 12:53 schrieb "FSL - FMRIB's Software Library im Auftrag von Sheng Yang" <FSL@JISCMAIL.AC.UK im Auftrag von 0000c313628a5f61-dmarc-request@JISCMAIL.AC.UK>:
+
+    Dear Andreas,
+    I have total of 5 blocks in 1 run, which consisted of 20s of stimulus then 8s of crosshair (off).
+   
+    Thank you,
+    Alex
+   
+    ########################################################################
+   
+
+Dear Victoria,
+
+ 
+
+    Thank you for the advice and explanation! I have one follow-up question regarding your explanation for why the rotations would differ when the first shell was preprocessed alone compared to when it was preprocessed combined with the second shell. In both cases the b=0 volume used for eddy was the first b=0 volume from the first shell so would this mean the bvec values should be the same for the first shell in both scenarios because it is relative to the same b=0 volume, or is there something about the inclusion of the volumes from the second shell that changes the values because of the where the set of volume is relative to the first b=0? I just want to make sure I am understanding correctly to ensure I don't overlook any potential red flags that something has gone awry.
+
+    
+
+if the reference scan (the first b0 if you not specify otherwise) is the same for the two runs of eddy you would expect the rotated bvecs to be "the same". I write "the same" since they will not be identical. Adding the second shell will have an impact both on the relative rotations within the shell, since the predictions are now based on data from both shells. And also of the rotation of the whole shell relative to the b=0 scans since eddy will now calculate the rigid-body transforms b0<->S1, b0<->S2 and S1<->S2 and use an amalgam of all to work out the b0<->S1 transform.
+
+ 
+
+BUT, I would expect those differences to be very small. Well below a degree. If you see any more than that I expect something has gone wrong. You can either calculate the angle between each pair of bvecs in the two rotations, or you can use plot3 in Matlab to lay the two sets out on the sphere. Both would give you a good idea of if there is a problem or not.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+ 
+
+ 
+
+    Thanks!
+
+    Victoria
+
+    
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+
+Dear Andreas,
+I have total of 5 blocks in 1 run, which consisted of 20s of stimulus then 8s of crosshair (off).
+
+Thank you,
+Alex
+
+########################################################################
+
+
+Hi Alex,
+
+you could try FLOBS.
+How long are your blocks?
+
+Cheers,
+Andreas
+
+﻿Am 06.03.24, 12:34 schrieb "FSL - FMRIB's Software Library im Auftrag von Alex Yang" <FSL@JISCMAIL.AC.UK im Auftrag von 0000c313628a5f61-dmarc-request@JISCMAIL.AC.UK>:
+
+    Hello FSL experts,
+    I am analysing a block-design, visual stimulus data (on and off).
+   
+    In FSL, I have d pre-processing of data. Then, using feat, activation modelling (first-level analysis of each subject) was performed using Feat. For convolution setting I set as canonical HRF (double-gamma).
+   
+    I want to derive subject-level HRF characteristics within the anatomical region of V1, to be more specific, magnitude of change (%), time-to-peak, time-to-baseline. I know that activation effect size (or magnitude of change) can be derived using Featquery within FSL.
+   
+    However, I have not found an efficient and robust way to derive TTP and TTB from the results of first-level analysis.
+   
+    Thank you in advance for any tips or answers!
+   
+    Best,
+    Alex
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+
+Hello FSL experts,
+I am analysing a block-design, visual stimulus data (on and off).
+
+In FSL, I have d pre-processing of data. Then, using feat, activation modelling (first-level analysis of each subject) was performed using Feat. For convolution setting I set as canonical HRF (double-gamma).
+
+I want to derive subject-level HRF characteristics within the anatomical region of V1, to be more specific, magnitude of change (%), time-to-peak, time-to-baseline. I know that activation effect size (or magnitude of change) can be derived using Featquery within FSL.
+
+However, I have not found an efficient and robust way to derive TTP and TTB from the results of first-level analysis.
+
+Thank you in advance for any tips or answers!
+
+Best,
+Alex
+
+########################################################################
+
+
+Hi Jesper,
+
+Thank you for the advice and explanation! I have one follow-up question regarding your explanation for why the rotations would differ when the first shell was preprocessed alone compared to when it was preprocessed combined with the second shell. In both cases the b=0 volume used for eddy was the first b=0 volume from the first shell so would this mean the bvec values should be the same for the first shell in both scenarios because it is relative to the same b=0 volume, or is there something about the inclusion of the volumes from the second shell that changes the values because of the where the set of volume is relative to the first b=0? I just want to make sure I am understanding correctly to ensure I don't overlook any potential red flags that something has gone awry.
+
+Thanks!
+Victoria
+
+########################################################################
+
+
+Hi Roberto,
+                 The masks are not specifically anatomical but removing voxels with ( essentially ) no variance. For one of the problematic subjects you can re-run the commands
+
+fslmaths <subjectData> -Tstd mask1
+fslmaths <subjectData> -Tstd -bin mask2
+
+To check both the temporal standard-deviation of that image ( mask1 ) and the binarised version that dual_regression would use ( mask2 ). You can also check the time-series view of brain voxels for the same subject with FSLeyes to see what the in-brain signals look like.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 5 Mar 2024, at 15:48, Roberto Dos Santos <dsantos.roberto@GMAIL.COM> wrote:
+>
+> Hi Matthew
+>
+> Thanks for your assistance. I have some follow up questions. Firstly, I don't entirely understand the output of dual regression. Are the volumes of maskALL supposed to represent anatomical masks of each subject? The subjects with problematic data are blank (such as volume 57 that you showed), but the others don't look like brains (such as volume 56 below). Also, the "dr_stage1_subject.txt" file for all subjects is just filled with 0s.
+>
+> <scan 56 maskALL.png>
+>
+> Secondly, I tried running dual regression without the problematic subjects and it worked. However, I'm struggling to identify where the problem with those subjects might originate from. Their pre-processing seems to have worked. Do you perhaps have any ideas of what might cause this error? By the way, this imaging data is sourced from the ADNI database.
+>
+> Volume 56<scan 56 mri_info.png>
+>
+> <scan 56 fsleyes.png>
+>
+> Volume 57<scan 57 mri_info.png>
+>
+> <scan 57 fsleyes.png>
+>
+> Thank you very much!
+>
+> Kind regards,
+> Roberto
+>
+>
+> On Wed, 28 Feb 2024 at 17:02, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+> Hi Roberto,
+>    It looks like you have a number of subjects here where the automatic mask-generation from the data has failed - their mask is all 0 ( see picture ). I would start by inspecting the data for these subjects to see if ( e.g. ) pre-processing has failed. Note that as you have a lot of subjects ( ~3000 ) the full dual_regression analysis will take a while to complete - depending on if you’re running on an HPC cluster etc.
+>
+> Hope this helps.
+> Kind Regards.
+> Matthew
+> --------------------------------
+> Dr Matthew Webster
+> FMRIB Centre <mask.png>
+> John Radcliffe Hospital
+> University of Oxford
+>
+>> On 28 Feb 2024, at 11:30, Roberto dos Santos <dsantos.roberto@GMAIL.COM> wrote:
+>>
+>> Hi Matthew
+>>
+>> Thanks so much. Please find the files attached.
+>>
+>> Kind regards
+>> Roberto
+>> <maskALL.nii.gz><mask.nii.gz>
+>
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi Matthew
+
+Thanks for your assistance. I have some follow up questions. Firstly, I don't entirely understand the output of dual regression. Are the volumes of maskALL supposed to represent anatomical masks of each subject? The subjects with problematic data are blank (such as volume 57 that you showed), but the others don't look like brains (such as volume 56 below). Also, the "dr_stage1_subject.txt" file for all subjects is just filled with 0s.
+
+Hi Roman,
+
+Thank you so much for clearing it up. I really appreciate it. These details help us to better understand how these images are registered to each other. I think what you said makes a lot of sense. We just wanted to register the EPI image to T1 image in native space. Previously, we tried epi_reg a couple of times, but it did not work. After that, Paul suggested using flirt for registration. So far, flirt can register EPI image to T1 image. But, it's very confused about why epi_reg does not work. We are still working on it, we will keep you posted.
+
+Anyway, any comments will be appreciated. Thanks.
+
+Best,
+Cain
+
+
+Hi Paul,
+
+Thanks for your suggestions. Our aim is to register the EPI to T1 image in each individual, and then identify the brain regions active during a given task. We are not going to do the group comparison and statistic analysis. So, that's why we first wanted to try epi_reg for registration. But, as you know, epi_reg seems not working, so we tried flirt function based on your suggestions.
+
+I heard epi_reg is a very robust tool for registration. It should not have any issues for simple registration between two images. As you said, there might be something wrong during registration, resulting in BBR cost function being thrown off. Maybe it's because the skull is too bright? But, I am not sure. But, it's an interesting question.
+
+Thanks,
+Cain
+
+
+Hi Paul,
+
+Thanks again for your suggestions. The original resolution of the EPI image is 0.8*0.8*0.8, and the original resolution of the T1 image is 0.5*0.5*0.5. But, after applying 'flirt' function, I found the EPI registered to the T1 image became 0.5*0.5*0.5, instead of 0.8*0.8*0.8. Do you have any thoughts on performing registration, while keeping the original resolution of EPI?
+
+Thanks. I am looking forward to your reply.
+
+Best,
+Cain
+
+
+Hi Paul,
+
+Thanks for your reply. I think it might be not related to the ghosting artifact in the T1 image, as I tried another subject without any artifact in the T1 image. And then I found the registration process had the same issue. I uploaded the images of another subject to https://drive.google.com/drive/folders/1rN_1Y33ZPcTup176n3ttfRgbOIQq6zHV?usp=sharing.
+
+These images represent the ones reoriented by fslreorient2std function.
+T1_reo.nii.gz
+T1_mask_reo.nii.gz
+EPI_reo.nii.gz
+
+epi_reg_d.nii.gz represents the EPI image registered to the T1 image. Even though I tested with a new subject, the registration is worse. Do you have any further thoughts on this issue? Thank you so much for your suggestions.
+
+Best,
+Cain
+
+
+At 2024-02-22 22:21:25, "Paul McCarthy" <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Cain,
+
+I think the BBR cost function (which uses white matter boundaries to drive the registration) is being thrown off by the strong ghosting artifact in the T1 (there is a nose in the occipital region). 
+
+For this data set, I think you may be better off using FLIRT directly with the default cost function, e.g.:
+
+flirt -in EPI_reo.nii.gz -ref T1_reo.nii.gz -omat epi_to_t1.mat -out epi_to_t1.nii.gz
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of DS <zkypis@126.COM>
+Sent: 21 February 2024 13:33
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] registration with epi_reg
+ 
+Hi Paul,
+
+
+
+I uploaded the images that you mentioned a couple of days ago. I am not sure whether you are able to download the images that I uploaded. If you are not able to access these files, please let me know. Thanks. Do you have any thoughts on this registration issue? I am looking forward to your suggestions. Thanks.
+
+Best,
+
+Cain
+
+
+
+At 2024-02-19 22:25:48, "DS" <zkypis@126.com> wrote:
+
+Hi Paul,
+
+Yes, sure. No problem. Even though I have not received any link to a onedrive folder, I created a link to share these files. Please download it via https://drive.google.com/drive/folders/1rN_1Y33ZPcTup176n3ttfRgbOIQq6zHV?usp=sharing .
+
+I enclosed the original images without reorientation, including
+T1.nii.gz
+T1_mask.nii.gz
+EPI.nii.gz
+
+I also uploaded reorientated images derived from fslreorient2std, including
+T1_reo.nii.gz
+T1_mask_reo.nii.gz
+EPI_reo.nii.gz
+
+If you have any questions or any files from my side, please let me know.
+
+
+Best,
+Cain
+
+
+
+
+At 2024-02-19 18:45:01, "Paul McCarthy" <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Cain,
+
+I can't assess the registration quality from those screenshots. Are you able to share all of the image files used in that command? You should have received a link to a onedrive folder where you can upload the files.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Z Sha <zkypis@126.COM>
+Sent: 15 February 2024 20:35
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] registration with epi_reg
+ 
+Hi Paul,
+
+Thanks for your reply. Based on your suggestions, I first ran fslreorient2std for each input image, as follows:
+
+fslreorient2std T1.nii.gz T1_reo.nii.gz
+fslreorient2std T1_mask.nii.gz T1_mask_reo.nii.gz
+fslreorient2std EPI.nii EPI_reo.nii
+
+And then run the registration,
+
+epi_reg \
+--epi=EPI_reo.nii \
+--t1=T1_reo.nii.gz \
+--t1brain=T1_mask_reo.nii.gz \
+--out=epi_reg_d
+
+So, it results in an image called epi_reg_d.nii.gz, which is shown in https://drive.google.com/file/d/1CztMLtmBKmyTt7Q9jFw55ueZcudv52rJ/view?usp=sharing. So, we can see, it indeed improved, but the sagittal plane and horizontal plane are still bad. Do you have any further suggestions?
+
+Thanks,
+Cain
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+

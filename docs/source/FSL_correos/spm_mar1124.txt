@@ -1,0 +1,331 @@
+Dear experts, 
+
+I currently have an issue with my 2nd level analyses of fmri data of a brain slab. 
+
+I have run my single-subject/1st level analysis all in native space, which worked fine. We then used ANTs to morph all the contrast files into mni space, and those resampled contrast files were then used to calculate our group contrast. 
+
+Transforming the native contrast files into mni-space worked just fine and the native-space as well as mni-space contrasts all look correct. We did not observe any resampling issues with ANTs there. However, when we the use SPM to calculate the 2nd level/group analyses with the mni-contrasts, the result looks very noisy and not identifiable. 
+
+For demonstration purposes, I have attached an image of a dummy-like group contrast calculated of three contrast files of the same subject in native space (A) and then the group contrast with the same files that were transformed into mni space (B). As you can see, the voxels look much smaller and frizzy. 
+
+
+It would be great if anyone could give me some advice on how to deal with this issue - or ideally check two example files to identify what changed in those aside from morphing the blobs into mni space. 
+
+
+Thank you very much for your help and advice in advance! 
+
+
+Best, 
+Lisa 
+
+
+
+Lisa Jeschke
+
+PhD student
+lisa.jeschke@tu-dresden.de
++49 351 463-43897
+
+Cognitive and Clinical Neuroscience / Professur für Kognitive und Klinische Neurowissenschaft
+TUD Dresden University of Technology 
+https://tu-dresden.de/mn/psychologie/ifap/kknw
+
+
+Buen día. Agradecería mucho su apoyo para la donación de una línea celular humana cancerosa de riñón y una línea celular sana del mismo órgano que esté en su posibilidad de compartir. De antemano, muchas gracias.
+
+M. C. Juan Pablo Díaz Abad.
+Estudiante de doctorado del Centro e Investigaciones Químicas.
+Universidad Autónoma del Estado de Morelos.
+Teléfono: 2281161234
+Correo electrónico: juan.diazaba@uaem.edu.mx
+
+
+Unfortunately, there is no automated way that I can think of for doing this.  Approaches for validating spatial normalisation methods normally involve manually defining regions on images and then assessing how closely these regions can be made to overlap using the estimated warps.
+
+Perhaps you could identify an appropriate method from the literature.  The Klein et al paper might be a good place to start, but remember that the technology has progressed in the last 15 years:
+Klein, A., Andersson, J., Ardekani, B.A., Ashburner, J., Avants, B., Chiang, M.C., Christensen, G.E., Collins, D.L., Gee, J., Hellier, P. and Song, J.H., 2009. Evaluation of 14 nonlinear deformation algorithms applied to human brain MRI registration. Neuroimage, 46(3), pp.786-802.
+
+This paper includes some more recent comparisons among methods:
+Brudfors, Mikael, Yaël Balbastre, Guillaume Flandin, Parashkev Nachev, and John Ashburner. "Flexible Bayesian modelling for nonlinear image registration." In Medical Image Computing and Computer Assisted Intervention–MICCAI 2020: 23rd International Conference, Lima, Peru, October 4–8, 2020, Proceedings, Part III 23, pp. 253-263. Springer International Publishing, 2020.
+
+
+Some people use the mean squares difference between aligned images to assess performance.  By itself, this is not a good way to do things.
+Rohlfing, T., 2011. Image similarity and tissue overlaps as surrogates for image registration accuracy: widely used but unreliable. IEEE transactions on medical imaging, 31(2), pp.153-163.
+
+Best regards,
+-John
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Stephan Klaus DEHEN <0000c3d842d86a8a-dmarc-request@JISCMAIL.AC.UK>
+Sent: 09 March 2024 21:50
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Normalization quality assessment
+ 
+⚠ Caution: External sender
+
+
+Hi all,
+
+ 
+
+For my master’s thesis I need to normalize several PDw-MRIs from different subjects to a MNI template. For this I would like to compare the quality between first creating a DARTEL template or normalizing the MRIs directly to the MNI template.
+
+Is there an automatic way to assess and quantify the quality of the normalization? Or is there a standardized procedure?
+
+ 
+
+Thank you very much for your support.
+
+ 
+
+Stephan
+
+ 
+
+ 
+
+Dear Batiah,
+
+you have to be careful here. FIR is an onset-related model, where I guess only duration=0 makes sense.
+The length of the modelled response and the granularity is determined by "order" and "length", where the granularity/resolution is length ./ order. Note that the resolution
+cannot be infinitely high, because you then might end up with empty regressors due to sampling. Usually people define the granularity as a TR i.e. order=10, then length = 10*TR gives you 10 bins after stimulus onset with a resolution of one TR per bin. PS. The units depend on whether you specify everything in seconds or scans (...fmri_spec.timing.units).
+
+I hope this helps,
+
+Christian
+--
+Prof. Dr. Christian Büchel
+Institut für Systemische Neurowissenschaften Haus W34, Universitätsklinikum Hamburg-Eppendorf Martinistr. 52, D-20246 Hamburg, Germany
+Tel.: +49-40-7410-54726
+Fax.: +49-40-7410-59955
+buechel@uke.de
+http://www.uke.uni-hamburg.de/institute/systemische-neurowissenschaften/
+
+
+
+
+> -----Ursprüngliche Nachricht-----
+> Von: SPM (Statistical Parametric Mapping) [mailto:SPM@JISCMAIL.AC.UK] Im
+> Auftrag von Batiah Keissar
+> Gesendet: Montag, 11. März 2024 09:12
+> An: SPM@JISCMAIL.AC.UK
+> Betreff: [EXT] [SPM] Finite Impulse Response and event durations in SPM
+>
+> Hello SPM experts,
+>
+> I am using Finite Impulse Response in an SPM fMRI analysis, and I wanted to
+> ask if it is possible to do this with a window containing events with durations of
+> 0 seconds? What would be the implications for my analysis in comparison to
+> longer durations?
+> Also, If anyone has recommendations for further learning materials on this
+> topic I would greatly appreciate it.
+>
+> Thank you all kindly,
+>
+> Batiah
+
+--
+
+Hello SPM experts,
+
+I am using Finite Impulse Response in an SPM fMRI analysis, and I wanted to ask if it is possible to do this with a window containing events with durations of 0 seconds? What would be the implications for my analysis in comparison to longer durations?
+Also, If anyone has recommendations for further learning materials on this topic I would greatly appreciate it.
+
+Thank you all kindly,
+
+Batiah
+
+Dear Pavlina,
+
+the ROI tool checks the filenames of the original (VBM) analysis and should contain one of the following patterns
+mwp
+m0wp
+wp
+
+These are the patterns usually found in the filenames after segmentation. In your case, I assume that you have renamed or moved the files.
+
+Best,
+
+Christian
+
+On Thu, 7 Mar 2024 14:18:24 +0100, Pavlina Lieskovsky <pavlina.lieskovsky@GMAIL.COM> wrote:
+
+>Dear all,
+>
+>I am currently facing an issue while attempting ROI analysis in CAT12.
+>Specifically, I keep encountering the following error message: "ROI
+>analysis is only supported for VBM of GM/WM/CSF. No ROI values for DBM will
+>be estimated." I followed the VBM longitudinal data CAT12 manual during
+>preprocessing.
+>
+>I have attached my script and screenshots of my batch. I would greatly
+>appreciate it if someone could review these and offer insights into why
+>this error is occurring and if there is some reason this data could be DBM.
+>
+>Thank you very much for your attention and assistance.
+>
+>Warm regards,
+>
+>Pavlina
+>%-----------------------------------------------------------------------
+>%%
+>matlabbatch{1}.spm.tools.cat.long.datalong.timepoints = {
+>{
+>..............baseline files
+>}
+>{
+>..............follow up files'
+>}
+>}';
+>%%
+>matlabbatch{1}.spm.tools.cat.long.longmodel = 2;
+>matlabbatch{1}.spm.tools.cat.long.enablepriors = 1;
+>matlabbatch{1}.spm.tools.cat.long.prepavg = 2;
+>matlabbatch{1}.spm.tools.cat.long.bstr = 0;
+>matlabbatch{1}.spm.tools.cat.long.avgLASWMHC = 0;
+>matlabbatch{1}.spm.tools.cat.long.nproc = 4;
+>matlabbatch{1}.spm.tools.cat.long.opts.tpm = {
+>'/Users/Downloads/spm12/tpm/TPM.nii'};
+>matlabbatch{1}.spm.tools.cat.long.opts.affreg = 'mni';
+>matlabbatch{1}.spm.tools.cat.long.opts.biasacc = 0.5;
+>matlabbatch{1}.spm.tools.cat.long.extopts.restypes.optimal = [1 0.3];
+>matlabbatch{1}.spm.tools.cat.long.extopts.setCOM = 1;
+>matlabbatch{1}.spm.tools.cat.long.extopts.APP
+><http://spm.tools.cat.long.extopts.app/> = 1070;
+>matlabbatch{1}.spm.tools.cat.long.extopts.affmod = 0;
+>matlabbatch{1}.spm.tools.cat.long.extopts.spm_kamap = 0;
+>matlabbatch{1}.spm.tools.cat.long.extopts.LASstr = 0.5;
+>matlabbatch{1}.spm.tools.cat.long.extopts.LASmyostr = 0;
+>matlabbatch{1}.spm.tools.cat.long.extopts.gcutstr = 2;
+>matlabbatch{1}.spm.tools.cat.long.extopts.WMHC = 2;
+>matlabbatch{1}.spm.tools.cat.long.extopts.registration.shooting.shootingtpm
+>= {
+>'/Users/Downloads/spm12/toolbox/cat12/templates_MNI152NLin2009cAsym/Template_0_GS.nii'
+>};
+>matlabbatch{1}.spm.tools.cat.long.extopts.registration.shooting.regstr =
+>0.5;
+>matlabbatch{1}.spm.tools.cat.long.extopts.vox = 1.5;
+>matlabbatch{1}.spm.tools.cat.long.extopts.bb = 12;
+>matlabbatch{1}.spm.tools.cat.long.extopts.SRP = 22;
+>matlabbatch{1}.spm.tools.cat.long.extopts.ignoreErrors = 1;
+>matlabbatch{1}.spm.tools.cat.long.output.BIDS.BIDSno = 1;
+>matlabbatch{1}.spm.tools.cat.long.output.surface = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.neuromorphometrics = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.lpba40 = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.cobra = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.hammers = 0;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.thalamus = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.thalamic_nuclei = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.suit = 1;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.ibsr = 0;
+>matlabbatch{1}.spm.tools.cat.long.ROImenu.atlases.ownatlas = {''};
+>matlabbatch{1}.spm.tools.cat.long.longTPM = 1;
+>matlabbatch{1}.spm.tools.cat.long.modulate = 1;
+>matlabbatch{1}.spm.tools.cat.long.dartel = 0;
+>matlabbatch{1}.spm.tools.cat.long.printlong = 2;
+>matlabbatch{1}.spm.tools.cat.long.delete_temp = 1;
+>
+>
+>
+>[image: image.png]
+>
+>[image: image.png]
+>
+
+Hi SPM experts,
+
+In my fMRI experiment, participants were instructed to perform motor responses during blocks. These responses, however, were not of interest as the task solely aimed at improving concentration levels. So no timestamps were recorded for these motor responses.
+
+However, in our group analysis, we observed significant effects of these motor responses: all experimental conditions exhibited negative activations in regions of interest. This could potentially be attributed to motor responses between blocks, leading to a higher baseline in the GLM.
+
+Hence, I’m wondering if there are any noise-reduction techniques available to eliminate such noise from the data?
+
+Best,
+Luna
+
+Hi all,
+
+ 
+
+For my master’s thesis I need to normalize several PDw-MRIs from different subjects to a MNI template. For this I would like to compare the quality between first creating a DARTEL template or normalizing the MRIs directly to the MNI template.
+
+Is there an automatic way to assess and quantify the quality of the normalization? Or is there a standardized procedure?
+
+ 
+
+Thank you very much for your support.
+
+ 
+
+Stephan
+
+Dear Christian,
+Thank you very much for taking the time to answer my question. 
+After tinkering a bit more I found that running 'normalization (estimate and write)' as opposed to just the write option took care of the problem. 
+Best,
+Gaël
+
+On Thu, 7 Mar 2024 at 13:46, Christian Büchel <buechel@uke.de> wrote:
+Dear Gael,
+
+if the template is "higher" than your images this would be the expected behavior of spatial normalization. Open a template in the same "checkreg" to see whether this is the case. In general I would point you to the excellent PDF in the SPM distribution under /man which explains all these concepts.
+
+I hope this helps,
+
+Christian
+--
+Prof. Dr. Christian Büchel
+Institut für Systemische Neurowissenschaften Haus W34, Universitätsklinikum Hamburg-Eppendorf Martinistr. 52, D-20246 Hamburg, Germany
+Tel.: +49-40-7410-54726
+Fax.: +49-40-7410-59955
+buechel@uke.de
+http://www.uke.uni-hamburg.de/institute/systemische-neurowissenschaften/
+
+
+
+
+> -----Ursprüngliche Nachricht-----
+> Von: SPM (Statistical Parametric Mapping) [mailto:SPM@JISCMAIL.AC.UK] Im
+> Auftrag von Ga ël Cordero Otero
+> Gesendet: Donnerstag, 7. März 2024 13:38
+> An: SPM@JISCMAIL.AC.UK
+> Betreff: [EXT] [SPM] Normalization shifting image upwards (axially)
+>
+> Dear experts,
+>
+> During preprocessing, normalization seems to be moving my images upwards
+> (axially speaking). To better illustrate what I mean I've attached an image of a
+> realigned & unwarped image (left) and the same image after normalization
+> (right). We acquired the volumes with a slice tilt since there is evidence that
+> suggests that this increases the SNR of temporal lobes, that's why there isn't
+> whole brian coverage. I'm using SPM12 on matlab 2021a, if that is of any help.
+>
+> Has anyone run into this issue previously? If so, how can it be solved?
+> Thank you very much for your time,
+> Gaël
+
+--
+
+_____________________________________________________________________
+
+Universitätsklinikum Hamburg-Eppendorf; Körperschaft des öffentlichen Rechts; Gerichtsstand: Hamburg | www.uke.de
+Vorstandsmitglieder: Prof. Dr. Christian Gerloff (Vorsitzender), Joachim Prölß, Prof. Dr. Blanche Schwappach-Pignataro, Matthias Waldmann (komm.)
+________________________________________________________
+
+Hi everyone
+
+Instats is pleased to present an upcoming seminar introducing Machine Learning and AI for Research in R, running March 12 - 13. This seminar is being led by professor Giovanni Cerulli who has extensive experience teaching this material, and will follow along with the core topics in his new book Fundamentals of Supervised Machine Learning: With Applications in Python, R, and Stata. The seminar provides a comprehensive introduction to Machine Learning and Artificial Intelligence methods for the social, economic, and health sciences using R. After introducing the subject, the seminar will cover the following methods: (i) model selection and regularization (Lasso, Ridge, Elastic-net); (ii) discriminant analysis and nearest-neighbor classification; and (iii) artificial neural networks. The course will offer various instructional examples using real datasets in R and Python. An Instats certificate of completion is provided at the end of the seminar, and 2 ECTS equivalent points are offered.
+
+Register today to secure your spot, and please feel free to tell your colleagues and friends.
+
+
+Best wishes and we hope to see you there!
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+
+
+
+

@@ -1,0 +1,649 @@
+Dear all,
+
+Due to unexpected events we have had to make the decision to transition our workshop to a virtual format. While this change was unexpected, we are well-prepared due to our previous experience with our own online platform. Rest assured, we are fully equipped to ensure that the virtual workshop will run smoothly.
+
+It's worth noting that all talks this year will be conducted live, as opposed to pre-recorded. So now we are offering the following updated and flexible registration options: 
+
+Silver : Starts from $200
+	1	Listen to the talks live. Learn from the experts. 
+	2	3 days workshop, get the basic kit to strive in the diffusion imaging world.   
+	3	Ability to upgrade during the workshop.
+
+Gold :  Starts from $500
+Everything in Silver plus:
+	1	Ability to attend study groups and to present your work.
+	2	Full 5 days workshop. 
+	3	Certificate of attendance (Linkedin verifiable).
+
+Platinum : Starts from $995
+Everything in Gold plus:
+	1	Provides additional preset hourly meetings with the DIPY developers beyond the workshop's duration. These will be 1 to 1 meetings to set up or improve your pipeline for your needs. Maximum 6 meetings. Each meeting will be 1 hour long. 
+	2	Provides access to the talks and all materials after the workshop.
+	3	Ability to move to yearly long support.
+
+Register now!
+
+In summary, the workshop offers:
+
+	•	Hands-on tutorials - Every single day !!!
+	•	Guided practice sessions (bring your data)
+	•	Personalized certificates of attendance
+	•	Effective networking opportunities with one-to-one follow ups 
+	•	Comprehensive explanation of theoretical foundations with practical examples
+	•	Access to latest and established methods with code and interfaces
+	•	Pointers to move beyond the current challenges and navigate hard to do analyses
+	•	Multiple clinical use cases (AZ, Parkinson’s, Stroke, etc.)
+
+This year there is a higher level of focus in AI and ML. These technologies have been transforming various industries, and now they are revolutionizing medical imaging. By harnessing the power of advanced algorithms and vast data sets, we have successfully integrated machine learning into our imaging solutions, providing unparalleled accuracy and efficiency.
+
+For those of you who are new to this. DIPY is an open source software project used for processing structural and diffusion imaging data. Join us for an exciting in person workshop hosted online April 24-28. https://dipy.org/workshops/latest
+
+Our team of expert instructors will guide you through the fundamentals of diffusion theory, data pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading professionals, ask questions, and network with like-minded peers.
+
+Register today to secure your spot in this highly anticipated event. Now online!!
+https://dipy.org/workshops/dipy-workshop-2023#Registration
+
+Happy to answer any questions you may have. 
+
+Thank you!,
+DIPY team
+
+
+Dear Gian Marco,
+
+Yes, exactly, you may use "spm_file_merge" to combine multiple 3D volumes into a single 4D volume if necessary (e.g. creating a single 4D NIFTI file per functional run/session)
+
+Best
+Alfonso
+
+On Wed, 12 Apr 2023 12:34:42 +0200, Gian Marco Duma <gmduma90@GMAIL.COM> wrote:
+
+>Dear Alfonso thank you so much for this useful suggestion. In this case the
+>functional data should be a 4D file created from all the slices, correct?
+>Thanks
+>
+>Il mar 11 apr 2023, 19:21 Alfonso Nieto-Castanon <alfnie@bu.edu> ha scritto:
+>
+>> Dear Gian Marco,
+>>
+>> You may first convert the .mgz files to NIFTI (.nii) format, and then use
+>> any regular ROI extraction tool to obtain the BOLD timeseries from those
+>> locations. For example, if you are using CONN (one of the SPM toolboxes,
+>> see conn-toolbox.org), you could start using a Matlab command like:
+>>
+>>    conn_mgh2nii /mydata/mri/aparc.a2009s+aseg.mgz;
+>>
+>> to convert your .mgz to .nii format, and then something like:
+>>
+>>    [data, labels] = conn_rex('/mydata/functional/aurest.nii',
+>> '/mydata/mri/aparc.a2009s+aseg.nii', 'level', 'clusters');
+>>
+>> to extract a #timepoints x #rois matrix with the BOLD timeseries within
+>> each ROI. Note that your functional data (in this example the file
+>> aurest.nii) is expected to be already preprocessed, and in particular
+>> co-registered to your anatomical data (to the same anatomical volume that
+>> was analyzed by freesurfer); e.g. in the CONN toolbox you may use one of
+>> the default subject-space pipelines for that but you can of course also do
+>> that in any number of different ways directly from SPM.
+>>
+>> Hope this helps
+>> Alfonso
+>>
+>> On Thu, 6 Apr 2023 20:18:45 +0100, Gian Marco Duma <gmduma90@GMAIL.COM>
+>> wrote:
+>>
+>> >Dear SPM experts, I have a resting state data in fMRI. I have segmented
+>> with freesurfer the anatomy. So now I would like to extract the ROI
+>> timeseries based on the the aparc2009 segmentation atlas from Freesurfer.
+>> Is there a simple way to extract the BOLD time series from ROI based on
+>> freesurfer atlas? I would only need to obtain a matrix n (regions) x m
+>> (time point of the BOLD).
+>> >Thanks
+>>
+>>
+>>
+>
+
+Dear SPM experts, I am trying to use an open source dataset for analysis on resting brain dynamics.
+The dataset is composed by an anatomical image T1w and functional images (210 volumes) for each subject. I need to segment the T1 in order to obtain the Destrieux and Desikan atlas. I can segment the T1 with freesurfer or CAT12, it is not a problem with both of them. However I have no idea how to use the atlases for extracting ROI BOLD time series. My purpose it to obtain a simple matrix N (Region of the atlas) x M (BOLD time point) to do additional analyses.
+
+My analysis Pipeline with SPM12 is the following: I realign the images, reslice in time, coregister, segment, normalize and smoothing.
+First of all: how do I regress out motion, cardiac and respiratory artifact so that I know that when I am extracting the bold time series I am extracting a cleaned BOLD signal?
+
+Second: can I read mgz file from Freesurfer in SPM12?
+
+Third: Once I have coregistered both the structural, the functional and the atlas in the same space, how can I use the the Freesurfer atlas to extract the data creating a simple matrix ROI of altas x BOLD samplig points.? In my case I have 210 volumes, and 114 regions therefore I need to obtain a matrix 114 x 210.
+
+I exstensively check online, there are some suggestions of creating the ROI with the sphere with Marsbar, or using pickatlas, but I must say that those examples do not help at all in my case.
+
+I believe that a lot of SPM users had my same problem, therefore I believe that there should be a solution already made for this. Unfortuntaley I cannot use other software like FSL or AFNI since I use window system in this case. I run Freesufer via CBRAIN server.
+
+Therefore I am asking you, is there a way to solve this problem to obtain a data matrix roi x bold sampling points derived from an volumetric atlas from freesurfer with SPM?
+
+Thanks for your help
+
+Dear Alfonso thank you so much for this useful suggestion. In this case the functional data should be a 4D file created from all the slices, correct?
+Thanks 
+
+Il mar 11 apr 2023, 19:21 Alfonso Nieto-Castanon <alfnie@bu.edu> ha scritto:
+Dear Gian Marco,
+
+You may first convert the .mgz files to NIFTI (.nii) format, and then use any regular ROI extraction tool to obtain the BOLD timeseries from those locations. For example, if you are using CONN (one of the SPM toolboxes, see conn-toolbox.org), you could start using a Matlab command like:
+
+   conn_mgh2nii /mydata/mri/aparc.a2009s+aseg.mgz;
+
+to convert your .mgz to .nii format, and then something like:
+
+   [data, labels] = conn_rex('/mydata/functional/aurest.nii', '/mydata/mri/aparc.a2009s+aseg.nii', 'level', 'clusters');
+
+to extract a #timepoints x #rois matrix with the BOLD timeseries within each ROI. Note that your functional data (in this example the file aurest.nii) is expected to be already preprocessed, and in particular co-registered to your anatomical data (to the same anatomical volume that was analyzed by freesurfer); e.g. in the CONN toolbox you may use one of the default subject-space pipelines for that but you can of course also do that in any number of different ways directly from SPM.
+
+Hope this helps
+Alfonso
+
+On Thu, 6 Apr 2023 20:18:45 +0100, Gian Marco Duma <gmduma90@GMAIL.COM> wrote:
+
+>Dear SPM experts, I have a resting state data in fMRI. I have segmented with freesurfer the anatomy. So now I would like to extract the ROI timeseries based on the the aparc2009 segmentation atlas from Freesurfer. Is there a simple way to extract the BOLD time series from ROI based on freesurfer atlas? I would only need to obtain a matrix n (regions) x m (time point of the BOLD).
+>Thanks
+
+
+
+Dear all,
+
+Due to unexpected events we have had to make the decision to transition our workshop to a virtual format. While this change was unexpected, we are well-prepared due to our previous experience with our own online platform. Rest assured, we are fully equipped to ensure that the virtual workshop will run smoothly.
+
+It's worth noting that all talks this year will be conducted live, as opposed to pre-recorded. So now we are offering the following updated and flexible registration options: 
+
+Silver : Starts from $200
+	1	Listen to the talks live. Learn from the experts. 
+	2	3 days workshop, get the basic kit to strive in the diffusion imaging world.   
+	3	Ability to upgrade during the workshop.
+
+Gold :  Starts from $500
+Everything in Silver plus:
+	1	Ability to attend study groups and to present your work.
+	2	Full 5 days workshop. 
+	3	Certificate of attendance (Linkedin verifiable).
+
+Platinum : Starts from $995
+Everything in Gold plus:
+	1	Provides additional preset hourly meetings with the DIPY developers beyond the workshop's duration. These will be 1 to 1 meetings to set up or improve your pipeline for your needs. Maximum 6 meetings. Each meeting will be 1 hour long. 
+	2	Provides access to the talks and all materials after the workshop.
+	3	Ability to move to yearly long support.
+
+Register now!
+
+In summary, the workshop offers:
+
+	•	Hands-on tutorials - Every single day !!!
+	•	Guided practice sessions (bring your data)
+	•	Personalized certificates of attendance
+	•	Effective networking opportunities with one-to-one follow ups 
+	•	Comprehensive explanation of theoretical foundations with practical examples
+	•	Access to latest and established methods with code and interfaces
+	•	Pointers to move beyond the current challenges and navigate hard to do analyses
+	•	Multiple clinical use cases (AZ, Parkinson’s, Stroke, etc.)
+
+This year there is a higher level of focus in AI and ML. These technologies have been transforming various industries, and now they are revolutionizing medical imaging. By harnessing the power of advanced algorithms and vast data sets, we have successfully integrated machine learning into our imaging solutions, providing unparalleled accuracy and efficiency.
+
+For those of you who are new to this. DIPY is an open source software project used for processing structural and diffusion imaging data. Join us for an exciting in person workshop hosted online April 24-28. https://dipy.org/workshops/latest
+
+Our team of expert instructors will guide you through the fundamentals of diffusion theory, data pre-processing, fiber tracking, and much more. You'll have the opportunity to learn from industry-leading professionals, ask questions, and network with like-minded peers.
+
+Register today to secure your spot in this highly anticipated event. Now online!!
+https://dipy.org/workshops/dipy-workshop-2023#Registration
+
+Happy to answer any questions you may have. 
+
+Thank you!,
+DIPY team
+
+
+Dear SPM and CAT experts,
+I need to calculate brainstem volume from the midbrain, pons and medulla regions from T1 or FLAIR image. Is there any toolbox could perform this calcularion ?
+thanks your help
+sincerely yours
+Jung Lung Hsu
+--- 本郵件來自HiNet WebMail ---
+
+
+Dear all,
+
+Join the fun & learn new skills at Neuroscience Alliance (NEURAL) - an OHBM chapter (9-11.05.23). 
+
+You can also test your skills during the event, compete for the stroke outcome prediction cup, and win a real cup!
+
+Don't forget to register here -->  https://storage.googleapis.com/bcblabweb/neuroscience-alliance.html
+Location: BORDEAUX, IMN, Amphi Broca
+
+Aim of the event
+Neuroscience Alliance is a nonprofit organisation that works like a Brainhack and aims to promote interaction between scientists, developers, and artists interested in the brain. Questions may evolve around the study of brain anatomy and function using non-invasive imaging methods (e.g., MRI, EEG, MEG) and intraoperative brain mapping methods, or post-mortem dissection of the evolution of nervous systems across species, variability of brain characteristics in healthy participants, the insurgency of brain pathologies, and there is no limit to artistic reflections in any form.
+Participants can bring their dataset, discuss a project, and recruit a team of collaborators on-site. Access to large, free online databases of MRI images will also be available throughout the three days to test new creative ideas.
+The workshop, which incorporates all levels of expertise, is also an opportunity to learn methods, develop skills and collaborate with other participants.
+
+Program
+08/05
+20:00 - Informal get-together (optional)
+ 
+09/05 Anatomy
+09:00 - 09:30 Welcome intro (Michel Thiebaut de Schotten, Bordeaux)
+09:30 - 10:00 Anatomical update: A novel occipitotemporal pathway supports early encoding of visuospatial attention? (Ahmad Beyh, UK)
+10:00 - 11:00 Project pitches
+- The stroke outcome prediction cup (100 strokes lesion, T1w, and behavior will be made available on-site for outcome prediction, success will be assessed with  an out-of-sample dataset of n = 50 from the same cohort) (Anna Matsulevits)
+- Neuroimaging of a unique genetical cohort from South Africa  (Aline Ferreira Correia)
+- A 3D fractal(-ish) dataset for machine learning data augmentation (Chris Foulon)
+- Project the MEG signal onto the white matter (Stephanie Forkel)
+- Exploring the White Matter Circuits Associated with Patterns of Pathology in Alzheimer's Disease (Elinor Thompson)
+... And many more upon request :)
+
+11:00 - 12:30 Teamwork and hacking
+12:30 - Lunch trays provided
+12:30 - 18:00 Free hacking
+
+10/05 Cognition
+09:00 - 09:30 Update on cognition: The fabric of cognition (Valentina Pacella, Italy)
+09:30 - 10:00 Update on cognition: Neural bases of creativity (Marcella Ovando-Tellez, France)
+10:00 - 12:30 Free hacking
+12:30 - 13:30 Project update Need help? Last call!
+13:30 - Lunch trays provided
+13:30 - 16:00 Free hacking
+16:00 -18:00 screening of "my love affair with the brain" followed by a debate on brain plasticity.
+Optional hacking / free evening
+ 
+11/05 Clinical disorders
+Clinical update: Tracking the landscape of neuropsychology and neuroscience in southern Africa (Sabah Besharati, SA)
+Clinical Update: Neuroimaging in Huntington Disease-Like 2: current knowledge and future directions (Aline Ferreira Correia, SA)
+
+10:00 - 13:30 Open hacking session
+13:30 - 14:30 Lunch trays provided
+14:30 - 17:00 Last line of hacking!
+17:00 - 18:00 Report on projects/Wrap-up
+18:00 - ? ??      Farewell aperitif
+
+Location, BORDEAUX, IMN, Amphi Broca
+About Neuroscience Alliance (NEURAL)
+About Organisation For Human Brain Mapping (OHBM)
+Contact email michel.thiebaut@gmail.com
+
+
+Contact email michel.thiebaut@gmail.com
+
+
+
+      _---~~(~~-_.
+    _{        )   )
+  ,   ) -~~- ( ,-' )_
+ (  `-,_..`., )-- '_,)
+( ` _)  (  -~( -_ `,  }
+(_-  _  ~_-~~~~`,  ,' )
+  `~ -^(    __;-,((()))
+        ~~~~ {_ -_(())
+               `\  }
+                 { }   
+
+
+Not sure if this is what you mean but SPM uses 18-neighbour criterion (all voxels within a 3x3x3 3D cube excluding the vertices) to define clusters (connected components) and peaks (local maxima)
+Best
+Alfonso
+
+
+On Mon, 10 Apr 2023 14:24:39 +0000, McMains, Stephanie A <mcmains@BU.EDU> wrote:
+
+>Does anyone know what nearest neighbor value SPM uses for the FDRc correction?
+>
+>Thanks,
+>Stephanie
+>
+>
+>++++++++++++++++++++++++++
+>Stephanie McMains
+>Associate Director
+>Cognitive Neuroimaging Center
+>Boston University
+>610 Commonwealth Ave.
+>Boston, MA 02215
+>Phone: 617-529-1854
+>Pronouns: she, her, hers
+>++++++++++++++++++++++++++
+>
+>
+
+Dear Gian Marco,
+
+You may first convert the .mgz files to NIFTI (.nii) format, and then use any regular ROI extraction tool to obtain the BOLD timeseries from those locations. For example, if you are using CONN (one of the SPM toolboxes, see conn-toolbox.org), you could start using a Matlab command like:
+
+   conn_mgh2nii /mydata/mri/aparc.a2009s+aseg.mgz;
+
+to convert your .mgz to .nii format, and then something like:
+
+   [data, labels] = conn_rex('/mydata/functional/aurest.nii', '/mydata/mri/aparc.a2009s+aseg.nii', 'level', 'clusters');
+
+to extract a #timepoints x #rois matrix with the BOLD timeseries within each ROI. Note that your functional data (in this example the file aurest.nii) is expected to be already preprocessed, and in particular co-registered to your anatomical data (to the same anatomical volume that was analyzed by freesurfer); e.g. in the CONN toolbox you may use one of the default subject-space pipelines for that but you can of course also do that in any number of different ways directly from SPM.
+
+Hope this helps
+Alfonso
+
+On Thu, 6 Apr 2023 20:18:45 +0100, Gian Marco Duma <gmduma90@GMAIL.COM> wrote:
+
+>Dear SPM experts, I have a resting state data in fMRI. I have segmented with freesurfer the anatomy. So now I would like to extract the ROI timeseries based on the the aparc2009 segmentation atlas from Freesurfer. Is there a simple way to extract the BOLD time series from ROI based on freesurfer atlas? I would only need to obtain a matrix n (regions) x m (time point of the BOLD).
+>Thanks
+
+Does anyone know what nearest neighbor value SPM uses for the FDRc correction?
+ 
+Thanks,
+Stephanie
+ 
+ 
+
+
+Hello,
+I am a long term MATLAB-SPM users and have had this problem periodically over the years.
+After opening MATLAB and navigating to SPM12, the GUI (Spashscren) doesn't come up.
+Where is it? How to get it to appear?
+
+I have ust downloaded and installed the latest updates for spm12..and all of sudden, no GUI.
+
+Hope you can advise,
+eb
+Elaine L. Bearer, MD-PhD, FAAAS, FCAP
+The Harvey Family Professor, Dept of Pathology
+Professor, Department of Music (secondary)
+University of New Mexico Health Sciences Center
+Albuquerque, NM 87131
+https://hsc.unm.edu/medicine/departments/pathology/research/labs/bearer.html
+https://en.wikipedia.org/wiki/Elaine_Bearer
+
+Also, Visitor
+California Institute of Technology
+
+
+Hello experts,
+I was trying to understand the code behind how SPM plots event-related responses  (SPM-> Results GUI, plot-> event-related responses-> fitted response and PSTH option). 
+
+The pertinent code seems to be in spm_graph.m line 287 onwards. Currently, I'm going through the code line-by-line, and I was wondering if this is the best approach, or whether there is any descriptive documentation that I should be looking at first? 
+
+Thank you,
+Mayank
+
+
+I’m in the process of looking to hire up to two senior research scientists (that is a position like a senior post-doc, but with a title so that I can pay them above NIH scale!) here at OSUMC Psychiatry.  They’d be working with me doing imaging and/or imaging genetics studies and analyses—plenty of work to keep busy on many different projects.  Besides my schizophrenia interests, there are people here (or coming soon!) doing similar work in bipolar disorder, PTSD, depression, and there’s a massive focus on suicide prevention, including EMA and imaging and various new directions.  And there’s Nationwide Children’s Hospital here which has strong genetics research and OSU collaborations. The ideal candidate is someone who’d be interested in working with me and building their own research program—this is a position supported by grant funding in the long term, not a tenure-track position.
+ 
+I don’t know how visas work here yet, so if you are outside the US, talk to me directly about it and I’ll find out what’s possible.
+ 
+Here is the official link and description below:
+https://osu.wd1.myworkdayjobs.com/OSUCareers/job/Medical-Center-Campus/Senior-Researcher_R74255-1
+ 
+ 
+Job Description
+The Senior Researcher designs and conducts independent complex experimental research in a foundational (basic) biological/health science research laboratory with a psychiatric neuroimaging and genetics research program, in the Department of Psychiatry and Behavioral Health.  Expected responsibilities include developing and investigating neuroimaging models of symptoms and response to various treatments across diagnostic groups; applying current analysis techniques to the analysis of behavioral, neurophysiological, and genetic data in combinations; interpreting and evaluating research data; working with collaborative multi-site teams in the analysis of large-scale data collections; preparing manuscripts, articles, reports and abstracts for publication in peer-reviewed journals; attending and presenting results at national and international scientific conferences, seminars, and workshops; collaboratively developing and contributing to grant proposals to obtain extramural funding to support research; developing and implementing new research projects; directing and training other research staff, participating in laboratory meetings and project meetings.  Some mentoring of other research personnel may be available.
+ 
+Minimum Education Required
+Doctorate (Academic) in psychology, biology, engineering, computer science, or a relevant field.  
+Required Qualifications
+The candidate will be analyzing data as part of their research work and must be capable of independently using some neuroimaging analysis pipelines (for example, fmriprep, SPM, FSL), ideally for structural, resting state, task-based analyses (the more imaging modalities the candidate has worked with, the better).  The ability to work in a Linux environment is a must. Experience with multivariate analyses of functional MRI data or combined analysis of imaging and other datatypes such as EEG, EMA, PET, genetics is a strength. An interest in the integration of genetic data with neuroimaging and behavioral data within clinical populations is ideal.  Clinical experience is not required but would be a strength. The candidate will also be writing in support of the research program, and must be capable of developing first author papers on neuroimaging results (as demonstrated by previous publications).
+ 
+Many thanks,
+Jess
+ 
+Jessica A. Turner, Ph.D.
+Professor, Department of Psychiatry and Behavioral Health
+Wexner Medical Center
+The Ohio State University
+jessica.turner@osumc.edu
+https://medicine.osu.edu/find-faculty/clinical/psychiatry-and-behavioral-health/jessica-turner-phd
+
+
+Dear SPM experts, I have a resting state data in fMRI. I have segmented with freesurfer the anatomy. So now I would like to extract the ROI timeseries based on the the aparc2009 segmentation atlas from Freesurfer. Is there a simple way to extract the BOLD time series from ROI based on freesurfer atlas? I would only need to obtain a matrix n (regions) x m (time point of the BOLD).
+Thanks
+
+Dear SPM experts,
+
+In an ROI, I want to choose a variable number of voxels with the highest values. For instance, the 100 voxels with bigger t-values, is this possible in SPM? Does it have a single function? 
+I found the spm_max function, but it only allows me to have the peak voxel.
+
+Thanks in advance for your help!
+
+Best, 
+Daniela Valério, 
+Ph.D. student
+
+
+
+Dear Muhammad,
+How is your ROI defined? Is it from a mask image or a sphere around a given location? If so, it might be more convenient to directly use the spm_summarise function. What are the data you want to extract, time series or contrast values?
+Best regards, Guillaume.
+
+
+Dear Xiaochen,
+You can do a right click on the glass brain and select the option "display/hide channels" from the contextual menu. This is briefly described in page 393 of the SPM manual: https://www.fil.ion.ucl.ac.uk/spm/doc/manual.pdf
+Best regards, Guillaume.
+
+On 05/04/2023 05:31, Xiaochen Zhang wrote:
+⚠ Caution: External sender
+
+
+Dear SPMers.
+I am using SPM eeg to investigate whether there is a group x sex interaction. I have already got the results (F map, significant clusters, etc). But the significant clusters are displayed on a glass brain and I have no idea how to map the clusters to specific electrodes. Is there an approach where SPM could display original electrodes on the same glass brain on the Results page?
+Best regards,
+Xiaochen Zhang
+-- 
+Guillaume Flandin, PhD
+Wellcome Centre for Human Neuroimaging
+UCL Queen Square Institute of Neurology
+London WC1N 3BG
+
+
+Dear SPMers.
+I am using SPM eeg to investigate whether there is a group x sex interaction. I have already got the results (F map, significant clusters, etc). But the significant clusters are displayed on a glass brain and I have no idea how to map the clusters to specific electrodes. Is there an approach where SPM could display original electrodes on the same glass brain on the Results page?
+Best regards,
+Xiaochen Zhang
+
+Hi everyone,
+
+I'm trying to extract functional data using ROIs. In some conditions, I got a warning message saying that the data in some ROIs is invalid. It's apparently due to a linear sampling used by default in Marsbar (voxels at the edge, for example, get the value NaN). I tried to run a code suggested in the Marsbar manual, but it didn't solve the problem.
+Here is the code:
+roi_filename = 'my_roi.mat';
+my_roi = maroi(roi_filename);
+my_roi = spm_hold(my_roi, 0); % set NN resampling
+saveroi(my_roi, roi_filename);
+
+I'd appreciate it if anyone could share any ideas about  this issue.
+
+Thank you,
+MB
+
+
+Dear colleagues,
+
+July 24 – 28 2023 will see the eighth Model-Based Neuroscience Summer School, hosted at the University of Amsterdam. The summer school is held the week after the international MathPsych conference (https://mathpsych.org/conference/12/), also hosted in Amsterdam!
+
+The Summer School will provide participants with hands-on experience in both cognitive modeling using evidence-accumulation models and cognitive neuroscience methods. This year, the summer school includes an introduction to evidence accumulation models, combining evidence-accumulation models with reinforcement-learning models and joint-modelling of behavioral and neural data. The program is sponsored by the Netherlands Organization of Scientific Research (NWO) and includes a series of lectures on model-based decision neuroscience from experts including Andrew Heathcote, Dora Matzke, Brandon Turner, Michael Nunez, Steven Miletić, Birte Forstmann and other keynote speakers to be determined!
+
+The summer school is aimed at PhD students and early postdocs who wish to combine cognitive modeling with experimental and theoretical neuroscience research. Participants should be familiar with general programming concepts and state in their statement of interest which programming languages and software packages they typically use. Familiarity with R is particularly recommended.
+
+Application and registration:
+
+The registration fee for the Summer School is € 450. Participants should make their own housing arrangements. Space is limited, therefore we ask participants to provide a statement of interest. We will select participants based on the relevance of the Summer School to their research. The application deadline is May 15, 2023.
+
+More information about the Summer School including lecturers, preliminary program, and application can be found at https://modelbasedneurosci.com/. 
+
+We look forward to welcoming you to Amsterdam!
+
+Organization
+Birte Forstmann (University of Amsterdam) Dora Matzke (University of Amsterdam) Andrew Heathcote (University of Amsterdam) Niek Stevenson (University of Amsterdam)
+
+
+The Center of Brain and Health at New York University Abu Dhabi seeks to recruit two postdoctoral associates for two projects: 1) a project on the mechanisms underlying rapid perception and cognition, and 2) a project on the neural mechanisms underlying interactions of visual and conceptual systems.
+ 
+Project 1: Mechanisms underlying rapid perception and cognition
+(PI: Prof. David Melcher, Perception and Active Cognition Laboratory)
+
+Attention, perception, working memory and other aspects of cognition are limited by time constraints that are linked to the temporal scales of neural activity. On the one hand, we can find general principles linking ongoing brain rhythms to the temporal unfolding of thought, from the sampling rate of sensory perception to the maintenance of active representations in memory. However, there are also large individual differences in processing speed within the healthy adult population, across the developmental lifespan, and when considering clinical and neurological patient groups. The successful applicant will drive a fascinating project on the neural correlates of these individual and clinical differences in speed of information processing.
+ 
+Project 2: Neural mechanisms underlying interactions of visual and conceptual systems
+(PI: Prof. Olivia Cheung, Objects And Knowledge Laboratory)
+ 
+High-level vision, which involves transforming visual inputs into meaningful concepts such as faces, words, animals, human-made objects, and scenes, is essential for humans to understand and interact with their environment. This process relies on a cortical network that supports perception, learning, memory, and prediction. The study of high-level vision provides a window into how learning and experience impact the human brain. The successful applicant will lead a project investigating the complex nature of semantic associations and image statistics on category selectivity, using machine learning and multivariate pattern analysis techniques. To distinguish the cortical networks and behavioral markers that are common across categories or unique to specific categories, the project involves characterizing the similarities and differences in the processing of multiple categories in healthy and clinical populations.
+ 
+The positions are funded for two years with the possibility of renewal. Required expertise includes strong knowledge of cognitive neuroscience and expertise in at least one of the neuroimaging methodologies involved in the project (fMRI, EEG or MEG). For a competitive application at the postdoctoral level, candidates should demonstrate experience in leading neuroimaging studies, as shown by publications in international scientific journals. The successful candidates will work in a multidisciplinary Center environment with world-class research infrastructure, consisting of PhD-level scientists, graduate students and undergraduate students.
+ 
+The terms of employment are extremely competitive and include housing and educational subsidies for children. Applications will be accepted immediately and candidates will be considered until the positions are filled.
+ 
+For more information and to apply via Interfolio:
+https://apply.interfolio.com/120844 (Project 1)
+https://apply.interfolio.com/122830 (Project 2)
+ 
+
+
+
+Dear SPM Community 
+
+We have a postdoctoral research scientist post available in the Neuroimaging, Cognition and Genomics Center here in Galway, Ireland. You are welcome to make inquiries with me dara.cannon@universityofireland.ie
+
+Please find attached details of the opportunity and how to apply, closing date: 21st April 2023. 
+
+
+
+
+Best wishes
+Dara
+
+__________________________________
+Associate Professor Dara M Cannon PhD
+Director, Clinical Neuroimaging Laboratory 
+University of Galway 
+Ireland 
+
+
+
+The Hong Kong Baptist University has procured a Magnetic Resonance Imaging (MRI) facility (model: MAGNETOM Prisma1) as a major research infrastructure or central research facility to promote individual and collaborative research on transdisciplinary neuroscience studies. The MRI center is equipped with a 3T Prisma scanner, MRI-compatible EGI sets, TMS, BIOPAC, Eyelink plus, and fNIRS.
+
+Six positions are currently available for researchers with MRI and cognitive neuroscience backgrounds, including Radiographers, Research Assistant/Technician, Research Associate/Scientific Officer, and Research Scientist positions. 
+
+For more information, please check:
+https://research.hkbu.edu.hk/support/facilities-and-labs/hkbu-magnetic-resonance-imaging-mri-center
+For inquiries, please feel free to contact: rongjunyu@hkbu.edu.hk
+
+
+Best,
+
+Rongjun YU
+Department of Management, HKBU
+System Health Lab
+www.rongjunyu.org
+ 
+
+Dear colleagues,
+ 
+The Laboratory of Neuropsychopsysiology (https://www.fpce.up.pt/labpsi) is pleased to announce the 2023 Cognitive and Affective Neurophysiology Summer School, which will take place on-site from 17-21 July 2023 (35h course).
+ 
+This summer school is focused on the application of Electroencephalography (EEG) and Event Related Potential (ERP) techniques to the study of cognitive and affective processes. The course is designed as an introduction to these techniques and does not require prior knowledge or experience with EEG/ERP. However, participants with some degree of experience have also considered the course helpful in past editions. Basic knowledge of statistics is expected (general understanding of statistical significance tests, correlation, ANOVA, regression). This year's program will include:
+ 
+1) Introduction to the EEG/ERP techniques in Cognitive and Affective Neuroscience
+2) Collecting EEG data and ERP Research Design
+3) Electrophysiological signal processing
+4) Statistical analysis of ERP data
+ 
+You can find more details in the summer school website: https://sites.google.com/view/can-summerschool-porto/
+ 
+If you have any additional questions, please do not hesitate to contact us at labnpf@fpce.up.pt.
+ 
+(Apologies for cross-postings)
+ 
+ 
+ 
+Fernando Ferreira-Santos Professor Auxiliar | Assistant Professor Coordenador Lab. Neuropsicofisiologia | Coordinator Lab. Neuropsychophysiology  Laboratório de Neuropsicofisiologia | Laboratory of Neuropsychophysiology Faculdade de Psicologia e de Ciências da Educação da Universidade do Porto Faculty of Psychology and Education Sciences – University of Porto Rua Alfredo Allen, 4200–135 Porto, Portugal https://www.fpce.up.pt | frsantos@fpce.up.pt | (+351) 22 607 97 00 (ext. 409)  Lab: https://www.fpce.up.pt/labpsi Personal: http://ferreira-santos.eu
+ 
+
+
+Two imaging-related positions in Glasgow:
+ 
+1.     Lecturer/Senior Lecturer
+ 
+The Centre for Cognitive Neuroimaging (CCNi) at the School of Psychology & Neuroscience, University of Glasgow, has an opening for a Lecturer/Senior Lecturer position in the area of cognitive neuroscience and development. The post is full time and open ended. The ideal candidate should have a strong record in development/ageing using state-of-the-art neuroimaging methods (e.g., MRI, EEG, MEG, brain stimulation).
+ 
+The CCNi is one of the top neuroimaging centres in the UK, with a vibrant community of cognitive neuroscientists interested in how brain networks give rise to complex behaviour.
+ 
+The post is full time and open ended.
+Application deadline is 01 May 2023.
+ 
+More information about the position and environment in Glasgow can be found here:
+https://www.jobs.ac.uk/job/CYH374/senior-lecturer-lecturer-research-and-teaching-track
+
+Informal enquiries can be directed to Prof Gregor Thut, gregor.thut@glasgow.ac.uk.
+ 
+ 
+2.     PhD studentship
+ 
+https://www.sgsss.ac.uk/studentship/transformations-in-memory-representations-of-naturalistic-stimuli-over-extended-periods-of-consolidation/
+ 
+ 
+ 
+---------------------------------------------------------------
+ 
+Prof Richard Henson
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+Deputy Director, MRC Cognition and Brain Sciences Unit
+President, British Neuroscience Association
+Fellow of the British Academy
+ MRC Cognition and Brain Sciences Unit University of Cambridge
+15 Chaucer Road Cambridge, CB2 7EF England
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+DIRECT: +44 (0)1223 767 591 RECEPT: +44 (0)1223 355 294 MOBILE: +44 (0)794 1377 345
+ 
+What is credible neuroscience?
+---------------------------------------------------------------
+ 
+ 
+
+
+Dear friends and colleagues,
+
+I am pleased to announce my new, shiny, improved summer schools! This year in the alluring Bucharest (Romania).
+
+I will teach two separate week-long courses on neuroscience data analysis: One about time-frequency/synchronization/statistics (*note: this same course is offered twice due to popular demand!*), and one about linear algebra and dimension-reduction/source-separation.
+
+Below is the direct link to the course pages with application information. Please pass this link around to your colleagues/students who might be interested in one or both of these courses.
+https://sincxpress.com/summerschool.html
+
+Analyzing neural time series data
+(26-30 June *AND* 14-18 August). Fourier transform, convolution, time-frequency analysis, synchronization, nonparametric statistics, simulating time series data. (Note: the August session is recommended for people taking both courses.)
+
+Linear algebra for neuroscientists
+(21-25 August). Matrix algebra, least-squares model fitting, eigendecomposition, multivariate source separation, simulating multicomponent and multichannel time series data.
+
+https://sincxpress.com/summerschool.html
+
+Please note that applications, if accepted, are selected on a first-come-first-serve basis, and that the number of participants for each course is limited to 30. The courses tend to fill up around April/May, after which there is a wait-list.
+
+If you have questions about the courses, please feel free to contact me.
+
+I look forward to welcoming you to Bucharest this summer!
+
+--
+Mike X Cohen, PhD
+Fresh look: mikexcohen.com
+
+Dear DCM experts,
+  
+I would like to compare the effective connectivity at rest in a network containing a cerebellar region and several cortical nodes between patients and controls.  
+I am also interested to study the overall effect of the cerebellum on the cortex in term of excitation/inhibition and differences between the groups.  
+
+  For this, I constructed a full model and used the PEB framework. This is my model matrix M : a first column of  "1" and a second column with "1" for patients and "-1" for controls (then mean centered). I used the option "search over the nested model" to prune away non-relevant connections.  
+This analysis gave me two A-matrix contrasts: A first one for the entire group of participants and the second one for the between groups contrast.  
+
+Now, I would like to investigate the overall difference in term of inhibition of the cerebellum on the cortical nodes between groups.  I used [PEB,DCM ]    = spm_dcm_peb(GCM,M) to get the subjects parameters updated with the group priors.  
+
+Then, I calculated the mean of the extrinsic connectivity parameters (with a posterior probability >99 for the entire group of participants - given by the first A-matrix contrast) directed from the cerebellum to the cortex in each groups.
+Then I compared these means which were both negative, but more negative in controls compared to patients.
+
+I have following questions :
+-          Can I simply  assume from the above, that the cerebellum had a lower inhibitory effect on the cortex in the patients group ?
+-          Or do I need to perform a statistic test to compare these means (such as a t-test) or the update of the parameters made by the PEB has already taken into account the group difference?
+-          Is there a better way to resolve this question?  
+
+Thank you very much for your help.
+
+Best,
+Clément
+

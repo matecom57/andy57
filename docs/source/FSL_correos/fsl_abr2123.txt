@@ -1,0 +1,595 @@
+Hi Estephan,
+I feel your pain - I haven't used Qunex and so not sure how that container is built. When I have run eddy_cuda in a singularity container on a gpu node on our cluster I have usually just used the --nv parameter and have usually had no problems. In these custom singularity containers I have usually installed the relevant cuda toolkit without the GPU drivers for the version of eddy_cuda I intend to run. So for example for eddy_cuda9.1 I woud install cuda toolkit 9.1 in the container but not the cuda driver for the GPU itself. I notice in one of your calls to start Qunex you are binding to the system cuda library as follows
+-B /panfs/roc/msisoft/cuda/11.2:/usr/local/cuda
+I wonder how things run if you omit this line and just use --nv on its own?
+
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Estephan J. Moana-Filho <000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>
+Sent: Friday, April 21, 2023 7:13 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy cryptic error message
+ 
+I'm bumping this. When I sent the original message, it got cut for some reason. Below is my request and the previous messages show an example of the eddy error message I'm referring to. Thank you.
+
+On Fri, 14 Apr 2023 22:43:32 +0100, Estephan J. Moana-Filho <moana004@UMN.EDU> wrote:
+
+>Another try.
+>
+>Dear all, I have diffusion data collected using the HCP Lifespan protocol (98 and 99 directions, AP and PA directions). I am using the QuNex apptainer to process these data and I am having troubles doing so. Basically the processing has an error at the eddy stage which is not helpful in identifying the error (FSL version in QuNex container is FSL 6.0.6.2). I posted it in the QuNex forum and tried some of their proposed solutions but it seems that the error might be related to eddy itself: https://forum.qunex.yale.edu/t/hcp-diffusion-error-with-qunex-0-97-2/827
+>
+>I also found this post in this list that mentions an error very similar to the one I found: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2302&L=FSL&D=0&P=69009
+>
+>Following the suggestion in that post, I ran eddy (non-cuda version, FSL 6.0.6.4) with the "--very_verbose" flag, starting with the semi-processed data from QuNex but the output was again not that helpful. I list below the commands issued and the output as captured by the "&>" redirection flag. Any thoughts on the next step would be appreciated. Thank you.
+>
+>Estephan
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+I'm bumping this. When I sent the original message, it got cut for some reason. Below is my request and the previous messages show an example of the eddy error message I'm referring to. Thank you.
+
+On Fri, 14 Apr 2023 22:43:32 +0100, Estephan J. Moana-Filho <moana004@UMN.EDU> wrote:
+
+>Another try.
+>
+>Dear all, I have diffusion data collected using the HCP Lifespan protocol (98 and 99 directions, AP and PA directions). I am using the QuNex apptainer to process these data and I am having troubles doing so. Basically the processing has an error at the eddy stage which is not helpful in identifying the error (FSL version in QuNex container is FSL 6.0.6.2). I posted it in the QuNex forum and tried some of their proposed solutions but it seems that the error might be related to eddy itself: https://forum.qunex.yale.edu/t/hcp-diffusion-error-with-qunex-0-97-2/827
+>
+>I also found this post in this list that mentions an error very similar to the one I found: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2302&L=FSL&D=0&P=69009
+>
+>Following the suggestion in that post, I ran eddy (non-cuda version, FSL 6.0.6.4) with the "--very_verbose" flag, starting with the semi-processed data from QuNex but the output was again not that helpful. I list below the commands issued and the output as captured by the "&>" redirection flag. Any thoughts on the next step would be appreciated. Thank you.
+>
+>Estephan
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Thank you so much!!
+
+Best, 
+Anna
+
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Gesendet: Freitag, 21. April 2023 18:18
+An: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] [FSL] correlating covariates
+ 
+Dear Anna,
+  It’s fine for the EVs to be highly ( but not perfectly ) correlated, especially for confound EVs as your specific contrast isn’t concerned with how variance is “split” between the various confound EVs. FSL handles this ( in a general sense ) for all designs with a unique solution for the parameter estimates. The order of the covariates is unimportant, as long as your design and contrast files use the same ordering.
+
+
+The correct order should be 
+
+9 7 5 8 6 4 3 1 2
+
+as the first slice to be acquired is the 9th slice ( voxel co-ordinate 8 ) and the final slice to be acquired is the second ( voxel co-ordinate 1 )
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 19 Apr 2023, at 23:48, C Law <cslaw@STANFORD.EDU> wrote:
+
+I have a question about slice timing file to be used in slicetimer:
+My acquisition for each TR involves two regions: brain and spine. I first interleaved all brain slices, then interleaved spine slices. Acquisition starts at top of brain.
+e.g. assume I have 6 brain slices and 3 spine slices.
+
+Slice order in time    Region
+1                              ------
+4                                 |
+2                                 |
+5                              brain
+3                                 |
+6                             __|__
+7                                 |
+9                             spine
+8                             __|__
+
+If I use the option --ocustom in slicetimer, should my text file be like:
+1                              
+4                                 
+2                                 
+5                              
+3                                 
+6                            
+7                                 
+9                             
+8                             
+
+or should it be fliped up side down (because in FSLEYES, bottom of spine has voxel location 0 and top of brain has voxel location 8)?
+i.e.
+8
+9
+7
+6
+3
+5
+2
+4
+1
+
+Thank you,
+Christine
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+I would generally argue that it is better to transform ROIs that are in standard space into the native space of the ASL data, that allows you to manage partial voluming of the ROIs (or at least appreciate any issues) rather than working with data that has been substantially upsampled.
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Patterson, Dianne K - (dkp) <dkp@ARIZONA.EDU>
+Date: Thursday, 13 April 2023 at 18:33
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] ASL ROI analysis
+
+In my experiments with Basil, I never used the --nocrop parameter for fslanat.
+
+ 
+
+The question I have is whether the asl perfusion data was in the structural T1w space.  Running Basil gives you native, T1w, and standard space output.
+
+ 
+
+Personally, I'd use the standard space output with rois created from atlases.  This will be easier and more reproducible for multiple subjects. But, perhaps there is a reason not to do this??
+
+ 
+
+In addition, BASIL can produce some nice tables of regional values. 
+
+ 
+
+-D
+
+ 
+
+Dianne Patterson, Ph.D
+
+dkp@arizona.edu
+
+Office: BSRL, Room 235
+
+
+RII Neuroimaging Staff Scientist 
+
+Program Coordinator Neuroimaging Methods Certificate 
+
+Cognitive Science GIDP affiliate member
+
+Faculty Lead OpenClass.ai
+
+Mastodon: @dpat@scicomm.xyz
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Sent: Thursday, April 13, 2023 8:07 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [EXT]Re: [FSL] ASL ROI analysis
+
+ 
+
+External Email
+
+Hi Emma,
+
+Someone with more expertise will need to confirm this but I wonder if the issue is that you ran fsl_anat without the --nocrop parameter - I think using this parameter will ensure that all the structural outputs in the fsl_anat folder are consistent with the original T1 space.
+
+Best
+
+Chidi
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Emma <00008fd4374a06cf-dmarc-request@JISCMAIL.AC.UK>
+Sent: Thursday, April 13, 2023 6:28 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] ASL ROI analysis
+
+ 
+
+I am currently preprocessing my ASL data with FSL BASIL using the oxford_asl command. Using “fslutils”, I have created a mask of various brain regions from the participants fsl_anat data. However, when I use ‘fslmaths” to mask the binarized mask onto the ASL data (perfusion.nii but i have also tried others: perfusion_var.nii.gz, perfusion_calib.nii.gz), it says that my two images are different sizes.
+ 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Anna,
+  It’s fine for the EVs to be highly ( but not perfectly ) correlated, especially for confound EVs as your specific contrast isn’t concerned with how variance is “split” between the various confound EVs. FSL handles this ( in a general sense ) for all designs with a unique solution for the parameter estimates. The order of the covariates is unimportant, as long as your design and contrast files use the same ordering.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 19 Apr 2023, at 08:07, Kwiatkowski, Anna <ankwiatkowsk@UKAACHEN.DE> wrote:
+
+Dear Matthew,
+ 
+many thanks for your quick response!
+EVs 3-5 represent 4 sites. EVs 6-8 represent 4 groups.
+ 
+My dataset was pooled from different sites and my main interest is the overall CHANGE (across sites and groups), i. e. the overall CHANGE (baseline vs. post-scan) across all participants in the dataset (not matter to which site or group the participant belongs).
+ 
+I addition I would like to control for site-effects (e.g. due to acquisition differences) and group affiliation. I DO NOT want to make a specific claim about one of the two covariates -> although it would be very interesting to perform additional analyses and look at these effects, both covariates are highly correlated (i.e. group affiliation highly depends on site), therefore the unique effect of each covariate might be hard to estimate as I understood from the previous thread.
+ 
+Consequently, I will restrict the analysis to the overall CHANGE. My question is whether the fact that both covariates are highly correlated is an issue when adding both of them as covariates. How does FSL handles this? Could it be problematic in any sense? Could the order in which the covariates are added change my results?
+ 
+Thank you so much for your help!
+ 
+Anna
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Im Auftrag von Matthew Webster
+Gesendet: Dienstag, 18. April 2023 16:37
+An: FSL@JISCMAIL.AC.UK
+Betreff: Re: [FSL] correlating covariates
+ 
+Dear Anna, 
+   Can you clarify your design a little - in particular how many sites ( represented by EVs 3-5 ) and how many groups ( EVs 6-8 ) you have, as well as the specific hypothesis you want to test - EV1 ( really the _global_ mean here assuming more than one group ) will be testing for the average difference across groups, which isn’t quite the same as if _any_ group has a significant difference ( something that is commonly asked of data like this ).
+ 
+Kind Regards
+Matthew
+-------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+On 18 Apr 2023, at 15:20, Anna Kwiatkowski <ankwiatkowsk@UKAACHEN.DE> wrote:
+ 
+Dear FSL experts, 
+
+I am a FSL beginner. I hope my questions are not too basic.
+My questions (see end of this message) are related to a previous thread: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1703&L=FSL&P=R23505&X=ED9A41891D9A52B819&Y=ankwiatkowsk%40ukaachen.de
+
+For my analysis, I use RANDOMISE to perform Single-Group Average analysis using difference maps with multiple categorical covariates (demeaned; 2-levels or 4-levels -> added as 3 dummy variables). 
+
+EV1= group mean
+
+EV2= gender (demeaned)
+
+EV3= research-site – level1 (demeaned)
+EV4= research-site – level2 (demeaned)
+EV5= research-site – level3 (demeaned)
+
+EV6= group-variable – level1 (demeaned)
+EV7= group-variable – level2 (demeaned)
+EV8= group-variable – level3 (demeaned)
+
+
+
+design.mat
+EV1  EV2  EV3   EV4   EV5   EV6   EV7   EV8 
+1     ...  demeaned values...
+1       
+1       
+1       
+1       
+..
+
+design.con
+1 0 0 0 0 0 0 0
+
+When entering the covariates one-by-one, each shows widespread significant effects on the change scores. However, the design is non-orthogonal, the covariates are highly correlated. My questions are:
+- Is this an issue when I only want to look at the mean change while controlling for all covariates at once?
+- Do I need to restrict my model to a single of these covariates? 
+- If I include all covariates, could the order in which the covariates are added change my results?
+
+As I understood from the previous thread, when using the full model, I would expect to find non-significant results for the single covariates, as the shared variance will not contribute to the specific t-contrasts (covariate with 2-levels) and f-contrasts (covariate with > 2 levels). So it would be meaningless to interpret the effect of the single covariates?
+
+I am looking forward to your response!
+Anna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+ 
+ 
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Estephan,
+I feel your pain - I haven't used Qunex and so not sure how that container is built. When I have run eddy_cuda in a singularity container on a gpu node on our cluster I have usually just used the --nv parameter and have usually had no problems. In these custom singularity containers I have usually installed the relevant cuda toolkit without the GPU drivers for the version of eddy_cuda I intend to run. So for example for eddy_cuda9.1 I woud install cuda toolkit 9.1 in the container but not the cuda driver for the GPU itself. I notice in one of your calls to start Qunex you are binding to the system cuda library as follows
+-B /panfs/roc/msisoft/cuda/11.2:/usr/local/cuda
+I wonder how things run if you omit this line and just use --nv on its own?
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Estephan J. Moana-Filho <000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>
+Sent: Friday, April 21, 2023 7:13 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy cryptic error message
+ 
+I'm bumping this. When I sent the original message, it got cut for some reason. Below is my request and the previous messages show an example of the eddy error message I'm referring to. Thank you.
+
+On Fri, 14 Apr 2023 22:43:32 +0100, Estephan J. Moana-Filho <moana004@UMN.EDU> wrote:
+
+>Another try.
+>
+>Dear all, I have diffusion data collected using the HCP Lifespan protocol (98 and 99 directions, AP and PA directions). I am using the QuNex apptainer to process these data and I am having troubles doing so. Basically the processing has an error at the eddy stage which is not helpful in identifying the error (FSL version in QuNex container is FSL 6.0.6.2). I posted it in the QuNex forum and tried some of their proposed solutions but it seems that the error might be related to eddy itself: https://forum.qunex.yale.edu/t/hcp-diffusion-error-with-qunex-0-97-2/827
+>
+>I also found this post in this list that mentions an error very similar to the one I found: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2302&L=FSL&D=0&P=69009
+>
+>Following the suggestion in that post, I ran eddy (non-cuda version, FSL 6.0.6.4) with the "--very_verbose" flag, starting with the semi-processed data from QuNex but the output was again not that helpful. I list below the commands issued and the output as captured by the "&>" redirection flag. Any thoughts on the next step would be appreciated. Thank you.
+>
+>Estephan
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear colleagues,
+We are looking for a PhD student interested in learning and decision making, the development of habits, their neural implementation and clinical application in substance use disorders starting this September. If you happen to know someone who might be interested in doing a PhD with us in this area, please forward this call for applications to them: https://tinyurl.com/PhDhabit
+Thank you!
+Cheers,
+Stephan Nebe
+
+**************************************************
+
+
+
+University of Zurich<https://jobs.uzh.ch/offene-stellen/doctoral-student-in-a-project-about-the-development-of-habits-its-neural-implementation-and-clinical-application/edb80339-381f-41b3-924d-67f446c45482>
+Department of Economics<https://www.econ.uzh.ch/en.html>
+Zurich Center for Neuroeconomics<https://www.zne.uzh.ch/en.html>
+
+Doctoral student in a project about the development of habits, its neural implementation and clinical application
+
+The Zurich Center for Neuroeconomics<https://www.zne.uzh.ch/en.html> is a research center with the Laboratory for Social and Neural Systems Research (SNS Lab)<https://www.zne.uzh.ch/en/facilities> at its heart. In this interdisciplinary laboratory, researchers explore the neural mechanisms that underlie decision making and learning. The SNS Lab is in a custom-built section of the MR Centre at the University Hospital Zurich and equipped with research-dedicated facilities for MRI, EEG, behavioral measurements, brain stimulation, and pharmacological manipulations.
+
+Your responsibilities
+The doctoral student position will be funded by SNSF project "The process of habitization, its neural implementation and clinical application." The goal of this project is to reveal how the process of shaping habits from instrumental learning experiences works on a formal level, how it is implemented in the human brain, and how it may become pathological in substance use disorders. The successful candidate will plan, conduct, and analyze studies about the development of human habits with a focus on the learning process and how learned associations influence later decision making. For this purpose, they will acquire behavioral, EEG, and/or MRI data with healthy and/or substance use disorder patients, apply computational models of behavior, prepare scientific manuscripts about the studies and the generated insights, and present their work at national and international conferences.
+
+Your profile
+The candidate should hold (or expect to hold by the end of July) a very good Master's degree in one of the following (or similar) domains: Psychology, Neuroscience, Physics, or Computer Science. They should have a strong interest in the basic mechanisms of learning and decision making. The candidate should have strong skills in research methods and scientific data analysis, good programming skills (demonstrated experience with MATLAB, R, or Python), a strong proactive, collaborative, and creative working approach, as well as strong organization, social and communication skills. They should possess excellent English skills (both written and oral). German is a plus (but not essential). They should also feel comfortable interacting with study participants. Preference will be given to applicants with experience in MRI or EEG data analysis and/or in conducting behavioral, EEG, or MRI experiments. The working language in the laboratory is English and all PhD courses are taught in English.
+
+What we offer
+We offer a PhD position funded for four years starting in September 2023; an inclusive, supportive, and stimulating environment to help you develop your unique academic profile; the opportunity to work under the supervision of Dr. Stephan Nebe and Prof. Philippe Tobler at an excellent research institute; facilities to run state-of-the-art experiments; and a salary in line with cantonal regulations. All qualified applicants are considered for employment regardless of their origin, ethnicity, religion, gender, sexual orientation, gender identity, citizenship, age, or disability.
+
+Place of work
+Blümlisalpstrasse 10, Zürich, Switzerland
+
+Start of employment
+Employment start date is September 1, 2023 (or later by mutual agreement). Please submit your application by May 15, 2023. Applications should be submitted in electronic form only; one single PDF file per applicant. These must include: CV, letter of motivation (max. 2 pages), transcript of MSc grades and MSc diploma if available, GRE score report if available, TOEFL score report if available, and the names and e-mail addresses of at least two referees. Informal inquiries about the position can be made to Dr. Stephan Nebe<https://www.econ.uzh.ch/en/people/researchers/nebe.html>. The University of Zurich values transparent, reproducible, and replicable research and supports Open Science practices. As an applicant, you are asked to outline in your letter the ways in which you have already pursued these practices and/or would like to pursue them in the future.
+
+Please apply via our job portal at http://www.jobs.uzh.ch
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Anderson,
+Yes, each subject has 8 total scans with 4 possible combinations of treatment types. A/sham and B/sham are different from the perspective of the subject and some have been able to tell the difference. Thank you so much for your help!
+Best,
+Tricia
+
+​Tricia Stefancin
+
+Lab manager
+Z-lab
+Department of Psychology
+The Ohio State University
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Anderson Winkler <anderson.winkler@UTRGV.EDU>
+Sent: Tuesday, April 18, 2023 11:38 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] 2x4 repeated measures ANOVA
+
+I wouldn’t be so critical of the topup-based approach.  If someone moves during your longer fieldmap acquisition it probably isn’t going to be as accurate in any case (and when people move, the field changes anyway). 
+
+ 
+
+In our hands, both methods produce comparable results.  The topup-based approach has some other advantages without our tools, so we usually recommend it. 
+
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, April 21, 2023 at 6:40 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Echo fieldmaps for EPI field map distortions -Rookie question
+
+ 
+
+ 
+
+Dear Addison and all,
+
+ 
+
+The second method of measuring field map is much faster but is less reliable than the first.
+
+ 
+
+Imagine you have a uniform object in the scanner. Since it is uniform, it has no internal structure to allow determination of field map using distortion method. (Well, varying image intensity will be of some help.) Or still cruder example: if object is moved between the two EPI scans, there is no way to distinguish motion from a uniform field offset.
+
+ 
+
+The first, direct method, does not rely on the presence or absence of the internal structure to measure field map and overall motion can be separated from the field measurement.
+
+ 
+
+Roman
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Sent: Friday, April 21, 2023 6:00 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Echo fieldmaps for EPI field map distortions -Rookie question
+
+ 
+
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+
+Dear Addison,
+
+ 
+
+there are two ways to measure/calculate a fieldmap. One is a quite direct way of measuring the field by looking at how the phase changes between two gradient echo images with different echo times. This is the method that gives you magnitude and phase images.
+
+ 
+
+The other way is to acquire two EPI images with different polarity so that the distortions caused by the field go in opposing directions. It is then possible to calculate the field from the difference between these two images. It sounds like this is the kind of data you have. You will then use a tool called “topup” to estimate the field (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup).
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Addison, Reuben" <RAddison@MGHIHP.EDU>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Sunday, 16 April 2023 at 03:50
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Echo fieldmaps for EPI field map distortions -Rookie question
+
+ 
+
+I am using a pipeline for a resting state analysis and I want to perform a fieldmap correction. I am supposed to provide the pipeline with two magnitude images and a phase difference image, however our Siemens scanner only recorded two magnitude images in two phase directions (fieldmap_AP and fieldmap_PA). How do I get my phasediff image? Is there a way to get that?
+
+ 
+
+ 
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+ 
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+

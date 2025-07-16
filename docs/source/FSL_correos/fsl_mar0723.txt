@@ -1,0 +1,634 @@
+Greetings,
+
+I have a dataset in which participants have resting-state fMRI, structural MRI, and high-density resting state EEG recordings. I am interested in exploring data-fusion with FLICA to see if the components better explain different behavioural measures compared to any modality alone.
+
+For EEG, I have performed source-localization, with features of interest now extracted from the Desikan-Killiany atlas. As a first try, I am hoping to perform data-fusion with the cortical thickness also extracted from the Desikan-Killiany-defined parcels, so both EEG and structural MRI are in the same parcellation space. Each participant in this case has 68*5 features for EEG (power spectral density from 68 cortical regions * 5 frequency bands) and 68 features for anatomy (cortical thickness from 68 cortical regions).
+
+It states on the FLICA webpage: Currently, the only supported inputs are *.mgh and *.nii.gz -- but more formats could easily be added to flica_load.m and flica_save.m.
+
+My question is: if I am working with data that is neither *.mgh or *.nii.gz format, is FLICA still possible/appropriate? Would I just skip the flica_load.m, and go straight to flica.m with my cell array of N(k) by L data matrices already defined by myself (for example as a .mat or within my Matlab workspace)?
+
+Thank you for any insight,
+Paul
+
+########################################################################
+
+Hello FSL community,
+
+I have a problem regarding the installation of FSL under Ubuntu 20.04.
+
+I have a local conda environment and I can use it in terminal before installing FSL using the fslinstaller.py script. But I installed FSL successfully, I found that the conda location is change to $FSLDIR (such as /opt/fsl/...). I want to use the previous conda, is there any way to solve it? Thank you!
+ 
+Best wishes,
+Zack
+
+########################################################################
+
+Hello,
+  I have a question about the installation of FSL.
+
+  My OS is Ubuntu 20.04, I have a conda environment and I can use the conda command in the terminal before installing FSL. But when I installed the FSL successfully， I found that the location of the default conda changed to the conda installed by FSL. I want to use the prior conda, is there any way to solve it?
+
+Thank you so much!
+
+Best,
+Zack
+
+########################################################################
+
+
+Hello,
+I’m not sure of the exact question ( the message only contained the matrix file ) but the attached file appears fine to me - e.g. when applied to a random input/reference the output is transformed according to the matrix parameters….
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear Colleagues,
+
+ We are recruiting one post-doc and one PhD for the Department of Movement Disorders and Neurostimulation at the Clinic for Neurology in Mainz. The candidates will work in integrating multimodal MR-imaging, LFP recordings, and OMICs data. Get in touch if you want to study neurodegeneration & related CNS-inflammatory paths.
+
+As part of the team, we offer an intensive multidisciplinary exchange, a lovely place to work and stay in Mainz and Frankfurt area, and competitive salaries according to national regulations. We are a collaborative partner of Rhine-Main-Neuronetwork (rmn2; http://www.rmn2.de/), Focus Program Translational Neuroscience (FTN; https://www.ftn.uni-mainz.de/).
+
+More details about our group and work on our site https://imaging-neurostim.com/
+
+We encourage applicants from different disciplines including neuroscience, imaging neuroscience, biomedicine/biotechnology, computer science, or physics. A strong background in multiOMICs/transcriptomics analyses will be desired.
+
+For Job specs and application details please contact Prof. Sergiu Groppa (segroppa@uni-mainz.de) or Dr. Gabriel Gonzalez-Escamilla (ggonzale@uni-mainz.de). Your email may already include a brief summary of research interests and career goals and C.V.
+
+Please spread the word. Looking forward to receiving motivated applications.
+
+
+Hi Ashwati,
+
+The ROIs used for regional analysis will be masked by your brain mask, so the first thing to check is that this is accurate and in the same space as the ASL data. Can you check in fsleyes for one of the subjects where you're missing region data that the mask is including the whole of the brain?
+
+The other thing to look at is whether the registration to standard space is working correctly since this is used to transform the atlas regions into ASL space so the stats can be extracted. Can you try viewing the standard space output from oxford_asl (in the std_space directory), overlaid on one of the standard FSL MNI images and confirm that this is all well aligned?
+
+You can also add the option --region-analysis-save-rois to oxford_asl, this should save the actual ROIs being used by the region analysis code - if you try overlaying these on the ASL data you may be able to see if there's an alignment or masking problem.
+
+Let me know how you get on, if necessary I'd be happy to run one of the subjects through locally to diagnose the problem if you're able to share a sample.
+
+Martin
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ashwati Vipin <0000859e7d588b57-dmarc-request@JISCMAIL.AC.UK>
+Sent: Tuesday, March 7, 2023 6:22 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] BASIL - region analysis incomplete for some subjects 3D-PASL
+ 
+Hi Michael,
+
+I tried running BASIL using my own mask, but it seems like during the process of deriving the gm or wm masks, the brain keeps getting cut off and so the regional analysis has a lot of missing regions. I'm really not sure what is going on. The command I used is as follows:
+
+/usr/local/fsl/bin/oxford_asl -i /.../BIOC_0144_v01_mask/BIOC_0144_v01_3DASL.nii --iaf ct --ibf rpt --bolus 0.7 --rpts 4 --tis 1.29 --fslanat /.../BIOC_0144_v01_mask/struc.anat -c /.../BIOC_0144_v01_mask/BIOC_0144_v01_M0.nii --cmethod voxel --tr 10 --cgain 10 -o /.../BIOC_0144_v01_mask -m /Users/ashwativipin/Desktop/BASIL_3DASL/GUI/BIOC_0144_v01_mask/mask.nii.gz --bat 0 --t1 1.65 --t1b 1.65 --alpha 0.98 --spatial --fixbolus --mc --pvcorr --artoff --wp --region-analysis
+
+
+Is there anything that needs tweaking? It's as if the --region-analysis is causing some issue. In the 230 subjects with 3D PASL that I have used BASIL on, only 93 have complete masks and complete data on regional perfusion.
+
+Could you please advise on what I should do next?
+
+Thank you for your help.
+
+Ashwati
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+Hi Michael,
+
+I tried running BASIL using my own mask, but it seems like during the process of deriving the gm or wm masks, the brain keeps getting cut off and so the regional analysis has a lot of missing regions. I'm really not sure what is going on. The command I used is as follows:
+
+/usr/local/fsl/bin/oxford_asl -i /.../BIOC_0144_v01_mask/BIOC_0144_v01_3DASL.nii --iaf ct --ibf rpt --bolus 0.7 --rpts 4 --tis 1.29 --fslanat /.../BIOC_0144_v01_mask/struc.anat -c /.../BIOC_0144_v01_mask/BIOC_0144_v01_M0.nii --cmethod voxel --tr 10 --cgain 10 -o /.../BIOC_0144_v01_mask -m /Users/ashwativipin/Desktop/BASIL_3DASL/GUI/BIOC_0144_v01_mask/mask.nii.gz --bat 0 --t1 1.65 --t1b 1.65 --alpha 0.98 --spatial --fixbolus --mc --pvcorr --artoff --wp --region-analysis
+
+
+Is there anything that needs tweaking? It's as if the --region-analysis is causing some issue. In the 230 subjects with 3D PASL that I have used BASIL on, only 93 have complete masks and complete data on regional perfusion.
+
+Could you please advise on what I should do next?
+
+Thank you for your help.
+
+Ashwati
+
+########################################################################
+
+I am trying to project multiple roi’s on an MNI template brain. I have created the roi spheres. I want to know if there is an option in fsleyes to help import the multiple roi spheres on to the surface.
+
+My template is the MNI152 1 mm
+
+ 
+
+ 
+
+Reuben A.  
+
+  
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+Dear Paul:
+
+  Do you know if FSL 6.0.6.3 includes all the BASIL corrections ?
+
+  Sincerely,
+
+
+Gonzalo Rojas Costa
+
+On Tue, Feb 21, 2023 at 7:31 AM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Gonzalo,
+
+Can you download the attached file, and copy it into FSLDIR/lib/python3.10/site-packages/oxford_asl/gui/__init__.py  (overwriting the existing file)?
+
+Paul
+From: Gonzalo Rojas Costa <gonzalo.rojas.costa@GMAIL.COM>
+Sent: 17 February 2023 18:00
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk>
+Subject: Re: BASIL error...
+ 
+Hi Paul:
+
+  I made the correction in $FSLDIR/lib/python3.10/site-packages/oxford_asl/gui/__init__.py that you told me... But, then I ran BASIL, I specified an ASL input Image (4D NIFTI file), appears the message "%s - failed to read data shape - check image file is not corrupted"... Why ?
+
+  Sincerely,
+
+
+
+Gonzalo Rojas Costa
+
+
+Problem solved
+
+Checking the permissions is always helpful in such situations
+
+########################################################################
+
+Dear FSL Community,
+
+I have a problem regarding the executability of FSL under Windows.
+Namely, I have installed Ubuntu over the WSL environment and FSL over it.
+The installation of FSL was also successful and I can open the commands and GUI.
+
+However, the executability of the FSL commands, e.g. "bet", shows that I can neither execute them via the GUI nor via the TerminalWindow.
+
+I always get the following error message:
+
+terminate called after throwing an instance of 'NiftiIO::NiftiException'.
+  what():  Error: cant open file /home/schuerjn/01_DataResearch/01_StrokeProject/MPRAGE_brain.nii.gz
+/home/me/fsl/bin/bet: line 399: 29431 Aborted      
+  
+
+I am in any case in the correct path with the required files
+For me it sounds more like it might be a permission problem.
+Does anyone had similar problems or might know how to fix this issue?
+
+Kind regards
+
+########################################################################
+
+Hi there,
+
+I'm working on a study that compares MRS fitting metrics such as SNR, CRLB% and linewidth (sLASER data from a Philips scanner). I recently updated my fsl_mrs to version 1.1.13 on ubuntu, and I noticed something that worried me. I ran the exact same data twice through the analysis, in the exact same way, but got different results. I then decided to see how much it varied and ran the same data in the exact same way, 10 times. Using NAA as a reference, I found that the SNR was on average 24.68 with a standard deviation of 0.99 and had a range of 3.13. The CRLB %'s varied too, with an average of 2.83, a standard deviation of 0.44 and a range of 1.07. Additionally, and you may or may not remember this from a query I had a few months ago, when I ran this same data on the previous version (1.1.2), I instead got an SNR of ~180. For your reference, you can find the html reports of the 10 analyses at this link: https://1drv.ms/u/s!Arog8qk8Unwvg5Fxd5TTNPBJa2ZvNg?e=pLELWH.
+
+So, I have a few questions:
+- Do you know why fsl_mrs doesn't produce the same result every time when the same data is processed in the same way?
+- I noticed that in the nuisance parameters of the html report that fsl_mrs does linear phase correction, and the amount of linear phase correction varies from analysis to analysis too. I'm quite confident that our data doesn't need linear phase correction at all. Is there a way to restrict fsl_mrs from doing it entirely? I believe this linear phase correction might be a reason as to why fsl_mrs isn't giving the same results each time.
+
+Another thing I noticed is that sometimes the fit completely fails - it's almost as if it's unsuccessful in loading in the data and thus cannot fit any peaks. I've included the html report of this failure too. Do you know why this is happening? For a single set of data, this will happen approximately 1 in 3 times. 
+
+Thank you very much for your help and I look forward to hearing back from you!
+
+All the best,
+
+Alex Ensworth
+
+PhD Student
+The University of British Columbia
+
+
+
+Dear Paul, 
+
+Thank you so much for the prompt reply. Is there a way to correct this diagonal misalignment? Below is the header for my highres scan (reference scan). 
+sizeof_hdr 348
+
+data_type FLOAT32
+
+dim0 3
+
+dim1 208
+
+dim2 320
+
+dim3 320
+
+dim4 1
+
+dim5 1
+
+dim6 1
+
+dim7 1
+
+vox_units mm
+
+time_units Unknown
+
+datatype 16
+
+nbyper 4
+
+bitpix 32
+
+pixdim0 -1.000000
+
+pixdim1 0.800000
+
+pixdim2 0.796875
+
+pixdim3 0.796875
+
+pixdim4 0.000000
+
+pixdim5 0.000000
+
+pixdim6 0.000000
+
+pixdim7 0.000000
+
+vox_offset 352
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+scl_slope 1.000000
+
+scl_inter 0.000000
+
+phase_dim 0
+
+freq_dim 0
+
+slice_dim 0
+
+slice_name Unknown
+
+slice_code 0
+
+slice_start 0
+
+slice_end 0
+
+slice_duration 0.000000
+
+toffset 0.000000
+
+intent Unknown
+
+intent_code 0
+
+intent_name 
+
+intent_p1 0.000000
+
+intent_p2 0.000000
+
+intent_p3 0.000000
+
+qform_name Scanner Anat
+
+qform_code 1
+
+qto_xyz:1 -0.799298 -0.033370 -0.000000 86.474922 
+
+qto_xyz:2 -0.033501 0.796176 -0.000000 -90.902626 
+
+qto_xyz:3 -0.000000 0.000000 0.796875 -142.081009 
+
+qto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+qform_xorient Right-to-Left
+
+qform_yorient Posterior-to-Anterior
+
+qform_zorient Inferior-to-Superior
+
+sform_name Scanner Anat
+
+sform_code 1
+
+sto_xyz:1 -0.799298 -0.033370 0.000000 86.474922 
+
+sto_xyz:2 -0.033501 0.796176 -0.000000 -90.902626 
+
+sto_xyz:3 0.000000 0.000000 0.796875 -142.081009 
+
+sto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+sform_xorient Right-to-Left
+
+sform_yorient Posterior-to-Anterior
+
+sform_zorient Inferior-to-Superior
+
+file_type NIFTI-1+
+
+file_code 1
+
+descrip 
+
+aux_file
+
+
+On Mon, Jun 20, 2022 at 4:01 AM paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Jingyi,
+
+It looks like the voxel->world affine of your reference image contains a slight rotation, so the diagonal elements will not directly correspond to scaling parameters.
+
+Paul
+
+On Mon, 20 Jun 2022 at 11:41, Jingyi Wang <jy_wang@ucsb.edu> wrote:
+Hello fsl experts,
+
+I recently want to register my functional scans to anatomical scans but still keep as functional scan resolution (2mm). I used flirt registration: flirt -ref highres -in ../filtered_func_data -applyxfm -init example_func2highres.mat -out $function_dir/output -applyisoxfm 2. However, it creates the output with different affine parameters (qto_xyz and sto_xyz):
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            4
+dim1            83
+dim2            127
+dim3            127
+dim4            816
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         -1.000000
+pixdim1         2.000000
+pixdim2         2.000000
+pixdim3         2.000000
+pixdim4         0.720000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      32368
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       0.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       3
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       126
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name     
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       -1.998246 -0.083751 -0.000000 86.474922
+qto_xyz:2       -0.083751 1.998246 -0.000000 -90.902634
+qto_xyz:3       -0.000000 0.000000 2.000000 -142.080994
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Right-to-Left
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       -1.998246 -0.083751 0.000000 86.474922
+sto_xyz:2       -0.083751 1.998246 0.000000 -90.902634
+sto_xyz:3       0.000000 0.000000 2.000000 -142.080994
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Right-to-Left
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         
+aux_file       
+
+Is a way to flirt register that keep qto_xyz and sto_xyz as 2, instead of -1.998246? Any insight could be super helpful. Thanks!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi Daniel
+
+I had the same issue and recently consulted a colleague who know FSL analysis levels much better than I do (I have 3 runs per subject) and doing an interim 2nd level analysis per subject seems to be perfectly fine and would allow you to evaluate your z maps for each subject on the go
+
+Hope it helps
+
+BW
+
+Erdem
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Daniel Levitas <dlevitas@IU.EDU>
+Sent: 07 June 2022 7:41 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Running 2nd level FEAT by subject
+
+
+Hello,
+
+What is the recommended slice order for pCASL data? Some recommend ascending, but in the literature I've seen others use interleaved slice order.
+
+Our current 2D ASL dataset was collected with interleaved slice order. Does the oxford_asl slicedt option correct for interleaved slice acquisition? If not, are there alternative methods?
+
+Thanks.
+
+d.m.
+
+Dear Matthew,
+
+Sorry for the delayed response, and thanks for helping! I have now used the fslstats-command as you suggested, and the output shows that the max intensity for the image is below 0.95:
+
+0.000000 0.941400 62 92 113
+
+Which explains why I get no visible clusters. The thing I don't understand then, is why the max intensity is set to a higher number when I open the image in fsleyes (there, it says the max intensity is 0.953238).
+
+-
+Best,
+Sarah
+
+########################################################################
+
+Hi Martin,
+
+Thank you so much for the quick response. I should have checked other locations in the code for get_data(). I did not want to dig too deep in the code and mess up something else.
+
+However, I found that the problem was already resolved with version 6.0.6.3. I saw that 6.0.6.3 was released shortly after 6.0.6.2. I thought that one of the FSL team members already caught the bug and fixed it.
+
+Thank you all who are making this tool available to us. I found BASIL (and asl_gui) to be extremely useful and versatile for my ASL work.
+
+cheers!
+
+-Tugan
+
+########################################################################
+
+I have not previously done anything more than a straight correction using a field map with GRASE readout before, someone with a deeper acquisition knowledge may be able to comment though.
+
+Michael
+
+> On 5 Mar 2023, at 23:57, Chidi Ugonna <chidi_ugonna@HOTMAIL.COM> wrote:
+>
+> Hi Michael and Catarina,
+> Thank you for this thread. As a follow up question to you both and anyone else who might have expertise with using fieldmaps with 3D GRASE: Do we have to take the fact that GRASE is a hybrid between FSE and EPI into consideration when applying a previously obtained fieldmap in BASIL? I have obtained the echo spacing value from the siemens protocol pdf (0.5ms) for the 3D GRASE PASL implementation on our scanner. Am i correct in assuming that this echo spacing value is an overestimation of the actual off-resonance phase accrual that the GRASE acquisition will actually experience? If this assumption is correct then is there a robust mathematical approach for adjusting this echo-spacing value for use in BASIL from some of the GRASE parameters?
+> Thank you for any advice on this.
+> Best
+> Chidi
+>
+> Chidi Ugonna
+> Research Specialist
+> Biomedical Engineering
+> University of Arizona
+>
+>
+
+
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment.
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored
+where permitted by law.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello FSL community,
+
+I have an error in concatenating masks from first level for a group level analysis. I could spot the cause of error --in the fslmerge command line, while listing the inputs, a seemingly random 0 is included between two files in a list of many other inputs. This throws an error that says child process exited abnormally. In the terminal window, I double-checked if removing 0 from fslmerge would be solution and it works. Is there a fault in my GUI FEAT file setup or elsewhere that throws in this random 0? Pls let me know how I can have FSL run fslmerge in the correct manner from GUI.
+
+Error spot:
+fslmerge -t mask /Volumes/....../mask 0 /Volumes/......./mask
+
+Thanks,
+Suja
+
+########################################################################
+
+The mismatch in reported and actual resolution will be a potential issue for PV correction to start with (we are starting to appreciate this effect as we look at more data). Even the relatively subtle difference you have could be sufficient to explain some of the surprising amplification potentially. There is generally a reasonable argument to trust perfusion values from voxels with low GM PV given the low SNR of ASL data. I would generally be more comfortable excluding based on a ‘independent’ measure like GM PV rather than excluding based on the perfusion values themselves.
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ralf Veit <ralf.veit@UNI-TUEBINGEN.DE>
+Date: Monday, 6 March 2023 at 11:26
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] PCASL partial volume correction
+
+Michael,
+
+thank you very much for your insightful comments. Actually, there is a difference listed in the parameter card between ACQ voxels (3.75 x 3.75 x 6) and the Recon voxel size (3 x 3 x 6). This can be certainly an issue, but the slice thickness is the same. For that, I don’t know how this affects the PSF. Overall, the variability is much higher in the pvgm image compared to the uncorrected CBF image. I still have the impression that voxels with low GM portion will be excessively augmented, when the uncorrected CBF value is already quite high (e.g. initial: 64 pvgm: 0.35 corrected: 156). Therefore some thresholding might be useful.
+
+One simple solution would be to calculate the CBF values with and without PV correction and compare the results.
+
+Ralf
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+
+Ashwati,
+
+ 
+
+Yes, any solution you have to create a reliable mask would be fine. If you have struc.anat to begin with I am surprise that the brain mask isn’t correct, as the default is to use a mask derived from one arrived at from the structural image.
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ashwati Vipin <0000859e7d588b57-dmarc-request@JISCMAIL.AC.UK>
+Date: Monday, 6 March 2023 at 07:41
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] BASIL - region analysis incomplete for some subjects 3D-PASL
+
+Hi Michael,
+
+Thanks for your response. Yes, the mask.nii.gz generated automatically is not complete and cuts off the inferior parts of the brain. Could a simple fslmaths command to binarize the asl input image be alright for use as a native space mask?
+
+I'm guessing the native space grey matter and white matter masks are generated by overlaying this brain mask with the segmented structural image in struc.anat?
+
+Thanks
+
+Ashwati
+
+########################################################################
+

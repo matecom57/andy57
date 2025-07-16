@@ -1,0 +1,563 @@
+Hi Saad,
+
+Thank you for the explanation. Could you clarify one more thing? If I use the —kurt option for the multishell data, the FA and other diffusion parameters are calculated based on the kurtosis model already?
+
+Best,
+Jun
+
+On Tue, Jan 24, 2023 at 3:01 PM Reid, Robert I. (Rob) <000021189f1cfce9-dmarc-request@jiscmail.ac.uk> wrote:
+Hi,
+
+ 
+
+Thank you for posting the plugin code! I’m not sure I want to look at all 4 dimensions simultaneously, but it is inspirational.
+
+ 
+
+I recommend correcting for Rician bias before doing anything with b > ~1300 s/mm^2, depending on the SNR: Koay et al 2009. It will not fix DTI’s issues with multiple bundle directions, but on the other hand if the noise floor is not removed, DKI has more freedom to fit it.
+
+ 
+
+Best regards,
+
+ 
+
+Rob
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Saad Jbabdi
+Sent: Monday, January 23, 2023 2:32 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: [EXTERNAL] Re: [FSL] Multishell Data dtifit Question
+
+ 
+
+Hi Jun
+
+ 
+
+The DTI model is a bad fit for multishell data that spans this bvalue range, and fitting it to multishell will tend to bias the parameters. The correct thing to do is to extract one shell, or you can use a kurtosis model.
+
+ 
+
+Have a look at this tweet from last September: https://twitter.com/SaadJbabdi/status/1567554211012923394
+
+ 
+
+It shows (and shares) a FSLeyes plugin for diffusion where you can easily compare DTI and kurtosis fits and the resulting parameters. I hope it is helpful to you.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jun Yeon Won <won25@UMD.EDU>
+Date: Monday, 23 January 2023 at 19:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Multishell Data dtifit Question
+
+Dear FSL experts,
+
+ 
+
+I just ran dtifit on multi-shell dti data and extracted b1000 from the multi-shell data. The images look like below. The left one is the FA image from the entire multi-shell data and the right one is the FA image from the b1000 extracted from the multi-shell data. Their FA values are different on the same location (the left one: 0.908, the right one (0.888).
+
+ 
+
+
+
+ 
+
+I am wondering how dtifit works on multi-shell data. Could you please let me know how it decides the b value from the multi-shell data? Thank you!
+
+ 
+
+Best,
+
+Jun
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+I can't seem to figure out where in my output files I can access the group mixing matrix of a melodic temporal concatenation. The name of the output file would be greatly appreciated!
+
+########################################################################
+
+Dear FSL experts,
+
+I just ran dtifit on multi-shell dti data and extracted b1000 from the multi-shell data. The images look like below. The left one is the FA image from the entire multi-shell data and the right one is the FA image from the b1000 extracted from the multi-shell data. Their FA values are different on the same location (the left one: 0.908, the right one (0.888).
+
+image.png
+
+I am wondering how dtifit works on multi-shell data. Could you please let me know how it decides the b value from the multi-shell data? Thank you!
+
+Best,
+Jun
+
+Hi Saad,
+
+Thank you for the explanation. Could you clarify one more thing? If I use the —kurt option for the multishell data, the FA and other diffusion parameters are calculated based on the kurtosis model already?
+
+Best,
+Jun
+
+On Tue, Jan 24, 2023 at 3:01 PM Reid, Robert I. (Rob) <000021189f1cfce9-dmarc-request@jiscmail.ac.uk> wrote:
+Hi,
+
+ 
+
+Thank you for posting the plugin code! I’m not sure I want to look at all 4 dimensions simultaneously, but it is inspirational.
+
+ 
+
+I recommend correcting for Rician bias before doing anything with b > ~1300 s/mm^2, depending on the SNR: Koay et al 2009. It will not fix DTI’s issues with multiple bundle directions, but on the other hand if the noise floor is not removed, DKI has more freedom to fit it.
+
+ 
+
+Best regards,
+
+ 
+
+Rob
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Saad Jbabdi
+Sent: Monday, January 23, 2023 2:32 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: [EXTERNAL] Re: [FSL] Multishell Data dtifit Question
+
+ 
+
+Hi Jun
+
+ 
+
+The DTI model is a bad fit for multishell data that spans this bvalue range, and fitting it to multishell will tend to bias the parameters. The correct thing to do is to extract one shell, or you can use a kurtosis model.
+
+ 
+
+Have a look at this tweet from last September: https://twitter.com/SaadJbabdi/status/1567554211012923394
+
+ 
+
+It shows (and shares) a FSLeyes plugin for diffusion where you can easily compare DTI and kurtosis fits and the resulting parameters. I hope it is helpful to you.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jun Yeon Won <won25@UMD.EDU>
+Date: Monday, 23 January 2023 at 19:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Multishell Data dtifit Question
+
+Dear FSL experts,
+
+ 
+
+I just ran dtifit on multi-shell dti data and extracted b1000 from the multi-shell data. The images look like below. The left one is the FA image from the entire multi-shell data and the right one is the FA image from the b1000 extracted from the multi-shell data. Their FA values are different on the same location (the left one: 0.908, the right one (0.888).
+
+ 
+
+
+
+ 
+
+I am wondering how dtifit works on multi-shell data. Could you please let me know how it decides the b value from the multi-shell data? Thank you!
+
+ 
+
+Best,
+
+Jun
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear FSL experts,
+
+Is the notebook for fsl-profumo still available?
+Following the main FSL page it should be locate at:
+
+wget https://git.fmrib.ox.ac.uk/rezvanh/sprofumo_develop/-/raw/master/FSLcourse/PFM_practical.ipynb
+
+However, it seems unreadable: "Notebook does not appear to be JSON"
+
+Thanks
+Lorenzo
+
+
+--
+Lorenzo Pini, PhD
+Padova Neuroscience Center, PNC
+Università degli Studi di Padova
+
+
+I can't seem to be able to find the group mixing matrix output of my melodic temporal concatenation. The name of the output file would be greatly appreciated!
+
+########################################################################
+
+
+Hello,
+I have a question concerning the GLM model.
+As far as I know, when I use a GLM to fit data in software packages such as (R, statsmodels in Python) I need to define a link function, the so called "family" (it can be binomial, gaussian, gamma, poisson, etc).
+
+In the context of FSL, how does the link function definition work?
+
+Kind regards,
+Marco
+
+########################################################################
+
+
+Hello,
+
+We are trying to do slice timing correction in FEAT. "Use slice timings file" and then select the json file output by MRIcron. Please see the attached example.
+
+FEAT errors out with "Could not find enough numbers in matrix". Number of slices is 72 and the json file has 72 values. Could you take a look at the json file to see what might be causing problems?
+
+On a broader note, slice acquisition on our scanner is interleaved. Should we just pick the Interleaved option instead of trying to use the json file? Would that be easier without much of a tradeoff?
+
+Thanks,
+Malathi
+
+########################################################################
+
+
+The Jiang Lab at the University of Iowa Carver College of Medicine (PI: Dr. Jing Jiang, https://jingjiang.lab.uiowa.edu/) is seeking a highly motivated postdoctoral fellow to join our team with a two-year term (and a possibility of extension) to work on projects related to neuromodulation and neuroplasticity. Research topics may include but not limited to emotion, language, and social cognition. The lab has a variety of unique datasets ready for immediate analyses, such as concurrent transcranial magnetic stimulation (TMS)-functional magnetic resonance imaging (fMRI), concurrent TMS-intracranial electroencephalography (iEEG), as well as brain lesion data from healthy, neuropsychiatric, and neurological populations.
+We are an interdisciplinary team situated in the Stead Family Department of Pediatrics and Department of Psychiatry. We maintain active collaborations with faculty and teams from the Departments of Neurology, Neurosurgery, Psychological and Brain Sciences, and Biomedical Engineering at the University of Iowa, the Iowa Neuroscience Institute, and the Intellectual and Developmental Disabilities Research Center. Our lab has access to the University of Iowa’s cutting-edge imaging facility (https://medicine.uiowa.edu/mri/equipment-information), the world-renowned Iowa Neurological Patient Registry (https://brain-registry.lab.uiowa.edu/) including neuroimaging and neuropsychological testing data from over 4,400 patients with focal brain lesions, and state-of-the-art portable fNIRS, concurrent TMS-fMRI, concurrent TMS-iEEG, and concurrent es-fMRI systems. 
+The University of Iowa is an internationally recognized leader in neuropsychology and cognitive neuroscience. The Roy J. and Lucille A. Carver College of Medicine is consistently one of the nation’s top-ranked medical schools (#39 on research by the 2022 U.S. News & World Report). The Stead Family Children’s Hospital is listed among the nation’s best in seven specialties in the 2022-23 “Best Children’s Hospitals” rankings by U.S. News & World Report (#38 in pediatrics neurology).
+
+Iowa City ranks among one of the best places to live in America (e.g., #1 Best College Town by Reviews.org). Iowa City, Johnson County, and the state of Iowa all routinely appear on national “best of” lists for low cost of living, safety, access to world-class health care, and more.
+
+Responsibilities and what you will achieve
+The goal of postdoctoral training in our lab is to help you become an independent researcher. To achieve this goal, you will work with Dr. Jiang to develop a plan (e.g., independent projects, mentorship experience, grant application, job hunts, networking) that meets your career development. You will receive theoretical and methodological training and resources through ongoing projects and independent projects, mentor students and research assistants, publish impactful papers, and apply for eligible research grants. You will also be provided with networking opportunities and professional guidance for job hunts.
+
+Requirements
+-       PhD and/or MD degree in Neuroscience, Computer Science, Electrical or Biomedical Engineering, Psychology, Cognitive Science, Biology, or a related field
+-       A track record of peer-reviewed scientific journal publications in human neuroscience
+-       Experience with programming, e.g., in MATLAB, Python, R, and/or Shell
+-       Experience with data analyses, e.g., in fMRI, (i)EEG, brain lesion, and/or, neural network
+-       Self-motivated, able to work independently, strong written and interpersonal communication skills
+To apply, please email (1) a cover letter describing your research interests and (2) your CV to Dr. Jing Jiang (jing-jiang@uiowa.edu). Applications will be reviewed on a rolling basis until the position is filled. Start date is flexible depending on candidate availability.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+I'm glad you found that option. The ADNI advanced protocol (also used by several other studies) uses the same b values, with 6 directions at b = 500, and many more at b > 500 s/mm^2, all in approximately isotropic shells. But with a minimal number of directions at b = 500, and no great need for more, it does tend to run up against eddy's default opinion of what constitutes a shell.
+
+Best regards,
+
+Rob
+
+-----Original Message-----
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Alessandra Caporale
+Sent: Tuesday, January 24, 2023 5:43 AM
+To: FSL@JISCMAIL.AC.UK
+Subject: [EXTERNAL] [FSL] FSL - eddy_cuda
+
+I post this just as an update: I have solved the problems I had with eddy_cuda.
+
+I had the correct version of CUDA, so I tried to run eddy_cuda on other diffusion data, and it went well.
+The problem with the new diffusion dataset was that the diffusion data included several b-values (b=0,500,1000,2000), and I had omitted the flag --data_is_shelled.
+With that flag added at the end of the command, eddy_cuda ran without a hitch!
+
+I thank you again for your support and quick reply, which were both much appreciated!
+
+
+Stella
+
+########################################################################
+
+
+Hi,
+
+ 
+
+Thank you for posting the plugin code! I’m not sure I want to look at all 4 dimensions simultaneously, but it is inspirational.
+
+ 
+
+I recommend correcting for Rician bias before doing anything with b > ~1300 s/mm^2, depending on the SNR: Koay et al 2009. It will not fix DTI’s issues with multiple bundle directions, but on the other hand if the noise floor is not removed, DKI has more freedom to fit it.
+
+ 
+
+Best regards,
+
+ 
+
+Rob
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Saad Jbabdi
+Sent: Monday, January 23, 2023 2:32 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: [EXTERNAL] Re: [FSL] Multishell Data dtifit Question
+
+ 
+
+Hi Jun
+
+ 
+
+The DTI model is a bad fit for multishell data that spans this bvalue range, and fitting it to multishell will tend to bias the parameters. The correct thing to do is to extract one shell, or you can use a kurtosis model.
+
+ 
+
+Have a look at this tweet from last September: https://twitter.com/SaadJbabdi/status/1567554211012923394
+
+ 
+
+It shows (and shares) a FSLeyes plugin for diffusion where you can easily compare DTI and kurtosis fits and the resulting parameters. I hope it is helpful to you.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jun Yeon Won <won25@UMD.EDU>
+Date: Monday, 23 January 2023 at 19:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Multishell Data dtifit Question
+
+Dear FSL experts,
+
+ 
+
+I just ran dtifit on multi-shell dti data and extracted b1000 from the multi-shell data. The images look like below. The left one is the FA image from the entire multi-shell data and the right one is the FA image from the b1000 extracted from the multi-shell data. Their FA values are different on the same location (the left one: 0.908, the right one (0.888).
+
+ 
+
+
+
+ 
+
+I am wondering how dtifit works on multi-shell data. Could you please let me know how it decides the b value from the multi-shell data? Thank you!
+
+ 
+
+Best,
+
+Jun
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Malathi,
+
+Are you specifically trying to install an older version of FSL? If not,
+can you download the latest version of the installer from https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation.
+
+Note that the installer script was rewritten just a couple of months ago, and so if you are using a version that you have previously downloaded, it may be out of date.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Malathi Thothathiri <000093e27667ac26-dmarc-request@JISCMAIL.AC.UK>
+Sent: 24 January 2023 14:58
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Install fails on macos Monterey - Failed to create FSL Python environment
+ 
+Hi Paul,
+
+Thanks for the suggestions.
+
+Our machine is not Apple Silicon. It has an Intel processor: 3.4 ghz quad core Intel core I5. So Rosetta2 doesn't work. Any other thoughts?
+
+Best,
+Malathi
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Paul,
+
+Thanks for the suggestions.
+
+Our machine is not Apple Silicon. It has an Intel processor: 3.4 ghz quad core Intel core I5. So Rosetta2 doesn't work. Any other thoughts?
+
+Best,
+Malathi
+
+########################################################################
+
+I can't seem to figure out where in my output files I can access the group mixing matrix of a melodic temporal concatenation. The name of the output file would be greatly appreciated!
+
+########################################################################
+
+I post this just as an update: I have solved the problems I had with eddy_cuda.
+
+I had the correct version of CUDA, so I tried to run eddy_cuda on other diffusion data, and it went well.
+The problem with the new diffusion dataset was that the diffusion data included several b-values (b=0,500,1000,2000), and I had omitted the flag
+--data_is_shelled.
+With that flag added at the end of the command, eddy_cuda ran without a hitch!
+
+I thank you again for your support and quick reply,
+which were both much appreciated!
+
+
+Stella
+
+########################################################################
+
+Dear Gordon,
+
+the best way to check if your results are valid is to check the perfusion image and the values you obtained. In the image (perfusion.nii or perfusion_calib.nii) you should clearly distinguish the GM to the WM (since WM has much lower and less reliable values). The logfile would give you as output the GM and WM means, with calibrated values between 40 and 80/100 in the GM (this is very approximative: some patients, especially on your age range, might have lower values) and around 20 in the WM.
+
+Regarding region analysis: I usually check the Mean value in the region_analysis.csv that you obtain. However, I am not entirely sure if this is the best way: for example, in the same file you have also a precision-weighted mean and median. Moreover, there is also a region_analysis_gm.csv file : not sure if this last one is a more valid table when you want to check only for your GM values. Perhaps in this mail list there's somebody that uses different parameters than me for his analysis and that can give you better explanations regarding this last topic..
+
+Hope that clears.
+Best,
+
+Lorenzo Nigris
+
+########################################################################
+
+
+Dear all,
+
+Thank you kindly for your help, I have been able to get some results from the regional analysis within BASIL. I still have a few questions; firstly, what do people normally use as their output values – to me it seems as though you would use region_Analysis.csv unless you had a specific need to measure gm/wm regionally?
+
+Also, how do people check that their results are valid? I have checked the perfusion.nii image, which I can tell is slightly different for one of my results (the first patient below). Does anyone have any sources of normative data? I have included some of my results from three patients I have analysed. Seemingly the first one has some different results compared with the latter two, unsure why. Otherwise, do the results seem vaguely ok? I have only included x5 regions of interest.
+
+60 year old healthy man: perfusion_calib_gm_mean = 45.2
+                                 : perfusion_calib_wm_mean = 18.4
+
+Region_analysis – Frontal pole: 22.66
+                                 Insular cortex: 46.62
+                      Pre-central gyrus: 60.62
+                     Left thalamus 37.29
+                      Right thalamus 52.9
+
+60 year old healthy man: perfusion_calib_gm_mean = 54.8
+                                 : perfusion_calib_wm_mean = 24.9
+
+Region_analysis – Frontal pole: 48.9
+                                 Insular cortex: 55.6
+                      Pre-central gyrus: 65.9
+                     Left thalamus 35.1
+                      Right thalamus 52.9
+
+65 year old healthy man: perfusion_calib_gm_mean = 48.3
+                                 : perfusion_calib_wm_mean = 25.0
+
+Region_analysis – Frontal pole: 49.9
+                                 Insular cortex: 56.6
+                      Pre-central gyrus: 74.1
+                     Left thalamus 46.7
+                      Right thalamus 45.7
+
+Many thanks,
+Gordon
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi FSL experts,
+
+I ran topup and eddy in my dwi data using a script, but it seems that in 4 subjects I got an error during eddy that I am unable to understand (attached file).
+
+I have tried to run eddy individually for these subjects but I get the same error. It appears to happen at the beginning of eddy command.
+
+Can someone help?
+
+Thanks
+Nelson Descalço
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Yes, I use default of 5000 samples per voxel. When a fiber enters terminate region, the tracking stops right away. Therefore, the only non-zero voxels from fdt map in the termination will be on the edge of the termination. Adding them up gives the number that survived. This should be close to waytotal, but as Saad explained, a single fiber entering termination twice will receive a count of 2, whereas for waytotal will be incremented by 1.
+
+Seed region is different. Its entire volume is used for seeding, not only its edge. Therefore, a fiber started deep inside the seed will have to pass through the edge of the seed. Thus, edge voxels will have counts of the fibers that start there and survive, plus fibers that stared deep, passed through the edge and survived. I thus expect total of seed to be much larger than the total of termination. But in some cases I see termination has 25% more of the survived fibers than survived in the seed.
+
+Saad explained that termination region (and in fact any region) can have two ends of the same fiber. (A voxel can not have both ends because this is not allowed by tracking, but two neighboring voxels in termination can have two ends of the same fiber that started at a seed.) Seeing 25% more terminate than leave, means that at least 25% go from seed to termination with both ends. Maybe it is realistic? The track is between two FreeSurfer regions: from ctx-rh-unknown to ctx-rh-parahippocampal.
+
+Roman
+
+
+Hi Roman,
+
+I guess it depends on the size of your seed ROI and the number of samples you prescribed.  The fdt map represents how many samples launched made it through whatever waypoints or termination you defined.  If you send out 5000 samples per voxel, not all of them make it.  The value of each voxel within fdt map is the number of samples that "survived".
+
+The waytotal is the number that DO make it, whatever route they choose to get there.  I would threshold your fdt map based on a percentage of the waytotal, eg drop the lowest 10%.  If waytotal is 3330, threshold w 333. 
+
+To me, it doesn't make sense to add up the fdt counts, as this can vary from scan to scan due to movement, noise, etc.  Best to evaluate in reference to the waytotal on a scan-to-scan basis.
+
+Conrad
+
+
+
+

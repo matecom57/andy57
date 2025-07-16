@@ -1,0 +1,198 @@
+Hi. I have a set of T1 scans of patients many of whom have quite severe cerebellar atrophy. This seems to be causing a lot of segmentation programs to fail 
+around the cerebellum, typically if I run e.g. FAST on one of these scans the resulting tissue maps will be missing large quantities of cerebellar tissue.
+
+We have manually drawn binary cerebellar masks for some of these patients (in their native space). I am wondering if there is a way to feed these masks 
+into the FAST pipeline as a way of specifying what cerebellar tissue should and shouldn't be included in the generation of the TPMs. I can't see anything 
+in the FAST (or SIENAX) options that sounds too relevant to this so don't know if it might be a fairly complex issue?
+
+Thanks,
+Iain
+
+########################################################################
+
+Hello,
+
+Has anyone here used FSLeyes' select mode and tool to select voxels by intensity in 3D to facilitate manual segmentation of white matter hyperintensity 
+(WMH) in (3T) FLAIR scans? If so, which intensity threshold do you find best to select the most of such voxels across the cortex?
+
+Thank you,
+Cristian
+
+########################################################################
+
+Hi Cristian,
+
+I suspect that the best threshold will vary from image to image. Furthermore, the intensity level of WMHs may overlap with other tissue, e.g. skull, so you 
+may need to restrict the selection to local search, and select WMHs individually.
+
+In any case, I think the best approach for using the select by intensity option is to select a representative voxel, and then slowly increase the threshold 
+until the selection looks reasonable, and then change to pencil/draw mode, and manually edit the selection until you are happy.
+
+Paul
+
+
+Cool, thanks!  Is there nice documentation somewhere that tells us which tools are in which packages?
+
+-Dianne
+
+Dianne Patterson, Ph.D
+dkp@arizona.edu
+Office: BSRL, Room 235
+RII Neuroimaging Staff Scientist 
+Program Coordinator Neuroimaging Methods Certificate 
+Cognitive Science GIDP affiliate member
+Faculty Lead OpenClass.ai
+Mastodon: @dpat@scicomm.xyz
+
+
+Hi Unnah,
+
+Can you open a powershell window, and run these commands:
+
+wsl --update
+wsl --shutdown
+
+And then open a new Ubuntu terminal, and try running gedit again?
+
+Paul
+
+Hi Ema,
+
+How much RAM and hard disk space does your system have?
+
+Paul
+
+Small addition to this: I just realized the BIANCA exclusion mask doesn't exclude the caudate (s. screenshot), which is what is being picked up as WMH in 
+all of our healthy participants without WMH. Is this by design or not supposed to be like that?
+
+
+Hi Hayden,
+  The model will be evaluated for all brain voxels and so the direct outputs like zstat1.nii.gz should cover the whole brain. The thresholded outputs ( 
+e.g. thresh_zstat1.nii.gz ) should be constrained to the pre-threshold mask. If you have a FEAT run where the mask isn’t being applied correctly, then if 
+you tar and upload the feat folder to a file-sharing service ( e.g. Google Drive, Dropbox ) we will be able to check what is happening locally.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Steve,
+
+I am getting the same issue as described by the other user who posted this question. I have created a binarized mask which is in the same space as the 
+example_func to constrain the higher-order analysis to a select few ROIs, and despite this I get clusters of activity detected outside of the mask. Why is 
+this occurring? Is it just that the outputs only show statistics calculated within the mask, but when you examine the zstat1.nii it displays whole brain 
+activity? Happy to provide more details as needed.
+
+Best,
+Hayden
+
+########################################################################
+
+
+Hi everyone,
+
+I have two questions for BIANCA users: I've run it with standard settings (FLAIR + T1, registered to FLAIR space, exclusion mask applied, no patch, 
+--trainingpts=2000 --nonlespts=10000 --selectpts=any, 20 training images with various lesion loads) in our cohort of older participants/patients and the 
+results are fairly good.
+
+1) However, for the few younger participants with barely any WMH (40-55 years old) it doesn't seem to work well at all as there is a massive amount of 
+false positives, especially in the basal ganglia, which are less visible in the older participants and are thus not leading to false positives there. I 
+thought the exclusion mask was supposed to exclude basal ganglia among other structures, but it doesn't seem to (s. screenshot of mask for 2 subjects), so 
+I assume this is the main issue, but I created the mask as suggested in the userguide. Since I used a threshold of 0.6 on the segmentations, increasing the 
+threshold might be a pragmatic suggestion if the mask issue can't be fixed, but that brings me to question 2...
+
+2) In https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5035138/ the threshold applied to the BIANCA segmentation was 0.95, but in our case even for people 
+where the segmentation has worked well we need a threshold of around 0.6 in order to cover all lesions. I attached screenshots showing a bad and a good 
+segmentation, both thresholded at 0.6 and 0.9 for comparison, and as you can see 0.9 barely leaves any WMH. Is it normal for the necessary thresholds to 
+differ between datasets or is it indicative of some issue with our data/a mistake I've made?
+
+Thank you in advance!
+Tanja
+
+########################################################################
+
+
+Dear FSL experts
+
+We are interested in the association between physical activity (PA) and BOLD activation during a food task performed in one group of participants and 
+including adjustment for covariates (age, sex, BMI). We have run a first level FEAT analysis for each participant with EVs for two categories of food 
+images and one category of non-food images, and contrasts specified for food vs non-food. We have then set up a higher level analysis with the following 
+design matrix to derive the association (positive or negative) between PA and BOLD activation adjusted for age, sex and BMI:
+
+EV1 (PA) EV2 (age) EV3 (sex) EV4 (bmi)
+
+and contrasts for:
+
+contrast 1 (+ve): 1 0 0 0
+contrast 2 (-ve): -1 0 0 0
+
+We are also interested in whether the association between PA and BOLD activation differs according to the level of covariates (e.g., sex) by adding an 
+interaction term. We have specified the following design matrix by splitting the independent variable (PA) according to the level of the covariate (e.g., 
+men vs women) to derive the following design matrix:
+
+EV1 (PA_men) EV2 (PA_women) EV3 (age) EV4 (bmi)
+
+and contrasts for:
+
+slope1_men > slope 2_women: 1 -1 0 0 
+slope 2_women > slope 1_men: -1 1 0 0
+
+Firstly, are you able to confirm if this is the correct design matrix and contrasts for adding an interaction for a covariate in a single group of 
+participants?
+Secondly, if either of the contrasts in the interaction model are significant, what is the best approach to explore this further?
+
+Many thanks in advance for your assistance
+
+Alice Thackray 
+
+
+Clinical diffusion images also have major issues for use in research.  In addition to what I said in the other post (thick slices with gaps between them).  
+Most diffusion protocols were designed by people who don't understand that you want to maximize the number of unique directions, rather than averaging the 
+same directions over and over.  If you have 5 averages of 6 directions versus 1 average of 30 directions, your DWI trace image will have the same SNR, but 
+in the first case you will have a biased estimate of the diffusion tensor, whereas in the second case you will not.  These problems extend to clinical 
+images that are actually intended for tractography too.  I only recently was able to move our clinical tractography protocol to a 2mm isotropic, no gap, 
+b=1000, 64-direction sequence.  This kind of diffusion sequence was state of the art in the mid-2000s in brain imaging research when I first started 
+collaborating with fMRIB.  Progress takes forever to go from research to clinical practice.
+
+Matt.
+
+﻿On 8/25/24, 11:05 PM, "FSL - FMRIB's Software Library on behalf of Ely Freeman" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 
+elyfreeman39@GMAIL.COM <mailto:elyfreeman39@GMAIL.COM>> wrote:
+
+
+This is a chronic problem in clinical neuroradiology.  Radiology was initially practiced with film on lightboxes.  In that context, it didn't matter how 
+thick the slices were or how much gap there was between them, as there was no way to reformat the images in other planes.  Radiologists stopped using film 
+about 25 years ago, but for some reason practice has been very slow to change.  People got used to these 2D images and then resist change when better 3D 
+and/or isotropic sequences became available.  Honestly, it was the surgeons pushing for using images in operating room image-based navigation systems that 
+has drove progress in many practices more than neuroradiologists.  Some clinician-scientist neuroradiologists have been trying to improve things as well.  
+In our practice, at our children's hospital we have mostly isotropic resolution images now and are trying to improve the adult practice too, but it remains 
+slow going.  Our PACS has image registration between current and prior images, that makes comparisons much more accurate, but requires isotropic resolution 
+images.
+
+There are some deep learning methods that can take multiple planes of thick-slice 2D images with gaps and create a highres 3D image from that, so perhaps 
+you could explore that option.
+
+Matt.
+
+Dear FSL team,
+
+I am a bit confused - I know DWI is the basis of DTI. However, sometimes I have clinical images called DWI (which are helpful for clinicians to quickly 
+review) which after dcm2nii give me bvec and bval metrics. I have not attempted DTI analysis on these yet, but I was surprised to get the metrics in the 
+first place.
+I thought DWI images are some simplified version of DTIs and do not contain the bvec and bval metrics available to users. Also, my DWI image does only show 
+one single axial slice without this well-known "shimmering" effect when you go through a real DTI image where you have slices of the whole brain and not 
+just a single slice.
+
+Please do help me understand the difference as I didn't really appreciate that I could potentially use those DWIs for DTI analysis? Can I?
+
+Thank you and best wishes,
+Ely
+
+########################################################################
+
+
+

@@ -1,0 +1,1866 @@
+
+Research Assistant Professor/Postdoctoral Fellow Positions
+ 
+The laboratory of medical data sciences at the Hong Kong Polytechnic University is searching for research assistant professors and postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+ 
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. The lab is well-equipped with computational power, including cloud servers, data storage, and GPU systems, for big medical data. The lab 
+ 
+Our research center and laboratory have great computing capacity, including multiple M40 and V100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical record, medical images, and pathological images, that are sufficient for deep learning applications to many medical problems. The research group published 170 peer-reviewed journal papers. Among them, 87% were published in top 10% of peer-reviewed journals, such as PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc. 
+ 
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+ 
+The position offers a competitive salary and benefits. We will apply for VISA for applicants. 
+The position will start immediately.
+Deadline: 31st May. 2023
+Requirements:
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, or relevant fields;
+2.     Experience with neuroimage analysis techniques;
+	3	Good communication and writing skills in English.
+ 
+Please send cv/inquiries to polyuqa@gmail.com
+ 
+
+
+Hello FSL Community!
+ 
+My PI and I have been working on analyzing ALFF data, but we’re getting strange output from Randomize. We keep getting a huge cluster that spans multiple distal ROIs in the brain but is described as one unit. We are not sure whether we messed up along the way, or if we can trust these results as is. 
+ 
+I have pasted the code below, attached the cluster output, the nifti file, and the results from AFNI’s “where am I” (WamI) button for your reference. As you can see in the WamI pictures, cluster 1 is 97% accounted for, but cluster 2 is only 61% accounted for.
+ 
+This analysis compares two groups (hc and ocd), and motion has been addressed in preprocessing. Since the group-EVs already account for the global mean, the -D option was removed. Please let me know if you have any advice, and thank you for your help!
+---
+ 
+Cluster Output:
+
+---
+ 
+ Randomise Code: 
+##HC vs Med w/ Rel and Abs Mot##
+#/ContrastName1            hc<ocd-med
+#/ContrastName2            hc>ocd-med
+ 
+parent=$HOME/Desktop/2022ALFF
+sbjs="ta0860 tb0113 tb0168 tb0195 tb0221 tb0266 tb0294 tb0529 tb0558 tb0628 tb0639 tb0650 tb0691 tb0728 tb0791 tb0806 tb0817 tb0861 tb0892 tb0901 tb0934 tb0963 tb1012 tb1043 tb1086 tb1308 tb1318 tb1330 tb1338 tb1366 tb1450 tb1464 tb1503 tb1562 tb1646 tb1680 tb1728 tb1751 tb1917 tb2002 tr7100 tr7529 tr7569 tr7604 tr7640 tr7767 tr7825 tr7868 tr7901 tr7917 tr7977 tr8010 tr8026 tr8119 tr8123 tr8511 tr8623 tr8791 tr9024 tr9043 tr9222 tr9275 tr9380 tr9459 tr9463 tr9906 tb2073 tr7582 tr7733 tr7932 tr7987 tr8167 tr8222 tr8688 tr8740 tr8860 tr9332 tr9515 tr9707 tr9765"
+sample=hc_med
+analysis=HCvMED
+echo $sbjs
+echo $sample
+echo $analysis
+ 
+ 
+# create mask (first go to masks directory)
+cd ${parent}/GM_masks
+cmd="fslmerge -t ${sample}_merged.nii.gz $sbjs"
+echo $cmd
+$cmd
+ 
+cmd="fslmaths ${sample}_merged.nii.gz -Tperc 20 ${sample}_mask.nii.gz"
+echo $cmd
+$cmd
+ 
+# view mask
+cd ${parent}/GM_masks
+fsleyes $FSLDIR/data/standard/MNI152_T1_2mm_brain.nii.gz ${sample}_mask.nii.gz
+ 
+# merge ALFF analysis maps
+cd ${parent}/alff_network_cc/ALFF_zs
+rm ${parent}/alff_network_cc/ALFF_zs/*${sample}_ALFF_merged.nii.gz
+cmd="fslmerge -t ${sample}_ALFF_merged.nii.gz ${sbjs}"
+echo $cmd
+$cmd
+ 
+#Randomise
+cd ${parent}
+rm /2022ALFF/alff_network_cc/ALFF_zs/${analysis}*
+cmd="randomise -i alff_network_cc/ALFF_zs/${sample}_ALFF_merged.nii.gz
+-o ${sample}/${analysis}_cc_ALFF_zs
+-d ${sample}/${analysis}.mat
+-t ${sample}/${analysis}.con
+-m GM_masks/${sample}_mask.nii.gz
+-T -n 5000"
+echo $cmd
+$cmd
+ 
+ 
+----
+ 
+Hannah Wild
+She/Her/Hers
+Clinical Psychology Graduate Student
+Department of Psychology
+University of Kentucky
+Kastle Hall, Rm. 111C
+Lexington, KY 40506
+
+
+Dear FSL experts, I have two questions regarding obtaining volumes in native space:
+
+1) Are subcortical volumes that are obtained using fslstats and the *_first_seg file equivalent to volumes in an individual native space? (e.g., output_name_all_fast_firstseg -l 16.5 -u 17.5 -V) 
+
+2) Would T1_fast_pve_1 be the correct image to input to obtain total GM volume in individual native space? (i.e., fslstats T1_fast_pve_1 -M -V)
+
+Thank you in advance!
+
+
+Dear FSL's users,
+
+
+
+I am dealing with a problem when running FEAT. The following message appears and I do not know what can be happening.
+
+
+
+Registration
+
+/bin/mkdir -p /media/rosalia/LaCie/PROHEPIC/FEAT/sub-APC20053.feat/reg
+
+
+/home/rosalia/fsl/bin/fslmaths /media/rosalia/LaCie/PROHEPIC/BIDS/sub-APC20053/anat/sub-APC20053_T1w_brain highres
+
+
+/home/rosalia/fsl/bin/fslmaths /media/rosalia/LaCie/PROHEPIC/BIDS/sub-APC20053/anat/sub-APC20053_T1w  highres_head
+
+Checking for /media/rosalia/LaCie/PROHEPIC/BIDS/sub-APC20053/anat/sub-APC20053_T1w_brain2MNI152_T1_2mm_brain_warp and /media/rosalia/LaCie/PROHEPIC/BIDS/sub-APC20053/anat/sub-APC20053_T1w_brain2MNI152_T1_2mm_brain.mat
+did not find file: example_func2highres.mat. Generating transform.
+
+/home/rosalia/fsl/bin/epi_reg --epi=example_func --t1=highres_head --t1brain=highres --out=example_func2highres
+Running FAST segmentation FLIRT pre-alignment Running BBR Applying POWELL correction finit, fend, fextrap = 0.496931 , 0.494997 , 0.494309 fval = 0.491575 0.499484 0.999923 -0.007923 -0.009557 0.000000 0.008049 0.999879 0.013285 0.000000 0.009451 -0.013361 0.999866 0.000000 -1.192303 3.653441 3.691747 1.000000
+
+/home/rosalia/fsl/bin/convert_xfm -inverse -omat highres2example_func.mat example_func2highres.mat
+
+
+/home/rosalia/fsl/bin/slicer example_func2highres highres -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /home/rosalia/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png example_func2highres1.png ; /home/rosalia/fsl/bin/slicer highres example_func2highres -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /home/rosalia/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png example_func2highres2.png ; /home/rosalia/fsl/bin/pngappend example_func2highres1.png - example_func2highres2.png example_func2highres.png; /bin/rm -f sl?.png example_func2highres2.png
+Images aren't the same size!
+
+ Cannot open sla.png for reading
+Segmentation fault (core dumped)
+Images aren't the same size!
+
+ Cannot open sla.png for reading
+Segmentation fault (core dumped)
+
+ Cannot open example_func2highres1.png for reading
+Segmentation fault (core dumped)
+
+
+/bin/rm example_func2highres1.png
+/bin/rm: cannot remove 'example_func2highres1.png': No such file or directory
+
+
+
+
+
+
+
+Any help would be greatly appreciated.
+
+
+
+Kind regards,
+
+
+
+Rosalia
+
+
+
+Hi,
+
+ 
+
+I’m trying to insert a custom registration into a FEAT analysis using 7DOF for BBR. In my preprocessing steps, I also include a fieldmap. When I run updatefeatreg <featdir.feat> -gifs I get the following error: ‘updatefeatreg cannot be used when the FEAT data has had B0 unwarping applied’. Am I missing a step or does updatefeatreg just not work when a fieldmap is used? If so, is there another way to combine the custom registration and the fieldmap in my preprocessing?
+
+ 
+
+Thank you!
+
+Ingrid
+
+ 
+
+Hi Matt,
+I don't quite understand the reason.
+For example, for a ROI in fMRI image, I want to know its exact location in dMRI data. I think it needs a good correspondence between the two coordinates.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+I am currently running FEAT statistics on preprocessed data. I am looking to do a group level analysis looking at the seed-based connectivity of 7 regions. I have a sample of 175 with 4 runs each. I have already collected the timeseries data for each ROI seed and am now running first-level analysis for each run with 1 region (EV) at a time. This means I have to run FEAT 9800 times (7 regions x 2 hemispheres x 4 runs x 175 subjects). The data is 7T rs-fMRI data (900 volumes) so every FEAT analysis is taking 1.5 hours.
+
+Is there any way for me to speed up the process? I have scripted it and am running every subregion and run as a for loop for the 175 subjects but am running into the bottleneck of CPU cores on the computers I have available.
+
+If there is anything anyone recommends both related to the FEAT analysis or my analysis design that may speed up the process that would be greatly appreciated!
+
+Thanks,
+Matthew
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello Suja,
+                 For the second job ( run March 7th ) it looks like the run is failing during or after statistics. Can you check the logs sub-directory of:
+
+/Volumes/cerebro/Studies/MCA_FMRI/Public/Data/FSL_Mem/Gp_c1_ME1_030723.gfeat/cope1.feat/
+
+To check is any errors occurred with flame?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 13 Mar 2023, at 18:36, Suja Reddy <reddysn2@UPMC.EDU> wrote:
+>
+> Hello Paul,
+>
+> I'm attaching the relevant logs folders for your reference.
+>
+> Please let me know what is the error I'm encountering: I noticed one of the first level inputs had an error, so I replaced it for the next trial run which seemed to run fslmerge without any error, but stopping at an error after performing fslmaths on mask for the corresponding varcope data.
+>
+> Thanks for looking into this problem.
+>
+> Suja
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+> <logs.zip><logs.zip>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Karina,
+
+It’s hard to tell what would be the optimal training in your case, but your strategy sounds good to me.
+
+Six cases are likely not enough, so I would suggest using 10-15 cases, adding more Fazekas 2 and some examples of Fazekas 1.
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Karina Dorfman <karinador@GMAIL.COM>
+Date: Thursday, 9 March 2023 at 22:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Optimal training dataset for BIANCA
+
+Hello,
+
+What would be the optimal training dataset for BIANCA in the following case:
+
+I have 25 subjects:  2 subjects with a Fazekas score of 0, 11 subjects with a Fazekas score of 1, 7 subjects with a Fazekas score of 2, and 4  subjects with a Fazekas score of 3.
+
+I chose for my training dataset 6 subjects:  1 subject with a Fazekas score of 0, 1 subject with a Fazekas score of 2, and 4  subjects with a Fazekas score of 3.
+
+The results I got from the BIANCA run were unsatisfactory, and I wonder whether I should've chosen a different training dataset, in terms of number of subjects/WMH load.
+
+ 
+
+Thanks,
+
+Karina
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear FSL experts,
+
+I have recently re-analysed some of my fMRI data (using what I believed to be an equivalent FSL pipeline to my previous analysis). However, I am finding some discrepancies between the output of my old and new analyses. I was hoping someone here may be able to shed light on what is causing this difference.  I have attached pictures of my first-level FEAT setup for both analyses, but I will describe the change below.
+
+Analysis 1:
+First, I ran melodic to obtain my ICA regressors. Within the melodic GUI, I preprocessed my raw functional data and obtained the output filtered_func_data.nii.gz. Then for my first level feat analysis, I inputted the filtered_func_data.nii.gz and ran statistics only. After completing the first level, I copied in the ICA reg folder and ran the command updatefeatreg before running my second level analysis.
+
+Analysis 2:
+I wanted to flip the raw data for some of my participants, so I re-ran the analysis for all participants (including the non-flipped subjects as a sanity check). The following example is for a subject whose data I did not flip. I determined that I did not need to re-run melodic, as I wanted to use the same ICA regressor list from before (as I understand, this list would still be valid - even for use with participants for whom I had flipped the functional and structural data). So, this time I set up the first-level FEAT for a full analysis. Here I inputted the raw functional data (NOT the filtered_func_data.nii.gz) and set up the Pre-stats tab as I did in the melodic GUI. Everything else was kept consistent.
+
+I thought running the first level with the filtered_func_data.nii.gz and no pre-stats would be equivalent to running it with the raw.nii.gz and including pre-stats. However, the peak voxel shifts, and the mean percent signal change within a ROI decreases in approach 2. So, is one of these approaches invalid?
+
+Any thoughts you have on the matter would be greatly appreciated.
+
+Best wishes,
+Paige
+
+
+
+Hi James,
+
+All of the wrapper functions accept a "log" parameter, allowing you to control how the standard output/error streams are handled. This parameter is passed to the run function, and its meaning is documented here: https://open.win.ox.ac.uk/pages/fsl/fslpy/fsl.utils.run.html#fsl.utils.run.run
+
+For example, if you want to stop the standard output/error of the underlying command being piped to the standard output/error of your process, you can set tee=False, e.g.:
+
+bedpost.xfibres(‘data, mask,bvecs,bvals’, log={'tee':False})
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of James Grist <james.grist@DPAG.OX.AC.UK>
+Sent: 14 March 2023 10:14
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] xfibres print statements in fslpy
+ 
+Hi all,
+
+I’m using fslpy to run xfibres. Is there a way to reduce the quantity of print statements it outputs?
+
+I’m not running -v as an option and my call is:
+
+bedpost.xfibres(‘data, mask,bvecs,bvals’) 
+
+All the best,
+
+James
+
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+For what purpose?
+
+Matt.
+
+﻿On 3/13/23, 9:58 PM, "Zack Guo" <gzt2019@MAIL.BNU.EDU.CN <mailto:gzt2019@MAIL.BNU.EDU.CN>> wrote:
+
+
+
+Hi Matt,
+Thank you for such a quick reply~
+
+
+I want to make a correspondence in the coordinates of voxel between fMRI and dMRI. So I have to keep both the space and voxel size of fMRI and dMRI data are same.
+
+
+Zack
+
+
+
+
+
+
+________________________________
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+What are you trying to do?
+
+Matt.
+
+﻿On 3/13/23, 9:36 PM, "FSL - FMRIB's Software Library on behalf of Zack Guo" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of gzt2019@MAIL.BNU.EDU.CN <mailto:gzt2019@MAIL.BNU.EDU.CN>> wrote:
+
+
+
+Dear FSL experts,
+I’m processing the fMRI and dMRI data from the HCP project. The voxel sizes of the two modalities are 2 and 1.25, respectively. Both the data I used are minimally preprocessed. I have the following two questions.
+
+
+1. The fMRI data has been registered to the MNI space but the dMRI data not. I want the dMRI data to also be in MNI space. How can I do?
+
+
+2. The voxel sizes of fMRI and dMRI data are different, when should I resample the voxel size of the DWI data, before the start of all preprocessing steps, after the preprocessing step or something else?
+
+
+Thanks~~~
+
+
+Best,
+Zack
+
+
+########################################################################
+
+
+To unsubscribe from the FSL list, click the following link:
+https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fcgi-bin%2FWA-JISC.exe%3FSUBED1%3DFSL%26A%3D1&data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=pJXfm1JTkH9a5YsXRSHC4W9b9kQmXCA1Q61g6zXIWl0%3D&reserved=0 <https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fcgi-bin%2FWA-JISC.exe%3FSUBED1%3DFSL%26A%3D1&amp;data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=pJXfm1JTkH9a5YsXRSHC4W9b9kQmXCA1Q61g6zXIWl0%3D&amp;reserved=0>
+
+
+This message was issued to members of https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2FFSL&data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=NQtvbRNqJ%2BiKCXmeJuZWDCBZ0K3pXlWh%2FVgA49xrhu8%3D&reserved=0 <https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2FFSL&amp;data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=NQtvbRNqJ%2BiKCXmeJuZWDCBZ0K3pXlWh%2FVgA49xrhu8%3D&amp;reserved=0>, a mailing list hosted by https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2F&data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=mY2V5Gyf05WRhGxIAPtQMQaOxJlYtRLQ5IUp0IpVrII%3D&reserved=0 <https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2F&amp;data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=mY2V5Gyf05WRhGxIAPtQMQaOxJlYtRLQ5IUp0IpVrII%3D&amp;reserved=0>, terms & conditions are available at https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fpolicyandsecurity%2F&data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Y7aGcENWgyvh7J6tUG5ft44J2zjAagEvLY1Ao4QUwOA%3D&reserved=0 <https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fpolicyandsecurity%2F&amp;data=05%7C01%7Cglasserm%40wustl.edu%7C213ff40c376b47c3017208db2434f631%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638143582267899532%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp;sdata=Y7aGcENWgyvh7J6tUG5ft44J2zjAagEvLY1Ao4QUwOA%3D&amp;reserved=0>
+
+
+
+
+________________________________
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL experts,
+I’m processing the fMRI and dMRI data from the HCP project. The voxel sizes of the two modalities are 2 and 1.25, respectively. Both the data I used are minimally preprocessed. I have the following two questions.
+
+1. The fMRI data has been registered to the MNI space but the dMRI data not. I want the dMRI data to also be in MNI space. How can I do?
+
+2. The voxel sizes of fMRI and dMRI data are different, when should I resample the voxel size of the DWI data, before the start of all preprocessing steps, after the preprocessing step or something else?
+
+Thanks~~~
+
+Best,
+Zack
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Graham,
+                  fsl_sub is trying to run 10 jobs at once, which may need more RAM than is available, if you switch to one core with
+
+export FSLSUB_PARALLEL=1
+
+and then run dual_regression, do the initial fsl_glm jobs still fail?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 13 Mar 2023, at 16:36, Graham Warner <warnergr@MUSC.EDU> wrote:
+>
+> Hi experts,
+>
+> I'm trying to run dual_regression and keep getting a massive error output (see below). The part that concerns me most is `*** Error in `/usr/local/fsl/bin/fsl_glm': corrupted size vs. prev_size: 0x00000000027b2070 ***` which to my knowledge indicates that fsl_glm isn't correctly allocating memory for the process. Is this assumption correct and/or how do I go about addressing this problem?
+>
+> Please let me know what other information I can provide to help clarifiy the issue. Thank you!
+>
+>
+>
+> [grw201@bcdl2 ICA_Output_no_ADNI]$ time dual_regression melodic_IC.nii.gz 1 ../TESTMODEL.mat ../TESTMODEL.con 0 DualRegressionOutput `cat ../All_paths_for_SIRP_No_ADNI.txt`
+> creating common mask
+> fsl_sub running 10 cores to process 123 tasks: DualRegressionOutput/scripts+logs/drA
+> doing the dual regressions
+> fsl_sub running 10 cores to process 123 tasks: DualRegressionOutput/scripts+logs/drC
+> /bin/sh: line 1: 31165 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2042/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00008.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> /bin/sh: line 1: 31153 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2033/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00006.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00008.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00007.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00006.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00008
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00008
+> /bin/sh: line 1: 31767 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00008 DualRegressionOutput/dr_stage2_subject00008_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00007
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00007
+> /bin/sh: line 1: 31819 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00007 DualRegressionOutput/dr_stage2_subject00007_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00006
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00006
+> /bin/sh: line 1: 31862 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00006 DualRegressionOutput/dr_stage2_subject00006_ic
+> std::bad_alloc
+> /bin/sh: line 1: 31129 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2009/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00002.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00002.txt
+> /bin/sh: line 1: 31117 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2002/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00000.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00003.txt
+> /bin/sh: line 1: 31141 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2015/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00004.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00002
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00002
+> /bin/sh: line 1: 32198 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00002 DualRegressionOutput/dr_stage2_subject00002_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00003
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00003
+> /bin/sh: line 1: 32255 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00003 DualRegressionOutput/dr_stage2_subject00003_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00000.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00004.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00000
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00000
+> /bin/sh: line 1: 32396 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00000 DualRegressionOutput/dr_stage2_subject00000_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00004
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00004
+> /bin/sh: line 1: 32443 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00004 DualRegressionOutput/dr_stage2_subject00004_ic
+> std::bad_alloc
+> /bin/sh: line 1: 31830 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2024/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00011.txt --demean -m DualRegressionOutput/mask
+> /bin/sh: line 1: 31804 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2023/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00010.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00011.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00009.txt
+> std::bad_alloc
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00010
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00010
+> /bin/sh: line 1: 32927 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00010 DualRegressionOutput/dr_stage2_subject00010_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00011
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00011
+> /bin/sh: line 1: 33010 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00011 DualRegressionOutput/dr_stage2_subject00011_ic
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00009
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00009
+> /bin/sh: line 1: 33023 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00009 DualRegressionOutput/dr_stage2_subject00009_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00014.txt
+> std::bad_alloc
+> /bin/sh: line 1: 32213 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2029/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00013.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00014
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00014
+> /bin/sh: line 1: 33233 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00014 DualRegressionOutput/dr_stage2_subject00014_ic
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00016.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00013.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00018.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00016
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00016
+> /bin/sh: line 1: 33500 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00016 DualRegressionOutput/dr_stage2_subject00016_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00013
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00013
+> /bin/sh: line 1: 33528 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00013 DualRegressionOutput/dr_stage2_subject00013_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00018
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00018
+> /bin/sh: line 1: 33623 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00018 DualRegressionOutput/dr_stage2_subject00018_ic
+> /bin/sh: line 1: 32947 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1002/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00017.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00017
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00017
+> /bin/sh: line 1: 33818 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00017 DualRegressionOutput/dr_stage2_subject00017_ic
+> /bin/sh: line 1: 33034 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1005/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00019.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00019.txt
+> /bin/sh: line 1: 33254 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1006/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00020.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00019
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00019
+> /bin/sh: line 1: 34543 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00019 DualRegressionOutput/dr_stage2_subject00019_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CoAPilot/1011/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CoAPilot/1011/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CoAPilot/1011/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CoAPilot/1011/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00025
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00025
+> /bin/sh: line 1: 34563 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00025 DualRegressionOutput/dr_stage2_subject00025_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CoAPilot/1015/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CoAPilot/1015/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CoAPilot/1015/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CoAPilot/1015/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00026
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00026
+> /bin/sh: line 1: 34586 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00026 DualRegressionOutput/dr_stage2_subject00026_ic
+> /bin/sh: line 1: 33518 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1007/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00021.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00020.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00024.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00021.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00020
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00020
+> /bin/sh: line 1: 34750 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00020 DualRegressionOutput/dr_stage2_subject00020_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00024
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00024
+> /bin/sh: line 1: 34799 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00024 DualRegressionOutput/dr_stage2_subject00024_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00021
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00021
+> /bin/sh: line 1: 34871 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00021 DualRegressionOutput/dr_stage2_subject00021_ic
+> std::bad_alloc
+> std::bad_alloc
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00005
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00005
+> /bin/sh: line 1: 35056 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00005 DualRegressionOutput/dr_stage2_subject00005_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00029.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00022.txt
+> std::bad_alloc
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00015
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00015
+> /bin/sh: line 1: 35204 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00015 DualRegressionOutput/dr_stage2_subject00015_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00029
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00029
+> /bin/sh: line 1: 35225 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00029 DualRegressionOutput/dr_stage2_subject00029_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00022
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00022
+> /bin/sh: line 1: 35255 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00022 DualRegressionOutput/dr_stage2_subject00022_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00030.txt
+> /bin/sh: line 1: 33751 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/MCI/2027/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00012.txt -o DualRegressionOutput/dr_stage2_subject00012 --out_z=DualRegressionOutput/dr_stage2_subject00012_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00012
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00012
+> /bin/sh: line 1: 35350 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00012 DualRegressionOutput/dr_stage2_subject00012_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00030
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00030
+> /bin/sh: line 1: 35410 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00030 DualRegressionOutput/dr_stage2_subject00030_ic
+> std::bad_alloc
+> std::bad_alloc
+> /bin/sh: line 1: 34761 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1017/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00028.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00032.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00027.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00028.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00032
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00032
+> /bin/sh: line 1: 35728 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00032 DualRegressionOutput/dr_stage2_subject00032_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00027
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00027
+> /bin/sh: line 1: 35813 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00027 DualRegressionOutput/dr_stage2_subject00027_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00028
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00028
+> /bin/sh: line 1: 35856 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00028 DualRegressionOutput/dr_stage2_subject00028_ic
+> std::bad_alloc
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00037.txt
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00037
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00037
+> /bin/sh: line 1: 36035 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00037 DualRegressionOutput/dr_stage2_subject00037_ic
+> /bin/sh: line 1: 35236 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1023/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00033.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00036
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00036
+> /bin/sh: line 1: 36083 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00036 DualRegressionOutput/dr_stage2_subject00036_ic
+> /bin/sh: line 1: 35365 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1025/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00035.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00033.txt
+> std::bad_alloc
+> /bin/sh: line 1: 35645 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CoAPilot/1009/V1/Data/R1_Regress.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00023.txt -o DualRegressionOutput/dr_stage2_subject00023 --out_z=DualRegressionOutput/dr_stage2_subject00023_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00023
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00023
+> /bin/sh: line 1: 36298 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00023 DualRegressionOutput/dr_stage2_subject00023_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00035.txt
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00033
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00033
+> /bin/sh: line 1: 36333 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00033 DualRegressionOutput/dr_stage2_subject00033_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00038.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00035
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00035
+> /bin/sh: line 1: 36467 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00035 DualRegressionOutput/dr_stage2_subject00035_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00038
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00038
+> /bin/sh: line 1: 36545 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00038 DualRegressionOutput/dr_stage2_subject00038_ic
+> std::bad_alloc
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00001
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00001
+> /bin/sh: line 1: 36738 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00001 DualRegressionOutput/dr_stage2_subject00001_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00042.txt
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00031
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00031
+> /bin/sh: line 1: 36063 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1007/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00040.txt --demean -m DualRegressionOutput/mask
+> /bin/sh: line 1: 36843 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00031 DualRegressionOutput/dr_stage2_subject00031_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00042
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00042
+> /bin/sh: line 1: 36889 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00042 DualRegressionOutput/dr_stage2_subject00042_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00040.txt
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00034
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00034
+> /bin/sh: line 1: 37078 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00034 DualRegressionOutput/dr_stage2_subject00034_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1019/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1019/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1019/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1019/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00049
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00049
+> /bin/sh: line 1: 37099 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00049 DualRegressionOutput/dr_stage2_subject00049_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1021/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1021/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> /bin/sh: line 1: 36096 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1008/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00041.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00040
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00040
+> /bin/sh: line 1: 37178 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00040 DualRegressionOutput/dr_stage2_subject00040_ic
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00050.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00041.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00046.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00041
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00041
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00050
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00050
+> /bin/sh: line 1: 37401 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00050 DualRegressionOutput/dr_stage2_subject00050_ic
+> /bin/sh: line 1: 37399 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00041 DualRegressionOutput/dr_stage2_subject00041_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00046
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00046
+> /bin/sh: line 1: 37496 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00046 DualRegressionOutput/dr_stage2_subject00046_ic
+> std::bad_alloc
+> /bin/sh: line 1: 36862 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1017/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00047.txt --demean -m DualRegressionOutput/mask
+> /bin/sh: line 1: 36901 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1018/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00048.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00051.txt
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00047
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00047
+> /bin/sh: line 1: 38191 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00047 DualRegressionOutput/dr_stage2_subject00047_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1026/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1026/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1026/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1026/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00055
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00055
+> /bin/sh: line 1: 38212 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00055 DualRegressionOutput/dr_stage2_subject00055_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1027/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1027/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1027/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1027/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00056
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00056
+> /bin/sh: line 1: 38225 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00056 DualRegressionOutput/dr_stage2_subject00056_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1028/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1028/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00048.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00051
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00051
+> /bin/sh: line 1: 38313 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00051 DualRegressionOutput/dr_stage2_subject00051_ic
+> std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1025/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1025/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00054
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00054
+> /bin/sh: line 1: 38357 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00054 DualRegressionOutput/dr_stage2_subject00054_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1032/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1032/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1032/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1032/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00059
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00059
+> /bin/sh: line 1: 38370 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00059 DualRegressionOutput/dr_stage2_subject00059_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1039/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1039/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1039/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1039/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00060
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00060
+> /bin/sh: line 1: 38383 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00060 DualRegressionOutput/dr_stage2_subject00060_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1040/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1040/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1040/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1040/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00061
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00061
+> /bin/sh: line 1: 38397 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00061 DualRegressionOutput/dr_stage2_subject00061_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1041/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1041/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1041/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1041/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00062
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00062
+> /bin/sh: line 1: 38420 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00062 DualRegressionOutput/dr_stage2_subject00062_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00057.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00048
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00048
+> /bin/sh: line 1: 38478 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00048 DualRegressionOutput/dr_stage2_subject00048_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00043
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00043
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> /bin/sh: line 1: 38571 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00043 DualRegressionOutput/dr_stage2_subject00043_ic
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00057
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00057
+> /bin/sh: line 1: 38588 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00057 DualRegressionOutput/dr_stage2_subject00057_ic
+> /bin/sh: line 1: 37337 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1006/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00039.txt -o DualRegressionOutput/dr_stage2_subject00039 --out_z=DualRegressionOutput/dr_stage2_subject00039_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00039
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00039
+> /bin/sh: line 1: 38667 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00039 DualRegressionOutput/dr_stage2_subject00039_ic
+> /bin/sh: line 1: 37433 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1024/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00053.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00053
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00053
+> /bin/sh: line 1: 38974 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00053 DualRegressionOutput/dr_stage2_subject00053_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00044
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00044
+> /bin/sh: line 1: 39017 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00044 DualRegressionOutput/dr_stage2_subject00044_ic
+> std::bad_alloc
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00045
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00045
+> /bin/sh: line 1: 39097 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00045 DualRegressionOutput/dr_stage2_subject00045_ic
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00066.txt
+> std::bad_alloc
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00067.txt
+> /bin/sh: line 1: 38496 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1043/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00064.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00066
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00066
+> /bin/sh: line 1: 39335 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00066 DualRegressionOutput/dr_stage2_subject00066_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00070.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00069.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00067
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00067
+> /bin/sh: line 1: 39402 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00067 DualRegressionOutput/dr_stage2_subject00067_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00064.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00070
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00070
+> /bin/sh: line 1: 39482 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00070 DualRegressionOutput/dr_stage2_subject00070_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00069
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00069
+> /bin/sh: line 1: 39507 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00069 DualRegressionOutput/dr_stage2_subject00069_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00064
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00064
+> /bin/sh: line 1: 39585 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00064 DualRegressionOutput/dr_stage2_subject00064_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00052
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00052
+> /bin/sh: line 1: 39717 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00052 DualRegressionOutput/dr_stage2_subject00052_ic
+> std::bad_alloc
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00073.txt
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00075.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00073
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00073
+> /bin/sh: line 1: 39957 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00073 DualRegressionOutput/dr_stage2_subject00073_ic
+> /bin/sh: line 1: 39349 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1054/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00071.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00068.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00075
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00075
+> /bin/sh: line 1: 40154 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00075 DualRegressionOutput/dr_stage2_subject00075_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00071.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00068
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00068
+> /bin/sh: line 1: 40364 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00068 DualRegressionOutput/dr_stage2_subject00068_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00071
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00071
+> /bin/sh: line 1: 40443 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00071 DualRegressionOutput/dr_stage2_subject00071_ic
+> std::bad_alloc
+> *** Error in `/usr/local/fsl/bin/fsl_glm': corrupted size vs. prev_size: 0x00000000027b2070 ***
+> ======= Backtrace: =========
+> /lib64/libc.so.6(+0x7f474)[0x7fb696970474]
+> /lib64/libc.so.6(+0x816a4)[0x7fb6969726a4]
+> /usr/local/fsl/bin/fsl_glm[0x4445d9]
+> /lib64/libc.so.6(+0x39ce9)[0x7fb69692ace9]
+> /lib64/libc.so.6(+0x39d37)[0x7fb69692ad37]
+> /lib64/libc.so.6(__libc_start_main+0xfc)[0x7fb69691355c]
+> /usr/local/fsl/bin/fsl_glm[0x42fab6]
+> ======= Memory map: ========
+> 00400000-00645000 r-xp 00000000 fd:00 1526829419                         /usr/local/fsl/bin/fsl_glm
+> 00844000-00845000 r--p 00244000 fd:00 1526829419                         /usr/local/fsl/bin/fsl_glm
+> 00845000-00846000 rw-p 00245000 fd:00 1526829419                         /usr/local/fsl/bin/fsl_glm
+> 00846000-00849000 rw-p 00000000 00:00 0
+> 02452000-03e7f000 rw-p 00000000 00:00 0                                  [heap]
+> 7fb68c000000-7fb68c021000 rw-p 00000000 00:00 0
+> 7fb68c021000-7fb690000000 ---p 00000000 00:00 0
+> 7fb693487000-7fb695487000 rw-p 00000000 00:00 0
+> 7fb696393000-7fb6963ce000 r-xp 00000000 fd:00 794503                     /usr/lib64/libquadmath.so.0.0.0
+> 7fb6963ce000-7fb6965cd000 ---p 0003b000 fd:00 794503                     /usr/lib64/libquadmath.so.0.0.0
+> 7fb6965cd000-7fb6965ce000 r--p 0003a000 fd:00 794503                     /usr/lib64/libquadmath.so.0.0.0
+> 7fb6965ce000-7fb6965cf000 rw-p 0003b000 fd:00 794503                     /usr/lib64/libquadmath.so.0.0.0
+> 7fb6965cf000-7fb6966ee000 r-xp 00000000 fd:00 942396497                  /usr/local/fsl/lib/libgfortran.so.3
+> 7fb6966ee000-7fb6968ee000 ---p 0011f000 fd:00 942396497                  /usr/local/fsl/lib/libgfortran.so.3
+> 7fb6968ee000-7fb6968ef000 r--p 0011f000 fd:00 942396497                  /usr/local/fsl/lib/libgfortran.so.3
+> 7fb6968ef000-7fb6968f1000 rw-p 00120000 fd:00 942396497                  /usr/local/fsl/lib/libgfortran.so.3
+> 7fb6968f1000-7fb696ab5000 r-xp 00000000 fd:00 81117                      /usr/lib64/libc-2.17.so
+> 7fb696ab5000-7fb696cb4000 ---p 001c4000 fd:00 81117                      /usr/lib64/libc-2.17.so
+> 7fb696cb4000-7fb696cb8000 r--p 001c3000 fd:00 81117                      /usr/lib64/libc-2.17.so
+> 7fb696cb8000-7fb696cba000 rw-p 001c7000 fd:00 81117                      /usr/lib64/libc-2.17.so
+> 7fb696cba000-7fb696cbf000 rw-p 00000000 00:00 0
+> 7fb696cbf000-7fb696cd4000 r-xp 00000000 fd:00 41299                      /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7fb696cd4000-7fb696ed3000 ---p 00015000 fd:00 41299                      /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7fb696ed3000-7fb696ed4000 r--p 00014000 fd:00 41299                      /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7fb696ed4000-7fb696ed5000 rw-p 00015000 fd:00 41299                      /usr/lib64/libgcc_s-4.8.5-20150702.so.1
+> 7fb696ed5000-7fb696fd6000 r-xp 00000000 fd:00 370819                     /usr/lib64/libm-2.17.so
+> 7fb696fd6000-7fb6971d5000 ---p 00101000 fd:00 370819                     /usr/lib64/libm-2.17.so
+> 7fb6971d5000-7fb6971d6000 r--p 00100000 fd:00 370819                     /usr/lib64/libm-2.17.so
+> 7fb6971d6000-7fb6971d7000 rw-p 00101000 fd:00 370819                     /usr/lib64/libm-2.17.so
+> 7fb6971d7000-7fb6972c0000 r-xp 00000000 fd:00 281837                     /usr/lib64/libstdc++.so.6.0.19
+> 7fb6972c0000-7fb6974c0000 ---p 000e9000 fd:00 281837                     /usr/lib64/libstdc++.so.6.0.19
+> 7fb6974c0000-7fb6974c8000 r--p 000e9000 fd:00 281837                     /usr/lib64/libstdc++.so.6.0.19
+> 7fb6974c8000-7fb6974ca000 rw-p 000f1000 fd:00 281837                     /usr/lib64/libstdc++.so.6.0.19
+> 7fb6974ca000-7fb6974df000 rw-p 00000000 00:00 0
+> 7fb6974df000-7fb6974f4000 r-xp 00000000 fd:00 136855                     /usr/lib64/libz.so.1.2.7
+> 7fb6974f4000-7fb6976f3000 ---p 00015000 fd:00 136855                     /usr/lib64/libz.so.1.2.7
+> 7fb6976f3000-7fb6976f4000 r--p 00014000 fd:00 136855                     /usr/lib64/libz.so.1.2.7
+> 7fb6976f4000-7fb6976f5000 rw-p 00015000 fd:00 136855                     /usr/lib64/libz.so.1.2.7
+> 7fb6976f5000-7fb6999c1000 r-xp 00000000 fd:00 942396569                  /usr/local/fsl/lib/libopenblas.so.0
+> 7fb6999c1000-7fb699bc0000 ---p 022cc000 fd:00 942396569                  /usr/local/fsl/lib/libopenblas.so.0
+> 7fb699bc0000-7fb699bc4000 r--p 022cb000 fd:00 942396569                  /usr/local/fsl/lib/libopenblas.so.0
+> 7fb699bc4000-7fb699bde000 rw-p 022cf000 fd:00 942396569                  /usr/local/fsl/lib/libopenblas.so.0
+> 7fb699bde000-7fb699be9000 rw-p 00000000 00:00 0
+> 7fb699be9000-7fb699c0b000 r-xp 00000000 fd:00 81104                      /usr/lib64/ld-2.17.so
+> 7fb699ddf000-7fb699de6000 rw-p 00000000 00:00 0
+> 7fb699e06000-7fb699e0a000 rw-p 00000000 00:00 0
+> 7fb699e0a000-7fb699e0b000 r--p 00021000 fd:00 81104                      /usr/lib64/ld-2.17.so
+> 7fb699e0b000-7fb699e0c000 rw-p 00022000 fd:00 81104                      /usr/lib64/ld-2.17.so
+> 7fb699e0c000-7fb699e0d000 rw-p 00000000 00:00 0
+> 7ffce042c000-7ffce044d000 rw-p 00000000 00:00 0                          [stack]
+> 7ffce05b3000-7ffce05b5000 r-xp 00000000 00:00 0                          [vdso]
+> ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+> std::bad_alloc
+> /bin/sh: line 1: 40328 Aborted                 (core dumped) /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1042/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00063.txt -o DualRegressionOutput/dr_stage2_subject00063 --out_z=DualRegressionOutput/dr_stage2_subject00063_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00065
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00065
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00063
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00063
+> /bin/sh: line 1: 40639 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00063 DualRegressionOutput/dr_stage2_subject00063_ic
+> /bin/sh: line 1: 40638 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00065 DualRegressionOutput/dr_stage2_subject00065_ic
+> Image Exception : #22 :: Failed to read volume /bcdlab/CURforDAD/HC_IAM/1076/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> Failed to read volume /bcdlab/CURforDAD/HC_IAM/1076/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space
+> Error : std::bad_alloc
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00058
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00058
+> /bin/sh: line 1: 40691 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00058 DualRegressionOutput/dr_stage2_subject00058_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00082.txt
+> std::bad_alloc
+> /bin/sh: line 1: 39973 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1065/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00077.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00077
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00077
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00081
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00081
+> /bin/sh: line 1: 40927 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00077 DualRegressionOutput/dr_stage2_subject00077_ic
+> /bin/sh: line 1: 40929 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00081 DualRegressionOutput/dr_stage2_subject00081_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00082
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00082
+> /bin/sh: line 1: 40953 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00082 DualRegressionOutput/dr_stage2_subject00082_ic
+> /bin/sh: line 1: 40209 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1066/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00078.txt --demean -m DualRegressionOutput/mask
+> /bin/sh: line 1: 40378 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1069/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00079.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00078.txt
+> /bin/sh: line 1: 40455 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1074/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00080.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00078
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00078
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00079.txt
+> /bin/sh: line 1: 41699 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00078 DualRegressionOutput/dr_stage2_subject00078_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00080.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00079
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00079
+> /bin/sh: line 1: 41874 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00079 DualRegressionOutput/dr_stage2_subject00079_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00074
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00074
+> /bin/sh: line 1: 41927 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00074 DualRegressionOutput/dr_stage2_subject00074_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00080
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00080
+> /bin/sh: line 1: 41944 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00080 DualRegressionOutput/dr_stage2_subject00080_ic
+> /bin/sh: line 1: 41133 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1055/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00072.txt -o DualRegressionOutput/dr_stage2_subject00072 --out_z=DualRegressionOutput/dr_stage2_subject00072_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00072
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00072
+> /bin/sh: line 1: 42031 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00072 DualRegressionOutput/dr_stage2_subject00072_ic
+> /bin/sh: line 1: 40969 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1082/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00086.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00086.txt
+> /bin/sh: line 1: 41239 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1063/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00076.txt -o DualRegressionOutput/dr_stage2_subject00076 --out_z=DualRegressionOutput/dr_stage2_subject00076_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00076
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00076
+> /bin/sh: line 1: 42223 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00076 DualRegressionOutput/dr_stage2_subject00076_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00084.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00086
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00086
+> /bin/sh: line 1: 42356 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00086 DualRegressionOutput/dr_stage2_subject00086_ic
+> std::bad_alloc
+> std::bad_alloc
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00084
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00084
+> /bin/sh: line 1: 42486 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00084 DualRegressionOutput/dr_stage2_subject00084_ic
+> /bin/sh: line 1: 41717 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1084/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00087.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00091.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00090.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00087.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00090
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00090
+> /bin/sh: line 1: 42744 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00090 DualRegressionOutput/dr_stage2_subject00090_ic
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00091
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00091
+> /bin/sh: line 1: 42759 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00091 DualRegressionOutput/dr_stage2_subject00091_ic
+> std::bad_alloc
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00087
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00087
+> /bin/sh: line 1: 42901 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00087 DualRegressionOutput/dr_stage2_subject00087_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00094.txt
+> std::bad_alloc
+> /bin/sh: line 1: 41938 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1089/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00089.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00094
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00094
+> /bin/sh: line 1: 43220 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00094 DualRegressionOutput/dr_stage2_subject00094_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00089
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00089
+> /bin/sh: line 1: 43329 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00089 DualRegressionOutput/dr_stage2_subject00089_ic
+> /bin/sh: line 1: 42237 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1099/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00092.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00088.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00092.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00088
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00088
+> /bin/sh: line 1: 43572 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00088 DualRegressionOutput/dr_stage2_subject00088_ic
+> std::bad_alloc
+> /bin/sh: line 1: 42776 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1109/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00096.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00092
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00092
+> /bin/sh: line 1: 43695 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00092 DualRegressionOutput/dr_stage2_subject00092_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00097.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00096.txt
+> std::bad_alloc
+> /bin/sh: line 1: 42769 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1108/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00095.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00097
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00097
+> /bin/sh: line 1: 43957 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00097 DualRegressionOutput/dr_stage2_subject00097_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00096
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00096
+> /bin/sh: line 1: 44017 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00096 DualRegressionOutput/dr_stage2_subject00096_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00099.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00095.txt
+> /bin/sh: line 1: 43448 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1081/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00085.txt -o DualRegressionOutput/dr_stage2_subject00085 --out_z=DualRegressionOutput/dr_stage2_subject00085_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00085
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00085
+> /bin/sh: line 1: 44280 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00085 DualRegressionOutput/dr_stage2_subject00085_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00099
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00099
+> /bin/sh: line 1: 44336 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00099 DualRegressionOutput/dr_stage2_subject00099_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00095
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00095
+> /bin/sh: line 1: 44387 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00095 DualRegressionOutput/dr_stage2_subject00095_ic
+> std::bad_alloc
+> /bin/sh: line 1: 43235 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1113/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00098.txt --demean -m DualRegressionOutput/mask
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00105.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00098.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00106.txt
+> std::bad_alloc
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00105
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00105
+> /bin/sh: line 1: 44698 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00105 DualRegressionOutput/dr_stage2_subject00105_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00098
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00098
+> /bin/sh: line 1: 44748 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00098 DualRegressionOutput/dr_stage2_subject00098_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00106
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00106
+> /bin/sh: line 1: 44773 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00106 DualRegressionOutput/dr_stage2_subject00106_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00102.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00102
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00102
+> /bin/sh: line 1: 44941 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00102 DualRegressionOutput/dr_stage2_subject00102_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00083
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00083
+> /bin/sh: line 1: 45006 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00083 DualRegressionOutput/dr_stage2_subject00083_ic
+> /bin/sh: line 1: 44291 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1121/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00104.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00104.txt
+> std::bad_alloc
+> /bin/sh: line 1: 44784 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1128/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00109.txt --demean -m DualRegressionOutput/mask
+> /bin/sh: line 1: 44874 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1101/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00093.txt -o DualRegressionOutput/dr_stage2_subject00093 --out_z=DualRegressionOutput/dr_stage2_subject00093_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00093
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00093
+> /bin/sh: line 1: 45299 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00093 DualRegressionOutput/dr_stage2_subject00093_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00104
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00104
+> /bin/sh: line 1: 45456 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00104 DualRegressionOutput/dr_stage2_subject00104_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00107.txt
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00109.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00107
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00107
+> /bin/sh: line 1: 45890 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00107 DualRegressionOutput/dr_stage2_subject00107_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00109
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00109
+> /bin/sh: line 1: 45933 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00109 DualRegressionOutput/dr_stage2_subject00109_ic
+> std::bad_alloc
+> /bin/sh: line 1: 44959 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1129/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00110.txt --demean -m DualRegressionOutput/mask
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00114.txt
+> std::bad_alloc
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00110.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00114
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00114
+> /bin/sh: line 1: 46303 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00114 DualRegressionOutput/dr_stage2_subject00114_ic
+> /bin/sh: line 1: 45833 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1116/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00100.txt -o DualRegressionOutput/dr_stage2_subject00100 --out_z=DualRegressionOutput/dr_stage2_subject00100_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00100
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00100
+> /bin/sh: line 1: 46372 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00100 DualRegressionOutput/dr_stage2_subject00100_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00108.txt
+> std::bad_alloc
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00110
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00110
+> /bin/sh: line 1: 46443 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00110 DualRegressionOutput/dr_stage2_subject00110_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00108
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00108
+> /bin/sh: line 1: 46526 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00108 DualRegressionOutput/dr_stage2_subject00108_ic
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00101
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00101
+> /bin/sh: line 1: 46535 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00101 DualRegressionOutput/dr_stage2_subject00101_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00116.txt
+> Image Exception : #22 :: Failed to read volume melodic_IC
+> Error : std::bad_alloc
+> Failed to read volume melodic_IC
+> Error : std::bad_alloc
+> std::bad_alloc
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00116
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00116
+> /bin/sh: line 1: 46704 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00116 DualRegressionOutput/dr_stage2_subject00116_ic
+> /bin/sh: line 1: 46246 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1120/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00103.txt -o DualRegressionOutput/dr_stage2_subject00103 --out_z=DualRegressionOutput/dr_stage2_subject00103_Z --demean -m DualRegressionOutput/mask --des_norm
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00120.txt
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00103
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00103
+> /bin/sh: line 1: 46782 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00103 DualRegressionOutput/dr_stage2_subject00103_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00118.txt
+> /bin/sh: line 1: 45944 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1136/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d melodic_IC -o DualRegressionOutput/dr_stage1_subject00115.txt --demean -m DualRegressionOutput/mask
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00120
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00120
+> /bin/sh: line 1: 46908 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00120 DualRegressionOutput/dr_stage2_subject00120_ic
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00118
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00118
+> /bin/sh: line 1: 46918 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00118 DualRegressionOutput/dr_stage2_subject00118_ic
+> Could not open matrix file DualRegressionOutput/dr_stage1_subject00115.txt
+> ols_dof: Error in determining the trace, resorting to basic calculation
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00115
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00115
+> /bin/sh: line 1: 46952 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00115 DualRegressionOutput/dr_stage2_subject00115_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00112
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00112
+> /bin/sh: line 1: 47202 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00112 DualRegressionOutput/dr_stage2_subject00112_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00117
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00117
+> /bin/sh: line 1: 47296 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00117 DualRegressionOutput/dr_stage2_subject00117_ic
+> /bin/sh: line 1: 46926 Killed                  /usr/local/fsl/bin/fsl_glm -i /bcdlab/CURforDAD/HC_IAM/1130/V1/Data/R1_REGRESS.feat/filtered_func_in_MNI_space -d DualRegressionOutput/dr_stage1_subject00111.txt -o DualRegressionOutput/dr_stage2_subject00111 --out_z=DualRegressionOutput/dr_stage2_subject00111_Z --demean -m DualRegressionOutput/mask --des_norm
+> Image Exception : #22 :: Failed to read volume DualRegressionOutput/dr_stage2_subject00111
+> Error : Error: short read, file may be truncated
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  Failed to read volume DualRegressionOutput/dr_stage2_subject00111
+> Error : Error: short read, file may be truncated
+> /bin/sh: line 1: 47302 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00111 DualRegressionOutput/dr_stage2_subject00111_ic
+> std::bad_alloc
+> Image Exception : #63 :: No image files match: DualRegressionOutput/dr_stage2_subject00121
+> terminate called after throwing an instance of 'std::runtime_error'
+>  what():  No image files match: DualRegressionOutput/dr_stage2_subject00121
+> /bin/sh: line 1: 47336 Aborted                 (core dumped) /usr/local/fsl/bin/fslsplit DualRegressionOutput/dr_stage2_subject00121 DualRegressionOutput/dr_stage2_subject00121_ic
+> sorting maps and running randomise
+> fsl_sub running 10 cores to process 432 tasks: DualRegressionOutput/scripts+logs/drD
+>
+> real  35m1.090s
+> user  208m46.341s
+> sys   40m40.479s
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+We are hiring; if you are interested in a "genetic first" approach to neurodevelopmental conditions (ADHD, ASD), please check this opportunity out and consider applying. https://postdocs.stanford.edu/prospective/opportunities/open-postdoctoral-position-faculty-mentor-tamar-green Tamar -- The Stephen Bechtel Endowed Faculty Scholar in Pediatric Translational Medicine, Stanford Maternal & Child Health Research Institute. The Francis S. Collins Scholar in Neurofibromatosis Clinical and Translational Research Assistant Professor@Department of Psychiatry & Behavioral Sciences Principal Investigator, Brain Imaging, Development, Genetics Lab Stanford University School of Medicine | 401 Quarry Rd, MC 5795, Stanford, CA 94305 | Website: https://bridgelab.stanford.edu
+
+Hello Paul,
+
+I'm attaching the relevant logs folders for your reference.
+
+Please let me know what is the error I'm encountering: I noticed one of the first level inputs had an error, so I replaced it for the next trial run which seemed to run fslmerge without any error, but stopping at an error after performing fslmaths on mask for the corresponding varcope data.
+
+Thanks for looking into this problem.
+
+Suja
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+1. does dcm2niix extract these values from your Siemens data?
+2. Was your Siemens scanner upgraded from V* (e.g. VE11) to XA* (e.g. XA30)? Is so, use private tag 0021,1153 instead of 0019,1028.
+3. gdcmdump with --csa (V*) and --mrprotocol (XA*) can often provide more insight by parsing the CSA header of DICOM data
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Experts,
+
+As part of the multi-session tensor-ICA an s-mode report with negative and positive values is generated in relation to each component/network. My question is what a positive versus negative s-values actually means?. Furthermore, if a component's s-values are correlated significantly with a behavioral measurement like IQ for example, is it a way to find out the direction of the correlation between the two variables?
+
+References on the subject will be greatly appreciated. 
+
+Best wishes/ Tom Eek
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear all,
+
+It is now possible to register for the summer school "Brain Image Analysis and Interpretation of Neurodegeneration" that the Free University (VU) Amsterdam is organising this summer.
+
+For more information about the schedule, topics, admission etc. please visit
+https://vu.nl/en/education/summerschool/brain-image-analysis-and-interpretation-of-neurodegeneration
+
+This is the course description in brief:
+
+Neuroimaging, the study of the brain with medical-imaging devices such as magnetic resonance scanners, is our number one in-vivo source of quantitative data on brain structure and function. While scientists are learning more and more about the human brain's anatomy and physiology/function, there is still a huge knowledge gap, especially when trying to explain complex symptoms. The more we learn about the human brain, the better we can diagnose and treat brain diseases such as dementia, multiple sclerosis, and brain tumors. Imaging modalities such as MRI and PET have improved in the last 30 years, to the extent that they can be reliably employed as non-invasive biomarkers not only for visualizing the brain’s anatomy but also physiology and function.
+
+This summer course will be held at the Amsterdam UMC, location VUmc. Here is where the Amsterdam Neuroscience research institute is as well as the Amsterdam Alzheimer’s, Multiple Sclerosis, and Brain Tumour Centres. Together with the Amsterdam UMC Department of Radiology and Nuclear Medicine, these are leading groups for clinical brain imaging research. Facilities include the imaging centre, MRI scanners from all MRI vendors, magnetoencephalography (MEG), a new whole-body PET scanner, and a 7T MRI scanner. The teachers of the Amsterdam Neuroimaging summer school have both a technical and clinical background and have years of experience in brain image analysis for research. Most teachers have built analysis pipelines, reusing existing image analysis algorithms in an innovative way for specific clinical research questions. The Amsterdam Summer School for Brain Image Analysis and Interpretation of Neurodegeneration is unique as it teaches brain image analysis from a clinical perspective.
+
+Feel free to contact us for more information and hope to see you there!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Melih,
+If you are using the standard FEAT pipeline then although a functional->standard transform will be calculated, all first-level statistics will be performed in a subject’s “native” space and only the statistical _outputs_ ( COPEs etc ) will be resampled into standard-space for higher-level analyses. If you are running a different process, please let me know the specific steps/commands etc.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Mar 2023, at 18:20, Melih Keskin <MELIH@UALBERTA.CA> wrote:
+
+Hi,
+
+I would like to put multiple participants' 4D data into the same standard space to do experiments. I was following this tutorial: https://www.youtube.com/watch?v=nETfSWPKSes&ab_channel=AndrewJahn. I did registration + put the data into MNI152_T1_2mm space just like in the tutorial. However, when I compare the final image (filtered_func_data) with the standard MNI152_T1_2mm_brain, I see that they are not on top of each other (I am assuming this would be the correct output). I attached the screenshot of the comparison. It also says "Displaying images with different orientations/fields of view" on the bottom left corner of the FSLeyes window. Could you help me with this? Let me know if you have any other questions. Thank you!
+
+Melih
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+<FSL_standard.png>
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi,
+
+I would like to put multiple participants' 4D data into the same standard space to do experiments. I was following this tutorial: https://www.youtube.com/watch?v=nETfSWPKSes&ab_channel=AndrewJahn. I did registration + put the data into MNI152_T1_2mm space just like in the tutorial. However, when I compare the final image (filtered_func_data) with the standard MNI152_T1_2mm_brain, I see that they are not on top of each other (I am assuming this would be the correct output). I attached the screenshot of the comparison. It also says "Displaying images with different orientations/fields of view" on the bottom left corner of the FSLeyes window. Could you help me with this? Let me know if you have any other questions. Thank you!
+
+Melih
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+What is the last version of FSL that supports fslview?
+
+I have reasons to prefer fslview over fsleyes:
+
+fslview has command line interface to open images with certain intensity range and color and overlays (order)
+fslview does NOT apply q/s-forms and thus one can test image registration in the same sense as FLIRT does it.
+
+Other less important reasons: fslview does what it should, shows images. In my opinion, adding compute-like functionality to a viewer (say attaching fslmaths to it) makes viewer complicated to use and learn. Simplification is achieved by separating functionality. It also reduces the number of buttons and simplifies interface/layout.
+
+Alternatively, please provide equivalent functionality in fsleyes.
+
+Yet another alternative: Can fslview be installed separately from the main package? How?
+
+Roman
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Tuesday, March 7, 2023 9:51 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fslview_deprecated in version 6.0.6.2
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi Rebecca,
+
+FSLView has not been included in FSL 6.0.6 and newer. Your options are to migrate to FSLeyes, or to stick with an older version of FSL.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Rebecca Hippen <R.Hippen@CAMPUS.LMU.DE>
+Sent: 06 March 2023 11:00
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fslview_deprecated in version 6.0.6.2
+ 
+Dear all,
+
+Does FSL version 6.0.6.2 include fslview_deprecated? I am getting the message "bash: fslview_deprecated: command not found". Other fsl commands word without a problem.
+
+Best,
+Rebecca
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello Tanja,
+Can you confirm which version of FSL you are using ( more $FSLDIR/etc/fslversion ) as this sounds like an issue that has been fixed in the latest version of FSL ( 6.0.6.3 ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Mar 2023, at 14:54, Tatjana Schmidt <ts887@CAM.AC.UK> wrote:
+
+Hello Matthew,
+
+thank you for your reply and for having a look at the file! I realize I did something wrong when posting the message so the text ended up in an attachment, here it is:
+
+
+Hello FSL experts,
+I have been trying to use BIANCA on a dataset and wanted to include spatial features, but there seems to be a problem with the transformation matrix files (from subject space to the MNI space) that I wanted to use to extract spatial features. I get the error "UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 78: invalid start byte" but I don't see anything wrong with the files (I attached one here as an example), and since they were automatically generated when I used FLIRT to register images from subject space to MNI space, I don't know what I can change. When I use BIANCA without the transformation matrix files it works absolutely fine.
+I would appreciate any tip, thank you in advance!
+
+Tanja
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+Paul has answered this question in the other thread.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Mar 2023, at 13:24, Zack Guo <gzt2019@MAIL.BNU.EDU.CN> wrote:
+
+Hello,
+ I have a question about the installation of FSL.
+
+ My OS is Ubuntu 20.04, I have a conda environment and I can use the conda command in the terminal before installing FSL. But when I installed the FSL successfully， I found that the location of the default conda changed to the conda installed by FSL. I want to use the prior conda, is there any way to solve it?
+
+Thank you so much!
+
+Best,
+Zack
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Zack,
+
+You should be able to resolve this by making sure that $FSLDIR/share/fsl/bin/ is added to your $PATH instead of $FSLDIR/bin/.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Zack Guo <gzt2019@MAIL.BNU.EDU.CN>
+Sent: 07 March 2023 13:37
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Installation of FSL
+ 
+Hello FSL community,
+
+I have a problem regarding the installation of FSL under Ubuntu 20.04.
+
+I have a local conda environment and I can use it in terminal before installing FSL using the fslinstaller.py script. But I installed FSL successfully, I found that the conda location is change to $FSLDIR (such as /opt/fsl/...). I want to use the previous conda, is there any way to solve it? Thank you!
+ 
+Best wishes,
+Zack
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Rebecca,
+
+FSLView has not been included in FSL 6.0.6 and newer. Your options are to migrate to FSLeyes, or to stick with an older version of FSL.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Rebecca Hippen <R.Hippen@CAMPUS.LMU.DE>
+Sent: 06 March 2023 11:00
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fslview_deprecated in version 6.0.6.2
+ 
+Dear all,
+
+Does FSL version 6.0.6.2 include fslview_deprecated? I am getting the message "bash: fslview_deprecated: command not found". Other fsl commands word without a problem.
+
+Best,
+Rebecca
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi shaun, 
+
+Hope you are doing well. Following up on our previous conversation, I have couple of questions. 
+
+1. I extracted the values from the tracts and surprisingly there are some tracts whose values are missing. I extracted those for about 2000 subjects, so I could observe a pattern and it is always the same tracts where there are zeros, specifically slf (90% of subjects have zeros), ar (70%) and cst, mcp, fx (40%). It made me think now is there something fundamentally wrong that I am doing here? I do not get any error messages, so I am finding it hard to decode what is going on. Do you have an idea what is going on here ? 
+
+2. Since the last time we talked I saw that there is a new(?) command called Xtract_stats which extracts the stats from the tracts. I extracted the above using fslmeants commands. Is there is a difference on how Xtract_stats extracts the values? 
+
+Please let me know if you would want more details. 
+
+Thank you. 
+
+Nabin
+
+On Mon, Mar 23, 2020 at 5:58 PM Nabin Koirala <nabinkoirala20@gmail.com> wrote:
+Thanks Shaun. 
+
+Stay Safe. 
+
+Best, 
+Nabin
+
+On Mon, Mar 23, 2020 at 5:30 PM Shaun Warrington <Shaun.Warrington@nottingham.ac.uk> wrote:
+Yes, the FA extraction process is basically the same depending on how it’s run, etc.. XTRACT is basically a wrapper around probtrackx: it calls probtrackx with pre-defined anatomical constraints and applies some further processing steps, e.g. for the reverse-seeding. So, you can treat the outputs very similarly.
+
+There are many zeros in the images, mostly in the non-brain regions. And after thresholding, there will be many more zeros again - values less than the threshold value have been set as zero but will still be included in the “-m” mean calculation. Using the non-zero “-M” option is best in this case.
+
+Regarding your AF waytotals, I generally find lower waytotals for the tractsInv run - the scale of the difference in this case may be related to data quality. Best to check the general appearance of the tract to make sure it has worked as expected. 
+
+Thanks,
+Shaun.
+
+On 23 Mar 2020, at 21:07, Nabin Koirala <nabinkoirala20@GMAIL.COM> wrote:
+
+Thanks Shaun, I was reporting the values from arculate fasciculus. So,the FA extraction is similar to the one after probtrackx but only difference is I guess the thresholding and native space transformation. Sorry to bother you a lot but one more thing while using the fslstats mean using the -M or -m has huge difference in the fiber lengths or probability distribution. Why would that be ? I understand that it is with or without zero voxels but should there be lots of zero voxels in there ? I cannot wrap my head around. Just to be in safe side, I should use the bigger M, right ?
+
+Thanks again. 
+
+Best,
+Nabin 
+
+On Mon, Mar 23, 2020 at 5:00 PM Shaun Warrington <Shaun.Warrington@nottingham.ac.uk> wrote:
+Hi,
+
+You’ll want to use the densityNorm.nii.gz file. With that, you can apply a consistent and meaningful threshold to remove the very low probabilities.
+
+It is possible to have large differences between the waytotals as the size of the seed and target masks may be very different depending on the tract/protocol. Out of interest, which tract are you reporting here?
+
+To get FA, you can now threshold and binarise the densityNorm files using fslmaths to get a tract mask. Typical threshold values are 0.001 or 0.005 - best to apply threshold and inspect the mask to see whether it is fit for your purposes. e.g. fslmaths densityNorm -thr 0.001 -bin densityNorm_bin
+
+Once you have a binary mask, you can multiply it by the subject’s FA map to get a tract specific distribution of FA values. Depending on how you have run XTRACT, you may need to transform the tract mask (or densityNorm) to the subject’s native space prior to multiplication (assuming the FA map is in the subject’s native space).
+
+Thanks,
+Shaun.
+
+On 23 Mar 2020, at 20:23, Nabin Koirala <nabinkoirala20@GMAIL.COM> wrote:
+
+Thank you Shaun. So, should I use "sum_density" or only "density" file in that case. Also, could it be that the waytotal is significantly different between the seed to target and when it is swapped, I can understand some variation but in one of my tracts the waytotal outside has 37717 and inside the tractINV folder is only 982. Could that be ? Or there is something wrong there. 
+Sorry for too many questions but if I want to get the FA values from these fibers now, is it possible ? If so, how and which of the output should I use and how is the thresholding done if needed. 
+Thanks a lot again for you kind support. 
+
+Best,
+Nabin 
+
+On Mon, Mar 23, 2020 at 4:06 PM Shaun Warrington <Shaun.Warrington@nottingham.ac.uk> wrote:
+Hi Nabin,
+
+1. For some of the tracts, we use a "reverse-seeding” approach. i.e. we run tractography with a seed and target, then we repeat tractography after switching the seed and target (target becomes seed and seed becomes target). The second run is stored in the tractsINV folder. After running both, the results are summed for the final probability distributions. So, you want to use the files in the parent/tract directory.
+
+ 2. The "density.nii.gz" file is the fibre probability distribution. The "density_lenths.nii.gz" file contains the fibre lengths, each voxel is the average streamline length - this is the "-ompl" probtrackx option. The "densityNorm.nii.gz" is the waytotal normalised fibre probability distribution. Just the "density.nii.gz" divided by the total number of valid streamlines. So fslstats mean will give you the mean of the probability distribution, the mean of the length of fibres and the mean of the normalised probability distribution respectively.
+
+Hope that helps!
+
+Thanks,
+Shaun.
+
+> On 23 Mar 2020, at 19:30, Nabin <nabinkoirala20@GMAIL.COM> wrote:
+>
+> Hi fsl team,
+>
+> I am trying to understand the output of xtract. There are couple of questions>
+> 1. What is difference between the two files one inside the tract folder and other inside the tractsINV folder ? Both has density_lengths and density and waytotal but are different than those outside of the folder.
+> 2. What would the output of fslstats mean or fslmeants would mean for the density, density_length and densityNorm files ?
+>
+> Thank you.
+>
+> Best,
+> Nabin
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment.
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored
+where permitted by law.
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+

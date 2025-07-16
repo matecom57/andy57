@@ -1,0 +1,389 @@
+ello I want to unsubscribe from the list 
+
+Get Outlook for iOS
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: Monday, June 17, 2024 9:47:24 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes settings
+ 
+Hi Paul,
+
+ 
+
+will try (not this week but soon) and keep you posted.
+
+Btw, changing to wayland did result in the same display.
+
+Cheers,
+
+Andreas
+
+ 
+
+Hi Paul,
+
+ 
+
+will try (not this week but soon) and keep you posted.
+
+Btw, changing to wayland did result in the same display.
+
+Cheers,
+
+Andreas
+
+ 
+Hi Andreas,
+
+I don't have access to a high-DPI display running native Linux, so can't experiment. But you could try installing 
+a newer version of FSLeyes - at the moment you will need to install it into a separate conda environment, using a 
+command such as:
+
+$FSLDIR/bin/conda create -p ~/fsleyes-env fsleyes
+
+changing ~/fsleyes-env to a location of your preference, and then calling  that version instead of the one in 
+$FSLDIR.
+
+Paul
+
+Hi Paul,
+I am on native Ubuntu 22, not WSL. It runs on X11 but I could switch to Wayland.
+Cheers,
+Andreas
+
+
+Am 17.06.2024 um 13:47 schrieb Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk>:
+
+﻿
+Hi Andreas,
+
+What X server are you using? I can't reproduce this issue when using vcxsrv, or the built-in WSL Wayland server.
+
+Note that, as of the next FSL release, it should no longer be necessary to install a separate X server when 
+installing FSL in WSL.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 17 June 2024 11:57
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes settings
+ 
+Hi PAul,
+
+Hi Andreas,
+
+What X server are you using? I can't reproduce this issue when using vcxsrv, or the built-in WSL Wayland server.
+
+Note that, as of the next FSL release, it should no longer be necessary to install a separate X server when 
+installing FSL in WSL.
+
+Paul
+
+
+Hi PAul,
+
+
+
+sorry - I mean the icons in the screenshot attached.
+
+These are quite small on my screen, presumably due to the high inherent resolution of the display.
+
+I have already upscaled to 200% but that does not increase these icons within fsleyes.
+
+Is there a way to get these bigger?
+
+
+
+Thanks!
+
+Cheers-
+
+Andreas
+
+Am 17.06.24 um 11:09 schrieb Paul McCarthy:
+Hi Andreas,
+
+The toolbar should appear when you load an image.
+
+Thanks,
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 14 June 2024 23:22
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes settings
+ 
+Hi,
+
+how can I increase the icons in second row toolbar of fsleyes (i.e.
+where the movie mode etc. is) in ubuntu 22? Is there a solution to get
+these bigger?
+
+Thx and cheers,
+
+Andreas
+
+
+Hi Andreas,
+
+The toolbar should appear when you load an image.
+
+Thanks,
+
+Paul
+
+Hi,
+
+how can I increase the icons in second row toolbar of fsleyes (i.e.
+where the movie mode etc. is) in ubuntu 22? Is there a solution to get
+these bigger?
+
+Thx and cheers,
+
+Andreas
+
+Dear FSL users,
+                        We are pleased to announce the release of FSL 6.0.7.12.
+
+Release highlights:
+
+* Improvements to running bet4animal on MacOS, courtesy of Takuya Hayashi.
+* Bug fix to invwarp which should result in major performance improvements.
+* A separate X server is no longer required when installing FSL into a WSL2 environment.
+* topup: Some fields will have small improvements to boundary slices.
+
+The full changelog can be found at:
+
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/development/history/changelog-6.0.7.12.md
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in 
+beta please use the link above if you encounter any problems.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+Hi,
+
+I am trying to make myself familiar with fslpy and try to run feat from python. I see a difference how feat 
+behaves when calling it from cmd (bash) and from python script.
+
+I have rs_fmri.nii.gz and mprage.nii.gz in /data directory and corresponding path entries in design.fsf. 
+
+1. bash
+/opt/fsl/bin/feat /data/design.fsf
+This starts the feat and creates working directory /data/rs_fmri.ica, where all the ICA outputs are stored
+
+2. python
+
+from fsl.wrappers import feat as feat
+
+feat('/data/design.fsf')
+I see feat running in htop, but there is no /data/rs_fmri.ica created. Searching entire harddrive does not find 
+any outptuts like report.html
+
+Thanks for hints,
+
+Martin
+
+
+Hi Andreas,
+
+Unfortunately this is due to some breaking changes in the latest numpy release (2.0). I'm working on updating the 
+FSLeyes code, but in the meantime you could downgrade the version of numpy that you have installed - you should 
+be able to use a command such as:
+
+$FSLDIR/bin/conda install -p ~/fsleyes-env "numpy=1.*"
+
+Paul
+
+Hi Ruiqing
+
+ 
+
+Yes that looks about right. You can change the max intensity modulation if you want to make it look nicer. You 
+can also see the command line that would generate this display through the Menu ( Settings -> Ortho View 1 -> 
+Show command line for scene)
+I am not sure if there is a NIFTI-compatible format for saving the combined FA-V1 map…
+ 
+
+ 
+
+Cheers
+
+Saad
+
+Hi Mariana
+
+ 
+
+If you want to be sure that you are providing the correct input file, why not give the full path to the file?
+
+ 
+
+Cheers
+
+Saad
+
+I know you are really backed up now due to the FSL course in Osaka, but I wonder if Matthew has had the time to 
+look at my fill-holes question? I actually did make it work using 'imfill' in Matlab slice-by-slice, but I just 
+find it so confusing that the fslmaths command -fillh does nothing to the image. Also, the niftiwrite-command i 
+matlab changes the space of the images (even if one in the output includes the 'info' tag from the niftiinfo of 
+the input image) and one has to realign them to the previous space to not get warnings pertaining coordinates. It 
+is the z-coordinates that are translated; hence the volume is parallely moved upwards in the z-direction compared 
+to the input mask volume. So I would like to, if possible, to stay in FSL space while performing the filling.
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Hi Paul,
+
+
+
+it seems better but I now get:
+
+WARNING          __init__.py  804: create          - GLContext callback function raised ValueError: Unable to
+avoid copy while creating an array as requested.
+If using `np.array(obj, copy=False)` replace it with `np.asarray(obj)` to allow a copy when needed (no behavio
+r change in NumPy 1.x).
+For more details, see https://numpy.org/devdocs/numpy_2_0_migration_guide.html#adapting-to-changes-in-the-copy
+-keyword.
+Traceback (most recent call last):
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/gl/__init__.py", line 801, in create
+   ready()
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/main.py", line 585, in realCallback
+   callback()
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/main.py", line 372, in buildGui
+   frame = makeFrame(namespace[0],
+           ^^^^^^^^^^^^^^^^^^^^^^^
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/main.py", line 807, in makeFrame
+   frame = fsleyesframe.FSLeyesFrame(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/frame.py", line 311, in __init__
+   self.__restoreState(restore)
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/frame.py", line 1466, in __restoreState
+   layouts.loadLayout(self, 'default')
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/layouts.py", line 306, in loadLayout
+   applyLayout(frame, name, layout, **kwargs)
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/layouts.py", line 344, in applyLayout
+   frame.addViewPanel(vp, defaultLayout=False)
+ File "/home/andreas/fsleyes-env/lib/python3.12/site-packages/fsleyes/frame.py", line 511, in addViewPanel
+   panel = panelCls(self.__mainPanel, self.__overlayList, childDC, self)
+
+hi everyone, 
+recently after a major Windows 11 update, I can not launch fsl in my wsl ubunto machine and encounter the 
+following error:
+
+application-specific initialization failed: couldn't connect to display "10.255.255.254:0"
+Error in startup script: couldn't connect to display "10.255.255.254:0"
+    while executing
+"load /home/amani/fsl/lib/libtk8.6.so"
+    ("package ifneeded Tk 8.6.12" script)
+    invoked from within
+"package require Tk"
+    (file "/home/amani/fsl/tcl/fslstart.tcl" line 19)
+    invoked from within
+"source [ file dirname [ info script ] ]/fslstart.tcl"
+    (file "/home/amani/fsl/tcl/fsl.tcl" line 71)
+    invoked from within
+"source ${FSLDIR}/tcl/${origname}.tcl"
+    (file "/home/amani/fsl/bin/fsl" line 20)
+
+
+do you have any idea to troubleshoot this error?
+
+I appreciate any help you can provide,
+Yunus
+
+
+
+Dear Maedeh,
+For your first question: The model allows for each subject to have an individual “baseline” response plus the 
+common A/B condition response. These individual variance(s) are explained by columns 2-9, while the first column 
+is modelling the condition response ( the EV of interest ). A separate column is needed for each subject, so in 
+this case 8 extra columns are needed.
+
+For the second question: Yes you can model as many groups as needed, e.g.
+
+1 0 0 0
+1 0 0 0
+…….
+0 1 0 0
+0 1 0 0
+…….
+0 0 1 0
+0 0 1 0
+…….
+0 0 0 1
+0 0 0 1
+
+and add t-contrasts as required. You may want to add an f-test on enough contrasts to “span” the groups ( e.g. on 
+1 -1 0 0, 0 1 -1 0, 0 0 1 -1 ) and use that to determine significance ( if want to control the error rate across 
+contrasts ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 15 Jun 2024, at 13:27, maedeh khalilian <maedeh.kh73@GMAIL.COM> wrote:
+
+Dear Matthew
+Thank you very much for your help. 
+I have 2 more questions question regarding 2 sample paired ttest. and unpaired ttest.
+1- For example if I have 9 subjects under condition A and the same 9 under condition B. How would be the design 
+and contrast? I have read the documentation in FSL site: 
+Two-Sample Paired T-test (Paired Two-Group Difference)
+We will follow the setup in the FEAT manual where we have a group of 8 subjects scanned under two different 
+conditions, A and B. Condition A will be entered as the first 8 inputs, and condition B as the second 8 inputs, 
+with the subjects in the same order in each case (ordering is, naturally, very important).
+
+The design matrix (design.mat) looks like
+
+
+
+Dear Emil,
+It looks like you already have a conda environment installed - do you have an existing  “.condarc” file in your 
+$HOME directory, as this could be overriding some of the installer’s behaviour?
+
+Kind Regards 
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+

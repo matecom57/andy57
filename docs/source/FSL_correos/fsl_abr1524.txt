@@ -1,0 +1,580 @@
+The brain is a complex network that underlies our thoughts and actions. Disruption of brain network has been associated with neurological and psychiatric disorders, such as Alzheimer’s disease. Understanding how brain network operates in supporting cognitive functions is fundamental for improving performance, treating disorders and developing next generation of artificial intelligence. 
+
+Recent works from Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs that are causal for memory formation. We are developing imaging, modelling and interventional techniques to define and modulate this memory network in rodent models and humans. These techniques will have potential for enhancing memory and the diagnosis and treatment of cognitive impairment and dementia.
+
+This PhD project will develop a computational brain model based on The Virtual Brain platform to simulate memory formation and predict the effects of network modulation. The model will be validated by cell-type specific neuronal recordings, targeted neuromodulation and brain network imaging using simultaneous calcium photometry, optogenetic neuromodulation and fMRI in rodents. 
+
+We welcome highly motivated individuals with backgrounds in biomedical/electrical engineering, computer science, biological science, medicine or relevant fields to join this challenging project. Experiences with neural modelling, neuroimaging and programming language are desirable.
+For enquiry: A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+
+
+
+
+Hi,
+
+Do FSL commands work when you use the call_fsl function? That is the recommended approach, rather than using the "!<command>" syntax.
+
+Paul
+
+Hello FSL Users,
+
+I installed the FSL program on my Windows 11 computer according to the instructions provided on the FSL FMRIB site.
+However, when I ran the 2nd level analysis in Feat, I encountered the following error.
+
+child process exited abnormally
+while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -flame1" -b 60 -N feat3a_flame -h $preID -l logs "
+     invoked from within
+"if { $done_something==0 } {
+
+  if { ! $fmri(inmelodic) } {
+     if { $fmri(level)==1 } {
+        for { set session 1 } { $session <= $fmri(mult..."
+     (file "home/ruveyda/fsl/bin/feat" line 390)
+
+How can I solve this error, can you please help me?
+
+
+Yours sincerely.
+
+Hi Matt, bug report (log file attached):
+
+keith@Saruman ~ % $FSLDIR/bin/update_fsl_release
+Log file:
+/var/folders/xy/9hnt0p39799cjcyfkn2wy3fr0000gn/T/update_fsl_release_x8s8dnom.log
+
+FSL 6.0.7.10 selected for installation
+A new version of FSL is available
+  FSL installation directory:
+/usr/local/fsl
+  Installed version:          6.0.7.9
+
+Latest available version:   6.0.7.10
+
+Do you want to update your FSL installation? [y/n]: y
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldow
+nloads/fslconda/releases/fsl-6.0.7.10_macos-M1.yml...
+Updating /usr/local/fsl from version 6.0.7.9 to 6.0.7.10...
+Your administrator password is needed to update FSL:
+Password:Password accepted
+/
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/update_fsl_release", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsl/base/update_fsl_release.py", line 158, in main
+    do_update(fsldir, installed, ctx)
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsl/base/update_fsl_release.py", line 70, in do_update
+    ctx.run(fi.Process.monitor_progress, cmd, total=output)
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsl/installer/fslinstaller.py", line 1586, in run
+    return process_func(admin=self.need_admin,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsl/installer/fslinstaller.py", line 1056, in monitor_progress
+    raise RuntimeError('This command returned '
+RuntimeError: This command returned an error: /usr/local/fsl/bin/mamba env update -f /private/var/folders/xy/9hnt0p39799cjcyfkn2wy3fr0000gn/T/tmpnt1ongy3/fsl-6.0.7.10_macos-M1.yml -p /usr/local/fsl
+keith@Saruman ~ %
+
+
+########################################################################
+
+
+The brain is a complex network that underlies our thoughts and actions. Disruption of brain network has been associated with neurological and psychiatric disorders, such as Alzheimer’s disease. Understanding how brain network operates in supporting cognitive functions is fundamental for improving performance, treating disorders and developing next generation of artificial intelligence. 
+
+Recent works from Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs that are causal for memory formation. We are developing imaging, modelling and interventional techniques to define and modulate this memory network in rodent models and humans. These techniques will have potential for enhancing memory and the diagnosis and treatment of cognitive impairment and dementia.
+
+This PhD project will develop a computational brain model based on The Virtual Brain platform to simulate memory formation and predict the effects of network modulation. The model will be validated by cell-type specific neuronal recordings, targeted neuromodulation and brain network imaging using simultaneous calcium photometry, optogenetic neuromodulation and fMRI in rodents. 
+
+We welcome highly motivated individuals with backgrounds in biomedical/electrical engineering, computer science, biological science, medicine or relevant fields to join this challenging project. Experiences with neural modelling, neuroimaging and programming language are desirable.
+For enquiry: A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+
+
+Hi Manuel,
+
+Thank you for sharing the useful information! The method you described sounds very promising. I will try it out.
+
+I also appreciate you pointing me towards the paper.
+
+I'm not familiar with ANTS, so it may take some time, but I'll report back on how it goes.
+
+Thanks again,
+
+Kikuko
+
+Hi, 
+Thanks for your reply
+I think I said the wrong path. 
+I wrote the same code in the path you mentioned.
+But it still doesn't seem to work.
+How do I fix that ?
+ 
+
+2024. 4. 12. 오후 9:55, Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> 작성:
+
+Hi,
+
+I think the MATLAB startup file needs to be located in ~/Documents/MATLAB/startup.m for it to take effect.
+
+Paul
+
+
+Dear colleagues,
+
+
+On behalf of the Molecular Connectivity Working Group, I am delighted to invite you to our next symposium with the title “What is brain connectivity?”, bringing together leading experts in the field of fMRI, DWI, EEG, and molecular imaging. Registration is free and travel bursaries for early-career researchers are available (apply before March 31st!). 
+
+
+📅 Date: May 3, 2024
+🕒 Time: 9:00 am - 1:00 pm CEST
+
+ 📍   Virtually + @TranslaTUM, University Hospital “Klinikum rechts der Isar”, Ismaninger Str. 22, Munich 
+
+
+Key Highlights:
+
+·   🌐 Recognized experts
+
+·   🤝 Networking opportunities
+
+·   🎓 Virtual and on-site hybrid event 
+
+·   📋  No registration fees
+
+·   🚂 Travel bursaries for PhD students/Post-Docs
+
+
+Goal
+
+ 
+
+The symposium aims to identify a common denominator across modalities in the definition of macroscale brain connectivity. The event is supposed to provide a baseline for follow-up debates on standardized nomenclature for molecular connectivity.
+
+
+🌐 For more information visit: tinyurl.com/MCWGMunich2024
+
+
+Registration:
+
+
+Registration for the symposium is open and free but obligatory. Places are limited so do not miss out on the opportunity to be a part of this event by securing your spot here .
+
+
+Travel bursaries:
+
+
+Travel bursaries of up to 500€ will be awarded to eight early career researchers outside Bavaria to attend in person. Bursaries are reserved to researchers pursuing doctoral degree or having a doctoral degree obtained after May 2019. We encourage all eligible persons to apply, the deadline is March 31, 2024, 23:59 CEST. Winners will be announced at the beginning of April.
+
+
+📝 For more information about the bursaries and to apply, please visit: https://molecularconnectivity.com/events/nomenclature-symposium-2024/#travelbursaries
+
+
+Thanks to the sponsors Deutsche Forschungsgemeinschaft (DFG) - German Research Foundation, Bruker (PMOD), Curium Pharma, Technical University of Munich for the support.
+
+
+Who we are
+
+The Molecular Connectivity Working Group is an initiative of an international and interdisciplinary group of neuroimaging experts with background in biomedicine, health sciences, neuroscience, and physics. Our ultimate aim is to establish Molecular imaging as a tool to study brain Connectivity.
+
+Hi Keith,
+
+That is strange - the update_fsl_release command worked for me on Linux and intel macOS. In any case, the easiest option would just be to re-install FSL instead of using the update_fsl_release command.
+
+Paul
+
+Hi,
+
+I think the MATLAB startup file needs to be located in ~/Documents/MATLAB/startup.m for it to take effect.
+
+Paul
+
+Dear FSL experts,
+
+I am currently using melodic to calculate group ICA on 24 subject's CIFTI files, representing 24 preprocessed and aligned sessions. The actual command I am using is:
+
+melodic -i input.txt -o output_dir --CIFTI --nomask --nobet --bgthreshold=-1e10 -d 20 --report --Oall --tr=0.8
+
+While inspecting the output 'melodic_mix', which contains the estimated mixing matrix for each fo the 20 components, each timeseries is, as expected, of length m=2*T-1, where T is the number of cifti timepoints. However, as you can see in the attached image, every single one of the pseudotimeseries blows out in value towards the end. I cannot see why this would be the case, since every subject is comparable and of same length T. In order to confirm that this was not caused by the last subject(s) covariance matrix being particular, I reran the aforementioned command (MIGP input order randomised by default) obtaining the same result every single time.
+
+I expected an interpretable mixing matrix since, as the MIGP paper by Smith et al. states, "W becomes a running estimate of the final group-average set of spatial eigenvectors, and can be considered a pseudo-timeseries matrix of m “timepoints” and v voxels."
+
+To discard any other sources of error, I ran the same command again, but now without using MIGP:
+
+
+melodic -i input.txt -o output_dir_nomigp --CIFTI --nomask --nobet --bgthreshold=-1e10 -d 20 --report --Oall --tr=0.8 --disableMigp
+
+As expected, the resulting mixing timeseries are of length T*S where S is the total number of input sessions. Some exemplary timeseries are averaged across subjects and shown in the second attachement. By doing this, I can confirm that the mixing matrix looks as expected when not using MIGP.
+
+Do you have any intuition why MIGP might cause this phenomenon on the mixing matrix?
+
+Thank you very much,
+
+Diego
+
+
+
+Dear FSL Main list forum members,
+
+
+Thank you so much for solving my previous problem.
+I'm trying to use FSL in MATLAB, but I'm having problems.
+
+First, I wrote and saved the FSL executable code in the Matilab startup.m file. 
+The code is shown below.
+
+% /Users/myname/matlab/startup.m
+%------------ FSL ------------------------%
+setenv( 'PATH' , [getenv( 'PATH' ) ':/usr/local/fsl/bin' ]);
+setenv( 'FSLDIR', '/usr/local/fsl' );
+setenv('FSLOUTPUTTYPE', 'NIFTI_GZ');
+fsldir = getenv('FSLDIR');
+fsldirmpath = sprintf('%s/etc/matlab',fsldir);
+path(path, fsldirmpath);
+clear fsldir fsldirmpath;
+
+Then, I tried to run FSL inside MATLAB by using the system function or !
+I want to run feat, so I enter that code on the command line.
+There are no errors in the execution, but it keeps loading without producing any results. 
+
+붙여넣은 그래픽-1.png
+
+붙여넣은 그래픽-2.png
+
+When I type that command to try and get the fsl gui to run, it looks like this, how do I fix it ?
+
+Thank you for your attention and assistance.
+
+Hello everyone, we would like to select the basolateral and central nucleus of the amygdala as ROIs for our analysis, using the Jülich histological atlas (i.e.: centro-median nucleus & latero-basal nucleus). Does anyone know how to extract regions from this (probabilistic) atlas?
+
+Any help is highly appreciated!
+Regards, Frieda
+
+Hi FLS group:
+
+I am trying to run eddy_cpu script for my file but is not working, I am attaching the whole messages. Please let me know how to proceed or fix this issue:
+
+ /home/acamargofb/fsl/bin/eddy_cpu --imain=eddy_in.nii --mask=eddy_mask.nii --acqp=eddy_config.txt --index=eddy_indices.txt --bvecs=bvecs --bvals=bvals --data_is_shelled --slm=linear --out=dwi_post_eddy --verbose --niter=3
+
+Warning: In a future release the first argument will have to be "diffusion" when using eddy on diffusion data, i.e.
+eddy diffusion --imain='my_ima' --acqp='my_acqp' ...
+
+Warning: Writing of individual text files will be discontinued in favour of a single .json file in future versions
+
+Reading images
+Performing volume-to-volume registration
+Running Register
+Loading prediction maker
+Evaluating prediction maker model
+Calculating parameter updates
+Iter: 0, Total mss = 44.8532
+Loading prediction maker
+Evaluating prediction maker model
+Calculating parameter updates
+Iter: 1, Total mss = 14.6387
+Loading prediction maker
+Evaluating prediction maker model
+Calculating parameter updates
+Iter: 2, Total mss = 12.7865
+Running sm.ApplyB0LocationReference
+Running sm.PolateB0MovPar
+Running Register
+Loading prediction maker
+Evaluating prediction maker model
+Estimated hyperparameters: 5.289824
+33.104380
+-2.284134
+14.272191
+-5.236213
+1.752514
+2.048877
+5.753699
+22.905748
+-14.000177
+
+EDDY::ReplacementManager::Update: Mismatched DiffStatsVector object
+EDDY::EddyHelperClasses.cpp:::  void EDDY::ReplacementManager::Update(const EDDY::DiffStatsVector&):  Exception thrown
+EDDY::eddy.cpp:::  EDDY::DiffStatsVector EDDY::detect_outliers(const EddyCommandLineOptions&, ScanType, std::shared_ptr<const DWIPredictionMaker>, const NEWIMAGE::volume<float>&, const ECScanManager&, unsigned int, unsigned int, ReplacementManager&):  Exception thrown
+EDDY::eddy.cpp:::  EDDY::DiffStatsVector EDDY::DetectOutliers(const EddyCommandLineOptions&, ScanType, std::shared_ptr<const DWIPredictionMaker>, const NEWIMAGE::volume<float>&, const ECScanManager&, ReplacementManager&):  Exception thrown
+EDDY::eddy.cpp:::  EDDY::ReplacementManager* EDDY::Register(const EddyCommandLineOptions&, ScanType, unsigned int, const std::vector<float, std::allocator<float> >&, SecondLevelECModelType, bool, ECScanManager&, ReplacementManager*, NEWMAT::Matrix&, NEWMAT::Matrix&):  Exception thrown
+EDDY::: Eddy failed with message EDDY::eddy.cpp:::  EDDY::ReplacementManager* EDDY::DoVolumeToVolumeRegistration(const EddyCommandLineOptions&, ECScanManager&):  Exception thrown
+
+
+Hi Shaun,
+
+I'm considering the challenges of using the dHCP pipeline due to missing images. Therefore, I'll proceed with trying the BBR approach.
+Your input on this matter has been very helpful in clarifying the issue.
+Thank you for the discussion.
+
+Best regards,
+Kikuko
+
+I haven’t done the neonate registration myself, but it looks like the dHCP pipeline uses BBR to the T2 template. It may be worth having a look at the dHCP processing pipelines for registration: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6299258/ and https://git.fmrib.ox.ac.uk/matteob/dHCP_neo_dMRI_pipeline_release
+
+ 
+
+Thanks,
+
+Shaun.
+
+Dear Paul:
+
+I just noticed something really weird. Probtrackv2_gpu would run when there is a concurrent process using the same GPU, but fails when there isn't any. 
+
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+Thank you for your quick response!
+
+> Do you have phase reversed data? i.e. 64 directions in one phase encoding direction and a blip (single, or a few volumes) in the opposite direction? This would be ideal for distortion corrections. Without correcting distortions, registrations will be very difficult and XTRACT results will be poor.
+
+Unfortunately, no, I don't have reversed encoding data. Just dMRI in phase encoding direction of AP and T1w(mprage).
+
+> If not, there are some tools available that you could try to generate a field map using the T1 as a reference, e.g. Synb0-DisCo https://pubmed.ncbi.nlm.nih.gov/31075422/. I haven’t used this tool but colleagues have and it has worked for them.
+
+Thanks for the information. I have experience with Synb0-Disco. It worked very well for some data, but when I used it recently, it introduced some kind of artifact. So I didn't try this time. Anyway, I will try it.
+
+> Once you have completed distortion corrections, you can do registrations following the FDT guide https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#Registration_within_FDT. Note: for XTRACT you want non-linear warp fields (NIFTI files).
+
+I think I followed that guide. Here are the commands I used.
+(My FSL version is 6.0.7.6, and these commands and XTRACT usually work well for adult data.)
+
+
+After preprocessing(including eddy and some other processes) and skull stripping,
+
+flirt -in DTI.bedpostX/nodif_brain \
+    -ref T1_brain.nii.gz \
+    -omat DTI.bedpostX/xfms/diff2str.mat \
+    -searchrx -180 180 -searchry -180 180 -searchrz -180 180 \
+    -dof 6 -cost corratio -out b0_in_T1_space
+    # -dof 6 -cost normmi
+
+convert_xfm -omat DTI.bedpostX/xfms/str2diff.mat \
+    -inverse DTI.bedpostX/xfms/diff2str.mat
+
+flirt -in T1_brain.nii.gz \
+    -ref /usr/local/fsl/data/standard/MNI152_T1_2mm_brain.nii.gz \
+    -omat DTI.bedpostX/xfms/str2standard.mat -out T1_in_standard_space \
+    -searchrx -180 180 -searchry -180 180 -searchrz -180 180 \
+    -dof 12 -cost corratio
+
+convert_xfm -omat DTI.bedpostX/xfms/standard2str.mat \
+            -inverse DTI.bedpostX/xfms/str2standard.mat
+convert_xfm -omat DTI.bedpostX/xfms/diff2standard.mat \
+            -concat DTI.bedpostX/xfms/str2standard.mat DTI.bedpostX/xfms/diff2str.mat
+convert_xfm -omat DTI.bedpostX/xfms/standard2diff.mat \
+            -inverse DTI.bedpostX/xfms/diff2standard.mat
+
+fnirt --in=T1.nii.gz \
+    --aff=DTI.bedpostX/xfms/str2standard.mat \
+    --cout=DTI.bedpostX/xfms/str2standard_warp \
+    --config=T1_2_MNI152_2mm \
+    --iout=T1_in_standard_space
+
+invwarp -w DTI.bedpostX/xfms/str2standard_warp \
+        -o DTI.bedpostX/xfms/standard2str_warp \
+        -r T1_brain.nii.gz
+
+convertwarp -o DTI.bedpostX/xfms/diff2standard_warp \
+    -r /usr/local/fsl/data/standard/MNI152_T1_2mm_brain.nii.gz \
+    -m DTI.bedpostX/xfms/diff2str.mat \
+    -w DTI.bedpostX/xfms/str2standard_warp
+
+convertwarp -o DTI.bedpostX/xfms/standard2diff_warp \
+    -r DTI.bedpostX/nodif_brain_mask \
+    -w DTI.bedpostX/xfms/standard2str_warp \
+    --postmat=DTI.bedpostX/xfms/str2diff.mat
+
+
+Then I run XTRACT Human_baby.
+
+xtract -bpx DTI.bedpostX -out XTRACT_output -species HUMAN_BABY  -stdwarp DTI.bedpostX/xfms/standard2diff_warp DTI.bedpostX/xfms/diff2standard_warp -gpu
+
+
+The result is attached to another mail.
+When I overlay the images, i.e. Schuh_lowres, T1-brain, b0_in_T1_space, and T1_in_standard_space, they are obviously not the right size.
+
+As I mentioned before, I only have a T1w structural image. But perhaps should I change the reference image to $FSLDIR/data/xtract_data/standard/Schuh40week/mri/schuh_lowres.nii.gz(it seems T2w, right?)? If so, what should I do with the fnirt config file?
+Or do you recommend introducing a T1w template for newborns from another source?
+
+
+Thank you very much for your help and time.
+
+ 
+
+Kikuko
+
+
+
+----- Original Message -----
+
+From: "Shaun Warrington" <000079c3707b0d26-dmarc-request_at_JISCMAIL_AC_UK_wdyyca5ekt24f4_1drk3886@icloud.com>
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Date: 2024/04/08 月 01:09
+Subject: Re: [FSL] Assistance Needed for Neonatal Tractography with XTRACT
+
+
+Hi Kikuko,
+ 
+Do you have phase reversed data? i.e. 64 directions in one phase encoding direction and a blip (single, or a few volumes) in the opposite direction? This would be ideal for distortion corrections. Without correcting distortions, registrations will be very difficult and XTRACT results will be poor.
+ 
+If not, there are some tools available that you could try to generate a field map using the T1 as a reference, e.g. Synb0-DisCo https://pubmed.ncbi.nlm.nih.gov/31075422/. I haven’t used this tool but colleagues have and it has worked for them.
+ 
+Once you have completed distortion corrections, you can do registrations following the FDT guide https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#Registration_within_FDT. Note: for XTRACT you want non-linear warp fields (NIFTI files).
+ 
+And yes, the Schuh_lowres is the correct template for neonatal XTRACT.
+ 
+Thanks,
+Shaun.
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Kikuko Kaneko <000091f2afcdfdcb-dmarc-request@JISCMAIL.AC.UK>
+Date: Monday, 8 April 2024 at 02:55
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Assistance Needed for Neonatal Tractography with XTRACT
+[You don't often get email from 000091f2afcdfdcb-dmarc-request@jiscmail.ac.uk. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+
+Dear FSL experts,
+
+I'm currently working on neonatal tractography using XTRACT but am encountering issues with the registration process. The data I have comes from clinical settings, specifically diffusion MRI with a 64-axis scheme, and unfortunately, I don't have any field maps. The only structural image available to me is an mprage.
+
+Could anyone provide guidance on how to successfully execute the registration under these conditions?
+
+And I would like to confirm if the correct template for registration in XTRACT is:
+$FSLDIR/data/xtract_data/standard/Schuh40week/mri/schuh_lowres.nii.gz. Could you please verify this for me?
+
+
+Best regards,
+Kikuko
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+This message and any attachment are intended solely for the addressee and may contain confidential information. If you have received this message in error, please contact the sender and delete the email and attachment. Any views or opinions expressed by the author of this email do not necessarily reflect the views of the University of Nottingham. Email communications with the University of Nottingham may be monitored where permitted by law.
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+########################################################################
+
+
+Hi Michel,
+
+It looks to me like a scanner reconfiguration (e.g. re-shimming) has taken place between the acquisition of these two images (see the attached screenshot). Topup expects the input image FOVs to match. Jesper may be able to advise further.
+
+Paul
+
+Hi Davide,
+
+Your ROI image (L_dACC.nii.gz) is not defined in the same space as your diffusion data.  I'm not sure what space it is aligned to, as it doesn't match your diffusion or your structural images.
+
+The ROI is aligned with the diffusion data when viewed in FSLeyes (i.e. they are aligned in the world coordinate system), but in order to use your FLIRT transformation matrix, the ROI image must also have the same voxel grid as the diffusion data.
+
+On an unrelated note, even though it doesn't appear to have caused problems here, I would suggest running fslreorient2std on all of your images before any other steps so that they all have a consistent voxel orientation - your diffusion data has LAS voxel orientation, whereas your structural data has LIA orientation.
+
+Paul
+
+Dear Emily,
+
+If you are using the transformed aCBF image output by asl_reg, then I believe that it will have been resampled to structural space using spline interpolation. While spline interpolation produces a better representation of the original data, it can introduce negative values. You can avoid this by using the .mat file output by asl_reg to transform the aCBF image yourself using trilinear interpolation, which will not introduce negative values.
+
+On a separate note, registering native aCBF images to a structural image transformed to MNI through a 12 dof transform might introduce errors, as I believe asl_reg only performs a 6 dof alignment. In other words, asl_reg expects the structural image to be a rigidly (rather than affinely) transformed version of the aCBF image. As such, I would recommend first running als_reg from native aCBF to native T1 and then combining the resulting transformation with your  T1 to MNI transformation, before performing a single resampling of your aCBF image to MNI space (using trilinear interpolation).
+
+Kind regards,
+Rick
+
+Hi Kikuko,
+
+ 
+
+Do you have phase reversed data? i.e. 64 directions in one phase encoding direction and a blip (single, or a few volumes) in the opposite direction? This would be ideal for distortion corrections. Without correcting distortions, registrations will be very difficult and XTRACT results will be poor.
+
+ 
+
+If not, there are some tools available that you could try to generate a field map using the T1 as a reference, e.g. Synb0-DisCo https://pubmed.ncbi.nlm.nih.gov/31075422/. I haven’t used this tool but colleagues have and it has worked for them.
+
+ 
+
+Once you have completed distortion corrections, you can do registrations following the FDT guide https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#Registration_within_FDT. Note: for XTRACT you want non-linear warp fields (NIFTI files).
+
+ 
+
+And yes, the Schuh_lowres is the correct template for neonatal XTRACT.
+
+ 
+
+Thanks,
+
+Shaun.
+
+Dear FSL experts,
+
+I'm currently working on neonatal tractography using XTRACT but am encountering issues with the registration process. The data I have comes from clinical settings, specifically diffusion MRI with a 64-axis scheme, and unfortunately, I don't have any field maps. The only structural image available to me is an mprage.
+
+Could anyone provide guidance on how to successfully execute the registration under these conditions?
+
+And I would like to confirm if the correct template for registration in XTRACT is:
+$FSLDIR/data/xtract_data/standard/Schuh40week/mri/schuh_lowres.nii.gz. Could you please verify this for me?
+
+
+Best regards,
+Kikuko
+
+Dear Support,
+
+We are finding that after we register our subjects' aCBF maps (produced by MRICloud software in native space) to the MNI brain, that the values are in some cases becoming negative. We started by l/r reversing our native M0 and aCBF maps for each subject (both generated by MRI Cloud), registered our aCBF maps to the MNI 2 mm brain with asl_reg using skull-stripped T1s for each subject that had been reoriented and registered to the MNI brain (12 dof with FLIRT), and then visually QC’d the registrations afterwards. We then extracted the values from the peak voxels in various ROIs, and found that many took on negative values (across several ROIs for most of our 38 longitudinal subjects: 33 at baseline and 31 at follow up). The MRI cloud generated aCBF maps in native space do not exhibit this behavior and have no negative values. Do you have any idea why we may be getting these negative values when we register the aCBF maps with asl_reg?
+
+I will paste the command below for reference:
+
+asl_reg -i PREV${i}_S${s}_ASL_real_aCBF_native_rpi.nii.gz --sbet PREV${i}_S${s}_T1_FS_RPI_MNI_brain.nii.gz -s PREV${i}_S${s}_T1_RPI_MNI_head.nii.gz -o asl_reg_aCBF-native_to_MNI
+
+I read previously that using the perfusion image as the basis for registration was recommended, but did also test using flirt to 1) reg the M0 to the native T1 (6 dof), 2) reg the native T1 to MNI (12 dof), and then applied these transformations to the aCBF map, and found better registration results when using asl_reg.
+
+If there is any other info I can provide that would be helpful, please let me know.
+
+Thank you so much for your help!
+
+
+Dear FSL community, We are running the FSL eddy_openmp command on our DWI data (108 directions, b-values from 5 - 3000 mm/s^2) for slice-to-volume motion correction. The main problem we see in our raw data is horizontal striping, likely due to motion and when we run the FSL eddy_openmp command it smooths some of the artifacts. In other cases, however, it does not fully remove these motion artifacts. Please see attached 4 photos representing 2 of our cases before and after processing: image 1: Case 1 - An example of our pre-processed data before eddy_openmp and topup (note the horizontal lines visible in the coronal and sagittal sections) image 2: Case 1 - An example of our data after eddy_openmp and topup (note that the horizontal lines seem to be improved slightly but not fully resolved) image 3: Case 2 - An example of our RAW data image 4: Case 2- An example of our data after eddy_openmp and topup These are the parameters in our configuration file: $ eddy_openmp: --verbose --data_is_shelled --niter=8 --fwhm=10,8,4,2,0,0,0,0 --repol --mporder=6 --slspec=/DSS_LRZ/01_Projects/REPIMPACT/installed_tools/PNLNYpipeline_2023/pnlNipype/slspec.txt --s2v_niter=5 --s2v_lambda=1 --s2v_interp=trilinear Is is possible that there is a particular tag that we could change to get this slice-to-volume motion correction to be stronger? Or, one that we could add? If so does anyone have any recommendations? Thank you in advance for your input! Best, Kate
+
+Hi all,
+
+A postdoc position is available for immediate start down under in Melbourne, Australia!
+
+The position at Monash University involves working with neuroimaging data from the ABCD study to predict onset of non-suicidal self-injury in youths.
+
+See link:
+
+https://careers.pageuppeople.com/513/cw/en/job/663675/research-fellow-adolescent-brain-cognitive-development-abcd-study 
+
+ 
+
+Feel free to contact me with questions, and please share!
+
+ 
+
+Best,
+
+Lisanne
+
+ 
+
+Hi all,
+
+I’m looking to provide different tissue signal priors to FAST, but the documentation is a little sparse.
+
+What does the signal prior file that can be provided by -s look like?
+
+
+All the best,
+
+James
+

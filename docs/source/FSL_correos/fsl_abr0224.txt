@@ -1,0 +1,313 @@
+Good morning,
+I am running higher-level FEAT analyses.
+I would like to compare two groups in terms of seed-based functional connectivity.
+By using a cluster threshold of z>2.3, I am not obtaining any difference among groups.
+How much I can decrease the z threshold for trying to detect subtle (but still sound) differences between groups?
+If I use an uncorrected threshold, which is the minimum z level I have to set up for looking the results on thresh_zstat maps?
+Thanks for your help.
+
+Hi Jesper. Thanks for your reply.
+
+The command line I used for topup is the following:
+topup --imain=AP_PA_b0 \                      
+
+      --datain=acqparams.txt \
+
+      --config=b02b0.cnf \
+
+      --out=topup_AP_PA_b0 \
+
+      --iout=topup_AP_PA_b0_iout \
+
+      --fout=topup_AP_PA_b0_fout
+
+
+fslinfo topup_AP_PA_b0_iout.nii.gz
+
+data_type FLOAT32
+
+dim1 144
+
+dim2 144
+
+dim3 80
+
+dim4 2
+
+datatype 16
+
+pixdim1 1.666667
+
+pixdim2 1.666667
+
+pixdim3 1.700000
+
+pixdim4 5.300000
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+file_type NIFTI-1+
+
+
+Thanks for your help.
+Best,
+Pamela
+
+
+On 02-04-2024, at 06:45, Jesper Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear Pamela,
+ 
+my suspicion is that the problem is with the dimensionality of the topup field. Can you please send me the command line you used for topup, and the output of fslinfo on the 4D input file to topup.
+ 
+Best regards Jesper
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Pamela Patricia Gonzalez Mendez <0000c7ca8df1f972-dmarc-request@JISCMAIL.AC.UK>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, 29 March 2024 at 17:12
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Assistance with FSL on Intel Core i9 without GPU - Missing eddy_openmp and eddy Execution Issues
+ 
+Thank you so much Jesper. 
+I ran the command line following your suggestions, and now I have 3 output files. However, I still getting errors.
+ 
+Outputs:
+ 
+ 
+ 
+ 
+
+Dear Pearly,
+
+ 
+
+    Hello FSL Community,
+
+    
+
+    I ran eddy_correct and it worked, but I need the motion parameters (translation in x,y and z axis and the rotation in the x, y and z axis) for each volume in each subject. Therefore, I need to run the eddy command to get the output file (eddy_correct_index.txt or the eddy_output.eddy_parameters).
+
+ 
+
+It is not clear to me why you need the motion parameters? If it is in order to be able to rotate the bvecs, you don't need to do that manually. The rotated bvecs will be part of eddy's default output.
+
+   
+
+    However, I see on this website: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide that this command is no longer available and I have to run the eddy_cuda or eddy_openmp command.
+
+    
+
+    On the server I am using there is an eddy_cuda10.2 executable in the FSL bin directory. But when I run it, it gives the error: "Terminating program".
+
+    
+
+    Could you please provide me with any guidance as to how to solve this problem?
+
+    
+
+what version of FSL are you running? If it is a reasonably recent one you will have two executables, one named eddy_cuda10.2 and one named eddy_cpu. There should also be a python script named eddy, which will detect your hardware and launch the right executable based on that.
+
+The short story is that you can only use eddy_cuda10.2 if you have an Nvidia GPU set up on your system. Otherwise you need to use eddy_cpu.
+
+If you are not using a reasonably recent FSL version I recommend downloading the latest version and try that.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+    I would highly appreciate it.
+
+    
+
+    Kind regards,
+
+    Pearly
+
+    
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+Dear Pamela,
+
+ 
+
+my suspicion is that the problem is with the dimensionality of the topup field. Can you please send me the command line you used for topup, and the output of fslinfo on the 4D input file to topup.
+
+ 
+
+Best regards Jesper
+
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Pamela Patricia Gonzalez Mendez <0000c7ca8df1f972-dmarc-request@JISCMAIL.AC.UK>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, 29 March 2024 at 17:12
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Assistance with FSL on Intel Core i9 without GPU - Missing eddy_openmp and eddy Execution Issues
+
+ 
+
+Thank you so much Jesper.
+
+I ran the command line following your suggestions, and now I have 3 output files. However, I still getting errors.
+
+ 
+
+Outputs:
+
+ 
+
+ 
+
+ 
+
+ 
+
+Command line:
+
+ 
+
+eddy --imain=dwidata \
+
+     --mask=b0_brain_mask \
+
+     --index=index1.txt \
+
+     --acqp=acqparams.txt \
+
+     --bvecs=dwidata.bvec \
+
+     --bvals=dwidata.bval \
+
+     --fwhm=0 \
+
+     --topup=topup_AP_PA_b0 \
+
+     --flm=quadratic \
+
+     --out=eddy_unwarped_images \
+
+     --data_is_shelled
+
+ 
+
+Warning: In a future release the first argument will have to be "diffusion" when using eddy on diffusion data, i.e.
+
+eddy diffusion --imain='my_ima' --acqp='my_acqp' ...
+
+ 
+
+Warning: Writing of individual text files will be discontinued in favour of a single .json file in future versions
+
+ 
+
+Image Exception : #3 :: Attempted to add images of different sizes
+
+Attempted to add images of different sizes
+
+EDDY::ECScanClasses.cpp:::  NEWIMAGE::volume<float> EDDY::ECScan::field_for_scan_to_model_transform(std::shared_ptr<const NEWIMAGE::volume<float>>, NEWIMAGE::volume<float> *, NEWIMAGE::volume<float> *) const:  Exception thrown
+
+EDDY::./ECScanClasses.h:::  NEWIMAGE::volume<float> EDDY::ECScan::FieldForScanToModelTransform(std::shared_ptr<const NEWIMAGE::volume<float>>, NEWIMAGE::volume<float> &, NEWIMAGE::volume<float> &) const:  Exception thrown
+
+EDDY::ECScanClasses.cpp:::  NEWIMAGE::volume<float> EDDY::ECScan::transform_to_model_space(const NEWIMAGE::volume<float> &, std::shared_ptr<const NEWIMAGE::volume<float>>, NEWIMAGE::volume<float> &, bool) const:  Exception thrown
+
+EDDY::ECScanClasses.cpp:::  NEWIMAGE::volume<float> EDDY::ECScan::GetUnwarpedIma(std::shared_ptr<const NEWIMAGE::volume<float>>, NEWIMAGE::volume<float> &) const:  Exception thrown
+
+EDDY::ECScanClasses.cpp:::  NEWIMAGE::volume<float> EDDY::ECScanManager::GetUnwarpedScan(unsigned int, NEWIMAGE::volume<float> &, ScanType) const:  Exception thrown
+
+EDDY::eddy.cpp:::  std::shared_ptr<DWIPredictionMaker> EDDY::LoadPredictionMaker(const EddyCommandLineOptions &, ScanType, const ECScanManager &, unsigned int, float, NEWIMAGE::volume<float> &, bool):  Exception thrown
+
+EDDY::eddy.cpp:::  ReplacementManager *EDDY::Register(const EddyCommandLineOptions &, ScanType, unsigned int, const std::vector<float> &, SecondLevelECModelType, bool, ECScanManager &, ReplacementManager *, NEWMAT::Matrix &, NEWMAT::Matrix &):  Exception thrown
+
+EDDY::: Eddy failed with message EDDY::eddy.cpp:::  ReplacementManager *EDDY::DoVolumeToVolumeRegistration(const EddyCommandLineOptions &, ECScanManager &):  Exception thrown
+
+
+
+
+fslinfo dwidata.nii.gz 
+
+data_type INT16
+
+dim1 128
+
+dim2 128
+
+dim3 60
+
+dim4 37
+
+datatype 4
+
+pixdim1 1.750000
+
+pixdim2 1.750000
+
+pixdim3 2.000000
+
+pixdim4 4.100679
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+file_type NIFTI-1+
+
+
+
+
+
+
+
+fslinfo b0_brain_mask
+
+data_type FLOAT32
+
+dim1 128
+
+dim2 128
+
+dim3 60
+
+dim4 1
+
+datatype 16
+
+pixdim1 1.750000
+
+pixdim2 1.750000
+
+pixdim3 2.000000
+
+pixdim4 4.100679
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+file_type NIFTI-1+
+
+
+
+
+
+
+

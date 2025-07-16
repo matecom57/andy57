@@ -1,0 +1,1222 @@
+Dear Jack,
+ 
+    Hi Jesper
+   
+    >One way around this is to use applywarp instead of flirt. You can use it without a warp, supplying only a transformation matrix. It has  a parameter called --super, which will "super-sample" the new volume, before then averaging neighbouring voxels. So if your new resolution is 3mm and you specify "--super --superlevel=2", it will create the new volume at 1.5mm resolution, after which neighbouring voxels will be average down to a resolution of 3mm.
+   
+    I tried to do as suggested but this method does not seem to work for me.  When I used --supersample=2, I still got an empty output.  So, under the assumption that I am still "missing" the location of the voxel,
+ 
+I sounds unlikely (though I guess not completely impossible) that you would miss the voxel completely with --supersample=2. Do you think it might just be a matter of being "tricked" by the "robust range" scaling (which would effectively ignore a single non-zero voxel)? What do you get if you do
+fslstats 'my image' -R
+?
+ 
+I tried --supersample=3, but got the following error:
+    "Supersampling renders output image too large"
+   
+It is not the size of the input image that matters here. What applywarp does is to transform the image and resample it to the matrix given by the --ref parameter. So say for example that the image you specify as --ref is 100x100x100 and that you specify --supersamp=3. That means that an image of size 300x300x300 will be created internally, before being subsampled by averaging each 3x3x3 neighbourhood. It is the size of the internal 300x300x300 image that matters. So if you want to experiment with small images and high --supersample factors it is the --ref image that you need to make smaller.
+But you should also match the size of the input image in order to make sure that your pixel doesn't end up outside of the FOV of the output image. You should also make sure that your transform matrix doesn't cause a large translation outside of the FOV (that would be another way in which you could end up "missing" your voxel).
+ 
+Jesper
+ 
+ 
+    So I did the following experiment.
+    I started with a file with the following parameters:
+   
+    scales=[0.6   0.5078  0.5078]
+    dim=[280 512 512]
+    FOV=[168 260 260]
+    total_num_voxels=73400320
+   
+    Using  --supersample=2, I received no error and got these parameters:
+   
+    scales=[0.3000    0.2539    0.2539]
+    dim=[560 1024 1024]
+    FOV=[168 260 260]
+    total_num_voxels=587202560
+   
+    However, if I started with a much smaller file:
+   
+    scales=[0.6   0.5078  0.5078]
+    dim=[21 21 21]
+    FOV=[12.6  10.6638  10.6638]
+    total_num_voxels=9261
+   
+    and then used --supersample=3, I received the "Supersampling renders output image too large" error, even though this output should be about an order of magnitude smaller than the supersample=2 output:
+   
+    --supersample=3
+    scales=[0.2000    0.1693    0.1693]
+    dim=[280  512  512]
+    FOV=[12.6  10.6638  10.6638];
+    total_num_voxels=73400320;
+   
+    Any thoughts on why -supersample=3 fails?
+    thanks!!
+   
+    jack
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+Hi Jesper
+
+>One way around this is to use applywarp instead of flirt. You can use it without a warp, supplying only a transformation matrix. It has  a parameter called --super, which will "super-sample" the new volume, before then averaging neighbouring voxels. So if your new resolution is 3mm and you specify "--super --superlevel=2", it will create the new volume at 1.5mm resolution, after which neighbouring voxels will be average down to a resolution of 3mm.
+
+I tried to do as suggested but this method does not seem to work for me.  When I used --supersample=2, I still got an empty output.  So, under the assumption that I am still "missing" the location of the voxel, I tried --supersample=3, but got the following error:
+"Supersampling renders output image too large"
+
+So I did the following experiment.
+I started with a file with the following parameters:
+
+scales=[0.6   0.5078  0.5078]
+dim=[280 512 512]
+FOV=[168 260 260]
+total_num_voxels=73400320
+
+Using  --supersample=2, I received no error and got these parameters:
+
+scales=[0.3000    0.2539    0.2539]
+dim=[560 1024 1024]
+FOV=[168 260 260]
+total_num_voxels=587202560
+
+However, if I started with a much smaller file:
+
+scales=[0.6   0.5078  0.5078]
+dim=[21 21 21]
+FOV=[12.6  10.6638  10.6638]
+total_num_voxels=9261
+
+and then used --supersample=3, I received the "Supersampling renders output image too large" error, even though this output should be about an order of magnitude smaller than the supersample=2 output:
+
+--supersample=3
+scales=[0.2000    0.1693    0.1693]
+dim=[280  512  512]
+FOV=[12.6  10.6638  10.6638];
+total_num_voxels=73400320;
+
+Any thoughts on why -supersample=3 fails?
+thanks!!
+
+jack
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Rob,
+
+Currently your only options are to modify the FSLeyes installation ($FSLDIR/lib/python3.10/site-packages/assets), or to modify the per-user configuration directory (~/.config/fsleyes/). However, I don't think it would be difficult to adjust FSLeyes to also check a separate system-wide location - I will add this to the list for the next release.
+
+Or, if you have the time, and get to it before me, PRs are welcome at https://github.com/pauldmccarthy/fsleyes/. The file that would need to be modified is fsleyes/colourmaps.py. Currently it is tightly coupled to the concept of checking only two directories - the installation assets/ directory, and the user settings directory, but it should be fairly straightforward to modify it to support searching more than one settings directory.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Shanrong Zhang <zhang.shanrong.me@GMAIL.COM>
+Sent: 30 June 2023 23:12
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Is there a way to install custom fsleyes colormaps and luts lab-wide?
+ 
+Hi Rob, 
+
+I believe that you need to make changes at several sub-folders, such as, 
+~/.fsleyes/luts/ 
+/site-packages/fsleyes/assets/luts/  
+/site-packages/fsleyes/assets/colormaps/ 
+/site-packages/fsleyes/displaycontext/
+
+After the above changes, you need to sudo chmod a+x $FSLDIR. It is better to add your own colormaps after the default ones.  
+
+Best wishes,
+
+Shanrong
+
+ 
+
+On Jun 30, 2023, at 3:00 PM, Reid, Robert I. <000021189f1cfce9-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi,
+ 
+Our lab has about a dozen colormaps and luts that are extensively used, including by visiting researchers, summer interns, etc. that we’d like to get set up quickly. Is there a way to get fsleyes to check a system-wide path for them? (in Linux)
+ 
+I’ve read https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html and gotten it to work with ~/.config/fsleyes/luts/, but I would like to add files to a central location and have the colormaps and luts be available to everyone without making them run a script to set up their ~/.config/fsleyes. (We could do that, but first I wanted to check that I’m not missing something.)
+ 
+I also found $FSLDIR/lib/python3.10/site-packages/assets and had some success with editing order.txt, but for some reason copying new versions of the files there isn’t taking effect.
+Ideally we would like fsleyes to effectively check a system config path (an environment variable, probably) in between the check for ~/.config/fsleyes and the $FSLDIR builtin items. It would also mostly decouple our local customizations (cluster jobs come to mind, but are out of scope for fsleyes) from FSL updates. 
+ 
+We’re very grateful for fsleyes being made available, and I would be happy to contribute a patch if pointed at where I should start hacking.
+ 
+Thanks,
+ 
+Rob
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi
+
+How much diffusion weighted volumes are required (at minimum) to run dtifit?
+
+Also, I have a bvec-file containing only 0's. What does that mean?
+
+Best
+Theo
+
+########################################################################
+
+Thanks, Paul.
+
+d.m.
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Wednesday, June 28, 2023 4:38 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes lightbox view reverse slice range order
+ 
+Hi,
+
+No, there is currently no way to do this in FSLeyes.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of d m <fmrilog@OUTLOOK.COM>
+Sent: 27 June 2023 01:35
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes lightbox view reverse slice range order
+ 
+Hello,
+
+Is there a way to reverse the order of slices in light box whether within the gui or the command line?
+
+Here is my command line.
+
+fsleyes -slightbox -zx 2 -nr 5 -nc 10 -ss 1.5 -zr 50 125 /usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz
+
+
+
+I tried switching the -zr option (-zr 125 50), but I just get a black screen as the output window.
+
+d.m.
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hi Shuo,
+I think the BETted images need to match the original name/prefix, e.g. sub1_struc_brain.nii.gz, 
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Matthew,
+I have sub1_struc.nii.gz sub2_struc.nii.gz sub1_brain.nii.gz sub2_brain.nii.gz in the  /directory/struc folder
+The /directory folder has only the struc folder inside. I made these two folders and put the two subjects in there for test runs.
+Thanks
+Shuo
+
+########################################################################
+
+Hi Shuo,
+Is this just a “test” directory with just two subjects? Can you let me know the contents of the directory?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Thank you, Saad.
+
+Do I need to take some matters into consideration when running DTIFIT on data with anisotropic voxels compared with running DTIFIT on data with isotropic voxels?
+
+Best
+Theo
+
+########################################################################
+
+Hello,
+
+Do I need images with isotropic voxels to run DTIFIT?
+
+Best,
+Theo
+
+########################################################################
+
+Hi Matthew,
+I copied two images and changed their name to _struc.nii.gz, and put these two in the struc folder with _brain.nii.gz images. And when I ran fslvbm_2_template -a I got the following error:
+
+Running segmentation: ID=49607
+Running initial registration: ID=49809
+Image Exception : #63 :: No image files match: SGSG0002_V1_struc_GM_to_T
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: SGSG0002_V1_struc_GM_to_T
+./fslvbm2c: line 13: 50041 Aborted  
+
+########################################################################
+
+Hello,
+
+Is there a way to reverse the order of slices in light box whether within the gui or the command line?
+
+Here is my command line.
+
+fsleyes -slightbox -zx 2 -nr 5 -nc 10 -ss 1.5 -zr 50 125 /usr/local/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz
+
+Hi Shuo,
+It should be fine just to have images that have the same names that the unbetted images would ( e.g. you could copy across the betted images to the right names ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear Jack,
+
+no, there shouldn't be any such "minimum voxel volume". I suspect that what happens here is the you/flirt simply misses your one voxel when resampling to the lower resolution.
+
+With tri-linear interpolation you look at where a voxel in the new (low resolution space) falls within the old space, and then uses the 8 surrounding voxels in the old space to work out the intensity. But let's say for example that your original resolution is 1mm, and you resample to 3mm. You will then "miss" some of the voxels in the original space, i.e. they will never be part of the eight surrounding points. They will quite simply be ignored. Exactly which ones will be considered will depend on your transformation matrix.
+
+One way around this is to use applywarp instead of flirt. You can use it without a warp, supplying only a transformation matrix. It has  a parameter called --super, which will "super-sample" the new volume, before then averaging neighbouring voxels. So if your new resolution is 3mm and you specify "--super --superlevel=2", it will create the new volume at 1.5mm resolution, after which neighbouring voxels will be average down to a resolution of 3mm.
+
+Jesper
+
+
+﻿On 26/06/2023, 15:39, "FSL - FMRIB's Software Library on behalf of Jack Grinband" <FSL@JISCMAIL.AC.UK on behalf of jg2269@COLUMBIA.EDU> wrote:
+
+    Hi All,
+    Is there a minimum voxel volume below which interpolation rounds down to zero? 
+    Here is what I did:
+    1. create a 3D mask with a single voxel equal to 1 and all other voxels equal to zero
+    2. resample to a different resolution using trilinear interpolation.
+    When the new voxel resolution is greater than 3mm3, I get what appears to be an accurate interpolation.  When the new voxel resolution is less than 3mm3, FLIRT appears to round down to zero.
+    Is this expected behavior?
+    thanks!
+   
+    jack
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi All,
+Is there a minimum voxel volume below which interpolation rounds down to zero? 
+Here is what I did:
+1. create a 3D mask with a single voxel equal to 1 and all other voxels equal to zero
+2. resample to a different resolution using trilinear interpolation.
+When the new voxel resolution is greater than 3mm3, I get what appears to be an accurate interpolation.  When the new voxel resolution is less than 3mm3, FLIRT appears to round down to zero.
+Is this expected behavior?
+thanks!
+
+jack
+
+Hi Brice,
+
+Perhaps your proxy is interfering with HTTPS/SSL certificate validation - you might have some success running the installer with the --skip_ssl_verify option, e.g.:
+
+fslinstaller.py --skip_ssl_verify -d /usr/local/fsl-6.0.6.5 -V 6.0.6.5
+
+Paul
+
+Hi Matthew,
+Just checking if it is absolutely necessary to have all unbetted images in the same folder. And if I need anything else to run fslvbm_2.
+Thank you
+Shuo
+
+########################################################################
+
+
+Hi Brice,
+
+There is one report suggesting that mamba has trouble behind a proxy - are you able to try using conda instead to see if that does any better?
+
+sudo /usr/local/fsl-6.0.6.5/bin/conda env update -n base -f fsl-6.0.6.5_linux-64.yml
+
+If this appears to work, you can:
+cancel the operation
+download an updated version of the fslinstaller script from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+Run the installer script like: fslinstaller.py --conda -d /usr/local/fsl-6.0.6.5 -V 6.0.6.5
+
+Paul
+
+Hi
+
+I am using the FEAT command line for task 1st level analysis. While for looping it through multiple subjects, does FSL perform 'estimate high pass filter' or 'estimate noise' and automatically update the values (option found in the misc section of FEAT GUI)? Will it be used in the analysis?
+
+
+Thank you!
+
+########################################################################
+
+Thanks to both of you.
+
+the results of the commands:
+
+bash-3.2$ which python
+/usr/local/bin/python
+bash-3.2$ which python3
+/Library/Frameworks/Python.framework/Versions/3.8/bin/python3
+bash-3.2$ ls /Applications/Python*/Install*Certificates.command
+/Applications/Python 2.7/Install Certificates.command /Applications/Python 3.8/Install Certificates.command
+
+Udo
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Tuesday, July 4, 2023 6:19 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Unable to download via fslinstaller.py
+ 
+
+
+Hi Udo,
+
+Can you let me know the results of running
+
+which python
+
+And
+
+which python3
+
+And
+
+ls /Applications/Python*/Install*Certificates.command
+
+On your Mac?
+
+Kind Regards
+Matthew
+
+--------------------------------
+
+Hi Udo,
+
+Can you let me know the results of running
+
+which python
+
+And
+
+which python3
+
+And
+
+ls /Applications/Python*/Install*Certificates.command
+
+On your Mac?
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 4 Jul 2023, at 11:35, Will, Udo <will.51@OSU.EDU> wrote:
+>
+> Thanks, Paul. That option did not help much. Here is the terminal output I got:
+>
+> bash-3.2$ python fslinstaller.py --skip_ssl_verify
+> FSL installer version: 3.5.3
+> Press CTRL+C at any time to cancel installation
+> Installation log file: /var/folders/4g/7l0z6kc57m706jwwh5ksg_9w0000gn/T/fslinstaller_8sYLf0.log
+>
+> Traceback (most recent call last):
+>   File "fslinstaller.py", line 2403, in <module>
+>     sys.exit(main())
+>   File "fslinstaller.py", line 2352, in main
+>     self_update(ctx.manifest, args.workdir, not args.no_checksum)
+>   File "fslinstaller.py", line 1315, in manifest
+>     self.args.workdir)
+>   File "fslinstaller.py", line 477, in download_manifest
+>     'from {} [{}]!'.format(url, str(e)))
+> Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [[Errno socket error] [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:726)]!
+>
+> Udo
+> From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+> Sent: Tuesday, July 4, 2023 2:54 AM
+> To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+> Subject: Re: [FSL] Unable to download via fslinstaller.py
+>  Hi Udo,
+>
+> Can you try re-running the first installer script, with the --skip_ssl_verify option?
+>
+> Paul
+> From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Udo Will <will.51@OSU.EDU>
+> Sent: 03 July 2023 23:40
+> To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+> Subject: [FSL] Unable to download via fslinstaller.py
+>  I seem to be unable to install FSL via fslinstaller.py.I am on MacPro 5.1 running MacOS 10.13.6 and tried two installers that produced the following terminal poutput:
+>
+> --- installer version: 3.5.3
+> Press CTRL+C at any time to cancel installation
+> Running the installer script as root user is discouraged! You should run this script as a regular user - you will be asked for your administrator password if required.
+> Installation log file: /tmp/fslinstaller_fz_bpG.log
+>
+> Traceback (most recent call last):
+>   File "fslinstaller.py", line 2403, in <module>
+>     sys.exit(main())
+>   File "fslinstaller.py", line 2352, in main
+>     self_update(ctx.manifest, args.workdir, not args.no_checksum)
+>   File "fslinstaller.py", line 1315, in manifest
+>     self.args.workdir)
+>   File "fslinstaller.py", line 477, in download_manifest
+>     'from {} [{}]!'.format(url, str(e)))
+> Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json[[Errno socket error] [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:726)]!
+> ===============================
+>
+>
+>
+> --- FSL Installer - Version 3.3.0 ---
+> [Warning] Some operations of the installer require administative rights,
+>     for example installing into the default folder of /usr/local.
+>     If your account is an 'Administrator' (you have 'sudo' rights)
+>     then you will be prompted for your administrator password
+>     when necessary.
+> When asked a question, the default answer is given in square brackets.
+> Hit the Enter key to accept this default answer.
+> Where would you like the FSL install to be (including the FSL folder name)? [/usr/local/fsl]:
+> Downloading...
+> [FAILED] Unable to download FSL
+>
+>
+> =========================
+> Any hints to solve this are much appreciated.
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Jaël,
+You should shortly receive a link to a OneDrive folder - can you tar and upload your 6subs_2runs_stage12.dr folder to that link so we can take a closer look at the files?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 4 Jul 2023, at 10:23, Jaël C. <0000a693507d1012-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hey Matthew,
+
+nope, same error...
+
+Best,
+Jaël
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Thanks, Paul. That option did not help much. Here is the terminal output I got:
+
+bash-3.2$ python fslinstaller.py --skip_ssl_verify
+FSL installer version: 3.5.3
+Press CTRL+C at any time to cancel installation
+Installation log file: /var/folders/4g/7l0z6kc57m706jwwh5ksg_9w0000gn/T/fslinstaller_8sYLf0.log
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 2403, in <module>
+    sys.exit(main())
+  File "fslinstaller.py", line 2352, in main
+    self_update(ctx.manifest, args.workdir, not args.no_checksum)
+  File "fslinstaller.py", line 1315, in manifest
+    self.args.workdir)
+  File "fslinstaller.py", line 477, in download_manifest
+    'from {} [{}]!'.format(url, str(e)))
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [[Errno socket error] [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:726)]!
+
+Udo
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Tuesday, July 4, 2023 2:54 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Unable to download via fslinstaller.py
+ 
+Hi Udo,
+
+Can you try re-running the first installer script, with the --skip_ssl_verify option?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Udo Will <will.51@OSU.EDU>
+Sent: 03 July 2023 23:40
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Unable to download via fslinstaller.py
+ 
+I seem to be unable to install FSL via fslinstaller.py.I am on MacPro 5.1 running MacOS 10.13.6 and tried two installers that produced the following terminal poutput:
+
+--- installer version: 3.5.3
+Press CTRL+C at any time to cancel installation
+Running the installer script as root user is discouraged! You should run this script as a regular user - you will be asked for your administrator password if required.
+Installation log file: /tmp/fslinstaller_fz_bpG.log
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 2403, in <module>
+    sys.exit(main())
+  File "fslinstaller.py", line 2352, in main
+    self_update(ctx.manifest, args.workdir, not args.no_checksum)
+  File "fslinstaller.py", line 1315, in manifest
+    self.args.workdir)
+  File "fslinstaller.py", line 477, in download_manifest
+    'from {} [{}]!'.format(url, str(e)))
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [[Errno socket error] [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:726)]!
+===============================
+
+
+
+--- FSL Installer - Version 3.3.0 ---
+[Warning] Some operations of the installer require administative rights,
+    for example installing into the default folder of /usr/local.
+    If your account is an 'Administrator' (you have 'sudo' rights)
+    then you will be prompted for your administrator password
+    when necessary.
+When asked a question, the default answer is given in square brackets.
+Hit the Enter key to accept this default answer.
+Where would you like the FSL install to be (including the FSL folder name)? [/usr/local/fsl]:
+Downloading...
+[FAILED] Unable to download FSL
+
+
+=========================
+Any hints to solve this are much appreciated.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hey Matthew,
+
+nope, same error...
+
+Best,
+Jaël
+
+########################################################################
+
+
+Hi Udo,
+
+Can you try re-running the first installer script, with the --skip_ssl_verify option?
+
+Paul
+
+
+I seem to be unable to install FSL via fslinstaller.py.I am on MacPro 5.1 running MacOS 10.13.6 and tried two installers that produced the following terminal poutput:
+
+--- installer version: 3.5.3
+Press CTRL+C at any time to cancel installation
+Running the installer script as root user is discouraged! You should run this script as a regular user - you will be asked for your administrator password if required.
+Installation log file: /tmp/fslinstaller_fz_bpG.log
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 2403, in <module>
+    sys.exit(main())
+  File "fslinstaller.py", line 2352, in main
+    self_update(ctx.manifest, args.workdir, not args.no_checksum)
+  File "fslinstaller.py", line 1315, in manifest
+    self.args.workdir)
+  File "fslinstaller.py", line 477, in download_manifest
+    'from {} [{}]!'.format(url, str(e)))
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [[Errno socket error] [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:726)]!
+===============================
+
+
+
+--- FSL Installer - Version 3.3.0 ---
+[Warning] Some operations of the installer require administative rights,
+    for example installing into the default folder of /usr/local.
+    If your account is an 'Administrator' (you have 'sudo' rights)
+    then you will be prompted for your administrator password
+    when necessary.
+When asked a question, the default answer is given in square brackets.
+Hit the Enter key to accept this default answer.
+Where would you like the FSL install to be (including the FSL folder name)? [/usr/local/fsl]:
+Downloading...
+[FAILED] Unable to download FSL
+
+
+=========================
+Any hints to solve this are much appreciated.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Vae,
+   The second error ( Fatal error: cannot open file: - ) should be solved by updating to the latest FSL ( 6.0.6.5 ) as this is a known interaction between our scripts and Ventura. Once updated can you try re-running the command ( deleting the output folder first, if it exists )?
+
+Kind Regards
+Matthew
+
+Hi Jael,
+To make sure this isn't some kind of strange path issue, can you re-run passing the absolute path to the output folder?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Experts,
+
+I got this error when I tried to run the script below:
+
+error:
+>mkdir: DR: File exists
+>mkdir: DR/scripts+logs: File exists
+>creating common mask
+
+>Fatal error: cannot open file: -
+    >Function: (main)
+
+>Error submitting job - Array task definition file fault: Cannot find script/binary Usage: on line 3 of DR/scripts+logs/drA
+
+script:
+```
+dual_regression melodic_IC_thr5.nii.gz 1 design.mat design.con 10000 DR sub-EXCI0001_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0003_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0004_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0005_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0008_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0009_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0102_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0161_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0164_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0165_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0166_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz sub-EXCI0168_ses-2_task-rest_space-MNI152NLin6Asym_res-2_desc-denoisedSmoothed_bold.nii.gz
+
+```
+
+I have tried running this line of script before, and it worked fine previously before I updated my M1 Mac ventura 13.4. Could this be the problem?
+
+Thank you!
+Regards,
+Vae
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Anaam,
+
+You should be able to use Windows Explorer to navigate to the location of the log file, then select the file and add it as an attachment to your email.
+
+If you are using the JISCMail web interface to send your messages, click on the "Show advanced" button - this will display more options, including a "Browse" button to select/add attachments.
+
+Paul
+
+Hi Paul, 
+
+So I was able to find the log file on Windows, but I wasn't able to attach it. I'm using WSL on my windows 11 to launch ubuntu 18.04. Could you please show me how you would attach/access the log file? Sorry to bother you ):
+
+On Mon, 3 Jul 2023 at 14:12, Anaam <anaam.qureshi1@gmail.com> wrote:
+Hi Paul, 
+
+So I was able to find the log file on Windows, but I wasn't able to attach it. I'm using WSL on my windows 11 to launch ubuntu 18.04. Could you please show me how you would attach/access the log file? Sorry to bother you ):
+
+
+Hi Paul, 
+
+So I was able to find the log file on Windows, but I wasn't able to attach it. I'm using WSL on my windows 11 to launch ubuntu 18.04. Could you please show me how you would attach/access the log file? Sorry to bother you ):
+
+Hi Theo
+
+ 
+
+
+How much diffusion weighted volumes are required (at minimum) to run dtifit?
+
+ 
+
+I would recommend reading some of the early papers by Derek Jones addressing this question.
+
+
+
+Also, I have a bvec-file containing only 0's. What does that mean?
+
+ 
+
+That should not be a problem. Usually this indicates that the associated bvalue is also zero.
+
+ 
+
+Cheers
+
+Saad
+
+
+
+Best
+Theo
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Aleta,
+
+Are the anatomical orientation labels for your image correct, when viewed in FSLeyes? If so, you should be able to re-orient the image (without modifying the data) by running the fslreorient2std command on your images.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Aleta de Ruiter <deruiter.aleta@GMAIL.COM>
+Sent: 01 July 2023 16:07
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Voxel coordinates
+ 
+Hello,
+
+Hi Blanca
+
+ 
+
+The wls option is not a requirement for fitting multi-shell data, it is simply a method for dealing with particularly noisy data. The kurtosis option is more relevant for multi-shell, as without it the tensor model can provide quite a bad fit to the data.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+Hi Anaam,
+
+Can you share the log file that is mentioned in the error message, to see if it contains any useful information?
+
+Paul
+
+Hey Matthew,
+
+that worked wonders, thank you so much!! 
+
+Unfortunately, we’re now encountering another error:
+
+creating common mask
+Error submitting job - Command not usable: Cannot find script/binary '6subs_2runs_stage12.dr/scripts+logs/drB'
+doing the dual regressions
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+               [--coprocessor_multi COPROCESSOR_MULTI]
+               [--coprocessor_class COPROCESSOR_CLASS]
+               [--coprocessor_class_strict]
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+               [--show_config] [-v] [-V] [-z file]
+               ...
+fsl_sub: error: argument -j/--jobhold: expected one argument
+sorting maps and running randomise
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+               [--coprocessor_multi COPROCESSOR_MULTI]
+               [--coprocessor_class COPROCESSOR_CLASS]
+               [--coprocessor_class_strict]
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+               [--show_config] [-v] [-V] [-z file]
+               ...
+fsl_sub: error: argument -j/--jobhold: expected one argument
+
+The bash script “drB” is certainly being written, though, and in the specified directory too. I’m going to attach it here.
+
+Maybe you happen to have another genius idea?
+
+Thanks again and best 
+Jaël 
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+-- 
+Jaël Caviola, B.Sc. (she/her)
+Ruhr University Bochum 
+Faculty of Psychology 
+Department of Cognitive Psychology 
+Universitätsstr. 150 
+44780 Bochum, Germany
+
+Room: IB 6/77
+Phone: +49 234 32 22668
+E-Mail: jael.caviola@rub.de
+
+On 29. Jun 2023, at 23:30, Matthew Webster <matthew.webster@NDCN.OX.AC.UK> wrote:
+
+Hi Jaël,
+If a random set of calls is failing each time, this may be due to the fsl_sub shell plugin trying to run too many jobs simultaneously, can you try running:
+
+export FSLSUB_PARALLEL=2
+
+Just before the dual_regression call and see if that changes anything? If 2 works then you could potentially increase to 3/4 etc for future analyses.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+
+Hello,
+
+I converted MR images from DICOM to NIfTI. While scrolling through the images in FSLeyes, I noticed that the 'wrong' planes were responding when using the voxel location panel. The orientations as displayed in the overlay information seem to be different. How can I fix this?
+
+Storage order: radiological
+X voxel orientation: anterior-posterior
+Y voxel orientation: inferior-superior
+Z voxel orientation: left-right
+X world orientation: left-right
+Y world orientation: posterior-anterior
+Z world orientation: inferior-superior
+
+Thanks and regards,
+Aleta
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+I'm subscribed now too! 
+
+
+On Sat, 1 Jul 2023 at 18:29, Anaam <anaam.qureshi1@gmail.com> wrote:
+Hi there, 
+
+Could you please help me install FSL on my computer? I use windows and I'm installing FSL using Ubuntu (I used this installation guide:https://www.youtube.com/watch?v=QNp3lyP57rw) - but I still keep getting this error (please refer screenshot below). I'm not an ubuntu user so I'd appreciate any help - not sure what's wrong. I can even get on a call if needed. 
+
+Screenshot 1:
+
+Dear FSL experts,
+
+I am not quite sure if I have an issue regarding the output of randomise. I am conducting a regular activity as well as a PPI analysis using task based fMRI. Three groups are compared using randomise. Conducting a one sample t test to test whether the task works and significantly activates the regions of interest, irrespective of group, reveals the following results: minimum z statistic of 2.770329 and maximum z statistic of 3.540119.For some reason are the connectivity maps showing similar stats: minimum z statistic of 2.726552 and a maximum z statistic of 3.540119. Thresholds of the same analysis with a different seed are: minimum z statistic of 2.706481 and a maximum z statistic of 3.540119.
+
+1. Why is the lower threshold set on approximately 2.7, although being prespecified as 3.1 in the GUI?
+
+2. Why is the upper threshold limited to 3.540119?
+
+3. Furthermore, a zstat NIFTI in the stats directory of the activity analysis is showing large areas of zeros instead of floating numbers. This is not the case in the results of the PPI analyses, which also seems kind of odd to me.
+
+
+All analyses are set up using the FEAT GUI.
+
+The log is showing the following commands for the thresholding in the activity analysis (one sample t test):
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat1 -mas mask thresh_zstat1
+
+    echo 231729 > thresh_zstat1.vol
+    zstat1: DLH=1 VOLUME=231729 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat1 -mas mask thresh_pstat1
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat1 -t 0.95 --othresh=thresh_zstat1 -o cluster_mask_zstat1 --connectivity=26 --mm --olmax=lmax_zstat1_std.txt --scalarname=Z -p 0.05 -d 1 --volume=231729 -c stats/cope1 --empiricalNull=thresh_pstat1 > cluster_zstat1_std.txt
+
+     /Users/marvin/fsl/bin/cluster2html . cluster_zstat1 -std
+
+     /Users/marvin/fsl/bin/fslstats thresh_zstat1 -l 0.0001 -R 2>/dev/null
+     2.726552 3.540119
+     Rendering using zmin=2.726552 zmax=3.540119
+
+     /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat1 2.726552 3.540119 rendered_thresh_zstat1
+
+     /Users/marvin/fsl/bin/slicer rendered_thresh_zstat1 -S 2 750 rendered_thresh_zstat1.png
+
+     /bin/cp /Users/marvin/fsl/etc/luts/ramp.gif .ramp.gif
+
+     mkdir -p tsplot ; /Users/marvin/fsl/bin/tsplot . -f filtered_func_data -o tsplot
+
+The log is showing the following commands for the thresholding in the connectivity analysis (PPI):
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat1 -mas mask thresh_zstat1
+
+    echo 257138 > thresh_zstat1.vol
+    zstat1: DLH=1 VOLUME=257138 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat2 -mas mask thresh_zstat2
+
+    echo 257202 > thresh_zstat2.vol
+    zstat2: DLH=1 VOLUME=257202 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat3 -mas mask thresh_zstat3
+
+    echo 257195 > thresh_zstat3.vol
+    zstat3: DLH=1 VOLUME=257195 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat4 -mas mask thresh_zstat4
+
+    echo 256496 > thresh_zstat4.vol
+    zstat4: DLH=1 VOLUME=256496 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat5 -mas mask thresh_zstat5
+
+    echo 256901 > thresh_zstat5.vol
+    zstat5: DLH=1 VOLUME=256901 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat6 -mas mask thresh_zstat6
+
+    echo 257173 > thresh_zstat6.vol
+    zstat6: DLH=1 VOLUME=257173 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/zstat7 -mas mask thresh_zstat7
+
+    echo 257146 > thresh_zstat7.vol
+    zstat7: DLH=1 VOLUME=257146 RESELS=1
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat1 -mas mask thresh_pstat1
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat2 -mas mask thresh_pstat2
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat3 -mas mask thresh_pstat3
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat4 -mas mask thresh_pstat4
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat5 -mas mask thresh_pstat5
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat6 -mas mask thresh_pstat6
+
+    /Users/marvin/fsl/bin/fslmaths stats/pstat7 -mas mask thresh_pstat7
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat1 -t 0.95 --othresh=thresh_zstat1 -o cluster_mask_zstat1 --connectivity=26 --mm --olmax=lmax_zstat1_std.txt --scalarname=Z -p 0.05 -d 1 --volume=257138 -c stats/cope1 --    empiricalNull=thresh_pstat1 > cluster_zstat1_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat1 -std
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat2 -t 0.95 --othresh=thresh_zstat2 -o cluster_mask_zstat2 --connectivity=26 --mm --olmax=lmax_zstat2_std.txt --scalarname=Z -p 0.05 -d 1 --volume=257202 -c stats/cope2 --  empiricalNull=thresh_pstat2 > cluster_zstat2_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat2 -std
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat3 -t 0.95 --othresh=thresh_zstat3 -o cluster_mask_zstat3 --connectivity=26 --mm --olmax=lmax_zstat3_std.txt --scalarname=Z -p 0.05 -d 1 --volume=257195 -c stats/cope3 --empiricalNull=thresh_pstat3 > cluster_zstat3_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat3 -std
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat4 -t 0.95 --othresh=thresh_zstat4 -o cluster_mask_zstat4 --connectivity=26 --mm --olmax=lmax_zstat4_std.txt --scalarname=Z -p 0.05 -d 1 --volume=256496 -c stats/cope4 --empiricalNull=thresh_pstat4 > cluster_zstat4_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat4 -std
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat5 -t 0.95 --othresh=thresh_zstat5 -o cluster_mask_zstat5 --connectivity=26 --mm --olmax=lmax_zstat5_std.txt --scalarname=Z -p 0.05 -d 1 --volume=256901 -c stats/cope5 --empiricalNull=thresh_pstat5 > cluster_zstat5_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat5 -std
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat6 -t 0.95 --othresh=thresh_zstat6 -o cluster_mask_zstat6 --connectivity=26 --mm --olmax=lmax_zstat6_std.txt --scalarname=Z -p 0.05 -d 1 --volume=257173 -c stats/cope6 --empiricalNull=thresh_pstat6 > cluster_zstat6_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat6 -std
+
+    /Users/marvin/fsl/bin/fsl-cluster -i thresh_zstat7 -t 0.95 --othresh=thresh_zstat7 -o cluster_mask_zstat7 --connectivity=26 --mm --olmax=lmax_zstat7_std.txt --scalarname=Z -p 0.05 -d 1 --volume=257146 -c stats/cope7 --empiricalNull=thresh_pstat7 > cluster_zstat7_std.txt
+
+    /Users/marvin/fsl/bin/cluster2html . cluster_zstat7 -std
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat1 -l 0.0001 -R 2>/dev/null
+    0.000000 0.000000
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat2 -l 0.0001 -R 2>/dev/null
+    2.878166 3.540119
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat3 -l 0.0001 -R 2>/dev/null
+    2.706481 3.540119
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat4 -l 0.0001 -R 2>/dev/null
+    0.000000 0.000000
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat5 -l 0.0001 -R 2>/dev/null
+    0.000000 0.000000
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat6 -l 0.0001 -R 2>/dev/null
+    0.000000 0.000000
+
+    /Users/marvin/fsl/bin/fslstats thresh_zstat7 -l 0.0001 -R 2>/dev/null
+    0.000000 0.000000
+    Rendering using zmin=2.706481 zmax=3.540119
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat1 2.706481 3.540119 rendered_thresh_zstat1
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat1 -S 2 750 rendered_thresh_zstat1.png
+
+    /bin/cp /Users/marvin/fsl/etc/luts/ramp.gif .ramp.gif
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat2 2.706481 3.540119 rendered_thresh_zstat2
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat2 -S 2 750 rendered_thresh_zstat2.png
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat3 2.706481 3.540119 rendered_thresh_zstat3
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat3 -S 2 750 rendered_thresh_zstat3.png
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat4 2.706481 3.540119 rendered_thresh_zstat4
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat4 -S 2 750 rendered_thresh_zstat4.png
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat5 2.706481 3.540119 rendered_thresh_zstat5
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat5 -S 2 750 rendered_thresh_zstat5.png
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat6 2.706481 3.540119 rendered_thresh_zstat6
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat6 -S 2 750 rendered_thresh_zstat6.png
+
+    /Users/marvin/fsl/bin/overlay 1 0 example_func -a thresh_zstat7 2.706481 3.540119 rendered_thresh_zstat7
+
+    /Users/marvin/fsl/bin/slicer rendered_thresh_zstat7 -S 2 750 rendered_thresh_zstat7.png
+
+    mkdir -p tsplot ; /Users/marvin/fsl/bin/tsplot . -f filtered_func_data -o tsplot
+
+Has anyone observed something similar or could provide an explanation for these results?
+
+Help would be much appreciated, so thank you in advance!
+
+Best,
+Marvin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Rob, 
+
+I believe that you need to make changes at several sub-folders, such as, 
+~/.fsleyes/luts/ 
+/site-packages/fsleyes/assets/luts/  
+/site-packages/fsleyes/assets/colormaps/ 
+/site-packages/fsleyes/displaycontext/
+
+After the above changes, you need to sudo chmod a+x $FSLDIR. It is better to add your own colormaps after the default ones.  
+
+Best wishes,
+
+Shanrong
+
+Dear All,
+
+We are currently recruiting for a PhD student to start in September 2023 as part of a Precision Medicine Doctoral Training Partnership cohort (https://www.ed.ac.uk/usher/precision-medicine/about-the-programme/programme-structure). Unfortunately, due to funding restrictions only candidates with Home fees status (typically UK citizens or EU citizens with (pre)settled) can be considered. If you may be interested or know of someone who may be please let me know.
+
+Best wishes,
+
+Michael Stringer
+
+Research Fellow in Magnetic Resonance Imaging, University of Edinburgh
+
+Determining cerebral small vessel function and flow in small vessel disease
+
+Supervisors: Dr Michael Stringer, Dr Michael Thrippleton, Prof Joanna Wardlaw
+
+Description: Small vessel disease (SVD) causes many cases of stroke and dementias.1 While what causes SVD is poorly understood, in patients with higher SVD severity their blood vessels are less responsiveness to increased demand.1 We can measure cerebrovascular reactivity (CVR), how well blood vessels respond to increased demand, using magnetic resonance imaging (MRI) scans during hypercapnic gas challenge. However, existing methods to calculate CVR have several limitations.2 More accurate quantification would improve understanding of SVD pathophysiology and patient stratification.1
+
+In this project, the successful student will:
+
+support acquisition of brain MRI scans and further their MRI physics knowledge
+develop novel CVR methods to analyse several large existing datasets with extensive contextual data
+learn about clinical brain imaging, how scans are interpreted and clinical presentations of SVD
+expand their statistical skills to run complex multifactorial analyses
+develop their scientific writing and presentation skills
+References
+
+1. Wardlaw JM, Smith C, Dichgans M. Small vessel disease: Mechanisms and clinical implications. The Lancet Neurology. 2019;18:684-696
+
+2. Sleight E, Stringer MS, Marshall I, Wardlaw JM, Thrippleton MJ. Cerebrovascular reactivity measurement using magnetic resonance imaging: A systematic review. Frontiers in Physiology. 2021
+
+Small Vessel Diseases Research Group
+
+The post will be based in the Small Vessel Diseases Research Group (Prof Joanna Wardlaw) linked with the Row Fogo Centre for Research into Ageing and the Brain and UK DRI: UK Dementia Research Institute at the University of Edinburgh. The group also has exceptional links with other world leading SVD research centres in the UK and internationally. 
+
+Precision Medicine Doctoral Training Programme
+
+The Precision Medicine Doctoral Training Programme is a 3.5-4 year PhD programme funded by the Medical Research Council, University of Edinburgh and University of Glasgow. It trains PhD in both quantitative skills and their application to medical data sources giving the interdisciplinary skills needed to put precision medicine into practice.
+
+For full details see: https://www.ed.ac.uk/usher/precision-medicine/about-the-programme
+
+Contact details
+
+If you would like to apply or have any questions, please contact Dr Michael Stringer (m.stringer@ed.ac.uk).
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+

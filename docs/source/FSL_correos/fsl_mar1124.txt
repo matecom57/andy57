@@ -1,0 +1,327 @@
+Hi,
+
+FYI, I used 3dresample to convert the template file into the same size as my ICA results. Then I run fslcc and it works. 
+
+3dresample -master melodic_IC.nii.gz -prefix rsn20_resample -input rsn20.nii.gz 
+
+Thank you for your attention.
+
+
+Best,
+Xiyue Zhang 
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca
+Hear my name
+
+On Mar 8, 2024, at 3:01 PM, Xiyue Zhang <xiyue.zhang.2@ulaval.ca> wrote:
+
+Hi experts,
+
+I have got the results of ICA from Melodic. The size of melodic_IC is:
+
+dim1 54
+dim2 64
+dim3 50
+dim4 20
+pixdim1 3.000000
+pixdim2 3.000000
+pixdim3 3.000000
+pixdim4 2.398998
+Data Axes Orientation:
+  first  (x) = Right-to-Left
+  second (y) = Anterior-to-Posterior
+  third  (z) = Inferior-to-Superior
+
+Since I used Talairach templates for registration in preprocessing, the melodic_IC’s Template Space is TLRC. The  rsn20.nii.gz (download from https://www.fmrib.ox.ac.uk/datasets/brainmap+rsns/) is in MNI space. Do I have to convert my results to MNI? Or convert rsn20.nii.gz to TLRC?
+
+The size of the rsn20.nii.gz is :
+dim1 91
+dim2 109
+dim3 91
+dim4 20
+pixdim1 2.000000
+pixdim2 2.000000
+pixdim3 2.000000
+pixdim4 1.000000
+Data Axes Orientation:
+  first  (x) = Right-to-Left
+  second (y) = Posterior-to-Anterior
+
+  third  (z) = Inferior-to-Superior
+
+I searched the emails and tried to use flirt to uniform the size of both files. I tried following commands:
+
+flirt -in melodic_IC.nii.gz -ref rsn20trlc.nii -out melodic_IC_align
+flirt -in rsn20trlc.nii -ref melodic_IC.nii.gz -out melodic_IC_align
+flirt -in melodic_IC.nii.gz -ref rsn20.nii.gz -out melodic_IC_align
+
+But all of them only convert the first volume. The brain was also distorted, as shown in the following figure.
+
+<截屏2024-03-08 下午2.39.16.png>
+
+My questions are:
+1) Dose fslcc have to have two inputs the exactly same size? Including voxels and axes orientation? 
+2) Do the two inputs of fslcc have to be in the same space? Can I convert the Melodic_IC directly? Or do I need to redo the preprocessing into MNI from the very beginning?
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca
+Hear my name
+
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hello,
+
+I recently installed FSL 6.0.7.7 on Rocky Linux 8. My .bash_profile is set as:
+
+# FSL Setup
+FSLDIR=/usr/local/software/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+When I attempt to run the "Feat" command, it says the command is not found. I noticed that the soft links for Feat and others are only located in $FSLDIR/bin. Why are these soft links not also located in $FSLDIR/share/fsl/bin? Should I also add $FSLDIR/bin to the PATH in order to use these soft links?
+
+Thanks,
+Eddie
+
+########################################################################
+
+Hi experts,
+
+I have got the results of ICA from Melodic. The size of melodic_IC is:
+
+dim1 54
+dim2 64
+dim3 50
+dim4 20
+pixdim1 3.000000
+pixdim2 3.000000
+pixdim3 3.000000
+pixdim4 2.398998
+Data Axes Orientation:
+  first  (x) = Right-to-Left
+  second (y) = Anterior-to-Posterior
+  third  (z) = Inferior-to-Superior
+
+Since I used Talairach templates for registration in preprocessing, the melodic_IC’s Template Space is TLRC. The  rsn20.nii.gz (download from https://www.fmrib.ox.ac.uk/datasets/brainmap+rsns/) is in MNI space. Do I have to convert my results to MNI? Or convert rsn20.nii.gz to TLRC?
+
+The size of the rsn20.nii.gz is :
+dim1 91
+dim2 109
+dim3 91
+dim4 20
+pixdim1 2.000000
+pixdim2 2.000000
+pixdim3 2.000000
+pixdim4 1.000000
+Data Axes Orientation:
+  first  (x) = Right-to-Left
+  second (y) = Posterior-to-Anterior
+
+  third  (z) = Inferior-to-Superior
+
+I searched the emails and tried to use flirt to uniform the size of both files. I tried following commands:
+
+flirt -in melodic_IC.nii.gz -ref rsn20trlc.nii -out melodic_IC_align
+flirt -in rsn20trlc.nii -ref melodic_IC.nii.gz -out melodic_IC_align
+flirt -in melodic_IC.nii.gz -ref rsn20.nii.gz -out melodic_IC_align
+
+But all of them only convert the first volume. The brain was also distorted, as shown in the following figure.
+
+
+
+My questions are:
+1) Dose fslcc have to have two inputs the exactly same size? Including voxels and axes orientation? 
+2) Do the two inputs of fslcc have to be in the same space? Can I convert the Melodic_IC directly? Or do I need to redo the preprocessing into MNI from the very beginning?
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca
+Hear my name
+
+
+Dear FSL experts,
+I am using featquery to examine %BOLD signal change and to extract peristimulus data. My input to featquery (tfMRI.feat) has 332 timepoints.
+
+When examining featquery outputs, I found that mean_mask_ts.txt and tsplotc_zstat1.txt (data averaged over all voxels in all sig. clusters for contrast 1) both have 332 timepoints, but ps_tsplotc_zstat1_ev1.txt (model fits averaged over multiple stimulus repeats) has 483 rows. I am not sure why there’s discrepancies in timepoints. 
+
+I look into the FEAT user guide and see that ps_tsplotc_zstat1_ev1.txt is encoded as peristimulus timing (i.e., time relative to the start time within the peristimulus window). What does this mean?
+
+Thank you very much in advance.
+
+########################################################################
+
+
+Dear FSL experts,
+I am using featquery to examine %BOLD signal change and to extract peristimulus data. My input to featquery (tfMRI.feat) has 332 timepoints.
+
+When examining featquery outputs, I found that mean_mask_ts.txt and tsplotc_zstat1.txt (data averaged over all voxels in all sig. clusters for contrast 1) both have 332 timepoints, but ps_tsplotc_zstat1_ev1.txt (model fits averaged over multiple stimulus repeats) has 483 rows. I am not sure why there’s discrepancies in timepoints. 
+
+I look into the FEAT user guide and see that ps_tsplotc_zstat1_ev1.txt is encoded as peristimulus timing (i.e., time relative to the start time within the peristimulus window). What does this mean?
+
+Thank you very much in advance.
+
+########################################################################
+
+
+Using fslvbm—on step “C” create the template—segments and makes files that appear to use the template.
+
+ 
+
+ie
+
+_struc_GM_to_T_init_warp.msf
+
+_struct_GM_to_T.mat
+
+_struc_GM_to_T.nii.gz
+
+ 
+
+But—there is no “template_GM_4D” image—and no error message.
+
+ 
+
+Help?
+
+ 
+
+-- Dan
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+
+Hi Roman,
+
+I can't quite tell from the screenshot, but it looks like you have interpolation enabled, which will cause smoothing across voxels.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 06 March 2024 17:52
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes: incorrect gray level
+ 
+Dear Paul,
+Dear FSL developers,
+
+I noticed that fsleyes sometimes does not show gray (perhaps color in general) correctly.
+Loaded is a NIFTI file with two time points in it. Volume=0 is T1W image, volume=1 is a mask of only 0s and 1s. As you can see on the image, pixel brightness at crosshairs is gray despite value reads 1 and should be white (max of brightness range).
+
+Does this mean that T1W image from volume=0 somehow bleeds through?
+
+Thank you,
+
+Hi Paul,
+
+I have updated my z.profile but it still does not seem to be working, below is my list of contents in my z.profile and what happens when i do echo $PATH in my terminal. Is there any indication of what I need to modify? 
+
+Sean 
+
+
+Hi James,
+
+Are you using a Linux system? At the moment, MMORF can only be used on Linux, and cannot be used on macOS, as Apple do not support CUDA.
+
+Paul
+
+Hi - I am trying to compile and run MMORF. I have FSL 6.0.7.4 installed.
+
+When trying to set it up, I get this error:
+
+$FSLDIR/bin/conda create -c conda-forge  -p ~/gcc8 "gxx_linux-64=8.*" make
+
+Collecting package metadata (current_repodata.json): done
+Solving environment: unsuccessful attempt using repodata from current_repodata.json, retrying with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - gxx_linux-64=8
+
+
+Can you advise on how to set this up please?
+
+Best wishes
+
+James
+DM Student
+University of Oxford
+
+########################################################################
+
+
+Re: [FSL] installation set up error
+
+Traducir mensaje a: Español | Nunca traduzcas de: Inglés
+Este mensaje está en Inglés
+FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> en nombre de Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+​
+FSL@JISCMAIL.AC.UK
+​
+
+
+Dear fsl experts, I hope you may be able to help me with this problem I am facing with eddy
+
+When I try to run eddy I get the following error:
+EddyInputError:  --imain and --mask images must have the same dimensions
+Terminating program
+
+Inspecting the mask and the main image I get the following:
+fslinfo topup/*_mask.nii.gz
+data_type       INT16
+dim1            100
+dim2            100
+dim3            60
+dim4            1
+datatype        4
+pixdim1         2.200000
+pixdim2         2.200000
+pixdim3         2.200000
+pixdim4         1.000000
+cal_max         1.000000
+cal_min         0.000000
+file_type       NIFTI-1+
+
+
+fslinfo *_dwi.nii.gz
+data_type       UINT16
+dim1            100
+dim2            100
+dim3            72
+dim4            129
+datatype        512
+pixdim1         2.200000
+pixdim2         2.200000
+pixdim3         2.200000
+pixdim4         5.000000
+cal_max         0.000000
+cal_min         0.000000
+file_type       NIFTI-1+
+
+As you can see this is not merely a rounding error, the dimensionality of the two sets of images are different. Is there a way around this?
+
+########################################################################
+
+

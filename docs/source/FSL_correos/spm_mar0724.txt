@@ -1,0 +1,412 @@
+Hi all, 
+
+After realignment processing in SPM, we obtain a file named rp_*.txt containing a matrix with six columns.
+
+How can we determine if a subject’s head motion is unacceptable using this matrix?
+
+Thank you for your help.
+
+I wish u good.
+Olivia
+
+
+Dear all,
+I am currently facing an issue while attempting ROI analysis in CAT12. Specifically, I keep encountering the following error message: "ROI analysis is only supported for VBM of GM/WM/CSF. No ROI values for DBM will be estimated." I followed the VBM longitudinal data CAT12 manual during preprocessing.
+
+I have attached my script and screenshots of my batch. I would greatly appreciate it if someone could review these and offer insights into why this error is occurring and if there is some reason this data could be DBM.
+
+Thank you very much for your attention and assistance.
+
+Warm regards,
+
+Pavlina
+
+Dear Gael,
+
+if the template is "higher" than your images this would be the expected behavior of spatial normalization. Open a template in the same "checkreg" to see whether this is the case. In general I would point you to the excellent PDF in the SPM distribution under /man which explains all these concepts.
+
+I hope this helps,
+
+Christian
+--
+Prof. Dr. Christian Büchel
+Institut für Systemische Neurowissenschaften Haus W34, Universitätsklinikum Hamburg-Eppendorf Martinistr. 52, D-20246 Hamburg, Germany
+Tel.: +49-40-7410-54726
+Fax.: +49-40-7410-59955
+buechel@uke.de
+http://www.uke.uni-hamburg.de/institute/systemische-neurowissenschaften/
+
+
+
+
+> -----Ursprüngliche Nachricht-----
+> Von: SPM (Statistical Parametric Mapping) [mailto:SPM@JISCMAIL.AC.UK] Im
+> Auftrag von Ga ël Cordero Otero
+> Gesendet: Donnerstag, 7. März 2024 13:38
+> An: SPM@JISCMAIL.AC.UK
+> Betreff: [EXT] [SPM] Normalization shifting image upwards (axially)
+>
+> Dear experts,
+>
+> During preprocessing, normalization seems to be moving my images upwards
+> (axially speaking). To better illustrate what I mean I've attached an image of a
+> realigned & unwarped image (left) and the same image after normalization
+> (right). We acquired the volumes with a slice tilt since there is evidence that
+> suggests that this increases the SNR of temporal lobes, that's why there isn't
+> whole brian coverage. I'm using SPM12 on matlab 2021a, if that is of any help.
+>
+> Has anyone run into this issue previously? If so, how can it be solved?
+> Thank you very much for your time,
+> Gaël
+
+--
+
+_____________________________________________________________________
+
+Universitätsklinikum Hamburg-Eppendorf; Körperschaft des öffentlichen Rechts; Gerichtsstand: Hamburg | www.uke.de
+Vorstandsmitglieder: Prof. Dr. Christian Gerloff (Vorsitzender), Joachim Prölß, Prof. Dr. Blanche Schwappach-Pignataro, Matthias Waldmann (komm.)
+_____________________________________________________________________
+
+SAVE PAPER - THINK BEFORE PRINTING
+
+Dear Mayank 
+
+I assume that y1 in your simulation is a BOLD signal of interest, and y2 is some form nuisance e.g. drift you want to filter away. If this is the case your simulation would apply to a situation where the SNR is around 1/50 (+white noise) which luckily is not quite the situation we typically are dealing with in fMRI. I have extended your simulation to SNR around 1 and SNR around 1/10. As you can see from the figure (run the attached code if it is removed due to its size) the filter performs pretty consistently for the SNR range from 0.1 to 10, but you do get some ringing if your SNR is around 0.02.  In that scenario I am afraid you will have other problems :-)  The ringing can be reduced if the length of the signal is extended with a factor of 100 - but that would be equally irrelevant in practice. 
+
+I hope this helps
+
+Best
+Torben
+
+
+
+
+%%
+L = 1024; %<length of signal
+filter_100s = ...          %< filter with hpf_cutoff = 100s
+    spm_filter(   struct('RT', 1, 'HParam', 100, 'row', 1:L)   );
+ 
+
+ 
+
+y1 = sin(2*pi*[1:L]/50 )';         %< sinusoid with period = 50s,  shouldn't be filtered
+y2 = sin(2*pi*[1:L]/350)'; %< sinusoid with period = 350s, should be filtered
+ 
+
+ 
+
+y_filter_test1 = spm_filter(filter_100s,    y1+50*y2); %< 'a' = 50
+y_filter_test2 = spm_filter(filter_100s,    y1+.1*y2);  %< 'a'=0.1
+ 
+
+y_filter_test3 = spm_filter(filter_100s,    y1+10*y2); %< 'a' = 10
+y_filter_test4 = spm_filter(filter_100s,    y1+1*y2);  %< 'a'=1
+ 
+
+ 
+
+figure;
+subplot(2,1,1); plot([y1+50*y2 y1+10*y2 y1+1*y2 y1+.1*y2]),
+l=legend({'SNR=0.02' 'SNR=0.1' 'SNR=1' 'SNR=10' }),xlim([1 L])
+l.Location='NorthEastOutside';
+title('Unfiltered signals')
+xlabel('Time [s]')
+subplot(2,1,2);
+plot([y_filter_test1 y_filter_test3 y_filter_test4 y_filter_test2])
+title('Highpass filtered T=100s')
+xlabel('Time [s]')
+ylim([-5 5]),xlim([1 L])
+l=legend({'SNR=0.02' 'SNR=0.1' 'SNR=1' 'SNR=10' }),xlim([1 L])
+l.Location='NorthEastOutside';
+ 
+
+
+
+
+
+
+
+
+
+Den 25. feb. 2024 kl. 21.49 skrev Mayank Jog <mayankjog@GMAIL.COM>:
+
+Hello experts!
+I was trying to understand an oddity I observed with high-pass filtering in spm. 
+
+Basically, I constructed a signal = y1+ a*y2; 
+y1 = sinusoid whose freq > hpf_cutoff, ie. it shouldn't be filtered out
+y2 = sinusoid whose freq < hpf_cutoff, ie. it should be filtered out. 
+
+The issue I'm having is that the filter gives different results based on "a" above (MATLAB code @ end of this email). Thinking from a brick wall** -type filtering POV, this shouldn't happen... the result of filtering "signal" above should be y1 everytime, independent of "a".  
+
+1.  Reading the documentation, I realized that SPM implements high-pass filtering using DCT.... why do we prefer filtering fMRI data with a DCT filter, since as the above case shows, a brick wall filter seems to be more accurate? 
+2. Thinking of y2 as "noise", it's almost as if the output is dependent on the scale of noise (captured by the scaling factor "a" above). Is this the right way to think about it/ Am I missing something here?
+
+Thank you!
+Mayank
+
+
+**By brick wall, I mean doing an fft, and nulling all frequencies above hpf_cutoff, followed by an inverse fft. 
+
+MATLAB Code: ===================
+L = 1024; %<length of signal
+filter_100s = ...          %< filter with hpf_cutoff = 100s
+                     spm_filter(   struct('RT', 1, 'HParam', 100, 'row', 1:L)   );
+
+
+y1 = sin(2*pi*[1:L]/50 )';         %< sinusoid with period = 50s,  shouldn't be filtered
+y2 = sin(2*pi*[ylim1:L]/350)'; %< sinusoid with period = 350s, should be filtered
+
+
+y_filter_test1 = spm_filter(filter_100s,    y1+50*y2); %< 'a' = 50
+y_filter_test2 = spm_filter(filter_100s,    y1+.1*y2);  %< 'a'=0.1
+
+figure; subplot(3,1,1); plot([y1 y2]);
+           subplot(3,1,2); plot(y_filter_test1);
+           subplot(3,1,3); plot(y_filter_test2);
+%============================
+
+Dear experts,
+
+During preprocessing, normalization seems to be moving my images upwards (axially speaking). To better illustrate what I mean I've attached an image of a realigned & unwarped image (left) and the same image after normalization (right). We acquired the volumes with a slice tilt since there is evidence that suggests that this increases the SNR of temporal lobes, that's why there isn't whole brian coverage. I'm using SPM12 on matlab 2021a, if that is of any help.
+
+Has anyone run into this issue previously? If so, how can it be solved?
+Thank you very much for your time,
+Gaël
+
+Thank you very much John! 
+It works!!!
+
+BW 
+Elena
+
+Il giorno gio 7 mar 2024 alle ore 09:09 Ashburner, John <j.ashburner@ucl.ac.uk> ha scritto:
+You can get the voxel sizes and bounding box for an axial image by:
+
+P = spm_select(1,'nifti');
+[bb,vx]=spm_get_bbox(P)
+
+Note that for historical reasons, I think it still rounds to the origin to the closest voxel, so the dimensions may not quite be exactly the same.  I think it should work for one of the MNI average images (in NIfTI format) though.
+
+Also note that the vx and bb formulation only works for exactly axial images (imho it is better to specify this using image dimensions and a voxel-to-world matrix).  Again, this should be fine for the MNI data.
+
+Best regards,
+-John
+
+
+From: ELENA GROSSO <elena.grosso01@universitadipavia.it>
+Sent: 06 March 2024 16:23
+To: Ashburner, John <j.ashburner@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK <SPM@jiscmail.ac.uk>
+Subject: Re: [SPM] SPM registration to MNI152 1 mm
+ 
+Thank you John for your fast reply.
+
+Changing the voxel size I don't obtain the same dimensions as in MNI152 (as you can see from the screenshots attached).
+In fact, my normalized spm image has dimensions 181x217x181, while MNI152 has dimensions 182x218x182. How could I obtain the same dimensions?
+I also copy the batch if can be useful:
+
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasreg = 0.0001;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasfwhm = 60;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.tpm = {'spm12/tpm/TPM.nii'};
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.affreg = 'mni';
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.reg = [0 0.001 0.5 0.05 0.2];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.fwhm = 0;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.samp = 3;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.bb = [-90 -126 -7  90 90 108];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.vox = [1 1 1];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.interp = 4;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.prefix = 'bb';
+
+Thanks!!
+Elena
+
+
+Il giorno mer 6 mar 2024 alle ore 16:50 Ashburner, John <j.ashburner@ucl.ac.uk> ha scritto:
+If I understand your question, you want to be able to specify a bounding box for generating images spatially normalised to 1 mm isotropic resolution.
+
+The bounding box is in units of mm, and specifies coordinates within MNI space that define the corners of your normalised images.  I think you just need to change the voxel sizes for the normalised images to [1 1 1] instead of their current default values.
+
+Best regards,
+-John
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of ELENA GROSSO <elena.grosso01@UNIVERSITADIPAVIA.IT>
+Sent: 06 March 2024 15:02
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] SPM registration to MNI152 1 mm
+ 
+⚠ Caution: External sender
+
+
+Hi all,
+
+Have you ever registered maps with 1x1x1 mm3 resolution in MNI space with SPM?
+I can' t find anywhere the bounding box to do it!
+
+Thanks,
+Elena
+
+PhD in psychology/ neuroscience/multi-modal neuroimaging
+
+Start date: April 2024 or later
+Duration: 3 years, optional extension by another year
+
+We offer a PhD position in a project funded by the Swiss National Science Foundation (Schweizerischer Nationalfonds, SNF): „The extended metabolic phenotype of preclinical Huntington’s disease: Whole body PET studies of glucose metabolism“.
+
+The group of Prof. Michael Orth, MD, PhD (University Hospital for Old Age Psychiatry and Psychotherapy) explores the relationship between brain structure, brain function, glucose metabolism and behaviour in Huntington’s disease, a hereditary neurodegenerative disease. The goal is to better understand what happens just before people carrying the HD mutation develop clinical signs of manifest HD. This can help to better predict the age at onset and improve the timing of disease modifying interventions. The current project is a collaboration with the Department of Nuclear Medicine at Inselspital Bern (head Prof. Axel Rominger), Prof. Jessica Peter at University Hospital for Old Age Psychiatry and Psychotherapy and Prof. Christian Wolf, Department of Psychiatry, Heidelberg University Hospital, Germany. We will examine carriers of the HD mutation who have no clinical signs of HD. They will undergo a whole-body glucose PET, and structural and resting state functional 3T MRI. The main question is whether HD mutation carriers differ from healthy volunteers in dynamic glucose uptake in the brain and/or peripheral tissues like skeletal muscle, and, if so, if there is a relationship between glucose metabolism and structural, or functional, changes in the brain. The project employs state-of-the-art PET and MRI methods, and multi-modal biostatistical methods for data analysis.
+
+ 
+
+Tasks
+
+Recruitment of study participants (healthy volunteers: HD participants are recruited via the HD clinic at the Swiss HD centre by the PI)
+Generation of PET and MRI data; data analysis
+Publication of results at conferences and in peer-reviewed journals
+
+
+You have
+
+A master degree in neurosciences, psychology, or a related field
+Keen interest in research
+Proficiency in German and English
+Ability to work independently and self-driven
+Knowledge in empirical methods and biostatistics
+Previous experience in imaging research (PET or MRI) will be helpful
+
+
+We offer
+
+Close PhD supervision by the PI and the multidisciplinary team
+Opportunities for training in neuroimaging and the analysis of complex multi-modal data
+Opportunities for international networking in HD research
+Salary according to the guidelines of the Swiss National Science Foundation (Schweizerischer Nationalfonds,SNF)
+
+
+Contact and application
+
+Please apply in writing to michael.orth@unibe.ch (deadline 15 March 2024) and include CV, cover letter, and references (as pdf no larger than 5MB). Inquiries can also be sent to the above email address.
+
+
+
+Antworten
+
+Weiterleiten
+Teilnehmerbereich geschlossen
+
+
+
+Universitäre Psychiatrische Dienste Bern (UPD) AG
+Universitätsklinik für Alterspsychiatrie und Psychotherapie
+
+
+Prof. Dr. Jessica Peter
+Leiterin Forschung
+
+Bolligenstrasse 111, 3000 Bern 60
+Tel.: +41(0)31 932 89 03
+Mail: jessica.peter@unibe.ch
+Webseite: http://www.upd.unibe.ch/research/research_groups/group_peter
+
+You can get the voxel sizes and bounding box for an axial image by:
+
+P = spm_select(1,'nifti');
+[bb,vx]=spm_get_bbox(P)
+
+Note that for historical reasons, I think it still rounds to the origin to the closest voxel, so the dimensions may not quite be exactly the same.  I think it should work for one of the MNI average images (in NIfTI format) though.
+
+Also note that the vx and bb formulation only works for exactly axial images (imho it is better to specify this using image dimensions and a voxel-to-world matrix).  Again, this should be fine for the MNI data.
+
+Best regards,
+-John
+
+
+From: ELENA GROSSO <elena.grosso01@universitadipavia.it>
+Sent: 06 March 2024 16:23
+To: Ashburner, John <j.ashburner@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK <SPM@jiscmail.ac.uk>
+Subject: Re: [SPM] SPM registration to MNI152 1 mm
+ 
+Thank you John for your fast reply.
+
+Changing the voxel size I don't obtain the same dimensions as in MNI152 (as you can see from the screenshots attached).
+In fact, my normalized spm image has dimensions 181x217x181, while MNI152 has dimensions 182x218x182. How could I obtain the same dimensions?
+I also copy the batch if can be useful:
+
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasreg = 0.0001;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasfwhm = 60;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.tpm = {'spm12/tpm/TPM.nii'};
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.affreg = 'mni';
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.reg = [0 0.001 0.5 0.05 0.2];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.fwhm = 0;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.samp = 3;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.bb = [-90 -126 -7  90 90 108];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.vox = [1 1 1];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.interp = 4;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.prefix = 'bb';
+
+Thanks!!
+Elena
+
+
+Thank you John for your fast reply.
+
+Changing the voxel size I don't obtain the same dimensions as in MNI152 (as you can see from the screenshots attached).
+In fact, my normalized spm image has dimensions 181x217x181, while MNI152 has dimensions 182x218x182. How could I obtain the same dimensions?
+I also copy the batch if can be useful:
+
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasreg = 0.0001;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasfwhm = 60;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.tpm = {'spm12/tpm/TPM.nii'};
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.affreg = 'mni';
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.reg = [0 0.001 0.5 0.05 0.2];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.fwhm = 0;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.samp = 3;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.bb = [-90 -126 -7  90 90 108];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.vox = [1 1 1];
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.interp = 4;
+            matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.prefix = 'bb';
+
+Thanks!!
+Elena
+
+
+Il giorno mer 6 mar 2024 alle ore 16:50 Ashburner, John <j.ashburner@ucl.ac.uk> ha scritto:
+If I understand your question, you want to be able to specify a bounding box for generating images spatially normalised to 1 mm isotropic resolution.
+
+The bounding box is in units of mm, and specifies coordinates within MNI space that define the corners of your normalised images.  I think you just need to change the voxel sizes for the normalised images to [1 1 1] instead of their current default values.
+
+Best regards,
+-John
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of ELENA GROSSO <elena.grosso01@UNIVERSITADIPAVIA.IT>
+Sent: 06 March 2024 15:02
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] SPM registration to MNI152 1 mm
+ 
+⚠ Caution: External sender
+
+
+Hi all,
+
+Have you ever registered maps with 1x1x1 mm3 resolution in MNI space with SPM?
+I can' t find anywhere the bounding box to do it!
+
+Thanks,
+Elena
+
+If I understand your question, you want to be able to specify a bounding box for generating images spatially normalised to 1 mm isotropic resolution.
+
+The bounding box is in units of mm, and specifies coordinates within MNI space that define the corners of your normalised images.  I think you just need to change the voxel sizes for the normalised images to [1 1 1] instead of their current default values.
+
+Best regards,
+-John
+
+
+Hi all,
+
+Have you ever registered maps with 1x1x1 mm3 resolution in MNI space with SPM?
+I can' t find anywhere the bounding box to do it!
+
+Thanks,
+Elena
+

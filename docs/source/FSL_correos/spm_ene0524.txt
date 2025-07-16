@@ -1,0 +1,581 @@
+Hello,
+
+I have several questions regarding the aal cluster labeling (I am using spm8 for FDG-PET):
+
+1) I recognized that for one cluster, when you sum up the shares of all labels (% Cluster) of whom a certain Cluster extends it does not come out as (near to) 100% as you would expect. The sum is often far less than 100% but why?
+
+2) Always when I multiply the % Cluster of the OUTSIDE label of any Cluster in any brain analysis with the number of voxel of this cluster it amounts to 1. This would mean that there is always just one voxel labeled OUTSIDE, what makes no sense at all in my opinion.
+
+3) Lastly I found in analysis of several brains that sometimes in a cluster the % label is given a number over 100 which I interpret that over 100% of this label are filled out by this cluster, how is this be possible?
+
+Kind regards,
+
+Martin
+
+Dear Peter,
+Thank you!
+
+I've reviewed the beta and contrast maps, and they appear normal. I've re-run all preprocessing steps for this subject, but the all-zero issues persist.
+
+The description in the file header of the spmT files seems unusual:
+descrip: 'SPM{T_[0.9]} - contrast 2: effect1'
+
+Is the number 0.9 representing the degrees of freedom for the t-test?
+
+Any thoughts on why the all-zero issues persist?
+
+Best,
+Luna
+
+Jan 5, 2024, 10:59 PM by peter.zeidman@ucl.ac.uk:
+Thanks Luna
+
+Great. I am not surprised that a t-value map of all zeros broke your analysis 😊 . Take a look at the beta maps, then the contrast maps, then the t-maps, to determine at which stage the all-zero issue arose. Let us know if we can be of further help.
+
+ 
+
+Best
+
+P
+
+ 
+
+From: lunamitsukisato@keemail.me <lunamitsukisato@keemail.me>
+Sent: 04 January 2024 23:32
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: RE: [SPM] SPM gets stuck during the extraction of a VOI
+
+ 
+
+Dear Peter,
+
+Thank you very much!
+
+I checked the statistical results of the contrast. And found only zero values in the spmT file. I think this is the reason why VOI extraction procedure couldn’t overcome the while circle.
+
+Besides, I checked all the beta files and con files of this subjects, which look normal. But there are only zero values in all spmT files of this subject.
+
+This makes me confused. Because the analysis code for all subjects are the same. An other subjects’ contrast results look fine and even perfect. 
+
+Next, I plan to re-run GLM for this subject and see what will happen.
+
+ 
+
+What do you think?
+
+ 
+
+1.1.1.Is this an analysis of BOLD fMRI data?
+yes
+
+2. Were spm1 and spm2 in your batch different SPMs? Were they both first-level analysis?
+
+They are different SPMs and all first-level analysis. Spm1 contains analysis of main sessions. Spm2 contains analysis of functional localizer sessions.
+
+ 
+
+3.What was the specification of the contrast (i.e., the contrast vector or matrix used in contrast contrastNumber)?
+
+[1 1 1 1 ]   There are four conditions in the functional localizer sessions.
+
+ 
+
+4.What threshold was used (SThreshold)?
+
+SThreshold=0.05;
+
+Dear Peter
+
+I think you are absolutely right!
+
+Thanks so much and sorry for all the questions.
+
+I will try to collate the GCMs in a way that has the same number of models for each subject.
+If you know any clever ways of doing this it would be greatly appreciated but you have already helped
+so much, so only if you can be bothered of course!!
+
+All the best :)
+-Johannes
+
+Den tirs. 2. jan. 2024 kl. 10.54 skrev Zeidman, Peter <peter.zeidman@ucl.ac.uk>:
+Dear Johannes
+You're welcome. It's not obvious to me how uneven group sizes would cause the error you mentioned. Are you sure that it's not that the four GCM files containing different numbers of models per subject (i.e., a different number of columns?).
+
+Otherwise, what line does the error occur one?
+
+Re: mean-centring - that is already in the script I sent.
+
+Best
+P
+
+-----Original Message-----
+From: Johannes Wibroe <jegerbims@GMAIL.COM>
+Sent: 22 December 2023 19:47
+To: SPM@JISCMAIL.AC.UK; Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Subject: Re: Spm error message
+
+⚠ Caution: External sender
+
+
+Dear Peter
+
+Thank you so much for your help that seems to have worked!
+
+My only remaining issue now is that my groups have unequal sizes, and so I get the error that the arrays being concatenated are not consistent.
+
+Would you consider mean-centering appropriate in this situation?
+
+Thank you!
+
+All the best,
+Johannes
+
+
+Dear SPM community
+
+
+
+Just a reminder that we are looking for 3 people (2 post-docs and 1 support scientist) to work with Optically Pumped Magnetometers (OPMs) at UCL.
+
+
+
+The roles will involve substantial methods development in real-time signal processing, computational modeling, and electronic circuit design. You'll also get to be part of the SPM team and contribute to the software's growth. If any of the above interests you please apply or forward the links below to someone who you think might be interested. 
+
+
+
+Best
+
+
+
+Tim Tierney 
+
+ 
+
+OPM Research Fellow to develop methods for measurement outside the MSR - B02-06258: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7965&nPostingTargetId=18663&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+ 
+
+OPM Research Fellow developing methods to expand the range and quality of naturalistic neuroscience experiments with OPMs - B02-06268: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7989&nPostingTargetId=18660&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+ 
+
+OPM Support Scientist assisting researchers in conducting experiments and overseeing the operations of the OPM suite - B02-06270: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7985&nPostingTargetId=18665&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+
+
+
+Thanks Luna
+
+Great. I am not surprised that a t-value map of all zeros broke your analysis 😊 . Take a look at the beta maps, then the contrast maps, then the t-maps, to determine at which stage the all-zero issue arose. Let us know if we can be of further help.
+
+ 
+
+Best
+
+P
+
+ 
+
+Hi folks,
+
+I have a single participant for whom the FOV was slightly wider than others, so SPM gives an error at second level when trying to combine the contrast images
+
+[71 84 49]  /Volumes/13/GLM/EV_RPE_RPEhx/con_0006.nii
+[71 84 49]  /Volumes/15/GLM/EV_RPE_RPEhx/con_0006.nii
+[85 101 49]  /Volumes/22/GLM/EV_RPE_RPEhx/con_0006.nii
+[71 84 49]  /Volumes/25/GLM/EV_RPE_RPEhx/con_0006.nii
+
+I've inspected them, and normalisation looks correct ie when overlaying, the brain is in the same place in that image as all of the others; there are just more empty voxels around the edges of the image. Not perfect, but I think some missing coverage/dropout rather than poor normalisation.
+
+
+
+I've opened the smoothed images - note they are 4D - and shaved off half of the voxels from beginning/end of each matrix dimension that doesn't match (x and y).
+
+fnm='ssub-22_task-rt_rec-FEEPI_run-1_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'
+hdr = spm_vol(fnm);
+img = spm_read_vols(hdr);
+imgsize = size(img(:,:,:,1))
+targetsize = [71 84 49]
+sizediff = imgsize-targetsize
+nvoxToremoveBeginAndEnd = sizediff/2
+nvol=size(img,4)
+indvoxtoKeep ={};
+for idim=1:3
+    indvoxtoKeep{idim} = floor(nvoxToremoveBeginAndEnd(idim))+1: imgsize(idim)-ceil(nvoxToremoveTopAndBottom(idim))
+end
+croppedimg=img(indvoxtoKeep{1}, indvoxtoKeep{2}, indvoxtoKeep{3},:);
+
+
+I have two issues: first, recalculating the header information and second writing it out as a 4D image:
+
+I read that V.pinfo can be missing and SPM calculates it, so I just deleted that field. I think the main thing that needs updating is the field for number of voxels and, crucially, V.mat, the affine transformation. I borrowed some of John's code on another post:
+bb=[indvoxtoKeep{1}(1) indvoxtoKeep{1}(end) ; indvoxtoKeep{2}(1) indvoxtoKeep{2}(end) ; indvoxtoKeep{3}(1) indvoxtoKeep{3}(end)]'
+bb      = round(bb);
+bb      = sort(bb);
+bb(1,:) = max(bb(1,:),[1 1 1]);
+bb(2,:) = min(bb(2,:),V(1).dim(1:3));
+newmat = V(1).mat*spm_matrix((bb(1,:)-1))
+
+Reassuringly, the new P.mat matrix is identical to the other participants' with the desired image dimensions, so I thought I did good. However, when I open the image, the brain is now visually much larger (occupies a greater % of the voxels than before/than the other participants). So the resulting image is no longer normalised. In hindsight, cropping away voxels was bound to change the resolution of the image. I guess a safer approach would have been to add voxels to all of the other participant images, but it's a large dataset with many runs so I prefer to avoid that if possible.
+
+
+
+The second problem I have is writing it out as a 4D. In the end I resorted to writing it out as multiple 3D and then using the merge function.
+for ivol=1:length(outhdr2)
+    writehdr = outhdr2(ivol)
+    writehdr.fname = strrep(writehdr.fname, '.nii', ['_cropped_',num2str(ivol), '.nii'])
+    writehdr.n=[1 1]
+    writevol = croppedimg(:,:,:,ivol);
+    spm_write_vol(writehdr,writevol);
+end
+spm_file_merge % manually selecting images here
+
+I'm thinking it might be better to attempt this directly on the contrast images, as they are at 3D so less moving parts. I'd rather do that than begin on the smoothed or raw images, as they have been put through fmriprep which took a long time.
+
+My questions:
+
+Can someone help understand the mistake I'm making here?
+And maybe point me to an actual tool or code to do this?
+
+
+Thanks!
+Liam
+
+Dear Peter,
+Thank you very much!
+
+I checked the statistical results of the contrast. And found only zero values in the spmT file. I think this is the reason why VOI extraction procedure couldn’t overcome the while circle.
+
+Besides, I checked all the beta files and con files of this subjects, which look normal. But there are only zero values in all spmT files of this subject.
+
+This makes me confused. Because the analysis code for all subjects are the same. An other subjects’ contrast results look fine and even perfect.  
+
+Next, I plan to re-run GLM for this subject and see what will happen.
+
+
+What do you think?
+
+1.1.1.Is this an analysis of BOLD fMRI data?
+yes
+
+2. Were spm1 and spm2 in your batch different SPMs? Were they both first-level analysis?
+They are different SPMs and all first-level analysis. Spm1 contains analysis of main sessions. Spm2 contains analysis of functional localizer sessions.
+
+3.What was the specification of the contrast (i.e., the contrast vector or matrix used in contrast contrastNumber)?
+[1 1 1 1 ]   There are four conditions in the functional localizer sessions.
+
+4.What threshold was used (SThreshold)?
+SThreshold=0.05;
+
+5.If you view the results of a contrast from model spm2 using the GUI, does the same error occur? (I.e., click Results, then select the SPM.mat file corresponding to spm2, then select a contrast to view)
+The same error appeared, no matter which contrast was selected for this subject.
+Cheers,
+
+Luna
+
+
+Jan 4, 2024, 8:41 PM by peter.zeidman@ucl.ac.uk:
+Dear Luna
+
+Sorry you’ve had this problem – and thank you for providing a very clear error report. The function is getting stuck in part of the code related to thresholding the SPM. This part of the code has no known bugs and is quite well established, which makes me think there is something unusual with the data going into it. Please can we check a few things?
+
+ 
+
+Is this an analysis of BOLD fMRI data?
+Were spm1 and spm2 in your batch different SPMs? Were they both first-level analysis?
+What was the specification of the contrast (i.e., the contrast vector or matrix used in contrast contrastNumber)?
+What threshold was used (SThreshold)?
+If you view the results of a contrast from model spm2 using the GUI, does the same error occur? (I.e., click Results, then select the SPM.mat file corresponding to spm2, then select a contrast to view)
+ 
+
+Hopefully that will get us closer to a solution,
+
+Peter
+
+Dear SPM-Experts,
+
+I have recently encountered a problem that concerns the statistical representation of all significant clusters. Not all statistical values are displayed when using the 'Call Results' function of the TFCE toolbox. In the graphical illustration, three significant clusters are visible, for which statistical parameters are available for only two clusters.
+
+Interestingly, when I load the data into the CAT12 toolbox, it defines all three clusters with their corresponding p-values and brain areas. This error hasn't occurred to me before and has equally surprised my colleagues. Unfortunately, the CAT12 toolbox doesn't allow me to determine both the peak cluster with corresponding MNI coordinates and the TFCE statistics, which I need to include in my manuscript.
+
+Has anyone encountered this problem before, or has an idea, or an alternative method to access this data?
+
+I have already attempted several approaches, including updating the toolbox, recalculating, and loading the logarithmic data into the GIFTI toolbox.
+Moreover, rounding errors were ruled out as well.
+
+I would be extremely grateful for any support and advice.
+
+Best,
+Jonathan
+
+Dear Luna
+
+Sorry you’ve had this problem – and thank you for providing a very clear error report. The function is getting stuck in part of the code related to thresholding the SPM. This part of the code has no known bugs and is quite well established, which makes me think there is something unusual with the data going into it. Please can we check a few things?
+
+ 
+
+Is this an analysis of BOLD fMRI data?
+Were spm1 and spm2 in your batch different SPMs? Were they both first-level analysis?
+What was the specification of the contrast (i.e., the contrast vector or matrix used in contrast contrastNumber)?
+What threshold was used (SThreshold)?
+If you view the results of a contrast from model spm2 using the GUI, does the same error occur? (I.e., click Results, then select the SPM.mat file corresponding to spm2, then select a contrast to view)
+ 
+
+Hopefully that will get us closer to a solution,
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Luna Sato
+Sent: 01 January 2024 21:31
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] SPM gets stuck during the extraction of a VOI
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear SPM experts,
+
+ 
+
+My SPM gets stuck during the extraction of a VOI.  I've waited for about 15 hours, but it hasn't completed the process. It gets stuck in a while loop within a function named spm_uc_RF.
+
+ 
+
+This is the function hierarchy：
+
+ 
+
+spm_run_voi
+
+   roi_estim
+
+      getSPM
+
+        spm_getSPM
+
+          spm_uc
+
+            spm_uc_RF
+
+ 
+
+This is the while loop:
+
+ 
+
+while abs(d) > 1e-6
+
+    [P, P, p] = spm_P_RF(1,0,u,df,STAT,R,n);
+
+    [P, P, q] = spm_P_RF(1,0,u + du,df,STAT,R,n);
+
+    d         = (a - p)/((q - p)/du);
+
+    u         = u + d;
+
+    if isinf(u), u=+Inf; return; end
+
+end
+
+ 
+
+Below is the code I'm using for VOI extraction:
+
+ 
+
+matlabbatch{1}.spm.util.voi.spmmat = spm1;
+
+matlabbatch{1}.spm.util.voi.adjust = 1;
+
+matlabbatch{1}.spm.util.voi.session = 1;
+
+matlabbatch{1}.spm.util.voi.name = vname;
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.spmmat =  spm2;
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.contrast = contrastNumber;
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.conjunction = 1;
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.threshdesc = 'none';
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.thresh = SThreshold;
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.extent = 0;
+
+matlabbatch{1}.spm.util.voi.roi{1}.spm.mask = struct('contrast', {}, 'thresh', {}, 'mtype', {});
+
+matlabbatch{1}.spm.util.voi.roi{2}.sphere.centre = peakcoordinate;
+
+matlabbatch{1}.spm.util.voi.roi{2}.sphere.radius = 4;
+
+matlabbatch{1}.spm.util.voi.roi{2}.sphere.move.local.spm = 1;
+
+matlabbatch{1}.spm.util.voi.roi{2}.sphere.move.local.mask = 'i3';
+
+matlabbatch{1}.spm.util.voi.roi{3}.sphere.centre = peakcoordinate;
+
+matlabbatch{1}.spm.util.voi.roi{3}.sphere.radius = 7;
+
+matlabbatch{1}.spm.util.voi.roi{3}.sphere.move.fixed = 1;
+
+matlabbatch{1}.spm.util.voi.expression = 'i1&i2';
+
+ 
+
+Does anyone have suggestions on how to resolve this problem?
+
+ 
+
+Cheers,
+
+Luna
+
+Postdoctoral studies in Cognitive Neuroscience
+
+ 
+
+Brain, Body, and Self Laboratory, Department of Neuroscience, Karolinska Institutet
+
+ 
+
+The Department of Neuroscience comprises multiple research groups focusing on diverse aspects of nervous system function in both normal and diseased states. Our research encompasses a wide array of studies, ranging from molecular and cellular levels to neuron networks and the overall organization of the nervous system. This includes four labs dedicated to cognitive neuroscience. The Department maintains a flat organizational structure with 40 research group leaders, including 24 full professors, alongside 65 PhD students and 35 postdocs.
+
+ 
+
+The Brain, Body, and Self Laboratory (Group Ehrsson) uses neuroimaging and behavioral methods to study how we perceive our own bodies as unique objects distinct from the external environment (www.ehrssonlab.se). We aim to characterize the perceptual rules and brain mechanisms whereby a central representation of one's own body is constructed by integrating signals from the different sensory modalities (e.g., vision, touch, and proprioception). We also investigate how central body representation influences how we think, feel, and remember ourselves and how the external world looks to us. Our laboratory has expertise in functional magnetic resonance imaging (fMRI), electroencephalography (EEG), transcranial magnetic stimulation (TMS), psychophysics, and other behavioral approaches (including virtual reality technology and robotically controlled bodily illusion setups). We have local access to two state-of-the-art 3T MRI scanners, one 7T scanner, and one MEG scanner.
+
+ 
+
+We are seeking a highly talented, innovative, and enthusiastic researcher who has been awarded a Ph.D. in cognitive neuroscience or a related field within the past two years. The successful candidate will work on projects focused on body representation, bodily illusions, multisensory integration, embodied cognition, or processes related to bodily self-awareness, including the sense of body ownership.
+
+ 
+
+The ideal candidate should possess expertise in experimental psychology or cognitive neuroscience, with a preference for skills in psychophysics and computational modeling, and/or proficiency in neuroimaging methods, especially multivoxel pattern analyses, and/or experience with human electrophysiology (EEG, MEG) or brain stimulation methods (e.g., TMS). The candidate will be expected to work within the framework of our research program (www.ehrssonlab.se), yet will have considerable freedom to develop their own ideas and project proposals. The ability to work independently, initiate and lead novel research projects, and prepare high-quality draft manuscripts for research articles is crucial. Applicants must demonstrate an excellent academic track record, including high-quality publications in international peer-reviewed journals.
+
+ 
+
+The application must me uploaded via the Karolinska job recruitment portal: http://ki.varbi.com/what:job/jobID:687736/
+
+ 
+
+An application must contain the following documents in English or Swedish:
+
+A complete curriculum vitae, including date of the thesis defence, title of the thesis, previous academic positions, academic title, current position, academic distinctions, and committee work
+A complete list of publications
+A summary of current work (no more than one page)
+ 
+
+Deadline: February 16, 2024
+
+ 
+
+/Henrik Ehrsson
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dr Charlotte Rae is looking for 2 postdoctoral researchers to study how a 4 day working week changes mind, brain, and body, at the University of Sussex, Brighton, UK.
+
+Our lab investigates how our working lives interact with wellbeing, using occupational psychology, lifestyle and mental health assessments, and MRI brain scanning. More information about the lab can be found at: https://www.sussex.ac.uk/psychology/abc-lab, and on our Sussex 4 day week project website: www.sussex4dayweek.co.uk.
+
+There are 2 postdoc positions available to start from April 2024, both initially for 3 years. One postdoc role is focused on analysing functional Magnetic Resonance Imaging (fMRI) data, including integrating fMRI with lifestyle and wellbeing variables: https://jobs.sussex.ac.uk/job/771a64ef-f387-4e71-a80a-534f509b4912
+
+The second postdoc role is focused on analysing mental health, lifestyle (e.g. sleep), and occupational psychology data, as well as inflammatory cytokines from blood samples:
+https://jobs.sussex.ac.uk/job/addc07ab-32f5-4bbc-a768-7bfb6b0db55e
+
+As well as utilising data from trials of the 4 day working week, the research will use data from the UK Biobank to investigate how time spent at work influences brain function, mental health, and physical health. The research is part of a £1.6m Future Leaders Fellowship project led by Dr Charlotte Rae and funded by UKRI.
+
+Informal enquiries are most welcome: please contact Dr Charlotte Rae (c.rae@sussex.ac.uk).
+
+Closing date: 9 February
+
+Hello,
+
+I have several questions regarding the aal cluster labeling (I am using spm8 for FDG-PET):
+
+1) I recognized that for one cluster, when you sum up the shares of all labels (% Cluster) of whom a certain Cluster extends it does not come out as (near to) 100% as you would expect. The sum is often far less than 100% but why?
+
+2) Always when I multiply the % Cluster of the OUTSIDE label of any Cluster in any brain analysis with the number of voxel of this cluster it amounts to 1. This would mean that there is always just one voxel labeled OUTSIDE, what makes no sense at all in my opinion.
+
+3) Lastly I found in analysis of several brains that sometimes in a cluster the % label is given a number over 100 which I interpret that over 100% of this label are filled out by this cluster, how is this be possible?
+
+Kind regards,
+
+Martin
+
+Hello,
+
+From a 2nd-level generalised psychophysiological interaction (PPI) analysis, I would like to extract the value of significant PPI activations (within specific clusters of interest), from the group t-contrast of interest. The t-contrast results from a mixed ANCOVA using a flexible factorial design, with a 3-level between-subject factor (controls, patient-group A, patient-group B), and a 2-level within-subject factor (time 1 and time 2), and covariate (memory score at time 1 and time 2 for each subject). For a specific t-contrast [-1 1 1 -1 0 0 1], I would like to retrieve the value of specific significant clusters to be able to use it in further types of correlations analysis, such as with structural data. Aka, for each patient, I am interested in the contrast estimate within a certain cluster that is specific to the group t-contrast.
+
+I have tried different approaches but they all give me different results. I have tried:
+1) Manual parameter extraction via Marsbar
+http://andysbrainblog.blogspot.com/2012/11/parameter-extraction-with-marsbar.html
+
+2) Using ROI_Extract_Data.m
+http://andysbrainblog.blogspot.com/2014/07/quick-and-efficient-roi-analysis-using.html
+
+3) ROI Analysis with SPM12
+After loading the group-level flexible factorial t-contrast within a mask/sphere, I extracted whitened and filtered y within a cluster of interest.
+
+4) adjusted responses via SPM 12
+- upload an spm.mat with the contrast of interest, go to -->plot --> fitted responses
+- Select contrast of interest --> predicted or adjusted: adjusted response
+- plot against: Scan or time
+- then in matlab see the "y" variable.
+-> This method yields 62 values (one for each subject times two, due to the repeated timepoints), which are mirrored and centred around 0 (e.g.,  1.71 and -1.71 for subject 1; 0.14 and -0.14 for subject 2, 0.25 and -0.25 for subject 3 etc. until subject 31. I am not sure why this is doing this/ should this method be used only at the 1st-level analysis?
+
+The example documentations show methods for one-sample or two-sample t-tests but I am not sure how to reliable retrieve the contrast estimates from a mixed ANCOVA with repeated measures.
+
+My main questions are:
+1. Is there another/a better method to extract the PPI contrast estimate for my repeated measures, flexible factorial design? If not, which of the ones listed above should I use since I am getting different values for each method.
+
+2. For each method, I get two values per subject, but are these values actually representing the connectivity value between a brain region and my seed region used in PPI analysis that correlates with memory scores in that cluster at time 1 and time 2?
+
+I hope my questions make sense; I would appreciate any help on this!
+
+Thank you!
+Kind regards,
+Marine
+
+Dear SPM experts,
+
+We collected MRI images from some brain tumour patients and wanted to segment their T1w images to obtain grey and white matter portions. As previous studies have suggested that the original function may still be preserved in tumour-infested brain tissue, we did not use a tumour mask to generate the masked T1w image. We tried using CAT12 for automatic tissue segmentation, but the resulting grey matter tends to encapsulate the tumour-infested white matter region area as well, so I wonder if there is any more accurate method or pipeline for segmenting the brain tissue of tumour patients.
+
+Best regards,
+
+Chuyue
+
+Dear all,
+We are delighted to announce that registration is now open for the 3rd edition of WIRED! The International Workshop on Intracranial Recordings in humans: Epilepsy and DBS. 
+
+Paris Brain Institute from the 13th to the 15th of March 2024
+
+
+
+This year, in addition to the main program featuring lectures of renowned experts in the field (March 14-15), this 2024 edition also includes a special event : a full day of hands-on tutorials (March 13th) on main data analysis software (#Fieldtrip, #Spike Interface, #MNE, #Brainstorm-MIA).
+
+
+
+To keep in touch please subscribe to our mailing list! (Send an empty email to sympa@listes.upmc.fr with object : subscribe wired_infos) 
+
+We are looking forward to seeing you in Paris!
+
+The organizing committee of WIRED
+Organizing committee: Katia Lehongre, Anne Buot, A.-Sophie Dubarry, Anaïs Llorens, Adrien Schramm (Independent event organizer)
+
+
+Scientific committee: Katia Lehongre, Anne Buot, A.-Sophie Dubarry, Anaïs Llorens, Vincent Navarro, Valerio Frazzini, Nathalie George, Brian Lau, Marie-Laure Welter.
+
+

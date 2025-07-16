@@ -1,0 +1,819 @@
+Dear Paul:
+
+May I wonder if you had a chance to look into the data to see if the problem could be resolved?
+
+Really appreciate your taking the time and help. Many thanks. 
+
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+On Sat, Dec 31, 2022 at 8:07 AM Edward S. Hui <edward.s.hui@gmail.com> wrote:
+Hi Paul:
+
+My apologies, please kindly use this link instead:
+https://gocuhk-my.sharepoint.com/:u:/g/personal/skhui_cuhk_edu_hk/EYsyPL1AAnpCpLzq4HP9rykBEyPT03UXa6KpPRT8Lbwf_w?e=4EJDYv
+
+Many thanks!
+
+On Sat, 31 Dec 2022 at 7:55 AM, paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Ed,
+
+The link seems to have expired - are you able to share it again? I am on holiday, so may not get to it for a couple of days.
+
+Paul
+
+On Thu, 29 Dec 2022 at 08:51, Edward S. Hui <edward.s.hui@gmail.com> wrote:
+Hi Paul:
+
+Please kindly download the data using this link instead as I'm not sure why it took a little too long time to upload the data to the address you provided. 
+
+Please do not hesitate to let me know in case you need anything else. Many thanks. 
+
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+On Thu, Dec 29, 2022 at 10:01 AM Edward S. Hui <edward.s.hui@gmail.com> wrote:
+Hi Paul:
+
+Kindly note that I have just uploaded the files to the link you previously gave me. 
+
+I should give you the simplified command call below instead:
+probtrackx2_gpu --loopcheck --forcedir --fibthresh=0.01 --cthr=0.2 --sampvox=2 --randfib=1 --nsamples=3000 --nsteps=2000 --steplength=0.5 --samples=V3/T1w/Diffusion.bedpostX/merged --mask=V3/T1w/Diffusion.bedpostX/nodif_brain_mask --meshspace=caret --seed=V3/MNINonLinear/ROIs/Whole_Brain_Trajectory_ROI_2 --seedref=/opt/fsl/fsl/data/standard/MNI152_T1_2mm_brain_mask --xfm=V3/MNINonLinear/xfms/standard2acpc_dc --invxfm=V3/MNINonLinear/xfms/acpc_dc2standard --stop=V3/MNINonLinear/Results/Tractography/stop --wtstop=V3/MNINonLinear/Results/Tractography/wtstop --waypoints=V3/MNINonLinear/ROIs/Whole_Brain_Trajectory_ROI_2 --omatrix3 --target3=V3/MNINonLinear/Results/Tractography/Mat3_targets --dir=V3/MNINonLinear/Results/Tractography
+
+Many thanks for your help indeed!
+
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+On Thu, Dec 29, 2022 at 9:29 AM Edward S. Hui <edward.s.hui@gmail.com> wrote:
+Hi Paul:
+
+Absolutely. Please find below the command that I used:
+probtrackx2_gpu --loopcheck --forcedir --fibthresh=0.01 --cthr=0.2 --sampvox=2 --randfib=1 --nsamples=3000 --nsteps=2000 --steplength=0.5 --samples=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/T1w/Diffusion.bedpostX/merged --mask=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/T1w/Diffusion.bedpostX/nodif_brain_mask --meshspace=caret --seed=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/ROIs/Whole_Brain_Trajectory_ROI_2 --seedref=/opt/fsl/fsl/data/standard/MNI152_T1_2mm_brain_mask --xfm=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/xfms/standard2acpc_dc --invxfm=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/xfms/acpc_dc2standard --stop=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/Results/Tractography/stop --wtstop=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/Results/Tractography/wtstop --waypoints=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/ROIs/Whole_Brain_Trajectory_ROI_2 --omatrix3 --target3=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/Results/Tractography/Mat3_targets --dir=/home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/Results/Tractography
+
+I will upload the data accordingly. Many thanks! 
+
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+On Thu, Dec 29, 2022 at 9:21 AM paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Ed,
+
+Would you be able to share your data, and the command you are running, so I can try to reproduce the error? You can upload your data to https://oxfile.ox.ac.uk/oxfile/work/extBox?id=1210622161ED8E4490A
+
+Paul
+
+On Thu, 29 Dec 2022 at 01:07, Edward S. Hui <edward.s.hui@gmail.com> wrote:
+Hi Paul:
+
+Yes, I am using the latest version and had the same problem. 
+
+Many thanks for your swift response. 
+
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+On Thu, Dec 29, 2022 at 9:05 AM paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Ed,
+
+Are you using the latest version of FSL? If not, could you upgrade to the latest, and try again?
+
+Paul
+
+On Wed, 28 Dec 2022 at 08:09, Edward Hui <edward.s.hui@gmail.com> wrote:
+Dear FSL Experts:
+
+I ran into a problem with running probtrackx2_gpu on either ubuntu 18.04 or ubuntu 20.04 with NVIDIA's A6000 GPU.
+
+Please find the error message below for your reference:
+PROBTRACKX2 VERSION GPU
+Log directory is: /home/ehui/qunex/cimt/sessions/V3/hcp/V3/MNINonLinear/Results/Tractography
+Running in seedmask mode
+Loading tractography data
+Number of Seeds: 192184
+Dimensions Matrix3 91282 x 91282
+
+Time Loading Data: 32 seconds
+
+
+...................Allocated GPU 0...................
+Device memory available (MB): 48419 ---- Total device memory(MB): 48685
+Memory required for allocating data (MB): 826
+Device memory available after copying data (MB): 47549
+Running 457112 streamlines in parallel using 2 STREAMS
+Total number of streamlines: 576552000
+CUDA Runtime Error: out of memory
+
+
+As you can see, my GPU should have sufficient memory to run the probtrackx2_gpu job.
+
+Any help to resolve this issue would be greatly appreciated! Thank you very much for your attention.
+
+Best,
+Ed
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+--
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+
+Hello!
+
+I am setting up a CLI-based SOP to perform QC with FSLeyes, and I would like to display two "default" scenes (with options -xh -yh). Is it possible to do it via the CLI?  I've tried doubling the argument pair: `--scene default --scene default` (only one default scene appears) or doubling the argument value: `--scene default default` (crashes).
+
+I know I can save a custom scene, but it is saved under `~/.fsleyes`, hence not "easily" portable to a public-facing SOP.
+
+Many thanks!
+Julien
+
+########################################################################
+
+
+Dear FSl community,
+Happy 2023, wishing you and your loved ones a prosperous new year.
+I would appreciate your input regarding a voxel wise analysis that I am working on.
+I have one group of FA maps. I need to correlate clinical behaviour scale with FA within every voxel in the brain before and after adjustemnt for age.
+
+I ran Glm gui in terminal, I chosse #of groups =1 and # of EVs =2 ... GLM window looks as follows:
+
+Group      EV1   EV2 EV3
+
+Input 1     1     
+Input 2     1
+Input 3     1
+Input 4     1
+.
+.
+.
+.
+etc
+
+EV2 and EV3 are demeaned clinical scale and age. The contrast that I am interested in is negative correlation between clinical scale and FA before and after adjusting for age. Is this contrast correct?
+
+Title               EV1     EV2   EV3
+Slope (-)        0         -1      -1            (before removing age effect)
+Slope (-)        0         -1      1            (after removing age effect)
+
+EV2 is the demeaned clinical scale. EV3 is demeaned age and EV1 is for FA maps.
+
+Thanks for any guidance.
+
+Best.
+James
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi everyone,
+I have a problem with installing fsl.
+I would install it from WSL, I followed instructions on the fsl page, all passages are completed but during the processing of the command "python /mnt/c/Users/<WindowsUserName>/Downloads/fslinstaller.py" , the blue screen appears with a system error every time.
+Does my pc (Dell Latitude 7490) not support fsl requirements?
+Thank you in advance
+
+########################################################################
+
+Hi Matt,
+It might be worth checking with the cluster tool ( if you haven’t already ) that these really are isolated 1-2 voxel clusters and not connected in a way that is hard to visualise with an orthographic viewer like FSLeyes.TFCE _can_ determine a single voxel to be significant, but it’s t-value would need to be quite high - as TFCE scores are driven by both spatial-extent and statistic magnitude. You could apply an additional threshold to your final results of a minimum cluster size ( cluster can do this with the --minextent option ) but this would need to be chosen a priori - similar to ROI analyses etc.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Jan 2023, at 19:07, Matthew Hoptman <000091b8d3ed1a07-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi all,
+I just wanted to see if anyone had any suggestions on this issue.
+Thanks,
+Matt
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Erin,
+
+ 
+
+Sorry for the long delay in replying, I took some time off before Christmas for a holiday and have just returned to the lab.
+
+ 
+
+Thank you for checking those couple of things. I’m sure we can make some tweaks to the fitting code to improve this. Would you be able to send us an example of your data and basis set so we can test against it making any changes?
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Erin L. MacMillan <erin.macmillan@UBC.CA>
+Date: Monday, 2 January 2023 at 18:50
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL-MRS: Limit First Order Phase?
+
+Dear Will and Saad,
+
+Happy New Year!
+
+We are continuing to find that FSL-MRS is imparting a significant first order phase when fitting our data (>20 deg/ppm).
+
+In response to your previous questions:
+
+1. There is not a first order phase on the basis set. This is a basis set for semi-LASER that was simulated with FID-A and converted with the makebasis function in LCModel, all with pretty well default settings. Attached is the output of basis_tools vis.
+
+2. Yes, we have removed the first point in the FID, though it doesn't change the appearance of the real part of the spectrum very much. I suspect that the deviation of the first point from a pure FID is related to some residual water that is out of phase, not to errors in the timing of the pulse sequence that would lead to a first order phase effect.
+
+It would be great if we could place a limit on how much first order phase could be allowed on the basis set.
+
+Please let me know if you need any further info.
+
+Thank you so much for your help,
+Erin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Yes, I believe it was introduced after 6.0.4
+
+> On 23 Dec 2022, at 14:53, Joost de Jong <j.dejong@MUMC.NL> wrote:
+>
+> Dear ASL experts/FSL BASIL users,
+>
+> I wanted to use FSL BASIL (oxford_asl) to calculate CBF maps and mean values for seperate regions. According to the documentation, this can be done using the --region-analysis-atlas option (see Chapter 5.7 of https://buildmedia.readthedocs.org/media/pdf/asl-docs/latest/asl-docs.pdf). However, when I want to run oxford_asl, I get the error
+> "Error! Unrecognised option on command line: --region-analysis-atlas"
+>
+> I have FSL version 6.0.4 with OXFORD_ASL Version: v4.0.15-dirty Fri Jul 17 11:23:03 2020
+>
+> Do I need an updated version?
+>
+> Best regards,
+>
+> Joost de Jong, PhD
+> Scientific Imaging Engineer
+> Maastricht University Medical Center
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment.
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored
+where permitted by law.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+I'm attempting to run fsl but I'm facing an issue that relates to the fslinstaller.py that I downloaded from the website every time I want to run it in my terminal I encounter with manifest Jason error (I'm using the latest version of python).
+can you help me with my issue or do you have any other version of fsl installer to send me for the latest version of macOS?
+
+Best Regards,
+Alireza
+MRI Researcher
+
+
+Dear FSL community,
+
+I am trying to build a higher level FEAT analysis for the following experiment: Each subject was scanned four times on two different days. During all scans, there was a simultaneous stimulation of two sensory modalities (visual and tactile in a block design). The two scans on one day differed only with regards to the subject’s attentional focus (i.e. the subject was instructed to attend to the visual stimulus versus to tactile stimulus).
+This was exactly the same on the second scan day. The only difference on day 2 was the stimulation location on the body for the tactile stimulation (location 1 versus location 2).
+
+Ideally, I would like to set up a 2x2 repeated measures ANOVA with focus on modality (levels: visual and tactile) and stimulation location (levels: location 1 versus 2). Both of these factors would be within-subject factors. Is it possible to set this up in FEAT? I read that the GLM is not necessarily designed to handle repeated measures so I am not sure how to set up the design matrix.
+
+So far, I have only managed to design a paired t-test. With the paired t-test I could analyse the two sensory modalities in two distinct analysis pathways to compare the effect for stimulus location in both sensory systems. However, this would mean that I cannot look at the interaction of my two factors.  
+
+I would appreciate any tips!
+
+All the best,
+Henrike
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Eleanor,
+                  Everything looks like it should match ( timepoints in data/matrix ), can you tar and upload your input files ( data, mask, design.mat, design.con ) to
+
+https://oxfile.ox.ac.uk/oxfile/work/extBox?id=700839B35190E48BF
+
+so I can check the data locally?
+
+For the second randomise call:
+
+randomise -i all_FA_skeletonised -o tbss -m mean_FA_skeleton_mask -d design.mat -t design.con -f —T2
+
+The command is failing as -f needs an argument ( f-contrasts file ) and so is interpreting —-T2 as a file name ).
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 13 Dec 2022, at 15:45, Brian, Eleanor <Eleanor.Brian@LIVERPOOL.AC.UK> wrote:
+>
+> Hi Matthew,
+> Thanks for your response. Yes I used the Text2Vest command to create the design.mat file.
+> 
+> filename      all_FA_skeletonised.nii.gz
+> 
+> sizeof_hdr    348
+> data_type     FLOAT32
+> dim0          4
+> dim1          182
+> dim2          218
+> dim3          182
+> dim4          46
+> dim5          1
+> dim6          1
+> dim7          1
+> vox_units     mm
+> time_units    s
+> datatype      16
+> nbyper        4
+> bitpix        32
+> pixdim0       -1.000000
+> pixdim1       1.000000
+> pixdim2       1.000000
+> pixdim3       1.000000
+> pixdim4       1.000000
+> pixdim5       1.000000
+> pixdim6       1.000000
+> pixdim7       1.000000
+> vox_offset    352
+> cal_max       0.000000
+> cal_min       0.000000
+> scl_slope     1.000000
+> scl_inter     0.000000
+> phase_dim     0
+> freq_dim      0
+> slice_dim     0
+> slice_name    Unknown
+> slice_code    0
+> slice_start   0
+> slice_end     0
+> slice_duration 0.000000
+> toffset       0.000000
+> intent        Unknown
+> intent_code   0
+> intent_name 
+> intent_p1     0.000000
+> intent_p2     0.000000
+> intent_p3     0.000000
+> qform_name    Aligned Anat
+> qform_code    2
+> qto_xyz:1     -1.000000 0.000000 -0.000000 90.000000
+> qto_xyz:2     0.000000 1.000000 -0.000000 -126.000000
+> qto_xyz:3     0.000000 0.000000 1.000000 -72.000000
+> qto_xyz:4     0.000000 0.000000 0.000000 1.000000
+> qform_xorient Right-to-Left
+> qform_yorient Posterior-to-Anterior
+> qform_zorient Inferior-to-Superior
+> sform_name    Aligned Anat
+> sform_code    2
+> sto_xyz:1     -1.000000 0.000000 0.000000 90.000000
+> sto_xyz:2     0.000000 1.000000 0.000000 -126.000000
+> sto_xyz:3     0.000000 0.000000 1.000000 -72.000000
+> sto_xyz:4     0.000000 0.000000 0.000000 1.000000
+> sform_xorient Right-to-Left
+> sform_yorient Posterior-to-Anterior
+> sform_zorient Inferior-to-Superior
+> file_type     NIFTI-1+
+> file_code     1
+> descrip       6.0.4:ddd0a010
+> aux_file    
+> 
+> Hope that helps!
+> Best wishes,
+> 
+> Eleanor
+> 
+> Eleanor J. G. Brian MSc
+> Research Assistant and PhD student
+> 
+> Room 2.58, Eleanor Rathbone Building,
+> The University of Liverpool,
+> L69 7ZA
+> 
+> Office number: 0151 795 8054
+> 
+> <image001.jpg>
+> 
+> 
+> 
+> From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+> Date: Tuesday, 13 December 2022 at 15:23
+> To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+> Subject: Re: [FSL] TBSS Randomize 3 groups
+>
+> Hi Eleanor,
+>   Can I check your design.mat is still in Vest format ( you can use Text2Vest if not ) and has a header like:
+> 
+> /NumWaves 3
+> /NumPoints 46
+> /Matrix
+> 
+> ? Also can you confirm the output of:
+> 
+> fslhd all_FA_skeletonised
+> 
+> ?
+> 
+> Kind Regards
+> Matthew
+> --------------------------------
+> Dr Matthew Webster
+> FMRIB Centre
+> John Radcliffe Hospital
+> University of Oxford
+>
+>
+> On 13 Dec 2022, at 13:56, Brian, Eleanor <Eleanor.Brian@liverpool.ac.uk> wrote:
+> 
+> 
+> Hi there,
+> I wondered if you could help. I’m trying to do a one-way ANOVA design on FSL randomize with x3 groups, approximately 10-20 per group.
+> I’ve successfully run this in two groups but I’m struggling to run with the altered design. I’ve made my design.mat file to demonstrate the x3 groups (see below). When I try to run I get this error:
+> “ERROR: Program failed number of rows in design matrix doesn't match number of "time points" in input data!”
+> 
+> Presumably because it is trying to run as a t-test instead of a one-way ANOVA. I have seen the script is slightly different for a repeated measures ANOVA and includes the edition of a “design.grp” file but I don’t believe I need this and I did try with it just incase and I got this error:
+> 
+> “randomise -i all_FA_skeletonised -o tbss -m mean_FA_skeleton_mask -d design.mat -t design.con -f --T2
+> randomise options: -i all_FA_skeletonised -o tbss -m mean_FA_skeleton_mask -d design.mat -t design.con -f --T2
+> Loading Data: ERROR: Program failedUnable to open --T2”
+> 
+> Any help would be greatly appreciated ,
+> Best wishes,
+> Eleanor
+> 
+> Design.mat below:
+> 
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 1              0              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              1              0
+> 0              0              1
+> 0              0              1
+> 0              0              1
+> 0              0              1
+> 0              0              1
+> 0              0              1
+> 0              0              1
+> 0              0              1
+> 
+> 
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+> 
+> 
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Sally,
+It looks like the global mean is not accounted for in your design, this can be done by adding the -D flag to the randomise call or by adding an extra EV that is a column of ones. I recommend the second approach as it explicitly indicates in the design how the mean has been modelled.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 12 Dec 2022, at 19:58, SCC024@student.bham.ac.uk <SCC024@STUDENT.BHAM.AC.UK> wrote:
+
+Dear Matthew,
+ 
+Thank you very much for getting back to me. The randomise command I have used is:
+ 
+randomise -i all_FA_skeletonised -o SRPTotal -m mean_FA_skeleton_mask -d SRPTotal.mat -t SRPTotal.con --T2
+ 
+(Substituted with all_L1_skeletonised / all_RD_skeletonised depending on the metric)
+ 
+I have attached screenshots of the design.mat and design.con files. Please let me know if I can provide any further information. 
+ 
+Many thanks,
+Sally
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: 12 December 2022 16:34
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] cluster command issue - FSL - DTI analysis
+ 
+Hi Sally,
+Can you confirm the randomise call used, as well as the contents of the design.mat/con files?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 6 Dec 2022, at 16:40, Sally Chester <scc024@STUDENT.BHAM.AC.UK> wrote:
+
+Hi FSL experts,
+
+I have performed TBSS on data from adults in the community. I am looking for associations between brain structure and scores on a self-report measure of a personality trait (I am performing linear regression analysis as opposed to looking at differences between two groups). In my GLM, all participants are labelled as being in group 1 and I have two contrasts set up to look for positive and negative correlations (age and sex included as covariates of no interest).
+
+I have followed the FSL manual as much as possible. After running TOPUP and EDDY, I have used the TBSS (1-4) commands, built GLMs and performed randomise. I have also run the TBSS_non_FA on the Axial diffusivity (L1) images and also used FSLmaths to create Radial diffusivity images ((L2+L3)/2) and run TBSS_non_FA on the RD images and performed randomise on these metrics too. I have used TBSS_FILL and viewed the tfce corrected-p tstat images in FSLeyes and then used the cluster command to try and extract information about the significant clusters.
+
+The issue that I have is that when I use the cluster command, the results table is identical regardless of the metric. So, the results output for FA, AD, RD are all practically identical. The coordinates that should give the ‘maximum intensity’ voxel locate this voxel in the brain stem, but the images show results are located in the corpus callosum, and the size of the cluster, according to the results output, is also quite big (around 136500 voxels) which seems much bigger than just one significant cluster.
+
+Any help would be appreciated.
+Many thanks,
+Sally
+
+I am using FSL 6.0.1
+
+My cluster command is:
+
+cluster -i (file_name)_tfce_corrp_tstat1.nii.gz -t 0.95 -o (file_name)_cluster_index > (file_name)_cluster_info --mm
+
+The results output is:
+Cluster Index     Voxels      MAX   MAX X (mm)  MAX Y (mm)  MAX Z (mm)  COG X (mm)  COG Y (mm)  COG Z (mm)
+1     135490      1     4     -38   -51   1.16  -21.7 8.95
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<design.con_contents.png><design.mat_contents.png>
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Diego,
+                        Does this command return any error messages?
+
+${FSLDIR}/bin/standard_space_roi /Volumes/DCF_1tb/Processamento/Projects/Connectome_article2/p003/t1 /Volumes/DCF_1tb/Processamento/Projects/Connectome_article2/p003/t1_brain test_output -b -d
+
+( you can delete the test_output_<foo> images if it runs correctly )
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 13 Dec 2022, at 14:56, Diego Fragoso <diego.fragoso@FM.USP.BR> wrote:
+>
+> Dear Matthew,
+>
+> The FSL was installed correctly. After the upgrade, I have run the standard bet and it was ok.
+>
+> Yes, there are fifteen "tmp" files!
+>
+> Kind Regards
+> Diego
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+> <Captura de Tela 2022-12-13 aÌ€s 11.55.15.png>
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Matthew,
+
+The FSL was installed correctly. After the upgrade, I have run the standard bet and it was ok.
+
+Yes, there are fifteen "tmp" files!
+
+Kind Regards
+Diego
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi FSL team,
+
+I have an error from running a first level analysis:
+
+child process exited abnormally
+    while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -stats" -b $howlong -h $prestatsID -N feat3_film -l logs "
+    (procedure "firstLevelMaster" line 190)
+    invoked from within
+"firstLevelMaster $session"
+    invoked from within
+"if { $done_something == 0 } {
+
+    if { ! $fmri(inmelodic) } {
+       if { $fmri(level) == 1 } {
+              for { set session 1 } { $session <= $fmri(mult..."
+    (file "/usr/local/fsl-6.0.5.2/bin/feat" line 390)
+
+How can I troubleshoot this error? Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

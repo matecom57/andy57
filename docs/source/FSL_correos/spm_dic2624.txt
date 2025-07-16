@@ -1,0 +1,734 @@
+Postdoctoral Fellow Positions in Brain Development
+
+ 
+
+Join Our Dynamic Research Team!
+
+The Laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University invites applications for 
+postdoctoral scholars. We are dedicated to pioneering research at the forefront of brain imaging and genetics, leveraging 
+AI technology to analyse large datasets and uncover insights into brain development in early life.
+
+Over the years, our lab has spearheaded numerous human studies focused on brain health and cognition in children. With a 
+repository of brain scans, cognitive assessments, genetic profiles, and environmental data from over 60,000 subjects across 
+multiple time points, we are committed to unravelling the complexities of developmental conditions.
+
+Why Join Us?
+
+·     Cutting-Edge Facilities: Benefit from our state-of-the-art research centre equipped with high-performance computing 
+resources, including multiple H100 and A100 GPU systems for deep learning, and computing clusters tailored for large-scale 
+data analysis. With access to over 5000T of medical data, spanning medical records, images, and pathology data, you'll have 
+the tools needed to drive impactful research forward.
+
+·     Publication Excellence: Join a team that prides itself on academic excellence. Our laboratory has contributed over 
+180 papers to esteemed journals such as Nature, Nature Neuroscience, Nature Mental Health, PNAS, and more, showcasing our 
+commitment to advancing knowledge in the field.
+
+·     International Collaboration: Engage with our global network of researchers through our participation in an 
+international consortium on brain development from infancy onwards. By collaborating with multiple cohorts worldwide, we 
+aim to generate insights that will inform strategies for optimizing brain health across diverse populations.
+
+Position Requirements:
+
+1.   PhD Qualification: Hold a PhD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or a related 
+discipline.
+
+2.   Experience in Brain Development Studies: strong publications in brain imaging research.
+
+Responsibilities:
+
+1.   Supervise Research Assistants: Provide oversight and guidance to research assistants involved in participant 
+recruitment and data collection, ensuring adherence to study protocols and ethical standards.
+
+2.   Conduct Brain Development Research: Undertake research activities utilizing both existing and newly collected data, 
+employing advanced analytical techniques to investigate various aspects of aging and neurodegenerative diseases.
+
+3.   Collaborate on International Studies: Engage in collaborative efforts with international partners to contribute to 
+large-scale infant studies, fostering cross-cultural insights and advancing the field of brain development research on a 
+global scale.
+
+The position offers a competitive package (up to HKD 558,000 annually) and benefits. We will apply for VISA for applicants. 
+
+2 PhD positions in the field of Movement Neurosciences as part of the project “Embodied cognitive reserve in the 
+cortico-subcortical premotor network”
+
+The Faculties of Humanities (FHW) and Medicine (FME) seek to fill the following vacancies at the Department of Sport 
+Science (FHW) and the Institute for Cognitive Neurology and Dementia Research (FME)
+
+Salary scale: 13 TV-L  Date commencing:  as soon as possible    Fixed term (until):   31.12.2028  Contract status:   65 % 
+                 
+
+In association with the already established Collaborative Research Centre (CRC) SFB1436, 'Neural Resources of Cognition 
+(supported by the German Research Foundation) we are looking for two highly motivated PhD students. Both positions are 
+available for a fixed term appointment running until the end of 2028, with a competitive salary of TV-L E13 (65%).
+
+SFB 1436 subproject C01 ‘Embodied cognitive reserve in the cortico-subcortical premotor network’, is a collaboration 
+between Dr. Gabriel Ziegler, Dr. Nico Lehmann, and Prof. Marco Taubert. The aim of the project is to identify the brain 
+processes that enable some people to cope better than others with the progressive degradation of the supraspinal and 
+musculoskeletal components of the sensorimotor system with aging, ultimately contributing to interindividual differences in 
+both motor performance (e.g., balance performance and learning) and visuo-spatial cognition. Your role in the project will 
+be to investigate embodied cognitive reserve behaviorally in a training study, and by means of advanced MRI methodology and 
+multivariate analysis techniques.
+
+
+
+Requirement Profile
+
+·       Master’s degree or equivalent in Psychology, Neuroscience, Sports Science, Medicine, Life Sciences, Biomedical 
+Engineering, Computer Science or related fields
+
+·       Interest in research on motor learning, balance, neuroplasticity and aging
+
+·       Strong motivation to learn new techniques and to plan, conduct and analyze experiments
+
+·       Experience with at least two of the following methods is desired:
+
+Preference will be given to candidates with experience in neuroimaging techniques (particularly structural and diffusion 
+MRI), but willingness to learn these methods is a minimum requirement
+Behavioral experiments (beneficial: assessment of cognitive and motor skills) and interaction with older persons
+Movement analysis (e.g., kinematic analysis techniques)
+Advanced statistics (e.g., multivariate statistical analysis approaches)
+Proficiency in programming languages (e.g., MATLAB, R, Python)
+Machine learning/ AI
+Optional: Non-invasive brain stimulation techniques (e.g., TMS, tDCS)
+·       Good command of written and spoken English
+
+·       Intermediate to advanced knowledge of German language is highly appreciated (but not required)
+
+·       Collaborative mindset and willingness to contribute to the CRC research environment
+
+ 
+
+Our multidisciplinary and dedicated project group offers excellent opportunities for cognitive neuroscientific and sports 
+science research, including state-of-the-art lab and MRI facilities. Funding for travels gives successful candidates the 
+opportunity to present their research at national and international conferences. Both candidates are expected to publish 
+their results in high-visibility scientific journals and to develop a doctoral thesis with extensive support through the 
+IRTG and the CBBS graduate program. Comprehensive training and career development support is also provided through the OvGU 
+graduate academy. Both students will have the opportunity for further collaboration within the SFB 1436.
+
+For further information about the position, please contact Gabriel Ziegler (Gabriel.Ziegler@dzne.de), Marco Taubert 
+(marco.taubert@ovgu.de) or Nico Lehmann (nico1.lehmann@ovgu.de).
+
+You will benefit from our structures and offerings in the fields of sustainability, diversity, family support and staff 
+development. Our location in the center of a thriving, lively and family-friendly state capital guarantees a high quality 
+of life and a wide range of leisure activities. For more information, please visit www.ovgu.de/en/karriere.
+
+Otto von Guericke University Magdeburg is a signatory of the German Diversity Charter. We welcome your application, 
+regardless of gender, cultural and social background, age or sexual orientation. Applications from severely disabled people 
+or people with an equivalent impairment will be given priority in the case of equal suitability, ability and professional 
+expertise. Otto von Guericke University Magdeburg strongly promotes gender equality in all professional areas.
+
+Please note the information for storage of personal data: https://www.ovgu.de/en /data_protection.html.
+
+Please send your complete application (motivation statement, CV, graduation certificates, contact information for 
+references) by January 17, 2024 using the online application portal.
+
+Dear all,
+
+the groups of Dr Max-Philipp Stenner and Dr Elena Azañón at the Leibniz Institute for Neurobiology (Magdeburg, Germany) and 
+Otto-von Guericke University Magdeburg offer a position as part of the Collaborative Research Centre 1436 “Neural Resources 
+of Cognition” (project C03) as
+
+ 
+
+Postdoctoral fellow
+
+(up to four years)
+
+Neural Coding of Sequential Information in Human Memory & Action
+
+ 
+
+About the Project
+
+The ability to order sequential information is critical for human memory and action. Our goal is to identify neural 
+representations of serial order that are shared across memory and action in the human brain. Using magnetoencephalography 
+(MEG), decoding techniques, and transcranial magnetic stimulation (TMS), the candidate will investigate the macroscopic 
+neural circuitry underlying domain-general serial order, assess its enhancement through training, and examine its transfer 
+potential in healthy, young participants. Additionally, the research will explore the vulnerability of these mechanisms to 
+pre-clinical tau pathology in the aging brain.
+
+Your profile
+
+·       A highly motivated, team-minded scientist.
+
+·       Strong interest in the psychology and neuroscience of human motor control and memory.
+
+·       High degree of scientific creativity, passion, and rigor.
+
+·       Demonstrable experience with MEG or EEG is essential, as well as demonstrable experience with human behavioral 
+experiments.
+
+·       Experience with decoding of MEG or EEG data is a strong plus, or else will have to be acquired quickly.
+
+·       Excellent programming skills (in particular MatLab; in addition, Python would help).
+
+·       Solid statistical skills and high proficiency in spoken and written English are mandatory.
+
+·       Suitable candidates should have a PhD in psychology, neuroscience, engineering (with a previous focus on 
+neuroscience), or related.
+
+·       We are looking for ambitious candidates who aim for a career in academia, for which we will provide ample support. 
+Due to various local funding options, Magdeburg is particularly attractive as neuroscience hub for young scientists on 
+track to their first own group leadership.
+
+What we offer
+
+·       A young, interdisciplinary & international team.
+
+·       Flat hierarchies & strong early career support.
+
+·       State-of-the-art research facilities, including MEG and 7 T MRI scanner.
+
+·       Methodological support by leading experts.
+
+·       No obligation to teach (but possible if desired).
+
+·       Possibility to present data at several national and international conferences.
+
+·       Employment, remuneration and social benefits according to the collective agreement for the public service of the 
+federal states (TV-L)
+
+·       Equal opportunities and the compatibility of career and family as part of our personnel policy.
+
+The Leibniz Institute for Neurobiology (LIN) and Otto-von-Guericke University have a long tradition of world-leading 
+research on learning and memory, both in animals and humans. The labs of Dr Azañón and Dr Stenner have first-rate access to 
+Magdeburg's excellent, state-of-the-art facilities for non-invasive human electrophysiology and neuroimaging, including 
+MEG, EEG, TMS, 7T, 3T MRI (all on the same campus, and supported by expert staff). Close collaboration with Neurology and 
+Stereotactic Neurosurgery enables systematic invasive human electrophysiology and studies involving clinical populations.
+
+The successful candidate will be a full member of the Collaborative Research Centre (CRC) 1436 “Neural Resources of 
+Cognition”. The CRC includes an exciting and very active Graduate School, which offers a great program of retreats, lecture 
+series, and workshops that focus on scientific topics, methods, and career development. This gives the members of the 
+graduate school abundant opportunities to get in touch with all the other labs that are part of the CRC, as well as 
+potential future employers from industry and science. In addition, there is frequent exchange among all members of the CRC 
+at the yearly retreats and other assemblies.
+
+The Magdeburg neuroscience community provides a vibrant, international, highly inspiring, friendly and supportive research 
+environment. Dr Azañón’s and Dr Stenner’s labs hold weekly joint lab meetings, in addition to regular department and 
+institute meetings, and provide a supportive, aspiring, and friendly atmosphere. Magdeburg is a growing, intriguing city 
+with lots of activities beyond work (second greenest city in Germany) and a strong, friendly academic community.
+
+Terms & conditions
+
+The position is offered for a duration until the end of December 2028 (in accordance with the availability of funds and 
+individual requirements). The preferred starting date is February 2025, though this is open to negotiation. Applications 
+will be accepted until the position is filled. The salary is based on TV-L E 13 by 50 % at the Leibniz-Institute for 
+Neurobiology. You will receive a second contract (also TV-L E 13 50%) due to the project constellation at the 
+Otto-von-Guericke University, so that you will be employed on a 100% contract in total.
+
+How to apply
+
+Send a single PDF-file with 1) Cover letter (max 1.5 pages) providing a description of previous and current research work 
+and achievements, research interests and, importantly, motivation to enter this particular project and pursue a career in 
+academia; 2) Curriculum vitae, including a list of publications; 3) contact details of two scientists who can provide 
+references.
+
+Review of the applications will start on January 7th 2024, until the position is filled
+
+max-philipp.stenner@lin-magdeburg.de
+
+elena.azanon@med.ovgu.de
+
+ 
+
+We are committed to a comprehensive policy of Equal Opportunities in employment and research. We welcome all applications - 
+regardless of gender, nationality, ethnic and social origin, religion, disability, age, sexual orientation and identity.
+
+  
+
+The Department of Cognitive Psychology, located at Universität Hamburg, is inviting researchers of exceptional talent to 
+apply for a 2 year post-doc position (E13, 100%; extension possible) at the intersection of Psychology and Cognitive 
+Neuroscience. The starting date is negotiable, as from April 2025
+
+We offer:       
+- a strong and highly visible international research environment, including excellent access to cutting-edge research 
+facilities
+- exceptional support, mentoring and career development
+- access to an interdisciplinary and structured research training group (emotionalmemory.de)
+- sufficient funds to implement exciting research projects within the research area of the lab
+
+For more details on our research, please see:
+https://www.psy.uni-hamburg.de/en/arbeitsbereiche/kognitionspsychologie.html
+
+We invite highly qualified researchers holding a PhD in Psychology, Medicine, Neuroscience, or a related discipline who 
+share our enthusiasm for interdisciplinary research. We expect excellent methodological skills and statistical knowledge, 
+coding skills (e.g. MATLAB, Phython, R), expertise in at least one cognitive-neuroscientific method (e.g. fMRI, EEG, 
+Psychophysiology, cognitive modelling), as well as experience in scientific publishing, documented by at least one 
+publication as first author in a peer-reviewed scientific journal.
+
+To apply, please send your CV, a letter of motivation, reference letters as well as copies of all relevant certificates – 
+by January 10th, 2025 – via the application platform of the University of Hamburg:
+
+https://www.uni-hamburg.de/stellenangebote/ausschreibung.html?jobID=876c2b18a45d73ece9840832493f2c9fbc5a389e
+
+(Please use the “apply” button at the bottom of the application page)
+
+The Department of Cognitive Psychology, located at Universität Hamburg, is inviting students of exceptional talent to apply 
+for a 3 years PhD position (E13, 75%; extension possible) at the intersection of Psychology and Cognitive Neuroscience. The 
+starting date is April 2025.
+
+We offer:       
+- a strong and highly visible international research environment, including excellent access to cutting-edge research 
+facilities
+- exceptional support, mentoring and career development
+- access to an interdisciplinary and structured research training group (emotionalmemory.de)
+
+The successful candidate will work on an exciting project directed at understanding the neural and cognitive processes that 
+underlie the impact of emotion and stress on learning, memory, and decision-making.
+
+For more details on our research, please see:
+https://www.psy.uni-hamburg.de/en/arbeitsbereiche/kognitionspsychologie.html
+
+We are inviting highly qualified students holding a MSc. or equivalent in Psychology, Medicine, Neuroscience or a related 
+discipline who share our enthusiasm for interdisciplinary research. We expect excellent methodological skills, programming 
+skills (e.g. MATLAB, Phython, R) and statistical knowledge as well as the openness to learn new techniques.
+
+To apply, please send your CV, a letter of motivation, contact details of two references as well as copies of all relevant 
+certificates – by January 6th, 2025 – via the application platform of the University of Hamburg:
+
+https://www.uni-hamburg.de/stellenangebote/ausschreibung.html?jobID=a114523e0e71b0d3134270b91a9fb6c5f97cbd42
+(Please use the “apply” button at the bottom of the application page)
+
+We are seeking for a highly motivated Postdoc to join the Action Recognition and Concepts Group at CIMeC (Center for 
+Mind/Brain Sciences), University of Trento, Italy. The research project will focus on an MEG-based dynamic extension to 
+representational similarity analysis (dynamic RSA) that we have recently developed in our lab to investigate predictive 
+representations of dynamic events. 
+
+ 
+
+We're looking for applicants who:
+
+·     Have a strong drive to pursue a career in scientific research
+
+·     Possess independent and critical thinking skills
+
+·     Excel in collaborative teamwork
+
+·     Have a background in cognitive neuroscience (preferably M/EEG or fMRI, MVPA/RSA) and strong programming skills 
+(preferably Matlab, or Python)
+
+·     Have experience in action / biological motion perception (ideally in generating point light displays or avatars) or 
+in action execution
+
+ 
+
+At CIMeC, you'll have access to cutting-edge research facilities, such as:
+
+·     A brand new MEGIN TRIUX neo MEG system
+
+·     A 3T MRI Siemens Prisma
+
+·     TMS, EEG, and combined TMS-EEG setups
+
+·     Human intracranial stereotactic EEG
+
+·     Eye-tracking systems
+
+·     Kinematic recording systems
+
+ 
+
+All equipment is dedicated 100% to research purposes, providing you with the ideal environment for testing your research 
+questions. As a member of our lab and of the wider CIMeC community, you will be part of an international community of 
+students and researchers in a vibrant scientific environment. The working language is English. Our lab enjoys numerous 
+international collaborations, and we offer ample opportunities to engage with the broader scientific community through 
+conferences, workshops, and international meetings, supported by research funding attracted by our lab.
+
+ 
+
+Living in Trentino offers a unique combination of natural beauty and cultural richness. Situated among stunning landscapes 
+between the Dolomites and Lake Garda, it provides a serene setting where you can appreciate nature alongside various 
+cultural activities and sports. Trentino is undoubtedly one of the most beautiful regions in Italy, offering an exceptional 
+quality of life alongside your academic pursuits.
+
+ 
+
+The Postdoc position will be for 2 years (potentially extendable). The start date cannot be later than May 1, 2025, except 
+for candidates requiring a Visa (in that case the latest start date is one month after the Visa is obtained). The 
+application deadline is February 28, 2025. Visit the application page for more information.
+
+If you are thrilled to contribute to our research in cognitive neuroscience, please write to moritz.wurm@unitn.it. We look 
+forward to hearing from you!
+
+ 
+
+Best wishes,
+
+Moritz Wurm
+
+
+ 
+
+The DFG-funded Research Training Group (RTG) “Emotional Learning and Memory”, located at the University of Hamburg and the 
+University Medical Center Hamburg-Eppendorf, is inviting young scientists of exceptional talent to apply for 3-year PhD 
+positions (salary level E13, 75%). The projects are at the intersection of Cognitive and Clinical Psychology, Neuroscience, 
+and Psychiatry and will start on July 1st, 2025.
+
+We offer:      
+- a strong and highly visible international research environment, including excellent access to cutting-edge research 
+facilities
+- an interdisciplinary and structured PhD program
+- exceptional support, mentoring and career development
+
+The primary objectives of this interdisciplinary RTG are to elucidate the mechanisms involved in emotion-related 
+alterations of learning and memory in health and mental disorders and to train a new generation of scientists that is 
+ideally equipped to perform research at the intersection of basic science and clinical research.
+For more information on the research projects and involved PIs, see: emotionalmemory.de
+
+We invite highly qualified students holding a MSc. or equivalent in Psychology, Medicine, Neuroscience, Biology or a 
+related discipline who share our enthusiasm for interdisciplinary research. We expect excellent methodological skills and 
+statistical knowledge as well as the openness to learn new techniques and coding skills (e.g. MATLAB, Phython, R).
+
+To apply, please send your CV, a letter of motivation, contact details of two references as well as copies of all relevant 
+certificates – by January 31st, 2025 – via the application platform of the University of Hamburg:
+
+https://www.uni-hamburg.de/stellenangebote/ausschreibung.html?jobID=d39be30d6dcaa4dfee6070013e37e060a2a255c9
+
+
+Dear All,
+
+DIPY is a software that analyzes structural and diffusion MRI images using Python. We are excited to invite you to our 
+upcoming DIPY workshop, which will take place from March 17 to March 21, 2025. This year, we promise an enriching 
+experience as we dive into the world of AI in advanced imaging and data analytics.
+
+Our distinguished keynote speakers include Prof. Simon Warfield (Harvard Medical School), Prof. Alexandra Badea (Duke 
+University), Prof. Franco Pestilli (University of Texas at Austin), Prof. Marco Palombo (Cardiff University), and Prof. 
+Julien Cohen-Adad (Polytechnique Montreal). 
+
+Additionally, Koudoro, Descoteaux, Tang, Rokem, Chandio, Fadnavis, Henriques, Legarreta, and others will present various 
+techniques in medical imaging, including (but not limited to) pre-processing, reconstruction, denoising, microstructure 
+modeling, tractography, and visualization.
+
+This year’s highlights include the overview of our new ultra-fast tracking API by Girard (CPU) and Kruper (GPU) and much 
+more!
+
+The DIPY workshop aims to train the next generation of scientists, doctors, and engineers who will shape the future of 
+medical imaging. Your participation will contribute greatly to the success of this event.
+
+As is customary for the DIPY workshop, the following will be available:
+
+Daily hands-on sessions for guided practice
+
+Opportunities for attendees to present their work or problems of interest
+
+Certificates of Attendance
+
+Please visit our website here to register for the workshop. We look forward to your participation and to exploring the 
+exciting work of imaging science together.
+
+DIPY is also offering Early Bird discounts until January 3rd, 2025. Register soon to take advantage of these offers!
+
+For any concerns, please email workshop@dipy.org.
+
+On behalf of the DIPY team,
+Eleftherios Garyfallidis, PhD
+DIPY Founder & Lead
+Associate Professor
+Intelligent Systems Engineering
+Indiana University
+Luddy Hall 700 N Woodlawn
+Bloomington, IN 47408
+GRG | DIPY | FURY
+
+
+The Clinical Neuroscience and Neuroimaging Lab (PI: Dr. Hengyi Cao) in the Institute of Behavioral Science (IBS), Feinstein 
+Institutes for Medical Research is seeking a highly motivated postdoctoral associate for a recently funded NIH R01 project. 
+We use multimodal imaging (structural, functional, diffusional MRI) and neuromodulation (TMS) approaches to study the 
+cognitive function of the cerebellum and its mechanisms for the onset and treatment of psychotic disorders. The funded 
+project will be focused on the development of the cerebellum and the training of cerebellum-based predictive models for 
+psychosis prediction.
+
+ 
+
+We welcome applicants who are interested in psychosis and/or cerebellar neuroscience, with strong skills in neuroimaging 
+data analysis, statistics, and machine learning. Previous experience in neurodevelopment is a plus. The successful 
+applicant will be focusing on analyzing a large array of existing datasets, writing up papers, and publishing in 
+high-impact journals. The applicant will also have opportunity to contribute to other ongoing projects in the institute as 
+well as to develop independent studies and acquire independent fundings. The IBS is located at the Zucker Hillside 
+Hospital, one of the largest psychiatric facilities in the broader New York area. It has been an NIH-funded Advanced Center 
+for Intervention and Services Research on Early Psychosis for approximately thirty consecutive years and has tremendous 
+clinical and research resources for conducting various psychiatric studies.
+
+ 
+
+To apply, please send a cover letter describing your research interest and prior experience, a CV, and contact information 
+of three references to Hengyi Cao (hcao2@northwell.edu). We provide competitive salary commensurate with living costs in 
+the New York City. The position can start as early as January 2025 and will be evaluated on a rolling basis until filled.
+
+The information contained in this electronic e-mail transmission and any attachments are intended only for the use of the 
+individual or entity to whom or to which it is addressed, and may contain information that is privileged, confidential and 
+exempt from disclosure under applicable law. If the reader of this communication is not the intended recipient, or the 
+employee or agent responsible for delivering this communication to the intended recipient, you are hereby notified that any 
+dissemination, distribution, copying or disclosure of this communication and any attachment is strictly prohibited. If you 
+have received this transmission in error, please notify the sender immediately by telephone and electronic mail, and delete 
+the original communication and any attachment from any computer, server or other electronic recording or storage device or 
+medium. Receipt by anyone other than the intended recipient is not a waiver of any attorney-client, physician-patient or 
+other privilege.
+
+Hi everyone
+
+Instats is offering a new 2-day seminar Introduction to Nonlinear Dynamical Systems and Analysis, running Jan 13 - 14 with 
+physicist turned social researcher, professor Bernard Ricca. This seminar introduces nonlinear dynamical systems analyses 
+tailored for researchers across the social, health, and physical sciences, providing a framework to model complex behavior 
+and interactions. Participants will gain hands-on expertise in using R for nonlinear dynamical systems modeling, exploring 
+concepts such as fixed points, stability, and attractors, with practical applications to enhance their research across a 
+broad range of fields.
+
+Sign up today to secure your place in this unique seminar, and make sure to tell your colleagues and students who have an 
+interest in conceptualizing and analyzing complex systems!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Hi everyone
+
+Instats is offering a new 4-day seminar by professor Moses Boudourides on Hypernetworks in Theory and Practice, running 
+March 9 - 12. Hypernetworks or hypergraphs are rapidly becoming a crucial tool for understanding complex systems across a 
+variety of fields. Unlike traditional network models, hypernets can capture higher-order and multi-dimensional interactions 
+and relationships among entities. Such systems are inherently interconnected and their interactions can encompass 
+simultaneous connections among multiple entities. This four-day seminar provides a comprehensive exploration of both 
+fundamental and advanced concepts, emphasizing their application in analyzing complex systems across various domains. 
+Participants will gain hands-on experience with Python tools to effectively model and interpret multi-dimensional 
+interactions, enhancing their research capabilities and analytical skills.
+
+Sign up today to secure your spot, and please feel free to tell your colleagues and students about this unique opportunity!
+
+
+
+Hi,
+
+For those who are considering submitting an abstract/symposium/roundtable/educational course for OHBM2025, be aware that 
+the submission deadline is firm and will NOT be extended as was usual in the past!
+
+The point is to get the submission sorted and distributed for review before the Xmas break, such that acceptance letters 
+are sent out earlier, a prerequisite for those who need to apply for a visa.
+
+Seasonal greetings everyone!
+
+Best,
+Chris
+
+
+Dear Peter,
+
+ 
+
+thank you for that very helpful information about the SPM release which I really appreciated.
+I have needed a little bit time to get clear which release I wanna use for my first research project.
+
+I'm happy to looking forward for the week of the 6th January 2025 and will be use the actual version of SPM for my first 
+research project and will start after that with the preprocessing steps (VBM and SHOOT toolbox and so on). Between the time 
+today and the 6th January 2025 I will use the current development version to become familiar with the preprocessing steps 
+in SPM. And of course I'm also happy to use the newest SPM software in future for my first research project.
+
+
+
+If I will have any questions in future about SPM I will contact you and the SPM mailing list again.
+
+ 
+
+Dear all,
+
+when trying to estimate mean/volume inside ROI in cat 12 I recieve the following warning:
+
+
+
+Save D:\MRT_Phobie\VPN\vbm\Expert_mode\statistik2\ROIfu_cobra_Vwm.csv.
+Warning: Escaped character '\M' is not valid. See 'doc sprintf' for supported special characters.
+
+
+
+The Excel files are written but do only contain the name of the ROIs...
+
+Any help or suggestions?
+
+Many thanks!
+
+Cheers
+
+bs
+
+
+Dear Torsten
+
+The development version is simply the current working version of SPM that is under continuous development. It does not have 
+the same level of testing as an official release. The next release (25.01) is scheduled for the week commencing 6th January 
+2025 and if you need it sooner , there is a pre-release version available at 
+https://github.com/spm/spm/releases/tag/25.01.rc3 .
+
+ 
+
+For the tools you mentioned, I would indeed recommend either the development version or the pre-release of 25.01.
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Torsten Klenert
+Sent: 19 November 2024 17:01
+To: SPM@JISCMAIL.AC.UK
+Subject: {SPAM?} [SPM] SPM actual development version
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hello to all people who are using SPM,
+
+Hi everyone
+
+Instats is pleased to be offering a new 1-day seminar on Principles of Data Visualization, running Dec 18 by professor 
+Daniel Schnitzlein. This seminar provides an essential introduction to the principles of data visualization for academic 
+researchers and research professionals. It focuses on understanding how to effectively communicate quantitative information 
+through visual means, with an emphasis on audience-centric design. Attendees will learn how to select appropriate chart 
+types, declutter visualizations, and enhance clarity in ways that are applicable to any software package or data 
+visualization suite. This course is designed to improve data storytelling and ensure that visual presentations of data are 
+both accurate and compelling.
+
+Sign up today to secure your spots in these unique seminars, and please feel free to tell your friends and colleagues.
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Dear Christian,
+thank you so much for your help.
+Thanks for pointing me to the FAQs!
+Best regards,
+Gregor
+
+
+The Department of Cognitive Psychology, located at Universität Hamburg, is inviting researchers of exceptional talent to 
+apply for a 2 year post-doc position (E13, 100%; extension possible) at the intersection of Psychology and Cognitive 
+Neuroscience. The starting date is negotiable, as from April 2025.
+
+We offer:       
+- a strong and highly visible international research environment, including excellent access to cutting-edge research 
+facilities
+- exceptional support, mentoring and career development
+- access to an interdisciplinary and structured research training group (emotionalmemory.de)
+- sufficient funds to implement exciting research projects within the research area of the lab
+
+For more details on our research, please see:
+https://www.psy.uni-hamburg.de/en/arbeitsbereiche/kognitionspsychologie.html
+
+We invite highly qualified researchers holding a PhD in Psychology, Medicine, Neuroscience, or a related discipline who 
+share our enthusiasm for interdisciplinary research. We expect excellent methodological skills and statistical knowledge, 
+coding skills (e.g. MATLAB, Phython, R), expertise in at least one cognitive-neuroscientific method (e.g. fMRI, EEG, 
+Psychophysiology, cognitive modelling), as well as experience in scientific publishing, documented by at least one 
+publication as first author in a peer-reviewed scientific journal.
+
+To apply, please send your CV, a letter of motivation, reference letters as well as copies of all relevant certificates – 
+by January 10th, 2025 – via the application platform of the University of Hamburg:
+
+https://www.uni-hamburg.de/stellenangebote/ausschreibung.html?jobID=876c2b18a45d73ece9840832493f2c9fbc5a389e
+
+(Please use the “apply” button at the bottom of the application page)
+
+Dear Felix,
+
+the needed contrast is described here:
+https://neuro-jena.github.io/cat12-help/#long_two
+https://neuro-jena.github.io/cat12-help/#long_contrast
+
+However, this contrast may artificially inflate your results and this longitudinal design is not really appropriate to test 
+the main effect:
+https://doi.org/10.3389/fnins.2019.00352
+
+Furthermore, you can skip using TIV as covariate for long. designs since only individual changes in TIV would be considered 
+(anything else is considered as subject effect). TIV should not change between the time points...
+
+Best, Christian
+
+On Tue, 10 Dec 2024 15:22:16 +0100, Felix Kleinschroth <felix.kleinschroth@PSYCHOLOGIE.UNI-FREIBURG.DE> wrote:
+
+>Hello SPM Community,
+>
+>I am currently running a VBM analysis in SPM where I have 2 groups
+>(experimental, control) and 2 timepoints (pre-experiment, post-experiment).
+>After preprocessing the Data I turned to the statistical analysis
+>(flexible factorial) and first wanted to confirm that there are no
+>differences between timepoint 1 of the experimental compared to that of
+>the control group.
+>
+>My design contained 3 factors. subject, group and time with
+>main effect:             subject
+>main interaction:   group & time
+>
+>The first 4 columns of my experimental matrix are therefore
+>group, time 1, 1
+>group, time 1, 2
+>group, time 2, 1
+>group, time 2, 2
+>followed by the individual subjects and the TIV, which I added for
+>correction.
+>To evaluate differences in timepoint 1 I tried to define the contrast as
+>1 0 -1 0, but this is flagged as invalid by SPM.
+>The ones suggested in the manual do work, but are not what I am
+>initially interested in.
+>
+>As no such (t-)contrast is shown in either the manual or by SPMs
+>"SPM_make_contrasts" function, I assume I am missing something here,
+>Can somebody see an error here?
+>
+>Thank you
+>Felix
+>
+>--
+>M. Sc. Felix Kleinschroth
+>PhD Candidate / Scientific Staff
+>University of Freiburg
+>Department of Psychology
+>Neuropsychology
+>Engelbergerstraße 41
+>D-79106 Freiburg
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position 
+in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is 
+to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and 
+identify therapeutic targets.
+ 
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for 
+Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The 
+postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We 
+are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. 
+The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing 
+interests and relevant prior experience, CV, and contact information for three references to ([log in to unmask]). 
+ 
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative 
+diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such 
+as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their 
+reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their 
+underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that 
+currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as 
+psychophysiology, as well as structural and functional neuroimaging.
+
+Noah Cryns | Clinical Research Coordinator
+
+Memory and Aging Center
+
+University of California – San Francisco
+
+Phone: (415) 514-7580
+
+https://perrylab.ucsf.edu/
+
+https://decisionlab.ucsf.edu/
+ 
+
+

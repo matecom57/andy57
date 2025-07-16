@@ -1,0 +1,331 @@
+Hi!
+ 
+I have set up a standard preprocessing pipeline using SPM12. However I can’t run it on my Windows Computer (windows 10; Intel® Core™ i5-10500 CPU; 16 GB RAM). The problem is that it takes ages until matlab writes the image (e.g. 5 hours for slice timing). When using a Linux system the same script performs well and a preprocessing takes about 20-30 minutes.
+I use 4d nifti files and a multiband sequence (TR = 0.869) and my sequence has about 800 volumes so the files are quite big (e.g. 763 233 KB).
+ A first-level analyses runs fine on windows and takes a similar amount of time compared to the linux environment.
+ 
+My question is: is there a way to  make the writing of images in Windows faster using SPM commands or do you have any advice on how I can manage data processing in windows?
+ 
+Best and many thanks
+Kristina
+ 
+
+
+Hi Tamer
+
+ 
+
+Thanks for your reply. Good to know that we are not we only ones encountering problems with this.
+
+ 
+
+We use the same spm version on both systems. I don’t think there are any toolboxes on Windows – however I don’t know if there are processes in the background that might interfere with Matlab/SPM.
+
+ 
+
+If you find out something that might help, it would be wonderful if you’d let me know =)
+
+ 
+
+Best, Kristina
+
+ 
+
+ 
+
+Von: Tamer Gezici <tamergezici@gmail.com>
+Gesendet: Montag, 24. Juli 2023 10:17
+An: Schwarz, Kristina <kristina.schwarz@tu-dresden.de>
+Cc: SPM@jiscmail.ac.uk
+Betreff: Re: [SPM] 4D nifti file writing on Windows
+
+ 
+
+Hi Kristina,
+
+ 
+
+I noted this issue as well and I think there is an issue with 4D NIfTI files. We are investigating the issue with Guillaume Flandin. For now if you want you can convert your files to 3D NIfTI
+
+ 
+
+Also, are there any toolboxes which you may have installed on Windows but not Linux?
+
+ 
+
+Kind regards
+
+ 
+
+Tamer Gezici
+
+ 
+
+ 
+
+ 
+
+ 
+
+On 24 Jul 2023 Mon at 10:53 Kristina Schwarz <kristina.schwarz@tu-dresden.de> wrote:
+
+Hi!
+
+ 
+
+I have set up a standard preprocessing pipeline using SPM12. However I can’t run it on my Windows Computer (windows 10; Intel® Core™ i5-10500 CPU; 16 GB RAM). The problem is that it takes ages until matlab writes the image (e.g. 5 hours for slice timing). When using a Linux system the same script performs well and a preprocessing takes about 20-30 minutes.
+
+I use 4d nifti files and a multiband sequence (TR = 0.869) and my sequence has about 800 volumes so the files are quite big (e.g. 763 233 KB).
+
+ A first-level analyses runs fine on windows and takes a similar amount of time compared to the linux environment.
+
+ 
+
+My question is: is there a way to  make the writing of images in Windows faster using SPM commands or do you have any advice on how I can manage data processing in windows?
+
+ 
+
+Best and many thanks
+
+Kristina
+
+ 
+
+I also tried using the rendering code provided in the paper from which the figure was taken:
+
+spm_mesh_render('View',get(findobj(spm_figure('GetWin','Graphics'),'Tag','SPMMeshRender'),'Parent'),'bottom')
+
+However, when running the code (after getting glass brain image), I encountered the following error messages in the command window:
+“
+Error using camlight (line 60)
+is an invalid argument
+Error in spm_mesh_render>myView (line 567)
+camlight(H.light);
+Error in spm_mesh_render (line 362)
+        myView([],[],H,v);
+“
+I'm not sure what went wrong. Any assistance would be greatly appreciated.
+
+Best regards,
+Ling
+
+Dear Haorui,
+
+MEX files for Apple Silicon are available in the development version of SPM that you can download here:
+
+https://github.com/spm/spm/archive/refs/heads/main.zip
+
+It should hopefully work fine with R2023b beta but please let us know if you have any issue with it. I am not aware of particular issues (freeze, crash) with R2023a so there might be another issue to look into.
+
+Best regards,
+
+Guillaume.
+
+
+
+Hi everyone,
+
+I would like to estimate the mean value for each ROI for standard templates (hammers, cobra, etc) on my saliency maps. I trained networks, one for each tissue, with the modulated warped files (mwp*) files. Then I derived the saliency maps for certain predictions. The shape of saliency maps are 121*145*121 (equal to mwp*'s shape) and the template's shape on CAT12 are 161*197*161.  How can I extract the ROI mean on my  saliency maps?
+
+Can I also extract cortical values from the saliency maps overlaid with the grey matter modulated warped image?
+
+Thanks in advance,
+
+Maria Fátima Dias
+
+Hi Kristina,
+
+I noted this issue as well and I think there is an issue with 4D NIfTI files. We are investigating the issue with Guillaume Flandin. For now if you want you can convert your files to 3D NIfTI
+
+Also, are there any toolboxes which you may have installed on Windows but not Linux?
+
+Kind regards
+
+Tamer Gezici
+
+
+
+
+On 24 Jul 2023 Mon at 10:53 Kristina Schwarz <kristina.schwarz@tu-dresden.de> wrote:
+Hi!
+
+ 
+
+I have set up a standard preprocessing pipeline using SPM12. However I can’t run it on my Windows Computer (windows 10; Intel® Core™ i5-10500 CPU; 16 GB RAM). The problem is that it takes ages until matlab writes the image (e.g. 5 hours for slice timing). When using a Linux system the same script performs well and a preprocessing takes about 20-30 minutes.
+
+I use 4d nifti files and a multiband sequence (TR = 0.869) and my sequence has about 800 volumes so the files are quite big (e.g. 763 233 KB).
+
+ A first-level analyses runs fine on windows and takes a similar amount of time compared to the linux environment.
+
+ 
+
+My question is: is there a way to  make the writing of images in Windows faster using SPM commands or do you have any advice on how I can manage data processing in windows?
+
+ 
+
+Best and many thanks
+
+
+Kristina
+
+ 
+
+
+
+When you save your batch, save it as batch and script. When you reload it, open the file that is 'batchname'_job.m
+
+
+I am attempting to normalise brain FDG uptake to a global mean/ PET intensity normalisation using SPM12. Ive tried this in a variety of ways - using binary brain masks created during skull stripping, and inverse deformation fields created during segmentation. Ive included them as specified files, and dependencies. My resulting PET.nii files are generated, but appear empty - I've viewed them in SPM and ITKsnap. The PET nifti files were reoriented and normalised to old normalise pet template prior to PET intensity normalisation. Does anyone have a suggestion as to why this might be?
+
+Dear all, I have created an automated first level within SPM but am unable to load it. Can I check the instructions to do so? Should I go to batch, load batch? But, I receive this error message  -
+
+Unable to perform assignment because the left and right sides have a different number of elements 
+
+Thank you
+Nat
+
+To account for the slice time sampling, the actual slice times can be entered directly into SPM slice time correction. The slice time correction can be run from the GUI or accessed using the function spm_slice_timing. You will see from the function description of spm_slice_timing that, rather specifying sliceorder as a vector of integers that correspond to the order of slices, sliceorder can instead be specified in milliseconds, if desired. Passing the actual slice times (in milliseconds) to the function means that the slice times will be correctly accounted for in a sparse acquisition (or any other acquisition format)
+
+The slice times can be specified by hand or read from the header of the MRI data (e.g., .ima) files. The function spm_dicom_headers can be used to read the slice time information from the file header
+
+Best wishes,
+
+Emma
+
+ 
+
+Dear Po-Yu
+
+you can put an elementary dipole everywhere in the brain source model and get from the algorithm its current density but this does not mean that the resulting timeserie is reliable. There are several locations in the brain that I would never consider reliably when calculated by eeg data. cerebellum is one of them.
+unfortunately, a rigorous consensus on what you can and what you cannot investigate is, to my knowledge, missing.
+hope this helped you.
+Alberto
+
+Hi SPM experts
+I would like to do the SPM source reconstruction over the whole brain (including the cerebellum) from the EEG signal, but the current SPM has no cerebellum in the source reconstruction. Is there any toolbox to help with this? Thanks
+
+Po-Yu
+
+
+Dear SPM experts,
+
+I have defined a region of interest (ROI) for brain activation analysis based on relevant papers. The ROI is a 5mm sphere centered at (MNI: −30, 23, −2). In my manuscript, I would like to demonstrate the selected ROI by highlighting it on a brain or surfer image in a pretty way.
+
+Could you kindly guide me regarding the appropriate SPM functions or provide demo code to accomplish this?
+
+Your assistance would be highly appreciated.
+
+Best regards,
+
+Ling
+
+
+Hello all, 
+
+
+
+I am hiring a postdoctoral fellow. Please see the description below and contact me for more details/questions. 
+
+
+
+Description: The Adise lab in the Division of Endocrinology, Diabetes, and Metabolism, Department of Pediatrics, Children's Hospital of Los Angeles, University of Southern California seeks a postdoctoral fellow to work on NIH funded studies investigating neurocognitive development of obesity and appetite regulation during childhood and adolescence. The start date for this position will be as early as 1 Sept 2023 but is flexible.
+
+ 
+
+This research combines multimodal techniques including behavioral, magnetic resonance imaging (MRI) and biological markers of metabolic health. The postdoctoral fellow will be using Big Data methods to analyze large-scale questions in the ABCD Study geared at understanding how social determinants of health may influence neurocognitive development of obesity risk. There will also be opportunities to be involved in smaller scale studies at CHLA. Additionally, the candidate will work alongside leaders of the field of ingestive behavior, neuroimaging, and neurocognitive development.
+
+ 
+
+Minimum qualifications/Work experience: Candidates should have a PhD in a relevant discipline (e.g., psychology, neuroscience, computer science, engineering, nutrition). A background in one or more of the following is essential: obesity/eating behavior, nutrition, biostatistics, big data analytics, neuroimaging.  Programming experience (Python, R etc.) will be highly valuable but is not absolutely required as a prerequisite (however, learning to program is an absolute must). Strong data analysis and writing skills required. 
+
+ 
+
+If interested, please send a CV, statement of research interests, one or more PDFs of representative publications, and contact details of two references to sadise@chla.usc.edu
+
+
+
+
+
+Shana Adise, Ph.D. (she/her/ella)
+Assistant Professor of Research Pediatrics
+Division of Endocrinology, Diabetes, and Metabolism
+
+Children's Hospital of Los Angeles
+
+Department of Pediatrics
+
+Keck School of Medicine | University of Southern California
+4650 Sunset Blvd Mailstop #61, Los Angeles, CA 90027
+
+shanaadise@gmail.com
+
+http://shanaadise.weebly.com/
+
+
+** While I may have sent this email outside of regular office hours, I value your personal time and wellbeing. Therefore, I do not expect a response outside of your normal working hours **
+
+The Institute for Human Neuroscience at Boys Town National Research Hospital in Omaha, NE, USA invites applications for three open Laboratory Director positions in Cognitive Neuroscience. For these junior faculty positions (Assistant Professor/Research Scientist I), we welcome applications from any area of cognitive neuroscience, including executive function, visual attention, perception, motor control, emotion, memory, and methods-oriented areas, and are especially interested in building our existing research programs in pediatric and adult brain health. Methodological specialty within neuroimaging is open, but ideally the candidate would benefit from our strong existing programs in multimodal MRI, MEG imaging, optically-pumped magnetometry (OPM), and/or neuromodulation, and develop a nationally recognized program focusing on their area of interest. The successful applicant will receive strong financial support for building their research program, including a generous start-up package, and would join a growing group of cognitive neuroscientists, both within the Institute and across campus, using the latest tools in human neuroscience.
+
+ 
+
+Successful candidates will have a PhD, MD, DPT/PhD or MD/PhD in neuroscience, psychology, physics, computer science, or related field, with postdoctoral training and an excellent publication record for their career stage. Candidates should also have a sustained record of research in high impact journals and demonstrated ability, or evidence of the potential, to generate extramural funding commensurate with their career stage. Applicants should have the ability and interest to teach graduate courses in cognitive neuroscience, and to mentor PhD students in our growing joint PhD program in Neuroscience with Creighton University.
+
+ 
+
+The 15,000+ square foot Institute for Human Neuroscience is a vibrant research environment with state-of-the-art equipment and ample opportunities for training and trans-disciplinary collaboration. The Institute houses the latest equipment available in the field of noninvasive neuroimaging, including a 3T Siemens Prisma MRI system, two Neo MEG systems, which are the most advanced MEG units currently available, an NIH S10 supported OPM suite, a mock MRI scanner, and a high-performance computing space. The Institute’s resources also include state-of-the-art high-definition transcranial direct-current and alternating-current stimulation (HD-tDCS/tACS) equipment, and biomechanical equipment for quantifying human movement physiology (i.e., KINARM, Delsys EMG, Vicon motion capture, Bertec force treadmill). The Institute maintains a 2,500+ square foot clinic that is staffed by research dedicated physical therapists, and the most up-to-date therapeutic equipment for conducting clinical trials with children and adults with neurologic and/or orthopedic impairments. Lastly, the Institute is the home for the Center for Pediatric Brain Health, which is an NIH P20 Center of Biomedical Research Excellence. The Center for Pediatric Brain Health includes multiple research support mechanisms for junior faculty at Boys Town, including both pilot project funding (approx. $50k direct costs per year) and major research project funding (approx. $175k direct costs per year for 3-4 years).
+
+ 
+
+We expect to hire two or three junior faculty through the current initiative, with a start date in 2024. Interested applicants should submit a letter detailing current research interests, a list of the applicant’s five most important publications, and a curriculum vitae to Dr. Tony Wilson (tony.wilson@boystown.org). Contact information for three references will be requested at a later time. Review of applications will begin September 22, 2023 and will continue until the position is filled. Individuals from diverse backgrounds are especially encouraged to apply.
+
+ 
+
+Check out our website: Institute for Human Neuroscience for more information!
+
+ 
+
+ 
+
+ 
+
+Gaelle Doucet, Ph.D.
+Director, Brain Architecture, Imaging and Cognition Lab
+w: 531.355.6703 | e: gaelle.doucet@boystown.org
+
+Boys Town National Research Hospital Logo
+
+Boys Town National
+Research Hospital
+boystownhospital.org
+Institute for Human Neuroscience,
+
+14090 Mother Teresa Lane,
+Boys Town, NE
+
+ 
+
+This message is privileged and confidential and is intended only for the use of the addressee. Unauthorized use of this message is strictly prohibited. If you received this transmission in error, please immediately contact the sender and destroy the message. Thank you.
+
+ 
+
+ 
+
+Hi everyone
+
+Instats is pleased to present a new 3-day seminar introducing Statistical Machine Learning for Researchers by University of Oxford professor Seth Flaxman (July 24-26). This seminar offers a hands-on introduction to modern machine learning tools that you can apply in your ongoing research. By the conclusion of this seminar, participants will have the knowledge and skills needed to go beyond traditional statistical methods, allowing them to uncover new patterns in their data and expand their ability to publish papers and procure grants. Hope to see you there!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Hi, I am doing an analysis where I will include motion as a regressor in my second level flexible factorial anova.
+
+Would it be best to add all 6 motion parameters (6 covariates) or to first calculate an average per person (average all the volumes and 6 motion parameters so I have  one value per person)?
+
+Thanks in advance,
+Gloria
+

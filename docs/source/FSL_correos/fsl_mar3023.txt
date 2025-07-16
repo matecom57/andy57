@@ -1,0 +1,310 @@
+Following the example at https://git.fmrib.ox.ac.uk/thanayik/fsl-docker-example-bet , I'm trying to build a docker container that just has fsl-utils. The actual docker build step went fine, but I see no evidence that fslmaths, fslmeants, and other elements of fsl-utils were built/installed.
+
+Just in case "find / -name fslmaths" somehow missed it (unlikely though that seems), I fired up python and tried:
+
+>>> from fsl.wrappers import fslmaths
+>>> fslmaths('image.nii').thr(0).run('out.nii')
+
+...which resulted in:
+
+FileNotFoundError: FSL tool fslmaths not found (checked /opt/conda/bin)
+
+Is there something I need to do to install fsl-utils other than install the conda package? Or is the conda package just missing the stuff necessary to build and install the relevant binaries?
+
+Thanks,
+Noah
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear respected professionals,
+
+I was hoping you could point me towards where I can download version 5.0.4 of FSL that includes version 3.13 of MELODIC. The oldest version I see in the fsl installer script for prior versions is 5.0.9 which includes version 3.14 of MELODIC.
+
+Thank you!
+
+########################################################################
+
+I am a PhD student recently started to work on DTI. I have a couple of questions/doubts regarding the preprocessing steps: I have some data acquired in 2011/2012 with a Siemens scanner and I have found only one encoding direction (Posterior to Anterior) in all the headers of the Nifti files as well as in the json file (Encoding Direction: -j) and I was wondering, since I am running the preprocessing with FSL and therefore I will use TBSS, if there should be the other encoding direction somewhere and if I can get some more informations from the Diffusion Matrix with all the directions (19, 20, 21) that I received from the MRI technician.
+
+If I won´t find this direction, should I just skip the topup correction and run eddy instead? I hope that this won´t make the analyses less sensitive, but I also have to do some quality checks of course.
+
+Thank you!
+
+Julia Ernst 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear scientists,
+        I am a postdoc analysing diffusion tensor imaging data using your FSL toolbox. Thank you for your fantastic invention!
+        I now encounter a question:
+        1. how to set the threshold for clustere during F-test using randomise calculation for TBSS? 
+image.png
+            I mean the “threshold” should be 0.95 or 0.05 
+         My script is like the following（I just want to do a simple F-test,no Anova or paris）
+randomise -i all_FA_skeletonised -o tbss -m mean_FA_skeleton_mask -d design.mat -t design.con -f design.fts -n 10000 -c 0.95 -F 0.95 -D 
+          2. I am a little confused about the threshold and setting threshold for the map of corrp_fstat. 
+               If I see clusters with P<0.005, I should set the threshold during randomise to 0.995(or 0.005), or I just directly use the 0.95 during randomise then set 0.005-1 to the map I got from randomise?  
+           Looking forward to your kind reply! Thank you very much for your time!
+
+
+
+             Best regards,
+             Xiaolin Tan
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Karina,
+
+There is a bug in the bianca_overlap_measures script which should be fixed in the latest version of FSL. If you don't want to upgrade your FSL installation, you should be able to resolve it by opening bianca_overlap_measures in a plain-text editor, and changing the first line from "#!/bin/sh" to "#!/usr/bin/env bash".
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Karina Dorfman <karinador@GMAIL.COM>
+Sent: 30 March 2023 01:29
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Dice score calculation on FSL
+ 
+Hello,
+I have tried to run the BIANCA performance evaluation command, which should output the dice score between manual segmentations and BIANCA output)
+[kdor0003@m3p008 37]$ bianca_overlap_measures 37_bianca_output.nii.gz 0.9 T2_brain_mask.nii.gz 1
+And got these errors:
+/opt/fsl/bin/bianca_overlap_measures: 85: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 87: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 94: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 96: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 1: bc: not found
+
+How can I fix this problem? Or alterntively;How can I calculate a dice score between two binary masks on FSL (in these case manual segmentaton and binarised BIANCA output)?
+
+Thanks,
+Karina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Noah,
+
+The fslmaths command is provided by the fsl-avwutils package - the fsl-utils package is a shared library that provides a range of miscellaneous functions.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Noah Mercer <noahmerc@USC.EDU>
+Sent: 30 March 2023 00:53
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsl-utils conda package misconfigured?
+ 
+Following the example at https://git.fmrib.ox.ac.uk/thanayik/fsl-docker-example-bet , I'm trying to build a docker container that just has fsl-utils. The actual docker build step went fine, but I see no evidence that fslmaths, fslmeants, and other elements of fsl-utils were built/installed.
+
+Just in case "find / -name fslmaths" somehow missed it (unlikely though that seems), I fired up python and tried:
+
+>>> from fsl.wrappers import fslmaths
+>>> fslmaths('image.nii').thr(0).run('out.nii')
+
+...which resulted in:
+
+FileNotFoundError: FSL tool fslmaths not found (checked /opt/conda/bin)
+
+Is there something I need to do to install fsl-utils other than install the conda package? Or is the conda package just missing the stuff necessary to build and install the relevant binaries?
+
+Thanks,
+Noah
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+I have tried to run the BIANCA performance evaluation command, which should output the dice score between manual segmentations and BIANCA output)
+[kdor0003@m3p008 37]$ bianca_overlap_measures 37_bianca_output.nii.gz 0.9 T2_brain_mask.nii.gz 1
+And got these errors:
+/opt/fsl/bin/bianca_overlap_measures: 85: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 87: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 94: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 96: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 1: bc: not found
+
+How can I fix this problem? Or alterntively;How can I calculate a dice score between two binary masks on FSL (in these case manual segmentaton and binarised BIANCA output)?
+
+Thanks,
+Karina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Following the example at https://git.fmrib.ox.ac.uk/thanayik/fsl-docker-example-bet , I'm trying to build a docker container that just has fsl-utils. The actual docker build step went fine, but I see no evidence that fslmaths, fslmeants, and other elements of fsl-utils were built/installed.
+
+Just in case "find / -name fslmaths" somehow missed it (unlikely though that seems), I fired up python and tried:
+
+>>> from fsl.wrappers import fslmaths
+>>> fslmaths('image.nii').thr(0).run('out.nii')
+
+...which resulted in:
+
+FileNotFoundError: FSL tool fslmaths not found (checked /opt/conda/bin)
+
+Is there something I need to do to install fsl-utils other than install the conda package? Or is the conda package just missing the stuff necessary to build and install the relevant binaries?
+
+Thanks,
+Noah
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello Pawel,
+
+Try Pavlovia: https://pavlovia.org/
+
+Best,
+Michal
+
+śr., 29 mar 2023 o 11:30 Pawel Jakuszyk <p.jakuszyk@nencki.edu.pl> napisał(a):
+Hello,
+
+My question does not relate to the FSL software but I fell like this is a good community to ask this.
+Are there any public repositories that provide access to fMRI task paradigms programmed in psychopy, presentation or any other format? I have checked OpenNeuro, NeuroVault, NITRC and all there is are datasets with images but unfortunately no tasks.
+The HCP page realting to protocols seems to be down or does not exist anymore.
+
+I would appreciate any help.
+
+All the best,
+
+Pawel
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+My question does not relate to the FSL software but I fell like this is a good community to ask this.
+Are there any public repositories that provide access to fMRI task paradigms programmed in psychopy, presentation or any other format? I have checked OpenNeuro, NeuroVault, NITRC and all there is are datasets with images but unfortunately no tasks.
+The HCP page realting to protocols seems to be down or does not exist anymore.
+
+I would appreciate any help.
+
+All the best,
+
+Pawel
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Power went out during while tbss_2_reg  -n  was running, I already removed the .msf files that were empty however when I try to rerun, I get the following error:
+
+line 130: /Users/macmini02/fsl/bin/imglob: Argument list too long
+Error submitting job - Array task definition file fault: Unable to read '.commands’
+
+Is there a way of fixing this without having to start tbss_2_reg completely from the beginning?
+
+
+Dear Zack,
+
+first of all I would say that there is very rarely, if ever, a practical need for you to understand the difference between --rel and --abs. That is because applywarp, and I think all other FSL tools, will be able to automatically decide if a warp field is relative or absolute. So a very strong recommendation is to always leave that parameter out and let the tool work it out itself.
+
+Here is a short attempt at an explanation. Let us say that you are in a location x,y,z in brain A and you want to know what location x',y',z' that corresponds to in volume B. The model we use in FSL (and I think this is true of any non-linear registration tool) is to say that
+
+x' = x + d_x
+y' = y + d_y
+z' = z + d_z
+
+where the d_i:s are displacements in the x, y and z directions. Now, let's say we have a tool, like for example fnirt, that has calculated the d_i:s for all voxels in the brain, and we now want to communicate that information to a tool, like applywarp, that needs to use it. We can then chose to pass that information either as x',y',z' for all voxels. That would be an example of an "absolute field". Or we can chose to pass it as d_x,d_y,d_z for all voxels. And that would be an example of a "relative field". It doesn't matter what you chose, but it is important that whoever is going to use the field, e.g. applywarp, know which it is.
+
+Jesper
+
+
+﻿On 28/03/2023, 11:10, "FSL - FMRIB's Software Library on behalf of Zack Guo" <FSL@JISCMAIL.AC.UK on behalf of gzt2019@MAIL.BNU.EDU.CN> wrote:
+
+    Hi Rick,
+   
+    Thanks for your reply.
+   
+    I have understood the --aff option in fnirt according to your answer~
+    And for the --rel option in applywarp, maybe I could not fully understand the true meaning of that option. Could you please give me some examples, please? And in the general registration process (such as T1 to MNI152), which one should we choose, --rel or --abs?
+   
+    Thanks again~~~
+   
+    Cheers,
+    Zack
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Rick,
+
+Thanks for your reply.
+
+I have understood the --aff option in fnirt according to your answer~
+And for the --rel option in applywarp, maybe I could not fully understand the true meaning of that option. Could you please give me some examples, please? And in the general registration process (such as T1 to MNI152), which one should we choose, --rel or --abs?
+
+Thanks again~~~
+
+Cheers,
+Zack
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi everyone,
+
+I'm having an issue with BIANCA I haven't been able to solve (using FSL 6.0.6.4): Since many voxels in the cerebellum are marked as WMH, I wanted to use the exclusion mask on the input images, however this did not change much, see attached screenshot of BIANCA output overlaid on the FLAIR image of the query subject. To create the exclusion mask, I used make_bianca_mask on FLAIR images as it is described in the documentation and registered it from T1 to FLAIR space; then I passed the masked FLAIR images to the -brainmaskfeaturenum option. I attached one of the masked FLAIR images as an example, to me they all look fine and I also made sure all the voxels outside the mask are actually 0.
+I also attached the masterfile I used (participant IDs are edited but the file originally contains 9 different participants), and here is the command used to call BIANCA:
+
+bianca --singlefile=/Users/tanja/Desktop/masterfile_test.txt --labelfeaturenum=4 --brainmaskfeaturenum=3 --querysubjectnum=9 --trainingnums=1,2,3,4,5,6,7,8 --featuresubset=1,2,3 --trainingpts=2000 --nonlespts=10000 --selectpts=noborder -o /Users/tanja/Desktop/BIANCA_output –v
+
+When I mask the output images everything seems to work perfectly, however this is not a good option for me because I have hundreds of query subjects and much fewer training subjects, so I'd rather use the mask on the training subjects because running fsl_anat to create the images needed for the mask takes a lot of time. If anyone can see what I'm missing, any help would be appreciated, thank you in advance!
+
+Tanja
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

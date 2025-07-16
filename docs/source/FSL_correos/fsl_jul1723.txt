@@ -1,0 +1,2154 @@
+Hello,
+
+I am using the eddy tool (FSL v6.0.3) in my DWI preprocessing stream. I used dcm2niix to convert my data. When creating the acqp.txt file, should the fourth number be equal to the "TotalReadoutTime" value from the JSON file?
+
+Thank you,
+Jenna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi All,
+https://fsl.fmrib.ox.ac.uk/fslcourse/ returns a "403 Forbidden" error.  Is it coming back soon?
+thanks!
+
+jack
+
+########################################################################
+
+I see - the PA image seems to have 3 volumes. In this case, should I just use fslsplit to get the first image for fslmerge and topup?
+
+Best,
+
+Noah Lee
+he/him/his
+Yale University | Saybrook '25
+B.S. Neuroscience
+
+
+
+On Wed, Jul 12, 2023 at 3:06 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Noah,
+It looks like your output image has _4_ volumes the final 3 of which _may_ be all the same ( they have identical ranges ). It’s probably worth running those commands on the inputs as well to check what is happening ( e.g. might the PA map have already been merged into the AP image )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 12 Jul 2023, at 15:51, Noah Lee <n.lee@YALE.EDU> wrote:
+
+Hi!
+
+Trying to merge two fieldmaps in AP and PA orientations using fslmerge -t (for topup DTI). Unfortunately, when I do so, the output file is exactly the same as the AP fieldmap. The PA image is not empty. Any solution to this?
+
+Best,
+
+Noah Lee
+he/him/his
+Yale University | Saybrook '25
+B.S. Neuroscience
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi FSL'ers,
+We have a 3 year postdoc position here at DRCMR in Copenhagen area:
+
+Are you fascinated by the potential of multi-modal imaging to explore
+the intricate details of cortical layers across various image
+resolutions? Are you motivated to develop an imaging approach that not
+only detects disease-related cortical layer changes but also holds
+promise for future clinical applications? If so, we have an exciting
+opportunity for you to join our cross-disciplinary research team as part
+of the Xtreme-CT project, generously supported by the Novo Nordisk
+Foundation's synergy program.
+
+As a member of our team, you will contribute to the development of a
+groundbreaking 3D multiscale tomographic imaging approach at the MAXIV
+synchrotron facility. Our aim is to collect data at different fields of
+view and voxel sizes within a single acquisition, including imaging at
+the cellular level with sub-micrometer voxel sizes. Leveraging your
+curiosity and expertise, alongside a preclinical MRI scanner, you will
+work towards establishing a correlation between MRI-based cortical
+layers fingerprint metrics and 3D multiscale tomographic imaging.
+
+Apply via this link:
+https://candidate.hr-manager.net/ApplicationInit.aspx?cid=342&ProjectId=250636&DepartmentId=18051&MediaId=4754
+
+Deadline is 15th August
+
+Please feel free contacting me if any questions :-)
+
+Hygge,
+Tim
+
+--
+Tim B. Dyrby
+Professor
+Microstructure and Plasticity (MaP) Group
+Danish Research Centre for Magnetic Resonance (DRCMR)
+Copenhagen University Hospital - Amager and Hvidovre
+2650 Hvidovre
+Denmark
+web: www.drcmr.dk/map and www.drcmr.dk
+     &
+Visual computing section
+Department of Applied Mathematics and Computer Science
+Technical University of Denmark
+2800 Kongens Lyngby
+Denmark
+web: www.compute.dtu.dk/english/research/research-sections/visual-computing
+
+########################################################################
+
+Hi!
+
+Trying to merge two fieldmaps in AP and PA orientations using fslmerge -t (for topup DTI). Unfortunately, when I do so, the output file is exactly the same as the AP fieldmap. The PA image is not empty. Any solution to this?
+
+Best,
+
+Noah Lee
+he/him/his
+Yale University | Saybrook '25
+B.S. Neuroscience
+
+
+Hi everyone, I have three groups and wish to compare their TBSS (difference between means) with randomise. On the GLM wiki page there is an example for 3 groups called "F-Tests (Inter-Group differences, no repeated measures)" and a different design for a one-way ANOVA (the example used is for 4 groups). Could someone please give an example of a situation where you would use each option instead of the other? i.e. when would you use the F-test for 3 groups instead of the one-way ANOVA design?
+Thanks in advance :)
+
+########################################################################
+
+Dear FSL users,
+                        We are pleased to announce the release of FSL 6.0.7.1
+
+This release is identical to 6.0.7 apart from the GEHC update to fsl_prepare_fieldmap that was inadvertently omitted from 6.0.7.
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+NOTE FOR ASL USERS:
+There is an issue with one of the dependencies used by the ASL GUI ( this only affects the GUI and not the processing scripts ). We believe the maintainer of this package will release a fix shortly, but for now ASL users should use/install FSL 6.0.6.5 ( python fslinstaller.py -V 6.0.6.5 )
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+CHANGELOG:
+
+### fsl-fugue 2201.2 --> 2201.3
+
+- MNT: Update GE to GEHC
+- ENH: GE fieldmap processing, kindly provided by Brice Fernandez
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+As a continue to this question, is it possible to use .par parameters to return the motion-corrected scan to its uncorrected form? Using flirt or any other tools?
+
+Best,
+Amir
+
+########################################################################
+
+Hello!
+
+I’m currently working on running the command “bet” on a series of nii.gz image files using a shell script. The images I’m trying to “bet" are fairly conventional T1w 3D MPRAGE images with 1mm isotropic resolution.  The command executes properly for some image files in the series but for others I get the following error, “input image not valid”.
+
+I’ve tried running the command manually from the terminal (I’m using Ubuntu 18.04.5 on Windows 11) and I get the same error as I do when I ran the command in the script. I also tried running it using the FSL GUI window and I get the same error.
+
+I can still view these “invalid" image files using FSLeyes and they don’t seem to have any labelling or orientation errors (i.e. the outputs of fslhd are similar between the invalid images, and ones that can be successfully "betted"). I can also run different FSL commands and they execute properly; however, “bet” doesn’t seem to be working.
+
+Does anyone have any idea as to why these image files might be invalid or a way to solve the error?
+
+Ultimately, I just want to register all of my MPRAGE images to the MNI152 standard image, and I am under the impression that it is best to run "bet" first.
+
+Thanks in advance!
+
+Kiriya
+
+########################################################################
+
+
+
+Dear colleagues,
+
+ 
+
+I am pleased to announce our upcoming Course in Neuroimaging: Analysis and results interpretation. The course will be held online starting from September 14th and will be taught in Spanish. It takes a practical approach and does not require qualifications or previous experience in neuroimaging.
+ 
+
+The multidisciplinary programme provides thorough training in the analysis of brain images from different MRI modalities and data modeling techniques, including voxel-based morphometry, cortical thickness, diffusion tensor imaging and fibre tracking, functional MRI and brain connectivity, as well as the statistical methods behind these techniques including elements of meta-analysis, and more.
+
+
+
+The course is organized by FIDMAG Research Foundation and this will be its 8th edition. For further information, please visit the website: https://cursoneuroimagen.com/es/
+
+
+
+Best regards,
+
+Paola.
+
+########################################################################
+
+
+Hi,
+
+Does the new MacBook Pro M2 pro and MacBook Pro M2 max meet the requirements to run FSL smoothly?
+
+Gina
+
+########################################################################
+
+
+Hi Paul,
+
+Thanks very much.  'fslreorient2std' was the missing link I was looking for.
+
+Conrad
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Monday, July 17, 2023 4:37 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSL and Freesurfer
+ 
+[△EXTERNAL]
+
+
+Hi Conrad,
+
+FSLeyes is not a registration tool - all it does is use the qform/sform of each image to project all loaded images into a common space. You can read more about this here: https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/display_space.html
+
+If you have two images for which you need anatomical alignment, you will need to register them using (e.g.) FLIRT. You can find an overview and examples on how to do this in the FSL course registration practical at https://open.win.ox.ac.uk/pages/fslcourse/practicals/registration/index.html.
+
+When you load the Freesurfer-derived image into FSLeyes first, it is displayed upside down because Freesurfer uses a different default voxel coordinate system orientation. This is not necessarily a problem, as long as the anatomical labels are correct.
+
+However, when working with FSL tools such as FLIRT, it is a good idea to run fslreorient2std on all of your images, which adjusts them all to have a consistent voxelwise orientation (and does not modify the data).
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Conrad Rockel <conrad.rockel@UCALGARY.CA>
+Sent: 16 July 2023 20:43
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL and Freesurfer
+ 
+Hi everyone,
+
+     I have used Freesurfer for a previous analysis, and now would like to use those segmentations for another analysis using Feat.
+
+However, when using FSLeyes, files output from Freesurfer obviously use a different coordinate system from that I'd used previously (via dcm2niix).
+
+When I bring these *nii.gz volumes into FSLeyes, they "somewhat" overlay.  I can tell they aren't because of visible diagonal slicing, so I know that FSLeyes is working hard, but in the background, the images aren't yet aligned.  If I bring a Freesurfer-derived image into FSLeyes first, the image shows things upside down.  I tried FLIRT, but it was off enough that I wasn't confident
+
+I feel like Im missing something obvious.  Should I be incorporating JSON files somehow?
+
+I just want to make sure that the ROIs I choose are seated properly in my functional data.
+
+Any advice would be welcome.
+
+Thanks,
+
+Conrad
+
+########################################################################
+
+Hi everyone,
+
+     I have used Freesurfer for a previous analysis, and now would like to use those segmentations for another analysis using Feat.
+
+However, when using FSLeyes, files output from Freesurfer obviously use a different coordinate system from that I'd used previously (via dcm2niix).
+
+When I bring these *nii.gz volumes into FSLeyes, they "somewhat" overlay.  I can tell they aren't because of visible diagonal slicing, so I know that FSLeyes is working hard, but in the background, the images aren't yet aligned.  If I bring a Freesurfer-derived image into FSLeyes first, the image shows things upside down.  I tried FLIRT, but it was off enough that I wasn't confident
+
+I feel like Im missing something obvious.  Should I be incorporating JSON files somehow?
+
+I just want to make sure that the ROIs I choose are seated properly in my functional data.
+
+Any advice would be welcome.
+
+Thanks,
+
+Conrad
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear FSL users,
+                         We are pleased to announce the release of FSL 6.0.7.
+
+This release contains a number of new tools as well as various bug-fixes and improvements.
+
+New tools:
+mmorf - The MultiMOdal Registration Framework. For simultaneous, nonlinear alignment of multimodal image data.
+fsl-nets - New Python-based re-implementation of the MATLAB FSLNets scripts, for FMRI network modelling
+file-tree - Framework to represent structured directories in Python
+fsl-pipe - Declarative pipelines based on file-tree
+bet4animal - species-tuned BET, kindly provided by Takuya Hayashi
+fsl_prepare_fieldmap - Now supports GEHC fieldmaps, kindly provided by Brice Fernandez
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+NOTE FOR ASL USERS:
+We have discovered a last-minute issue with one of the dependencies used by the ASL GUI ( this only affects the GUI and not the processing scripts ). We believe the maintainer of this package will release a fix shortly, but for now ASL users should use/install FSL 6.0.6.5 ( python fslinstaller.py -V 6.0.6.5 )
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+CHANGELOG:
+### fsleyes 1.6.1 --> 1.7.0
+
+
+- New colour range option (available via the --colourRange command-line option) which can be used on vector overlays when colouring them by a secondary image, to specify the mapping between the voxel intensities and the colour map.
+- New Show slice location option, allowing the location of each slice to be displayed in the lightbox view.
+- Changed the --initialDisplayRange command-line option to have the same behaviour as the --displayRange option - by default, the values will now be interpreted as raw intensities. Values can be specified as percentiles by appending a % to the high value.
+- Colour map and lookup table files may now have a .txt suffix instead of .cmap / .lut.
+- Colour map interpolation will now be applied to the colour bar shown in the ortho/lightbox/3D views.
+- Changed the behaviour of the Clip by and Modulate by settings for volume overlays - when clipping/modulating by a secondary image, and a negative colour map is in use, the absolute values of the secondary image are now used for clipping/modulation.
+- Changes to the mechanism used to save screenshots/movies, which should make the process more robust.
+- Fixed some issues with parsing command line arguments for RGB vector and complex images.
+- Fixed an issue with plotting the MELODIC power spectrum for data with an odd number of timepoints.
+- Fixed an issue when passing a colour map file path to the --negativeCmap option.
+- Fixed an issue related to loading NIfTI qform matrices which arose with nibabel >= 5.1.0.
+- Fixed an edit mode issue where a drawn line would have gaps in it.
+- Some minor fixes which allow the overlay type of a NIfTI image to be changed whilst it is being edited.
+- Fixed a small issue with volume overlays sometimes not being refreshed.
+
+
+### fslpy 3.11.3 --> 3.13.2
+
+- New scaleAtOrigin option to the affine.compose() function, which allows the origin to be preserved by scaling parameters.
+- New runfunc() function which can be used to execute a Python function in a separate process (or as a submitted cluster job), via the func_to_cmd() function.
+- New keys(), values(), and items() methods on the Cache class.
+- The run.func_to_cmd(), run.hold(), and run.job_output() functions have been moved from fsl.utils.fslsub to the fsl.utils.run module.
+- The fsl.utils.fslsub module has been deprecated, and scheduled for removal in fslpy 4.0.0.
+- The fsl.scripts.Text2Vest now handles column vector inputs correctly.
+- The tempdir() function was not changing back to the original working directory when the override argument was used.
+- New randomise() wrapper function.
+- The fslmaths() wrapper function now allows the -dt and -odt options to be set.
+- Assertions (from the assertions module) called within wrapper functions are now disabled if the command is to be submitted via fsl_sub.
+- The Image class will now resolve symlinks when loading images from file.
+- The fslstats() wrapper no longer overwrites the log option that is passed to run(), if a wrapperconfig() context is active.
+
+
+
+### fsl-add_module 0.4.0 --> 0.5.0
+
+- New command to generate/update a manifest from a set of files
+- Rename Plugin.termsOfUse to Plugin.terms_of_use, so naming is same in code and JSON
+- Ability to refer to FSL course / grad course manifests by alias
+- Add support for a "size" field
+
+
+### fsl-base 2303.2 --> 2306.1
+
+- New --conda options for update_fsl_package/release to prefer conda over mamba
+- New fslnotebook alias
+- New custominstall make rule - can optionally be defined in project Makefile for any custom installation steps (e.g. flirt/feat5 "schedule" rules).
+- Adjust the update_fsl_package so that it does not call conda with --freeze-installed or --no-channel-priority - they cause too much problems; in particular, conda seems to dislike being asked to install/update anything if it is not allowed to update ssl/certificates (which it can't do when called with --freeze-installed).
+
+
+### fsl-bet2 2111.2 --> 2111.4
+
+- ENH: bet4animal from Takuya Hayashi
+- add h2c function and --ct option
+
+
+### fsl-bianca 2209.2 --> 2209.3
+
+- BF: Removed breaking .nii.gz from remove_ext call
+
+
+### fsl-feat5 2201.4 --> 2201.5
+
+- MNT: Replace "defaultfiles" with "custominstall", so it gets executed at install time, not build time.
+
+
+### fsl-flirt 2111.1 --> 2111.2
+
+- MNT: Some additional dc calls that were missed in the code audit
+- MNT: Use new "custominstall" rule, which gets executed by make install - the schedule rule was being executed at build time.
+
+
+### fsl-fugue 2201.2 --> 2201.3
+
+- MNT: Update GE to GEHC
+- ENH: GE fieldmap processing, kindly provided by Brice Fernandez
+
+
+### fsl-get_standard 0.1.0 --> 0.2.0
+
+- Don't absorb system exit
+- raise exception if an unknown resolution is requested
+
+
+### fsl-giftiio 2111.0 --> 2111.1
+
+- MNT: Pre-declare one nifti_ function which was being implicitly used in gifti_tool.c
+- MNT: Add an alternative header for C++
+
+
+### fsl-installer 3.4.1 --> 3.5.3
+
+- New --conda option to use conda instead of mamba
+- Print an error message on attempt to install FSL < 6.0.6
+- New hidden --debug option which enables super verbose logging on conda/mamba
+- Use pwd module instead of op.expanduser to determine user home directory
+- New hidden --root_env option to disable automatic --no_env when run as root. Adding primarily for testing purposes
+- Adjust defaults when installer is called as root - install to /usr/local/fsl/, and don't modify shell profile
+
+
+### fsl-mist 2111.3 --> 2111.5
+
+- MNT: Update for nibabel 5 API
+- MNT: VTK to 9.2
+
+
+### fsl_mrs 2.1.0 --> 2.1.6
+
+- Merge branch 'enh/fmrs_model_improvements' into 'master'
+- Update changelog info
+- Test tweaks
+- Fix one fo the new tests.
+- lint
+- Add more informative errors in dynamic fitting module and tests.
+- Add very basic tests for scalings.
+- First pass at scaling of dynamic results.
+- Remove debug logging
+- Add ability to form betas with different parameter categories
+- Better and tested linewidth estimates.
+- Add model performance parameters to dynamic output.
+- Merge branch 'enh/mrsi_coil_comb' into 'master'
+- Fix phase test.
+- Update changelog date.
+- Final set of coil combine tests. cov/noise extended to commandline scripts.
+- Update docs.
+- Add noise and covariance options to coil combine in fsl_mrs_proc
+- lint
+- Further testing
+- Update denmatsim commit.
+- New structure for mrsi and tests for coil combination
+- Merge branch 'bf/fsl_proc_apodise' into 'master'
+- Typo
+- Fix non working fsl_mrs_proc apodize
+- Merge branch 'bf/fsl_summarise_names3' into 'master'
+- [skip-tests] attempt 3 at summarise naming fix.
+- Merge branch 'bf/fsl_summarise_names2' into 'master'
+- [skip-tests] attempt 2 at summarise naming fix.
+- Merge branch 'bf/summarise_naming' into 'master'
+- Improved name ID for directories with subdirectories.
+- Merge branch 'bf/qc_warnings' into 'master'
+- Update QC detrending.
+- Merge branch 'enh/basis_in_report' into 'master'
+- Update report with new basis view.
+- Merge branch 'bf/fsl_summarise_conj' into 'master'
+- Update install instructions.
+- Ensure conjugation of basis in summarise matches that in fitting.
+- Merge branch 'bf/matplotlib_grid' into 'master'
+- Update changelog version date.
+- Fix depreciation bug in plotting.
+- Merge branch 'enh/x_nuclei' into 'master'
+- Update tests for new extension in symlinks.
+- Minor fixes for x-nuceli and symlinks
+- Updates for x-nuclei handling
+
+
+### fsl-newimage 2203.8 --> 2203.9
+
+- BF: samesize shouldn't write to cerr
+
+
+### fsl_sub 2.7.5 --> 2.8.3
+
+- Merge branch 'shell_to_files_default' into 'master'
+- Return default of shell log output being
+- Add license file Change development status
+- Bump version number
+- Fix bad indentation
+- Testing an file opened for writing is not safe on Linux hosts Test for non-file redirecting exception not matching generic error message
+- Fix utils tests
+- Make sure exception tests are outside of with block
+- Merge branch 'mnt/pypi-publish' into 'master'
+- Fix _run_job test
+- Remove Python 3.6 from requirements
+- MNT: add long_description to setup call
+- TEST: Work around strange mock conflict in python 3.11
+- CI: Remove py36, add py310+311 to tests. Add build+deploy pypi package jobs
+- MNT: Change license to Apache, update supported pyvers
+- Make shell runner output to controlling console
+- Linting
+- Improve handling of thread requests on SLURM
+- Update template to suggest shutil.move as this supports moving files across file systems
+- Add some debug messages to configuration loader Lint clean up
+- Add check for empty queues
+
+
+### fsl_sub_plugin_sge 1.5.2 --> 1.5.4
+
+- Switch to Apache 2 license Make Python 3.7 earliest supported version
+- Merge branch 'mnt/pypi-publish' into 'master'
+- Update setup.py to require python 3.7
+- MNT: revert name changes
+- MNT: fsl_sub -> fslsub
+- CI: Need fsl_sub
+- CI: Pipeline config for unit tests and pypi build+publish
+- MNT: Change name, change license to Apache, update python versions
+- Merge branch 'mnt/qsub-output' into 'master'
+- MNT: Ignore additional messages emitted from qsub when scraping job ID
+- Use warnings not logger.warn
+- Ensure fsl_sub 2.7 is installed
+- Merge branch 'master' of git.fmrib.ox.ac.uk:fsl/fsl_sub_plugin_sge
+- Add method to report whether the plugin suggests GPU config
+- Merge branch 'master' of git.fmrib.ox.ac.uk:fsl/fsl_sub_plugin_sge
+- Add configuration option to specify that the plugin supports parallel environments.
+
+
+### fsl_sub_plugin_slurm 1.4.4 --> 1.6.1
+
+- Fix issue #7 'jobhold' of empty list/tuples is interpreted as a valid job hold list This causes the slurm submission to be invalid. Add additional input validation and associated tests.
+- Fix minor linting issues
+- Improve reliability of tests against time based output
+- Switch default for job dependencies to 'afterany' from 'afterok'. This is the SLURM default Introduce option/environment variable to control above Add ability to specify complex SLURM job holds via the -j option. Refactor code which builds the dependency argument to simplify testing Add tests for job holds
+- Bump version number
+- Add ability to retain the job script on failure to submit Resolves issue #6
+- Move minimum python supported version to 3.7 Add license file
+- Merge branch 'mnt/pypi-publish' into 'master'
+- Update setup.py to require python 3.7 as per header
+- MNT: revert name change
+- CI: Pipeline config for unit tests and pypi build+publish
+- MNT: Change name, change license to Apache, update python versions
+- Merge:
+- Fix specification of constraints Add mem/cpu-per-gpu support
+- Merge branch 'bf/get_queue_gres' into 'master'
+- BF: Splitting wrong string
+
+
+### fsl-surface 2111.0 --> 2111.1
+
+- Fixed some typo's in stdout text from surf2surf
+
+
+### fsl-topup 2203.1 --> 2203.2
+
+- New config file that works a little better on data with large and sharp distortions
+
+### fsl-xtract 1.6.2 --> 1.6.4.1
+
+- Added xtract_qc, add subcortical to blueprint
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Paul, 
+
+It is working! 
+Thank you a lot for the prompt help. 
+
+Best wishes,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 15:49
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+That file is currently owned by the root account, but should be owned by your user account - you should be able to fix it by running:
+
+sudo chown $USER:staff ~/.bash_profile
+
+You don't need to re-run the installer, instead you can just edit that file with a plain text editor (e.g. "nano ~/.bash_profile"), and add these lines at the bottom:
+
+FSLDIR=$HOME/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+And you can also remove the eariler installation from when you used sudo:
+
+sudo rm -r /usr/local/fsl
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 14:42
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Sure here it is: 
+
+MacBook-Pro-117:Downloads sofiamarcolini$ ls -al ~/.bash_profile
+-rw-r--r--  1 root  wheel  447 Aug  6  2021 /Users/sofiamarcolini/.bash_profile
+
+Best wishes,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 15:37
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Something strange is going on with your system - ~/.bash_profile is a file tied to your user account, and so should be able to be modified. Can you send me the output of this command?
+
+ls -al ~/.bash_profile
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 14:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+I tried but does not seem to solve the issue. 
+
+MacBook-Pro-117:~ sofiamarcolini$ cd ~/Downloads/
+
+MacBook-Pro-117:Downloads sofiamarcolini$ chmod u+w ~/.bash_profile
+
+MacBook-Pro-117:Downloads sofiamarcolini$ python3 fslinstaller.py 
+
+FSL installer version: 3.5.3
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /var/folders/9f/m7xsq0qn0vs7t0l4jhfmjh6c0000gn/T/fslinstaller_vdigla1t.log
+
+
+
+FSL 6.0.7 selected for installation
+
+
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/Users/sofiamarcolini/fsl]
+
+
+
+FSL installation directory [/Users/sofiamarcolini/fsl]: 
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7_macos-M1.yml...
+
+
+
+Installing FSL in /Users/sofiamarcolini/fsl
+
+
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-MacOSX-arm64.sh...
+
+[##############################################################################################################] 57.0 / 57.0 MB /
+
+Installing miniconda at /Users/sofiamarcolini/fsl...
+
+[#################################################################################################################] 100 / 100 % |
+
+Installing FSL into /Users/sofiamarcolini/fsl...
+
+[################################################################################################################################################################################] 100 / 100 % \
+
+Adding FSL configuration to /Users/sofiamarcolini/.bash_profile
+
+Traceback (most recent call last):
+
+  File "fslinstaller.py", line 2403, in <module>
+
+    sys.exit(main())
+
+  File "fslinstaller.py", line 2392, in main
+
+    configure_shell(ctx.shell, args.homedir, ctx.destdir)
+
+  File "fslinstaller.py", line 1914, in configure_shell
+
+    patch_file(profile, '# FSL Setup', len(cfg.split('\n')), cfg)
+
+  File "fslinstaller.py", line 1847, in patch_file
+
+    with open(filename, 'wt') as f:
+
+PermissionError: [Errno 13] Permission denied: '/Users/sofiamarcolini/.bash_profile'
+
+MacBook-Pro-117:Downloads sofiamarcolini$ 
+
+
+
+
+Best regards,
+Sofia
+
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:46
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Can you run "chmod u+w ~/.bash_profile", and then try running the installer again?
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 13:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+Thank you for the quick answer.
+
+If i do not use "sudo" i get permission denied as you can see in the screenshot. 
+
+Best Regards,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:33
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Because you ran the installer with "sudo", the installer script was unable to set up your shell profile - this is why it is recommended to run the installer script via your regular user account.
+
+But you shouldn't need to run the installer again - you should be able to open ~/.zprofile in a text editor, and add the following lines at the bottom:
+
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 12:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Jenna,
+
+yes.
+
+Jesper
+
+
+﻿On 14/07/2023, 14:55, "FSL - FMRIB's Software Library on behalf of Jenna Blujus" <FSL@JISCMAIL.AC.UK on behalf of jenna_blujus@BROWN.EDU> wrote:
+
+    Hello,
+   
+    I am using the eddy tool (FSL v6.0.3) in my DWI preprocessing stream. I used dcm2niix to convert my data. When creating the acqp.txt file, should the fourth number be equal to the "TotalReadoutTime" value from the JSON file?
+   
+    Thank you,
+    Jenna
+
+Hi Sofia,
+
+That file is currently owned by the root account, but should be owned by your user account - you should be able to fix it by running:
+
+sudo chown $USER:staff ~/.bash_profile
+
+You don't need to re-run the installer, instead you can just edit that file with a plain text editor (e.g. "nano ~/.bash_profile"), and add these lines at the bottom:
+
+FSLDIR=$HOME/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+And you can also remove the eariler installation from when you used sudo:
+
+sudo rm -r /usr/local/fsl
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 14:42
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Sure here it is: 
+
+MacBook-Pro-117:Downloads sofiamarcolini$ ls -al ~/.bash_profile
+-rw-r--r--  1 root  wheel  447 Aug  6  2021 /Users/sofiamarcolini/.bash_profile
+
+Best wishes,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 15:37
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Something strange is going on with your system - ~/.bash_profile is a file tied to your user account, and so should be able to be modified. Can you send me the output of this command?
+
+ls -al ~/.bash_profile
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 14:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+I tried but does not seem to solve the issue. 
+
+MacBook-Pro-117:~ sofiamarcolini$ cd ~/Downloads/
+
+MacBook-Pro-117:Downloads sofiamarcolini$ chmod u+w ~/.bash_profile
+
+MacBook-Pro-117:Downloads sofiamarcolini$ python3 fslinstaller.py 
+
+FSL installer version: 3.5.3
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /var/folders/9f/m7xsq0qn0vs7t0l4jhfmjh6c0000gn/T/fslinstaller_vdigla1t.log
+
+
+
+FSL 6.0.7 selected for installation
+
+
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/Users/sofiamarcolini/fsl]
+
+
+
+FSL installation directory [/Users/sofiamarcolini/fsl]: 
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7_macos-M1.yml...
+
+
+
+Installing FSL in /Users/sofiamarcolini/fsl
+
+
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-MacOSX-arm64.sh...
+
+[##############################################################################################################] 57.0 / 57.0 MB /
+
+Installing miniconda at /Users/sofiamarcolini/fsl...
+
+[#################################################################################################################] 100 / 100 % |
+
+Installing FSL into /Users/sofiamarcolini/fsl...
+
+[################################################################################################################################################################################] 100 / 100 % \
+
+Adding FSL configuration to /Users/sofiamarcolini/.bash_profile
+
+Traceback (most recent call last):
+
+  File "fslinstaller.py", line 2403, in <module>
+
+    sys.exit(main())
+
+  File "fslinstaller.py", line 2392, in main
+
+    configure_shell(ctx.shell, args.homedir, ctx.destdir)
+
+  File "fslinstaller.py", line 1914, in configure_shell
+
+    patch_file(profile, '# FSL Setup', len(cfg.split('\n')), cfg)
+
+  File "fslinstaller.py", line 1847, in patch_file
+
+    with open(filename, 'wt') as f:
+
+PermissionError: [Errno 13] Permission denied: '/Users/sofiamarcolini/.bash_profile'
+
+MacBook-Pro-117:Downloads sofiamarcolini$ 
+
+
+
+
+Best regards,
+Sofia
+
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:46
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Can you run "chmod u+w ~/.bash_profile", and then try running the installer again?
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 13:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+Thank you for the quick answer.
+
+If i do not use "sudo" i get permission denied as you can see in the screenshot. 
+
+Best Regards,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:33
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Because you ran the installer with "sudo", the installer script was unable to set up your shell profile - this is why it is recommended to run the installer script via your regular user account.
+
+But you shouldn't need to run the installer again - you should be able to open ~/.zprofile in a text editor, and add the following lines at the bottom:
+
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 12:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Sure here it is: 
+
+MacBook-Pro-117:Downloads sofiamarcolini$ ls -al ~/.bash_profile
+-rw-r--r--  1 root  wheel  447 Aug  6  2021 /Users/sofiamarcolini/.bash_profile
+
+Best wishes,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 15:37
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Something strange is going on with your system - ~/.bash_profile is a file tied to your user account, and so should be able to be modified. Can you send me the output of this command?
+
+ls -al ~/.bash_profile
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 14:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+I tried but does not seem to solve the issue. 
+
+MacBook-Pro-117:~ sofiamarcolini$ cd ~/Downloads/
+
+MacBook-Pro-117:Downloads sofiamarcolini$ chmod u+w ~/.bash_profile
+
+MacBook-Pro-117:Downloads sofiamarcolini$ python3 fslinstaller.py 
+
+FSL installer version: 3.5.3
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /var/folders/9f/m7xsq0qn0vs7t0l4jhfmjh6c0000gn/T/fslinstaller_vdigla1t.log
+
+
+
+FSL 6.0.7 selected for installation
+
+
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/Users/sofiamarcolini/fsl]
+
+
+
+FSL installation directory [/Users/sofiamarcolini/fsl]: 
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7_macos-M1.yml...
+
+
+
+Installing FSL in /Users/sofiamarcolini/fsl
+
+
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-MacOSX-arm64.sh...
+
+[##############################################################################################################] 57.0 / 57.0 MB /
+
+Installing miniconda at /Users/sofiamarcolini/fsl...
+
+[#################################################################################################################] 100 / 100 % |
+
+Installing FSL into /Users/sofiamarcolini/fsl...
+
+[################################################################################################################################################################################] 100 / 100 % \
+
+Adding FSL configuration to /Users/sofiamarcolini/.bash_profile
+
+Traceback (most recent call last):
+
+  File "fslinstaller.py", line 2403, in <module>
+
+    sys.exit(main())
+
+  File "fslinstaller.py", line 2392, in main
+
+    configure_shell(ctx.shell, args.homedir, ctx.destdir)
+
+  File "fslinstaller.py", line 1914, in configure_shell
+
+    patch_file(profile, '# FSL Setup', len(cfg.split('\n')), cfg)
+
+  File "fslinstaller.py", line 1847, in patch_file
+
+    with open(filename, 'wt') as f:
+
+PermissionError: [Errno 13] Permission denied: '/Users/sofiamarcolini/.bash_profile'
+
+MacBook-Pro-117:Downloads sofiamarcolini$ 
+
+
+
+
+Best regards,
+Sofia
+
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:46
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Can you run "chmod u+w ~/.bash_profile", and then try running the installer again?
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 13:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+Thank you for the quick answer.
+
+If i do not use "sudo" i get permission denied as you can see in the screenshot. 
+
+Best Regards,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:33
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Because you ran the installer with "sudo", the installer script was unable to set up your shell profile - this is why it is recommended to run the installer script via your regular user account.
+
+But you shouldn't need to run the installer again - you should be able to open ~/.zprofile in a text editor, and add the following lines at the bottom:
+
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 12:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+
+Hi Sofia,
+
+Something strange is going on with your system - ~/.bash_profile is a file tied to your user account, and so should be able to be modified. Can you send me the output of this command?
+
+ls -al ~/.bash_profile
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 14:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+I tried but does not seem to solve the issue. 
+
+MacBook-Pro-117:~ sofiamarcolini$ cd ~/Downloads/
+
+MacBook-Pro-117:Downloads sofiamarcolini$ chmod u+w ~/.bash_profile
+
+MacBook-Pro-117:Downloads sofiamarcolini$ python3 fslinstaller.py 
+
+FSL installer version: 3.5.3
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /var/folders/9f/m7xsq0qn0vs7t0l4jhfmjh6c0000gn/T/fslinstaller_vdigla1t.log
+
+
+
+FSL 6.0.7 selected for installation
+
+
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/Users/sofiamarcolini/fsl]
+
+
+
+FSL installation directory [/Users/sofiamarcolini/fsl]: 
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7_macos-M1.yml...
+
+
+
+Installing FSL in /Users/sofiamarcolini/fsl
+
+
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-MacOSX-arm64.sh...
+
+[##############################################################################################################] 57.0 / 57.0 MB /
+
+Installing miniconda at /Users/sofiamarcolini/fsl...
+
+[#################################################################################################################] 100 / 100 % |
+
+Installing FSL into /Users/sofiamarcolini/fsl...
+
+[################################################################################################################################################################################] 100 / 100 % \
+
+Adding FSL configuration to /Users/sofiamarcolini/.bash_profile
+
+Traceback (most recent call last):
+
+  File "fslinstaller.py", line 2403, in <module>
+
+    sys.exit(main())
+
+  File "fslinstaller.py", line 2392, in main
+
+    configure_shell(ctx.shell, args.homedir, ctx.destdir)
+
+  File "fslinstaller.py", line 1914, in configure_shell
+
+    patch_file(profile, '# FSL Setup', len(cfg.split('\n')), cfg)
+
+  File "fslinstaller.py", line 1847, in patch_file
+
+    with open(filename, 'wt') as f:
+
+PermissionError: [Errno 13] Permission denied: '/Users/sofiamarcolini/.bash_profile'
+
+MacBook-Pro-117:Downloads sofiamarcolini$ 
+
+
+
+
+Best regards,
+Sofia
+
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:46
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Can you run "chmod u+w ~/.bash_profile", and then try running the installer again?
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 13:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Dear Paul, 
+
+Thank you for the quick answer.
+
+If i do not use "sudo" i get permission denied as you can see in the screenshot. 
+
+Best Regards,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:33
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Because you ran the installer with "sudo", the installer script was unable to set up your shell profile - this is why it is recommended to run the installer script via your regular user account.
+
+But you shouldn't need to run the installer again - you should be able to open ~/.zprofile in a text editor, and add the following lines at the bottom:
+
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 12:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I'm trying to run calc_grad_perc_dev but it returns the error 'Segmentation fault (core dumped)' with no more explanation. Would you please help me to solve this issue?
+
+Thank you.
+
+Best wishes,
+Maryam
+
+########################################################################
+
+Dear Paul, 
+
+Thank you for the quick answer.
+
+If i do not use "sudo" i get permission denied as you can see in the screenshot. 
+
+Best Regards,
+Sofia
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Verzonden: vrijdag 14 juli 2023 14:33
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+Hi Sofia,
+
+Because you ran the installer with "sudo", the installer script was unable to set up your shell profile - this is why it is recommended to run the installer script via your regular user account.
+
+But you shouldn't need to run the installer again - you should be able to open ~/.zprofile in a text editor, and add the following lines at the bottom:
+
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 12:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+
+Hi Sofia,
+
+Because you ran the installer with "sudo", the installer script was unable to set up your shell profile - this is why it is recommended to run the installer script via your regular user account.
+
+But you shouldn't need to run the installer again - you should be able to open ~/.zprofile in a text editor, and add the following lines at the bottom:
+
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marcolini, S (neuro) <0000a80d8c616040-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 12:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question installation and opening FSL - MacOs
+ 
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+To whom it may concern, 
+
+ 
+
+I am having troubles running fsl after the installation. 
+
+You can see attached screenshots. The installation seems to be successful but then the program is not found. 
+
+And i am using sudo python3 fslinstaller.py because otherwise i get "permission denied".
+
+ 
+
+Thank you for the help. 
+
+Best wishes,
+
+Sofia 
+
+De inhoud van dit bericht is vertrouwelijk en alleen bestemd voor de geadresseerde(n). Anderen dan de geadresseerde(n) mogen geen gebruik maken van dit bericht, het niet openbaar maken of op enige wijze verspreiden of vermenigvuldigen. Het UMCG kan niet aansprakelijk gesteld worden voor een incomplete aankomst of vertraging van dit verzonden bericht.
+
+The contents of this message are confidential and only intended for the eyes of the addressee(s). Others than the addressee(s) are not allowed to use this message, to make it public or to distribute or multiply this message in any way. The UMCG cannot be held responsible for incomplete reception or delay of this transferred message.
+
+Hi Khazar,
+
+Why don't you calculate the registration, and then invert the resulting transformation, then resample the T1 into functional space? Then you can overlay your native functional data on top of the resampled T1 image.
+
+You can invert a FLIRT transformation using the convert_xfm command.
+
+As an alternative to resampling the T1 image, it is also possible to apply a FLIRT transformation from within FSLeyes via the Tools -> Load affine transformation. So you could:
+
+Load your original functional and T1 images into FSLeyes
+Select the functional image
+Open Tools -> load affine transformation
+Leave the File Type as FLIRT, set the T1 as the reference, and set the Matrix file to your functional->T1 FLIRT transform
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Khazar Ahmadi <0000a7facc96d36b-dmarc-request@JISCMAIL.AC.UK>
+Sent: 14 July 2023 11:14
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT output in native func space
+ 
+Hi Paul,
+
+Thanks for the quick reply! I want to do some laminar analyses looking at BOLD changes across grey matter layers in medial temporal lobe structures. That's why I'd rather stick to data in native space, just want the landmarks match with the T1 image without being resampled.
+
+I have already tried FLIRT with -applyisoxfm 0.8 to keep the same resolution and then used fslroi to get a FOV same as the functional data. Altough it generates a well-aligned output with identical dimension and voxel size, the qform and sform are different. The output also looks somewhat smoother than the original data in FSLeyes. All I want is to translate/rotate the func data in a way that matches the anatomy without changing anything in the nifti header. Hopefully, I could explain it more clearly this time :) Many thanks for your help!
+
+Best,
+Khazar
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Paul,
+
+Thanks for the quick reply! I want to do some laminar analyses looking at BOLD changes across grey matter layers in medial temporal lobe structures. That's why I'd rather stick to data in native space, just want the landmarks match with the T1 image without being resampled.
+
+I have already tried FLIRT with -applyisoxfm 0.8 to keep the same resolution and then used fslroi to get a FOV same as the functional data. Altough it generates a well-aligned output with identical dimension and voxel size, the qform and sform are different. The output also looks somewhat smoother than the original data in FSLeyes. All I want is to translate/rotate the func data in a way that matches the anatomy without changing anything in the nifti header. Hopefully, I could explain it more clearly this time :) Many thanks for your help!
+
+Best,
+Khazar
+
+########################################################################
+
+Hi Khazar,
+
+I don't understand what you're trying to do - can you explain in more detail what you are hoping to accomplish? Are you just trying to keep the resolution of the resampled fMRI data at 0.8mm^3?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Khazar Ahmadi <0000a7facc96d36b-dmarc-request@JISCMAIL.AC.UK>
+Sent: 13 July 2023 17:50
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FLIRT output in native func space
+ 
+Dear FSL team,
+
+I have a simple question about FLIRT but haven't been able to find the right solution after reading the documentation and relevant topics in the mailing list. I'd appreciate your help on the following matter.
+
+I want to co-register a limited-FOV submillimeter fMRI data (dimensions: 240 x 240 x 38, voxel size = 0.8 mm3 isotropic with 256 volumes) to a whole-brain high-res T1 (dimensions: 256 X 340 X 340, voxel size = 0.75 mm3 isotropic). FLIRT generates well-aligned outputs but in T1 space. Based on the procedure described in multiple previous posts, I did the following:
+
+ 1 ) flirt -in Run1.nii.gz -ref T1w.nii.gz -omat reg.mat 
+
+ 2) manually changed the transformation matrix by adding half of the difference of the dimensions i.e. (func dims - standard dims)/2 to the 4th column in reg.mat (three top rows of the far right side), so changing the translation values.
+
+ 3)  flirt -in Run1.nii.gz -ref Run1-copy.nii.gz -o Run1_aligned_nativespec.nii.gz -applyxfm -init reg.mat
+
+Checking the nifti header shows the right dimensions and voxel size in the output image. However, it's entirely blank with 0 intensities when viewed in FSLeyes. Any ideas what I'm missing here? Thanks a lot already in advance.
+
+Best,
+Khazar   
+
+
+  
+
+########################################################################
+
+Hi Jaël,
+
+Would you be able to try copying the data locally and running dual regression, to see if the issue is with your file system configuration? Much of FSL was written for use on a UNIX environment, so problems can sometimes occur when working with data stored on a non-UNIX file system.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jaël Caviola <0000a693507d1012-dmarc-request@JISCMAIL.AC.UK>
+Sent: 13 July 2023 10:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Dual Regression - Error running array task
+ 
+Hi Matthew,
+
+this is where it gets a bit complicated: The folder “share” we’re working in is a shared folder projected onto a virtual machine, but the actual, “non-virtual” root folder lies on a local disk drive on a server somewhere on campus. Hope this crude explanation gives you a picture of the situation… 
+
+Best and thanks 
+Jaël 
+
+-- 
+Jaël Caviola, B.Sc. (she/her)
+Ruhr University Bochum 
+Faculty of Psychology 
+Department of Cognitive Psychology 
+Universitätsstr. 150 
+44780 Bochum, Germany
+
+Room: IB 6/77
+Phone: +49 234 32 22668
+E-Mail: jael.caviola@rub.de
+
+On 10. Jul 2023, at 15:49, Matthew Webster <matthew.webster@NDCN.OX.AC.UK> wrote:
+
+Hi Jaël,
+    Everything looks good with the folder you sent, do you know if the folder in Desktop ( share/BIDS_<blah>/<blah> ) a local or network folder? 
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 4 Jul 2023, at 12:15, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+
+Hi Jaël,
+You should shortly receive a link to a OneDrive folder - can you tar and upload your 6subs_2runs_stage12.dr folder to that link so we can take a closer look at the files?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 4 Jul 2023, at 10:23, Jaël C. <0000a693507d1012-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hey Matthew,
+
+nope, same error...
+
+Best,
+Jaël
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear all,
+
+Postdoc position available in the human intracranial EEG (iEEG, ECoG) Laboratory for Human Brain Mapping at the Feinstein Institute for Medical Research – Hofstra Northwell School of Medicine, NY, USA.
+
+The lab studies neuronal dynamics underlying cognitive processes such as selective attention and active sensing, interoception, memory, and auditory stream and speech processing using iEEG recordings surgical epilepsy patients. Besides iEEG recordings we also use invasive and non-invasive electrical stimulation, eye tracking, single unit recordings, recording of other physiological signals (i.e., EKG, breathing), and functional and anatomical imaging. This postdoc position is part of a large, recently funded NIH multi-center project to investigate the functional role of slow fluctuating cortical activity. These slow fluctuations are a ubiquitous and fascinating feature of brain activity and are thought to play a crucial role in many cognitive functions from attention, interoception, state switching, etc. The position is funded for 4-5 years (less is ok), with expected start date as soon as possible. This is an extremely collaborative project among a large amount (>25 PIs) of international leaders in the field using scalp EEG, fMRI, iEEG, and single unit recordings in humans and animal models, electrical stimulation, and computational modeling. The candidate will have ample opportunities to work closely with these collaborators.
+
+ 
+
+Qualifications:
+
+PhD in neuroscience, biomedical engineering, psychology, or related field
+Programming (Matlab or Python) experience
+Solid background in signal processing (EEG/MEG or iEEG)
+Solid background in statistics
+Solid background in scientific writing
+Supervision/mentoring of research assistants and students is encouraged
+ 
+
+Application: Interested candidate should send CV, names and contact info of 2-3 references, and any questions to Stephan Bickel, MD PhD (sbickel@northwell.edu)
+
+ 
+
+The information contained in this electronic e-mail transmission and any attachments are intended only for the use of the individual or entity to whom or to which it is addressed, and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this communication is not the intended recipient, or the employee or agent responsible for delivering this communication to the intended recipient, you are hereby notified that any dissemination, distribution, copying or disclosure of this communication and any attachment is strictly prohibited. If you have received this transmission in error, please notify the sender immediately by telephone and electronic mail, and delete the original communication and any attachment from any computer, server or other electronic recording or storage device or medium. Receipt by anyone other than the intended recipient is not a waiver of any attorney-client, physician-patient or other privilege.
+
+Dear all,
+
+I'm currently building a 1st-level FIR model template. I have 8 sets of real EVs and want to model 112 (model 1) or 168 (model 2) contrasts (TR-by-TR for each real EV). The model seems to be too overwhelming for FSL so every time I tried opening/editing it, FSL crashed. I'm wondering if anyone has suggestions on how to go about it. I thought about coding the .fsf template instead of manually building it up, but I would love to learn if there are better solutions!
+
+Many thanks,
+Mengsi
+
+########################################################################
+
+
+Hi Noah,
+This should be fine, although topup can also be run on inputs with more than 2 volumes - you just need to make sure the acqparams file correctly specifies everything.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 12 Jul 2023, at 20:54, Noah Lee <n.lee@YALE.EDU> wrote:
+>
+> I see - the PA image seems to have 3 volumes. In this case, should I just use fslsplit to get the first image for fslmerge and topup?
+>
+> Best,
+>
+Dear FSL team,
+
+I have a simple question about FLIRT but haven't been able to find the right solution after reading the documentation and relevant topics in the mailing list. I'd appreciate your help on the following matter.
+
+I want to co-register a limited-FOV submillimeter fMRI data (dimensions: 240 x 240 x 38, voxel size = 0.8 mm3 isotropic with 256 volumes) to a whole-brain high-res T1 (dimensions: 256 X 340 X 340, voxel size = 0.75 mm3 isotropic). FLIRT generates well-aligned outputs but in T1 space. Based on the procedure described in multiple previous posts, I did the following:
+
+ 1 ) flirt -in Run1.nii.gz -ref T1w.nii.gz -omat reg.mat 
+
+ 2) manually changed the transformation matrix by adding half of the difference of the dimensions i.e. (func dims - standard dims)/2 to the 4th column in reg.mat (three top rows of the far right side), so changing the translation values.
+
+ 3)  flirt -in Run1.nii.gz -ref Run1-copy.nii.gz -o Run1_aligned_nativespec.nii.gz -applyxfm -init reg.mat
+
+Checking the nifti header shows the right dimensions and voxel size in the output image. However, it's entirely blank with 0 intensities when viewed in FSLeyes. Any ideas what I'm missing here? Thanks a lot already in advance.
+
+Best,
+Khazar   
+
+
+  
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello FSL experts,
+
+I had a few quick questions regarding the output generated by FEAT statistics. I'm currently working with resting-state data and am attempting to perform nuisance regression of CSF, WM, Global Signal, motion parameters (standard + extended), and also scrub volumes that exceed a specific threshold of motion using FEAT Statistics. To scrub specific volumes with excessive motion I generated a confound.txt file that includes columns of 0 each with a single 1 indicating the specific volume that needs to be scrubbed. I selected Standard + Extended Motion Parameters to apply the motion parameters generated during FEAT preprocessing. Additionally, I applied CSF, WM, and Global signal nuisance regressors under full model setup by selecting Custom (1 entry per volume) and including three separate .txt files, each including 1 column of average values per volume (for CSF, WM, or Global). Doing so generated the attached design.png and res4d image. Is this the correct way to perform nuisance regression? If so, does the output res4d image look correct?  It is very difficult to see the actual image relative to the background. Furthermore, is res4d the right image that I should be using if my goal is to extract the time series of ROIs within this fully processed resting state data?
+
+Any help is very much appreciated!
+
+Best,
+Brandon
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Georgina,
+    These should both provide great performance for most FSL-related tasks, anything that wouldn’t run on these would almost certainly require HPC-type facilities.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 13 Jul 2023, at 12:38, Georgina Carts <g_na@MAIL.COM> wrote:
+
+Hi,
+
+Does the new MacBook Pro M2 pro and MacBook Pro M2 max meet the requirements to run FSL smoothly?
+
+Gina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Batel,
+
+those are very minor differences. I would say that you are fine.
+
+Jesper
+
+
+﻿On 13/07/2023, 08:04, "Batel Yifrah" <batel.yifrah1@GMAIL.COM> wrote:
+
+    Hi Jesper,
+   
+    Thank you once again for all your assistance. I followed your proposed suggestions, and it appears that there is indeed a difference between the original output files and the new ones (topup with the first image from each acquisition). Now, I'm wondering how I can determine whether this difference is critical or if it's within an acceptable range. I have attached the figures for your reference. Please note that the figures ending with '1' represent the new images
+   
+    Thank you!
+   
+    Batel
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Matthew,
+
+this is where it gets a bit complicated: The folder “share” we’re working in is a shared folder projected onto a virtual machine, but the actual, “non-virtual” root folder lies on a local disk drive on a server somewhere on campus. Hope this crude explanation gives you a picture of the situation… 
+
+Best and thanks 
+Jaël 
+
+-- 
+Jaël Caviola, B.Sc. (she/her)
+Ruhr University Bochum 
+Faculty of Psychology 
+Department of Cognitive Psychology 
+Universitätsstr. 150 
+44780 Bochum, Germany
+
+Room: IB 6/77
+Phone: +49 234 32 22668
+E-Mail: jael.caviola@rub.de
+
+On 10. Jul 2023, at 15:49, Matthew Webster <matthew.webster@NDCN.OX.AC.UK> wrote:
+
+Hi Jaël,
+    Everything looks good with the folder you sent, do you know if the folder in Desktop ( share/BIDS_<blah>/<blah> ) a local or network folder? 
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 4 Jul 2023, at 12:15, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+
+Hi Jaël,
+You should shortly receive a link to a OneDrive folder - can you tar and upload your 6subs_2runs_stage12.dr folder to that link so we can take a closer look at the files?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 4 Jul 2023, at 10:23, Jaël C. <0000a693507d1012-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hey Matthew,
+
+nope, same error...
+
+Best,
+Jaël
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi!
+
+I am encountering an issue when loading an ROI NIfTI file in the TrackVis program, which was segmented using fsleyes.
+
+The ROI was manually segmented on a T2w image using fsleyes.
+
+While the ROI file aligns well with the T2w image in fsleyes, it appears slightly shifted when loaded in TrackVis.
+
+I suspect that this discrepancy might be due to differences in the transformation matrix present in the NIfTI headers.
+
+This is the header file extracted from ROI Nifti file segmented using fsleyes:
+filename        resampled_Left_Olfactory_Bulb.nii.gz
+
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            3
+dim1            77
+dim2            93
+dim3            77
+dim4            1
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         -1.000000
+pixdim1         2.330000
+pixdim2         2.330000
+pixdim3         2.330000
+pixdim4         1.000000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       0
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name    
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      MNI_152
+qform_code      4
+qto_xyz:1       -2.330000 0.000000 -0.000000 90.000000
+qto_xyz:2       0.000000 2.330000 -0.000000 -126.000000
+qto_xyz:3       0.000000 0.000000 2.330000 -72.000000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Right-to-Left
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      MNI_152
+sform_code      4
+sto_xyz:1       -2.330000 0.000000 0.000000 90.000000
+sto_xyz:2       0.000000 2.330000 0.000000 -126.000000
+sto_xyz:3       0.000000 0.000000 2.330000 -72.000000
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Right-to-Left
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         6.0.5:9e026117
+aux_file       
+
+This is the header file from TrackVis ROI file:
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            3
+dim1            77
+dim2            93
+dim3            77
+dim4            1
+dim5            0
+dim6            0
+dim7            0
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         1.000000
+pixdim1         2.330000
+pixdim2         2.330000
+pixdim3         2.330000
+pixdim4         0.000000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       0.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       0
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name    
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       2.330000 0.000000 0.000000 0.000000
+qto_xyz:2       0.000000 2.330000 0.000000 0.000000
+qto_xyz:3       0.000000 0.000000 2.330000 0.000000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Left-to-Right
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      0
+sto_xyz:1       0.000000 0.000000 0.000000 0.000000
+sto_xyz:2       0.000000 0.000000 0.000000 0.000000
+sto_xyz:3       0.000000 0.000000 0.000000 0.000000
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Unknown
+sform_yorient   Unknown
+sform_zorient   Unknown
+file_type       NIFTI-1+
+file_code       1
+descrip        
+aux_file       
+
+I would greatly appreciate any assistance in resolving this issue. Thank you!
+
+Jun
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

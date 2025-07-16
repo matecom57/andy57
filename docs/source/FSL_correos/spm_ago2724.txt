@@ -1,0 +1,1264 @@
+Hi Jothini,
+
+In terms of your model, I would encourage you to read my paper here 
+(https://www.frontiersin.org/articles/10.3389/fnins.2019.00352/full), as 
+there are a number of recommendations in Gläscher and Gitelman that are 
+not suitable for testing effects in repeated measures models. The paper 
+will explain the theory and provide some examples in SPM of how to 
+correctly use these types of models.
+
+In terms of your questions:
+
+1) Even though I specified the factor "subject" as first, "group" as 
+second and "condition" as third factor, respectively, why does SPM put the 
+"subject" columns at the end of my design matrix and "group" in the 
+beginning?
+
+The order of columns in the design matrix is dictated by the "Main Effects 
+& Interactions" option, not the order in which you add the factors. If you 
+added the main effect of subject first, then the subject columns would 
+come first.
+
+2) I am interested in the contrast G1C1 versus G2C1 and I set it up based 
+on Dr. McLaren's description in previous posts. First, I defined the 
+contrast weights for my design matrix for
+G1C1=[1 0 1 0 1 0 0 0 ones(1,n1)/n1 zeros(1,n2)]
+G2C1=[0 1 1 0 0 0 1 0 zeros(1,n1) ones(1,n2)/n2]
+And then I substracted them, to get G1C1 versus G2C1:
+G1C1-G2C1=[1 -1 0 0 1 0 -1 0 ones(1,n1)/n1 -ones(1,n2)/n2]
+Did I specify this contrast correctly?
+
+Yes, the weights are correct for calculating the effect. HOWEVER, this 
+will not provide the correct error term for the hypothesis test. This is 
+effectively a between-subjects effect that you are testing using a 
+within-subject error term. This is explained in the paper, but the 
+long-and-short of it is that your error term will be too small and the 
+significance of effects will be over-stated. Another way of seeing this is 
+considering that the subject effects do not cancel. The subject effects 
+are random-effects and shouldn't factor into the effect you are trying to 
+test.
+
+3) When I run this second level model, I do see some significant activity 
+in the white matter and the ventricles even after cluster-level FWE 
+correction. Does anyone know why this is the case? Might there be a 
+problem with my preprocessing (I preprocessed the data using SPM12 
+including realignment, slice timing correction, outlier detection, 
+segmentation, normalization and smoothing)? And any ideas how this can be 
+resolved?
+
+This may partly be due to the incorrect error term above, but also can be 
+a result of spatial smoothing which can move activation beyond its 
+original spatial extent. It could also be motion related. I'd get the 
+hypothesis test right first before exploring any further.
+
+4) One of the advantages of the flexible factorial model is that unequal 
+group sizes are taken into account. In my case, as I have balanced sample 
+sizes within the two groups, is there still an advantage of using the 
+flexible factorial model?
+
+The flexible factorial model isn't for unequal group sizes. All the other 
+SPM models also allow for unequal group sizes, so this isn't an advantage 
+of the flexible factorial. I've written another paper about dealing with 
+unequal group sizes within the GLM 
+(https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2016.00270/full), 
+but this relates more to the contrast weights than it does the model 
+setup. The flexible factorial module can be used for overparameterised 
+repeated measures designs. That's the advantage, not group size.
+
+Hope this helps!
+
+- Martyn
+
+The School of Psychology and Clinical Language Sciences at the University 
+of Reading is looking to appoint two permanent members of faculty in 
+Developmental/Social/Forensic psychology. The appointments will be made at 
+the Lecturer level (US equivalent: Assistant Professor). 
+
+The school is one of the oldest departments of Psychology in the UK, and 
+has a strong research focus, It houses three research clinics (focusing on 
+Anxiety, Depression, Speech & Language, Autism) as well as the Centre for 
+Integrative Neuroscience and Neurodynamics with a research-dedicated 3T 
+scanner, TMS, and EEG.
+
+The deadline to apply is 16th September.
+More details on the roles and application are available here:
+https://jobs.reading.ac.uk/Job/JobDetail?JobId=13619
+
+--
+Bhismadev Chakrabarti, PhD
+
+Professor of Neuroscience & Mental Health
+Research Director, Centre for Autism
+School of Psychology & Clinical Language Sciences, University of Reading
+
+W: bhismalab[dot]org
+
+
+Hi Naoto!
+Pleased to see you doing well.
+
+I haven't done anything related to fMRI network analysis recently, so I'll 
+just write a general answer.
+
+1. Spectral Density (BOLD):
+The number of graphs displayed in the Spectral Density (BOLD) plot is 
+related to the number of VOIs (Volumes of Interest) selected. When you 
+select 3 VOIs, the plot will display 5 graphs, as each VOI has its own 
+spectral density plot, and there are also cross-spectral density plots 
+between each pair of VOIs, resulting in a total of 5 graphs.
+
+However, when you select 4 or more VOIs, the number of graphs increases 
+exponentially, as there are more possible pairwise cross-spectral density 
+plots. For example, with 4 VOIs, there will be 10 graphs (4 individual 
+spectral densities + 6 cross-spectral densities), and with 5 VOIs, there 
+will be 15 graphs (5 individual spectral densities + 10 cross-spectral 
+densities).
+
+The default display may be limited to 5 graphs when selecting 3 VOIs to 
+avoid overwhelming the plot with too many lines. This is likely a design 
+choice to keep the visualization manageable for the common case of 3 VOIs. 
+If you need to see all the individual and cross-spectral densities, 
+selecting 4 or more VOIs will provide the complete picture.
+
+2. Functional Connectivity:
+
+The term "non-neuronal" refers to physiological signals that are not 
+directly related to neural activity, such as those originating from 
+vascular, metabolic, or other sources. These non-neuronal signals can also 
+contribute to the BOLD (Blood-Oxygen-Level-Dependent) signal measured in 
+fMRI.
+
+In the "Neuronal and non-neuronal part" plot, the solid, dashed, and 
+dash-dotted lines represent the estimated contributions of the neuronal 
+and non-neuronal components to the overall BOLD signal for each of the 
+VOIs (MTG1_mm, MTG2_mm, and MTG3_mm).
+
+To better understand these lines, you should refer to the parameters in 
+the DCM file, specifically:
+
+The "A" matrix, which represents the intrinsic connectivity between the 
+neuronal states of the VOIs.
+The "C" matrix, which represents the influences of the experimental inputs 
+on the neuronal states.
+The "G" matrix, which represents the parameters of the hemodynamic model 
+that transform the neuronal activity into the observed BOLD signal.
+
+The solid lines represent the estimated neuronal component, while the 
+dashed and dash-dotted lines represent the estimated non-neuronal 
+components (e.g., vascular, metabolic) for each VOI. Analyzing these 
+components can provide insights into the underlying neural and non-neural 
+contributions to the observed BOLD signal.
+
+I'm sure the expartes on the mailing list will answer any further 
+questions.
+
+For now, why don't you read the following review article on DCM practices?
+https://doi.org/10.1016/j.neuroimage.2009.11.015
+https://doi.org/10.1016/S1053-8119(03)00202-7
+
+Igarashi@Niigata
+
+Dear SPM experts,
+
+I am encountering some difficulties in interpreting the results from DCM 
+analysis, and I would appreciate your guidance on the following issues:
+
+1. Spectral Density (BOLD):
+When selecting three VOIs, only five graphs are displayed, as shown in the 
+attached, rather than the expected six. However, when I select four or 
+more VOIs, the graphs are displayed as expected (e.g., 10 for four VOIs, 
+15 for five VOIs). Could you please explain why this is the case? Is there 
+a default setting that limits the display to only five graphs when 
+selecting three VOIs?
+
+2. Functional Connectivity:
+I was just wondering what the term "non-neuronal" means? Additionally, I 
+am having trouble understanding what the solid, dashed, and dash-dotted 
+lines represent on the left graph. Which specific items in the DCM file 
+should I refer to in order to better understand these lines?
+
+Thank you very much for your assistance and time in advance.
+
+Kind regards,
+Naoto Nagino
+
+Dear Colleague,
+
+Apologies for cross-posting! 
+
+ 
+
+The Faculty of Psychology and Educational Sciences of the University of 
+Coimbra (FPCE-UC) Portugal invites applications from rising and aspiring 
+leaders in Cognitive Science and Neuroscience and Cognitive Computational 
+Neuroscience for 2 tenure-track positions at the Assistant Professor 
+level. These positions are part of a transformative ERA Chair grant 
+CogBooster from the European Union to FPCE-UC led by Dr. Alfonso 
+Caramazza. The goal of CogBooster is to implement strong and international 
+lines of research in Cognitive Science/Neuroscience, so as to contribute 
+to the ongoing renewal of the Psychological and Brain Sciences in Portugal 
+over the next decade. 
+
+ 
+
+The project has recently led to the appointment of Jorge Almeida, Jason 
+Fischer and Joana Carvalho as tenured Professors, and Alfonso Caramazza as 
+a Visiting Researcher at the University of Coimbra.
+
+ 
+
+ 
+
+Equal Employment Opportunity statement:
+
+ 
+
+The University of Coimbra is an equal opportunity/affirmative action 
+employer and has a Gender Equality Plan in place. We are committed to 
+fostering a diverse and inclusive academic global community at the 
+University. We particularly encourage applications from women, and from 
+under-represented groups in the University of Coimbra’s workforce and in 
+the brain sciences.   
+
+ 
+
+ 
+
+Positions:
+
+ 
+
+We seek applicants with expertise in any area of Cognitive 
+Science/Neuroscience and Cognitive Computational Neuroscience. The 
+positions are tenure-track at the rank of Assistant Professor. The start 
+date should be around September 1, 2025 (but potentially negotiable).
+
+ 
+
+ 
+
+Qualifications:
+
+ 
+
+Applicants must hold a Ph.D. in a discipline relevant to Cognitive 
+Science/Neuroscience and Cognitive Computational Neuroscience. Successful 
+applicants should have an excellent record of research for their career 
+level. To contribute to the mission of CogBooster and to the research and 
+educational mission of FPCE-UC, they are expected to establish an active 
+research program in any of the major cognitive areas, acquire external 
+research funds, and contribute to teaching and mentoring.
+
+ 
+
+The applicant will actively engage in research, teaching, and supervision 
+in the field of the specific positions at FPCE-UC and its affiliated 
+research center. Applicants may use different technical and methodological 
+approaches to address their cognitive research questions, including, but 
+not limited to, cognitive neuropsychological investigations, human 
+neuroimaging techniques (fMRI, EEG, sEEG, etc), behavioral and cognitive 
+approaches, and computational cognitive neuroscience.
+
+ 
+
+ 
+
+Offer:
+
+ 
+
+Positions are tenure-track and include social security and national 
+pension plans, medical insurance, and all legally applicable benefits 
+under Portuguese law. Salary depends on the level of appointment.
+
+ 
+
+In addition to the legally required employment conditions described above, 
+and as part of the ERA Chair initiative CogBooster, these positions come 
+with a start-up package. This includes (subject to final discussion 
+between the selected candidates and Dr. Alfonso Caramazza):
+
+ 
+
+· Funding for 1 Post-Doctoral fellow at the Portuguese pay grade for 36 
+months;
+
+ 
+
+· Funding for 1 Research Assistant/Doctoral student at the Portuguese pay 
+grade for 36 months;
+
+ 
+
+· Funding for 200 fMRI hours (or EEG hours, use of neurostimulation, 
+etc.);
+
+ 
+
+· Funding for attending and presenting at national and international 
+conferences
+
+ 
+
+· Funding for open access publications;
+
+ 
+
+· Funding for Laboratory resources (e.g., Computers);
+
+ 
+
+· Laboratory space shared with other laboratories at FPCE-UC;
+
+ 
+
+· Institutional support for applying to major European and international 
+grants (grant reviewing by experts, interview preparation, etc).
+
+ 
+
+ 
+
+About Portugal, Coimbra, and FPCE-UC:
+
+ 
+
+Portugal’s warm and pleasant climate, rich history and culture, beautiful 
+landscapes and beaches, affordable cost of living, and quality but 
+affordable medical and educational systems, makes it one of the most 
+exciting countries to live in. Moreover, Portuguese culture is incredibly 
+family-friendly, welcoming to foreigners (English is widely spoken), and 
+the country is one of the five safest countries in the world. Finally, it 
+features an incredible and diverse cuisine, great wine, and a pace of life 
+commensurate with work-life balance.
+
+ 
+
+The University of Coimbra is a 700-year-old University and is a UNESCO 
+world Heritage site. Coimbra is one of the liveliest university cities in 
+the world, and it is a beautiful city with easy access to the beach and 
+mountains. According to Numbeo-Cost of Living, 2300 euro in Coimbra (the 
+net value approximate monthly salary of an Assistant Professor, 12 months 
+plus a Summer and Christmas bonus is a total of 14 months) correspond to a 
+local purchasing power of about 4300 euro in Paris, 4700 GBP in London 
+(UK), 3050 euro in Rome, 4100 euro in Munich, 3600 euro in Brussels, 
+approximately 5700 USD in Los Angeles, 6000 USD in Washington, or 6200 USD 
+in Boston, 6200 CAD in Toronto, 19k CNY in Beijing or Shanghai, 11k reais 
+in São Paulo, and 7600 AUD euro in Sydney.
+
+ 
+
+The Faculty of Psychology and Educational Sciences has been consistently 
+ranked as the, or one of the, best Psychology Departments in Portugal. In 
+the last decade it has become the leading department in Portugal on 
+Psychological research, holding, for instance, the only 2 ERC grants in 
+Psychology in Portugal. FPCE-UC has laboratories for Cognitive Science and 
+Cognitive Neuroscience research – the Proaction Lab (led by Jorge 
+Almeida); The Dynamic Perception Lab (led by Jason Fischer), Joana 
+Carvalho's Vision Science lab, and the Cognitive Neuropsychology group led 
+by Alfonso Caramazza. We have access to two 3T MRI scanners, to tDCS and 
+TMS with neuronavigation, to a 256 channel EEG, and to a fully functional 
+behavioral lab.
+
+ 
+
+ 
+
+Further information:
+
+ 
+
+The official call will be available here at a later date (by the end of 
+2024, beginning of 2025), but please send an email to Dr. Jorge Almeida 
+(jorgecbalmeida@gmail.com) if you want to be informed when the positions 
+are open, and/or if you want to receive further information about the ERA 
+Chair Project CogBooster. In the meanwhile, we strongly encourage 
+potential applicants to contact Drs. Alfonso Caramazza 
+(caram@wjh.harvard.edu) and Jorge Almeida (jorgecbalmeida@gmail.com). 
+Please send us your CV, and a short cover letter describing your interest 
+in the position (including the general field of research).
+
+Dear all,
+
+ 
+
+I would like to draw your attention to two PhD positions in Germany at 
+Forschungszentrum Jülich in the field of Cognitive Neuroscience (INM-3). 
+Details of the positions can be found under the following links
+
+https://www.fz-juelich.de/de/karriere/stellenangebote/2024D-080
+
+https://www.fz-juelich.de/de/karriere/stellenangebote/2024D-081
+
+ 
+
+Best wishes,
+
+Ralph Weidner 
+
+ 
+
+PD Dr. Ralph Weidner, Dipl.-Psych.
+INM 3 - Kognitive Neurowissenschaften
+Forschungszentrum Jülich
+Leo-Brandt-Str. 5
+52425  Juelich
+Germany
+Tel.: ++49 (0)2461/616737
+Fax : ++49 (0)2461/611518
+e-mail: r.weidner@fz-juelich.de
+
+Hi everyone
+
+Instats is offering a 2-day workshop on Using ChatGPT and Copilot for 
+Efficient Data Analysis in R, running August 29 - 30, by professor Peter 
+Gruber (who holds dual PhDs in physics and economics). This workshop 
+provides a 21st-century introduction to Statistical Analysis with R, 
+focusing on the efficient use of AI assistants including ChatGPT and 
+Github Copilot to automate R coding with plain language requests. Because 
+R is free, this revolution will help democratize access to basic and 
+advanced analysis tools without having to suffer the learning curve of 
+coding in R, including for qualitative and mixed methods research. 
+Participants will learn step by step how to install AI tools and how to 
+harness their power for efficient data analysis in R, making them many 
+times more efficient. They will be able to create R code in the blink of 
+an eye and with unprecedented ease of use, while learning some of the 
+underlying principles of the R language as this relates to competently 
+assessing and using AI-generated code.
+
+Professor Gruber also have two separate 2-day workshops on how to use 
+ChatGPT's newly updated Advanced Data Analysis tool to natively analyze 
+data using ChatGPT. These workshops are timed for the EU and US time 
+zones, with the first one Using ChatGPT for Advanced Data Analysis 3.0 
+(EU) on September 16 - 17, and the second Using ChatGPT for Advanced Data 
+Analysis 3.0 (US) on October 19 and 22.
+
+Don't miss out on this unique opportunity to learn how to easily and 
+rapidly analyze your data in R and/or ChatGPT, and please feel free to 
+tell your friends and colleagues!
+
+
+Best wishes
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Topic: Upcoming NIH Workshop: Insights Into Cognitive And Neural
+Function Through Eye Tracking
+
+The Center for Multimodal Neuroimaging (CMN; cmn.nimh.nih.gov) and the
+fMRI Core Facility (FMRIF; fmrif.nimh.nih.gov) are proud to announce
+our upcoming workshop September 4-5 on “Insights Into Cognitive And
+Neural Function Through Eye Tracking”. The workshop brings together
+ten experts (8 extramural, 2 intramural) linking together eye tracking
+and cognition. An introduction to the workshop will be provided by Dr.
+Chris Baker.
+
+On Wednesday, September 4th, speakers will present their research into
+theory and methods from 9am – 5pm, full schedule available soon. On
+September 5th, the speakers will take part in a roundtable
+specifically tailored to NIH trainees from 9am – 12pm (noon). This is
+an ideal opportunity for trainees to connect with experts and get
+advice on training and career development.
+
+The workshop will be held on the NIH Bethesda campus in Building 40
+and simultaneously streamed on zoom. Recordings will be available
+later on NIH VideoCast and YouTube.  More information can be found on
+our website:
+
+https://cmn.nimh.nih.gov/cmnworkshop2024
+
+Dear Jacqueline
+
+We recommend concatenating the onsets, pre-GLM specification, as set out 
+in that Wiki article. It’s an interesting idea to concatenate the VOI 
+files – but you would also need to concatenate the onsets, by which time 
+you may as well have gone down the GLM route.
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf 
+Of Quirke, Jacqueline
+Sent: 20 August 2024 12:18
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] DCM Concatenation Error
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear SPM Experts, 
+
+ 
+
+I hope this message finds you well. 
+
+ 
+
+I was hoping to ask a DCM query concerning the concatenation of two 
+timepoints. 
+
+ 
+
+I am working with fMRI timeseries data which has previously undergone 1st 
+and 2nd level fMRI analyses via SPM12. It contains two runs within the 
+data during one session. 
+
+ 
+
+I am working to extract VOI's from the significant peaks of the 2nd level 
+analysis in order to run DCM to investigate effective connectivity 
+differences in bipolar disorder versus healthy controls. When I extract a 
+VOI, I am given two output files, one from the "pre" timepoint (run 1), 
+and one from the "post" timepoint (run 2). I have been attempting to 
+concatenate the pre and post VOI.mat files in order to continue my 
+analyses using a single file (to investigate pre versus post timepoint 
+differences).  
+
+ 
+
+I have tried to concatenate them via the Matlab terminal using the 
+following code: 
+
+ 
+
+ 
+ 
+ 
+
+Which resulted in a .mat file with the following structure: 
+
+ 
+
+ 
+
+ 
+
+However, when I have moved this file forward into the "specify" step 
+within the DCM software of SPM12, I received the following error:  
+
+ 
+
+ 
+
+ 
+
+Do you happen to know why I have come up against these errors?
+
+ 
+
+Alternatively, I have researched using the SPM concatenation method 
+illustrated here: https://en.wikibooks.org/wiki/SPM/Concatenation 
+
+ 
+
+However, my understanding is that this step needs to take place prior to 
+running 1st level fMRI analyses. (Please let me know if my understanding 
+is incorrect). 
+
+ 
+
+Based on all of this, I was not sure what to try next. Do you know if 
+there are any alternative methods for the concatenation of VOI.mat files? 
+Or is my only option to concatenate the timepoints prior to 1st level fMRI 
+analyses?
+
+ 
+
+Thank you so much for your time. Looking forward to hearing your advice.  
+
+ 
+
+Best wishes, 
+
+Jacqueline Quirke 
+
+ 
+
+PhD Candidate 
+
+University of Galway, Ireland
+
+Dear SPM Experts, 
+ 
+I hope this message finds you well. 
+ 
+I was hoping to ask a DCM query concerning the concatenation of two 
+timepoints. 
+ 
+I am working with fMRI timeseries data which has previously undergone 1st 
+and 2nd level fMRI analyses via SPM12. It contains two runs within the 
+data during one session. 
+ 
+I am working to extract VOI's from the significant peaks of the 2nd level 
+analysis in order to run DCM to investigate effective connectivity 
+differences in bipolar disorder versus healthy controls. When I extract a 
+VOI, I am given two output files, one from the "pre" timepoint (run 1), 
+and one from the "post" timepoint (run 2). I have been attempting to 
+concatenate the pre and post VOI.mat files in order to continue my 
+analyses using a single file (to investigate pre versus post timepoint 
+differences).  
+ 
+I have tried to concatenate them via the Matlab terminal using the 
+following code: 
+ 
+ 
+ 
+ 
+Which resulted in a .mat file with the following structure: 
+ 
+ 
+ 
+However, when I have moved this file forward into the "specify" step 
+within the DCM software of SPM12, I received the following error:  
+ 
+ 
+ 
+Do you happen to know why I have come up against these errors?
+
+Alternatively, I have researched using the SPM concatenation method 
+illustrated here: https://en.wikibooks.org/wiki/SPM/Concatenation 
+ 
+However, my understanding is that this step needs to take place prior to 
+running 1st level fMRI analyses. (Please let me know if my understanding 
+is incorrect). 
+ 
+Based on all of this, I was not sure what to try next. Do you know if 
+there are any alternative methods for the concatenation of VOI.mat files? 
+Or is my only option to concatenate the timepoints prior to 1st level fMRI 
+analyses? 
+
+Thank you so much for your time. Looking forward to hearing your advice.  
+ 
+Best wishes, 
+Jacqueline Quirke 
+ 
+PhD Candidate 
+University of Galway, Ireland
+
+From: Mark Woolrich 
+Date: Tuesday, 20 August 2024 at 11:09
+Subject: Job opportunity: Experiment Support Officer (Electrophysiology 
+and Brain Stimulation) 
+
+ 
+
+We are looking to appoint an experiment support officer to support the 
+human neurophysiology (EEG and MEG) and brain stimulation research in the 
+Wellcome Centre for Integrative Neuroimaging (WIN) at the University of 
+Oxford.  The post will be primarily based within the Oxford Centre for 
+Human Brain Activity (OHBA), but also support labs in other WIN buildings, 
+including the FMRIB at the John Radcliffe Hospital, Oxford. 
+
+ 
+
+Please see here for more details:
+
+ 
+
+https://my.corehr.com/pls/uoxrecruit/erq_jobspec_details_form.jobspec?p_id=174462
+
+Two Experienced Postdoctoral Researchers or Research Fellows in Deep 
+Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or 
+perinatal injury, can be measured with functional MRI (fMRI). 
+Unfortunately, infants move in the scanner and half the images are 
+discarded, precluding clinical application. In recent years, deep neural 
+networks (DNNs) have led to breakthroughs in artificial intelligence and 
+are finding growing application in biomedical imaging. DNNs have 
+considerable potential to correct head motion in fMRI, as they can learn 
+complex mappings, and exploit knowledge of brain structure. The 
+FreezeMotion project will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas 
+and must be willing to develop skills in the other:
+•       design and optimisation of deep neural networks
+•       neuroimaging with fMRI
+Candidates must have a strong level of expertise in programming in python 
+or another language.
+
+FreezeMotion is a collaboration between Rhodri Cusack (Trinity College 
+Institute of Neuroscience, Trinity College Dublin), Chen Qin (Department 
+of Electrical and Electronic Engineering and Imperial-X, Imperial College 
+London), Mark Chiew (Medical Biophysics, University of Toronto) and Alex 
+Bronstein (Computer Science, Technion).
+
+The post will be based in Dublin, Ireland. Appointment will be on SFI 
+Experienced Post Doctoral Research (2B) or Research Fellow (Level 3) 
+scales, full time, €51,677-€68,318 per annum. Benefits include a pension 
+contribution and PRSI social insurance.
+
+See further details and application procedure at 
+cusacklab.org/freezemotion.html
+
+Deadline 12 noon on Sept 16, 2024
+
+PhD Studentship in Deep Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or 
+perinatal injury, can be measured with functional MRI (fMRI). 
+Unfortunately, infants move in the scanner and half the images are 
+discarded, precluding clinical application. In recent years, deep neural 
+networks (DNNs) have led to breakthroughs in artificial intelligence and 
+are finding growing application in biomedical imaging. DNNs have 
+considerable potential to correct head motion in fMRI, as they can learn 
+complex mappings, and exploit knowledge of brain structure.  The 
+FreezeMotion project will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas 
+and must be willing to develop skills in the other:
+•       design and optimisation of deep neural networks
+•       neuroimaging
+Candidates must have expertise in programming in python or another 
+language.
+
+FreezeMotion is a collaboration between Rhodri Cusack (Trinity College 
+Institute of Neuroscience, Trinity College Dublin), Chen Qin (Department 
+of Electrical and Electronic Engineering and Imperial-X, Imperial College 
+London), Mark Chiew (Medical Biophysics, University of Toronto) and Alex 
+Bronstein (Computer Science, Technion).
+
+The studentship comprises EU fees, a stipend, research materials, and 
+conference travel. A waiver for non-EU fees may be possible for 
+exceptional candidates.
+
+See further details and application procedure at 
+cusacklab.org/freezemotion.html
+
+Deadline 12 noon on Sept 16, 2024
+
+PhD Studentship in Deep Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or 
+perinatal injury, can be measured with functional MRI (fMRI). 
+Unfortunately, infants move in the scanner and half the images are 
+discarded, precluding clinical application. In recent years, deep neural 
+networks (DNNs) have led to breakthroughs in artificial intelligence and 
+are finding growing application in biomedical imaging. DNNs have 
+considerable potential to correct head motion in fMRI, as they can learn 
+complex mappings, and exploit knowledge of brain structure.  The 
+FreezeMotion project will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas 
+and must be willing to develop skills in the other:
+•       design and optimisation of deep neural networks
+•       neuroimaging
+Candidates must have expertise in programming in python or another 
+language.
+
+FreezeMotion is a collaboration between Rhodri Cusack (Trinity College 
+Institute of Neuroscience, Trinity College Dublin), Chen Qin (Department 
+of Electrical and Electronic Engineering and Imperial-X, Imperial College 
+London), Mark Chiew (Medical Biophysics, University of Toronto) and Alex 
+Bronstein (Computer Science, Technion).
+
+The studentship comprises EU fees, a stipend, research materials, and 
+conference travel. A waiver for non-EU fees may be possible for 
+exceptional candidates.
+
+See further details and application procedure at 
+cusacklab.org/vacancies.html
+
+Deadline 12 noon on Sept 16, 2024
+
+Two Experienced Postdoctoral Researchers or Research Fellows in Deep 
+Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or 
+perinatal injury, can be measured with functional MRI (fMRI). 
+Unfortunately, infants move in the scanner and half the images are 
+discarded, precluding clinical application. In recent years, deep neural 
+networks (DNNs) have led to breakthroughs in artificial intelligence and 
+are finding growing application in biomedical imaging. DNNs have 
+considerable potential to correct head motion in fMRI, as they can learn 
+complex mappings, and exploit knowledge of brain structure. The 
+FreezeMotion project will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas 
+and must be willing to develop skills in the other:
+•       design and optimisation of deep neural networks
+•       neuroimaging with fMRI
+Candidates must have a strong level of expertise in programming in python 
+or another language.
+
+FreezeMotion is a collaboration between Rhodri Cusack (Trinity College 
+Institute of Neuroscience, Trinity College Dublin), Chen Qin (Department 
+of Electrical and Electronic Engineering and Imperial-X, Imperial College 
+London), Mark Chiew (Medical Biophysics, University of Toronto) and Alex 
+Bronstein (Computer Science, Technion).
+
+The post will be based in Dublin, Ireland. Appointment will be on SFI 
+Experienced Post Doctoral Research (2B) or Research Fellow (Level 3) 
+scales, full time, €51,677-€68,318 per annum. Benefits include a pension 
+contribution and PRSI social insurance.
+Theses posts will be for two years but there may arise the opportunity to 
+extend them.
+
+See further details and application procedure at 
+cusacklab.org/vacancies.html
+
+Deadline 12 noon on Sept 16, 2024
+
+i everyone,
+
+This is just a friendly reminder that the next online CONN workshop will 
+be starting in a month (Sept 16 - Oct 18), and there is still time to 
+enroll if you are interested.
+
+CONN (https://www.conn-toolbox.org) is a popular SPM toolbox that 
+implements preprocessing, quality assurance, denoising, first- and 
+second-level functional connectivity analyses, for both resting-state as 
+well as task-based functional data.
+
+As usual, the CONN workshop (https://www.conn-toolbox.org/workshops) 
+offers intensive hands-on and highly interactive courses covering all 
+aspects of functional connectivity analyses in CONN, and both beginners 
+and advanced users are welcome. Presentations will take place over Zoom on 
+Monday and Friday for five consecutive weeks, and there will be a bit of 
+homework each week and some office hours available to help with that. 
+Course contents include:
+
+1) basic topics in CONN such as data import, fMRI preprocessing pipelines, 
+data denoising and quality control procedures, seed-based and ROI-to-ROI 
+functional connectivity measures, or group-level General Linear Model 
+(GLM) analyses and inferences
+
+2) descriptions and examples of all specialized functional connectivity 
+methods available in CONN, including generalized Psycho-Physiological 
+Interaction models, temporal modulation analyses, Independent Component 
+Analyses, voxel-to-voxel connectivity measures, network- and cluster- 
+level statistics, graph theory measures, functional connectivity 
+MultiVariate Pattern Analyses, or dynamic connectivity analyses
+
+and 3) discussions about practical aspects of fcMRI analyses, covering 
+topics such as clinical applications of functional connectivity, how to 
+design GLM analyses addressing specific research questions, or how to 
+create batch scripts and use parallelization options in High Performance 
+Computing environments
+
+For additional information and registration please visit 
+https://conn-toolbox.org/workshops
+
+Looking forward to seeing you there!
+Alfonso Nieto-Castanon
+
+Dear SPM Community,
+
+I hope this message finds you well. I am currently working on a project 
+where I have combined Halfpipe for preprocessing with SPM for analysis. 
+Specifically, I have manually loaded all runs and regressors in the batch 
+for one subject, saved the scripts and batch, and am now in the process of 
+modifying the first-level script to loop over multiple subjects. My 
+approach has primarily followed Andy’s Brain Book tutorials, with some 
+additional exploration to adapt it to our specific data structure.
+
+I was wondering if anyone in the community has followed similar steps or 
+has experience with this combination of tools. I would greatly appreciate 
+any insights or suggestions you might have, especially if there are more 
+efficient approaches or potential pitfalls to be aware of.
+
+Thank you in advance for your time and help.
+
+Best regards,
+
+Lancy.C
+
+
+--
+Lancy Cao. (she/her/hers)
+Doctoral Student, Clinical Psychology
+Stony Brook University
+Lancy.Cao@stonybrook.edu
+
+
+Hi Everyone,
+
+We are hiring a Neuroimaging Lab Staff Researcher. Please forward this to 
+anyone who may be suitable or can refer us appropriate candidates.
+
+https://ut.taleo.net/careersection/ut_health_science_center/jobdetail.ftl?job=24000001OX&tz=GMT-05%3A00&tzname=America%2FChicago
+
+
+Neuroimaging Lab Staff Researcher-Department of Pediatrics
+Click the link provided to see the complete job description.
+ut.taleo.net
+
+
+
+
+Neuroimaging Lab Staff Researcher-Department of Pediatrics
+ - 24000001OX
+ 
+ 
+
+Hi, I am about to finish my PhD by December 2024. Am I allowed to apply?
+
+
+On Wed, 14 Aug, 2024, 5:04 pm Jorge Almeida, <jorgecbalmeida@gmail.com> 
+wrote:
+The Proaction Laboratory (proactionlab.fpce.uc.pt) at the University 
+Coimbra Portugal is looking for Researchers at initial stages (post-PhD) 
+of their career to be part of the lab in a joint competitive application 
+to a Portuguese Science Foundation (FCT) independent researcher call. We 
+particularly encourage applications from women, and from underrepresented 
+groups in academia.
+
+ 
+
+The applicants should have obtained a PhD, and have an interest in 
+cognitive neuroscience, vision science and preferably (but not limited to) 
+object recognition, shape processing, and texture and surface processing. 
+We are particularly interested in motivated and independent Researchers 
+addressing these topics with strong expertise in fMRI (in particular 
+decoding and multivariate apporaches). Good programming skills, great 
+communication and mentoring skills, and a great command of English are a 
+plus.
+
+ 
+
+The applicant and the lab will work on a competitive project to be 
+submitted. Results from the application are expected to be out mid 2025. 
+The application will be open September 30, and will close November 29, 
+2024.
+
+ 
+
+The positions are as independent researchers in the Proaction Lab, are for 
+3 years, and the salary is the same as the Portuguese payroll for 
+University Professors (net values for junior or assistant positions, for 
+instance are approximately 1700 or 2100 euros net-value per month in a 
+14-month salary per year; these are competitive salaries for the cost of 
+living in Portugal and especially in Coimbra).
+
+ 
+
+The Proaction Lab is currently very well funded as we have a set of 
+on-going funded projects including a Starting Grant ERC to Jorge Almeida, 
+a major European ERA Chair project to Jorge ALmeida and Alfonso Caramzza, 
+and other projects. We have access to a 3T MRI scanner with a 32-channel 
+coil, to tDCS, and to a fully set psychophysics lab. We have a 256 ch EEG, 
+motion tracking and eyetracking on site. We also have a science 
+communication office dedicated to the lab.
+
+ 
+
+Finally, the University of Coimbra is a 700 year old University and has 
+been selected as a UNESCO world Heritage site. Coimbra is one of the most 
+lively university cities in the world, and it is a beautiful city with 
+easy access to the beach and mountain.
+
+ 
+
+You should apply as soon as you can - the sooner the better so that we can 
+prepare the application. If interested send an email to 
+jorgecbalmeida@gmail.com, with a CV, and motivation/scientific proposal 
+letter. If there is a fit, we will jointly apply to these positions – we 
+have had in past applications a high success rate as a lab (in four 
+previous editions, we got several applications that were offered a 
+position).
+
+
+
+Hi everyone,
+
+The project "BullyStop - Predictors and (neuro-)biological correlates of 
+(cyber)bullying and victimization in real contexts" is being carried out 
+at the Clinic for Child and Adolescent Psychiatry and Psychotherapy, 
+headed by Prof. Dr. Dr. Tobias Banaschewski. This project is part of a 
+newly established Transregio Collaborative Research Center (TRR), funded 
+by the German Research Foundation (DFG), which will commence in October 
+2024. The primary objective of the TRR is to identify multidimensional 
+bio-signatures of aggression in mental disorders, with the ultimate goal 
+of developing tailored, bio-signature-specific prevention and intervention 
+strategies.
+
+For further details about the positions and application procedures, please 
+visit: 
+https://www.einzigartigwir.de/en/job-offers/doktorandin-wissenschaftliche-mitarbeiterin-ag-entwicklungsneurowissenschaften-in-der-psychiatrie-996/
+
+Employer: ZI Mannheim
+Salary grade: TV-L 13 (65%)
+Application Deadline: Open
+Starting date: October 2024
+
+A good knowledge of German is highly appreciated.  
+
+For informal inquiries, please contact Seda Sacu, a PhD Candidate at ZI 
+Mannheim, at seda.sacu@zi-mannheim.de.
+
+Best,
+Emin
+
+Fully funded PhD (28th August deadline) to understand cortical visual loss 
+arising in the UK Biobank repeat imaging study and owing to posterior 
+cortical atrophy ('visual variant Alzheimer's').
+
+https://www.findaphd.com/phds/project/visual-system-vulnerability-in-dementia-from-detection-to-determinants/?p173178
+
+Best wishes,
+
+Keir
+
+Hi All,
+
+I am running a script that performs spatial normalization in batch mode: 
+
+
+matlabbatch{8}.spm.spatial.normalise.write.subj.def(1) = cfg_dep('Segment: 
+Forward Deformations', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, 
+'.','val', '{}',{1}), substruct('.','fordef', '()',{':'}));
+matlabbatch{8}.spm.spatial.normalise.write.subj.resample(1) = 
+cfg_dep('Coregister: Estimate: Coregistered Images', substruct('.','val', 
+'{}',{7}, '.','val', '{}',{1}, '.','val', '{}',{1}, '.','val', '{}',{1}), 
+substruct('.','cfiles'));
+matlabbatch{8}.spm.spatial.normalise.write.woptions.bb = [-78 -112 -70
+                                                          78 76 85];
+matlabbatch{8}.spm.spatial.normalise.write.woptions.vox = [2 2 2];
+matlabbatch{8}.spm.spatial.normalise.write.woptions.interp = 4;
+matlabbatch{8}.spm.spatial.normalise.write.woptions.prefix = 'w';
+matlabbatch{9}.spm.spatial.normalise.write.subj.def(1) = cfg_dep('Segment: 
+Forward Deformations', substruct('.','val', '{}',{2}, '.','val', '{}',{1}, 
+'.','val', '{}',{1}), substruct('.','fordef', '()',{':'}));
+matlabbatch{9}.spm.spatial.normalise.write.subj.resample(1) = 
+cfg_dep('Segment: Bias Corrected (1)', substruct('.','val', '{}',{2}, 
+'.','val', '{}',{1}, '.','val', '{}',{1}), substruct('.','channel', 
+'()',{1}, '.','biascorr', '()',{':'}));
+matlabbatch{9}.spm.spatial.normalise.write.woptions.bb = [-78 -112 -70
+                                                          78 76 85];
+matlabbatch{9}.spm.spatial.normalise.write.woptions.vox = [1 1 1];
+matlabbatch{9}.spm.spatial.normalise.write.woptions.interp = 4;
+matlabbatch{9}.spm.spatial.normalise.write.woptions.prefix = 'w’;
+
+
+The resulting error message seems to indicate a dimension mismatch:
+
+SPM12: spm_imcalc (v6961)                          21:54:46 - 13/08/2024
+========================================================================
+ImCalc Image: 
+/media/Data2/STTR_UNM/15-507/20161005_M87148839/output-TF/workdir/ActivationMaps/norm_stats/brain.nii
+Done    'Image Calculator'
+Running 'Coregister: Estimate'
+Failed  'Coregister: Estimate'
+Index exceeds matrix dimensions.
+In file "/media/Synapse2-root/usr/local/spm12/config/spm_run_coreg.m" 
+(v5956), function "spm_run_coreg" at line 15.
+
+
+Any suggestions would be appreciated.
+
+Thanks,
+
+Stefan
+
+
+
+
+Stefan Posse, Ph.D.
+
+Professor of Neurology (primary), & Physics and Astronomy 
+University of New Mexico School of Medicine
+
+Mailing Address:
+Department of Neurology
+MSC 10 5620
+1 University of New Mexico
+Albuquerque, NM  87131
+
+Email: sposse@unm.edu 
+Phone: (+1) 505 925-6087
+Fax: (+1) 505 272-6692
+Website: https://posse.unm.edu
+
+
+
+
+
+
+
+
+
+
+PS Apologies that the github link I sent was incorrect (thanks to Tom 
+Nichols for pointing out) – the Matlab livescript that tries to explain 
+statistics for neuroimaging from first principles is here: 
+https://github.com/RikHenson/CognesticStats (or with python version if 
+preferred).
+
+ 
+
+ 
+
+From: Orhan Murat Koçak <orhanmuratkocak@gmail.com>
+Sent: 12 August 2024 09:15
+To: Rik Henson <Rik.Henson@mrc-cbu.cam.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] 3 x 2 x 2 design
+
+ 
+
+Hi Rik,
+
+Thank you very much for your rapid reply:) 
+
+We will work on it with the direction that you recommended.
+
+ 
+
+Rik Henson <Rik.Henson@mrc-cbu.cam.ac.uk>, 12 Ağu 2024 Pzt, 10:52 
+tarihinde şunu yazdı:
+
+ 
+
+Hi Orhan –
+
+ 
+
+The contrast weights for the 3-way interaction in a 2x2x3 ANOVA are:
+
+ 
+
+d2 = orth(diff(eye(2))')
+
+d3 = orth(diff(eye(3))')
+
+c = kron(kron(d2,d2),d3)’
+
+ 
+
+If you are doing these in 1st-level models, and want to test at the group 
+level, then they will produce 2 con*imgs per participant, which you need 
+to take to a 2nd-level model consisting of just two columns (a “one-way 
+ANOVA with no constant term”) in which you can evaluate the F-contrast 
+“eye(2)”.
+
+ 
+
+If you are doing these in a 2nd-level model (with 12 conditions), you can 
+simply evaluate the “c” matrix above, though note that you should model 
+nonsphericity when fitting the model (ie selecting unequal variance and, 
+if a within-participant design, non-independence, in the SPM interface).
+
+ 
+
+The general way to create such contrasts (eg for other ANOVA effects in 
+your design) is given in the section “Generalization to K-Way ANOVAs” of 
+this PDF:
+
+ 
+
+https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2015/03/Henson_EN_15_ANOVA.pdf
+
+ 
+
+Or if you want a more general introduction to the GLM in the context of 
+imaging, you could try this Matlab Livescript (ie interactive notebook): 
+https://github.com/RikHenson/CognesticStats/cognestic_stats_matlab.mlx
+
+ 
+
+Rik
+
+ 
+
+---------------------------------------------------------------
+
+ 
+
+Prof Richard Henson, MA, MSc, PhD, FBA
+
+Professor of Cognitive Neuroscience, Department of Psychiatry, University 
+of Cambridge
+
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+
+President-Past, British Neuroscience Association
+
+Fellow of the British Academy
+
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+
+ 
+
+What is credible neuroscience?
+
+---------------------------------------------------------------
+
+ 
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf 
+Of Orhan Murat Koçak
+Sent: 12 August 2024 06:56
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] 3 x 2 x 2 design
+
+ 
+
+Hi everybody,
+
+ 
+
+We are stuck in an analysis of our data. Maybe it was discussed but I 
+missed it to the answer of my question so sorry for bothering. We have 
+there group, two imagination tasks (somatization and distraction), and two 
+masking tasks (negative, positive). We are trying to do a full factorial 
+analysis. We cannot design a contrast manager. My question is how can we 
+enter the values in order to obtain results of an interaction of group x 
+imagination x mask (Panic, somatization, negative)?
+
+
+Thank you very much
+
+ 
+
+--
+
+Orhan Murat Koçak
+
+Baskent University Faculty of Medicine Department of Psychiatry
+
+
+
+ 
+
+--
+
+Prof. Dr. Orhan Murat Koçak
+
+Başkent Üniversitesi Tıp Fakültesi Psikiyatri A.D.
+
+Baskent University Faculty of Medicine Department of Psychiatry
+
+Dear Benedetta,
+
+If it's still not resolved,  send me just the mat file of that dataset and 
+I'll take a look.
+
+Vladimir
+
+
+

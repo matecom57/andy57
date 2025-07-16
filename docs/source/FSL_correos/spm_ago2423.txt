@@ -1,0 +1,166 @@
+Dear Rob,
+
+I see your point.
+
+if you assign the result of spm_select to e.g. imglist, then {deblank(imglist(i,:))} might resolve your issue.
+
+So it should see something like this:
+
+imglist = spm_select(Inf,'image','Select T1w files');
+
+for i=1:size(imglist,1)
+    matlabbatch{i}.spm.spatial.preproc.channel.vols = {deblank(imglist(i,:))};
+    matlabbatch{i}.spm.spatial.preproc.channel.biasreg = 0.001;
+       ...
+end
+
+
+Best regards,
+
+Kiyotaka
+
+
+On Thu, Aug 24, 2023 at 8:02 PM Rob Shortman <rmhahor@ucl.ac.uk> wrote:
+ok, thank you for your scripts so far everyone!
+
+Some more context is needed - the first part of my batch uses a named file selector to pick up the t1 MRI for each my subjects. I then use a dependency to select and normalise my T1 MR and write it as a new file, and then a further dependency to segment my newly normalised file. If the for loops don't reference the named file selector it won't play, and Im not good enough at picking through the script to adjust it to my batch.
+
+
+
+ok, thank you for your scripts so far everyone!
+
+Some more context is needed - the first part of my batch uses a named file selector to pick up the t1 MRI for each my subjects. I then use a dependency to select and normalise my T1 MR and write it as a new file, and then a further dependency to segment my newly normalised file. If the for loops don't reference the named file selector it won't play, and Im not good enough at picking through the script to adjust it to my batch.
+
+Dear Rob,
+
+Attached is a script I use for segmentation and normalization (without DARTEL) of T1 images.
+For VBM segmentation, you don't have to use for-loops because batch editor accepts as many t1w images as you want to segment.
+Using spm_jobman would save your time.
+
+If you want to try this script, just save the file in any directory under the matlab path, then type 'vbm_preproc_normalize_batch' in the matlab command window. (You don't have to run SPM12 beforehand)
+
+This script brings up a SPM File selector. After you select T1 images, it brings up SPM12 and a batch editor. You can check your settings and run the batch. It takes care of segmentation and normalization of all images.
+
+Hope this helps,
+
+Kiyotaka
+
+I have a simple batch to normalise and segment some T1 MR data, on around 150 subjects, and I would dearly love to create a for loop to cycle through all the subjects in the batch script.
+
+The batch works, but it only looks at the first or the last subject - if anyone has the secret to this I would be very grateful. Ive tried asking chat gpt, and watching Andrew Jahns YouTube video on the subject. I know I've done everything right - but it just won't go.
+
+Hi Jakub,
+The atlasreader package would do what you want, but it's written in Python.
+https://joss.theoj.org/papers/10.21105/joss.01257
+https://github.com/miykael/atlasreader
+HTH
+Best,
+Leyla
+
+On Wed, Aug 9, 2023 at 11:33 AM SUBSCRIBE SPM Jakub Skalbania <skalbaniakuba@gmail.com> wrote:
+Hello!
+
+I have an experiment with two sessions and a lot of participants. I'm running gPPI analysis and I want to analyze connectivity with the seed based on individual activity peaks in the contrast I am interested in.
+I know there are built-in ppi analysis functions that allow me to look for session specific peak activity (matlabbatch{1}.spm.util.voi.roi{3}.sphere.move.global.spm). But i want to have one xyz coordinates for every participant (without separation between sessions). So basically I'd like to use a script to get the coordinates that I could locate using the GUI by clicking on Results>participant selection>contrast selection>go to local maximum.
+
+If any of you have an idea how this can be achieved, I would be very grateful for a reply.
+
+Best regards,
+Jakub Skałbania
+
+
+
+Dear experts,
+
+
+I want to check if I set my model and contrast properly in CAT12 for comparing two groups (HC and patients) while controlling the effect of age, gender, and TIV (as covariates). 
+
+I correct TIV with the option of Correction of TIV instead of setting it as Covariates.
+I remember that the TIV covariates should have only one regressor in the design matrix (at least in old CAT12), but I find TIV is set as two regressors (global@sF21 and glpbal@sF22). I think it is caused by the new option of "Correction of TIV", but in the CAT12 online manual, the example of the design matrix still has only a regressor for TIV.
+
+According to my knowledge, the contrast vector would be a T-test [-1 1 0 0 0] ([Group1 Group2 Age Sex TIV]) for comparing the two groups (Group 2 > Group 1) while controlling the effect of age, sex, and TIV. Thus, for the current design matrix, should I set the contrast vector as [-1 1 0 0 0 0] now?
+
+In addition, when I use "ROI analysis" in CAT12, I get an error message "Order of filenames is uncorrect. Please take care of the same order of file selection as in your SPM design.". I'm sure the order is correct (33 files for Group 1 and 18 files for Group 2).
+
+Does anyone know how to check the order in SPM design?
+
+The following is my setting in the Basic model module:
+
+Design:
+.Any cross-sectional data (Full factorial)
+...Factor
+......Name: Group
+......Level: 2
+......Independence: Yes
+.......Variance: Unequal
+
+Cells
+..Cell
+.....Levels: 1
+.....Scans: 33 files
+..Cell
+.....Levels: 2
+.....Scans: 18 flies
+
+
+Covariates
+..Covariate
+..Vector: [51x1] (age in years)
+..Name: Age
+..Interaction: No
+..Centring: Overall man
+
+..Covariate
+..Vector: [51x1]  (dummy coding, 1 for male and 0 for female)
+..Name: Sex
+..Interaction: No
+..Centring: No centering
+
+Masking
+..Threshold masking
+..Absolute
+...Threshold: 0.1
+..Implicit Mask: Yes
+
+Correction of TIV
+.ANCOVA:
+..Vector: [51x1]
+
+Best regards,
+Chih-Hao
+
+
+Dear SPM experts,
+
+I need to reslice image voxels in many 4D fmri datasets. In the previous there is a resize_img.m function work for 3D image but it can not work on 4D fmri data. I wonder if there any script could do this ?
+
+Thank your help
+
+Jung Lung Hsu
+
+Hello everyone
+
+Instats and UC Louvain are announcing a new partnership to offer online research training in both English and French. You can see some of the exciting offerings by the SMCS group from UC Louvain below and by heading to instats.org. The SMCS group consists of a dozen academic consultants who work with collaborators from a variety of fields within the university. The training being offered through Instats starting next month is listed below. 
+
+Please spread the word, and if you or your university would like to partner with Instats to offer content on the Instats platform, please get in touch with me today!
+
+
+Introduction au calcul de taille d'échantillon with UCLouvain: Sep 28 - Sep 29
+Cette formation vous permettra d'acquérir les compétences nécessaires pour calculer la taille d'échantillon appropriée, par exemple dans le cadre d'essais cliniques.
+
+Introduction to GraphPad Prism with UCLouvain: Oct 10 - Oct 13
+This training is designed to introduce participants to GraphPad, a comprehensive and user-friendly statistical software widely used in biostatistics for biomedical research.
+
+Découverte et utilisation de JMP dans le cadre de l’exploration de données with UCLouvain: Oct 23 - Oct 25
+Cette formation vous permettra de découvrir le logiciel JMP, qui offre à la fois une visualisation interactive et des outils d'analyse performants.
+
+Applied Statistics with SPSS with UCLouvain: Nov 6 - Nov 9
+This training is designed to help participants enhance their statistical skills and learn how to effectively use SPSS, a user-friendly data analysis tool widely used in social sciences.
+
+Introduction aux modèles multi-niveaux avec SPSS with UCLouvain: Nov 13 - Nov 18
+Cette formation de 4 jours vous permettra d'acquérir les compétences nécessaires pour analyser des données non indépendantes en SPSS via des modèles multi-niveaux.
+
+
+
+
+

@@ -1,0 +1,1777 @@
+Research Fellow (Postdoctoral)
+University of Birmingham - School of Psychology - Centre for Human Brain Health
+Salary: £32,348 to £42,155 full time starting salary range, with potential progression once in post to £44,737, Grade 7
+Hours:  Full Time
+Closes: 22nd March 2023
+Contract:   Fixed Term contract up to two years with potential extension
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by Fellowships and grants from the BBSRC, ERC, Wellcome Trust and Jacobs Foundation, totalling over £4m.
+
+An initial 2 year postdoctoral position (with possibility of extension) is available from 1st April 2023, or as soon as possible thereafter.
+
+The main focus of this role will be on the design, collection and analysis of novel model-based behavioural, and neuroimaging experiments with the potential for novel neuroimaging methods (e.g. Spinal fMRI or OPM-MEG). In addition, the post holder may also be involved in behavioural, psychopharmacology, and neuroimaging studies involving children, adolescents and older adults. The position is broad and can be in part tailored to the applicants interest, and there is the opportunity to analyse existing data. There will be opportunities to collaborate with colleagues in the University of Oxford (Prof. Masud Husain and Prof. Catherine Harmer), University of California, San Francisco (Dr. Simon Little) and in Berlin (Prof. Radek Cichy).
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) is essential and experience of computational modelling, studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary.
+
+The work will build on studies such as this:
+1.    Müller, T., Klein-Flügge, M. C., Manohar, S. G., Husain, M. & Apps, M. A. J. Neural and computational mechanisms of momentary fatigue and persistence in effort-based choice. Nature Communications. 12, 4593 (2021).
+2.    Lockwood, P. L. … Apps, M.A. Distinct neural representations for prosocial and self-benefiting effort. Current Biology 32, 4172–4185 (2022).
+3.    Apps, M. A. J., Rushworth, M. F. S. & Chang, S. W. C. The Anterior Cingulate Gyrus and Social Cognition: Tracking the Motivation of Others. Neuron 90, 692–707 (2016).
+4.    Le Heron, C. et al. Dopamine modulates dynamic decision-making during foraging. Journal of Neuroscience. 40, 5273–5282 (2020).
+
+Main Duties
+
+- Contributing to the design and programming of behavioural and/or neuroimaging experiments
+- Running experiments involving behavioural and neuroimaging measures (e.g. fMRI, MEG)
+- Recruiting and contacting participants
+- Analysing behavioural and brain imaging data using advanced analysis tools (e.g. computational modelling)
+- Writing and contributing to manuscripts for research publications, and presenting data
+- Work collaboratively with other members of the group, the centre and wider school
+- Helping to look after and ordering relevant equipment when required
+- Assisting the laboratory head with supervision of student projects and outreach activities
+
+Person Specification
+
+- Have or be close to the completion of a PhD in cognitive neuroscience, neuroimaging, experimental psychology or a closely related discipline
+- Experience in designing/conducting or analysing neuroimaging data (e.g. fMRI and/or MEG)
+- Experience in the design, coding and analysis of behavioural experiments
+- Strong quantitative and programming skills, and knowledge of one or more relevant programming languages (e.g. Matlab; Python; R)
+- Experience of writing and publishing peer reviewed scientific papers or preprints
+- Ability to work independently
+- Resourcefulness and organisational skills to act on own initiative
+- Strong presentation skills including the ability to present research proposals and results, and represent the lab at meetings
+
+For informal enquiries contact Matthew Apps (m.a.j.apps@bham.ac.uk)
+
+To download the full job description and details of this position and submit an electronic application online please click on the link below or visit our careers website; https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/job/537/?utm_medium=jobshare .
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+I am having what seems to be a simple issue with the installer script, but I can’t figure it out.
+
+It seems that the script is not creating the installation directory.  It doesn’t matter whether I specify an installation location of /usr/local/fsl or choose the default /Users/keith/fsl
+
+I get the following error (from the log) after mamba is installed:
+
+12:15:58 fslinstaller.py: 929:  [stdout]: Linking mamba-1.0.0-py310h6bde348_2
+
+12:15:59 fslinstaller.py: 929:  [stdout]: Transaction finished
+
+12:15:59 fslinstaller.py: 929:  [stdout]: installation finished.
+
+12:16:00 fslinstaller.py: 760: Running find /Users/keith/fsl -type f -exec touch {} + [as admin: False]
+
+12:16:00 fslinstaller.py: 929:  [stderr]: find: /Users/keith/fsl: No such file or directory
+
+12:16:00 fslinstaller.py: 162: 
+
+ERROR occurred during installation!
+
+12:16:00 fslinstaller.py: 162:     This command returned an error: find /Users/keith/fsl -type f -exec touch {} +
+
+
+Thanks for any help, this has been bugging me for a while, as I want to upgrade to the latest version.
+
+keith
+
+-----
+Keith Schneider
+Director, Center for Biomedical & Brain Imaging
+Professor, Psychological & Brain Sciences
+University of Delaware
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear ASL team, I'm analyzing ASL data (FSL version: 6.0.4) from Philips using a 3D PCASL sequence with GRASE readout. We have an inplane resolution of 3x3 mm and a slice thickness of 6 mm. We selected voxel-wise calibration using an M0 image. The images were distortion corrected using a separate M0 image with reversed PE direction. For the segmentation we run fsl_anat. I have a question regarding the partial volume correction. In particular, in voxels with a quite low gray matter portion the correction produces relative high CBF values (gm portion 0.1 to 0.3 or 0.4) that seems to me unrealistic (up to 150 or even higher). The values corresponds roughly to uncorrected CBF values divided by GM portion. What is the exact formula for the calculation? Does it make sense to threshold the perfusion images with more stringent criteria, like 0.3? Attached is an image with uncorrected CBF values at the top (scaled 0 – 100), the pvgm_inasl image in the middle (scaled 0-1) and the PV corrected image at the bottom (scaled 0 to 100). The most noticeable differences are in the middle frontal area, lower temporal areas and at the edges. Should I use a cut-off for CBF values beyond a certain threshold (i.e. 150)? The second question relates to the extrapolation of the M0 image using asl_file (partial volume correction at the edges). The following command does not work. asl_file --data=M0n.nii.gz --extrapolate --out=M0n_extrapol.nii asl_file expects a time series or a difference image, but not a M0 image. How can I do this? Best regards, Ralf
+
+
+Dear FSL experts,
+
+I'm running a diffusion tractography on a relatively large dataset, and having run preprocessing and xtract without issue, am now trying to generate the tract statistics using xtract_stats. When running this on the vast majority of subjects, I receive the message "Couldn't find images for [tract name]" on a number of tracts. Some others show the "ERROR: Empty mask image" message instead. I've tried re-running both registration and xtract (using scripts and commands in terminal, and batch array scripts on a cluster in case of any differences) but seem to be running into the same issues. Strangely, after re-running xtract on a number of subjects, xtract_stats ran just fine on a couple of the ones that showed errors previously, but many more are still showing them.
+
+I can't seem to find anything about the "couldn't find images" message anywhere on the forum and can't seem to figure out why it keeps cropping up. Any help or suggestions you could give would be a huge help. I can show my scripts/commands if needed.
+
+Kind regards,
+Alex Sheehan
+
+########################################################################
+
+
+Research Fellow (Postdoctoral)
+University of Birmingham - School of Psychology - Centre for Human Brain Health
+Salary: £32,348 to £42,155 full time starting salary range, with potential progression once in post to £44,737, Grade 7
+Hours:  Full Time
+Closes: 22nd March 2023
+Contract:   Fixed Term contract up to two years with potential extension
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by Fellowships and grants from the BBSRC, ERC, Wellcome Trust and Jacobs Foundation, totalling over £4m.
+
+An initial 2 year postdoctoral position (with possibility of extension) is available from 1st April 2023, or as soon as possible thereafter.
+
+The main focus of this role will be on the design, collection and analysis of novel model-based behavioural, and neuroimaging experiments with the potential for novel neuroimaging methods (e.g. Spinal fMRI or OPM-MEG). In addition, the post holder may also be involved in behavioural, psychopharmacology, and neuroimaging studies involving children, adolescents and older adults. The position is broad and can be in part tailored to the applicants interest, and there is the opportunity to analyse existing data. There will be opportunities to collaborate with colleagues in the University of Oxford (Prof. Masud Husain and Prof. Catherine Harmer), University of California, San Francisco (Dr. Simon Little) and in Berlin (Prof. Radek Cichy).
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) is essential and experience of computational modelling, studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary.
+
+The work will build on studies such as this:
+1.    Müller, T., Klein-Flügge, M. C., Manohar, S. G., Husain, M. & Apps, M. A. J. Neural and computational mechanisms of momentary fatigue and persistence in effort-based choice. Nature Communications. 12, 4593 (2021).
+2.    Lockwood, P. L. … Apps, M.A. Distinct neural representations for prosocial and self-benefiting effort. Current Biology 32, 4172–4185 (2022).
+3.    Apps, M. A. J., Rushworth, M. F. S. & Chang, S. W. C. The Anterior Cingulate Gyrus and Social Cognition: Tracking the Motivation of Others. Neuron 90, 692–707 (2016).
+4.    Le Heron, C. et al. Dopamine modulates dynamic decision-making during foraging. Journal of Neuroscience. 40, 5273–5282 (2020).
+
+Main Duties
+
+- Contributing to the design and programming of behavioural and/or neuroimaging experiments
+- Running experiments involving behavioural and neuroimaging measures (e.g. fMRI, MEG)
+- Recruiting and contacting participants
+- Analysing behavioural and brain imaging data using advanced analysis tools (e.g. computational modelling)
+- Writing and contributing to manuscripts for research publications, and presenting data
+- Work collaboratively with other members of the group, the centre and wider school
+- Helping to look after and ordering relevant equipment when required
+- Assisting the laboratory head with supervision of student projects and outreach activities
+
+Person Specification
+
+- Have or be close to the completion of a PhD in cognitive neuroscience, neuroimaging, experimental psychology or a closely related discipline
+- Experience in designing/conducting or analysing neuroimaging data (e.g. fMRI and/or MEG)
+- Experience in the design, coding and analysis of behavioural experiments
+- Strong quantitative and programming skills, and knowledge of one or more relevant programming languages (e.g. Matlab; Python; R)
+- Experience of writing and publishing peer reviewed scientific papers or preprints
+- Ability to work independently
+- Resourcefulness and organisational skills to act on own initiative
+- Strong presentation skills including the ability to present research proposals and results, and represent the lab at meetings
+
+For informal enquiries contact Matthew Apps (m.a.j.apps@bham.ac.uk)
+
+To download the full job description and details of this position and submit an electronic application online please click on the link below or visit our careers website; https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/job/537/?utm_medium=jobshare .
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi, I was hoping to get some help setting up a contrast.
+
+I am working on a cognitive flexibility paradigm that includes two non-switch and one switch number blocks as well as two non-switch and one switch image blocks. I was trying to create one contrast of the switch numbers minus the non-switch numbers blocks and the switch images blocks minus the non-switch images blocks (e.g. (SwitchNumbers-(SquareNumbers+DiamondNumbers))-(SwitchImages-(SquareImages+DiamondImages)). Below is how I currently have it setup but wanted to check that it would give me the output I was looking for. Hopefully this made sense. I appreciate any help
+
+EVs
+EV1: SquareNumbers
+EV2: DiamondNumbers
+EV3: SwitchNumbers
+EV4: SquareImages
+EV5: DiamondImages
+EV6: SwitchImages
+
+Contrast: (SwitchNumbers-(SquareNumbers+DiamondNumbers))-(SwitchImages-(SquareImages+DiamondImages))
+EV1  EV2  EV3  EV4  EV5  EV6
+-0.5  -0.5  3     -0.5  -0.5  -1
+
+########################################################################
+
+Dear Sir/Ma'am
+
+I ran a meta ICA for 6 different group ICA's of 32 subjects each, the only difference being the fix training threshold - (20,30,40,50,60,70). However the ICA components for the meta ICA look a little weird, with a lot of signal, it seems as though the upper color and the lower color threshold is set very low, the power spectra also don't resemble the typical tapering down pattern as observed in signals of ALFF, Is there a particular reason as to why the components look weird in the html report
+
+########################################################################
+
+Dear Paul, 
+
+Thank you for the response. Though the result with rotation for functional scan registers to anatomical scan and keep in 2mm is fine. However, I have masks from freesurfer that use anatomical scan as a template. when I try to register those free surfer masks to the registered functional scans (function->anatomical registration in 2mm resolution), there is misalignment. Below is the script when I register them: 
+flirt -in ${outdir}/FS_${mask} -applyxfm -init ident.mat -nosearch -out ${outdir}/FS_${mask}_registered -paddingsize 0.0 -interp nearestneighbour -ref  $funcdir/registered_func.nii.gz
+
+The free surfer masks and registered function scan have misaligned affine. This line of script corrects the affine difference, but the result is misaligned. 
+
+Do you have any suggestions about how to register these? Thanks a lot!
+
+Below are the header information for those scans, before registration between them:
+freesurfer mask:
+sizeof_hdr 348
+
+data_type FLOAT32
+
+dim0 3
+
+dim1 83
+
+dim2 127
+
+dim3 127
+
+dim4 1
+
+dim5 1
+
+dim6 1
+
+dim7 1
+
+vox_units mm
+
+time_units s
+
+datatype 16
+
+nbyper 4
+
+bitpix 32
+
+pixdim0 -1.000000
+
+pixdim1 2.000000
+
+pixdim2 2.000000
+
+pixdim3 2.000000
+
+pixdim4 0.000000
+
+pixdim5 0.000000
+
+pixdim6 0.000000
+
+pixdim7 0.000000
+
+vox_offset 352
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+scl_slope 1.000000
+
+scl_inter 0.000000
+
+phase_dim 0
+
+freq_dim 0
+
+slice_dim 0
+
+slice_name Unknown
+
+slice_code 0
+
+slice_start 0
+
+slice_end 0
+
+slice_duration 0.000000
+
+toffset 0.000000
+
+intent Unknown
+
+intent_code 0
+
+intent_name 
+
+intent_p1 0.000000
+
+intent_p2 0.000000
+
+intent_p3 0.000000
+
+qform_name Scanner Anat
+
+qform_code 1
+
+qto_xyz:1 -2.000000 0.000000 -0.000000 86.474922 
+
+qto_xyz:2 0.000000 2.000000 -0.000000 -90.902626 
+
+qto_xyz:3 0.000000 0.000000 2.000000 -142.081009 
+
+qto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+qform_xorient Right-to-Left
+
+qform_yorient Posterior-to-Anterior
+
+qform_zorient Inferior-to-Superior
+
+sform_name Scanner Anat
+
+sform_code 1
+
+sto_xyz:1 -2.000000 -0.000000 -0.000000 86.474922 
+
+sto_xyz:2 -0.000000 2.000000 -0.000000 -90.902626 
+
+sto_xyz:3 0.000000 0.000000 2.000000 -142.081009 
+
+sto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+sform_xorient Right-to-Left
+
+sform_yorient Posterior-to-Anterior
+
+sform_zorient Inferior-to-Superior
+
+file_type NIFTI-1+
+
+file_code 1
+
+descrip 6.0.4:ddd0a010
+
+aux_file
+
+
+
+Registered functional scan:
+
+sizeof_hdr 348
+
+data_type FLOAT32
+
+dim0 4
+
+dim1 83
+
+dim2 127
+
+dim3 127
+
+dim4 816
+
+dim5 1
+
+dim6 1
+
+dim7 1
+
+vox_units mm
+
+time_units s
+
+datatype 16
+
+nbyper 4
+
+bitpix 32
+
+pixdim0 -1.000000
+
+pixdim1 2.000000
+
+pixdim2 2.000000
+
+pixdim3 2.000000
+
+pixdim4 0.720000
+
+pixdim5 0.000000
+
+pixdim6 0.000000
+
+pixdim7 0.000000
+
+vox_offset 32368
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+scl_slope 0.000000
+
+scl_inter 0.000000
+
+phase_dim 0
+
+freq_dim 0
+
+slice_dim 3
+
+slice_name Unknown
+
+slice_code 0
+
+slice_start 0
+
+slice_end 126
+
+slice_duration 0.000000
+
+toffset 0.000000
+
+intent Unknown
+
+intent_code 0
+
+intent_name 
+
+intent_p1 0.000000
+
+intent_p2 0.000000
+
+intent_p3 0.000000
+
+qform_name Scanner Anat
+
+qform_code 1
+
+qto_xyz:1 -1.998246 -0.083751 -0.000000 86.474922 
+
+qto_xyz:2 -0.083751 1.998246 -0.000000 -90.902634 
+
+qto_xyz:3 -0.000000 0.000000 2.000000 -142.080994 
+
+qto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+qform_xorient Right-to-Left
+
+qform_yorient Posterior-to-Anterior
+
+qform_zorient Inferior-to-Superior
+
+sform_name Scanner Anat
+
+sform_code 1
+
+sto_xyz:1 -1.998246 -0.083751 0.000000 86.474922 
+
+sto_xyz:2 -0.083751 1.998246 0.000000 -90.902634 
+
+sto_xyz:3 0.000000 0.000000 2.000000 -142.080994 
+
+sto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+sform_xorient Right-to-Left
+
+sform_yorient Posterior-to-Anterior
+
+sform_zorient Inferior-to-Superior
+
+file_type NIFTI-1+
+
+file_code 1
+
+descrip 
+
+aux_file 
+
+
+
+On Tue, Jun 21, 2022 at 1:48 AM paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Jingyi,
+
+There is no problem here - having rotations in the voxel->world affine is perfectly normal. It's just an artifact of the scanner FOV setup.
+
+Paul
+
+On Mon, 20 Jun 2022 at 17:51, Jingyi Wang <jy_wang@ucsb.edu> wrote:
+Dear Paul, 
+
+Thank you so much for the prompt reply. Is there a way to correct this diagonal misalignment? Below is the header for my highres scan (reference scan). 
+sizeof_hdr 348
+
+data_type FLOAT32
+
+dim0 3
+
+dim1 208
+
+dim2 320
+
+dim3 320
+
+dim4 1
+
+dim5 1
+
+dim6 1
+
+dim7 1
+
+vox_units mm
+
+time_units Unknown
+
+datatype 16
+
+nbyper 4
+
+bitpix 32
+
+pixdim0 -1.000000
+
+pixdim1 0.800000
+
+pixdim2 0.796875
+
+pixdim3 0.796875
+
+pixdim4 0.000000
+
+pixdim5 0.000000
+
+pixdim6 0.000000
+
+pixdim7 0.000000
+
+vox_offset 352
+
+cal_max 0.000000
+
+cal_min 0.000000
+
+scl_slope 1.000000
+
+scl_inter 0.000000
+
+phase_dim 0
+
+freq_dim 0
+
+slice_dim 0
+
+slice_name Unknown
+
+slice_code 0
+
+slice_start 0
+
+slice_end 0
+
+slice_duration 0.000000
+
+toffset 0.000000
+
+intent Unknown
+
+intent_code 0
+
+intent_name 
+
+intent_p1 0.000000
+
+intent_p2 0.000000
+
+intent_p3 0.000000
+
+qform_name Scanner Anat
+
+qform_code 1
+
+qto_xyz:1 -0.799298 -0.033370 -0.000000 86.474922 
+
+qto_xyz:2 -0.033501 0.796176 -0.000000 -90.902626 
+
+qto_xyz:3 -0.000000 0.000000 0.796875 -142.081009 
+
+qto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+qform_xorient Right-to-Left
+
+qform_yorient Posterior-to-Anterior
+
+qform_zorient Inferior-to-Superior
+
+sform_name Scanner Anat
+
+sform_code 1
+
+sto_xyz:1 -0.799298 -0.033370 0.000000 86.474922 
+
+sto_xyz:2 -0.033501 0.796176 -0.000000 -90.902626 
+
+sto_xyz:3 0.000000 0.000000 0.796875 -142.081009 
+
+sto_xyz:4 0.000000 0.000000 0.000000 1.000000 
+
+sform_xorient Right-to-Left
+
+sform_yorient Posterior-to-Anterior
+
+sform_zorient Inferior-to-Superior
+
+file_type NIFTI-1+
+
+file_code 1
+
+descrip 
+
+aux_file
+
+
+On Mon, Jun 20, 2022 at 4:01 AM paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Jingyi,
+
+It looks like the voxel->world affine of your reference image contains a slight rotation, so the diagonal elements will not directly correspond to scaling parameters.
+
+Paul
+
+On Mon, 20 Jun 2022 at 11:41, Jingyi Wang <jy_wang@ucsb.edu> wrote:
+Hello fsl experts,
+
+I recently want to register my functional scans to anatomical scans but still keep as functional scan resolution (2mm). I used flirt registration: flirt -ref highres -in ../filtered_func_data -applyxfm -init example_func2highres.mat -out $function_dir/output -applyisoxfm 2. However, it creates the output with different affine parameters (qto_xyz and sto_xyz):
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            4
+dim1            83
+dim2            127
+dim3            127
+dim4            816
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         -1.000000
+pixdim1         2.000000
+pixdim2         2.000000
+pixdim3         2.000000
+pixdim4         0.720000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      32368
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       0.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       3
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       126
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name     
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       -1.998246 -0.083751 -0.000000 86.474922
+qto_xyz:2       -0.083751 1.998246 -0.000000 -90.902634
+qto_xyz:3       -0.000000 0.000000 2.000000 -142.080994
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Right-to-Left
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       -1.998246 -0.083751 0.000000 86.474922
+sto_xyz:2       -0.083751 1.998246 0.000000 -90.902634
+sto_xyz:3       0.000000 0.000000 2.000000 -142.080994
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Right-to-Left
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         
+aux_file       
+
+Is a way to flirt register that keep qto_xyz and sto_xyz as 2, instead of -1.998246? Any insight could be super helpful. Thanks!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Will,
+
+Thank you for your suggestions and working with me to figure this out!
+
+I tried a couple things and I found some interesting results. The first was your suggestion on removing the HLSVD step. Your suspicions were correct in that doing so removed the variations entirely. I ran the whole pipeline 10 times without HLSVD and found that the fitting result was identical each time. Additionally, in these 10 runs, there were no failures. However, the spectrum was very obviously affected. 
+
+The other thing I tried was removing the spectral registration step from the pipeline, so the "align" step (I kept the HLSVD step in the pipeline for this). This was quite interesting. First off, the failures (and fluctuations) were back. I had to run it a total of 15 times as it failed in 6 of them. This suggests that the HLSVD step is perhaps the culprit for these failures as well as the fluctuations. However, the strangest thing was that the SNR increased by a factor of 2 in these results. So, with the align preproc step in place, the average SNR was 24.7. Without the align step, the average was 47.9. The FWHM increased only slightly without the align step though (about 4.7 to 5.2). Perhaps this could point to a reason for the discrepancy I was noticing across volunteers? I'm not sure, but this was definitely very interesting.
+
+
+
+I have uploaded a sample html report for each of these tests to the OneDrive folder for reference. Let me know what else I can do to help!
+
+Best,
+Alex
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of William Clarke <william.clar
+
+Hi Will,
+
+Thank you for your quick response!
+
+
+
+Yes - I was re-running all stages of the pipeline, including pre-processing. To check what you said, I ran only the fitting step 5 times, and got the exact same thing each time. So I can confirm too that just fitting produces the same thing and that the variability must come from the pre-processing steps.
+Sure! I have uploaded my shell script and data to that same onedrive link. 
+No, its from the exact same dataset. I would also agree that this issue arises from a step in the processing chain as when I ran just the fitting step 5 times, it was fine each time. But yes, when I ran the processing and fitting 10 times, I saw this error about 3 times.
+
+Thank you for the note on linear phase too - this makes sense!
+
+One follow up question though: I scanned a few volunteers in the exact same way, however the analysis shows that the SNR for NAA varies by a factor of 3+ across them. I would expect some variability,  but not this much. I could maybe argue that the residuals on one seems to be a little be larger, but to me I can't quite understand why it might vary by a factor of 3? I've included the html reports for 3 volunteers, scanned in the same way - these are in the same onedrive link, in the folder named "volunteer_comparison".
+
+All the best,
+Alex
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of William Clarke <william.clarke@NDCN.OX.AC.UK>
+Sent: Monday, June 20, 2022 11:06:44 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] FSL MRS reproducibility
+ 
+[CAUTION: Non-UBC Email]
+Hi Alex,
+
+ 
+
+Thanks for this detailed report. Your main point about reproducibility is concerning. Could I ask for a few more details?
+
+ 
+
+When running the repeated analyses do you run all stages of the pre-processing again or just the final fitting stage? A quick test at my end indicates that the fitting stage produces the same result on the same data, but perhaps the instability results from over sensitivity to slightly different pre-processing results.
+Are you able to share this dataset and the exact steps you run?
+Is the data that failed a different dataset? I have a suspicion that it might be a step in the processing chain which has done this. I’ve very rarely seen some odd results from the HLSVD algorithm which look like this.
+ 
+
+The linear phase could be an issue, but it is just one parameter in the many fit parameters, so I’m loath to blame it without more evidence. The amount being used here is very small, and nearly all datasets will have a small amount of linear phase to correct (even if it’s equivalent to microsecond or shorter timing discrepancy).
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of alexens@student.ubc.ca <alexens@STUDENT.UBC.CA>
+Date: Tuesday, 21 June 2022 at 01:29
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL MRS reproducibility
+
+Hi there,
+
+I'm working on a study that compares MRS fitting metrics such as SNR, CRLB% and linewidth (sLASER data from a Philips scanner). I recently updated my fsl_mrs to version 1.1.13 on ubuntu, and I noticed something that worried me. I ran the exact same data twice through the analysis, in the exact same way, but got different results. I then decided to see how much it varied and ran the same data in the exact same way, 10 times. Using NAA as a reference, I found that the SNR was on average 24.68 with a standard deviation of 0.99 and had a range of 3.13. The CRLB %'s varied too, with an average of 2.83, a standard deviation of 0.44 and a range of 1.07. Additionally, and you may or may not remember this from a query I had a few months ago, when I ran this same data on the previous version (1.1.2), I instead got an SNR of ~180. For your reference, you can find the html reports of the 10 analyses at this link: https://1drv.ms/u/s!Arog8qk8Unwvg5Fxd5TTNPBJa2ZvNg?e=pLELWH.
+
+So, I have a few questions:
+- Do you know why fsl_mrs doesn't produce the same result every time when the same data is processed in the same way?
+- I noticed that in the nuisance parameters of the html report that fsl_mrs does linear phase correction, and the amount of linear phase correction varies from analysis to analysis too. I'm quite confident that our data doesn't need linear phase correction at all. Is there a way to restrict fsl_mrs from doing it entirely? I believe this linear phase correction might be a reason as to why fsl_mrs isn't giving the same results each time.
+
+Another thing I noticed is that sometimes the fit completely fails - it's almost as if it's unsuccessful in loading in the data and thus cannot fit any peaks. I've included the html report of this failure too. Do you know why this is happening? For a single set of data, this will happen approximately 1 in 3 times. 
+
+Thank you very much for your help and I look forward to hearing back from you!
+
+All the best,
+
+Alex Ensworth
+
+PhD Student
+The University of British Columbia
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+I ran a first level FEAT analysis and when I look at the zstat.nii.gz  file, I get the attached image. Something looks very wrong but I am not sure how to trouble shoot. Where is the issue that the data looked striped like that and the zstat map includes the gray box? the gray box does go away if I make 0 the minimum- is that right? Also, the functional data are not well-aligned to the standard image but I didn't see any major issues in the registration output. Any help would be greatly appreciated as I am using FSL after a long time away so am a bit rusty.
+Thanks
+Amy
+
+########################################################################
+
+Hi everyone,
+ 
+  I was using MRtrix3 to do the fixel-based analysis. And I followed the offical document, creating a average image of all my subjects which named "wmfod_template.nii.gz", and I extracted  the I=0 image, which is similar to the b=0 in the voxel-based analysis, to register to the MNI, but the output matrix is full of "nan", I have no idea what may cause this error. My ubuntu is 20.04, fsl is 6.0.6.
+
+My command: flirt -ref MNI150_T1_1mm_brain.nii.gz -in I0image.nii.gz -omat template2mni.mat -dof12
+
+It would be greatly appreciated if you could give me any possible suggestion.
+
+Yuting
+
+########################################################################
+
+Dear FSL experts,
+I have encountered an issue where the outputs of Fast are empty maps for GM and WM, and all 1's for CSF.
+I am running fast on a brain extracted T1 image that comes from FreeSurfer (intensity normalised brain.mgz) and is re-registered to T1 space.
+I have run this process on many images before this without issue. Unfortunately, I cannot share the images, but this is a histogram of the brain extracted volume I am using as input to Fast (110 is the value of most WM voxels).
+This is very similar to the histogram of images that have been run without issue, do you know what might be going wrong?
+
+Thank you!
+Michele
+
+--
+
+
+
+Michele Valotti
+
+
+
+Software Engineer and Data Scientist
+
+ 
+
+                         
+
+                Rethinking brain health.                    Finalist Nature Spinoff Prize
+
+
+
+
+michele.valotti@oxfordbraindiagnostics.com
+
+
+
++44 (0)7490 167702
+
+
+
+Oxford Centre for Innovation | New Road | Oxford | OX1 1BY
+
+
+
+Oxford Brain Diagnostics Ltd is a company registered in England and Wales | Company No. 11703979 | VAT No. 321 3026 62
+
+This e-mail and any attachments are confidential and may contain personal views that are not the views of Oxford Brain Diagnostics Ltd unless specifically stated. If you are not an addressee you must not copy, distribute, disclose or use any of the information in it or any attachments. If you have received this email in error, please notify the sender immediately and then delete it from your system.
+
+
+
+Hi Kangcheng,
+
+Can you send me the log file?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Kangcheng Wang <V1KWAN12@EXSEED.ED.AC.UK>
+Sent: 01 March 2023 09:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] error FSL Installation Mac OS Monterey
+ 
+Hi paul,
+   I try several times and fail again. I am still not sure what is the problem. Maybe  switching to the centos/Ubuntu is a better choice.
+
+BW
+
+Kangcheng
+
+########################################################################
+
+Hi paul,
+   I try several times and fail again. I am still not sure what is the problem. Maybe  switching to the centos/Ubuntu is a better choice.
+
+BW
+
+Kangcheng
+
+########################################################################
+
+Hi Keith,
+
+Would you be able to send me the full log file so I can take a look?
+
+Thanks,
+
+Paul
+
+
+From: FSL - FMRIB's Software Library on behalf of Keith Schneider
+Sent: Tuesday, February 28, 2023 17:22
+To: FSL@JISCMAIL.AC.UK
+Subject: [FSL] Installation problem (Mac M1 max, Ventura 13.3)
+
+Hello,
+
+I am having what seems to be a simple issue with the installer script, but I can’t figure it out.
+
+It seems that the script is not creating the installation directory.  It doesn’t matter whether I specify an installation location of /usr/local/fsl or choose the default /Users/keith/fsl
+
+I get the following error (from the log) after mamba is installed:
+
+12:15:58 fslinstaller.py: 929:  [stdout]: Linking mamba-1.0.0-py310h6bde348_2
+
+12:15:59 fslinstaller.py: 929:  [stdout]: Transaction finished
+
+12:15:59 fslinstaller.py: 929:  [stdout]: installation finished.
+
+12:16:00 fslinstaller.py: 760: Running find /Users/keith/fsl -type f -exec touch {} + [as admin: False]
+
+12:16:00 fslinstaller.py: 929:  [stderr]: find: /Users/keith/fsl: No such file or directory
+
+12:16:00 fslinstaller.py: 162: 
+
+ERROR occurred during installation!
+
+12:16:00 fslinstaller.py: 162:     This command returned an error: find /Users/keith/fsl -type f -exec touch {} +
+
+
+Thanks for any help, this has been bugging me for a while, as I want to upgrade to the latest version.
+
+keith
+
+-----
+Keith Schneider
+Director, Center for Biomedical & Brain Imaging
+Professor, Psychological & Brain Sciences
+University of Delaware
+
+
+
+Dear FSL-experts,
+
+I am using SQUAD to generate the QC reports for all data.
+I have checked the qc_updated.pdf for each individual data.
+Although I have read through the paper from Bastiani et al.(2019), I still would like to know how to exclude subjects according to the group QC report and each updated QC report.
+Could you please give me some objective steps to exclude unusable data?
+
+Best regards,
+Lin
+
+########################################################################
+
+
+Dear FSL-experts,
+
+I am using SQUAD to generate the QC reports for all data.
+I have checked the qc_updated.pdf for each individual data.
+Although I have read through the paper from Bastiani et al.(2019), I still would like to know how to exclude subjects according to the group QC report and each updated QC report.
+Could you please give me some objective steps to exclude unusable data?
+
+Best regards,
+Lin
+
+
+
+Hi everyone,
+
+I have been using asl_gui for sometime and everything worked without a problem. I recently updated to the latest fsl version and it is having problems loading the asl image series. When i try to load the image series (input image), an error message shows up in the terminal (using ubuntu 22.04) complaining that nibabel depracated the get_data(). I replaced the get_data() with get_fdata() as recommended in the error message. Then I can see that it reads the file and the correct number of volumes shows up in the lower right corner. But a red error message shows up at the bottom of the gui complaining that it cannot determine the size of the image. "%s - failed to read data shape - check image file is not corrupted". I was uploading these files into asl_gui before, and i tried a bunch of images that I processed before. So, I know that they are not corrupted. I can also view them with fsleyes.
+
+I also tried reading shape of the file myself in the fslpython environment using shape = nib.load(fname).get_fdata().shape, and  it reads the image and gets the shape correctly. So, I don't know where it fails.
+
+I will be grateful if anyone can suggest some solutions.
+
+best wishes,
+-Tugan
+ 
+
+Here's the error message that shows up:
+(base) tgn@tgn-HP-Z2-Mini-G3:.../S906-27Feb2023$ Traceback (most recent call last):
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/oxford_asl/gui/main.py", line 136, in update_options
+    widget.option_changed(options, diff_key, options.get(diff_key, None))
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/oxford_asl/gui/input_tab.py", line 115, in option_changed
+    self._nvols = get_nvols(self.data_picker.GetPath())
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/oxford_asl/gui/__init__.py", line 164, in get_nvols
+    shape = nib.load(fname).get_data().shape
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/nibabel/deprecator.py", line 185, in deprecated_func
+    raise error_class(message)
+nibabel.deprecator.ExpiredDeprecationError: get_data() is deprecated in favor of get_fdata(), which has a more predictable return type. To obtain get_data() behavior going forward, use numpy.asanyarray(img.dataobj).
+
+* deprecated from version: 3.0
+* Raises <class 'nibabel.deprecator.ExpiredDeprecationError'> as of version: 5.0
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL experts,
+
+I have some nifti files (4D fMRI) in FSL which I transferred them to Matlab and read them with command "niftiread". Then I made some changes on volumetric data in matlab. Then I  turned the volumetric data to nifti file. I used command "niftiwrite" to generate nifti file again. However, it seems the generated nifti files are not correct.  Are the procedure is right?
+I really appreciate your response.
+
+Sincerely yours,
+Zahra ,
+
+Dear Sheng,
+It looks like the 4D input file only has one volume ( maybe the wrong input was selected ) - which will cause quite a few issues!
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 22 Feb 2023, at 10:05, Sheng Yang <sheng.yang@NDCN.OX.AC.UK> wrote:
+
+Dear Matthew,
+Here's the file. Thank you. 
+
+Best
+Sheng
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+Progress Report / Log
+Started at Tue Feb 21 12:46:04 GMT 2023
+Feat main script
+
+/bin/cp /var/folders/pb/hnjzkrz10dd00r83hgz8fpk80000gn/T/feat_42ijqlt6.fsf design.fsf
+
+mkdir .files;cp /usr/local/fsl/doc/fsl.css .files;cp -r /usr/local/fsl/doc/images .files/images
+
+/usr/local/fsl/bin/fsl_sub -T 10 -l logs -N feat0_init   /usr/local/fsl/bin/feat /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/design.fsf -D /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat -I 1 -init
+52963
+
+/usr/local/fsl/bin/fsl_sub -T 30 -l logs -N feat2_pre -j 52963  /usr/local/fsl/bin/feat /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/design.fsf -D /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat -I 1 -prestats
+Error submitting job - can't read "relrms": no such variable
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+	-I {
+	    incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/fsl_sub -T 30 -l logs -N feat2_pre -j 52963  /usr/local/fsl/bin/feat /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/design.fsf -D /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat -I 1 -prestats
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+Initialisation
+/usr/local/fsl/bin/fslmaths /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain prefiltered_func_data -odt float
+Total original volumes = 1
+
+/usr/local/fsl/bin/fslroi prefiltered_func_data example_func 0 1
+Preprocessing:Stage 1
+/usr/local/fsl/bin/mainfeatreg -F 6.00 -d /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat -l /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/logs/feat2_pre -R /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/report_unwarp.html -r /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/report_reg.html  -i /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/example_func.nii.gz  -h /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/MPRAGE_mprage_grappa2x_20190319170409_2.anat/T1_biascorr_brain -w  BBR -x 90 -s /usr/local/fsl/data/standard/MNI152_T1_2mm_brain -y 12 -z 90 
+Option -F ( FEAT version parameter ) selected with  argument "6.00"
+Option -d ( output directory ) selected with  argument "/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat"
+Option -l ( logfile )input with argument "/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/logs/feat2_pre"
+Option -R ( html unwarping report ) selected with  argument "/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/report_unwarp.html"
+Option -r ( html registration report ) selected with  argument "/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/report_reg.html"
+Option -i ( main input ) input with argument "/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/example_func.nii.gz"
+Option -h ( high-res structural image ) selected with  argument "/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/MPRAGE_mprage_grappa2x_20190319170409_2.anat/T1_biascorr_brain"
+Option -w ( highres dof ) selected with  argument "BBR"
+Option -x ( highres search ) selected with  argument "90"
+Option -s ( standard image ) selected with  argument "/usr/local/fsl/data/standard/MNI152_T1_2mm_brain"
+Option -y ( standard dof ) selected with  argument "12"
+Option -z ( standard search ) selected with  argument "90"
+Registration
+/bin/mkdir -p /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat/reg
+
+
+/usr/local/fsl/bin/fslmaths /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/MPRAGE_mprage_grappa2x_20190319170409_2.anat/T1_biascorr_brain highres
+
+
+/usr/local/fsl/bin/fslmaths /Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/MPRAGE_mprage_grappa2x_20190319170409_2.anat/T1_biascorr  highres_head
+
+
+/usr/local/fsl/bin/fslmaths /usr/local/fsl/data/standard/MNI152_T1_2mm_brain standard
+
+did not find file: example_func2highres.mat. Generating transform.
+
+/usr/local/fsl/bin/epi_reg --epi=example_func --t1=highres_head --t1brain=highres --out=example_func2highres
+Running FAST segmentation FLIRT pre-alignment Running BBR 0.488399 0.999981 -0.003836 -0.004744 0.000000 0.003813 0.999981 -0.004888 0.000000 0.004763 0.004870 0.999977 0.000000 -1.121183 2.070128 4.987688 1.000000
+
+/usr/local/fsl/bin/convert_xfm -inverse -omat highres2example_func.mat example_func2highres.mat
+
+
+/usr/local/fsl/bin/slicer example_func2highres highres -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /usr/local/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png example_func2highres1.png ; /usr/local/fsl/bin/slicer highres example_func2highres -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /usr/local/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png example_func2highres2.png ; /usr/local/fsl/bin/pngappend example_func2highres1.png - example_func2highres2.png example_func2highres.png; /bin/rm -f sl?.png example_func
+ 2highres2.png
+
+
+/bin/rm example_func2highres1.png
+
+did not find file: highres2standard.mat. Generating transform.
+
+/usr/local/fsl/bin/flirt -in highres -ref standard -out highres2standard -omat highres2standard.mat -cost corratio -dof 12 -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -interp trilinear 
+
+
+/usr/local/fsl/bin/convert_xfm -inverse -omat standard2highres.mat highres2standard.mat
+
+
+/usr/local/fsl/bin/slicer highres2standard standard -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /usr/local/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png highres2standard1.png ; /usr/local/fsl/bin/slicer standard highres2standard -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /usr/local/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png highres2standard2.png ; /usr/local/fsl/bin/pngappend highres2standard1.png - highres2standard2.png highres2standard.png; /bin/rm -f sl?.png highres2standard2.png
+
+
+/bin/rm highres2standard1.png
+
+
+/usr/local/fsl/bin/convert_xfm -omat example_func2standard.mat -concat highres2standard.mat example_func2highres.mat
+
+
+/usr/local/fsl/bin/flirt -ref standard -in example_func -out example_func2standard -applyxfm -init example_func2standard.mat -interp trilinear
+
+Found file: example_func2standard.mat.
+
+/usr/local/fsl/bin/convert_xfm -inverse -omat standard2example_func.mat example_func2standard.mat
+
+
+/usr/local/fsl/bin/slicer example_func2standard standard -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /usr/local/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png example_func2standard1.png ; /usr/local/fsl/bin/slicer standard example_func2standard -s 2 -x 0.35 sla.png -x 0.45 slb.png -x 0.55 slc.png -x 0.65 sld.png -y 0.35 sle.png -y 0.45 slf.png -y 0.55 slg.png -y 0.65 slh.png -z 0.35 sli.png -z 0.45 slj.png -z 0.55 slk.png -z 0.65 sll.png ; /usr/local/fsl/bin/pngappend sla.png + slb.png + slc.png + sld.png + sle.png + slf.png + slg.png + slh.png + sli.png + slj.png + slk.png + sll.png example_func2standard2.png ; /usr/local/fsl/bin/pngappend example_func2standard1.png - example_func2standard2.png example_func2standard.png; /bin/rm -f sl?.png exa
+ mple_func2standard2.png
+
+Preprocessing:Stage 2
+/usr/local/fsl/bin/mcflirt -in prefiltered_func_data -out prefiltered_func_data_mcf -mats -plots -reffile example_func -rmsrel -rmsabs -spline_final
+
+/bin/mkdir -p mc ; /bin/mv -f prefiltered_func_data_mcf.mat prefiltered_func_data_mcf.par prefiltered_func_data_mcf_abs.rms prefiltered_func_data_mcf_abs_mean.rms prefiltered_func_data_mcf_rel.rms prefiltered_func_data_mcf_rel_mean.rms mc
+
+/usr/local/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated rotations (radians)' -u 1 --start=1 --finish=3 -a x,y,z -w 640 -h 144 -o rot.png 
+
+/usr/local/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated translations (mm)' -u 1 --start=4 --finish=6 -a x,y,z -w 640 -h 144 -o trans.png 
+
+/usr/local/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png 
+can't read "relrms": no such variable
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+	-I {
+	    incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+Error encountered while running in main feat script, halting.
+can't read "relrms": no such variable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello Sheng,
+I’m not sure about the first error - does the input cursor still appear in the active entry ( e.g. “Number of inputs” ). However for the second error, if you are using FSL6.0.6 or greater then you should be able to paste the “standard” OSX keys, e.g. Command-V etc..
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 26 Feb 2023, at 12:47, Sheng Yang <sheng.yang@NDCN.OX.AC.UK> wrote:
+
+Hello,
+I was using feat for higher-level analysis, and in the Data tab, I came across the following problems:
+1. I could not change the input of numbers by typing (no response when in i press the numbers on my keyboard), but have to use the up/down button
+2. In the select feat directories tab, I pressed PASTE, but could not paste (with control y) the list of groups, or type into the window.
+
+I am using Mac with M1 chip, mac OS 13, XQuartz is up-to-date.
+Thank you,
+
+Best
+Sheng
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear Anna,
+   Your design looks good ( the examples in the wiki cover a number of different ways of constructing a design and command-line call ). Note that for the design below the -D flag should _not_ be used ( as the global mean is already represented by EV1 ). To test both for both +ve and -ve negative changes, you may also want to add the sign-reversed contrast -1 0.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 28 Feb 2023, at 11:11, Anna Kwiatkowski <ankwiatkowsk@UKAACHEN.DE> wrote:
+
+Dear FSL-experts,
+
+I have a question regarding the .mat file for my analysis. For my study, I have DTI data from time1 and time2. I have calculated the difference maps in both ways and performed a one-sample t-test with the -1 option, respectively, to see whether there is any positive or negative changes across the two time points.
+
+To control for age-effects, I would like to add age as a covariate to the model, so I need to create a .mat and .con file. Is the follwing correct (example n=5)?:
+
+EV1= group mean
+EV2= age (demeaned)
+
+design.mat
+EV1  EV2
+1       -1.8
+1        3,2
+1        1,2
+1       -2,8
+1        0,2
+
+design.con
+1 0
+
+I am unsure whether EV1 is needed as it was used in the FEAT, but not in the randomise example in the Glm Guide (Single-Group Average with Additional Covariate).
+
+I am looking foward to your response!
+
+Anna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear Matthew,
+
+Thank you very much for the clarification and the update.
+
+Kind regards,
+Rosalia
+
+
+
+
+On Tue, Feb 28, 2023 at 5:21 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Dear Rosalia,
+This looks to be a bug in applyxfm4D that has been fixed in more recent versions of FSL. However it’s fine to perform the transform with FLIRT as well.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 28 Feb 2023, at 15:49, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+
+The result I got was something like this...
+
+
+
+On Tue, Feb 28, 2023 at 4:46 PM Rosalia Dacosta Aguayo <rdacostaa@gmail.com> wrote:
+Dear Matthew,
+
+Thank you very much for your answer.
+
+However, using this command line it did not work in my case which is weird but when I tried to compare the resulting image with the examplefunc2standard it was not a match. In fact in fsleyes it said images with different orientation and different FOV.
+
+So now I used this one:
+
+flirt -in ../filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm -init example_func2standard.mat -out fmriMNI
+
+And it seems it is working perfectly.
+
+I don't know why applyxfm4D did not work.
+
+Kind regards,
+Rosie
+
+
+
+On Tue, Feb 28, 2023 at 4:13 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Dear Roslia,
+                    applyxfm4D is a separate command ( flirt has a similarly named -applyxfm option ) so the command should look something like:
+
+applyxfm4D filtered_func_data  $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz  fmriMNI example_func2standard.mat --singlematrix
+
+Hope this help,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 28 Feb 2023, at 14:32, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+>
+> Dear FSL experts,
+>
+> I am trying to run linear registration on my fmri data and I am using the option -applyxfm4D as suggested in your web but I am getting one error I do not know how to solve.
+>
+> Any suggestions would be really appreciated.
+>
+>
+> flirt -in filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm4D -init example_func2standard.mat -out fmriMNI
+> Unrecognised option -applyxfm4D
+>
+> Kind regards,
+> Rosalia
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<Screenshot from 2023-02-28 15-57-09.png>
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Rosalia,
+This looks to be a bug in applyxfm4D that has been fixed in more recent versions of FSL. However it’s fine to perform the transform with FLIRT as well.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 28 Feb 2023, at 15:49, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+
+The result I got was something like this...
+
+
+
+On Tue, Feb 28, 2023 at 4:46 PM Rosalia Dacosta Aguayo <rdacostaa@gmail.com> wrote:
+Dear Matthew,
+
+Thank you very much for your answer.
+
+However, using this command line it did not work in my case which is weird but when I tried to compare the resulting image with the examplefunc2standard it was not a match. In fact in fsleyes it said images with different orientation and different FOV.
+
+So now I used this one:
+
+flirt -in ../filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm -init example_func2standard.mat -out fmriMNI
+
+And it seems it is working perfectly.
+
+I don't know why applyxfm4D did not work.
+
+Kind regards,
+Rosie
+
+
+
+On Tue, Feb 28, 2023 at 4:13 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Dear Roslia,
+                    applyxfm4D is a separate command ( flirt has a similarly named -applyxfm option ) so the command should look something like:
+
+applyxfm4D filtered_func_data  $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz  fmriMNI example_func2standard.mat --singlematrix
+
+Hope this help,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 28 Feb 2023, at 14:32, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+>
+> Dear FSL experts,
+>
+> I am trying to run linear registration on my fmri data and I am using the option -applyxfm4D as suggested in your web but I am getting one error I do not know how to solve.
+>
+> Any suggestions would be really appreciated.
+>
+>
+> flirt -in filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm4D -init example_func2standard.mat -out fmriMNI
+> Unrecognised option -applyxfm4D
+>
+> Kind regards,
+> Rosalia
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<Screenshot from 2023-02-28 15-57-09.png>
+
+
+
+The result I got was something like this...
+
+
+
+
+On Tue, Feb 28, 2023 at 4:46 PM Rosalia Dacosta Aguayo <rdacostaa@gmail.com> wrote:
+Dear Matthew,
+
+Thank you very much for your answer.
+
+However, using this command line it did not work in my case which is weird but when I tried to compare the resulting image with the examplefunc2standard it was not a match. In fact in fsleyes it said images with different orientation and different FOV.
+
+So now I used this one:
+
+flirt -in ../filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm -init example_func2standard.mat -out fmriMNI
+
+And it seems it is working perfectly.
+
+I don't know why applyxfm4D did not work.
+
+Kind regards,
+Rosie
+
+
+
+
+On Tue, Feb 28, 2023 at 4:13 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Dear Roslia,
+                    applyxfm4D is a separate command ( flirt has a similarly named -applyxfm option ) so the command should look something like:
+
+applyxfm4D filtered_func_data  $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz  fmriMNI example_func2standard.mat --singlematrix
+
+Hope this help,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 28 Feb 2023, at 14:32, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+>
+> Dear FSL experts,
+>
+> I am trying to run linear registration on my fmri data and I am using the option -applyxfm4D as suggested in your web but I am getting one error I do not know how to solve.
+>
+> Any suggestions would be really appreciated.
+>
+>
+> flirt -in filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm4D -init example_func2standard.mat -out fmriMNI
+> Unrecognised option -applyxfm4D
+>
+> Kind regards,
+> Rosalia
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Matthew,
+
+Thank you very much for your answer.
+
+However, using this command line it did not work in my case which is weird but when I tried to compare the resulting image with the examplefunc2standard it was not a match. In fact in fsleyes it said images with different orientation and different FOV.
+
+So now I used this one:
+
+flirt -in ../filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm -init example_func2standard.mat -out fmriMNI
+
+And it seems it is working perfectly.
+
+I don't know why applyxfm4D did not work.
+
+Kind regards,
+Rosie
+
+
+
+
+On Tue, Feb 28, 2023 at 4:13 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Dear Roslia,
+                    applyxfm4D is a separate command ( flirt has a similarly named -applyxfm option ) so the command should look something like:
+
+applyxfm4D filtered_func_data  $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz  fmriMNI example_func2standard.mat --singlematrix
+
+Hope this help,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 28 Feb 2023, at 14:32, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+>
+> Dear FSL experts,
+>
+> I am trying to run linear registration on my fmri data and I am using the option -applyxfm4D as suggested in your web but I am getting one error I do not know how to solve.
+>
+> Any suggestions would be really appreciated.
+>
+>
+> flirt -in filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm4D -init example_func2standard.mat -out fmriMNI
+> Unrecognised option -applyxfm4D
+>
+> Kind regards,
+> Rosalia
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Roslia,
+                    applyxfm4D is a separate command ( flirt has a similarly named -applyxfm option ) so the command should look something like:
+
+applyxfm4D filtered_func_data  $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz  fmriMNI example_func2standard.mat --singlematrix
+
+Hope this help,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 28 Feb 2023, at 14:32, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+>
+> Dear FSL experts,
+>
+> I am trying to run linear registration on my fmri data and I am using the option -applyxfm4D as suggested in your web but I am getting one error I do not know how to solve.
+>
+> Any suggestions would be really appreciated.
+>
+>
+> flirt -in filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm4D -init example_func2standard.mat -out fmriMNI
+> Unrecognised option -applyxfm4D
+>
+> Kind regards,
+> Rosalia
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL experts,
+
+I am trying to run linear registration on my fmri data and I am using the option -applyxfm4D as suggested in your web but I am getting one error I do not know how to solve.
+
+Any suggestions would be really appreciated.
+
+
+flirt -in filtered_func_data.nii.gz -ref $FSLDIR/data/standard/MNI152_T1_2mm.nii.gz -applyxfm4D -init example_func2standard.mat -out fmriMNI
+Unrecognised option -applyxfm4D
+
+
+
+Kind regards,
+
+Rosalia
+
+
+
+
+Dear Paul,
+
+Thank you so much!
+For the time being, I'll modify my scripts.
+
+Best,
+Daisuke
+
+Paul McCarthy wrote on 2023/02/27 20:39:
+> Hi Daisuke,
+>
+> Sorry - this is a bug which we will fix for the next FSL version. In the
+> meantime, you could pass the file extension as part of the glob pattern,
+> e.g. "imrm img_????.nii.gz"
+>
+> Paul
+> ------------------------------------------------------------------------
+> *From:* FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of
+> Daisuke Matsuyoshi <matsuyoshi.daisuke@QST.GO.JP>
+> *Sent:* 26 February 2023 12:25
+> *To:* FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+> *Subject:* [FSL] imrm and bash
+> Dear FSL List members,
+>
+> On Ubuntu 22.04 LST and FSL 6.0.6.2, the pattern matching character
+> ("?") seems not to work as intended in "imrm" using bash.
+> https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching <https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching>
+>
+> Any changes in imrm or am I missing something?
+>
+> EXAMPLE CODE:
+> ---------------------------------------------------
+> #!/bin/bash
+> mkdir temp; cd temp
+> touch test_1_000{1,2,3,4}.nii.gz  # three-zero nii.gz
+> touch test_1_000{1,2,3,4}.bval    # three-zero bval
+> touch test_1_0000{1,2,3,4}.nii.gz # four-zero nii.gz
+> ls
+>
+> # Had deleted image files in FSL 6.0.4 or earlier
+> # but do not delete them in FSL 6.0.6.2
+> imrm test_1_???? # Fail, not delete anything
+> ls
+> imrm test_1_????.* # OK, delete three-zero nii.gz, while preserving
+> four-zero nii.gz
+> ls
+> ---------------------------------------------------
+>
+> Best,
+> D
+>
+> --
+> Daisuke MATSUYOSHI, Ph.D.
+> Research Scientist
+> Functional Brain Imaging Research
+> National Institutes for Quantum Science and Technology (QST)
+> (f.k.a. National Institute of Radiological Sciences)
+> 4-9-1 Anagawa, Inage, Chiba 263-8555, Japan
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+> <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL
+> <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by
+> www.jiscmail.ac.uk <http://www.jiscmail.ac.uk>, terms & conditions are
+> available at https://www.jiscmail.ac.uk/policyandsecurity/
+> <https://www.jiscmail.ac.uk/policyandsecurity/>
+>
+> ------------------------------------------------------------------------
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+> <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL-experts,
+
+I have a question regarding the .mat file for my analysis. For my study, I have DTI data from time1 and time2. I have calculated the difference maps in both ways and performed a one-sample t-test with the -1 option, respectively, to see whether there is any positive or negative changes across the two time points.
+
+To control for age-effects, I would like to add age as a covariate to the model, so I need to create a .mat and .con file. Is the follwing correct (example n=5)?:
+
+EV1= group mean
+EV2= age (demeaned)
+
+design.mat
+EV1  EV2
+1       -1.8
+1        3,2
+1        1,2
+1       -2,8
+1        0,2
+
+design.con
+1 0
+
+I am unsure whether EV1 is needed as it was used in the FEAT, but not in the randomise example in the Glm Guide (Single-Group Average with Additional Covariate).
+
+I am looking foward to your response!
+
+Anna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

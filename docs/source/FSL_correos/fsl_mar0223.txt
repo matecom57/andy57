@@ -1,0 +1,655 @@
+I'm looking for some help with my brain segmentation workflow. We created a brain segmentation workflow that has the following steps
+- convert DICOM to NIFTI images
+- Run FSL BET to remove non brain tissue (skull stripping)
+- Run FSL FAST - Segmentation of each brain image into the specified number of classes and correction for spatial intensity variation
+- Show the output of the segmentation classes. We take the output of the Partial Volume Maps that gives 4 types of output labels -
+"CSF" , "Other tissue", "grey matter", "white matter"
+
+Issue is that - sometimes the 4 labels get mixed up. What should be CSF gets labeled as something else, and vice-versa.
+
+Is there a seed that needs to be set somewhere ? What could be causing this mislabeling even though the segmentation seems to be correct ? Please advise.
+
+Thanks, Krithika
+
+########################################################################
+
+Dear ASL team, I'm analyzing ASL data (FSL version: 6.0.4) from Philips using a 3D PCASL sequence with GRASE readout. We have an inplane resolution of 3x3 mm and a slice thickness of 6 mm. We selected voxel-wise calibration using an M0 image. The images were distortion corrected using a separate M0 image with reversed PE direction. For the segmentation we run fsl_anat. I have a question regarding the partial volume correction. In particular, in voxels with a quite low gray matter portion the correction produces relative high CBF values (gm portion 0.1 to 0.3 or 0.4) that seems to me unrealistic (up to 150 or even higher). The values corresponds roughly to uncorrected CBF values divided by GM portion. What is the exact formula for the calculation? Does it make sense to threshold the perfusion images with more stringent criteria, like 0.3? Attached is an image with uncorrected CBF values at the top (scaled 0 – 100), the pvgm_inasl image in the middle (scaled 0-1) and the PV corrected image at the bottom (scaled 0 to 100). The most noticeable differences are in the middle frontal area, lower temporal areas and at the edges. Should I use a cut-off for CBF values beyond a certain threshold (i.e. 150)? The second question relates to the extrapolation of the M0 image using asl_file (partial volume correction at the edges). The following command does not work. asl_file --data=M0n.nii.gz --extrapolate --out=M0n_extrapol.nii asl_file expects a time series or a difference image, but not a M0 image. How can I do this? Best regards, Ralf
+
+
+Hi Lin,
+          If you need to install 6.0.5.2 for any reason ( with the legacy installer ) then if you enter these commands into the terminal:
+
+CONDA_CHANNEL_PRIORITY=disabled
+CONDA_LOCAL_REPODATA_TTL=0
+
+and run fslinstaller.py, hopefully FSL should install as before.
+
+Kind Regards
+Matthew
+
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 2 Mar 2023, at 08:53, Lin Cai <bertram0611@gmail.com> wrote:
+>
+> Hi Matthew,
+>
+> When I installed the FSL 6.0.5, the error messages are as follows.
+> Today I installed FSL 6.0.6 with sudo python2 fslinstaller.py, it was installed successfully.
+>
+> Best,
+> Lin
+>
+> klab@DELL-Ubuntu02:~/Downloads$ python2 fslinstaller.py
+> --- FSL Installer - Version 3.3.0 ---
+> [Warning] Some operations of the installer require administative rights,
+>    for example installing into the default folder of /usr/local.
+>    If your account is an 'Administrator' (you have 'sudo' rights)
+>    then you will be prompted for your administrator password
+>    when necessary.
+> When asked a question, the default answer is given in square brackets.
+> Hit the Enter key to accept this default answer.
+> Where would you like the FSL install to be (including the FSL folder name)? [/usr/local/fsl]:
+> The requested version matches the installed version - do you wish to re-install FSL? [no]: yes
+> Downloading...
+> Checking FSL package       
+> [OK] File downloaded
+> Installing FSL software version 6.0.5.2...
+> FSL exists in the current location, would you like to keep a backup of the old version (N.B. You will not be able to use the old version)? [no]: no
+> We require your password to continue...
+> password:
+> [OK] FSL software installed.
+> Performing post install tasks
+> Stage 1
+> By installing this python distribution you agree to the license terms in
+> /usr/local/fsl/fslpython/LICENSE.txt
+> 100%
+> Stage 2
+> 100%
+>
+> ----- ERROR -----
+> Failed to create FSL Python environment - see /tmp/fslpythonOF7e/fslpython_miniconda_installer.log for details
+>
+> Post install setup failed
+> [OK] Post installation setup complete
+> Setting up FSL software...
+> [OK] User profile updated with FSL settings, you will need to log out and back in to use the FSL tools.
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear all,
+As a result of first level FEAT analysis, I have 5 maps per person (5 different levels of a regressor). I want to do lasso-PCR. For this, I need to first do a PCA (and I assume ICA  would be fine as well). Can I use melodic to do ICA across my participants (e.g. 25 participants * 5 images). Do I just need to stick the images together for this? And then run Melodic?
+Many thanks
+Jacquie
+
+########################################################################
+
+
+Hi Matthew,
+
+When I installed the FSL 6.0.5, the error messages are as follows.
+Today I installed FSL 6.0.6 with sudo python2 fslinstaller.py, it was installed successfully.
+
+Best,
+Lin
+
+klab@DELL-Ubuntu02:~/Downloads$ python2 fslinstaller.py
+--- FSL Installer - Version 3.3.0 ---
+[Warning] Some operations of the installer require administative rights,
+    for example installing into the default folder of /usr/local.
+    If your account is an 'Administrator' (you have 'sudo' rights)
+    then you will be prompted for your administrator password
+    when necessary.
+When asked a question, the default answer is given in square brackets.
+Hit the Enter key to accept this default answer.
+Where would you like the FSL install to be (including the FSL folder name)? [/usr/local/fsl]:
+The requested version matches the installed version - do you wish to re-install FSL? [no]: yes
+Downloading...
+Checking FSL package       
+[OK] File downloaded
+Installing FSL software version 6.0.5.2...
+FSL exists in the current location, would you like to keep a backup of the old version (N.B. You will not be able to use the old version)? [no]: no
+We require your password to continue...
+password:
+[OK] FSL software installed.
+Performing post install tasks
+Stage 1
+By installing this python distribution you agree to the license terms in
+/usr/local/fsl/fslpython/LICENSE.txt
+100%
+Stage 2
+100%
+
+----- ERROR -----
+Failed to create FSL Python environment - see /tmp/fslpythonOF7e/fslpython_miniconda_installer.log for details
+
+Post install setup failed
+[OK] Post installation setup complete
+Setting up FSL software...
+[OK] User profile updated with FSL settings, you will need to log out and back in to use the FSL tools.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Lin,
+   Can you let me know the error message you are receiving ( and the associated log file )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 2 Mar 2023, at 01:25, Lin Cai <bertram0611@gmail.com> wrote:
+
+Hi,
+
+I can not install FSL 6.0.5, or FSL 6.0.6 on my Ubuntu 18.04 either, even though the error messages is different from yours.
+
+Lin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi E,
+The installer should have returned a link to a log file when the error occurred - can you upload one of those logs so we can see what is happening?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 1 Mar 2023, at 20:40, P <0000993b9569c98c-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+
+Hi,
+
+I tried to install FSL four or five times now, using two machines, one with Ubuntu 20.04 (focal) installed, and second with Windows where Ubuntu was downloaded from Windows Store (Ubuntu 22.04.2 LTS).
+
+In both cases the same message with failed installation appears.
+
+"This command returned an error: home/xxx/fsl/bin/mamba env update -n base -f /tmp/xxx/fsl-6.0.6.3_linux-64.yml"
+
+Running the script with sudo doesn't help, running it with "python 2.7" to "python3.10" doesn't work. I also tried to reinstall conda myself, and it also did not work. Is FSL script broken and the software is no longer maintained or is there anything that can be done to install it? Thanks!
+
+E
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I have a question about BET.
+I was wondering if it's possible to extract brain using a mask to include olfactory bulb and tract.
+I'm currently using BET parameters as -f 0.34 -c 49 49 24 but both OB and OT seem to be missed out.
+I would really appreciate if anyone could help me adjusting these parameters or any other solutions to do so.
+
+Thank you in advance for your help.
+
+Jun
+
+########################################################################
+
+Dear experts,
+
+Recent versions of fslmaths give this error with -subsamp2 on a 4D volume. Is this behavior supposed to be permanent?
+
+>Image Exception : #75 :: 3D only method called by higher-dimensional volume.
+>terminate called after throwing an instance of 'std::runtime_error'
+> what():  3D only method called by higher-dimensional volume.
+
+Because it worked before (fsl 5.0.9) and niimath also supports 4D. I'm curious if there's any critical reason for this change or if it's just a bug to be taken care of. There were previous posts regarding this error during distortion correction, but not about this behavior per se. I use this function to extract the rough perfusion lag structure out of fMRI data.
+
+Thanks!
+
+
+Toshihiko ASO, MD, PhD
+Deputy Team Leader
+Laboratory for Brain Connectomics Imaging
+RIKEN Center for Biosystems Dynamics Research
+2-2-3 Minatojima-minamimachi, Chuo-ku, Kobe, Hyogo 650-0047, JAPAN
+Tel: +8178-304-7142 Fax: +8178-304-7141 Mobile: 090-1916-5150
+
+
+
+
+Hi,
+
+I tried to install FSL four or five times now, using two machines, one with Ubuntu 20.04 (focal) installed, and second with Windows where Ubuntu was downloaded from Windows Store (Ubuntu 22.04.2 LTS).
+
+In both cases the same message with failed installation appears.
+
+"This command returned an error: home/xxx/fsl/bin/mamba env update -n base -f /tmp/xxx/fsl-6.0.6.3_linux-64.yml"
+
+Running the script with sudo doesn't help, running it with "python 2.7" to "python3.10" doesn't work. I also tried to reinstall conda myself, and it also did not work. Is FSL script broken and the software is no longer maintained or is there anything that can be done to install it? Thanks!
+
+
+Dear FSL 's experts,
+
+I am having a problem I do not know how to solve.
+
+When running my script to preprocess dwi data it appears the following error: could not open matrix....
+
+Any help would be really appreciated.
+
+Kind regards,
+Rosalia
+
+rosalia@rosalia-Lenovo-Y520-15IKBN:/media/rosalia/LaCie/PROHEPIC_SCRIPTS$ ./dwi_batch_process.sh
+
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Could not open matrix file /media/rosalia/LaCie/PROHEPIC/PROHEPIC_SCRIPTS/dwi_params.txt
+
+
+
+It worked
+
+Aaron Tanenbaum
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Wednesday, March 1, 2023 9:53 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fail install of FSL6.06.3
+ 
+* External Email - Caution *
+
+I wonder if an existing .condarc file might be clashing somehow. Can you move
+
+/home/usr/tanenbauma/.condarc
+
+To a temporary location ( e.g. /home/usr/tanenbauma/.condarc_bak )
+
+And see if the error changes at all?
+
+Matthew
+/--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 1 Mar 2023, at 14:53, Tanenbaum, Aaron <aaron.tanenbaum@WUSTL.EDU> wrote:
+>
+> I attempted to install FSL 6.0.6.3. It failed. attached is the log file.
+>
+> Aaron Tanenbaum
+>
+>
+> The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fcgi-bin%2FWA-JISC.exe%3FSUBED1%3DFSL%26A%3D1&data=05%7C01%7Caaron.tanenbaum%40wustl.edu%7C926a0da4521249e2777408db1a6d255c%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638132828302183960%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=TyLpZVXCjfb0OWIbQaGo3sexpOXJ5n6n4zkCkzZuAeU%3D&reserved=0
+> <fslinstaller_o0gib2jd.log>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fcgi-bin%2FWA-JISC.exe%3FSUBED1%3DFSL%26A%3D1&data=05%7C01%7Caaron.tanenbaum%40wustl.edu%7C926a0da4521249e2777408db1a6d255c%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638132828302183960%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=TyLpZVXCjfb0OWIbQaGo3sexpOXJ5n6n4zkCkzZuAeU%3D&reserved=0
+
+This message was issued to members of https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2FFSL&data=05%7C01%7Caaron.tanenbaum%40wustl.edu%7C926a0da4521249e2777408db1a6d255c%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638132828302183960%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=7UraAqLXNpeYytVSWWwnNZ0csrnf9pWErouszEX7jD8%3D&reserved=0, a mailing list hosted by https://nam10.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2F&data=05%7C01%7Caaron.tanenbaum%40wustl.edu%7C926a0da4521249e2777408db1a6d255c%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638132828302183960%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=LxRUHO3orQI56M9xDT07S2Ye4%2FjH232fPGghOQF2o7A%3D&reserved=0, terms & conditions are available at https://nam10.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fpolicyandsecurity%2F&data=05%7C01%7Caaron.tanenbaum%40wustl.edu%7C926a0da4521249e2777408db1a6d255c%7C4ccca3b571cd4e6d974b4d9beb96c6d6%7C0%7C0%7C638132828302183960%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=RCDAmknD3mDPcCDxc3wyrENT%2FBhdsNUnr65ifuN3wBU%3D&reserved=0
+ 
+
+I wonder if an existing .condarc file might be clashing somehow. Can you move
+
+/home/usr/tanenbauma/.condarc
+
+To a temporary location ( e.g. /home/usr/tanenbauma/.condarc_bak )
+
+And see if the error changes at all?
+
+Matthew
+/--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 1 Mar 2023, at 14:53, Tanenbaum, Aaron <aaron.tanenbaum@WUSTL.EDU> wrote:
+>
+> I attempted to install FSL 6.0.6.3. It failed. attached is the log file.
+>
+> Aaron Tanenbaum
+>
+> 
+> The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+> <fslinstaller_o0gib2jd.log>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi  Paul,
+
+     After I install the fsl (6.0.6.3), I start to set up the Shell environment with the Guide help  (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/ShellSetup). I often use the tcsh, so I edit the ~/.cshrc with commands  :
+
+# FSL Setup
+setenv FSLDIR /usr/local/fsl
+setenv PATH ${FSLDIR}/share/fsl/bin:${PATH}
+source ${FSLDIR}/etc/fslconf/fsl.csh
+
+But,  It reports error if ...fi commands,  or so ..So, I check it and find that the etc/fslconf/fsl.csh has the error between line 31 -- 33.. Then, I change fi it with  endif...Then, it  reports setenv has too many arguments. I do not specify the place.  Now,  I change the fsl.csh with an old one from 5.0.6/etc/fslconf/fsl.csh. Hope fsl.csh could be updated and works well.
+
+Best wishes
+
+########################################################################
+
+
+Dear FSL users,
+        We are pleased to announce the release of FSL 6.0.6.3.
+
+This release contains a number of minor bug-fixes and improvements.
+
+This update can be downloaded via:
+
+http://www.fmrib.ox.ac.uk/fsldownloads/
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+CHANGELOG:
+
+### fsleyes             1.5.0     --> 1.6.1
+
+- Internal changes to avoid having to overwrite built-in matplotlib colour maps.
+- Added an outline button to the overlay display toolbar for mask overlays.
+- New --no3DInterp / -ni option, which prevents interpolation from being enabled for volume overlays when a 3D view is opened.
+- FSLeyes will now read "default" command-line arguments from a file called default_arguments.txt, stored in the FSLeyes settings directory.
+- New --numSlices command-line option for use with lightbox views, which  is an inverted alias for the --sliceSpacing option.
+- DICOM directories are now only scanned once, instead of each time they are opened via the Add from DICOM menu option.
+- The --useNegativeCmap / -un option is now automatically enabled when --negativeCmap / -nc is specified.
+- Fixed some issues related to shutting down FSLeyes cleanly, which could occasionally result in segmentation faults.
+- Fixed an issue with tractogram overlays not being drawn in some circumstances.
+- Fixed an issue with loading mesh vertex data.
+- Fixed an issue with loading annotations when using fsleyes render.
+
+
+### fslpy               3.10.0     --> 3.11.2
+
+- Fixed a bug in the dcm2niix function.
+- Adjusted the imrm and imglob scripts to support incomplete wildcard patterns (e.g. img_?? matching img_01.nii.gz).
+- New featquery wrapper function.
+- fixed the fslstats wrapper to handle index masks (the -K option) with missing label values.
+- New standard_space_roi, fslswapdim, fslmerge, fslsplit, fslselectvols, and fslcpgeom wrapper functions.
+- New fsl.wrappers.first wrapper functions.
+- New fsl.wrappers.bianca and fsl.wrappers.avwutils wrapper functions.
+- New fsl.wrappers.bedpostx and fsl.wrappers.dtifit wrapper functions.
+- New fsl.wrappers.feat.feat, melodic.fsl_regfilt and melodic.fsl_glm wrapper functions.
+- New oxford_asl and asl_file wrapper functions.
+- New wrapperconfig context manager function, which allows the default values for arguments passed by the fsl.wrappers functions to the fsl.utils.run.run function to be changed.
+- New affine.mergeBounds function.
+- The fsl.wrappers.fslmaths.fslmaths and fsl.wrappers.fslstats.fslstats wrapper functions have been updated to accept arguments destined for fsl.utils.run.run.
+- Mesh objects can now be created without indices/triangles - they can be assigned after creation.
+- The fsl.data.dicom module will now preferentially call $FSLDIR/bin/dcm2niix, instead of calling the first dcm2niix on the $PATH.
+- The applyArgStyle argmap argument can now be a callable which defines a rule which will be applied to all argument names.
+- The applyArgStyle valmap argument now accepts a new EXPAND_LIST option, which allows sequences to be expanded as separate command-line options.
+- Image objects can now be created without passing a nibabel.Nifti1Image (or similar) object, as long as a nibabel.Nifti1Header and a DataManager are provided.
+- Fixed a bug in the Image.strval method.
+
+
+### fsl-add_module       0.3.2     --> 0.4.0
+
+- Changed the default behaviour so that only files in the fsl_course_data category are downloaded. This can be overridden by specifying --category all.
+- Prefix downloaded files with their category name to reduce the likelihood of collisions across different categories (e.g. registration.tar.gz from the FSL course and from grad course data sets). Nothing is done to prevent collisions in extracted paths from different archives though.
+- The --force option can now be used without specifying any modules - it causes all modules in the default/selected cateogories to be downloaded.
+
+
+### fsl-base             2212.0     --> 2302.2
+
+- Small adjustments to the createFSLWrapper script.
+- Updated $FSLDIR/etc/fslconf/fsl.csh to bring it in sync with $FSLDIR/etc/fslconf/fsl.sh
+- New fslversion command, which prints information about a FSL installation.
+- Changed $FSLDIR/bin/Runtcl so that it does not check for a $DISPLAY environment variable (as this variable may not be present on macOS).
+- The $CXXFLAGS environment variable is now propagated through to nvcc calls.
+- The $FSLDEVDIR destination will be created if it doesn't already exist, when make install is run inside a FSL project directory.
+- The update_fsl_package command will add the FSL conda development channel to $FSLDIR/.condarc if the --development option is used.
+- The find_cuda_exe command will return the oldest available executable if nvidia-smi reports a CUDA version older than any available executable.
+
+
+### fsl-bet2             2111.0     --> 2111.2
+
+- Add guards for out-of-bounds -f and -g parameters.
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new versions of macOS).
+
+
+### fsl-eddy_qc         v1.1.1     --> v1.2.1
+
+- Minor improvements to plots and layout.
+
+
+### fsl-fabber_models_asl v2.0.7     --> v2.0.8
+
+- Add newinstance calls to work around factory registration broken in build against FSL6.0.6
+- Add multiple TEs per TI, ITT inference and separated T2 / T2b inference
+- Updates to support compiling against old and new (dynamic linking) versions of FSL
+
+
+### fsl-fast4           2111.0     --> 2111.3
+
+- Fixed and refactored 2-class PVE calculations
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl-fdt             2202.5     --> 2202.6
+
+- replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl-feat5           2201.2     --> 2201.4
+
+- Adjust pnm_stage1 web server creation to avoid pickle problems on macOS.
+- Fix file type for slice order file GUI option
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl-flirt           2111.0     --> 2111.1
+
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl-installer       3.0.0     --> 3.3.0
+
+- Update the installer to install macOS-M1 FSL builds if available.
+- Exit with a warning if an Intel FSL build is to be installed on a M1 machine, and Rosetta emulation is not enabled.
+- Unrecognised command-line arguments are ignored - this is to allow for forward-compatibility within a self-update cycle.
+- bash is used rather than sh when calling the miniconda installer script.
+- New hidden --miniconda option, allowing an alternate miniconda installer   to be used.
+- Allow different progress reporting implementations
+- Clear all $PYTHON* environment variables before installing miniconda and FSL.
+
+
+### fsl-melodic         2111.1     --> 2111.3
+
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+- Example dual_regression call does not match actual argument parsing
+
+
+### fsl-miscvis         2201.0     --> 2201.1
+
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl_mrs             2.0.9     --> 2.1.0
+
+- Fix bugs in fmrs stats contrasts.
+- Fix fmrs stats error for 1d matrices.
+- Move to nifti-mrs dependency.
+
+
+### fsl-oxford_asl       v4.0.28   --> v4.0.29
+
+- Ignore python build dir
+- Remove --save-native-masks option as this isn't suppported in oxford_asl version of ROI stats
+- Nifti1Image.get_data raises an error in nibabel 5
+- Install python components to $FSLDEVDIR. Remove unused/obsolete targets from SCRIPTS
+- Mis-organised kwargs meant that console_script entry points were not being installed
+- Set initial choice selection after call to pack, as SetFont seems to reset it on macOS/wxpython 4.1.1
+
+
+### fsl-pyfeeds         0.10.1     --> 0.11.0
+
+
+- Environment variables and tildes (~) can now be used in the pyfeeds configuration file, for options which expect a file path.
+- The pyfeeds hash file will now contain test names, purely for descriptive purposes.
+
+
+### fsl-pyfeeds-tests   2210.0     --> 2302.0
+
+- New pyfeeds test for old feeds tests. Relies on "old_feeds" external data
+- Fixes to a few feedsRun scripts
+
+
+### fsl-randomise       2203.2     --> 2203.3
+
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl-siena           2111.0     --> 2111.1
+
+- replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl_sub_plugin_slurm 1.4.3     --> 1.4.4
+
+- os.rename does not always work when tmpdir and cwd are on different file systems. shutil.move is able to handle this with a copy/delete mechanism.
+- Use warnings not logger.warn
+- Ensure fsl_sub 2.7 is installed
+
+
+### fsl-tbss             2111.0     --> 2111.1
+
+- Replace dc calls with syntax that will work on all platforms ("dc -" is unsupported on new macOS)
+
+
+### fsl-xtract           1.5.1     --> 1.6.2
+
+- Removed xtract_qc install as per SW request
+- Baby xtract, fsl_sub updates, xtract_qc, plus minor fixes
+
+
+### fsl-xtract_data     1.3.4     --> 2.0.1
+
+- Baby xtract
+
+########################################################################
+
+
+
+
+Hi paul,
+
+     I solve the problem by updating the python3.7 to python3.10.  It seems that Python3.7 would stop updating...I am not sure. After updating the python3.10, I first run the file "Install Certificates.command" from the Python3.10 direcctory.  Then, I run python3.10 fslinstaller.py.
+
+Here I paste the error  fromt he conda.core.link...
+
+Great  thanks
+
+Kangcheng
+
+Hi,
+
+I am currently preprocessing the DWI data of a trial run for a new MRI study. I am quite new to these types of data, so I have a (probably naive) question:
+From what I understand, it is required for TOPUP to have an opposite PE image (primary direction is AP). The data that I got from the hospital only has a b0 image in the opposite direction (PA instead of AP), but this image has a different FOV (only lower half brain). Also, when trying to merge the b0 images in opposite directions, I get the error that there are inconsistent orientations for individual images. I was thus wondering if I can use this PA b0-image or not? If there is a problem, I can still change the parameters before we start the actual data collection, so it would be great if you could help me out!
+
+Thank you so much!
+
+Best,
+
+Cheyenne
+
+########################################################################
+
+Thanks for your prompt response.
+
+Yes. I moved the FSL directory after installing.
+Will it work if I just create a soft link of the original installed directory at another location? Like this:
+ln -s original-installed-location/fsl6 /opt/fsl
+
+Then, in my shell configuration file, I'll use
+FSLDIR=/opt/fsl
+
+Thanks!
+Shen
+
+########################################################################
+
+Hello Everyone,
+
+In my dataset, the fix_training. RData file is generated for all the other subjects; however, for two subjects, the. Rdata is not created.
+I have tried the following:
+- Re-ran the feat preprocessing thrice.
+- Checked the hand_labels_noise.txt for commas, space, and brackets and made sure that there was an empty final line after that.
+- Checked the.Rlog file which shows:   Error in knn(train.data[, -dim(train.data)[2]], train.data[, -dim(train.data)[2]],  :
+  no missing values are allowed
+  Execution halted
+
+Please take a look at the attached .Rlog file & sample hand_labels_noise.txt
+
+Looking forward to your response!
+Thanks in advance!
+
+Best,
+Priyanka
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

@@ -1,0 +1,1356 @@
+Dear Will,
+
+Apologies for my slow response. Thank you so much for having a close look at our data. The processing and fitting script that you shared sound like a good way to approach the data we have. We will run it on the rest of the dataset and let you know if it consistently results in reasonable first order phase values (like the 3 deg/ppm from the report that you shared).
+
+The smaller value of the first point in the FID is there in the data directly from the scanner. For this study I used a scanner patch to export every transient into the SDAT files. For other studies I export the MRS "raw" data as .data/.list files, which can be done from the Philips scanner user interface if you have a research agreement with Philips.  The scanner does downsample from 16,000Hz to 2,000Hz before saving the .SDAT/.SPAR and .data/.list files, but these files contain the FIDs from all transients and all channels. I then load the .data/.list files into MATLAB and write them out as .SDAT/.SPAR for FSL-MRS. I would be happy to share the .data/.list MATLAB reader if you would like to include this filetype for FSL-MRS?
+
+Also thank you for the suggestion to limit the basis set to the more highly concentrated metabolites. We will take a closer look now that we understand the processing steps more clearly.
+
+Thank you again! Your help and support is truly appreciated!!
+Erin
+
+########################################################################
+
+
+Hello,
+
+I am using randomise with TFCE to examine the effects of diagnosis (HC, MCI, AD), sex (F, M), and APOE-genotype (carrier, non) on the FA skeleton in 450 subjects. As suggested by the GLM Wiki page, I set up my design and contrast matrices using a factor effects approach. I also included age as a covariate, which was centered across the mean of all subjects. I've included my matrices below. Do they look correct?
+
+All main effects and interactions in the model were significant. To run post hoc comparisons for the 2- and 3-way interactions which approach would you suggest? For example, if I was running posthoc comparisons for the sex*APOE interaction, would you suggest:
+
+1. Extract the average FA for all subjects from the all_FA_skeleton based on significant clusters from the sex*APOE4 fmap and run follow-up statistics in R, or
+2. Run voxelwise t-tests within each level of the factors (e.g., (1) within females, examine voxelwise differences between e4 and none4 carriers; (2) within males, examine voxelwise differences between e4 and none4 carriers; etc)?
+
+Thanks,
+Jenna
+
+------ DESIGN MATRICES ------
+#### Description
+column 1 = mean
+column 2 = sex (1 M; -1 F)
+column 3 = APOE (1 non-carrier; -1 carrier)
+column 4 = DX1 (1 HC, -1 AD)
+column 5 = DX2 (1 MCI, -1 AD)
+column 6 = age
+column 7= sex*e4 (col2*col3)
+column 8 = sex*dx1
+column 9 = sex*dx2
+column 10 = apoe*dx1
+column 11 = apoe*dx2
+column 12 = sex*apoe*dx1
+column 13 = sex*apoe*dx2
+
+### File contents
+
+/NumWaves 13
+/NumPoints 450
+/Matrix
+1       -1      1       0       1       9.414004376     -1      0       -1      0       1       0       -1
+1       1       1       0       1       11.41400438     1       0       1       0       1       0       1
+1       1       1       0       1       6.014004376     1       0       1       0       1       0       1
+1       1       1       0       1       8.714004376     1       0       1       0       1       0       1
+1       1       1       -1      -1      8.514004376     1       -1      -1      -1      -1      -1      -1
+1       -1      1       -1      -1      13.61400438     -1      1       1       -1      -1      1       1
+1       1       1       1       0       8.314004376     1       1       0       1       0       1       0
+
+
+
+------ CONTRAST MATRICES ------
+#### Description
+contrast 1 = sex
+contrast 2 = APOE
+contrast 3 = DX1
+contrast 4 = DX2
+contrast 5 = sex*apoe
+contrast 6 = sex*dx1
+contrast 7= sex*dx2
+contrast 8 = apoe*dx1
+contrast 9 = apoe*dx2
+contrast 10 = sex*apoe*dx1
+contrast 11 = sex*apoe*dx2
+
+### File contents
+
+/NumWaves 13
+/NumPoints 11
+/Matrix
+0       1       0       0       0       0       0       0       0       0       0       0       0
+0       0       1       0       0       0       0       0       0       0       0       0       0
+0       0       0       1       0       0       0       0       0       0       0       0       0
+0       0       0       0       1       0       0       0       0       0       0       0       0
+0       0       0       0       0       0       1       0       0       0       0       0       0
+0       0       0       0       0       0       0       1       0       0       0       0       0
+0       0       0       0       0       0       0       0       1       0       0       0       0
+0       0       0       0       0       0       0       0       0       1       0       0       0
+0       0       0       0       0       0       0       0       0       0       1       0       0
+0       0       0       0       0       0       0       0       0       0       0       1       0
+0       0       0       0       0       0       0       0       0       0       0       0       1
+
+
+
+------ FTEST MATRICES ------
+#### Description
+contrast 1 = sex
+contrast 2 = APOE
+contrast 3 = DX
+contrast 4 = sex*apoe
+contrast 5 = sex*dx
+contrast 6= apoe*dx
+contrast 7 = 3-way interaction
+
+### File contents
+/NumWaves 11
+/NumPoints 7
+/Matrix
+1       0       0       0       0       0       0       0       0       0       0
+0       1       0       0       0       0       0       0       0       0       0
+0       0       1       1       0       0       0       0       0       0       0
+0       0       0       0       1       0       0       0       0       0       0
+0       0       0       0       0       1       1       0       0       0       0
+0       0       0       0       0       0       0       1       1       0       0
+0       0       0       0       0       0       0       0       0       1       1
+
+########################################################################
+
+
+Hi
+
+ 
+
+Yes you will get FA/MD values predicted by the kurtosis model. But one issue with FA in particular is that it may be biased due to the assumption that you have one single kurtosis parameter controlling non-gaussian diffusion along all directions.  So I would use single shell at least for FA calculations.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jun Yeon Won <won25@UMD.EDU>
+Date: Wednesday, 25 January 2023 at 01:57
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Multishell Data dtifit Question
+
+Hi Saad,
+
+ 
+
+Thank you for the explanation. Could you clarify one more thing? If I use the —kurt option for the multishell data, the FA and other diffusion parameters are calculated based on the kurtosis model already?
+
+ 
+
+Best,
+
+Jun
+
+ 
+
+On Tue, Jan 24, 2023 at 3:01 PM Reid, Robert I. (Rob) <000021189f1cfce9-dmarc-request@jiscmail.ac.uk> wrote:
+
+Hi,
+
+ 
+
+Thank you for posting the plugin code! I’m not sure I want to look at all 4 dimensions simultaneously, but it is inspirational.
+
+ 
+
+I recommend correcting for Rician bias before doing anything with b > ~1300 s/mm^2, depending on the SNR: Koay et al 2009. It will not fix DTI’s issues with multiple bundle directions, but on the other hand if the noise floor is not removed, DKI has more freedom to fit it.
+
+ 
+
+Best regards,
+
+ 
+
+Rob
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Saad Jbabdi
+Sent: Monday, January 23, 2023 2:32 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: [EXTERNAL] Re: [FSL] Multishell Data dtifit Question
+
+ 
+
+Hi Jun
+
+ 
+
+The DTI model is a bad fit for multishell data that spans this bvalue range, and fitting it to multishell will tend to bias the parameters. The correct thing to do is to extract one shell, or you can use a kurtosis model.
+
+ 
+
+Have a look at this tweet from last September: https://twitter.com/SaadJbabdi/status/1567554211012923394
+
+ 
+
+It shows (and shares) a FSLeyes plugin for diffusion where you can easily compare DTI and kurtosis fits and the resulting parameters. I hope it is helpful to you.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jun Yeon Won <won25@UMD.EDU>
+Date: Monday, 23 January 2023 at 19:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Multishell Data dtifit Question
+
+Dear FSL experts,
+
+ 
+
+I just ran dtifit on multi-shell dti data and extracted b1000 from the multi-shell data. The images look like below. The left one is the FA image from the entire multi-shell data and the right one is the FA image from the b1000 extracted from the multi-shell data. Their FA values are different on the same location (the left one: 0.908, the right one (0.888).
+
+ 
+
+
+
+ 
+
+I am wondering how dtifit works on multi-shell data. Could you please let me know how it decides the b value from the multi-shell data? Thank you!
+
+ 
+
+Best,
+
+Jun
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Sarah
+
+ 
+
+I am not a big fan of throwing away data. So unless the number of runs per subject correlates with your design (e.g. all patients have 2 runs, all controls have 1 run), you can use all the data. Another consideration is if the presence of 2 runs means you can do significantly better pre-processing (e.g. 1 run blip up and 1 run blip down). If it is just about having more averages in some subjects, I would keep them in. There will always be differences in data quality across subjects. That being said, others on this list might strongly disagree with me here! 
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Sarah Fan <siyan.fan@YALE.EDU>
+Date: Thursday, 26 January 2023 at 16:51
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] DTI question
+
+Dear FSL expert,
+
+I am currently processing a DTI dataset with some subjects have two runs and others have just one run. I have combined the DTI runs into 1 for those subjects have 2 runs, however, I am wondering would it be better to keep the dataset more consistent i.e. everyone just has one run instead of some have two combined into 1 and others have 1 run only. Would this mixing affect the findings in any ways?
+
+Many thanks,
+Sarah
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+
+Dear Robin,
+
+  
+
+    We have a dataset of about 130 subjects. Each have one raw T1 image. These T1-images have been through minor prepping steps (e.g., cutting out neck, centering).
+
+   
+
+    There are about 60+ patients and 60+ controls.
+
+   
+
+    The data has been run through Freesurfer´s recon-all function, and we summarized the volumes of the left and right hippocampus from the aseg output files. We ran wilcoxon unpaired (1-sided and 2-sides) tests, and the difference turned out significant between the two groups. Hippocampus volume smaller in patients. This study was published, and the difference of the median of the groups was about 7489.9 (HC) - 7315.3 (patients) = 175 mm^3.
+
+   
+
+    We then ran the exact same data (the T1 data we used as input to freesurfer) as input to the FSL VBM pipeline. We made the template balanced between the two groups, given that one group had about 5 more subjects.
+
+    I was expecting VBM to also find significant differences near hippocampus. Or at least borderline, since VBM might be more conservative since we test so many voxels instead of just one volume value per subject.
+
+   
+
+    But the tfce output from randomize is not significant, not even close (1-p = 0.5/06 as best). We tested multiple levels of smoothing and preformed the tests on both GM, GM-mod and on the jacobians (if the difference was purely volumetric / needed expansion in the patient group). As well as 3 different skull-stripping methods (bet -n, bet -b, SSwarper in AFNI).
+
+   
+
+    Can someone explain to me if this is "expected"?
+
+    Or how this can be?
+
+   
+
+I wouldn’t call it “expected”, but I can see how something like this can happen. I think that at the core of it is that you are asking two very different questions here. In the freesurfer case you ask “is there a difference in volume in the hippocampus?”. In the VBM case you ask “is there a difference anywhere in the brain”.
+
+ 
+
+That means that in the latter case you perform a whole slew of different tests, essentially asking “is there a difference in this here, is there a difference here …”. When doing that you need to take care that you do your inferential testing in such a way that you still control your false positive rate. In the simplest case you can think of each voxel in your VBM map as an independent test, and if you were to reject the null at the “regular” 0.05 level you would find on average one false positive per 20 voxels. Multiply that by the number of voxels, and that is a lot of false positives.
+
+ 
+
+In reality it isn’t quite as bad as that since neighbouring voxels are strongly correlated, so there isn’t as many independent tests as there are voxels. But even so you typically end up with voxelwise thresholds of ~4.5, which would correspond to several thousand independent tests. There is a very big difference for an effect (difference between patients and HC) to have to reach a z-score of ~1.645 (single 1-sided test) compared to ~4.5.
+
+ 
+
+The comparison isn’t necessarily as straightforward as above. It is complicated by using a “cluster test” such as TFCE (which considers a neighbourhood), which should increase the relative sensitivity for the VBM test. And also by the fact that when you decide on a region to perform a directed test at (like the hippocampus in your case) you may not have chosen an optimal region. Imagine for example that in your case the “true” difference is only in one part of the hippocampus (for example CA1), then by performing your test on the whole of the hippocampus you may reduce your sensitivity.
+
+ 
+
+But it is nevertheless the case that when you perform a directed test for a single region you tend to be _much_ more sensitive than when looking for any difference anywhere in the brain. I am personally a big fan of doing more directed tests whenever there is pre-existing knowledge to guide it. One way to do that would be by using the mask option in randomise (-m). That reduces the “search space” you statistical map to the areas included in the mask. It still doesn’t reduce the number of tests to a single test, but it also doesn’t have the disadvantage of lumping the whole regions (cf. CA1 above).
+
+ 
+
+I hope this helps Jesper
+
+ 
+
+ 
+
+    Best of regards,
+
+    Robin
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+
+Dear Colleagues
+
+
+Applications are invited for a post-doctoral position in the Sir Peter Mansfield Imaging Centre (SPMIC), University of Nottingham, UK.
+
+ 
+
+The post is funded by the European Research Council (ERC) to develop generative models of brain connectivity/tractography data using deep learning approaches (such as autoencoders and generative adversarial networks), with the aim of normative modeling and/or data harmonisation.
+
+ 
+
+The successful candidate will join the Computational Neuroimaging Laboratory (https://conilab.nottingham.ac.uk) at SPMIC, who develop innovative methodologies for brain mapping using diffusion MRI. They will have the opportunity to integrate into other projects of the group and pursue inter-disciplinary collaborations within the SPMIC centre (https://www.nottingham.ac.uk/research/groups/spmic/index.aspx), the home of MRI and soon of the ultra-high field (11.7T) UK national facility; as well as collaborate with our international partners.
+
+ 
+
+More information and application details for the post can be found here.
+
+https://jobs.nottingham.ac.uk/Vacancy.aspx?id=42830
+
+ 
+
+The post is offered for two years in the first instance (but further extension is possible).
+
+ 
+
+Please do not hesitate to contact me for any informal inquiries. 
+
+ 
+
+Best wishes
+
+Stam
+
+ 
+
+ 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stamatios N Sotiropoulos, PhD
+*Professor & ERC Consolidator Fellow
+
+Head of the Computational Neuroimaging Group
+
+Sir Peter Mansfield Imaging Centre & Precision Imaging Beacon
+
+Mental Health & Clinical Neurosciences, School of Medicine
+
+University of Nottingham
+
+ 
+
+*Honorary Research Fellow 
+Wellcome Centre for Integrative Neuroimaging - WIN/FMRIB
+University of Oxford
+
+t: +44 (0) 115 82 31027
+w: https://conilab.nottingham.ac.uk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Dear Sarah,
+
+ 
+
+    I am currently processing a DTI dataset with some subjects have two runs and others have just one run. I have combined the DTI runs into 1 for those subjects have 2 runs, however, I am wondering would it be better to keep the dataset more consistent i.e. everyone just has one run instead of some have two combined into 1 and others have 1 run only. Would this mixing affect the findings in any ways?
+
+ 
+
+I suspect different people might give you different answers to this question, and it also depends on what subsequent analysis you plan to use the data for. If you plan to do some sort of inferential testing where you for example compare two different groups or want to correlate the data to some independent variable (age, disease duration etc), then you could argue that
+
+the correct thing would be for the data from all subjects to be associated with the same uncertainty, i.e. be based on one run each. And you wouldn’t be wrong.
+
+ 
+
+On the other hand one could argue that as long as the presence of an extra run doesn’t correlate with the independent variable (for example as long as you have the same proportion of 1-to-2 runs in both your groups) it makes sense to use all the available data.
+
+ 
+
+I think I would fall in the latter category. But as I said, I suspect that there are people who would fall in the first.
+
+ 
+
+Best regards Jesper
+
+    
+
+    ########################################################################
+
+Hi Rene
+
+ 
+
+The analysis will be carried out on the parts of the brain that are covered in all subjects, so this will likely not affect your results unless you are interested in the brainstem, in which case you would need that covered by the field of view in all subjects.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+On 27/01/2023, 10:00, "FSL - FMRIB's Software Library" <FSL@JISCMAIL.AC.UK> wrote:
+
+Dear experts:
+
+I am getting in touch with you because I am running TBSS and I don’t know if this difference between 2 different datasets similar parameter acquisitions for DTI are compatible for this TBSS or how can I change it accordingly to make it work. As you see in the image one dataset has brainstem and the other does not. Do I need to change something or I do not?
+
+ 
+
+Thanks for your help in advance!
+
+ 
+
+ 
+
+Best,
+
+Rene Andrade.
+
+ 
+
+ 
+
+ 
+
+########################################################################
+
+ 
+
+Dear experts:
+I am getting in touch with you because I am running TBSS and I don’t know if this difference between 2 different datasets similar parameter acquisitions for DTI are compatible for this TBSS or how can I change it accordingly to make it work. As you see in the image one dataset has brainstem and the other does not. Do I need to change something or I do not?
+
+Thanks for your help in advance!
+
+
+Best,
+Rene Andrade.
+
+
+
+########################################################################
+
+Hi Erin,
+
+ 
+
+Do let me know how you get on. Re data/list, spec2nii does already handle that export type, you need to also provide an SPAR or DICOM file for all the metadata data/list doesn’t export.
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Erin L. MacMillan <erin.macmillan@UBC.CA>
+Date: Friday, 27 January 2023 at 00:19
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSL-MRS: Limit First Order Phase?
+
+Dear Will,
+
+Apologies for my slow response. Thank you so much for having a close look at our data. The processing and fitting script that you shared sound like a good way to approach the data we have. We will run it on the rest of the dataset and let you know if it consistently results in reasonable first order phase values (like the 3 deg/ppm from the report that you shared).
+
+The smaller value of the first point in the FID is there in the data directly from the scanner. For this study I used a scanner patch to export every transient into the SDAT files. For other studies I export the MRS "raw" data as .data/.list files, which can be done from the Philips scanner user interface if you have a research agreement with Philips.  The scanner does downsample from 16,000Hz to 2,000Hz before saving the .SDAT/.SPAR and .data/.list files, but these files contain the FIDs from all transients and all channels. I then load the .data/.list files into MATLAB and write them out as .SDAT/.SPAR for FSL-MRS. I would be happy to share the .data/.list MATLAB reader if you would like to include this filetype for FSL-MRS?
+
+Also thank you for the suggestion to limit the basis set to the more highly concentrated metabolites. We will take a closer look now that we understand the processing steps more clearly.
+
+Thank you again! Your help and support is truly appreciated!!
+Erin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear Will,
+
+Apologies for my slow response. Thank you so much for having a close look at our data. The processing and fitting script that you shared sound like a good way to approach the data we have. We will run it on the rest of the dataset and let you know if it consistently results in reasonable first order phase values (like the 3 deg/ppm from the report that you shared).
+
+The smaller value of the first point in the FID is there in the data directly from the scanner. For this study I used a scanner patch to export every transient into the SDAT files. For other studies I export the MRS "raw" data as .data/.list files, which can be done from the Philips scanner user interface if you have a research agreement with Philips.  The scanner does downsample from 16,000Hz to 2,000Hz before saving the .SDAT/.SPAR and .data/.list files, but these files contain the FIDs from all transients and all channels. I then load the .data/.list files into MATLAB and write them out as .SDAT/.SPAR for FSL-MRS. I would be happy to share the .data/.list MATLAB reader if you would like to include this filetype for FSL-MRS?
+
+Also thank you for the suggestion to limit the basis set to the more highly concentrated metabolites. We will take a closer look now that we understand the processing steps more clearly.
+
+Thank you again! Your help and support is truly appreciated!!
+Erin
+
+########################################################################
+
+Dear Fsl expert,
+
+I am using Melodic ICA & the fsl_regfilt to clean functional data
+(remove the noise components). My data were preprocessed (no smoothing
+is applied) using SPM12, and the only Melodic preprocessing option that
+I used is the smoothing of the functional data with a kernel of 5x5x5
+mm. Could anyone tell me if the "filtered_func_data.nii.gz" melodic
+output is a smoothed data and so, I need to take into account this
+smoothing for my statistical analysis?
+
+Many thanks for your times,
+
+Best regards,
+
+Mohamed
+
+########################################################################
+
+Dear experts:
+
+On TBSS when I have done randomise I obtain tstats1 and tstats2 maps. When I use them as overlays onto MNI152_T1_1mm I cannot see a thing. It colours all the brain. Is that normal? What could be the issue?
+
+Also I wonder if I can use cluster after using randomise for TBSS?
+
+Best,
+Rene Andrade.
+########################################################################
+
+
+Dear David,
+  I’ve been able to reproduce this locally - it does seem to be a bug in pve estimation when n=2, we’re looking into a solution for a future release of FSL.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 26 Jan 2023, at 14:33, David van Nederpelt <d.vannederpelt@AMSTERDAMUMC.NL> wrote:
+
+Dear FSL,
+
+For a specific task i would like to segment an image with fast using only 2 classess. While the pve_0 file gives a nice partial volume estimate for boundary voxels, pve_1 seems to be a binary mask instead of a "partial volume image". Is this suppost to be a binary mask (while I would expect a PV image). I've tried it on multiple scanner images (all T1w contrast) and have extracted the brains before segmentation.
+
+Thank you in advance,
+
+Kind regards,
+David van Nederpelt
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Lauren,
+Bu default melodic uses MIGP dimensionality reduction, to obtain the “classic” mixing matrix you can add the --disableMigp option to the command line call ( the actual spatial maps should be very similar for both cases ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear FSL,
+
+For a specific task i would like to segment an image with fast using only 2 classess. While the pve_0 file gives a nice partial volume estimate for boundary voxels, pve_1 seems to be a binary mask instead of a "partial volume image". Is this suppost to be a binary mask (while I would expect a PV image). I've tried it on multiple scanner images (all T1w contrast) and have extracted the brains before segmentation.
+
+Thank you in advance,
+
+Kind regards,
+David van Nederpelt
+
+########################################################################
+
+
+Dear Rezvan,
+
+Thanks for your reply!
+Installation with conda also worked fine from my side.
+Again, thank you for sharing this wonderful software!
+
+Best,
+Ikko
+
+--------------------------------------------------------------------
+Ikko Kimura M.D., Ph.D. candidate
+1. Graduate School of Frontier Biosciences, Osaka University, Japan
+2. Department of Neurology, Osaka University Hospital, Japan
+3. Center for Information and Neural Networks (CiNet), NICT, Japan
+4. Laboratory for Brain Connectomics Imaging, RIKEN Center for Biosystems Dynamics Research, Japan
+Room 2B6, 1-4 Yamadaoka, Suita City, Osaka, 565-0871, Japan
+e-mail: ikimura@nict.go.jp
+--------------------------------------------------------------------
+
+2023年1月26日(木) 1:54 Rezvan Farahibozorg <rezvan.farahibozorg@ndcn.ox.ac.uk>:
+Hi Ikko,
+
+Thanks for getting in touch and apologies for the delay in replying. Our software team has recently made a Conda package for PROFUMO to make its installation easier. 
+
+You can download it from here, there is a download button on the right hand side of the page:
+
+https://git.fmrib.ox.ac.uk/fsl/conda/fsl-profumo/-/jobs/72189
+
+ 
+
+Once downloaded, you can install it like this: 
+
+$unzip artifacts.zip
+$conda create -y -c $(pwd)/conda_build/_linux-64_/ -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ -c conda-forge -p profumo.env fsl-profumo
+
+$source activate ./profumo.env # or however you activate conda envs on your system
+
+$PROFUMO --help
+
+ 
+
+This is a beta version of this Conda package and its installation should be much simpler. Please do let us know if it works for you or if you run into any problems during installation and/or when running the code.
+
+ 
+
+Best,
+
+Rezvan
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ikko Kimura <ikko1001676@GMAIL.COM>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, 16 December 2022 at 13:23
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Error in installing profumo
+
+ 
+
+Dear all,
+
+ 
+
+I'm trying to install profumo building from the source with Ubuntu 20.04.5 LTS and FSL 6.0.5.
+
+I followed the link (https://git.fmrib.ox.ac.uk/profumo/profumo#installation), but when I built C++ codes with 'make all CXXEXTRAS="-fopenmp" LDEXTRAS="-fopenmp -lopenblas,' I got the error like the below:
+
+/usr/bin/ld: /usr/local/fsl/lib/libNewNifti.a(NewNifti.o): relocation R_X86_64_32S against symbol `_ZNSs4_Rep20_S_empty_rep_storageE@@GLIBCXX_3.4' can not be used when making a PIE object; recompile with -fPIE
+
+(I also attached all the error)
+
+ 
+
+I thought that this might to be due to the "linker errors about the NIfTI library," but when I copied "${FSLDIR}/src/NewNifti" and build from them, I also got the error saying that "default.mk was not found."
+
+
+
+
+Could someone tell me what to do next?
+
+Thanks in advance!
+
+Ikko
+
+
+   
+
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Ikko,
+
+Thanks for getting in touch and apologies for the delay in replying. Our software team has recently made a Conda package for PROFUMO to make its installation easier. 
+
+You can download it from here, there is a download button on the right hand side of the page:
+
+https://git.fmrib.ox.ac.uk/fsl/conda/fsl-profumo/-/jobs/72189
+
+ 
+
+Once downloaded, you can install it like this: 
+
+$unzip artifacts.zip
+$conda create -y -c $(pwd)/conda_build/_linux-64_/ -c https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/ -c conda-forge -p profumo.env fsl-profumo
+
+$source activate ./profumo.env # or however you activate conda envs on your system
+
+$PROFUMO --help
+
+ 
+
+This is a beta version of this Conda package and its installation should be much simpler. Please do let us know if it works for you or if you run into any problems during installation and/or when running the code.
+
+ 
+
+Best,
+
+Rezvan
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ikko Kimura <ikko1001676@GMAIL.COM>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, 16 December 2022 at 13:23
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Error in installing profumo
+
+ 
+
+Dear all,
+
+ 
+
+I'm trying to install profumo building from the source with Ubuntu 20.04.5 LTS and FSL 6.0.5.
+
+I followed the link (https://git.fmrib.ox.ac.uk/profumo/profumo#installation), but when I built C++ codes with 'make all CXXEXTRAS="-fopenmp" LDEXTRAS="-fopenmp -lopenblas,' I got the error like the below:
+
+/usr/bin/ld: /usr/local/fsl/lib/libNewNifti.a(NewNifti.o): relocation R_X86_64_32S against symbol `_ZNSs4_Rep20_S_empty_rep_storageE@@GLIBCXX_3.4' can not be used when making a PIE object; recompile with -fPIE
+
+(I also attached all the error)
+
+ 
+
+I thought that this might to be due to the "linker errors about the NIfTI library," but when I copied "${FSLDIR}/src/NewNifti" and build from them, I also got the error saying that "default.mk was not found."
+
+
+
+
+Could someone tell me what to do next?
+
+Thanks in advance!
+
+Ikko
+
+
+   
+
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Ryu,
+The GLM fit is for the whole model - each contrast is simply a specific combination of the calculated parameters. Inputting 0 into EV1,EV3 etc means that this hypothesis does not explicitly involve EV1/EV3.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 22 Jan 2023, at 19:24, Ryu Lien <rlien2@UWO.CA> wrote:
+
+Hi everyone,
+
+I created a contrast in the GLM GUI and it has the following information:
+
+EV1 = G2 pre
+EV2 = G2 post
+EV3 = G1 pre
+EV4 = G1 post
+EV5 = Age
+EV6 = MoCA
+
+Contrast Title                EV1    EV2    EV3    EV4    EV5     EV6   
+G1post < G2 post.          0         1       0       -1       0         0
+
+My question is... does inputting 0 into EV1 and EV3 control for the pre- (baseline) for both G1 and G2?
+
+Hope to hear back soon!
+
+Best,
+Ryu     
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello,
+  This has been answered in the other thread.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 24 Jan 2023, at 13:44, Lauren Lang <llang3@EMORY.EDU> wrote:
+
+I can't seem to figure out where in my output files I can access the group mixing matrix of a melodic temporal concatenation. The name of the output file would be greatly appreciated!
+
+########################################################################
+
+
+Hello,
+ I think this may be the sometimes confusing terminology of General and Generalised Linear Models. FSL uses the General Linear Model, so no explicit link function definition is required.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 25 Jan 2023, at 11:05, Marco Ganzetti <0000945c4659118f-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hello,
+I have a question concerning the GLM model.
+As far as I know, when I use a GLM to fit data in software packages such as (R, statsmodels in Python) I need to define a link function, the so called "family" (it can be binomial, gaussian, gamma, poisson, etc).
+
+In the context of FSL, how does the link function definition work?
+
+Kind regards,
+Marco
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Lorenzo,
+This has been answered in the other thread.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 17 Jan 2023, at 22:00, Lorenzo Pini <pini.lorenzo2@GMAIL.COM> wrote:
+
+Dear FSL experts,
+
+Is the notebook for fsl-profumo still available?
+Following the main FSL page it should be locate at:
+
+wget https://git.fmrib.ox.ac.uk/rezvanh/sprofumo_develop/-/raw/master/FSLcourse/PFM_practical.ipynb
+
+However, it seems unreadable: "Notebook does not appear to be JSON"
+
+Thanks
+Lorenzo
+
+
+Dear Lorenzo,
+The notebook has been moved to a new location ( the practical instructions provide the new URL ).
+
+Hope this helps,
+Kind Regards
+Matthew 
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 25 Jan 2023, at 11:28, Lorenzo Pini <pini.lorenzo2@GMAIL.COM> wrote:
+
+Dear FSL experts,
+
+Is the notebook for fsl-profumo still available?
+Following the main FSL page it should be locate at:
+
+wget https://git.fmrib.ox.ac.uk/rezvanh/sprofumo_develop/-/raw/master/FSLcourse/PFM_practical.ipynb
+
+However, it seems unreadable: "Notebook does not appear to be JSON"
+
+Thanks
+Lorenzo
+
+Hi Jun
+
+ 
+
+The DTI model is a bad fit for multishell data that spans this bvalue range, and fitting it to multishell will tend to bias the parameters. The correct thing to do is to extract one shell, or you can use a kurtosis model.
+
+ 
+
+Have a look at this tweet from last September: https://twitter.com/SaadJbabdi/status/1567554211012923394
+
+ 
+
+It shows (and shares) a FSLeyes plugin for diffusion where you can easily compare DTI and kurtosis fits and the resulting parameters. I hope it is helpful to you.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+Hi Lior,
+
+The percentage values reported in the FSLeyes atlas panel are taken from the 1mm version of the atlas, which will have slightly different values to those in the 2mm version, from which you generated your mask.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lior Abramson Vaisman <labramson87@GMAIL.COM>
+Sent: 23 January 2023 14:22
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] ROI based on probabilistic atlases
+ 
+Hi,
+I want to extract a mask based on Juelich atlas, considering only voxels that have 50% of belonging to a specific region (amygdala nuclei).
+I thought I should do it with the "fslmaths [FILENAME] -thr 50 [OUTPUT_NAME]".
+However, I it appears that this command uses some activation threshold that does not 100% overlap with the atlas probabilities.
+For example, in the attached screenshot, the probability of being part of the lateralobasal amygdala is 56% and the threshold on the right is 43.  Accordingly, the value in the mask is zero although it is supposed to be 1.
+
+How can I extract a mask BASED ON THE ATLAS PROBABILITIES?
+
+Thank you very much,
+Lior
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+
+
+Dear FSL experts,
+
+Is the notebook for fsl-profumo still available?
+Following the main FSL page it should be locate at:
+
+wget https://git.fmrib.ox.ac.uk/rezvanh/sprofumo_develop/-/raw/master/FSLcourse/PFM_practical.ipynb
+
+However, it seems unreadable: "Notebook does not appear to be JSON"
+
+Thanks
+Lorenzo
+
+Dear Paul:
+
+Thank so much for looking into this indeed! I would love to hear from you regarding any fix for the A6000 issue with probtrackx2_gpu.
+
+Yes, I was able to run it on V100 previously. But I would prefer to use A6000 since I have bought a new GPU server with 8x A6000 on it:)
+
+Many thanks! 
+Ed
+
+On Sat, 21 Jan 2023 at 1:13 AM, Edward S. Hui <edward.s.hui@gmail.com> wrote:
+Dear Paul:
+
+Thank so much for looking into this indeed! I would love to hear from you regarding any fix for the A6000 issue with probtrackx2_gpu.
+
+Yes, I was able to run it on V100 previously. But I would prefer to use A6000 since I have bought a new GPU server with 8x A6000 on it:)
+
+Many thanks! 
+
+On Fri, 20 Jan 2023 at 9:28 PM, paul mccarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Edward,
+
+I have reproduced the crash on one particular system (A100), and will hopefully have some time to look into it further next week. Strangely though, it appears to run fine on another system (Tesla K80), so you may have success if you can run it on a system with a different GPU.
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+--
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+--
+Best, 
+Edward 
+
+"you miss 100% of the shots you don't take"
+
+Hui, Sai Kam, Ph.D.
+Assistant Professor | MR Scientist | Biomedical Engineer
+Room 131B, 1/F, Cancer Center, Prince of Wales Hospital
+Dept of Imaging & Interventional Radiology | Psychiatry
+The Chinese University of Hong Kong, Hong Kong, China
+Personal Page | 35052975 | WeChat | skhui@cuhk.edu.hk
+
+
+Dear Paul:
+
+Thank so much for looking into this indeed! I would love to hear from you regarding any fix for the A6000 issue with probtrackx2_gpu.
+
+Yes, I was able to run it on V100 previously. But I would prefer to use A6000 since I have bought a new GPU server with 8x A6000 on it:)
+
+Many thanks! 
+
+On Fri, 20 Jan 2023 at 9:28 PM, paul mccarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Edward,
+
+I have reproduced the crash on one particular system (A100), and will hopefully have some time to look into it further next week. Strangely though, it appears to run fine on another system (Tesla K80), so you may have success if you can run it on a system with a different GPU.
+
+Paul
+
+########################################################################
+
+
+Thank you so much Professor Kiyotaka Nemoto,
+this surely helps!
+
+Thanks so much for the quick reply!
+
+Alessandra Stella 
+
+
+On Thu, Jan 19, 2023 at 6:59 PM Kiyotaka Nemoto <kiyotaka@nemotos.net> wrote:
+Dear Alessandra,
+
+In order to use eddy_cuda10.2 in Ubuntu 20.04, you need to install CUDA 10.2.
+
+The trick is that you need to use Ubuntu 18.04 repository for CUDA (not Ubuntu 20.04 repository)
+
+Attached is a script which installs CUDA 10.2 for Ubuntu 20.04.
+
+I myself use Ubuntu 20.04 and I wrote this script for myself.
+
+Save this script in Download and run this script sets up NVIDIA repository and install CUDA 10.2.
+
+After reboot, you can use eddy_cuda 10.2.
+
+Hope this helps,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 2:42 AM Alessandra Caporale <alessandra.stella.caporale@gmail.com> wrote:
+I found these information at
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GPU
+
+according to which, it seems that eddy_cuda is not supported by the 10.02 cuda suite!
+
+How could I install a cuda (9.1 or 8.0) that instead supports it?
+
+Thanks,
+
+Alessandra Stella
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+--
+Kiyotaka Nemoto, M.D., Ph.D.
+Associate Professor
+Department of Psychiatry
+Division of Clinical Medicine, Faculty of Medicine
+University of Tsukuba
+1-1-1 Tennodai Tsukuba, Ibaraki 305-8575, Japan
+E-mail: kiyotaka@nemotos.net
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+-----------------------------------------------------------------------
+Alessandra, Stella Caporale
+ITAB, Institute for Advanced Biomedical Technologies
+Via Luigi Polacchi, 66100 Chieti CH, Italy
+Email: alessandra.caporale@unich.it
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Maarten,
+
+On the surface this looks like a network error - is there anything unusual about your network connection? Have you tried again recently?
+
+Paul
+
+On Thu, 19 Jan 2023 at 10:42, <Maarten> <Mennes> <mennes.maarten@gmail.com> wrote:
+Hello,
+
+I'm trying to install the latest fsl version on our compute system. However, I keep running into the same error each time.
+
+11:48:15 fslinstaller.py: 162:     This command returned an error: /opt/fsl/6.0.6/bin/mamba env update -n base -f /tmp/tmpy7eu57mp/fsl-6.0.6.2_linux-64.yml
+
+Which in the error log shows:
+
+'fsl-wire==1.0.0', 'fsl-xtract==1.5.1', 'fsl-xtract_data==1.3.4', 'fsl-znzlib==2111.0', 'ghalton==0.6.1', 'hlsvdpropy==2.0.1', 'libopenblas==0.3.18[build=*openmp*]', 'make', 'nidmresults==2.1.0', 'nidmresults-fsl==2.2.0', 'numpy=1.21', 'openslide-python==v1.1.2', 'pkg-config', 'python=3.10', 'tk=8.6', 'vtk==9.1', 'wxpython=4.1', 'zlib=1.2', 'fsl-cudabasisfield-cuda-10.2==1.1.1', 'fsl-eddy-cuda-10.2==2111.0', 'fsl-fdt-cuda-10.2==2202.5', 'fsl-ptx2-cuda-10.2==2111.4']
+11:46:55 fslinstaller.py: 929:  [stderr]:     Traceback (most recent call last):
+11:46:55 fslinstaller.py: 929:  [stdout]:
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda/exceptions.py", line 1129, in __call__
+11:46:55 fslinstaller.py: 929:  [stdout]:
+11:46:55 fslinstaller.py: 929:  [stderr]:         return func(*args, **kwargs)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda_env/cli/main.py", line 80, in do_call
+11:46:55 fslinstaller.py: 929:  [stderr]:         exit_code = getattr(module, func_name)(args, parser)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda/notices/core.py", line 72, in wrapper
+11:46:55 fslinstaller.py: 929:  [stderr]:         return_value = func(*args, **kwargs)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda_env/cli/main_update.py", line 130, in execute
+11:46:55 fslinstaller.py: 929:  [stderr]:         result[installer_type] = installer.install(prefix, specs, args, env)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/mamba/mamba_env.py", line 153, in mamba_install
+11:46:55 fslinstaller.py: 929:  [stderr]:         transaction.fetch_extract_packages()
+11:46:55 fslinstaller.py: 929:  [stderr]:     RuntimeError: Resource temporarily unavailable
+
+AND
+
+11:46:55 fslinstaller.py: 929:  [stderr]:           conda version : 22.9.0
+11:46:55 fslinstaller.py: 929:  [stderr]:     conda-build version : not installed
+11:46:55 fslinstaller.py: 929:  [stderr]:          python version : 3.10.6.final.0
+11:46:55 fslinstaller.py: 929:  [stderr]:        virtual packages : __linux=4.19.94=0
+11:46:55 fslinstaller.py: 929:  [stderr]:                           __glibc=2.17=0
+11:46:55 fslinstaller.py: 929:  [stderr]:                           __unix=0=0
+11:46:55 fslinstaller.py: 929:  [stderr]:                           __archspec=1=x86_64
+11:46:55 fslinstaller.py: 929:  [stderr]:        base environment : /opt/fsl/6.0.6  (writable)
+11:46:55 fslinstaller.py: 929:  [stderr]:       conda av data dir : /opt/fsl/6.0.6/etc/conda
+11:46:55 fslinstaller.py: 929:  [stderr]:   conda av metadata url : None
+11:46:55 fslinstaller.py: 929:  [stderr]:            channel URLs : https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/linux-64
+11:46:55 fslinstaller.py: 929:  [stderr]:                           https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/noarch
+11:46:55 fslinstaller.py: 929:  [stderr]:                           https://conda.anaconda.org/conda-forge/linux-64
+11:46:55 fslinstaller.py: 929:  [stderr]:                           https://conda.anaconda.org/conda-forge/noarch
+11:46:55 fslinstaller.py: 929:  [stderr]:           package cache : /opt/fsl/6.0.6/pkgs
+11:46:55 fslinstaller.py: 929:  [stderr]:                           /home/mrstats/maamen/.conda/pkgs
+11:46:55 fslinstaller.py: 929:  [stderr]:        envs directories : /opt/fsl/6.0.6/envs
+11:46:55 fslinstaller.py: 929:  [stderr]:                           /home/mrstats/maamen/.conda/envs
+11:46:55 fslinstaller.py: 929:  [stderr]:                platform : linux-64
+11:46:55 fslinstaller.py: 929:  [stderr]:              user-agent : conda/22.9.0 requests/2.28.1 CPython/3.10.6 Linux/4.19.94-300.el7.x86_64 centos/7.6.1810 glibc/2.17
+11:46:55 fslinstaller.py: 929:  [stderr]:                 UID:GID : 10013:668
+11:46:55 fslinstaller.py: 929:  [stderr]:              netrc file : None
+11:46:55 fslinstaller.py: 929:  [stderr]:            offline mode : False
+
+We're running Centos 7
+I've tried with python 3.6, 3.7 and 3.10
+
+Thanks,
+Maarten
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear all,
+
+We are looking for another new Postdoc to work in an interdisciplinary and internationally competitive environment at Karolinska Institute, one of the top medical universities in the world and the home for the Nobel Prize in Medicine.
+
+We combine imaging analyses, statistical tools, machine learning algorithms and biofluid assays to study brain aging and the earliest signs of Alzheimer’s and Parkinson’s diseases.
+
+This project will be carried out under the supervision of Associate Professor Joana B. Pereira and Assistant Professor/Neurologist Sara Garcia-Ptacek and it will involve analyzing the effects of different types of medication on brain connectivity in patients at different stages of Alzheimer's disease. 
+
+The Postdoctoral fellow will work in the center of Stockholm together with 3 PhD students, 2 Postdocs and 4 affiliated members of Dr. Pereira's group. He/she will help collect data from patients at the local memory clinic using well-established and new imaging sequences as well as perform analyses using already acquired cross-sectional and longitudinal data. 
+
+We work in a friendly and inclusive environment, where the future fellow will be involved in many projects, collaborate with group members on different studies, learn new skills, attend conferences, apply for grants and develop a wide network of international collaborations.
+
+The ideal candidate should have the following qualities:
+
+A PhD in medicine, neuroimaging, computational science, physics, neuropsychology, statistics or a related field.
+Experience in statistical techniques, programming, and scripting in MATLAB, STATA, Python, R or other softwares.
+Experience with structural MRI, DTI, fMRI and/or EEG/MEG imaging analyses.
+Experience with different softwares such as SPM, FSL, FreeSurfer, AFNI, etc.
+Experience or interest in working with aging and/or neurodegenerative disorders, particularly Alzheimer’s and Parkinson’s diseases.
+Good academic record with scientific publications in world-class journals.
+Be independent and willing to supervise students.
+The Postdoctoral studies will be performed for 2 years, with possible extension for an additional year. 
+
+To apply please go to: https://ki.varbi.com/en/what:job/jobID:577826/ 
+(Deadline: 22.Jan.2023)
+
+For further information or general inquiries, please contact Joana B. Pereira at joana.pereira@ki.se.
+
+Best wishes,
+Joana
+
+
+
+Dear FSL users,
+I want to perform two separate higher-level analyses with small volume correction (i.e., put pre-threshold masking in the post-stats tab). I also want to use the Threshold free cluster enhancement (TFCE) option to correct for multiple comparisons. 
+
+I would like to ask:
+1. what exactly does the TFCE P threshold stands for? is the .05 default value in FSL gui corrects for multiple comparisons?
+2. How can I consider the fact that I do two separate analyses? Does it make sense to change the TFCE P threshold in each analysis from .05 to .025?
+
+Thank you very much,
+Lior
+
+########################################################################
+
+Dear Alice,
+  I think the order file recommended by Mark Jenkinson in the link looks correct - can you clarify exactly which one you’re looking at?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 20 Jan 2023, at 14:39, Alice Giubergia <alice.giubergia@GMAIL.COM> wrote:
+
+Dear FSL experts,
+I read the following https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=ind1703&L=FSL&P=R87264&1=FSL&9=A&J=on&d=No+Match%3BMatch%3BMatches&z=4). about the topic but now i have a question about the example suggested in it.
+
+Given that first line of -tcustom file refers to the first slice (i.e., with z=0), in an ascending-order acquisition (in which first slice=bottom slice) my assumption is that first slices should have positive values to forward them in time. Why is the correct order of the aforementioned example the other way around?
+
+Thank you very much for your attention,
+
+Alice Giubergia
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear FSL experts,
+I read the following https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=ind1703&L=FSL&P=R87264&1=FSL&9=A&J=on&d=No+Match%3BMatch%3BMatches&z=4). about the topic but now i have a question about the example suggested in it.
+
+Given that first line of -tcustom file refers to the first slice (i.e., with z=0), in an ascending-order acquisition (in which first slice=bottom slice) my assumption is that first slices should have positive values to forward them in time. Why is the correct order of the aforementioned example the other way around?
+
+Thank you very much for your attention,
+
+Alice Giubergia
+
+########################################################################
+
+
+

@@ -1,0 +1,442 @@
+Dear all,
+
+I set up a higher level analysis in FEAT with images as input which are not stored in a FEAT directory. I got the images running C-PAC on resting-state data (I don't want to use C-PAC for the analysis to be more flexible.). When I hit the "Go" button I get the following error message: "Registration has not been run for all of the FEAT directories that you have selected for group analysis." How may I skip this check if the images are registered or how may I tell FEAT that the images were already registered?
+
+Thank you for your help and best regards,
+
+Martin
+
+########################################################################
+
+
+Dear FSL experts,
+
+I got a error when I ran fix script (fix log attached).
+Could you help me please?
+
+Thanks
+Helka
+
+########################################################################
+
+
+Thanks Paul, that's done the trick (after restarting the terminal).
+
+########################################################################
+
+
+Hello,
+
+I processed my DTI data through the TBSS pipeline and am now running an analysis using randomise to examine diagnostic differences (CN, MCI, AD) in the WM skeleton. The data were collected across 5 sites and I would like to account for the different sites in the analysis. I looked through the archives to understand how to set up a multilevel covariate in the analysis but I am unsure whether I should model the mean of the sites (example A below) or the intercept of each site (example B). What would you suggest?
+
+Example A (modeling site means):
+EV4 -1 for site 1, 1 for site 2, 0 otherwise
+EV5 -1 for site 1, 1 for site 3, 0 otherwise
+EV6 -1 for site 1, 1 for site 4, 0 otherwise
+EV7 -1 for site 1, 1 for site 5, 0 otherwise
+
+Example B (modeling site intercepts):
+EV4 1 for site 1, 0 otherwise
+EV6 1 for site 2, 0 otherwise
+EV7 1 for site 3, 0 otherwise
+EV8 1 for site 4, 0 otherwise
+EV9 1 for site 5, 0 otherwise
+
+Thanks in advance,
+Jenna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear experts,
+I encountered a strange issue with some of my single-subject preprocessing output.
+Data from some of the runs seem to have been fully brain-extracted, and from others are not, i.e. voxels outside of the brain have non-zero (negative) values (please see the 2 screenshots from FSLEYES attached, together with the design files of both examples).
+
+Normally, I don't believe it's a problem for stats calculation or otherwise (but please correct me if I'm wrong!) but we're using the filtered_func_data.nii.gz to calculate tSNR and the negative values outside of the brain are skewing our calculations. Besides, the inconsistency of masking is a bit worrisome, especially since we're using the same design file looped over the different runs/participants.
+NB. the mask.nii.gz file in the feat output folder is created correctly.
+
+I have rerun the datasets in question and the output remains the same.
+Would you have any idea why this would happen and how to solve this?
+
+Many thanks in advance.
+Kind regards,
+Olga Kepinska
+
+
+
+
+--
+Olga Kepinska, PhD 
+she/her
+Postdoctoral Researcher
+Brain and Language Lab, University of Vienna
+https://www.olgakepinska.com
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Jesper,
+
+thank you so much for your reply!
+Please find below the outputs of fslhd for the DWIs and the b0 file.
+
+FOR THE DWIs:
+fslhd 2019*009a001.nii.gz
+filename        20191127_144200CHARMEDb200500120024004000600060dirshuffs009a001.nii.gz
+sizeof_hdr      348
+data_type       INT16
+dim0            4
+dim1            88
+dim2            88
+dim3            42
+dim4            266
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        4
+nbyper          2
+bitpix          16
+pixdim0         -1.000000
+pixdim1         2.500000
+pixdim2         2.500000
+pixdim3         2.500000
+pixdim4         3.000000
+pixdim5         1.000000
+pixdim6         0.375000
+pixdim7         55099.359375
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       3
+slice_name      alternating_increasing_2
+slice_code      5
+slice_start     0
+slice_end       41
+slice_duration  33.000034
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name    
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       -2.500000 0.000000 -0.000000 110.000000
+qto_xyz:2       0.000000 2.338610 -0.883687 -80.034943
+qto_xyz:3       0.000000 0.883687 2.338610 -52.807503
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Right-to-Left
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       -2.500000 0.000000 0.000000 110.000000
+sto_xyz:2       0.000000 2.338610 -0.883687 -80.034943
+sto_xyz:3       0.000000 0.883687 2.338610 -52.807503
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Right-to-Left
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         TE=85;sec=55099.3600;phaseDir=+;dwell=0.375
+aux_file        Unaliased MB2/PE4/LB
+
+FOR THE B0 FILE:
+fslhd b0_brain_mask.nii.gz
+filename        b0_brain_mask.nii.gz
+sizeof_hdr      348
+data_type       INT16
+dim0            3
+dim1            88
+dim2            88
+dim3            42
+dim4            1
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        4
+nbyper          2
+bitpix          16
+pixdim0         -1.000000
+pixdim1         2.500000
+pixdim2         2.500000
+pixdim3         2.500000
+pixdim4         3.000000
+pixdim5         1.000000
+pixdim6         0.375000
+pixdim7         55099.359375
+vox_offset      352
+cal_max         1.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       0
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name    
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       -2.500000 0.000000 -0.000000 110.000000
+qto_xyz:2       0.000000 2.338610 -0.883687 -80.034943
+qto_xyz:3       0.000000 0.883687 2.338610 -52.807503
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Right-to-Left
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       -2.500000 0.000000 0.000000 110.000000
+sto_xyz:2       0.000000 2.338610 -0.883687 -80.034943
+sto_xyz:3       0.000000 0.883687 2.338610 -52.807503
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Right-to-Left
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         2203.6-dirty 2022-09-08T15:38:56+01:00
+aux_file        Unaliased MB2/PE4/LB
+
+I made sure that all the needed files are in the folder where I run eddy, to exclude pathname errors, including the topup outputs. By repeating the command, I got some other symbols:
+ eddy_cuda --imain=20191127_144200CHARMEDb200500120024004000600060dirshuffs009a001.nii.gz --mask=b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs.txt --bvals=bvals.txt --topup=topup --out=eddy_unwarped --data_is_shelled --very_verbose
+Reading images
+Performing volume-to-volume registration
+Running Register
+@??N????U
+7N????U
+
+
+EDDY::: Eddy failed with message ??FR????U
+
+
+Thank you so much in advance for taking the time to try solving this!
+
+Stella
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Jenna,
+
+the two models should be exactly equivalent. I would slightly favour the former as I won't lead to a singular matrix (which may or may not be a problem depending on how things have been coded up).
+
+Best regards Jesper
+
+
+﻿On 13/02/2023, 15:32, "FSL - FMRIB's Software Library on behalf of Jenna Blujus" <FSL@JISCMAIL.AC.UK on behalf of jenna_blujus@BROWN.EDU> wrote:
+
+    Hello,
+   
+    I processed my DTI data through the TBSS pipeline and am now running an analysis using randomise to examine diagnostic differences (CN, MCI, AD) in the WM skeleton. The data were collected across 5 sites and I would like to account for the different sites in the analysis. I looked through the archives to understand how to set up a multilevel covariate in the analysis but I am unsure whether I should model the mean of the sites (example A below) or the intercept of each site (example B). What would you suggest?
+   
+    Example A (modeling site means):
+    EV4 -1 for site 1, 1 for site 2, 0 otherwise
+    EV5 -1 for site 1, 1 for site 3, 0 otherwise
+    EV6 -1 for site 1, 1 for site 4, 0 otherwise
+    EV7 -1 for site 1, 1 for site 5, 0 otherwise
+   
+    Example B (modeling site intercepts):
+    EV4 1 for site 1, 0 otherwise
+    EV6 1 for site 2, 0 otherwise
+    EV7 1 for site 3, 0 otherwise
+    EV8 1 for site 4, 0 otherwise
+    EV9 1 for site 5, 0 otherwise
+   
+    Thanks in advance,
+    Jenna
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Stella,
+
+looking at your bvals it should be perfectly fine for eddy. I am not sure why it happens that some people report getting such strange error messages (??????A??U). Just the other day I looked at the data from someone who reported the same, and I got a sensible error message that allowed us to resolve the problem.
+
+Can I just ask you to make sure that all the necessary files are available in the directory you are attempting to run eddy from? If you run it as part of a script, maybe you can run just one subject manually without any variable expansions in that directory.
+Can I also ask you to send me the output of 'fslhd' on DWIs and on b0_brain_mask.
+
+If we cannot solve it like that I will send you a link where you can upload your data so I can take a look at it.
+
+Best regards Jesper
+
+
+﻿On 10/02/2023, 21:10, "FSL - FMRIB's Software Library on behalf of Alessandra Caporale" <FSL@JISCMAIL.AC.UK on behalf of alessandra.stella.caporale@GMAIL.COM> wrote:
+
+    Dear FSL experts,
+   
+    I thought I was done seeing strange symbols as an error message of eddy_cuda, but apparently I am not!
+    Last time I solved this issue simply by adding the flag '--data_is_shelled'.
+    Now I have a different dataset, which also is shelled, but although the flag is there, there is something that doesn't work, and I can't figure what it is.
+    The command is given below (please note that DWIs='/pathtoDWIs/DWIs.nii.gz');
+   
+    eddy_cuda --imain=$DWIs --mask=b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs.txt --bvals=bvals.txt --topup=topup --out=eddy_unwarped --data_is_shelled --very_verbose
+   
+    The messages I get are:
+    Reading images
+    Performing volume-to-volume registration
+    Running Register
+    ??????A??U
+    `????L??U
+   
+    EDDY::: Eddy failed with message ??^??A??U
+   
+    I also show you the bvals file to give you an idea on how the data were acquired (perhaps I need to reorder them before apply eddy correction?):
+   
+    0 6005 500 2405 4005 6005 500 2400 4005 6005 500 2405 4005 6005 500 2400 4000 6005 500 2405 4005 0 5990 500 2395 3995 6000 500 2400 4000 5995 500 2395 3995 6000 500 2400 4000 6000 500 2400 4000 0 5995 500 2395 3995 6000 500 2400 4000 5995 500 2395 3995 5995 500 2395 3995 6005 500 2405 4005 0 5995 500 2395 3995 5995 500 2395 3995 6000 500 2400 4000 5995 500 2395 3995 6005 500 2405 4005 0 6000 200 2400 4000 6000 200 2400 4000 6010 200 2405 4005 5995 200 2400 4000 5995 200 2395 3995 0 6000 200 2400 4000 6005 200 2400 4005 5995 200 2395 3995 6000 200 2400 4000 6005 200 2405 4005 0 6005 200 2405 4005 6005 200 2405 4005 5995 200 2400 4000 6000 200 2400 4000 6000 200 2400 4000 0 5995 200 2395 3995 5995 200 2395 3995 6000 200 2400 4000 6000 200 2400 4000 5990 200 2395 3995 0 6000 1205 2400 4000 6000 1200 2400 4000 5995 1200 2395 3995 6000 1200 2400 4000 5995 1200 2395 3995 0 6005 1195 2400 4005 6000 1200 2400 4000 5990 1195 2395 3995 6000 1200 2400 4000 6005 1200 2405 4005 0 6005 1195 2405 4005 5995 1200 2395 3995 5995 1200 2395 3995 6005 1200 2400 4005 5995 1205 2395 3995 0 6005 1200 2405 4005 6000 1200 2400 4000 5995 1200 2395 3995 5995 1200 2400 3995 6005 1205 2400 4000 0 6000 1200 2400 4000 1200 1205 1200 1195 1200 1200 1200 1200 1205
+   
+    Sorry for the very long message,
+    and thanks in advance!
+   
+    Stella
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear all,
+
+I set up a higher level analysis in FEAT with images as input which are not stored in a FEAT directory. I got the images running C-PAC on resting-state data (I don't want to use C-PAC for the analysis to be more flexible.). When I hit the "Go" button I get the following error message: "Registration has not been run for all of the FEAT directories that you have selected for group analysis." How may I skip this check if the images are registered or how may I tell FEAT that the images were already registered?
+
+Thank you for your help and best regards,
+
+Martin
+
+########################################################################
+
+
+Hi Aisling,
+
+So you are trying to call FSL commands from a separate Windows Python environment with fslpy installed? This is possible, but you need to set a FSLDIR environment variable in Windows​, so that fslpy knows where FSL is installed within your WSL installation.
+
+You will need  to set the FSLDIR environment variable to something like the following (it may differ depending on the name of your WSL installation, and the location of your FSL installation within WSL):
+
+\\wsl$\Ubuntu-20.04\usr\local\fsl\
+
+You can read more about working across the WSL file system boundary at these links:
+
+https://learn.microsoft.com/en-us/windows/wsl/filesystems
+https://www.howtogeek.com/426749/how-to-access-your-linux-wsl-files-in-windows-10/
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Aisling Fothergill <aisling.fothergill@POSTGRAD.MANCHESTER.AC.UK>
+Sent: 13 February 2023 12:48
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL Python Wrapper Error
+ 
+Hi,
+
+I have been running FSL on my Windows 10 system for a while through the Windows Subsystem for Linux (WSL Ubuntu 20.04). I have now tried to set up the fsl wrapper in python (python version 3.10, and fslpy version 3.10) however I keep getting an error that FSL cannot be found.
+
+specifically, if I try and run:
+
+fsl.bet(('T1.nii', 'brain_extracted')
+
+I get the error:
+
+Traceback (most recent call last):
+  File "C:\Users\r07557af\OneDrive - The University of Manchester\Documents_One_Drive\PYTHON\POBIG\fsl_test.py", line 21, in <module>
+    fsl.bet('T1.nii', 'brain_extracted')
+  File "C:\Users\r07557af\OneDrive - The University of Manchester\Documents_One_Drive\PYTHON\POBIG\venv\lib\site-packages\fsl\wrappers\wrapperutils.py", line 1152, in wrapper
+    result = fot(*args, **kwargs)
+  File "C:\Users\r07557af\OneDrive - The University of Manchester\Documents_One_Drive\PYTHON\POBIG\venv\lib\site-packages\fsl\wrappers\wrapperutils.py", line 796, in __call__
+    result = func(*args, **kwargs)
+  File "C:\Users\r07557af\OneDrive - The University of Manchester\Documents_One_Drive\PYTHON\POBIG\venv\lib\site-packages\fsl\wrappers\wrapperutils.py", line 197, in wrapper
+    return runner(cmd,
+  File "C:\Users\r07557af\OneDrive - The University of Manchester\Documents_One_Drive\PYTHON\POBIG\venv\lib\site-packages\fsl\utils\run.py", line 375, in runfsl
+    raise FSLNotPresent('$FSLDIR is not set - FSL cannot be found!')
+fsl.utils.run.FSLNotPresent: $FSLDIR is not set - FSL cannot be found!
+
+
+I am running fsl version 6.0.5.1
+
+Thanks very much,
+Aisling
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+

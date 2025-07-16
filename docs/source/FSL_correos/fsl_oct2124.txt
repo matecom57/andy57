@@ -1,0 +1,209 @@
+Hello Victoria,
+
+ 
+
+It might be helpful to use a combination of the watch and nvidia-smi programs, to monitor 
+your GPU activity.
+
+ 
+
+But it looks like at least for lab3 there is not enough VRAM to do the computation.
+
+ 
+
+Best,
+
+Norman
+
+Hi Norman,
+
+I haven't been able to reproduce the error yet - would it be possible for you to share a 
+test data set with me? You can share it via any online service (e.g. dropbox), or I can 
+prepare a folder in onedrive for you to upload to.
+
+Paul
+
+
+Dear Colleague,
+
+Apologies for cross-posting! 
+
+ 
+
+The Faculty of Psychology and Educational Sciences of the University of Coimbra (FPCE-UC) 
+Portugal invites applications from rising and aspiring leaders in Cognitive Science and 
+Neuroscience and Cognitive Computational Neuroscience for 2 tenure-track positions at the 
+Assistant Professor level. These positions are part of a transformative ERA Chair grant 
+CogBooster from the European Union to FPCE-UC led by Dr. Alfonso Caramazza. The goal of 
+CogBooster is to implement strong and international lines of research in Cognitive 
+Science/Neuroscience, so as to contribute to the ongoing renewal of the Psychological and 
+Brain Sciences in Portugal over the next decade. 
+
+ 
+
+The project has recently led to the appointment of Jorge Almeida, Jason Fischer and Joana 
+Carvalho as tenured Professors, and Alfonso Caramazza as a Visiting Researcher at the 
+University of Coimbra.
+
+ 
+
+ 
+
+Equal Employment Opportunity statement:
+
+ 
+
+The University of Coimbra is an equal opportunity/affirmative action employer and has a 
+Gender Equality Plan in place. We are committed to fostering a diverse and inclusive 
+academic global community at the University. We particularly encourage applications from 
+women, and from under-represented groups in the University of Coimbra’s workforce and in 
+the brain sciences.   
+
+ 
+
+ 
+
+Positions:
+
+ 
+
+We seek applicants with expertise in any area of Cognitive Science/Neuroscience and 
+Cognitive Computational Neuroscience. The positions are tenure-track at the rank of 
+Assistant Professor. The start date should be around September 1, 2025 (but potentially 
+negotiable).
+
+ 
+
+ 
+
+Qualifications:
+
+ 
+
+Applicants must hold a Ph.D. in a discipline relevant to Cognitive Science/Neuroscience and 
+Cognitive Computational Neuroscience. Successful applicants should have an excellent record 
+of research for their career level. To contribute to the mission of CogBooster and to the 
+research and educational mission of FPCE-UC, they are expected to establish an active 
+research program in any of the major cognitive areas, acquire external research funds, and 
+contribute to teaching and mentoring.
+
+ 
+
+The applicant will actively engage in research, teaching, and supervision in the field of 
+the specific positions at FPCE-UC and its affiliated research center. Applicants may use 
+different technical and methodological approaches to address their cognitive research 
+questions, including, but not limited to, cognitive neuropsychological investigations, 
+human neuroimaging techniques (fMRI, EEG, sEEG, etc), behavioral and cognitive approaches, 
+and computational cognitive neuroscience.
+
+ 
+
+ 
+
+Offer:
+
+ 
+
+Positions are tenure-track and include social security and national pension plans, medical 
+insurance, and all legally applicable benefits under Portuguese law. Salary depends on the 
+level of appointment.
+
+ 
+
+In addition to the legally required employment conditions described above, and as part of 
+the ERA Chair initiative CogBooster, these positions come with a start-up package. This 
+includes (subject to final discussion between the selected candidates and Dr. Alfonso 
+Caramazza):
+
+ 
+
+· Funding for 1 Post-Doctoral fellow at the Portuguese pay grade for 36 months;
+
+ 
+
+· Funding for 1 Research Assistant/Doctoral student at the Portuguese pay grade for 36 
+months;
+
+ 
+
+· Funding for 200 fMRI hours (or EEG hours, use of neurostimulation, etc.);
+
+ 
+
+· Funding for attending and presenting at national and international conferences
+
+ 
+
+· Funding for open access publications;
+
+ 
+
+· Funding for Laboratory resources (e.g., Computers);
+
+ 
+
+· Laboratory space shared with other laboratories at FPCE-UC;
+
+ 
+
+· Institutional support for applying to major European and international grants (grant 
+reviewing by experts, interview preparation, etc).
+
+ 
+
+ 
+
+About Portugal, Coimbra, and FPCE-UC:
+
+ 
+
+Portugal’s warm and pleasant climate, rich history and culture, beautiful landscapes and 
+beaches, affordable cost of living, and quality but affordable medical and educational 
+systems, makes it one of the most exciting countries to live in. Moreover, Portuguese 
+culture is incredibly family-friendly, welcoming to foreigners (English is widely spoken), 
+and the country is one of the five safest countries in the world. Finally, it features an 
+incredible and diverse cuisine, great wine, and a pace of life commensurate with work-life 
+balance.
+
+ 
+
+The University of Coimbra is a 700-year-old University and is a UNESCO world Heritage site. 
+Coimbra is one of the liveliest university cities in the world, and it is a beautiful city 
+with easy access to the beach and mountains. According to Numbeo-Cost of Living, 2300 euro 
+in Coimbra (the net value approximate monthly salary of an Assistant Professor, 12 months 
+plus a Summer and Christmas bonus is a total of 14 months) correspond to a local purchasing 
+power of about 4300 euro in Paris, 4700 GBP in London (UK), 3050 euro in Rome, 4100 euro in 
+Munich, 3600 euro in Brussels, approximately 5700 USD in Los Angeles, 6000 USD in 
+Washington, or 6200 USD in Boston, 6200 CAD in Toronto, 19k CNY in Beijing or Shanghai, 11k 
+reais in São Paulo, and 7600 AUD euro in Sydney.
+
+ 
+
+The Faculty of Psychology and Educational Sciences has been consistently ranked as the, or 
+one of the, best Psychology Departments in Portugal. In the last decade it has become the 
+leading department in Portugal on Psychological research, holding, for instance, the only 2 
+ERC grants in Psychology in Portugal. FPCE-UC has laboratories for Cognitive Science and 
+Cognitive Neuroscience research – the Proaction Lab (led by Jorge Almeida); The Dynamic 
+Perception Lab (led by Jason Fischer), Joana Carvalho's Vision Science lab, and the 
+Cognitive Neuropsychology group led by Alfonso Caramazza. We have access to two 3T MRI 
+scanners, to tDCS and TMS with neuronavigation, to a 256 channel EEG, and to a fully 
+functional behavioral lab.
+
+ 
+
+ 
+
+Further information:
+
+ 
+
+The official call will be available here at a later date (by the end of 2024, beginning of 
+2025), but please send an email to Dr. Jorge Almeida (jorgecbalmeida@gmail.com) if you want 
+to be informed when the positions are open, and/or if you want to receive further 
+information about the ERA Chair Project CogBooster. In the meanwhile, we strongly encourage 
+potential applicants to contact Drs. Alfonso Caramazza (caram@wjh.harvard.edu) and Jorge 
+Almeida (jorgecbalmeida@gmail.com). Please send us your CV, and a short cover letter 
+describing your interest in the position (including the general field of research).
+
+
+

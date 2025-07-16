@@ -1,0 +1,466 @@
+I see...as for running applytopup, I'm a little unsure as to how the inindex would be made:
+
+If the topup results I'm using are coming from AP-PA fieldmaps with an acqparams.txt file as follows:
+
+0 -1 0 0.0593
+0 1 0 0.5893
+
+and the data I want to correct is just functional data  (300 volumes, all in the AP direction), how would I determine --inindex?
+
+Best,
+
+Noah
+
+On Mon, Aug 14, 2023 at 11:12 AM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hello Noah,
+   I believe you should be able to use applytopup command for this, you will just need to make sure that your functional and mag/phase images are all in alignment.
+
+Hope this helps,
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+On 10 Aug 2023, at 03:29, Noah Lee <n.lee@YALE.EDU> wrote:
+
+
+Hello!
+
+I'm trying to run solely EPI correction for functional data. Typically, I'll run topup to get fieldmaps to be inputted into FEAT, but I want to use a different pipeline for that preprocessing, which only requires EPI correction prior. I'm wondering if anyone can help me with a step by step for FUGUE? I have a mag image (from topup), and what I believe is a phase image (the fieldcoef output, also from topup). I am unsure about finding the deltaTE, as the AP and PA fieldmap json files give identical TE.
+
+Could anyone provide any help with this?
+
+Best,
+
+Noah Lee
+he/him/his
+Yale University | Saybrook '25
+B.S. Neuroscience
+
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+--
+Noah Lee
+he/him/his
+Yale University | Saybrook '25
+B.S. Neuroscience
+
+
+
+Hello Noah,
+   I believe you should be able to use applytopup command for this, you will just need to make sure that your functional and mag/phase images are all in alignment.
+
+Hope this helps,
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 10 Aug 2023, at 03:29, Noah Lee <n.lee@YALE.EDU> wrote:
+
+Hello!
+
+I'm trying to run solely EPI correction for functional data. Typically, I'll run topup to get fieldmaps to be inputted into FEAT, but I want to use a different pipeline for that preprocessing, which only requires EPI correction prior. I'm wondering if anyone can help me with a step by step for FUGUE? I have a mag image (from topup), and what I believe is a phase image (the fieldcoef output, also from topup). I am unsure about finding the deltaTE, as the AP and PA fieldmap json files give identical TE.
+
+Could anyone provide any help with this?
+
+Best,
+
+Noah Lee
+he/him/his
+Yale University | Saybrook '25
+B.S. Neuroscience
+
+
+
+Apologies for cross-posting.
+
+The Faculty of Psychology and Educational Sciences of the University of Coimbra (FPCE-UC) Portugal invites applications from rising and aspiring leaders in Cognitive Science and Neuroscience for 2 tenure-track positions at the Assistant (1) and Associate (1) Professor level. These positions are part of a transformative ERA Chair grant CogBooster from the European Union to FPCE-UC led by Dr. Alfonso Caramazza. The goal of CogBooster is to implement a strong and international line of research in Cognitive Science/Neuroscience, so as to contribute to the ongoing renewal of the Psychological and Brain Sciences in Portugal over the next decade.
+
+The official calls are will be open on August 16, 2023, and will close on September 26, 2023 (no exceptions):
+
+The call (and all the documentation that explains the procedure) for the Assistant Professor position (process number IT136-23-12844) can be found here
+
+
+The call (and all the documentation that explains the procedure) for the Associate Professor position (process number IT136-23-12845) can be found here
+
+
+
+Equal Employment Opportunity statement:
+
+The University of Coimbra is an equal opportunity/affirmative action employer and has a Gender Equality Plan in place. We are committed to fostering a diverse and inclusive academic global community at the University. We particularly encourage applications from women, and from other under-represented groups in the University of Coimbra’s workforce and in the brain sciences.   
+
+ 
+
+Positions:
+
+We seek applicants with expertise in any area of Cognitive Science/Neuroscience. The positions are tenure-track at the rank of Assistant (1) and Associate (1) Professor. The start date should be around November/December, 2023 (but potentially negotiable). Applicants for the Associate Professor position should have completed their PhD before September 2018.
+
+ 
+
+Qualifications:
+
+Applicants must hold a Ph.D. in a discipline relevant to Cognitive Science/Neuroscience, and/or have relevant work in the area. Successful applicants should have an excellent record of research for their career level. To contribute to the mission of CogBooster and to the research and educational mission of FPCE-UC, they are expected to establish an active research program, acquire external research funds, and contribute to teaching and mentoring.
+
+The applicant will actively engage in research, teaching, and supervision in the field of the specific positions at FPCE-UC and its affiliated research center. Applicants may use different technical and methodological approaches to address their research questions, including, but not limited to, cognitive neuropsychology and the study of brain lesions, human neuroimaging techniques (fMRI, EEG, sEEG, etc), behavioral and cognitive approaches, and computational cognitive neuroscience.
+
+ 
+
+Offer:
+
+Positions are tenure-track with a permanent contract. All positions include social security and national pension plans, medical insurance (if required by the applicant), and all legally applicable benefits under Portuguese law. Salary depends on the level of appointment.
+
+
+In addition to the legally required employment conditions described above, and has part of the ERA Chair initiative CogBooster, these positions come with a start-up package. This includes (subject to final discussion between the selected candidates and Dr. Alfonso Caramazza):
+
+ 
+
+·         Funding for 1 Post-Doctoral fellow at the Portuguese pay grade for 36 months;
+
+·         Funding for 1 Research Assistant/Doctoral student at the Portuguese pay grade for 48
+
+·         Months;
+
+·         Funding for 200 fMRI hours (or EEG hours, use of neurostimulation, etc.);
+
+·         Funding for attending and presenting at national and international conferences
+
+·         Funding for open access publications;
+
+·         Funding for Laboratory resources (e.g., Computers);
+
+·         Laboratory space shared with other laboratories at FPCE-UC;
+
+·         Institutional support for applying to major European and international grants (grant reviewing by experts, interview preparation, etc).
+
+ 
+
+About Portugal, Coimbra, and FPCE-UC:
+
+Portugal’s warm and pleasant climate, rich history and culture, beautiful landscapes and beaches, affordable cost of living, and quality but affordable medical and educational systems, makes it one of the most exciting countries to live in. Moreover, Portuguese culture is incredibly family-friendly, welcoming to foreigners (English is widely spoken), and the country is one of the five safest countries in the world. Finally, it features an incredible and diverse cuisine, great wine, and a pace of life commensurate with work-life balance.
+
+ 
+
+The University of Coimbra is a 700-year-old University and is a UNESCO world Heritage site. Coimbra is one of the liveliest university cities in the world, and it is a beautiful city with easy access to the beach and mountain. According to Numbeo-Cost of Living, 2500 euro in Coimbra (the net value approximate monthly salary of an Associate Professor) correspond to a local purchasing power of about 5000 euro in Paris, 5300 pounds in London (UK), 4200 euro in Rome, 4900 euro in Munich, 40200 DKK in Copenhagen, 6900 USD in Los Angeles or Washington, 7400 CAD in Toronto, 26k CNY in Beijing or Shanghai, and 8700 AUD euro in Sydney.
+
+ 
+
+The Faculty of Psychology and Educational Sciences has been consistently ranked as the, or one of the, best Psychology Departments in Portugal. In the last decade it has become the leading department in Portugal on Psychological research, holding, for instance, the only 2 ERC grants in Psychology in Portugal. FPCE-UC has a laboratory for Cognitive Science and Cognitive Neuroscience research – the Proaction Lab. We have access to two 3T MRI scanners, to tDCS and TMS with neuronavigation, to a 256 channel EEG, and to a fully functional behavioral lab.
+
+ 
+
+Further information:
+
+The official calls are will be open on August 16, 2023, and will close on September 26, 2023 (no exceptions):
+
+The call for the Assistant Professor position (process number IT136-23-12844) can be found here
+The call for the Associate Professor position (process number IT136-23-12845) can be found here
+
+
+
+If you have any questions about the application please send an email to Jorge Almeida (jorgecbalmeida@gmail.com). In the meanwhile, we strongly encourage potential applicants to contact Drs. Alfonso Caramazza (caram@wjh.harvard.edu) and Jorge Almeida (jorgecbalmeida@gmail.com). Please send us your CV, and a short cover letter describing your interest in the position (including the general field of research, the rank/s to which you are applying).
+
+
+
+Hi Sam,
+
+This does look like an issue with the data set, and looks like a mac-specific issue, as I have reproduced the crash on M1 and Intel macs, but melodic runs fine on Linux. I'll look into this further and get back to you.
+
+Paul
+
+
+Hello,
+
+I have brain volumes (T2W) that I am using to segment certain structures in the WM. I want to visualize these structures in different subcortical regions of the brain. For this, I tried registering my volumes to the MNI152 space using FSL FLIRT.
+
+While FLIRT works well using the original unprocessed images and gives me a transformation matrix as well, I am not able to use this matrix in Matlab to replicate the transformation on pre-processed images (possibly due to the change in header files and due to different co-ordinate space). 
+
+I've also tried changing the co-ordinate space by;
+
+% Create a conversion matrix to switch between FSL's and MATLAB's coordinate conventions convert_mat = [-1 0 0 size(img,1)/2; 0 -1 0 size(img,2)/2; 0 0 1 size(img,3)/2; 0 0 0 1]; 
+
+% Convert the FLIRT matrix to MATLAB's space
+M_matlab = convert_mat \ F * convert_mat;
+
+tform = affine3d(M_matlab);
+
+% Transform your image using the tform object
+transformed_img = imwarp(img, tform);
+
+Yet i cannot replicate the transform.
+
+Could you please help?
+
+Thank You
+Yours Sincerely
+
+Zoheb Ahasan
+
+
+Hi Paul,
+
+Thanks or the reply. I'm trying to build atlas and this is just the preprocess of the data. My plan was to align/center all the data and then use voxel-wise average to build template, and then pairwise registration, and so on. My initial thought was to align the data with an atlas in MNI space. But my professor told me to "just center all the volumes without changing the content," plus there's no proper atlas that allows me to align with. 
+
+My approach now is to find a volume that looks relatively in the middle and align all the other volumes with it. Then apply each saved transformation to the segmented version of volumes. But, as you said, the change of content is unavoidable. 
+
+Thanks
+
+
+On Fri, Aug 11, 2023 at 3:53 AM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Guyu,
+
+Can you give more details as to why you are trying to accomplish this?
+
+Regardless, whenever you resample one image into the space of another, trhe image data is going to be changed by way of the resampling/interpolation process. There is no way to avoid this. If you don't want to change your data at all, you can use FLIRT to calculate, but not apply, the transformation.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Guyu Li <guyuli.grace@GMAIL.COM>
+Sent: 11 August 2023 03:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Center/align volume
+ 
+Hi,
+
+I have a set of segmented and preprocessed brain 3D volume. If my goal is just to center all the data without changing the brain's content and shape, can I still use FLIRT? DOF 6 seems still changing the content of brain. Maybe just the transaction with DOF 3? In this case, what would be a proper reference? Should I just pick one that looks like in the middle of the space and use that data as a reference? Since I don't need to transfer between space or change brain in anyway, reference volume seems less useful/important in this case? Center rather than align seems to be a better description of my goal. Is there a better tool for center?
+
+Thanks
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+We are pleased to announce our upcoming four-day educational course in Laminar fMRI. 
+
+  
+
+This course will provide an introduction to fMRI of cerebral cortical layers, and will provide didactic lectures spanning neuroscientific background, high-resolution fMRI data acquisition and analysis, interpretation, and publication, focused on the practicalities of conducting a successful experiment, as well as hands-on training in data analysis. It is designed for beginners who are new to laminar fMRI, however researchers at all experience levels are welcome! 
+
+  
+
+Where: Athinoula A. Martinos Center for Biomedical Imaging, Massachusetts General Hospital (MGH), Boston, MA, USA. 
+
+  
+
+The course will be offered in-person, onsite at MGH, however there is a remote option available. 
+
+  
+
+When: October 2-5, 2023
+
+  
+
+Course Faculty: Peter Bandettini, Anna Blazejewska, Saskia Bollmann, Jingyuan Chen, Anna Devor, Jozien Goense, Daniel Gomez, Doug Greve, Faruk Gulban, Laurentius (Renzo) Huber, A. Tyler Morgan, David Norris*, Jonathan Polimeni, Robert Savoy, Kamil Uludag, Divya Varadarajan, Luca Vizioli 
+
+  
+
+(*: remote lecturer)
+
+  
+
+Course Moderator: A. Tyler Morgan 
+
+  
+
+Course Organizers: Jonathan Polimeni, Anna Blazejewska, Laurentius (Renzo) Huber & Robert Savoy 
+
+  
+
+Course webpage, lecture topics, schedule, and registration: https://education.martinos.org/workshop-on-laminar-fmri/ 
+
+  
+
+Registration closes September 17; the number of attendees is limited. 
+
+  
+
+For more information: email us questions at laminarfmricourse@nmr.mgh.harvard.edu
+
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+
+Hi, thanks in advance for your replies!
+
+ICA-AROMA suggest that the fmri data should be smoothed before. But i want to perform the Degree Centrality analysis (DC) then, which requires the preprocessing steps don't include smoothing. Is there any ways to solve this conflict? or can I input the unsmoothed data into ICA-AROMA? 
+
+########################################################################
+
+Hi, 
+after defining nodes, extracting timeseries from nodes and creating images from nodes (https://open.win.ox.ac.uk/pages/fsl/analysis-course-practicals/fslnets/), I followed the instructions for Fslnets in python  https://git.fmrib.ox.ac.uk/fsl/fslnets
+
+the 
+ts = nets.load('./groupICA100.dr/', 0.72, thumbnaildir='./groupICA100.sum/')
+
+
+is returning the error:
+
+Hi Noah,
+
+If registration has completed successfully, that file should be in:
+
+<your_analysis>.feat/reg/ example_func2standard.mat
+
+Note that the file begins with example_func2, not example_fun2.
+
+Paul
+
+Hi Eugenie,
+
+That error usually suggests that something else has gone wrong previously. Are you able to share:
+The full command you were trying to run
+All of the information that was printed to the terminal
+the contents of the .fslvbmlog file
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Eugenie Choe <choeeugenie@GMAIL.COM>
+Sent: 12 August 2023 11:32
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Error while running FSLVBM
+ 
+
+Hello,
+
+I have a question regarding my output using FSL randomise with TFCE.
+
+I seem to get very large clusters when applying TFCE, which does not appear when applying, for example, voxel-based correction. I have attached screenshots of the tstat and pstat (red/yellow) map from the randomise with TFCE and the pstat from the randomise with voxel correction (black), as well as the cluster tables (TFCE-left, voxel-right) showing the cluster sizes. To me, this output seems strange that the surviving clusters would be so large, even using TFCE. Thus, I wanted to ask whether this indeed a strange outcome, or whether clusters this large might be expected with TFCE?
+
+Many thanks and best wishes,
+Afton Nelson
+
+
+
+Dear all,
+
+I would like to share that I have a PhD opportunity available in my lab at the Institute of Physics Gleb Wataghin of the University of Campinas (UNICAMP), located in Campinas, SP, Brazil. This is an exciting opportunity to work in the development of MRI pulse sequences to address complex questions about the brain clearance mechanisms.
+
+For more info, please visit: https://loamri.com/Opportunities/phd1/
+
+Cheers,
+
+Andre
+
+
+<html dir="ltr">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <p>Dear all,</p>
+        <p>I would like to share that I have a PhD opportunity available in my lab at the Institute of Physics Gleb Wataghin of the University of Campinas (UNICAMP), located in Campinas, SP, Brazil. This is an exciting opportunity to work in the development of MRI pulse sequences to address complex questions about the brain clearance mechanisms.</p>
+        <p>For more info, please visit:&#160;<a href="https://loamri.com/Opportunities/phd1/">https://loamri.com/Opportunities/phd1/</a>&#160;</p>
+        <p>Cheers,</p>
+        <p>Andre</p>
+    </body>
+</html>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ok! thank you!
+
+best
+pelle
+
+Den sön 13 aug. 2023 kl 16:24 skrev Glasser, Matt <glasserm@wustl.edu>:
+If you are using the HCP Pipelines, you can use RSNRegression to do dual regression.  We prefer the WR weighted regression method over a standard dual regression (methods are in Glasser et al., 2016 Nature).
+
+https://github.com/Washington-University/HCPpipelines/blob/master/global/scripts/RSNregression.sh
+
+Matt.
+
+﻿On 8/13/23, 9:21 AM, "FSL - FMRIB's Software Library on behalf of Pelle Svensson" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of pellesvenssom625@GMAIL.COM <mailto:pellesvenssom625@GMAIL.COM>> wrote:
+
+
+If you are using the HCP Pipelines, you can use RSNRegression to do dual regression.  We prefer the WR weighted regression method over a standard dual regression (methods are in Glasser et al., 2016 Nature).
+
+https://github.com/Washington-University/HCPpipelines/blob/master/global/scripts/RSNregression.sh
+
+Matt.
+
+﻿On 8/13/23, 9:21 AM, "FSL - FMRIB's Software Library on behalf of Pelle Svensson" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of pellesvenssom625@GMAIL.COM <mailto:pellesvenssom625@GMAIL.COM>> wrote:
+
+
+
+Hi all!
+
+
+I'd like to run FSL dual regression on command line melodic -CIFTI output (HCP data). This data has a 2D format while the dual_regression documentation states that only melodic 4D image data can be used. Is there anyway of performing dual regression with 2D (voxels x components) data instead?
+
+
+Hi all!
+
+I'd like to run FSL dual regression on command line melodic -CIFTI output (HCP data). This data has a 2D format while the dual_regression documentation states that only melodic 4D image data can be used. Is there anyway of performing dual regression with 2D (voxels x components) data instead?
+
+Best and thanks
+Pelle
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Josie,
+
+ 
+
+I think you could try the options below:
+
+ 
+
+--vxl                        list of numbers indicating voxelwise EVs position in the design matrix (list order corresponds to files in vxf option).
+
+--vxf                       list of 4D images containing voxelwise EVs (list order corresponds to numbers in vxl option).
+
+ 
+
+Best wishes,
+
+David
+
+ 
+
+-- 
+
+David V. Smith, Ph.D.
+
+Associate Professor of Psychology & Neuroscience
+
+Temple University
+
+Weiss Hall, Room 825
+
+1701 North 13th Street
+
+Philadelphia, PA 19122
+
+Office Phone: 215-204-1552
+
+Lab Website: https://sites.temple.edu/neuroeconlab/
+

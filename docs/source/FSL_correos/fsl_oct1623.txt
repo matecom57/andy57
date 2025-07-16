@@ -1,0 +1,359 @@
+Hi,
+
+I solved the issue. I had to add the following line:
+
+from plotly.subplots import make_subplots
+
+To report_xtract_qc.py
+How can I check it, please? What should I look for? I opened them in fsleyes.
+
+Thanks
+I hope this helps!
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+
+How can I check it, please? What should I look for? I opened them in fsleyes.
+
+Thanks
+
+Hi Blaise,
+
+I've prepared some instructions on setting up a FSL installation by hand at https://git.fmrib.ox.ac.uk/-/snippets/77 - hopefully that is enough to get you started.
+
+Paul
+
+Dear Paul,
+Thank you for your very fast response and excuse me for late reply. I was making further tests, including fslreorient2std as you recommended. Images have the same voxel orientation and fslreorient2std did not change the results. I figured out though, that the problem does not starts from flirt but from
+standard_space_roi T1_tmp_brain_reor.nii.gz T1_tmp2 -maskNONE -ssref $FSLDIR/data/standard/MNI152_T1_1mm_brain -altinput T1_orig_ud -d
+
+which is creating an affine used later in flirt command.
+
+The attached figure shows all involved volumes and the output of this command.
+
+Any idea of why is this happening?
+
+Best regards,
+Georgios
+
+########################################################################
+
+
+
+
+Hi Tamires,
+
+What is the value of "subjdata" just before the call to "nets.load_from_images"?
+
+Paul
+
+Hi Dianne
+
+ 
+
+We still recommend using bedpostx for multi-shell data. By default, it will run model 2 instead of model 1 to avoid potentially over-fitting crossing fibres ( see  https://pubmed.ncbi.nlm.nih.gov/22334356/ )
+
+ 
+
+Cheers
+
+Saad
+
+Hi Georgios,
+
+Would you be able to share one of your problematic data sets, along with the specific command that is failing, so I can try and reproduce the issue?
+
+Paul
+
+Dear Michael,
+
+Thank you for your reply, I think I might go down the first route you suggest first as there are not that many files to go through.
+
+I have not used fslstats before, but have seen this command suggested: fslstats image.nii.gz -M -k mask.nii.gz
+
+However, as I do not have a different file with a mask do I need to save the drawn ROI in fsleyes as a mask image?
+
+Many thanks,
+Gordon
+
+On Fri, 13 Oct 2023 at 16:11, Michael Chappell <000079f9f909e19d-dmarc-request@jiscmail.ac.uk> wrote:
+You can draw an ROI in FSLeyes and then save that and use with fslstats on the perfusion_calib image to calculate a mean within the region. If you can define your region in another space, e.g. on the anatomical or from an atlas, it is possible to use the results of registration to transform the ROI in the space of the perfusion image and then do the calculation using fslstats (that is what the ROI reporting tools that go with BASIL, in effect, do). That would be a good route if you are planning on doing this with a lot of subjects and can more easily automatically define your ROI away from the perfusion images themselves.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Sir Peter Mansfield Imaging Centre 
+
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+ 
+
+Precision Imaging Beacon Hub 
+
+Room A39f, A floor 
+
+Medical School, QMC 
+
+Nottingham, NG7 2UH 
+
+ 
+
+Books for biomedical engineering (physiology and imaging): 
+
+PhysiologyforEngineers.org 
+
+ 
+
+Books for neuroimaging: 
+
+NeuroimagingPrimers.org
+
+ 
+
+ 
+
+Dear group, 
+
+I've used bedpost and probtrack in the past on single-shell data, with a focus on connectivity-based classification.
+More recently, we've been acquiring multishell data and I'd appreciate some advice:
+
+Should I use qboot (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide?highlight=%28qboot%29#qboot_-_Estimation_of_fibre_orientations_using_q-ball_ODFs_and_residual_bootstrap) instead of bedpost?
+
+Assuming qboot is a better alternative than bedpost for multishell data, and given that my interest is connectivity-based classification, are there particular optional arguments I should use with qboot?
+
+As far as I'm aware, FSL is still THE tool to use for connectivity-based classification, but if there are other tools/approaches I should consider, could you please suggest them?
+
+Thank you for your time,
+
+Dianne
+
+Dianne Patterson, Ph.D
+dkp@arizona.edu
+Office: BSRL, Room 235
+RII Neuroimaging Staff Scientist 
+Program Coordinator Neuroimaging Methods Certificate 
+Cognitive Science GIDP affiliate member
+Faculty Lead OpenClass.ai
+Mastodon: @dpat@scicomm.xyz
+
+
+Hi Matthew,
+
+Originally I was using the MNI reference image MNI152_T1_2mm_brain. The same thing occurs when I use .feat/reg/standard (which I believe is the same image as the MNI152) as well as .feat/reg/func2standard. I am not warping through the anatomical images or using the field map here.
+
+My gui inputs are:
+
+Mode: Input Image -> Reference Image
+Reference: .feat/reg/standard.nii.gz
+Model/DOF: Affine
+Input image: .feat/stats/zfstat1.nii.gz (or cope1)
+
+Best,
+Sarah
+
+I have two cope files and one zfstat file that I need to warp to MNI space using flirt. For some reason, the two cope files I am able to transform without any issues but the zfstat file ends up misplaced and not aligned at all to MNI, maybe even rotated.
+
+I'm able to warp the example_func file to MNI just fine and the unwarped zfstat file aligns to the example_func file.
+
+Does anyone have any insights as to what could possibly be different in the zfstat.nii that might cause difficulty in alignment?
+
+
+Best,
+Sarah
+
+
+You can draw an ROI in FSLeyes and then save that and use with fslstats on the perfusion_calib image to calculate a mean within the region. If you can define your region in another space, e.g. on the anatomical or from an atlas, it is possible to use the results of registration to transform the ROI in the space of the perfusion image and then do the calculation using fslstats (that is what the ROI reporting tools that go with BASIL, in effect, do). That would be a good route if you are planning on doing this with a lot of subjects and can more easily automatically define your ROI away from the perfusion images themselves.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Sir Peter Mansfield Imaging Centre 
+
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+Dear,
+
+Is there a way to turn off the brain extraction tool of fsl_anat? This option is not listed as a possible argument.
+
+Thank you,
+Eva
+
+########################################################################
+
+Dear FSL,
+
+Sorry to bother you, not sure if this is the right email but this is a query off the back of the recent FSL course that I did.
+
+It was in relation to selecting a particular ROI to determine the perfusion within the VPL nucleus of the thalamus. I performed BASIL and obtained a perfusion value for the thalamus but hoped to select my own region within the thalamus.
+
+I enclose below in FSLeyes, where I was trying to use edit mode to select the posterio-lateral aspect of the thalamus. The select by intensity option did not seem to work. Essentially, I wanted to know the mean perfusion underneath the selected purple area, rather than just the voxel I am clicking on.
+
+Is this possible?
+
+Many thanks,
+Gordon
+image.png
+
+
+
+Hello experts,
+
+ 
+
+I am having another PNM question –
+
+ 
+
+After running the stage 1 (both with command or GUI have I tried), no card and resp txt files are automatically created. I therefore cannot carry on with stage 3. There were no error message about this.
+
+ 
+
+I have 2 sets of physiological data recording data file – one sampling at 50hz worked. Another one sampling at 1000hz did not work.  The failing 1000hz one had a "square wave" so I transformed it to "spike", matching similar ones we had here at fmrib.
+
+ 
+
+Also, the HTML page has not been successful opening itself.
+
+ 
+
+Resources on PNM is very limited so your help will be very much appreciated!
+
+ 
+
+Best wishes,
+
+Lin
+
+
+Dear Julia,
+  I think the best practical solution here is to go with the corrcon/corrmod options ( as already in the call ) since the outputs will then be “fully” corrected ( which as mentioned before is why an F-test might be used in other situations ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Postdoctoral position in Neuroimaging and Aging at Albert Einstein College of Medicine
+
+ 
+
+A postdoctoral research fellow position is available immediately in the departments of Neurology and Radiology at the Albert Einstein College of Medicine in NY. The position will offer unique opportunities to utilize multi-modal neuroimaging data collected on normal and neurological populations that are well characterized in terms of cognitive, motor, and emotional function.  The post-doctoral fellow will be expected to devote significant time and effort to writing empirical research articles. In addition, there will be opportunities to learn and become involved in collecting, processing, and analyzing novel neuroimaging data combining different methods (MRI, fNIRS, EEG).
+
+ 
+
+We are seeking an enthusiastic and highly-motivated individual with experience in neuroimaging analysis methodologies.  Experience and knowledge of aging and neurodegenerative diseases is desirable. Successful candidates will have a PhD in biomedical engineering, physics, computer science, cognitive neuroscience or related disciplines, and experience in conducting experiments and performing advanced data analysis with structural and/or functional MRI methods (e.g. DTI/NODDI, resting state). Candidates will have a solid background in relevant data processing packages (e.g., FSL, SPM, Freesurfer), programming in either Matlab, Python or similar environments and should be comfortable with data analysis in a Linux environment. The ideal candidate will also have familiarity with computational and statistical methods related to imaging analyses. A strong work ethic, excellent organizational and communication skills is expected as well as the ability to work in an interdisciplinary environment. Willingness to learn new techniques or software environments and a strong foundation in neuroanatomy is plus. Excellent writing skills, a good publication record, and ability to work independently will be strongly favorable.
+
+ 
+
+The Albert Einstein College of Medicine is an Equal Opportunity/Affirmative Action Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, age, protected veteran or disabled status, or genetic information. Einstein seeks candidates whose skills, and personal and professional experience, have prepared them to contribute to our commitment to diversity and excellence, and the communities we serve.
+
+ 
+
+ 
+
+ 
+
+Mark
+
+ 
+
+____________________
+Mark Wagshul, PhD
+Associate Professor
+Gruss Magnetic Resonance Research Center
+Albert Einstein College of Medicine
+Bronx, NY 10461
+
+Ph: 718-430-4011
+
+FAX: 718-430-3399
+
+Email: mark.wagshul@einsteinmed.edu
+
+ 
+
+einstein-logo-rgb
+
+This email message and any accompanying attachments may contain privileged information intended only for the named recipient(s). If you are not the intended recipient(s), you are hereby notified that the dissemination, distribution, and or copying of this message is strictly prohibited. If you receive this message in error, or are not the named recipient(s), please notify the sender at the email address above, delete this email from your computer, and destroy any copies in any form immediately.
+
+ 
+
+
+
+
+Ah ok.  Eventually I'll want the whole package, but at the moment, the key tools that would help me are:
+
+flirt
+applywarp
+fslmaths
+
+And if I can see how to build those, I can probably work our how to compile other tools as I need them.
+
+Blaise
+
+
+Dear all,
+
+I am trying to analyse pCASL data using BASIL. I have obtained the perfusion_calib output and also performed regional analysis. However, I was hoping to identify my own region of interest, and determine the perfusion within this region.
+
+Specifically, I want to look at the Ventro-posterio lateral nucleus of the thalamus (the posterior/lateral aspect of the thalamus).
+
+I have tried to go through the 'edit mode' within FSLeyes: Selection mode, choosing a 4mm region, 2D and clicking over the area of interest. However, this only gives me the perfusion for the voxel I click on rather than within the particular region.
+
+Is this the way to identify the region to get the mean perfusion within the selected region or am I missing something?
+
+Many thanks,
+Gordon
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

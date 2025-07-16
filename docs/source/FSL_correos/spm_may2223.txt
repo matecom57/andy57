@@ -1,0 +1,94 @@
+Hello dear
+ 
+This is Haya Althuwaini, a PhD student registered at the University of Liverpool in the UK. We are collecting MR brain scans for research purposes as a main PhD project that focuses on investigating hallucination proneness among healthy people. Data collection is conducted on a healthy university-student sample, using a 3T Signa GE scanner. A part of the MR protocol used are functional scans, both task-based and resting state. We performed two functional block design scans (interleaved hyperband acquisition), with auditory and visual stimuli presented to participants through Psychopy, in addition to the resting-state (functional connectivity) fMRI scan.
+ 
+The MR protocol including these tasks were first tested on a 3T Siemens scanner and showed nice activation when they were analysed using SPM on MATLAB. However, there was no or just minimal activation when we did the same scans on the GE scanner. We are using MATLAB R2022a to conduct the analysis. We tried to manipulate different options to get the expected activation but unfortunately nothing works well.
+ 
+Does anyone have experience with GE fMRI data and could give me some guidance on how to properly analyse my data?
+ 
+Kind regards
+Haya
+
+
+Hello dear
+
+ 
+
+This is Haya Althuwaini, a PhD student registered at the University of Liverpool in the UK. We are collecting MR brain scans for research purposes as a main PhD project that focuses on investigating hallucination proneness among healthy people. Data collection is conducted on a healthy university-student sample, using a 3T Signa GE scanner. A part of the MR protocol used are functional scans, both task-based and resting state. We performed two functional block design scans (interleaved hyperband acquisition), with auditory and visual stimuli presented to participants through Psychopy, in addition to the resting-state (functional connectivity) fMRI scan.
+
+ 
+
+The MR protocol including these tasks were first tested on a 3T Siemens scanner and showed nice activation when they were analysed using SPM on MATLAB. However, there was no or just minimal activation when we did the same scans on the GE scanner. We are using MATLAB R2022a to conduct the analysis. We tried to manipulate different options to get the expected activation but unfortunately nothing works well.
+
+ 
+
+Does anyone have experience with GE fMRI data and could give me some guidance on how to properly analyse my data?
+
+ 
+
+Kind regards
+
+Haya
+
+***COMPUTATIONAL PSYCHIATRY COURSE (4th SEPTEMBER - 9th SEPTEMBER 2023) - IN ZURICH OR ONLINE***
+ 
+Dear all,
+
+We are excited to announce that the next international Computational Psychiatry Course organised by the Translational Neuromodeling Unit(TNU; PI: Prof. Dr. Klaas Stephan) at the ETH and University of Zurich will take place from 4th September – 9th September 2023.
+After last year's success, we are offering once again a HYBRID course: That means you can either join online via Zoom or in person in Zurich.
+
+Registration is open! https://events.eventzilla.net/e/computational-psychiatry-course-cpc-zurich-2023--hybrid-2138601232?preview=1677865209506
+Please note that spaces are limited and are made available on a first-come first-served basis.
+ 
+We are looking forward to welcoming you in person in Zurich or online and invite you to distribute this information amongst your peers.
+
+DETAILS
+
+The 6-day course, organized by the Translational Neuromodeling Unit (TNU, PI; Dr. Klaas Stephan) of ETH and University of Zurich, is a non-profit, block course with lectures on Monday-Thursday, application talks on Friday, and tutorials on Saturday.
+The course is desgined to be practically useful for students at all levels (MDs, Master, PhD, Postdoc, PI) and from diverse backgrounds (neuroscience, psychology, medicine, engineering, physics, etc.), who would like to apply modeling techniques to study cognition or brain physiology in mental health. The course will teach not only the theory of computational modeling, but also demonstrate open-source software in application to example data sets. Students enrolled at ETH and University of Zurich can earn 3 ECTS upon successfull completion of this module. The CPC Zurich 2023 main course comprises ca. 50 hours. Visit our website for more information: https://translationalneuromodeling.org/cpcourse/
+
+ 
+Your CPC Zurich Team
+
+
+Hi Everyone,
+
+As you might have heard, all NeuroImage and NeuroImage:Reports editors have resigned over Elsevier's very high publication fee, and have started a new non-profit Open Access journal with MIT Press: https://imaging-neuroscience.org
+
+Our resignation came with great regret, and a huge amount of thought and discussion - please read our announcement (on the web page above) to get more details.
+
+We are now open for submission of new papers to Imaging Neuroscience (see above link for details). This allows for the review process to proceed without delay. The production & publication process for accepted papers will then wait until full journal opening (aiming for mid-July).
+
+Also, some authors with papers under review at NeuroImage have asked to transfer over, into review at Imaging Neuroscience. We are ready for this; please include all information about your review process to date in your cover letter.
+
+Thanks,
+Thomas
+
+Dear Martin,
+
+The analyses can proceed in the usual way, regardless of the TR or sampling frequency.
+
+The is some information about sparse paradigms in the following chapter:
+"Despite the sampling rate for “sparse” BOLD time series approaching 0.1 Hz, plausible models of dynamic neural interactions at the millisecond level can still be disambiguated, given the fMRI data. This is because the forward model predicts, given the known experimental inputs, what the BOLD signal should look like at any future time point, including the times when BOLD measurements were taken; the sampling frequency (repetition time) is irrelevant."
+Griffiths, T. D., Kumar, S., Von Kriegstein, K., Overath, T., Stephan, K. E., & Friston, K. J . (2009). Auditory object analysis. In M. S. Gazzaniga, E. Bizzi, L. M. Chalupa, S. T. Grafton, T. F. Heatherton, C. Koch, J. E. LeDoux, S. J. Luck, G. R. Mangan, J. A. Movshon, H. Neville, E. A. Phelps, P. Rakic, D. L. Schacter, M. Sur, & B. A. Wandell (Eds.), The cognitive neurosciences (pp. 367–381). Massachusetts Institute of Technology. https://doi.org/10.7551/mitpress/8029.003.0035
+
+I hope this helps
+
+Best wishes,
+
+Emma Holmes
+
+
+I hope all the well in London !
+
+We have a sparse-sampling fMRI dataset during a vocal motor task. Each trial lasted 5,5 sec with 1 sec sampling at the end, resulting in an effective TR = 1 sec followed by 4,5 sec gap. The sampling scheme is similar to your recent paper investigating Speech-in-noise perception with DCM, although you had a longer TR: https://academic.oup.com/cercor/article/31/3/1582/5951763#227520616
+
+Difficulties with Speech-in-Noise Perception Related to Fundamental Grouping Processes in Auditory Cortex
+Abstract. In our everyday lives, we are often required to follow a conversation when background noise is present (“speech-in-noise” [SPIN] perception). SPIN per
+academic.oup.com
+
+However, I wasn't able to find any details of how the sparse design is actually modelled in the GLM - and subsequently with DCM - with respect to the timing fo the paradigm in relation to missing data periods. Would you be happy to share how your modelled this ?
+
+Best wishes
+Martin
+

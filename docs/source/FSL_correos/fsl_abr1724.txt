@@ -1,0 +1,242 @@
+Hi Tony,
+
+Unfortunately this isn't possible in the new version - you will need to convert the desired slice indices into proportions between 0 and 1. 
+
+Adding back in a slider controlling the slice index would not be particularly straightforward, but I could look into adding e.g. a dialog box which would allow you to enter the desired range in slice indices if that would work  for you.
+
+Paul
+
+Hello Frieda,
+     From your terminal prompt it looks like you might already be in the “reg” directory, in which case the input files won’t need the “reg/“ relative path pre-pended to their filenames.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hello again,
+
+we are currently trying to transform our OFC ROI mask into functional space before extracting the timeseries, using the following command:
+applywarp -i PCC.nii.gz -r reg/example_func.nii.gz -o PCC_func --postmat=reg/highres2example_func.mat -w reg/highres2standard_warp_inv
+
+Unfortunately, we continue to receive the following error:
+
+friedakruschina@MacBook-Air-von-Frieda reg %
+applywarp -i /Users/friedakruschina/Desktop/Masks/bin_thr50_orbitofrontal_cortex_ROI_harvardoxford.nii.gz -r reg/example_func.nii.gz -o OFCC_func --postmat=reg/highres2example_func.mat -w reg/highres2standard_warp_inv
+
+Could not open matrix file reg/highres2example_func.mat
+Image Exception : #63 :: No image files match: reg/example_func
+Image Exception : #22 :: Failed to read volume reg/example_func.nii.gz
+Error : No image files match: reg/example_func
+libc++abi: terminating due to uncaught exception of type std::runtime_error: Failed to read volume reg/example_func.nii.gz
+Error : No image files match: reg/example_func
+/Users/friedakruschina/fsl/share/fsl/bin/applywarp: line 2: 32573 Abort trap: 6           /Users/friedakruschina/fsl/bin/applywarp "$@"
+
+Any suggestions on solving this issue are highly appreciated!
+
+Kindly, Frieda
+
+########################################################################
+
+Dear Mathew,
+
+ 
+
+that was indeed the issue. Seems like the FNIRT/UserGuide provided by FSL contains a mistake. Now it worked. Thank you very much for highlighting this!
+
+ 
+
+Kind regards,
+
+Frieda
+
+Dear Frieda,
+It looks like you may have a doubled “=“ in the first argument ( --ref==highres.nii.gz as opposed to --ref=highres.nii.gz ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear all,
+
+in order to transform our mask image (ROI) into functional space, we are trying to reverse the non-linear transform: highres2standard_warp using the following command:
+
+invwarp --ref==highres --warp=highres2standard_warp --out=highres2standard_warp_inv
+
+We can open and access our 'highres' file without any problems, but continue to get the following error:
+
+[friedakruschina@MacBook-Air-von-Frieda reg % invwarp --ref==highres.nii.gz --warp=highres2standard_warp.nii.gz --out=highres2standard_warp_inv]
+Image Exception : #63 :: No image files match: =highres
+Image Exception : #22 :: Failed to read volume =highres.nii.gz
+Error : No image files match: =highres
+libc++abi: terminating due to uncaught exception of type std::runtime_error: Failed to read volume =highres.nii.gz
+Error : No image files match: =highres
+/Users/friedakruschina/fsl/share/fsl/bin/invwarp: line 2: 32277 Abort trap: 6          /Users/friedakruschina/fsl/bin/invwarp "$@"
+
+Any suggestions for solving this issue are highly appreciated!
+
+Kindly, Frieda
+
+Hi:
+
+  In a research project in which we are acquiring images (MPRAGE, DTI, RS), we will have to change to another MRI equipment. Any problem to use TBSS, for example?
+
+  Sincerely,
+
+
+Gonzalo Rojas Costa
+
+########################################################################
+
+Dear Arslan,
+   For a repeated measures design ( with all subjects having all 4 measures ). Then you can expand the design in the link below by “splltting" the final column of ones into a separate column of ones per subject - so expanding a single ev into an ev per subject.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear all,
+My name is Arslan Gabdulkhakov, I am a PhD student in the Neuroimaging Group at Leibniz Research Institute (IfADo) in Dortmund, Germany.
+
+I am trying to run a 2nd level ANOVA with 2 factors (CS and halves) and with 2 levels each (CS+ / CS- / 1st half / 2nd half) with 1st level copes. There are in total four 1st level copes CS+ 1st half, CS- 1st half, CS+ 2nd half, CS- 2nd half. Thus each 'Input' in the EV's tab of the GLM is one such a cope image, with 4 copes per subject. 
+
+Looking at the FSL Feat UserGuide below, I couldn't figure out how exactly to structure the design matrix for this case when inputs are 1st level copes and would appreciate any suggestion
+ https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FEAT/UserGuide#ANOVA:_2-factors_2-levels
+
+Best regards,
+Arslan
+
+The Psychiatric Neuroscience Lab at Taipei Medical University (TMU), directed by Dr. Matteo Martino (Graduate Institute of Mind, Brain, and Consciousness) and Dr. Paola Magioncalda (International Master/Ph.D. Program in Medicine, College of Medicine), is recruiting a full-time Neuroimaging Research Assistant.
+
+Our Lab investigates brain function and the neurobiology of psychiatric disorders, bipolar disorder especially, using clinical and behavioral evaluations, laboratory analysis, and neuroimaging techniques (functional, structural, and diffusion MRI).
+https://tmu.pure.elsevier.com/en/persons/matteo-martino
+https://gimbc.tmu.edu.tw/matteo-martino/
+https://tmu.pure.elsevier.com/en/persons/paola-magioncalda
+https://www.ncbi.nlm.nih.gov/myncbi/paola.magioncalda.1/bibliography/public/
+
+The position involves leading/assisting with various aspects of multimodal neuroimaging studies in humans including neuroimaging data collection, preprocessing, and analysis (resting state fMRI data especially).
+
+Applicants must have a Bachelor’s and/or Master’s degree in Engineering, Physics, Computer Science, Neuroscience, or a related field.
+Proficiencies with major neuroimaging software tools (FSL, AFNI, SPM, Freesurfer, etc.) and experience with programming in Python and MATLAB are required. The ability to carry out independent statistical analyses using standard software packages (e.g. R) is desirable.
+English communication skills are required.
+
+The initial employment period for this position is 1 year, with the possibility of extension. The job will start in October 2024.
+Salary is in accordance with the TMU research assistant compensation standard plus health insurance and other benefits. Compensation is commensurate with qualifications and experience and is subject to an annual increase.
+ 
+Applicants are invited to send their resume, statement of interest, and contact information for at least two references to Dr. Matteo Martino at matteomartino9@gmail.com and Dr. Paola Magioncalda at paola.magioncalda@gmail.com.
+
+########################################################################
+
+
+Dear Matthew,
+thanks for the quick feedback,
+  - your EPI and fieldmap images all have the same reduced field-of-view? 
+correct 
+
+-  you registered the phasediff image to the structural, was this by applying the transform from the magnitude->structural registration 
+correct. i tried as you said by applying the transform from the magnitude->structural registration. And also tried doing the same transformation as i did for the magnitude image, which led to the same result. 
+
+- and were these pre-registered images the ones that were passed into fsl_prepare_fieldmap/FEAT etc?
+correct
+Best,
+J.A.
+
+Le lun. 15 avr. 2024 à 17:00, Matthew Webster <0000bb75d3c794d0-dmarc-request@jiscmail.ac.uk> a écrit :
+Dear Jamy,
+  If I understand, your EPI and fieldmap images all have the same reduced field-of-view? Also when you say you registered the phasediff image to the structural, was this by applying the transform from the magnitude->structural registration - and were these pre-registered images the ones that were passed into fsl_prepare_fieldmap/FEAT etc?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 15 Apr 2024, at 14:42, Jamy Andy <and.jami@GMAIL.COM> wrote:
+
+Dear all
+We acquired some EPI at 7T with reduced FOV. And field maps (2 magnitude volumes, and a single phase difference (phasediff) image with same FOV, Vox size etc.. as the EPIs.)
+
+We unfortunately did not acquire a whole-brain EPI volume that matches the reduced FOV acquisition
+But I tried the options that were mentioned in this post with the magnitude image instead of SBRef (https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1707&L=FSL&P=R1367&X=23E5BED42B47F78F61&Y)
+In my case, options (e) and the bbr, did not show much difference. Both look decent.
+
+I also registered the phasediff image to the structural image so that it has the same dimensions as the magnitude image.
+
+My command looks like this:
+fsl_prepare_fieldmap SIEMENS phasediff magnitude_brain  phaserad 1.02
+
+When I overlay the phaserad and the magnitude_brain, they perfectly match.
+When I run Feat the distortion correction is however weird. See image im1.png
+Any input is warmly welcome,
+Thanks
+J.A.
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+<im1.png>
+
+
+Dear FSL experts,
+
+for a research paper of our group, we used FSL randomise to perform paired one-sample t-tests using TFCE to investigate DTI changes in a TBI sample. Our methodology involved using difference maps (pre- minus post-measurement and vice versa) as inputs, and we reported peak coordinates (FEW-corrected p-values in MNI) of significant clusters, consistent with similar studies in the field.
+
+The reviewers have raised a question regarding the interpretation of these peak coordinates. They argue that peak coordinates may not directly correspond to the peak of injury or the centroid of damage due to the irregular shapes of the significant clusters. They seek clarification on what these peak coordinates mean pathologically.
+
+Our primary intention in reporting these coordinates was to facilitate replication and comparison across different studies, aiding in the localization and characterization of areas of interest within the WM. Secondly, we aimed to align with common practices in meta-analysis methods such as ALE and SDM, where peak coordinates serve as pivotal data points for summarizing findings across various studies. We do not think that peak coordinates may invariably denote the precise site of injury. Rather, they signify spatial locations within the brain where significant changes or abnormalities in diffusion metrics are observed, which could be indicative of various pathological processes.
+
+We would greatly appreciate your insights and expertise on this question in order to come to a well-founded interpretation of our results. Thank you!
+Anna
+
+
+Dear Jamy,
+  If I understand, your EPI and fieldmap images all have the same reduced field-of-view? Also when you say you registered the phasediff image to the structural, was this by applying the transform from the magnitude->structural registration - and were these pre-registered images the ones that were passed into fsl_prepare_fieldmap/FEAT etc?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear all
+We acquired some EPI at 7T with reduced FOV. And field maps (2 magnitude volumes, and a single phase difference (phasediff) image with same FOV, Vox size etc.. as the EPIs.)
+
+We unfortunately did not acquire a whole-brain EPI volume that matches the reduced FOV acquisition
+But I tried the options that were mentioned in this post with the magnitude image instead of SBRef (https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1707&L=FSL&P=R1367&X=23E5BED42B47F78F61&Y)
+In my case, options (e) and the bbr, did not show much difference. Both look decent.
+
+I also registered the phasediff image to the structural image so that it has the same dimensions as the magnitude image.
+
+My command looks like this:
+fsl_prepare_fieldmap SIEMENS phasediff magnitude_brain  phaserad 1.02
+
+When I overlay the phaserad and the magnitude_brain, they perfectly match.
+When I run Feat the distortion correction is however weird. See image im1.png
+Any input is warmly welcome,
+Thanks
+J.A.
+
+

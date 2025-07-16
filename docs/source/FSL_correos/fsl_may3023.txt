@@ -1,0 +1,340 @@
+FSL Users,
+ 
+I am working to move my processing pipeline to FSL and begin utilization of multi-band acquisitions on a Philips 3T Ingenia. I typically use dcm2niix for conversions, but I am only getting the bval/bvec files, NIfTI image, and txt/json sidecars. We are acquiring with MB3 and 51 slices, and I am looking to specify the slspec filebut this is not being produced by dcm2niix.
+ 
+	1	Is there a way to get the slice timings file from dcm2niix on the Philips data? I am not seeing this in my JSON sidecar.
+	2	I am also working to utilizing multithreading on my Ubuntu 20.04 server with 40 physical cores. Does this utilize SGE or can I also utilize HTcondor? Is there anything special I need to utilize mutli-threaded CPU’s or just the FSLPARALLEL bash variable?
+ 
+ 
+Thanks
+_matt
+ 
+Matthew Sherwood
+ 
+
+
+
+I am running the following code to make deterministic tractography with autoptx and fsl:
+
+<#!/bin/bash
+
+mkdir dmri
+
+bet data.nii.gz  dmri/nodif_brain -f 0.25 -g 0 -m
+
+indx=""
+for ((i=1; i<=26; i+=1)); do indx="$indx 1"; done
+echo $indx > dmri/indices.txt
+
+for ((i=1; i<=26;i+=1)) ; do echo 0 1 0 0.096 >> dmri/acqparm.txt ; done ;
+
+eddy_openmp --imain=data --mask=dmri/nodif_brain_mask --bvecs=data.bvec --bvals=data.bval --out=dmri/data --index=dmri/indices.txt --acqp=dmri/acqparm.txt --repol -v
+
+cp dmri/data.eddy_rotated_bvecs dmri/bvecs.ecc
+cp dmri/data.eddy_rotated_bvecs dmri/bvecs
+cp data.bval dmri/bvals
+
+dtifit -k dmri/data.nii.gz -o dmri/data -m dmri/nodif_brain_mask.nii.gz -r dmri/bvecs -b dmri/bvals --sse
+
+cp dmri/data_L1.nii.gz dmri/data_AD.nii.gz
+fslmaths dmri/data_L2 -add dmri/data_L3 -div 2 dmri/data_RD
+
+mkdir dmri/data
+
+cp dmri/data_FA.nii.gz dmri/data/data_FA.nii.gz
+cp dmri/data_L1.nii.gz dmri/data/data_L1.nii.gz
+cp dmri/data_L2.nii.gz dmri/data/data_L2.nii.gz
+cp dmri/data_L3.nii.gz dmri/data/data_L3.nii.gz
+cp dmri/data_MD.nii.gz dmri/data/data_MD.nii.gz
+cp dmri/data_AD.nii.gz dmri/data/data_AD.nii.gz
+cp dmri/data_RD.nii.gz dmri/data/data_RD.nii.gz
+
+
+$FSLDIR/bin/fsl_reg dmri/data_FA $FSLDIR/data/standard/FMRIB58_FA_1mm dmri/nat2std -e -FA
+$FSLDIR/bin/invwarp -r dmri/data_FA -w dmri/nat2std_warp -o dmri/std2nat_warp
+
+$FSLDIR/bin/bedpostx dmri -n 2
+
+...>
+
+the code should continue afterwards. However, it does not because, when it reaches the last line written previously (i.e,
+$FSLDIR/bin/bedpostx dmri -n 2), all the lines of the bedpostx function appear until it gives the error:
+
+</usr/local/fsl/bin/bedpostx: line 277: /home/neuroimage/shared_hd/tracts/066/dmri.bedpostX/monitor: Permission denied>.
+
+How can I fix this permissions problem? .monitor messes up the code, and the proper outputs from bedpostx stop coming out.
+
+
+Hello FSL expert's,
+I did a PPI analysis and I wonder whether I can extract brain signals from the PSY and PHYS interaction cope to represent the strength/intensity of the connectivity. I wanted to correlate these signals with behavioral data to look at whether the connectivity strength can relate to behavioral data. Am I doing this right?
+Thanks,
+XB
+
+
+Dear all,
+
+I am now working on some DTI data. I have processed the data using TBSS, and would like to do the statistics using “randomise”.
+
+It is two-group difference (two-sample unpaired t-test), with two covariates, i.e., age and gender. How should I make the design.con and design.mat? 
+
+I try to follow https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM#Two-Group_Difference_Adjusted_for_Covariate, but I am not sure I understand the website correctly. I have 2 covariates, i.e., age and gender, does it mean 2 contrasts  for each covariate need to be added? So I have to add 4 more contrasts? I want to know the group difference after adjusting for age, and whether the male/female difference is siginicant. What should I fill out the matrix in the design.con? Can anyone show me an example?
+
+Another question is about the interaction effect? Do I need to deal with it?
+
+Any help will be appreciated.
+
+
+Kind regards,
+Erin 
+
+
+Most importantly, how do the corrected volumes look like?
+
+The skull seems quite thick, and things like that can happen, but the corrected volumes should match the anatomicals quite well.
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von "Glasser, Matt" <glasserm@WUSTL.EDU>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Donnerstag, 25. Mai 2023 um 19:22
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] stretching of DWI volumes
+
+ 
+
+What does the structural scan look like?  Is it possible you are missing some slices in the PA volume and the AP volume is actually correct?  I see a neuroanatomical discontinuity a few slices above the corpus callosum…
+
+Matt.
+
+Dear Jesper,
+
+Thanks for your reply.
+I am very grateful for your help.
+
+There is only the difference in the voxel intensity value.
+
+I was just wondering and wanted to check if I missed any other process that should be contained to get the eddy_corrected data through displacement field.
+
+I set the option "interp" to "spline" in the "applywarp", and I found that the result is almost same as the output of the "eddy".
+
+Thanks again!
+Best,
+Jingguo
+
+
+Where are the FSL improvements since version 6.0.6.3? I didn't found it in https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew
+
+Sincerely,
+
+
+Gonzalo Rojas Costa
+
+########################################################################
+
+Dear FSL Experts, 
+
+I am trying to display statistical results from a Vertex analysis in Fsleyes.  This page (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST/UserGuide) gives instructions for fslview but there are no instructions explaining the visualization process in 3 D for Fsleyes.  Using the 3D view in fsleyes and following similar instructions for fslview does not seem to show the statistics in 3D on the surface.  I managed to display sub-cortical structures in 3D but not the statistical overlay.  
+
+Thank you for any help!
+
+Paul Geha
+--------------------------------------------
+Paul Geha, MD
+Assistant Professor of Psychiatry
+430 Elmwood Ave, R2.B206
+Rochester, NY 14620
+Tel: (585)-275-8675
+
+Dear FSL experts£¬
+I have recently run eddy according to the user guide£º
+
+eddy_cuda10.2 --imain=data --mask=my_hifi_b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs --bvals=bvals --topup=my_topup_results --out=eddy_corrected_data --dfields test_dfields
+
+The data for "--imain" is from the HCP, an unprocessed multi-shell(b=0,1000,2000,3000) dMRI data with 95 volumes and its PE direction is LR .
+
+I used cuda version eddy and added the command "--dfields" to get the deformation field of every volume.
+
+I tried to get the "my_eddy_corrected_data" by myself by applying the deformation field to the raw dMRI data as follows:
+
+1. first extract the second volume in the "--imain=data" , named it as 002_rawdata;
+    and extract the second volume in the "--out=eddy_corrected_data", named it as 002_corrected_data
+2. apply second deformation field(named it as 002_dfield) to the extracted volume :
+    applywarp -i 002_rawdata -w 002_dfield -r 002_corrected_data -o warped_002_rawdata
+3. compute jacobian determinent map of the "002_dfield" by command "fnirtfileutils":
+    fnirtfileutils --in=002_dfield --ref=002_corrected_data --jac=my_jac
+4. warped_002_rawdata multipy my_jac, to get "my_eddy_corrected_data"
+
+I hace checked results by fsleyes and found that the intensity of every voxel between the 
+"eddy_corrected_data" and the "my_eddy_corrected_data" is not the same. I also tried to
+get the jacobian determinent by "convertwarp" command, but the result is still not same as
+the "eddy_corrected_data"
+
+My question is what should I do to get the same result as
+"--out=eddy_corrected_data" by applying the deformation field
+to raw dMRI data.
+
+Any help would be appreciated!
+
+########################################################################
+
+
+Hello,
+
+I'm trying to use probtrackx2_gpu to process 0.3 mm resolution data, the program works fine without the --omatrix1/2/3 options, but as soon as I set the option --omatrix1 for example, I get the following error:
+
+"PROBTRACKX2 VERSION GPU
+Log directory is: data/output_ptx2
+Running in seedmask mode
+Loading tractography data
+read gifti
+read gifti
+Number of Seeds: 93509
+read gifti
+read gifti
+Dimensions Matrix1: 93509 x 93509
+
+Time Loading Data: 329 seconds
+
+Hello,
+
+I'm trying to use probtrackx2_gpu to process 0.3 mm resolution data, the program works fine without the --omatrix1/2/3 options, but as soon as I set the option --omatrix1 for example, I get the following error:
+
+"PROBTRACKX2 VERSION GPU
+Log directory is: data/output_ptx2
+Running in seedmask mode
+Loading tractography data
+read gifti
+read gifti
+Number of Seeds: 93509
+read gifti
+read gifti
+Dimensions Matrix1: 93509 x 93509
+
+Time Loading Data: 329 seconds
+
+Dear Andreas and Matt,
+
+ 
+
+Thank you both for your responses.
+
+ 
+
+The number of slices is consistent across all scans (AP, PA, raw and corrected). The raw scans look as expected: dented in prefrontal for AP and stretched in prefrontal  but dented in occipital for PA, both compared to the anatomical scan. Processed scans however, look a bit squashed (in occipital) for AP and stretched (in occipital) for PA, compared to anatomical. The screenshots are after correction.
+
+ 
+
+Best,
+
+Simon
+
+Dear FSL experts,
+
+I am trying to run topup to do distortion correction for DWI data and I have a question about the input for the topup command. We have acquired the A2P b0 image as separate acquisition from the scanner. In this case is it still necessary to extract the b0 from the DWI data using the fslroi command, or should the separate acquisition A2P b0 image be used for merging with the P2A b0 image, to obtain the input image for topup? If I extract the first volume from the DWI image using fslroi, the output is not the same as the separate acquisition A2P b0.
+
+Thank you very much for your help!
+
+Kind regards,
+Andra
+
+
+Hi - is it maybe that you don't have write permission in that shared working directory?
+Cheers.
+
+
+On 30 May 2023, at 12:31, Alberto Del Cerro Leon <bertocerron@GMAIL.COM> wrote:
+
+I am running the following code to make deterministic tractography with autoptx and fsl:
+
+<#!/bin/bash
+
+mkdir dmri
+
+bet data.nii.gz  dmri/nodif_brain -f 0.25 -g 0 -m
+
+indx=""
+for ((i=1; i<=26; i+=1)); do indx="$indx 1"; done
+echo $indx > dmri/indices.txt
+
+for ((i=1; i<=26;i+=1)) ; do echo 0 1 0 0.096 >> dmri/acqparm.txt ; done ;
+
+eddy_openmp --imain=data --mask=dmri/nodif_brain_mask --bvecs=data.bvec --bvals=data.bval --out=dmri/data --index=dmri/indices.txt --acqp=dmri/acqparm.txt --repol -v
+
+cp dmri/data.eddy_rotated_bvecs dmri/bvecs.ecc
+cp dmri/data.eddy_rotated_bvecs dmri/bvecs
+cp data.bval dmri/bvals
+
+dtifit -k dmri/data.nii.gz -o dmri/data -m dmri/nodif_brain_mask.nii.gz -r dmri/bvecs -b dmri/bvals --sse
+
+cp dmri/data_L1.nii.gz dmri/data_AD.nii.gz
+fslmaths dmri/data_L2 -add dmri/data_L3 -div 2 dmri/data_RD
+
+mkdir dmri/data
+
+cp dmri/data_FA.nii.gz dmri/data/data_FA.nii.gz
+cp dmri/data_L1.nii.gz dmri/data/data_L1.nii.gz
+cp dmri/data_L2.nii.gz dmri/data/data_L2.nii.gz
+cp dmri/data_L3.nii.gz dmri/data/data_L3.nii.gz
+cp dmri/data_MD.nii.gz dmri/data/data_MD.nii.gz
+cp dmri/data_AD.nii.gz dmri/data/data_AD.nii.gz
+cp dmri/data_RD.nii.gz dmri/data/data_RD.nii.gz
+
+
+$FSLDIR/bin/fsl_reg dmri/data_FA $FSLDIR/data/standard/FMRIB58_FA_1mm dmri/nat2std -e -FA
+$FSLDIR/bin/invwarp -r dmri/data_FA -w dmri/nat2std_warp -o dmri/std2nat_warp
+
+$FSLDIR/bin/bedpostx dmri -n 2
+
+...>
+
+the code should continue afterwards. However, it does not because, when it reaches the last line written previously (i.e,
+$FSLDIR/bin/bedpostx dmri -n 2), all the lines of the bedpostx function appear until it gives the error:
+
+</usr/local/fsl/bin/bedpostx: line 277: /home/neuroimage/shared_hd/tracts/066/dmri.bedpostX/monitor: Permission denied>.
+
+How can I fix this permissions problem? .monitor messes up the code, and the proper outputs from bedpostx stop coming out.
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+---------------------------------------------------------------------------
+Stephen M. Smith, Professor of Biomedical Engineering
+Head of Analysis,  WIN (FMRIB) Oxford
+
+Editor-in-Chief, Imaging Neuroscience
+
+FMRIB, JR Hospital, Headington, Oxford  OX3 9DU, UK
+steve@fmrib.ox.ac.uk    http://www.fmrib.ox.ac.uk/~steve
+---------------------------------------------------------------------------
+
+
+emailFooter.png
+
+
+
+Hi Anderson,
+
+Thank you.
+
+The last thing PALM prints in the screen is the reading input massage:
+Reading input 1/1: <input_data.nii>
+Then I get a crash window from Matlab (I'm attaching the crash log if it helps).
+
+Thank you for the help,
+Naama
+
+Hi,
+
+In my study I have 3 independent tasks (20 participants).
+
+I have already done the Group Analysis (to see which areas are more activated in each task) for each task.
+
+Now, I want to compare the activation between them: Task A > Task B; Task A < Task B; Task A > Task C; Task A < Task C; Task C > Task B; Task C < Task B.
+
+My question is: How can I make these comparisons? I know I have to use GLM from FEAT, but I do not know what will be my inputs nor how to fill the "Full model setup".
+
+Any help you can provide would be greatly appreciated!
+
+

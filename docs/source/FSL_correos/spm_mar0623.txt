@@ -1,0 +1,205 @@
+Dear Natalie,
+
+if both patients and controls differentiate in terms of response time, I would suggest modelling the group analysis as 2-factor design with factors "group" (levels "patients" and "controls") and "response time" (levels "fast", "immediate" and "slow"). For within-group analyses, you may want to run separate analyses that only model the factor "response time".
+Since each subject belongs to exactly one cell in this factorial design (either "patient" or "control", either "fast", "immediate" and "slow" responder) there should be no need to take this into account during first level analysis - except for stimulus modelling of course.
+
+Hope this helps
+Volkmar
+
+Research Fellow (Postdoctoral)
+University of Birmingham - School of Psychology - Centre for Human Brain Health
+Salary: £32,348 to £42,155 full time starting salary range, with potential progression once in post to £44,737, Grade 7
+Hours:  Full Time
+Closes: 22nd March 2023
+Contract:   Fixed Term contract up to two years with potential extension
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by Fellowships and grants from the BBSRC, ERC, Wellcome Trust and Jacobs Foundation, totalling over £4m.
+
+An initial 2 year postdoctoral position (with possibility of extension) is available from 1st April 2023, or as soon as possible thereafter.
+
+The main focus of this role will be on the design, collection and analysis of novel model-based behavioural, and neuroimaging experiments with the potential for novel neuroimaging methods (e.g. Spinal fMRI or OPM-MEG). In addition, the post holder may also be involved in behavioural, psychopharmacology, and neuroimaging studies involving children, adolescents and older adults. The position is broad and can be in part tailored to the applicants interest, and there is the opportunity to analyse existing data. There will be opportunities to collaborate with colleagues in the University of Oxford (Prof. Masud Husain and Prof. Catherine Harmer), University of California, San Francisco (Dr. Simon Little) and in Berlin (Prof. Radek Cichy).
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) is essential and experience of computational modelling, studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary.
+
+The work will build on studies such as this:
+1.    Müller, T., Klein-Flügge, M. C., Manohar, S. G., Husain, M. & Apps, M. A. J. Neural and computational mechanisms of momentary fatigue and persistence in effort-based choice. Nature Communications. 12, 4593 (2021).
+2.    Lockwood, P. L. … Apps, M.A. Distinct neural representations for prosocial and self-benefiting effort. Current Biology 32, 4172–4185 (2022).
+3.    Apps, M. A. J., Rushworth, M. F. S. & Chang, S. W. C. The Anterior Cingulate Gyrus and Social Cognition: Tracking the Motivation of Others. Neuron 90, 692–707 (2016).
+4.    Le Heron, C. et al. Dopamine modulates dynamic decision-making during foraging. Journal of Neuroscience. 40, 5273–5282 (2020).
+
+Main Duties
+
+- Contributing to the design and programming of behavioural and/or neuroimaging experiments
+- Running experiments involving behavioural and neuroimaging measures (e.g. fMRI, MEG)
+- Recruiting and contacting participants
+- Analysing behavioural and brain imaging data using advanced analysis tools (e.g. computational modelling)
+- Writing and contributing to manuscripts for research publications, and presenting data
+- Work collaboratively with other members of the group, the centre and wider school
+- Helping to look after and ordering relevant equipment when required
+- Assisting the laboratory head with supervision of student projects and outreach activities
+
+Person Specification
+
+- Have or be close to the completion of a PhD in cognitive neuroscience, neuroimaging, experimental psychology or a closely related discipline
+- Experience in designing/conducting or analysing neuroimaging data (e.g. fMRI and/or MEG)
+- Experience in the design, coding and analysis of behavioural experiments
+- Strong quantitative and programming skills, and knowledge of one or more relevant programming languages (e.g. Matlab; Python; R)
+- Experience of writing and publishing peer reviewed scientific papers or preprints
+- Ability to work independently
+- Resourcefulness and organisational skills to act on own initiative
+- Strong presentation skills including the ability to present research proposals and results, and represent the lab at meetings
+
+For informal enquiries contact Matthew Apps (m.a.j.apps@bham.ac.uk)
+
+To download the full job description and details of this position and submit an electronic application online please click on the link below or visit our careers website; https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/job/537/?utm_medium=jobshare .
+
+
+
+Dear everyone, this is a reminder about the possibility to send a manuscript to the Research Topic on Frontiers in Psychology and Neuropsychology titled "When Predicting Means Adapting: A Neurocognitive Perspective Across Lifespan and Clinical Populations".
+
+The general goal of the present research topic is to encourage researchers to contribute to the understanding of the mechanisms involved in prediction-based proactive adaptation of human behavior. Particular attention will be devoted to the core neuropsychological functions involved, including but not limited to attention, cognitive control, memory, language, perception, emotion, motor control, etc.
+
+The topic can be investigated in healthy adults, typical and atypical development, as well as aging populations, taking a lifespan perspective. A part of the topic will be also dedicated to those works investigating possible dysfunctions in neuropsychological and neurological disorders. However, in this latter case, the clinical works should emphasize a neurocognitive approach. The methodology can include clinical, behavioral and neuroimaging measures (e.g., M/EEG, fMRI, fNIRS, etc.) as well as neurostimulation techniques (e.g., TMS, tDCS, etc.).
+
+The deadline for the manuscript submission is the 15th of May.
+
+Looking forward for some manuscripts of a great community
+
+Dear Ben
+
+I’m hoping that others correct me if I’m wrong, but I think the most straightforward way of dealing with a parametric regressor in DCM for M/EEG would be to discretize its values into a few bins, assign your trials to those bins (i.e., conditions), and include the conditions in your DCM as modulatory effects (between-trial, B-matrices). In other words, you’ll have an average ERP for each discrete level of the parametric regressor, and the DCM will try to explain the difference between the levels by increasing or decreasing connection strengths.
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Benjamin Jonah Maas
+Sent: Sunday, March 5, 2023 8:13 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] DCMs for MEG - Behavioral Experimental Parametric Variables/Modulators
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hi there,
+
+New here and fairly new to MEG and DCMs. 
+
+I am trying to implement a parametric variable or modulator of interest into the design matrix for a DCM for MEG data.
+
+In brief, I have a behavioral variable that fluctuates with each trial during the experiment. It is a reinforcement learning task and I am really only interested in one ERP or timepoint during each trial which is modulated by this parametric behavioral variable of interest. I have 5 ROIs that I am trying to build the DCMs with.
+
+All the experimental designs I have seen for DCMs in MEG have mainly been a 2x2 design between two ERPs of interest - usually with a driving input followed by a modulatory one.
+
+I saw in the SPM Manual some generic setups for experimental designs for a psychophysiological DCM in fMRI data. I am having difficulty though with setting it up in my context and unsure if I can do this in MEG. Is this possible to do? Did not seem possible to do in the GUI but am wondering if I can edit the scripts for the design matrix for the experiment and put in a parametric variable of interest for the psychophysiological interaction column.
+
+I haven't found any papers that addressed this or implemented something along these lines. I am also new to MEG and DCMs so please feel free to ask any clarifying questions. Thank you for any help you can provide.
+
+Best,
+Ben
+
+
+If you wanted to concatenate sessions, then it's straightforward to deal with head motion - you could either concatenate the head motion files vertically (stack one on top of the other) or you could enter them as separate regressors for each session. Trying both and seeing which gives you higher t-statistics for your task in the SPM analysis would help you to choose which is better.
+
+Best
+P
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Yang Xu
+Sent: Wednesday, February 15, 2023 4:39 AM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] DCM-PEB for multi sessions without concatenation
+
+⚠ Caution: External sender
+
+
+Hi all,
+
+I hope to get some advice during the DCM-PEB analysis if I don't want to concatenate multi sessions.
+
+In my project, each subject has six sessions (runs) with identical scans (333 scans of TR = 2s). According to some studies, I should concatenate the sessions, then extract the time series from VOI. However, I am unsure how to add head motion parameters to the first-level GLM. Say the data was preprocessed session-wise, and each session has its head motion parameters, if the six sessions were combined into one session, which head motion parameters should I add?
+
+So I plan to create a DCM for each session and do the PEB-of-PEBs for group analysis. I want to ask your advice if I think correctly as below:
+
+Generally, I will have a 3-level design, first-level: DCM for each run, second-level: PEB for each subject, third-level: PEB for the group.
+
+GCM_subject1 = [DCM_sbuject1run1, DCM_sbuject1run2, ..., DCM_sbuject1run6];
+PEB_subject1 = spm_dcm_peb(GCM_subject1, X1); X1 contains six rows of 1, as the mean of this group.
+
+GCM_all = [PEB_subject1,..., PEB_sbuject50] PEB_all = [GCM_all, X2]; X2 contains one column of mean (i.e. 1) and other columns of covariates.
+
+Do you think this approach is correct, or do you have other suggestions?
+
+Best wishes,
+Yang
+
+Dear Asif,
+
+Thanks for your comments!
+
+If these 4 groups were different diseases, of course we should compare the differences with separate design matrices (pattern 2).
+However, in this case, the patients in G1-G4 are all with the same disease (Parkinson's disease), so I think that the effect of nuisance covariates in each group should be treated as the common effect seen in the patients with Parkinson's disease, and thus we analyzed with an all combined matrix at first.
+In fMRI analysis, this combined 'All' matrix seems to be OK (https://www.nitrc.org/forum/message.php?msg_id=33823), though I cannot find any statistical evidence.
+
+Best,
+=============================================
+Graduate School of Medicine, Kyoto University
+Kenji Yoshimura M.D.
+
+54 Shogoin-Kawahara-cho
+Sakyo-ku, Kyoto, Japan
+606-8507
+TEL: 075-751-3773
+FAX: 075-753-4257
+Mail: yoshiken@kuhp.kyoto-u.ac.jp
+=============================================
+
+Hi there,
+
+New here and fairly new to MEG and DCMs. 
+
+I am trying to implement a parametric variable or modulator of interest into the design matrix for a DCM for MEG data.
+
+In brief, I have a behavioral variable that fluctuates with each trial during the experiment. It is a reinforcement learning task and I am really only interested in one ERP or timepoint during each trial which is modulated by this parametric behavioral variable of interest. I have 5 ROIs that I am trying to build the DCMs with.
+
+All the experimental designs I have seen for DCMs in MEG have mainly been a 2x2 design between two ERPs of interest - usually with a driving input followed by a modulatory one.
+
+I saw in the SPM Manual some generic setups for experimental designs for a psychophysiological DCM in fMRI data. I am having difficulty though with setting it up in my context and unsure if I can do this in MEG. Is this possible to do? Did not seem possible to do in the GUI but am wondering if I can edit the scripts for the design matrix for the experiment and put in a parametric variable of interest for the psychophysiological interaction column.
+
+I haven't found any papers that addressed this or implemented something along these lines. I am also new to MEG and DCMs so please feel free to ask any clarifying questions. Thank you for any help you can provide.
+
+Best,
+Ben
+
+Dear SPMers,
+
+on behalf of Prof. Dr. Ute Habel I would like to draw your attention to
+a PhD position in the Research Training Group (RTG 2416) about
+multisensory integration. Please refer to the attached document for more
+details.
+
+Please submit your application or informal inquiries to 
+uhabel@ukaachen.de
+
+Best,
+Thilo
+
+--
+Thilo Kellermann
+Department of Psychiatry, Psychotherapy and Psychosomatics
+Uniklinik RWTH Aachen
+JARA Translational Brain Medicine
+Pauwelsstr. 30
+52074 Aachen
+Germany
+Tel.: +49 (0)241 / 8089977
+Fax.: +49 (0)241 / 8082401
+E-Mail: thilo@izkf.rwth-aachen.de
+

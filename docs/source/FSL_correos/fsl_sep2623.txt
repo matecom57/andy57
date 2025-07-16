@@ -1,0 +1,803 @@
+Thanks Paul – follow up question, would it be okay if I saved the data on a shared space within our team (rather than my home folder due to its size, and perhaps it could be of use to others’ learning too)?
+ 
+Thanks again,
+Carmen
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> Date: Tuesday, 26 September 2023 at 00:52 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] FSL course data download
+Hi Carmen,
+ 
+If you have installed FSL, you should simply be able to run the "fsl_add_module" command in a terminal. More information, along with other options for downloading the data, are here: https://open.win.ox.ac.uk/pages/fslcourse/website/downloads.html
+ 
+Paul
+ 
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Carmen Zheng <jiaminz@STUDENT.UNIMELB.EDU.AU> Sent: 25 September 2023 02:33 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: [FSL] FSL course data download
+ 
+Hi team,
+ 
+Thanks for the past few weeks of teaching.
+I write to ask if you could guide me as to how I can download all data used in the practicals to local drive? Many thanks in advance.
+ 
+Best,
+ 
+Carmen Zheng
+PhD Student | University of Melbourne
+Neuropsychology Registrar | Austin Health
+ 
+Florey Institute of Neuroscience and Mental Health
+245 Burgundy St, Heidelberg, Victoria, Australia 3084
+E: carmen.zheng@florey.edu.au
+ 
+
+
+Hi everyone,
+
+ 
+
+I am running into an eddy error as part of my DWI pipeline. Please see more information below:
+
+ 
+
+FSL version: 6.0.7.1
+
+ 
+
+Eddy command [after topup is run]
+
+ 
+
+      echo "Running eddy for subject ${i}"
+
+       eddy \
+
+        --imain=$DIR/derivatives/dwi/sub-${i}/sub-${i}_desc-topup-corr_dwi.nii.gz \
+
+        --mask=$DIR/derivatives/dwi/sub-${i}/sub-${i}_desc-nodif-brain-mask.nii.gz \
+
+        --topup=$DIR/derivatives/dwi/sub-${i}/topup_results \
+
+        --out=$DIR/derivatives/dwi/sub-${i}/sub-${i}_desc-APeddy-corr_dwi \
+
+        --bvecs=$DIR/sub-${i}/dwi/sub-${i}_dir-AP_dwi.bvec \
+
+        --bvals=$DIR/sub-${i}/dwi/sub-${i}_dir-AP_dwi.bval \
+
+        --acqp=$DIR/derivatives/dwi/acq_param.txt \
+
+        --index=$DIR/derivatives/dwi/index.txt \
+
+        --repol=true \
+
+        --json=$DIR/sub-${i}/dwi/sub-${i}_dir-AP_dwi.json \
+
+        --fwhm=0 \
+
+        --niter=5 \
+
+        --estimate_move_by_susceptibility=true \
+
+        --flm=quadratic \
+
+        --data_is_shelled
+
+ 
+
+Some of the assumptions I checked include:
+
+ 
+
+-index.txt file has the correct number of 1's for the number of volumes in the AP main series DWI run
+
+-bvecs and bvals (and index.txt) files have the equal number of entries, i.e., 104 volumes in the AP series, 104 bvals, 104 1's in the index.txt file
+
+-Ran dtifit on the topup corrected DWI data to check V1-modulated by FA map to ensure proper anatomical alignment of the tracts in the data. 
+
+ 
+
+The exact error message I get reads: warning:
+
+ 
+
+chol(): given matrix is not symmetric
+
+ 
+
+warning: chol(): given matrix is not symmetric
+
+subtraction: incompatible matrix dimensions: 7x1 and 13716718975949581963x13707992159305506766
+
+?
+
+EDDY::: eddy.cpp::: std::shared_ptr<DWIPredictionMaker> EDDY::LoadPredictionMaker(const EDDY::EddyCommandLineOptions &, EDDY::ScanType, const EDDY::ECScanManager &, unsigned int, float, NEWIMAGE::volume<float> &, bool): Exception thrown
+
+EDDY::: Eddy failed with message EDDY::: eddy.cpp::: EDDY::ReplacementManager *EDDY::DoVolumeToVolumeRegistration(const EDDY::EddyCommandLineOptions &, EDDY::ECScanManager &): Exception thrown
+
+ 
+
+Has anyone encountered this error? I appreciate any and all help.
+
+ 
+
+Best regards,
+
+ 
+
+Batu [B2] Kaya (ORCid)
+
+ 
+
+MSc Student  Centre for Multimodal Sensorimotor and Pain Research, University of Toronto
+
+Junior Fellow  Massey College, University of Toronto
+
+Visiting Researcher Women’s College Hospital
+
+Research Analyst  Krembil Research Institute, Toronto Western Hospital
+
+ 
+
+
+
+
+At this point it is probably best to run FIX in a container as it is a pain to get all these R packages right.
+
+Matt.
+
+﻿On 9/23/23, 5:36 PM, "FSL - FMRIB's Software Library on behalf of Christine Kindler" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of Christine.Kindler@UKBONN.DE <mailto:Christine.Kindler@UKBONN.DE>> wrote:
+
+
+
+Dear FSL experts,
+
+
+I would like to use the “Fix” for denoising resting state data (FSL version 6.0.7.3; macOS Monterey, version 12.6.9). Therefore, I have installed R 4.3.1 and MATLAB_R2021a.
+
+
+I applied FIX with the Trained-weights files “Standard.RData” and the following command:
+
+
+/usr/local/fix/fix rest_Do.ica /usr/local/fix/training_files/Standard.RData 5
+
+
+After running FIX, I obtain the following output: “No valid labelling file specified”. The “<subject.ica>/fix/logMatlab.txt“ is without any error but I do not have a “fix_2b_predict.log” or a “fix.log” file. I have no I idea, what the problem could be. But I have noticed, that the versions of my R-packages not correspond to the required versions:
+
+
+'kernlab' version: 4.3.0; required: 0.9.24
+'ROCR' version: 1.0-11; required: 1.0.7
+'class' version: 4.3.1; required: 7.3.14
+'party' version: 1.3-13; required: 1.0.25
+'e1071' version: 4.3.0; required: 1.6.7
+'randomForest' version: 4.7-1.1; required: 4.6.12
+
+
+I tried to install the versions according to the FIX “README” e.g.:
+
+
+/usr/local/fsl/fslpython/bin/conda install r-kernlab=0.9_25
+
+
+Here I received a long error that can be found at the end of this message.
+
+
+Installing via R failed too. In R I tried the following command:
+
+
+install.packages("~/Downloads/kernlab_0.9-24.tar.gz", type="source", repos = NULL)
+
+
+Here the error message is:
+
+
+“installation of package ‘/Users/christine/Downloads/kernlab_0.9-24.tar.gz’ had non-zero exit status”
+
+
+I also tried running of FIX as well as installation of the packages with older versions of R e.g. 3.3.0 and got the same results.
+
+
+
+
+I highly appreciate your help!
+
+
+Dear FSL experts,
+
+I would like to use the “Fix” for denoising resting state data (FSL version 6.0.7.3; macOS Monterey, version 12.6.9). Therefore, I have installed R 4.3.1 and MATLAB_R2021a.
+
+I applied FIX with the Trained-weights files “Standard.RData” and the following command:
+
+/usr/local/fix/fix rest_Do.ica /usr/local/fix/training_files/Standard.RData 5
+
+After running FIX, I obtain the following output: “No valid labelling file specified”. The “<subject.ica>/fix/logMatlab.txt“ is without any error but I do not have a “fix_2b_predict.log” or a “fix.log” file. I have no I idea, what the problem could be. But I have noticed, that the versions of my R-packages not correspond to the required versions:
+
+'kernlab' version:  4.3.0; required: 0.9.24
+'ROCR' version: 1.0-11; required: 1.0.7
+'class' version: 4.3.1; required: 7.3.14
+'party' version: 1.3-13; required: 1.0.25
+'e1071' version: 4.3.0; required: 1.6.7
+'randomForest' version: 4.7-1.1; required: 4.6.12
+
+I tried to install the versions according to the FIX “README” e.g.:
+
+/usr/local/fsl/fslpython/bin/conda install r-kernlab=0.9_25
+
+Here I received a long error that can be found at the end of this message.
+
+Installing via R failed too. In R I tried the following command:
+
+install.packages("~/Downloads/kernlab_0.9-24.tar.gz", type="source", repos = NULL)
+
+Here the error message is:
+
+“installation of package ‘/Users/christine/Downloads/kernlab_0.9-24.tar.gz’ had non-zero exit status”
+
+I also tried running of FIX as well as installation of the packages with older versions of R e.g. 3.3.0 and got the same results.
+
+
+I highly appreciate your help!
+
+
+Best wishes
+Christine
+
+
+Error message:
+
+christine@Christines-MacBook-Pro ~ % /usr/local/fsl/fslpython/bin/conda install r-kernlab=0.9_25
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Solving environment: \
+Found conflicts! Looking for incompatible packages.
+This can take several minutes.  Press CTRL-C to abort.
+Examining conflict for conda requests conda-package-handling: : 39it [03:20,  1.Examining conflict for conda requests: : 39it [03:21,  1.05s/it]             failed                                                                          
+
+UnsatisfiableError: The following specifications were found
+to be incompatible with the existing python installation in your environment:
+
+Specifications:
+
+  - brotlipy -> python[version='3.10.*|3.4.*|3.6.12|3.6.12|3.7.10|3.7.10|3.7.12|3.8.12|3.8.16|3.9.16|>=3.12.0rc3,<3.13.0a0|3.9.10|3.7.9|3.6.9|3.6.9|3.6.9|3.6.9|3.9.*|3.11.*|3.8.*|3.7.*',build='0_73_pypy|1_73_pypy|4_73_pypy|0_73_pypy|0_73_pypy|1_73_pypy|5_73_pypy|5_73_pypy|3_73_pypy|2_73_pypy']
+  - cffi -> python[version='2.7.*|3.5.*|3.6.*|3.6.12|3.6.12|3.7.10|3.7.10|3.7.12|3.8.12|3.8.16|3.9.16|>=3.10,<3.11.0a0|>=3.8,<3.9.0a0|>=3.11,<3.12.0a0|>=3.9,<3.10.0a0|>=3.12.0rc3,<3.13.0a0|>=3.7,<3.8.0a0|3.9.10|>=3.6,<3.7.0a0|3.7.9|3.6.9|3.6.9|3.6.9|>=2.7,<2.8.0a0|3.6.9|>=3.5,<3.6.0a0|3.4.*',build='0_73_pypy|1_73_pypy|4_73_pypy|0_73_pypy|0_73_pypy|1_73_pypy|5_73_pypy|5_73_pypy|3_73_pypy|2_73_pypy']
+  - cryptography -> python[version='3.10.*|3.11.*|3.6.12|3.6.12|3.7.10|3.7.10|3.7.12|3.8.12|3.8.16|3.9.16|3.9.10|3.7.9|3.6.9|3.6.9|3.6.9|3.6.9|3.8.*|3.9.*|3.7.*|3.4.*|>=3.6|>=3.5|<=3.3',build='0_73_pypy|1_73_pypy|4_73_pypy|0_73_pypy|0_73_pypy|1_73_pypy|5_73_pypy|5_73_pypy|3_73_pypy|2_73_pypy']
+  - pyopenssl -> python[version='>=3.12.0rc3,<3.13.0a0']
+
+Your python: python=3.8
+
+If python is on the left-most side of the chain, that's the version you've asked for.
+When python appears to the right, that indicates that the thing on the left is somehow
+not available for the python version you are constrained to. Note that conda will not
+change your python version to a different minor version unless you explicitly specify
+that.
+
+
+Hi everyone, I'm running into this error with slicesdir for FSLVBM that I've never run into before (I've successfully ran it before) any advice? It runs the first subject then I get this error. Thank you in advance.
+
+Fatal error: cannot open file: -
+    Function: (main)
+
+/usr/local/fsl/bin/slicesdir: line 117: [: -lt: unary operator expected
+
+########################################################################
+
+Hi all, I'm running a second level analysis with ~200 runs, ~100 subjects. I want to average across sessions, like https://andysbrainbook.readthedocs.io/en/latest/fMRI_Short_Course/fMRI_07_2ndLevelAnalysis.html .
+However, with so many runs, the GUI is unworkable. So I tried to follow the GLM by hand instructions. https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM/CreatingDesignMatricesByHand
+
+I successfully came up with .con and .mat files, attached. However, when I run 'feat 2ndLevel.fsf', it seems to completely ignore the files and just finds the average across all runs. Any advice?
+
+Thank you so much,
+Isaac
+
+########################################################################
+
+Hello experts,
+
+I have recently acquired data that used a Multi-echo (3 echo times), Multi-band (acceleration factor of 2) FMRI sequence. The data are acquired using a GE scanner, and RT was 2.5s. 
+
+With this data, I'm trying to test different combinations of pre-processing sequneces- some of which involve slice timing correction. 
+
+I was aware that multi band MRI requires a special setup for slice timing correction- the one that uses a custom timing file. And I'm having a bit of trouble:
+
+I extracted the slice timing values from the scan metadata (JSON), which was generated by dcm2niix. The raw timing data are shown in seconds (Please see attached (0-2.5s), with each value repeated for two slides acquired simultaneously ("Raw_ST.txt"). Then, based on some previous threads, I converted these values such that they reflect the fraction of RT ("Converted_ST.txt"), using the first slice as a reference (value of 0) (0-0.92). The total number of these timing values match the total slice number, and the interleaved acquisition sequence was correctly captured as well. All 78 slice timing are equally spaced. 
+
+But when I supply this timing text file (where the values are arranged in a single coloum, with each raw representing a timing value for each slice) to the Feat and run slicetimer with --tcustom option on, it returns the following error message- which I find too general to pinpoint the problem "
+
+"libc++abi.dylib: terminating with uncaught exception of type RBD_COMMON::BaseException
+
+Abort trap: 6"
+
+
+Could anyone direct me to the correct way of performing slice timing correction with ME-MB data? 
+
+Thank you for any help you could provide!
+Best,
+
+Minwoo
+
+
+
+
+
+Hi Paul,
+
+I followed your recommendation typing 'unset LD_PRELOAD’ in the console and that fix the problem and now FSLeyes open normally. Thanks for your help!
+
+Best,
+Ariel.
+
+On 26 Sep 2023, at 11:46, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Ariel,
+
+The problem is caused by the "LD_PRELOAD" environment variable - this is a dangerous variable to have in your default shell profile, as it will affect the execution of all programs. I would recommend removing it from your shell profile, and creating a wrapper script for whatever other program actually requires it.
+
+Paul
+
+
+Hi Daniëlla,
+
+ 
+
+RDA contains much less data than a twix file, as it is constructed after online processing, typically only a single spectrum in the case of an SVS sequence (PRESS, sLASER etc). Therefore, the inspection and selections steps aren’t needed and aren’t implemented. If you run without specifying -e or -v does it output the right thing? What would you expect it to contain?
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Theuerzeit, Daniëlla (MHENS) <daniella.theuerzeit.guest@MAASTRICHTUNIVERSITY.NL>
+Date: Tuesday, 26 September 2023 at 10:42
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] spec2nii rda
+
+Hello, 
+
+ 
+
+I am a student who is just starting out with MRS analysis. I have some rda files that I want to convert to nifti files, for this, I wanted to use 
+
+spec2nii. I have run spec2nii twix before, and then I used the -e flag to indicate which data should be used. However, I noticed that for spec2nii rda the -e flag does not work. I get an "unrecognized arguments" error concerning -e. How can I specify which data I want to convert? 
+
+ 
+
+Secondly, since I am not certain what my data file contains I also tried to use the -v flag followed by the data file but this does not work. I again receive the "unrecognized arguments". I have never encountered these errors with spec2nii twix.
+
+ 
+
+So my question is how can I "solve" this or where can I find the recognized arguments that I can use in combination with spec2nii rda? 
+
+ 
+
+Thank you :) 
+
+ 
+
+Kind regards, 
+
+Daniëlla Theuerzeit 
+
+ 
+Hi Ariel,
+
+The problem is caused by the "LD_PRELOAD" environment variable - this is a dangerous variable to have in your default shell profile, as it will affect the execution of all programs. I would recommend removing it from your shell profile, and creating a wrapper script for whatever other program actually requires it.
+
+Paul
+
+
+From: FSL - FMRIB's Software Library on behalf of Ariel Viña
+Sent: Tuesday, September 26, 2023 10:42
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] fsleyes execution error
+
+Hi Paul,
+
+Here is the output:
+
+$ env
+SHELL=/bin/bash
+SESSION_MANAGER=local/avina:@/tmp/.ICE-unix/2531,unix/avina:/tmp/.ICE-unix/2531
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GNOME_SHELL_SESSION_MODE=ubuntu
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+FSLWISH=/home/avina/fsl/bin/fslwish
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+SSH_AGENT_PID=2496
+GTK_MODULES=gail:atk-bridge
+PWD=/home/avina
+XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=avina
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+WINDOWPATH=2
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+HOME=/home/avina
+USERNAME=avina
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6003
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/89c0f22a_8b3f_40c2_b34a_7df00c4062dc
+FSLDIR=/home/avina/fsl
+INVOCATION_ID=73864714e051443a951d20b6cf0428d8
+MANAGERPID=2298
+GJS_DEBUG_OUTPUT=stderr
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+FSLTCLSH=/home/avina/fsl/bin/fsltclsh
+USER=avina
+GNOME_TERMINAL_SERVICE=:1.98
+DISPLAY=:1
+SHLVL=1
+QT_IM_MODULE=ibus
+FSLMULTIFILEQUIT=TRUE
+FSL_LOAD_NIFTI_EXTENSIONS=0
+XDG_RUNTIME_DIR=/run/user/1000
+JOURNAL_STREAM=8:45932
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+FSLGECUDAQ=cuda.q
+PATH=/home/avina/fsl/share/fsl/bin:/home/avina/fsl/share/fsl/bin::/opt/ANTs/bin:/home/avina/Documents/MRIcroGL:/home/avina/fsl/share/fsl/bin:/home/avina/fsl/share/fsl/bin:/home/avina/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+FSL_SKIP_GLOBAL=0
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+FSLOUTPUTTYPE=NIFTI_GZ
+_=/usr/bin/env
+
+Best,
+Ariel.
+
+On 26 Sep 2023, at 10:57, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Ariel,
+
+Can you share the output of running the "env" command?
+
+Paul
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi Paul,
+
+Here is the output:
+
+$ env
+SHELL=/bin/bash
+SESSION_MANAGER=local/avina:@/tmp/.ICE-unix/2531,unix/avina:/tmp/.ICE-unix/2531
+QT_ACCESSIBILITY=1
+COLORTERM=truecolor
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+XDG_MENU_PREFIX=gnome-
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GNOME_SHELL_SESSION_MODE=ubuntu
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+FSLWISH=/home/avina/fsl/bin/fslwish
+XMODIFIERS=@im=ibus
+DESKTOP_SESSION=ubuntu
+SSH_AGENT_PID=2496
+GTK_MODULES=gail:atk-bridge
+PWD=/home/avina
+XDG_SESSION_DESKTOP=ubuntu
+LOGNAME=avina
+XDG_SESSION_TYPE=x11
+GPG_AGENT_INFO=/run/user/1000/gnupg/S.gpg-agent:0:1
+XAUTHORITY=/run/user/1000/gdm/Xauthority
+GJS_DEBUG_TOPICS=JS ERROR;JS LOG
+WINDOWPATH=2
+LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6
+HOME=/home/avina
+USERNAME=avina
+IM_CONFIG_PHASE=1
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+VTE_VERSION=6003
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/89c0f22a_8b3f_40c2_b34a_7df00c4062dc
+FSLDIR=/home/avina/fsl
+INVOCATION_ID=73864714e051443a951d20b6cf0428d8
+MANAGERPID=2298
+GJS_DEBUG_OUTPUT=stderr
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+FSLTCLSH=/home/avina/fsl/bin/fsltclsh
+USER=avina
+GNOME_TERMINAL_SERVICE=:1.98
+DISPLAY=:1
+SHLVL=1
+QT_IM_MODULE=ibus
+FSLMULTIFILEQUIT=TRUE
+FSL_LOAD_NIFTI_EXTENSIONS=0
+XDG_RUNTIME_DIR=/run/user/1000
+JOURNAL_STREAM=8:45932
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+FSLGECUDAQ=cuda.q
+PATH=/home/avina/fsl/share/fsl/bin:/home/avina/fsl/share/fsl/bin::/opt/ANTs/bin:/home/avina/Documents/MRIcroGL:/home/avina/fsl/share/fsl/bin:/home/avina/fsl/share/fsl/bin:/home/avina/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+GDMSESSION=ubuntu
+FSL_SKIP_GLOBAL=0
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+FSLOUTPUTTYPE=NIFTI_GZ
+_=/usr/bin/env
+
+Best,
+Ariel.
+
+On 26 Sep 2023, at 10:57, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Ariel,
+
+Can you share the output of running the "env" command?
+
+Paul
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hello, 
+
+
+
+I am a student who is just starting out with MRS analysis. I have some rda files that I want to convert to nifti files, for this, I wanted to use 
+
+spec2nii. I have run spec2nii twix before, and then I used the -e flag to indicate which data should be used. However, I noticed that for spec2nii rda the -e flag does not work. I get an "unrecognized arguments" error concerning -e. How can I specify which data I want to convert? 
+
+
+
+Secondly, since I am not certain what my data file contains I also tried to use the -v flag followed by the data file but this does not work. I again receive the "unrecognized arguments". I have never encountered these errors with spec2nii twix.
+
+
+
+So my question is how can I "solve" this or where can I find the recognized arguments that I can use in combination with spec2nii rda? 
+
+
+
+Thank you :) 
+
+
+
+Kind regards, 
+
+Daniëlla Theuerzeit 
+
+Hi Matthew,
+
+Regarding bedpostx_gpu, would you be able to try running it with "-Q dummy", e.g.:
+
+bedpostx_gpu -Q dummy <other-arguments>
+
+Regarding probtrackx2_gpu, can you share the full command you are trying to run, and the exact error message? Can you also share the output of running the "nvidia-smi" command?
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Cormie <matthew.cormie@MAIL.UTORONTO.CA>
+Sent: 22 September 2023 22:30
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL GPU Programs Not Working
+ 
+Hello,
+
+Hi Ariel,
+
+Can you share the output of running the "env" command?
+
+Paul
+
+Thanks Matt.
+
+It’s a useful clarification that our COFFEE pipeline is not trying to achieve the full benefits of HCP Pipelines or “HCP-style processing.” The purpose of COFFEE is to provide a subset of HCP’s methods (preprocessing only) for committed FSL users who want to improve their FSL-style volumetric analysis.
+
+ 
+
+I like your suggestion of switching our pipeline over to relying on supported/pulled releases of HCP code rather than our own forked modifications, we’ll look into that.
+
+ 
+
+Best,
+
+ 
+
+-----
+
+Benjamin A. Philip, Ph.D.
+
+Assistant Professor, Program in Occupational Therapy, Neurology, and Surgery
+
+Neuroscience and Rehabilitation Laboratory
+
+Washington University School of Medicine
+
+4444 Forest Park Ave, MSC-8505-66-1
+
+Saint Louis, MO 63108
+
+bphilip@wustl.edu
+
+Pronouns: he/him
+
+Hello,
+
+I try to open FSLeyes but it does not work.
+
+I successfully installed the FSL software following the instructions of the official webpage and the path setup in the .bashrc is done. Indeed, the FSL software opens normally by writing 'fsl' in the console, but when I select 'FSLeyes' or 'POSSUM MRI simulator' tools don't work and I receive these errors:
+
+I’m Ubuntu 20.04 OS user.
+
+FSLeyes error:
+
+Traceback (most recent call last):
+ File "/home/avina/fsl/bin/fsleyes", line 6, in <module>
+   from fsleyes.filtermain import main
+ File "/home/avina/fsl/lib/python3.11/site-packages/fsleyes/__init__.py", line 374, in <module>
+   from fsleyes.main import embed, shutdown  # noqa
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/home/avina/fsl/lib/python3.11/site-packages/fsleyes/main.py", line 35, in <module>
+   import wx
+ File "/home/avina/fsl/lib/python3.11/site-packages/wx/__init__.py", line 17, in <module>
+   from wx.core import *
+ File "/home/avina/fsl/lib/python3.11/site-packages/wx/core.py", line 12, in <module>
+   from ._core import *
+ImportError: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `CXXABI_1.3.13' not found (required by /home/avina/fsl/lib/python3.11/site-packages/wx/../../../libwx_baseu-3.2.so.0)
+
+
+POSSUM error:
+
+Possum is running from POSSUMDIR=/home/avina/fsl
+Error in startup script: /home/avina/fsl/bin/fslhd: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/avina/fsl/bin/../lib/libfsl-newimage.so)
+/home/avina/fsl/bin/fslhd: /usr/lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/avina/fsl/bin/../lib/libfsl-miscmaths.so)
+   while executing
+"exec sh -c "$FSLDIR/bin/fslval $filename pixdim1" "
+   (procedure "possum:updateOBprop" line 5)
+   invoked from within
+"possum:updateOBprop $w ${FSLDIR}/data/possum/brain.nii.gz"
+   (procedure "possum" line 23)
+   invoked from within
+"possum .rename"
+   (file "/home/avina/fsl/tcl/possum.tcl" line 3097)
+   invoked from within
+"source ${FSLDIR}/tcl/${origname}.tcl"
+   (file "/home/avina/fsl/bin/Possum" line 20)
+
+
+Any thought on how to fix these errors? 
+PD: My priority is fix FSLeyes
+
+Thanks in advance, any comment would be highly appreciated.
+
+Best,
+Ariel.
+
+
+To be clear: HCP-Style processing (see Glasser et al., 2013 Neuroimage; Glasser et al., 2016 Nature Neuroscience) implies using a surface-based approach as implemented in the CIFTI standard grayordinates space for cross-subject alignment—not doing a volume-based analysis as described below.  Using the HCP Pipelines (https://github.com/Washington-University/HCPpipelines; if a containerized version of the HCP Pipelines is preferred, see the QuNex container: https://qunex.yale.edu/), one is able to:
+
+ 
+
+Perform structural preprocessing and generate surfaces using FreeSurfer (including use of a T2w or FLAIR image if available to improve surface placement and to generate T1w/T2w myelin maps).
+Perform functional preprocessing to get fMRI data into CIFTI space (including EPI/b0 distortion correction).
+Perform spatially specific fMRI denoising using sICA+FIX (to remove time varying image intensity artifacts from head motion or physiology).
+Perform a functional surface-based alignment using MSMAll allowing for much more accurate group analyses than a traditional volume-based approach (see Coalson et al., 2018 PNAS; Robinson et al., 2014; 2018 Neuroimage).
+Perform global fMRI denoising using temporal ICA (if desired to remove global respiratory artifact; see Glasser et al., 2018; 2019 Neuroimage).
+Perform CIFTI-based task fMRI analyses using the same underlying FSL tools that the FEAT GUI uses (film_gls and flameo).  The FEAT GUI can still be useful for setting up the design.fsf file for this task analysis pipeline.  The HCP’s Task analysis pipeline is capable of CIFTI, volume, and parcellated task analyses (parcellated task analyses have greater statistical sensitivity and power relative to unparcellated analyses due to averaging out random noise and collapsing non-independent statistical tests; see Glasser et al., 2016 Nature). 
+ 
+
+The below approach appears to use a modified version of one of the HCP Pipelines as a part of its processing, but does not offer the full benefits of the HCP Pipelines in terms of cross-subject alignment quality, fMRI denoising (which was shown to be beneficial to task fMRI in Glasser et al., 2018; 2019 Neuroimage), or parcellated analyses.  We also do not support modified versions of the HCP Pipelines, as it is not possible for us to know if they are kept up to date with the main repository with bugs addressed and new features added.  Users wishing to add new features to the HCP Pipelines are recommended to submit a pull request, rather than forking the code.  Also, use of FreeSurfer 7.X versions is not recommended for HCP-Style high resolution T1w and T2w data with the HCP Pipelines, because FreeSurfer 7.X performs poorly at surface reconstructions relative to FreeSurfer 6.0 at this time.  We hope to work with the FreeSurfer folks to get FreeSurfer fixed in the future, but at this point we recommend FreeSurfer 6.0 to maximize surface quality.  Finally, it is worth noting that the HCP Pipelines are capable of processing legacy data (e.g., lower resolution fMRI, lacking T2w images) using legacy flags, and that even very low-resolution fMRI data (e.g., 4mm isotropic) still benefit from HCP-Style processing (see Coalson et al., 2018 PNAS). 
+
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Philip, Benjamin" <bphilip@WUSTL.EDU>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Monday, September 25, 2023 at 10:58 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] New fMRI preprocessing pipeline to integrate HCP with FSL
+
+ 
+
+ 
+
+Hi folks,
+
+Some of you may be interested in a new preprint from my lab: we have developed a turnkey pipeline that will perform HCP data preprocessing (including Freesurfer brain extraction & registration) and provide it as input into FSL (the “statistics” stage of FEAT). If you’re using FSL to analyze task fMRI data, but have been dissatisfied with BET (like we were), this software may be for you!
+
+ 
+
+In our sample dataset (motor task fMRI), the new pipeline decreased inter-individual variability across the brain, and increased activation in contralateral sensorimotor areas.
+
+ 
+
+https://www.biorxiv.org/content/10.1101/2023.09.19.558290
+
+ 
+
+In the tradition of complicated acronyms, it is called COFFEE (Connectome Operations For FSL ExEcution).
+
+ 
+
+Thanks,
+
+ 
+
+-----
+
+Benjamin A. Philip, Ph.D.
+
+Assistant Professor, Program in Occupational Therapy, Neurology, and Surgery
+
+Neuroscience and Rehabilitation Laboratory
+
+Washington University School of Medicine
+
+4444 Forest Park Ave, MSC-8505-66-1
+
+Saint Louis, MO 63108
+
+bphilip@wustl.edu
+
+Pronouns: he/him
+
+ 
+
+ 
+
+Hi folks,
+
+Some of you may be interested in a new preprint from my lab: we have developed a turnkey pipeline that will perform HCP data preprocessing (including Freesurfer brain extraction & registration) and provide it as input into FSL (the “statistics” stage of FEAT). If you’re using FSL to analyze task fMRI data, but have been dissatisfied with BET (like we were), this software may be for you!
+
+ 
+
+In our sample dataset (motor task fMRI), the new pipeline decreased inter-individual variability across the brain, and increased activation in contralateral sensorimotor areas.
+
+ 
+
+https://www.biorxiv.org/content/10.1101/2023.09.19.558290
+
+ 
+
+In the tradition of complicated acronyms, it is called COFFEE (Connectome Operations For FSL ExEcution).
+
+ 
+
+Thanks,
+
+ 
+
+-----
+
+Benjamin A. Philip, Ph.D.
+
+Assistant Professor, Program in Occupational Therapy, Neurology, and Surgery
+
+Neuroscience and Rehabilitation Laboratory
+
+Washington University School of Medicine
+
+4444 Forest Park Ave, MSC-8505-66-1
+
+Saint Louis, MO 63108
+
+bphilip@wustl.edu
+
+Pronouns: he/him
+
+
+

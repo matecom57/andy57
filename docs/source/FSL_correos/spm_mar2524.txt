@@ -1,0 +1,337 @@
+Dear Vadim,
+
+the best thing to do at the scanner side would be to check for consistent positioning of subjects on the scanner table and within the head coil and for consistent positioning of the subject within the magnet. Unless there is a manual override, subject placement within the scanner should be quite automated. As for subject placement in the head coil, a good rule of thumb is to have the lateral center markings of the head coil in between eyes and eyebrows of the subject.
+
+Volkmar
+
+Dear Volkmar,
+
+Thank you for your detailed answer. My problem is that unless I set the origins in the center of the brain (somewhere around the AC), the segmentation & normalization is completely messed up. I attach EPIs of two subjects which have very different origins and I have no idea why this happened (two subjects were scanned one after another on the same day). In the left subject segmentation & normalization worked just fine. For the right subject, only after I reoriented the volumes by positioning the origins at the AC (similar to the left subject), the segmentation & normalization started to work. Obviously, the origins were the same throughout all volumes of the same subject, including the T1. So, I wondered whether something can be done at the scanner side...
+
+Thank you,
+Vadim
+
+On Tue, Mar 19, 2024 at 2:48 PM Volkmar Glauche <volkmar.glauche@uniklinik-freiburg.de> wrote:
+Dear Vadim,
+
+in measured data, the origin is defined by the hardware and image reconstruction parameters of the measurement device. MR scanners usually set the origin to the center of the magnet. If you position the head of your subject in a standard head coil and position this coil correctly in the scanner, images should actually be quite close to what MNI/Talairach define as origin.
+If it is not absolutely necessary, I would not mess around with this. Unless your data are really far off the origin, SPM does a pretty good job moving your data to the correct location during spatial normalisation or segmentation.
+
+Best regards.
+
+Dear Carles, 
+
+Thanks for your quick answer!
+We tried with the code below but in this way we were not able to save anything, there was no output.  We tried also with normalise.write but in this way the output atlas wasn't in the right space, do you have any suggestions? 
+
+Thank you very much, 
+Best regards
+Elena
+
+Dear Vladimir,
+
+right, sorry I meant thresholded t-maps.. That toolbox I shared last time, unfortunately, plots only peaks but not all the thresholded significant t-values.. Any chance you could share the codes you used in your Science 2011 paper (https://pubmed.ncbi.nlm.nih.gov/21566197/) to plot thresholded t-maps at selected time-points?
+
+Thanks again for your help and time,
+
+Benedetta
+
+Hi everyone
+
+Instats is offering a free introduction to the Instats platform for potential partners, running March 28 / 29. Our platform is designed to support research communities and promote academic freedom by providing a free platform for research training and community building with our global network of partners. Instats is methodologically pluralistic and open to partnerships across disciplines, and our partners include individual researchers with a PhD or equivalent, as well as professional associations/societies and universities.
+
+It's always free to become an Instats partner, which allows creating and offering free or fee-based livestreaming seminars, workshops, or conferences through instats.org. Our partners have free access to our platform's many back-end features, including AI-enabled content creation and automated video/audio editing that allows turning livestreamed recordings into on-demand streaming content. By building a library of on-demand streaming content, you can support your knowledge community and create a lasting body of research training content that can be useful for years to come (while retaining ownership of your intellectual property).
+
+Register today for this free introduction to the Instats platform, and for more information about our partnerships please feel free to get in touch with me directly.
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+A project, funded by the Swiss National Science Foundation as part of a Starting Grant (Principal Investigator: David Pascucci, CHUV/Unil/The Sense Innovation Center), is currently seeking:
+
+ 
+
+-          1 PhD candidate (4 years, starting in 2024)
+
+-          2 Postdoctoral researchers (2 years each, starting late 2024 – early-mid 2025 preferred)
+
+ 
+
+Project aim: To understand the relationship between individual-specific temporal structures of neural activity—particularly focusing on alpha-band neuronal oscillations—and variability in perceptual and cognitive functions.
+Specific segments of the project will explore temporal structures of neural activity linked to inter-individual variability in contextual effects in perception.
+
+ 
+
+Project methods: The project involves the collection of large-scale datasets comprising resting-state and event-related electroencephalography (EEG) data, recorded alongside behavioral performance in a wide range of visual tasks. The analysis will combine human psychophysics, EEG and EEG inverse modeling with advanced multivariate statistical and predictive modeling techniques.
+
+ 
+
+PhD position (starting as of 2024):
+
+Main tasks:
+
+1.     Recruitment of study participants, collection, and analysis of EEG+behavioral data.
+
+2.     Dissemination of research through conference presentations and peer-reviewed publications.
+
+Requirements and ideal skills:
+
+-         Master’s degree in Cognitive Psychology / Neuroscience / Bioengineering / Physiology.
+
+-         Strong motivation and commitment to data collection and analysis.
+
+-         Previous experience with psychophysics and EEG/signal processing (a plus, not mandatory).
+
+ 
+
+Postdoc positions (starting late 2024 – early-mid 2025 preferred):
+
+Main tasks:
+
+1.     Analysis and modeling of EEG+behavioral data.
+
+2.     Leading sub-projects (from experimental design to data analysis).
+
+3.     Development and validation of codes and toolboxes for public release (Matlab, Python, R).
+
+4.     Dissemination of research through conference presentations and peer-reviewed publications.
+
+Requirements and ideal skills:
+
+-          Proficiency in neuroimaging techniques (EEG, inverse solution) and signal processing (ERP, spectral analysis), as well as psychophysics.
+
+-          Good/strong statistical, computational, and programming skills.
+
+ 
+
+The project involves collaboration with a broad network of partners both within and outside Switzerland.
+
+ 
+
+Positions will remain open until filled, more information and the application form can be found here (click on the links): PhD – PostDoc.
+
+ 
+
+For further details and formal/informal enquiries, please contact:
+
+psc.dav@gmail.com
+
+david.pascucci@chuv.ch
+
+
+
+Dear SPM Experts,
+
+Is it okay to extract beta values of sig clusters/regions using MarsBaR, defined using spherical masks with a radius of 8mm around the peak coordinates? I have seen many earlier papers extracting beta values using spherical masks around peak coordinates too, but a reviewer commented that a sphere centered at the peak coordinate is not representative of the whole cluster, and that I should use the whole SPM clusters in their original form instead... could you please kindly advise if  the latter approach is the better one please?
+
+
+
+
+
+Many thanks,
+
+
+
+Lena
+
+
+
+Hi Elena
+you can use deformation tools:
+matlabbatch{1}.spm.util.defs.comp{1}.def = {LDEFORM_FILE};
+matlabbatch{1}.spm.util.defs.out{1}.pull.fnames = {FULLPATH_ATLASFILENAME};
+matlabbatch{1}.spm.util.defs.out{1}.pull.savedir.saveusr = {OUTFOLDER};
+matlabbatch{1}.spm.util.defs.out{1}.pull.interp = 0;
+matlabbatch{1}.spm.util.defs.out{1}.pull.mask = 1;
+matlabbatch{1}.spm.util.defs.out{1}.pull.fwhm = [0 0 0];
+
+defining LDEFORM_FILE as the file containing subject's deformation from MNI to native. You can get this transformation by several ways, the most usual is to ask to store iy file in segmentation or using deformation tools to invert dartel's flow fields
+
+Hope this helps
+Carles
+
+Missatge de ELENA GROSSO <elena.grosso01@universitadipavia.it> del dia dv., 22 de març 2024 a les 17:09:
+Dear all,
+
+I'm experiencing trouble inverting the normalization to MNI space I've computed with the code above. I need it to register an atlas into the subject space. 
+Thanks to anybody who can help!
+
+Elena
+matlabbatch{1}.spm.spatial.normalise.estwrite.subj.vol = {T1dir};
+matlabbatch{1}.spm.spatial.normalise.estwrite.subj.resample = {Gdir
+Gdir1 
+Gdir2 
+Gdir3
+Gdir4
+Gdir5};
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasreg = 0.0001;
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasfwhm = 60;
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.tpm = {'/home/bcc/matlab/spm12/tpm/TPM.nii'};
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.affreg = 'mni';
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.reg = [0 0.001 0.5 0.05 0.2];
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.fwhm = 0;
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.samp = 3;
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.bb = [-91 -126 -72
+90 91 109];
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.vox = [1 1 1];
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.interp = 4;
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.prefix = 'MNI_1mm';
+spm('defaults', 'FMRI');
+spm_jobman('run',matlabbatch);
+
+
+
+Dear all,
+
+I'm experiencing trouble inverting the normalization to MNI space I've computed with the code above. I need it to register an atlas into the subject space. 
+Thanks to anybody who can help!
+
+Elena
+matlabbatch{1}.spm.spatial.normalise.estwrite.subj.vol = {T1dir};
+matlabbatch{1}.spm.spatial.normalise.estwrite.subj.resample = {Gdir
+Gdir1 
+Gdir2 
+Gdir3
+Gdir4
+Gdir5};
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasreg = 0.0001;
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.biasfwhm = 60;
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.tpm = {'/home/bcc/matlab/spm12/tpm/TPM.nii'};
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.affreg = 'mni';
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.reg = [0 0.001 0.5 0.05 0.2];
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.fwhm = 0;
+matlabbatch{1}.spm.spatial.normalise.estwrite.eoptions.samp = 3;
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.bb = [-91 -126 -72
+90 91 109];
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.vox = [1 1 1];
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.interp = 4;
+matlabbatch{1}.spm.spatial.normalise.estwrite.woptions.prefix = 'MNI_1mm';
+spm('defaults', 'FMRI');
+spm_jobman('run',matlabbatch);
+
+
+
+Two PhD Studentships in Deep Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or perinatal injury, can be measured with functional MRI (fMRI). Unfortunately, infants move in the scanner and half the images are discarded, precluding clinical application. In recent years, deep neural networks (DNNs) have led to breakthroughs in artificial intelligence and are finding growing application in biomedical imaging. DNNs have considerable potential to correct head motion in fMRI, as they can learn complex mappings, and exploit knowledge of brain structure. The PhD Candidates will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas and must be willing to develop skills in the other:
+design and optimisation of deep neural networks
+neuroimaging
+Candidates must have expertise in programming in python or another language.
+
+The studentships comprise EU fees, stipend and conference travel.
+
+See further details: www.cusacklab.org/vacancies
+
+​​Deadline 12 noon on April 22, 2024.
+
+Two Senior Postdoctoral Researchers in Deep Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or perinatal injury, can be measured with functional MRI (fMRI). Unfortunately, infants move in the scanner and half the images are discarded, precluding clinical application. In recent years, deep neural networks (DNNs) have led to breakthroughs in artificial intelligence and are finding growing application in biomedical imaging. DNNs have considerable potential to correct head motion in fMRI, as they can learn complex mappings, and exploit knowledge of brain structure. The postdoctoral researchers will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas and must be willing to develop skills in the other:
+design and optimisation of deep neural networks
+neuroimaging with fMRI
+Candidates must have a strong level of expertise in programming in python or another language.
+
+Full time, €50,540-€54,965 per annum. Benefits include a pension contribution and PRSI social insurance.
+Theses posts will be for two years but there may arise the opportunity to extend them.
+
+See further details: www.cusacklab.org/vacancies
+
+​Deadline 12 noon on April 22, 2024.
+
+
+Experienced Postdoctoral Fellow in Infant Developmental Cognitive Neuroscience​
+
+The Foundations of Cognition project is studying the emergence of cognition in infants, and how this is disrupted by brain injury. It has acquired functional MRI in a substantial cohort of 2-and 9-month-old infants (N=134), awake watching pictures and movies. The postholder will work with Professor Cusack and the team to use this rich dataset to characterise infant’s emerging cognition: critically evaluating the literature, developing a hypothesis, implementing the analysis, interpreting the results, and writing the manuscripts(s).
+
+Full time, €50,540-€54,965 per annum, post ends June 2025.
+Benefits include a pension contribution and PRSI social insurance.
+​
+See further details: www.cusacklab.org/vacancies
+
+​Deadline 12 noon on April 22, 2024.
+
+
+Dear Peter,
+Thank you for your quick reply!
+And in your experience, does the exclusion of these subjects impact the model comparison result? For example: I assumed two alternative models to the full One, can the posterior probability of compared models increase and/or decrease as a result of excluding these subjects?
+
+Best
+Debora 
+
+Inviato da Outlook per Android
+From: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Sent: Friday, March 22, 2024 11:39:03 AM
+To: Veronica Debora TORO <veronicadebora.toro@studenti.unipr.it>; SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: RE: [SPM] Subjects with less than 10% explained variance in DCM_PEB
+ 
+Dear Debora
+I'm assuming the subjects with low explained variance had little or no activation in their SPM analyses (particularly in the region(s) that receive driving input).
+
+You can either include the subjects with little or no activation - acknowledging that a representative sample of the population will include some people for whom experimental effects couldn't be detected - or you can exclude them, focussing your results on just those who do show activation. Both approaches have been used and can reasonably be justified.
+
+All the best
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Debora Toro
+Sent: 22 March 2024 09:28
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Subjects with less than 10% explained variance in DCM_PEB
+
+⚠ Caution: External sender
+
+
+Dear SPM and DCM experts,
+I'm running a DCM analysis. While checking diagnostics I noticed the presence of some subjects with poor explained variance (less than 10%). After checking their single-subject First level SPM Maps, am I entitled to esclude these subjects from the 2nd level DCM analysis? Does the esclusion of these subjects affect the results obtained from the model comparison?
+
+
+Best regards
+Debora
+
+Dear Debora
+I'm assuming the subjects with low explained variance had little or no activation in their SPM analyses (particularly in the region(s) that receive driving input).
+
+You can either include the subjects with little or no activation - acknowledging that a representative sample of the population will include some people for whom experimental effects couldn't be detected - or you can exclude them, focussing your results on just those who do show activation. Both approaches have been used and can reasonably be justified.
+
+All the best
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Debora Toro
+Sent: 22 March 2024 09:28
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Subjects with less than 10% explained variance in DCM_PEB
+
+⚠ Caution: External sender
+
+
+Dear SPM and DCM experts,
+I'm running a DCM analysis. While checking diagnostics I noticed the presence of some subjects with poor explained variance (less than 10%). After checking their single-subject First level SPM Maps, am I entitled to esclude these subjects from the 2nd level DCM analysis? Does the esclusion of these subjects affect the results obtained from the model comparison?
+
+
+Best regards
+Debora
+
+Dear SPM and DCM experts,
+I'm running a DCM analysis. While checking diagnostics I noticed the presence of some subjects with poor explained variance (less than 10%). After checking their single-subject First level SPM Maps, am I entitled to esclude these subjects from the 2nd level DCM analysis? Does the esclusion of these subjects affect the results obtained from the model comparison?
+
+
+Best regards
+Debora
+
+
+Dear Vadim,
+
+the best thing to do at the scanner side would be to check for consistent positioning of subjects on the scanner table and within the head coil and for consistent positioning of the subject within the magnet. Unless there is a manual override, subject placement within the scanner should be quite automated. As for subject placement in the head coil, a good rule of thumb is to have the lateral center markings of the head coil in between eyes and eyebrows of the subject.
+
+Volkmar
+

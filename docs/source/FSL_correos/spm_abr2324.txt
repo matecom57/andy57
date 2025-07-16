@@ -1,0 +1,253 @@
+There is some information about changes in ANTs https://github.com/ANTsX/ANTs/wiki/How-does-ANTs-handle-qform-and-sform-in-NIFTI-1-images%3F The quaternion qform can describe rigid transforms (scanner space); the matrix sform can describe affine, non-rigid transforms (standard space). These transforms could be to some template space for instance, although now you would ultimately do a non-linear transform to accomplish that. If you mix different types of software and software versions, then I find you have to consider this and force the transforms to be equal on some occasions. This is often the case when rigid transform is not perfectly represented and there is some rounding error which the software identifies a mismatch.
+
+
+Simon
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Lisa Jeschke
+Sent: Tuesday, April 23, 2024 9:58 AM
+To: SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] SPM and ANTs compatibility
+
+ 
+
+
+
+Dear John,
+
+
+
+thank you so much for the help!  I used your code to show the matrices and both are identical, so I assume ANTs is using the same parameters as SPM eventually. Are the matrices supposed to be the same?
+
+
+
+I also now checked the headers of a contrast-nii (created by calculating GLMs) in native space, and the header of the same image after I used ANTs to morph it into mni space. Within one image, the S-Form parameters and Q-Form parameters are identical. They have however changed with the morphing, so they are different between both images. I am naively assuming that this is making sense, since we are morphing the image into a different space, or could this be the error source for my SPM result problem? 
+
+
+
+
+
+Many thanks in advance,
+
+Lisa
+
+
+
+The matrices should be the same.  Perhaps you could also check the matrices in the original images before they were aligned to see if these are also the same.
+
+If they differ, then SPM's behaviour and ANTs behaviour are likely to differ from each other, because SPM uses the S-form and ANTs uses the Q-form representations for encoding head positioning.  Wherever possible, SPM tries to write images with the same S-form and Q-form information (although this is not always possible).
+
+Best regards,
+-John
+
+Dear experts,
+
+I would like to inquire if there are any good codes or tools for visualizing effective connectivity matrix produced by DCM pipline in SPM. It seems that tools like BrainNetViewer or Nilearn are generally only capable of plotting functional connectivity graphs, but the matrix for functional connectivity is symmetric, whereas the matrix for effective connectivity is not, so these tools may not be suitable for plotting. I used MATLAB digraph function to draw directed graphs. However, it was criticized for being rather crude and unattractive. Therefore, I am looking for better tools for visualizing effective connectivity, preferably ones that allow for the input of matrices to create the visualization.
+
+Best regards,
+Chuyue
+
+Dear Colleagues,
+
+ 
+
+We are recruiting a postdoctoral research scientist to work on model-based analysis of task fMRI and MEG data, and precision neuromodulation with theta burst TMS. Please do apply and/or share with anyone that might be interested!
+
+ 
+
+Official job ad/description: https://unm.csod.com/ux/ats/careersite/18/home/requisition/28785?c=unm
+
+ 
+
+Cheers,
+
+Jeremy
+
+ 
+
+---
+
+Dear Peter,
+Thank you for your reply. Maybe i didn't clearly express my question. In this analysis, i have three modulatory inputs and four ROIs (i.e., the B matrix is 4*4*3).  I have fitted the subject-level DCM and conducted the group-level PEB. Then, an automatic search was conducted over the entire model space using Bayesian model reduction (BMR) and Bayesian model averaging (BMA), resulting in a final group model with a BMA_B.Ep < 0.95. How can i compare the different modulatory parameters using the pair sample t-test for the group-level model?
+Best wish!
+Shuaicheng Liu
+
+We are thrilled to announce an opening for a Postdoctoral Position at the Tee Lab, Department of Neurology, University of California, San Francisco (UCSF). This is a unique opportunity for a passionate researcher to contribute to groundbreaking work in the field of neuroimaging and neurodegenerative diseases.
+
+Job Summary: The selected candidate will participate in projects that focus on establishing MRI protocols with cutting-edge methodologies and applying neuroimaging techniques, such as tractography, graph theory analysis, and machine learning algorithms. Our focus spans a range of neurodegenerative diseases, including Alzheimer’s disease, primary progressive aphasia, and frontotemporal dementia, particularly in the context of diverse populations and bilingualism.
+
+Laboratory Mission: The Tee Lab is dedicated to promoting equal representation in cognitive and dementia research, enhancing our understanding of brain aging and neurodegenerative diseases. We collaborate internationally, aiming to understand bilingualism and dementia syndromes and promote language diversity in cognitive research.
+
+Required Qualifications:
+
+Ph.D. in neurology, radiology, neuropsychology, cognitive neuroscience, biomedical engineering, or related fields.
+Experience with MRI/PET data analysis.
+Proficiency in neuroimaging tools and programming/scripting languages.
+Preferred Qualifications:
+
+Experience in connectomics, tractography, functional MRI, bilingualism, and cross-linguistic studies.
+Proficiency in Mandarin and/or Cantonese is a plus.
+Application Process: Interested candidates should send a cover letter, CV, and contact information for three references to BoonLead.Tee@ucsf.edu and Stephanie.Kwan3@ucsf.edu.
+
+For more information about the Tee Lab and our projects, please visit our website: Tee Lab - UCSF
+
+To view the detailed job posting, please visit: Tee Lab Open Positions - UCSF
+
+We look forward to welcoming a new member to our dynamic team!
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+Dear SPM experts,
+
+Thanks a lot for your time reading this post.
+
+I have a longitudinal study with three groups of participants with pre and post measurements: an intervention group, an active control group (using another form of intervention) and a passive control group. The goal is to determine if there is difference in the effect of intervention between the intervention group and the active control group, and also between the intervention group and passive control group.
+
+I would like to do a VBM analysis. After reading the "CAT12 for longitudinal data" section of the manual, I understand that this is a 3 x 2 design with 3 groups and 2 time points, and the effect of interest is the interaction effect between time and group. 
+
+But I really have a difficulty setting up a contrast matrix. Should I use t-tests for each pair of groups, or use a F test? If I use a F-test, what are the procedures of post-hoc tests?
+
+Dear Chris,
+
+You are correct. Thank you very much.
+
+Best regards,
+
+Sanaz
+
+
+
+On Monday, April 22, 2024 at 12:10:41 PM GMT+3:30, Chris Lambert <clambert.spm@gmail.com> wrote:
+
+
+They don’t show the same slice between the two conditions (for clarity, CT first vs. PET first), look at where the cross hairs are on the CT, the vertical jumps from being nearly aligned with pituitary fossa to just anterior to foramen magnum. On the SI axis you can also see difference between horizontal line and interior occipital protuberance. If you put the crosshairs in precisely the same place (e.g tip of pituitary fossa on CT, or some other clear landmark), I think you will find it is only field of view that differs, not orientation.
+
+If you did coreg and reslice, you would not see this effect. 
+
+You can check by right clicking on each image and looking at the image dimensions/voxel size.
+
+BW
+
+They don’t show the same slice between the two conditions (for clarity, CT first vs. PET first), look at where the cross hairs are on the CT, the vertical jumps from being nearly aligned with pituitary fossa to just anterior to foramen magnum. On the SI axis you can also see difference between horizontal line and interior occipital protuberance. If you put the crosshairs in precisely the same place (e.g tip of pituitary fossa on CT, or some other clear landmark), I think you will find it is only field of view that differs, not orientation.
+
+If you did coreg and reslice, you would not see this effect. 
+
+You can check by right clicking on each image and looking at the image dimensions/voxel size.
+
+BW
+
+Chris
+
+On 22 Apr 2024, at 05:17, Sanaz Hariri <shanraiz@yahoo.com> wrote:
+
+﻿
+Dear Chris,
+
+Thank you for your email. They show the same slice and they are shown after co-registration of the CT image versus PET reference image. I found that the file with r prefix is shown correctly. Thanks.
+
+Best regards,
+
+Sanaz
+
+
+
+On Sunday, April 21, 2024 at 10:22:36 PM GMT+3:30, Chris Lambert <clambert.spm@gmail.com> wrote:
+
+
+Check reg will show images based on the dimensions/orientations of the first image. I think your CT is simply bigger, so shows the full images for both. In terms of “matching”, it looks to me like the orientation is the same for both, the only difference is field of view, for the reasons above (note: you are showing different slices in the two examples so not really a like-for-like comparison)
+
+BW
+
+Chris
+
+On 21 Apr 2024, at 09:51, Sanaz Hariri <0000b97bf3b220ea-dmarc-request@jiscmail.ac.uk> wrote:
+
+﻿
+Dear experts,
+I have seen a strange phenomenon while checking the registration between PET and CT datasets. When the first selected file is the PET dataset, no matching is seen. However, when the first selected database is the CT, correct matching is shown. Please refer to the attached figures in which the same PET and CT images are loaded. It may be a bug in SPM 12.
+Best regards,
+Sanaz Hariri
+
+<CT-PET.PNG>
+<PET-CT.PNG>
+Dear Chris,
+
+Thank you for your email. They show the same slice and they are shown after co-registration of the CT image versus PET reference image. I found that the file with r prefix is shown correctly. Thanks.
+
+Best regards,
+
+Sanaz
+
+Dear Angenelle,
+
+volumes in CAT12 are always in ml. If you want to convert to cubic millimeters you have to simply multiply with 1000.
+
+Best,
+
+Christian
+
+On Fri, 19 Apr 2024 23:27:19 -0400, Angenelle Rosal <angenelle.r@GMAIL.COM> wrote:
+
+>Hello all,
+
+Check reg will show images based on the dimensions/orientations of the first image. I think your CT is simply bigger, so shows the full images for both. In terms of “matching”, it looks to me like the orientation is the same for both, the only difference is field of view, for the reasons above (note: you are showing different slices in the two examples so not really a like-for-like comparison)
+
+BW
+
+Chris
+
+On 21 Apr 2024, at 09:51, Sanaz Hariri <0000b97bf3b220ea-dmarc-request@jiscmail.ac.uk> wrote:
+
+﻿
+Dear experts,
+I have seen a strange phenomenon while checking the registration between PET and CT datasets. When the first selected file is the PET dataset, no matching is seen. However, when the first selected database is the CT, correct matching is shown. Please refer to the attached figures in which the same PET and CT images are loaded. It may be a bug in SPM 12.
+Best regards,
+Sanaz Hariri
+
+Apologies for the repeat post, but Instats is offering a new 2-day seminar Using ChatGPT to Learn Python for Data Analysis, running April 23 - 24 by professor Peter Gruber (who holds dual PhDs in physics and economics). This workshop provides a 21st-century introduction to statistical analysis and programming with Python using ChatGPT, which you can use for quantitative or qualitative data analysis. Participants will learn how to harness the power of AI and optimally collaborate with ChatGPT to greatly simplify the process of working with and analyzing data in Python - even with no prior coding experience. Write Python programs faster, find errors more efficiently, and get comfortable with Python using plain language requests to ChatGPT. The workshop comes with 30 days of access to the recordings and 30 days of Q&A Forum access with professor Gruber.
+
+Sign up today to secure your spot, and please feel free to tell your friends and colleagues about this unique opportunity.
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Hello all,
+
+I just wanted to clarify the units for the Total Intracranial Volume, Total Gray Matter Volume, and Gray Matter Volume of Regions Of Interest using CAT12 for SPM.
+
+When using the "Get TIV" tab in CAT12, I am provided a txt.file that is stated to provide raw volumes of the TIV/GM/WM/CSF/WM hyperintensities. Are these all in cubic millimeters?
+
+Additionally, I then use the "ROI tools" in CAT12, particularly the "Estimated Mean Value ROI for external analysis" to acquire GM volumes for particular regions of interest using the Neuromorphometrics atlas. I just wanted to clarify,  these volumes are in mL, correct? Is there any way where they can be downloaded in a CSV file that shows they are in other units instead (i.e.cubic millimeters)?
+
+Thank you in advance.
+
+If only I hadn't opted for Arno to use the skull-stripped images for the Klein et al paper, then Dartel would have come top in the comparisons instead of ANTs.
+
+SPM uses the S-form matrices in the headers, which I don't think ANTs does anything sensible with.  Try copy/pasting this and selecting your image:
+
+P = spm_select(1,'nifti','Select the image');
+Nii = nifti(P);
+disp(Nii.mat0)
+disp(Nii.mat)
+
+The output will be two voxel-to-world matrices.  SPM uses the second one, whereas ANTs uses the first one.
+
+Best regards,
+-John
+
+
+
+

@@ -1,0 +1,390 @@
+Ss
+
+***Applications still being accepted for flexible start date***
+
+The Bipolar Disorder Research Program, of the Department of Psychiatry & Behavioral Sciences at the Medical University of South Carolina (located in sunny Charleston, SC), is seeking a postdoctoral fellow by agreement (i.e., start date is flexible). The successful applicant will work on several large NIH-funded projects (e.g., AA025365, DA054275) focused on using experimental pharmacology and multimodal MRI (e.g., fMRI, proton MR spectroscopy) to better understand and treat individuals with bipolar disorder, with a special emphasis on those with co-occurring substance use disorders who have historically been excluded from research.
+
+Primary Responsibilities: (1) Assessing research participants using semi-structured clinical interviews (e.g., SCID-5); (2) Managing participant recruitment from clinical referral sources; (3) Overseeing MRI data collection and quality control; (4) Analyzing data and publishing/presenting results.
+
+Requirements: We seek a highly talented and motivated postdoctoral researcher with a degree in clinical psychology (i.e., PhD) or psychiatry (i.e., MD). Background in clinical assessment, MRI, bipolar disorder, and/or substance use disorder research is a plus, but not required.
+
+This postdoctoral fellowship position offers a competitive salary, a dynamic work environment alongside an ambitious multidisciplinary team, innovative cutting-edge research with an excellent infrastructure, intellectual freedom, scientific integrity, strong collaborations at the national and international level, and a flexible start date (e.g., current psychology interns, please feel encouraged to apply!). For clinical psychologists seeking licensure, the hours of supervised clinic work required by the SC board can be obtained within approximately one year.
+
+For further information on the position, please contact Dr. James (Jim) Prisciandaro. Please email your application (including a letter of intent, curriculum vitae, and 3 academic/professional references) in a pdf document to priscian@musc.edu (email subject: Postdoc Position Application).
+
+Universal Psychology Postdoctoral Directory Job Posting:
+https://www.appic.org/Postdocs/Universal-Psychology-Postdoctoral-Directory-UPPD/Detail/id/5538
+Universal Psychology Postdoctoral Directory Entry
+Association of Psychology Postdoctoral and Internship Centers, Postdoc Interns, Psychology Internships, Psych Internship Matching - APPIC
+www.appic.org
+
+
+Dear colleagues,
+
+ 
+
+We are searching for an enthusiastic candidate to work with us in the “Nutrition and Decision Neuroscience Laboratory” in beautiful Vienna, starting around June/July 2023 (later start negotiable). The position is initially for 14 months and is ideal for someone who wants to acquire some more research experience after their Master/Diploma, while simultaneously preparing and starting a PhD project (with the possibility of joining a doctoral school with an extended funding period).
+
+ 
+
+For further details, see https://nutrition.univie.ac.at/fileadmin/user_upload/i_ernaehrung/ResearchAssociatePhD_Vienna.pdf
+
+ 
+
+Please feel free to forward this ad to whoever might be interested.
+
+ 
+
+Kind regards
+
+
+
+--
+Ass.-Prof. Dr. Stefan Schulreich
+Nutrition and Decision Neuroscience Laboratory
+
+University of Vienna
+Faculty of Life Sciences
+Department of Nutritional Sciences
+Josef-Holaubek-Platz 2 (UZA II)
+1090 Vienna, Austria
+
+
+
+
+Hello everyone,
+
+I have a very greenhorn-comprehensive question about a 2nd Level fMRI ROI analysis, where I want to apply a small volume correction and a significance level of p -value FWE-corrected = 0.05.
+
+I get different results with two different approaches:
+
+1) select my contrast --> apply p uncorrected of 0.001 --> then in the results panel I click on "small volume" and select my ROI-mask I have created from a functional localizer earlier --> In my Stats-Table, I have several significant clusters below a FWE-corrected p-value of 0.05.
+
+2) same procedure, but apply in the first step already a FWE-corrected p-value --> click on "small volume", select my ROI --> now I do not have any significant clusters anymore.
+
+I was wondering what the difference between those two appoaches is? Why do I have some significant FWE-corrected p-values in one approach and not in the other, even though the only difference seems to be if I "filter" first or filter visually for FWE in my stats-table?
+
+And which approach would be the recommended one?
+
+Your advice is highly appreciated and thank you very much for your help in advance!
+
+
+Best,
+Lisa
+
+
+
+Lisa Jeschke
+PhD student
+lisa.jeschke@tu-dresden.de
++49 351 463-43897
+
+Cognitive and Clinical Neuroscience / Professur für Kognitive und Klinische Neurowissenschaft
+Technische Universität Dresden
+https://tu-dresden.de/mn/psychologie/ifap/kknw
+
+
+
+
+Lisa Jeschke
+PhD student
+lisa.jeschke@tu-dresden.de
++49 351 463-43897
+
+Cognitive and Clinical Neuroscience / Professur für Kognitive und Klinische Neurowissenschaft
+Technische Universität Dresden
+https://tu-dresden.de/mn/psychologie/ifap/kknw
+
+***Applications still being accepted for flexible start date***
+
+The Bipolar Disorder Research Program, of the Department of Psychiatry & Behavioral Sciences at the Medical University of South Carolina (located in sunny Charleston, SC), is seeking a postdoctoral fellow by agreement (i.e., start date is flexible). The successful applicant will work on several large NIH-funded projects (e.g., AA025365, DA054275) focused on using experimental pharmacology and multimodal MRI (e.g., fMRI, proton MR spectroscopy) to better understand and treat individuals with bipolar disorder, with a special emphasis on those with co-occurring substance use disorders who have historically been excluded from research.
+
+Primary Responsibilities: (1) Assessing research participants using semi-structured clinical interviews (e.g., SCID-5); (2) Managing participant recruitment from clinical referral sources; (3) Overseeing MRI data collection and quality control; (4) Analyzing data and publishing/presenting results.
+
+Requirements: We seek a highly talented and motivated postdoctoral researcher with a degree in clinical psychology (i.e., PhD) or psychiatry (i.e., MD). Background in clinical assessment, MRI, bipolar disorder, and/or substance use disorder research is a plus, but not required.
+
+This postdoctoral fellowship position offers a competitive salary, a dynamic work environment alongside an ambitious multidisciplinary team, innovative cutting-edge research with an excellent infrastructure, intellectual freedom, scientific integrity, strong collaborations at the national and international level, and a flexible start date (e.g., current psychology interns, please feel encouraged to apply!). For clinical psychologists seeking licensure, the hours of supervised clinic work required by the SC board can be obtained within approximately one year.
+
+For further information on the position, please contact Dr. James (Jim) Prisciandaro. Please email your application (including a letter of intent, curriculum vitae, and 3 academic/professional references) in a pdf document to priscian@musc.edu (email subject: Postdoc Position Application).
+
+Universal Psychology Postdoctoral Directory Job Posting:
+https://www.appic.org/Postdocs/Universal-Psychology-Postdoctoral-Directory-UPPD/Detail/id/5538
+Universal Psychology Postdoctoral Directory Entry
+Association of Psychology Postdoctoral and Internship Centers, Postdoc Interns, Psychology Internships, Psych Internship Matching - APPIC
+www.appic.org
+
+Dear SPM users,
+
+ 
+
+Please find below a call for papers for a special issue on "Brain Imaging and Personalized Medicine in Neuropsychiatric Disorders" in Journal of Personalized Medicine. This special issue will include research articles as well as review articles focused on developing and optimizing image processing methods in brain imaging, including but not limited to neuropsychiatric disorder diagnosis and prognosis, as well as neuroimaging data registration and segmentation.
+
+ 
+
+This Special Issue will cover important methodological questions and novel applications in neuroimaging data analysis for fetal, infant, adolescent, and adult brain images. It will benefit neuroscientists and clinicians by introducing advanced techniques that will elevate the accuracy and efficiency of neuroimaging data processing. As a result, this will advance the understanding of the pathophysiological mechanisms and find biomarkers that would be valuable for clinical diagnosis, monitoring disease progression, and evaluating treatment effects.
+
+ 
+
+Authors can submit their manuscripts via the Manuscript Tracking System at
+
+https://www.mdpi.com/journal/jpm/special_issues/5EME151RX0#info
+
+Journal of Personalized Medicine
+Journal of Personalized Medicine, an international, peer-reviewed Open Access journal.
+www.mdpi.com
+
+Manuscript Due 15 May 2023 (will be extended)
+
+ 
+
+ 
+
+Best regards,
+
+ 
+
+Dr. Feng Liu
+
+Dr. Yang Yang
+
+Dr. Xiaoke Hao
+
+Dr. Chao Li
+
+Guest Editors
+
+many thanks! eventually the enhanced siemens file could be imported either by spm12 (takes ages but works) or by mricrogl (fast and creates 4d files). i will make sure the coregistration works fine and let you know if i observe some weird reconstructions. kind regards, Gyula
+
+Hi, I am analyzing SPECT images but I am having some issues with SPM SPECT template. In SPM12, there is no SPECT template provided, so I searched in SPM2 version. However, when I display the orientation of SPM2 SPECT template, it is not quite what I expected: The sargittal view is pointing to the right instead of pointing to the left.
+
+Does anyone know whether there is any difference from SPM2 to SPM12 versions that changed the way that templates are oriented ?
+
+For this analysis, I am following the instructions provided in this manual:
+http://spect.yale.edu/analysis_details.html
+
+They suggest that images should be oriented as the template, which does not correspond to what I see when I open in SPM12:
+
+Frontal view (pane 1) of the brain is upright
+Sagittal view (pane 2) is pointing left (in my case it is pointing to the right)
+Transverse view (pane 3) is pointing up
+
+You can check out the template orientation in the following link:
+https://drive.google.com/drive/u/0/folders/1DgcnCC502jqvYzsKEjoYmdKGsTQy_fV1
+
+Do you have any suggestions?
+Kindly regards
+
+
+Dear Tamer,
+
+Thanks for the report. Which operating system are you using? Similar behaviour has already been observed (see e.g.   https://github.com/spm/spm/issues/4
+
+Windows 11 Performance · Issue #4 · spm/spm
+I am experiencing some severe performance issues on Windows 11 that are not present on Ubuntu 22.04. For instance, smoothing a functional file containing 375 volumes takes around 9 seconds on Ubunt...
+github.com
+) but I haven't been able to reproduce it myself yet. I do have some guesses of what might be going on though. Could you run the profiler when smoothing a 4D file and send me a zip file of the report:
+
+profile on
+...smooth 4D file...
+profsave(profile('info'),'profile_smooth');
+zip('profile_smooth.zip','profile_smooth');
+
+Best regards,
+Guillaume.
+
+
+
+On 25/03/2023 14:31, Tamer Gezici wrote:
+⚠ Caution: External sender
+
+
+Hello,
+
+I noticed that using 4D NIfTI is much slower compared to 3D for some SPM functions (such as realignment or smoothing) 
+
+Did anyone else experience this behaviour? Could there be a way to optimize it?
+
+4D:
+------------------------------------------------------------------------
+25-Mar-2023 17:20:01 - Running job #3
+------------------------------------------------------------------------
+25-Mar-2023 17:20:01 - Running 'Smooth'
+25-Mar-2023 17:21:26 - Done    'Smooth'
+25-Mar-2023 17:21:26 - Done
+
+1:25s
+
+3D:
+------------------------------------------------------------------------
+25-Mar-2023 17:22:54 - Running job #3
+------------------------------------------------------------------------
+25-Mar-2023 17:22:54 - Running 'Smooth'
+25-Mar-2023 17:23:17 - Done    'Smooth'
+25-Mar-2023 17:23:17 - Done
+
+23s
+
+Kind regards,
+
+Tamer Gezici
+-- 
+Guillaume Flandin, PhD
+Wellcome Centre for Human Neuroimaging
+UCL Queen Square Institute of Neurology
+London WC1N 3BG
+
+Hello,
+
+I noticed that using 4D NIfTI is much slower compared to 3D for some SPM functions (such as realignment or smoothing) 
+
+Did anyone else experience this behaviour? Could there be a way to optimize it?
+
+4D:
+------------------------------------------------------------------------
+25-Mar-2023 17:20:01 - Running job #3
+------------------------------------------------------------------------
+25-Mar-2023 17:20:01 - Running 'Smooth'
+25-Mar-2023 17:21:26 - Done    'Smooth'
+25-Mar-2023 17:21:26 - Done
+
+1:25s
+
+3D:
+------------------------------------------------------------------------
+25-Mar-2023 17:22:54 - Running job #3
+------------------------------------------------------------------------
+25-Mar-2023 17:22:54 - Running 'Smooth'
+25-Mar-2023 17:23:17 - Done    'Smooth'
+25-Mar-2023 17:23:17 - Done
+
+23s
+
+Kind regards,
+
+Tamer Gezici
+
+Applications are now being accepted for the Post-Doctoral Fellowship in Neuropsychology and Neuroscience with a focus in multiple sclerosis research at Kessler Foundation. 
+
+ 
+
+The two-year funded program aims to prepare clinician-scientists for a career in clinical research within the specialty area of rehabilitation research. Training opportunities are provided more broadly across multiple departments, capitalizing on unique opportunities throughout the center as well as other nearby centers of excellence throughout New Jersey to pursue key clinical and research training goals. All fellows participate in an extensive training curriculum and didactic offerings. Multidisciplinary mentored training opportunities are individually tailored to achieve specific goals considering the fellows’ prior background and interests. 
+
+ 
+
+The successful applicant would be expected to assist in ongoing endeavors as well as develop his/her own mentored research projects. There are opportunities for fellows to join existing programs of MS research including functional neuroimaging, the assessment and rehabilitation of cognitive symptoms, functional outcomes research, cross-cultural work, virtual reality, and fatigue research. Fellows work on various aspects of research projects ranging from inception (e.g., study formulation, grant-writing, etc.) to manuscript publication. Clinical opportunities involve assessment and treatment of outpatient rehabilitation populations under the supervision of a licensed psychologist. Additional offerings are made possible through strong collaborations with additional centers including, Rutgers University, Veterans Administration New Jersey Healthcare System, and New Jersey Institute of Technology. 
+
+ 
+
+Salary is commensurate with NIH guidelines. Kessler Foundation is an equal opportunity employer committed to creating a diverse, cooperative work environment. Women, members of under-represented minority groups and individuals with physical disabilities are encouraged to apply. EOE/M/F/D/V 
+
+ 
+
+Please contact Nancy Chiaravalloti, PhD at (973) 324-8440 or via e-mail at nchiaravalloti@kesslerfoundation.org.   
+
+Hi Lisa, 
+
+I can come up with an explanation to my knowledge.  Every time you apply a correction, you will get a thresholded SPM. The color blobs in your SPM are voxels that survived the threshold. The stricter your threshold becomes, the fewer voxels you will have.
+
+Imagine your ROI is a sphere superimposed on the SPM. SVC will encircle all voxels within that sphere based on that current SPM, and then redefine the search volume to these voxels.  Before any corrections, your ROI will surely contain many voxels—let's say 100 voxels. 
+
+When you apply a slight correction, the voxels in this sphere region might drop to 50 voxels,  because fewer voxels will survive. Now, SVC will encircle all 50 voxels within that sphere and redefine the search volume to all 50 exsisting voxels, still might be able to produce significant clusters. 
+
+But after FEW corrections of p= 0.05, there might be 0 or 1 or 2 voxels in your ROI. Apparently, you might have no significant results now, since your search volume contains no voxels at all or very few voxels. 
+
+
+
+
+Personally, I suppose this method is reasonable. 
+1) select my contrast --> apply p uncorrected of 0.001 --> then in the results panel I click on "small volume" and select my ROI-mask I have created from a functional localizer earlier --> In my Stats-Table, I have several significant clusters below a FWE-corrected p-value of 0.05.
+
+
+Best regards,
+Mu Nan
+
+
+Postdoctoral Position in Cognitive and Translational Neuroscience at Brown University
+
+
+Area: Cognitive Neuroscience of Visual Memory, Aging, and Alzheimer’s disease
+
+ 
+
+Depts. of Cognitive, Linguistic, and Psychological Sciences (CLPS) and Psychiatry and Human Behavior
+
+
+Brown University
+
+
+We are seeking a highly motivated postdoctoral researcher to lead an NIH-funded project in the Laboratory for Cognitive and Translational Neuroscience directed by Dr. Hwamee Oh at Brown University. The project is to use fMRI and PET to study visual memory networks in healthy young, cognitively normal older adults, and older adults who are considered as preclinical Alzheimer's disease.  
+
+
+Applicants with a Ph.D. degree in cognitive neuroscience, computational neuroscience, biomedical engineering, or a relevant field are encouraged to apply. Prior experience with human neuroimaging, a strong background in cognitive neuroscience and experimental design, and/or familiarity with programming in relevant languages (e.g., Python, MATLAB) are required. Applicants with experience with multivariate analyses on task-fMRI data are especially encouraged to apply. The successful candidate is expected to demonstrate communication skills, motivation and interest in the area of cognitive neuroscience of visual perception and memory, brain aging or Alzheimer’s disease, and the ability to independently develop research questions and work in collaboration with other team members.
+
+
+An expected start date is early summer or fall 2023. The position is primarily affiliated with Brown CLPS.
+
+ 
+
+Interested applicants should email a brief description of research background and career goals, and CV with a list of 3 references to Dr. Hwamee Oh at hwamee_oh@brown.edu.
+
+
+
+Contact Website 
+
+https://sites.brown.edu/oh-ctnlab/available-positions/
+
+
+Twitter @OhLabBrown
+
+
+--
+Elizabeth Sharp
+Research Assistant
+Oh Lab
+Brown University 
+
+I have no idea how to solve the issue because I haven't seen what's changed in the DICOM files.  If there are no privacy concerns, making a small number of example DICOMs available to people who develop converters might help - otherwise they can't fix the problem.
+
+All the best,
+-John
+
+
+
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Gyula Kovács <gyula.kovacs@UNI-JENA.DE>
+Sent: 24 March 2023 12:50
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] siemens enhanced dicom conversion to nii for spm12
+ 
+⚠ Caution: External sender
+
+
+we received a new siemens prisma, which uses these enhanced dicoms where each slice is a separate file. for the functional mri images spm12 is unable to import this any more imo. what am i missing here??? any idea how to solve the issue? (the structural worked just fine).
+thanks in advance,
+gyula
+
+Using SPM12 (and most other nifti converters) to convert the enhanced dicoms from the new Siemens system is a problem.  There are several other save options from the scanner -- sorry, I'm drawing a blank at the moment on their naming convention -- all of which can be converted by SPM12.  Although the Siemens tech support claim there is some difference between these other options, I have not found any for processing either fMRI or structural images.
+
+One note of caution from my recent experience.  After Siemens installed their latest software (XA), we have had problems generating good coregistration between the fMRI and structural images.  My group has been interacting with Siemens on this for the past year, but the problem has not yet been resolved.  My latest analysis indicates that the structural images (including MPRAGE & flair) use a coordinate system that is slightly rotated along the AP axis relative to the fMRI images, which uses the same coordinate system as in earlier Siemens operating systems.  The result is "activation" appears displaced when superimposed on the structural image, with displacement greater the further the activation cluster is from the origin (coordinates 0,0,0).  As a result, activation in sensorimotor cortex during a motor task appears somewhat posterior and extends outside of the brain, typically extending to the skull.  We have never had this problem with earlier Siemens software, nor on our Siemens scanner that has not yet had the software upgrade.
+
+If other people have noticed this as well, please comment, as Siemens is telling us no one else has observed this.  (They are suggesting the problem is with our processing stream, even though we have never had this problem with many hundreds of patients and research subjects prior to this upgrade.)
+
+I'm in the process of writing up / providing graphic proof of the problem to present to Siemens, which I hope will finally lead to their resolution of the issue.  I have not yet figured out a workaround.  I will try to update the SPM listserv once there is a resolution.
+
+Doug Burman, emeritus professor
+NorthShore University HealthSystem
+
+
+
+
+On Friday, March 24, 2023 at 08:01:22 AM CDT, Gyula Kovács <gyula.kovacs@uni-jena.de> wrote:
+
+
+we received a new siemens prisma, which uses these enhanced dicoms where each slice is a separate file. for the functional mri images spm12 is unable to import this any more imo. what am i missing here??? any idea how to solve the issue? (the structural worked just fine).
+thanks in advance,
+gyula
+
+we received a new siemens prisma, which uses these enhanced dicoms where each slice is a separate file. for the functional mri images spm12 is unable to import this any more imo. what am i missing here??? any idea how to solve the issue? (the structural worked just fine).
+thanks in advance,
+gyula
+

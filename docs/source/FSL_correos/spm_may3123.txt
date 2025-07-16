@@ -1,0 +1,526 @@
+Hi Tibor
+ 
+They are quite similar. Same TR (1.5) , flip angle (90), and number of volumes / slices. However, there is a little difference in TE and voxel size.
+TE - Siemens = 30   ,      GE = 35
+Voxel size Siemens = 3 x 3 x 2.7 mm ,     GE = 3.75  X 3.75  X 3
+I will check the aa pipeline.
+ 
+Thank you
+Haya  
+ 
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Auer, Tibor Sent: Monday, May 29, 2023 8:45 PM To: SPM@JISCMAIL.AC.UK Subject: Re: [SPM] advice on analysing fMRI scans from a 3T GE scanner
+
+
+Hi Haya,
+Please be aware, that a flip angle of 90° means throwing away signal and hence functional contrast. The Ernst angle can be calculated from T1 of gray matter.
+Regards, Peter
+Am 31.05.2023 um 12:48 schrieb Althuwaini, Haya:
+Hi Tibor
+ 
+They are quite similar. Same TR (1.5) , flip angle (90), and number of volumes / slices. However, there is a little difference in TE and voxel size.
+TE - Siemens = 30   ,      GE = 35
+Voxel size Siemens = 3 x 3 x 2.7 mm ,     GE = 3.75  X 3.75  X 3
+I will check the aa pipeline.
+ 
+Thank you
+Haya  
+
+
+Yes, I agree that there are many things that affect the accuracy of the alignment.
+
+I don't remember the details from 20 years ago very well. Many things have changed in the code since then, and I'd generally urge you to look into a more recent update of SPM12.
+
+After downloading SPM2, I see that the images were smoothed by 5mm in memory and samples every 4 mm to make realignment go faster.  In SPM12, it smooths by only 2 mm and samples about every 2 mm. The smoothing is mostly included so that information is not lost because of only sampling every few voxels, but it also makes Gauss-Newton work more effectively (but also increases the influence of changing bold signal on the estimated parameters).
+
+These values were all pretty arbitrary, and mostly relate to speed/accuracy trade-offs.  More computation leads to slower run times but more accurate results. Because computers are about 1,000 times faster than they were in 2002, the default settings also change over time.
+
+Motion correction should not need many iterations to converge, so there was (and still is) a maximum of 64 iterations done. If the relative decrease in mean squares difference is less than 10-8 for three successive iterations, then the Gauss-Newton iterations stop.
+
+SPM simply tries to minimise the mean squares difference.  There are many tweaks that could be made to increase accuracy (slice-to-volume, EPI distortion, priors on the motion parameters, robust similarity measures, etc), but none of these would involve contours.
+
+There's nothing in SPM for evaluating the effects of head motion correction, but it's sometimes useful to see how the estimates may be influenced by BOLD signal.  spm_cva.m might be helpful for obtaining deeper insights into the relationship between the design matrix and estimated motion parameters.
+
+Anyone who wants to properly assess head motion estimation accuracy might need to work with data from optical head motion trackers. Without this, it is very hard to get any kind of ground truth.
+
+Best regards,
+
+Hi Tibor
+
+ 
+
+They are quite similar. Same TR (1.5) , flip angle (90), and number of volumes / slices. However, there is a little difference in TE and voxel size.
+
+TE - Siemens = 30   ,      GE = 35
+
+Voxel size Siemens = 3 x 3 x 2.7 mm ,     GE = 3.75  X 3.75  X 3
+
+I will check the aa pipeline.
+
+ 
+
+Thank you
+
+Haya  
+
+ 
+
+
+
+t is hard to say what is going on, you will have to look at the original images as a movie. (See my mail to Gabriella a few weeks ago: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2305&L=SPM&P=R16306)
+
+Best
+Torben 
+
+Den 31. maj 2023 kl. 10.44 skrev Alex spm <alexengmri@GMAIL.COM>:
+
+Hello Torben,
+
+The acquisitions are sequential, not interlaced or multiband.
+Strange, isn't it?
+
+Alex
+
+Le mer. 31 mai 2023 à 08:30, Torben Lund <torbenelund@me.com> a écrit :
+It looks like you are using multiband or SMS acceleration factor of 5, is that correct?
+
+Best
+Torben
+
+Hello Torben,
+
+The acquisitions are sequential, not interlaced or multiband.
+Strange, isn't it?
+
+Alex
+
+Le mer. 31 mai 2023 à 08:30, Torben Lund <torbenelund@me.com> a écrit :
+It looks like you are using multiband or SMS acceleration factor of 5, is that correct?
+
+Best
+Torben
+
+Dear SPM experts,
+I am writing to inquire about several questions regarding the Gauss-Newton optimization used in the head motion correction code spm_realign.m in SPM2(Although the latest version is SPM12, I focus on SPM2).
+I have found that the specific values of the number of iterations and point selection intervals in the Gauss-Newton iteration algorithm can significantly affect the correction results. Could you please explain how SPM determines the number of iterations and point selection intervals?
+Additionally, I would like to inquire whether SPM uses any auxiliary methods to improve accuracy aside from the Gauss-Newton iteration algorithm, such as contour extraction.
+I am also eager to find out what methods or parameters SPM use to evaluate the effects of the head motion correction.
+Any insights or feedback on this matter would be greatly appreciated. Thank you for your time and assistance.
+Best,
+Yuqi Yin
+
+It looks like you are using multiband or SMS acceleration factor of 5, is that correct?
+
+Best
+Torben
+
+> Den 26. maj 2023 kl. 16.21 skrev Alex spm <alexengmri@GMAIL.COM>:
+>
+> Dear all,
+>
+> I've got very strange diagonals bands in first level results (see attachment).
+> I suspect the large motions are responsible for these artifacts. But maybe I'm wrong.
+>
+> Has anyone seen this type of artifact before?
+>
+> Thanks,
+>
+> Alex
+>
+> <Image2.png>
+
+Hi Haya,
+
+ 
+
+Are the parameters the same on both scanners?
+
+ 
+
+I agree with Peter on everything. Especially the TE might be an issue, resulting in a low signal or distortions.
+
+ 
+
+I suggest starting with simple QA, such as temporal mean and SD, and comparing them across the scanners.
+
+ 
+
+Regarding the pipeline, I used Automatic Analysis (aa) for Siemens, Philips and GE data. It also has a useful low-level QA module, tsdiffana.
+
+ 
+
+Kind regards,
+
+Tibor
+
+ 
+
+Auer, Tibor M.D. Ph.D.
+
+Lecturer in Biological Psychology
+
+School of Psychology, Faculty of Health and Medical Sciences
+
+University of Surrey, Guildford GU2 7XH
+
+T.Auer@surrey.ac.uk
+
+@TiborAuer
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Peter Erhard
+Sent: Wednesday, May 24, 2023 9:50 AM
+To: SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] advice on analysing fMRI scans from a 3T GE scanner
+
+Hello Alex,
+
+I have observed the same artefact in some of our data and it indeed seems to be due to the subject's movements during acquisition. I bet that if you look carefully at your raw data, around the time points with sudden movement, especially along perpendicular to the slices, you will see some large variation of intensity in a "zebra pattern" in coronal view.
+Are you using an interleaved sequence with some acceleration factor?
+
+So far we have not been able to get rid of these abnormal patterns in a satisfactory way: they're obvious in some volumes but seem to sneak more subtly in most volumes. 😕
+Happy to hear from others who could provide a fix.
+
+Best,
+Chris
+
+Dear Alex,
+
+could you please send a plot of the realignment output?
+Also could you tell us, how the slice planes were tilted relative to
+your image?
+
+TIA,
+Peter
+
+Am 26.05.2023 um 16:21 schrieb Alex spm:
+> Dear all,
+>
+> I've got very strange diagonals bands in first level results (see
+> attachment).
+> I suspect the large motions are responsible for these artifacts. But
+> maybe I'm wrong.
+>
+> Has anyone seen this type of artifact before?
+>
+> Thanks,
+>
+> Alex
+>
+
+Dear all, 
+
+I've got very strange diagonals bands in first level results (see attachment). 
+I suspect the large motions are responsible for these artifacts. But maybe I'm wrong.
+
+Has anyone seen this type of artifact before?
+
+Thanks, 
+
+Alex
+
+A postdoctoral position is available in the Center for Stroke Rehabilitation Research at Kessler Foundation. We use a combination of behavioral, neuropsychological, eye-tracking, and brain imaging techniques to study aphasia, acquired dyslexia, spatial neglect, anosognosia, and related cognitive disorders as consequences of stroke.
+
+
+Candidate eligibility:
+1)      Ph.D. in neuroscience, cognitive psychology, experimental psychology, clinical psychology, cognitive neuroscience, neurology, or a related field. The degree should be obtained no earlier than 2021.
+2)      Experience in analyzing and processing structural and functional MRI data.
+3)      Proficient in spoken and written English.
+4)      Strong programming skills for stimulus presentation and experiment design (e.g., E-Prime, MATLAB, or Presentation).
+5)      Prior experience in working with clinical populations is a plus.
+
+To apply, please send your CV and a statement of research interest to career@KesslerFoundation.org. Center for Stroke Rehabilitation Research                    https://kesslerfoundation.org/research/stroke/rehabilitation; Kessler Foundation; 1199 Pleasant Valley Way, West Orange, NJ 07052
+
+MICCAI Workshop on Machine Learning in Clinical NeuroImaging: Paper Submissions
+
+Dear Researchers!
+
+ 
+
+We are excited to announce that the paper submissions for the #MICCAI Workshop on Machine Learning in Clinical NeuroImaging are now open! This workshop aims to bring together experts from the fields of machine learning and clinical neuroimaging to explore innovative solutions and advancements in this rapidly evolving domain - https://mlcnworkshop.github.io .
+
+ 
+
+If you have been working on cutting-edge research related to machine learning techniques applied to clinical neuroimaging data, we invite you to submit your work for consideration. This is a remarkable opportunity to showcase your expertise and contribute to the advancement of the field.
+
+ 
+
+Benefits:
+
+Accepted papers will be presented during the workshop, providing an opportunity for valuable discussions and feedback from experts in the field.
+The top 3 papers will receive recognition and prize money of 1.500 USD will be awarded to the authors of these top papers.
+Accepted papers will be published in conference proceedings, Springer (MLCN 22 Proceeding:https://link.springer.com/book/10.1007/978-3-031-17899-3)
+ 
+
+Join us in exploring the frontiers of machine learning in clinical neuroimaging and help shape the future of this exciting field. We encourage you to spread the word among your colleagues and fellow researchers who may be interested.
+
+ 
+
+For more information, including the workshop schedule, submission guidelines, and important dates, please visit our workshop website - https://mlcnworkshop.github.io .
+
+ 
+
+We look forward to your submissions and your presence at the workshop.
+
+Hello everyone,
+
+I noticed that the last version of the template for SPECT is from SPM 2, and it comes flipped in a different orientation of the other pattern updated templates.
+
+
+I kindly request, if possible, access to an updated version of the SPECT template that would be compatible with the orientation requirements of the latest templates of SPM12. This template is crucial for my research as it will enable me to conduct accurate and reliable analysis and comparisons of the SPECT data collected.
+
+
+If you are aware of any updated version of this template or can provide guidance on where I can obtain it, I would appreciate it very much.
+
+
+Kind regards,
+
+Hello everyone,
+
+I noticed that the last version of the template for SPECT is from SPM 2, and it comes flipped in a different orientation of the other pattern updated templates.
+
+
+I kindly request, if possible, access to an updated version of the SPECT template that would be compatible with the orientation requirements of the latest templates of SPM12. This template is crucial for my research as it will enable me to conduct accurate and reliable analysis and comparisons of the SPECT data collected.
+
+
+If you are aware of any updated version of this template or can provide guidance on where I can obtain it, I would appreciate it very much.
+
+
+kind regards,
+Dear Haya,
+
+flip angle is definitely too high for this TR, I would recommend 73°.
+The TR is rather low for 48 slices, are you using a multiband sequence, what is your MB factor in that case?
+Interleaved is good, if you can assume very little head motion, so as mentioned before, check for striping in your images.
+Otherwise I would use none interleaved imaging with a small gap.
+TE is 35, we use on a VidaFIT (Healthyneeers) 30 with good results. Check if significant portions of the brain are
+misssing or heavily distorted around air filled cavities like ear canal...
+What about matrix, voxel size, FOV ...
+
+That is all that comes to mind,
+Best regards,
+Peter
+
+
+
+Am 24.05.2023 um 10:40 schrieb Althuwaini, Haya:
+
+Hi Tibor
+
+ 
+
+Thank you for your quick response.
+
+The raw data appears to be good, and I assume the parameters we applied are optimized.
+
+The following parameters were used in an interleaved hyperband sequence acquisition:
+
+ 
+
+Brain wave real time = 2
+Slice order = interleaved
+View order = bottom/up
+TR = 1500
+TE = 35
+Flip Angle = 90
+
+Number of slices = 48
+
+Number of averages: 1
+
+Slice thickness (mm): 3
+
+Slice spacing (mm): 3
+
+Number of volumes in RUN1 = 430
+
+Number of volumes in RUN2 = 327
+
+I can't say for sure, but the preprocessing pipeline might be the issue! Would you mind checking it out?
+
+ 
+
+Kind regards
+
+Haya
+
+From: tibor.auer@gmail.com <tibor.auer@gmail.com>
+Sent: Tuesday, May 23, 2023 11:02 AM
+To: Althuwaini, Haya <H.Althuwaini@LIVERPOOL.AC.UK>; SPM@JISCMAIL.AC.UK
+Subject: RE: [SPM] advice on analysing fMRI scans from a 3T GE scanner
+
+ 
+
+Hi Haya,
+
+ 
+
+I have experience with data from three major scanner vendors (Siemens, Philips and GE), and data processing and analysis strategy largely depends on your data. Therefore, it would be best to start with (optimising) the scanning parameters, which might differ across scanners, and (inspecting) the raw data, checking for contrasts, distortions and artefacts (whose level, again, might vary across scanners).
+
+ 
+
+Kind regards,
+
+Tibor
+
+ 
+
+Auer, Tibor M.D. Ph.D.
+
+Lecturer in Biological Psychology
+
+School of Psychology, Faculty of Health and Medical Sciences
+
+University of Surrey, Guildford GU2 7XH
+
+T.Auer@surrey.ac.uk
+
+@TiborAuer
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Althuwaini, Haya
+Sent: Monday, May 22, 2023 11:27 AM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] advice on analysing fMRI scans from a 3T GE scanner
+
+ 
+
+Hello dear
+
+ 
+
+This is Haya Althuwaini, a PhD student registered at the University of Liverpool in the UK. We are collecting MR brain scans for research purposes as a main PhD project that focuses on investigating hallucination proneness among healthy people. Data collection is conducted on a healthy university-student sample, using a 3T Signa GE scanner. A part of the MR protocol used are functional scans, both task-based and resting state. We performed two functional block design scans (interleaved hyperband acquisition), with auditory and visual stimuli presented to participants through Psychopy, in addition to the resting-state (functional connectivity) fMRI scan.
+
+ 
+
+The MR protocol including these tasks were first tested on a 3T Siemens scanner and showed nice activation when they were analysed using SPM on MATLAB. However, there was no or just minimal activation when we did the same scans on the GE scanner. We are using MATLAB R2022a to conduct the analysis. We tried to manipulate different options to get the expected activation but unfortunately nothing works well.
+
+ 
+
+Does anyone have experience with GE fMRI data and could give me some guidance on how to properly analyse my data?
+
+ 
+
+Kind regards
+
+Haya
+
+Dear Torben,
+
+thank you very much for your tremendous help!! I have just tested it out on my data and it works perfectly : )
+
+Thanks again and all the best,
+Philipp
+
+Dear Philip
+
+You actually need the iy_ deformation field, see procedure in the attached PDF. You can also use the program I have attached.
+
+
+>> MNICord=GetMNICoord('/Users/lund/Desktop/Day2/Images/iy_MPRAGE1.nii',[0.3 -26.6 0.1])
+
+MNICord =
+
+    1.4945
+  -26.7329
+   -0.8824
+
+Dear SPM experts,
+
+how can one transform native-space coordinates into MNI space (coordinates in mm)? I have already normalized the subject's native T1 image into MNI space and have exported the forward deformation field (y_*.nii).
+
+Thanks in advance,
+Philipp
+
+We are currently advertising a funded PhD opportunity (3-4 years) at UCL (London, UK), researching how central cognitive pathways interact with hearing loss, using behaviour and pupillometry. This is an opportunity to join the Cognitive Hearing Lab at UCL, led by Dr Emma Holmes, which combines behavioural techniques (e.g., auditory psychophysics), cognitive neuroscience (e.g., EEG, MEG, and fMRI), and computational modelling. UK students will receive a salary at Grade 6 and their PhD fees fully covered. International students will receive a salary at Grade 6 and their PhD fees partially covered.
+
+
+
+
+
+Application deadline: 8th June 2023
+
+
+Full details and application portal: https://www.jobs.ac.uk/job/CZZ650/research-assistant-with-mphil-phd-enrollment
+
+
+Feel free to get in touch with me (emma.holmes@ucl.ac.uk) for informal queries about the position
+
+Best wishes,
+
+Emma
+
+---
+
+About us
+
+The UCL Division of Psychology and Language Sciences is part of the Faculty of Brain Sciences, and leads the way in the fields of mind, behaviour and language. UCL Speech Hearing and Phonetic Sciences (SHaPS) sits within the UCL Division of Psychology and Language Sciences. It is internationally recognised for the excellence of its research into the perception and production of speech, hearing for speech and applied research in speech signal processing. It combines basic research into the normal mechanisms of speech and hearing with applied research into problems caused by hearing impairment or by atypical perceptual and cognitive development. Our methodologies include behavioural experimentation, neuroimaging, computational modelling, and acoustic analysis.
+
+
+
+About the role
+
+The postholder will be part of the Cognitive Hearing Lab, which is led by Dr Emma Holmes. The postholder will contribute to a programme of work focussed on “Uncovering how central cognitive pathways interact with hearing loss” which is funded by Wellcome. The overarching aim of this programme of work is to understand how hearing loss interacts with auditory cognitive effects on speech-in-noise perception. The postholder will be enrolled in a full-time PhD at UCL. (UCL PhD fees for UK students are covered by the grant, and fees for international students are partially covered.) The appointment will be made at an annual salary of £35,702- £36,611 per annum including London Allowance.
+
+
+
+About you
+
+The appointed candidate will have a first or upper-second class Bachelor’s degree from a UK university, or a recognised taught Master’s degree, in a relevant subject (e.g., psychology, linguistics, neuroscience) prior to starting the post. They will be able to statistically analyse data using appropriate software and will be willing to learn to use other software as needed. They will have the ability to work harmoniously with colleagues and students of all cultures and backgrounds. They will be committed to high quality research, have good time management skills, and have the ability to work to strict deadlines.
+
+
+
+What we offer
+
+The postholder will be part of the Cognitive Hearing Lab, which combines behavioural techniques (e.g., auditory psychophysics), cognitive neuroscience (e.g., EEG, MEG, and fMRI), and computational modelling. We aim to foster a supportive and inclusive lab environment in which all members can thrive. The postholder will have the opportunity to interact with and learn from other members of the lab, and colleagues in the wider community at SHaPS, PALS, and UCL. The postholder will be enrolled on the Speech, Hearing and Phonetic Sciences MPhil/PhD programme and will have access to the UCL Doctoral Skills Development programme, which is designed to help doctoral candidates develop skills for research, professional development, and employment. As well as the exciting opportunities this role presents, UCL also offers an extensive range of staff benefits: https://www.ucl.ac.uk/human-resources/pay-benefits/staff-benefits
+
+
+
+Our commitment to Equality, Diversity and Inclusion
+
+As London’s Global University, we know diversity fosters creativity and innovation, and we want our community to represent the diversity of the world’s talent. We are committed to equality of opportunity, to being fair and inclusive, and to being a place where we all belong. We therefore particularly encourage applications from candidates who are likely to be underrepresented in UCL’s workforce. These include people from Black, Asian and ethnic minority backgrounds; disabled people; LGBTQI+ people; and for our Grade 9 and 10 roles, women.
+
+
+I suggest looking at the raw images (dicoms) before preprocessing to narrow down the source of the problem. Some issues (e.g., https://mvpa.blogspot.com/2020/02/when-making-qc-or-most-any-images-dont.html, https://mvpa.blogspot.com/2017/09/voxelwise-standard-deviation-at.html) are much more obvious in unmasked raw images. Mango (and other software) lets you view a set of dicom images from a run as a movie, which can make it clear if there's only a handful of high-motion frames at fault or a bigger issue (e.g., https://mvpa.blogspot.com/2021/09/yes-im-still-glad-were-censoring-our.html). Checking if other participants have the same artifact also helps narrow down the issue.
+
+good luck!
+Jo
+
+Hi Haya,
+
+ 
+
+I have experience with data from three major scanner vendors (Siemens, Philips and GE), and data processing and analysis strategy largely depends on your data. Therefore, it would be best to start with (optimising) the scanning parameters, which might differ across scanners, and (inspecting) the raw data, checking for contrasts, distortions and artefacts (whose level, again, might vary across scanners).
+
+ 
+
+Kind regards,
+
+Tibor
+
+ 
+
+Auer, Tibor M.D. Ph.D.
+
+Lecturer in Biological Psychology
+
+School of Psychology, Faculty of Health and Medical Sciences
+
+University of Surrey, Guildford GU2 7XH
+
+T.Auer@surrey.ac.uk
+
+@TiborAuer
+
+ 
+
+Hello DCM experts,
+
+I am running a DCM analysis for a case study. How would you create the contrasts at second-level to compare between conditions? My design is as follows: Participant completed 10 runs of meditation conditions A, B, C, which are also in progressive order in a single run. 
+
+Is there a way to look at the changes in effective connectivity from A-B-C while accounting for the repeated runs? If not, what is the simplest manner to investigate this? If not, should i compare between two conditions then, and how would the contrast look like?
+
+Kind regard,
+Winson
+

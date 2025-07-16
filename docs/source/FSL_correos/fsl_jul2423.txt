@@ -1,0 +1,816 @@
+Hello, 
+
+We are attempting to perform a regression with multiple comparisons correction between two 4D volumes (data1 and data2) using palm. The command we are running currently is: 
+
+palm -i data1.nii -i data2.nii -n 10 -npc 
+
+This command outputs several files, including: palm_vox_npc_fisher_c1.nii palm_vox_npc_fisher_c2.nii palm_vox_npc_fisher_fwep_c1.nii   palm_vox_npc_fisher_fwep_c2.nii   palm_vox_npc_fisher_uncp_c1.nii  palm_vox_npc_fisher_uncp_c2.nii 
+
+palm_vox_npc_fisher_c1.nii contains high values that are not likely to be alpha or p values. 
+palm_vox_npc_fisher_c2.nii is blank. 
+The other 4 files all appear to be masks of palm_vox_npc_fisher_c1.nii. 
+
+Is this the correct command to perform regression on two modalities with multiple comparisons correction?
+
+All the best,
+Nick
+Hi Paul,
+
+I tried using VcXsrv with the same results as with Xming.
+
+With MobaXterm, I got this error:
+WARNING          __init__.py  746: create          - GLContext callback function raised ValueError: Properties must be of the same type to be bound
+Traceback (most recent call last):
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/gl/__init__.py", line 743, in create
+    ready()
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/main.py", line 577, in realCallback
+    callback()
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/main.py", line 374, in buildGui
+    frame = makeFrame(namespace[0],
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/main.py", line 782, in makeFrame
+    frame = fsleyesframe.FSLeyesFrame(
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/frame.py", line 310, in __init__
+    self.__restoreState(restore)
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/frame.py", line 1448, in __restoreState
+    layouts.loadLayout(self, 'default')
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/layouts.py", line 104, in loadLayout
+    applyLayout(frame, name, layout, **kwargs)
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/layouts.py", line 143, in applyLayout
+    frame.addViewPanel(vp, defaultLayout=False)
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/frame.py", line 519, in addViewPanel
+    panel = panelCls(self.__mainPanel, self.__overlayList, childDC, self)
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/views/orthopanel.py", line 277, in __init__
+    xopts.bindProps('highDpi',      sceneOpts)
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes_props/properties.py", line 673, in bindProps
+    bindable.bindProps(self, *args, **kwargs)
+  File "/home/jeewon/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes_props/bindable.py", line 204, in bindProps
+    raise ValueError('Properties must be of the '
+ValueError: Properties must be of the same type to be bound
+
+And FSLeyes just hangs at the FMRIB startup screen for 10+ minutes.
+
+Thank you,
+Jee Won
+
+Hi Paul,
+
+I am using Xming on Windows.
+
+I was able to successfully install FSL v6.0.5.2 based on the instructions provided by Matthew, but I am still having the same issue with not being able to properly use FSLeyes as described before (e.g., the viewer settings is basically frozen).
+
+However, with FSL v6.0.5.2, I am not getting the error messages (debugger warnings), and instead, whenever I quit FSLeyes, I get a "Segmentation fault".
+
+Thank you for your assistance,
+Jee Won
+
+########################################################################
+
+Hi Paul,
+
+I changed it to "/" but it's still not working.
+My filtered_func_data_clean files are not normalized in the MNI152 standard. Do you think this is a problem?
+
+Thanks
+
+########################################################################
+
+Hi Paul,
+
+I tried this but  got the same message:
+
+hozelo@lamad-alnilam:~$ /usr/local/fsl/bin/melodic -i lista.txt -o gica20.ica -v --nobet --bgthreshold=10 --tr=2.0 --report -d 20 --mmthresh=0.5 --Ostats -a concat
+
+Melodic Version 3.15
+
+Melodic results will be in gica20.ica
+
+Image Exception : #63 :: No image files match: ./home/hozelo/data/sub-10159.ica/filtered_func_data_clean.nii.gz
+Image Exception : #22 :: Failed to read volume ./home/hozelo/data/sub-10159.ica/filtered_func_data_clean.nii.gz
+Error : No image files match: ./home/hozelo/data/sub-10159.ica/filtered_func_data_clean.nii.gz
+
+Failed to read volume ./home/hozelo/data/sub-10159.ica/filtered_func_data_clean.nii.gz
+Error : No image files match: ./home/hozelo/data/sub-10159.ica/filtered_func_data_clean.nii.gz
+
+Any idea?
+Thanks a lot
+
+########################################################################
+
+
+Hi Alex,
+
+Your internet connection seems to be a little slow (2 minutes to download the 60MB mambaforge installer- based on that, I'd expect the total download (3GB) to take between one and two hours). If you have access to a faster connection (e.g. from your workplace), I'd suggest trying the installation there.
+
+There is a chance that this is simply due to an unreliable internet connection. But there is also a chance that mamba is mis-behaviing. Could you try re-running the installer ilke so?
+
+export MAMBA_NO_LOW_SPEED_LIMIT=1
+[python] fslinstaller.py [other options]
+
+Paul
+
+Yes, but transforming mc data back to generate uncorrected data is generally not a good idea as you will interpolate, so this data is not going to match the real uncorrected data.
+
+Cheers,
+
+Andreas
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Freitag, 21. Juli 2023 um 17:26
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] MCFLIRT "transformation parameters"
+
+ 
+
+Hi Amir,
+
+ 
+
+You should be able to reconstruct an affine transformation from the motion parameters - this should be fairly straightforward to do in Python or MATLAB. Note that FLIRT matrices use a "scaled mm" coordinate system, so if you are using FLIRT to resample your data, you will need to ensure that the transformations are defined in terms of this coordinate system. You can read more about this at the following pages:
+
+ 
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/FAQ#What_is_the_format_of_the_matrix_used_by_FLIRT.2C_and_how_does_it_relate_to_the_transformation_parameters.3F
+
+ 
+
+https://open.win.ox.ac.uk/pages/fsl/fslpy/fsl.transform.flirt.html#module-fsl.transform.flirt
+
+ 
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of AmirHussein Abdolalizadeh <amirhussein.a@GMAIL.COM>
+Sent: 21 July 2023 08:25
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] MCFLIRT "transformation parameters"
+
+ 
+
+Hi Paul,
+
+Thanks for your reply. I am using preprocessed data with no access to .mat files. I have a naive thought, please correct me if I am wrong: what if I apply the negated .par file on the motion-corrected scan to bring it to the previous uncorrected stage? Since those 6 parameters are rotations and translations (in radian and mm) wrt the images center of mass, applied to the original image to motion correct.
+
+Best,
+Amir
+
+When I info = dicominfo('path_to_your_dicom_file.dcm');
+echo_spacing = info.Private_0019_1028; to get EPI factor I get a vector with double numbers. How can I use these numbers to calculate EPI factor, which is required to calculate acqp I also need to calculate Echoecho spacing?
+
+Knut J Bjuland
+
+########################################################################
+
+
+Hi Nelson,
+
+FA should end up to be close to 0 for CSF. So the cyst itself should not affect the skeleton. But: there may be registration issues if you include the subject in a group analysis.
+Looks like a Galassi type 1 or 2 cyst (https://pubmed.ncbi.nlm.nih.gov/7089853/).
+Cheers,
+Andreas
+
+﻿Am 20.07.23, 19:20 schrieb "FSL - FMRIB's Software Library im Auftrag von Nelson Descalço" <FSL@JISCMAIL.AC.UK im Auftrag von ndescalco@GMAIL.COM>:
+
+    Dear all,
+   
+    Hope you are well. I am doing a TBSS analysis and there is something I need to check with you.
+   
+    I have a participant to whom we have found an arachnoid cyst close to the temporal lobe, causing mass effect (attached). The cyst is included as brain tissue in the mask and this is not corrected by registration. How will this affect the subject's FA skeleton, i.e., what is the value that the software is going to attribute to the part of the FA skeleton the “represents” the temporal lobe?
+   
+    Thanks for your help,
+   
+    Nelson
+   
+   
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+
+Hi, all!
+ 
+I would like to check if there is a relationship of resting state patterns and antidepressant response, but as a continuum (i.e. exploring the "gradation of symptoms severity"), without separating people into responder and non-responder groups? I believe I cannot use FSL dual regression for that as I would need to divide them per group. Please, what would be the best approach for doing so? Maybe FSL FEAT (seed-based connectivity)?
+
+Thank you!
+Best,
+Tamires
+
+########################################################################
+
+Hi Tamires,
+  You can use any GLM design with dual_regression. If I understand your study correctly, you want to correlate a continuous variable ( severity ) with RSN-differences for a single cohort - in that case this design https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM#Single-Group_Average_with_Additional_Covariate should work - you may want to modify the contrasts for your study ( e.g. drop the group-mean, test the opposite direction for the continuous covariate, and use a F-test to test for significance across those contrasts ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Oh, totally correct. Thanks!
+
+Amir
+
+########################################################################
+
+
+Hello,
+
+ 
+
+I am new to using FSL and have been trying to use the relevant tools to preprocess diffusion data for DTI. Tools: topup, bet, eddy
+
+ 
+
+My original data had 6 slices and I could not run topup on it as it kept producing inaccurate results. I opted to extract slices from the example data provided by FSL to first simulate the processing pipeline. Only after extracting 14 slices did topup work well for the slices in the middle (while giving cropped images in the peripherical slices).
+
+
+
+ 
+
+This affected the binary brain extraction as well. So I only kept 10 slices in the middle and extracted the data. The brain region was extracted and a binary mask was generated succfully.
+
+ 
+
+Now every time I try to run eddy it gives out unformatted text and keeps saying Terminating program which makes it difficult to figure out the underlying reason behind crashing.
+
+
+
+ 
+
+I made sure that the dimensions of the input volume, the mask, and topup outputs are all the same (10 slices). May I know what could be the reason?
+
+ 
+
+Best regards,
+
+Ahmed Aburas
+
+Hello,
+
+I'm new to using the Probtrackx2 tool.
+Reading the documentation, I understood that the -omatrix1 option outputs the vortex by vortex connectivity matrix (for surfaces) with a second coordinate file that lets us know the vortexes associated with each region (I'm working with 316 ROIs).
+Then there's the -network option, which directly outputs the ROI by ROI matrix.
+
+1- So, as I understand it, the -network option allows vortexes to be grouped into the regions to which they correspond, resulting in an ROI by ROI matrix. However, I've tried to get the ROI by ROI matrix using Matrix1 and the coordinates file, but I still can't, so can someone please explain the distinction?
+
+The total for the network matrix ~= 40 million streamlines and for matrix1 ~= 214 million.
+
+2- Concerning Matrix3, if I give the seed as a target, will I get the same result as Matrix1?
+
+I really appreciate any help you can provide.
+Zakaria
+
+Dear Saad,
+
+thank you very much for your quick and precise response! Now I understand.
+Best regards
+Marvin
+
+Marvin Jüchtern
+
+Assistenzarzt
+
+Klinik für Neurologie
+
+ 
+
+Uniklinik
+
+ 
+
+mjuechtern@ukaachen.de
+
+Universitätsklinikum Aachen
+
+Anstalt des öffentlichen Rechts (AöR)
+
+Pauwelsstraße 30
+
+52074 Aachen
+
+info@ukaachen.de
+
+www.ukaachen.de
+
+Thanks Paul, the file is uploaded.
+
+Udo
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Friday, July 21, 2023 10:53 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] calling fsleyes leads to python quitting
+ 
+Hi Udo,
+
+You should have received a link to a OneDrive folder where you can upload the trace file.
+
+Paul
+
+Hi Jee Won,
+
+Can you try using a different X server such as VcxSrv or mobaxterm?, The freezing issue may not occur with a different X server.
+
+Paul
+From: Jee Won Kang <jeewonkang@UCLA.EDU>
+Sent: 21 July 2023 17:20
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk>
+Subject: Re: Error with FSLeyes in FSL 6.0.7.1 on WSL2 Ubuntu 20.04
+ 
+Hi Paul,
+
+I am using Xming on Windows.
+
+I was able to successfully install FSL v6.0.5.2 based on the instructions provided by Matthew, but I am still having the same issue with not being able to properly use FSLeyes as described before (e.g., the viewer settings is basically frozen).
+
+However, with FSL v6.0.5.2, I am not getting the error messages (debugger warnings), and instead, whenever I quit FSLeyes, I get a "Segmentation fault".
+
+Thank you for your assistance,
+Jee Won
+
+
+
+Hi Udo,
+
+You should have received a link to a OneDrive folder where you can upload the trace file.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Will, Udo <will.51@OSU.EDU>
+Sent: 21 July 2023 16:42
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] calling fsleyes leads to python quitting
+ 
+Thanks, Paul,
+
+Fsleyes version 1.6.1. See attached terminal output that also shows the results of the trace command. The trace.txt is 394 MB! If you want/need that, how and where can I upload that?
+
+Udo
+
+Hi Paul,
+
+Was doing ICA using melodic - worth using a different browser? Was in work - can run again and give you more details next week.
+
+Many thanks for help
+James
+
+On Fri, Jul 21, 2023 at 2:24 PM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi James,
+
+Can you give more details as to what command you are trying to run? A cursory web search of that message suggests that it may be originating from Firefox.
+
+Paul
+
+Hi Amir,
+
+You should be able to reconstruct an affine transformation from the motion parameters - this should be fairly straightforward to do in Python or MATLAB. Note that FLIRT matrices use a "scaled mm" coordinate system, so if you are using FLIRT to resample your data, you will need to ensure that the transformations are defined in terms of this coordinate system. You can read more about this at the following pages:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/FAQ#What_is_the_format_of_the_matrix_used_by_FLIRT.2C_and_how_does_it_relate_to_the_transformation_parameters.3F
+
+https://open.win.ox.ac.uk/pages/fsl/fslpy/fsl.transform.flirt.html#module-fsl.transform.flirt
+
+Paul
+
+Hi Helka,
+
+The error message is saying that the files you have specified in list.txt cannot be found, so the paths are incorrect. What happens when you run this command?
+
+ls -l /home/hozelo/data/sub-10159.ica/filtered_func_data_clean.nii.gz
+My filtered_func_data_clean files are not normalized in the MNI152 standard. Do you think this is a problem?
+This is not the cause of the present issue, but it will be a problem for you - when running group ICA you need to make sure that all of the input data is anatomically aligned, so you will need to transform the cleaned functional data for all of your subjects into standard space. Assuming that you have already registered each subject using e.g. the MELODIC gui, an example of transforming your data is given in the "(Optional) Scripting" section near the bottom of the FSL course practical: https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/
+
+Paul
+
+Hi Udo,
+
+Something is causing a corrupted version of PyObjC to be loaded, which is strange, as FSLeyes doesn't depend on that library. Could you run this command, and send me the resulting "trace.txt" file?
+
+$FSLDIR/bin/python -m trace --trace --module fsleyes.main > trace.txt
+
+Could you also double check which version of FSLeyes you are running by running these commands?
+
+which fsleyes
+fsleyes -V
+
+Paul
+
+Thanks Paul,
+
+attached is the llb output - hopefully it contains some cues waht's going on.
+
+Best
+Udo
+
+Hi James,
+
+Can you give more details as to what command you are trying to run? A cursory web search of that message suggests that it may be originating from Firefox.
+
+Paul
+
+Hi Udo,
+
+I cannot reproduce the issue I'm afraid. Would you be able to try doing the following, as it might give me some more information:
+Run "lldb $FSLDIR/bin/python -- -m fsleyes.main"
+Type "r" into the (lldb) prompt and press enter
+After FSLeyes crashes, type "bt" into the (lldb) prompt and press enter
+Send me all of the output
+If you don't have lldb installed, you could install it into your FSL installation with the following command:
+
+$FSLDIR/bin/mamba install -p $FSLDIR lldb
+
+And then perform step 1 above with "$FSLDIR/bin/lldb $FSLDIR/bin/python -- -m fsleyes.main"
+
+Paul
+
+Hi there,
+
+ 
+
+I would recommend taking a look at the docs here, and see if you can get the info from some protocol PDFs off your scanner to confirm the values you need.
+
+ 
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/Faq#How_do_I_know_what_to_put_into_my_--acqp_file.3F
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+Hi Paul,
+
+did the command output contain any clues as to why fsleyes doesn't run properly?
+
+Best
+Udo
+From: Will, Udo <will.51@osu.edu>
+Sent: Thursday, July 20, 2023 9:40 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] calling fsleyes leads to python quitting
+ 
+Hi Paul,
+
+attached is the output list. Thanks.
+
+Udo
+
+Hi Marvin
+
+ 
+
+1) If you use the GUI in MultipleMasks mode, what is going on under the hood is that each mask will be used as a seed and the other masks as waypoint masks with the “OR” option.
+
+2) You can’t easily add all the masks as terminations, as that would also include the seed mask, and streamlines will stop immediately. The easiest way to do this is to run probtrackx2 separately for each seed and use the other masks as waypoint/termination.
+
+ 
+
+Cheers
+
+Saad
+
+Dear Paul,
+
+Trying to run an ICA on Windows 11 linux and getting this error :  [gfx1-]: unrecognized feature accelerated canvas 2d
+
+I don't suppose you know how tor resolve?
+
+Many thanks
+James
+
+
+Hi Paul,
+
+that seems to have solved the problem, thank you so much!!
+
+Best
+Jaël
+
+########################################################################
+
+
+Hi Helka,
+
+Do all of your paths begin with a dot character '.'? That is still a relative path, relative to your current directory. Absolute paths begin at the root directory, i.e. '/'.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Helka Ozelo <helka.ozelo@GMAIL.COM>
+Sent: 20 July 2023 20:54
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group ICA - error
+ 
+Hi Paul,
+
+I tried this but  got the same message:
+
+hozelo@lamad-alnilam:~$ /usr/local/fsl/bin/melodic -i lista.txt -o gica20.ica -v --nobet --bgthreshold=10 --tr=2.0 --report -d 20 --mmthresh=0.5 --Ostats -a concat
+
+Melodic Version 3.15
+
+Melodic results will be in gica20.ica
+
+
+Hi Paul,
+
+Thanks for your reply. I am using preprocessed data with no access to .mat files. I have a naive thought, please correct me if I am wrong: what if I apply the negated .par file on the motion-corrected scan to bring it to the previous uncorrected stage? Since those 6 parameters are rotations and translations (in radian and mm) wrt the images center of mass, applied to the original image to motion correct.
+
+Best,
+Amir
+
+########################################################################
+
+
+Hello,
+
+I was if you can please explain what the 'T1_to_MNI_nonlin_jac' file output from the 'fsl_anat' command is? I read on the Wiki that it is the Jacobian of the non-linear warp field, does that mean this is the deformation file? If you can help provide a more detailed explanation.
+
+Secondly, we want to calculate Jacobian determinant maps and perform TBM. Does FSL have any functions to compute this from T1-weighted images?
+
+Any suggestions you have would be greatly appreciated, thank you so much!
+
+-RJ
+
+########################################################################
+
+Hello Jee Won,
+                         For the 6.0.5.2 issue,  if you run these commands:
+
+export CONDA_CHANNEL_PRIORITY=disabled
+export CONDA_LOCAL_REPODATA_TTL=0
+python fslinstaller.py -V 6.0.5.2
+
+Then you should be able to install 6.0.5.2.
+
+Kind Regards
+Matthew
+--------------------------------
+
+Hello all, 
+
+
+
+I am hiring a postdoctoral fellow. Please see the description below and contact me for more details/questions. 
+
+
+
+Description: The Adise lab in the Division of Endocrinology, Diabetes, and Metabolism, Department of Pediatrics, Children's Hospital of Los Angeles, University of Southern California seeks a postdoctoral fellow to work on NIH funded studies investigating neurocognitive development of obesity and appetite regulation during childhood and adolescence. The start date for this position will be as early as 1 Sept 2023 but is flexible.
+
+ 
+
+This research combines multimodal techniques including behavioral, magnetic resonance imaging (MRI) and biological markers of metabolic health. The postdoctoral fellow will be using Big Data methods to analyze large-scale questions in the ABCD Study geared at understanding how social determinants of health may influence neurocognitive development of obesity risk. There will also be opportunities to be involved in smaller scale studies at CHLA. Additionally, the candidate will work alongside leaders of the field of ingestive behavior, neuroimaging, and neurocognitive development.
+
+ 
+
+Minimum qualifications/Work experience: Candidates should have a PhD in a relevant discipline (e.g., psychology, neuroscience, computer science, engineering, nutrition). A background in one or more of the following is essential: obesity/eating behavior, nutrition, biostatistics, big data analytics, neuroimaging.  Programming experience (Python, R etc.) will be highly valuable but is not absolutely required as a prerequisite (however, learning to program is an absolute must). Strong data analysis and writing skills required. 
+
+ 
+
+If interested, please send a CV, statement of research interests, one or more PDFs of representative publications, and contact details of two references to sadise@chla.usc.edu
+
+
+
+
+
+Shana Adise, Ph.D. (she/her/ella)
+Assistant Professor of Research Pediatrics
+Division of Endocrinology, Diabetes, and Metabolism
+
+Children's Hospital of Los Angeles
+
+Department of Pediatrics
+
+Keck School of Medicine | University of Southern California
+4650 Sunset Blvd Mailstop #61, Los Angeles, CA 90027
+
+shanaadise@gmail.com
+
+http://shanaadise.weebly.com/
+
+
+** While I may have sent this email outside of regular office hours, I value your personal time and wellbeing. Therefore, I do not expect a response outside of your normal working hours **
+Shana Adise, Ph.D. (she/her/ella)
+Assistant Professor of Research Pediatrics
+Division of Endocrinology, Diabetes, and Metabolism
+
+Children's Hospital of Los Angeles
+
+Department of Pediatrics
+
+Keck School of Medicine | University of Southern California
+4650 Sunset Blvd Mailstop #61, Los Angeles, CA 90027
+
+shanaadise@gmail.com
+
+http://shanaadise.weebly.com/
+
+
+** While I may have sent this email outside of regular office hours, I value your personal time and wellbeing. Therefore, I do not expect a response outside of your normal working hours **
+
+
+
+I've recently processed around 1000 T1w scans with fsl_anat (default settings), most of which go through just fine. However, fsl_anat is not producing a complete set of outputs for a subset of the scans. These failing scans do not exhibit any obvious quality issues. The processing seems to go haywire early, with the FOV cropping by robustfov; the "T1" output on these failing images all have inferior portions of the brain cropped (whether fsl_anat reports an error varies, but one error that sometimes occurs is an inability to segment the brainstem during the FIRST step).
+
+Most of the images that are processed successfully were collected with k-space parallel imaging, but the ones that fail were all collected with image domain PI. I suspect that the image domain PI might be throwing off the heuristics used by robustfov by causing many of the background voxels to have an intensity that is far from the intensity of the brain voxels (most voxels in the background are exactly 0 whereas brain voxels have an intensity of around 10k). When calling robustfov alone, the slice along the z-axis that is reported as the top of the brain is far from the skull.
+
+So, a couple of questions
+- Does that (lots of 0-intensity background voxels) sound like a plausible source of the issue?
+- If so, is there a recommended way to configure fsl_anat to handle these kinds of images?
+
+It seems like there are several ways in which we can get things to work (e.g., skip cropping, do the cropping ourselves, replace the 0 intensity voxels with some helpfully random value, etc), but also it would be nice to process these images without giving them special treatment.
+
+Let me know if it would be useful to see pictures or samples.
+
+Thanks!
+
+########################################################################
+
+
+Hi Matthew,
+
+I deleted the .nii and bet executed properly!
+
+Thanks so much!
+
+########################################################################
+
+
+Hi Kiriya,
+It looks like you have “doubled” up copies of some files - e.g.
+
+sub-0015_ses-FU108_acq-MPRAGE_T1w.nii.gz
+
+And
+
+sub-0015_ses-FU108_acq-MPRAGE_T1w.nii
+
+If you delete one of the files ( the .nii ones will take up more space ) then things should hopefully start working.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 18 Jul 2023, at 15:42, Kiriya Awad <kiriya.awad@gmail.com> wrote:
+>
+> Hi Matthew!
+>
+> Thanks for a prompt reply!
+>
+> I am using fsl version 6.0.6.5.
+>
+> Here is the link to the image via Google Drive:
+> https://drive.google.com/file/d/1YFEMZhj2tpY_ClBrK6ukSFqFBAJfx4Lk/view?usp=drive_link
+>
+> Thanks!
+>
+> Kiriya
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+########################################################################
+
+
+Hi Matthew!
+
+Thanks for a prompt reply!
+
+I am using fsl version 6.0.6.5.
+
+Here is the link to the image via Google Drive:
+https://drive.google.com/file/d/1YFEMZhj2tpY_ClBrK6ukSFqFBAJfx4Lk/view?usp=drive_link
+
+Thanks!
+
+Kiriya
+
+########################################################################
+
+Hi Amir,
+
+If you use the -mats option to mcflirt, it will save a FLIRT transformation matrix for every volume - you can invert this and transform each voxel back to uncorrected space.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of AmirHussein Abdolalizadeh <amirhussein.a@GMAIL.COM>
+Sent: 18 July 2023 14:23
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] MCFLIRT "transformation parameters"
+ 
+Hi,
+
+As a continue to this question, is it possible to use .par parameters to return the motion-corrected scan to its uncorrected form? Using flirt or any other tools?
+
+Best,
+Amir
+
+########################################################################
+
+The Institute for Human Neuroscience at Boys Town National Research Hospital in Omaha, NE, USA invites applications for three open Laboratory Director positions in Cognitive Neuroscience. For these junior faculty positions (Assistant Professor/Research Scientist I), we welcome applications from any area of cognitive neuroscience, including executive function, visual attention, perception, motor control, emotion, memory, and methods-oriented areas, and are especially interested in building our existing research programs in pediatric and adult brain health. Methodological specialty within neuroimaging is open, but ideally the candidate would benefit from our strong existing programs in multimodal MRI, MEG imaging, optically-pumped magnetometry (OPM), and/or neuromodulation, and develop a nationally recognized program focusing on their area of interest. The successful applicant will receive strong financial support for building their research program, including a generous start-up package, and would join a growing group of cognitive neuroscientists, both within the Institute and across campus, using the latest tools in human neuroscience.
+
+ 
+
+Successful candidates will have a PhD, MD, DPT/PhD or MD/PhD in neuroscience, psychology, physics, computer science, or related field, with postdoctoral training and an excellent publication record for their career stage. Candidates should also have a sustained record of research in high impact journals and demonstrated ability, or evidence of the potential, to generate extramural funding commensurate with their career stage. Applicants should have the ability and interest to teach graduate courses in cognitive neuroscience, and to mentor PhD students in our growing joint PhD program in Neuroscience with Creighton University.
+
+ 
+
+The 15,000+ square foot Institute for Human Neuroscience is a vibrant research environment with state-of-the-art equipment and ample opportunities for training and trans-disciplinary collaboration. The Institute houses the latest equipment available in the field of noninvasive neuroimaging, including a 3T Siemens Prisma MRI system, two Neo MEG systems, which are the most advanced MEG units currently available, an NIH S10 supported OPM suite, a mock MRI scanner, and a high-performance computing space. The Institute’s resources also include state-of-the-art high-definition transcranial direct-current and alternating-current stimulation (HD-tDCS/tACS) equipment, and biomechanical equipment for quantifying human movement physiology (i.e., KINARM, Delsys EMG, Vicon motion capture, Bertec force treadmill). The Institute maintains a 2,500+ square foot clinic that is staffed by research dedicated physical therapists, and the most up-to-date therapeutic equipment for conducting clinical trials with children and adults with neurologic and/or orthopedic impairments. Lastly, the Institute is the home for the Center for Pediatric Brain Health, which is an NIH P20 Center of Biomedical Research Excellence. The Center for Pediatric Brain Health includes multiple research support mechanisms for junior faculty at Boys Town, including both pilot project funding (approx. $50k direct costs per year) and major research project funding (approx. $175k direct costs per year for 3-4 years).
+
+ 
+
+We expect to hire two or three junior faculty through the current initiative, with a start date in 2024. Interested applicants should submit a letter detailing current research interests, a list of the applicant’s five most important publications, and a curriculum vitae to Dr. Tony Wilson (tony.wilson@boystown.org). Contact information for three references will be requested at a later time. Review of applications will begin September 22, 2023 and will continue until the position is filled. Individuals from diverse backgrounds are especially encouraged to apply.
+
+ 
+
+Check out our website: Institute for Human Neuroscience for more information!
+
+ 
+
+ 
+
+ 
+
+Gaelle Doucet, Ph.D.
+Director, Brain Architecture, Imaging and Cognition Lab
+w: 531.355.6703 | e: gaelle.doucet@boystown.org
+
+Boys Town National Research Hospital Logo
+
+Boys Town National
+Research Hospital
+boystownhospital.org
+Institute for Human Neuroscience,
+
+14090 Mother Teresa Lane,
+Boys Town, NE
+
+ 
+
+This message is privileged and confidential and is intended only for the use of the addressee. Unauthorized use of this message is strictly prohibited. If you received this transmission in error, please immediately contact the sender and destroy the message. Thank you.
+
+ 
+
+ 
+
+
+
+Hello Kiriya!
+    Can you confirm the version of FSL you are using ( more $FSLDIR/etc/fslversion ) and upload one of the problematic files to a download service ( e.g. Google Drive, Dropbox ) and let me know the link?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 17 Jul 2023, at 20:03, Kiriya Awad <kiriya.awad@gmail.com> wrote:
+
+Hello!
+
+I’m currently working on running the command “bet” on a series of nii.gz image files using a shell script. The images I’m trying to “bet" are fairly conventional T1w 3D MPRAGE images with 1mm isotropic resolution.  The command executes properly for some image files in the series but for others I get the following error, “input image not valid”.
+
+I’ve tried running the command manually from the terminal (I’m using Ubuntu 18.04.5 on Windows 11) and I get the same error as I do when I ran the command in the script. I also tried running it using the FSL GUI window and I get the same error.
+
+I can still view these “invalid" image files using FSLeyes and they don’t seem to have any labelling or orientation errors (i.e. the outputs of fslhd are similar between the invalid images, and ones that can be successfully "betted"). I can also run different FSL commands and they execute properly; however, “bet” doesn’t seem to be working.
+
+Does anyone have any idea as to why these image files might be invalid or a way to solve the error?
+
+Ultimately, I just want to register all of my MPRAGE images to the MNI152 standard image, and I am under the impression that it is best to run "bet" first.
+
+Thanks in advance!
+
+Kiriya
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+

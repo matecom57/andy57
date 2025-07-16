@@ -1,0 +1,1048 @@
+Greetings,
+I am having trouble understanding FSL's dtifit V1 file format.
+
+As far as I understand, as a principal eigenvector it defines the vector 
+of the fastest diffusion. In V1 this vector is defined by three volumes, 
+representing the x/y/z axes. What I don't understand is why values in 
+these volumes go into negatives.
+I would expect the values to stay positive only, as (from my 
+understanding) DTI can only differentiate the axis of diffusion 
+(right-left), but not the direction of diffusion (from left to right or 
+vice versa).
+ 
+The reason I am asking is because I was trying to create an FA modulated 
+V1 RGB image readable by ITK-SNAP. I found here a fix for that that 
+required using absolute values of V1 and multiplying these by FA. It 
+worked but I am struggling to understand why there are non-absolute values 
+in V1 at all.
+
+Best regards,
+Stan
+
+########################################################################
+
+Hi Jure,
+     Our systems are in the process of being restored, so I would expect 
+hopefully by the end of today ( UK time ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Andreas,
+
+ 
+
+how are --field and field_mat specifically used, esp. the mat part?
+
+ 
+
+the --field should be a fieldmap, in Hz, with the same FOV as the 
+diffusion data. The --field_mat is an optional (FLIRT style) rigid body 
+matrix that maps the field onto the diffusion data.
+
+ 
+
+I don't really recommend using --field. The problem is that the field you 
+pass to eddy needs to be invertible (well, it is the resulting 
+displacement field that has to be invertible). This will be true for the 
+field you get from topup, but it may not necessarily be true for a dual 
+echo-time field. And in particular some of the FSL processing of dual 
+echo-time fields in FSL introduces artificial edges at the edge of the 
+object, and these edges are effectively singularities.
+
+ 
+
+Jesper
+
+Hi Matthew,
+
+Thanks for a quick response. Any eta about when servers will be up?
+
+I need the MATLAB/R version because it is used by HCP Pipelines' ICAFix.
+
+Best, Jure
+
+########################################################################
+
+Dear Anderson,
+
+after a more extensive search I could find the file design_ekaterina.osd 
+within the FSL mailing list. However, it is not clear for me how to
+extend the design to three time points per subject. For example, EV1 in 
+design 1 is
+Subj time EB EV1
+1      t1     1   1
+1      t2     1  -1
+
+how should I define t3 in EV1? Do I need another EV like
+Subj time EB EV1 EV2 EV3
+1      t1     1   1      1     0
+1      t2     1  -1      0    1
+1      t3     1   0      -1   -1
+
+in design 2
+Subj time EB EV1 EV2 EV3
+1      t1      1   1     0    1
+1      t2      1   1     0   -1
+
+how should I define t3 in EV3? Additional EVs like?
+
+Subj time EB EV1 EV2 EV3 EV4 EV5
+1      t1      1   1     0    1      1     0
+1      t2      1   1     0   -1      0     1
+1      t3      1   1     0    0     -1    -1
+
+what would be the correct contrast for an interaction?
+
+Best,
+Ralf
+
+########################################################################
+
+
+Hi Jesper,
+
+ 
+
+thanks!
+
+ 
+
+how are --field and field_mat specifically used, esp. the mat part?
+
+Cheers,
+
+Andreas
+
+ 
+
+Dear Saina,
+
+ 
+
+My FSL version is 6.0 and I am using eddy_cuda10.2.
+Could this be a problem of the version?
+
+ 
+
+yes, there were some changes to eddy as part of release 6.0.7.8 that may 
+potentially affect you. There is a quite long explanation in the release 
+note, but the short story is that the problem described there can 
+potentially cause eddy to not estimate and correct for EC and or movement 
+accurately. The issue is more likely to appear if you have large 
+susceptibility-induced distortions, which is in turn more likely if have a 
+long effective readout time and/or if you have a high field scanner (e.g. 
+7T).
+
+ 
+
+So, I would suggest you first update to the latest version (I think it is 
+6.0.7.11), and if you still have problems after that I can take a look at 
+your data.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Jesper Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Sent: 04 June 2024 11:09
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy correction 7T diffusion data
+
+ 
+
+Dear Saina,
+
+ 
+
+that all looks good to me. Can you please confirm that you are using the 
+latest version of FSL/eddy for this? If you do, then the next step would 
+be for us to take a look at your data.
+
+ 
+
+Best regards Jesper
+
+ 
+
+Hi Niklas,
+
+ 
+
+If there is a more detailed explanation of the -flags and output/input for 
+the newest version of eddy, I would very much appreciate a link.
+
+ 
+
+the output (format) of eddy is about to change quite a lot. The image 
+output will remain much the same as before, but all the text output will 
+change. Instead of having individual text files for EC, 
+slice-to-vol-movement, outliers etc, they will all be included in a single 
+.JSON file. That will also allow me to output more and more detailed 
+information that will aid with QC. The "old" text files will still be 
+optionally available (and are likely to be for some time) so as not to 
+break existing pipelines. These changes are expected to go live with the 
+next eddy release. People who use the latest version will have noticed 
+that eddy already output a .JSON file, but I still haven't decided on the 
+final format so please don't write/base any scripts based on what they 
+currently look like.
+
+The documentation is also in the process of being updated accordingly (and 
+getting a face lift).
+
+ 
+
+Again, my study is not on the brain, it targeted the ankle and the tibial 
+nerve with 25 axial slices.
+
+ 
+
+I think my concerns are benign, but I just want to check.
+
+ 
+
+When running eddy_cuda linked to cuda10.2, I now get several 
+EddyInternalGpuUtils: param_update: updates rejected for volume #1 (and 
+further volumes, which I assume in my case are slices). Then it refers to 
+Levenberg-lamda and writes the mss and then an updated mss.
+
+ 
+
+Yes, that was mainly for my own sake to monitor some changes I made to the 
+optimisation. If there is anything of genuine concern eddy will terminate. 
+Can I just check that you only see those if you specify the --very_verbose 
+flag?
+
+ 
+
+The end slices of the 25-slices are in many cases empty or corrupt, but in 
+some cases it mentions #7, which should not be affected. I also use 
+slm=quadratic as I have relatively few gradients and also --resamp=lsr. 
+Eddy never halts and the output looks fine and the time for running it is 
+similar as before (12 min with one core). Is this something to be 
+concerned about?
+
+ 
+
+It is unlikely that this indicates a problem. My guess is that it has 
+identified slice 7 as an outlier, correctly or not, in some volume. It 
+would only be a source of concern if you see the same slice implicated in 
+many of the volumes.
+
+I am sure that slm=quadratic is sufficient (it almost always is). Given 
+that your object (ankle) is quite small compare to a head, and as long as 
+it is placed close to the iso-centre, I would even think that slm=linear 
+might be sufficient.
+
+ 
+
+Furthermore, there is an bvec-output, bvecs_for_SLR that at least I have 
+not observed before. When is this useful and is it associated with any 
+particular flags to get is as output?
+
+ 
+
+When using SLR you get one output volume per matched pair of input 
+volumes. The "bvecs_for_SLR" are the rotated bvecs suitable for use with 
+such an output, and the rotation for each pair is the geometric average of 
+the two input images.
+
+ 
+
+Regarding inputs, is it enough to include the output from topup as input, 
+or should one now explicitly set the --field flag as well, assuming it 
+refers to the field output of topup? There is also a file field_mat 
+mentioned, but I cannot find that file as output from topup, what does 
+that file refer to?
+
+ 
+
+No, you don't need to worry about those. They are for when you have a 
+fieldmap that you have acquired in some other way, i.e. a dual echo-time 
+fieldmap.
+
+ 
+
+Jesper
+
+ 
+
+Hi Stan
+
+ 
+
+While it is true that V1 orientations from diffusion MRI don’t have a 
+polarity (i.e. could be represented in ½ of the 3D space), this does not 
+mean that all the elements of V1 must be positive. If that were the case, 
+then the orientations would be confined to one 1/8th of the 3D space.
+
+ 
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Stan Marecek <stan.marecek@GMAIL.COM>
+Date: Sunday, 9 June 2024 at 22:04
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] dtifit V1 format
+
+Greetings,
+I am having trouble understanding FSL's dtifit V1 file format.
+
+As far as I understand, as a principal eigenvector it defines the vector 
+of the fastest diffusion. In V1 this vector is defined by three volumes, 
+representing the x/y/z axes. What I don't understand is why values in 
+these volumes go into negatives.
+I would expect the values to stay positive only, as (from my 
+understanding) DTI can only differentiate the axis of diffusion 
+(right-left), but not the direction of diffusion (from left to right or 
+vice versa).
+ 
+The reason I am asking is because I was trying to create an FA modulated 
+V1 RGB image readable by ITK-SNAP. I found here a fix for that that 
+required using absolute values of V1 and multiplying these by FA. It 
+worked but I am struggling to understand why there are non-absolute values 
+in V1 at all.
+
+Best regards,
+Stan
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing 
+list hosted by www.jiscmail.ac.uk, terms & conditions are available at 
+https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Greetings,
+I am having trouble understanding FSL's dtifit V1 file format.
+
+As far as I understand, as a principal eigenvector it defines the vector 
+of the fastest diffusion. In V1 this vector is defined by three volumes, 
+representing the x/y/z axes. What I don't understand is why values in 
+these volumes go into negatives.
+I would expect the values to stay positive only, as (from my 
+understanding) DTI can only differentiate the axis of diffusion 
+(right-left), but not the direction of diffusion (from left to right or 
+vice versa).
+ 
+The reason I am asking is because I was trying to create an FA modulated 
+V1 RGB image readable by ITK-SNAP. I found here a fix for that that 
+required using absolute values of V1 and multiplying these by FA. It 
+worked but I am struggling to understand why there are non-absolute values 
+in V1 at all.
+
+Best regards,
+Stan
+
+########################################################################
+
+
+Hi Jure,
+    Some of our systems are currently down for maintenance, however if you 
+have a recent version of FSL installed, I would strongly recommend 
+switching to pyFIX ( installed as part of all new FSL releases ) which is 
+a drop-in Python replacement for the original FIX tools.
+
+Kind Regards
+Matthew
+
+Location: Imaging Memory and Consolidation Lab (IMaC Lab), Freiburg
+
+Position: Doctoral Candidate (E 13 TVöD 75%, 39 hours/week) 
+
+Duration: 3 years, starting October 1, 2024
+
+Location: Imaging Memory and Consolidation Lab (IMaC Lab), Freiburg
+
+
+
+Project Overview: 
+
+The selected candidate will engage in research exploring the impact of 
+sleep (dys)regulation on metabolic clearance, autonomic activity, and 
+memory (representations). This will involve concurrent fMRI and EEG 
+recordings during wake and sleep studies in both younger and older adults.
+
+ 
+
+Your Qualifications: 
+
+- Background: Master’s degree (or expected by October 2024) in 
+Neuroscience, Psychology, Biology, Computer Science, or related fields.
+
+- Technical Skills: Experience or a strong interest in fMRI and EEG 
+methodologies. Proficiency in advanced signal processing, statistical 
+analysis, and programming (e.g., Python, MATLAB) is highly advantageous.
+
+- Research Focus: A keen interest in aging physiology, memory, and sleep.
+
+- Language Skills: High proficiency in English required; German is 
+beneficial but not mandatory.
+
+- Capability to operate independently
+
+- Strong analytical skills and a methodical approach to research.
+
+ 
+
+Benefits: 
+
+- Collaborative opportunities on an international scale.
+
+- 30 days of vacation annually.
+
+- Work in the scenic, vibrant city of Freiburg in Germany
+
+ 
+
+Application Details: 
+
+For inquiries, contact Dr. Deniz Kumral at 
+deniz.kumral@psychologie.uni-freiburg.de. 
+
+To apply, submit your CV, degree certificates, and contact details for 2-3 
+references by July 1, 2024 on one PDF document.
+
+
+
+Best Wishes
+
+Dr. Deniz Kumral
+
+
+
+
+
+ 
+
+ 
+
+
+
+Dear Paul,
+
+Thank you for your reply. The image screenshot and info I sent in my 
+initial email are for the raw unprocessed images. I made copies and ran 
+fslswapdim etc. on those while retaining the original files. At least, 
+these are the state of the images I received. We received them in DICOM 
+format and we converted them to NIFTI as we did with all other images. For 
+some reason only these few have this problem but not others.
+
+You mentioned the superior-inferior labels are swapped, might this be 
+pertaining to the DTI file (in the AP direction)? What other explanations 
+(and possible solutions) could there be?
+
+Many thanks,
+Adriana
+
+########################################################################
+
+
+Dear list members, 
+
+Apologies for cross-posting.
+
+
+
+Postdoc and PhD student positions on fMRI study of spontaneous thoughts
+
+
+
+The lab led by Mingbo Cai (https://cailab-miami.org/) at the Department of 
+Psychology, University of Miami, seeks a talented cognitive neuroscientist 
+or AI researcher to join as a postdoctoral associate in the beautiful 
+Miami of USA! 
+
+
+
+Hi!
+
+It seems like there are some issues with FSL FIX download links. None of 
+the link provided at https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIX/UserGuide 
+seems to be working for a couple of days now. Looks like 
+http://www.fmrib.ox.ac.uk/~steve/ftp is down.
+
+Best, Jure
+
+
+Hi
+
+I just changed to the latest version of fsl from a version two years old 
+and I have noted some additions which I do not follow. I have searched the 
+web and this email list for answers, but I came up short, so I post my 
+queries here, although I am sure that it is me being very late on the ball 
+so to speak.
+
+If there is a more detailed explanation of the -flags and output/input for 
+the newest version of eddy, I would very much appreciate a link.
+
+Again, my study is not on the brain, it targeted the ankle and the tibial 
+nerve with 25 axial slices.
+
+I think my concerns are benign, but I just want to check.
+
+When running eddy_cuda linked to cuda10.2, I now get several 
+EddyInternalGpuUtils: param_update: updates rejected for volume #1 (and 
+further volumes, which I assume in my case are slices). Then it refers to 
+Levenberg-lamda and writes the mss and then an updated mss.
+
+The end slices of the 25-slices are in many cases empty or corrupt, but in 
+some cases it mentions #7, which should not be affected. I also use 
+slm=quadratic as I have relatively few gradients and also --resamp=lsr. 
+Eddy never halts and the output looks fine and the time for running it is 
+similar as before (12 min with one core). Is this something to be 
+concerned about?
+
+Furthermore, there is an bvec-output, bvecs_for_SLR that at least I have 
+not observed before. When is this useful and is it associated with any 
+particular flags to get is as output?
+
+Regarding inputs, is it enough to include the output from topup as input, 
+or should one now explicitly set the --field flag as well, assuming it 
+refers to the field output of topup? There is also a file field_mat 
+mentioned, but I cannot find that file as output from topup, what does 
+that file refer to?
+
+Any help on these issues would be much appreciated.
+
+best
+
+Nick
+
+
+Dear Jesper,
+
+My FSL version is 6.0 and I am using eddy_cuda10.2.
+Could this be a problem of the version?
+
+Many thanks,
+Saina
+
+Dear Anderson,
+
+we investigated 2 groups at 3 different visits (pre, post1 and post2) and 
+analyzed the diffusion data with tbss (2x3 design with one between and one 
+within factor). We compared the two groups separately for the three visits 
+using two sample t-tests and randomise. Now we received the reviews from 
+our submisson and one reviewer asked "Were there group differences or a 
+time x group interaction for FA, MD?"
+After searching the mailing list, I found a link to a exkaterina.ods file 
+with the design description of a 2x2 design as a possible reference. 
+Unfortunately the link to dropbox is no more valid (this refers also to 
+other older .ods files from you with designs). Could you provide the 
+exkaternia.ods design again and/or have suggestions to the 2x3 design in 
+our study (including contrast setting for the interaction term)?
+
+Best
+Ralf
+
+########################################################################
+
+Dear Miguel,
+     I don’t believe “-xthresh” is an existing randomise option ( and may 
+throw off the option parser ). If you want to threshold the (1-)pvalue 
+outputs you would do this after the randomise call completes ( e.g. to 
+isolate significant voxels ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Adriana,
+
+It looks like you have corrupted the orientation information in one of 
+your images, as superior is labelled inferior and vice versa. What do the 
+raw, unprocessed NIFTI images look like in FSLeyes (i.e. without running 
+any fslswapdim, fslorient etc commands)?
+
+Paul
+
+Hi Emil,
+
+Could you try running the installer with a different python interpreter? 
+e.g.:
+
+/usr/bin/python fslinstaller.py
+
+Paul
+
+I have troubles installing FSL I tried this yesterday as suggest by 
+@paulmccarthy:
+export SYSTEM_VERSION_COMPAT=0
+python fslinstaller.py
+ 
+Nothing happened for multiple hours. I have attached my log file.
+
+(@paulmccarthy I could not reply in the last post in Neurostars (new 
+member issues) so no I try a new)
+
+Hi Aldo,
+
+ 
+
+To replicate the results from the paper you referenced it would be best to 
+use the ROIs used in the paper. Defining protocols to achieve anatomically 
+accurate results will take some time and is an iterative process.
+
+ 
+
+For visualisation, the colour is simply controlled by what you set it to. 
+Different colour maps (hot, cool) can be applied to gain more contrast. 
+You can also try adjusting the min and max display ranges.
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+Hi,
+
+when I look at V1 BA17 R it seems like the left occipital petalia has
+not been considered properly and that V1 from the left has been taken
+into the right. See the attached png.
+
+The very same part is chopped off on the left (PNG also attached).
+
+This should be revisited.
+
+Cheers,
+
+Andreas
+
+########################################################################
+
+
+Dear FSL experts,
+
+I am trying to run randomise for a two-independent t-sample. I have 
+created my matrix with GLM_gui. However, every time I run my command:
+
+randomise -i perfusion_conc.nii.gz -o randomise_resultados -d matriz.mat  
+-t matriz.con -n 5000 -T -x -xthresh=0.05 
+
+It pops up this message:
+
+-t: Missing non-optional argument
+
+Whatever I do, it pops up the same message/
+
+Best Wishes,
+Miguel Hernandez
+
+########################################################################
+
+
+Hi Shaun:
+
+Thanks a lot for your email, I followed your advice: 
+
+1) I used only the left insula ROI, and as target the left NAc.
+2) I runned again and the results are not according with this paper:  
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7776926/
+
+One question: How can I visualize the fibers like in the paper? because 
+now I see only one color for the tracks:  blue
+
+
+Thanks a lot in advance for your help,
+
+Aldo Camargo
+
+
+
+Hi Gohar,
+
+Would you be able to update your FSLeyes version to the latest available 
+version, and see if that fixes the problem? You should be able to do this 
+by running the following command (you may be prompted for your password):
+
+update_fsl_package fsleyes fslpy
+
+Paul
+
+Dear Matthew,
+Thank you for your detailed explanation! I have a small question about it.
+If I understand correctly:
+P-value Threshold
+Purpose: Identifies statistically significant voxels based on permutation 
+tests.
+Application: After running the permutation tests, you set a p-value 
+threshold (e.g., p < 0.05) to identify statistically significant voxels. 
+This initial thresholding helps to focus on voxels that have a high 
+likelihood of being truly significant.
+Z-value Threshold
+Purpose: Standardizes the significant voxels to facilitate comparison and 
+interpretability.
+Application: Converts significant p-values to Z-values. Applying a Z-value 
+threshold (e.g., Z > 3.1) further refines the set of significant voxels, 
+ensuring they surpass a certain statistical strength.
+In a nutshell, the significant voxel is defined by the p-value from the 
+permutation test. In randomise, we can't get a “true” t->p->z conversion, 
+so this threshold of 3.1 is not used in defining significant voxels. This 
+means changing it to 2.3 will not influence the identification of 
+significant voxels. The significant voxel is defined by the p-value from 
+the permutation test. The Z value here is just used to compare our results 
+to those obtained using parametric methods.
+However, what is my cluster probability threshold? Is that set to 0.05 
+automatically?
+Thank you again for your assistance. Your insights are invaluable in 
+helping me grasp the nuances of this analysis.
+Kind Regards, 
+Yiling
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK>
+Sent: Wednesday, June 5, 2024 5:04 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Question about the Feat report page
+ 
+Dear Yiling,
+   The “thresh_pstat” image is the (1-)pvalue output from randomise ( the 
+naming is a little confusing and comes from shared pipeline elements 
+between parametric and non-parametric stats ).  The values in this image 
+will be used to determine which voxels are significant and control how the 
+next image is clustered: “thresh_zstat” contains the significant, 
+cluster-corrected, voxels _but_ the z-values are calculated from the 
+per-voxel randomise-derived p-values, to allow easier comparison with 
+parametric outputs. The threshold passed into randomise ( 3.1 ) will 
+actually be applied to the “raw” t-statistics ( since we are assuming 
+non-parametric statistics the “true” t->p->z conversion is unknown ). 
+“Thresh_zstat” is the image that will be used in the FEAT report, while 
+“cluster_mask_zstat” should just be the discretised cluster-labels for 
+thresh_zstat.
+
+When viewing your results, thresh_zstat will probably be the most useful ( 
+just remember that some voxels may undershoot the 3.1 t-threshold that 
+randomise used ). If you explicitly threshold thresh_pstat at 0.95, then 
+the surviving voxels should match those in thresh_zstat.
+
+Hope this all makes sense
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 5 Jun 2024, at 12:01, SUBSCRIBE FSL Yiling Shi 
+<0000b00fa4582965-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear FSL experts,
+
+I hope you are doing well!
+
+I am trying to figure out the output of Feat Gui.  I don't understand how 
+we get the image in the report webpage.
+    Can you explain(or anywhere I could find) how we got the 
+cluster_mask_zstat1.nii.gz, thresh_zstat.nii.gz, and thresh_pstat.nii.g 
+and in which sequence
+    should I look at them?  I used randomise with cluster threshold 3.1 
+and p<0.05
+    I thought I first got thresh_zstat.nii.gz since the Z threshold(I used 
+3.1) was applied, however, in this image, I still have voxels < 3.1.
+    Then I looked at  thresh_pstat.nii.gz which I thought was applied on  
+thresh_zstat.nii.gz to get clusters whose size is above the 0.05 
+threshold, however, I
+    find this contains even more clusters than thresh_zstat.nii.gz.
+    Finally, I looked at cluster_mask_zstat1.nii.gz, it is not the same as 
+any other images, so I was confused about how we got these clusters
+    So I do not understand where my thresholds z=3.1 and p<0.05 applied, 
+could you kindly give me some hints on that?
+
+Many thanks,
+Yiling
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing 
+list hosted by www.jiscmail.ac.uk, terms & conditions are available at 
+https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello Cesar,
+
+The PCA dimensionality is set by MIGP (see the corresponding paper). In 
+this case, the PCA length would be length m=2*T-1, where T is the number 
+of timepoints. This is the default behaviour for MIGP. However, you can 
+change this with the parameter --migpN, which modifies the "Number of 
+internal Eigenmaps".
+
+Best,
+
+Diego
+
+
+
+Hi,
+
+For the number of samples, you don't need to perform such a calculation. 
+It is simply the number of samples per seed voxel. You can start with a 
+value of e.g. 5 and increase if the resultant tract is noisy.
+
+From the screenshot, it looks like you're running this using left and 
+right seeds and targets combined? I.e. The yellow seed contains left and 
+right insula and the target contains both left and right NAC? It will 
+likely work better if you separate left and right.
+
+To remove false positives (projections you don't want in your tract) like 
+the blue tail, you can add exclusions. Exclude masks delete streamlines 
+that pass though the exclusion ROI, thus cleaning up the resultant tract.
+
+Thanks,
+Shaun.
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Aldo Camargo <aldo.camargo@GMAIL.COM>
+Sent: Wednesday, June 5, 2024 8:28 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Problems with working with my own tracs in xtract
+ 
+You don't often get email from aldo.camargo@gmail.com. Learn why this is 
+important
+Hi Shaun,
+
+Thanks a lot for the email. I was able to run the script but the results 
+don't make sense to me. I am using a mask for insula as seed and for 
+target I am using NAC (Nucleus Accumbens)..  I computed the # samples per 
+voxel / 1000 like this:
+
+
+fslstats insula_mask.nii.gz -V
+21449 21449.000000 
+
+Then I divided by 1000  ~= 21, I used this value for the file 
+structures.txt:
+Insula 21
+
+In the figure that I have attached, there is a blue tail that doesn't make 
+sense. The yellow ins the insula ROI, and and green is the NAC.
+
+Could you tell me how can I remove that tail or is normal  that?
+Screenshot from 2024-06-05 15-22-17.png
+
+
+
+On Wed, Jun 5, 2024 at 12:44 PM Shaun Warrington 
+<000079c3707b0d26-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Aldo,
+
+ 
+
+I’m not sure where this config.json definition came from but it’s not 
+XTRACT.
+
+ 
+
+To use your own protocols in XTRACT, you should create a directory per 
+tract containing seed/target/exclude masks. Then create a structure file 
+with 2 columns (tract name and nsamples).
+
+ 
+
+This is detailed fully in the documentation: 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/diffusion/xtract?id=adding-your-own-tracts
+
+ 
+
+You could also use the pre-existing XTRACT tracts as an example, see: 
+${FSLDIR}/data/xtract_data/HUMAN where you’ll find protocols for existing 
+tracts and the associated structureList file.
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+-----------------------------------------------------------
+Shaun Warrington, PhD
+Research Fellow
+
+Computational Neuroimaging Laboratory
+
+Sir Peter Mansfield Imaging Centre
+
+Mental Health & Clinical Neurosciences, School of Medicine
+
+University of Nottingham
+
+w: https://swarrington1.github.io/
+----------------------------------------------------------- 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Aldo Camargo <aldo.camargo@GMAIL.COM>
+Date: Wednesday, 5 June 2024 at 17:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Problems with working with my own tracs in xtract
+
+You don't often get email from aldo.camargo@gmail.com. Learn why this is 
+important
+
+Hi there,
+
+ 
+
+I am trying to create my own tractography using XTRACT, I have used this 
+code:
+
+ 
+
+My structures.txt file has the following:
+
+ALPFC
+Amigdala
+FPC
+Insula
+Putamen
+
+ 
+
+and my confi.json:
+
+ 
+
+{
+  "ALPFC": {
+    "name": "ALPFC Tract",
+    "seeds": ["ALPFC/AnteriorLateralPrefrontalCortex_v3.nii.gz", 
+"Putamen/putamen_mask.nii.gz"],
+    "targets": ["ALPFC/roi_NAC.nii.gz"]
+  },
+  "Amigdala": {
+    "name": "Amigdala Tract",
+    "seeds": ["Amigdala/roi_basolatera_anygdala.nii.gz", 
+"Putamen/putamen_mask.nii.gz"],
+    "targets": ["Amigdala/roi_NAC.nii.gz"]
+  },
+  "FPC": {
+    "name": "FPC Tract",
+    "seeds": ["FPC/roi_FPC_v4.nii.gz", "Putamen/putamen_mask.nii.gz"],
+    "targets": ["FPC/roi_NAC.nii.gz"]
+  },
+  "Insula": {
+    "name": "Insula Tract",
+    "seeds": ["Insula/insula_mask.nii.gz", "Putamen/putamen_mask.nii.gz"],
+    "targets": ["Insula/roi_NAC.nii.gz"]
+  },
+  "Putamen": {
+    "name": "Putamen Tract",
+    "seeds": ["Putamen/putamen_mask.nii.gz", 
+"Amigdala/roi_basolatera_anygdala.nii.gz"],
+    "targets": ["Putamen/roi_NAC.nii.gz"]
+  }  
+}
+
+ 
+
+xtract -bpx ./diffusion2.bedpostX/ \
+       -out ./xtract_attunes_v2/ \
+       -species CUSTOM \
+       -stdwarp standard2diff_warp.nii.gz diff2standard_warp.nii.gz \
+       -p ./custom_xtract_directory/ \
+       -stdref 
+/home/acamargofb/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz \
+       -str ../custom_xtract_directory/structures.txt \
+       -gpu
+
+=====================================================
+
+I am getting this error:
+
+ 
+
+ \ \/ /_   _|  _ \    / \  / ___|_   _|
+  \  /  | | | |_) |  / _ \| |     | |
+  /  \  | | |  _ <  / ___ \ |___  | |
+ /_/\_\ |_| |_| \_\/_/   \_\____| |_|
+ 
+Warning: output directory already exists. XTRACT may overwrite existing 
+content.
+SPECIES: CUSTOM
+Traceback (most recent call last):
+  File "/home/acamargofb/fsl/bin/xtract", line 343, in <module>
+    structure_arr.append([structstring[0], structstring[1]])
+                                           ~~~~~~~~~~~~^^^
+IndexError: list index out of range
+
+ 
+
+ 
+
+Does anyone know how to fix this problem ?
+
+
+Aldo
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message and any attachment are intended solely for the addressee and 
+may contain confidential information. If you have received this message in 
+error, please contact the sender and delete the email and attachment. Any 
+views or opinions expressed by the author of this email do not necessarily 
+reflect the views of the University of Nottingham. Email communications 
+with the University of Nottingham may be monitored where permitted by law.
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello
+
+Thanks very much. I tried that and the number of components was exactly 
+that number.
+However, my question is whether it is possible to estimate a larger 
+dimension for the initial dimensionality reduction (PCA) than the number 
+of ICs.
+
+Best wishes,
+César
+
+
+

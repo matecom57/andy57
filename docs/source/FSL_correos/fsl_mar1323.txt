@@ -1,0 +1,1148 @@
+Hello Karina,
+
+I believe what went wrong is that under --trainingnums you specified the numbers of the subjects, but it should be the number of the row in your masterfile where the files of that subject can be found. For example you specified 37 under --trainingnums, but there is no row 37 in your masterfile. For 37 you should have passed the number 16 which is the row of subject 37. I hope this solves your problem!
+
+Best wishes,
+Tanja
+
+########################################################################
+
+Dear all,
+
+The Headache and Orofacial Pain Effort (H.O.P.E.) Lab at the University of Michigan requests applications for a postdoctoral position to work on migraine, fibromyalgia, and TMD research programs funded mainly by the National Institute of Health. The programs use novel methodologies in neuroimaging and neuromodulation to investigate and target central mechanisms of chronic pain in vivo.
+
+Extensive knowledge of neuroimaging analysis software systems as well as programming experience is required, as is some level of comfort with novel neuromodulatory protocols. Previous research experience and publications with positron emission tomography (PET) and/or MRI-based neuroimaging methods and analyses are also needed.
+
+We are seeking applicants with advanced degrees and strong self-motivation to work in a highly creative, altruistic, and mentoring environment with students and residents from different departments across campus. The applicant will be exposed to several tech innovations, many developed in-house, for clinical translational pain research (e.g., migraine, TMD, dental and cancer pain), such as mobile technology, multimodal neuroimaging (PET, MRI, fNIRS, EEG) and neuromodulation montages (TMS and [HD]-tDCS).
+
+For more information: https://lnkd.in/gYZqw9Z6
+
+Thank you,
+
+Alex F. DaSilva, DDS, DMedSc
+Tenured Professor
+Director, Learning Health Systems
+Diplomate of the American Board of Orofacial Pain
+Department of Biologic and Materials Sciences & Department of Psychology
+University of Michigan School of Dentistry
+Director, Headache & Orofacial Pain Effort (H.O.P.E.) 
+"Brain as the Target for Pain Research, Treatment, and Education"
+
+https://media.dent.umich.edu/labs/hope/dev/
+
+ 
+Michigan Neuroscience Institute (MNI)
+205 Zina Pitcher Pl, room 1021
+Ann Arbor, MI 48109-5720
+
+Office: 734 615-3807 Fax: 734 763-3453
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+HI,
+
+I am facing this weird issue where BET is consistently eliminating a major part of the brain. The outputs are also surprisingly consistent across multiple fractional scaling and other settings There are no logs, and BET runs successfully without any errors. I couldn't find any relevant discussion on the issue. Strangely, extraction with alternative tools like Robex produces a better result from the same input file.
+
+https://imgur.com/gallery/by61fIA
+
+Thanks
+
+########################################################################
+
+
+Am 08.03.23, 12:07 schrieb "FSL - FMRIB's Software Library im Auftrag von Tom Eek" <FSL@JISCMAIL.AC.UK im Auftrag von 00009a22cadcbcab-dmarc-request@JISCMAIL.AC.UK>:
+
+    Dear Experts,
+   
+    As part of the multi-session tensor-ICA an s-mode report with negative and positive values is generated in relation to each component/network. My question is what a positive versus negative s-values actually means?. Furthermore, if a component's s-values are correlated significantly with a behavioral measurement like IQ for example, is it a way to find out the direction of the correlation between the two variables?
+   
+    References on the subject will be greatly appreciated. 
+   
+    Best wishes/ Tom Eek
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Community
+
+Is there any place to download PROFUMO data related to the FSL Course, to do the practicals?
+
+Best Regards.
+
+########################################################################
+
+
+Hi Lin,
+
+This issue is fixed in the latest version of eddy_qc. You can update your FSL installation by:
+
+	1	Run "update_fsl_release" to update your FSL installation to the latest available
+	2	Run "update_fsl_package -u fsl-eddy_qc" to install the latest version of the eddy_qc package.
+Paul
+
+
+Hi!
+I’m running a first level analysis on fMRI data using feat, including the preprocessing steps.
+I’m generating the .fsf file based on a template, then calling feat generated.fsf.
+When I do it this way the analysis fails during registration, apparantly because it’s looking for some example_func file or some such - but really the errors and stack are quite cryptic.
+
+The thing is that when I open the GUI and load the exact same .fsf file and hit ‘Go’ - the analysis completes without problems.
+
+I’d appreciate any help - thanks!
+
+(cross-posted from https://neurostars.org/t/fsls-feat-working-through-gui-while-failing-on-the-command-line/25043?u=yonatan)
+
+Version: FSL 6.0.6
+
+Environment: Ubuntu 20
+
+Relevant log outputs:
+
+```
+Registration
+
+/bin/mkdir -p /media/user/Data/fmri-data/analysis-output/101/functional/sub101_auditoryLoc_1.feat/reg
+
+Could not find a supported file with prefix "/media/user/Data/fmri-data/analysis-output/101/functional/sub101_auditoryLoc_1.feat/example_func"
+
+/home/user/fsl/bin/fslmaths /media/user/Data/fmri-data/analysis-output/101/anatomy/101anatomy_brain highres
+
+
+/home/user/fsl/bin/fslmaths /media/user/Data/fmri-data/analysis-output/101/anatomy/101anatomy  highres_head
+
+Checking for /media/user/Data/fmri-data/analysis-output/101/anatomy/101anatomy_brain2MNI152_T1_2mm_brain_warp and /media/user/Data/fmri-data/analysis-output/101/anatomy/101anatomy_brain2MNI152_T1_2mm_brain.mat
+
+/home/user/fsl/bin/fslmaths /home/user/fsl/data/standard/MNI152_T1_2mm_brain standard
+
+
+/home/user/fsl/bin/fslmaths /home/user/fsl/data/standard/MNI152_T1_2mm standard_head
+
+
+/home/user/fsl/bin/fslmaths /home/user/fsl/data/standard/MNI152_T1_2mm_brain_mask_dil standard_mask
+
+did not find file: example_func2highres.mat. Generating transform.
+
+/home/user/fsl/bin/epi_reg --epi=example_func --t1=highres_head --t1brain=highres --out=example_func2highres
+Image Exception : #63 :: No image files match: example_func
+Image Exception : #22 :: Failed to read volume example_func
+Error : No image files match: example_func
+Failed to read volume example_func
+Error : No image files match: example_func
+Image Exception : #63 :: No image files match: example_func
+Image Exception : #22 :: Failed to read volume example_func
+Error : No image files match: example_func
+Failed to read volume example_func
+Error : No image files match: example_func
+Could not open matrix file example_func2highres.mat
+Image Exception : #63 :: No image files match: example_func
+Image Exception : #22 :: Failed to read volume example_func
+Error : No image files match: example_func
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume example_func
+Error : No image files match: example_func
+/home/user/fsl/bin/epi_reg: line 390: 623496 Aborted                 (core dumped) $FSLDIR/bin/applywarp -i ${vepi} -r ${vrefhead} -o ${vout} --premat=${vout}.mat --interp=spline
+Running FAST segmentation FLIRT pre-alignment Running BBR
+```
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL experts,
+
+I need to install the libquadmath, then I follow this command: sudo yum install  libquadmath, but the below error is appeard:
+
+[fsluser@localhost ~]$ sudo yum install libquadmath
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: istanbul.centos-mirror.guzel.net.tr
+ * extras: mirror.alastyr.com
+ * updates: mirror.alastyr.com
+No package libquadmath available.
+Error: Nothing to do
+
+How can I solve this problem?
+Thanks in advance for your help!
+
+Sincerely yours,
+Zahra ,
+
+	•	
+
+
+
+
+Hi Alexander,
+
+The wiki link is out of date (I'll update it now). You can download the FSLVM zip file from:
+
+fsl.fmrib.ox.ac.uk/fsldownloads/FSLVm7_64.zip
+
+However, I would recommend using WSL instead if at all possible, as it provides a much nicer experience than using a VM.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Alexander Romero Cabeza <romerocalexanderg@GMAIL.COM>
+Sent: 10 March 2023 21:45
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSLvm Installation
+ 
+Hi,
+
+I followed all the instructions to use FSL with virtual machine. But when I try to find zip file to decompress and use FSLvm is not possible. I would appreciate any help for being able to proceed and use the program
+
+Kind regards
+
+Alexander 
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hi Alessandra,
+
+The resulting affine is essentially an identity matrix, but boundary effects like this can occur with affines that contain very small offsets - the boundary slice in the input image will have been placed just outside of the field-of-view of the reference image (or vice-versa).
+
+Have you considered adjusting your code so that the firstvol->firstvol registration is skipped?
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Alessandra Caporale <alessandra.stella.caporale@GMAIL.COM>
+Sent: 08 March 2023 14:57
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FLIRT - an image onto itself
+ 
+Hi FSL experts,
+
+I am writing you as I have just noticed something quite curious, by chance.
+
+For a different reason, I had to realign several splitted volumes to the first volume of a dataset, and I then realigned the first volume to itself, as it was embedded in a for loop.
+To my surprise, I noticed that doing flirt with an input equal as the reference image, doesn't give the identity matrix as a transform, regardless of the degrees of freedom used (I tried with 6 or 12). Apart from the transformation matrix, I also noticed that a slice gets 'cut off' for apparently no reason ( I can see this when I open with fsleyes the difference image between the output of the realignment and the original input.
+Has this something to do with the -cost function used? Have you ever experienced this issue?
+
+Thanks in advance for your help!
+
+
+Code used:
+flirt -in ASL_vol_1.nii.gz -ref ASL_vol_1.nii.gz -out ASL_realigned_vol1_6DOF.nii.gz
+
+Transformation matrix:
+1.000000 0.000000 0.000000 0.000000
+0.000000 1.000000 0.000000 -0.000007
+0.000000 -0.000000 1.000000 0.000014
+0.000000 0.000000 0.000000 1.000000
+
+
+ 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hi Suja,
+
+Would you be able to zip-up and share the contents of the logs directory contained within the FEAT output directory?
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Suja Reddy <reddysn2@UPMC.EDU>
+Sent: 06 March 2023 16:26
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSLMERGE
+ 
+Hello FSL community,
+
+I have an error in concatenating masks from first level for a group level analysis. I could spot the cause of error --in the fslmerge command line, while listing the inputs, a seemingly random 0 is included between two files in a list of many other inputs. This throws an error that says child process exited abnormally. In the terminal window, I double-checked if removing 0 from fslmerge would be solution and it works. Is there a fault in my GUI FEAT file setup or elsewhere that throws in this random 0? Pls let me know how I can have FSL run fslmerge in the correct manner from GUI.
+
+Error spot:
+fslmerge -t mask /Volumes/....../mask 0 /Volumes/......./mask
+
+Thanks,
+Suja
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Zack,
+
+The FreesurferEnv.[sh|csh] scripts will also add $FSLDIR/bin to your $PATH. There is an open pull request on the Freesurfer github repository to fix this, but it has not yet been merged:
+
+https://github.com/freesurfer/freesurfer/pull/1072/files
+
+In the meantime, you could edit the FreeSurferEnv.sh script in your Freesurfer installation so that the FSL_BIN variable is set to $FSLDIR/share/fsl/bin/, instead of $FSLDIR/bin/.
+
+Paul
+
+From: Zack Guo <gzt2019@MAIL.BNU.EDU.CN>
+Sent: 12 March 2023 12:55
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk>
+Subject: Re: Installation of FSL
+ 
+Hi Paul,
+Thanks for your help very much! I did what you suggested, but it doesn't seem to solve my problem.
+When I installed FSL, I added the following lines to /etc/profile.
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+As shown above, I did not add $FSLDIR/bin/ to $PATH. Will the configuration of other software (such as FreeSurfer) affect FSL, and what should I do next to solve the problem?
+
+Thanks again~~~
+Zack
+
+
+Hi Karina,
+
+This has been fixed in the latest version of FSL. If you don't want to update your FSL installation, you can work around this by opening $FSLDIR/bin/bianca_overlap_measures in a text editor (e.g. nano), and changing the very first line from "#!/bin/sh" to  "!#/bin/bash".
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Karina Dorfman <karinador@GMAIL.COM>
+Sent: 11 March 2023 03:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] BIANCA performance evaluation
+ 
+Hello,
+I am trying to run the BIANCA performance evaluation command:
+[kdor0003@m3p008 37]$ bianca_overlap_measures 37_bianca_output.nii.gz 0.9 T2_brain_mask.nii.gz 1
+And get these errors:
+/opt/fsl/bin/bianca_overlap_measures: 85: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 87: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 94: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 96: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 1: bc: not found
+
+How can I fix this problem?
+
+Thanks,
+Karina
+
+
+Hi Paul,
+Thanks for your help very much! I did what you suggested, but it doesn't seem to solve my problem.
+When I installed FSL, I added the following lines to /etc/profile.
+FSLDIR=/usr/local/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+As shown above, I did not add $FSLDIR/bin/ to $PATH. Will the configuration of other software (such as FreeSurfer) affect FSL, and what should I do next to solve the problem?
+
+Thanks again~~~
+Zack
+
+########################################################################
+
+
+Dear developers,
+May I please ask you to check my custom slice timing file?
+Here are the real values from the corresponding json file (in seconds) (80 slices, 8 in a group, min time=0, max time=0.7025):
+
+"SliceTiming": [
+
+0.5475
+0
+0.39
+0.0775
+0.4675
+0.235
+0.625
+0.3125
+0.7025
+0.1575
+
+0.5475
+0
+0.39
+0.0775
+0.4675
+0.235
+0.625
+0.3125
+0.7025
+0.1575
+
+et cetera...
+
+We have ascending (F>>H) interleaved acquisition.
+I made the following file:
+
+-0.2
+0.5
+0
+0.4
+-0.1
+0.2
+-0.3
+0.1
+-0.4
+0.3
+
+-0.2
+0.5
+0
+0.4
+-0.1
+0.2
+-0.3
+0.1
+-0.4
+0.3
+
+et cetera...
+
+Is this correct?
+
+Thank you very much!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+I am trying to run the BIANCA performance evaluation command:
+[kdor0003@m3p008 37]$ bianca_overlap_measures 37_bianca_output.nii.gz 0.9 T2_brain_mask.nii.gz 1
+And get these errors:
+/opt/fsl/bin/bianca_overlap_measures: 85: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 87: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 94: pushd: not found
+/opt/fsl/bin/bianca_overlap_measures: 96: popd: not found
+/opt/fsl/bin/bianca_overlap_measures: 1: bc: not found
+
+How can I fix this problem?
+
+Thanks,
+Karina
+
+
+Hi,
+
+I followed all the instructions to use FSL with virtual machine. But when I try to find zip file to decompress and use FSLvm is not possible. I would appreciate any help for being able to proceed and use the program
+
+Kind regards
+
+Alexander 
+
+
+Hi Matthew,
+
+ Thank you so much for your reply. I am a total beginner in FSL and fMRI data preprocessing, so I couldn’t fully follow what you were saying. Yes, I am following the standard FEAT pipeline. What should I be doing if I want to get the standard space representations for each participant? I am not sure how to get the “resampled into standard-space” data. Should I change the “preprocessing” on top to something else? Could you guide me through this? Thank you so much for your time.
+
+########################################################################
+
+Dear FSL users,
+
+Apologies if this has already been asked, I'm new to FSL.
+
+I've done my first TBSS analysis on some brain tumour data and I'm currently in the process of checking the location of the areas of significantly low and high FA. I'm using tbss_deproject to assess if the FA is coming from the location of the tumour.
+
+So far, I've run the commands:
+
+fslmaths tbss_tfce_corrp_tstat1 -thr 0.95 grot
+tbss_deproject grot 1
+tbss_deproject grot 2
+
+These were successful. However, one of the things I've noticed after I've run 'tbss_deproject grot 2' is that the areas of significantly high and low FA have grown larger in the image, i.e. they cover a larger area. The results look a little similar to tbss_fill when used to highlight areas of significant FA change compared to controls.
+
+I assume this has something to do with the back projection to the native space of the patient, but I was hoping someone could explain why this is occurring?
+
+Best wishes and thank you -
+
+Emily
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+What would be the optimal training dataset for BIANCA in the following case:
+I have 25 subjects:  2 subjects with a Fazekas score of 0, 11 subjects with a Fazekas score of 1, 7 subjects with a Fazekas score of 2, and 4  subjects with a Fazekas score of 3.
+I chose for my training dataset 6 subjects:  1 subject with a Fazekas score of 0, 1 subject with a Fazekas score of 2, and 4  subjects with a Fazekas score of 3.
+The results I got from the BIANCA run were unsatisfactory, and I wonder whether I should've chosen a different training dataset, in terms of number of subjects/WMH load.
+
+Thanks,
+Karina
+
+
+
+The JackLab at George Mason University seeks a full-time postdoctoral fellow with experience in MRI to work on an NIMH Autism Centers of Excellence Network project focused on understanding late diagnosis in autism. The successful candidate will work with a team of autistic and non-autistic investigators, Advisory Board members, and staff to ensure the success of this unique multimodal, mixed-methods project (with neuroimaging, qualitative, and quantitative data collection) developed in collaboration with the autistic community and focused on autistic well-being. 
+Mason's MRI facility features state-of-the-art equipment, including a research-dedicated 3T Siemens Prisma, MRI simulator, and in-bore EEG and eye-tracking capabilities. This is a great opportunity for a candidate looking to advance in an autism-related career, as it will provide the opportunity to collaborate with field leaders throughout our network. Postdoctoral trainees on previous waves of data collection through this project have been successful in obtaining competitive NIH awards (e.g., K01, R01, etc.) and faculty positions. Our team is comprised of scientists of a variety of neurotypes, and autistic candidates are particularly encouraged to apply. Please see below for the official position description and link to the job ad/application portal. 
+For full consideration, applicants must apply at https://jobs.gmu.edu/postings/56771, complete and submit the online application; and upload a cover letter, curriculum vitae (CV), and a list of three professional references with contact information.
+Thank you!
+Allison Jack, PhD (she/her) ajack@gmu.edu Assistant Professor, Dept. of Psychology George Mason University
+***
+Job Posting: https://jobs.gmu.edu/postings/56771
+Developmental Neuroscience Postdoctoral Fellow – NIH Autism Center of Excellence Network
+The JackLab in the Psychology Department at George Mason University is seeking a Postdoctoral Fellow to work on an NIH-funded Autism Center of Excellence (ACE) Network project focused on understanding late diagnosis in autism. This position is a 1-year, full time position, with potential for renewal throughout the life of the funded project. George Mason University has a strong institutional commitment to the achievement of excellence and diversity among its faculty and staff, and strongly encourages candidates to apply who will enrich Mason’s academic and culturally inclusive environment.
+About the Position: Our NIH-funded ACE Network project (R01MH100028, MPIs: Pelphrey, Kenworthy, & Jack) aims to understand and address disparities in diagnostic timing among autistic people, especially those potentially related to gender and sex assigned at birth. The successful candidate will work with a team of autistic and non-autistic investigators, Advisory Board members, and staff to ensure the success of this unique multimodal, mixed-methods project (with neuroimaging, qualitative, and quantitative data collection) developed in collaboration with the autistic community and focused on autistic well-being. This will be the third wave of data collection from the sex-balanced GENDAAR cohort (NDA Data Collection #2021), and will involve new recruitment of late-diagnosed autistic individuals who can enhance the cohort’s diversity with respect to race, ethnicity, gender identity, and other features (e.g., communication style, rurality).
+Under the supervision of Dr. Allison Jack at Mason, the fellow will facilitate project-related data collection and analysis as well as manuscript preparation. Specifically, they will assist with the collection of behavioral and neuroimaging data at Mason. Further, they will be involved preprocessing and analysis of both behavioral and magnetic resonance imaging (MRI) data and preparation of results from these analyses, as appropriate, for manuscript submissions and conference presentations. Commensurate with experience and interest, the fellow may also be involved in engagement with our Advisory Board; expansion of inclusive research practices; analyses in the domain(s) of machine learning, imaging genetics, and/or psychometrics; or other project-related activities.
+As an ACE Network, the project provides opportunities for the fellow to engage with field leaders in autism research across the country. The fellow will collaborate closely with the ACE Network research team at Children’s National Hospital Center for Autism Spectrum Disorders (CASD), led by Dr. Lauren Kenworthy, and our investigative partners at the Autistic Self Advocacy Network and the Autistic Women & Nonbinary Network. They will also assist with cross-site planning and coordination of MRI data collection and analysis in collaboration with our partners at the University of Virginia (Drs. Kevin Pelphrey & Jack Van Horn), Yale (Dr. Jim Duncan), and UCLA (Dr. Mirella Dapretto). Annual ACE Investigator Meetings hosted by NIH offer further opportunity for professional networking with leading autism researchers in the United States.
+A key value of our ACE project is inclusion of autistic individuals at all levels of research. We strongly encourage qualified candidates of all neurotypes, including autistic candidates, to apply.
+Required Qualifications:
+	•	Doctoral degree in psychology, neuroscience, psychiatry, or a related discipline;
+	•	Experience with MRI acquisition, preprocessing, and analytic methods; and
+	•	Experience in autism or a closely related neurodevelopmental condition.
+Preferred Qualifications:
+	•	Familiarity with work with adolescents;
+	•	Familiarity with use of MRI simulator/mock scanner and other practices to help acclimate individuals to the scanner environment;
+	•	Familiarity with BIDS format and fMRIPrep;
+	•	Extensive experience with one or more of: FSL, Freesurfer, and/or SPM;
+	•	Strong programming skills in Python, R, MATLAB, and/or linux/unix shell; and
+	•	Experience conducting analyses using a high performance computing cluster.
+
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hi FSL community--
+
+We want to compare patient and control groups in terms of functional connectivity using ICA-dual-regression derived functional connectivity maps. Currently we make functional connectivity maps for each subject using a command of the form:
+
+fsl_glm -i filtered_func_data_clean -d component_time-series --out_z --demean --des_norm -m template_vol
+
+The outputs are z-score maps.
+
+The extant literature seems to be divided in terms of what to use for second-level (i.e., between-subjects) analysis. Some use voxel-wise z- / t- / r-scores and some use voxel-wise beta coefficients from the regression. The former makes more sense to me in terms of the following toy example. Case 1: for a given voxel time-series, the slope (beta) of the regression equation is fairly steep and the predicted data all lie quite close to the regression line (low residual noise); Case 2: for a given voxel time-series, the slope (beta) of the regression is the same as Case 1 but the predicted data are scattered more around the regression line (moderate residual noise). In terms of computing functional connectivity with a seed or DR-based regressor, Case 1 seems to convey better functional connectivity than Case 2. Using, say, a z-score [which conveys a signal (beta) divided by residual noise] captures the Case 1 versus Case 2 difference whereas using only a beta weight evaluates the two cases as equivalent.
+
+Now, finally, to my actual questions:
+
+1. Are there flaws in my logic for preferring z- / t- / r- scores? Is there anything to be gained by using betas?
+2. Is the format of our fsl_glm command (using --out_z) rendering the "right" thing? In particular, I really want to make sure that it's not, for example, creating for each subject a distribution of all voxel values within a mask and then assigning z values to voxels based on where they lie in that same distribution.
+
+Thanks for any advice / guidance!
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+          You may need to install command line tools first with the command:
+
+xcode-select —install
+
+( a window may pop-up asking you to confirm installation )
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 9 Mar 2023, at 14:37, Annette Karimi <annette.geeb.karimi@AKADEMISKA.SE> wrote:
+>
+> Hello, I tried to istall Fsl on my computer. A Mac book pro M1 with Ventura and I got the following error message:
+>
+> Last login: Thu Mar  9 13:40:05 on ttys000
+> annge147@RUD-VFGJ2GZQ05N ~ % cd ~/Downloads/
+> annge147@RUD-VFGJ2GZQ05N Downloads % python fslinstaller.py
+> zsh: command not found: python
+> annge147@RUD-VFGJ2GZQ05N Downloads % python2 fslinstaller.py
+> zsh: command not found: python2
+> annge147@RUD-VFGJ2GZQ05N Downloads % python3 fslinstaller.py
+> xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+> annge147@RUD-VFGJ2GZQ05N Downloads % 
+>
+> Is there something I can do?
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello, I tried to istall Fsl on my computer. A Mac book pro M1 with Ventura and I got the following error message:
+
+Last login: Thu Mar  9 13:40:05 on ttys000
+annge147@RUD-VFGJ2GZQ05N ~ % cd ~/Downloads/
+annge147@RUD-VFGJ2GZQ05N Downloads % python fslinstaller.py
+zsh: command not found: python
+annge147@RUD-VFGJ2GZQ05N Downloads % python2 fslinstaller.py
+zsh: command not found: python2
+annge147@RUD-VFGJ2GZQ05N Downloads % python3 fslinstaller.py
+xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
+annge147@RUD-VFGJ2GZQ05N Downloads % 
+
+Is there something I can do?
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear all (apologies for cross posting),
+ 
+We have an opportunity for a Research Assistant/Associate to make a leading contribution to an ERC-funded project "Dynamic network reconstruction of human perceptual and reward learning via multimodal data fusion", at the Centre for Cognitive Neuroimaging at the University of Glasgow.
+
+The job has a strong neuroeconomics component, requiring advances in 1) theoretical neuroscience – to enable the development of a unified computational framework for integrating perceptual and reward learning – and 2) multimodal brain imaging – to offer a high spatiotemporal characterisation of the relevant cortical and subcortical pathways.
+
+The post holder will have the opportunity to be involved in cutting-edge bespoke neuroimaging technology [7TfMRI-EEG fusion] and advanced data analytics to uncover and predict patterns in large multimodal datasets [e.g. behaviour, simultaneous EEG-fMRI and eye-tracking data].
+
+The post is full-time with funding up to 31 May 2026, in the first instance.
+ 
+To apply online, please follow this link:
+https://www.jobs.ac.uk/job/CYB449/research-assistant-associate
+ 
+Closing date: 5 April 2023
+
+
+--
+Marios G. Philiastides, Ph.D.
+Professor of Decision Neuroscience
+Institute of Neuroscience and Psychology
+Centre for Cognitive Neuroimaging
+University of Glasgow
+Glasgow, G12 8QB
+ 
+Web: http://mphiliastides.org
+Email: marios.philiastides@glasgow.ac.uk
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL users,
+           We are pleased to announce the release of FSL 6.0.6.4.
+
+This release only fixes minor issues with the installer/shell-setup and links to FSL documentation
+
+This update can be downloaded via:
+
+http://www.fmrib.ox.ac.uk/fsldownloads/
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+CHANGELOG:
+
+### fsl-base                2302.2      -->  2303.2
+- RF: simplify python interpreter detection in createFSLWrapper - use the interpreter specified in the hashbang line
+- BF: fixes to fsl.csh
+### fsl-installer           3.3.0       -->  3.4.1
+- BF: Make sure temp work dir is deleted as root if necessary
+- MNT: Set conda pkgs dir to avoid conflict/collision with user pkgs dirs
+- MNT: Copy log file to homedir to make it easier to access
+### fsl-misc_tcl            2206.0      -->  2303.0
+- RF: Adjust help buttons to go to online docs, as offline docs are no longer shipped with FSL
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Lara,
+
+it is indeed possible to get values higher than one, counterintuitive as it might feel.
+
+When using Jacobian modulation (which you would normally do) the "intensity values" consist of two parts. One is the probability of the voxel being gray matter, which of course can never be greater than one. The other part is the "Jacobian modulation", which is there to compensate for any stretching/compression of the gray matter.
+
+The comparison (stats) will be performed in the space of your template (MNI152 or custom), so all the images have been warped into that space. Now consider a subject with thicker cortex, such that in order to fit his/her into a gray matter voxel in the template it had to compress two of the subjects gray matter voxels into the one in the template. Since we are interested in "gray matter density" in VBM we want to take that into account. And we do that by multiplying the value of that subjects voxel by the Jacobian of its warp, in this case by 2. Let us further say that the two voxels in that subjects original space both had a probability of 1 of being gray matter, we will end up with an "intensity value" of 2 in that voxel for that subject.
+
+I hope that helps.
+
+Best regards Jesper
+ 
+
+﻿On 08/03/2023, 17:28, "FSL - FMRIB's Software Library on behalf of Lara Langensee" <FSL@JISCMAIL.AC.UK on behalf of 00009a37a3de7790-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+    Dear experts,
+   
+    After running VBM and randomise, I got one cluster that survived FWE-correction and thresholding at 0.95. I extracted the median intensity values for that area for each participant in my sample and noticed that about 10% have median values larger than 1. I know that the values should range between 0 and 1 - does anyone know what may cause the >1 values and whether or not I need to be concerned?
+   
+    Thank you in advance!
+   
+    Kind regards,
+    Lara
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello everyone,
+
+I am attempting to apply a method described in the article "Spatial regression analysis of MR diffusion reveals subject-specific white matter changes associated with repetitive head impacts in contact sports" to my data. The method involves permuting voxels in pre- and post-FA maps and subjecting them to spatial regression. To do this, I need to use anisotropic, non-linear smoothing on my FA maps. I am wondering if SUSAN is a suitable tool for this purpose, and if so, how should I use it? Additionally, I would like to know if FSL offers a better solution for my needs. Thank you in advance for your assistance.
+
+Best regards,
+Batel
+
+########################################################################
+
+Hi,
+
+I am running the preprocessing and registration of one subject using the FEAT GUI (version 6.0) with 4D resting state fMRI data, MP2RAGE (T1w) images and MNI 1mm resolution standard space image.
+
+According to the report_log, the program is still running after more than 16 hours now.
+Is this normal?
+
+Also, an error appears in my terminal (twice): 
+
+child process exited abnormally
+    while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -prestats" -b $prestatsTime -h $initID $jobHalt -N feat2_pre -l logs "
+    (procedure "firstLevelMaster" line 168)
+    invoked from within
+"firstLevelMaster $session"
+    invoked from within
+"if { $done_something == 0 } {
+
+    if { ! $fmri(inmelodic) } {
+       if { $fmri(level) == 1 } {
+              for { set session 1 } { $session <= $fmri(mult..."
+    (file "/home/noambe/fsl/bin/feat" line 390)
+child process exited abnormally
+    while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -prestats" -b $prestatsTime -h $initID $jobHalt -N feat2_pre -l logs "
+    (procedure "firstLevelMaster" line 168)
+    invoked from within
+"firstLevelMaster $session"
+    invoked from within
+"if { $done_something == 0 } {
+
+    if { ! $fmri(inmelodic) } {
+       if { $fmri(level) == 1 } {
+              for { set session 1 } { $session <= $fmri(mult..."
+    (file "/home/noambe/fsl/bin/feat" line 390)
+
+This error also appears in the report_log:
+
+home/noambe/fsl/bin/fsl_sub -T 614 -l logs -N feat2_pre -j 18533  /home/noambe/fsl/bin/feat /home/noambe/Public/rs-fMRI/DATA/Mindfulness/S1/V101.feat/design.fsf -D /home/noambe/Public/rs-fMRI/DATA/Mindfulness/S1/V101.feat -I 1 -prestats
+Error submitting job -
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/home/noambe/fsl/bin/fsl_sub -T 614 -l logs -N feat2_pre -j 18533  /home/noambe/fsl/bin/feat /home/noambe/Public/rs-fMRI/DATA/Mindfulness/S1/V101.feat/design.fsf -D /home/noambe/Public/rs-fMRI/DATA/Mindfulness/S1/V101.feat -I 1 -prestats
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+What does this error mean and how can I solve it?
+I should add that most of the output files have been created, but I am still missing the folders: "stats", "reg_standard/stats", and "tsplot".
+
+Thanks!
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+I would be happy for your help with the BIANCA tool.
+I created a folder with subjects for the BIANCA run, that looks like that:
+
+[kdor0003@m3p010 Data_for_BIANCA]$ ls
+1   14  19  21  23  25  30  35  38  40  5  7  9
+10  15  2   22  24  3   34  37  4   41  6  8  masterfile.txt
+
+I've attached the masterfile.txt to te mail.
+
+I ran the following command line:
+
+bianca --singlefile=masterfile.txt --trainingnums=1,2,19,23,25,37 --labelfeaturenum=4 --querysubjectnum=1 --brainmaskfeaturenum=1 --featuresubset=1,2 --matfeaturenum=3 --trainingpts=2000 --nonlespts=10000 --selectpts=noborder -o 3/bianca_output -v
+
+And got this error:
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/6.0.4/fsl/bin/bianca", line 1033, in <module>
+    p_main()
+  File "/usr/local/fsl/6.0.4/fsl/bin/bianca", line 904, in p_main
+    traininglabellist=sublist(labelfilelist,GlobalOpts.trainingnums)
+  File "/usr/local/fsl/6.0.4/fsl/bin/bianca", line 232, in sublist
+    return [ list[n] for n in indices ]
+  File "/usr/local/fsl/6.0.4/fsl/bin/bianca", line 232, in <listcomp>
+    return [ list[n] for n in indices ]
+IndexError: list index out of range
+
+What could be the reason for that?
+
+Thanks,
+Karina
+
+
+
+
+
+Thanks Shaun. Yaa most of them are empty, so probably related to data quality. Regarding the xtract_stat, do I need nifti file for the standard2diff or matfile is enough? I only output matfile during flirt, can I still run xtract_stats ? Also just to confirm that I am not doing something wrong, I am pasting a part of my script for xtract here, would be great to get your confirmation. 
+
+echo "Registration to T1"
+
+flirt -in ${line1}/nodif_brain.nii.gz -ref ${line1}/T1_brain.nii.gz -omat ${line1}/xfms/diff2str.mat -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -dof 6 -cost corratio
+
+convert_xfm -omat ${line1}/xfms/str2diff.mat -inverse ${line1}/xfms/diff2str.mat
+
+echo "Registration to standard space"
+
+flirt -in ${line1}/T1_brain.nii.gz -ref /gpfs/ysm/apps/software/FSL/6.0.1-centos7_64/data/standard/MNI152_T1_2mm_brain.nii.gz -omat ${line1}/xfms/str2standard.mat -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -dof 12 -cost corratio
+
+convert_xfm -omat ${line1}/xfms/standard2str.mat -inverse ${line1}/xfms/str2standard.mat
+
+convert_xfm -omat ${line1}/xfms/diff2standard.mat -concat ${line1}/xfms/str2standard.mat ${line1}/xfms/diff2str.mat
+
+convert_xfm -omat ${line1}/xfms/standard2diff.mat -inverse ${line1}/xfms/diff2standard.mat
+
+echo "Running xtract"
+
+xtract -bpx ${line1} -out ${line}/xtract_output -species HUMAN -stdwarp ${line1}/xfms/standard2diff.mat ${line1}/xfms/diff2standard
+
+
+Best,
+Nabin 
+
+On Wed, Mar 8, 2023 at 4:20 AM Shaun Warrington <000079c3707b0d26-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Nabin,
+
+1. 
+
+For some of these tracts/subjects, it would be best to visually check the images. Is there any tract found, or is the image empty? If there is some tract but of low quality, you could adjust the threshold you use.
+Empty tracts may relate to data quality, particularly for SLF and AR, which can be tricky to track in lower quality data. 
+For the MCP, it may be worth checking the coverage of the data. Is the cerebellum always included?
+
+It will likely be the case that some subjects will always be missing some tracts due to data quality.
+
+
+2. 
+
+Xtract_stats is an easy way of getting tract stats. It gets the mean/median e.g. FA, MD, etc… It uses fslstats to do this. I’m not sure how exactly you are using fslmeants but I think, in principle, you can achieve similar results to xtract_stats. 
+
+Thanks,
+Shaun.
+
+-----------------------------------------------------------
+Shaun Warrington, PhD
+Research Fellow
+
+Sir Peter Mansfield Imaging Centre & Precision Imaging Beacon
+Division of Clinical Neurosciences, School of Medicine
+University of Nottingham
+
+w: https://swarrington1.github.io/
+-----------------------------------------------------------
+
+On 7 Mar 2023, at 14:30, Nabin Koirala <nabinkoirala20@GMAIL.COM> wrote:
+
+Hi shaun, 
+
+Hope you are doing well. Following up on our previous conversation, I have couple of questions. 
+
+1. I extracted the values from the tracts and surprisingly there are some tracts whose values are missing. I extracted those for about 2000 subjects, so I could observe a pattern and it is always the same tracts where there are zeros, specifically slf (90% of subjects have zeros), ar (70%) and cst, mcp, fx (40%). It made me think now is there something fundamentally wrong that I am doing here? I do not get any error messages, so I am finding it hard to decode what is going on. Do you have an idea what is going on here ? 
+
+2. Since the last time we talked I saw that there is a new(?) command called Xtract_stats which extracts the stats from the tracts. I extracted the above using fslmeants commands. Is there is a difference on how Xtract_stats extracts the values? 
+
+Please let me know if you would want more details. 
+
+Thank you. 
+
+Nabin
+
+On Mon, Mar 23, 2020 at 5:58 PM Nabin Koirala <nabinkoirala20@gmail.com> wrote:
+Thanks Shaun. 
+
+Stay Safe. 
+
+Best, 
+Nabin
+
+On Mon, Mar 23, 2020 at 5:30 PM Shaun Warrington <Shaun.Warrington@nottingham.ac.uk> wrote:
+Yes, the FA extraction process is basically the same depending on how it’s run, etc.. XTRACT is basically a wrapper around probtrackx: it calls probtrackx with pre-defined anatomical constraints and applies some further processing steps, e.g. for the reverse-seeding. So, you can treat the outputs very similarly.
+
+There are many zeros in the images, mostly in the non-brain regions. And after thresholding, there will be many more zeros again - values less than the threshold value have been set as zero but will still be included in the “-m” mean calculation. Using the non-zero “-M” option is best in this case.
+
+Regarding your AF waytotals, I generally find lower waytotals for the tractsInv run - the scale of the difference in this case may be related to data quality. Best to check the general appearance of the tract to make sure it has worked as expected. 
+
+Thanks,
+Shaun.
+
+On 23 Mar 2020, at 21:07, Nabin Koirala <nabinkoirala20@GMAIL.COM> wrote:
+
+Thanks Shaun, I was reporting the values from arculate fasciculus. So,the FA extraction is similar to the one after probtrackx but only difference is I guess the thresholding and native space transformation. Sorry to bother you a lot but one more thing while using the fslstats mean using the -M or -m has huge difference in the fiber lengths or probability distribution. Why would that be ? I understand that it is with or without zero voxels but should there be lots of zero voxels in there ? I cannot wrap my head around. Just to be in safe side, I should use the bigger M, right ?
+
+Thanks again. 
+
+Best,
+Nabin 
+
+On Mon, Mar 23, 2020 at 5:00 PM Shaun Warrington <Shaun.Warrington@nottingham.ac.uk> wrote:
+Hi,
+
+You’ll want to use the densityNorm.nii.gz file. With that, you can apply a consistent and meaningful threshold to remove the very low probabilities.
+
+It is possible to have large differences between the waytotals as the size of the seed and target masks may be very different depending on the tract/protocol. Out of interest, which tract are you reporting here?
+
+To get FA, you can now threshold and binarise the densityNorm files using fslmaths to get a tract mask. Typical threshold values are 0.001 or 0.005 - best to apply threshold and inspect the mask to see whether it is fit for your purposes. e.g. fslmaths densityNorm -thr 0.001 -bin densityNorm_bin
+
+Once you have a binary mask, you can multiply it by the subject’s FA map to get a tract specific distribution of FA values. Depending on how you have run XTRACT, you may need to transform the tract mask (or densityNorm) to the subject’s native space prior to multiplication (assuming the FA map is in the subject’s native space).
+
+Thanks,
+Shaun.
+
+On 23 Mar 2020, at 20:23, Nabin Koirala <nabinkoirala20@GMAIL.COM> wrote:
+
+Thank you Shaun. So, should I use "sum_density" or only "density" file in that case. Also, could it be that the waytotal is significantly different between the seed to target and when it is swapped, I can understand some variation but in one of my tracts the waytotal outside has 37717 and inside the tractINV folder is only 982. Could that be ? Or there is something wrong there. 
+Sorry for too many questions but if I want to get the FA values from these fibers now, is it possible ? If so, how and which of the output should I use and how is the thresholding done if needed. 
+Thanks a lot again for you kind support. 
+
+Best,
+Nabin 
+
+On Mon, Mar 23, 2020 at 4:06 PM Shaun Warrington <Shaun.Warrington@nottingham.ac.uk> wrote:
+Hi Nabin,
+
+1. For some of the tracts, we use a "reverse-seeding” approach. i.e. we run tractography with a seed and target, then we repeat tractography after switching the seed and target (target becomes seed and seed becomes target). The second run is stored in the tractsINV folder. After running both, the results are summed for the final probability distributions. So, you want to use the files in the parent/tract directory.
+
+ 2. The "density.nii.gz" file is the fibre probability distribution. The "density_lenths.nii.gz" file contains the fibre lengths, each voxel is the average streamline length - this is the "-ompl" probtrackx option. The "densityNorm.nii.gz" is the waytotal normalised fibre probability distribution. Just the "density.nii.gz" divided by the total number of valid streamlines. So fslstats mean will give you the mean of the probability distribution, the mean of the length of fibres and the mean of the normalised probability distribution respectively.
+
+Hope that helps!
+
+Thanks,
+Shaun.
+
+> On 23 Mar 2020, at 19:30, Nabin <nabinkoirala20@GMAIL.COM> wrote:
+> 
+> Hi fsl team, 
+> 
+> I am trying to understand the output of xtract. There are couple of questions> 
+> 1. What is difference between the two files one inside the tract folder and other inside the tractsINV folder ? Both has density_lengths and density and waytotal but are different than those outside of the folder. 
+> 2. What would the output of fslstats mean or fslmeants would mean for the density, density_length and densityNorm files ? 
+> 
+> Thank you. 
+> 
+> Best,
+> Nabin
+> 
+> ########################################################################
+> 
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear colleagues,
+
+The Penn Frontotemporal Degeneration Center is seeking a Clinical Research Coordinator to manage our ongoing NIA-funded PET and MRI studies of atypical, early-onset Alzheimer's disease and frontotemporal dementia patients. This position is ideal for aspiring researchers looking to gain experience with neuroimaging, Alzheimer's disease and related dementias, and clinical trial management. Please share this link with your talented trainees or colleagues--I'm happy to respond to direct inquiries:
+
+https://wd1.myworkdaysite.com/en-US/recruiting/upenn/careers-at-penn/job/Clinical-Research-Coordinator-A--Hybrid-Eligible--Department-of-Neurology-_JR00068570-1
+
+Thanks so much,
+
+Jeff Phillips
+
+Research Assistant Professor of Neurology
+Penn Frontotemporal Degeneration Center
+Philadelphia, PA
+
+
+
+Nuffield Department of Clinical Neurosciences (NDCN), WIN/FMRIB, John Radcliffe Hospital, Oxford, OX3 9DU
+We are looking for a researcher who can contribute expertise in analysis of multimodal imaging data, in applying machine learning methods across brain imaging, device-based and clinical data emerging from existing studies specific to Parkinson’s disease (PD and RBD cohorts), and to translate disease-specific imaging biomarkers into unselected population brain imaging data in UK Biobank. The post holder will optimise image pipelines, and create new pipelines, to convert and process raw imaging data. They will also produce progress reports and, when possible , publish and present research results to the international community in collaboration with the PIs. The post holder will employ machine learning tools to data across the different data sources to identify candidate disease biomarkers, including multiple modalities from each data source. The successful candidate will hold a DPhil/PhD degree (or nearing completion) in neuroscience, engineering, physics, mathematics, statistics, or other relevant field. They will also have experience of MRI-based neuroimaging analysis and advanced skills in statistical analysis using Python, MATLAB, R, SPSS or similar. It is desirable that the candidate has advanced skills using FSL and experience analysing large data sets.
+
+https://my.corehr.com/pls/uoxrecruit/erq_jobspec_version_4.display_form?p_company=10&p_internal_external=E&p_display_in_irish=N&p_process_type=&p_applicant_no=&p_form_profile_detail=&p_display_apply_ind=Y&p_refresh_search=Y&p_recruitment_id=163734
+
+Dear experts,
+
+After running VBM and randomise, I got one cluster that survived FWE-correction and thresholding at 0.95. I extracted the median intensity values for that area for each participant in my sample and noticed that about 10% have median values larger than 1. I know that the values should range between 0 and 1 - does anyone know what may cause the >1 values and whether or not I need to be concerned?
+
+Thank you in advance!
+
+Kind regards,
+Lara
+
+########################################################################
+
+Hi FSL experts,
+
+I am writing you as I have just noticed something quite curious, by chance.
+
+For a different reason, I had to realign several splitted volumes to the first volume of a dataset, and I then realigned the first volume to itself, as it was embedded in a for loop.
+To my surprise, I noticed that doing flirt with an input equal as the reference image, doesn't give the identity matrix as a transform, regardless of the degrees of freedom used (I tried with 6 or 12). Apart from the transformation matrix, I also noticed that a slice gets 'cut off' for apparently no reason ( I can see this when I open with fsleyes the difference image between the output of the realignment and the original input.
+Has this something to do with the -cost function used? Have you ever experienced this issue?
+
+Thanks in advance for your help!
+
+
+Code used:
+flirt -in ASL_vol_1.nii.gz -ref ASL_vol_1.nii.gz -out ASL_realigned_vol1_6DOF.nii.gz
+
+Transformation matrix:
+1.000000 0.000000 0.000000 0.000000
+0.000000 1.000000 0.000000 -0.000007
+0.000000 -0.000000 1.000000 0.000014
+0.000000 0.000000 0.000000 1.000000
+
+
+ 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

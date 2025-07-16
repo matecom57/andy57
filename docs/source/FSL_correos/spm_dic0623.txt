@@ -1,0 +1,184 @@
+Dear Edward,
+
+I don't have any recent performance numbers available, but as a local file system XFS may have slight advantages over ext4 for typical image processing usage. However, this is only local storage. If you plan to use shared storage, performance will depend on network characteristics and local caching. Many workflows will perform better if data is read once from the network and subsequent reads are served from a local cache.
+
+Best regards,
+Volkmar
+
+Hello,
+
+We are upgrading our MRI Lab servers and workstations to Rocky Linux 8. We have used ext4 for the past 10 years, however we are considering using XFS for its better performance with larger files and parallel processing. I'm curious to hear which file systems other SPM users use.
+
+Thanks,
+Eddie
+
+--
+Edward A. Zuniga
+Senior Research Analyst/CARI MRI Lab Manager
+Virginia Commonwealth University
+C. Kenneth and Dianne Wright Center for Clinical and Translational Research
+Institute for Drug and Alcohol Studies
+Collaborative Advanced Research Imaging (CARI) Facility
+203 East Cary Street, Suite 202
+Richmond, Virginia 23219
+Phone: (804) 828-4184
+Fax: (804) 827-2565
+eazuniga@vcu.edu
+
+fMRI Image Acquisition and Analyses Course with SPM and ICA - ONLINE!
+
+December 6-8, 2023.
+
+Celebrating our 22nd year!
+
+The course faculty include:
+Kent Kiehl (The Mind Research Network and the University of New Mexico)
+Vince Calhoun (Georgia State University, Georgia Institute of Technology and Emory University)
+Tor Wager (Dartmouth College)
+
+Dates and Time: December 6-8, from 8:00am to 6:00pm EST.
+Location:  Zoom - online course.  
+
+Description: The course is designed for fMRI researchers who range from beginning to intermediate skill levels. Novice fMRI researchers benefit from a comprehensive set of tools and software, and intermediate/advanced researchers benefit from a custom code and supplements to standard analyses developed by the instructors. The course covers Statistical Parametric Mapping (SPM8/12), independent component analyses (ICA) of fMRI data, mediation analysis of fMRI, statistical non-parametric mapping (SnPM), and provides a comprehensive coverage of all aspects of experimental design, image acquisition, image pre-processing, and analysis.  We now include a special emphasis on multiband/multislice fMRI.
+
+The course is unique in that it pairs interactive lectures with hands-on demonstrations and work-through sessions. Each student works on their own laptop. Software will be installed on each student's laptop during the beginning of the course, including Matlab (a trial version), SPM8/12, the Group ICA of fMRI Toolbox (GIFT), and related SPM toolboxes, including statistical non-parametric mapping (SnPM) and the multi-level mediation fMRItoolbox (M3). In addition, participants will be trained to analyze example fMRI data using these tools. The course will be small and interactive, with many opportunities to work closely with the faculty. Registration will be on a first-come, first-served basis; we apologize in advance if we cannot accommodate all who wish to attend, but we will admit as many people as possible given the interactive nature of the course.
+
+For more information or to register visit: https://sites.google.com/dartmouth.edu/mind-fmri-course/home
+
+Email: Dr. Kent Kiehl at kkiehl@unm.edu with questions.
+
+
+
+Kent A. Kiehl, Ph.D.
+Executive Science Officer and Director of Mobile Brain Imaging
+The nonprofit Mind Research Network (www.mrn.org), a partner with Lovelace Biomedical, Inc
+&
+Professor of Psychology, Neuroscience and Law
+University of New Mexico (www.unm.edu)
+
+Mailing Address:
+Mind Research Network
+1101 Yale Blvd NE
+Albuquerque, NM, 87106
+Office: 505-925-4516
+kkiehl@unm.edu
+
+Hello all,
+
+just as an update: I tried selecting the individual frames from the 4D
+image using spm_select('ExtList',...) but got the follwoing error message:
+
+Item 'Images', field 'val': Number of matching files (0) less than
+required (1).
+error('spm:spm_jobman:jobNotFilled', 'No executable modules, but still
+unresolved dependencies or incomplete module inputs.');
+
+So it seemed like, the way I did it was not correct. But just using the
+4D-nifti as a whole worked without any issues.
+There was even a little information in the MATLAB console, that showed
+that the individual frames were detected and used, that looked like this:
+1,1,1    2,1,1    3,1,1    4,1,1    5,1,1    6,1,1    7,1,1 8,1,1   
+9,1,1    10,1,1    11,1,1    12,1,1    13,1,1 14,1,1    15,1,1   
+16,1,1    17,1,1  ... (until all images were read).
+
+So you can just use the 4D.nii file.
+
+Best wishes, Falko
+
+Am 29.11.2023 um 14:19 schrieb Volkmar Glauche:
+> Dear Falko,
+>
+> to be on the safe side, you will have to list each frame (e.g. via spm_select('ExtList',...)) that you want to normalise, but you don't need to split the 4D image stack into separate 3D files.
+>
+> Volkmar
+
+--
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+
+/Please circulate – apologies for cross-posting and for reposting: the job app is now live!/
+
+We have an exciting opportunity for a motivated postdoc to join the Learning, Memory, and Decision Lab at UCL in London (https://lmdlab.github.io/), within the Max Planck UCL Centre for Computational Psychiatry & Ageing Research.
+
+Expertise in neuroimaging of memory *or* decision-making is desirable.
+For brief information, see ex-Twitter:  https://x.com/gelliott_wimmer/status/1717562876368408820 (or bluesky: @elliottwimmer.bsky.social)
+
+The aim of the project is to better understand the role of memory, mood, and mood disorders in goal-directed decision-making.  The position is funded by the UK MRC for behavioral and neuroimaging research in the area of memory and goal-directed decision making.  The postdoc would be designing and conducting neuroimaging experiments investigating the role of memory reactivation and replay using multivariate neuroimaging approaches to MEG data.
+
+Using a transdiagnostic approach, the fellow can also investigate the influence of mood as well as depression and anxiety on learning & decision-making.  We investigate these questions using large-scale online experiments and in-lab behavioral studies.
+
+The University College London job posting link is here: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7861&nPostingTargetId=18042&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+Informal inquiries are welcome.  Prior to submitting an application, please submit a current CV including publication list and a brief statement describing your experience and interests to Dr Elliott Wimmer (e.wimmer@ucl.ac.uk).
+
+Review is rolling, but the current deadline is January 2nd!
+
+Relevant publications:
+[1] Wimmer, G.E., Liu, Y., McNamee, D., Dolan, R.J. (2023). Distinct replay signatures for prospective decision-making and memory preservation. PNAS, 120(6): e2205211120.
+[2] Wimmer, G.E., Büchel, C. (2021). Reactivation of single-episode pain patterns in the hippocampus and decision making. Journal of Neuroscience, 41(37): 7894-7908.
+[3] Wimmer, G.E.*, Liu, Y.*, Vehar, N., Behrens, T.E.J., Dolan, R.J. (2020). Episodic memory retrieval success is associated with rapid replay of episode content. Nature Neuroscience. 23: 1025–1033.
+
+--
+
+G. Elliott Wimmer, Ph.D.
+MRC Fellow / Senior Research Fellow
+Learning Memory and Decision Group PI
+Max Planck UCL Centre for Computational 
+Psychiatry & Ageing Research
+Wellcome Centre for Human NeuroImaging
+University College London
+10-12 Russell Square, London
+
+Email: e.wimmer@ucl.ac.uk
+
+Web: https://lmdlab.github.io
+
+We are thrilled to announce an opening for a Postdoctoral Position at the Tee Lab, Department of Neurology, University of California, San Francisco (UCSF). This is a unique opportunity for a passionate researcher to contribute to groundbreaking work in the field of neuroimaging and neurodegenerative diseases.
+
+Job Summary: The selected candidate will participate in projects that focus on establishing MRI protocols with cutting-edge methodologies and applying neuroimaging techniques, such as tractography, graph theory analysis, and machine learning algorithms. Our focus spans a range of neurodegenerative diseases, including Alzheimer’s disease, primary progressive aphasia, and frontotemporal dementia, particularly in the context of diverse populations and bilingualism.
+
+Laboratory Mission: The Tee Lab is dedicated to promoting equal representation in cognitive and dementia research, enhancing our understanding of brain aging and neurodegenerative diseases. We collaborate internationally, aiming to understand bilingualism and dementia syndromes and promote language diversity in cognitive research.
+
+Required Qualifications:
+
+Ph.D. in neurology, radiology, neuropsychology, cognitive neuroscience, biomedical engineering, or related fields.
+Experience with MRI/PET data collection and analysis.
+Proficiency in neuroimaging tools and programming/scripting languages.
+Preferred Qualifications:
+
+Experience in connectomics, tractography, functional MRI, bilingualism, and cross-linguistic studies.
+Proficiency in Mandarin and/or Cantonese is a plus.
+Application Process: Interested candidates should send a cover letter, CV, and contact information for three references to BoonLead.Tee@ucsf.edu and Stephanie.Kwan3@ucsf.edu.
+
+For more information about the Tee Lab and our projects, please visit our website: Tee Lab - UCSF
+
+To view the detailed job posting, please visit: Tee Lab Open Positions - UCSF
+
+We look forward to welcoming a new member to our dynamic team!
+
+Apologize for cross-posting]
+
+We are delighted to invite proposals for special sessions at the first International Conference on Artificial Intelligence in Healthcare (AIiH 2024), which will be held in Swansea from 4 September to 6 September 2024. A special session is designed to delve into a specific research theme or showcase innovative applications. Each special session will feature a minimum of five presentations. For topics of interest, please see the conference website (https://aiih.cc).
+
+Special session chairs will receive one free full registration. For a special session with more than five accepted papers, the organisers may invite one invited speaker, whose registration to the conference will also be free. Papers submitted to special sessions are reviewed in the same way as submissions to the conference's main sessions. Author guidance and paper submission details can be found here (https://aiih.cc/paper-submission). Presenting speakers are required to register at the conference. Special session papers will be included in the conference proceedings, published by Springer Lecture Notes in Computer Science.
+
+Procedure for Submitting Special Session Proposals
+
+Each proposal should include:
+
+1. Session title. The title will be published in the conference programme.
+2. Abstract (250 words). The abstract will be published in the conference program.
+3. Name and affiliation of the special session organisers.
+4. Name and affiliation of invited speakers who will contribute to the special session. Please note that the invited speakers will need to submit their papers (https://aiih.cc/paper-submission). Papers submitted for special sessions undergo the same review process as open submissions and will be included in the conference proceeding.
+5. You can propose an open special session, which allows other delegates to submit their papers to the proposed session.
+
+Please email your proposal to contact@AIiH.cc by the deadline of January 26th, 2024.
+
+The conference committee will assess special session proposals based on the quality of the proposal and the broad appeal of the topic.
+

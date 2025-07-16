@@ -1,0 +1,138 @@
+Optseq2 is helpful
+
+On Thu, Feb 1, 2024 at 1:48 AM Phil Moir
+<00000e1a3c9ac37b-dmarc-request@jiscmail.ac.uk> wrote:
+>
+> Hi All,
+>
+> does anyone know of a tool (like design magic) that calculates the optimal design for your fast event related design?
+>
+> Kind regards
+> Phil
+
+Hi All,
+
+does anyone know of a tool (like design magic) that calculates the optimal design for your fast event related design?
+
+Kind regards
+Phil
+
+De : Claudio Brozzoli <claudio.brozzoli@inserm.fr>
+
+
+
+Post-doc in cognitive neurosciences / neurolinguistics
+“Effects of manual gestures on phonological learning in a foreign language”
+A post-doc offer is available for a motivated candidate interested in the neurobiological
+foundations of language and the functional links between language and action. The project lies
+in the embodied cognition framework and aims at evaluating the potential benefits of manual
+gestures on the learning of phonemes in a foreign language. Behavioral and functional
+neuroimaging (fMRI) measures will allow to compare the performance of French adult learners,
+together with their brain activity patterns, before and after a learning phase that will include or
+not manual gestures. This project is part of the AnchorFL project funded by the ANR and
+coordinated by Véronique Boulenger and Alice C. Roy at the Dynamique Du Langage research
+unit (DDL, CNRS), and in collaboration with Claudio Brozzoli from the IMPACT team at the
+Lyon Neuroscience Research Centre (INSERM).
+
+Skills and personal qualities
+▪ PhD in neuroscience, cognitive neuroscience, cognitive science, cognitive psychology, or associated disciplines.
+▪ Acquired competence in MRI techniques and experience in univariate and multivariate analyses of functional neuroimaging data (e.g. MVPA, functional connectivity…).
+▪ Good programming (e.g. MATLAB, Python) and statistical skills.
+▪ Previous experience in research projects in the domain of language will be an asset.
+▪ Proficiency in English (written and oral) is necessary. Mastering of French is strongly advised although not obligatory.
+▪ Good track record of scientific publications in peer-reviewed international journals.
+▪ Team spirit.
+
+Apply here:
+https://emploi.cnrs.fr/Offres/CDD/UMR5596-RABMAK-012/Default.aspx?lang=EN
+Starting date: April 1st, 2024
+
+-- 
+_._.
+
+Claudio Brozzoli, PhD, HDR
+(he/him/his)
+Researcher at ImpAct Team
+INSERM U1028, CNRS UMR5292
+Lyon Neuroscience Research Center
+16, av. du Doyen Lépine - 69500, Bron, France
+tel.: (+33) (0)4 72 91 34 39
+
+Dear CAT12 users,
+
+
+I just downloaded the CAT12.8.2 (r2170), and want to perform VBM analysis. However, I just found the SHOOT approach and could not find the DARTEL approach for registration. 
+
+Could you please provide guidance on whether DARTEL is still supported in this version? Your assistance and advice would be greatly appreciated.
+
+Best,
+Feng
+
+
+1.png
+
+Postdoctoral studies in Cognitive Neuroscience 
+
+ 
+
+Brain, Body, and Self Laboratory, Department of Neuroscience, Karolinska Institutet
+
+ 
+
+The Department of Neuroscience comprises multiple research groups focusing on diverse aspects of nervous system function in both normal and diseased states. Our research encompasses a wide array of studies, ranging from molecular and cellular levels to neuron networks and the overall organization of the nervous system. This includes four labs dedicated to cognitive neuroscience. The Department maintains a flat organizational structure with 40 research group leaders, including 24 full professors, alongside 65 PhD students and 35 postdocs.
+
+ 
+
+The Brain, Body, and Self Laboratory (Group Ehrsson) uses neuroimaging and behavioral methods to study how we perceive our own bodies as unique objects distinct from the external environment (www.ehrssonlab.se). We aim to characterize the perceptual rules and brain mechanisms whereby a central representation of one's own body is constructed by integrating signals from the different sensory modalities (e.g., vision, touch, and proprioception). We also investigate how central body representation influences how we think, feel, and remember ourselves and how the external world looks to us. Our laboratory has expertise in functional magnetic resonance imaging (fMRI), electroencephalography (EEG), transcranial magnetic stimulation (TMS), psychophysics, and other behavioral approaches (including virtual reality technology and robotically controlled bodily illusion setups). We have local access to two state-of-the-art 3T MRI scanners, one 7T scanner, and one MEG scanner.
+
+ 
+
+We are seeking a highly talented, innovative, and enthusiastic researcher who has been awarded a Ph.D. in cognitive neuroscience or a related field within the past two years. The successful candidate will work on projects focused on body representation, bodily illusions, multisensory integration, embodied cognition, or processes related to bodily self-awareness, including the sense of body ownership.
+
+ 
+
+The ideal candidate should possess expertise in experimental psychology or cognitive neuroscience, with a preference for skills in psychophysics and computational modeling, and/or proficiency in neuroimagingmethods, especially multivoxel pattern analyses, and/or experience with human electrophysiology (EEG, MEG) or brain stimulation methods (e.g., TMS). The candidate will be expected to work within the framework of our research program (www.ehrssonlab.se), yet will have considerable freedom to develop their own ideas and project proposals. The ability to work independently, initiate and lead novel research projects, and prepare high-quality draft manuscripts for research articles is crucial. Applicants must demonstrate an excellent academic track record, including high-quality publications in international peer-reviewed journals.
+
+ 
+
+The application must me uploaded via the Karolinska job recruitment portal: http://ki.varbi.com/what:job/jobID:687736/
+
+ 
+
+An application must contain the following documents in English or Swedish:
+
+A complete curriculum vitae, including date of the thesis defence, title of the thesis, previous academic positions, academic title, current position, academic distinctions, and committee work
+A complete list of publications
+A summary of current work (no more than one page)
+ 
+
+Deadline: February 16, 2024
+
+ 
+
+/Henrik Ehrsson
+
+ 
+
+
+
+Hi  all,
+  Could I ask for some advice on installing spm toolbox for Matlab 2022b please? 
+  We are running Matlab 2022b  wish to run spm12.  I have unpacked spm12 and placed it locally in c:\matlabinstall\toolbox\spm12.  I’ve also unzipped the 7487 update and placed the contents in that folder.
+
+ In Matlab I do the following:
+
+>>> addpath c:\matlabinstall\toolbox\spm12
+
+>>> spm
+
+ Error using spm_check_installation>check_basic (line 58)
+
+A problem occurred with spm_check_version.m.
+
+Error in spm_check_installation (line 28)
+        check_basic;
+Any advice very much appreciated.
+Regards
+Jason
+

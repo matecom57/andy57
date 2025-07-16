@@ -1,0 +1,272 @@
+Position: Postdoctoral Position in Neuroimaging Research on Brain
+Aging and Alzheimer’s disease
+
+Area: Brain Aging and Alzheimer’s disease
+
+Department: Department of Psychiatry and Human Behavior
+
+Institution: Brown University
+
+We are seeking a highly motivated postdoctoral researcher to lead an
+NIH-funded project in the Laboratory for Cognitive and Translational
+Neuroscience (Director: Dr. Hwamee Oh) at Brown University. The
+project is to use amyloid and tau PET and structural MRI/DTI to study
+the impact of Alzheimer’s disease pathologies on structural and
+functional networks among cognitively normal older adults and patients
+with cognitive impairment.
+
+Applicants with a Ph.D. degree in cognitive neuroscience,
+computational neuroscience, biomedical engineering, or a relevant field
+are encouraged to apply. Prior experience with human neuroimaging in
+PET and/or structural MRI, and familiarity with programming in relevant
+languages (e.g., Python, MATLAB) are required. Applicants with
+experience with amyloid and tau PET or diffusion weighted imaging are
+especially encouraged to apply. The successful candidate is expected
+to demonstrate communication skills, motivation and interest in the
+area of neuroscience of cognitive and brain aging and Alzheimer’s
+disease, and the ability to independently develop research questions
+and work in collaboration with other team members.
+
+A preferred start date is Summer 2024, although it can be flexible. The
+position is primarily affiliated with the Department of Psychiatry and
+Human Behavior at Brown University.
+
+Interested applicants should email a brief description of research
+background and career goals, and CV with a list of 3 references to Dr.
+Hwamee Oh at hwamee_oh@brown.edu.
+
+Contact Website:
+https://sites.brown.edu/oh-ctnlab/available-positions/
+
+--
+Mackenzie Topper
+Research Assistant & Lab Manager
+Oh Lab
+Brown University
+
+
+Hello Matthew,
+
+Thanks for your response. 
+
+I am a bit confused by the commands you mentioned. I could not find them in the instructions. Nevertheless, I tried them and received this message:
+Error while loading conda entry point: conda-libmamba-solver (dlopen(/usr/local/fsl/lib/python3.11/site-packages/libmambapy/bindings.cpython-311-darwin.so, 0x0002): Library not loaded: @rpath/libarchive.19.dylib
+
+  Referenced from: <494304CB-2F24-3FF8-B4AE-F4E6B16BDC26> /usr/local/fsl/lib/libmamba.2.0.0.dylib
+
+  Reason: tried: '/usr/local/fsl/lib/libarchive.19.dylib' (no such file), '/usr/local/fsl/lib/python3.11/site-packages/libmambapy/../../../libarchive.19.dylib' (no such file), '/usr/local/fsl/lib/python3.11/site-packages/libmambapy/../../../libarchive.19.dylib' (no such file), '/usr/local/fsl/bin/../lib/libarchive.19.dylib' (no such file), '/usr/local/fsl/bin/../lib/libarchive.19.dylib' (no such file), '/usr/local/lib/libarchive.19.dylib' (no such file), '/usr/lib/libarchive.19.dylib' (no such file, not in dyld cache))
+
+
+
+CondaValueError: You have chosen a non-default solver backend (libmamba) but it was not recognized. Choose one of: classic
+
+
+The instructions in the fix package included these instructions.:
+. $FSLDIR/fslpython/bin/activate $FSLDIR/fslpython/envs/fslpython
+
+I tried to remove the python part, but ended up with an error that it was not a conda environment, even when I tried to use $FSLDIR/bin/conda-env.
+
+Yes, I am using R2019a with FIX 1.06.15.
+
+What can I try to fix it?
+
+Thanks,
+
+Marie
+
+On Feb 1, 2024, at 11:48 AM, Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hello Marie,
+   For FSL 6.0.6 or newer, “fslpython” needs to be removed from the paths in the installation calls, e.g.
+
+$FSLDIR/fslpython/bin/conda create -n fslR
+
+would become:
+
+$FSLDIR/bin/conda create -n fslR
+
+And
+
+$FSLDIR/fslpython/envs/fslR/bin/R
+
+would become
+
+$FSLDIR/envs/fslR/bin/R
+
+For your FSL 6.0.5 install, can you confirm you installed the MCR version that matches the FIX version - R2019a for FIX 1.06.15?
+
+Kind Regards
+Matthew
+
+
+
+Dear fsl community,
+
+ 
+
+I have troubles creating physiological noise regressors recorded by biopack using pnm. 
+
+First, I still have the same trouble with running pnm from the command line as stated in the email below from the archive- the .txt file includes all files in that folder. Please could you confirm if the correct ev_list should be a list only including the ev_0*.nii.gz files created in the process, but not any of the .txt or .html files also in that folder?
+
+Second, the ev_0*.nii.gz files created in the process are quite small (168 bytes) and appear to be all 0s by inspection with fsleyes or nilearn. The textfiles created by pnm_stage1, however, seem reasonable (one column of ascending numbers). Is there some way to check if the evs created by pnm_evs are correct, and if they aren’t do you have an idea of what could be going wrong?
+
+ 
+
+This is the command I am using:
+
+ 
+
+pnm_evs –tr=1.078 -i ../func/preproc_clean01.feat/prefiltered_func_data.nii.gz -o pnm_out -r sub-23_01_resp.txt -c sub_23_01_card.txt --csfmask=../func/nuisance01/segmentation/CSF_mask.nii.gz
+
+
+Apologies for cross-posting
+ 
+Dear Colleagues
+I am sharing this final call as we will be closing our survey of carers in UK HE at the end of the month. Many thanks to those of you who have replied.
+To be eligible, you need to be employed by a UK-based university and to be a carer (broadly understood, including as a parent, for a friend, a relative etc.). Here’s the link:
+https://angliaruskin.onlinesurveys.ac.uk/national-carers-survey-uk The outcomes will help us to better understand the experiences of carers in higher education and to provide recommendations to the sector.
+We have received ethical approval for this project and are happy to address any question.
+Warm wishes
+Marie-Pierre Moreau
+
+ARU, Cambridge, UK
+
+Dear Matthew,
+This is the contents of design.trg:
+-5.000000e-01 6.752721e+01 1.355544e+02 2.035816e+02 2.716088e+02 106.122440
+-5.000000e-01 6.752721e+01 1.355544e+02 2.035816e+02 2.716088e+02 106.122440
+
+It is a block-design, visual stimulus (on & off) design. I attach the ev1 (on) design timing here:
+0 42 1
+50 42 1
+100 42 1
+150 42 1
+200 42 1
+
+thank you!
+
+Best wishes,
+Alex
+
+########################################################################
+
+
+Hi Alex,
+Can you let me know the contents of “design.trg” in the input feat directory and roughly what sort of design is being used ( especially ev1 )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Sean,
+                The line:
+export PATH=/opt/homebrew/bin:/Users/seantanyongwei/opt/anaconda3/bin:/Users/seantanyongwei/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+
+Is probably the one overriding the other settings. If you want to preserve these paths, then adding ${FSLDIR}/share/fsl/bin to the line ( remember all paths are colon separated ) should fix things.
+
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 11 Mar 2024, at 23:15, TAN, Sean (ROYAL PAPWORTH HOSPITAL NHS FOUNDATION TRUST) <0000672db0bb4617-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Hi Paul,
+>
+> Thanks verymuch, yes it seems to be a conda initialisation process (as below). How should I modify this profile?
+>
+> Thanks,
+> Sean
+>
+> (base) seantanyongwei@seans-Air ~ % cat  ~/.zshrc
+>
+> # >>> conda initialize >>>
+> # !! Contents within this block are managed by 'conda init' !!
+> __conda_setup="$('/Users/seantanyongwei/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+> if [ $? -eq 0 ]; then
+>     eval "$__conda_setup"
+> else
+>     if [ -f "/Users/seantanyongwei/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+>         . "/Users/seantanyongwei/opt/anaconda3/etc/profile.d/conda.sh"
+>     else
+>         export PATH="/Users/seantanyongwei/opt/anaconda3/bin:$PATH"
+>     fi
+> fi
+> unset __conda_setup
+> # <<< conda initialize <<<
+>
+> export PATH=/opt/homebrew/bin:/Users/seantanyongwei/opt/anaconda3/bin:/Users/seantanyongwei/opt/anaconda3/condabin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/binFrom: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+> Sent: Monday, March 11, 2024 4:40 PM
+> To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+> Subject: Re: [FSL] installation set up error
+>  You don't often get email from 0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk. Learn why this is important
+>  This message originated from outside of NHSmail. Please do not click links or open attachments unless you recognise the sender and know the content is safe. Hi Sean,
+>
+> You probably have another profile file which is overwriting the $PATH - do you have a ~/.zshrc file? What is its contents?
+>
+> Paul
+> From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of TAN, Sean (ROYAL PAPWORTH HOSPITAL NHS FOUNDATION TRUST) <0000672db0bb4617-dmarc-request@JISCMAIL.AC.UK>
+> Sent: 08 March 2024 17:21
+> To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+> Subject: Re: [FSL] installation set up error
+>  Hi Paul,
+>
+
+Hi Marie,
+                The older instructions are here ( that need to have modified paths ):
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2005&L=FSL&P=R27323
+
+although it looks like you will need to run this command first to update the conda solver:
+
+$FSLDIR/bin/conda update -p $FSLDIR conda libmamba -y --solver=classic
+
+( add sudo if necessary )
+
+For the 6.0.5 install I think it would be helpful to know the exact error message, but you may also want to try installing the latest FSL ( 6.0.7.8 ) as that includes “pyfix” which is a python-based rewrite of FIX.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi Javier
+
+ 
+
+As far as I recall, the fdt_paths file contains all the streamlines seeded from your seed masks, regardless of whether they have reached the other seed masks you are using in network mode. However, the output matrix (fdt_network_matrix) of course only records the streamlines that connect pairs of ROIs.  If you want to check the fdt_paths, you can run ptx separately for each seed mask and set the others as waypoint masks.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+Hi Luna
+
+This is nothing to worry about. If I remember correctly, I added that field to help with specifying DCMs using the batch editor. Its omission won’t alter your results.
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Luna Sato
+Sent: 06 March 2024 03:23
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] What is the DCM.U.idx parameter for?
+
+ 
+

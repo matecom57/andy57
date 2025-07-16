@@ -1,0 +1,622 @@
+Ss
+What Christophe posted sounds very plausible. It also depends on whether you have done slice-timing correction or not - and if so to what slice you aligned it to.
+
+Have a look at Figure 4: https://www.sciencedirect.com/science/article/pii/S1053811911007245?via%3Dihub#f0020
+
+Slice-timing effects and their correction in functional MRI
+Exact timing is essential for functional MRI data analysis. Datasets are commonly measured using repeated 2D imaging methods, resulting in a temporal …
+www.sciencedirect.com
+
+Here you nicely see the reduced sensitivity in the motor cortex if the timing is off by 0.5-1 TR.
+
+Hope this helps,
+Ronny
+
+The laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University is searching for postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+
+ 
+
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. 
+
+ 
+
+Our research center and laboratory have great computing capacity, including multiple H100 and A100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical records, medical images, and pathological images. We published more than 170 peer-reviewed journal papers. Among them, 87% were published in the top 10% of peer-reviewed journals, such as Nature, Nature Neuroscience, Nature Mental Health, PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc.
+
+ 
+
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+
+ 
+
+The position offers a competitive salary (up to HKD 540,000 annually) and benefits. We will apply for VISA for applicants. 
+
+Requirements:
+
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or relevant fields in Top Universities
+
+2.     Experience with neuroimage analysis techniques;
+
+Good communication and writing skills in English.
+ 
+
+Please send cv/inquiries to Professor Anqi Qiu, Global STEM scholar an-qi.qiu@polyu.edu.hk.
+
+Dear all,
+
+I am doing Parametric Empirical Bayes (BMA = spm_dcm_peb_bmc(PEB)) according to Zeidman et al. (2019) for the first time. I have one between subject factor and two groups (HC and patients). Now I noticed that I get very different results connectivities after Bayesian Model Averaging depending on whether I have a
+(1) first vector of 1s and a second, 'dummy' regressors of 0s and 1s OR
+(2) again a first regressor of 1s and a second regressor of -1s and 1s.
+
+I realise that the interpretation of the coefficient is somewhat different depending on whether I use dummy or effect coding (as in all GLMs). However, I get very different connections with sufficient evidence after Bayesian Model Averaging. I was wondering whether you could advice, which approach is most suitable in my case where I am basically looking for difference in connectivity between two groups?
+
+Thank you very much in advance!
+
+Best,
+Susan
+
+You may consider what is known as ‘hidden dummies’, which are not disclosed by the scanner, as opposed to the 'visible dummy scans'. Hidden dummies are hidden to the operator and may be 1 or 2, as it depends on the type of tissue chosen, and a different TR for those dummies may also be applied.
+
+73, Peter
+
+> On 11 Dec 2023, at 12:28, Ronald Sladky <ronald.sladky@UNIVIE.AC.AT> wrote:
+>
+> What Christophe posted sounds very plausible. It also depends on whether you have done slice-timing correction or not - and if so to what slice you aligned it to.
+>
+> Have a look at Figure 4: https://www.sciencedirect.com/science/article/pii/S1053811911007245?via%3Dihub#f0020
+
+Slice-timing effects and their correction in functional MRI
+Exact timing is essential for functional MRI data analysis. Datasets are commonly measured using repeated 2D imaging methods, resulting in a temporal …
+www.sciencedirect.com
+
+> Here you nicely see the reduced sensitivity in the motor cortex if the timing is off by 0.5-1 TR.
+>
+> Hope this helps,
+> Ronny
+
+
+The laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University is searching for postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+
+ 
+
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. 
+
+ 
+
+Our research center and laboratory have great computing capacity, including multiple H100 and A100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical records, medical images, and pathological images. We published more than 170 peer-reviewed journal papers. Among them, 87% were published in the top 10% of peer-reviewed journals, such as Nature, Nature Neuroscience, Nature Mental Health, PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc.
+
+ 
+
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+
+ 
+
+The position offers a competitive salary (up to HKD 540,000 annually) and benefits. We will apply for VISA for applicants. 
+
+Requirements:
+
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or relevant fields in Top Universities
+
+2.     Experience with neuroimage analysis techniques;
+
+Good communication and writing skills in English.
+ 
+
+Please send cv/inquiries to Professor Anqi Qiu, Global STEM scholar an-qi.qiu@polyu.edu.hk.
+
+Hi everybody,
+
+We are pleased to announce that the application portal is still open for the NIH funded 2024 session of the course, “Training in Advanced Statistical Methods in Neuroimaging and Genetics”.
+
+ 
+
+We hope you pass this email on to your local neuroimaging community.
+
+ 
+
+The course will start on Monday, April 15, 2024 and finish on April 26, 2024. We are happy to announce that the course is to be held in person, in Salt Lake City, Utah, United States at the University Guest House Conference Center. Our course also includes an ongoing continuing education portion.
+
+ 
+
+The course is an intensive 2-weeks, about 8 hours per day of a mix of lectures and hands-on computer labs.
+
+ 
+
+neurostatsbootcamp.org
+
+ 
+
+The course cost is $3000 (see scholarship information below), which includes hotel accommodations at the Guest House (arrival on April 14 with departure on April 26), breakfast, lunch, day time snacks, three dinners out as a group, and the planned evening activities. All course attendees will arrange for their own transportation to Salt Lake City. The course cost does include a daily pass to the Salt Lake City Trax light rail/commuter system. (Please note that the course instructors' effort is supported by the NIH grant thus avoiding that cost being passed on to the course attendees. This course is strictly not-for-profit.)
+
+Because of the limited size and advanced nature of the course, attendance is by application only – please make sure to fully read the website instructions. In general, applicants must be a US citizen, permanent resident, or with an appointment at a US institution, though we do have the ability to accommodate 3 to 6 individuals that do not meet this criteria. We anticipate the total class size to be between 22 and 25 students.
+
+ 
+
+There are opportunities for scholarships which can partially offset hotel accommodations. These are based on true financial need and you will be instructed how to apply if you are admitted to the course.
+
+ 
+
+We look forward to seeing you in SLC in 2024!
+
+ 
+
+The application deadline is Nov 1, 2023. Decisions around Dec 5th.
+
+ 
+
+For more information email us at neurostats@g.ucla.edu or  advancedstatisticscourse@utah.edu
+
+ 
+
+Robert and Anna
+
+ 
+
+------------------------------
+
+Robert Welsh, PhD
+
+Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+rcwelsh@g.ucla.edu
+
+robert.c.welsh@utah.edu
+
+ 
+
+Anna Docherty, PhD
+
+Associate Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+anna.docherty@utah.edu
+
+ 
+
+ 
+
+Dear Rob,
+
+ 
+
+I’m not sure that the segment routine has been optimized for PET. I’d say it isn’t, given how segment works and how PET activity is spread.
+
+Maybe with very new systems with much higher resolution and motion correction.
+
+Why do you want to segment PET images? Which tracer by the way?
+
+ 
+
+(re-added the SPM mailing list in the loop)
+
+ 
+
+Luca
+
+ 
+
+Da: Shortman, Robert <robert.shortman.12@ucl.ac.uk>
+Inviato: lunedì 16 ottobre 2023 12:20
+A: Luca Presotto <lucaxx85@hotmail.com>
+Oggetto: Re: [SPM] Pet segmentation
+
+ 
+
+Just using the same segmentation tool as you would for mri. The problem was my pet intensity normalisation- it was fine on the whole brain, but it screwed up the segmentation intensity values.
+
+From: Luca Presotto <lucaxx85@hotmail.com>
+Sent: Monday, October 16, 2023 8:46:09 AM
+To: Shortman, Robert <robert.shortman.12@ucl.ac.uk>; SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: RE: [SPM] Pet segmentation
+
+ 
+
+⚠ Caution: External sender
+
+
+How are you trying to do that?
+I don't remember SPM having a PET segmentation module
+
+Luca
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Rob Shortman
+Sent: Friday, October 13, 2023 11:13 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Pet segmentation
+
+Hi there,
+
+I’ve segmented some pet images- but what I get looks like a mask, rather than grey or white matter uptake.
+
+Has anyone got any experience of how to do it properly?
+
+Ta, Rob
+
+How are you trying to do that?
+I don't remember SPM having a PET segmentation module
+
+Luca
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Rob Shortman
+Sent: Friday, October 13, 2023 11:13 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Pet segmentation
+
+Hi there,
+
+I’ve segmented some pet images- but what I get looks like a mask, rather than grey or white matter uptake.
+
+Has anyone got any experience of how to do it properly?
+
+Ta, Rob
+Hey everyone,
+
+i am working on ROI Analsysis for the mirror neuron system at the moment and am trying to use custom Atlases,
+is there a option to import those or any code i can use to import atlases into the CAT12 GUI?
+
+I tried with the help of this, but the code has aged too much i think https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=spm;e2cb99a1.1804
+Also i tried just writing the Atlases into the cat_default after adding them into the atlas folder, but that seems to create many errors and
+leaves me not being abled to open CAT12, until i take the lines out of the file.
+
+Would be super happy if u got any tips on how i can go on.
+
+
+Greetings, Jack
+
+
+Job Title: Postdoctoral Researcher - Center for Brain Recovery
+
+ 
+
+Location: 635 Commonwealth Avenue, Boston University, Boston, MA 02215
+
+Position Type: Full-time
+
+Duration:  2+ years
+
+Application Deadline: Nov 1st, 2023
+
+Organization: Center for Brain Recovery, Boston University
+
+ 
+
+About Us: The Center for Brain Recovery (CBR) at Boston University is a cutting-edge research center focused on understanding, treating, and preventing neurological disorders such as stroke, brain injury, Alzheimer's disease, Parkinson's disease, and more. Our interdisciplinary team of clinicians, neuroscientists, engineers, and data scientists is dedicated to unraveling the complexities of the brain, with a goal to improve brain function and enhance the quality of life for those affected by neurological conditions.
+
+ 
+
+Position Overview: The Center for Brain Recovery is seeking a highly motivated and innovative Postdoctoral Researcher to join our dynamic team. The successful candidate will collaborate with our interdisciplinary group of researchers to advance our mission of addressing brain disorders through innovative research projects. This position offers a unique opportunity to work on cutting-edge research in neuroimaging, neuroscience, data science, and clinical trials, contributing to our understanding of brain function and neurological disease.
+
+ 
+
+Key Responsibilities:
+
+Neuroimaging and Neuroscience Research:
+
+·      Collaborate on projects aimed at obtaining a dynamic picture of the functioning brain and identifying novel signatures of brain disease.
+
+·      Use innovative research techniques to continuously monitor brain function in real-world settings.
+
+Neurobiomarker Development:
+
+·      Conduct research to identify neural and behavioral biomarkers of brain health, both during recovery and in cases of neurological decline.
+
+·      Develop advanced computational models to extract clinically significant information from neuroimaging data for diagnosis and treatment of neurological disorders.
+
+Data Science and AI Research:
+
+·      Utilize data science and AI methods to predict human cognitive function and individual patient recoveries after rehabilitation and in cases of neurological decline.
+
+·      Analyze large behavioral datasets to enable early detection of neurodegenerative diseases and create patient profiles of recovery trajectories.
+
+Clinical Trials:
+
+·      Participate in clinical trials related to rehabilitation for various neurological disorders, including stroke, traumatic brain injury (TBI), and primary progressive aphasia (PPA).
+
+·      Assist in conducting randomized control trials, evaluating behavioral, functional, and brain plasticity outcomes.
+
+ 
+
+Qualifications:
+
+·      Ph.D. in neuroscience, neuroimaging, data science, psychology, neuropsychology, speech language pathology, or a related field.
+
+·      Strong research background and experience in relevant research methodologies.
+
+·      Proficiency in data analysis software and programming languages (e.g., Python, MATLAB, R).
+
+·      Excellent written and verbal communication skills.
+
+·      Ability to work collaboratively in an interdisciplinary team.
+
+·      Prior experience in clinical research or clinical trial involvement is a plus.
+
+·      A commitment to ethical research practices and patient-centered care.
+
+ 
+
+Benefits:
+
+·      Competitive salary commensurate with experience.
+
+·      Access to state-of-the-art research facilities and resources.
+
+·      Opportunity for professional development and mentorship.
+
+·      Collaborative and inclusive work environment.
+
+·      Health and retirement benefits.
+
+ 
+
+Application Instructions: Interested candidates should submit the following documents:
+
+A cover letter outlining your research interests and relevant experience.
+
+A current CV detailing your academic and research achievements.
+
+Contact information for at least two professional references.
+
+Please submit your application to brainrec@bu.edu or kirans@bu.edu.
+
+Boston University is an equal opportunity employer. We encourage applications from individuals of all backgrounds and experiences.
+
+ 
+
+Join our team at the Center for Brain Recovery and contribute to groundbreaking research aimed at improving the lives of those affected by neurological disorders. Apply today!
+
+ 
+
+
+
+Hi Enrique,
+
+ 
+
+I’d like to bring to your attention this work of mine from 2018 about the subject of normalizing PET images using their CT scan with SPM unified segmentation.
+
+Low-dose CT for the spatial normalization of PET images: A validation procedure for amyloid-PET semi-quantification - ScienceDirect
+
+NeuroImage: Clinical, Volume 20, 2018, Pages 153-160
+
+ 
+
+With FDG I generally prefer using the old-normalization, but I’ve found that CT-based normalization works “well enough” even with attenuation correction CT. Of course you don’t see atrophy anywhere as good as with MR… But it still works quite well for most PET related stuff!
+
+ 
+
+Let me know if you have any question!
+
+ 
+
+Luca
+
+ 
+
+Da: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> Per conto di Franky Vargas, Enrique
+Inviato: mercoledì 27 settembre 2023 10:59
+A: SPM@JISCMAIL.AC.UK
+Oggetto: [SPM] CT as a anatomicall reference
+
+ 
+
+Hello everyone,
+
+ 
+
+I'm in the process of implementing SPM (Statistical Parametric Mapping) analysis for brain FDG PET-CT images, and I'm looking to gain a deeper understanding of the algorithm's limitations when it comes to normalization using an Atlas brain. Most of the examples and tutorials I've come across are based on MRI anatomical references, and I'm wondering if the same process can be applied to PET-CT images. Specifically, I have a couple of questions:
+
+ 
+
+Is it feasible to perform the preprocessing steps of the SPM algorithm on PET-CT images?
+
+ 
+
+Can PET-CT images be normalized to an atlas, such as MCIN or any that the SPM algorithm supports?
+
+ 
+
+I'd greatly appreciate any insights or guidance on this matter. Thank you!​
+
+
+
+Position Title
+
+Assistant Professor of Chemistry and Biochemistry
+
+Job Description
+
+The Oxley College of Health and Natural Science and The Department of Chemistry and Biochemistry at The University of Tulsa invites applications for a tenure-track position as an Assistant Professor in Biochemistry with a neuroscience speciality starting August 2024.
+
+This Tenure-Track position comes with a generous start-up package that includes lab space in Keplinger Hall, protected time for establishing an independent research program, and mentoring by collegial and supportive faculty. The successful candidate will be expected to develop a strong extramurally funded research program to support the growth of TU to an R1 institution. For a more complete description of our program and facilities, please visit our website at https://healthsciences.utulsa.edu/chemistry-biochemistry/.
+
+Required Qualifications
+
+Ph.D. degree, postdoctoral experience, and a record of research excellence.
+
+Preferred Qualifications
+
+Applicants for the position should have a Ph.D. degree, postdoctoral experience, and a record of research excellence. Preference will be given to individuals that broadly complement existing faculty research, and who can contribute to undergraduate and graduate teaching in Biochemistry.
+
+Physical Demands
+
+Some lifting in lab work.
+
+https://universitytulsa.peopleadmin.com/postings/8150
+
+We are currently planning a new event-related fMRI study, which will involve 6 task blocks per session. We would like to perform univariate activation and multivariate (MVPA) decoding analyses, as well as task-related functional/effective connectivity analyses such as PPI and DCM. Now, we are wondering whether it would be better to do continuous scanning (1 run) with 6 blocks that are separated by 20-second rest periods, or to do 6 runs (between which the scanner is stopped)?
+
+Some people I've talked to argue that task-based functional connectivity analyses (e.g. PPI, DCM) should be performed on a continuous timeseries, and concatenating runs would not be good. This speaks for continuous scanning with 6 blocks.
+
+For MVPA decoding, on the other hand, people seem to prefer leave-one-RUN-out cross validation to leave-one-BLOCK-out cross validation to ensure that training and test data are independent. This would speak for 6 runs.
+
+A compromise would be 2 runs with 3 blocks each.
+
+Which option would you prefer?
+
+Thanks in advance and all the best,
+Philipp
+
+--
+Dr. Philipp Kuhnke
+Postdoctoral Researcher
+Max Planck Institute for Human Cognitive and Brain Sciences, Leipzig, Germany
+
+Dear Nancy,
+
+could you be off by about half a TR ?
+Not exactly sure why this would happen but maybe:
+the scan trigger is sent at half TR ? Weird but why not...
+the microtime resolution and onset in the GLM definition ("Timing parameters") have been poorly/erroneously defined, such that events are timed half a TR toff? 
+
+BTW knowing if you have to remove or add some 1-1.5s may help figuring out where things are going astray...
+
+Best,
+Christophe
+
+
+Christophe Phillips
+GIGA CRC in vivo imaging & in silico medicine
+Cyclotron Research Centre, B30
+University of Liège
+4000 Liège, Belgium
+T: +3243662316
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Nancy A. Dennis <nad12@PSU.EDU>
+Sent: 07 December 2023 13:32
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: Re: [SPM] hrf issue modeling data
+ 
+My TR is 2.5. And that is what I first thought too. But we have a scanner trigger and have tested in more than a dozen times and it seems to be right on.
+Also, taking it back 1 TR is not better than 1/1.5 seconds...nancy :(
+
+On Wed, Dec 6, 2023 at 5:13 PM Christopher Madan <chris.madan@gmail.com> wrote:
+Hi Nancy,
+
+My intuition is that this is an issue with initial dummy volumes that are discarded or otherwise pulses sent by the MRI that don't correspond with brain volumes collected. 
+
+What is your TR?
+
+Best,
+
+~ Chris
+---
+Christopher R Madan, PhD [he/him] @ University of Nottingham | http://www.cmadan.com, http://engra.me
+Author of "An Introduction to MATLAB for Behavioral Researchers" | http://engra.me/books/matlab/
+and "Academia and the World Beyond: Navigating Life after a PhD" | http://engra.me/books/academiabeyond
+
+On Wed, Dec 6, 2023, 18:05 Nancy Dennis <nad12@psu.edu> wrote:
+Hi helpful listserv
+
+We are having the craziest time with our newest study trying to match our onsets with the hrf.
+We have checked the timing on the task (we, the scanner techs, and physicists at our imaging center) and it is 100% correct. All onsets are accurate. Yet when we run our model and look for basic neural activity vs. rest baseline as we have always done, we do not get a large response in occipital cortex, nor do we get motor activity. Yet, if we move the onset timing back 1.5 seconds the motor activity is large and significant - as is activity in the visual cortex. Activity in this model is exactly as I would expect. For reference, this is a memory task where participants look at pictures and make a button response corresponding to their memory decision (something I have done a dozen times before). We have run the model (with the accurate onset convolved with the default hrf in SPM12) on 2 versions of SPM12 and across 3 pilot subjects. The results are always the same whereby moving the onset back 1.5 second provides the most robust neural activity at baseline and captures motor activity).....it is the same every time.
+Does anyone have any thoughts? Given that I have no doubt about the onsets, I am thinking that for whatever reason the match with the SPM12 hrf is just not working. (Why I dunno)
+
+I am considering adjusting the format/shape of the hrf in SPM to capture our neural activity and was wondering if anyone has done this before and if you have any advice on how to adjust the spm_hrf script (i.e., a more specific understanding of what changing the variables will do)
+
+Thank you in advance. I am at a complete loss.
+-Nancy Dennis
+
+
+--
+Nancy A. Dennis, PhD
+Professor of Psychology
+Associate Department Head of Instruction & Director of Undergraduate Studies, Department of Psychology
+Assistant Director of Research, Center for Healthy Aging
+The Pennsylvania State University
+
+445 Moore Bldg.
+University Park, PA 16802
+(office) 814.865.1712
+nad12@psu.edu
+https://psych.la.psu.edu/directory/nad12
+zoom: https://psu.zoom.us/j/3092030161
+
+Lab website:
+http://canlab.la.psu.edu/
+
+Center for Healthy Aging:
+http://healthyaging.psu.edu
+
+My work day may look different than your work day. Please do not feel any pressure to respond outside of your normal working hours.
+
+My TR is 2.5. And that is what I first thought too. But we have a scanner trigger and have tested in more than a dozen times and it seems to be right on.
+Also, taking it back 1 TR is not better than 1/1.5 seconds...nancy :(
+
+On Wed, Dec 6, 2023 at 5:13 PM Christopher Madan <chris.madan@gmail.com> wrote:
+Hi Nancy,
+
+My intuition is that this is an issue with initial dummy volumes that are discarded or otherwise pulses sent by the MRI that don't correspond with brain volumes collected. 
+
+What is your TR?
+
+Some MR-scanners have 'hidden dummy scans' in the beginning of the scanning protocol, that are not resulting in saved images. In some cases, the number of dummies (typically 2 or 3 TRs) also depend on which tissue type that is selected. The intention is to remove the initial relaxation effects, prior to the development of steady state. Contact your MR-scanner manufacturer to resolve if that is indeed the case with your data. 
+
+73, Peter
+
+Sent from my iPad
+
+On 6 Dec 2023, at 23:26, Christopher Madan <chris.madan@gmail.com> wrote:
+
+﻿
+Hi Nancy,
+
+My intuition is that this is an issue with initial dummy volumes that are discarded or otherwise pulses sent by the MRI that don't correspond with brain volumes collected. 
+
+What is your TR?
+
+Best,
+
+~ Chris
+---
+Christopher R Madan, PhD [he/him] @ University of Nottingham | http://www.cmadan.com, http://engra.me
+Author of "An Introduction to MATLAB for Behavioral Researchers" | http://engra.me/books/matlab/
+and "Academia and the World Beyond: Navigating Life after a PhD" | http://engra.me/books/academiabeyond
+
+On Wed, Dec 6, 2023, 18:05 Nancy Dennis <nad12@psu.edu> wrote:
+Hi helpful listserv
+
+We are having the craziest time with our newest study trying to match our onsets with the hrf.
+We have checked the timing on the task (we, the scanner techs, and physicists at our imaging center) and it is 100% correct. All onsets are accurate. Yet when we run our model and look for basic neural activity vs. rest baseline as we have always done, we do not get a large response in occipital cortex, nor do we get motor activity. Yet, if we move the onset timing back 1.5 seconds the motor activity is large and significant - as is activity in the visual cortex. Activity in this model is exactly as I would expect. For reference, this is a memory task where participants look at pictures and make a button response corresponding to their memory decision (something I have done a dozen times before). We have run the model (with the accurate onset convolved with the default hrf in SPM12) on 2 versions of SPM12 and across 3 pilot subjects. The results are always the same whereby moving the onset back 1.5 second provides the most robust neural activity at baseline and captures motor activity).....it is the same every time.
+Does anyone have any thoughts? Given that I have no doubt about the onsets, I am thinking that for whatever reason the match with the SPM12 hrf is just not working. (Why I dunno)
+
+I am considering adjusting the format/shape of the hrf in SPM to capture our neural activity and was wondering if anyone has done this before and if you have any advice on how to adjust the spm_hrf script (i.e., a more specific understanding of what changing the variables will do)
+
+Thank you in advance. I am at a complete loss.
+-Nancy Dennis
+
+Hi Nancy,
+
+My intuition is that this is an issue with initial dummy volumes that are discarded or otherwise pulses sent by the MRI that don't correspond with brain volumes collected. 
+
+What is your TR?
+
+Best,
+
+~ Chris
+---
+Christopher R Madan, PhD [he/him] @ University of Nottingham | http://www.cmadan.com, http://engra.me
+Author of "An Introduction to MATLAB for Behavioral Researchers" | http://engra.me/books/matlab/
+and "Academia and the World Beyond: Navigating Life after a PhD" | http://engra.me/books/academiabeyond
+
+On Wed, Dec 6, 2023, 18:05 Nancy Dennis <nad12@psu.edu> wrote:
+Hi helpful listserv
+
+We are having the craziest time with our newest study trying to match our onsets with the hrf.
+We have checked the timing on the task (we, the scanner techs, and physicists at our imaging center) and it is 100% correct. All onsets are accurate. Yet when we run our model and look for basic neural activity vs. rest baseline as we have always done, we do not get a large response in occipital cortex, nor do we get motor activity. Yet, if we move the onset timing back 1.5 seconds the motor activity is large and significant - as is activity in the visual cortex. Activity in this model is exactly as I would expect. For reference, this is a memory task where participants look at pictures and make a button response corresponding to their memory decision (something I have done a dozen times before). We have run the model (with the accurate onset convolved with the default hrf in SPM12) on 2 versions of SPM12 and across 3 pilot subjects. The results are always the same whereby moving the onset back 1.5 second provides the most robust neural activity at baseline and captures motor activity).....it is the same every time.
+Does anyone have any thoughts? Given that I have no doubt about the onsets, I am thinking that for whatever reason the match with the SPM12 hrf is just not working. (Why I dunno)
+
+I am considering adjusting the format/shape of the hrf in SPM to capture our neural activity and was wondering if anyone has done this before and if you have any advice on how to adjust the spm_hrf script (i.e., a more specific understanding of what changing the variables will do)
+
+Thank you in advance. I am at a complete loss.
+-Nancy Dennis
+
+Hi helpful listserv
+
+We are having the craziest time with our newest study trying to match our onsets with the hrf.
+We have checked the timing on the task (we, the scanner techs, and physicists at our imaging center) and it is 100% correct. All onsets are accurate. Yet when we run our model and look for basic neural activity vs. rest baseline as we have always done, we do not get a large response in occipital cortex, nor do we get motor activity. Yet, if we move the onset timing back 1.5 seconds the motor activity is large and significant - as is activity in the visual cortex. Activity in this model is exactly as I would expect. For reference, this is a memory task where participants look at pictures and make a button response corresponding to their memory decision (something I have done a dozen times before). We have run the model (with the accurate onset convolved with the default hrf in SPM12) on 2 versions of SPM12 and across 3 pilot subjects. The results are always the same whereby moving the onset back 1.5 second provides the most robust neural activity at baseline and captures motor activity).....it is the same every time.
+Does anyone have any thoughts? Given that I have no doubt about the onsets, I am thinking that for whatever reason the match with the SPM12 hrf is just not working. (Why I dunno)
+
+I am considering adjusting the format/shape of the hrf in SPM to capture our neural activity and was wondering if anyone has done this before and if you have any advice on how to adjust the spm_hrf script (i.e., a more specific understanding of what changing the variables will do)
+
+Thank you in advance. I am at a complete loss.
+-Nancy Dennis
+

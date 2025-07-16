@@ -1,0 +1,1109 @@
+Dear Jesper,
+
+Sorry for reviving this old topic. I have to process another dataset with the same code, and I encountered a similar problem, to recap the issue:
+
+I have to select the best b0 to use in topup, for this I'm using the pickB0 script and once I have the best B0 for both phase encoding directions I run topup on those with the full set of parameters.
+
+The original best_b0.cnf is the following:
+
+# Resolution (knot-spacing) of warps in mm
+--warpres=20,14
+# Subsampling level (a value of 2 indicates that a 2x2x2 neighbourhood is collapsed to 1 voxel)
+--subsamp=4,2
+# FWHM of gaussian smoothing
+--fwhm=8,4
+# Maximum number of iterations
+--miter=5,5
+# Relative weight of regularisation
+--lambda=0.0005,0.00001
+# If set to 1 lambda is multiplied by the current average squared difference
+--ssqlambda=1
+# Regularisation model
+--regmod=bending_energy
+# If set to 1 movements are estimated along with the field
+--estmov=1
+# 0=Levenberg-Marquardt, 1=Scaled Conjugate Gradient
+--minmet=0,1
+# Quadratic or cubic splines
+--splineorder=3
+# Precision for calculation and storage of Hessian
+--numprec=double
+# Linear or spline interpolation
+--interp=linear
+# If set to 1 the images are individually scaled to a common mean intensity
+--scale=1
+# To ensure that field is written
+--fout=field_test
+# To ensure that "unwarped" images are written
+--iout=iout_test
+
+I had a dataset of 56 slices and some data had 58, to make it work you suggested me to change the two following parameters:
+
+# Subsampling level (a value of 2 indicates that a 2x2x2 neighbourhood is collapsed to 1 voxel)
+
+--subsamp=2,2
+
+# Relative weight of regularisation
+
+--lambda=0.0001,0.00001
+
+Now I have to process a dataset with 63 silces, I had a look to the b02b0_1.cnf and I changed the following parameters to create another best_b0.cnf:
+
+# Subsampling level (a value of 2 indicates that a 2x2x2 neighbourhood is collapsed to 1 voxel)
+
+--subsamp=1,1
+
+# Relative weight of regularisation
+
+--lambda=0.0001,0.00001
+
+Is this correct? Thanks in advance.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+
+Last Call: 
+Multiple fully-funded PhD positions (PhD) are available  at the Center for Molecular and Behavioral Neuroscience (CMBN), Rutgers University. CMBN is located in Newark NJ, a short commute from New York City.  Students in the Behavioral and Neural Sciences Graduate Program perform original research, culminating in a Ph.D. in neuroscience. The program is hosted by the Center for Molecular and Behavioral Neuroscience (CMBN) at Rutgers University in Newark. Research in our program spans every level of brain function - from molecules to behavior to computation - and students have available to them the full gamut of cutting-edge techniques and approaches. All students receive tuition and a generous stipend, regardless of nationality, and additional fellowships are available. Applications are due December 15th every year. 
+
+Cognitive Neuroscience Focus: For those interested in a cognitive neuroscience PhD track, this position offers an excellent opportunity to develop research expertise in Cognitive Neuroscience Methods (EEG, MRI, fMRI, DWI, TMS, TCDS, functional connectivity). Laboratories within CMBN (e.g., Baker neurostimlab, The Cole Neurocognition Lab, Krekelberg Neuroscience Laboratory) houses an Adept Viper s850 robotic arm used for robot-assisted image-guided transcranial magnetic stimulation (Ri-TMS), several systems for recording EEG/ERPs, eyetracking,  virtual and augmented reality, and has the capabilities of recording and analyzing simultaneous EEG-fMRI, and simultaneous EEG-TMS. CMBN benefits from on-site access to Rutgers University Brain Imaging Center (RUBIC), a research-dedicated facility equipped with two 3T fMRI scanners (Siemens TRIO, Prisma) (http://rubic.rutgers.edu). For those with an interest in working with clinical populations, we have superb cooperation with our medical school faculty in neurology, psychiatry, and neurosurgery, as well as collaborations with several medical centers in nearby New York City. 
+Essential information for applicants
+Register and apply here: https://gradstudy.rutgers.edu/apply/apply-now
+
+Select our program: For area of study select Neuroscience. For location select Newark. For program select Behavioral and Neural Sciences (PHD).
+
+Gather required materials: personal statement, three letters of reference, undergraduate transcripts, recent TOEFL if applying from abroad. A recent GRE result can also be submitted, but is optional.
+
+Tell us your research interests: In your personal statement, please tell us your research interests, and identify at least two of our faculty whose work interests you.
+
+Deadline is December 15th or until the positions are filled. Late applications accepted on a case-by-case basis. Review will begin in January, 2024
+
+Contact: Dr. Ravi Mill, BNS program director.
+ 
+
+
+
+Dear FSL Team,
+
+I am trying to run a code using FSL PALM for multiple modalities, joint inference with NPC, but I keep getting the same error message. I have attached an image of both my code and the error message below. The code is meant to be in a loop format to combine multiple modalities one subject at a time (ex. 001, 002). I would like to know if you have any suggestions or resources I can use to fix this issue. Thank you in advance!
+
+Are you passionate about neuropsychology and eager to contribute to a clinical trial focused on individuals at risk for Alzheimer’s disease? JOIN US!
+
+The Gordon Center for Medical Imaging (GCMI) in the Department of Radiology at Massachusetts General Hospital (MGH) and Harvard Medical School (HMS) in Boston, Massachusetts, is hiring a clinical research coordinator to work with Dr. Heidi Jacobs (www.heidijacobs.org). The Jacobs lab is part of the Gordon Center for Medical Imaging at MGH and focused on improving the early detection and early treatment of Alzheimer’s disease. The lab focuses on the neuromodulatory subcortical nuclei, in particular the locus coeruleus, using a variety of approaches, including 7T MRI, PET imaging, pupil measurements, physiological recording, blood-based markers and cognitive assessments.
+
+In this position, you'll play a crucial role in our clinical trial exploring the potential of transcutaneous vagus nerve stimulation on memory. Responsibilities include neuropsychological testing, 7T MR-imaging, physiological and pupil measurements, administering the intervention, conducting phlebotomy, and overall organizational tasks.
+
+More information and application: https://partners.taleo.net/careersection/ghc/jobdetail.ftl?job=3261238&tz=GMT-05%3A00&tzname=America%2FNew_York
+
+For this position we seek someone with a B.A/B.S./MS with background in pre-med, psychology, neuroscience or related field required and with one year of experience in a related field.
+
+ 
+
+ 
+
+Dr. Heidi Jacobs
+
+Associate Professor of Radiology
+
+ 
+
+Massachusetts General Hospital 
+
+Harvard Medical School
+
+Department of Radiology
+
+Gordon Center for Medical Imaging
+
+149 13th Street
+
+Charlestown, MA 02129
+
+hjacobs@mgh.harvard.edu
+
+www.heidijacobs.org
+
+twitter: @HeidiJacobsLab
+
+Linkedin: https://www.linkedin.com/in/heidijacobs/
+
+ 
+
+ 
+
+
+Hi,
+We are trying to fit some data acquired with a Philips Achieva 3T MRI running either R2.3.1 or R3.2.3, so really really old data. The data is just 1 FID, already averaged over coils and transients.
+We understand that spec2nii has likely not been tested on data this old. I re-wrote the SPAR files to make spec2nii happy so it does the conversion. However, when we run mrs_tools vis *svs.nii.gz, we get the error:
+
+file "...nifit_mrs.py" line 417, in copy
+reduced_data = self[:].take(0, axis=dim)
+numpy.AxisError: axis 4 is out of bounds for array of dimension 4
+
+when we run mrs_tools info *svs.nii.gz we get:
+
+NIfTI-MRS version 0.7
+Data shape (1, 1, 1, 1024, 1)
+Dimension tags: ['DIM_DYN', None, None]
+Spectrometer Frequency: 127.798 MHz
+Dwelltime (Bandwidth): 5.000E-04s (2000 Hz)
+Nucleus: 1H
+Field Strength: 3.00T
+
+Do you have any suggestions on how to get fsl_mrs to recognize the right dimensions?
+Thank you so much!
+Erin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello Shengwei,
+   From the Python version ( 3.8 ) it looks like you have quite an old version of FSL installed. I would strongly advise updating to the latest version ( 6.0.7.6 ) before continuing.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 5 Jan 2024, at 08:06, S Z <zswgzx@GMAIL.COM> wrote:
+
+Hello,
+
+I've installed fsl and fsleyes long time ago, and recently noticed that fsleyes didn't work with the following:
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/fslpython/envs/fslpython/bin/fsleyes", line 7, in <module>
+    from fsleyes.filtermain import main
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/__init__.py", line 367, in <module>
+    from fsleyes.main import embed, shutdown  # noqa
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/main.py", line 50, in <module>
+    import fsleyes.cliserver  as cliserver
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/cliserver.py", line 37, in <module>
+    import fsleyes.actions.applycommandline as applycli
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/actions/applycommandline.py", line 28, in <module>
+    import fsleyes.parseargs            as parseargs
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/parseargs.py", line 285, in <module>
+    from . import displaycontext as fsldisplay
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/displaycontext/__init__.py", line 156, in <module>
+    from .sceneopts      import SceneOpts
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/displaycontext/sceneopts.py", line 16, in <module>
+    import fsleyes.gl         as fslgl
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/gl/__init__.py", line 290, in <module>
+    _selectPyOpenGLPlatform()
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/gl/__init__.py", line 283, in _selectPyOpenGLPlatform
+    if wxplat == fwidgets.GTK2:
+AttributeError: module 'fsleyes_widgets' has no attribute 'GTK2'
+
+Is there any clue about what happened and how to make fsleyes work again? It's installed in Ubuntu. Any help would be highly appreciated.
+
+Thanks,
+Shengwei
+
+
+Hi Matthew,
+
+Thanks for your support. I fixed the indices to 0,2,4,6, and put the output in the stats folder, I also changed the name to start with "cope" so that it finds it correctly.
+It seems that the shape of the files are fine, this is one example, though I am unsure how the std_combined_ev_encoding should look like. 
+
+Processing participant /Volumes/PreProc_III/Preprocessed_Data/Task_fMRI_spatial/CSE_287/f_spatial/4D.feat_firstlevel.feat completed.
+
+Shape of std_combined_ev_encoding: ()
+
+Shape of std_combined_ev_decoding: ()
+
+Shape of std_cope_1: (72, 72, 41)
+
+Shape of std_cope_3: (72, 72, 41)
+
+
+However, the output still does not work in the higher level analyses. It now gives the following error:
+
+ /usr/local/fsl/bin/fslmaths mean_func -Tmean mean_func printf '1 ' >> design.lcon printf '1 ' >> design.lcon printf '1 ' >> design.lcon printf '1 ' >> design.lcon Error - not all input FEAT directories have valid and compatible design.con contrast files.
+
+I am confused about that, because if I run the higher level analyses on the other cope images it is working fine. Isn't it supposed to use only the design.con from the higher level analyses?
+
+I attach my code below for clarity. Hoping to get this fixed 🙂
+
+Thanks,
+
+Annelies
+
+import numpy as np
+import nibabel as nib
+import subprocess
+
+# Specify base path for participants
+base_path_list = "Paths_SecondLevel_Spatial.txt"
+
+# Read the list of base paths for participants
+with open(base_path_list, 'r') as f:
+    participant_paths = f.read().splitlines()
+
+# Specify the EVs of interest (1, 3, 5, 7) but they are encoded as 0, 2, 4, 6
+ev_indices = [0, 2, 4, 6]
+
+# Loop through each participant
+for participant_path in participant_paths:
+    # Construct paths to design.mat, design.con, and cope images
+    design_mat_path = f"{participant_path}/design.mat"
+    design_con_path = f"{participant_path}/design.con"
+    cope_image_path_1 = f"{participant_path}/stats/cope1.nii.gz"
+    cope_image_path_3 = f"{participant_path}/stats/cope3.nii.gz"
+
+    # Load the design matrix
+    design_matrix = np.loadtxt(design_mat_path, skiprows=5)  # Skip the header lines
+
+    # Extract columns corresponding to the EVs of interest
+    original_ev_columns = design_matrix[:, ev_indices]
+
+    # Combine EVs for "Encoding Experimental vs Encoding Control" (EV1 - EV3)
+    combined_ev_encoding = original_ev_columns[:, 0] - original_ev_columns[:, 1]
+
+    # Combine EVs for "Decoding Experimental vs Decoding Control" (EV5 - EV7)
+    combined_ev_decoding = original_ev_columns[:, 2] - original_ev_columns[:, 3]
+
+    # Calculate Temporal Standard Deviation (across subjects for each combined EV)
+    std_combined_ev_encoding = np.std(combined_ev_encoding, axis=0)
+    std_combined_ev_decoding = np.std(combined_ev_decoding, axis=0)
+
+    # Print the shapes
+    print("Shape of std_combined_ev_encoding:", std_combined_ev_encoding.shape)
+    print("Shape of std_combined_ev_decoding:", std_combined_ev_decoding.shape)
+
+    # Save the effective EVs as NIfTI files
+    effective_ev_path_encoding = f"{participant_path}/effective_ev_encoding.nii.gz"
+    effective_ev_path_decoding = f"{participant_path}/effective_ev_decoding.nii.gz"
+    nib.save(nib.Nifti1Image(combined_ev_encoding, affine=None), effective_ev_path_encoding)
+    nib.save(nib.Nifti1Image(combined_ev_decoding, affine=None), effective_ev_path_decoding)
+
+    # Load the cope images
+    cope_data_1 = nib.load(cope_image_path_1)
+    cope_data_3 = nib.load(cope_image_path_3)
+
+    # Create std_data by processing data as needed
+    std_data_1 = cope_data_1.get_fdata() * std_combined_ev_encoding
+    std_data_3 = cope_data_3.get_fdata() * std_combined_ev_decoding
+
+    # Create NIfTI images with correct header information
+    std_cope_1 = nib.Nifti1Image(std_data_1, cope_data_1.affine, cope_data_1.header)
+    std_cope_3 = nib.Nifti1Image(std_data_3, cope_data_3.affine, cope_data_3.header)
+
+    # Save the resulting images in the "stats" folder
+    stats_folder = f"{participant_path}/stats/"
+    nib.save(std_cope_1, f"{stats_folder}cope_std_encoding.nii.gz")
+    nib.save(std_cope_3, f"{stats_folder}cope_std_decoding.nii.gz")
+
+    # Print the shapes
+    print("Shape of std_cope_1:", std_data_1.shape)
+    print("Shape of std_cope_3:", std_data_3.shape)
+
+    print(f"Processing participant {participant_path} completed.")
+
+
+Annelies van't Westeinde | Postdoctoral researcher
+Department of Women's and Children's Health | Karolinska Institutet
+171 76 Stockholm | Karolinskavägen 37A
++46 760967499
+annelies.vant.westeinde@ki.se | ki.se
+______________________________________
+Karolinska Institutet – a medical university
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Wednesday, 20 December 2023 17:59
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coefficient of variation
+ 
+Hi Annelies,
+   I think the code below is mostly correct - although if I understand your design correctly then there may be an indexing bug with ev_indices:
+
+# Specify the EVs of interest (1, 3, 5, 7)
+
+ev_indices = [1, 3, 5, 7]
+
+
+might need to be 
+
+# Specify the EVs of interest (1, 3, 5, 7)
+
+ev_indices = [0, 2, 4, 6]
+
+ 
+as numpy/python arrays are zero-indexed, so the first EV has index 0. The script should also make sure the output files have the correct header information ( cloned from the originals ) - e.g. something like
+
+cope1=nib.load("cope_image_path_1")
+data1=cope1.get_fdata()
+#Create std_data1 by processing data1 as needed
+std_cope1 = nib.Nifti1Image(std_data1, cope1.affine, cope1.header)
+nib.save(std_cope1, ’std_cope1.nii’)
+
+I would also try saving/moving the “std_cope_blah.nii.gz” images into the “stats” folder for each participant ( just in case this is causing an issue ) and maybe add a sanity check that the data shape of the outputs is unchanged in the script:
+
+print("Shape of std_cope_1:", cope_data_1.shape)
+print("Shape of std_cope_3:", cope_data_3.shape)
+
+( These are also the correct files to pass up to the higher-level, not the merged file )
+
+Hope this helps,
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 20 Dec 2023, at 15:16, Annelies Vant Westeinde <0000ae4b41bd0bc0-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Matthew,
+ 
+I have done what you suggested and combined the EVs, calculated the std’s on them and then multiplied with the relevant cope images that represented each contrast. I then tried to input those images into the higher level group comparison, but it is not working. It doesn’t seem to recognize them as cope images. What am I missing? Here is the code that I used to make the EVs (I didn’t use the merged image, but the std_cope1.nii.gz and std_cope3.nii.gz that were the outputs. The paths refer to each individual’s first level folders (though the txt is named second level, that’s just because it’s input for the second level)
+ 
+import numpy as np
+import nibabel as nib
+import subprocess
+ 
+# Specify base path for participants
+base_path_list = "Paths_SecondLevel_Spatial.txt"
+ 
+# Read the list of base paths for participants
+with open(base_path_list, 'r') as f:
+    participant_paths = f.read().splitlines()
+ 
+# Specify the EVs of interest (1, 3, 5, 7)
+ev_indices = [1, 3, 5, 7]
+ 
+# Loop through each participant
+for participant_path in participant_paths:
+    # Construct paths to design.mat, design.con, and cope images
+    design_mat_path = f"{participant_path}/design.mat"
+    design_con_path = f"{participant_path}/design.con"
+    cope_image_path_1 = f"{participant_path}/stats/cope1.nii.gz"
+    cope_image_path_3 = f"{participant_path}/stats/cope3.nii.gz"
+ 
+    # Load the design matrix
+    design_matrix = np.loadtxt(design_mat_path, skiprows=5)  # Skip the header lines
+ 
+    # Extract columns corresponding to the EVs of interest
+    original_ev_columns = design_matrix[:, ev_indices]
+ 
+    # Combine EVs for "Encoding Experimental vs Encoding Control" (EV1 - EV3)
+    combined_ev_encoding = original_ev_columns[:, 0] - original_ev_columns[:, 1]
+ 
+    # Combine EVs for "Decoding Experimental vs Decoding Control" (EV5 - EV7)
+    combined_ev_decoding = original_ev_columns[:, 2] - original_ev_columns[:, 3]
+ 
+    # Calculate Temporal Standard Deviation (across subjects for each combined EV)
+    std_combined_ev_encoding = np.std(combined_ev_encoding, axis=0)
+    std_combined_ev_decoding = np.std(combined_ev_decoding, axis=0)
+ 
+    # Print the shapes
+    print("Shape of std_combined_ev_encoding:", std_combined_ev_encoding.shape)
+    print("Shape of std_combined_ev_decoding:", std_combined_ev_decoding.shape)
+ 
+    # Save the effective EVs as NIfTI files
+    effective_ev_path_encoding = f"{participant_path}/effective_ev_encoding.nii.gz"
+    effective_ev_path_decoding = f"{participant_path}/effective_ev_decoding.nii.gz"
+    nib.save(nib.Nifti1Image(combined_ev_encoding, affine=None), effective_ev_path_encoding)
+    nib.save(nib.Nifti1Image(combined_ev_decoding, affine=None), effective_ev_path_decoding)
+ 
+    # Load the cope images
+    cope_data_1 = nib.load(cope_image_path_1).get_fdata()
+    cope_data_3 = nib.load(cope_image_path_3).get_fdata()
+ 
+    # Print the shapes
+    print("Shape of cope_data_1:", cope_data_1.shape)
+    print("Shape of cope_data_3:", cope_data_3.shape)
+ 
+    # Multiply cope images by Temporal Standard Deviations
+    std_cope_data_encoding = cope_data_1 * std_combined_ev_encoding
+    std_cope_data_decoding = cope_data_3 * std_combined_ev_decoding
+ 
+    # Save the resulting images
+    std_cope_path_encoding = f"{participant_path}/std_cope_encoding.nii.gz"
+    std_cope_path_decoding = f"{participant_path}/std_cope_decoding.nii.gz"
+    nib.save(nib.Nifti1Image(std_cope_data_encoding, affine=None), std_cope_path_encoding)
+    nib.save(nib.Nifti1Image(std_cope_data_decoding, affine=None), std_cope_path_decoding)
+ 
+    # Combine resulting images for input to randomise (not sure if this is necessary)
+    merged_path = f"{participant_path}/merged_std_images.nii.gz"
+    subprocess.run(['fslmerge', '-t', merged_path, std_cope_path_encoding, std_cope_path_decoding])
+ 
+    print(f"Processing participant {participant_path} completed.")
+ 
+Thanks so much for your help!
+ 
+Annelies
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Annelies Vant Westeinde <0000ae4b41bd0bc0-dmarc-request@JISCMAIL.AC.UK>
+Date: Monday, 4 December 2023 at 17:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coefficient of variation
+
+Hi,
+ 
+Yes, that helps a lot! I will do that 😊
+ 
+Thanks for all your help!
+ 
+Annelies
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Date: Monday, 4 December 2023 at 17:23
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coefficient of variation
+
+Hi Annelies,
+                   For a general contrast you will need to manually combine the EVs ( in the python script ) to form the effective EV corresponding to each contrast - so assuming a [1 -1] contrast for "Encoding Experimental vs Encoding Control” the effective EV would be EV1-EV3.
+
+Hope this helps
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+
+Hello,
+
+I've installed fsl and fsleyes long time ago, and recently noticed that fsleyes didn't work with the following:
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/fslpython/envs/fslpython/bin/fsleyes", line 7, in <module>
+    from fsleyes.filtermain import main
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/__init__.py", line 367, in <module>
+    from fsleyes.main import embed, shutdown  # noqa
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/main.py", line 50, in <module>
+    import fsleyes.cliserver  as cliserver
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/cliserver.py", line 37, in <module>
+    import fsleyes.actions.applycommandline as applycli
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/actions/applycommandline.py", line 28, in <module>
+    import fsleyes.parseargs            as parseargs
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/parseargs.py", line 285, in <module>
+    from . import displaycontext as fsldisplay
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/displaycontext/__init__.py", line 156, in <module>
+    from .sceneopts      import SceneOpts
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/displaycontext/sceneopts.py", line 16, in <module>
+    import fsleyes.gl         as fslgl
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/gl/__init__.py", line 290, in <module>
+    _selectPyOpenGLPlatform()
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/fsleyes/gl/__init__.py", line 283, in _selectPyOpenGLPlatform
+    if wxplat == fwidgets.GTK2:
+AttributeError: module 'fsleyes_widgets' has no attribute 'GTK2'
+
+Is there any clue about what happened and how to make fsleyes work again? It's installed in Ubuntu. Any help would be highly appreciated.
+
+Thanks,
+Shengwei
+
+
+Hi Aleta,
+
+This is from the BET documentation at  https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/BET/UserGuide
+
+This option runs more "robust" brain centre estimation; it repeatedly calls bet2, each time using the same input image and the same main options, except that the -c option (which sets the starting centre of the brain estimation) is set each time to the centre-of-gravity of the previously estimated brain extraction. The primary purpose is to improve the brain extraction when the input data contains a lot of non-brain matter - most likely when there is a lot of neck included in the input image. By iterating in this way the centre-of-gravity should move up each time towards the true centre, resulting in a better final estimate. The iterations stop when the centre-of-gravity stops moving, up to a maximum of 10 iterations.
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Aleta <deruiter.aleta@GMAIL.COM>
+Sent: 03 January 2024 14:37
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] BET, option -R
+ 
+Dear reader,
+
+I have a brief question about FSL BET, option -R.
+
+In what cases will using this option be beneficial over the standard one?
+
+Regards,
+Aleta
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello FSL experts,
+
+ 
+
+I’m running into an issue while running eddy_cuda on a cluster.
+
+ 
+
+I am using dwifslpreproc from MRtrix to run FSL’s DWI preprocessing using the following command:
+
+ 
+
+dwifslpreproc \
+
+                                    -force \
+
+                                    -eddy_mask $sess_dwi/mean_b0_synthstrip_mask.nii.gz \
+
+                                    dwi_den_unr.mif \
+
+                                    dwi_den_unr_preproc.mif \
+
+                                    -pe_dir j- \
+
+                                    -rpe_none \
+
+                                    -eddy_options " --field=$sess_dwi/fmap_rads2dwi_12dof_applyxfm --slm=linear --data_is_shelled"
+
+ 
+
+This wrapper script creates a directory with the proper structure and naming convention for FSL’s eddy. The script then attempts the following command from within this directory:
+
+ 
+
+eddy_cuda --imain=eddy_in.nii --mask=eddy_mask.nii --acqp=eddy_config.txt --index=eddy_indices.txt --bvecs=bvecs --bvals=bvals --field=/full/path/to/fmap_rads2dwi_12dof_applyxfm --slm=linear --data_is_shelled --out=dwi_post_eddy –verbose
+
+ 
+
+However, eddy_cuda fails without a helpful warning a few seconds into processing. See message below:
+
+ 
+
+Reading images
+
+Performing volume-to-volume registration
+
+Running Register
+
+ 
+
+...................Allocated GPU # 0...................
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 144593
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 141872
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 138765
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 138755
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 138755
+
+Running sm.ApplyB0LocationReference
+
+Running sm.PolateB0MovPar
+
+Running Register
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+ 
+
+�W��g+
+
+F
+
+�5V
+
+�W��g+
+
+�W��g+
+
+��g[1]
+
+EDDY::: Eddy failed with message �W��g+
+
+ 
+
+Notably, dwifslpreproc subsequently runs eddy using eddy_openmp without issue, but far slower (~60% slower at iteration #0). Understandably, I would like to use eddy_cuda to substantially reduce processing time.
+
+ 
+
+Some additional background:
+
+ 
+
+According to cluster IT, the eddy_cuda that comes with FSL 6.0.3 is compiled with CUDA toolkits that are incompatible with our cluster GPUs (which are A100 GPUs that need CUDA toolkit 11.0 or greater).
+
+ 
+
+As such, he has statistically compiled eddy_cuda (ID: 6.0.5:9e026117) against the CUDA 11 libraries, which has worked with other users in the past.
+
+ 
+
+[quser31 ~]$ ldd `which eddy_cuda`
+    linux-vdso.so.1 =>  (0x00007fff6c3ad000)
+    libopenblas.so.0 => /software/fsl/6.0.3/bin/../lib/libopenblas.so.0 (0x00002b517a05e000)
+    libcublas.so.11 => /hpc/software/spack_v17d2/spack/opt/spack/linux-rhel7-x86_64/gcc-10.3.0/cuda-11.2.2-rcdeg4fzkisdlmauxoofqp4islygdvxs/lib64/libcublas.so.11 (0x00002b517c552000)
+    libcudart.so.11.0 => /hpc/software/spack_v17d2/spack/opt/spack/linux-rhel7-x86_64/gcc-10.3.0/cuda-11.2.2-rcdeg4fzkisdlmauxoofqp4islygdvxs/lib64/libcudart.so.11.0 (0x00002b5183515000)
+    libstdc++.so.6 => /hpc/software/spack_v17d2/spack/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-10.3.0-353gcsmwg5tvj5tq5zwv3xwmq5xefubj/lib64/libstdc++.so.6 (0x00002b5179e67000)
+    libm.so.6 => /lib64/libm.so.6 (0x00002b51837cc000)
+    libgcc_s.so.1 => /hpc/software/spack_v17d2/spack/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-10.3.0-353gcsmwg5tvj5tq5zwv3xwmq5xefubj/lib64/libgcc_s.so.1 (0x00002b517a03d000)
+    libc.so.6 => /lib64/libc.so.6 (0x00002b5183ace000)
+    libgfortran.so.3 => /software/fsl/6.0.3/bin/../lib/libgfortran.so.3 (0x00002b5183e9c000)
+    libcublasLt.so.11 => /hpc/software/spack_v17d2/spack/opt/spack/linux-rhel7-x86_64/gcc-10.3.0/cuda-11.2.2-rcdeg4fzkisdlmauxoofqp4islygdvxs/lib64/libcublasLt.so.11 (0x00002b51841be000)
+    libpthread.so.0 => /lib64/libpthread.so.0 (0x00002b518fd9f000)
+    librt.so.1 => /lib64/librt.so.1 (0x00002b518ffbb000)
+    libdl.so.2 => /lib64/libdl.so.2 (0x00002b51901c3000)
+    /lib64/ld-linux-x86-64.so.2 (0x00002b5179e3a000)
+    libquadmath.so.0 => /hpc/software/spack_v17d2/spack/opt/spack/linux-rhel7-x86_64/gcc-4.8.5/gcc-10.3.0-353gcsmwg5tvj5tq5zwv3xwmq5xefubj/lib64/libquadmath.so.0 (0x00002b51903c7000)
+
+ 
+
+Any guidance would be greatly appreciated. Many thanks!
+
+ 
+
+Best,
+
+Bram
+
+ 
+
+Bram R. Diamond, MS
+
+Clinical Psychology Doctoral Candidate
+
+Northwestern University Feinberg School of Medicine
+
+Mesulam Center for Cognitive Neurology & Alzheimer’s Disease
+
+300 E. Superior Street | Tarry 8 | Chicago, IL 60611
+
+www.brain.northwestern.edu
+
+
+
+Dear FSL expert
+
+Hope you are having an awesome New Year!
+
+I have acquired some asymmetric echo fMRI data. In addition, I have also acquired AP (-1 y- direction) and PA (1 y- direction) phase encoding direction Spin Echo data. From these AP and PA direction images. I was able to acquired a off-resonance fieldmap using topup.
+
+topup --imain=PA_AP --datain=Acq_params.txt --config=b02b0.cnf --out=topup_result --fout=fieldmap
+
+However, I am not sure how I can use this fieldmap to correct my fMRI images. Since all the fMRI image I acquired are from AP direction and I do not have the PA direction images. I tried using the -method=jac with the interpolation, but the result is very bad. The distortion are not corrected at all. The fsl command I ran for this is:
+
+applytopup --imain=ASE_1.nii.gz --inindex=2 --method=jac --datain=Acq_params.txt --topup=topup_result --out=hifi_ase_1
+
+ASE_1.nii.gz is the 3D volume at the first time frame, index 2 is the line index of the parameter file corresponding to AP direction. The parameters text file is like:
+0 1 0 0.0346
+0 -1 0 0.0346
+
+
+Could you please have a look and suggest where did I do wrong. Or if the jacobian is not the correct method, what other fsl command I should use to implement the correction of distortion using the topup's fieldmap.
+
+########################################################################
+
+Dear Madeleine,
+The “—nobet” is actually superfluous here as the mask ( -m ) option takes precedence over any bet-ting/thresholding.
+
+Hope this helps,
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Jan 2024, at 17:24, Madeleine Hau <madeleine.hau@UZH.CH> wrote:
+
+Dear Experts,
+
+I have a short question regarding the use of the Melodic command line.
+
+I am attempting to perform group ICA on my resting-state data following the example in the ICA practical (https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/index.html#dim).
+
+I noticed that the command used here included the --nobet option but did not include a --bgthreshold option.
+
+melodic -i input_files.txt -o groupICA15 \
+ --tr=0.72 --nobet -a concat \
+ -m $FSLDIR/data/standard/MNI152_T1_2mm_brain_mask.nii.gz \
+ --report --Oall -d 15
+
+From melodic --help, I got the impression that the --bgthreshold is needed if --nobet is used:
+"--bgthreshold brain / non-brain threshold (only if --nobet selected)"
+
+Is there a special reason why the --bgthreshold is not defined in this example, or is there some kind of automated calculation of the threshold?
+
+Thanks a lot for the clarification!
+
+All the best,
+Madeleine
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear Experts,
+
+I have a short question regarding the use of the Melodic command line.
+
+I am attempting to perform group ICA on my resting-state data following the example in the ICA practical (https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/index.html#dim).
+
+I noticed that the command used here included the --nobet option but did not include a --bgthreshold option.
+
+melodic -i input_files.txt -o groupICA15 \
+  --tr=0.72 --nobet -a concat \
+  -m $FSLDIR/data/standard/MNI152_T1_2mm_brain_mask.nii.gz \
+  --report --Oall -d 15
+
+From melodic --help, I got the impression that the --bgthreshold is needed if --nobet is used:
+"--bgthreshold  brain / non-brain threshold (only if --nobet selected)"
+
+Is there a special reason why the --bgthreshold is not defined in this example, or is there some kind of automated calculation of the threshold?
+
+Thanks a lot for the clarification!
+
+All the best,
+Madeleine
+
+Hi FSL Experts,
+
+I have a quick question about using susan on pre-processed and cleaned resting-state data.
+
+We would like to use susan for smoothing after preprocessing with FEAT and ICA-based cleaning with a pre-trained version of FIX. We use this pre-trained version because our acquisition parameters are very similar to HCP. Our preprocessing in FEAT excluded smoothing, as the HCP rs-data used for the training dataset was preprocessed without smoothing, according to the FIX webpage. After FIX, the cleaned data has been registered to standard space.
+
+Now, I'm wondering if I should use the raw functional data or the preprocessed, cleaned, and registered data to calculate the parameters for susan (in particular, the brightness threshold).
+
+I also want to double-check if there are any adjustments to the usual workflow (as discussed here: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2207&L=FSL&P=R78218&X=3A91C305E10543CF64&Y=madeleine.hau%40uzh.ch#TOP ) needed when applying susan to pre-processed, cleaned, and registered data. My current plan is to directly apply Susan to filtered_func_data_clean in standard space without applying the mask (pre_thr_mask) beforehand, as done by FEAT and suggested in Step 5 of the previously discussed workflow (see link above).
+
+Would you agree with this approach? Is there anything else I might need to consider, or are there any potential "red flags" when applying smoothing at the end of the preprocessing pipeline?
+
+I highly appreciate your time and assistance on this matter. Thank you in advance, and all the best,
+
+Madeleine
+
+########################################################################
+
+Dr Charlotte Rae is looking for 2 postdoctoral researchers to study how a 4 day working week changes mind, brain, and body, at the University of Sussex, Brighton, UK.
+
+Our lab investigates how our working lives interact with wellbeing, using occupational psychology, lifestyle and mental health assessments, and MRI brain scanning. More information about the lab can be found at: https://www.sussex.ac.uk/psychology/abc-lab, and on our Sussex 4 day week project website: www.sussex4dayweek.co.uk.
+
+There are 2 postdoc positions available to start from April 2024, both initially for 3 years. One postdoc role is focused on analysing functional Magnetic Resonance Imaging (fMRI) data, including integrating fMRI with lifestyle and wellbeing variables: https://jobs.sussex.ac.uk/job/771a64ef-f387-4e71-a80a-534f509b4912
+
+The second postdoc role is focused on analysing mental health, lifestyle (e.g. sleep), and occupational psychology data, as well as inflammatory cytokines from blood samples:
+https://jobs.sussex.ac.uk/job/addc07ab-32f5-4bbc-a768-7bfb6b0db55e
+
+As well as utilising data from trials of the 4 day working week, the research will use data from the UK Biobank to investigate how time spent at work influences brain function, mental health, and physical health. The research is part of a £1.6m Future Leaders Fellowship project led by Dr Charlotte Rae and funded by UKRI.
+
+Informal enquiries are most welcome: please contact Dr Charlotte Rae (c.rae@sussex.ac.uk).
+
+Closing date: 9 February
+
+########################################################################
+
+
+Dear reader,
+
+I have a brief question about FSL BET, option -R.
+
+In what cases will using this option be beneficial over the standard one?
+
+Regards,
+Aleta
+
+########################################################################
+
+Hi Rob,
+The Resident Set Size ( RSS ) or similar fields may be more useful in optimising cluster performance, as we’ve noticed locally some programs ( e.g. electron apps ) can have _very_ high VIRT values, but very low RSS values.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Jan 2024, at 11:43, Jesper Andersson <jesper.andersson@ndcn.ox.ac.uk> wrote:
+
+Dear Rob,
+ 
+A colleague is trying to optimize our slurm usage and noticed that eddy_cuda’s peak virtual memory has a very bimodal distribution. Most jobs take around 10GB and there is an unsurprising tail out to ~40 GB. But then there is a very narrow spike of ~20% of the jobs taking ~210 GB. I have not been able to find the trigger – it does NOT appear to be related to the number of directions or shells, a particular server, or other loads on the server.
+
+ 
+
+I used top to watch eddy_cuda (6.0.6.4, CUDA 10.2)  –repol –data_is_shelled working on a vanilla single shell DTI (1 b0, 30 directions) from a Siemens Verio, and all seemed well until about a minute before the end, where VIRT went to 200GB. The resulting main output file was only 73MB. I doubt it was actually using 200GB – it seems like that amount of I/O would have taken a noticeable amount of time.
+
+ 
+
+Meanwhile other scans with multiple shells and finer voxels can either sail through without doing this, or trigger the allocation.
+
+ 
+
+Does anybody have any insight, either on how to prevent eddy_cuda from doing this, or whether this a slurm setting that is worth managing?
+
+ 
+I don't where this is coming from, and I haven't actually seen it myself (which might just be because I haven't looked for it). I could try to reproduce the behaviour, and potentially find where it is coming from. But my question is if this is a serious problem or not. I.e. is it something that prevents you from processing some data sets?
+ 
+Best regards Jesper
+ 
+
+
+Dear Rob,
+
+ 
+
+A colleague is trying to optimize our slurm usage and noticed that eddy_cuda’s peak virtual memory has a very bimodal distribution. Most jobs take around 10GB and there is an unsurprising tail out to ~40 GB. But then there is a very narrow spike of ~20% of the jobs taking ~210 GB. I have not been able to find the trigger – it does NOT appear to be related to the number of directions or shells, a particular server, or other loads on the server.
+
+ 
+
+I used top to watch eddy_cuda (6.0.6.4, CUDA 10.2)  –repol –data_is_shelled working on a vanilla single shell DTI (1 b0, 30 directions) from a Siemens Verio, and all seemed well until about a minute before the end, where VIRT went to 200GB. The resulting main output file was only 73MB. I doubt it was actually using 200GB – it seems like that amount of I/O would have taken a noticeable amount of time.
+
+ 
+
+Meanwhile other scans with multiple shells and finer voxels can either sail through without doing this, or trigger the allocation.
+
+ 
+
+Does anybody have any insight, either on how to prevent eddy_cuda from doing this, or whether this a slurm setting that is worth managing?
+
+ 
+
+I don't where this is coming from, and I haven't actually seen it myself (which might just be because I haven't looked for it). I could try to reproduce the behaviour, and potentially find where it is coming from. But my question is if this is a serious problem or not. I.e. is it something that prevents you from processing some data sets?
+
+ 
+
+Best regards Jesper
+
+ 
+
+
+
+Hi all,
+
+RESPECT 4 Neurodevelopment is an EPSRC/ MRC funded UKRI-Network Plus; which aims to make transformative changes in developing child-specific neurotechnologies for the clinic and home. One of the missions of the network is to understand issues around Reliability in EEG, fNIRS and MRI in Neurodevelopment. 
+
+🔬🧠👶 We need your support in writing a White Paper that discusses the reliability of neurotech by completing a 10 min questionnaire about what reliability means to you and the procedures you follow in your lab or company to assess reliability. Please find the questionnaire in the link below and complete it before 15th of January 2024.
+
+https://forms.gle/y9oxZ7RS5t6JYpK37
+
+Many thanks from the EPSRC/MRC Neurodevelopmental Network Reliability Group.
+
+
+
+Dr Jonathan O’Muircheartaigh MSc PhD
+Reader in Developmental Neuroimaging
+ 
+Forensic & Neurodevelopmental Sciences, IoPPN
+Perinatal Imaging and Health, St. Thomas’ Hospital
+MRC Centre for Neurodevelopmental Disorders
+King’s College London
+
+Dear all,
+
+ 
+
+The human intracranial EEG Laboratory at The Feinstein Institutes for Medical Research – Hofstra Northwell School of Medicine in New York is looking for a research assistant with a start date as soon as possible. The successful candidate will help with the lab’s research into (1) improving the identification of functional and pathological brain regions in individuals suffering from epilepsy, (2) the neural mechanisms of cognition, and (3) characterization of macro-scale human brain networks. The lab works exclusively with patients being evaluated for epilepsy surgery using methods such as invasive stereo EEG and electrocorticography recordings (iEEG, ECoG), anatomical MRI, fMRI, DTI, and direct electrical brain stimulation.
+
+ 
+
+The responsibilities will include assisting with the collection and analysis of the aforementioned data, project management, assistance with grant applications and progress reports, help with analysis of neural and imaging data using existing scripts (Matlab, Python), further development of those scripts (depending on coding and signal processing proficiency), and helping to present lab findings at conferences and in journals. The relative weighting of responsibilities can be adjusted depending on the interest of the applicant.
+
+ 
+
+If there is interest, the RA will have a scientific project with dedicated time to work on. Past research assistants have presented their work at clinical and basic research conferences, co-authored publications, and are working on first-author publications. They have gone on to medical schools or PhD programs after spending 1-3 years in the lab.
+
+This unique position will expose the successful applicant to basic and clinical neuroscience as well as neurosurgery, neurology, and neuropsychology. The location of the institute allows living either in the suburban neighborhoods of Long Island or in vibrant Brooklyn or Queens. Some employees also commute from Manhattan. It is a great opportunity for recent post-bacs interested in medical school or graduate school in neuroscience/biomedical engineering.
+
+ 
+
+------------- Qualifications -------------
+
+Minimum:
+
+- B.A./B.S./B.E. in an appropriate discipline (e.g., neuroscience, psychology, biomedical engineering, computer science, physics)
+
+- 2-year commitment
+
+- Experience with at least one programming language (MATLAB, R, or Python)
+
+Desirable:
+
+- Prior experience working with neuroimaging, EEG/MEG, or brain stimulation data
+
+- Previous experience working with patients
+
+- Previous work in a research laboratory that shows evidence of independent scholarship, problem solving, and motivation
+
+ 
+
+For more information about the position please send your CV along with your questions to Dr. Stephan Bickel (sbickel@northwell.edu). Looking forward to hearing from you!
+
+ 
+
+The information contained in this electronic e-mail transmission and any attachments are intended only for the use of the individual or entity to whom or to which it is addressed, and may contain information that is privileged, confidential and exempt from disclosure under applicable law. If the reader of this communication is not the intended recipient, or the employee or agent responsible for delivering this communication to the intended recipient, you are hereby notified that any dissemination, distribution, copying or disclosure of this communication and any attachment is strictly prohibited. If you have received this transmission in error, please notify the sender immediately by telephone and electronic mail, and delete the original communication and any attachment from any computer, server or other electronic recording or storage device or medium. Receipt by anyone other than the intended recipient is not a waiver of any attorney-client, physician-patient or other privilege.
+
+
+Dear Charlotte,
+
+ 
+
+I am researching on your logic for motion correction in fsl eddy. I was trying to read essays called A global optimisation method for robust affine registration of brain images which you used on flirt to hope to get some reference. But I did notice some difference between eddy, at least from the part you suggested me earlier on the para_update function inside of eddy_Utils, in which you used derivatives for raw_general_transform. I have never been into the neuroscience area so I don't know if I understand your essay correctly and wether your method in motion correction, specificly for affine transformation is the same for flirt and eddy. 
+
+ 
+
+No, they use very different methods for finding the motion parameters. FLIRT precedes eddy by quite a few years, and was written by someone else (FLIRT was written by Mark Jenkinson and eddy was written by me). I don't think you would be much helped in understanding eddy by reading the FLIRT paper.
+
+ 
+
+Also, I wonder if you could help me and give me some advice on how I should understand the code flow and some recommendations on any external resources like articles by you to understand the code logic. Thanks so much!
+
+ 
+
+I think that the best resource for understanding the basics of eddy is the original paper, which you can find here (https://pubmed.ncbi.nlm.nih.gov/26481672/). The "Theory" section and figures 1 and 2 should give you the basic idea. But it is also the case that eddy has moved on quite a bit, with more and more functionality added to it, which will inevitably have made the code more complicated. And therefore potentially it is a little harder to understand the logic of the code.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+ 
+
+Best regards,
+
+Charlotte
+
+ 
+
+Thank you for your help!
+
+Best wishes,
+Mairi
+
+########################################################################
+
+Hi Chloe,
+
+It looks like you are being affected by an outstanding issue with mamba, the tool we use to manage FSL. Can you try re-running the installer with the --conda option, e.g.:
+
+python fslinstaller.py --conda
+
+Note that this will cause the installation to take quite a bit longer (possibly up to an hour, or even more) as conda is much slower than mamba.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of fucong666 <fucong666@YEAH.NET>
+Sent: 02 January 2024 03:59
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Error FSL installation on MAC Sonoma 14.1.1
+ 
+Hi Paul，
+
+The log file has uploaded. Thanks for your help.
+
+Chloe
+
+	
+fucong666
+fucong666@yeah.net
+
+---- Replied Message ----
+From	Paul McCarthy<paul.mccarthy@NDCN.OX.AC.UK>
+Date	01/2/2024 11:29
+To	<FSL@JISCMAIL.AC.UK>
+Subject	Re: [FSL] Error FSL installation on MAC Sonoma 14.1.1
+Hi,
+
+Can you send the log file that is mentioned in the error message?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of fucong666 <fucong666@YEAH.NET>
+Sent: 29 December 2023 03:14
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Error FSL installation on MAC Sonoma 14.1.1
+ 
+I tried installing FSL in my Mac, but ERROR occurred during installation! 
+This command returned an error: /Applications/work/fsl/bin/mamba env update -n base -f /private/var/folders/lc/d4zbg93s48v75rtkhk4jw2940000gn/T/tmp_y4lydz4/fsl-6.0.7.6_macos-64.yml
+Kindly help me in this regard. 
+
+	
+fucong666
+fucong666@yeah.net
+
+
+
+
+Hi Romain,
+
+The surface file loads for me, but the surface is not displayed correctly - you are correct in that the winding order is used to determine front vs back (inner / outer) faces, and most visualisation software will only display one or the other. I'm not sure why it is not loading at all for you - perhaps you could share the error messages that were printed in your terminal.
+
+FSLeyes supports either clockwise or counter-clockwise winding order, but surface files must be internally consistent - i.e. all triangles must have the same winding order.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 26 December 2023 20:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] surface in fsleyes
+
+Hi,
+
+This should now be resolved - you should be able to update your copy of fsl_prepare_fieldmap by running this command:
+
+update_fsl_package fsl-fugue
+
+Paul
+
+Hi,
+
+Yes, you should be able to use a command such as
+
+flirt -applyisoxfm 3 -init $FSLDIR/etc/flirtsch/ident.mat -in mask.nii.gz -out mask_3mm.nii.gz -ref mask.nii.gz
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of A A N <phoeinix93@GMAIL.COM>
+Sent: 27 December 2023 11:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] resampling
+

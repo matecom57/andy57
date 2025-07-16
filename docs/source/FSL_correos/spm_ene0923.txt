@@ -1,0 +1,208 @@
+We are looking for a postdoc working on fMRI and rsfMRI data analysis. This position is supported by NIH grants for many years. We are particularly interested in fMRI and rsfMRI based classification/clustering.  Ideal candidates should have data processing experience in rsfMRI and/or ASL perfusion MRI. Experience of longitudinal analysis is favored but not required. The candidate will have chance to work with many other lab mates in several different research frontiers. Salary will depend on the CV and experience.  Note that we do consider the potential visa issue if the candidate is from a sensitive region. The previous candidate dropped as he didn’t get a visa after 6 months.
+ 
+Interested candidates should send CV, personal statement (including research statement), and contact information for three referees to Dr. Ze Wang: ze.wang@som.umaryland.edu.
+ 
+
+
+Dear All,
+
+Follow this link for descriptions of PhD Studentships at the University of East Anglia - deadline for application 22nd February 2023:
+
+https://www.uea.ac.uk/web/research/research-with-us/postgraduate-research/latest-phds-and-research-studentships
+
+Please address queries to the relevant supervisor.
+
+All the best,
+
+Will Penny,
+School of Psychology,
+UEA.
+
+
+Dear colleagues
+
+We hope that our email finds you well. We are writing to you as you are
+involved in running excellent MSc/MA courses and we hope that you can
+inform your current MSc/MA students about twelve new PhD studentships
+that may interest them.
+
+
+We represent a new Marie Curie Doctoral Network that brings together
+political science and communication, psychology and neuroscience to
+study the development of the political self in adolescence.
+'Interdisciplinary Perspectives on the Politics of Adolescence and
+Democracy' (IP-PAD, https://www.ippad.eu/ ) is a partnership between the
+University of Amsterdam (Netherlands), University of Vienna (Austria),
+Panteion University of Social and Political Sciences (Greece), 
+Jagiellonian University (Poland) and Royal Holloway, University of
+London (UK).
+
+
+
+We have 12 PhD studentships across these five countries available to
+begin between September and October 2023. We just opened now the call
+for applications.
+
+
+As we are an interdisciplinary network, we are looking for MSc/MA
+students in the fields of Psychology, Political Science, Communication
+Science, Neuroscience, Sociology and related disciplines with an
+interest in Political Psychology, Cognitive Science, Survey Methodology,
+Experimental Psychology, Social Psychology, Cognitive or Developmental
+Psychology and Neuroscience.
+
+
+
+Interested applicants can find more information here :
+https://www.ippad.eu/phd where we describe who we are, what we are
+looking for, what we offer and how to apply!
+
+
+
+We would be grateful if you could inform your students of these
+opportunities.
+
+
+
+Thank you for your attention,
+
+IP-PAD consortium
+
+Dear Carole
+If you want to compare the effect of two conditions on a particular connection, the ideal approach would be to have a parameter (i.e., modulatory input) in your DCM corresponding to the *difference* between the two conditions. DCM will give you the probability that the connection is non-zero at the individual level, or at the group level if you're using PEB. This would mean going back to the definition of the (first level) DCMs.
+
+An alternative approach would be to keep your current models, and compare the estimated effect of condition 1 against the estimated effect of condition 2. In statistical language, you would be computing the probability of a difference between the marginal posterior probability densities of the two conditions (sometimes referred to as a Bayesian contrast). There is a function for conducting this at the group level called spm_dcm_peb_con.
+
+However, my suggested solution would be option 1 - I'd be happy to further discuss how to set that up, if you're able to provide more detail on your experimental design (i.e., were there baseline conditions as well as the 3 types of stimulation? What are the driving inputs into your DCMs?).
+
+Best
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Carole Guedj
+Sent: 03 November 2022 13:11
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] DCM and Estimated posterior parameters
+
+⚠ Caution: External sender
+
+
+Dear SPM expert's,
+
+I ran a DCM analysis. I got a wining model for my B-matrix (using BMC) where tested the modulatory effects of 3 type of stimulation. I also defined a A-matrix considered as the baseline (using BMR).
+
+If for example I got such result in my B-matrix for the posterior parameters values:
+stimulus 1:  ROI1  -> ROI2 (+0.23 Hz)
+stimulus 2:  ROI1  -> ROI2 (+0.05 Hz)
+Can I said that the input from ROI1 to ROI2 is stronger in the condition with stimulus 1 (statistically)?
+
+And can I also compare the the posterior parameters values from matrix-B to the one of matrix-A?
+
+Many thanks in advance for any responses,
+
+Best,
+
+Carole
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for two NIH-funded postdoctoral fellowship positions in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+ 
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellows will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu). 
+ 
+Postdoctoral fellowship #1 - Reward Processing in frontotemporal dementia and mood disorders
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+Postdoctoral fellowship #2 - Diagnostic and prognostic certainty in frontotemporal dementia
+The postdoctoral fellow will work on our lab's study investigating factors that influence clinical diagnostic certainty and clinicopathological prediction in neurodegenerative disease, with a particular focus on frontotemporal dementia. Our research employs multivariate classification algorithms to identify clinical, neuropsychological, neuroimaging, serum marker, genetic, and gene expression differences that permit improved predictive certainty from early in the disease course.
+
+
+
+
+Noah Cryns | Assistant Clinical Research Coordinator
+Memory and Aging Center
+University of California – San Francisco
+
+Phone: (415) 514-7580
+https://perrylab.ucsf.edu/
+https://decisionlab.ucsf.edu/
+
+ 
+
+_______________________________________
+ 
+weill.ucsf.edu | neurology.ucsf.edu | ucsfhealth.org
+
+
+Dear SPM experts,
+I have two groups of subjects and have extracted their source activity of each ROI. My data is resting state.   In the example in Chapter 47 'DCM for Cross Spectral Densities: Anaesthesia Depth in Rodent Data' of the manual, the data structure is 2 × 30000 × 4, where 2 is the number of sources, 30000 is the time, and 4 represents the number of experimental conditions. In my case have no experimental conditions and therefore do not have the third dimension.   How should I organize my mat data so as to input SPM to fit a DCM model for each subject.
+Yours,
+Yanxi
+
+Dear Vladimir,
+Like Gian Marco Duma, I have two groups of subjects and have extracted their source activity of each ROI.  My data are also resting state data.  However, I still do not know how I should organize my mat data so as to input spm to fit a DCM model for each subject.  In the example of Chapter 47 in the manual 'DCM for Cross Spectral Densities: Anaesthesia Depth in Rodent Data', there is a trial dimension, but my data is resting and therefore do not have this dimension.  How should I deal with this problem?
+Looking forward to your reply.
+Yours,
+Yanxi
+
+Hi there
+Thanks for reporting this. We generally test DCM for fMRI using a dataset that has a non-integer TR, so I think the problem might lay elsewhere. Would you be able to send me an example subject's DCM to look at? (Zipped, as I can't received .mat files).
+
+Many thanks
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Anonymous
+Sent: 02 December 2022 16:54
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Interscan Interval in DCM Analysis
+
+⚠ Caution: External sender
+
+
+Hello, I am trying to follow the manual for DCM analysis. I am using resting state data with 0.8 TR. However, it gives an expecting an integer error at line 67 in spm_csd2ccf.m when I run DCM/estimate (cross-spectra). Here is what I think is the problem: in the specification step VOI timings were taken as 0.4 (half of the TR) and I can't change it (I tried giving 1 1 1 1  instead) and during the estimation since 0.4 is not an integer it gives an error. All examples were given on TR of 2. How can I use my correct TR value?
+
+The Department of Cognitive Psychology, located at Universität Hamburg, is inviting students of exceptional talent to apply for a 3 years PhD position (E13, 75%) at the intersection of Psychology and Cognitive Neuroscience. The starting date is negotiable, as from March 2023.
+
+We offer:       
+- a strong and highly visible international research environment, including excellent access to cutting-edge research facilities
+- exceptional support, mentoring and career development
+- access to an interdisciplinary and structured research training group (emotionalmemory.de)
+
+The successful candidate will work on an exciting project directed at understanding the neural and cognitive processes that underlie stress effects on memory.
+
+For more details on our research, please see:
+https://www.psy.uni-hamburg.de/en/arbeitsbereiche/kognitionspsychologie.html
+
+We are inviting highly qualified students holding a MSc. or equivalent in Psychology, Medicine, Neuroscience, Biology or a related discipline who share our enthusiasm for interdisciplinary research. We expect excellent methodological skills and statistical knowledge as well as the openness to learn new techniques and coding skills (e.g. MATLAB, Phython, R).
+
+To apply, please send your CV, a letter of motivation, contact details of two references as well as copies of all relevant certificates – by January 25th, 2023 – via the application platform of the University of Hamburg:
+
+https://www.uni-hamburg.de/stellenangebote/ausschreibung.html?jobID=0455fd04e8c3e999613f8539fabc6db703e741e2
+
+(Please use the “apply” button at the bottom of the application page)
+
+PhD position, University of Birmingham: Identifying the Role of Conscious Perception, a Neuroimaging and Computational Investigation
+ 
+Howard Bowman and Damian Cruse, School of Psychology, University of Birmingham are seeking applications for this PhD project, which is competition-funded under the Midlands Integrative Biosciences Training Partnership (supported by the UK Biotechnology and Biological Sciences Research Council). The deadline for applications is Friday, January 20, 2023; a percentage of the available scholarships can be allocated to non-UK students. Informal enquires can be made to H.Bowman@kent.ac.uk.
+ 
+The question of what conscious perception is for remains a key issue for science.  In fact, a substantial part of the scientific study of consciousness has focused on showing how sophisticated subconscious processing can be, seemingly leaving little room for a “special” purpose for conscious experience.
+ 
+We have recently presented evidence that the subconscious brain is limited in its capacity to represent episodic information (Avilés, Bowman & Wyble, 2020; Bowman & Avilés, In Press; Bowman et al, 2014).  We now have extensive behavioural evidence for this hypothesis. We are thus at a perfect stage to 1) characterise the neural correlates (with fMRI, MEG or EEG) that support this formation of episodic memories, and 2) explain these findings with the Simultaneous Type/ Serial Token (STST) model (Bowman & Wyble, 2007), a neural network model of temporal attention. We are proposing a PhD to work on one or both of these topics.
+ 
+More details can be found at,
+https://warwick.ac.uk/fac/cross_fac/mibtp/pgstudy/phd_opportunities/neurosciencebehaviour2023/neuroimagingand
+https://warwick.ac.uk/fac/cross_fac/mibtp/
+ 
+ 
+--------------------------------------------
+Professor Howard Bowman (PhD)
+Professor of Cognition & Logic in Computing at Uni Kent, and
+Professor of Cognitive Neuroscience in Psychology at Uni Birmingham
+(honorary at Wellcome Centre for Human Neuroimaging, University College London)
+ 
+Centre for Cognitive Neuroscience and Cognitive Systems and the School of Computing, University of Kent at Canterbury, Canterbury, Kent, CT2 7NF, UK
+email: H.Bowman@kent.ac.uk
+WWW: http://www.cs.kent.ac.uk/people/staff/hb5/
+ 
+School of Psychology, University of Birmingham, Edgbaston, Birmingham B15 2TT, UK
+ 
+
+

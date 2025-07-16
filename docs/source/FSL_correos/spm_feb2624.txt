@@ -1,0 +1,232 @@
+hi,
+
+i am trying to use spm12 shoot create a group templete from a longitudinal dataset of t1 images (2 scan timepoints) which have already been brain extracted. the steps are:
+
+1. i run segment on all the images, i have kept the output tissue classes as native resolution, i.e. 230 x 230 x 240, 1 mm isotropic voxels. all the output image should be teh same resolution.
+
+2. i then run shoot create templete by putting the timepoint 1 and timepoint 2 scans c1 images in channel 1, c2 images in channel 2 and c3 image sin channel 3. i received the following error?
+
+Unable to perform assignment because the size of the left side is 230-by-230-by-240 and the size of the right side is 256-by-256-by-142.
+In file "/home/yizhou/Documents/spm12/toolbox/Shoot/spm_shoot_template.m" (v7718), function "spm_shoot_template" at line 121.
+
+is this because of the resolution of my output segment tissue classes? should i have kept it as 1.5 mm x 1.5 mm x 1.5 mm?
+
+thanks
+
+yizhou
+
+Hi Christian,
+
+Just wanted to thank you for the very fast response and binary. I confirmed it works.
+
+I did want to point out, because I didn't see it mentioned on any forum, that CAT12's format is ideal for certain other programs than Freesurfer, such as BrainStat or loading in via the Python nilearn package, as the values array for the measurement of interest (i.e. thickness) is directly accessible.
+
+Again, much appreciated!
+Maurice
+
+I have processed T1w volumes using the Segment Longitudinal pipeline followed by "Resample and Smooth Surface Data" to the Freesurfer 164k mesh. The resampled output, however, is not compatible with the kinds of analysis I wish to conduct (linear mixed effects; i.e. AFNI's 3dLMEr), as it consists of relatively small .gii files paired with larger .dat files.
+
+I understand that these .dat files are an internal CAT12 optimization for its own GLM approach.
+
+Can someone kindly advise on how I can convert the output of CAT12's surface files into a format that Freesurfer or AFNI can use (i.e. mgh or complete GIfTI).
+
+I have tried to use the cat_io_FreeSurfer script on the [FWHM].mesh.thickness.resampled.[sub].gii files, with the following error when using the gii2fs argument:
+
+```
+Error using  '  (line 9)
+file_array objects can not be transposed.
+
+Error in cat_io_FreeSurfer>write_surf (line 370)
+  vert = reshape(vert',size(vert,1)*size(vert,2),1);
+
+Error in cat_io_FreeSurfer>gii2fs (line 219)
+      write_surf(char(surfname{si}), CS.vertices , CS.faces);
+
+Error in cat_io_FreeSurfer (line 68)
+        gii2fs(varargin{1})
+```
+
+I have also attempted to use the command on the native-space GIfTi images with that same argument, with no luck (it appears to look for an XML file that obviously won't be present in the surf directory by CAT12 convention):
+
+```
+Warning: [GIFTI] Parsing of XML file /media/mpasternak/ADATA-1TB/TMEM_Project/derivatives/spm/longitudinal/subjects/sub-C9ORF001/ses-01/surf/lh.thickness.rsub-C9ORF001_ses-01_T1w.gii failed.
+> In read_gifti_file (line 17)
+In gifti (line 108)
+In cat_io_FreeSurfer>gii2fs (line 211)
+In cat_io_FreeSurfer (line 68)
+Error using xmltree (line 47)
+[XMLTree] Cannot open /media/mpasternak/ADATA-1TB/TMEM_Project/derivatives/spm/longitudinal/subjects/sub-C9ORF001/ses-01/surf/lh.thickness.rsub-C9ORF001_ses-01_T1w.gii
+
+Error in xmltree (line 47)
+                    error(['[XMLTree] Cannot open ' varargin{1}]);
+
+Error in read_gifti_file (line 15)
+    t = xmltree(filename);
+
+Error in gifti (line 108)
+                this = read_gifti_file(varargin{1},giftistruct);
+
+Error in cat_io_FreeSurfer>gii2fs (line 211)
+    CS = gifti(job.data{si});
+
+Error in cat_io_FreeSurfer (line 68)
+        gii2fs(varargin{1})
+```
+
+
+Thank you,
+Maurice
+
+Hi everyone
+
+Instats is pleased to present a 1-day seminar on Cluster Analysis in R: From Theory to Practice, running March 7, by professor Bert Weijterss from the University of Ghent. This workshop offers a comprehensive understanding of the theory and practice of cluster analysis, a crucial tool in academic research for identifying patterns within datasets, including with large numbers of cases and/or variables. This hands-on workshop covers topics from a very brief introduction to RStudio and cluster analysis, to mastering different clustering techniques, and provides practical exercises on simulated and real-world datasets, offering valuable skills applicable in your ongoing research.
+
+Please feel free to tell your colleagues and friends, and register today to secure your spot in this workshop on Cluster Analysis in R: From Theory to Practice.
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+hi,
+
+i am trying to use spm12 shoot create a group templete from a longitudinal dataset of t1 images (2 scan timepoints) which have already been brain extracted. the steps are:
+
+1. i run segment on all the images, i have kept the output tissue classes as native resolution, i.e. 230 x 230 x 240, 1 mm isotropic voxels. all the output image should be teh same resolution.
+
+2. i then run shoot create templete by putting the timepoint 1 and timepoint 2 scans c1 images in channel 1, c2 images in channel 2 and c3 image sin channel 3. i received the following error?
+
+Unable to perform assignment because the size of the left side is 230-by-230-by-240 and the size of the right side is 256-by-256-by-142.
+In file "/home/yizhou/Documents/spm12/toolbox/Shoot/spm_shoot_template.m" (v7718), function "spm_shoot_template" at line 121.
+
+is this because of the resolution of my output segment tissue classes? should i have kept it as 1.5 mm x 1.5 mm x 1.5 mm?
+
+thanks
+
+yizhou
+
+Hello experts!
+I was trying to understand an oddity I observed with high-pass filtering in spm. 
+
+Basically, I constructed a signal = y1+ a*y2; 
+y1 = sinusoid whose freq > hpf_cutoff, ie. it shouldn't be filtered out
+y2 = sinusoid whose freq < hpf_cutoff, ie. it should be filtered out. 
+
+The issue I'm having is that the filter gives different results based on "a" above (MATLAB code @ end of this email). Thinking from a brick wall** -type filtering POV, this shouldn't happen... the result of filtering "signal" above should be y1 everytime, independent of "a".  
+
+1.  Reading the documentation, I realized that SPM implements high-pass filtering using DCT.... why do we prefer filtering fMRI data with a DCT filter, since as the above case shows, a brick wall filter seems to be more accurate? 
+2. Thinking of y2 as "noise", it's almost as if the output is dependent on the scale of noise (captured by the scaling factor "a" above). Is this the right way to think about it/ Am I missing something here?
+
+Thank you!
+Mayank
+
+
+**By brick wall, I mean doing an fft, and nulling all frequencies above hpf_cutoff, followed by an inverse fft. 
+
+
+Dear Maurice,
+
+The surfaces saved in native space before resampling (i.e. lh.central.name.gii) can be viewed with Freeview. However, the resampled surfaces are saved in a gifti format which is not supported by Freeview and uses an additional data file. The advantage of using this format is that the surfaces are not saved in the SPM.mat file for statistical analysis, which would otherwise result in a huge SPM.mat file. Also, the resampled surface contains the thickness texture and I am not sure if this is correctly recognised by Freeview.
+
+This file (after unzipping) allows you to convert from this dat/gii format to the pure gii format under Linux:
+https://github.com/ChristianGaser/cat12/files/14397198/CAT_SurfConvert.zip
+
+However, I would recommend to view the native surface file before resampling...
+
+
+Best,
+
+Christian
+
+On Sat, 24 Feb 2024 17:33:51 +0000, Maurice Pasternak <maurice.pasternak@UTORONTO.CA> wrote:
+
+>I have processed T1w volumes using the Segment Longitudinal pipeline followed by "Resample and Smooth Surface Data" to the Freesurfer 164k mesh. The resampled output, however, is not compatible with the kinds of analysis I wish to conduct (linear mixed effects; i.e. AFNI's 3dLMEr), as it consists of relatively small .gii files paired with larger .dat files.
+>
+>I understand that these .dat files are an internal CAT12 optimization for its own GLM approach.
+>
+>Can someone kindly advise on how I can convert the output of CAT12's surface files into a format that Freesurfer or AFNI can use (i.e. mgh or complete GIfTI).
+>
+>I have tried to use the cat_io_FreeSurfer script on the [FWHM].mesh.thickness.resampled.[sub].gii files, with the following error when using the gii2fs argument:
+>
+>```
+>Error using  '  (line 9)
+>file_array objects can not be transposed.
+>
+>Error in cat_io_FreeSurfer>write_surf (line 370)
+>  vert = reshape(vert',size(vert,1)*size(vert,2),1);
+>
+>Error in cat_io_FreeSurfer>gii2fs (line 219)
+>      write_surf(char(surfname{si}), CS.vertices , CS.faces);
+>
+>Error in cat_io_FreeSurfer (line 68)
+>        gii2fs(varargin{1})
+>```
+>
+>I have also attempted to use the command on the native-space GIfTi images with that same argument, with no luck (it appears to look for an XML file that obviously won't be present in the surf directory by CAT12 convention):
+>
+>```
+>Warning: [GIFTI] Parsing of XML file /media/mpasternak/ADATA-1TB/TMEM_Project/derivatives/spm/longitudinal/subjects/sub-C9ORF001/ses-01/surf/lh.thickness.rsub-C9ORF001_ses-01_T1w.gii failed.
+>> In read_gifti_file (line 17)
+>In gifti (line 108)
+>In cat_io_FreeSurfer>gii2fs (line 211)
+>In cat_io_FreeSurfer (line 68)
+>Error using xmltree (line 47)
+>[XMLTree] Cannot open /media/mpasternak/ADATA-1TB/TMEM_Project/derivatives/spm/longitudinal/subjects/sub-C9ORF001/ses-01/surf/lh.thickness.rsub-C9ORF001_ses-01_T1w.gii
+>
+>Error in xmltree (line 47)
+>                    error(['[XMLTree] Cannot open ' varargin{1}]);
+>
+>Error in read_gifti_file (line 15)
+>    t = xmltree(filename);
+>
+>Error in gifti (line 108)
+>                this = read_gifti_file(varargin{1},giftistruct);
+>
+>Error in cat_io_FreeSurfer>gii2fs (line 211)
+>    CS = gifti(job.data{si});
+>
+>Error in cat_io_FreeSurfer (line 68)
+>        gii2fs(varargin{1})
+>```
+>
+>
+>Thank you,
+>Maurice
+
+We are pleased to announce "Thalamocortical networks (ThalNet): Bringing together cellular and cognitive neuroscience", which will take place in person this May 16-17 at the Miramar Palace in Donostia–San Sebastián: https://www.bcbl.eu/events/Thalnet/en/
+
+To understand thalamic function and structure represents a formidable neuroscientific challenge, wherein the collaboration between cellular and cognitive neuroscientific approaches holds much promise. Recognizing the potential synergy between these two disciplines, ThalNet is aimed at convening world experts from both realms and at setting the bases to initiate, foster, and develop interactions among researchers from these fields to further advance and strength our understanding of thalamocortical and corticothalamic networks.
+ 
+We look forward to welcoming you to Donostia-San Sebastián and to this exciting scientific event, which includes world renowned speakers on the topic.
+
+
+ThalNet scientific, organizing and administration committees
+https://www.bcbl.eu/events/Thalnet/en/
+
+Dear community, 
+Here is my question. A researcher before me has preprocessed some fMRI data on SPM12. He has done the realignment of functional images, and he used the Coregister(Estimate) function with the anatomical image as a source and the mean functional image as a reference. Then he jumped the segment and used the Normalise(Est&Wri) function, giving input to the anatomical image and the realigned functional images. Then, the functional images were smoothed. 
+
+My goal is to create two masks one for the CSF and one for the white matter WM, to extract the voxel intensities from these tissues.  My supervisor suggested instead of using the tpm maps built in SPM12, to use the segment function to estimate the tissue maps in each subject and use those as masks. However, since the workflow, the researcher before me used is a bit different from the one I usually use (I usually use the coregister(Estimate&Res), then Segment the resliced image, then Normalise(write) using the deformation fields from Segment) I am not sure how to proceed exactly. 
+
+My guess would be to use Coregister(write) to actually reslice the anatomical image to match the mean functional, then use Segment on the resliced anatomical image, and then use the Normalise(write) to write the c2 and c3 maps according to the deformation field that was generated during Normalise(Est&Wri) my coworker did (not the one generated during segment). 
+
+However, I am not sure about it. What do you think? 
+
+Thank you in advance. 
+
+Giacomo Costa
+
+We are delighted to invite proposals for the NeuroPyschoEconomics Conference 2024 which is scheduled to take place in Milan, Italy, on June 6th and 7th 2024. The conference will bring together experts and scholars in the fields of neuroscience, psychology, and economics. Attendees can look forward to two keynote speeches, symposia, and single presentations. 
+
+ 
+
+Submission Invitation: We are presently welcoming abstracts for consideration. Please visit our official website at https://www.neuropsychoeconomics.org/conference to access our submission guidelines and further details. Remember, the deadline for submissions is March 15th. 
+
+
+Best regards, 
+
+The local organizing committee
+

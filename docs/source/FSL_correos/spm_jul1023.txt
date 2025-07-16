@@ -1,0 +1,161 @@
+Hi everyone,
+
+I have an issue with first level model estimation. I have a design matrix with two sessions, each with two onset regressors and two parametric modulations for each onset regressor. For most of my subjects, this model can be estimated perfectly. However, for a few subjects, one or more of the parametric regressors is turned into a column of all zeros after model estimation which leads to not uniquely specified regressors and consequently, contrasts cannot be estimated using these regressors. How does model estimation turn my regressor into a column of all zeros? I have confirmed that the design matrix is not rank deficient, that there are actually several events distributed in time for each of these regressors and that I have not accidentally inserted NaNs. Any other things that might cause this issue?
+
+Thanks a lot!
+Jasmin
+
+
+Dear Colleagues,
+
+Please see a job announcement to lead UConn’s Brain Imaging Research Center (BIRC). Please see below and here for the full ad and to apply. Also attached is the short version of the job ad.
+
+Thank you!
+Fumiko
+
+Neuroimaging Core Facility Director (Facility Scientist 4)
+APPLY NOWSearch #: 497648
+Work type: Full-time
+Location: Storrs Campus
+Categories: Research
+
+JOB SUMMARY
+
+The University of Connecticut (UConn) invites applications for a full-time Director of a state-of-the-art neuroimaging core facility currently in UConn's Brain Imaging Research Center (BIRC). The facility is located in 3,200 square feet of recently renovated space and houses a Siemens Prisma 3-Tesla scanner and additional instrumentation for simultaneous and standalone high-density EEG, TMS, and tES. 
+
+DUTIES AND RESPONSIBILITIES
+
+The successful candidate will be enthusiastic to run a full-service core and motivated to maintain a high-quality fee-for-service facility at the cutting edge of research. It is expected that the majority of the facility director’s time will be spent providing consultations, analytical tools, and training to faculty and students on neuroimaging experiments and analyses, and maintaining instruments. Hours may depend on users’ needs.
+
+The University of Connecticut has dynamic, highly-regarded research programs in cognition and cognitive neuroscience, language, speech, and reading, developmental psychopathology, health psychology, kinesiology, genetics/genome sciences, and others, including the Institutes for the Brain and Cognitive Sciences (IBACS) and for Collaboration on Health, Intervention, and Policy (InCHIP).  The appointment is expected to fall under the Office of the Vice President for Research (OVPR) Center for Open Research Resources (COR²E) and/or the College of Liberal Arts and Sciences (CLAS).
+
+MINIMUM QUALIFICATIONS
+
+A Ph.D. or equivalent, with specialization in biomedical engineering, cognitive/computational neuroscience, or related fields.
+A minimum of 3 years post-Ph.D. working in the neuroimaging field.
+Significant expertise in conducting human neuroimaging, and in particular, functional MRI.
+A strong track record of participating in federally-funded large-scale research and peer-reviewed publications.
+Expertise necessary to support research across diverse content areas and the ability to keep the facility at the cutting edge of neuroimaging.
+Ability and eagerness to provide technical consultations with large numbers of faculty and provide workshops/seminars for faculty and students.
+Excellent oral and written communication skills and the desire to work in a service-oriented environment.
+Excellent organizational and management skills.
+Knowledge of computer programming and high-performance computing.
+A commitment to supporting a diverse community of scholars, staff, and students.
+PREFERRED QUALIFICATIONS
+
+Experience teaching neuroimaging-related content (e.g., through seminars, workshops, and/or courses).
+Published methodological research peer-reviewed papers as first- and/or senior-author using functional, anatomical, diffusion, spectroscopic MRI, EEG, TMS, tDCS, and/or multi-modal imaging techniques.
+A track record of obtaining federally-funded research/instrumentation grants or equivalent.
+Previous core facility management experience.
+Demonstrated leadership and collaboration in interdisciplinary teams.
+APPOINTMENT TERMS 
+
+This is a full-time, end-dated position with the possibility of renewal subject to performance and funding. The University offers a competitive salary, and outstanding benefits, including employee and dependent tuition reimbursement at UConn, and a highly desirable work environment. For additional information regarding benefits visit: https://hr.uconn.edu/benefits-beyond-pay/.
+
+TERMS AND CONDITIONS OF EMPLOYMENT
+
+Employment of the successful candidate is contingent upon the successful completion of a pre-employment criminal background check.
+
+TO APPLY
+
+Please apply online at https://hr.uconn.edu/jobs, Staff Positions, Search #497648 to upload the following documents as a single PDF file: cover letter, curriculum vitae, research and scholarship statement, a brief statement on your commitment to diversity, equity, and inclusion statement, and contact information for three (3) professional references. Evaluation of applicants will begin on August 7, 2023. For more information regarding COR²E and BIRC, please visit our websites at core.uconn.edu and birc.uconn.edu.
+
+For additional information, contact:
+
+Andrew Moiseff
+
+Chair of Search # 497648
+
+Associate Dean College of Liberal Arts and Sciences
+
+215 Glenbrook Road, U4098
+
+University of Connecticut
+
+Storrs, CT 06269-4098
+
+Email: Andrew.Moiseff@UConn.edu
+
+This job posting is scheduled to be removed at 11:55 p.m. Eastern time on August 7, 2023.
+
+All employees are subject to adherence to the State Code of Ethics which may be found at http://www.ct.gov/ethics/site/default.asp.
+
+All members of the University of Connecticut are expected to exhibit appreciation of, and contribute to, an inclusive, respectful, and diverse environment for the University community.
+
+The University of Connecticut aspires to create a community built on collaboration and belonging and has actively sought to create an inclusive culture within the workforce.  The success of the University is dependent on the willingness of our diverse employee and student populations to share their rich perspectives and backgrounds in a respectful manner.  This makes it essential for each member of our community to feel secure and welcomed and to thoroughly understand and believe that their ideas are respected by all.  We strongly respect each individual employee’s unique experiences and perspectives and encourage all members of the community to do the same.  All applicants will receive consideration for employment without regard to race, color, religion, gender, gender identity or expression, sexual orientation, national origin, genetics, disability, age, or veteran status.
+
+The University of Connecticut is an AA/EEO Employer.
+
+Advertised: Jun 27 2023 Eastern Daylight Time
+Applications close: Aug 07 2023 Eastern Daylight Time
+
+
+
+
+
+
+--------------------
+Fumiko Hoeft md phd 
+
+Director @ UConn Waterbury  |  UConn BIRC  |  UConn-UCSF brainLENS
+
+Co-Director @ UConn NSF PhD Training Program TRANSCEND  |  NIH Emotional Well-being Network M3EWB
+
+Professor @ UConn Psych Sci  |  Comp Sci  |  Ed Psych  |  Math  |  Neurosci  |  Pediatrics  |  Psychiatry
+
+Professor @ UCSF Psychiatry & Behav Sci
+
+cell +1.650.245.7016  |  email  |  twitter  |  instagram
+
+COMPUTATIONAL PSYCHIATRY COURSE (04 – 09 SEPTEMBER 2023) – IN ZURICH OR ONLINE
+
+
+
+
+
+Dear all,
+
+
+
+The next international Computational Psychiatry Course (CPC) will take place 04 – 09 September 2023 (http://www.translationalneuromodeling.org/cpcourse/). This annual course is organised by the Translational Neuromodeling Unit (TNU) at the University of Zurich and ETH Zurich.
+
+
+
+After last year's success, we are offering a HYBRID course again: this means you can either join online via Zoom or in person in Zurich.
+
+
+
+Registration is open! https://events.eventzilla.net/e/computational-psychiatry-course-cpc-zurich-2023--hybrid-2138601232?preview=1677865209506
+
+Please note that spaces are limited and are made available on a first-come first-served basis.
+
+
+
+
+
+DETAILS
+
+The CPC is a 6-day course that features clinical and modeling lectures on Monday-Thursday, application talks on Friday, and tutorials on Saturday.
+
+
+
+The course is designed to be practically useful for students and scientists at all levels (Master, PhD, Postdoc) and from diverse backgrounds (neuroscience, psychology, medicine, engineering, physics, etc.), who would like to apply modeling techniques to study cognition or brain physiology in mental health. The course will teach not only the theory of computational modeling, but also demonstrate open-source software in application to example data sets.
+
+
+
+All participants receive a certificate of attendance. Students enrolled at ETH and University of Zurich can earn 3 ECTS upon passing an exam after the course.
+
+
+
+We would be grateful if you could distribute this information amongst interested students and colleagues.
+
+
+
+
+
+We look forward to welcoming you at Zurich or online.
+
+ 
+
+Your CPC Zurich Team
+

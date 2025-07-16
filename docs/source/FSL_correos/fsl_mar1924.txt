@@ -1,0 +1,456 @@
+Hi Matthew,
+
+Thank you for your response.
+
+Could you please clarify what I need to do in order to use the fix script that is included in $FSLDIR/bin? Is there anything I need to compile before calling the script to clean the data?
+
+Thanks,
+
+Marie
+
+
+Marie-Eve Hoeppli, Ph.D.
+Research Associate
+
+You could also use standardized effect size benchmarks
+
+On Thu, Mar 14, 2024, 06:46 Thomas Nichols <0000c0d4b0357566-dmarc-request@jiscmail.ac.uk> wrote:
+Dear Jeffrey,
+
+To add to Matthew's reply, we use cluster size inference to maximize power with very weak signals.  It sounds like you have quite strong signals, so my question is: Why are you using cluster size inference?  With strong signals you can afford to use (more spatially-specific) voxel-wise inference.
+
+-Tom
+
+On Wed, 13 Mar 2024 at 17:52, Jeffrey Spielberg <jspielb2@gmail.com> wrote:
+Does anyone know of a principled way of breaking down large clusters into sub-clusters? 
+
+For example, I'm looking at very robust task effects for a paradigm my lab developed, and after running randomise (with tfce), I end up with a single cluster of over 300k voxels. I'd typically decompose the effects to see what conditions are driving the differences by taking the mean across the cluster, but that's pretty meaningless when the cluster is so large, as there may be key differences across different regions.
+
+Raising the 1-p-threshold does nothing, because the effects are so significant. I also tried using a very conservative gray matter mask (based on participants own anatomy) to reduce the points at which activation in different areas can touch, but that was also unsuccessful.
+
+As per the randomise documentation, I realize that I can raise the t-value, which does separate out clusters. However, this doesn't seem to be a very principled (i.e., non-arbitrary) method for several reasons, including the arbitrariness of how many t-thresholds should be used (i.e., because different cluster pieces will 'break off' at different t-values) and which particular t-thresholds are selected. I addition, how does one decide whether a piece of the cluster that 'breaks off' is a meaningful cluster in itself? For example, lets say I apply a t-value threshhold of 5, and a 20-voxel 'cluster' becomes discontiguous with the larger cluster. Is this 20-voxel grouping a meaningful cluster in it's own right (and I should explore/interpret it that way)? Relatedly, when do I stop raising the t-value threshold to further separate clusters? For example, I could stop when I get clusters that are all smaller than some predefined cutoff (e.g., 200 voxels), but this is problematic because the cutoff is arbitrary.
+
+Given that these arbitrary decisions are what tfce was created to avoid, it seems counterproductive to reintroduce them in order to interpret large clusters. I'm hoping that there is a a more principled way of doing so out there. For example, selecting thresholds based on whatever values optimize some function or using the topology of the cluster to segregate it into component parts. It would also be great if any such methods were implemented in freely available code. If anyone knows of such methods, I'd appreciate you pointing me in the right direction. Thanks! 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Jeffrey,
+
+To add to Matthew's reply, we use cluster size inference to maximize power with very weak signals.  It sounds like you have quite strong signals, so my question is: Why are you using cluster size inference?  With strong signals you can afford to use (more spatially-specific) voxel-wise inference.
+
+-Tom
+
+On Wed, 13 Mar 2024 at 17:52, Jeffrey Spielberg <jspielb2@gmail.com> wrote:
+Does anyone know of a principled way of breaking down large clusters into sub-clusters? 
+
+For example, I'm looking at very robust task effects for a paradigm my lab developed, and after running randomise (with tfce), I end up with a single cluster of over 300k voxels. I'd typically decompose the effects to see what conditions are driving the differences by taking the mean across the cluster, but that's pretty meaningless when the cluster is so large, as there may be key differences across different regions.
+
+Raising the 1-p-threshold does nothing, because the effects are so significant. I also tried using a very conservative gray matter mask (based on participants own anatomy) to reduce the points at which activation in different areas can touch, but that was also unsuccessful.
+
+As per the randomise documentation, I realize that I can raise the t-value, which does separate out clusters. However, this doesn't seem to be a very principled (i.e., non-arbitrary) method for several reasons, including the arbitrariness of how many t-thresholds should be used (i.e., because different cluster pieces will 'break off' at different t-values) and which particular t-thresholds are selected. I addition, how does one decide whether a piece of the cluster that 'breaks off' is a meaningful cluster in itself? For example, lets say I apply a t-value threshhold of 5, and a 20-voxel 'cluster' becomes discontiguous with the larger cluster. Is this 20-voxel grouping a meaningful cluster in it's own right (and I should explore/interpret it that way)? Relatedly, when do I stop raising the t-value threshold to further separate clusters? For example, I could stop when I get clusters that are all smaller than some predefined cutoff (e.g., 200 voxels), but this is problematic because the cutoff is arbitrary.
+
+Given that these arbitrary decisions are what tfce was created to avoid, it seems counterproductive to reintroduce them in order to interpret large clusters. I'm hoping that there is a a more principled way of doing so out there. For example, selecting thresholds based on whatever values optimize some function or using the topology of the cluster to segregate it into component parts. It would also be great if any such methods were implemented in freely available code. If anyone knows of such methods, I'd appreciate you pointing me in the right direction. Thanks! 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Jeffrey,
+300k voxels is certainly a very large cluster - I would potentially be worried about excluding modelling issues here - can you upload your design matrix and contrast ( and a brief description of the input data )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 13 Mar 2024, at 17:51, Jeffrey Spielberg <jspielb2@GMAIL.COM> wrote:
+
+Does anyone know of a principled way of breaking down large clusters into sub-clusters?  
+
+For example, I'm looking at very robust task effects for a paradigm my lab developed, and after running randomise (with tfce), I end up with a single cluster of over 300k voxels. I'd typically decompose the effects to see what conditions are driving the differences by taking the mean across the cluster, but that's pretty meaningless when the cluster is so large, as there may be key differences across different regions.
+
+Raising the 1-p-threshold does nothing, because the effects are so significant. I also tried using a very conservative gray matter mask (based on participants own anatomy) to reduce the points at which activation in different areas can touch, but that was also unsuccessful.
+
+As per the randomise documentation, I realize that I can raise the t-value, which does separate out clusters. However, this doesn't seem to be a very principled (i.e., non-arbitrary) method for several reasons, including the arbitrariness of how many t-thresholds should be used (i.e., because different cluster pieces will 'break off' at different t-values) and which particular t-thresholds are selected. I addition, how does one decide whether a piece of the cluster that 'breaks off' is a meaningful cluster in itself? For example, lets say I apply a t-value threshhold of 5, and a 20-voxel 'cluster' becomes discontiguous with the larger cluster. Is this 20-voxel grouping a meaningful cluster in it's own right (and I should explore/interpret it that way)? Relatedly, when do I stop raising the t-value threshold to further separate clusters? For example, I could stop when I get clusters that are all smaller than some predefined cutoff (e.g., 200 voxels), but this is problematic because the cutoff is arbitrary.
+
+Given that these arbitrary decisions are what tfce was created to avoid, it seems counterproductive to reintroduce them in order to interpret large clusters. I'm hoping that there is a a more principled way of doing so out there. For example, selecting thresholds based on whatever values optimize some function or using the topology of the cluster to segregate it into component parts. It would also be great if any such methods were implemented in freely available code. If anyone knows of such methods, I'd appreciate you pointing me in the right direction. Thanks!  
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+I am getting an error when running group feat on the poststats side. The error is saying that it cannot find tmpreport_poststats.html (line 312 of feat). Has anyone encountered this and discovered a solution.
+
+ 
+
+-Matt
+
+
+
+Does anyone know of a principled way of breaking down large clusters into sub-clusters? 
+
+For example, I'm looking at very robust task effects for a paradigm my lab developed, and after running randomise (with tfce), I end up with a single cluster of over 300k voxels. I'd typically decompose the effects to see what conditions are driving the differences by taking the mean across the cluster, but that's pretty meaningless when the cluster is so large, as there may be key differences across different regions.
+
+Raising the 1-p-threshold does nothing, because the effects are so significant. I also tried using a very conservative gray matter mask (based on participants own anatomy) to reduce the points at which activation in different areas can touch, but that was also unsuccessful.
+
+As per the randomise documentation, I realize that I can raise the t-value, which does separate out clusters. However, this doesn't seem to be a very principled (i.e., non-arbitrary) method for several reasons, including the arbitrariness of how many t-thresholds should be used (i.e., because different cluster pieces will 'break off' at different t-values) and which particular t-thresholds are selected. I addition, how does one decide whether a piece of the cluster that 'breaks off' is a meaningful cluster in itself? For example, lets say I apply a t-value threshhold of 5, and a 20-voxel 'cluster' becomes discontiguous with the larger cluster. Is this 20-voxel grouping a meaningful cluster in it's own right (and I should explore/interpret it that way)? Relatedly, when do I stop raising the t-value threshold to further separate clusters? For example, I could stop when I get clusters that are all smaller than some predefined cutoff (e.g., 200 voxels), but this is problematic because the cutoff is arbitrary.
+
+Given that these arbitrary decisions are what tfce was created to avoid, it seems counterproductive to reintroduce them in order to interpret large clusters. I'm hoping that there is a a more principled way of doing so out there. For example, selecting thresholds based on whatever values optimize some function or using the topology of the cluster to segregate it into component parts. It would also be great if any such methods were implemented in freely available code. If anyone knows of such methods, I'd appreciate you pointing me in the right direction. Thanks! 
+
+########################################################################
+
+
+Dear Alex,
+I’m not sure there’s any actual _problem_ here - I’m guessing the scan has a shorter TR, so given the event timings, some overlap is possible..
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 19 Mar 2024, at 09:39, Sheng Yang <0000c313628a5f61-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear Matthew,
+You are right about the output of peristimulus (ps) time series. What could be causing this? Where file should I examine?
+Thank you.
+
+Best,
+Alex
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello FSL users,
+
+I am trying to regress out specific confounders from fmriprep output in CLI and compare the effect of removing each set of components on some post-processing I do. 
+I have my selected confounders copied in columns as txt file and converted to mat using
+Text2Vest design.txt design.mat
+ and ran:
+
+fsl_glm -i sub-x_ses-1A_task-rest_dir-AP_run-1_space-T1w_desc-preproc_bold.nii.gz -d design.mat --out_res=denoised_name.nii
+
+the result, denoised_name.nii, has different range of intensities than the original input and impossible to compare, namely it has negative and positive values in the timeseries and appeared to be meaned to zero. is this the  correct denoised file? Do I need to define any contrast for resting state?
+
+Thank you,
+Taha
+
+########################################################################
+
+Hi Roberto,
+   You could run the first two-stages of dual_regression on a single subject ( as obviously no cross-subject modelling can take place ) but you would need to perform any inference yourself on ( e.g ) the z-stat outputs. I’m not sure how useful this would be though as your inference would be limited to that subject - potentially only interesting in cases of unusual pathology or similar?
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear Matthew,
+You are right about the output of peristimulus (ps) time series. What could be causing this? Where file should I examine?
+Thank you.
+
+Best,
+Alex
+
+########################################################################
+
+
+Dear Alex,
+I suspect this is due to the end of one peri-stimulus period merging into the start of the next - you can check the ps timeseries outputs for this - the last few rows of one period will be identical to the starting rows of the next.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear Roman,
+If I understand correctly, each subject can have missing values for one or more of the data and the two voxelwise EVs. In general, it’s probably worth adding a column of ones to the design as a “normal” EV ( to model the overall mean ). For the missing values, one approach might be to create a single exclusion EV ( i.e. the binary inverse of each subject's overall validity ) which will fully regress out a subject’s data when 1. Randomise will remove null EVs when partitioning the design so all-zero columns will be removed from the design ( on a per-voxel basis ) although this does mean that a voxel with a large proportion of excluded subjects will be overly confounded and unable to generate meaningful estimates. To understand where valid estimates will be generated the overall data mask ( passed in with -m ) could be modified to only include voxels with ( e.g. ) more than 50% subject validity.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi Estephan,
+
+ 
+
+That target set-up sounds like it should be ok.
+
+ 
+
+For the medial wall ROI, it sounds like you have 1s for the medial wall and zeros for the cortex? The ROI expects 1s for regions you want to keep (i.e. cortex) and 0s for regions you want to discard (i.e. the medial wall). If you have the output from the HCP processing pipeline, you can use the atlasroi files.
+
+ 
+
+Thanks,
+
+Shaun.
+
+Hi, I'm trying to run xtract_blueprint using my dataset and saw some unusual results. I have 52 participants with HCP-like imaging protocol that was pre-processed using the HCP pipelines. I have two questions:
+- For the "-target" parameter entered, I used the "wm.mgz" file output from the freesurfer stream, and converted it to NIFTI and thresholded it to only include the white matter. Does this sound correct?
+- More importantly, I included the "-rois" parameter with the left and right medial walls to exclude them from seeding as recommended. However the resulting output file "BP.LR.dscalar.nii" only showed results over the medial wall, with the cortex being blank. What could be going on here?
+
+Thank you.
+
+Estephan
+
+The Motivated Memory Laboratory in the Center for Cognitive Neuroscience and Department of Psychiatry at Duke University is seeking a full-time Clinical Research Coordinator with strong interest in understanding how motivation shapes human experience to work on an NIH-funded project (PI: R. Alison Adcock). This project aims to uncover the neural mechanisms of motivation and its regulation using fMRI neurofeedback and advanced statistical modeling.
+
+Ongoing projects include: i) using real-time fMRI neurofeedback for endogenous regulation of dopaminergic midbrain activity, ii) understanding how midbrain neuromodulation contributes to downstream behavioral and cognitive outcomes (e.g. memory and decision-making), iii) identifying how different motivational states influence learning and memory formation. 
+
+Review of applications will start immediately and will continue until the position is filled. 
+
+Required qualifications
+Education: Completion of an Associate's degree
+Experience: Work requires a minimum of two years of relevant research experience. A Bachelor's degree may substitute for 2 years required experience.
+
+For inquiries please email: alison.adcock@duke.edu.
+
+Please see full postings and apply using the following link:
+Clinical Research Coordinator - Psychiatry - Beh Med Div - Adcock Team
+
+
+
+Postdoctoral Researcher in the Cognitive Neuroscience of Motivation and Memory at Duke University
+
+The Motivated Memory Laboratory in the Center for Cognitive Neuroscience and Department of Psychiatry at Duke University is seeking a full-time Cognitive Neuroscience Postdoctoral Researcher with strong interest in understanding how motivation shapes human experience to join the team and lead an NIH-funded project (PI: R. Alison Adcock). This project aims to uncover the neural mechanisms of motivation and its regulation using fMRI neurofeedback and advanced statistical modeling.
+
+Ongoing projects include: i) using real-time fMRI neurofeedback for endogenous regulation of dopaminergic midbrain activity, ii) understanding how midbrain neuromodulation contributes to downstream behavioral and cognitive outcomes (e.g. memory and decision-making), iii) identifying how different motivational states influence learning and memory formation. 
+
+Review of applications will start immediately and will continue until the position is filled. Salary is commensurate with NIH guidelines and applicant experience.
+
+Required qualifications
+Candidates must have a PhD in Psychology, Cognitive Science, Neurobiology, Neuroscience, or a related field by the position start date.
+
+Required skills and experience
+Experience collecting and analyzing behavioral and fMRI data (preferably in humans)
+Ability to work with and provide guidance to junior lab members and trainees
+Ability to work effectively with mentor(s) to conduct and implement research projects
+Demonstrated ability to conduct independent research - including formulating hypotheses, designing experiments, collecting data, analyzing data, and communication of results
+Demonstrated ability to independently write manuscripts and grant application with guidance from mentor(s)
+Experience with programming and troubleshooting experimental tools - preferably in Matlab and/or Python (e.g. for stimulus presentation, data cleaning, computational modeling)
+
+Strongly preferred but not required qualifications
+Experience working with real-time fMRI and/or neuro/biofeedback in other modalities (e.g. EEG, Pupillometry, HRV)
+Experience using advanced quantitative method for analysis of behavioral and imaging data (e.g. computational modeling, machine learning, mixed-models)
+Strong background in neuroanatomy and neurobiology
+Interest in translating basic science towards clinical applications
+For inquiries please email: alison.adcock@duke.edu.
+
+Please see full postings and apply using the following link:
+Postdoctoral Associate - Psychiatry - Behavioral - Adcock Team
+
+
+Sorry for being unclear - I'm not using cluster size inference, but rather randomise with tfce. My understanding is that the *_tfce_corrp_tstat* output images are voxelwise corrected for multiple comparisons - is that incorrect? If not, the issue I'm having is not with the correction itself, but rather how I can interrogate the findings (see below).
+
+As requested, here's a little background on the task/analyses:
+
+TASK: This is a sample (n=66) of healthy participants who performed two (counterbalanced) versions of the Go/NoGo. One run was a standard Go/NoGo (i.e., respond when you see a square, withhold when you see a triangle). The other run added a 1-back component, whereby participants were to respond if the symbol in the current trial matched the last trial (e.g., square -> square) and withhold when the symbols differed (e.g., square -> triangle).
+
+ANALYSIS: The first level was nested within both participant and run (1-back, standard), and thus we modeled the timeseries for each run separately. For each run, we modeled Go and NoGo trials with separate evs and computed a NoGo - Go contrast. We then computed second level analyses, still nested within participant, which consisted of a fixed effects analysis that contrasted the NoGovGo contrasts from the two different runs (i.e., 1-back vs. standard). Thus, the output of this level was the interaction between two within-participant effects: (NoGo vs. Go) X (1-back vs. standard task). Finally, these were carried up to a third (between-subject) analysis where the mean across participants was modeled (i.e., a column of ones) and the contrasts were just the positive and negative version of this mean.
+
+I've attached the relevant design and contrast matrices for each level (FYI, in the files, the 1-back version is referred to as cog and the standard version as neu). In regards to Matthew's comment about modeling issues, I'm fairly sure that's not an the case: The highest level is just a column of ones and the second level is just a 1 for the 1-back version and a -1 for the standard version. I've rechecked the first level designs again, and I'm fairly sure they've been set up correctly. So, overall, I don't think there's an issue with the finding itself.
+
+Instead, I'm wondering if there is principled (i.e., non-arbitrary) way to break down this giant contiguous set of voxels into pieces that I can interrogate separately. By interrogate, I'm talking about extracting the mean across voxels for each condition (i.e., 1-back go, 1-back nogo, standard go, standard nogo) and seeing what condition differences are driving the effects. I can do that across all 300k significant voxels, but that seems silly, as there is the potential for significant spatial variation in the pattern of means. So, I'm wondering if there are any principled methods out there that can help me to create meaningful subgroups of significant voxels, which I would then examine further. 
+
+Thanks for the help so far! 
+
+
+
+
+########################################################################
+
+
+Dear Antonio,
+
+    what are the types of images in which FNIRT is used instead of FLIRT?
+    An example is the istance of subjects with atrophy.
+
+we recommend using FNIRT instead if FLIRT when registering individual subjects to a template in standard space (for example MNI152). It is able to achieve a much closer alignment compared to an affine transform such as FLIRT. Only for very poor quality data would we recommend FLIRT instead of FNIRT for that purpose.
+But note that we recommend initiating FNIRT with an affine transform from FLIRT, as it is more robust to brains that are very far from each other.
+
+We recommend FLIRT, with a rigid body model, for motion correction and for aligning different modalities within the same subject (for example to register someone's diffusion images to the same persons T1 image).
+
+Jesper
+ 
+
+Hi Marie,
+Everything should already be in place for the script to run, the training data names are slightly different to the legacy version ( you can run fix without any options to see the available models ).
+
+Kind Regards
+Matthew
+
+Dear FSL experts,
+
+what are the types of images in which FNIRT is used instead of FLIRT?
+An example is the istance of subjects with atrophy.
+
+Thank you in advance,
+
+Antonio
+
+########################################################################
+
+Hi Tfce doesn’t take in dof so if you need to make that consistent across voxels you could first convert t to z.  
+Cheers. 
+
+Sent from Outlook for iOS
+
+Seems like the INPUT field didn't update from my bash script's FEAT call. Fixed the error when it was changed to reflect on the new fsf file(s).
+
+Thanks,
+Suja
+
+########################################################################
+
+
+Hi - you can't get TFCE-related p-values of course, but you can feed voxelwise tstats into fslmaths with the -tfce option.
+Cheers.
+
+
+On 14 Mar 2024, at 22:40, Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear FSL developers and Users,
+
+If I have a map of p-value or a t-statistics, is it possible to carry out Threshold-Free Cluster Enhancement, i.e. without running randomise? So to speak, TFCE in a stand-alone way? From what I understand, logically it should be possible but I may be wrong.
+
+Thank you,
+
+Roman
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+---------------------------------------------------------------------------
+Stephen M. Smith, Professor of Biomedical Engineering
+Head of Analysis,  WIN (FMRIB) Oxford
+
+Editor-in-Chief, Imaging Neuroscience
+
+FMRIB, JR Hospital, Headington, Oxford  OX3 9DU, UK
+steve@fmrib.ox.ac.uk    http://www.fmrib.ox.ac.uk/~steve
+---------------------------------------------------------------------------
+
+
+
+Dear FSL developers and Users,
+
+If I have a map of p-value or a t-statistics, is it possible to carry out Threshold-Free Cluster Enhancement, i.e. without running randomise? So to speak, TFCE in a stand-alone way? From what I understand, logically it should be possible but I may be wrong.
+
+Thank you,
+
+Roman
+
+Hello FSL Users,
+
+I have encountered an unsourced error related to stimulus timing file given as input for EV in the FEAT analysis.
+It should be as follows:
+
+24  10  1
+56  10  1
+84  10  1
+110 10  1
+140 10  1
+
+I'm using a text file MCA_pain_timing.txt as the input for this analysis.
+
+I am seeing error in the report.html reading as "No valid [onset duration strength] triplets found in /Volumes/CEREBRO/Studies/MCA_FMRI/Public/Data/MCA_pain_timing.txt"
+
+With the same design specifications and timing file, numerous feat runs have been done before, so I doubt if it's an error related to FSL version. I use 6.0.7.6 and the output log is attached for your ref.
+
+Please send any advice/insight to fix the error.
+
+Thanks,
+Suja
+
+########################################################################
+
+
+Dear all,
+
+Registration is still open for FSL Course 2024, which will be held in-person June 17th – 21st in Osaka, Japan, co-hosted by the Riken Center for Biosystems Dynamics Research. You can find details and registration info here: 
+
+https://open.win.ox.ac.uk/pages/fslcourse/website/upcoming.html 
+
+   
+
+Spots on the course are limited and will be allocated on a first-come-first-served basis. Please register early to avoid disappointment.  
+
+ 
+
+Both new and existing users of FSL are welcome on the course, as it aims to cover both basic and more advanced features of FSL. This intensive course covers the theory and practice of functional, structural, diffusion and resting state brain image analysis. Background concepts and the practicalities of analyses are taught in detailed lectures. These lectures are interleaved with hands-on practical sessions, where attendees learn how to carry out analysis for themselves on real data. The contents covered in the course are primarily aimed at applications in basic science and clinical research (not clinical practice). 
+
+ 
+
+Please note that the only option to attend the course in 2024 will be this in person course. To strike a balance between broad accessibility and the benefits of in-person interaction, the FSL Course intends to follow an approximately alternating pattern of fully in-person and fully online courses. 
+
+ 
+
+We hope to see you at the course!
+
+The FSL Course team
+
+ 
+
+ 
+
+Hi Matthew,
+
+Thank you for your response.
+
+Could you please clarify what I need to do in order to use the fix script that is included in $FSLDIR/bin? Is there anything I need to compile before calling the script to clean the data?
+
+Thanks,
+
+Marie
+
+
+Marie-Eve Hoeppli, Ph.D.
+Research Associate
+
+Hello,
+
+I have already computed the z-transformed R map for my connectivity analysis. I would like to know if I can use FSL to do the following statistical analyis, for example the paired t test by comparing the connectivity map between two different clinical conditions. If yes, could you please give me a demo script ? Also i would like to incorporate some clinical variables as covariates. Can fsl achieve this?
+
+Thank you very much in advance.
+
+Zhengyu
+
+########################################################################
+

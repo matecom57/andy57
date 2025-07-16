@@ -1,0 +1,374 @@
+Dear experts,
+
+We recently tried to run TBSS on nonhuman primates (Squirrel monkeys) 
+Typically we run the following code
+tbss_1_preproc *.nii.gz
+tbss_2_reg -t Template/Saimiri_template0.nii (this is our squirrel monkey template)
+tbss_3_postreg -S
+tbss_4_prestats 0.2
+
+however, TBSS always runs the following (visible in the terminal)
+affine-registering target to MNI152 space
+transforming (and upsampling) all FA images into MNI152 space
+
+This is a bit impractical since the squirrel monkey brain is much smaller than a human brain.
+How can we replace this with our template or skip this step?
+
+Thanks a lot for your input 
+Kind regard
+
+mich
+
+Michel Thiebaut de Schotten
+Director of Research, PhD, HDR, CNRS
+EiC Brain Structure & Function
+Section lead in Neuroscience - Comms.Bio. 
+Chair, Organization for Human Brain Mapping
+Skype: michel_thiebaut_de_schotten
+phone: +33 7 83 50 81 60
+
+Head of Brain Connectivity and Behaviour Laboratory (BCBLab),
+Sorbonne Universities, Paris, France
+
+Head of Neurofunctional Imaging Group (GIN)
+Institut des Maladies Neurodégénératives-UMR 5293
+CNRS, CEA University of Bordeaux, Bordeaux, France
+
+
+http://www.bcblab.com
+[http:/toolkit.bcblab.com]http://toolkit.bcblab.com
+https://www.gin.cnrs.fr
+
+
+
+Dear all,
+
+Please share this with whomever may be interested.
+
+We are looking for a Postdoc to work on pulse sequence development and image reconstruction methods in Leipzig, Germany. Projects could include e.g. non -Cartesian trajectories, pTx, parallel imaging, MR fingerprinting and correction of artifacts using optical motion tracking and field cameras.
+
+We offer:
+* the possibility to conduct truly fundamental research to change the field of neuroimaging,
+* an international, friendly and highly supportive interdisciplinary environment (working language English),
+* the chance to work with top researchers (inc. experienced IDEA programmers) from diverse backgrounds in an internationally leading neuroimaging center within the renowned Max Planck Society,
+* access to world-leading facilities, including a Siemens 7T Terra MRI scanner (64-ch Rx, 16-ch Tx), 3T Connectom (300 mT/m gradients) and numerous other 3T scanners, all dedicated to fundamental research with excellent scanner access, outstanding technical support, and the latest peripherals (Skope field camera system, Kineticor PMC).
+
+Informal enquiries to weiskopf@cbs.mpg.de or myself, thanks!
+
+There is more information on the department and links to the formal job description and application details at:
+
+https://www.cbs.mpg.de/departments/neurophysics
+
+Cheers,
+Kerrin
+
+--
+Dr Kerrin Pine (kpine@cbs.mpg.de)
+Max Planck Institute for Human Cognitive and Brain Sciences
+Stephanstr. 1a, 04103 Leipzig, Germany
+
+Stam, 
+
+Thanks for the help!
+
+So we have run bedpostx a couple of times and we are able to replicate our results but we are not able to replicate the original run that someone else in the lab ran. 
+
+Do you know if input files are changed by bedpostx? We are copying the same input folder they ran for their run. 
+
+And for running with a --seed flag. Is it possible to see if a run had a seed flag? 
+
+On Mon, Jan 30, 2023 at 2:20 PM Stamatios Sotiropoulos <stamatios.sotiropoulos@ndcn.ox.ac.uk> wrote:
+Hi Anna
+
+ 
+
+Bedpostx has run-rerun variability by design, as it does a stochastic estimation (i.e. during estimation random number generators are used in various steps).
+
+ 
+
+This is not something to worry about, but if for some reason you need to exactly replicate results between runs (e.g. for debugging purposes) you can do that by setting the --seed flag to a fixed number. This will fix the sequence of pseudo-random numbers and will return identical results across runs.
+
+ 
+
+Hope this helps
+
+Stam
+
+ 
+
+ 
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Lund, Anina" <000095225881fa1d-dmarc-request@JISCMAIL.AC.UK>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Monday, 30 January 2023 at 18:51
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Bedpostx question
+
+ 
+
+Hi,
+
+We have a question regarding running bedpostx. We have run the
+following command on the same input files and for some reason our
+output files are different (mean_dsamples.nii.gz,
+mean_d_stdsamples.nii.gz, mean_S0samples.nii.gz,
+merged_ph1samples.nii.gz, merged_ph2samples.nii.gz,
+merged_th1samples.nii.gz, merged_th2samples.nii.gz) in the cal_max and
+cal_min lines. As we run the rest of the pipeline our final values are
+also different so we believe this is making a difference. What we
+can't figure out is why the output is different .
+
+Does running bedpostx change the input folder?
+Is there generally some difference in running bedpostx multiple times?
+Another question, if we ran the original input folder along with 200
+other input folders would the output change vs running it only on one
+input folder (how we ran that is the code below)
+
+#how we run on a single folder
+module load fsl/6.0.3
+bedpostx [folder with the 4 input files] -n 2 -w 1 -b 1000
+
+#how we run on multiple folders
+module load fsl/6.0.3
+cd [directory]
+for d in *; do
+bsub -J BEDPOSTX -n 1 -P acc_psychgen -W 100:00 -q premium -M 10000 -R
+"rusage[mem=5000]" -oo ~/"bedpostxinfo."$d".stdout" -eo
+~/"bedpostxinfo."$d".stderr" bedpostx $d -n 2 -w 1 -b 1000;
+done
+
+thanks,
+
+Anina--
+
+Anina Lund
+
+Neuroscience PhD Candidate 
+
+Beckmann/Charney/Nestler Lab
+
+Icahn School of Medicine at Mount Sinai 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Anderson-
+
+Sure, I would be happy to share.  Can you send me an email or link to share with you?  Or if you send me an off-list email, I could send you a link to data I upload.
+
+-Joel
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Anderson Winkler <anderson.winkler@UTRGV.EDU>
+Sent: Wednesday, February 8, 2023 9:22 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [External] Re: [FSL] PALM errors with tail approximation
+ 
+Hi Joel,
+
+ 
+
+May I ask if you could share your data and design (off-list)? Somehow it seems there are infinities, but they shouldn’t be present unless with exceptionally high stats.
+
+ 
+
+Also, add -nouncorrected, since the issue could be with the uncorrected p-values (and consequently, drop -fdr).
+
+ 
+
+In any case, the gamma approximation is often as good as the Pareto, so it could also be an alternative.
+
+ 
+
+All the best,
+
+ 
+
+Anderson
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Bruss, Joel E" <joel-bruss@UIOWA.EDU>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Monday, November 28, 2022 at 4:51 PM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] PALM errors with tail approximation
+
+ 
+
+  External Mail
+
+  This email originated outside of The University of Texas Rio Grande Valley.
+  Please exercise caution when clicking on links or opening attachments.
+
+I'm trying to run PALM with seed-based WM tractography maps as inputs but am running into errors.  I can, however,  get seed-based fcMRI maps to run using the same subjects, same test scores.  My input is as follows (and I've verified that my 4D file looks OK):
+
+ 
+
+Running PALM alpha119 using MATLAB 9.8.0.1323502 (R2020a) with the following options:
+
+ 
+
+-i /input/group4D.nii
+
+-m /input/mask.nii
+
+-d /input/CPSP_design.mat
+
+-t /input/CPSP_contrast.con
+
+-n 2000
+
+-save1-p
+
+-twotail
+
+-accel tail
+
+-fdr
+
+-T
+
+-o /output/testOutput
+
+ 
+
+The groups are a bit unbalanced (38 in one group (test score=1), 87 in another (test score=0)) but, again, this works fine for fcMRI seedmaps.
+
+ 
+
+PALM builds the null distribution, completes, then chokes when computing the p-values:
+
+ 
+
+Computing p-values.
+
+Error using interp1 (g:154)
+
+The sample points must be finite.
+
+ 
+
+Error in andersondarling (/palmpath/palm-alpha119/palm_pareto.m:196->interp1)
+
+Error in palm_pareto (/palmpath/palm-alpha119/palm_pareto.m:128->andersondarling)
+
+Error in palm_saveall (/palmpath/palm-alpha119/palm_saveall.m:77->palm_pareto)
+
+Error in palm_core (/palmpath/palm-alpha119/palm_core.m:2469->palm_saveall)
+
+Error in palm (/palmpath/palm-alpha119/palm.m:81->palm_core)
+
+ 
+
+The only matlab function in PALM that I could find using "interp1" was palm_pareto, also referenced in the errors.  When I re-run palm using all the same data, but removing "-accel tail", I get significant results.  Is there a bug in palm_pareto or a reason to expect it to fail under certain conditions?
+
+ 
+
+ 
+
+-Joel
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+On behalf of Dr. Cordes at the Cleveland Clinic:
+
+MRI Research Engineer Job 
+
+The Cleveland Clinic Lou Ruvo Center for Brain Health in Las Vegas, Nevada, has a position available for a Research Engineer in MRI/fMRI/DTI. 
+
+SUMMARY: The MRI Research Engineer will work in structural and functional neuroimaging data analysis and will develop new algorithms and software for MRI/fMRI/DTI data analysis. Current research interests of the Institute are Alzheimer’s disease, Parkinson’s disease, Huntington’s disease, Multiple Systems Atrophy, frontotemporal dementia, and multiple sclerosis. The Lou Ruvo Center has a Siemens 3-Tesla Skyra magnet as well as a Siemens PET/CT. 
+
+JOB RESPONSIBILITIES: The key responsibility will be investigation of new methodological approaches, and algorithm and software development for fMRI, MRI, DTI. Potential research activities involve ICA, clustering, multivariate analysis, or other novel approaches to obtain activation patterns in the brain. The successful candidate has strong analytical skills, experience and interests in applied mathematics, statistics, MR physics, programming (python and Matlab), and signal & image processing. 
+
+Required Qualifications: Minimum Requirements: M.S. degree in mathematics, statistics, physics, medical physics, neuroscience, biomedical or electrical engineering, or related field; fMRI knowledge and experience in statistics and digital signal processing; proficiency in Matlab and python programming. 
+
+PREFERENCE FOR INDIVIDUALS WITH THE FOLLOWING SKILLS: Knowledge of MRI and related signal processing Experience with fMRI and time series analysis (ICA, clustering, general linear model regression), Mathematical and analytical skills Signal and image processing skills Programming skills (Linux, Unix, Matlab, python) Organizational, communication, written and verbal skills.
+
+LICENSURE/CERTIFICATION/REGISTRATION: None required. 
+
+REQUIRED EXPERIENCE: M.S. degree or higher, minimum of 1 year research experience in the MRI field related to image processing and data analysis. 
+
+How to apply: Interested applicants please submit a CV and a cover letter. Contact address: Dr. Dietmar Cordes cordesd@ccf.org
+
+Thank you,
+Dr. Filippo Cieri
+
+
+--
+Confidentiality Note: This message is intended for use only by the individual or entity to which it is addressed and may contain information that is privileged, confidential, and exempt from disclosure under applicable law. If the reader of this message is not the intended recipient or the employee or agent responsible for delivering the message to the intended recipient, you are hereby notified that any dissemination, distribution or copying of this communication is strictly prohibited. If you have received this communication in error, please contact the sender immediately and destroy the material in its entirety, whether electronic or hard copy. Thank you.
+
+
+Hi all,
+
+We’ve been trying some new preprocessing techniques in the lab, while continuing to use FSL for the “statistics” stage of analysis. However, we’ve ended up in a situation where first-level analyses work great, but second-level results (across runs within participant) always turn up suspiciously empty.
+
+ 
+
+It’s not the data. An all-FSL analysis of the same data shows strong results. (Test contrast is a basic movement>rest.)
+
+ 
+
+This says to me “problem registering/warping first-level functional space results up to second-level structural space” (since FEAT is not auto-creating the reg directory, since preprocessing isn’t in FEAT), but I’ve tested that. I created a script to manually create the example_func2highres and example_func2standard files for the reg directory. This script works fine for a normal all-FSL pipeline, but not for my externally-preprocessing pipeline.
+
+ 
+
+I’m hitting my head against a wall troubleshooting this. What else could make strong first-level results completely disappear from second-level analysis?
+
+ 
+
+Happy to share whatever files/info might be useful.
+
+ 
+
+Thanks,
+
+ 
+
+-----
+
+Benjamin A. Philip, Ph.D.
+
+Assistant Professor, Program in Occupational Therapy, Neurology, and Surgery
+
+Neuroscience and Rehabilitation Laboratory
+
+Washington University School of Medicine
+
+4444 Forest Park Ave, MSC-8505-66-1
+
+Saint Louis, MO 63108
+
+bphilip@wustl.edu
+
+Pronouns: he/him
+
+ 
+

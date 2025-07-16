@@ -1,0 +1,222 @@
+Hello,
+
+I've been trying to run "eddy" but keep getting an error message as below:
+
+���c
+���c
+EDDY::: Eddy failed with message ���c
+
+I'm not sure how it turns out for others, but on my end it includes odd characters which makes the error message unreadable. The line of code I used is:
+
+eddy_cuda10.2 --imain=DTI.nii.gz --mask=b0_topup_unwarped_brain_mask.nii.gz --index=index.txt --acqp=map.txt --bvecs=DTI.bvec --bvals=DTI.bval --out=eddy_unwarped --topup=b0_topup --fwhm=0 --flm=quadratic --verbose
+
+I have tried/checked the following:
+- nvidia-sim returns: NVIDIA-SMI 535.161.08   Driver Version: 535.161.08   CUDA Version: 12.2
+- the latest FSL version installed on my system is 6.0.7; in the bin folder, there is only "eddy_cuda10.2". I am using my university's High Performance Computing system so I have no control over any installations etc. But if a more recent version is required, I can try to ask the IT support team about it
+- I've tried "eddy" and "eddy_cpu" as well but receive the same error message
+- "eddy_current" works, but as I understand it is advisable to not use this. I haven't had any issues with other FSL commands so far
+- The current text encoding is set to UTF-8, I've tried some others but the odd characters (as above, but changes each time) still appear
+
+If useful, I've ran the "topup" command (which worked fine):
+topup --imain=b0_combined.nii.gz --datain=map.txt --config=b02b0.cnf --out=b0_topup --iout=b0_topup_unwarped
+
+I've checked all input files multiple times and followed the instructions in the FSL documentation so they are as they should be. I am unsure what is the problem or what else I can do.
+
+Any help would be much appreciated.
+
+Many thanks,
+Adriana
+
+########################################################################
+
+
+Hi Matt,
+
+The waypoints and exclusion masks will affect the connectivity metric. To estimate the connectivity, --omatrix2 (or any other output) will only count valid streamlines, which are those streamlines that hit the waypoint masks, but not the exclusion masks.
+
+Best wishes,
+
+Michiel
+
+On 3 May 2024, at 18:41, Matthew Amandola <000081b42280a247-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Michiel,
+
+Thanks so much for your reply.
+I suppose what I mean for my second question is that if I use for example --omatrix2 with the PFC as my --seed and the PPC as my --target2, will the waypoints and the exclusion masks I specify affect the outputted connectivity matrix? Or does it only affect the fdt_paths? Sorry if this is a silly question!
+
+- Matt
+
+On Wed, May 1, 2024 at 5:22 AM Michiel Cottaar <0000c795548cacb2-dmarc-request@jiscmail.ac.uk> wrote:
+Hi,
+
+In this case, you really have two options, depending on how you want to do the seeding. You've got two options:
+1. If you want to seed in one of the ROIs, you should use --omatrix2 . One of the masks will be your --seed, the other will by --target2. This will count the number of streamlines seeded from each of the voxels in the seed mask, how many hit each voxel in the target mask. You could run probtrackx a second time with the --seed and --target2 swapped and average the results to ensure that you are not biased by which ROI you made the seed the first time.
+2. If you want to seed in another ROI (e.g., the white matter), you would use --omatrix3. In that case --target3 is one of the ROIs (e.g., PFC) and --lrtarget3 is the other (e.g., PPC). If you have many more ROIs that you want to include in your analysis, it might be easier to put them together in a single ROI and pass this one on to both --target3 and --lrtarget3.
+
+I'm not sure what you are asking with your second question. Are you looking to get a white matter segmentation of the tract connecting the PFC and PPC? If so, the approach would be slightly different depending on which approach you select above, but the basic idea would be to use --waypoints to ensure you only keep streamlines that go through your ROIs. It might be easier to set this up in a separate probtrackx run.
+
+Best wishes,
+
+Michiel
+
+> On 24 Apr 2024, at 22:24, Matthew Amandola <000081b42280a247-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Hello FSL experts,
+>
+> I was hoping to be able to create a connectivity matrix between two ROI's, where each index of the matrix corresponds to the # of streamlines between the paired voxels of the two ROI's. Just wanted to clarify things first!
+>
+> 1. Is --omatrix3 the correct choice for this? And if it is the correct choice, how do I specify the targets? Using --target3, do I input a list of ROI's in a textfile, separate them with a comma, or should I add the ROI's together into one? Just a bit confused about how to go about this.
+>
+> 2. I am running tractography between multiple masks - in this case the PFC and PPC (the output of which would be the fdt_paths streamline mask). Do these multiple masks affect the output of --omatrix3? Or is that totally separate?
+>
+> Thanks so much!
+>
+> - Matt
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+--
+Matt Amandola (he/him)
+PhD Candidate in Integrative Neuroscience
+Dept. of Psychology
+Stony Brook University
+
+Dear Matthew,
+
+Thank you very much for your reply, it was really helpful.
+
+But two other questions popped up in the meantime.:
+
+1) Can I run the paired t-test through FEAT even when my single/group ICA was done with MELODIC? -> My superviser asked me to repeat the t-test with FEAT but I don’t have any feat directories so im not sure if it would even be possible.
+
+2) If I wanted to calculate the t-test with fslmaths/fslmerge by hand, I would need to substract ever subjects rs-measure (RW-SD) separately. But I don’t know how I would get the individuell spacial maps separately from the dr_stage2_ic<network>.nii.gz. Is there a command to split the stage 2 DR output of a specific IC network into every subject specific spacial map ?
+
+
+Regards
+Janis
+
+> On 2. May 2024, at 20:23, Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Dear Janis,
+>                  For the first two questions, a paired t-test ( https://fsl.fmrib.ox.ac.uk/fsl/docs/#/statistics/glm?id=single-group-paired-difference-paired-t-test ) on the relevant dr_stage2_ic<network>.nii.gz images should work. As this is a repeated measures analysis you will also need to pass in an exchangeability groups file to randomise with the -e option. For the third question ( between DMN and DAN ) the resting-state experts can offer the best suggestion, but a crude option might be to subtract the DMN and DAN inputs used above and then input that to randomise with the same design as before.
+>
+> Hope this helps,
+> Kind Regards
+> Matthew
+> --------------------------------
+> Dr Matthew Webster
+> FMRIB Centre
+> John Radcliffe Hospital
+> University of Oxford
+>
+>> On 24 Apr 2024, at 00:02, Janis Effenberger <janis.magde@gmail.com> wrote:
+>>
+>> Dear FSL team,
+>>
+>> For my bachelor thesis, I want to analyze the effects of Sleep deprivation (SD) on Functional connectivity in  two spezific Resting state Networks within 15 Subjects:
+>>
+>> 1) Effect of SD on Network Integration within DMN
+>> 2) Effect of SD on Network Integration within DAN
+>> 3) Effekt of SD on Network Segragation between  DMN and DAN
+>>
+>>
+>>
+>> Thus far I have done:
+>>
+>> 1) a single subject ICA for 15 subjects under two conditions (Sleep-deprived= SD and Rested Wakefulness= RW)
+>>
+>> 2) group ICA (d= 15) including all subjects and both conditions.
+>>
+>> 3) Identified two group components as the DMN and DAN by analyzing its overlapping with a template map for each of the two networks.
+>>
+>> 4) applying a dual regression (Stage 1 and 2)
+>>
+>> 5) created a Design Matrix with 4 Contrasts (SD), (RW), (SD > RW), (RW>SD)
+>>
+>> --------
+>>
+>> Now I'm stuck trying to figure out how I can use the subject specific maps from the dual regression to investigate the effects of SD on FC within the component representing the DMN, DAN and between the two defined components.
+>>
+>> I'm kinda overwhelmed with the options of the randomize command, so it would help me a lot, if you could help me find the necessary options for the randomize command, in order to investigate the question above.
+>>
+>> Any help would be greatly appreciated
+>>
+>>
+>> Regard
+>>
+>> Janis
+>> ########################################################################
+>>
+>> To unsubscribe from the FSL list, click the following link:
+>> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>
+>> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+
+Hi Michiel,
+
+Thanks so much for your reply.
+I suppose what I mean for my second question is that if I use for example --omatrix2 with the PFC as my --seed and the PPC as my --target2, will the waypoints and the exclusion masks I specify affect the outputted connectivity matrix? Or does it only affect the fdt_paths? Sorry if this is a silly question!
+
+- Matt
+
+On Wed, May 1, 2024 at 5:22 AM Michiel Cottaar <0000c795548cacb2-dmarc-request@jiscmail.ac.uk> wrote:
+Hi,
+
+In this case, you really have two options, depending on how you want to do the seeding. You've got two options:
+1. If you want to seed in one of the ROIs, you should use --omatrix2 . One of the masks will be your --seed, the other will by --target2. This will count the number of streamlines seeded from each of the voxels in the seed mask, how many hit each voxel in the target mask. You could run probtrackx a second time with the --seed and --target2 swapped and average the results to ensure that you are not biased by which ROI you made the seed the first time.
+2. If you want to seed in another ROI (e.g., the white matter), you would use --omatrix3. In that case --target3 is one of the ROIs (e.g., PFC) and --lrtarget3 is the other (e.g., PPC). If you have many more ROIs that you want to include in your analysis, it might be easier to put them together in a single ROI and pass this one on to both --target3 and --lrtarget3.
+
+I'm not sure what you are asking with your second question. Are you looking to get a white matter segmentation of the tract connecting the PFC and PPC? If so, the approach would be slightly different depending on which approach you select above, but the basic idea would be to use --waypoints to ensure you only keep streamlines that go through your ROIs. It might be easier to set this up in a separate probtrackx run.
+
+Best wishes,
+
+Michiel
+
+> On 24 Apr 2024, at 22:24, Matthew Amandola <000081b42280a247-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Hello FSL experts,
+>
+> I was hoping to be able to create a connectivity matrix between two ROI's, where each index of the matrix corresponds to the # of streamlines between the paired voxels of the two ROI's. Just wanted to clarify things first!
+>
+> 1. Is --omatrix3 the correct choice for this? And if it is the correct choice, how do I specify the targets? Using --target3, do I input a list of ROI's in a textfile, separate them with a comma, or should I add the ROI's together into one? Just a bit confused about how to go about this.
+>
+> 2. I am running tractography between multiple masks - in this case the PFC and PPC (the output of which would be the fdt_paths streamline mask). Do these multiple masks affect the output of --omatrix3? Or is that totally separate?
+>
+> Thanks so much!
+>
+> - Matt
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+

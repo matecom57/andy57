@@ -1,0 +1,430 @@
+Hi!
+
+I have initially preprocessed my data in fmriprep with --use-aroma. I am ultimately wanting to analyse fALFF values and seed-based connectivity (ROI’s in insula and dACC).
+
+After fmriprep, I want to linear detrend and do grand mean scaling, and then I want to regress out nuisance variables using FSL. I have noticed that in FEAT I can select intensity normalisation and high pass filtering at 100s, whilst also turning off registration (as this was already done in fmriprep) .
+
+Is this a correct and valid way of doing detrending and GMS? Do I need to apply the same de-trending/GMS to the confound regressors estimated by ICA-AROMA in fmriprep before nusiance regression?
+
+
+Thanks in advance!
+BM
+
+Hi FSL Experts,
+
+I was wondering if it's possible to run a small volume correction using "pre-threshold masking" and selecting "cluster thresholding" instead of "voxel thresholding?" If it is possible to use cluster thresholding for a small volume correction, then what should the Z threshold be set to?
+
+-Carolyn Zhou
+
+########################################################################
+
+
+Hello,
+
+I have the following queries regarding the design matrix for my glm model. It would be of immense help if anyone could help with them.
+
+1. If there are 3 variables - A, B, and C and I want to check if there is an interaction effect between A*B and A*C, should I include all the variables in the same design matrix as in [A B C A*B A*C]?
+
+2. Is multiplication better to check for interaction between two continuous variables (A and B)? If I divide 'A' into 2 groups using a median split, it gives different results. Which of the two should I use?
+
+Thank you
+Shruti
+
+########
+
+Dear All,
+
+ I'm working on a joint inference project using multiple modalities (e.g., T1w, T2w, etc) to look at cross-sectional as well as longitudinal associations with outcome measures. Now, I feel uncertain how to set-up the longitudinal component for the joint inference specifically. Is it legal (i.e., appropriate) for me to just subtract each modality individually [e.g., T1w_t2-T1w_t1, T2w_t2-T2w_t1, on a subject-by-subject basis] and then feed the resulting differences, in each modality, to PALM for a joint inference analysis?
+
+ cheers
+
+ Martin
+
+
+Dear Paul and other FSL Experts,
+
+Thank you for the helpful response regarding the use of the Python-based version of FIX for my rat data. I have made progress in preparing my data and have a few additional questions to ensure I am on the right track.
+
+I have the following prepared:
+
+IC images and time series extracted using the Group ICA Of fMRI Toolbox (GIFT).
+Head motion parameters in six directions calculated using Statistical Parametric Mapping (SPM) Realign function.
+A species-specific reference image.
+My goal is to integrate these elements into the FIX framework to effectively denoise my rat data. Could you please provide guidance on the following points?
+
+Integration of GIFT Outputs: How should I incorporate the IC images and time series obtained from GIFT into the FIX processing pipeline within FSL?
+Incorporation of Motion Parameters: How can I integrate the head motion parameters from SPM Realign into the FIX training and processing steps?
+Directory Structure and Code Modifications: Are there specific modifications needed in the FIX code or particular files within the FSL directory structure to accommodate the rat data and custom masks?
+
+Thank you for your continued support and assistance.
+
+Best regards,
+
+Tianye
+
+########################################################################
+
+I may be a bit late on this but I published an article on CUDA vs openmp a few years ago:
+
+https://pubmed.ncbi.nlm.nih.gov/32501890/
+
+Regards,
+
+Jerome
+
+
+On Sat, 18 May 2024 at 07:47, Niklas Lenfeldt <niklas.lenfeldt@umu.se> wrote:
+That is great news. Thank you very much for the update. I am just about to install the new fsl as I have been off my diffusion research for a while. But I just managed to get eddy working by linking eddy_cuda to cuda10.2 for an older fsl version, but I will change to the new version shortly.
+
+I also just found the specifications for the new eddy version, I will read it intently.
+
+Again, many thanks, you do a really great job! Thankyou!
+
+best
+
+Nick
+
+That is great news. Thank you very much for the update. I am just about to install the new fsl as I have been off my diffusion research for a while. But I just managed to get eddy working by linking eddy_cuda to cuda10.2 for an older fsl version, but I will change to the new version shortly.
+
+I also just found the specifications for the new eddy version, I will read it intently.
+
+Again, many thanks, you do a really great job! Thankyou!
+
+best
+
+Nick
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neuroscience
+
+University of Umeå
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 17 maj 2024 17:16
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] eddy cuda versus open_mp
+ 
+Hi Nick,
+
+I'm guessing that you are using a slightly older version of FSL - eddy has undergone some fairly substantial changes over the past few FSL versions, so I would recommend reinstalling the latest version of FSL (6.0.7.11 at the time of writing).
+
+eddy_openmp performs similarly but slower that eddy_cuda, but slice timing corrections are only available with cuda. Correct?
+The CUDA and CPU versions of eddy are both feature-complete, but the CPU version is obviously slower than the GPU version. The CPU version of eddy now uses native C++ threading for parallelising instead of OpenMP; you can specify the number of threads to use via the --nthr option.
+
+You should be able to just call the "eddy" command - this is a wrapper script which will call the CPU or GPU version depending on whether a GPU is detected.
+
+
+
+The Gabbay Laboratory within the Department of Psychiatry at the University of Miami Miller School of Medicine is seeking highly motivated postdoctoral scholars in the field of human neuroimaging. Available positions will focus on analyzing fMRI and proton MR spectroscopy data as well as acquiring or processing related MRI and biological measures.
+Candidates should either have completed or be near completing a PhD in neuroscience, psychology, cognitive neuroscience, radiology, engineering, biostatistics, or a related field, and should have a strong background in quantitative analysis. Proficiencies with at least one major neuroimaging software suite (e.g. FSL, AFNI, SPM, Freesurfer, Caret, Connectome Workbench, etc.) and Unix/Linux environment are expected. Familiarity with Matlab, Python, and/or R programming languages is a plus. The primary responsibilities for this postdoctoral fellow will be to run scans, analyze neuroimaging data from multiple ongoing and recently concluded research projects, and write manuscripts.
+Under the mentorship of Vilma Gabbay, MD and Benjamin Ely, PhD, postdoctoral scholars will be expected to advance clinical and methodological knowledge through their postdoctoral training. Our lab is dedicated to the study and treatment of mood, anxiety, and substance use disorders in adolescent and high-risk adult (e.g. HIV+) populations using innovative neuroimaging and immunological methodologies. The neuroimaging program features high-resolution data acquisition and analysis techniques modeled on the Human Connectome Project (HCP) and is committed to the highest standards for magnetic resonance imaging and spectroscopy.
+The lab is funded by four ongoing NIH R01 neuroimaging studies (R01MH120601, R01DA054885, R01MH128878, and R01MH131207) and several smaller grants, providing unparalleled funding for active and exploratory studies. Major research topics include longitudinal studies of adolescent mood and anxiety disorders; comorbidity of depression, cannabis use, and HIV infection; and an intervention study aimed at improving well-being among healthcare workers with parental responsibilities during the COVID-19 pandemic. Project abstracts with further details can be found on NIH RePORTER.
+Resources available on-campus and through long-standing collaborations include multiple research-dedicated 3T MRI scanners (Siemens Skyra/Vida/Prisma) with cutting-edge accelerated and multi-echo fMRI sequences, high-performance scientific computing clusters, and an extensive library of analytic and statistical software. The PIs are fully committed to fostering the trainee's research independence through publication of first-authored manuscripts in top journals and mentorship in grant applications. In addition to assisting with the PI’s proposals, the successful applicant will be highly encouraged to develop and pursue funding for their own research project through federal (e.g. NIH F32) or foundation grant programs by the end of their first year.
+The initial employment period for this position is two years, with the possibility of extension. Please send a CV, statement of interest, and contact information for three references to vxg595@med.miami.edu. University of Miami is an equal opportunity employer, and all qualified candidates will be given equal consideration. Priority will be given to candidates available to start sooner. Compensation will be proportional to experience and will follow standard postdoctoral fellowship rates posted by University of Miami.
+
+########################################################################
+
+
+Hi Nick,
+
+I'm guessing that you are using a slightly older version of FSL - eddy has undergone some fairly substantial changes over the past few FSL versions, so I would recommend reinstalling the latest version of FSL (6.0.7.11 at the time of writing).
+
+eddy_openmp performs similarly but slower that eddy_cuda, but slice timing corrections are only available with cuda. Correct?
+The CUDA and CPU versions of eddy are both feature-complete, but the CPU version is obviously slower than the GPU version. The CPU version of eddy now uses native C++ threading for parallelising instead of OpenMP; you can specify the number of threads to use via the --nthr option.
+
+You should be able to just call the "eddy" command - this is a wrapper script which will call the CPU or GPU version depending on whether a GPU is detected.
+
+
+
+Ladies and Gents,
+
+I am having issues with cuda-eddy after performing a major file clean up on my computer.
+
+I just want to check:
+eddy_openmp performs similarly but slower that eddy_cuda, but slice timing corrections are only available with cuda. Correct?
+
+Which is the latest version of cuda that the current fsl version is compatible with? 12.1?
+
+is there any new information on how to circumvent the "error while loading shared libraries: libcublas.so.9.1: cannot open shared object file: No such file or directory"?
+I managed to solve that issue before I did my major file clean up, and now I cannot remember the solution....I am getting old.
+
+Any help much appreciated.
+
+best
+
+nick
+
+Hi Tianye,
+
+First of all, I would recommend that you use the new Python-based version of FIX that is included in recent FSL releases. We do not have long term plans to support the old MATLAB/R version.
+
+In principle, all you need to do to run FIX on data from a different species is to create a set of mask images which are used by FIX for extracting some spatial features.  You also need a suitable species-specific reference image to use for registration, and your mask images need to be defined in the same space as your reference image. 
+
+FIX has built-in human and macaque masks which, in a recent FSL installation, you can find inside $FSLDIR/lib/python3.11/site-packages/pyfix/resources/masks/.  You can also download them from the pyfix git repository: https://git.fmrib.ox.ac.uk/fsl/pyfix/-/tree/main/pyfix/resources/masks?ref_type=heads
+
+Once you have a reference image and have created the mask images,
+you need to run MELODIC on your data as you would on human data, with registration to your reference image. An overview on the input directory structure expected by FIX can be found at https://fsl.fmrib.ox.ac.uk/fsl/docs/#/resting_state/fix?id=using-fix-with-a-pre-trained-model.
+
+Presently, to use FIX with a set of custom masks, you will need to copy the mask images into a location in $FSLDIR. However, the next version of FIX will allow you to specify a customs set of mask images on the command line, so hopefully by the time you have created the mask images, this version will be available.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tianye Chen <a1187551363@GMAIL.COM>
+Sent: 17 May 2024 04:33
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Seeking Guidance on Modifying ICA FIX Model for Rat Data Denoising
+ 
+Dear FSL Experts,
+I am interested in using the ICA-FIX to denoise rat data.
+Could you please advise me on the specific code and files that need to be modified or customized to achieve this? Any guidance or references to relevant documentation would be highly appreciated.
+Thank you very much for your time and assistance.
+Best regards,
+Tianye Chen
+
+########################################################################
+
+Yes, all the masks you provide should be in the same space (except for the `nodif_brain_mask` paseed on to `-m/--mask`, which is always in diffusion space).
+
+Michiel
+
+On 16 May 2024, at 17:22, Matthew Amandola <000081b42280a247-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Michiel -
+
+Just to be sure - if I specify that my masks are in MNI space and provide a transformation, does that also mean that I must have the waypoint and exclusion ROI masks in MNI space as well?
+
+Thanks again for all of your help,
+- Matt
+
+On Mon, May 13, 2024 at 5:51 AM Michiel Cottaar <0000c795548cacb2-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Matt,
+
+First, a general warning: you never want to apply any transforms to the bedpostX output, nor any non-linear transforms to the diffusion MRI data.
+
+Fortunately, you don't have to, because any outputs of probtrackx (including --matrix1) will be in the same space as you provide the masks, not the same space as the diffusion data. So, just provide the masks in MNI space and provide probtrackx with the transforms between MNI space and the diffusion space (using the --xfm and --invxfm flags). If you use the same MNI masks across subjects, this will ensure you have comparable matrix results across subjects.
+
+Best wishes,
+
+Michiel
+
+On 11 May 2024, at 18:15, Matthew Amandola <000081b42280a247-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Michiel,
+
+Quick question - if I wanted the outputs of matrix1 to correspond to MNI space, presumably I'd need to have my bedpostx outputs in diffusion space first, correct? That way, when I run probtrackx, the outputs will be in MNI space.
+
+Do you have any advice on how to accomplish this? Would it be running vecreg on the merged samples before running probtrackx? Or do you think I should put my EDDY outputs into MNI space first, then rerun bedpostx on the normalized files? If that's the case, is there a command that would transform the bvec files with the EDDY output?
+
+The goal is to eventually compare these matrix results directly between subjects, so having the same dimension matrix between subjects is what I'm trying to achieve.
+
+Thanks again for your help,
+- Matt
+
+
+Dear FSL Experts,
+I am interested in using the ICA-FIX to denoise rat data.
+Could you please advise me on the specific code and files that need to be modified or customized to achieve this? Any guidance or references to relevant documentation would be highly appreciated.
+Thank you very much for your time and assistance.
+Best regards,
+Tianye Chen
+
+########################################################################
+
+
+Hi Isabella,
+  You should be able to open up .bashrc with the following command in the Ubuntu terminal:
+
+notepad.exe ~/.bashrc
+
+( This will open the file with the Windows notepad app )
+
+and edit the export DISPLAY=<blah> line to the simpler :0.0 version.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi Matthew!
+
+I've successfully added these two lines into the Ubuntu shell:
+echo "export LIBGL_ALWAYS_INDIRECT=0" >> ~/.bashrc
+echo "export LIBGL_ALWAYS_SOFTWARE=1" >> ~/.bashrc
+
+However, there's a slight issue with this line:
+echo "export DISPLAY=\$(grep nameserver /etc/resolv.conf  | awk '{print \$2; exit}'):0" >> ~/.bashrc
+
+If I just add those three lines, neither glxgears nor FSL will run. I have to append this line to the bottom of the Ubuntu shell in order for both processes to even run:
+export DISPLAY=:0.0
+
+Which I assume overwrites the earlier export DISPLAY line. I've checked VcXsrv, it works fine, it's not blocked on my computer. Most likely if I left the former export DISPLAY line alone, the FSL displays will work. However, FSL won't even open if I do that. Do you have any thoughts as to how I could fix this?
+
+Thanks,
+Bell
+
+########################################################################
+
+
+Hi Michiel -
+
+Just to be sure - if I specify that my masks are in MNI space and provide a transformation, does that also mean that I must have the waypoint and exclusion ROI masks in MNI space as well?
+
+Thanks again for all of your help,
+- Matt
+
+On Mon, May 13, 2024 at 5:51 AM Michiel Cottaar <0000c795548cacb2-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Matt,
+
+First, a general warning: you never want to apply any transforms to the bedpostX output, nor any non-linear transforms to the diffusion MRI data.
+
+Fortunately, you don't have to, because any outputs of probtrackx (including --matrix1) will be in the same space as you provide the masks, not the same space as the diffusion data. So, just provide the masks in MNI space and provide probtrackx with the transforms between MNI space and the diffusion space (using the --xfm and --invxfm flags). If you use the same MNI masks across subjects, this will ensure you have comparable matrix results across subjects.
+
+Best wishes,
+
+Hi Isabella,
+                 Can you try installing VcXsrv ( from the instructions ) if you haven’t already and make sure .bashrc has been modified/the Ubuntu terminal restarted and XLaunch is running? The instructions only specify VcXsrv is needed for Windows 10, but it should also work for Windows 11.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/Windows
+
+These were the direct instructions I followed. I am using Windows 11.
+
+########################################################################
+
+Dear Isabella,
+Are you running Ubuntu 20.04 directly or via WSL on a Windows system? If you are using windows can you confirm if version 10 or 11, as the setup for the GUIs is a little different between the two?
+
+Kind Regards
+Matthew
+
+Dear Imaging Colleagues
+
+ 
+
+We are recruiting a post-doc or research assistant on our project “Advancing MRI biomarkers of brain tissue microstructure and energetics in Multiple Sclerosis.” 
+
+ 
+
+The project aims to develop and compare novel measures of brain oxygen metabolism and brain tissue microstructure and employs techniques of functional MRI and diffusion weighted imaging combined with models of physiological processes and microstructure. The post-holder would work with our research group to develop MRI acquisition methods, analyse signals and apply such methods to study the human brain in healthy volunteers and people with Multiple Sclerosis. The position would suit researchers with an applied physics or engineering background or neuroscientists able to develop a good understanding of MRI.
+
+ 
+
+The project lasts for 2 years and is based at the Institute for Advanced Biomedical Technologies (ITAB), University of Chieti-Pescara, Italy. The appointment will be in the Department of Neurosciences, Imaging and Clinical Sciences (DNISC). For more information about the Department please see www.dni.unich.it.
+
+ 
+
+Interested candidates are advised to contact, as soon as possible, Professor Richard Wise (richard.wise@unich.it) or Prof. Valentina Tomassini (valentina.tomassini@unich.it) for informal discussions before applying. 
+
+ 
+
+The deadline for applications is 9 June 2024. Formal recruitment procedures for these positions can be found on the University website: 
+
+https://www.unich.it/ateneo/concorsi-e-gare/assegni-di-ricerca. Please navigate to the section “D.R. n.1886 prot. n.87247 del 04/12/2023 Bando di concorso per il conferimento di n. 13 assegni per la collaborazione ad attività di ricerca.”
+
+The relevant position is N.4 in the document scheda_1declaratoria_assegni.pdf (https://www.unich.it/sites/default/files/scheda_1declaratoria_assegni_8.pdf under the link “Allegati”) where a further short description of the project can be found. Applications can be made through the site: https://pica.cineca.it/unich/ where you should follow the link indicated as D.R. n. 1886. Non-Italian candidates are advised to contact Profs. Wise or Tomassini for advice on how to complete the application process.
+
+ 
+
+Thanks and best wishes
+
+Richard Wise 
+
+Professor of Physics
+ITAB - Institute for Advanced Biomedical Technologies
+Department of Neurosciences, Imaging and Clinical Sciences
+University "G. d'Annunzio" - Chieti - Pescara
+Via dei Vestini 33 - 66100 Chieti - Italy
+
+
+
+Hi, my email address has been authorized now! Wahoo \o/
+
+This message was sent to you directly, but I thought I'd ask it again here.
+
+I've just downloaded FSL using the instructions provided on the webpage (through Ubuntu 20.04), and am currently using it to explore a few .nii files I have saved to my computer. I can click through the space and view the different planes of the brain well enough, however, anything else I click is completely inaccessible. For example, when I click on the 'i' symbol in the top left corner and open up the overlay information, I can't scroll or X out of the little UI that pops up.
+
+This is kind of an issue, as I'd like to be able to access the dimensions of my image. Do you have any insights?
+
+########################################################################
+
+
+Hello Jingyi,
+For higher-level analyses ( even mid-level analyses combining a single-subject’s sessions ) the mask must be in standard-space - as this will the common space that the lower-level inputs have been resampled into. 
+
+Hope this makes sense,
+Kind Regards,
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Carolyn,
+                 This should be fine, I don’t believe the Z-threshold specifically needs to change and so can remain at 3.1 for parametric stats.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Hello Frieda,
+                   In the link below the subject images are already in MNI space ( probably to make the tutorial clearer ). In general a mask's dimensions ( viewed with e.g. fslhd ) needs to match one of these three images in the reg subdirectory: example_func ( functional ), highres ( structural ),  standard ( usually MNI ). From reading your description it sounds like the mask source would already be in standard ( MNI ) space but potentially of a different resolution to the standard space used in the FEAT registrations ( e.g. 1mm vs 2mm ). I would start by checking the various image sizes ( particularly mask vs standard ) to see where the mismatch is.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Estephan
+
+OD is the ODI map, mean_fintra is the intracellular volume fraction and mean_fiso is the isotropic volume fraction. The orientation is in the dyads1 file.
+
+If you have used a deterministic fit (Levenberg-Marquardt, default), you can ignore all the *_samples files, they would just contain point estimates. If you use an MCMC-fit then for each parameter you get a distribution of potential values, the _samples files contain samples from this distribution and the mean_ contain the mean of these samples.
+
+There is a very similar organisation for the NODDI-Bingham case.
+
+Hope this helps
+Stam
+
+
+Hello FSL team,
+
+we received the following error trying to run featquery: Error - mask size doesn't match any of the images in the FEAT directory. Based on previous posts we understand that the mask needs to be in the same matrix space as the standard space image, which we assumed would be 1 for the mask region(s) and 0 for the rest of the brain.
+However, it seems that our image matrix only contains the mask. Can this be fixed by resampling or is there another way?
+
+We created the output mask by selecting/saving the centromedial amygdala from the Juelich-probabilistic-atlas and binarize it afterwards. The first mask of the orbitofrontal cortex has been extracted from the harvard-oxford-cortical atlas. Subsequently, this mask was put into the functional space of each subject to do the time series extraction following this pipeline: https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/fsl_fmri_restingstate-sbc.html.
+
+Any help on how to continue the analysis is highly appreciated.
+
+Best regards,
+Frieda
+
+
+

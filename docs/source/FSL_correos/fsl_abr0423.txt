@@ -1,0 +1,1475 @@
+Actually, just realized a mistake in my original message. Indexing mode only works properly if I do -M for non-zero mean. With regular -m for overall mean, it is also providing the sum of timepoint means.
+
+-Mike
+
+________________________________________
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Angstadt, Mike <mangstad@MED.UMICH.EDU>
+Sent: Monday, April 3, 2023 4:44 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: [FSL] fslstats issues with 4d file
+
+Hi,
+
+I just noticed an issue with fslstats in FSL 6.0.4 and 6.0.5.2 at least. Haven't gotten a chance to install the newest version to confirm.
+
+I was trying to run fslstats to get the grand mean of a 4D image. If I run this with no mask, I get back the correct mean over time and space. If I run it in index mode with a mask I get back the correct in-mask mean over time and space. However, if I run it as just masked, I get back a very large number, outside the range of the input data completely. Upon investigating further, I found that the number returned is the sum of the timepoint means within the mask.
+
+Here are example commands:
+fslstats input_4d.nii.gz -m (correct mean over time and space)
+fslstats -K brain_mask.nii.gz input_4d.nii.gz -m (correct in-brain mean over time and space)
+fslstats input_4d.nii.gz -k brain_mask.nii.gz -m (incorrect sum of timepoint in-brain means over space)
+
+I'm assuming this is not the desired behavior (especially since index mode and masking function differently).
+
+-Mike Angstadt
+**********************************************************
+Electronic Mail is not secure, may not be read every day, and should not be used for urgent or sensitive issues
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fcgi-bin%2FWA-JISC.exe%3FSUBED1%3DFSL%26A%3D1&data=05%7C01%7Cmangstad%40med.umich.edu%7C0991c13df1024c53de5008db348440ea%7C1f41d613d3a14ead918d2a25b10de330%7C0%7C0%7C638161514965325344%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=Du3bQVSw7ioYm0pEJ6%2F3JFY%2FNHVFauZbZiY%2BynujAlk%3D&reserved=0
+
+This message was issued to members of https://nam02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2FFSL&data=05%7C01%7Cmangstad%40med.umich.edu%7C0991c13df1024c53de5008db348440ea%7C1f41d613d3a14ead918d2a25b10de330%7C0%7C0%7C638161514965325344%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=g5yISIhAHWq1gg6no7yinSR4RqVjNLwfqqL1o1lSZxs%3D&reserved=0, a mailing list hosted by https://nam02.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.jiscmail.ac.uk%2F&data=05%7C01%7Cmangstad%40med.umich.edu%7C0991c13df1024c53de5008db348440ea%7C1f41d613d3a14ead918d2a25b10de330%7C0%7C0%7C638161514965325344%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=GLzaZJ4YgHde3vN9CzFefytfJaiZP03NMvZEXTFYVSc%3D&reserved=0, terms & conditions are available at https://nam02.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jiscmail.ac.uk%2Fpolicyandsecurity%2F&data=05%7C01%7Cmangstad%40med.umich.edu%7C0991c13df1024c53de5008db348440ea%7C1f41d613d3a14ead918d2a25b10de330%7C0%7C0%7C638161514965325344%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=lIq6%2By6YHxDoILIkep01frQa71eAKW1AOgNYLLw14tQ%3D&reserved=0
+**********************************************************
+Electronic Mail is not secure, may not be read every day, and should not be used for urgent or sensitive issues
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi,
+
+I just noticed an issue with fslstats in FSL 6.0.4 and 6.0.5.2 at least. Haven't gotten a chance to install the newest version to confirm.
+
+I was trying to run fslstats to get the grand mean of a 4D image. If I run this with no mask, I get back the correct mean over time and space. If I run it in index mode with a mask I get back the correct in-mask mean over time and space. However, if I run it as just masked, I get back a very large number, outside the range of the input data completely. Upon investigating further, I found that the number returned is the sum of the timepoint means within the mask.
+
+Here are example commands:
+fslstats input_4d.nii.gz -m (correct mean over time and space)
+fslstats -K brain_mask.nii.gz input_4d.nii.gz -m (correct in-brain mean over time and space)
+fslstats input_4d.nii.gz -k brain_mask.nii.gz -m (incorrect sum of timepoint in-brain means over space)
+
+I'm assuming this is not the desired behavior (especially since index mode and masking function differently).
+
+-Mike Angstadt
+**********************************************************
+
+Dear all,
+
+Only a few spots are left. Register now: https://dipy.org/workshops/latest !!!
+
+The complete program for the highly anticipated workshop is updated and available in the link above. 
+
+DIPY is a powerful software library for analyzing and processing diffusion MRI data. It is an open-source project with a large and active  community of contributors who are dedicated to advancing the field of medical imaging. The DIPY workshop provides an excellent opportunity  for individuals to learn how to use this software effectively. The workshop covers a broad range of topics, from basic concepts to advanced  techniques, and provides hands-on experience with the software. By attending the DIPY workshop, you will not only learn how to use this  powerful tool, but also gain a deeper understanding of diffusion imaging and machine learning for imaging in general. The workshop is led by  expert instructors who have extensive experience in both diffusion imaging and DIPY, so attendees can be confident that they are receiving  accurate and up-to-date information.
+
+
+Hi Alex,
+
+You can do this in one of two ways:
+
+	1	By using separate positive/negative colour maps, instead of using a single divergent colour map. If you take the attached white->red and white->blue colour map files, and copy them into ~/.fsleyes/colourmaps/ (on macOS) or ~/.config/fsleyes/colourmaps/ (on linux), you should then be able to get the view you want with: 
+	2	 fsleyes -cb -cbl left <image> -cm whitered -nc whiteblue -un
+	3	
+	4	
+	5	By continuing to use a single colour map, and toggling the "invert clipping range" option (which causes values within the clipping range to be hidden), e.g.:  fsleyes -cb -cbl left <image> -cm brain_colours_diverging_bwr -dr -0.115 0.155 -cr -0.001 0.001 -ic
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Alex Waldman <alex.waldman@SJC.OX.AC.UK>
+Sent: 04 April 2023 13:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Restrict Colour Map to Annotation
+ 
+Dear All,
+ 
+This is likely a naïve question (my apologies) but I am having some issues with generating an appropriate colour bar for my question.
+ 
+I have a subtractive frequency map that ranges from -0.115 to 0.115 and I want to apply a divergent colour map so I can demonstrate areas that are more inflammatory (ie positive frequency) versus those that are not (negative frequency). I also have an overlay of the spinal cord to show what areas these correspond to (image below).
+ 
+
+ 
+When I load in my frequency map and choose a divergent colour scale, I am getting areas outside the bounds of my spinal cord overlay all showing 0 (image below).
+ 
+
+ 
+Is there a way in which I can restrict the colour map display to only be inside the overlay?
+ 
+When I displayed the negative colour map I was able to do this but then the negative values and positive values were the same color.
+ 
+
+ 
+Is there a way to it display more like the first example in terms of color but having the background removed like the second example?
+ 
+Thanks for your help!
+ 
+Warm Regards,
+Alex
+
+
+Hi Kylie,
+
+Would you be able to let me know the following information:
+
+ - what OS you are using
+ - what FSL version (run "cat $FSLDIR/etc/fslversion")
+ - the output of running "$FSLDIR/bin/conda list -p $FSLDIR"
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Kylie Alm <00009d3eb22eefc1-dmarc-request@JISCMAIL.AC.UK>
+Sent: 03 April 2023 18:39
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy quad errors after FSL 6.0.6 update
+ 
+Dear Matthew,
+
+Thank you very much for your quick reply. I updated the package, and it gets a little further into the QC processing steps, but now I'm getting this error:
+
+-----
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 416, in main
+    pp.close()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 2734, in close
+    self._file.finalize()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 853, in finalize
+    self.writeFonts()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 999, in writeFonts
+    fonts[Fx] = self.embedTTF(filename, chars)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1476, in embedTTF
+    return embedTTFType3(font, characters, descriptor)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1220, in embedTTFType3
+    widths = [get_char_width(charcode)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1220, in <listcomp>
+    widths = [get_char_width(charcode)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1212, in get_char_width
+    width = font.load_char(
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/_text_helpers.py", line 19, in warn_on_missing_glyph
+    chr(codepoint).encode("ascii", "namereplace").decode("ascii")))
+AttributeError: module 'unicodedata2' has no attribute '_ucnhash_CAPI'
+-----
+
+Is there a python package that needs to be updated as well?
+
+Thanks,
+
+Kylie
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear All,
+
+ 
+
+This is likely a naïve question (my apologies) but I am having some issues with generating an appropriate colour bar for my question.
+
+ 
+
+I have a subtractive frequency map that ranges from -0.115 to 0.115 and I want to apply a divergent colour map so I can demonstrate areas that are more inflammatory (ie positive frequency) versus those that are not (negative frequency). I also have an overlay of the spinal cord to show what areas these correspond to (image below).
+
+ 
+
+
+
+ 
+
+When I load in my frequency map and choose a divergent colour scale, I am getting areas outside the bounds of my spinal cord overlay all showing 0 (image below).
+
+ 
+
+
+
+ 
+
+Is there a way in which I can restrict the colour map display to only be inside the overlay?
+
+ 
+
+When I displayed the negative colour map I was able to do this but then the negative values and positive values were the same color.
+
+ 
+
+
+
+ 
+
+Is there a way to it display more like the first example in terms of color but having the background removed like the second example?
+
+ 
+
+Thanks for your help!
+
+ 
+
+Warm Regards,
+
+Alex
+
+Hi again,
+
+Would you also be able to share the full eddy_quad command that you are trying to run?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: 04 April 2023 11:11
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy quad errors after FSL 6.0.6 update
+ 
+Hi Kylie,
+
+Would you be able to let me know the following information:
+
+ - what OS you are using
+ - what FSL version (run "cat $FSLDIR/etc/fslversion")
+ - the output of running "$FSLDIR/bin/conda list -p $FSLDIR"
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Kylie Alm <00009d3eb22eefc1-dmarc-request@JISCMAIL.AC.UK>
+Sent: 03 April 2023 18:39
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy quad errors after FSL 6.0.6 update
+ 
+Dear Matthew,
+
+Thank you very much for your quick reply. I updated the package, and it gets a little further into the QC processing steps, but now I'm getting this error:
+
+-----
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 416, in main
+    pp.close()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 2734, in close
+    self._file.finalize()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 853, in finalize
+    self.writeFonts()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 999, in writeFonts
+    fonts[Fx] = self.embedTTF(filename, chars)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1476, in embedTTF
+    return embedTTFType3(font, characters, descriptor)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1220, in embedTTFType3
+    widths = [get_char_width(charcode)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1220, in <listcomp>
+    widths = [get_char_width(charcode)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1212, in get_char_width
+    width = font.load_char(
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/_text_helpers.py", line 19, in warn_on_missing_glyph
+    chr(codepoint).encode("ascii", "namereplace").decode("ascii")))
+AttributeError: module 'unicodedata2' has no attribute '_ucnhash_CAPI'
+-----
+
+Is there a python package that needs to be updated as well?
+
+Thanks,
+
+Kylie
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+when running ICA-AROMA the first two steps work fine, however, the third step which is the denoising one did not work. I do not have any error but the ubuntu terminal just shut down. so, I have to use fsl_regfit to have the denoised data by using the classified motion component I am getting from ICA-AROMA. but the thing is I don't know whether this will give me the same results or not. additionally, I have used fsl_regfilt on two subjects, the first one seems fine, however the second one I am just getting the mask image which is a bit weird!!.
+
+normally I am using the following lines:
+
+melodic -i /home/w/.local/fmri/data/sub02/sub02-normalized.nii -o /home/w/.local/fmri/melodic/sub02  --tr=0.8 --report
+
+python2.7 ICA-AROMA/ICA_AROMA.py -i /home/w/.local/fmri/data/sub02/sub02-normalized.nii -o /home/w/.local/fmri/aroma_sub02 -tr 0.8 -mc /home/w/.local/fmri/motion_01.txt -m /home/w/.local/fmri/melodic/sub02/mask.nii.gz
+
+fsl_regfilt -i /home/w/.local/fmri/data/sub02/sub02-normalized.ni -o /home/w/.local/fmri/filtered -m /home/w/.local/fmri/melodic/sub02/mask.nii.gz  -d  /home/w/.local/fmri/aroma_sub02/melodic_mix -f <whatever the components are>
+
+
+will be very grateful if you can help me with that.
+
+kind regards,
+Mahmoud.
+
+kind regards,
+Mahmoud.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello everyone，I obtained the dMRI data from the NDA, and there were four files in total: "MR_dMRI_dir98_AP", MR_dMRI_dir98_PA, MR_dMRI_dir99_AP, MR_dMRI_dir99_AP. These files do not have a value of b = 0 in the bvalue file. The smallest value in the bvalue file is b = 5. I don't know how to use these files to perform "TOPUP".
+
+Also, do the four files have to be used together to make a single file, or do you have to choose two of them to use them? I looked at similar data files, and after the execution of eddy, it finally became a file with 199 volumes.
+
+Acquisition rules: Diffusion MRI with 1.5mm isotropic resolution with multi-band acceleration
+factor of 4, 92/93 directions in each shell (b=1500 and 3000 s/mm2) acquired four
+times: twice with AP and twice with PA phase encoding directions. 28 b=0 s/mm 2
+volumes were interspersed in total within all four runs.
+
+########################################################################
+
+
+Hello,
+
+I followed the tutorial on the official website（https://web.mit.edu/fsl_v5.0.10/fsl/doc/wiki/eddy(2f)UsersGuide.html#Running_eddy-1）and used official data (fsl_course_data/fdt1/subj1_preproc;  data list: acqparams.txt         b1500.nii.gz     bvecs    index.txt        pre_baked        b1500.bvec       bvals    dwidata.nii.gz   nodif_PA.nii.gz) to practice.
+
+commands are as follows:
+fsl &
+cd fsl_course_data/fdt1/subj1_preproc
+fslroi dwidata A2P_b0 0 1
+fslmerge -t A2P_P2A_b0 A2P_b0 nodif_PA
+topup --imain=A2P_P2A_b0 --datain=acqparams.txt --config=b02b0.cnf --out=my_topup_results --iout=my_hifi_b0
+fslmaths my_hifi_b0 -Tmean my_hifi_b0
+bet my_hifi_b0 my_hifi_b0_brain -m
+eddy --imain=dwidata --mask=my_hifi_b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs --bvals=bvals --topup=my_topup_results --out=eddy_corrected_data
+
+then Terminal showed "EDDY::: Eddy failed with message", sometimes with some strange characters like "???" above the message.
+
+I've tried many times but it still failed. And today, when I repeat the commands, at the "topup" step, another error message "zsh: command not found: topup --imain=A2P_P2A_b0 --datain=acqparams.txt --config=b02b0.cnf --out=my_topup_results --iout=my_hifi_b0" appeared.
+
+I would appreciate it if somebody could help me with these problems.
+
+Sincerely,
+
+Xiong
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ If I won´t find this direction, should I just skip the topup correction and run eddy instead
+
+yes
+
+﻿Am 30.03.23, 15:00 schrieb "FSL - FMRIB's Software Library im Auftrag von Julia Emily Ernst" <FSL@JISCMAIL.AC.UK im Auftrag von julia.ernst@ZI-MANNHEIM.DE>:
+
+    I am a PhD student recently started to work on DTI. I have a couple of questions/doubts regarding the preprocessing steps: I have some data acquired in 2011/2012 with a Siemens scanner and I have found only one encoding direction (Posterior to Anterior) in all the headers of the Nifti files as well as in the json file (Encoding Direction: -j) and I was wondering, since I am running the preprocessing with FSL and therefore I will use TBSS, if there should be the other encoding direction somewhere and if I can get some more informations from the Diffusion Matrix with all the directions (19, 20, 21) that I received from the MRI technician.
+   
+    If I won´t find this direction, should I just skip the topup correction and run eddy instead? I hope that this won´t make the analyses less sensitive, but I also have to do some quality checks of course.
+   
+    Thank you!
+   
+    Julia Ernst
+
+Dear Matthew,
+
+Thank you very much for your quick reply. I updated the package, and it gets a little further into the QC processing steps, but now I'm getting this error:
+
+-----
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 416, in main
+    pp.close()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 2734, in close
+    self._file.finalize()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 853, in finalize
+    self.writeFonts()
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 999, in writeFonts
+    fonts[Fx] = self.embedTTF(filename, chars)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1476, in embedTTF
+    return embedTTFType3(font, characters, descriptor)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1220, in embedTTFType3
+    widths = [get_char_width(charcode)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1220, in <listcomp>
+    widths = [get_char_width(charcode)
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/backends/backend_pdf.py", line 1212, in get_char_width
+    width = font.load_char(
+  File "/usr/local/fsl/lib/python3.10/site-packages/matplotlib/_text_helpers.py", line 19, in warn_on_missing_glyph
+    chr(codepoint).encode("ascii", "namereplace").decode("ascii")))
+AttributeError: module 'unicodedata2' has no attribute '_ucnhash_CAPI'
+-----
+
+Is there a python package that needs to be updated as well?
+
+Thanks,
+
+Kylie
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Alexander,
+  Apart from the fixation “initialisation” event can you confirm the entire session is either nonsense or stimuli? The current design will probably have issues if this is the case?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 27 Mar 2023, at 12:16, Alexander Tobias Ysbæk-Nielsen <atyn@OUTLOOK.DK> wrote:
+
+Hello again. Upon inspecting the design efficiency of the task, I found indications that the paradigm might indeed be the issue (rank-deficiency?). Here's a link to an image of the design matrix and efficiency: https://pasteboard.co/2klAgUgNma3P.png
+
+Any thoughts or experiences regarding similar paradigms/results (and the interpretation of them!) would be much appreciated. We're trying to work out how to move on from here.
+
+Best,
+Alexander  
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hello Adair,
+  I’ve answered this in the other thread.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 30 Mar 2023, at 19:34, Adair Maldonado <Braian_malu@HOTMAIL.COM> wrote:
+
+Hello everyone, I am a doctoral student at BUAP, Mexico and I am learning to use POSSUM. I see that in the FSL page they mention that POSSUM is not working in the current version of FSL-6.0.6.* so I have 2 questions, I have searched many places, but I can't find the fslinstaller that allows to install the FSL version- 5.0.* since it always directs me to the updated one, I would like to know if anyone has that file and my other question is due to my equipment, I am using a Mac with an M1 chip, that is, arm64, is it possible to run FSL-5.0.* once XQuartz is installed?
+Thank you for your time and I hope you can support me
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello Adair,
+ The “legacy” installer link on the main download page ( https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation ) should allow the installation of 5.0.11. As far as I know the Intel FSL binaries should work fine with Rosetta/M1.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 30 Mar 2023, at 19:31, Adair Maldonado <Braian_malu@HOTMAIL.COM> wrote:
+
+Hello everyone, I am a doctoral student at BUAP, Mexico and I am learning to use POSSUM. I see that in the FSL page they mention that POSSUM is not working in the current version of FSL-6.0.6.* so I have 2 questions, I have searched many places, but I can't find the fslinstaller that allows to install the FSL version- 5.0.* since it always directs me to the updated one, I would like to know if anyone has that file and my other question is due to my equipment, I am using a Mac with an M1 chip, that is, arm64, is it possible to run FSL-5.0.* once XQuartz is installed?
+Thank you for your time and I hope you can support me.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi, 
+
+I'm trying to run the c4d command and was wondering if anyone has experience running this? I was checking my .bval and .bvec and the #s are quite different so wanted to check the nifti file
+
+c4d [file].nii.gz -info
+
+cat [file].bval | wc -w
+
+head [file].bvec | wc -w
+
+thanks!
+
+
+
+Dear Kylie,
+  You should be able to update to the latest fixed version of eddy_qc with the command:
+
+$FSLDIR/bin/update_fsl_package -u fsl-eddy_qc
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Apr 2023, at 15:33, Kylie Alm <00009d3eb22eefc1-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear FSL experts,
+
+I have recently installed FSL 6.0.6 on a new work station, and I have been unable to run eddy_quad since installation. This was a new computer, so it was a fresh install of FSL. I receive the following error every time I try to run eddy_quad:
+
+-----
+Traceback (most recent call last):
+ File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+   main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+ File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 398, in main
+   quad_avg_maps.main(pp, data, eddyOutput)
+ File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad_avg_maps.py", line 36, in main
+   vol = nib.Nifti1Image(np.mean(data['eddy_epi'].get_data()[..., data['bvals']==0], axis=3), data['eddy_epi'].get_affine(), data['eddy_epi'].header)
+ File "/usr/local/fsl/lib/python3.10/site-packages/nibabel/deprecator.py", line 181, in deprecated_func
+   raise error_class(message)
+nibabel.deprecator.ExpiredDeprecationError: get_affine method is deprecated.
+Please use the ``img.affine`` property instead.
+
+* deprecated from version: 2.1
+* Raises <class 'nibabel.deprecator.ExpiredDeprecationError'> as of version: 4.0
+-----
+
+Please advise. Thank you for your time.
+
+Kylie Alm
+Johns Hopkins University School of Medicine
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+H Kirsten,
+We have a selection of old versions at 
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads/oldversions/
+
+Although only the _sources_ of 5.0.4 are available, and building would potentially be quite challenging. 5.0.6 is the closest version for which binaries are still available, although these different versions of melodic should be very close ( if not identical ) in their outputs.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Apr 2023, at 13:57, Kirsten Gillette <Kirsten_Gillette@MED.UNC.EDU> wrote:
+
+Thank you for your reply! However, from what I can tell, this installer script only goes back to version 6.0.6, so I tried the old FSL installer which still doesn't go all the way back to 5.0.4.
+
+Is there some other way I can access old versions of FSL?
+
+Thank you!
+Kirsten Gillette
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear FSL experts,
+
+I have recently installed FSL 6.0.6 on a new work station, and I have been unable to run eddy_quad since installation. This was a new computer, so it was a fresh install of FSL. I receive the following error every time I try to run eddy_quad:
+
+-----
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 398, in main
+    quad_avg_maps.main(pp, data, eddyOutput)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad_avg_maps.py", line 36, in main
+    vol = nib.Nifti1Image(np.mean(data['eddy_epi'].get_data()[..., data['bvals']==0], axis=3), data['eddy_epi'].get_affine(), data['eddy_epi'].header)
+  File "/usr/local/fsl/lib/python3.10/site-packages/nibabel/deprecator.py", line 181, in deprecated_func
+    raise error_class(message)
+nibabel.deprecator.ExpiredDeprecationError: get_affine method is deprecated.
+Please use the ``img.affine`` property instead.
+
+* deprecated from version: 2.1
+* Raises <class 'nibabel.deprecator.ExpiredDeprecationError'> as of version: 4.0
+-----
+
+Please advise. Thank you for your time.
+
+Kylie Alm
+Johns Hopkins University School of Medicine
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Lorenzo,
+
+I dont have a simple answer for this. I wouldn’t necessarily suggest masking these region out (using the -m) option for analysis - it is probably better to include them in the quantification, but then exclude them from subsequent analysis and ROI. It is possible you might have issues near the bottom of the FOV, it occasionally happens that there is an interaction between the labelling and imaging regions that would give rise to higher values in the region of overlap - could be the case, especially if the FOV had a different orientation to the labelling plane/region.
+
+Michael
+
+> On 31 Mar 2023, at 12:49, Lorenzo Nigris <lorenzonigris18@GMAIL.COM> wrote:
+>
+> Dear all,
+>
+> I am running some analysis for ASL data using oxford_asl.
+> By looking at the perfusion map from some participants, values at the bottom of the image, i.e. in cerebellum or frontal lobe, look sometimes atypically high. Does somebody know the reason for this? Perhaps is there any solution to the problem? I was wondering whether drawing a mask that omits such regions and adding it to oxford_asl (with the flag -m) could solve the issue.
+>
+> I had the same exact issue after analyzing 2  different sequences, one PASL and one PCASL, which makes me think that the problem is not sequence related. I added in attach 2 images, one is the perfusion_calib from PASL and the other one from PCASL: in particular, in the PASL the Field of View has wrongly set up, so the temporal lobe, the cerebellum and part of the frontal lobe has been cut out. I posted this example because it shows clearly that at the bottom of the image values are extramely high compared to the rest of the brain. For most of the acquisitions, however, where FoV covers entirely the brain, I don't have such issue. My guess is that either signal at the border of an ASL image is not reliable, and is affected by some factors, or perhaps there is a bug when processing with oxford_asl?
+>
+> Your help would be highly appreciated.
+>
+> Lorenzo Nigris
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+> <PASL.png><PCASL.png>
+
+
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment.
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored
+where permitted by law.
+
+
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+I am running an analysis using the Juelich histological atlas however when I try to apply the mask to my image, I keep getting the error
+
+“Attempted to multiply images of different sizes.
+
+libc++abi: terminating due to uncaught exception of type std::runtime_error: Attempted to multiply images of different sizes”
+
+ 
+
+Is there a way to get my mask in the same dimension as my image of interest which is in MNI space.
+
+ 
+
+ 
+
+Reuben A.
+
+Thank you for your reply! However, from what I can tell, this installer script only goes back to version 6.0.6, so I tried the old FSL installer which still doesn't go all the way back to 5.0.4.
+
+Is there some other way I can access old versions of FSL?
+
+Thank you!
+Kirsten Gillette
+
+########################################################################
+
+
+If on linux, you could try getting the FSL installer to do that:
+
+wget -O /tmp/fslinstaller.py https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
+python /tmp/fslinstaller.py -d /opt/fsl -V 5.0.4
+
+Hopefully it works!
+
+> On Mar 30, 2023, at 3:17 PM, Kirsten Gillette <Kirsten_Gillette@MED.UNC.EDU> wrote:
+>
+> Dear respected professionals,
+>
+> I was hoping you could point me towards where I can download version 5.0.4 of FSL that includes version 3.13 of MELODIC. The oldest version I see in the fsl installer script for prior versions is 5.0.9 which includes version 3.14 of MELODIC.
+>
+> Thank you!
+>
+> ########################################################################
+>
+
+Hi Tatjana,
+
+I am not sure I understand your problem: is it the fact that BIANCA doesn’t give a good result even after masking, or that masking works but it’s time consuming?
+
+ 
+
+In any case, here are a few thoughts.
+
+ 
+
+Masking the input FLAIR: I am assuming you run make_bianca_mask on the T1, then register the mask on FLAIR and use the masked FLAIR as input. The image you have now as FLAIR_brain_masked.nii.gz (column 3 of the Masterfile) should be used as input instead of the full FLAIR, not in addition to it. So you can have: --brainmaskfeaturenum=3 and --featuresubset=1,3 (as 2 and 3 contain the same intensity information)
+
+Using these flags you should not get results outside the masked FLAIR, so nothing in the cerebellum for example. If you still get results outside the mask check if there are any specific errors or warning when BIANCA runs and let me know as this should not happen.
+
+ 
+
+Masking the output: instead of masking the input you could use BIANCA on the non-masked T1 and FLAIR (--brainmaskfeaturenum=2 and --featuresubset=1,2) and then mask the output with the exclusion mask.
+
+ 
+
+Masking the input or masking the output can lead to different results (not completely different, but one might be better than the other), so my suggestion is to try both ways on a couple of subjects and see which one works best for you.
+
+ 
+
+However, whatever type of masking you decide to use, it will need to be the same for training and testing subjects, so it will not reduce the time for processing the rest of the images.
+
+You don’t have to use the full fsl_anat pipeline, so for example you can switch off the subcortical segmentation (--nosubcortseg). You can also derive the CSF pve and the non-linear registration warp separately running FAST and FLIRT/FNIRT, although I am not sure how much time difference there would be. Again, you can try and see which combination is the quickest.
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tatjana Schmidt <ts887@CAM.AC.UK>
+Date: Thursday, 30 March 2023 at 14:07
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] BIANCA: masking input does not work
+
+Hi everyone,
+
+I'm having an issue with BIANCA I haven't been able to solve (using FSL 6.0.6.4): Since many voxels in the cerebellum are marked as WMH, I wanted to use the exclusion mask on the input images, however this did not change much, see attached screenshot of BIANCA output overlaid on the FLAIR image of the query subject. To create the exclusion mask, I used make_bianca_mask on FLAIR images as it is described in the documentation and registered it from T1 to FLAIR space; then I passed the masked FLAIR images to the -brainmaskfeaturenum option. I attached one of the masked FLAIR images as an example, to me they all look fine and I also made sure all the voxels outside the mask are actually 0.
+I also attached the masterfile I used (participant IDs are edited but the file originally contains 9 different participants), and here is the command used to call BIANCA:
+
+bianca --singlefile=/Users/tanja/Desktop/masterfile_test.txt --labelfeaturenum=4 --brainmaskfeaturenum=3 --querysubjectnum=9 --trainingnums=1,2,3,4,5,6,7,8 --featuresubset=1,2,3 --trainingpts=2000 --nonlespts=10000 --selectpts=noborder -o /Users/tanja/Desktop/BIANCA_output –v
+
+When I mask the output images everything seems to work perfectly, however this is not a good option for me because I have hundreds of query subjects and much fewer training subjects, so I'd rather use the mask on the training subjects because running fsl_anat to create the images needed for the mask takes a lot of time. If anyone can see what I'm missing, any help would be appreciated, thank you in advance!
+
+Tanja
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello community.
+I am working with fMRI and ICA analysis by using Melodic.
+After the dual regression I also have the Z score maps for each subject and for each network.
+However, I also have some DTI data for the same study.
+My question is:
+is it possible to analyze the correlations, at the voxel level, between the Z score maps (after dual regression) and DTI metrics, such as FA? This for each network.
+
+Thanks,
+Manu
+
+########################################################################
+
+
+
+Hi,
+
+ 
+
+We had the same error using fastX to a server without an nVidia card, but fsleyes “just worked” when connecting with fastX to a CentOS8 server which happened to have an nVidia GPU.
+
+ 
+
+Presumably wxgl will work with other GPUs that aren’t from nVidia, but that has been our experience with recent fsleyes releases. We had thought it was a problem from using x2go or fastX, and tried software tricks like MESA_INDIRECT_GL=1 and virtualGLX without luck. So the accidental fix from a hardware upgrade was a pleasant surprise.
+
+ 
+
+Note that it is faster to test this issue with glxgears, and once glxgears runs, fsleyes will take a while to start up the first time.
+
+ 
+
+Good luck, and please share if you get any new data points.
+
+ 
+
+--
+
+Robert I. Reid, Ph.D.
+
+Assistant Professor of Radiology and Technical Specialist I, Information Technology
+
+Aging and Dementia Imaging Research
+
+Mayo Clinic (Opus building, Rochester, MN) mayoclinic.org
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Drucker, Daniel
+Sent: Friday, March 31, 2023 12:09 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: [EXTERNAL] [FSL] unable to initialize OpenGL, on RHEL 8
+
+ 
+
+On a basically brand new install of RHEL 8, in a completely brand new install of fsl 6.0.6.4:
+
+ 
+
+$ fsleyes
+
+   ERROR              main.py  592: initialise      - Unable to initialise OpenGL!
+
+Traceback (most recent call last):
+
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 884, in __createWXGLCanvas
+
+    self.__canvas = wxgl.GLCanvas(self.__parent, **attrs)
+
+wx._core.wxAssertionError: C++ assertion ""Assert failure"" failed at /home/conda/feedstock_root/build_artifacts/wxpython_1668091581272/work/ext/wxWidgets/src/unix/glx11.cpp(626) in InitVisual(): Failed to get a XVisualInfo for the requested attributes.
+
+During handling of the above exception, another exception occurred:
+
+wx._core.wxAssertionError: C++ assertion ""Assert failure"" failed at /home/conda/feedstock_root/build_artifacts/wxpython_1668091581272/work/ext/wxWidgets/src/unix/glx11.cpp(626) in InitVisual(): Failed to get a XVisualInfo for the requested attributes.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/main.py", line 588, in initialise
+
+    fslgl.getGLContext(ready=realCallback,
+
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 553, in getGLContext
+
+    thismod._glContext = GLContext(**kwargs)
+
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 732, in __init__
+
+    self.__createWXGLCanvas()
+
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 893, in __createWXGLCanvas
+
+    self.__canvas = wxgl.GLCanvas(self.__parent)
+
+SystemError: <class 'wx._glcanvas.GLCanvas'> returned a result with an exception set
+
+ 
+
+ 
+
+I assume this is something obvious, but I don’t know what it is.
+
+ 
+
+--
+Daniel M. Drucker, Ph.D.
+Director of IT, McLean Imaging Center
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+ 
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I am using the tbss_1_preproc script on some FA files, but the outputed *_FA.nii.gz files have square shaped holes throughout (see BL010_FA and BL015_FA attached). The input files all look fine see the index.html.  Can someone explain what is happening here?
+
+Sincerely,
+
+Dustin
+
+########################################################################
+
+
+On a basically brand new install of RHEL 8, in a completely brand new install of fsl 6.0.6.4:
+
+$ fsleyes
+   ERROR              main.py  592: initialise      - Unable to initialise OpenGL!
+Traceback (most recent call last):
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 884, in __createWXGLCanvas
+    self.__canvas = wxgl.GLCanvas(self.__parent, **attrs)
+wx._core.wxAssertionError: C++ assertion ""Assert failure"" failed at /home/conda/feedstock_root/build_artifacts/wxpython_1668091581272/work/ext/wxWidgets/src/unix/glx11.cpp(626) in InitVisual(): Failed to get a XVisualInfo for the requested attributes.
+During handling of the above exception, another exception occurred:
+wx._core.wxAssertionError: C++ assertion ""Assert failure"" failed at /home/conda/feedstock_root/build_artifacts/wxpython_1668091581272/work/ext/wxWidgets/src/unix/glx11.cpp(626) in InitVisual(): Failed to get a XVisualInfo for the requested attributes.
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/main.py", line 588, in initialise
+    fslgl.getGLContext(ready=realCallback,
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 553, in getGLContext
+    thismod._glContext = GLContext(**kwargs)
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 732, in __init__
+    self.__createWXGLCanvas()
+  File "/cm/shared/apps/fsl-6.0.6.4/lib/python3.10/site-packages/fsleyes/gl/__init__.py", line 893, in __createWXGLCanvas
+    self.__canvas = wxgl.GLCanvas(self.__parent)
+SystemError: <class 'wx._glcanvas.GLCanvas'> returned a result with an exception set
+
+
+I assume this is something obvious, but I don’t know what it is.
+
+--
+Daniel M. Drucker, Ph.D.
+Director of IT, McLean Imaging Center
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+
+Hi FSL Experts,
+I am trying to use fsl_glm to regress out a large text file of regressors containing motion, CSF and some other covariate of no interest. I searched the email chain history and wanna confirm if i understand it correctly:
+
+The command I should use is:
+fsl_glm -i <input> -d <regressor text file> --out_res=<output>
+
+Do I need to demean both the image and the regressor and add the mean back to the output??
+
+
+
+Thanks a lot for your help,
+Lei
+
+I have run Melodic on a large number of files and performed hand classification. When I went to go make my training file using -t I realized that I am missing the following files from the reg folder in all of my participants
+
+reg/example_func.nii.gz            example image from 4D data
+reg/highres.nii.gz                 brain-extracted structural
+reg/highres2example_func.mat       FLIRT transform from structural to functional space
+
+Is there any reason these files would not have populated for any of my participants? Is there a way to populate these files without rerunning melodic since I have already hand classified a large number of subjects?
+
+########################################################################
+
+
+Hi Paul,
+
+indeed, it was a memory problem. I have increased the allocating memory for wsl and not it works fine.
+
+thank you so much for your help
+
+kind regards,
+Mahmoud.
+
+########################################################################
+
+
+Dear all,
+
+I am running some analysis for ASL data using oxford_asl.
+By looking at the perfusion map from some participants, values at the bottom of the image, i.e. in cerebellum or frontal lobe, look sometimes atypically high. Does somebody know the reason for this? Perhaps is there any solution to the problem? I was wondering whether drawing a mask that omits such regions and adding it to oxford_asl (with the flag -m) could solve the issue.
+
+I had the same exact issue after analyzing 2  different sequences, one PASL and one PCASL, which makes me think that the problem is not sequence related. I added in attach 2 images, one is the perfusion_calib from PASL and the other one from PCASL: in particular, in the PASL the Field of View has wrongly set up, so the temporal lobe, the cerebellum and part of the frontal lobe has been cut out. I posted this example because it shows clearly that at the bottom of the image values are extramely high compared to the rest of the brain. For most of the acquisitions, however, where FoV covers entirely the brain, I don't have such issue. My guess is that either signal at the border of an ASL image is not reliable, and is affected by some factors, or perhaps there is a bug when processing with oxford_asl?
+
+Your help would be highly appreciated.
+
+Lorenzo Nigris
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Ose,
+
+Your question is probably best directed to the Freesurfer team: https://surfer.nmr.mgh.harvard.edu/fswiki/FreeSurferSupport
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ose Kadiri <osekadiri@UCLA.EDU>
+Sent: 30 March 2023 17:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Freeview segmentation fault
+ 
+Hello,
+
+I am having some trouble using Freeview on my university cluster with my MacBook (macOS Monterey version 12.4). Freeview works fine from a Windows machine, but when I try to view images (using XQuartz on my Mac), I get "segmentation fault." It does not seem to be a memory issue and I'm not using multiple screens. I can successfully run MATLAB and gnuplot using XQuartz. Any help is greatly appreciated!
+
+Thank you,
+Ose
+
+
+Hi Mahmoud,
+
+Errors such as this usually mean that the process was unable to allocate enough memory, and and was killed by your operating system. How much RAM do you have, and are you able to increase it (e.g. if you are using WSL, you can increase the available RAM).
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Mahmoud Magdy <mahmoudmagdy1197@GMAIL.COM>
+Sent: 30 March 2023 20:49
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsl_regfilt killed
+ 
+hello
+I was trying to remove some components which ICA-AROMA identified as motion components using the following code:
+
+fsl_regfilt -i /home/w/.local/fmri/normalized.nii -o /home/w/.local/fmri/filtered_f -m /home/w/.local/fmri/mask.nii.gz -d /home/w/.local/fmri/aroma_sub01/melodic.ica/melodic
+_mix -f 1,3,4,8,10,12,14,15,17,18,19,21,25,27,29,30,31,32,33,34,35,37,41,43,46,47,49,54,56,57,58,59,61,62,65
+
+but unfortunately, I a getting the following message:
+
+/home/w/fsl/share/fsl/bin/fsl_regfilt: line 2: 18468 Killed                  /home/w/fsl/bin/fsl_regfilt "$@"
+
+please note that ICA-AROMA itself did not remove the components, that is why i had to use fsl_regfilt
+
+so, may you please help me with that?
+
+many thanks in advance
+
+Kind regards,
+Mahmoud.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Fransisco,
+
+   
+    Q: Is there a reason why this message is shown as a corrupted string? Is the "out of memory" problem related to that?
+
+no, that is for an unrelated reason. We know the reason (for the corrupted string) now, so for future releases you will get legible error messages.
+
+Jesper
+
+   
+    Additional info:
+    --------------------------------------------------------------------------------------------
+    "free" command output:
+                   total        used        free      shared  buff/cache   available
+    Mem:       103008496      548184   102303560         880      156752   101707248
+    Swap:      104857600      115164   104742436
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/TopupUsersGuide
+
+From my understanding of the guide above, it should be the TotalReadoutTime.
+
+Best,
+Michal
+
+czw., 30 mar 2023 o 19:30 Lund, Anina <000095225881fa1d-dmarc-request@jiscmail.ac.uk> napisał(a):
+Hi,
+
+I'm working on making the acqparams.txt file. I believe my file is P-A so it should be 0 1 0 but I can't figure out what the 4th element should be (my understanding is you need echo spacing and EPI factor but I don't quite know where that would be here). My json file is the following:
+
+{
+
+        "Modality": "MR",
+
+        "MagneticFieldStrength": 3,
+
+        "Manufacturer": "GE",   
+
+        "ManufacturersModelName": "DISCOVERY_MR750",
+
+        "StationName": "MR02MR02",
+
+        "PatientPosition": "HFS",
+
+        "SoftwareVersions": "25_LX_MR_Software_release:DV25.0_R02_1549.b",
+
+        "MRAcquisitionType": "2D",
+
+        "SeriesDescription": "Ax_DIFFUSION_HIRES_2.0",
+
+        "ProtocolName": "Ax_DIFFUSION_HIRES_2.0",
+
+        "ScanningSequence": "EP_SE",
+
+        "SequenceVariant": "NONE",
+
+        "ScanOptions": "SAT_GEMS_EPI_GEMS_ACC_GEMS_PFF_FS",
+
+        "ImageType": ["ORIGINAL", "PRIMARY", "OTHER"],
+
+        "SeriesNumber": 5,
+
+        "AcquisitionTime": "13:14:49.000000",
+
+        "AcquisitionNumber": 1, 
+
+        "SliceThickness": 2,
+
+        "SpacingBetweenSlices": 2,
+
+        "SAR": 0.861686,
+
+        "EchoTime": 0.0839,
+
+        "RepetitionTime": 10,   
+
+        "FlipAngle": 90,
+
+        "PercentPhaseFOV": 100, 
+
+        "AcquisitionMatrixPE": 256,
+
+        "ReconMatrixPE": 256,   
+
+        "EffectiveEchoSpacing": 0.000592,
+
+        "TotalReadoutTime": 0.15096,
+
+        "PixelBandwidth": 1953.12,
+
+        "PhaseEncodingAxis": "j",
+
+        "ImageOrientationPatientDICOM": [
+
+                1,
+
+                -0,
+
+                0,
+
+                -0,
+
+                0.99239,
+
+                -0.123131       ],
+
+        "InPlanePhaseEncodingDirectionDICOM": "COL",
+
+        "ConversionSoftware": "dcm2niix",
+
+     
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Anina
+
+Do you have access to the original protocol from the scanner? If not, actually it does not matter what you put in there as long as the same file is put in both topup and eddy. 
+Here is some more information: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/Faq.
+
+
+Best Wishes
+
+Divesh Thaploo
+Smell and Taste Clinic
+Dept of ORL, Carl Gustav Carus
+TU Dresden, Germany
++49 177 4236 487
+Skype-ID: dthaploo
+
+
+On Thu, Mar 30, 2023 at 7:30 PM Lund, Anina <000095225881fa1d-dmarc-request@jiscmail.ac.uk> wrote:
+Hi,
+
+I'm working on making the acqparams.txt file. I believe my file is P-A so it should be 0 1 0 but I can't figure out what the 4th element should be (my understanding is you need echo spacing and EPI factor but I don't quite know where that would be here). My json file is the following:
+
+{
+
+        "Modality": "MR",
+
+        "MagneticFieldStrength": 3,
+
+        "Manufacturer": "GE",   
+
+        "ManufacturersModelName": "DISCOVERY_MR750",
+
+        "StationName": "MR02MR02",
+
+        "PatientPosition": "HFS",
+
+        "SoftwareVersions": "25_LX_MR_Software_release:DV25.0_R02_1549.b",
+
+        "MRAcquisitionType": "2D",
+
+        "SeriesDescription": "Ax_DIFFUSION_HIRES_2.0",
+
+        "ProtocolName": "Ax_DIFFUSION_HIRES_2.0",
+
+        "ScanningSequence": "EP_SE",
+
+        "SequenceVariant": "NONE",
+
+        "ScanOptions": "SAT_GEMS_EPI_GEMS_ACC_GEMS_PFF_FS",
+
+        "ImageType": ["ORIGINAL", "PRIMARY", "OTHER"],
+
+        "SeriesNumber": 5,
+
+        "AcquisitionTime": "13:14:49.000000",
+
+        "AcquisitionNumber": 1, 
+
+        "SliceThickness": 2,
+
+        "SpacingBetweenSlices": 2,
+
+        "SAR": 0.861686,
+
+        "EchoTime": 0.0839,
+
+        "RepetitionTime": 10,   
+
+        "FlipAngle": 90,
+
+        "PercentPhaseFOV": 100, 
+
+        "AcquisitionMatrixPE": 256,
+
+        "ReconMatrixPE": 256,   
+
+        "EffectiveEchoSpacing": 0.000592,
+
+        "TotalReadoutTime": 0.15096,
+
+        "PixelBandwidth": 1953.12,
+
+        "PhaseEncodingAxis": "j",
+
+        "ImageOrientationPatientDICOM": [
+
+                1,
+
+                -0,
+
+                0,
+
+                -0,
+
+                0.99239,
+
+                -0.123131       ],
+
+        "InPlanePhaseEncodingDirectionDICOM": "COL",
+
+        "ConversionSoftware": "dcm2niix",
+
+     
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+hello
+I was trying to remove some components which ICA-AROMA identified as motion components using the following code:
+
+fsl_regfilt -i /home/w/.local/fmri/normalized.nii -o /home/w/.local/fmri/filtered_f -m /home/w/.local/fmri/mask.nii.gz -d /home/w/.local/fmri/aroma_sub01/melodic.ica/melodic
+_mix -f 1,3,4,8,10,12,14,15,17,18,19,21,25,27,29,30,31,32,33,34,35,37,41,43,46,47,49,54,56,57,58,59,61,62,65
+
+but unfortunately, I a getting the following message:
+
+/home/w/fsl/share/fsl/bin/fsl_regfilt: line 2: 18468 Killed                  /home/w/fsl/bin/fsl_regfilt "$@"
+
+please note that ICA-AROMA itself did not remove the components, that is why i had to use fsl_regfilt
+
+so, may you please help me with that?
+
+many thanks in advance
+
+Kind regards,
+Mahmoud.
+
+########################################################################
+
+
+Hi,
+
+the 4th number should be the TotalReadoutTime.
+
+https://www.researchgate.net/post/How_do_we_get_the_acquisition_parameters_file_and_index_file_when_correcting_eddy_current_in_FSL
+
+Best,
+Rebecca
+
+########################################################################
+
+
+Hi,
+
+I'm working on making the acqparams.txt file. I believe my file is P-A so it should be 0 1 0 but I can't figure out what the 4th element should be (my understanding is you need echo spacing and EPI factor but I don't quite know where that would be here). My json file is the following:
+
+{
+
+        "Modality": "MR",
+
+        "MagneticFieldStrength": 3,
+
+        "Manufacturer": "GE",   
+
+        "ManufacturersModelName": "DISCOVERY_MR750",
+
+        "StationName": "MR02MR02",
+
+        "PatientPosition": "HFS",
+
+        "SoftwareVersions": "25_LX_MR_Software_release:DV25.0_R02_1549.b",
+
+        "MRAcquisitionType": "2D",
+
+        "SeriesDescription": "Ax_DIFFUSION_HIRES_2.0",
+
+        "ProtocolName": "Ax_DIFFUSION_HIRES_2.0",
+
+        "ScanningSequence": "EP_SE",
+
+        "SequenceVariant": "NONE",
+
+        "ScanOptions": "SAT_GEMS_EPI_GEMS_ACC_GEMS_PFF_FS",
+
+        "ImageType": ["ORIGINAL", "PRIMARY", "OTHER"],
+
+        "SeriesNumber": 5,
+
+        "AcquisitionTime": "13:14:49.000000",
+
+        "AcquisitionNumber": 1, 
+
+        "SliceThickness": 2,
+
+        "SpacingBetweenSlices": 2,
+
+        "SAR": 0.861686,
+
+        "EchoTime": 0.0839,
+
+        "RepetitionTime": 10,   
+
+        "FlipAngle": 90,
+
+        "PercentPhaseFOV": 100, 
+
+        "AcquisitionMatrixPE": 256,
+
+        "ReconMatrixPE": 256,   
+
+        "EffectiveEchoSpacing": 0.000592,
+
+        "TotalReadoutTime": 0.15096,
+
+        "PixelBandwidth": 1953.12,
+
+        "PhaseEncodingAxis": "j",
+
+        "ImageOrientationPatientDICOM": [
+
+                1,
+
+                -0,
+
+                0,
+
+                -0,
+
+                0.99239,
+
+                -0.123131       ],
+
+        "InPlanePhaseEncodingDirectionDICOM": "COL",
+
+        "ConversionSoftware": "dcm2niix",
+
+     
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Julia,
+
+While I haven't used them myself yet, there are ways to use the T1 image instead of a reverse phase-encoded b0 image to get rid of susceptibility induced distortions:
+
+https://github.com/MASILab/Synb0-DISCO
+
+Best,
+Rebecca
+
+########################################################################
+
+
+Hi Guillem,
+
+I am not familiar with that pipeline, do you have a link?  The transformation from uncropped T1 to MNI space should not work with the cropped image.
+When you say that your diffusion image is aligned with the structural image, do you mean that you have transformed it to structural space?
+
+Best,
+Rebecca
+
+########################################################################
+
+

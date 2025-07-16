@@ -1,0 +1,114 @@
+Dear Rob,
+
+if this is related to your question about "blank stats", then the error message is simply a more urgent request to inspect the data that enter your statistics. You should inspect the image data and make sure that your design matches the order of subjects you intended.
+
+Best,
+Volkmar
+
+I'd suggest not modulating the segmented images when you spatially normalise them - unless you intend to use an approach like this one:
+
+Lee, J.E., Chung, M.K., Lazar, M., DuBray, M.B., Kim, J., Bigler, E.D., Lainhart, J.E. and Alexander, A.L., 2009. A study of diffusion tensor imaging by tissue-specific, smoothing-compensated voxel-based analysis. Neuroimage, 44(3), pp.870-883.
+
+An extension of the above approach is involved in analysing quantitative MRI scans:
+
+Draganski, B., Ashburner, J., Hutton, C., Kherif, F., Frackowiak, R.S., Helms, G. and Weiskopf, N., 2011. Regional specificity of MRI contrast parameter changes in normal ageing revealed by voxel-based quantification (VBQ). Neuroimage, 55(4), pp.1423-1434.
+
+Similar methods could also be used for fMRI.
+
+Best regards,
+-John
+
+Dear All,
+
+For first level analyses we can extract data for an individual voxel by right clicking the results window and selecting extract data. Here we have the option of extracting  -- the raw y, whitened and filtered data, or the betas. What is the difference between the raw y and the whitened and filtered data?
+
+Am I correct in my assumption that the filtered data is the post-processed data?
+
+Sincerely, David Negelspach
+
+If you open the batching system (click the "Batch" button), you should see an "SPM" pulldown at the top. Take a look in "Tools", where you should see "Dartel Tools".
+
+Best regards,
+-John
+
+
+Hello everyone, 
+
+
+
+As i asked before about FDG-CT  normaization, i was training and learning how to use SPM for VBM. On the online documentation's tutorial about this topic its says to use dartel in order to model the shape of each brain before aplying the normalization. but i am not able to find the toolboox inside the interface, 
+
+
+
+    is it because is not longer implemented and i am following a not actualize tutorial? i dont understad why as it does not show on the toolbox scroll box since there is a subdirectory on the Toolbox folder that has the name of Dartel. I have to do something else in order to active it?. 
+
+
+
+Thanks for relpying.  
+
+The University of Pennsylvania’s Frontotemporal Degeneration Center (FTDC) seeks a qualified applicant for a postdoctoral fellowship in neuroimaging and biomarker investigations of atypical Alzheimer’s disease (AD), frontotemporal lobar degeneration (FTLD), and related diseases. The FTDC’s continuing mission includes advancing our understanding of the biological basis of early-onset neurodegenerative diseases, developing novel biomarkers for early and differential diagnosis, identifying sources of clinical and pathologic heterogeneity, and developing prognostic models of disease risk and progression.
+
+
+
+The FTDC’s longitudinal cohort comprises individuals with FTLD tauopathies and TDP-43 proteinopathies; non-amnestic and early-onset forms of AD; Lewy body spectrum disorders; and amyotrophic lateral sclerosis with frontotemporal dementia. Deep endophenotyping is achieved through expert clinical consensus, comprehensive cognitive and behavioral assessment, MRI, positron emission tomography (PET) imaging, genotyping, fluid biomarker assays for disease-related proteins, and postmortem histopathology with innovative digital quantification. FTDC researchers work closely with colleagues from the Penn Alzheimer’s Disease Research Center, Center for Neurodegenerative Disease Research, and the Penn Image Computing & Science Lab; in addition, we participate in several international consortium studies.
+
+ 
+
+Candidates should have or soon plan to receive a PhD, MD/PhD, or equivalent degree in a relevant field of study (e.g., neuroscience, neurology, bioengineering, computational biology, biostatistics, or cognitive psychology). The ideal candidate will have experience in one or more of the following areas:
+
+1) clinical research in AD, FTLD, or related diseases; 
+
+2) brain structural and functional connectivity analysis using MRI;
+
+3) PET imaging of neurodegenerative disease; or 
+
+4) computational modeling of disease progression. 
+
+
+
+Additional preference will be given to candidates with experience coding in R, Python, or Matlab; and those familiar with tools and best practices for open, reproducible science, including the use of Rmarkdown or Python notebooks, the Brain Imaging Data Standard (BIDS), and version control using Github, DataLad, or similar tools. Applicants from underrepresented backgrounds are encouraged to apply.
+
+
+
+The University of Pennsylvania adheres to a policy that prohibits discrimination on the basis of race, color, sex, sexual orientation, gender identity, religion, creed, national or ethnic origin, citizenship status, age, disability, veteran status, or any other legally protected class. Above all, we encourage applications from individuals with a deep interest in clinical-translational research to better understand age-related neurodegenerative disease and help develop effective disease-modifying therapies.
+
+ 
+
+The FTDC is based in the Department of Neurology within the Perelman School of Medicine. Located in Philadelphia, Pennsylvania, Penn has a highly collaborative brain science community spanning multiple departments and research centers. Postdoctoral fellows benefit from career development support through the Biomedical Postdoctoral Programs and the Penn Postdoc Association. FTDC trainees have a strong track record of applying for and achieving funding for original research projects through internal sources (e.g., the Institute for Translational Medicine and Therapeutics), foundations (e.g., the Alzheimer’s Association), and the National Institutes of Health.
+
+ 
+
+Qualifications: PhD or MD/PhD required in a relevant field.
+
+ 
+
+Contact: Interested candidates should email a cover letter, curriculum vitae, and anticipated PhD completion date to:
+
+ 
+
+Jeff Phillips, PhD
+
+Richards Medical Laboratories
+
+3700 Hamilton Walk, Room B601
+
+Philadelphia, PA. 19104
+
+Email: Jeffrey.Phillips@pennmedicine.upenn.edu
+
+Dear all,
+
+ 
+
+I am trying to visualise the first level results for some of my subjects and SPM is freezing after setting the threshold (it does not matter what value is entered). I have seen this previous thread on the SPM list (https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2008&L=SPM&D=0&X=0A7B61631349F12A88&Y=n.kindred1%40newcastle.ac.uk&P=10470) but it was a slightly different issue and there did not seem to be a resolution. I also have looked at the thread linked within that thread (https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2008&L=SPM&D=0&O=D&P=10968) but my T files are not blank so that is not the cause of the issue. The subjects I have the issue with are longitudinal runs with 3 time points, but other subjects with the same number of times points (scanned with the same scanner) do not have this issue.
+
+ 
+
+Any help or suggestions would be greatly appreciated!
+
+ 
+
+Thank you,
+
+Nathan
+

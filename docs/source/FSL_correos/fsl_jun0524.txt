@@ -1,0 +1,1152 @@
+Hi Vasilis,
+
+You can access the help to see details about what specific flags do by running "fslmaths" from the command line without any arguments.
+
+The "ero" flag will "Erode by zeroing non-zero voxels when zero voxels found in kernel". If you don't specify your own kernel (with the "-kernel" flag), 
+it will use the default 3x3x3 box kernel.
+
+Best,
+Rick
+
+Problem solved, thank you. 
+
+All the best,
+
+James 
+
+On 5 Jun 2024, at 10:18, Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi James,
+
+It looks like you're using an out-dated version of the fslinstaller.py script. The installer should automatically update itself to the latest version, 
+but this doesn't appear to be happening for you.
+
+Would you be able to download the latest version of the script and try again? 
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of James Grist <0000bd22e54626ea-dmarc-request@JISCMAIL.AC.UK>
+Sent: 05 June 2024 10:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Fsl update failed
+ 
+Hi fsl list,
+
+I’ve done an fsl update and got the following error message, does anyone have any thoughts? I’m on a Mac, M2, Sonoma 14.5
+
+Installing FSL in /Users/jamesgrist/fsl
+
+Hi Aldo,
+
+ 
+
+The medwall files are binary masks that restrict the blueprints to the GM, i.e. they avoid the CC at the medial wall.
+
+ 
+
+The most typical way of obtaining this medial wall mask is to use a standard atlas mask. In developing these tools, we often use the HCP minimally 
+pre-processed data. In the HCP, my understanding is that FreeSurfer is used to extract subject specific surfaces and then a standard medial wall mask is 
+used: see the HCP pipeline manuscript (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3720813/) and GitHub 
+(https://github.com/Washington-University/HCPpipelines/blob/master/PostFreeSurfer/scripts/FreeSurfer2CaretConvertAndRegisterNonlinear.sh, use find in 
+page "atlasroi") for more.
+
+ 
+
+There are also alternative approaches (https://neurostars.org/t/mapping-volumes-in-template-space-to-cortical-surface-template/18701/42?page=3), e.g. 
+from this thread
+
+1.    thresholding thickness map (0.6)
+
+2.    remove islands (wb_command -metric-remove-islands)
+
+3.    fill holes (wb_command -metric-remove-islands)
+
+4.    dilate and erode by 3mm
+
+ 
+
+I don’t recall if there is also some medial wall mask output from FreeSurfer as standard.
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+Dear FSL users
+
+I am new to FSL and I have a question about the -ero flag. 
+
+I use it to erode the outer layer of my ROI to minimise partial volume effects:
+
+      fslmaths <input> -ero <output>
+
+It is unclear by how much the boundary is eroded when used as above, as I can't find any documentation. I suspect it is by 1 voxel, but I could be wrong. 
+Could someone confirm? 
+
+Best wishes,
+
+ 
+
+Vasilis
+
+
+
+
+Dear FSL experts,
+
+I hope you are doing well!
+
+I am trying to figure out the output of Feat Gui.  I don't understand how we get the image in the report webpage.
+     Can you explain(or anywhere I could find) how we got the cluster_mask_zstat1.nii.gz, thresh_zstat.nii.gz, and thresh_pstat.nii.g and in which 
+sequence
+     should I look at them?  I used randomise with cluster threshold 3.1 and p<0.05
+     I thought I first got thresh_zstat.nii.gz since the Z threshold(I used 3.1) was applied, however, in this image, I still have voxels < 3.1.
+     Then I looked at  thresh_pstat.nii.gz which I thought was applied on  thresh_zstat.nii.gz to get clusters whose size is above the 0.05 threshold, 
+however, I
+     find this contains even more clusters than thresh_zstat.nii.gz.
+     Finally, I looked at cluster_mask_zstat1.nii.gz, it is not the same as any other images, so I was confused about how we got these clusters
+     So I do not understand where my thresholds z=3.1 and p<0.05 applied, could you kindly give me some hints on that?
+
+Many thanks,
+Yiling
+
+########################################################################
+
+
+Hi James,
+
+It looks like you're using an out-dated version of the fslinstaller.py script. The installer should automatically update itself to the latest version, 
+but this doesn't appear to be happening for you.
+
+Would you be able to download the latest version of the script and try again? 
+
+Paul
+
+Hi fsl list,
+
+I’ve done an fsl update and got the following error message, does anyone have any thoughts? I’m on a Mac, M2, Sonoma 14.5
+
+Installing FSL in /Users/jamesgrist/fsl
+
+10:06:16 fslinstaller.py: 167: Downloading miniconda from https://repo.anaconda.com/miniconda/Miniconda3-py311_24.3.0-0-MacOSX-arm64.sh...
+10:06:16 fslinstaller.py: 410: Downloading https://repo.anaconda.com/miniconda/Miniconda3-py311_24.3.0-0-MacOSX-arm64.sh ...
+10:06:22 fslinstaller.py: 167: Installing miniconda at /Users/jamesgrist/fsl...
+10:06:22 fslinstaller.py: 764: Running bash miniconda.sh -b -p /Users/jamesgrist/fsl [as admin: False]
+10:06:22 fslinstaller.py: 933:  [stdout]: PREFIX=/Users/jamesgrist/fsl
+10:06:23 fslinstaller.py: 933:  [stdout]: Unpacking payload ...
+10:06:30 fslinstaller.py: 933:  [stdout]:
+10:06:30 fslinstaller.py: 933:  [stdout]: Installing base environment...
+10:06:30 fslinstaller.py: 933:  [stdout]:
+10:06:34 fslinstaller.py: 933:  [stdout]: Preparing transaction: ...working... done
+10:06:40 fslinstaller.py: 933:  [stdout]: Executing transaction: ...working...
+10:06:40 fslinstaller.py: 933:  [stdout]: done
+10:06:42 fslinstaller.py: 933:  [stdout]: installation finished.
+10:06:42 fslinstaller.py: 764: Running find /Users/jamesgrist/fsl -type f -exec touch {} + [as admin: False]
+10:06:44 fslinstaller.py: 764: Running cp -f .condarc /Users/jamesgrist/fsl [as admin: False]
+10:06:44 fslinstaller.py: 167:
+ERROR occurred during installation!
+10:06:44 fslinstaller.py: 167:     int() argument must be a string, a bytes-like object or a real number, not 'dict'
+
+10:06:44 fslinstaller.py:2297:   File "/Users/jamesgrist/Documents/GitHub/Oxford_Molecular_Imaging/Python/Misc/fslinstaller.py", line 2289, in 
+handle_error
+    yield
+  File "/Users/jamesgrist/Documents/GitHub/Oxford_Molecular_Imaging/Python/Misc/fslinstaller.py", line 2387, in main
+    install_fsl(ctx)
+  File "/Users/jamesgrist/Documents/GitHub/Oxford_Molecular_Imaging/Python/Misc/fslinstaller.py", line 1774, in install_fsl
+    progval, progfunc = get_install_fsl_progress_reporting_method(ctx)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jamesgrist/Documents/GitHub/Oxford_Molecular_Imaging/Python/Misc/fslinstaller.py", line 1761, in get_install_fsl_progress_reporting_method
+    progval  = int(progparams['value'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+All the best,
+
+James
+
+########################################################################
+
+
+Dear Experts,
+
+I am currently using FSL 6.0.7.11, and encountering questions about the color-coded FA map.
+
+1. File -> Add from file -> dti_FA; File -> Add from file -> dti_V1; FSLeyes should open the image as a 3-direction vector image (RGB). Change the 
+"Modulate by" setting (locate at the middle upper part of the toolbar) from "None" to "dti_FA".
+Is this a complete process of making a color-coded FA map? Is there a recommended command line for this process?
+
+2. I didn't find a way to save the color-coded FA map to a file. How to save it?
+
+Thank you very much!
+
+Best regards,
+
+Good point. I apologize, in my head capital R had the same meaning as capital M, S and P; i.e. exkluding zeros, but capital R is different. Now 
+everything works fine.
+
+Thanks to both of you.
+
+best
+
+nick
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 4 juni 2024 17:40
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] Sv: [FSL] flirt and ROI measures by fstats
+ 
+Hi Nick,
+
+Did you use the "-r", or the "-R" flag when calling fslstats? The former will return the "robust" minimum/maximum intensities, which correspond to the 
+2nd and 98th percentiles, and which are commonly used to exclude extreme outlier values. The "-R" flag will return the actual minimum/maximum 
+intensities.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 04 June 2024 16:25
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Sv: [FSL] flirt and ROI measures by fstats
+ 
+Could it be some Interpol issue?
+
+Paul will have insights, I guess…
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Niklas Lenfeldt <niklas.lenfeldt@UMU.SE>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Dienstag, 4. Juni 2024 um 17:24
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: [FSL] Sv: [FSL] flirt and ROI measures by fstats
+
+ 
+
+Thank you for the clear and swift answer,  Andreas.
+
+ 
+
+Any ideas on the differing of the min and max? Because that "error" is not limited to ROIs of the diff2struct case; it occurs for FA data in the 
+diff-space as well. 
+
+ 
+
+best,
+
+ 
+
+Nick
+
+ 
+
+Hi Nick,
+
+Did you use the "-r", or the "-R" flag when calling fslstats? The former will return the "robust" minimum/maximum intensities, which correspond to the 
+2nd and 98th percentiles, and which are commonly used to exclude extreme outlier values. The "-R" flag will return the actual minimum/maximum 
+intensities.
+
+Paul
+
+Thank you for the clear and swift answer,  Andreas.
+
+Any ideas on the differing of the min and max? Because that "error" is not limited to ROIs of the diff2struct case; it occurs for FA data in the 
+diff-space as well. 
+
+best,
+
+Nick
+
+
+Hi
+
+ 
+
+If your seed mask is in MNI space, then you need a transform directly from MNI to diffusion space, which as you say you can get by concatenating thw 
+MNI->T1 and the T1->Diff transforms. Note however that for the MNI->T1, it is better to use a nonlinear transformation.
+
+ 
+
+I am not sure I understand your second question about the nodif_brain image. Are you asking about using that for the FLIRT transform or for probtrackx?
+
+ 
+
+Cheers
+
+Saad
+
+Hi
+
+ 
+
+Indeed xfm and invxfm are used to move between seed space and diffusion space. It does not move the masks, but the streamline coordinates (so no 
+interpolation is involved).
+
+ 
+
+If you are using a FLIRT (affine) transform, you don’t need the invxfm. If you are using a nonlinear (FNIRT) warpfield, you need boith xfm and invxfm.  
+If your seed space is already the diffusion space, you don’t need either of them.
+
+ 
+
+Cheers
+
+Saad
+
+Hi Gohar,
+
+The file is not a script - you need to install it into your FSL/FSLeyes installation. You should just be able to copy+paste the following command into a 
+terminal (you will be prompted for your password when you do so):
+
+Registration for FSL Course 2024 will close on 10 June, 13:00 BST!
+
+ 
+
+The course will be held in-person June 17th – 21st in Osaka, Japan, co-hosted by the RIKEN Center for Biosystems Dynamics Research. You can find details 
+and registration info here: 
+
+https://open.win.ox.ac.uk/pages/fslcourse/website/upcoming.html 
+
+   
+
+Both new and existing users of FSL are welcome on the course, as it aims to cover both basic and more advanced features of FSL. This intensive course 
+covers the theory and practice of functional, structural, diffusion and resting state brain image analysis. Background concepts and the practicalities of 
+analyses are taught in detailed lectures. These lectures are interleaved with hands-on practical sessions, where attendees learn how to carry out 
+analysis for themselves on real data. The contents covered in the course are primarily aimed at applications in basic science and clinical research (not 
+clinical practice). 
+
+ 
+
+Please note that the only option to attend the course in 2024 will be this in person course. To strike a balance between broad accessibility and the 
+benefits of in-person interaction, the FSL Course intends to follow an approximately alternating pattern of fully in-person and fully online courses. 
+
+ 
+
+We hope to see you at the course!
+
+The FSL Course team
+
+
+
+Dear Jesper,
+
+Of course, my topup command is
+topup --imain=b0_AP_PA.nii --datain=acqp.txt --config=config.cnf --out=topup_results --iout=b0_AP_PA_tu.nii.gz
+for the --imain topup I first extract 2 b0s from the AP original DWI image and the reverse PE b0 image, then concatenate them to have a 4-volume b0 image 
+(which correspond to my acqp.txt file).
+
+Also, for the motion which still remains after Eddy, I meant that this motion persist within anterior posterior directions in the image (original image 
+is reconstructed A>P).
+
+I hope the details are clearer. Please let me know if I can provide more information.
+
+Many thanks,
+Saina
+
+
+
+
+If you have the structures in T1 space, you can use the registration matrix produced by oxford_asl from ASL to T1 space to transform them into the ASL 
+space (invert the matrix and then use flirt). Once there (and after converting to a binary image with a threshold of your choice) you can then use 
+fslmaths/stats as you please to perform calculations. Certainly, I would recommend doing your ROI analysis in ASL space on the perfusion image to better 
+control for partial volume effects.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Hi Gohar,
+
+Would you be able to download the file below, and copy it to $FSLDIR/lib/python3.11/site-packages/fsleyes/gl/textures/texture3d.py:
+
+https://users.fmrib.ox.ac.uk/~paulmc/texture3d.py
+
+You should be able to do this by copy+pasting the following command into a terminal (you will be prompted for your adminsitrator password):
+
+sudo curl https://users.fmrib.ox.ac.uk/~paulmc/texture3d.py \
+  -o $FSLDIR/lib/python3.11/site-packages/fsleyes/gl/textures/texture3d.py
+
+If this resolves the issue for you, I will add it to the next FSLeyes release.
+
+Paul
+
+Hi Gohar,
+
+You may be affected by an issue which arose on some types of Apple hardware, and which I thought I had resolved several years ago. 
+
+I have a solution which may resolve this,  but first would you be able to send me the contents of the FSLeyes "About" dialog (just the text from "FSLeyes 
+version" through to "OpenGL renderer")?
+
+Paul
+
+Thank you for helping me Matthew, I am really lost here.
+
+File included as requested. Notably, it is not brain, it is a cross section from the ankle, where the black holes are tendons. The mask was derived 
+originally using bet on a T1 image applying very low thresholding (-f 0.001). The mask is excellent apart from the holes.
+
+best
+
+nick
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Hello,
+
+We are trying to extract volumes from an fMRI scan that was terminated early. The expected number of volumes is 1212, however, the actual number of 
+volumes acquired is 1050.
+
+We receive this error when attempting to extract the first 1050 volumes.
+
+[eazuniga@carimri-ws1 series_7]$ fslroi fmri.nii trimmed.nii 0 1049
+Image Exception : #22 :: Failed to read volume fmri.nii
+Error : Error: short read, file may be truncated
+Failed to read volume fmri.nii
+Error : Error: short read, file may be truncated
+
+I also tried to modify the header to change the number of volumes from 1212 to 1050, but I receive this error.
+
+[eazuniga@carimri-ws1 series_7]$ fslcreatehd header.txt new_header.nii
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+/usr/local/software/fsl/share/fsl/bin/fslcreatehd: line 2: 235765 Aborted                 (core dumped) /usr/local/software/fsl/bin/fslcreatehd "$@"
+
+Any help would be greatly appreciated.
+
+Thanks,
+Eddie
+
+########################################################################
+
+Dear Jiyang,
+
+for your --topup parameter you need to specify the "basename" that you gave as --out parameter for topup. In your case that would be " my_topup_results" 
+(i.e. remove the _fieldcoef).
+
+Best regards Jesper
+
+
+﻿On 28/05/2024, 06:38, "FSL - FMRIB's Software Library on behalf of Jiyang Liu" <FSL@JISCMAIL.AC.UK on behalf of lqq2679235754@OUTLOOK.COM> wrote:
+
+    > Hello
+    >
+    > I have got error message when I running eddy current corrections.
+   
+     eddy --imain=data --mask=my_hifi_b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=data --bvals=data --topup=my_topup_results_fieldcoef 
+--out=eddy_corrected_data
+   
+       Could not open matrix file data
+      Terminating program
+   
+    > Any suggestions ?
+    >
+    > Thanks in advance.
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at 
+https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+Dear Saina,
+
+ 
+
+that sounds like a reasonable data set, and your eddy command looks reasonable.
+
+ 
+
+Can you please also send me the topup command you run, and any other command you might run in between. Can you please also let me know how you create the 
+4D input file (--imain) to topup, and how the volumes in that relates to the data in "nordicdn_dg.nii.gz".
+
+ 
+
+In your original email you write "I can still see the motion which is present A<>P". I am not sure what you mean by that? Do you mean that you see motion 
+between on the one hand the A->P data and on the other hand the P->A data? Or do you see motion within the A->P and within the P->A?
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saina Asadi <saina.asadi@UNIL.CH>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Thursday, 30 May 2024 at 15:41
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy correction 7T diffusion data
+
+ 
+
+Hello,
+
+ 
+
+Thank you for your response, 
+
+I have multishell 7T diffusion data:
+
+b(dir)=0(4),1(20), 2(40), 3(60)
+
+TE = 78ms
+
+1.5-mm isotropic resolution
+
+and I have tried with the basic command, but I changed parameters as well to see if I can observe any improvement:
+
+ 
+
+eddy_cuda10.2 --imain=nordicdn_dg.nii.gz --mask=b0_AP_PA_tu_B0_brainmask.nii.gz --index=index.txt --acqp=acqp.txt --bvecs=bvec_file.bvec 
+--bvals=bval_file.bval --topup=topup_results --out=nordicdn_dg_tu_ec --data_is_shelled -v
+
+ 
+
+after running the command my output image still has the initial motion that was present in the original image and the correction is very minor.
+I also tried eddy by adding slice-to-volume correction, however, the results won't change for the motion across volumes.
+
+So, I was wondering if something specific needs to be modified that I have to take into account.
+
+ 
+
+Many thanks in advance,
+
+Saina
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Sent: 28 May 2024 15:47
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy correction 7T diffusion data
+
+ 
+
+Dear Saina,
+
+ 
+
+I am happy to help, but I would much more specific information about your data, the commands you have run and what goes wrong.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saina Asadi <saina.asadi@UNIL.CH>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Tuesday, 28 May 2024 at 11:00
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Eddy correction 7T diffusion data
+
+ 
+
+Hello,
+
+I had problems with motion correction on 7T multi-shell and multi-echo time diffusion data.
+
+Top-up corrects well for distortion, however Eddy lacks in correcting for motion and I feed topup results to Eddy.
+
+After running Eddy I can still see the motion which is present A<>P and I've tried different parameters.
+
+Any suggestions on how to improve results on the 7T? or a config file that works best with this data?
+
+ 
+
+Thanks in advance,
+
+Saina
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+Dear Magda,
+
+ 
+
+yes, if you want to run topup on 2D data your best bet is to duplicate that slice. You can for example replicate it to give you 8 slices.
+
+ 
+
+I would strongly discourage from using your own .cnf file. The b02b0.cnf file have been carefully tested, and it would be hard to improve on it without a 
+fair amount of testing.
+
+ 
+
+I _think_ that if you generate a data set with 8 slices and then run topup with the regular b02b0.cnf config file you will find that it runs in a couple 
+of minutes. I regularly run it on bigger data sets on a ten years old macbook in about that time. The --nthr can speed things up, but it really shouldn't 
+be needed on such a small data set as yours.
+
+ 
+
+Please let me know how it goes. If it still doesn't work we can take a look at your data to see if we can figure something out.
+
+ 
+
+Jesper
+
+Hello,
+
+The RAM on my wsl is set to 12 GB and I allow a SWAP memory of 17 GB. 
+
+Yes, I am using 2 2D images of the same slice taken with opposite PE directions. My goal was to first test the topup in a single slice of simulated data 
+to see how it performed.
+If the lack of the 3rd dimension is a problem, I can try to duplicate the slices?
+
+When I run the command I notice that it checks the consistency between the argument files given, namely matching between imain and datain but it does not 
+go beyond that. When the arguments pass the tests in the topupfns.cpp file nothing is printed in the console and the function is left to run.
+
+I am using the command:
+topup -v --imain=merged_img.nii.gz --datain=acqparams.txt --config=custom.cnf --out=topup_results --fout=
+topup_field --logout=topup_log
+
+and have removed the minnet=0 line in the custom.cnf file
+
+Best regards,
+Magda
+
+
+Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> escreveu (quinta, 30/05/2024 à(s) 11:41):
+Hi Magda,
+
+I've just re-read your original email - can you confirm that your data is just a single 2D slice? Topup is designed to work on whole-brain 3D images.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: 30 May 2024 10:19
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Topup execution time
+ 
+Hi Magda,
+
+How much RAM does your system have? Using the --minmet=0 option will substantially increase the amount of memory that topup needs, and if your system has 
+limited RAM, this may significantly impact runtime due to page swapping.
+
+As you are using WSL, you may need to increase the amount of RAM that Windows allows WSL to use - this website gives an overview of how to do 
+this:https://fizzylogic.nl/2023/01/05/how-to-configure-memory-limits-in-wsl2
+
+But if you don't have a specific need for the --minmet option, I'd recommend not using it.
+
+Paul
+
+
+
+
+I have two questions after run second level analysis with feat Gui, can you dive me some advice on thay? 
+
+In our second-level analysis, I set a Z-score threshold of 3.1 and a cluster probability of 0.05. Is my understanding correct that these parameters 
+delineate clusters based on the Z-statistic map, with clusters having a p-value below 0.05 being reported?
+
+       2: When examining output images from the GUI, I noticed that threshold_P.nii.gz contains more voxels than thresh_Z.nii.gz. If the P map 
+corresponding to the cluster P threshold, it will contain less voxel than Z statistic right? Could you kindly explain why this is the case and provide 
+guidance on interpreting these files? For instance, in the image I'm referencing, blue indicates threshold_P.nii.gz (with a range of 0.95-1, I thought 
+value in this map actually representing 1-p values), yellow represents thresh_Z.nii.gz, and white depicts the pre-threshold map.
+
+Many thanks,
+Yiling Shi (she/her)
+
+
+
+
+Hello,
+
+I'm exploring the idea of running a longitudinal "vertex" analysis (i.e. from FIRST data). I have a patient group with before / after scans, and a 
+continuous clinical variable which I am hypothesising increases the rate of brain atrophy over time. Having done a FIRST analysis and estimated rate of 
+atrophy per ROI by looking just the volumes in the later scan as a fraction of the volumes in the first, I've found that this clinical variable does 
+indeed correlate with the volume loss in some structures (e.g. brainstem).
+
+Would it be possible to now follow this up with a vertex study so that I can study which parts of a region like the brainstem are driving this 
+correlation? I have done a vertex analysis a few years ago, but that was single timepoint and a groupwise comparison. Looking at the user guide now it 
+first of all writes about vertex analyses like these are outdated (though I can't see what they have been "replaced" by), and secondly it isn't clear to 
+me if it is able to run an analysis which depends in part on there being two vertex models per subject.
+
+Does this sound worthwhile / feasible?
+
+Thanks very much,
+Iain
+
+########################################################################
+
+
+Hi Magda,
+
+How much RAM does your system have? Using the --minmet=0 option will substantially increase the amount of memory that topup needs, and if your system has 
+limited RAM, this may significantly impact runtime due to page swapping.
+
+As you are using WSL, you may need to increase the amount of RAM that Windows allows WSL to use - this website gives an overview of how to do 
+this:https://fizzylogic.nl/2023/01/05/how-to-configure-memory-limits-in-wsl2
+
+But if you don't have a specific need for the --minmet option, I'd recommend not using it.
+
+Paul
+
+Dear Dr. Webster,
+
+Thank you very much for your help and notice! I have successfully run the commands for registering FA-image to FMRIB58 based on your guide.
+
+Now I have some other questions requesting for assistance:
+
+1. "my_nonlinear_transf" from fnirt is blur. Is it normal?
+
+2. Can the "Registering FA-image to FMRIB58" process be conducted for all participants simultaneously, or must it be conducted one by one? 
+
+3. I need to select one participant with the smallest degree of warping (i.e., with the smallest sum of squared differences) for ROI placement. How to 
+realize this process?
+
+Best regards,
+
+Ruiqing
+
+
+Dear Ruiqing,
+This is a typo in the user-guide, the FMRIB58_FA_1mm image is already brain-extracted and the correct reference. Note I’m assuming you’ve updated the 
+other parameters in the command line call ( e.g “my_FA” ) to match your local data.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Dear FSL Experts,
+
+I am currently using FSL version 6.0.7.11, and I am encountering an error when running the commands below from FNIRT-UserGuide-Example uses.
+
+"Registering FA-image to FMRIB58
+
+flirt -ref ${FSLDIR}/data/standard/FMRIB58_FA_1mm_brain -in my_FA -omat my_affine_transf.mat
+fnirt --in=my_FA --aff=my_affine_transf.mat --cout=my_nonlinear_transf --config=FA_2_FMRIB58_1mm
+applywarp --ref=${FSLDIR}/data/standard/FMRIB58_FA_1mm_brain --in=my_FA --warp=my_nonlinear_transf --out=my_warped_FA"
+
+When I ran the first line of the commands, it showed:
+"Image Exception : #63 :: No image files match: /home/rui/fsl/data/standard/FMRIB58_FA_1mm_brain
+Image Exception : #22 :: Failed to read volume /home/rui/fsl/data/standard/FMRIB58_FA_1mm_brain
+Error : No image files match: /home/rui/fsl/data/standard/FMRIB58_FA_1mm_brain
+Failed to read volume /home/rui/fsl/data/standard/FMRIB58_FA_1mm_brain
+Error : No image files match: /home/rui/fsl/data/standard/FMRIB58_FA_1mm_brain"
+
+Then I checked the file: fsl/data/standard, and found no FMRIB58_FA_1mm_brain, only found FMRIB58_FA_1mm and FMRIB58_FA-skeleton_1mm there (regarding 
+FMRIB58_FA).
+
+Why would this happen? Could you kindly provide a solution for this?
+
+Best regards,
+
+Ruiqing
+
+########################################################################
+
+
+Hello,
+
+I am using version 6.0.7.11
+
+Magda
+
+Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> escreveu (quarta, 29/05/2024 à(s) 16:45):
+Hi Magda,
+
+What version of FSL are you using?
+
+Paul
+
+
+Hi Daniel,
+
+When using MELODIC for group ICA, a memory optimisation technique called MIGP is used. When this is in effect, the resulting mixture matrix does not 
+contain component time courses, so cannot be interpreted in that way.  
+
+If you need time courses, you can obtain subject-level time courses via dual regression. and then use a method of your choice to generate representative 
+group-level time courses.
+
+Paul
+
+Hi all,
+
+I have run a multi-session temporal concatenation ICA in MELODIC v3.14, with 50 input datasets at TR=900 (multiband) and fixing the number of extracted 
+components to 50.
+
+Given the above parameters, I'm surprised that the dimensions of both the melodic_mix and melodic_Tmodes files are 1299x50. Furthermore, the time-series 
+for each of the 50 components (e.g., t1.txt) also have 1299 elements.
+
+Do the dimensions of these output files suggest that something has gone wrong in the MELODIC process? If so, does anyone have any ideas what might have 
+gone wrong?
+
+Many thanks in advance,
+
+Dan.
+
+Hello,
+
+I have a python script that, resorting to nipype.interface.fsl, executes the topup command on my two EPI images (one with positive PE and the other with 
+negative PE in the y direction).
+
+The images have 64x64 resolution, for which I only found to be possible to use a subsamp = 1. Otherwise an error raised. After stacking them and loading 
+the file where both images are located, I find the shape of that object to be 64,64,1,2.
+
+The acqparameters.txt file contains:
+0 1 0 0.001
+0 -1 0 0.001
+
+To obtain a rapid solution, I set the .cnf  file as follows:
+# Save this content to a file named `custom.cnf`
+--subsamp=1
+--miter=1
+--lambda=0.01
+--ssqlambda=1
+--regmod=bending_energy
+--estmov=0
+--minmet=0
+--splineorder=3
+--numprec=float
+--interp=spline
+
+I am running topup it on my WSL2 Ubuntu. Do you have any prediction of how long this process should take? It seems to go beyond 30 minutes and I do not 
+know if this is standard or if I doing something wrong.
+
+Best regards and thank you in advance,
+Magda Duarte
+
+
+
+
+
+Dear experts,
+
+I am wondering why my image seems blurred after registration with FLIRT. I understand that some interpolations are applied, but personally, nevem saw a 
+blurring effect that important after a simple linear registration between images of a same subject and modality.
+I just want to register a 4D-EPI image to a 3D reference image. I am doing the following;
+
+# Estimate the register parameters
+flirt -in Full_EPI_360vols_MotCorr.nii.gz -ref vol0001.nii.gz -out Reg_EPI_Vol_1.nii.gz -omat invol2refvol.mat -dof 6
+
+# Apply the registering parameters to the whole EPI (all volumes)
+flirt -in Full_EPI_360vols_MotCorr.nii.gz -ref Reg_EPI_Vol_1.nii.gz -applyxfm -init invol2refvol.mat -out Full_EPI_360vols_MotCorr_Reg.nii.gz -dof 6
+
+Any help on how to avoid this? Thanks in advance.
+
+########################################################################
+
+
+Dear Saina,
+
+ 
+
+I am happy to help, but I would much more specific information about your data, the commands you have run and what goes wrong.
+
+ 
+
+Best regards Jesper
+
+ 
+
+Hi Tom,
+ 
+The analysis appears to be crashing during preprocessing of subject #4, i.e. before MELODIC is called.
+
+Can you double check that the data for your subject #4 is ok? MELODIC seems to be processing the data for subject #2 ok, so I am wondering if there is 
+something wrong with the data for subject #4.
+
+Paul
+
+Hi Tianye,
+
+It looks like you are using the old MATLAB/R version of FIX - we are not supporting this version anymore, so I would recommend that you start using the 
+new Python version that comes with the most recent version of FSL. You can find an overview of the new version on our new documentation site at 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/resting_state/fix
+
+It looks like you ran MELODIC without registration - you need to run MELODIC with functional->structural and structural->standard registration, so that 
+FIX can transform standard-space masks into functional space.
+
+Paul
+
+Dear colleague,
+
+(Apologies for the mass email and cross posting)
+
+
+The second edition of the Seeing and Acting Workshop (SAW) is approaching fast, and registration and poster submission are now open!
+
+ 
+
+SAW will take place at the Faculty of Psychology and Educational Sciences of the University of Coimbra, September 26-28, 2024 in Coimbra, Portugal.
+
+ 
+
+For the second edition of SAW, we have, once again, an exciting and stimulating group of Invited Speakers:
+
+·  Chris Baker, National Institute of Mental Health, USA
+
+·  Paolo Bartolomeo, Paris Brain Institute, France
+
+·  Marlene Behrmann, University of Pittsburgh, USA
+
+·  Jody Culham, Western University, Canada
+
+·  Roland Fleming, Giessen University, Germany
+
+·  Liuba Papeo, Institute of Cognitive Sciences Marc Jeannerod, France
+
+·  Hans Op de Beeck, KU Leuven, Belgium
+
+ 
+
+The goal of SAW is to provide a forum for cognitive science/neuroscience researchers from a range of perspectives who are interested in Perception and 
+Action, broadly construed, to come together to discuss their research and develop new directions and collaborations. The format of the workshop is 
+intended to encourage extensive discussion among participants. To this end, we have scheduled only a small number of invited speakers, and there are no 
+concurrent talks. In addition to the individual seminars, there will be a poster session for students, postdocs and other researchers to present their 
+work.
+
+ 
+
+Abstract submission for posters closes on July 31, 2024. The five best abstracts whose first author is a student or postdoc will receive a 200 euro award 
+sponsored by ANT Neuro.
+
+ 
+
+Registration for the workshop will be open in a couple of weeks. To register, submit a poster abstract, or for more information, please visit: 
+https://www.uc.pt/cogbooster/saw/2024/
+
+ 
+
+Please note that there are a limited number of places (~120), which will be assigned on a first come, first served basis. To secure your place, please 
+register as soon as possible. Note that you can register now and submit an abstract later (but before the July 31, 2024 deadline).
+
+ 
+
+SAW is powered by the ERA Chair CogBooster, and by the Faculty of Psychology and Educational Sciences of the University of Coimbra, Portugal.
+
+Workshop Organizers:
+Jorge Almeida, Alfonso Caramazza, Paul Downing, Mel Goodale, Zoe Kourtzi, Angelika Lingnau, and Isabel Pavão Martins
+
+Dear FSL experts,
+
+I am encountering an issue while trying to train a FIX classifier. The command I am using is:
+
+/usr/local/fix/fix -t /home/chenty/Training /home/chenty/DATA.ica
+
+However, I receive the following errors:
+
+FIX Training classifier with output training file: /home/chenty/Training and Melodic outputs list: /home/chenty/DATA.ica
+copy true labels and features into training directory
+FIX features not already generated, so creating them now.
+FIX Feature extraction for Melodic output directory: /home/chenty/DATA.ica
+create edge masks
+run FAST
+Image Exception : #63 :: No image files match: /home/chenty/DATA.ica/reg/highres
+Image Exception : #22 :: Failed to read volume /home/chenty/DATA.ica/reg/highres
+Error : No image files match: /home/chenty/DATA.ica/reg/highres
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume /home/chenty/DATA.ica/reg/highres
+Error : No image files match: /home/chenty/DATA.ica/reg/highres
+Aborted (core dumped)
+Image Exception : #63 :: No image files match: /home/chenty/DATA.ica/fix/fastsg_pveseg
+Image Exception : #22 :: Failed to read volume /home/chenty/DATA.ica/fix/fastsg_pveseg
+Error : No image files match: /home/chenty/DATA.ica/fix/fastsg_pveseg
+Failed to read volume /home/chenty/DATA.ica/fix/fastsg_pveseg
+Error : No image files match: /home/chenty/DATA.ica/fix/fastsg_pveseg
+registration of standard space masks
+extract features
+cp: cannot stat '/home/chenty/DATA.ica/fix/features.csv': No such file or directory
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+running classifier training
+
+It seems that the process is failing because it cannot find certain image files, specifically:
+
+/home/chenty/DATA.ica/reg/highres
+/home/chenty/DATA.ica/fix/fastsg_pveseg
+/home/chenty/DATA.ica/fix/features.csv
+
+However, the DATA.ica folder is generated by running MELODIC ICA. All operations follow the operating instructions on this 
+site:https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIX/UserGuide.
+Could you please provide guidance on how to resolve these issues? I have checked the mentioned directories and confirmed that the files do not exist. I 
+would appreciate any suggestions on what might be causing these errors and how to fix them.
+
+Thank you for your assistance.
+
+Best regards,
+
+Tianye
+
+########################################################################
+
+Dear Jesper,
+
+Thank you very much for your reply! That's very helpful, and I appreciate it a lot!
+
+Best regards,
+
+Ruiqing
+
+On Friday, May 24, 2024 at 10:02:47 PM GMT+8, Jesper Andersson <0000bb6368d04018-dmarc-request@jiscmail.ac.uk> wrote:
+
+
+Dear Ruiqing,
+
+ 
+
+    1. There is only one phase encoding direction of the DTI data which is "PhaseEncodingDirection": "j-", can I skip "topup" and start from "eddy" in 
+DTI processing?
+
+ 
+
+Yes, you can do that and in that case "eddy" will still correct your data for eddy current-induced distortions and subject movement. But the data will 
+still be "in the wrong space", i.e. be distorted.
+
+An alternative would be to use Synb0 (https://github.com/MASILab/Synb0-DISCO) to generate a distortion free "synthetic" distortion free b=0 volume from 
+your T1 structural data. You can then use that in "topup" together with your actual b=0 volume to estimate the susceptibility field.
+
+ 
+
+    2. There is "Binary brain mask" input option in "eddy", and also "BET binary brain mask" input option in "DTIFIT Reconstruct diffusion tensors". How 
+many times shall I conduct BET? Once or twice? If once, when shall i conduct the BET, before or after "eddy"?
+
+ 
+
+It should be enough to run BET once. If running topup I would recommend running it on the --iout output from topup. If not, you can just run it on the 
+first b=0 volume in your data set. You may need to experiment a little with the -f parameter of bet, I find that I often have to lower it (from the 
+default of 0.5) on diffusion data.
+
+   
+
+    3. How to set acqparams.txt (Acquisition parameters file) and index.txt (Index file) needed for "eddy"?  I have "PhaseEncodingDirection": "j-" and 
+"TotalReadoutTime": 0.0507233 in the JSON file, and set the acqparams.txt as "0 -1 0 0.0507233". Is this method correct? Since I have only one phase 
+encoding direction in my DTI data, there is only one line in my acquisition parameters file. Is it acceptable?
+
+ 
+
+That looks good to me.
+
+ 
+
+I've seen on the internet that the index file can be set from the bval file, can you provide a code on how to get the index file?
+
+ 
+
+Hmm, guess that if you want to involve the bvals file you could do something like.
+
+ 
+
+nvol=`wc bvals |  awk '{print $2}'`
+
+ones=""
+
+for ((i=1; i<=$nvol; i++)) do
+
+  ones="$ones 1"
+
+done
+
+echo $ones > my_index.txt
+
+ 
+
+I agree that is a little awkward, and in the future there will be an option to just specify --index=ones in eddy, and that will automatically be expanded 
+to the correct number of ones.
+
+ 
+
+Jesper
+
+ 
+
+   
+
+    Thank you very much!
+
+   
+
+    Best regards
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at 
+https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+
+Hi,
+Not that I’m aware of, but if you multiply the image beforehand by 1000 (e.g., fslmaths image -mul 1000 tmpimage), or some other appropriate value, you 
+can achieve what you are looking for. 
+
+Niels Bergsland
+Integration Director / Assistant Professor of Neurology
+Buffalo Neuroimaging Analysis Center / University at Buffalo
+77 Goodell St, Suite 450C, Buffalo, NY 14203
+npbergsland@bnac.net
+
+

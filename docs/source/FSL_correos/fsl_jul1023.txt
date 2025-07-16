@@ -1,0 +1,895 @@
+Hi Jaël,
+    Everything looks good with the folder you sent, do you know if the folder in Desktop ( share/BIDS_<blah>/<blah> ) a local or network folder? 
+
+Kind Regards
+Matthew
+
+
+Hi Vae,
+
+ 
+
+Here is some info on your first question: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/DualRegression/Faq
+
+ 
+
+And here is an example of design matrix for repeated measures (short answer is yes, you concatenate all and then specify the paired data in the design): https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Randomise/UserGuide#Two-Sample_Paired_T-test_.28Paired_Two-Group_Difference.29
+
+ 
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+Dear Batel,
+
+it is true that if you are only interested in correcting your images (i.e. if you have no interest in the field itself), and as long as your images are all acquired with the same actual readout time, you don't have to know the actual value. You can just use any "reasonable" value. I usually recommend 0.05. And no, it will not affect your FA values in any negative way.
+
+Jesper
+ 
+
+﻿On 10/07/2023, 10:23, "FSL - FMRIB's Software Library on behalf of Batel Yifrah" <FSL@JISCMAIL.AC.UK on behalf of batel.yifrah1@GMAIL.COM> wrote:
+
+    Hi everyone,
+    I have come across information stating that when performing Topup and Eddy, it is possible to input a value of 0.1 for the readout time in the acqparams file.
+    This means that if I have 1 AP acquisition and 1 PA acquisition, my acqparams file should look like this:
+   
+    0 -1 0 0.1
+    0 1 0 0.1
+   
+    However, I am unsure whether this approach will affect my FA values. Could someone please confirm if this is correct or if it will have an impact on my FA values?
+   
+    Thank you,
+    Batel
+   
+    ########################################################################
+   
+
+Hi Aleta,
+
+FSL requires the "bc" command to be installed - are you able to install it and try again? If you are using Ubuntu / WSL, you should be able to install it by running
+
+sudo apt install bc
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Aleta de Ruiter <deruiter.aleta@GMAIL.COM>
+Sent: 10 July 2023 10:30
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Voxel coordinates
+ 
+Hi Paul,
+
+I copied and pasted the command line you just sent, but I got an error. I attached a screenshot.
+
+Regards,
+Aleta
+
+
+Hi Paul,
+
+I copied and pasted the command line you just sent, but I got an error. I attached a screenshot.
+
+Regards,
+Aleta
+
+########################################################################
+
+
+Hi everyone,
+I have come across information stating that when performing Topup and Eddy, it is possible to input a value of 0.1 for the readout time in the acqparams file.
+This means that if I have 1 AP acquisition and 1 PA acquisition, my acqparams file should look like this:
+
+0 -1 0 0.1
+0 1 0 0.1
+
+However, I am unsure whether this approach will affect my FA values. Could someone please confirm if this is correct or if it will have an impact on my FA values?
+
+Thank you,
+Batel
+
+########################################################################
+
+
+Hi Aleta,
+
+That looks like you didn't run fslreorient2std on the image. Did you run it like "fslreorient2std <input_image> <output_image>"?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Aleta de Ruiter <deruiter.aleta@GMAIL.COM>
+Sent: 08 July 2023 20:50
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Voxel coordinates
+ 
+Hi Paul,
+
+Thank you for your response.
+
+The anatomical labels are correct. However, rotating the images did not solve the problem.
+
+Could it be something with the way the images are stored? I attached a screenshot.
+
+Regards,
+Aleta de Ruiter
+Hi Experts,
+
+I am a novice and a PhD student in the rs-fMRI field and would like to learn more about dual regression. I have performed dual regression on several different datasets, and realize that significant results (tfce_corrp outputs ) can be outside of their respective ICA components. Is that something to be concerned about? And how should we interpret these results? Have I done something wrong?
+
+A related question, if my design is repeated measures between two groups, should I still temporally concatenate all the datasets?
+
+Thank you!
+Regards,
+Vae
+
+########################################################################
+
+Dear Tanja,
+  We have released a new version of the bianca package which should fix this, can you run
+
+$FSLDIR/bin/update_fsl_package -y fsl-bianca
+
+and then try re-running bianca_cluster_stats?
+
+Kind Regards
+Matthew
+ 
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Good morning,
+
+I am setting up FIR models using the FEAT gui and have recently ran into an error when adding an EV of non-interest to account for "error" trials in the task. My setup includes four real EVs that represent the four different task conditions, one real EV of non-interest that represents a question-response epoch during the task, and the real EV that is intended to represent the error trials. I am setting up the model using FIR basis functions for the four real task EVs and double-gamma HRF for the two following EVs. The model saves when it only includes the four task EVs and the EV of non-interest for the question-response epoch. However, when I add the last EV to represent error trials, I receive the following error message:\
+Error: can't read "fmri(con_orig1.6)"
+can't read "fmri(con orig1.6)": no such element in array
+can't read "fmri(con orig1.6)": no such element in array
+     while executing
+"puts $channel "
+# Real contrast ${cm} vector $i element $i
+set fmri(con ${cm}${i}.${i}) $ƒmri(con ${cm}${i}.${i})"
+     (procedire "feat5:write" line 656)
+     invoked from within
+"feat5:write $w 1 0 0 $fmri(feat filename) "
+     (procedure "feat5:setup model preview" line 6)
+     invoked from within
+"feat5:setup model preview $w "
+     (procedure "feat5:setup model destroy" line 5)
+     invoked from within
+"feat5:setup modeldestroy .r .wdialoq1"
+     invoked from within
+".wdialoq1 .btns.b.cancel invoke"
+     ("uplevel" body line 1)
+     invoked from within
+"uplevel #0 [list $w invoke]"
+     (procedure "tk::ButtonUp" line 22)
+     invoked from within
+"tk::ButtonUp .wdialoq1 .btns.b.cancel"
+     (command bound to event)
+
+I had run FIR models with error terms previously without this issue. I have checked my timing files and they are correct. Any help or insight would be very much appreciated.
+
+Thank you very much,
+Joanne
+
+########################################################################
+
+
+Hi Paul,
+
+Thank you for your response.
+
+The anatomical labels are correct. However, rotating the images did not solve the problem.
+
+Could it be something with the way the images are stored? I attached a screenshot.
+
+Regards,
+Aleta de Ruiter
+
+
+
+########################################################################
+
+Hi again,
+
+This was relatively easy to add in, so will be an option in the next version of FSLeyes.
+
+Paul
+
+Hi Greg,
+
+We don't provide FSL binaries for PowerPC, but it should be possible to compile the C++ binaries for that architecture.
+
+However, we have transitioned over to releasing FSL in a modular fashion using Conda, and haven't yet devised a "source only" release mechanism.
+
+I think that the easiest pathway for you at the moment would probably be to install a PPC miniconda environment with the basic FSL dependencies, and then to clone the git repositories for the FSL tools you wish to use, and build/install them incrementally.
+
+Specifically which parts of FSL are you intending to use?
+
+Dear Colleagues,
+
+Please see a job announcement to lead UConn’s Brain Imaging Research Center (BIRC). Please see below and here for the full ad. Also attached is the short version.
+
+Thank you!
+Fumiko
+
+Neuroimaging Core Facility Director (Facility Scientist 4)
+APPLY NOW
+
+Hi Experts,
+
+I am a novice and a PhD student in the rs-fMRI field and would like to learn more about dual regression. I have performed dual regression on several different datasets, and realize that significant results (tfce_corrp outputs ) can be outside of their respective ICA components. Is that something to be concerned about? And how should we interpret these results? Have I done something wrong?
+
+I have attached a sample screenshot of what I mean.
+
+Here is a brief description of my methods. First I preprocess with fMRIprep, and then denoise with XCP-D, and feed the denoised image into melodic. Depending on the subject number, components may vary (the example shown was 15 components on 27 subjects), and datasets temporally concatenated. Voxel-wise comparisons were carried out with 10000 permutations.
+
+A related question, if my design is repeated measures between two groups, should I still temporally concatenate all the datasets?
+
+Thank you!
+Regards,
+Vae
+
+Yes, sorry for the typo. It should be:
+
+fslmaths ${filename}_FA_skeletonized_tp2 -sub ${filename}_FA_skeletonized_tp1 -div ${time_between_scan} ${filename}_annualized_skeleton.nii.gz
+
+Thanks,
+Jenna
+
+########################################################################
+
+Note I’m assuming a typo in the command below ( one should be “_tp1” or similar )...
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 6 Jul 2023, at 15:11, Jenna Blujus <jenna_blujus@BROWN.EDU> wrote:
+
+Hi all,
+
+I have two time points of DWI data for each subject. I have processed each time point of FA through the TBSS pipeline. This results in a single all_FA_skeletonised 4D file containing both time points from all subjects. I used fslsplit to separate the all_FA_skeletonised volume into its respective volumes (2 per subject (time point 1 and 2)) and used imglob in the FA directory to determine the order of the files in the 4D skeleton. Before stats, I would like to create an annualized change map skeleton by: (FA time point 2 - FA time point 1) / years between scans. Can this be accomplished using the following command:
+
+fslmaths ${filename}_FA_skeletonized_tp2 -sub ${filename}_FA_skeletonized_tp2 -div ${time_between_scan} ${filename}_annualized_skeleton.nii.gz
+
+Thanks,
+Jenna
+
+########################################################################
+
+
+Dear Marvin,
+    That should be fine, you would just need to make it clear to any reviewers etc. how the reported in-cluster z-values were calculated.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi, 
+That calculation is an ( optional ) manual step using the button on the GUI - the value in the “High-pass filter cutoff” entry on the Data tab is that one that will be actually be applied.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi all,
+
+I have two time points of DWI data for each subject. I have processed each time point of FA through the TBSS pipeline. This results in a single all_FA_skeletonised 4D file containing both time points from all subjects. I used fslsplit to separate the all_FA_skeletonised volume into its respective volumes (2 per subject (time point 1 and 2)) and used imglob in the FA directory to determine the order of the files in the 4D skeleton. Before stats, I would like to create an annualized change map skeleton by: (FA time point 2 - FA time point 1) / years between scans. Can this be accomplished using the following command:
+
+fslmaths ${filename}_FA_skeletonized_tp2 -sub ${filename}_FA_skeletonized_tp2 -div ${time_between_scan} ${filename}_annualized_skeleton.nii.gz
+
+Thanks,
+Jenna
+
+########################################################################
+
+Hi!
+
+ 
+
+I have created a loop to do fsl_anat on my 52 participants. There was only 1 participant that didn't work. It seems that for this participant, fsl anat is not producing the T1_first_all_fast_firstseg.nii.gz or T1_first_all_fast_origsegs.nii.gz... Although, I have my FIRST folder with different outputs in it, but not my T1_first_all_fast_firstseg.nii.gz or T1_first_all_fast_origsegs.nii.gz
+
+ 
+
+See error:
+
+Error submitting job - Errors occured when running array task in shell plugin: Task 15 failed executing: /bin/zsh -c /Users/monicasean/fsl/bin/run_first -i T1_biascorr -t T1_biascorr_to_std_sub.mat -n 40 -o first_results/T1_first-BrStem_first -m /Users/monicasean/fsl/data/first/models_336_bin/BrStem_bin.bmv; /Users/monicasean/fsl/bin/first_boundary_corr -s first_results/T1_first-BrStem_first -o first_results/T1_first-BrStem_corr -i T1_biascorr -b fast (/Users/monicasean/fsl/bin/run_first: line 165: 87263 Segmentation fault: 11  ${FSLDIR}/bin/first -i $image -l $trmat -m $model -k $outname -n $modes $verbose $comExtras
+
+)
+
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+
+               [--coprocessor_multi COPROCESSOR_MULTI]
+
+               [--coprocessor_class COPROCESSOR_CLASS]
+
+               [--coprocessor_class_strict]
+
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+
+               [--show_config] [-v] [-V] [-z file]
+
+               ...
+
+fsl_sub: error: argument -j/--jobhold: expected one argument
+
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+
+               [--coprocessor_multi COPROCESSOR_MULTI]
+
+               [--coprocessor_class COPROCESSOR_CLASS]
+
+               [--coprocessor_class_strict]
+
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+
+               [--show_config] [-v] [-V] [-z file]
+
+               ...
+
+fsl_sub: error: argument -j/--jobhold: expected one argument
+
+Error submitting job - Command not usable: Cannot find script/binary 'first_results/T1_first_all_fast_firstseg'
+
+ 
+
+Thank you!
+
+ 
+
+Monica
+
+Hi everyone, 
+
+I want to run FSL first to segment deep gray matter structures and get corresponding volumes. I'm currently using fsl first's command run_first_all: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST/UserGuide#:~:text=Labels-,Segmentation%20using%20FIRST,which%20have%20been%20optimised%20empirically but since my subjects are all infants, I'm wondering if there's a way to integrate a paediatric atlas into FSL first? 
+
+I'm not too familiar with the coding bit, but if any of you have done this before, any tips are welcome. 
+
+Thanks! 
+Anaam
+
+Dear Elisavet,
+
+Statistical inferential tools can only provide false positive guarantees for a given pre-specified analysis.  Hence this represents a second, follow up analysis.  As long as you make it clear that your primary hypothesis was the longitudinal one (now apparently negative) and that subsequent analyses are secondary analysis, I don't see any problem.  The reader can judge the reduced weight of evidence arising from any secondary hypothesis.
+
+Hope this helps!
+
+-Tom
+
+On Thu, 6 Jul 2023 at 09:53, Elisavet Kaltsouni <elisavet.kaltsouni@neuro.uu.se> wrote:
+Dear Thomas,
+
+
+
+Thank you so much for your answer and time. Just a small follow-up question. In the case that this analysis does not yield any significant results, would you believe it is reasonable to also investigate the treatment group differences only at follow-up, or would that be then considered p-fishing? I am mainly asking because this is a novel treatment and we have a sample size of 35, which is not big and perhaps compromises the power and likelihood to detect any effects.
+
+
+
+Would very much appreciate your opinion.
+
+
+
+I wish you a great rest of the week and summer!
+
+
+
+
+
+Dear all,
+
+I am just starting to use TBSS to compare our groups of patients with healthy controls.
+
+I specified the contrast as needed and have a correct design.mat file.
+
+For the TFCE FA results, the tstat1 and tstat2 are as expected (we see the stronger structural connectivity in tstat1) but for the other Non-FA parameters, the inverse is shown (the stronger structural connectivity is in tstat2).
+
+I was wondering if this is an error caused by using the function randomise incorrectly or if this has some other explanation regarding the interpretation of the Non-FA parameters.
+
+These are the lines of code we use to execute the analysis:
+
+randomise -i all_FA_skeletonised -o tbss_FA -m mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2
+randomise -i all_L1_skeletonised -o tbss_L1 -m mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2
+randomise -i all_MD_skeletonised -o tbss_MD -m mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2
+randomise -i all_RADDIFF_skeletonised -o tbss_RADDIFF -m mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2
+
+Thanks in advance,
+
+Adam
+
+########################################################################
+
+Hello FSL expert,
+
+I want to use Melodic ICA for fetal fmri processing but I have encountered the following errors that prevent completion of ICA and am looking for more information on what they mean, what might have caused them and how to navigate them.
+
+I tried to run melodic on 4d fmri data that was preregistered into atlas space. I also have a t2 image preregistered into atlas space. I tried several different processing designs within Melodic.
+
+First, I turn off MCFLIRT I get the following error message (this occurs when I run registration in Melodic GUI and when I perform the registration separately and exclude it from Melodic processing):
+
+"Stats
+An exception has been thrown
+Logic error:- detected by Newmat: index error: requested index = 0
+
+MatrixType = Rect   # Rows = 1; # Cols = 1
+
+
+Melodic Version 3.14
+
+Melodic results will be in filtered_func_data.ica
+
+Create mask ... done
+Reading data file filtered_func_data  ...  done
+  Estimating data smoothness ...  done
+  Removing mean image ... done
+  Normalising by voxel-wise variance ..."
+
+Any idea what might be causing this logic error?
+
+Next, when I turn MCFLIRT on, I get the following error message (this occurs when I run registration in melodic GUI and when I perform the registration separately and exclude it from Melodic processing):
+
+"Preprocessing Stage 2
+/netopt/rhel7/fsl/bin/mcflirt -in prefiltered_func_data -out prefiltered_func_data_mcf -mats -plots -reffile example_func -rmsrel -rmsabs -spline_final
+
+/bin/mkdir -p mc ; /bin/mv -f prefiltered_func_data_mcf.mat prefiltered_func_data_mcf.par prefiltered_func_data_mcf_abs.rms prefiltered_func_data_mcf_abs_mean.rms prefiltered_func_data_mcf_rel.rms prefiltered_func_data_mcf_rel_mean.rms mc
+
+/netopt/rhel7/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated rotations (radians)' -u 1 --start=1 --finish=3 -a x,y,z -w 640 -h 144 -o rot.png
+
+/netopt/rhel7/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated translations (mm)' -u 1 --start=4 --finish=6 -a x,y,z -w 640 -h 144 -o trans.png
+
+/netopt/rhel7/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png
+can't read "relrms": no such variable
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+        -I {
+            incr arginde..."
+    (file "/netopt/rhel7/fsl/bin/feat" line 310)
+Error encountered while running in main feat script, halting.
+can't read "relrms": no such variable"
+
+There seems to be an issue with MCFLIRT on my end where it doesn't recognize relrms...
+
+Finally, when I turn off variance-normalise timecourses, the error message says:
+
+"Stats
+
+ERROR:: too many components selected'
+
+Thank you for any insight into these issues!
+
+Megan
+
+########################################################################
+
+Postdoctoral Position
+Postdoctoral Fellow Neuroimaging and Cognitive Research
+University of Michigan - Ann Arbor, MI (On-Site)
+
+The Research Program on Cognition and Neuromodulation Based Interventions (RP-CNBI) at the University of Michigan (https://rpcnbi.medicine.umich.edu) announces an opening for a full-time research post-doctoral position. The program's mission is to implement novel and effective non-pharmacological treatments for individuals with cognitive impairments due to neurologic injury and/or disease. RP-CNBI integrates neuropsychological theory with multi-modal neuroimaging techniques and non-pharmacological treatments.
+
+The research fellow will be jointly supervised by Drs. Alexandru Iordan and Benjamin Hampstead and perform advanced analyses of multi-modal neuroimaging data from ongoing projects/clinical trials supported by 11 grants totaling over 13 million in NIH/DOD funding.
+
+The fellow will have access to a variety of research techniques, including:
+- Multi-modal imaging: fMRI, fNIRS, MRS/fMRS, PET, ASL, DWI
+- Neuromodulation: tDCS, tACS, TMS
+- Cognitive rehabilitation using computerized tasks and virtual reality
+
+The Department of Psychiatry at the University of Michigan is committed to creating an environment that is welcoming to all. We value the unique contributions of individuals and support a culture of inclusivity and inquiry among our employees and learners.
+
+How to Apply
+Please apply to job posting 228001 at this link for full description and application instructions:
+https://careers.umich.edu/job_detail/228001/research-fellow
+
+Contact Website
+https://careers.umich.edu/job_detail/228001/research-fellow
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Lyam,
+  You can use the --minextent option to exclude small clusters from both the text and image outputs, so in this case --minextent=20 should do what is required.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 5 Jul 2023, at 17:44, Lyam Bailey <Lyam.Bailey@DAL.CA> wrote:
+
+Dear users,
+
+I'm reporting results from a group-level analysis, and I've used FSL's cluster function to make tables of results which exclude small clusters (< 20 voxels). I would like to visualize the results (i.e., thresholded .nii.gz images) without showing small clusters (so that figures are consistent with the tables). Is it possible to remove small clusters from the .nii.gz images, prior to visualizing them? 
+
+Thanks!
+---------------------------------------------------------
+Lyam Bailey, B.Sc., M.Sc. 
+He / Him
+Doctoral student & Lecturer
+Department of Psychology & Neuroscience
+Dalhousie University
+
+Hi Matthew,
+
+that did the job. After several failed trials (due to http errors) I finally managed to get the current FSL version installed. Thanks for your help.
+
+Best
+Udo
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Wednesday, July 5, 2023 2:55 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Unable to download via fslinstaller.py
+ 
+Hi Udo,
+    the --conda should also be entered with double dashes - Mail autocorrected to a single!
+
+python3 fslinstaller.py --skip_ssl_verify --conda
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear colleague,
+
+We are very pleased to announce the first edition of the Seeing and Acting Workshop (SAW) that will take place at the Faculty of Psychology and Educational Sciences of the University of Coimbra, September 21-23, 2023 in Coimbra, Portugal.
+
+
+For the first edition of SAW, we have an exciting and stimulating group of Invited Speakers:
+
+·  Laurel Buxbaum, Moss Rehabilitation Research Institute, USA
+
+·  Erez Freud, York University, Canada
+
+·  Leyla Isik, Johns Hopkins University, USA
+
+·  Nancy Kanwisher, Massachusetts Institute of Technology, USA
+
+·  Bradford Mahon, Carnegie Mellon University, USA
+
+·  Alex Martin, National Institute of Health, USA
+
+·  Ricarda Schubotz, University of Münster, Germany
+
+ 
+
+The goal of SAW is to provide a forum for cognitive science/neuroscience researchers from a range of perspectives who are interested in Perception and Action, broadly construed, to come together to discuss their research and develop new directions and collaborations. The format of the workshop is intended to encourage extensive discussion among participants. To this end, we have scheduled only a small number of invited speakers, and there are no concurrent talks. In addition to the individual seminars, there will be a poster session for students, postdocs and other researchers to present their work.
+
+ 
+
+ 
+
+Abstract submission for posters closes on September 1, 2023. The five best abstracts whose first author is a student or postdoc will receive a 200 euro award sponsored by ANTneuro. 
+
+ 
+
+Registration for the workshop is now open. To register, submit a poster abstract, or for more information, please visit:
+
+https://www.uc.pt/cogbooster/saw/2023/
+
+ 
+
+Please note that there are a limited number of places (~120), which will be assigned on a first come, first served basis. To secure your place, please register as soon as possible. Note that you can register now and submit an abstract later (but before the September 1, 2023 deadline).
+
+ 
+
+SAW is powered by the ERA Chair CogBooster, and by the Faculty of Psychology and Educational Sciences of the University of Coimbra, Portugal.
+
+
+Hi,
+These need to be run manually - but for most batch processing the values for one subject will be good enough for all the others. The noise estimation is only used in reporting the design efficiency, the high-pass filter cut-off will be used in the actual analysis/modelling - but as above the estimated value for a single subject should be fine.
+
+Kind Regards 
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear Marvin,
+    The way randomise deals with cluster-thresholding is a little different to FLAME. Since the stats are non-parametric, no prior t->z transform is known, so the cluster-forming threshold is applied directly to the t-stats. For display purposes a basic t->z transform ( using the permutation data ) is applied to the input t-statistics but this does have some limitations - e.g. the maximum possible z-stat will correspond to a p of 1/nPermutations ( here ~3.54 for 1/5000 ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+Hi Udo,
+    the --conda should also be entered with double dashes - Mail autocorrected to a single!
+
+python3 fslinstaller.py --skip_ssl_verify --conda
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Thanks a lot, Matthew, the second suggestion (updating the Python3 certificates) solved the problem - I am downloading now!
+
+Thanks
+Udo
+
+
+
+Hi Udo,
+Can you try re-running the installer script with python3, and if that fails as well running:
+
+open /Applications/Python\ 3.8/Install\ Certificates.command
+
+and then the python3 call?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi
+
+I am using the FEAT command line for task 1st level analysis. While for looping it through multiple subjects, does FSL perform 'estimate high pass filter' or 'estimate noise' and automatically update the values (option found in the misc section of FEAT GUI)? Will it be used in the analysis?
+
+
+Thank you!
+
+########################################################################
+
+Dear Matthew,
+
+thank you very much!
+
+Best,
+Marvin
+
+
+Hi
+
+What parameters should be reported in a DTI study?
+
+Best
+Theo
+
+########################################################################
+
+
+Dear Thomas,
+
+
+
+Thank you so much for your valuable input. Have a great weekend!
+
+
+
+Dear Matthew,
+
+thank you for your reply, the info helped a lot!
+
+Would it be valid to define clusters based on the results of randomise, but to transform the t stat image (masked by sig clusters) to z stat parametrically, as a work around? The goal would be to receive a non-parametrically thresholded activation map, which also provides some information about areas more or less strongly activated by the task, without going through the hassle of increased computation time due to the higher number of permutations necessary to display the full range of (true) z stats. 
+
+Best,
+Marvin 
+
+
+Dear Thomas,
+
+
+
+Thank you so much for your answer and time. Just a small follow-up question. In the case that this analysis does not yield any significant results, would you believe it is reasonable to also investigate the treatment group differences only at follow-up, or would that be then considered p-fishing? I am mainly asking because this is a novel treatment and we have a sample size of 35, which is not big and perhaps compromises the power and likelihood to detect any effects.
+
+
+
+Would very much appreciate your opinion.
+
+
+
+I wish you a great rest of the week and summer!
+
+
+
+Prof. Iordan,
+
+ 
+
+This is Wooyoung Kang from Republic of Korea (South) [link]
+
+ 
+
+Please accept this letter expressing my interest in a research fellow position at the Research Program on Cognitive and Neuromodulation Based Interventions (RP-CNBI), the University of Michigan.
+
+ 
+
+I am a Ph.D. candidate at Korea University College of Medicine in August 2023 with a dissertation titled, “The resting brain of mood disorder and its functional connectivity: fMRI study” supervised by Professor. Byung-Joo Ham [link] . In my dissertation, I have examined the functional connectivity networks between bipolar disorder type II (BP2) and major depressive disorder (MDD).
+
+ 
+
+During my joint master’s and Ph.D. course at Korea University, I have learned about many kinds of neuroimaging tools, including Freesurfer, FSL, SPM12. I was also responsible for managing MRI and clinical data. I have practiced systemizing a vast size of data for its uses.
+
+ 
+
+Within my research, I have focused on a multidisciplinary approach to examining the nature of MDD and BP, especially by structural brain alterations and its association with clinical scales collected in out-patient dataset. I have published 4 research articles as a first author, all at SCI journal. I also have experience in resting-state fMRI with my Ph.D. dissertation.
+
+ 
+
+Moreover, I have studied Psychology, of course including developmental psychology, as my undergraduate at the University of Nottingham both in UK and Malaysia campus. Based on this psychological background, I am willing to develop my research covering broader neurologic clinical areas such as dementia.
+
+ 
+
+For sure, my love for my current research topic, that is mood disorders and neuroimaging, has been growing, and I’d love to continue working more intensively as a postdoctoral researcher to benefit individuals with neurologic injuries and/or diseases. I believe my background and qualification suits well to your research topic and needs, and it’s a good opportunity for me as well in order to develop further the depth and broaden the area of my future research.
+
+ 
+
+I am a fast learner, open to diversity, and good at both working in a team and solo.
+
+Currently, I live in Taiwan with a husband and a son.
+
+ 
+
+Please find attached my curriculum vitae for your consideration. Thank you for your time, and I look forward to hearing from you.
+
+ 
+
+ 
+
+Sincerely,
+
+Wooyoung Kang
+
+
+
+-----Original Message-----
+From: "Alex Iordan"<adiordan@GMAIL.COM>
+To: <FSL@JISCMAIL.AC.UK>;
+Cc:
+Sent: 2023. 7. 6. (목) 06:16 (GMT+09:00)
+Subject: [FSL] Postdoctoral Fellow Neuroimaging and Cognitive Research University of Michigan - Ann Arbor, MI
+ 
+
+Postdoctoral Position
+Postdoctoral Fellow Neuroimaging and Cognitive Research
+University of Michigan - Ann Arbor, MI (On-Site)
+
+The Research Program on Cognition and Neuromodulation Based Interventions (RP-CNBI) at the University of Michigan (https://rpcnbi.medicine.umich.edu) announces an opening for a full-time research post-doctoral position. The program's mission is to implement novel and effective non-pharmacological treatments for individuals with cognitive impairments due to neurologic injury and/or disease. RP-CNBI integrates neuropsychological theory with multi-modal neuroimaging techniques and non-pharmacological treatments.
+
+The research fellow will be jointly supervised by Drs. Alexandru Iordan and Benjamin Hampstead and perform advanced analyses of multi-modal neuroimaging data from ongoing projects/clinical trials supported by 11 grants totaling over 13 million in NIH/DOD funding.
+
+The fellow will have access to a variety of research techniques, including:
+- Multi-modal imaging: fMRI, fNIRS, MRS/fMRS, PET, ASL, DWI
+- Neuromodulation: tDCS, tACS, TMS
+- Cognitive rehabilitation using computerized tasks and virtual reality
+
+The Department of Psychiatry at the University of Michigan is committed to creating an environment that is welcoming to all. We value the unique contributions of individuals and support a culture of inclusivity and inquiry among our employees and learners.
+
+How to Apply
+Please apply to job posting 228001 at this link for full description and application instructions:
+https://careers.umich.edu/job_detail/228001/research-fellow
+
+Contact Website
+https://careers.umich.edu/job_detail/228001/research-fellow
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by [http://www.jiscmail.ac.uk,]www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Matthew, 
+
+Thanks for the reply. In my ignorance, I didn't realize that you could get output images from cluster (I thought it only generated tables!). I see now that you can specify an output image using --othresh. Thanks very much for the help!
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Wednesday, July 5, 2023 4:32 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Removing small clusters from .nii.gz images
+
+Dear users,
+
+I'm reporting results from a group-level analysis, and I've used FSL's cluster function to make tables of results which exclude small clusters (< 20 voxels). I would like to visualize the results (i.e., thresholded .nii.gz images) without showing small clusters (so that figures are consistent with the tables). Is it possible to remove small clusters from the .nii.gz images, prior to visualizing them? 
+
+Thanks!
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+Dear FSL experts,
+
+point 3 in my previous request regarding the large areas of zeros is not of interest anymore, I now understand why and how this is done. However, I am still wondering why the z stat maps are thresholded at 2.7 (lower bound) and 3.54 (upper bound) and if this is intended? The tstat images are clearly showing much more variance and higher values in areas activated by the task. Reanalysing the data using FLAME reveals z values of up to 9.8 instead of 3.54 using randomise.
+
+Maybe my problem is a too basic, however, a little help would be much appreciated! I uploaded the gfeat directories here: https://drive.google.com/drive/folders/1Bi0ljMM-43gTadfqwtmxcWab936z6CDN?usp=sharing
+
+Thank you for your time and help!
+
+Best,
+Marvin
+
+

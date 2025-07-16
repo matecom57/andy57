@@ -1,0 +1,177 @@
+Dear FSL experts,
+
+My data FA images have the wrong labels. The superior label is located at the anterior side of the brain; The inferior label is located at the posterior side of the brain; The posterior label is located at the superior side of the brain; The anterior label is located at the inferior side of the brain. Left and right are correct. My data FA images do not register properly with the T1 images, which do have the correct labels. How can I best go about this issue? Should I change the orientation of the labels of the data FA image? I tried fslcpgeom reference.nii.gz data_FA.nii.g -d to align the images without changing the voxel dimensions, but the voxel dimensions still seem to change when running this. 
+
+Thank you so much for your help!
+Mira
+
+
+
+Dear FSL experts,
+
+I am trying to understand whether I should copy the q form to s form for all my data FA, T1, and template images before running registration and tractography. What are the q and s forms exactly, and what happens to the image when you run the fslorient -copyqform2sform command? I am wondering whether it is better to keep the images as is (with s and qform not being equal) - so that no information is lost in the process. Or is it better to make them equal? I read that discrepancies between q and s form can lead to errors in neuroimaging analyses. I ran registration between raw (unequal q and s form) data FA, T1, and template images, which worked. I also ran registration between data FA, T1, and template space with the q and s forms being equal in all images, which also worked. 
+
+I am running tractography on about 70 chimpanzee brains, and I am not sure what is appropriate for my dataset.
+
+Thanks so much in advance for your help!
+Mira
+
+
+Hello,
+
+I processed a large DTI dataset through TBSS and am now using randomise to examine diagnostic group differences. When examining the number of non-zero voxels in the raw test statistic output (e.g., _fstat) the file has the same number of voxels as the mean_FA_skeleton mask, as expected. However, the TFCE and FWE corrected image (tfce_corrp_fstat) has less voxels than the mean_FA_skeleton. Can you explain why that is?
+
+Thank you,
+Jenna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+
+Hi Göktuğ,
+
+You will not be able to achieve a good registration using a DTI vector image - you need to use either the corresponding FA, or a b0 image to calculate the registration. Once you have calculated the registration, you will then be able to invert it if necessary, and apply it to any other images that are aligned to the source or reference spaces.
+
+You can learn more about registration concepts in the FSL course practical at https://open.win.ox.ac.uk/pages/fslcourse/practicals/registration/index.html
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Göktuğ Dinçer <goktugdincerr@GMAIL.COM>
+Sent: 14 February 2024 20:49
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] registration of dti color coded data on t1 and swi for alps-index-analysis
+ 
+I am quite new to this, I want to register DTI data on SWI, so that i can choose the appropriate area using SWI, draw ROI's in specific color coded fibers and then use eigenvalues and vectors of that ROI.
+
+My problem is, i cannot FLIRT color coded DTI on SWI as FLIRT does not support color coded dti files. How can i bypass this?
+
+Thank you!
+____________________________________
+Göktuğ DİNÇER
+Asistan Doktor | Ege Üniversitesi Tıp Fakültesi Hastanesi, Nöroloji AbD
+Resident | Ege University Faculty of Medicine, Neurology Dpt.
+M: goktugdincerr@gmail.com
+
+
+Dear asl experts,
+
+after solving the problems with newer numpy versions (float insted of np.float), I realized that oxford_asl with the flag --region-analyses
+and the script oxford_asl_roi_stats with the flag --add-standard-atlases produces slightly different results (I have a fsl_anat directory).
+Here is an example for one subject, but the effect was detectable in all subject.
+
+example showing the first rows of region_analysis_gm.csv with both approaches
+
+name,Nvoxels,Mean,Std,Median,IQR,Precision-weighted mean,I2
+10%+GM,21601,64.73,29.47,63.33,33.14,63.35,49
+80%+GM,3421,59.47,22.68,59.25,28.63,59.20,62
+10%+WM,12843,62.51,26.47,61.97,33.76,62.84,49
+90%+WM,0,,,,,,
+GM PV,21601,57.62,,,,59.26,
+WM PV,18684,63.70,,,,65.53,
+CSF PV,16702,97.33,,,,83.28,
+gmmask_pure_cort,2800,60.43,23.21,59.68,30.67,59.82,62
+wmmask_pure_cereb,0,,,,,,
+Frontal Pole,767,77.82,44.84,70.95,31.66,67.10,0
+Insular Cortex,120,52.93,14.26,53.77,18.94,52.03,23
+
+name,Nvoxels,Mean,Std,Median,IQR,Precision-weighted mean,I2
+10%+GM,20426,62.79,25.31,62.33,33.09,63.06,51
+80%+GM,3342,59.05,22.46,59.05,28.73,58.97,63
+10%+WM,12575,61.67,24.60,61.40,33.64,62.53,50
+90%+WM,0,,,,,,
+GM PV,20426,59.47,,,,59.09,
+WM PV,17943,62.37,,,,65.31,
+CSF PV,15565,80.57,,,,81.67,
+Frontal Pole,546,65.18,25.56,65.62,30.91,64.25,0
+Insular Cortex,121,52.97,14.21,53.89,19.27,52.10,23
+
+any ideas? I should mention that for own ROIs in mni space (using oxford_asl_roi_stats), I had to modify the roi_stats.py python script from np.int to int (again numpy version).
+
+Bw
+Ralf
+
+########################################################################
+
+
+Dear Colleagues,
+
+ 
+
+We are inviting applications for a Postdoctoral Researcher in Neuroimaging based within the Wellcome Centre for Integrative Neuroimaging (WIN), University of Oxford, UK. The project is funded by the NIHR Oxford Health BRC Brain Technologies theme, which focuses on the scientific/clinical interface to create and test accurate tools for measuring brain structure and function to improve risk identification, early diagnosis, outcome prediction and treatment targeting. 
+
+ 
+
+More details, full job description, and link to apply can be found here.
+
+Closing date: 6th March 2024
+
+ 
+
+Best wishes,
+
+Ludovica
+
+ 
+
+The Hoeft Lab (http://brainLENS.org; PI: Fumiko Hoeft MD PhD, Campus Dean & CAO; Professor of the Department of Psychological Sciences) at the University of Connecticut (UConn) is looking for two exceptional postdocs in the field of cognitive neuroscience/neurolinguistics with advanced neuroimaging, computational, programming, and writing skills.
+ 
+The postdocs are expected to analyze functional and structural MRI (and EEG) data and publish primarily from three NIH-funded projects: (1) the INTERGENERATIONAL NEUROIMAGING project that examines transmission of neurocognitive features of language/reading and executive function across generations (e.g., Ho et al. TiNS 2016); (2) the MULTILINGUAL project that investigates reading development and the underlying neural mechanisms in early multilingual children who were followed up since pre-literate grades 3/5 (e.g., Kepinska et al. Sci Rep 2023); and (3) the NEURAL NOISE HYPOTHESIS project that tests the hypothesis using multimodal MRI and EEG (e.g., Hancock et al. TiCS 2017). There are also opportunities to write grants and publish using other existing (e.g., TMS+MRI+MRS) and publicly available datasets in the lab on the neuroscience of language and literacy.
+ 
+The candidate must have strong research experience in (1) reading / dyslexia or related fields of cognitive neuroscience and (2) MRI- (and/or EEG) based neuroimaging. Strong management, collaboration, communication, and writing skills are required. A strong publication record and expertise in programming, open-science approaches, and network / machine learning approaches are a plus.
+ 
+The positions can begin immediately. Please email brainlens@uconn.edu with a cover letter describing qualifications and a current CV. Please add “[Postdoc job] First & Last Name” to the email's subject. Qualified candidates will be asked to have three letters of reference forwarded.
+
+Thank you!
+
+########################################################################
+
+
+Hello,
+
+Thank you for the great material on ASL!
+
+I want to use the control images as the calibration scan. I used no background suppression.
+
+My best guess was to split the ASL scan and then merge the control images (control first on Phillips), since I have 45 pairs that means: 
+
+fslsplit sub-"$subject"_ses-"$session"_asl.nii.gz
+
+fslmerge -t control_merged vol0000.nii.gz vol0002.nii.gz vol0004.nii.gz vol0006.nii.gz vol0008.nii.gz vol0010.nii.gz vol0012.nii.gz vol0014.nii.gz vol0016.nii.gz vol0018.nii.gz vol0020.nii.gz vol0022.nii.gz vol0024.nii.gz vol0026.nii.gz vol0028.nii.gz vol0030.nii.gz vol0032.nii.gz vol0034.nii.gz vol0036.nii.gz vol0038.nii.gz vol0040.nii.gz vol0042.nii.gz vol0044.nii.gz vol0046.nii.gz vol0048.nii.gz vol0050.nii.gz vol0052.nii.gz vol0054.nii.gz vol0056.nii.gz vol0058.nii.gz vol0060.nii.gz vol0062.nii.gz vol0064.nii.gz vol0066.nii.gz vol0068.nii.gz vol0070.nii.gz vol0072.nii.gz vol0074.nii.gz vol0076.nii.gz vol0078.nii.gz vol0080.nii.gz vol0082.nii.gz vol0084.nii.gz vol0086.nii.gz vol0088.nii.gz
+
+I have two questions. 1) Is any other step necessary to prep the calibration image? Averaging? Smoothing? 
+2) Can this be used with any or only some of the calibration options? I believe a reference region is more appropriate (when using control images). If so, I would just put my TR (4750ms), the gain is 1.0 (same as ASL sequence obviously), and my best guess would be to leave the rest on the calibration page as default. I am using the Basil gui, but I'm not opposed to scripting if it's more appropriate in this case.
+
+Thank you for any help.
+
+Annick
+
+Annick Tanguay, PhD | Postdoctoral Research Fellow
+
+
+I am quite new to this, I want to register DTI data on SWI, so that i can choose the appropriate area using SWI, draw ROI's in specific color coded fibers and then use eigenvalues and vectors of that ROI.
+
+My problem is, i cannot FLIRT color coded DTI on SWI as FLIRT does not support color coded dti files. How can i bypass this?
+
+Thank you!
+_______
+
+Hi James,
+
+This is due to a problem with how we have packaged oxford_asl. I have just published a new version, so you should be able to resolve this by updating your version - you can do so by running this command:
+
+update_fsl_package fsl-oxford_asl
+
+Note that it will probably update several packages - we haven't yet figured out a nice way to tell conda to perform a "minimal" update.
+
+Paul
+
+Hi Paul, I'm looking into this issue again. I followed your suggestion and got FSLNets updated to this current version. Now nets.glm spills out another error, "TypeError: tempdir() got an unexpected keyword argument 'prefix'". I saw another post last November reporting a similar error: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2311&L=FSL&P=R401407&X=A9487D02E5D8AD4D57&Y=moana004%40umn.edu
+
+I attached a text file with the full terminal output, in case it helps debugging (there were some warnings like "invalid value encountered in log" during netmats calculation). Thanks.
+
+Estephan
+
+
+On Thu, 16 Nov 2023 10:49:07 +0000, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+
+

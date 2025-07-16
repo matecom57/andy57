@@ -1,0 +1,176 @@
+Dear fsl users,
+I want to create a gray matter mask containing solely cortical GM (i.e., no cerebellum, no subcortical GM) in functional space.
+
+My plan was to use fsl_anat's T1_fast_pve_1.nii.gz image and register it to functional space using flirt, but I don't know how to get rid of the non-cortical areas most efficiently. Would it work to use some atlas (such as Harvard-Oxford), map the regions to subject space, and remove everything non-cortical with fslmaths? Or is there a more elegant way to do this?
+Best, Melissa
+
+
+Hi there,
+
+I am comparing three groups using TBSS. Disease 1, Disease 2 and Controls.
+
+I have run an f-test on all 3 groups and found significant results p<0.05.
+
+To investigate the directionality, I have then done individual t tests. The contrast file appears as:
+1 -1 0
+-1 1 0
+0 1 -1
+0 -1 1
+1 0 -1
+-1 0 1
+
+However none of these t-tests were significant. So I am confused as to how the f-test could be significant.
+
+Please let me know your thoughts :)
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Rona,
+
+The --ref argument is required - you need to specify a reference image, e.g. "--ref=$FSLDIR/data/standard/MNI152_T1_2mm.nii.gz".
+
+Paul
+
+
+Dear experts,
+Sorry for multiple postings. But I really can't get through this error when running vbm on betted images.
+I have all nifti images (*_brain.nii.gz) stored in directory/struc folder, and ran fslvbm_2_template -a in the directory folder. And I got the following error message:
+chmod: cannot access 'fslvbm2a': No such file or directory
+
+I am running fslvbm_2 because the imaged I received are already betted, so running fslvbm_1_bet again will result in chunks of frontal lobes being removed.
+Thank you and please let me know what I should do.
+
+########################################################################
+
+Hi Paul,
+Thanks for your reply.
+When I add the --ref argument, exactly as you suggested, and only when I DO add it, I get the error "--ref: Missing non-optional argument!" along with the help list for the function.
+
+########################################################################
+
+
+Hi paul,
+
+ My problem is solved.
+Thank you for your assistance.
+
+ Respectfully,
+Maryam Shapourjani 
+
+On Thu, 8 Jun 2023 at 12:37 Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Maryam,
+
+It sounds like you are trying to install an older version of FSL - I would suggest trying to install the most recent version - you can download an updated version of the fslinstaller script from https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation
+
+Paul
+
+Dear FSL experts,
+
+I am using FSL (installed on Cntos7) for 1 year, but when I open the FSL today, this message appeared,
+FSL User,
+then ask me username and password. But, I do not know what is username and password.
+
+How can I solve this problem?
+Thanks in advance for your help!
+
+Sincerely yours,
+Zahra ,
+
+Hi,
+
+I am running non-linear registration of background-denoised MP2RAGE images to MNI 2mm T1w.
+After working fine for 2 subjects, now everytime I try to run the command WITH arguments I just get the help menu for the command, as though I wrote "fnirt" with no arguments.
+
+This is the command I am trying to run:
+fnirt --in=<path to denoised MP2RAGE after BET> --aff=<path to T1toMNIlin.mat from linear registration with flirt> --config=T1_2_MNI152_2mm.cnf --iout=<path to output folder>/T1toMNInonlin --cout=<path to output folder>/T1toMNI_coef --fout=<path to output folder>/T1toMNI_warp
+
+The immediate output in the linux terminal is:
+
+Part of FSL (ID: "")
+fnirt
+
+Usage:
+fnirt --ref=<some template> --in=<some image>
+fnirt --ref=<some template> --in=<some image> --infwhm=8,4,2 --subsamp=4,2,1 --warpres=8,8,8
+
+Compulsory arguments (You MUST set one or more of):
+        --ref           name of reference image
+        --in            name of input image
+
+Optional arguments (You may optionally specify one or more of):
+        --aff           name of file containing affine transform
+        --inwarp        name of file containing initial non-linear warps
+        --intin         name of file/files containing initial intensity mapping
+        --cout          name of output file with field coefficients
+        --iout          name of output image
+        --fout          name of output file with field
+        --jout          name of file for writing out the Jacobian of the field (for diagnostic or VBM purposes)
+        --refout        name of file for writing out intensity modulated --ref (for diagnostic purposes)
+        --intout        name of files for writing information pertaining to intensity mapping
+        --logout        Name of log-file
+        --config        Name of config file specifying command line arguments
+        --refmask       name of file with mask in reference space
+        --inmask        name of file with mask in input image space
+        --applyrefmask  Use specified refmask if set, default 1 (true)
+        --applyinmask   Use specified inmask if set, default 1 (true)
+        --imprefm       If =1, use implicit masking based on value in --ref image. Default =1
+        --impinm        If =1, use implicit masking based on value in --in image, Default =1
+        --imprefval     Value to mask out in --ref image. Default =0.0
+        --impinval      Value to mask out in --in image. Default =0.0
+        --minmet        non-linear minimisation method [lm | scg] (Levenberg-Marquardt or Scaled Conjugate Gradient)
+        --miter         Max # of non-linear iterations, default 5,5,5,5
+        --subsamp       sub-sampling scheme, default 4,2,1,1
+        --warpres       (approximate) resolution (in mm) of warp basis in x-, y- and z-direction, default 10,10,10
+        --splineorder   Order of spline, 2->Quadratic spline, 3->Cubic spline. Default=3
+        --infwhm        FWHM (in mm) of gaussian smoothing kernel for input volume, default 6,4,2,2
+        --reffwhm       FWHM (in mm) of gaussian smoothing kernel for ref volume, default 4,2,0,0
+        --regmod        Model for regularisation of warp-field [membrane_energy bending_energy], default bending_energy
+        --lambda        Weight of regularisation, default depending on --ssqlambda and --regmod switches. See user documentation.
+        --ssqlambda     If set (=1), lambda is weighted by current ssq, default 1
+        --jacrange      Allowed range of Jacobian determinants, default 0.01,100.0
+        --refderiv      If =1, ref image is used to calculate derivatives. Default =0
+        --intmod        Model for intensity-mapping [none global_linear global_non_linear local_linear global_non_linear_with_bias local_non_linear]
+        --intorder      Order of polynomial for mapping intensities, default 5
+        --biasres       Resolution (in mm) of bias-field modelling local intensities, default 50,50,50
+        --biaslambda    Weight of regularisation for bias-field, default 10000
+        --estint        Estimate intensity-mapping if set, default 1 (true)
+        --numprec       Precision for representing Hessian, double or float. Default double
+        --interp        Image interpolation model, linear or spline. Default linear
+        -v,--verbose    Print diagnostic information while running
+        -h,--help       display help info
+
+when adding the --ref argument to my command, I get the same output PLUS this line: --ref: Missing non-optional argument!
+which does not appear when --ref is not given.
+
+I tried different MobaX users (with different permissions), relative or full paths to files, running from different directories, several subjects and found no similar problem in the mailing list.
+
+I am working through MobaX with a linux system, FSL version 6.0.6
+
+Thanks for the help!
+
+
+Hi Paul,
+
+I downloaded an updated version of the fslinstaller script but I have an error in "Installing FSL into /Users/shiraz1/fsl..." step,
+and this message displayed "ERROR occurred during installation!
+    This command returned an error: /Users/shiraz1/fsl/bin/mamba env update -n base -f /private/var/folders/xf/y1980ptj0t7fq4gs92fptx4r0000gn/T/tmpq7ebfmtt/fsl-6.0.6.5_macos-M1.yml""
+
+
+
+and I remind you that my macbook is M2
+
+
+
+Respectfully,
+
+Maryam Shaporjani
+
+
+
+
+

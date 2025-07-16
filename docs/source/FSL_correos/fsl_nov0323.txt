@@ -1,0 +1,1223 @@
+Hi,
+
+Thanks for your reply. That's what I thought, but I wanted to avoid that just in case some of the images fail to reorient (for example to the presence of skull) and are no longer aligned.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+
+Hi all,
+
+I am setting up a 2x2x3 model and would like to examine the 3-way interaction. Below is the setup for the design.mat, design.con, and desgin.fts. Can anyone provide feedback on whether this setup is correct, particularly the .fts file?
+
+Thanks in advance,
+Jenna
+
+------ DESIGN MATRICES ------
+#### Description
+column 1 = mean
+column 2 = sex (1 M; -1 F)
+column 3 = APOE (1 non-carrier; -1 carrier)
+column 4 = DX1 (1 HC, -1 AD)
+column 5 = DX2 (1 MCI, -1 AD)
+column 6 = age (demeaned; covariate)
+column 7= sex*e4 (col2*col3)
+column 8 = sex*dx1
+column 9 = sex*dx2
+column 10 = apoe*dx1
+column 11 = apoe*dx2
+column 12 = sex*apoe*dx1
+column 13 = sex*apoe*dx2
+column 14 = acquisition A vs. acquisition B (covariate)
+column 15 = acquisition A vs. acquisition C (covariate)
+column 16 = acquisition A vs. acquisition D (covariate)
+column 17 = acquisition A vs. acquisition E (covariate)
+column 18 = acquisition A vs. acquisition F (covariate)
+
+### File contents
+
+==> design.mat <==
+/NumWaves 18
+/NumPoints 431
+/Matrix
+1       -1      1       0       1       9.60649652      -1      0       -1      0       1       0       -1      0       0       0       0       1
+1       1       1       0       1       11.60649652     1       0       1       0       1       0       1       1       0       0       0       0
+1       1       1       0       1       6.20649652      1       0       1       0       1       0       1       0       0       1       0       0
+1       1       1       0       1       8.90649652      1       0       1       0       1       0       1       0       0       0       1       0
+1       1       1       -1      -1      8.70649652      1       -1      -1      -1      -1      -1      -1      0       0       0       1       0
+1       -1      1       -1      -1      13.80649652     -1      1       1       -1      -1      1       1       -1      -1      -1      -1      -1
+1       1       1       1       0       8.50649652      1       1       0       1       0       1       0       0       0       0       1       0
+
+
+
+
+------ CONTRAST MATRICES ------
+#### Description
+contrast 1 = sex
+contrast 2 = APOE
+contrast 3 = DX1
+contrast 4 = DX2
+contrast 5 = sex*apoe
+contrast 6 = sex*dx1
+contrast 7= sex*dx2
+contrast 8 = apoe*dx1
+contrast 9 = apoe*dx2
+contrast 10 = sex*apoe*dx1
+contrast 11 = sex*apoe*dx2
+
+### File contents
+
+==> design.con <==
+/NumWaves 18
+/NumPoints 11
+/Matrix
+0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       0       0
+0       0       0       0       1       0       0       0       0       0       0       0       0       0       0       0       0       0
+0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       0       0
+0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0       0
+0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0       0
+0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0       0
+0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0       0
+0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0       0
+0       0       0       0       0       0       0       0       0       0       0       0       1       0       0       0       0       0
+
+
+
+
+
+------ FTEST MATRICES ------
+#### Description
+contrast 1 = sex
+contrast 2 = APOE
+contrast 3 = DX
+contrast 4 = sex*apoe
+contrast 5 = sex*dx
+contrast 6= apoe*dx
+contrast 7 = 3-way interaction
+
+### File contents
+==> design.fts <==
+/NumWaves 11
+/NumPoints 7
+/Matrix
+1       0       0       0       0       0       0       0       0       0       0
+0       1       0       0       0       0       0       0       0       0       0
+0       0       1       1       0       0       0       0       0       0       0
+0       0       0       0       1       0       0       0       0       0       0
+0       0       0       0       0       1       1       0       0       0       0
+0       0       0       0       0       0       0       1       1       0       0
+0       0       0       0       0       0       0       0       0       1       1
+
+
+########################################################################
+
+########################################################################
+
+Hi,
+
+I'm rotating my images like this: fslreorient2std -m reorientation_2_fslstd.txt T2-skullstripped.nii.gz T2-skullstripped-fsl.nii.gz
+
+How I can apply the rotation obtained before (reorientation_2_fslstd.txt) to the same of modalities aligned with the same image without applying any interpolation? For example a T1w. Thanks in advance.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by a £1.7m ERC Consolidator award and a £5m Wellcome Trust Discovery Award between Prof. Masud Husain, Prof. Cath Harmer (Both Oxford), Dr. Simon Little (UCSF) and Dr. Matthew Apps that will run until 2030.
+
+An initial 2.5 year postdoctoral position (with possibility of extension) is available from 1st January 2024, or as soon as possible thereafter. Salary will be at grade 7.
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) and computational modelling is desirable, but not essential. Studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary. We encourage candidates from diverse range of backgrounds who have an interest in research in decision neuroscience or motivation to apply. Please note only applications made through the University of Birmingham jobs system will be able to be considered. The deadline is November 17th 2023.
+
+ENIGMA-Language (ENIGMA-LANG) is a new working group aiming to focus on the neurobiology of language, one of the most fundamental traits of our species, in order to investigate associations between brain structure, genotype and language measures. This will be investigated in both directions, including how brain structure and genetics predict performance in language tasks, but also how cognitively challenging linguistic experiences, e.g., bi/multilingualism, can affect the structure of the brain.
+
+Our call for participation is open!
+
+We are actively searching for international collaborators to join ENIGMA-Language! If you are interested in participating, please complete our short data query poll, and contact any of the Working Group chairs: Christos Pliatsikas (c.pliatsikas@reading.ac.uk), Narly Golestani (narly.golestani@unige.ch), Vincent DeLuca (vincent.f.deluca@uit.no), João Veríssimo (jlverissimo@edu.ulisboa.pt), Michael Ullman (michael@georgetown.edu) , and Simon Fisher (simon.fisher@mpi.nl).
+
+
+
+Hi George,
+
+Unfortunately recent versions of wxPython do not support indirect rendering via GLX over  X11/SSH; in general, supporting this mode of execution is becoming more and more difficult as it has been deemed a security risk by most major operating systems. 
+
+There are some more notes on this at:
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/install.html#install-from-conda-forge-recommended
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/troubleshooting.html#ssh-x11-vnc-nomachine-etc-fsleyes-won-t-start
+but briefly, you have a few options:
+If your server has a recent MESA version you can try software-based rendering via LIBGL_ALWAYS_SOFTWARE
+You could use a different method of running GUI applications (e.g. Open OnDemand, VNC, NoMachine)
+You could use an older version of wxPython (I would recommend creating a separate conda environment rather than attempting to downgrade the version of wxpython that is installed with FSL).
+Paul
+
+
+The end users haven't been running conda for FSL/FSLeyes over the recent years and older Ubuntu versions, but I installed it and tried it anyway. Get a similar error as just running it normally:
+
+fsleyes
+   ERROR              main.py  592: initialise      - Unable to initialise OpenG                                                              L!
+Traceback (most recent call last):
+  File "/home/clalocal/anaconda3/envs/fsleye_env/lib/python3.9/site-packages/fsl                                                              eyes/gl/__init__.py", line 884, in __createWXGLCanvas
+    self.__canvas = wxgl.GLCanvas(self.__parent, **attrs)
+wx._core.wxAssertionError: C++ assertion ""Assert failure"" failed at /home/cond                                                              a/feedstock_root/build_artifacts/wxpython_1689356231210/work/ext/wxWidgets/src/u                                                              nix/glx11.cpp(626) in InitVisual(): Failed to get a XVisualInfo for the requeste                                                              d attributes.
+During handling of the above exception, another exception occurred:
+wx._core.wxAssertionError: C++ assertion ""Assert failure"" failed at /home/cond                                                              a/feedstock_root/build_artifacts/wxpython_1689356231210/work/ext/wxWidgets/src/u                                                              nix/glx11.cpp(626) in InitVisual(): Failed to get a XVisualInfo for the requeste                                                              d attributes.
+The above exception was the direct cause of the following exception:
+Traceback (most recent call last):
+  File "/home/clalocal/anaconda3/envs/fsleye_env/lib/python3.9/site-packages/fsl                                                              eyes/main.py", line 588, in initialise
+    fslgl.getGLContext(ready=realCallback,
+  File "/home/clalocal/anaconda3/envs/fsleye_env/lib/python3.9/site-packages/fsl                                                              eyes/gl/__init__.py", line 553, in getGLContext
+    thismod._glContext = GLContext(**kwargs)
+  File "/home/clalocal/anaconda3/envs/fsleye_env/lib/python3.9/site-packages/fsl                                                              eyes/gl/__init__.py", line 732, in __init__
+    self.__createWXGLCanvas()
+  File "/home/clalocal/anaconda3/envs/fsleye_env/lib/python3.9/site-packages/fsl                                                              eyes/gl/__init__.py", line 893, in __createWXGLCanvas
+    self.__canvas = wxgl.GLCanvas(self.__parent)
+SystemError: <class 'wx._glcanvas.GLCanvas'> returned a result with an error set
+
+########################################################################
+
+
+Try launching with conda
+
+conda activate base
+fsleyes
+
+Or
+
+conda create -n fsleye_env python=3
+conda activate fsleye_env
+conda install -c conda-forge fsleyes
+
+
+Sorry I didn't mention I'm getting this connecting from Windows predominantly(using Putty and Xming). It still errors for me on one Mac I tried as well. The error from Mac(SSH and Xquartz) is slightly different though:
+
+fsleyes
+ WARNING              idle.py  578: __idleLoop      - Idle task create crashed - wxAssertionError: C++ assertion ""tempContext"" failed at /home/conda/feedstock_root/build_artifacts/wxpython_1689356204926/work/ext/wxWidgets/src/unix/glx11.cpp(498) in wxGLContext(): glXCreateContext failed
+Traceback (most recent call last):
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsl/utils/idle.py", line 576, in __idleLoop
+    task.task(*task.args, **task.kwargs)
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsleyes/gl/__init__.py", line 742, in create
+    self.__createWXGLContext(requestVersion=requestVersion)
+  File "/usr/local/fsl/lib/python3.11/site-packages/fsleyes/gl/__init__.py", line 975, in __createWXGLContext
+    ctx = wxgl.GLContext(self.__canvas, **candidate)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+wx._core.wxAssertionError: C++ assertion ""tempContext"" failed at /home/conda/feedstock_root/build_artifacts/wxpython_1689356204926/work/ext/wxWidgets/src/unix/glx11.cpp(498) in wxGLContext(): glXCreateContext failed
+
+########################################################################
+
+Hi
+
+We've noticed on several machines that FSLeyes will not open over SSH with X11 forwarding running Ubuntu 22.04.3. It opens and runs fine on the desktop environment but not over SSH. FSL opens and works over SSH but just not FSLeyes.
+
+It does still work as expected on previous Ubuntu versions(20.04) but not the most recent LTS 22.04.
+
+The FSLeyes window appears to open and then crashes shortly after with the following error:
+
+
+
+Hi! I followed the steps on the FSL website to install (My macOS version is 14.0, but FSL offers versions up to 13) $ python3 fslinstaller.py And installation failed, this command returned an error: /Users/hyf/fsl/bin/mamba env update -n base -f /private/var/folders/6r/fg89lrc13glcq3dcf6q3q3880000gn/T/tmpv_1ztw4q/fsl-6.0.7.4_macos-M1.yml The log file showed that there were many compressed packages that had not been extracted, e.g. 01:28:36 fslinstaller.py: 937: [stderr]: error libmamba Error opening for reading "/Users/hyf/fsl/pkgs/fsl-cudimot-2006.0-0/info/index.json": No such file or directory 01:28:36 fslinstaller.py: 937: [stderr]: error libmamba Error when extracting package: [json.exception.parse_error.101] parse error at line 1, column 1: syntax error while parsing value - unexpected end of input; expected '[', '{', or a literal How do I solve this problem？ (Attached is my log file)
+
+
+Hi, 
+
+I want to run a FEAT analysis on multiple subjects. 
+I want to modify the batch script by referencing  'https://wiki.biac.duke.edu/biac:fsl:guide’ to modify the batch script.
+
+
+However, I'm asking because I'm not sure if what I'm trying to do is correct or how to set up the DATA folder.
+
+This is how my folder is organized
+
+Basicpath : ~/Users/FEAT/
+Subject file : ~/Users/FEAT/raw
+filename : subj_0001, subj_0002, … , subj_0100
+output : Basicpath/output
+func4D : Basicpath/func
+ - file name : subj_0001_func.nii, subj_0002_func.nii…subj_0100_func.nii
+Anat : Basicpath/anat
+- file name : subj_0001_brain.nii, subj_0002_brain.nii… subj_0100_brain.nii
+
+This is how my folder is organized
+
+This means that the file /anat/ contains the brain extraction files for all subjects, and the file /func/ contains the function MRI 4D.nii files for all subjects.
+
+1) How should I modify the batch file in this case ?
+
+Or 2) should I create a folder for 'subjectname' and put the anat('_brain.nii'), func('_func.nii') files in that folder?
+   > 'subject0001' / '0001_brain.nii' , '0001_func.nii' 
+   > 'subject0002' / '0002_brain.nii' , '0002_func.nii’ 
+
+In case like #2, how should we modify the batch file ? 
+
+
+
+batchFSL script : 
+
+
+#change this part
+SUBJ=$1
+EXPDIR=`findexp Reward.01`
+FSLDATADIR=${EXPDIR}/Data/FSL/${SUBJ}
+ANATFILE=${FSLDATADIR}/anat_brain.nii
+ 
+#########
+ 
+#makes the orient file
+for run in 01 02 03 04; do
+ OUTPUT=${FSLDATADIR}/run${run}_output
+ DATA=${FSLDATADIR}/run${run}.hdr
+ echo $OUTPUT
+ #makes the fsf files from the template fsf file
+ for i in 'template.fsf'; do
+  sed -e 's@OUTPUT@'$OUTPUT'@g' \
+   -e 's@ANAT@'$ANATFILE'@g' \
+   -e 's@DATA@'$DATA'@g' <$i> ${FSLDATADIR}/FEAT_${run}.fsf
+ done
+ #runs the analysis using the newly created fsf file
+ feat ${FSLDATADIR}/FEAT_${run}.fsf
+done
+'#change this part', '#makes the orient file'
+Can you tell me how to change this part? 
+I want to create a batch code to automatically run FEAT analysis on 100 subjects. I would really appreciate it if you could tell me.
+
+
+Thank always
+
+
+Hi,
+
+I was confused about this, so I looked into it a little deeper - it turns out that img2imgcoord uses an approximation of the inverse warp field in the local neighbourhood around each set of coordinates, in order to transform from source coordinates to reference coordinates. So img2imgcoord will not produce exactly the same results as you would get when using the fully inverted warp field. So the results that you have obtained through fslpy will be more accurate, but for most uses the approximation produced by img2imgcoord is probably good enough.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK>
+Sent: 03 November 2023 09:32
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Can the img2imgcoord be calculated in parallel?
+ 
+Hi
+
+These look like numerical precision-related differences. Maybe the C++ code uses single precision and numpy double precision float or something like that.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: SUBSCRIBE FSL YiqiongYang <yangyiq1026@GMAIL.COM>
+Date: Friday, 3 November 2023 at 04:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>, Saad Jbabdi <saad.jbabdi@ndcn.ox.ac.uk>
+Subject: Re: Can the img2imgcoord be calculated in parallel?
+
+Hi
+Thanks for your email, I make a .py file that can realizing transformation from dwi voxel to MNI voxel. The python script is as follows:
+----------------------------------------
+from fsl.data.image import Image
+import os
+import os.path as op
+import nibabel as nib
+import numpy as np
+from fsl.transform.affine import transform
+
+#load all image
+dwi=Image("/home/yangyiqiong/tractoinferno/validset/1000/dwi_2mm.nii.gz")
+struc= Image("/home/yangyiqiong/tractoinferno/validset/1000/sub-1000_T1w.nii.gz")
+std= Image(op.expandvars(op.join('$FSLDIR', 'data', 'standard', 'MNI152_T1_2mm_brain')))
+
+#load inversewarp that achieved by using `invwarp` command
+std2struc = readFnirt("/home/yangyiqiong/tractoinferno/validset/1000/inversewarp.nii.gz", std, struc)
+
+#load dwi2struc affine, all invoxel
+from fsl.transform.affine import invert
+from fsl.transform.flirt import fromFlirt
+dwi2struc = np.loadtxt("/home/yangyiqiong/tractoinferno/validset/1000/dwi2T1.mat")
+dwi2struc = fromFlirt(dwi2struc, dwi, struc, 'voxel', 'voxel')
+
+#transform 1.dwi voxel -> struc voxel; 2. struc voxel ->mni voxel
+seeddwi = inputs# dwi voxel,np.array,(n,3)
+seedstruc=transform(seeddwi,dwi2struc)
+seedmni=std2struc.transform(seedstruc,'voxel','voxel')
+
+-------------------------------------------------------
+I don't know whether it's completely right, because when I compare results from my .py script with the one using `img2imgcoord`, I found there is indeed a certain degree of gap between them.
+for example:
+    result of fslpy:
+[[38.9682 93.0027 39.6729]
+ [38.3371 92.4096 39.5023]
+ [37.8156 91.7879 39.2024]
+ ...
+
+    result of `img2imgcoord`:
+array([[38.9769, 92.9915, 39.665 ],
+       [38.3003, 92.4485, 39.4784],
+       [37.8282, 91.7532, 39.1954],
+       ...,
+I was wondering if it due to different computation accuracy?
+
+Best wishes!
+Yiqiong
+
+
+
+Hi Will,
+
+I have the authorization to send a piece of data as long it is only for training/problem-solving. How can I send you it?
+
+Thank you very much,
+Eva
+
+########################################################################
+
+
+Hi
+
+These look like numerical precision-related differences. Maybe the C++ code uses single precision and numpy double precision float or something like that.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: SUBSCRIBE FSL YiqiongYang <yangyiq1026@GMAIL.COM>
+Date: Friday, 3 November 2023 at 04:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>, Saad Jbabdi <saad.jbabdi@ndcn.ox.ac.uk>
+Subject: Re: Can the img2imgcoord be calculated in parallel?
+
+Hi
+Thanks for your email, I make a .py file that can realizing transformation from dwi voxel to MNI voxel. The python script is as follows:
+----------------------------------------
+from fsl.data.image import Image
+import os
+import os.path as op
+import nibabel as nib
+import numpy as np
+from fsl.transform.affine import transform
+
+#load all image
+dwi=Image("/home/yangyiqiong/tractoinferno/validset/1000/dwi_2mm.nii.gz")
+struc= Image("/home/yangyiqiong/tractoinferno/validset/1000/sub-1000_T1w.nii.gz")
+std= Image(op.expandvars(op.join('$FSLDIR', 'data', 'standard', 'MNI152_T1_2mm_brain')))
+
+#load inversewarp that achieved by using `invwarp` command
+std2struc = readFnirt("/home/yangyiqiong/tractoinferno/validset/1000/inversewarp.nii.gz", std, struc)
+
+#load dwi2struc affine, all invoxel
+from fsl.transform.affine import invert
+from fsl.transform.flirt import fromFlirt
+dwi2struc = np.loadtxt("/home/yangyiqiong/tractoinferno/validset/1000/dwi2T1.mat")
+dwi2struc = fromFlirt(dwi2struc, dwi, struc, 'voxel', 'voxel')
+
+#transform 1.dwi voxel -> struc voxel; 2. struc voxel ->mni voxel
+seeddwi = inputs# dwi voxel,np.array,(n,3)
+seedstruc=transform(seeddwi,dwi2struc)
+seedmni=std2struc.transform(seedstruc,'voxel','voxel')
+
+-------------------------------------------------------
+I don't know whether it's completely right, because when I compare results from my .py script with the one using `img2imgcoord`, I found there is indeed a certain degree of gap between them.
+for example:
+    result of fslpy:
+[[38.9682 93.0027 39.6729]
+ [38.3371 92.4096 39.5023]
+ [37.8156 91.7879 39.2024]
+ ...
+
+    result of `img2imgcoord`:
+array([[38.9769, 92.9915, 39.665 ],
+       [38.3003, 92.4485, 39.4784],
+       [37.8282, 91.7532, 39.1954],
+       ...,
+I was wondering if it due to different computation accuracy?
+
+Best wishes!
+Yiqiong
+
+
+
+Hi
+Thanks for your email, I make a .py file that can realizing transformation from dwi voxel to MNI voxel. The python script is as follows:
+----------------------------------------
+from fsl.data.image import Image
+import os
+import os.path as op
+import nibabel as nib
+import numpy as np
+from fsl.transform.affine import transform
+
+#load all image
+dwi=Image("/home/yangyiqiong/tractoinferno/validset/1000/dwi_2mm.nii.gz")
+struc= Image("/home/yangyiqiong/tractoinferno/validset/1000/sub-1000_T1w.nii.gz")
+std= Image(op.expandvars(op.join('$FSLDIR', 'data', 'standard', 'MNI152_T1_2mm_brain')))
+
+#load inversewarp that achieved by using `invwarp` command
+std2struc = readFnirt("/home/yangyiqiong/tractoinferno/validset/1000/inversewarp.nii.gz", std, struc)
+
+#load dwi2struc affine, all invoxel
+from fsl.transform.affine import invert
+from fsl.transform.flirt import fromFlirt
+dwi2struc = np.loadtxt("/home/yangyiqiong/tractoinferno/validset/1000/dwi2T1.mat")
+dwi2struc = fromFlirt(dwi2struc, dwi, struc, 'voxel', 'voxel')
+
+#transform 1.dwi voxel -> struc voxel; 2. struc voxel ->mni voxel
+seeddwi = inputs# dwi voxel,np.array,(n,3)
+seedstruc=transform(seeddwi,dwi2struc)
+seedmni=std2struc.transform(seedstruc,'voxel','voxel')
+
+-------------------------------------------------------
+I don't know whether it's completely right, because when I compare results from my .py script with the one using `img2imgcoord`, I found there is indeed a certain degree of gap between them.
+for example:
+    result of fslpy:
+[[38.9682 93.0027 39.6729]
+ [38.3371 92.4096 39.5023]
+ [37.8156 91.7879 39.2024]
+ ...
+
+    result of `img2imgcoord`:
+array([[38.9769, 92.9915, 39.665 ],
+       [38.3003, 92.4485, 39.4784],
+       [37.8282, 91.7532, 39.1954],
+       ...,
+I was wondering if it due to different computation accuracy?
+
+Best wishes!
+Yiqiong
+
+########################################################################
+
+
+Dear Colleagues
+
+We are looking for candidates for fixed-term research positions in the Department of Neurosciences, Imaging and Clinical Sciences (DNISC), University of Chieti-Pescara, Italy.  The positions are based at the Institute for Advanced Biomedical Technologies (ITAB) and concern the development of methods for acquisition of structural and functional magnetic resonance imaging, the analysis of signals and images, and the application of such methods to study the human brain (e.g. models of microstructure and physiological processes). The positions would suit researchers with an applied physics or engineering background or neuroscientists with a good understanding of MRI. 
+
+There will be several deadlines for the different positions between now and the end of 2023. Interested candidates are advised to contact, as soon as possible, Prof. Antonio Chiarelli (antonio.chiarelli@unich.it) and Professor Richard Wise (richard.wise@unich.it) for informal discussions before applying. Formal recruitment procedures for these positions can be found at the following link: https://www.unich.it/ateneo/concorsi-e-gare/assegni-di-ricerca.
+
+For more information about the Department of Neurosciences, Imaging and Clinical Sciences please see www.dni.unich.it.
+
+Thanks and best wishes
+
+Richard Wise and Antonio Chiarelli
+
+Professor of Physics
+ITAB - Institute for Advanced Biomedical Technologies
+Department of Neurosciences, Imaging and Clinical Sciences
+University "G. d'Annunzio" - Chieti - Pescara
+Via dei Vestini 33 - 66100 Chieti - Italy
+
+########################################################################
+
+
+Hi,
+
+ 
+
+I think the most straightforward approach would be to call fslreorient2std on each image separately before any other preprocessing or coregistration step.
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Manuel Blesa <mblesac@GMAIL.COM>
+Date: Wednesday, 1 November 2023 at 17:08
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Apply rotation from fslreorient2std
+
+
+
+Hi
+
+ 
+
+If you are familiar with Python you might want to consider using FSLPY (See this tutorial on how to transform coordinates with fslpy: https://git.fmrib.ox.ac.uk/fsl/win-pytreat/-/blob/master/applications/fslpy/fslpy.md?ref_type=heads#nifti-coordinate-systems )
+
+ 
+
+This will allow you to apply the transform to all your coordinates at once.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL YiqiongYang <yangyiq1026@GMAIL.COM>
+Date: Thursday, 2 November 2023 at 09:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Can the img2imgcoord be calculated in parallel?
+
+Hi Matthew,
+I'm facing the same problem now. I have lots of points' coordinates to be changed(they 're all points on streamlines). Due to the special scenario, for every streamline I would have to call for the command one time , how can I make it faster? (PS. I've already used 'multiprocessing')
+
+########################################################################
+
+Hi Matthew,
+I'm facing the same problem now. I have lots of points' coordinates to be changed(they 're all points on streamlines). Due to the special scenario, for every streamline I would have to call for the command one time , how can I make it faster? (PS. I've already used 'multiprocessing')
+
+########################################################################
+
+Hello Rick,
+
+sure I can!
+
+cat T1_fslINV.mat
+
+-0.033120 -0.971057 -0.236539 203.010101
+-0.051739 0.238017 -0.969882 113.049744
+-0.998111 0.019884 0.058124 248.701813
+0.000000 0.000000 0.000000 1.000000
+
+fslhd T1.nii
+filename        T1.nii
+
+sizeof_hdr      348
+data_type       INT16
+dim0            3
+dim1            176
+dim2            256
+dim3            256
+dim4            1
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        4
+nbyper          2
+bitpix          16
+pixdim0         1.000000
+pixdim1         1.000000
+pixdim2         0.976562
+pixdim3         0.976562
+pixdim4         1.940000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       1
+freq_dim        2
+slice_dim       3
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       1.000000 0.000000 0.000000 -83.451805
+qto_xyz:2       0.000000 0.976562 0.000000 -99.059586
+qto_xyz:3       0.000000 0.000000 0.976562 -147.637894
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Left-to-Right
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       1.000000 0.000000 0.000000 -83.451805
+sto_xyz:2       0.000000 0.976562 0.000000 -99.059586
+sto_xyz:3       0.000000 0.000000 0.976562 -147.637894
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Left-to-Right
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         TE=3.1;Time=113153.163;phase=1
+aux_file
+
+
+fslhd T1_msp.nii
+filename        T1_msp.nii
+
+sizeof_hdr      348
+data_type       INT16
+dim0            3
+dim1            512
+dim2            512
+dim3            1
+dim4            1
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        4
+nbyper          2
+bitpix          16
+pixdim0         -1.000000
+pixdim1         0.500000
+pixdim2         0.500000
+pixdim3         1.000000
+pixdim4         1.940000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       1
+freq_dim        2
+slice_dim       3
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Talairach
+qform_code      3
+qto_xyz:1       0.000000 0.000000 -1.000000 0.000000
+qto_xyz:2       -0.500000 0.000000 -0.000000 127.750000
+qto_xyz:3       0.000000 -0.500000 -0.000000 127.750000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Anterior-to-Posterior
+qform_yorient   Superior-to-Inferior
+qform_zorient   Right-to-Left
+sform_name      Talairach
+sform_code      3
+sto_xyz:1       0.000000 0.000000 -1.000000 0.000000
+sto_xyz:2       -0.500000 0.000000 0.000000 127.750000
+sto_xyz:3       0.000000 -0.500000 0.000000 127.750000
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Anterior-to-Posterior
+sform_yorient   Superior-to-Inferior
+sform_zorient   Right-to-Left
+file_type       NIFTI-1+
+file_code       1
+descrip         Created by ART yuki
+aux_file
+
+
+Thank you very much for your help!
+Anna
+
+########################################################################
+
+
+Hi everybody,
+
+We are pleased to announce that the application portal is still open for the NIH funded 2024 session of the course, “Training in Advanced Statistical Methods in Neuroimaging and Genetics”.
+
+ 
+
+We hope you pass this email on to your local neuroimaging community.
+
+ 
+
+The course will start on Monday, April 15, 2024 and finish on April 26, 2024 and is to be held in person, in Salt Lake City, Utah, United States at the University Guest House Conference Center. Our course also includes an ongoing (throughout the year) continuing education portion.
+
+ 
+
+The course is an intensive 2-weeks, about 8 hours per day of a mix of lectures and hands-on computer labs.
+
+ 
+
+neurostatsbootcamp.org
+
+ 
+
+Due to recently increased funding, we are pleased to announce we can drop our tuition this year to $2250 (from $3000). Strictly financial need scholarships will also still be offered.
+
+Tuition includes hotel accommodations at the University Guest House (arrival on April 14 with departure on April 26), breakfast, lunch, day time snacks, three dinners out as a group, and the planned evening activities. All course attendees will arrange for their own transportation to Salt Lake City. The course cost does include a daily pass to the Salt Lake City Trax light rail/commuter system. (Please note that the course instructors' effort is supported by the NIH grant thus avoiding that cost being passed on to the course attendees. This course is strictly not-for-profit.)
+
+Because of the limited size and advanced nature of the course, attendance is by application only – please make sure to fully read the website instructions. In general, applicants must be a US citizen, permanent resident, or working with an appointment at a US institution, though we do have the ability to accommodate 3 to 6 individuals that do not meet this criteria. We anticipate the total class size to be between 22 and 25 students.
+
+ 
+
+There are opportunities for scholarships which can partially offset hotel accommodations. These are based on true financial need and you will be instructed how to apply if you are admitted to the course.
+
+ 
+
+We look forward to seeing you in SLC in 2024!
+
+ 
+
+Priority application deadline is Nov 1, 2023; decisions around Dec 5th.
+
+Late application deadline is Dec 1, 2023; decisions by Jan 5th, 2024.
+
+ 
+
+For more information email us at neurostats@g.ucla.edu or  advancedstatisticscourse@utah.edu
+
+ 
+
+Robert and Anna
+
+ 
+
+------------------------------
+
+Robert Welsh, PhD
+
+Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+rcwelsh@g.ucla.edu
+
+robert.c.welsh@utah.edu
+
+ 
+
+Anna Docherty, PhD
+
+Associate Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+anna.docherty@utah.edu
+
+ 
+
+Christina Caldera
+
+Course Administrator
+
+neurostats@g.ucla.edu
+
+ 
+
+Dear All,
+
+I'm trying to run Basil with variable TR MD-ASL data.
+
+It seems that some options cause the Basil pipeline to stop with out any errors or notifications during
+STEP 2: VB - Tissue Arterial - init with STEP 1. The counter should count from 0% to 100% but stays at 0%.
+
+These options I'm referring to is, first Initial Parameter Values - Arterial Transit Time 1.3 s (however it works fine with 0.7 s)
+Second, dispersion with Gamma (nor Gaussian) works either.
+
+Does any one have any thoughts or comments on this? It has been running over night.
+
+Regards
+Markus Fahlström, PhD
+Uppsala University
+
+########################################################################
+
+Hi,
+
+You could also try using the macOS version of python  by calling /usr/bin/python, and making sure that you have installed SSL certificates for the Python version that you installed from python.org - this is oulined in the FSL docs in the first box on this page: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/MacOsX
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Taylor Hanayik <taylor.hanayik@NDCN.OX.AC.UK>
+Sent: 01 November 2023 12:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Help on FSL installation
+ 
+Hi,
+
+ 
+
+Can you try again with these options:
+
+ 
+
+python3 fslinstaller.py --skip_ssl_verify --conda
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+Hi,
+
+ 
+
+Can you try again with these options:
+
+ 
+
+python3 fslinstaller.py --skip_ssl_verify --conda
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+Hello,
+
+Could you help me?
+
+I'm trying to install FSL version MacOS 13 to my MacOS 14
+
+Then, according to the installation instructions, I opened the command screen, pasting:
+
+cd ~/Downloads
+
+python fslinstaller.py (did not work)
+
+python2 fslinstaller.py (did not work)
+
+python3 fslinstaller.py (It did work, but I received the messages bellow about some errors):
+
+
+mateusboaventuradeoliveira@200-144-238-245 Downloads % python3 fslinstaller.py
+FSL installer version: 3.5.7
+Press CTRL+C at any time to cancel installation
+Installation log file: /var/folders/v_/7pxp23h52z3g97kfh06tv8b00000gn/T/fslinstaller_vkwtjknx.log
+
+Traceback (most recent call last):
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1344, in do_open
+   h.request(req.get_method(), req.selector, req.data, headers,
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1319, in request
+   self._send_request(method, url, body, headers, encode_chunked)
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1365, in _send_request
+   self.endheaders(body, encode_chunked=encode_chunked)
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1314, in endheaders
+   self._send_output(message_body, encode_chunked=encode_chunked)
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1074, in _send_output
+   self.send(msg)
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1018, in send
+   self.connect()
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/http/client.py", line 1460, in connect
+   self.sock = self._context.wrap_socket(self.sock,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 455, in wrap_socket
+   return self.sslsocket_class._create(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 1046, in _create
+   self.do_handshake()
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/ssl.py", line 1317, in do_handshake
+   self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+ File "/Users/mateusboaventuradeoliveira/Downloads/fslinstaller.py", line 476, in download_manifest
+   download_file(url, 'manifest.json')
+ File "/Users/mateusboaventuradeoliveira/Downloads/fslinstaller.py", line 436, in download_file
+   req = urlrequest.urlopen(url, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+   return opener.open(url, data, timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 515, in open
+   response = self._open(req, data)
+              ^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 532, in _open
+   result = self._call_chain(self.handle_open, protocol, protocol +
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+   result = func(*args)
+            ^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1392, in https_open
+   return self.do_open(http.client.HTTPSConnection, req,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1347, in do_open
+   raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+ File "/Users/mateusboaventuradeoliveira/Downloads/fslinstaller.py", line 2415, in <module>
+   sys.exit(main())
+            ^^^^^^
+ File "/Users/mateusboaventuradeoliveira/Downloads/fslinstaller.py", line 2364, in main
+   self_update(ctx.manifest, args.workdir, not args.no_checksum)
+               ^^^^^^^^^^^^
+ File "/Users/mateusboaventuradeoliveira/Downloads/fslinstaller.py", line 1321, in manifest
+   self.__manifest = download_manifest(self.args.manifest,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Users/mateusboaventuradeoliveira/Downloads/fslinstaller.py", line 480, in download_manifest
+   raise Exception('Unable to download FSL release manifest '
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json[<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>]!
+mateusboaventuradeoliveira@200-144-238-245 Downloads %
+
+
+After some tips from the Forum, I also tried with these comands, and both did not work:
+
+python fslinstaller.py --debug
+python2 fslinstaller.py --debug
+python3 fslinstaller.py --debug
+
+Thanks,
+
+Mateus Boaventura
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Anna,
+
+Can you please share the contents of the .mat file and the output of running fslhd on both the original 3D volume and the 2D slice?
+
+Best,
+Rick
+
+
+Hi Nooshin,
+
+Also as an additional note, have you checked the direction of gradient vectors and whether they align well with the scanner/real world data? For example, you can benefit from the dwigradcheck of the MRtrix package for such purpose.
+
+Cheers,
+Amir
+
+########################################################################
+
+Hi Stam and XTRACT experts,
+
+I've been experimenting with the XTRACT setup and have made some modifications to the code. However, I'm not entirely confident in my adjustments.
+
+Here's what I've done so far:
+
+xtract -bpx /mnt/c/Users/nsafari/fsl/332.bedpostX -out /mnt/c/Users/nsafari/fsl/332.bedpostX/UF_R -species HUMAN
+
+xtract -bpx /mnt/c/Users/nsafari/fsl/332.bedpostX -out /mnt/c/Users/nsafari/fsl/332.bedpostX/UF_R -species HUMAN -str UF samples=1 (note: 1 indicates 1000) -p /Users/nsafari/fsl/data/xtract_data/HUMAN -stdref /Users/nsafari/fsl/data/standard/MNI152_T1_1mm
+
+xtract -list -stdwarp /mnt/c/Users/nsafari/fsl/332.bedpostX/xfms/standard2diff.nii.gz /mnt/c/Users/nsafari/fsl/332.bedpostX/xfms/diff2standard.nii.gz
+
+I have a few questions regarding this:
+
+My primary interest is in UF_L and UF_R. Based on my initial analysis, the code seems to process all tracts in the protocol. Could you help me refine this to only target the tracts I'm interested in?
+
+Additionally, I've run an analysis using probtrackx 2 for Cing_L, Cing_R, SLF_L, SLF_R, IFOF_L, and IFOF_R with the specifications: -l --onewaycondition -c 0.2 -S 2000 --steplength=0.5 -P 5000 --fibthresh=0.01 --distthresh=0.0 --sampvox=0.0. I'm unsure how to replicate this using XTRACT. Could you provide guidance on this?
+
+Thank you so much for your assistance.
+
+We will have two positions starting from March 2024 for young postdoctoral researchers interested to work at the crossroads between Brain Imaging and Genetics.
+
+Projects overview
+The new researchers will be involved in two projects recently funded by the Italian Ministry of University and Research under the PRIN program. Both projects will involve the analysis of Brain Magnetic Resonance Imaging scans from public international datasets such as the UK Biobank and the Adolescent Brain Cognitive Development study (ABCD). The hired researchers will extract and analyze quantitative morphological phenotypes from these images and possibly enhance current extraction methods also through machine learning techniques.
+The subsequent analyses will focus on different aspects of these traits’ genetic bases. One project, held in collaboration with Prof. Gloria Menegaz at the University of Verona, will explore the neural foundations of aging and specifically aim to understand the molecular phenomena associated with aging (“age gap”) in healthy and pathological conditions. The other project, which will also involve Pagani Lab at the University of Padova, will include elements of evolutionary and population genetics with the goal to investigate the impact of Neanderthal-derived (and in general recently evolved) genetic variants.
+What we are looking for
+Young post-docs or post-lauream researchers (a recent PhD will be considered a plus but is not required) interested in the analysis of multimodal MRI images and, potentially, willing to learn about the genetics/genomics field. We require some experience in the analysis of large data sets, and working in a Linux command line environment. Coding skills in Python/R and previous experience in the analysis of MRI images will be considered a significant plus.
+What we are offering
+Two positions supervised by Prof. Fabrizio Pizzagalli for the imaging aspects and co-supervised by Dr. Davide Marnetto and Prof. Paolo Provero for the genomic and molecular aspects. The positions will be embedded within the NeuroImaging Genetics and Computational Biology labs community at the Dept. of Neuroscience 'Rita Levi Montalcini', Corso Massimo D’Azeglio 52, 10126, Turin, Italy.
+The NeuroImaging Genetics Lab, led by Prof. Pizzagalli, is dedicated to unraveling the intricate links between genetic factors and human brain anatomy and functions, delving into the mysteries of neurological disorders and cognitive processes. Prof. Pizzagalli, experienced in computational neuroanatomy and neuroimaging data analysis, leads the ENIGMA-SULCI group and collaborates internationally.
+The Computational Biology Unit is a medium-small purely computational group led by Prof Paolo Provero with decades of experience in bioinformatics and computational genomics, in addition to a great track record in mentoring young researchers towards expertise in computational biology research.
+Contract duration: 18-24 months
+Net monthly salary: approx. 1800 EUR/month after all income and local taxes
+Contract type: Assegno di Ricerca
+If interested please get in contact with us before November 15th 2023 by e-mail (fabrizio.pizzagalli@unito.it; davide.marnetto@unito.it; paolo.provero@unito.it enclosing a CV!
+
+
+Hello,
+As the global mean is already accounted for in the design, the -D option ( demean ) should not be used here.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hello
+I am trying to run randomize on a set of scans. Just a simple unpaired ttest using the tfce. It seems to hang one the second permutation for several hours, see below.  In fact, I have run 15 of these with different seeds and they all hang on this line.  Attached are the design matrix and contrasts. Any help would be appreciated. The internet says that there is something wrong with my design matrix.
+
+
+
+
+randomise options: -i Thalamus_zfrm -o Thalamus_zfrm_TwoSamplT_NoAge -d ../design_NoAge.mat -t ../design_NoAge.con -m GM_mask.nii.gz -D -R -N -T -n 10000
+Loading Data:
+Data loaded
+5.38258e+11 permutations required for exhaustive test of t-test 1
+Doing 10000 random permutations
+Starting permutation 1 (Unpermuted data)
+Starting permutation 2
+Warning: tfce has detected a large number of integral steps. This operation may require a great deal of time to complete.
+
+
+Aaron Tanenbaum
+
+
+Hi Yufei Hu,
+
+You appear to be working from a very slow internet connection (the expected download time for 3GB would be nearly two full days), so my guess is that some sort of network error has occurred.  Do you have access to a faster internet connection?
+
+Paul
+
+The Developmental Social Affective Neuroscience Lab at the University of Texas at Dallas (https://labs.utdallas.edu/dsanlab/), directed by Dr. Leehyun Yoon, is seeking a self-motivated and inquisitive postdoctoral scholar to take the lead on a project on the neural mechanisms of self-esteem updating through social comparison in social media and achievement-related contexts. The sample of this project will include emerging adults and adolescents. The desired start date is January 2024, but is flexible. Our research uses behavioral tasks, functional and structural neuroimaging, computational modeling, and longitudinal data analysis to investigate the mechanisms of self-referential processing and social motivation/behavior in young people (ages 10 – 25) and their link to mental health outcomes and social functioning. Dr. Yoon strives to build a collaborative and stimulating lab environment (see https://labs.utdallas.edu/dsanlab/values/ for lab values) and promote the careers of trainees. Our lab is a part of the Center for Vital Longevity (CVL), a research center where nine research labs are housed. The CVL is dedicated to understanding the brain and cognitive health across the lifespan from childhood to late adulthood. The postdoc will be able to interact with researchers at CVL and the department of psychology at UT Dallas. The CVL is located blocks away from the UTD imaging Center, where MRI equipment is housed. The lab is located in the heart of Dallas, a fun, dynamic, and affordable city.
+
+This position is funded for a period of 2 years. Position will work on site and in person.
+
+ 
+
+Preferred Education and Experience:
+
+· PhD by the start date in psychology, neuroscience, human development, or related field; an emphasis on social and affective neuroscience is desirable.
+· Strong interest in human social motivation, self-esteem, and the brain’s reward, emotion, and self-processing circuitry.
+· Experience with designing behavioral and/or fMRI experiments.
+· Experience with fMRI data analysis using any software.
+· Strong writing skills and emerging publication record.
+· Skills in computational modeling (e.g., fitting a reinforcement learning model) is preferred but not necessary.
+· Experience with structural MRI data analysis or advanced fMRI data analysis (e.g., MVPA, GIMME) is a plus.
+
+ 
+
+Duties and Responsibilities:
+
+· Designing novel behavioral/fMRI experiments
+
+· Programming experiments with psychtoolbox, cogent 2000, or Eprime
+
+· Supervising research assistants for data collection
+
+· Behavioral and fMRI data analysis with newly collected data
+
+· Behavioral and fMRI/structural MRI data analysis with the lab’s existing data related to social feedback processing
+
+· Data interpretation
+
+· Preparing manuscripts for publication and presenting findings at a conference
+
+ 
+
+Required documents:
+
+Interested applicants should submit their (1) CV, (2) a brief cover letter describing why they want to join the lab, research interest/experience, qualifications, future goals, and ideal start date, and (3) contact information for 2-3 references.
+
+ 
+
+Please contact Dr. Leehyun Yoon (leehyun.yoon@utdallas.edu) for any questions.
+
+ 
+
+Application site: https://jobs.utdallas.edu/postings/24799
+
+
+
+--
+Leehyun Yoon, PhD 
+Incoming Assistant Professor
+Department of Psychology
+Center for Vital Longevity
+The University of Texas at Dallas
+https://labs.utdallas.edu/dsanlab/
+
+
+
+The Developmental Social Affective Neuroscience Lab at the University of Texas at Dallas (https://labs.utdallas.edu/dsanlab/), directed by Dr. Leehyun Yoon, is seeking a full-time lab manager/Research Assistant I to begin in January 2024. The position requires a minimum of a one-year commitment. A two-year commitment is preferred. Our research uses behavioral tasks, functional and structural neuroimaging, computational modeling, and longitudinal data analysis to investigate the mechanisms of self-referential processing and social motivation/behavior in young people (ages 10 – 25) and their link to mental health outcomes and social functioning. Dr. Yoon strives to build a collaborative and stimulating lab environment (see https://labs.utdallas.edu/dsanlab/values/) and promote the careers of trainees. The lab’s ongoing projects include the neural mechanisms of updating self-esteem through social comparison in social media and achievement-related contexts. The Research Assistant I will be responsible for the general administration and supervision of the lab, as well as conducting experiments in collaboration with the PI and other lab members. The Research Assistant I will have an opportunity to experience all aspects of research processes and opportunities for authorship. This position would be ideal for candidates considering future graduate study in related fields. The desired start date is January 2024, but is flexible.
+
+ 
+
+Preferred Education and Experience:
+
+· BA or BS in psychology, neuroscience, human development, data science, or a related field.
+
+· Excellent organizational, planning, time management, problem-solving, interpersonal and communication skills.
+
+· Ability to efficiently search information on the web and follow complex instructions.
+
+· Prior experience with programming, data wrangling, human subject data collection, and behavioral/fMRI data analysis is highly desired, but not required.
+
+· Prior experience managing teams of people.
+
+· Prior experience working with children and adolescents.
+
+· Interest in human social motivation, self-esteem, adolescent depression, and the brain’s reward, emotion, and self-processing circuitry is a plus.
+
+ 
+
+Duties and Responsibilities:
+
+· Conducting systematic literature review
+
+· Setting up access to open datasets and arranging data of the lab’s interest
+
+· Recruiting, scheduling, and testing participants at ages 10 to 25
+
+· Coordinating and training research assistants
+
+· Ordering laboratory supplies as directed by senior research staff
+
+· Assisting with IRB applications and modifications
+
+· Assisting with or leading behavioral and fMRI data analysis
+
+· Assisting with the preparation of materials for reports or publication
+
+ 
+
+Required documents:
+
+Interested applicants should submit their (1) CV, (2) a brief cover letter describing why they want to join the lab, research interest/experience, qualifications, future goals, and ideal start date, and (3) contact information for 2-3 references.
+
+ 
+
+Please contact Dr. Leehyun Yoon (leehyun.yoon@utdallas.edu) for any questions.
+
+ 
+
+Application site: https://jobs.utdallas.edu/postings/24798
+
+
+--
+Leehyun Yoon, PhD 
+Incoming Assistant Professor
+Department of Psychology
+Center for Vital Longevity
+The University of Texas at Dallas
+https://labs.utdallas.edu/dsanlab/
+
+
+Dear FSL Support Team,
+
+I am writing to ask for your help with a neuroimaging analysis problem I am currently facing. My specific task involves the registration of a 2D slice to the original 3D volume. The 2D slice is a midsagittal image extracted from a 3D T1-weighted (T1W) MRI, which has been processed by another neuroimaging program (yuki, part of ART programme). This midsagittal slice is a result of a transform with a change in orientation to PIL (Posterior-Inferior-Left), and a change of dimension from 256x256 to 512x512, with .mat transformation matrix provided.
+I have attempted to use the FSL tool FLIRT to register the 2D slice to the original 3D volume; however, it has not been successful. I have also tried creating a single slice from the T1W volume with FSLroi and again tried 2D to 3D registration, but the registration was still unsuccessful.
+Therefore I would like to ask for your advice, if there is a feasible way to successfully register the 2D slice to the original 3D T1W volume using FSL. Any recommendations, best practices, or step-by-step guidance you can provide would be highly valuable to me.
+Thank you very much!
+
+Best regards,
+Anna
+
+########################################################################
+

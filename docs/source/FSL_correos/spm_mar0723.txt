@@ -1,0 +1,252 @@
+You are showing opposite contrasts G2 > HC and then HC > G2 so it is reassuring the blobs are in different places.  Blue indicates larger p-values, but some blobs appear small in size for a TFCE analysis. If one covariate behaves differently across groups there could be an interaction, e.g., strong age effect in one group but not he other. You could split the age covariate by group in this case and test for different age effects and possibly look at group effect if the covariate is mean centred, but you might want to look stick to the two-group design in that case depending on how the interaction behaves across different groups. The subcortical regions are in areas of poor GM definition/segmentation in typical T1w images, i.e., you may be finding results where there may be low signal or signal for other reasons than atrophy. Look at the uncorrected t-maps to see if the patterns are similar across design and maybe one has only slightly higher values. Sometimes cluster analysis generates results that can come and go whilst uncorrected height thresholds might appear more similar.
+ 
+Best regards,
+ 
+Simon
+ 
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Kenji Yoshimura Sent: Friday, February 24, 2023 3:06 PM To: SPM@JISCMAIL.AC.UK Subject: [SPM] Combined or separate design matrix?
+ 
+Dear SPM experts,  I'm trying clustering analysis of patients with a neurological disease (Parkinson's disease), and I obtained 4 groups (G1-4) from 160 patients.  I want to compare the GM atrophy patterns of patients in each cluster to 58 healthy control (HC) data. First, I ran TFCE analysis with a combined design matrix, i.e., one design matrix included all 218 images and nuisance covariates with 5 levels (HC, G1-4) (Fig.1). As a result, patients in G2 showed larger GM volumes in the basal ganglia and the cerebellum, and no GM atrophy (Fig.2). Then, I ran TFCE analysis with 4 separate design matrices, i.e., each design matrix included images and nuisance covariates of HC and only one group (G2 for Fig.3 as an example). Surprisingly, patients in G2 showed mild temporo-parietal GM atrophy in this analysis, and no GM enlargement (Fig.4). In both cases, nuisance covariates were handled with Smith method.  My question is, which result is correct, or which analysis should I use? I think this matter is quite important in the case of multiple group comparison, nevertheless I was unable to find a consensus opinion. Does anyone know which way is appropriate?  Thanks in advance, Best regards.
+ 
+============================================= Department of Neurology Graduate School of Medicine, Kyoto University Kenji Yoshimura M.D.
+54 Shogoin-Kawahara-cho Sakyo-ku, Kyoto, Japan 606-8507
+TEL: 075-751-3773
+FAX: 075-753-4257
+Mail: yoshiken@kuhp.kyoto-u.ac.jp
+=============================================
+
+
+Dear Friends and Colleagues,
+ 
+Please send/post these attachments (also copied below), and bring them to the attention of your best students.  Applications should be submitted ASAP, please.  Thank you!
+ 
+Karen
+ 
+ 
+Karen Faith Berman, M.D.
+Chief, Clinical & Translational Neuroscience Branch
+Section on Integrative Neuroimaging
+Psychosis & Cognitive Studies Section
+National Institutes of Health, NIMH
+Intramural Research Program
+9000 Rockville Pike, MSC 1365
+Building 10, Room 3C103A
+Bethesda, MD 20892-1365
+phone: 301/496-7603
+fax: 301/480-7795
+karen.berman@nih.gov                
+ 
+**********************************************************************************************************************************
+ 
+POSTDOCTORAL FELLOWSHIP
+SECTION ON INTEGRATIVE NEUROIMAGING
+CLINICAL & TRANSLATIONAL NEUROSCIENCE BRANCH
+NATIONAL INSTITUTE OF MENTAL HEALTH, NIH
+INTRAMURAL RESEARCH PROGRAM, DHHS, BETHESDA, MD
+ 
+Dr. Karen Berman, Chief of the Clinical & Translational Neuroscience Branch of the National Institute of Mental Health Intramural Research Program (NIMH IRP), at the National Institutes of Health (NIH), invites outstanding individuals to apply for a three- to five-year post-doctoral fellowship at one of the premier research sites in the world.  The renowned NIH Clinical Center on the 300-acre Bethesda campus of the NIH, near Washington D.C., houses unsurpassed, state-of-the-art neuroimaging facilities (MRI, PET and MEG) all dedicated to research, as well as superb clinical facilities, and an exciting, interactive research community of hundreds of talented colleagues. The strong scientific environment and outstanding resources at NIH make this a unique opportunity for an outstanding innovative scientist. 
+ 
+The Branch takes a multidisciplinary approach, with multimodal neuroimaging (sMRI, rMRI, fMRI, DTI, PET, MEG) at its core, but also integrates genetic, neurochemical, neuropsychological, and clinical investigations to study normal human higher cognitive function throughout the lifespan, as well as neuropsychiatric disorders such as Williams syndrome and schizophrenia. 
+ 
+What You’ll Do…
+You will work with an interdisciplinary team of clinicians and researchers, all with the goal of understanding neurogenetic mechanisms underlying brain development and neuropsychiatric disease. You would have particular opportunities within our ongoing schizophrenia studies and/or our longitudinal, developmental studies of Williams syndrome; will have access to large, unique, archival datasets; and will help to design new studies. 
+ 
+Who You Are…
+You are (1) a recent Ph.D. in experimental psychology, cognitive neuroscience, neuroscience, neuropharmacology, or other applicable disciplines; or (2) an M.D. with training in psychiatry, neurology, nuclear medicine, radiology or other relevant fields. You have a demonstrated record of superb scientific writing skills, as well as excellent interpersonal and presentation skills.  In addition, experience with any of the following is highly desirable: developmental or pediatric neuroimaging, multimodal neuroimaging techniques (MRI, PET, MEG), conducting cognitive neuroscience experiments, and/or neuroimaging of clinical populations.  Experience with AFNI/SUMA, SPM, FSL, Freesurfer, UNIX/LINUX computational environments and/or programming skills (MATLAB, R, C++; JAVA, Python) is desirable, but not required. Experience in MEG or PET will also be a plus, but is not required.
+ 
+The position is open immediately and applications will be accepted until the position is filled.  A curriculum vitae, letter of interest outlining experience and research goals, and three letters forwarded directly from recommenders should be sent to: Karen Berman, M.D.; C/O Jasmin B. Czarapata, Ph.D.; NIH Building 10, Rm 3C209; 9000 Rockville Pike; Bethesda MD 20892-1365 USA. (301) 435-7645, or electronically to jasmins@mail.nih.gov
+ 
+DHHS and NIH are Equal Opportunity Employers
+ 
+ 
+POSTDOCTORAL FELLOWSHIP
+SECTIONS ON INTEGRATIVE NEUROIMAGING and         BEHAVIORAL ENDOCRINOLOGY
+NATIONAL INSTITUTE OF MENTAL HEALTH, NIH INTRAMURAL RESEARCH PROGRAM, DHHS, BETHESDA, MD
+ 
+Drs. Karen Berman and Peter Schmidt, at the National Institute of Mental Health Intramural Research Program (NIMH IRP), at the National Institutes of Health (NIH), invite interested individuals to apply for a three- to five-year post-doctoral fellowship at one of the premier research sites in the world. The NIH Clinical Center, near Washington D.C., houses state-of-the-art neuroimaging facilities (MRI, PET and MEG) all dedicated to research, as well as superb clinical facilities, and an exciting, interactive research community of hundreds of talented colleagues. The strong scientific environment and outstanding resources at NIH make this a unique opportunity for an outstanding innovative scientist.
+ 
+The fellowship involves a team effort to investigate the neurobiological impact of puberty on brain development in typically-developing children. The candidate’s main focus would be to develop further expertise in neuroimaging techniques (MRI) in the context of a vibrant collaboration involving expertise in clinical neuroendocrinology, metabolism and pediatric development.
+What You’ll Do…
+You will work with an interdisciplinary team of clinicians and researchers, all with the goal of understanding the effect of puberty-related endocrine and metabolic events on brain development in an ongoing longitudinal study in typically-developing boys and girls. 
+Who You Are…
+You are (1) a recent Ph.D. in experimental psychology, cognitive neuroscience, neuroscience, neuropharmacology, or other applicable disciplines; or (2) an M.D. with training in psychiatry, neurology, nuclear medicine, radiology or other relevant fields. You have a demonstrated record of superb scientific writing skills, as well as excellent interpersonal and presentation skills. In addition, experience with any of the following is highly desirable: developmental or pediatric neuroimaging, multimodal neuroimaging techniques (MRI, PET, MEG), conducting cognitive neuroscience experiments, and/or neuroimaging of clinical populations. Experience with AFNI/SUMA, SPM, FSL, Freesurfer, UNIX/LINUX computational environments and/or programming skills (MATLAB, R, C++; JAVA, Python) is desirable, but not required.
+The position is open immediately and applications will be accepted until the position is filled. A curriculum vitae and letters of interest outlining experience and research goals should be sent to: Peter J. Schmidt, M.D.; C/O Tiffiany Jones; NIH Building 10- CRC, Rm 2-5340, 9000 Rockville Pike; Bethesda MD 20892-1276 USA. (301) 594-5503, or electronically to PeterSchmidt@mail.nih.gov
+ 
+DHHS and NIH are Equal Opportunity Employers
+ 
+ 
+ 
+ 
+
+Research Fellow (Postdoctoral)
+University of Birmingham - School of Psychology - Centre for Human Brain Health
+Salary: £32,348 to £42,155 full time starting salary range, with potential progression once in post to £44,737, Grade 7
+Hours:  Full Time
+Closes: 22nd March 2023
+Contract:   Fixed Term contract up to two years with potential extension
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by Fellowships and grants from the BBSRC, ERC, Wellcome Trust and Jacobs Foundation, totalling over £4m.
+
+An initial 2 year postdoctoral position (with possibility of extension) is available from 1st April 2023, or as soon as possible thereafter.
+
+The main focus of this role will be on the design, collection and analysis of novel model-based behavioural, and neuroimaging experiments with the potential for novel neuroimaging methods (e.g. Spinal fMRI or OPM-MEG). In addition, the post holder may also be involved in behavioural, psychopharmacology, and neuroimaging studies involving children, adolescents and older adults. The position is broad and can be in part tailored to the applicants interest, and there is the opportunity to analyse existing data. There will be opportunities to collaborate with colleagues in the University of Oxford (Prof. Masud Husain and Prof. Catherine Harmer), University of California, San Francisco (Dr. Simon Little) and in Berlin (Prof. Radek Cichy).
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) is essential and experience of computational modelling, studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary.
+
+The work will build on studies such as this:
+1.    Müller, T., Klein-Flügge, M. C., Manohar, S. G., Husain, M. & Apps, M. A. J. Neural and computational mechanisms of momentary fatigue and persistence in effort-based choice. Nature Communications. 12, 4593 (2021).
+2.    Lockwood, P. L. … Apps, M.A. Distinct neural representations for prosocial and self-benefiting effort. Current Biology 32, 4172–4185 (2022).
+3.    Apps, M. A. J., Rushworth, M. F. S. & Chang, S. W. C. The Anterior Cingulate Gyrus and Social Cognition: Tracking the Motivation of Others. Neuron 90, 692–707 (2016).
+4.    Le Heron, C. et al. Dopamine modulates dynamic decision-making during foraging. Journal of Neuroscience. 40, 5273–5282 (2020).
+
+Main Duties
+
+- Contributing to the design and programming of behavioural and/or neuroimaging experiments
+- Running experiments involving behavioural and neuroimaging measures (e.g. fMRI, MEG)
+- Recruiting and contacting participants
+- Analysing behavioural and brain imaging data using advanced analysis tools (e.g. computational modelling)
+- Writing and contributing to manuscripts for research publications, and presenting data
+- Work collaboratively with other members of the group, the centre and wider school
+- Helping to look after and ordering relevant equipment when required
+- Assisting the laboratory head with supervision of student projects and outreach activities
+
+Person Specification
+
+- Have or be close to the completion of a PhD in cognitive neuroscience, neuroimaging, experimental psychology or a closely related discipline
+- Experience in designing/conducting or analysing neuroimaging data (e.g. fMRI and/or MEG)
+- Experience in the design, coding and analysis of behavioural experiments
+- Strong quantitative and programming skills, and knowledge of one or more relevant programming languages (e.g. Matlab; Python; R)
+- Experience of writing and publishing peer reviewed scientific papers or preprints
+- Ability to work independently
+- Resourcefulness and organisational skills to act on own initiative
+- Strong presentation skills including the ability to present research proposals and results, and represent the lab at meetings
+
+For informal enquiries contact Matthew Apps (m.a.j.apps@bham.ac.uk)
+
+To download the full job description and details of this position and submit an electronic application online please click on the link below or visit our careers website; https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/job/537/?utm_medium=jobshare .
+
+Dear SPM enthusiasts,
+
+sorry if there are multiple posts, I was uncertain whether my mail reached, so I repost this back.
+
+I have data from an experiment with 3-by-2 design (3 stimulus configurations:''s''; 2 levels of reward:''r''; so 6 conditions in total: [s1r1,s2r1,s3r1,s2r2,s2r2,s3r2] ). Accordingly, my first-level design matrix has 6 regressors for the aforementioned conditions plus the usual nuisance regressors. In the second-level I use a 3*2 flexible factorial design to test the main and interaction effect of ''s'' and ''r'' factors.
+
+My question is regarding how to enter an additional factor into my anlaysis: halfway through the experiment the reward assignments reverse (I call this factor ''tp'', as in time point). I have considered two ways to model ''tp'':
+1) I'd just add an additional regressor for factor ''tp'' in my first-level design matrix and keep the second-level analysis as it was.
+2) alternatively, I could break down all six regressors ([s1r1,s2r1,s3r1,s2r2,s2r2,s3r2]) to two levels for tp1 and tp2 when creating the first-level analysis (hence having 12 instead of 6 main regressors) and then add one factor in the second-level analysis to model the effect of ''tp'' (i.e., 3*2*2 factorial design).
+
+Intuitively, we think the first method is more powerful and easier to interpret, but we are unsure. Any tips on these methods and specifically regarding which one would be more principled and statistically powerful is greatly appreciated.
+
+Thank you so much!
+
+Best regards,
+Jessica Emily Antono
+
+Apologies for cross-posting.
+
+
+We are seeking candidates for two PhD positions (3 years) and one postdoctoral position (2.5 years) funded by an ANR project on the perceptual and cerebral representation of natural sounds led by Dr. Bruno L. Giordano (Institut de Neurosciences de la Timone – INT, Marseille, https://www.int.univ-amu.fr/) and in collaboration with a related NWO project led by Prof. Elia Formisano (Department of Cognitive Neuroscience, Maastricht University).
+
+The first PhD position will be co-supervised with Dr. Daniele Schon (Institut de Neurosciences de Systèmes – INS, Marseille, https://ins-amu.fr/). Key requirements: master’s degree in cognitive neuroscience or related field, and experience with MEG/EEG data analysis.
+
+The second PhD position will be co-supervised with Prof. Thierry Artieres (Laboratoire d'Informatique et Systèmes – LIS, Marseille, https://www.lis-lab.fr/) on a computer science project. Key requirements: master’s degree in computer science, and experience with the development of artificial neural networks.
+
+Key requirements for postdoc position: PhD in cognitive neuroscience or related field. The ideal candidate will have published research in the field of auditory neuroscience and have a strong interest in computational modelling.
+
+APPLICATION: Send a curriculum vitae and motivation letter to bruno.giordano@univ-amu.fr. Informal enquiries are welcome.
+
+DEADLINE: until the position is filled
+
+STARTING DATE: September 2022
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Bruno L. Giordano, PhD – CRCN
+Institut de Neurosciences de la Timone (INT)
+UMR 7289, CNRS and Aix Marseille Université
+http://www.int.univ-amu.fr/
+Campus santé Timone
+27, boulevard Jean Moulin
+13385 Marseille cedex 5
+www: http://brungio.github.io
+
+Are you a beginner to MATLAB or are you a novice who would like a refresher to learn the basics of analysing data using MATLAB?
+
+The "Introduction to Data Analysis using MATLAB" course introduces the MATLAB interface and language, basics of loading data into MATLAB and data wrangling, data subsetting with conditional statements, logical operators, mathematical operations, graphs, summarising data and statistical analysis (t-tests, regression analysis). This hybrid course is run by the Centre for Applied Statistics Courses, University College London.
+
+This course covers the following topics:
+
+Getting started with the MATLAB interface
+Basic MATLAB commands: objects, functions, help and operations
+Creating and importing data in MATLAB
+Basic data manipulation in MATLAB
+Descriptive statistics
+Graphs
+Significance tests
+Overview of MATLAB applications
+Regression Analysis
+
+Date: 14th March 2023
+
+Mode of delivery: hybrid (face-to-face and online attendance)
+
+More details: https://www.ucl.ac.uk/child-health/events/2023/mar/introduction-data-analysis-using-matlab
+Introduction to Data Analysis using MATLAB.
+This course aims to introduce delegates to the MATLAB programming language for data analysis; begins with a brief overview of the MATLAB interface, then moves on to importing data, statistical analysis, graphical representation, and inbuilt MATLAB applications.
+www.ucl.ac.uk
+
+
+Dear Torben
+
+Yes, the conclusion from figure 3 would be that physiological modelling is still required when using the FAST18 model, and, agreed, it may well be the spatial and temporal variability of the cardiac effect that prevents its removal.
+
+Correct, we used the residuals output form the SPM model estimation.  We didn't test the areas under the curves, so I'm not sure if they are/not preserved, or affected by conversion to dB/Hz.  Our focus instead was on how flat they are across the frequency band, which is consistently improved by FAST18.
+
+Best wishes
+
+Martina
+
+
+
+
+
+-----Original Message-----
+From: Torben Lund <torbenelund@me.com>
+Sent: 23 February 2023 11:44
+To: Callaghan, Martina <m.callaghan@ucl.ac.uk>
+Cc: spm Parametric Mapping) <SPM@JISCMAIL.AC.UK>
+Subject: Re: [SPM] FAST Serial Correlation Correction Resources
+
+⚠ Caution: External sender
+
+
+Dear Martina
+
+Thanks for posting this great reference. Am I correct that figure 3 shows, that physiological modelling is needed even if FAST18 is used? It would have been great to see if Volterra expanded motion regressors (24 parameters) can reduce/remove the peak at low frequencies still present in the “No Model” data after HP filtering and RETROICOR modelling, or if we need to do both RETROICOR and FAST when TR is sufficiently low. I think the reason for FAST not being able to remove the cardiac peak in figure 3 TR=0,35s is that the cardiac frequency is not constant through time, and that there is considerable spatial variation both in phase and magnitude. At lower TR it makes the noise look like it is white (because it is aliased into a range of frequencies). I also found it a bit puzzling that the area under the yellow curve sometimes look smaller than or equal to those of the the red and green curve, but I guess you might have used normalised residuals, as those outputted from the SPM model estimation, correct?
+
+
+Best
+Torben
+
+
+
+
+
+
+
+Hello,
+
+I'm trying to convert fMRI files to hdr and img. In the first screenshot, you can see the downloaded files (first in .tar.gz, then unzipped). I’m not sure if they really are dicom files.
+
+In the second screenshot, we see that SPM has converted all the files from run1 to only one hdr and one img file. Does anyone know how to help me with that?
+
+Thanks,
+
+Jérémie
+
+
+
+
+
+

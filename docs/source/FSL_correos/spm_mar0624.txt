@@ -1,0 +1,210 @@
+Brickwall filtering in the frequency domain can introduce ringing in
+the time domain.
+
+On Mon, Mar 4, 2024 at 5:47 PM Mayank Jog <mayankjog@gmail.com> wrote:
+>
+> Dear experts,
+> Just following up on my query regarding the spm implementation of high pass filtering, in case anyone had insights,
+> Thank you,
+> Mayank
+>
+> On Sun, Feb 25, 2024 at 12:49 PM Mayank Jog <mayankjog@gmail.com> wrote:
+>>
+>> Hello experts!
+>> I was trying to understand an oddity I observed with high-pass filtering in spm.
+>>
+>> Basically, I constructed a signal = y1+ a*y2;
+>> y1 = sinusoid whose freq > hpf_cutoff, ie. it shouldn't be filtered out
+>> y2 = sinusoid whose freq < hpf_cutoff, ie. it should be filtered out.
+>>
+>> The issue I'm having is that the filter gives different results based on "a" above (MATLAB code @ end of this email). Thinking from a brick wall** -type filtering POV, this shouldn't happen... the result of filtering "signal" above should be y1 everytime, independent of "a".
+>>
+>> 1.  Reading the documentation, I realized that SPM implements high-pass filtering using DCT.... why do we prefer filtering fMRI data with a DCT filter, since as the above case shows, a brick wall filter seems to be more accurate?
+>> 2. Thinking of y2 as "noise", it's almost as if the output is dependent on the scale of noise (captured by the scaling factor "a" above). Is this the right way to think about it/ Am I missing something here?
+>>
+>> Thank you!
+>> Mayank
+>>
+>>
+>> **By brick wall, I mean doing an fft, and nulling all frequencies above hpf_cutoff, followed by an inverse fft.
+>>
+>> MATLAB Code: ===================
+>> L = 1024; %<length of signal
+>> filter_100s = ...          %< filter with hpf_cutoff = 100s
+>>                      spm_filter(   struct('RT', 1, 'HParam', 100, 'row', 1:L)   );
+>>
+>>
+>> y1 = sin(2*pi*[1:L]/50 )';         %< sinusoid with period = 50s,  shouldn't be filtered
+>> y2 = sin(2*pi*[ylim1:L]/350)'; %< sinusoid with period = 350s, should be filtered
+>>
+>>
+>> y_filter_test1 = spm_filter(filter_100s,    y1+50*y2); %< 'a' = 50
+>> y_filter_test2 = spm_filter(filter_100s,    y1+.1*y2);  %< 'a'=0.1
+>>
+>> figure; subplot(3,1,1); plot([y1 y2]);
+>>            subplot(3,1,2); plot(y_filter_test1);
+>>            subplot(3,1,3); plot(y_filter_test2);
+>> %============================
+
+Dear Mayank 
+
+I assume that y1 in your simulation is a BOLD signal of interest, and y2 is some form nuisance e.g. drift you want to filter away. If this is the case your simulation would apply to a situation where the SNR is around 1/50 (+white noise) which luckily is not quite the situation we typically are dealing with in fMRI. I have extended your simulation to SNR around 1 and SNR around 1/10. As you can see from the figure (run the attached code if it is removed due to its size) the filter performs pretty consistently for the SNR range from 0.1 to 10, but you do get some ringing if your SNR is around 0.02.  In that scenario I am afraid you will have other problems :-)  The ringing can be reduced if the length of the signal is extended with a factor of 100 - but that would be equally irrelevant in practice. 
+
+I hope this helps
+
+Best
+Torben
+
+
+
+
+%%
+L = 1024; %<length of signal
+filter_100s = ...          %< filter with hpf_cutoff = 100s
+    spm_filter(   struct('RT', 1, 'HParam', 100, 'row', 1:L)   );
+ 
+
+ 
+
+y1 = sin(2*pi*[1:L]/50 )';         %< sinusoid with period = 50s,  shouldn't be filtered
+y2 = sin(2*pi*[1:L]/350)'; %< sinusoid with period = 350s, should be filtered
+ 
+
+ 
+
+y_filter_test1 = spm_filter(filter_100s,    y1+50*y2); %< 'a' = 50
+y_filter_test2 = spm_filter(filter_100s,    y1+.1*y2);  %< 'a'=0.1
+ 
+
+y_filter_test3 = spm_filter(filter_100s,    y1+10*y2); %< 'a' = 10
+y_filter_test4 = spm_filter(filter_100s,    y1+1*y2);  %< 'a'=1
+ 
+
+ 
+
+figure;
+subplot(2,1,1); plot([y1+50*y2 y1+10*y2 y1+1*y2 y1+.1*y2]),
+l=legend({'SNR=0.02' 'SNR=0.1' 'SNR=1' 'SNR=10' }),xlim([1 L])
+l.Location='NorthEastOutside';
+title('Unfiltered signals')
+xlabel('Time [s]')
+subplot(2,1,2);
+plot([y_filter_test1 y_filter_test3 y_filter_test4 y_filter_test2])
+title('Highpass filtered T=100s')
+xlabel('Time [s]')
+ylim([-5 5]),xlim([1 L])
+l=legend({'SNR=0.02' 'SNR=0.1' 'SNR=1' 'SNR=10' }),xlim([1 L])
+l.Location='NorthEastOutside';
+ 
+
+
+
+
+
+
+
+
+
+Den 25. feb. 2024 kl. 21.49 skrev Mayank Jog <mayankjog@GMAIL.COM>:
+
+Hello experts!
+I was trying to understand an oddity I observed with high-pass filtering in spm. 
+
+Basically, I constructed a signal = y1+ a*y2; 
+y1 = sinusoid whose freq > hpf_cutoff, ie. it shouldn't be filtered out
+y2 = sinusoid whose freq < hpf_cutoff, ie. it should be filtered out. 
+
+The issue I'm having is that the filter gives different results based on "a" above (MATLAB code @ end of this email). Thinking from a brick wall** -type filtering POV, this shouldn't happen... the result of filtering "signal" above should be y1 everytime, independent of "a".  
+
+1.  Reading the documentation, I realized that SPM implements high-pass filtering using DCT.... why do we prefer filtering fMRI data with a DCT filter, since as the above case shows, a brick wall filter seems to be more accurate? 
+2. Thinking of y2 as "noise", it's almost as if the output is dependent on the scale of noise (captured by the scaling factor "a" above). Is this the right way to think about it/ Am I missing something here?
+
+Thank you!
+Mayank
+
+
+**By brick wall, I mean doing an fft, and nulling all frequencies above hpf_cutoff, followed by an inverse fft. 
+
+MATLAB Code: ===================
+L = 1024; %<length of signal
+filter_100s = ...          %< filter with hpf_cutoff = 100s
+                     spm_filter(   struct('RT', 1, 'HParam', 100, 'row', 1:L)   );
+
+
+y1 = sin(2*pi*[1:L]/50 )';         %< sinusoid with period = 50s,  shouldn't be filtered
+y2 = sin(2*pi*[ylim1:L]/350)'; %< sinusoid with period = 350s, should be filtered
+
+
+y_filter_test1 = spm_filter(filter_100s,    y1+50*y2); %< 'a' = 50
+y_filter_test2 = spm_filter(filter_100s,    y1+.1*y2);  %< 'a'=0.1
+
+figure; subplot(3,1,1); plot([y1 y2]);
+           subplot(3,1,2); plot(y_filter_test1);
+           subplot(3,1,3); plot(y_filter_test2);
+%============================
+
+
+Dear experts,
+
+I am currently employing DCM on a task-based dataset and ran into a problem when interpreting the results. As a framework, we are following the two Zeidman et al. papers from 2019 on Parametric Empirical Bayes (https://doi.org/10.1016/j.neuroimage.2019.06.031 and https://doi.org/10.1016/j.neuroimage.2019.06.032).
+
+For inference regarding our modulatory inputs (B matrix), we conducted an automatic "search over reduced PEB models" as described in section 4.7 in the 2nd Zeidman paper. This yielded significant results for several connections that were very much in line with our hypotheses. 
+However, when we then conducted another automatic search on our A matrix to derive average connectivity parameters (described in section 4.8 in 2nd Zeidman paper), we found that two connections were pruned away, even though our first analysis suggests that these connections would be significantly modulated by specific conditions.
+
+Can anyone explain to me how to interpret this? Is searching over reduced A matrix models the correct way to estimate average effective connectivity through Bayesian Model Averaging?
+
+Best regards,
+Lukas
+
+The newly established Cognitive Neuroscience & Neurotechnology group led by Dr. Romy Lorenz is looking for two enthusiastic PhD students (m/f/d) to join our growing team at the Max Planck Institute for Biological Cybernetics in Tübingen, Germany.
+
+Our lab focuses on advancing our understanding of the frontoparietal brain network mechanisms that underpin high-level cognition and adaptive behaviour. For this, we pursue an interdisciplinary research programme that allows studying this brain system at multiple levels of granularity. Our methodology involves subject-specific brain-computer interface technology, fMRI at 3T and ultrahigh (i.e., 7T and 9.4T) magnetic field strengths (for resolving cortical layers), EEG, non-invasive brain stimulation as well as machine learning. You can find out more about our work at:    https://www.kyb.tuebingen.mpg.de/711763/cognitive-neuroscience-neurotechnology
+
+We are seeking two ambitious PhD students who will work on the exciting field of ultrahigh resolution fMRI that allows to investigate the human cortex at the scale of layers and columns. 
+
+The ideal candidates should have a master’s degree in cognitive (neuro)science, psychology, computer science, biomedical or electrical engineering, physics, or related disciplines. A strong background in fMRI data analysis (e.g., FSL, Freesurfer, ANTS) and very good programming skills in Bash on Linux, Matlab and/or Python are required. Prior experience in MRI data acquisition and experience with ultrahigh resolution fMRI (e.g., at 7T) is desirable but not necessary. Equally, experience with machine learning-methods, code sharing platforms (e.g. GitHub) and high-performance computing clusters are highly desirable.
+
+The Max Planck Institute for Biological Cybernetics offers a world-leading research environment with access to the latest cutting-edge MRI hardware (including a Siemens 9.4T and Prisma 3T for humans as well as a 14.2T small animal system) and other excellent research facilities (EEG, eye-tracking, fMRI-TMS). The PhD student will receive generous support for professional travel and research needs (~2500€/year). Additionally, the student will have the opportunity to become part of the Graduate Training Centre of Neuroscience that provides training courses, summer schools and conferences to further educate doctoral students. Further, the Institute is part of the TübingenNeuroCampus (with more than 100 active groups), offering a vibrant community of international researchers and enriching environment of collaboration.
+
+The position is available from May 2024 on and remains open until filled. The salary is paid in accordance with the collective agreement for the public sector (65% TVL-E13, amounting to ~2000€ net per month).
+
+For more details about the two advertised PhD positions and how to apply, please see: https://www.kyb.tuebingen.mpg.de/729399/join-the-lab
+
+ 
+
+Dr. Romy Lorenz
+
+
+Max Planck Research Group Leader
+
+Research Group Cognitive Neuroscience & Neurotechnology
+
+Max Planck Institute for Biological Cybernetics
+
+Tübingen, Germany
+
+romy.lorenz@tuebingen.mpg.de
+
+www.kyb.tuebingen.mpg.de/711763/cognitive-neuroscience-neurotechnology
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+Hi experts,
+
+When checking DCM results, I found certain subjects' DCM fields include the parameter DCM.U.idx, while others don't. I suspect this variation might be due to different SPM versions used.
+
+I'm wondering about the significance of DCM.U.idx. Can I combine subjects with and without this parameter in group analysis? Or should I consider redoing some DCM analyses?
+
+Best regards,
+Luna
+

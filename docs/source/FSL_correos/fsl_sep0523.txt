@@ -1,0 +1,602 @@
+Research Assistant Professor/Postdoctoral Fellow Positions in Brain Development and Aging
+ 
+The laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University is searching for postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+ 
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. 
+ 
+Our research center and laboratory have great computing capacity, including multiple H100 and A100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical records, medical images, and pathological images. Wepublished more than 170 peer-reviewed journal papers. Among them, 87% were published in the top 10% of peer-reviewed journals, such as Nature, Nature Genetics, Nature Mental Health, PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc. 
+ 
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+ 
+The position offers a competitive salary (up to HKD 540,000 annually) and benefits. We will apply for VISA for applicants. 
+The position will start at any time from 1 Oct, 2023.
+Requirements:
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or relevant fields;
+2.     Experience with neuroimage analysis techniques;
+	3	Good communication and writing skills in English.
+ 
+Please send cv/inquiries to Professor Anqi Qiu, Global STEM scholar anqi.qiu.sg@gmail.com.
+ 
+ 
+ 
+
+
+Dear colleagues,
+ 
+We have one 2-year full-time research associate position open at either the Ph.D. or postdoc level.
+I’d be most appreciative if you could circulate the position announcement (below) in your department/institute.  With best regards, …. Shu-Chen Li
+ 
+2-year 100% research associate position in developmental cognitive neuroscience and EEG research at TU Dresden, Germany
+At the Faculty of Psychology, the Chair of Lifespan Developmental Neuroscience offers a position as
+Research Associate (m/f/x) (subject to personal qualification employees are remunerated according to salary group E 13 TV-L), starting as soon as possible. The position is initially limited until September 30, 2025 with the option for extension. The period of employment is governed by the Fixed Term Research Contracts Act (Wissenschaftszeitvertragsgesetz - WissZeitVG). The position offers the chance to obtain further academic qualification.
+ 
+The Chair of Lifespan Developmental Neuroscience investigates neurocognitive mechanisms underlying perceptual, cognitive, and motivational development across the lifespan. The main themes of our research are neurofunctional mechanisms underlying lifespan development of memory, cognitive control, reward processing, decision making, and multisensory perception. We also pursue applied research to study effects of behavioral intervention, non-invasive brain stimulation, or digital technologies in enhancing functional plasticity for individuals of difference ages. We utilize a broad range of neurocognitive (e.g., EEG, fNIRs, fMRI, tDCS) and computational methods. The lab has several testing rooms and is equipped with multiple EEG (64-channel and 32-channel) and fNIRs systems, as well as eye-tracking and virtual-reality devices. The MRI scanner (3T) and TMS-device can be accessed through the university’s NeuroImaging Center. TUD is a university of excellence supported by the DFG, which offers outstanding research opportunities. Researchers in this chair are involved in large research consortium and cluster, such as the DFG SFB 940 „Volition and Cognitive Control“ and DFG EXC 2050 „Tactile Internet with Human-in-the-Loop“.
+Tasks: research in the field of lifespan developmental cognitive neuroscience. The research topics are subject to the fits between the candidate’s research interests, expertise, and ongoing projects in the chair, particularly the DFG-funded research project Tec4Tic; scientific teaching (1 bachelor- or master-level seminar per semester for students majoring psychology). Topics for the seminars should cover neurocognitive mechanism of cognitive, motivation, or perceptual development.
+Requirements: at least university degree (Diploma/Master) in Psychology, Cognitive Neuroscience, or Cognitive Science (applicants with PhD degrees are also welcome); experiences with cognitive neuroscience methods (EEG, fNRIs, MRT); excellent language skills in German and in English.
+Please contact Shu-Chen Li (shu-chen.li@tu-dresden.de) for questions about the position.
+ 
+TUD strives to employ more women in academia and research. We therefore expressly encourage women to apply. The University is a certified family-friendly university and offers a Dual Career Service. We welcome applications from candidates with disabilities. If multiple candidates prove to be equally qualified, those with disabilities or with equivalent status pursuant to the German Social Code IX (SGB IX) will receive priority for employment.
+Please submit your detailed application (cover letter, research interests, CV, degree certificates and names of 2 referees) by October 12, 2023 (stamped arrival date of the university central mail service applies) to: TU Dresden, Fakultät Psychologie, Professur für Entwicklungspsychologie und Neurowissenschaft der Lebensspanne, Frau Prof. Dr. Shu-Chen Li, Helmholtzstr. 10, 01069 Dresden, Germany or via the TUD SecureMail Portal https://securemail.tu-dresden.de by sending it as a single pdf file (with the subject heading: Research Associate w23-306) to shu-chen.li@tu-dresden.de. Please submit copies only, as your application will not be returned to you. Expenses incurred in attending interviews cannot be reimbursed.
+ 
+_______________________________________________________________________________________________________________________
+Prof. Shu-Chen Li, Ph.D.
+Lehrstuhl Entwicklungspsychologie und Neurowissenschaft der Lebensspanne
+(Chair of Lifespan Developmental Neuroscience)
+Fakultät Psychologie (Faculty of Psychology) 
+Zellescher Weg 17, Rm. A233
+D-01062 Dresden, Germany
+E-mail: Shu-Chen.Li@tu-dresden.de
+URL: http://tu-dresden.de/mn/psy/epsy
+Tel.: +49-351-46334162/Fax:+49-351-46342194
+ 
+Excellence Cluster – Centre for Tactile Internet with Human-in-the-Loop
+URL: https://www.ceti.one
+ 
+Technische Universität Dresden (TU Dresden)
+_________________________________________________________________________________________________________________________
+ 
+
+
+Hi all,
+
+After merging my DTI images using fslmerge and overlaying on the MNI152 1mm template, some areas extend outside the standard brain. Despite applying a 0.2 threshold and the MNI152 brain mask, the issue persists.
+
+Steps taken:
+
+Registered images within FDT.
+Thresholded DTI at 0.2.
+Applied MNI152 T1 brain mask.
+Visualized against the MNI152 1mm standard brain.
+
+Any suggestions for a more precise masking to the standard brain boundaries?
+
+Thanks!
+
+
+
+Dear FSL users,
+                         We are pleased to announce the release of FSL 6.0.7.3.
+
+Release highlights:
+
+- Fixed some issues with the `fslchfiletype` command
+- `immv`/`imcp` honour `$FSLOUTPUTTYPE` more closely
+- FSLeyes - minor bug fixes and new `--cmapCycle` command-line option
+
+The full changelog can be found at:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew?action=AttachFile&do=view&target=6.0.7.3.md
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+########################################################################
+
+
+Dear colleagues,
+ 
+We have one 2-year full-time research associate position open at either the Ph.D. or postdoc level.
+I’d be most appreciative if you could circulate the position announcement (below) in your department/institute.  With best regards, …. Shu-Chen Li
+ 
+2-year 100% research associate position in developmental cognitive neuroscience and EEG research at TU Dresden, Germany
+At the Faculty of Psychology, the Chair of Lifespan Developmental Neuroscience offers a position as
+Research Associate (m/f/x) (subject to personal qualification employees are remunerated according to salary group E 13 TV-L), starting as soon as possible. The position is initially limited until September 30, 2025 with the option for extension. The period of employment is governed by the Fixed Term Research Contracts Act (Wissenschaftszeitvertragsgesetz - WissZeitVG). The position offers the chance to obtain further academic qualification.
+ 
+The Chair of Lifespan Developmental Neuroscience investigates neurocognitive mechanisms underlying perceptual, cognitive, and motivational development across the lifespan. The main themes of our research are neurofunctional mechanisms underlying lifespan development of memory, cognitive control, reward processing, decision making, and multisensory perception. We also pursue applied research to study effects of behavioral intervention, non-invasive brain stimulation, or digital technologies in enhancing functional plasticity for individuals of difference ages. We utilize a broad range of neurocognitive (e.g., EEG, fNIRs, fMRI, tDCS) and computational methods. The lab has several testing rooms and is equipped with multiple EEG (64-channel and 32-channel) and fNIRs systems, as well as eye-tracking and virtual-reality devices. The MRI scanner (3T) and TMS-device can be accessed through the university’s NeuroImaging Center. TUD is a university of excellence supported by the DFG, which offers outstanding research opportunities. Researchers in this chair are involved in large research consortium and cluster, such as the DFG SFB 940 „Volition and Cognitive Control“ and DFG EXC 2050 „Tactile Internet with Human-in-the-Loop“.
+Tasks: research in the field of lifespan developmental cognitive neuroscience. The research topics are subject to the fits between the candidate’s research interests, expertise, and ongoing projects in the chair, particularly the DFG-funded research project Tec4Tic; scientific teaching (1 bachelor- or master-level seminar per semester for students majoring psychology). Topics for the seminars should cover neurocognitive mechanism of cognitive, motivation, or perceptual development.
+Requirements: at least university degree (Diploma/Master) in Psychology, Cognitive Neuroscience, or Cognitive Science (applicants with PhD degrees are also welcome); experiences with cognitive neuroscience methods (EEG, fNRIs, MRT); excellent language skills in German and in English.
+Please contact Shu-Chen Li (shu-chen.li@tu-dresden.de) for questions about the position.
+ 
+TUD strives to employ more women in academia and research. We therefore expressly encourage women to apply. The University is a certified family-friendly university and offers a Dual Career Service. We welcome applications from candidates with disabilities. If multiple candidates prove to be equally qualified, those with disabilities or with equivalent status pursuant to the German Social Code IX (SGB IX) will receive priority for employment.
+Please submit your detailed application (cover letter, research interests, CV, degree certificates and names of 2 referees) by October 12, 2023 (stamped arrival date of the university central mail service applies) to: TU Dresden, Fakultät Psychologie, Professur für Entwicklungspsychologie und Neurowissenschaft der Lebensspanne, Frau Prof. Dr. Shu-Chen Li, Helmholtzstr. 10, 01069 Dresden, Germany or via the TUD SecureMail Portal https://securemail.tu-dresden.de by sending it as a single pdf file (with the subject heading: Research Associate w23-306) to shu-chen.li@tu-dresden.de. Please submit copies only, as your application will not be returned to you. Expenses incurred in attending interviews cannot be reimbursed.
+ 
+_______________________________________________________________________________________________________________________
+Prof. Shu-Chen Li, Ph.D.
+Lehrstuhl Entwicklungspsychologie und Neurowissenschaft der Lebensspanne
+(Chair of Lifespan Developmental Neuroscience)
+Fakultät Psychologie (Faculty of Psychology) 
+Zellescher Weg 17, Rm. A233
+D-01062 Dresden, Germany
+E-mail: Shu-Chen.Li@tu-dresden.de
+URL: http://tu-dresden.de/mn/psy/epsy
+Tel.: +49-351-46334162/Fax:+49-351-46342194
+ 
+Excellence Cluster – Centre for Tactile Internet with Human-in-the-Loop
+URL: https://www.ceti.one
+ 
+Technische Universität Dresden (TU Dresden)
+_________________________________________________________________________________________________________________________
+ 
+
+
+Hello Yanina,
+     Either approach could be used, but it may be simpler to run an individual second-level analysis per subject when it comes to adding the outputs to the final group-level analysis.
+
+Kind Regards
+Matthew
+--------------------------------
+
+
+Hi Joey,
+There are models where the “1's” approach can be used, but for the model here it would introduce rank-deficiency and should not be used.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 5 Sep 2023, at 11:14, Joey Verdijk <joey_verdijk@LIVE.NL> wrote:
+
+Hi Matthew,
+
+Thank you for your response!
+One follow-up question, for my understanding. Of the EVs 7 to 13, each EV contains both 1's and -1's, and is n (subjects) minus 1. Is this equivalent to using n EV's but only using 1's?
+
+I.e.
+1 0 0 0 0 0 0 0
+1 0 0 0 0 0 0 0
+1 0 0 0 0 0 0 0
+0 1 0 0 0 0 0 0
+0 1 0 0 0 0 0 0
+0 1 0 0 0 0 0 0
+0 0 1 0 0 0 0 0
+0 0 1 0 0 0 0 0
+0 0 1 0 0 0 0 0
+0 0 0 1 0 0 0 0
+0 0 0 1 0 0 0 0
+0 0 0 1 0 0 0 0
+0 0 0 0 1 0 0 0
+0 0 0 0 1 0 0 0
+0 0 0 0 1 0 0 0
+0 0 0 0 0 1 0 0
+0 0 0 0 0 1 0 0
+0 0 0 0 0 1 0 0
+0 0 0 0 0 0 1 0
+0 0 0 0 0 0 1 0
+0 0 0 0 0 0 1 0
+0 0 0 0 0 0 0 1
+0 0 0 0 0 0 0 1
+0 0 0 0 0 0 0 1
+
+Instead of
+1 0 0 0 0 0 0
+1 0 0 0 0 0 0
+1 0 0 0 0 0 0
+-1 1 0 0 0 0 0
+-1 1 0 0 0 0 0
+-1 1 0 0 0 0 0
+0 -1 1 0 0 0 0
+0 -1 1 0 0 0 0
+0 -1 1 0 0 0 0
+0 0 -1 1 0 0 0
+0 0 -1 1 0 0 0
+0 0 -1 1 0 0 0
+0 0 0 -1 1 0 0
+0 0 0 -1 1 0 0
+0 0 0 -1 1 0 0
+0 0 0 0 -1 1 0
+0 0 0 0 -1 1 0
+0 0 0 0 -1 1 0
+0 0 0 0 0 -1 1
+0 0 0 0 0 -1 1
+0 0 0 0 0 -1 1
+0 0 0 0 0 0 -1
+0 0 0 0 0 0 -1
+0 0 0 0 0 0 -1
+
+Thanks in advance,
+Joey
+
+
+
+
+
+Hi Nooshin,
+
+I think that something has gone wrong in one of your intermediate steps. I would recommend repeating each step, and visualising the outputs after each step to figure out where things are going wrong.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Nooshin Safari <nsafari@GMU.EDU>
+Sent: 05 September 2023 15:13
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fslmerge Output Extending Beyond MNI152 Brain Boundary
+ 
+Hi all,
+
+After merging my DTI images using fslmerge and overlaying on the MNI152 1mm template, some areas extend outside the standard brain. Despite applying a 0.2 threshold and the MNI152 brain mask, the issue persists.
+
+Steps taken:
+
+Registered images within FDT.
+Thresholded DTI at 0.2.
+Applied MNI152 T1 brain mask.
+Visualized against the MNI152 1mm standard brain.
+
+Any suggestions for a more precise masking to the standard brain boundaries?
+
+Thanks!
+
+
+########################################################################
+
+
+Research Assistant Professor/Postdoctoral Fellow Positions in Brain Development and Aging
+ 
+The laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University is searching for postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+ 
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. 
+ 
+Our research center and laboratory have great computing capacity, including multiple H100 and A100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical records, medical images, and pathological images. Wepublished more than 170 peer-reviewed journal papers. Among them, 87% were published in the top 10% of peer-reviewed journals, such as Nature, Nature Genetics, Nature Mental Health, PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc. 
+ 
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+ 
+The position offers a competitive salary (up to HKD 540,000 annually) and benefits. We will apply for VISA for applicants. 
+The position will start at any time from 1 Oct, 2023.
+Requirements:
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or relevant fields;
+2.     Experience with neuroimage analysis techniques;
+	3	Good communication and writing skills in English.
+ 
+Please send cv/inquiries to Professor Anqi Qiu, Global STEM scholar anqi.qiu.sg@gmail.com.
+ 
+ 
+ 
+
+
+Join our global Online Machine Learning School from 25th-29th of September!  
+ 
+Our hub is in Munich where Prof. Nikolaos Koutsouleris and his team are organizing the school together with the ECNP Neuroimaging Network. This will enable participants to join hands-on tutorials within the Central European Summer Time zone. Register here.
+ 
+For the first time, this school is also being conducted in Melbourne by Dr. Dom Dwyer and the Orygen Youth AI team, supported by The University of Melbourne and the PRE-EMPT project. This school is for participants in Asia-Pacific time zones and we offer tutorials in English, Vietnamese, and Mandarin Chinese. Register here.
+ 
+People with all levels of experience are encouraged to apply because you do not need coding experience to implement the cutting-edge machine learning techniques we teach.
+ 
+The school is tailored to online learning by providing different learning formats, including:
+	•	Seminars covering essential concepts
+	•	Hands-on tutorials using NeuroMiner that do not require coding experience
+	•	Application of learnt material in a machine learning competition with continuous assistance from tutors
+	•	Daily lectures from international experts in the field
+ 
+There are only 100 full course places available in total - so be quick and register now! 
+ 
+The school is supported by the Section for Precision Psychiatry (LMU Klinikum), the Max Planck Fellow Group for Precision Psychiatry, the Artificial Intelligence in Mental Health Lab (KCL), the ECNP and the ECNP Neuroimaging Network. It is also supported by Orygen, the University of Melbourne, and the Orygen Data Science and Analytical Methods team.
+ 
+For more information and to register for the school, please see the attached flyer or visit our website at https://neurominer-git.github.io/NeuroMiner_1.1/0.1_MLSchool.html.
+ 
+Looking forward to hearing from you!
+ 
+Best wishes,
+ 
+Your Online Machine Learning School Team
+ 
+
+
+Hi Anderson,
+
+Thank you for the reply!
+
+Just to make sure I understood:
+1. I would want to run two different designs with the same nifti file, where one has 1s for both time points and the contrasts from design1 and will give me the time and interaction effect, and the other has 1s only for the "post" timepoint, and the contrast from design2?
+
+2. makes sense, thank you
+
+3. in my case, the time point between scans is relatively short, so that the age stays the same, so that both the age and the gender are fixed effects. The fear is that (a) just as you mentioned, the effect of the intervention is different in different ages. in that case, do I use the same number, (i.e. -34 and 34)? and (b) since we have a higher percentage of males in the control group, I want to make sure I am not measuring gender instead of my own effect. would I need to add two more columns? (-1 and 1 for male, pre and post and -1 and 1 for female pre and post)?
+
+thanks again for all the help,
+Ronnie
+
+########################################################################
+
+Hello,
+        You may need to check that the “settings.sh” file is updated with the new path ( FSL_FIX_MCRROOT should be set to the path below ).
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 4 Sep 2023, at 07:05, 김슬기 <seuligo4@GMAIL.COM> wrote:
+>
+> Yes, I downloaded it.
+> After downloading the runtime, how should I set the path?
+>
+> Right now my path is this: /Applications/MATLAB/MATLAB_Runtime/v96
+> However, when I run the compiler in the terminal, it says that it is not there.
+>
+>> 2023. 9. 4. 오전 2:25, Matthew Webster <matthew.webster@NDCN.OX.AC.UK> 작성:
+>>
+>> Hello,
+>>    For OSX you should be able run the pre-compiled binaries with the 2019a runtime ( see https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIX/UserGuide for more details on MCR versions and download links ).
+>>
+>> Hope this helps,
+>> Kind regards
+>> Matthew
+>> --------------------------------
+>> Dr Matthew Webster
+>> FMRIB Centre
+>> John Radcliffe Hospital
+>> University of Oxford
+>>
+>>> On 3 Sep 2023, at 14:26, 김슬기 <seuligo4@GMAIL.COM> wrote:
+>>>
+>>> Hi, Thank you so much for solving my previous problem.
+>>> The difference is, I'm trying to run FIX after running MELODIC.
+>>>
+>>> I am using MATLAB version 2022b.
+>>>
+>>> However, it says that I need to have a matlab compiler to run FIX, but when I try to run the .sh file in terminal,
+>>> I get this error : Can't find MATLAB compiled software for this OS.
+>>> What should I do?
+>>> My macbook version is Ventura 13.5.1.
+>>>
+>>> Could you please tell me the order to run the m file in FIX-1.06.15 version, if I don't need a compiler to run FIX when using the paid version of MATLAB?
+>>>
+>>> Your answer would be appreciated.
+>>> Thanks.
+>>> ########################################################################
+>>>
+>>> To unsubscribe from the FSL list, click the following link:
+>>> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>>
+>>> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>>
+>>
+>> To unsubscribe from the FSL list, click the following link:
+>> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+########################################################################
+
+To unsubscribe from the FSL list, cli
+
+Hi Matthew,
+
+Thank you for your response!
+One follow-up question, for my understanding. Of the EVs 7 to 13, each EV contains both 1's and -1's, and is n (subjects) minus 1. Is this equivalent to using n EV's but only using 1's?
+
+I.e.
+1       0       0       0       0       0       0       0
+1       0       0       0       0       0       0       0
+1       0       0       0       0       0       0       0
+0       1       0       0       0       0       0       0
+0       1       0       0       0       0       0       0
+0       1       0       0       0       0       0       0
+0       0       1       0       0       0       0       0
+0       0       1       0       0       0       0       0
+0       0       1       0       0       0       0       0
+0       0       0       1       0       0       0       0
+0       0       0       1       0       0       0       0
+0       0       0       1       0       0       0       0
+0       0       0       0       1       0       0       0
+0       0       0       0       1       0       0       0
+0       0       0       0       1       0       0       0
+0       0       0       0       0       1       0       0
+0       0       0       0       0       1       0       0
+0       0       0       0       0       1       0       0
+0       0       0       0       0       0       1       0
+0       0       0       0       0       0       1       0
+0       0       0       0       0       0       1       0
+0       0       0       0       0       0       0       1
+0       0       0       0       0       0       0       1
+0       0       0       0       0       0       0       1
+
+Instead of
+1       0       0       0       0       0       0
+1       0       0       0       0       0       0
+1       0       0       0       0       0       0
+-1      1       0       0       0       0       0
+-1      1       0       0       0       0       0
+-1      1       0       0       0       0       0
+0       -1      1       0       0       0       0
+0       -1      1       0       0       0       0
+0       -1      1       0       0       0       0
+0       0       -1      1       0       0       0
+0       0       -1      1       0       0       0
+0       0       -1      1       0       0       0
+0       0       0       -1      1       0       0
+0       0       0       -1      1       0       0
+0       0       0       -1      1       0       0
+0       0       0       0       -1      1       0
+0       0       0       0       -1      1       0
+0       0       0       0       -1      1       0
+0       0       0       0       0       -1      1
+0       0       0       0       0       -1      1
+0       0       0       0       0       -1      1
+0       0       0       0       0       0       -1
+0       0       0       0       0       0       -1
+0       0       0       0       0       0       -1
+
+Thanks in advance,
+Joey
+
+########################################################################
+
+
+Estimados colegas,
+
+El IIMAS y de la UNAM sede Yucatán, en conjunto con el CIATEJ-Sureste y la Universidad de San Sebastián - Chile, se complacen en invitar a la comunidad académica al Ciclo Internacional de Conferencias de Bioinformática de la Península de Yucatán, Agosto-Diciembre 2023. En esta ocasión, tendremos la plática: "Genómica comparativa  y estudios de sintenia en hongos para dilucidar la evolución y conservación de caracteres" por el Dr.Alejandro Pereira del Centro de Investigación y Asistencia en Tecnología y Diseño del Estado de Jalisco, Sede SURESTE. Mexico, el 7 de Septiembre de 2023 a las 16:30 hrs (CdMx). Para el programa completo ver: https://sites.google.com/view/bioinformatica-yucatan. A nombre de los organizadores, esperamos contar con su asistencia.
+
+Dr. Ernesto Perez Rueda
+IIMAS-UNAM.
+ernesto.perez@iimas.unam.mx
+--
+
+Dear Lin,
+
+The hand_labels_noise.txt file should be saved at the same level as the filtered_func_data.ica folder, so in your case I think you should have 001/FIX_001.feat/hand_labels_noise.txt
+
+ 
+
+Your call to re-train FIX should then work using
+
+fix -t training_test1  001/FIX_001.feat 002/FIX_002.feat ….,
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Associate Professor | Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+ 
+
+Yes, I downloaded it. 
+After downloading the runtime, how should I set the path?
+
+Right now my path is this: /Applications/MATLAB/MATLAB_Runtime/v96
+However, when I run the compiler in the terminal, it says that it is not there.
+
+2023. 9. 4. 오전 2:25, Matthew Webster <matthew.webster@NDCN.OX.AC.UK> 작성:
+
+Hello,
+   For OSX you should be able run the pre-compiled binaries with the 2019a runtime ( see https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIX/UserGuide for more details on MCR versions and download links ).
+
+Hope this helps,
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Sep 2023, at 14:26, 김슬기 <seuligo4@GMAIL.COM> wrote:
+
+Hi, Thank you so much for solving my previous problem.
+The difference is, I'm trying to run FIX after running MELODIC.
+
+I am using MATLAB version 2022b.
+
+However, it says that I need to have a matlab compiler to run FIX, but when I try to run the .sh file in terminal,
+I get this error : Can't find MATLAB compiled software for this OS.
+What should I do?
+My macbook version is Ventura 13.5.1.
+
+Could you please tell me the order to run the m file in FIX-1.06.15 version, if I don't need a compiler to run FIX when using the paid version of MATLAB?
+
+Your answer would be appreciated.
+Thanks.
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Dear Magundhu,
+ An FSL install should usually complete within one to two hours. I would begin by listing the log file ( /tmp/fslinstaller_LfPHis.log ) to see what the last recorded message is, checking if the installer process is still active ( e.g. with top ) as well as running ls -alrt in the installation folder ( /usr/local/fsl ) to see when file-activity last took place.
+
+Kind Regards
+Matthew
+--------------------------------
+Dear FSL Developers,
+
+I am facing an installation issue. Though the installation shows 100% completion, there is still no finished or completed message. It has been in the same position for a long time. When I checked the size of the FSL, it was around 9.7 GB. 
+Should I wait or cancel it?
+
+Please suggest. 
+
+Thanks in advance
+Magundhu 
+
+Hello,
+   For OSX you should be able run the pre-compiled binaries with the 2019a runtime ( see https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIX/UserGuide for more details on MCR versions and download links ).
+
+Hope this helps,
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Sep 2023, at 14:26, 김슬기 <seuligo4@GMAIL.COM> wrote:
+
+Hi, Thank you so much for solving my previous problem.
+The difference is, I'm trying to run FIX after running MELODIC.
+
+I am using MATLAB version 2022b.
+
+However, it says that I need to have a matlab compiler to run FIX, but when I try to run the .sh file in terminal,
+I get this error : Can't find MATLAB compiled software for this OS.
+What should I do?
+My macbook version is Ventura 13.5.1.
+
+Could you please tell me the order to run the m file in FIX-1.06.15 version, if I don't need a compiler to run FIX when using the paid version of MATLAB?
+
+Your answer would be appreciated.
+Thanks.
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+

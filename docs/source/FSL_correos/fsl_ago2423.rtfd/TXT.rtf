@@ -1,0 +1,1142 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Arial-BoldMT;\f2\fswiss\fcharset0 ArialMT;
+\f3\fnil\fcharset0 HelveticaNeue;\f4\fswiss\fcharset0 Helvetica-Bold;\f5\fnil\fcharset0 Verdana-Bold;
+\f6\fnil\fcharset0 Verdana;\f7\fnil\fcharset0 HelveticaNeue-Bold;\f8\fswiss\fcharset0 Helvetica-Oblique;
+\f9\fnil\fcharset0 Georgia;\f10\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red27\green27\blue27;\red255\green255\blue255;\red0\green0\blue0;
+\red11\green76\blue180;\red1\green24\blue53;\red0\green0\blue233;\red26\green26\blue26;\red0\green0\blue255;
+\red129\green59\blue95;\red24\green55\blue106;\red37\green37\blue37;\red53\green91\blue183;\red15\green77\blue178;
+}
+{\*\expandedcolortbl;;\cssrgb\c14118\c14118\c14118;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c1961\c38824\c75686;\cssrgb\c0\c12941\c27059;\cssrgb\c0\c0\c93333;\cssrgb\c13333\c13333\c13333;\cssrgb\c0\c0\c100000;
+\cssrgb\c58431\c30980\c44706;\cssrgb\c12157\c28627\c49020;\cssrgb\c19216\c19216\c19216;\cssrgb\c26667\c44706\c76863;\cssrgb\c4706\c39216\c75294;
+}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid1\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid101\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Good afternoon,\'a0\strokec2 \
+\strokec4 \'a0\strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf2 \strokec4 I am hoping to seek your assistance regarding some questions involving FSL VBM. I'm currently working on a project, examining GM differences in two cohorts and the relationship with blood biomarkers.\'a0
+\fs32 \strokec2 \
+
+\fs36 \strokec4 \'a0\'a0
+\fs32 \strokec2 \
+
+\fs36 \strokec4 Specifically, I'm seeking clarification regarding the distinction between E1 and E2 as outlined here: ({\field{\*\fldinst{HYPERLINK "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM/UserGuide"}}{\fldrslt 
+\fs32 \cf5 \ul \ulc5 \strokec5 https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM/UserGuide}})\cf0 \cb1 \uc0\u8232 \cf2 \cb3 I have performed E1- and originally thought I needed to do both, but wondering if I could get some clarification or resources to read about which one (TFCE or cluster-based thresholding) should be done or both?\cf0 \cb1 \uc0\u8232 \u8232 
+\fs32 \cf2 \cb3 \strokec2 \
+
+\fs36 \strokec4 Additionally, I am hoping to use the Test2Vest tool as we have many participants, but I am unsure how to deal with missing data.\cf0 \cb1 \uc0\u8232 \cf2 \cb3 I could not find anything about missing values here: ({\field{\*\fldinst{HYPERLINK "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM/CreatingDesignMatricesByHand"}}{\fldrslt 
+\fs32 \cf5 \ul \ulc5 \strokec5 https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM/CreatingDesignMatricesByHand}}).
+\fs32 \strokec2 \
+
+\fs36 \strokec4 \'a0
+\fs32 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec4 Thank you very much in advance,\strokec2 \
+\strokec4 Best,\'a0\strokec2 \
+\strokec4 Jessica\strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs24 \cf6 \strokec6 Jessica Archibald
+\f2\b0 \'a0Ph.D.
+\f0\fs32 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf6 \strokec6 Experimental Medicine
+\f0\fs32 \cf2 \strokec2 \
+
+\f2\fs24 \cf6 \strokec6 ICORD |\'a0Blusson Spinal Cord Center \'a0\'a0
+\f0\fs32 \cf2 \strokec2 \
+
+\f2\fs24 \cf6 \strokec6 818 W 10th Ave Vancouver, BC, Canada. \'a0 \'a0\'a0
+\f0\fs32 \cf2 \strokec2 \
+\pard\pardeftab720\sa200\partightenfactor0
+
+\fs28 \cf0 \cb1 \strokec4 {{\NeXTGraphic unknown.png \width6000 \height1000 \appleattachmentpadding0 \appleembedtype0 \appleaqc
+}¬}\pard\pardeftab720\sa200\partightenfactor0
+
+\fs32 \cf2 \cb3 \strokec2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf2 \cb3 \strokec2 Hi Paul, I also want to report an error with the update_fsl_release script. \'a0It hangs after accepting my admin password. \'a0Here\'92s the log.\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Thanks,\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Keith\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 10:09:19 fslinstaller.py: 167: Log file: /var/folders/xy/9hnt0p39799cjcyfkn2wy3fr0000gn/T/update_fsl_release_wphtng5i.log\cb1 \
+\
+\cb3 10:09:19 fslinstaller.py: 467: Downloading FSL installer manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json\cb1 \
+\cb3 10:09:19 fslinstaller.py: 410: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json ...\cb1 \
+\cb3 10:09:19 fslinstaller.py: 167: FSL 6.0.7.2 selected for installation\cb1 \
+\cb3 10:09:19 fslinstaller.py: 167: A new version of FSL is available\cb1 \
+\cb3 \'a0 FSL installation directory: /usr/local/fsl\cb1 \
+\cb3 \'a0 Installed version: \'a0 \'a0 \'a0 \'a0 \'a06.0.7.1\cb1 \
+\cb3 \'a0 Latest available version: \'a0 6.0.7.2\cb1 \
+\
+\cb3 10:09:22 fslinstaller.py: 181: Do you want to update your FSL installation? [y/n]:: y\cb1 \
+\cb3 10:09:22 fslinstaller.py: 167: Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml...\cb1 \
+\cb3 10:09:22 fslinstaller.py: 410: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml ...\cb1 \
+\cb3 10:09:23 fslinstaller.py: 167: Updating /usr/local/fsl from version 6.0.7.1 to 6.0.7.2...\cb1 \
+\cb3 10:09:23 fslinstaller.py: 167: Your administrator password is needed to update FSL:\cb1 \
+\cb3 10:09:27 fslinstaller.py: 167: Password accepted\cb1 \
+\cb3 10:09:27 fslinstaller.py: 764: Running /usr/local/fsl/bin/mamba env update -f /private/var/folders/xy/9hnt0p39799cjcyfkn2wy3fr0000gn/T/tmp9le8fzik/fsl-6.0.7.2_macos-M1.yml -p /usr/local/fsl [as admin: True]\cb1 \
+\cb3 10:09:29 fslinstaller.py: 933: \'a0[stderr]: Password:Sorry, try again.\cb1 \
+\
+\
+\cb3 On Aug 23, 2023, at 4:55\uc0\u8239 AM, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf2 \cb3 Hi Dianne,\cb1 \
+\
+\cb3 It looks like the update did succeed.\cb1 \
+\
+\cb3 But the process then failed for some reason while updating $FSLDIR/etc/fslversion (which is just a text file that contains the installed version). There might be more information as to why this step failed in the log file.\cb1 \
+\
+\cb3 Would you be able to share the log file (
+\fs24 /var/folders/yn/zq2njbnn6cd224b_4qkprb6w0000gn/T/update_fsl_release_r4qoja9e.log
+\fs32 ) if it still exists?\cb1 \
+\
+\cb3 Paul\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs29\fsmilli14667 \cf2 \cb3 From:
+\f0\b0 \cf2 \cb3 \strokec2 \'a0FSL - FMRIB's Software Library <{\field{\*\fldinst{HYPERLINK "mailto:FSL@JISCMAIL.AC.UK"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 FSL@JISCMAIL.AC.UK}}> on behalf of Patterson, Dianne K - (dkp) <{\field{\*\fldinst{HYPERLINK "mailto:dkp@ARIZONA.EDU"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 dkp@ARIZONA.EDU}}>\cf2 \cb1 \strokec2 \
+
+\f4\b \cb3 Sent:
+\f0\b0 \cf2 \cb3 \strokec2 \'a023 August 2023 03:27\cf2 \cb1 \strokec2 \
+
+\f4\b \cb3 To:
+\f0\b0 \cf2 \cb3 \strokec2 \'a0{\field{\*\fldinst{HYPERLINK "mailto:FSL@JISCMAIL.AC.UK"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 FSL@JISCMAIL.AC.UK}}\'a0<{\field{\*\fldinst{HYPERLINK "mailto:FSL@JISCMAIL.AC.UK"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 FSL@JISCMAIL.AC.UK}}>\cf2 \cb1 \strokec2 \
+
+\f4\b \cb3 Subject:
+\f0\b0 \cf2 \cb3 \strokec2 \'a0[FSL] update_fsl_release failure
+\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \'a0\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb3 I am on an M2 Mac studio. Ventura 13.5\'a0\'a0\cb1 \
+\
+\cb3 I tried your new experimental update tool, but it failed (neat idea though):\cb1 \
+\
+\cb3 $FSLDIR/bin/update_fsl_release\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Log file: /var/folders/yn/zq2njbnn6cd224b_4qkprb6w0000gn/T/update_fsl_release_r4qoja9e.log\cb1 \
+\
+\
+\cb3 FSL 6.0.7.2 selected for installation\cb1 \
+\cb3 A new version of FSL is available\cb1 \
+\cb3 FSL installation directory: /Users/dpat/fsl\cb1 \
+\cb3 Installed version: 6.0.6.5\cb1 \
+\cb3 Latest available version: 6.0.7.2\cb1 \
+\
+\cb3 Do you want to update your FSL installation? [y/n]: y\cb1 \
+\
+\cb3 Downloading FSL environment specification from\'a0{\field{\*\fldinst{HYPERLINK "https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml"}}{\fldrslt \cf7 \ul \ulc7 \strokec7 https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml}}...\cb1 \
+\
+\cb3 Updating /Users/dpat/fsl from version 6.0.6.5 to 6.0.7.2...\cb1 \
+\
+\cb3 /\cb1 \
+\
+\cb3 Traceback (most recent call last):\cb1 \
+\
+\cb3 File "/Users/dpat/fsl/bin/update_fsl_release", line 10, in <module>\cb1 \
+\cb3 sys.exit(main())\cb1 \
+\cb3 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/base/update_fsl_release.py", line 153, in main\cb1 \
+\cb3 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/base/update_fsl_release.py", line 71, in do_update\cb1 \
+\cb3 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 1787, in finalise_installation\cb1 \
+\cb3 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 1365, in run\cb1 \
+\cb3 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 836, in check_call\cb1 \
+\
+\cb3 RuntimeError: This command returned an error: cp fslversion /Users/dpat/fsl/etc\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs32 \cf2 \
+\cb3 -Dianne\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://profiles.arizona.edu/person/dkp"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 Dianne Patterson, Ph.D}}
+\f0\fs24 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "mailto:dkp@arizona.edu"}}{\fldrslt 
+\f2\fs32 \cf7 \cb3 \ul \ulc7 \strokec7 dkp@arizona.edu}}
+\f2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs32 \cf2 \cb3 Office: BSRL, Room 235\cb1 \
+\cb3 RII Neuroimaging Staff Scientist\'a0
+\f0\fs24 \cb1 \
+
+\f2\fs32 \cb3 Program Coordinator\'a0{\field{\*\fldinst{HYPERLINK "https://cogsci.arizona.edu/programs/certificate"}}{\fldrslt \cf7 \ul \ulc7 \strokec7 Neuroimaging Methods Certificate}}\'a0\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf2 \cb3 \strokec2 Cognitive Science GIDP affiliate member
+\f2 \cf2 \cb3 \strokec2 \
+Faculty Lead\'a0{\field{\*\fldinst{HYPERLINK "https://openclass.ai/"}}{\fldrslt \cf7 \ul \ulc7 \strokec7 OpenClass.ai}}\
+Mastodon:\'a0@dpat@scicomm.xyz\'a0\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 To unsubscribe from the FSL list, click the following link:\cb1 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1}}\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 To unsubscribe from the FSL list, click the following link:\cb1 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1}}\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf0 \cb3 \strokec4 Hi Dianne,\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 It looks like the update did succeed.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 But the process then failed for some reason while updating $FSLDIR/etc/fslversion (which is just a text file that contains the installed version). There might be more information as to why this step failed in the log file.\cb1 \
+\
+\cb3 Would you be able to share the log file (
+\fs24 /var/folders/yn/zq2njbnn6cd224b_4qkprb6w0000gn/T/update_fsl_release_r4qoja9e.log
+\fs32 ) if it still exists?\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 Paul\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 \cb3 \strokec4 I am on an M2 Mac studio. Ventura 13.5\'a0\cb1 \uc0\u8232 \u8232 \cb3 I tried your new experimental update tool, but it failed (neat idea though):\cb1 \uc0\u8232 \u8232 \cb3 $FSLDIR/bin/update_fsl_release\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 \strokec4 Log file: /var/folders/yn/zq2njbnn6cd224b_4qkprb6w0000gn/T/update_fsl_release_r4qoja9e.log\cb1 \strokec4 \
+\
+\
+\cb3 \strokec4 FSL 6.0.7.2 selected for installation\cb1 \strokec4 \
+\cb3 \strokec4 A new version of FSL is available\cb1 \strokec4 \
+\cb3 \strokec4 FSL installation directory: /Users/dpat/fsl\cb1 \strokec4 \
+\cb3 \strokec4 Installed version: 6.0.6.5\cb1 \strokec4 \
+\cb3 \strokec4 Latest available version: 6.0.7.2\cb1 \strokec4 \
+\
+\cb3 \strokec4 Do you want to update your FSL installation? [y/n]: y\cb1 \strokec4 \
+\
+\cb3 \strokec4 Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml...\cb1 \strokec4 \
+\
+\cb3 \strokec4 Updating /Users/dpat/fsl from version 6.0.6.5 to 6.0.7.2...\cb1 \strokec4 \
+\
+\cb3 \strokec4 /\cb1 \strokec4 \
+\
+\cb3 \strokec4 Traceback (most recent call last):\cb1 \strokec4 \
+\
+\cb3 \strokec4 File "/Users/dpat/fsl/bin/update_fsl_release", line 10, in <module>\cb1 \strokec4 \
+\cb3 \strokec4 sys.exit(main())\cb1 \strokec4 \
+\cb3 \strokec4 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/base/update_fsl_release.py", line 153, in main\cb1 \strokec4 \
+\cb3 \strokec4 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/base/update_fsl_release.py", line 71, in do_update\cb1 \strokec4 \
+\cb3 \strokec4 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 1787, in finalise_installation\cb1 \strokec4 \
+\cb3 \strokec4 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 1365, in run\cb1 \strokec4 \
+\cb3 \strokec4 File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 836, in check_call\cb1 \strokec4 \
+\
+\cb3 \strokec4 RuntimeError: This command returned an error: cp fslversion /Users/dpat/fsl/etc\cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs32 \cf0 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec4 -Dianne\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://profiles.arizona.edu/person/dkp"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 Dianne Patterson, Ph.D}}
+\f3\fs30 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf2 \cb3 \strokec4 dkp@arizona.edu
+\fs30 \cb1 \strokec2 \
+
+\fs32 \cb3 \strokec4 Office: BSRL, Room 235\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 RII Neuroimaging Staff Scientist\'a0
+\f3\fs30 \cf2 \cb1 \strokec2 \
+
+\f2\fs32 \cf2 \cb3 \strokec4 Program Coordinator\'a0{\field{\*\fldinst{HYPERLINK "https://cogsci.arizona.edu/programs/certificate"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 Neuroimaging Methods Certificate}}\'a0\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\f0 \cf2 \cb3 \strokec4 Cognitive Science GIDP affiliate member
+\f2 \cf0 \cb3 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec4 Faculty Lead\'a0{\field{\*\fldinst{HYPERLINK "https://openclass.ai/"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 OpenClass.ai}}\cf0 \cb3 \strokec4 \
+\cf2 \cb3 \strokec4 Mastodon:\'a0@dpat@scicomm.xyz\cf0 \cb3 \strokec4 \
+\
+\
+Hi Tamires,\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 You should demean your categorical variables just like you would a continuous variable - if you have an even number of females (0) and males (1), the demeaned values would be -0.5 and +0.5 respectively. If you have twice as many females as males, the demeaned values would be -0.333 and +0.667 respectively.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 Paul\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Hi, all\
+\
+I have a silly question: how should I demean a categorical variable for adding it as an EV at the GLM?\
+\
+For gender/sex for example I have 0 (female) and 1 (male). I saw an example that the demeaned values would be -0.5 and 0.5, but shouldn't I consider the average, meaning that if I have more females the average will be closer to 0 (for example 0.3) and then use the each individual value (0 or 1) and subtract the average (example female> 0-0.3=-0.3 or male > 1-0.3=0.7)?\
+\
+Or for categorical values I will consider only the average between the binary 0 and 1 (0.5) regardless the number of females and males?\
+\
+Thank you!\
+\
+Best\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f5\b\fs26\fsmilli13333 \cf2 \cb3 \strokec4 One Postdoc
+\f6\b0 \'a0and one RA\'a0
+\f5\b positions
+\f6\b0 \'a0are available in the\'a0
+\f5\b \ul human intracranial EEG Laboratory
+\f6\b0 \'a0\ulnone at The Feinstein Institutes for Medical Research in New York (USA).\'a0The open position is funded by a newly awarded NIH grant to study the cortical and subcortical mechanisms underlying interoception, particularly breathing sensations including dyspnea (affective and sensory components of breathlessness), the neural control of breathing, and brain-body interactions (biofeedback).
+\f0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f6 \cf2 \strokec4 \'a0
+\f0 \strokec2 \
+
+\f6 \strokec4 The lab works with patients being evaluated for\'a0epilepsy surgery using invasive stereo EEG and\'a0electrocorticography recordings (iEEG, ECoG).
+\f0 \strokec2 \
+
+\f6 \strokec4 Imaging\'a0data (MRI, fMRI, DTI), surface EEG, and eye-tracking are also available.\'a0There is a focus on using neuromodulation methods (i.e., invasive and non-invasive electrical stimulation).\'a0General research topics include the investigation of neuronal dynamics underlying selective attention and active sensing, auditory/speech analysis, and neural correlates of object identification.
+\f0 \strokec2 \
+
+\f6 \strokec4 \'a0
+\f0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f6 \cf8 \strokec8 The ideal candidate for the Postdoc position has a PhD in biomedical engineering, neuroscience, psychology, or related field. She/he should have a solid background in signal processing (either ECoG, EEG/MEG, or fMRI), programming (Matlab/Python), statistics, and scientific writing. He/she should be comfortable working in a lab where there is interaction with clinical patients. The position is computationally focused, and responsibilities include analysis of neural, behavioral, and imaging, data using existing scripts (Matlab/Python), further development of analysis scripts, and database mining. Responsibilities will also\'a0include assisting with the\'a0collection and analysis of data, project management, assistance with preparing progress reports and grant applications,\'a0and\'a0helping to present lab findings at conferences and in journals.\'a0
+\f0 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f6 \cf2 \strokec4 \'a0
+\f0 \strokec2 \
+\pard\pardeftab720\li580\fi-580\ri960\sa0\partightenfactor0
+
+\f6 \cf2 \strokec4 ------------ Qualifications -------------\'a0\cf0 \cb1 \uc0\u8232 \cf2 \cb3 \ul \ulc2 Minimum\ulnone :\'a0\cf0 \cb1 \uc0\u8232 \cf2 \cb3 -\'a0PhD (and/or MSc) in an appropriate discipline (e.g., neuroscience, biomedical engineering, computer science, physics, psychology)\'a0
+\f0 \strokec2 \
+
+\f6 \strokec4 -\'a0Experience with at least one programming language (MATLAB, R, or Python).\'a0\'a0
+\f0 \strokec2 \
+
+\f6 \strokec4 - at least 2 years commitment\'a0\cf0 \cb1 \uc0\u8232 \cf2 \cb3 \'a0
+\f0 \strokec2 \
+\pard\pardeftab720\li580\fi-580\ri960\sa0\partightenfactor0
+
+\f6 \cf2 \ul \ulc2 \strokec4 Desirable\ulnone :\'a0
+\f0 \strokec2 \
+\pard\pardeftab720\li580\fi-580\ri720\sa0\partightenfactor0
+
+\f6 \cf2 \strokec4 -\'a0Prior experience working with ECoG/EEG/MEG, neuroimaging, or brain stimulation\'a0data\'a0
+\f0 \strokec2 \
+
+\f6 \strokec4 -\'a0Previous experience working with patients\'a0
+\f0 \strokec2 \
+
+\f6 \strokec4 -\'a0Previous work in a research laboratory that shows evidence of independent\'a0scholarship, problem solving, and motivation
+\f0 \strokec2 \
+
+\f6 \strokec4 -\'a02 years\'a0commitment
+\f0 \strokec2 \
+
+\f6 \strokec4 - Previous publications
+\f0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f6 \cf2 \strokec4 \'a0
+\f0 \strokec2 \
+
+\f6 \strokec4 The position is funded by a newly awarded\'a0NIH\'a0(NHLBI-RO1)\'a0grant, 2 years guaranteed, with expected start date\'a0
+\f5\b as soon as possible
+\f6\b0 . The candidate will have ample opportunities to work closely with national and international collaborators and\'a0will expose the successful applicant to basic and clinical\'a0neuroscience as well as neurosurgery, neurology, and neuropsychology.\'a0The location of the institute allows living in either Queens, Brooklyn or Manhattan, or the suburban neighborhoods of Long Island.
+\f0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f6 \cf0 \cb1 \strokec4 \uc0\u8232 \cf2 \cb3 If you are interested, please send your CV, names and contacts of 2-3 references (ideally researchers), along with possible questions about the positions to Jose Herrero, PhD ({\field{\*\fldinst{HYPERLINK "mailto:jherreroru@northwell.edu"}}{\fldrslt \cf9 \ul \ulc9 \strokec9 jherreroru@northwell.edu}}). We are looking forward to hearing from you!
+\f0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f6 \cf8 \strokec8 \'a0
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 \'a0
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 Thanks,
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 --
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 Jose L Herrero, PhD
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 Assistant Professor
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 Department of Neurosurgery, Northwell
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 Feinstein Institute for Medical Research
+\f0 \cf2 \strokec2 \
+
+\f6 \cf8 \strokec8 New York
+\f0 \cf2 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \cb3 \strokec2 \'a0
+\fs26\fsmilli13333 \cf2 \cb3 \strokec2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf0 \cb3 \strokec4 Hi Dianne,\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 As I mentioned, the update was successful, so you don't need to worry about this at all. But can you also send me the output of running these commands, so I can check the file permissions?\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 ls -l ~/fsl/\
+ls -l ~/fsl/etc/\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 Paul\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs29\fsmilli14667 \cf2 \cb3 \strokec2 The Department of Radiology in the Cumming School of Medicine at the University of Calgary is accepting applications for a Postdoctoral Scholar to join an interdisciplinary multisite team developing a new longitudinal neurodevelopmental cohort. The postdoc will work with Drs. Catherine Lebel and Signe Bray on projects related to characterizing brain development using a new multisite longitudinal cohort sample (800 participants imaged up to three times) and novel brain features and approaches. This is a 2-year position with the possibility of extension.\
+\
+Drs. Bray and Lebel are founding members of the Child and Adolescent Imaging Research (CAIR) Program based out of the Alberta Children\'92s Hospital. Our labs use the on-site research-dedicated 3T MRI to study multimodal brain development and factors influencing development including prenatal exposures, birth complications, neurodevelopmental diagnoses, and mental illness. We are co-leading a new multi-site study along with Drs. Anne Wheeler (SickKids) and Patricia Conrod (Ste-Justine).\
+\
+Applicants should have interest in brain development, mental health and neurodevelopmental conditions and have a background in neuroscience, psychology, physics, biomedical engineering, or a related discipline. Experience with neuroimaging and strong data analytic skills are required. It is highly desirable that applicants have experience conducting research in an interdisciplinary environment.\
+\
+Application details:\'a0\
+Our labs and the University of Calgary are committed to equity, diversity and inclusion (EDI;\'a0{\field{\*\fldinst{HYPERLINK "https://www.ucalgary.ca/equity-diversity-inclusion)"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://www.ucalgary.ca/equity-diversity-inclusion)}}\'a0and we encourage applicants from diverse backgrounds to apply.\
+\
+To apply, please submit a letter of interest and CV to slbray@ucalgary.ca and clebel@ucalgary.ca.\
+\
+Opportunity for on-site meetings at #FLUX2023, Sept 6-9.\
+\
+More information here:\'a0{\field{\*\fldinst{HYPERLINK "http://brayneuroimaginglab.ca/join-us"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 http://brayneuroimaginglab.ca/join-us}}\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs32 \cf2 \cb3 \strokec4 The\'a0Affective Neuroscience Project of the\'a0longitudinal Midlife in the US (MIDUS) study is recruiting a multimodal imaging scientist to investigate the socioemotional determinants of health, wellbeing, and brain aging in our multimodal neuroimaging and psychophysiological measures of brain structure, function, connectivity, and affective responses . More information about the position and how to apply is here:\'a0
+\f0\fs29\fsmilli14667 \cf2 \cb3 \strokec2 \'a0{\field{\*\fldinst{HYPERLINK "https://jobs.wisc.edu/jobs/multimodal-imaging-scientist-madison-wisconsin-united-states"}}{\fldrslt \cf10 \ul \ulc10 \strokec10 https://jobs.wisc.edu/jobs/multimodal-imaging-scientist-madison-wisconsin-united-states}}
+\f2\fs32 \cf0 \cb1 \strokec4 \
+\
+\cf2 \cb3 \strokec4 Learn all about MIDUS here:\'a0{\field{\*\fldinst{HYPERLINK "https://www.midus.wisc.edu/"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://www.midus.wisc.edu/}}\'a0\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 and about the Affective Neuroscience Project here:\'a0{\field{\*\fldinst{HYPERLINK "https://aging.wisc.edu/midus-affective-neuroscience-project/"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://aging.wisc.edu/midus-affective-neuroscience-project/}}\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 \cb3 \strokec4 Stacey M. Schaefer, Ph.D.
+\f2\b0 \cf0 \cb1 \strokec4 \uc0\u8232 \cf2 \cb3 \strokec4 Leader of the MIDUS Neuroscience Project &\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec4 Co-Leader of the MIDUS Admin Core\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 Institute on Aging\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 2245C Medical Sciences Center\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 University of Wisconsin-Madison\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 1300 University Ave\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec4 Madison, WI 53706\'a0USA\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf11 \cb3 \strokec11 Hi Jesper,
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 Of course \'96\'a0{\field{\*\fldinst{HYPERLINK "mailto:signe.winther.hasler@rsyd.dk"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 signe.winther.hasler@rsyd.dk}}
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 BR Signe
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f4\b\fs29\fsmilli14667 \cf2 Fra:
+\f0\b0 \'a0FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>\'a0
+\f4\b P\'e5 vegne af\'a0
+\f0\b0 Jesper Andersson\cb1 \uc0\u8232 
+\f4\b \cb3 Sendt:
+\f0\b0 \'a023. august 2023 16:11\cb1 \uc0\u8232 
+\f4\b \cb3 Til:
+\f0\b0 \'a0FSL@JISCMAIL.AC.UK\cb1 \uc0\u8232 
+\f4\b \cb3 Emne:
+\f0\b0 \'a0Re: [FSL] SV: [FSL] TOPUP voxel displacement map with acq. dur = 1 - extremely large distortions
+\fs32 \cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 Hi again Signe,
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 can I please have your email address? For some reason your email address comes out as\'a0{\field{\*\fldinst{HYPERLINK "mailto:0000ab3c854607d1-dmarc-request@JISCMAIL.AC.UK"}}{\fldrslt 
+\fs32 \cf5 \ul \ulc5 \strokec5 0000ab3c854607d1-dmarc-request@JISCMAIL.AC.UK}}
+\fs32 \strokec4 , which I assume is not correct.\strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \strokec4 \'a0\strokec2 \
+\strokec4 Jesper\strokec2 \
+\
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 Hi again Signe,
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 can I please have your email address? For some reason your email address comes out as\'a0{\field{\*\fldinst{HYPERLINK "mailto:0000ab3c854607d1-dmarc-request@JISCMAIL.AC.UK"}}{\fldrslt 
+\fs32 \cf5 \ul \ulc5 \strokec5 0000ab3c854607d1-dmarc-request@JISCMAIL.AC.UK}}
+\fs32 \strokec4 , which I assume is not correct.\strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \strokec4 \'a0\strokec2 \
+\strokec4 Jesper\strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f4\b \cf2 \cb3 \strokec4 From:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Signe Winther Hasler <0000ab3c854607d1-dmarc-request@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Reply to:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Date:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 Wednesday, 23 August 2023 at 13:41\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 To:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Subject:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 [FSL] SV: [FSL] TOPUP voxel displacement map with acq. dur = 1 - extremely large distortions\cb1 \strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \cb3 \'a0
+\fs32 \cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\fs29\fsmilli14667 \cf11 \cb3 \strokec11 Hi Jesper,
+\fs32 \cf2 \strokec2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs30 \cf2 \cb3 \strokec2 Dear Matthew,\'a0\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 I wanted to follow-up to this. I understand TFCE is generally more robust than voxel-wise. However, I wanted to clarify whether it is really likely that the clusters would be 15x larger with TFCE (~35,000) than with voxel-wise (~2,300)?\'a0\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 From the log file:\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 TFCE:\'a0
+\fs24 \cf2 \cb3 \strokec2 randomise -i filtered_func_data -o /stats -m mask -d design.mat -t design.con -e design.grp -n 500 -T --film
+\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\b\fs24 \cf12 \cb1 \strokec12 \
+\pard\pardeftab720\partightenfactor0
+\cf12 \cb3 voxel:
+\f3\b0\fs30 \cf2 \cb3 \strokec2 \'a0
+\fs24 \cf12 \cb3 \strokec12 randomise -i filtered_func_data -o /stats -m mask -d design.mat -t design.con -e design.grp -n 500 -x --film
+\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf12 \cb1 \strokec12 \
+\pard\pardeftab720\partightenfactor0
+\cf12 \cb3 I get similar cluster sizes (or even larger) when I run with more permutations.\'a0
+\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+Best,\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Afton\
+\
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf11 \cb3 \strokec11 Hi Jesper,
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 Thank you for your reply. That makes sense, and I will stay away from dur = 1 for my data, and instead rescale - -fout with my estimated duration. My data varies in size (we use 6 different DWI sequences based on which group a patient belongs to), so I use different b02b0 files based on the size of my data (the b02b0_1.cnf, b02b0_2.cnf
+\f8\i \cf11 \cb3 \strokec11 ,
+\f0\i0 \cf11 \cb3 \strokec11 \'a0and b02b0_4.cnf). I guess the regularization part is the same, but they are just for different size data, right?
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 Yes, I would very much like you to take a look \'96 thank you! Just specify what data you need (only the original b0-nifti files/all bvalues? or also topup outputs?)
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 BR, Signe
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+
+\fs29\fsmilli14667 \cf11 \strokec11 \'a0
+\fs32 \cf2 \strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f4\b\fs29\fsmilli14667 \cf2 Fra:
+\f0\b0 \'a0FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>\'a0
+\f4\b P\'e5 vegne af\'a0
+\f0\b0 Jesper Andersson\cb1 \uc0\u8232 
+\f4\b \cb3 Sendt:
+\f0\b0 \'a023. august 2023 14:29\cb1 \uc0\u8232 
+\f4\b \cb3 Til:
+\f0\b0 \'a0FSL@JISCMAIL.AC.UK\cb1 \uc0\u8232 
+\f4\b \cb3 Emne:
+\f0\b0 \'a0Re: [FSL] TOPUP voxel displacement map with acq. dur = 1 - extremely large distortions
+\fs32 \cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 Hi again Signe,
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 I accidentally inserted a "(inversely)" in the wrong place in my original email. I have edited it so that it is correct below.
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 Jesper
+\fs32 \
+\
+\
+
+\fs29\fsmilli14667 Hi again Signe,
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 I accidentally inserted a "(inversely)" in the wrong place in my original email. I have edited it so that it is correct below.
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 Jesper
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \
+
+\fs29\fsmilli14667 \'a0
+\fs32 \cb1 \
+
+\fs29\fsmilli14667 \cb3 Dear Signe,\
+\'a0\
+\pard\pardeftab720\li960\fi-960\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\'a0\'a0 I am currently testing the use of distortion correction with TOPUP and EDDY on some EPI-DWI data acquired outside the brain for ADC maps. So not for Eddy's intended use, and with very low-quality data compared to the recommended # of directions and much lower b-values, and probably also lower SNR than brain data.\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0I ran into an issue using TOPUP where I tested different values for the acquisition duration input. I have acquired b=0 data with reversed phase-encoded directions for TOPUP (P--> A and A-->P, and otherwise identical acquisitions so that the acquisition duration is the same).\'a0 I ran TOPUP with arbitrary acq. dur. values of [0.031, 0.051, 0.062] s (as I was unsure of the completely correct value from a Philips scanner), but I also ran TOPUP with this value set to 1 to obtain the field map showing voxel displacement instead of Hz.\'a0 I wanted to use the voxel displacement map to deform some other structure sets.\
+\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0My results for when TOPUP has been applied (with applytopup) on the remaining images with b-value (b=800) are very very different using the arbitrary acquisition durations and setting it to 1. However, I would have expected them all to be almost identical from the descriptions I have read regarding the acquisition duration parameter, when it is applied. I get extremely large corrections on the border of the patient when using acq. dur. = 1, whereas using different arbitrary acq. durs. of = [0.031, 0.051, 0.062] s gives me reasonable and comparable results, however slightly varying.\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0Can you help me figure out what happens when acq. dur. = 1? Does it imply that there is something wrong with my data/my data is not suitable for TOPUP/is SNR so low that TOPUP does something unexpected? Can I then trust using an arbitrary value for TOPUP will give me a correct field map, or should I be careful to find the correct acquisition duration?\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\
+I _
+\f8\i \cf2 \cb3 \strokec2 think
+\f0\i0 \cf2 \cb3 \strokec2 _ that what you see is a consequence of dur=1 giving you much less regularisation than the other choices. The "regularisation" is a way of penalising local changes in the field that are considered "unrealistic" and is an important aspect of making sure that topup converges to something reasonable. It essentially penalises spatial second derivatives of the field.\
+The strength of the penalty is given by the parameter --lambda, which you have probably not explicitly set yourself but which is set for you in the b02b0.cnf configuration file. So the penalty is essentially lambda*mean_second_derivative. But as you can gather from that the second part of that term scales with the magnitude of the field, and that in turn scales (inversely) with the "dur". So in your case you end up with very little regularisation, which together with the low SNR probably causes topup to take some wrong steps early in the process. And then it is not able to recover from those.\
+\'a0\
+So if you want to want to see the voxel displacement maps you are better off by using the correct (or at least a realistic) "dur" and then rescale --fout by whatever value you used.\
+\'a0\
+If you are still concerned about the validity of using topup (you are in somewhat uncharted territory) I would be happy to take a look at your data for you. Just let me know and I will provide a link for upload.\
+\'a0\
+Best regards Jesper\
+\'a0
+\fs32 \
+\
+\
+
+\fs29\fsmilli14667 Dear Signe,\
+\'a0\
+\pard\pardeftab720\li960\fi-960\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\'a0\'a0 I am currently testing the use of distortion correction with TOPUP and EDDY on some EPI-DWI data acquired outside the brain for ADC maps. So not for Eddy's intended use, and with very low-quality data compared to the recommended # of directions and much lower b-values, and probably also lower SNR than brain data.\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0I ran into an issue using TOPUP where I tested different values for the acquisition duration input. I have acquired b=0 data with reversed phase-encoded directions for TOPUP (P--> A and A-->P, and otherwise identical acquisitions so that the acquisition duration is the same).\'a0 I ran TOPUP with arbitrary acq. dur. values of [0.031, 0.051, 0.062] s (as I was unsure of the completely correct value from a Philips scanner), but I also ran TOPUP with this value set to 1 to obtain the field map showing voxel displacement instead of Hz.\'a0 I wanted to use the voxel displacement map to deform some other structure sets.\
+\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0My results for when TOPUP has been applied (with applytopup) on the remaining images with b-value (b=800) are very very different using the arbitrary acquisition durations and setting it to 1. However, I would have expected them all to be almost identical from the descriptions I have read regarding the acquisition duration parameter, when it is applied. I get extremely large corrections on the border of the patient when using acq. dur. = 1, whereas using different arbitrary acq. durs. of = [0.031, 0.051, 0.062] s gives me reasonable and comparable results, however slightly varying.\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0Can you help me figure out what happens when acq. dur. = 1? Does it imply that there is something wrong with my data/my data is not suitable for TOPUP/is SNR so low that TOPUP does something unexpected? Can I then trust using an arbitrary value for TOPUP will give me a correct field map, or should I be careful to find the correct acquisition duration?\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\
+I _
+\f8\i \cf2 \cb3 \strokec2 think
+\f0\i0 \cf2 \cb3 \strokec2 _ that what you see is a consequence of dur=1 giving you much less regularisation than the other choices. The "regularisation" is a way of penalising local changes in the field that are considered "unrealistic" and is an important aspect of making sure that topup converges to something reasonable. It essentially penalises spatial second derivatives of the field.\
+The strength of the penalty is given by the parameter --lambda, which you have probably not explicitly set yourself but which is set for you in the b02b0.cnf configuration file. So the penalty is essentially lambda*mean_second_derivative. But as you can gather from that the second part of that term scales (inversely) with the magnitude of the field, and that in turn scales with the "dur". So in your case you end up with very little regularisation, which together with the low SNR probably causes topup to take some wrong steps early in the process. And then it is not able to recover from those.\
+\'a0\
+So if you want to want to see the voxel displacement maps you are better off by using the correct (or at least a realistic) "dur" and then rescale --fout by whatever value you used.\
+\'a0\
+If you are still concerned about the validity of using topup (you are in somewhat uncharted territory) I would be happy to take a look at your data for you. Just let me know and I will provide a link for upload.\
+\'a0\
+Best regards Jesper\
+\'a0\'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\'a0\'a0\'a0 I hope you can help me understand this better, and thank you in advance!\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0KR Signe\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0Signe Winther Hasler,\
+\'a0\'a0\'a0 Department of Oncology, Odense University Hospital\
+\'a0\'a0\'a0 signe.winther.hasler@rsyd.dk\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0########################################################################\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0To unsubscribe from the FSL list, click the following link:\
+\'a0\'a0\'a0 https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1\
+\'a0\'a0\'a0\
+\
+\
+Dear Ahmed,\
+\'a0\
+just to add to Michiel's reply below.\
+\'a0\
+Michiel's suggestion to acquire whole brain b0 data for topup is an excellent one. You should take care though to ensure that the slices you acquire for your partial FOV diffusion data coincides "exactly" with a subset of the slices in the whole brain b0 data.\
+Also, if you run topup on data that has a different FOV (more slices) than your diffusion data you cannot use the "usual" mechanism for passing the topup output to eddy. I suspect that is what causes your problem (though the unformatted output is all my fault). In your case you will instead need to use the --fout (i.e. the image representation of the field itself), crop that so that you retain only the slices that coincide with the slices in your diffusion data and then pass it as a parameter to the --field option of eddy.\
+\'a0\
+I should warn you though that with very few slices you will always experience loss of data in the end slices, and that will result in completely blank slices (out of plane translation) or partially blank slices (out of plane rotations).\
+\'a0\
+Best regards Jesper\
+\'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f4\b\fs32 \cf2 \cb3 \strokec4 From:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Michiel Cottaar <michiel.cottaar@ndcn.ox.ac.uk>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Reply to:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Date:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 Wednesday, 26 July 2023 at 17:35\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 To:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Subject:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 Re: [FSL] Eddy is not working when trying to run it on a 10-slice volume data and displays unformatted strings (e.g. b 5 U)
+\fs29\fsmilli14667 \cb1 \strokec2 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf13 \cb3 \strokec13 The\strokec4 \'a0{\field{\*\fldinst{HYPERLINK "https://centerhealthyminds.org/"}}{\fldrslt \ul \strokec13 Center for Healthy Minds at the University of Wisconsin\'96Madison}}\'a0\strokec13 is seeking multiple highly motivated postdoctoral researchers to work on intervention studies in U.S. adults to promote wellbeing and prevent suicide.\cf0 \strokec4 \
+\cf13 \strokec13 \'a0\cf0 \strokec4 \
+\cf13 \strokec13 Areas of research include the evaluation and mechanistic examination of behavioral and physiological interventions in healthy and distressed adults using multiple types of MRI, passive measures of behavior and physiology, and survey measurements.\cf0 \strokec4 \
+\cf13 \strokec13 The postdoctoral research associates will have opportunities to participate in activities related to neuroimaging methods development and evaluation, study data collection and analyses, research publications, grant writing and are expected to make\cf0 \strokec4 \
+\cf13 \strokec13 positive scholarly contributions to this interdisciplinary and highly collaborative research program.\cf0 \strokec4 \
+\cf13 \strokec13 \'a0\cf0 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b \cf13 \strokec13 Qualifications:
+\f0\b0 \cf0 \strokec4 \
+
+\f4\b \cf13 \strokec13 Required
+\f0\b0 \cf0 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf13 \strokec13 Ph.D. in medical physics, psychology, neuroscience, and/or a related field\cf0 \strokec4 \
+\cf13 \strokec13 Prior experience with brain imaging techniques (e.g. MRI, DTI, and/or fMRI) and/or behavioral data\cf0 \strokec4 \
+\cf13 \strokec13 Strong communication and organization skills are a must.\cf0 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\b \cf13 \strokec13 Preferred
+\f0\b0 \cf0 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf13 \strokec13 Experience with brain image analysis software tools, MATLAB, Python, C++ and/or other computer programming (e.g., R, Mplus)\cf0 \strokec4 \
+\cf13 \strokec13 Experience with large and complex research studies and/or clinical trials\cf0 \strokec4 \
+\cf13 \strokec13 Emerging track record of publishing in academic journals, strong analytic skills, and excel at working in a collaborative environment.\cf0 \strokec4 \
+\cf13 \strokec13 \'a0\cf0 \strokec4 \
+\cf13 \strokec13 We are an equal opportunity/affirmative action employer. We promote excellence through diversity and encourage all qualified individuals to apply.\cf0 \strokec4 \
+\cf13 \strokec13 \'a0\cf0 \strokec4 \
+\cf13 \strokec13 To view the full posting with application instructions please go to\cf14 \strokec14 \'a0{\field{\*\fldinst{HYPERLINK "https://centerhealthyminds.org/assets/files-publications/PostDoc_DARPA-FINAL-COPY.pdf"}}{\fldrslt \cf13 \ul \ulc13 \strokec13 https://centerhealthyminds.org/assets/files-publications/PostDoc_DARPA-FINAL-COPY.pdf}}\cf0 \strokec4 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Hi SPM Experts!\
+\
+I am running a second level fMRI analysis with 2 groups and 1 covariate. It's set up as a full factorial design in spm 12.\
+\
+The design matrix has 3 columns.\
+Column 1 is group A, Column 2 is group B, and Column 3 is the covariate.\
+\
+I am interested in testing if there are any regions where my Betas scale with the covariate, but in different directions for each group.\
+\
+In other words, I expect a positive relationship for group A and a negative relationship for group B in the same region.\
+\
+I am not sure of the correct way to set up the contrast for this test, or if I can even use contrasts to really test this.\
+\
+I had thought that I could do the following F-contrast, thinking this indicates a positive relationship with Group and and negative with group B:\
+\
+1 0\'a0 1\
+0 1 -1\
+\
+And in fact, the region I expected did show a significant cluster. However when I tried it invert the direction of the effect (to confirm I was really measuring what I thought), I essentially got the same result suggesting this didn't actually tell me what I wanted.\
+\
+This is the other contrast matrix I tried (I thought this would indicate a negative relationship for group A and positive relationship for group b):\
+\
+1 0 -1\
+0 1\'a0 1\
+\
+So my questions are:\
+\
+Can I test what I want with the F or T contrasts at the second level?\
+\
+If I can, what is the right way to set up the contrast?\
+\
+If I can't, what is the right way to do this analysis?\
+\
+Thank you!\
+\
+Cheers,\
+Brandon\
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear Noah,\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f9 \cf2 \cb3 \strokec2 \'a0
+\f0 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\li960\fi-960\sa0\partightenfactor0
+
+\f9 \cf2 \cb3 \strokec2 I have a few questions regarding Fsl_prepare_fieldmap in preparation\'a0for FUGUE on functional data. I have AP and PA fieldmaps that I've run through topup to get a phase image along with the magnitude image (after running bet and etc).\'a0 Should the phase image be multiplied by 6.28 before putting it as the input for Fsl_prepare_fieldmap? Also, I am looking at the respective json files for the individual AP and PA fieldmaps, and they give identical TEs. Should I be looking at different values in my json files? Or is this something to be asked to the scanner technician?
+\f0 \cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\cb1 \
+\cb3 there seem to be a little bit of a misunderstanding here. There are two main methods for getting/calculating a fieldmap (i.e. a map of the off-resonance field, typically scaled in Hz or rad/s).\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa0\partightenfactor0
+\ls1\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 To acquire two gradient echo images (non-EPI) with different echo times. Because these are not EPI images they are not distorted (as a first approximation). If one has acquired two such images one can use fsl_prepare_fieldmap to calculate a fieldmap. By default that fieldmap is scaled in rad/s.\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 To acquire two spin echo-EPI images with opposing phase encode directions (e.g. A->P and P->A). These are both distorted (being EPI images), but in opposing images. These can be used together with topup to calculate a fieldmap, which if the total readout time was entered correctly will be scaled in Hz. The result is a finished fieldmap, and it does not need to (_should_ not) be processed with fsl_prepare_fieldmap.\cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\cb1 \
+\cb3 It sounds to me like you have acquired data for case 2, and that you don't need to do any more to your data.\cb1 \
+\cb3 \'a0\cb1 \
+\cb3 Best regards Jesper\cb1 \
+\cb3 \'a0\cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f9 \cf2 \cb3 \strokec2 \'a0
+\f0 \cf2 \cb1 \strokec2 \
+
+\f9 \cf2 \cb3 \strokec2 Best,
+\f0 \cf2 \cb1 \strokec2 \
+
+\f9 \cf2 \cb3 \strokec2 \'a0
+\f0 \cf2 \cb1 \strokec2 \
+
+\f9 \cf2 \cb3 \strokec2 Noah Lee
+\f0 \cf2 \cb1 \strokec2 \
+
+\f9 \cf2 \cb3 \strokec2 he/him/his
+\f0 \cf2 \cb1 \strokec2 \
+
+\f9 \cf2 \cb3 \strokec2 Yale University | Saybrook '25
+\f0 \cf2 \cb1 \strokec2 \
+
+\f9 \cf2 \cb3 \strokec2 B.S. Neuroscience
+\f0 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \'a0\cb1 \
+\
+\
+\cb3 Dear Robin,\
+\'a0\
+\pard\pardeftab720\li960\fi-960\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\'a0\'a0 I am trying to run TBSS on around 80 subjects. It seems like for some subjects the nonlinear registration fails. I preprocessed the data as follows:\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0dwidenoise (MRTrix)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0 mrdegibbs (MRTrix)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0 eddy (FSL)\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0 dwibiascorrect (MRTrix)\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0Then I rut dtifit and followed by the default TBSS pipeline. When I check the subjects *FA_to_target.nii.gz, few look very warped.\
+\'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0Do you have any suggestions on how I can handle that issue? Maybe rigid registration of the FA prior to the TBSS pipeline? Or would you rather just exclude these cases?\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 You say that some subjects "\cf2 \cb3 \strokec2 look very warped". Do you mean that they are warped in a way that make them look really weird, indicating a complete failure of the nonlinear registration? If so, when the non-linear registration fails spectacularly it is _
+\f8\i \cf2 \cb3 \strokec2 usually
+\f0\i0 \cf2 \cb3 \strokec2 _ caused by a failure of the preceeding affine registration. You should be able to check if that is the case, and if so modify the call to flirt for those specific cases that fail.\
+\'a0\
+Best regards Jesper\
+\'a0\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear FSL users,\
+\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0 We are pleased to announce the release of FSL 6.0.7.2.\
+\
+Release highlights:\
+\
+- **New** FSLeyes MRS plugin - for working with MRS data from within FSLeyes\
+- **New** `spec2nii` command-line tool - for generating MRS NIfTI images\
+- `fsl_mrs` 2.1.12 - A range of bug fixes and improvements\
+- Fixed threading initialisation issue in some FSL tools\
+- FSLeyes 1.8.0 - New lightox options to overlap slices, and reverse slice order. A range of other bug fixes and improvements.\
+- `fsl-nets` - fixed bug in the `plot_spectra` function.\
+- `newimage` - Suppress some debug messages, fixes to `.hdr`/`.img` file extension handling\
+- `fslstats` - new `-json` option for JSON-formatted output\
+\
+The full changelog can be found at:\
+\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew?action=AttachFile&do=view&target=6.0.7.2.md"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew?action=AttachFile&do=view&target=6.0.7.2.md}}\
+\
+This update can be downloaded via:\
+\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://fsl.fmrib.ox.ac.uk/fsldownloads_registration"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://fsl.fmrib.ox.ac.uk/fsldownloads_registration}}\
+\
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:\
+\
+$FSLDIR/bin/update_fsl_release\
+\
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.\
+\
+Kind Regards\
+Matthew\
+--------------------------------\
+Dr Matthew Webster\
+FMRIB Centre\
+John Radcliffe Hospital\
+University of Oxford\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs30 \cf2 \cb3 \strokec2 Dear Jesper,
+\f9 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 I realize the file name is misleading. To clarify, I have DWI data with gradient-echo fieldmaps, and I used FEAT to prepare fieldmaps and perform EPI distortion correction for tractography afterwards.\'a0
+\f9 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 You are right that the field map is scaled to radians/sec which I totally missed.
+\f9 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Just one question: how do you make a unity transform?
+\f9 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Also, I have tried Synb0-DISCO, but I did not have enough RAM unfortunately.
+\f9 \
+\pard\pardeftab720\partightenfactor0
+
+\f2 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Sincerely,
+\f9 \
+
+\f2 Rosemarie Le
+\f9 \
+\
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear Rosemarie,\
+\'a0\
+\pard\pardeftab720\li960\fi-960\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\'a0\'a0 The dimensions of filtered_func_data.nii.gz (top) are indeed different from fmap_rads.nii.gz (bottom).\
+\'a0\'a0\'a0 \'a0\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0How can I fix this issue?\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\'a0\'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec4 I am a little confused by what you are trying to do, and has done already. I only now noticed that you are attempting to run eddy on filtered_func_data. Does that mean that this is fMRI data? What processing was performed by FEAT? You write "
+\f10\fs36 \cf2 \cb3 \strokec4 \'a0
+\f0\fs29\fsmilli14667 \cf2 \cb3 \strokec4 after performing gradient fieldmap correction with FEAT". Does that mean that you use FEAT only to do the gradient non-linearity correction (by editing the job-file). Also, I notice that you attempt to pass a file called fmap_rads to eddy. Does that mean that your field is scaled to radians/sec? In that case you will need to divide it by 2*pi since eddy expects the field in Hz.\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 The things above aside, there are two ways in which you can proceed.\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sa0\partightenfactor0
+\ls2\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Resample fmap_rads (after scaling) to the dimensions of your data. You can do that using flirt where you use a volume from filtered_func_data as -ref, use the -applyxfm along with passing a unity transform as -init.\cf0 \cb1 \
+\ls2\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 Ignore your measured fieldmap and instead use the method suggested and released by Kurt Schilling to generate a synthetic spin-echo EPI in undistorted space. This can then be used together with your actual spin-echo EPI b=0 volume (assuming this is _
+\f8\i not
+\f0\i0 _ fMRI data) to run topup. You can then proceed exactly as if you had acquired an additional b=0 volume with reversed phase encoding.\cf0 \cb1 \
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 It may seem like a waste to discard your measured fieldmap. The main argument for doing so would be that eddy assumes the resulting voxel-displacement map to be invertible, which is often not true for fieldmaps generated with fsl_prepare_fieldmap (but which is true for topup generated fieldmaps). It also assumes that the fieldmap is very precisely registered to the first volume of your data set, which is again guaranteed for topup generated fieldmaps, but not for measured fieldmaps.\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 Best regards Jesper\cf2 \cb3 \strokec2 \
+\cf2 \cb3 \strokec4 \'a0\cf2 \cb3 \strokec2 \
+\
+\
+Dear Yixin,\
+\'a0\
+\pard\pardeftab720\li960\fi-960\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\'a0\'a0 may I ask if you have figured out what have caused this error message? I have encountered the same error message lately\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0Image Exception : #11 :: NEWIMAGE::raw_general_transform: vout and valid must have same dimensions\
+\'a0\'a0\'a0 NEWIMAGE::raw_general_transform: vout and valid must have same dimensions\
+\'a0\'a0\'a0 terminate called after throwing an instance of 'EDDY::EddyException'\
+\'a0\'a0\'a0\'a0\'a0 what():\'a0 EDDY:::\'a0 EddyUtils.cpp:::\'a0 static EDDY::DiffStats EDDY::EddyUtils::GetSliceWiseStats(const NEWIMAGE::volume<float>&, std::shared_ptr<const NEWIMAGE::volume<float> >, const NEWIMAGE::volume<float>&, const NEWIMAGE::volume<float>&, const EDDY::ECScan&):\'a0 Exception thrown\
+\'a0\'a0\'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+\cf2 \cb3 \strokec2 hmm, I cannot recall having seen that before. Though it is possible I have simply forgotten.\
+\'a0\
+How old is the version of FSL/eddy that you are using? The error above shouldn't really happen since there is a lot of checking when initially reading the input files to prevent it. If you are already using the latest version of eddy I might need to ask you to upload your data for me to take a look at.\
+\'a0\
+Best regards Jesper\
+\'a0\'a0\'a0\
+\'a0\'a0\'a0\'a0########################################################################\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear Jasper,\
+\
+Thanks a lot for all you advice. The two definitions indeed provide very similar values (if my calculation is correct).\
+\
+With some quick update, in our imaging protocol, we did use multiband EPI but didn't use GRAPPA acceleration.\'a0 Our Bandwidth Per Pixel Phase Encode was 20.886 (according to DICOM info), our NumberOfPhaseEncodingSteps was 84 (according to DICOM info), therefore our effective echo spacing time was 1/(20.886*84) ~= 0.00057 sec.\
+Accordingly,\
+FSL definition = (84-1)*0.00057 = 0.0473 Sec\
+SPM definition = 1/20.886 = 0.0479 Sec\
+\
+Which is about only 1.25% difference (as indicated by this website\'a0{\field{\*\fldinst{HYPERLINK "https://lcni.uoregon.edu/wiki/acquiring-and-using-field-maps/)"}}{\fldrslt \cf7 \cb3 \ul \ulc7 \strokec7 https://lcni.uoregon.edu/wiki/acquiring-and-using-field-maps/)}}.\
+\
+I will try to consult with SPM group as well.\
+\
+Thank you very much~\
+\
+Best\
+Vince\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \strokec2 The released HCP-YA resting state data that had been cleaned with sICA+FIX already had that done.\'a0 That said, we later determined this was not a good idea.\'a0 See Glasser et al., 2019 Neuroimage.\'a0 We ended up backing that step out of the cleanup for what will be in the next releases.\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \strokec2 \uc0\u8232 \cf2 \cb3 \strokec2 Matt.\
+\'a0\
+\pard\pardeftab720\partightenfactor0
+
+\f4\b\fs32 \cf2 \cb3 \strokec4 From:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Amin Ghaffari <amin.ghaffari@EMAIL.UCR.EDU>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Reply-To:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Date:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 Monday, August 21, 2023 at 4:39 PM\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 To:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \strokec4 \uc0\u8232 
+\f4\b \cf2 \cb3 Subject:\'a0
+\f0\b0 \cf2 \cb3 \strokec4 [FSL] Question about regressing out the motion parameters
+\fs29\fsmilli14667 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\b\fs26\fsmilli13333 \cf2 \cb3 \strokec2 \'a0
+\f0\b0\fs29\fsmilli14667 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \'a0\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 Hi Team;\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 So I am working with the HCP dataset, and I want my scans to be the results of the regressing out of the motion parameters.\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 So I am using the file with the 12 motion parameters that is demeaned (Movement_Regressors_dt.txt), and then getting the residuals of this file basd on the main scan. But I really don't know what I need to do after getting the residuals, can you please help me with this?\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 Thanks\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 Amin\cf2 \cb1 \strokec2 \
+\
+\
+}

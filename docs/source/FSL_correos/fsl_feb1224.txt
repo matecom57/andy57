@@ -1,0 +1,296 @@
+(reposting for a colleague, please follow contact instructions at the
+end if interested; apologies for repeated postings!)
+
+### HIRING: Data Analyst / Data Scientist Position at the CDN Lab
+
+The Unit on Computational Decision Neuroscience (CDN,
+https://www.nimh.nih.gov/research/research-conducted-at-nimh/research-areas/clinics-and-labs/edb/cdn
+) at the National Institute of Mental Health is seeking a full-time
+Data Scientist/Data Analyst.
+
+The lab is focused on understanding the neural and computational bases
+of adaptive and maladaptive decision-making and their relationship to
+mental health. Current studies investigate how internal states lead to
+biases in decision-making and how this is  exacerbated in mental
+health disorders. Our approach involves a combination of computational
+model-based tasks, questionnaires, biosensor data, fMRI, and
+intracranial recordings. The main models of interest come from
+neuroeconomics, reinforcement learning, Bayesian inference, signal
+detection, and information theory.
+
+The main tasks for this position include but are not restricted to
+computational modeling of behavioral data from decision-making and
+other cognitive tasks, statistical analysis of task-based, clinical,
+physiological and neuroimaging data, as well as data visualization for
+the purposes of scientific presentations, public communication, and
+academic manuscripts. The candidate is expected to demonstrate
+experience with best practices for the development of well-documented,
+reproducible programming pipelines for data analysis, that facilitate
+sharing and collaboration, and live up to our open-science philosophy,
+as well as to our data management and sharing commitments at NIH.
+
+No prior experience with psychiatry research is needed but a
+familiarity with the constructs and models of interest in the lab
+(value-based learning and decision-making, metacognition, belief
+updating, emotion regulation, and/or effort-cost estimation) is
+desirable, as these are universally important for understanding
+adaptive healthy functioning and psychiatric disease.
+
+This is an exciting opportunity for a candidate with established
+programming and analytic skills to work at the cutting edge of
+psychiatry research and computational cognitive neuroscience.
+
+You can find more about our work and recent publications at
+
+https://www.nimh.nih.gov/research/research-conducted-at-nimh/research-areas/clinics-and-labs/edb/cdn
+
+## Job Requirements:
+
+- Assisting with setting up and managing analysis pipelines
+- Conducting advanced analysis of behavioral, physiological, and
+imaging data, including but not limited to computational modeling and
+machine learning
+- Integrating complex datasets across multiple modalities, including
+fMRI, electrophysiology, biosensor data neuroendocrinology, behavior,
+and self-report
+- Assisting in data visualization for manuscripts and presentation of
+results at scientific meetings
+- Supporting/co-mentoring junior members of the lab on data analysis practices
+
+## Qualifications:
+
+- A PhD in neuroscience, cognitive science, psychology, computer
+science, data science, statistics, engineering, or a related field
+- Strong programming skills (ideally in Python, and/or MATLAB, R)
+- Experience working within Linux environment and cloud computing
+- An ability to work well in multidisciplinary and highly collaborative teams
+- An interest in translational research
+- A track record or potential for scholarly productivity
+- Effective independent problem-solving and task prioritization
+
+## Experience with any of the following is not required, but preferred:
+
+- Computational modeling (mathematical optimization, reinforcement
+learning, Bayesian inference, neuroeconomics or other types of
+modeling of human/animal learning and decision-making)
+- statistical inference (e.g. generalized linear models, mixed effect
+models, state space models, survival analysis)
+- Dynamic analysis of longitudinal or time series data (e.g.
+neuroimaging, MEG, EEG, or neural recordings)
+- Advanced statistical methods and machine learning
+
+The data analyst will work under the supervision of Dr. Silvia
+Lopez-Guzman on projects that aim to understand (1) the process of
+adaptively evaluating options and committing to a choice; (2) how
+changes in internal and motivational states may abnormally shape
+decisions in individuals with and without psychopathology; and (3) how
+cognitive and metacognitive resources support these adaptive or
+maladaptive decision-making processes. The CDN lab leverages the rich
+clinical resources and computational expertise across the NIH, and
+collaborates actively with labs that specialize on addiction,
+depression, anxiety, and pain. The lab is an active part of a growing
+community of expert labs on learning and decision-making who work
+together to improve our understanding from the circuits and behavioral
+neuroscience level to the human cognitive and clinical levels, making
+this a unique opportunity for any scientist with an interest in
+decision science and computational psychiatry.
+
+## How to Apply:
+
+To apply, please send your CV and a cover letter to Dr. Silvia
+Lopez-Guzman (silvia.lopezguzman@nih.gov ) with the subject “CDN Lab
+Data Analyst App”. Inquiries about any aspect of the position are very
+welcome!
+
+########################################################################
+
+
+Assistant/Associate/Full Professor, Radiology, Human Ultra-High-Field MR 
+Division: Radiological Sciences 
+Track: Tenure 
+Rank: Commensurate w/Experience 
+
+Position Description: 
+The Mallinckrodt Institute of Radiology (MIR) at the Washington University School of Medicine in St. Louis -- consistently ranked among the top five departments in NIH radiology funding (fourth in 2020, second in 2021, and third in 2022) -- invites applications for two full-time faculty positions on the investigator (tenure) track in human ultra-high field (UHF) MR imaging and spectroscopy. Applications are particularly encouraged from candidates with research interests focused on UHF RF coil and hardware development or novel acquisition and reconstruction methods. 
+
+Qualifications: 
+	•	PhD, MD/PhD or equivalent degree in the physical sciences or engineering; 
+	•	Experience and skill in the development of UHF MR hardware or data acquisition and reconstruction methods; 
+	•	Demonstrated potential or success in obtaining extramural funding; 
+	•	Demonstrated potential or success in mentoring graduate students and post-doctoral fellows; 
+	•	Outstanding communication, writing, and interpersonal skills. 
+
+Biomedical MR Center (BMRC): 
+The selected candidates will join the Biomedical Magnetic Resonance Center (BMRC), one of five research centers housed within MIR. The BMRC comprises approximately 20 faculty members and 50 students, postdoctoral fellows, staff, and clinical fellows. BMRC investigators are pioneers in the development and application of MR techniques and data analytics, providing an understanding of the complex microstructure and biophysical and physiological determinants that govern healthy and diseased tissues. The BMRC offers a collaborative environment for diverse interdisciplinary research initiatives. More information about the BMRC can be found here: https://www.mir.wustl.edu/research/research-centers/biomedical-mr-center-bmrc/. The selected candidates will be encouraged to collaborate with the BMRC faculty and the broader imaging community in MIR and other departments at Washington University in St. Louis. 
+
+Facilities: 
+MIR is a preeminent research institute with excellence in magnetic resonance imaging, optical imaging, neuroimaging, PET tracer development and translation, and imaging informatics. MIR has extensive collaborations with other top-ranked departments across the School of Medicine and the University. MIR supports world-class research imaging facilities, including magnetic resonance, nuclear, molecular, and optical imaging resources, and cyclotrons for preclinical and translational research. Human MR research scanners include a Siemens whole-body Terra.X 7T (anticipated delivery in summer 2024), four Siemens Prisma 3T, a Siemens Vida 3T, a Siemens Biograph mMR PET/MR, and two PET/CT (Vision). The MIR small-animal imaging resources include 9.4 T, 4.7 T, and 11.74 T MR scanners, PET/CT and simultaneous PET/MR scanners, and a GE SPINlab hyperpolarization unit. MIR radiologists serve nine hospitals, including the nationally ranked Barnes-Jewish and St. Louis Children's Hospitals, bridging cutting-edge MRI science with clinical excellence. 
+
+Benefits: 
+Washington University provides faculty with generous benefits that include health, life, disability coverage, retirement, and tuition assistance. In addition to these competitive benefits, the university offers a variety of time off and quality-of-life programs. We are a diverse group and wholly encourage diversity to reflect the rich community in which we live and serve. We are committed to promoting an environment that is inclusive and welcoming to all individuals. All qualified applicants will receive consideration for employment without regard to race, color, age, religion, sex, sexual orientation, gender identity or expression, national origin, veteran status, disability, or genetic information. 
+
+Application Instructions 
+Candidates are invited to submit their applications through Opportunity Details - Faculty Opportunities (wustl.edu), including a cover letter detailing qualifications and career goals, a research plan, and a curriculum vitae addressed to Dr. Pam Woodard, Elizabeth E. Mallinckrodt Professor and Chair of the Department of Radiology. 
+
+Contact for questions 
+Hongyu An, D.Sc, Chair of the Search Committee 
+hongyuan@wustl.edu 
+314-3625805 
+www.mir.wustl.edu 
+
+--
+Jennifer Elam, Ph.D.
+Scientific Outreach, Human Connectome Project
+Washington University School of Medicine
+Department of Neuroscience, Box 8108
+660 South Euclid Avenue
+St. Louis, MO 63110
+314-362-9387
+elam@wustl.edu
+www.humanconnectome.org
+
+
+Hi experts,
+
+Recently, I wanted to register T1 to EPI image with epi_reg function. I used the following command line to perform this registration.
+
+epi_reg \
+--epi=epi.nii.gz \
+--t1=T1.nii.gz \
+--t1brain=T1_mask.nii.gz \
+--out=epi_reg_d
+
+But, based on the output (e.g. epi_reg_d.nii.gz), it seems there is something wrong with the registration process. Please see the results via this link (https://drive.google.com/file/d/1V1XP0vUbHU8_qwqCvvKM59JtPIwxfB5S/view?usp=sharing). When I run epi_reg, there is no bug reported. But, the registration seems not correct. Do you have any thoughts on this issue?
+
+Thank you so much. Looking forward to your reply.
+
+Best,
+Cain
+
+########################################################################
+
+Dear all,
+ 
+Please share with anyone you think might be interested! Also posted on LinkedIn and Twitter.
+An exciting opportunity in Manchester: 
+2 PERMANENT ACADEMIC POSTS IN MRI PHYSICS 
+Do you want to work on the largest imaging project in the World? Come and join us!
+ 
+The UK Biobank Imaging Study is a “first of a kind”, significantly larger than any previous imaging study. The unprecedented scale, detail and quality of the project has enabled unique discoveries about the development of many diseases in older age. 
+The post-holders will work seamlessly across the University of Manchester and the UK Biobank (approximately on 50% each). You will develop a highly competitive program of research linking with your Biobank role. This could be related, but not limited, to areas of strategic importance such as technological advances in neuroimaging.
+To apply (deadline 28 Feb):
+https://www.jobs.manchester.ac.uk/Job/JobDetail?JobId=26274
+
+
+Hi Marina,
+I think this display range is just to get a good visualisation for the comparison in this specific example. Normally for your data you’d adjust these values (or in some cases you might want to display with no thresholding).
+ 
+Best
+Rezvan
+ 
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marina Di Stefano <marinadistefano99@HOTMAIL.IT> Date: Friday, 9 February 2024 at 14:34 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: [FSL] Dual regression
+Dear all, I'm appraoching seed-based correlation analysis, I'm quite new to the topic, so I apoogize if the question could seem trivial. Following the tutorial on the FSL page (https://www.fmrib.ox.ac.uk/primers/rest_primer/4.1_SCA/index.html) , I wonder why the output of stage 2 dual regression (dr_stage2_subject00000) should be taken in the 1 3 threshold. Any delucidation is well appreciated.  Kind regards
+
+
+We have a vacancy for a PhD student in our Alzheimer Nederland (Dutch Alzheimer Society) project
+'Multi-layer brain networks in Alzheimer’s disease':
+
+https://werkenbij.amsterdamumc.org/en/vacatures/research/multi-layer-brain-networks-in-alzheimers-disease
+https://www.linkedin.com/posts/alle-meije-wink-b185609_vacatures-multi-layer-brain-networks-in-activity-7159110239894577154-rAHR
+
+Do you have experience with neuroimage processing and analyses, programming skills, a fascination for the brain, and would you like to work in an international and collaborative group? Please visit the website for more info and application procedures. Feel free to mail me for any further questions.
+
+bw
+
+Dr. Ir. Alle Meije Wink | Assistant Professor
+
+Department of Radiology and Nuclear Medicine
+Amsterdam UMC, location VUmc
+office PK -1 X112 | Boelelaan 1118 | 1081 HZ Amsterdam
+T +31 20 4440316 | E: a.wink@amsterdamumc.nl
+www.amsterdamumc.nl | www.vumc.nl / www.amc.nl
+
+########################################################################
+
+
+Oh, also - FSLeyes lookup tables must have the format that is described here: https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html#lookup-tables
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: 09 February 2024 14:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Loading inia19 LUT into FSL
+ 
+Hi Andrew,
+
+Are you using the latest version of FSLeyes? Versions prior to 1.7.0 will not recognise files with a .txt extension.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andrew Stark <0000be7d4b169208-dmarc-request@JISCMAIL.AC.UK>
+Sent: 08 February 2024 20:07
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Loading inia19 LUT into FSL
+
+
+Dear all,
+I'm appraoching seed-based correlation analysis, I'm quite new to the topic, so I apoogize if the question could seem trivial. Following the tutorial on the FSL page (https://www.fmrib.ox.ac.uk/primers/rest_primer/4.1_SCA/index.html) , I wonder why the output of stage 2 dual regression (dr_stage2_subject00000) should be taken in the 1 3 threshold. Any delucidation is well appreciated.
+
+Kind regards
+
+########################################################################
+
+
+Dear Michael,
+
+I could solve the problem on my own. In the roi_stats.py script I changed in line 346 np.float to float
+
+array = array.astype(float)
+
+and on line 733 I deleted np.float
+
+if isinstance(v, (float, np.float32, np.float64)):
+
+after this small changes the oxford _asl_rois_stats script worked well.
+
+########################################################################
+
+
+Im trying to load the inia19 atlas to FSleyes. I am able to load the neuromaps image, however I want to load in the corresponding .txt file as a LUT. It contains something like
+
+1 l_occipital_gyrus_(macaque) 47 129 147 255
+
+
+
+However, when I go to Load LUT and select it, I get this error. Any fix?
+
+An error occurred while loading /mnt/OSDisk/Users/a.stark/Desktop/fMRI Analysis/inia19/inia19-NeuroMaps.txt
+Details: Cannot determine type of /mnt/OSDisk/Users/a.stark/Desktop/fMRI Analysis/inia19/inia19-NeuroMaps.txt
+
+########################################################################
+
+
+Hi Saad,
+ 
+Just to let you know this issue was resolved. The problem was that the acquisition parameter files used had been set up for synb0-disco, which resulted in extra information in the data_eddy_para and data_unique_pes fields in the qc.json files.
+ 
+Thank you for your time in helping to troubleshoot!
+ 
+BW,
+George
+
+Hi all,
+
+I'm running the most recent FSL version (6.0.7.7) on my iMac (macos sonoma) and was wondering whether there's any way to parallelise FEAT. I'm running my analyses on my iMac (i.e. not on the fmrib cluster) and would like FEAT to use more than one core. Is this at all possible?
+Just to clarify, I know how to run multiple participants in parallel but I wonder how to make it that each participants' FEAT analysis can be distributed across multiple cores. I've already googled but couldn't find anything on the FSL website and tutorials so I wasn't sure if I missed anything obvious.
+
+Any help is much appreciated!
+
+Best
+Lisa
+
+########################################################################
+
+

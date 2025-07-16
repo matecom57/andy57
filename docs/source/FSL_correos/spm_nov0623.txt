@@ -1,0 +1,576 @@
+Dear Riccardo,
+
+the spatial smoothing during realignment is only used to obtain more robust movement parameter estimates from noisy input images. If you run "Realign->Estimate", image pixel data will stay unmodified and only image orientation will be updated. If you reslice the realigned images, your resliced images will be interpolated, but no additional smoothing is applied.
+
+Hope this helps
+Volkmar
+
+Hi everybody,
+
+We are pleased to announce that the application portal is still open for the NIH funded 2024 session of the course, “Training in Advanced Statistical Methods in Neuroimaging and Genetics”.
+
+ 
+
+We hope you pass this email on to your local neuroimaging community.
+
+ 
+
+The course will start on Monday, April 15, 2024 and finish on April 26, 2024 and is to be held in person, in Salt Lake City, Utah, United States at the University Guest House Conference Center. Our course also includes an ongoing (throughout the year) continuing education portion.
+
+ 
+
+The course is an intensive 2-weeks, about 8 hours per day of a mix of lectures and hands-on computer labs.
+
+ 
+
+neurostatsbootcamp.org
+
+ 
+
+Due to recently increased funding, we are pleased to announce we can drop our tuition this year to $2250 (from $3000). Strictly financial need scholarships will also still be offered.
+
+Tuition includes hotel accommodations at the University Guest House (arrival on April 14 with departure on April 26), breakfast, lunch, day time snacks, three dinners out as a group, and the planned evening activities. All course attendees will arrange for their own transportation to Salt Lake City. The course cost does include a daily pass to the Salt Lake City Trax light rail/commuter system. (Please note that the course instructors' effort is supported by the NIH grant thus avoiding that cost being passed on to the course attendees. This course is strictly not-for-profit.)
+
+Because of the limited size and advanced nature of the course, attendance is by application only – please make sure to fully read the website instructions. In general, applicants must be a US citizen, permanent resident, or working with an appointment at a US institution, though we do have the ability to accommodate 3 to 6 individuals that do not meet this criteria. We anticipate the total class size to be between 22 and 25 students.
+
+ 
+
+There are opportunities for scholarships which can partially offset hotel accommodations. These are based on true financial need and you will be instructed how to apply if you are admitted to the course.
+
+ 
+
+We look forward to seeing you in SLC in 2024!
+
+ 
+
+Priority application deadline is Nov 1, 2023; decisions around Dec 5th.
+
+Late application deadline is Dec 1, 2023; decisions by Jan 5th, 2024.
+
+ 
+
+For more information email us at neurostats@g.ucla.edu or  advancedstatisticscourse@utah.edu
+
+ 
+
+Robert and Anna
+
+ 
+
+------------------------------
+
+Robert Welsh, PhD
+
+Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+rcwelsh@g.ucla.edu
+
+robert.c.welsh@utah.edu
+
+ 
+
+Anna Docherty, PhD
+
+Associate Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+anna.docherty@utah.edu
+
+ 
+
+Christina Caldera
+
+Course Administrator
+
+neurostats@g.ucla.edu
+
+ 
+
+With only one degree of freedom, there is no threshold (a in the attached plot) that corresponds with 0.05 (p in the plot) according to the approximations of random field theory. This causes spm_uc_RF.m to get stuck in an infinite loop because there is no solution to the problem.
+
+In such cases, the correction should probably switch to a Bonferroni, so I've tweaked the code so that if it runs for more than 10,000 iterations, it will give up and use this instead.  This fix is in the attached spm_uc_RF.m .
+
+I've ccd Karl because he understands random field theory - and it's his code.
+
+Best regards,
+-John
+
+
+Hi SPM members
+
+I’m trying to use a multiple regression model in CAT12. My main purpose is to check whether there are associations (positive/negative) between cortical thickness measures and cognitive scores. At first, I entered the cognitive scores as covariates in the regression models, but now I’m interested in controlling for the effects of age (enter age as a nuisance variable).
+
+After some research in the SPM Archives concerning this matter, I have set up the model as follows: 
+(1) Tested for the positive and negative age*cognitive_scores interactions; saved the map; excluded the significant areas from the next step
+(2) Tested for the effect of cognitive scores (-1 and 1); saved the map.
+
+Can you please check if I have done it correctly, please?
+
+Dear Ganesh,
+
+Spectral DCM uses a fourier transform, which by definition is a linear operation, to go from time domain to spectral domain hence precluding modelling of non-linear effects. For further technical description of spectral DCM please see this recent tutorial paper. 
+
+If you are modelling resting fMRI, you can instead use stochastic DCM. However, as Peter said, you need to think carefully if you want to use a very complicated stochastic DCM to model non-linear effects in your network model.
+
+With very best wishes,
+Adeel
+
+On Mon, Nov 6, 2023 at 7:07 PM Zeidman, Peter <peter.zeidman@ucl.ac.uk> wrote:
+Dear Ganesh
+There is an example script for specifying DCMs in SPM12 at the bottom of this page: https://www.fil.ion.ucl.ac.uk/spm/data/attention/ 
+
+Alternatively, there is a streamlined scripting interface for specifying fMRI DCMs in the development version of SPM. This version of SPM is available from https://github.com/spm/spm . See the help text at the top of spm_dcm_specify.m for an example.
+
+However, I'd also push back and ask - are you sure you want to use the non-linear model? It does make an already difficult model fitting problem more challenging, so I'd recommend only using it for your hypotheses depend on it.
+
+Best
+Peter
+
+-----Original Message-----
+From: Ganesh Chand <ganeshchand64@GMAIL.COM>
+Sent: 03 November 2023 20:22
+To: SPM@JISCMAIL.AC.UK; Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Subject: Spectral DCM Re: Batch script for non-linear modulations in DCM
+
+⚠ Caution: External sender
+
+
+Dear Peter,
+
+I am wondering how to apply spectral DCM for the model structure example below. If there is any batch script suggestion for this example. Greatly appreciate your response for this and in the past below.
+
+Best regards,
+Ganesh
+
+
+
+
+............................................
+
+Dear Ganesh,
+
+DCM.d should be of dimension [n x n x n] where n is the number of regions. The matrix DCM.d(:,:,1) represents non-linear connections from region 1, matrix DCM.d(:,:,2) represents non-linear connections from region 2, etc.
+
+
+
+So to match the description you provided, model 2 should be:
+
+
+
+DCM.d(1,3,2) = 1;
+
+DCM.d(3,1,2) = 1;
+
+
+
+Best,
+
+Peter
+
+
+
+From: SPM (Statistical Parametric Mapping) [mailto:SPM@JISCMAIL.AC.UK] On Behalf Of Ganesh Chand
+Sent: 02 March 2016 13:52
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Batch script for non-linear modulations in DCM
+
+
+
+Dear SPM team,
+
+
+
+I am having confusion how to write batch script for non-linear modulations in DCM.
+
+DCM.options.nonlinear  = 1;
+Suppose I have THREE ROIs and they are intrinsically connected so I define
+
+DCM.a = [1 1 1; 1 1 1; 1 1 1];
+
+No bilinear modulation: DCM.b = zeros(3,3,0); No external input to a node: DCM.c = zeros(3,3,0);
+
+
+%model 1:
+DCM.d = zeros(3,3,1);DCM.d(3,2,1) = 1;  DCM.d(2,3,1) = 1; % First ROI has nonlinear modulation in the connections between second ROI and third ROI save DCMM1 DCM
+
+%model 2:
+DCM.d = zeros(3,3,1);DCM.d(3,1,1) = 1;  DCM.d(1,3,1) = 1; % Second ROI has nonlinear modulations in the connections between first ROI and third ROI save DCMM2 DCM
+
+%model 3:
+DCM.d = zeros(3,3,1);DCM.d(2,1,1) = 1;  DCM.d(1,2,1) = 1; %Third ROI has nonlinear modulation in the connections between first ROI and  second ROI save DCMM3 DCM
+
+Are the models defined here the correct way for nonlinear modulations in DCM? If this is the correct way, my confusion is how the model 1 (for example) knows the first ROI is providing modulation effect?
+
+Your advice is greatly appreciated in advance.
+
+Best regards,
+
+Ganesh Chand
+
+
+Dear Ganesh
+There is an example script for specifying DCMs in SPM12 at the bottom of this page: https://www.fil.ion.ucl.ac.uk/spm/data/attention/ 
+
+Alternatively, there is a streamlined scripting interface for specifying fMRI DCMs in the development version of SPM. This version of SPM is available from https://github.com/spm/spm . See the help text at the top of spm_dcm_specify.m for an example.
+
+However, I'd also push back and ask - are you sure you want to use the non-linear model? It does make an already difficult model fitting problem more challenging, so I'd recommend only using it for your hypotheses depend on it.
+
+Best
+Peter
+
+-----Original Message-----
+From: Ganesh Chand <ganeshchand64@GMAIL.COM>
+Sent: 03 November 2023 20:22
+To: SPM@JISCMAIL.AC.UK; Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Subject: Spectral DCM Re: Batch script for non-linear modulations in DCM
+
+⚠ Caution: External sender
+
+
+Dear Peter,
+
+I am wondering how to apply spectral DCM for the model structure example below. If there is any batch script suggestion for this example. Greatly appreciate your response for this and in the past below.
+
+Best regards,
+Ganesh
+
+
+
+
+............................................
+
+Dear Ganesh,
+
+DCM.d should be of dimension [n x n x n] where n is the number of regions. The matrix DCM.d(:,:,1) represents non-linear connections from region 1, matrix DCM.d(:,:,2) represents non-linear connections from region 2, etc.
+
+
+
+So to match the description you provided, model 2 should be:
+
+
+
+DCM.d(1,3,2) = 1;
+
+DCM.d(3,1,2) = 1;
+
+
+
+Best,
+
+Peter
+
+
+
+From: SPM (Statistical Parametric Mapping) [mailto:SPM@JISCMAIL.AC.UK] On Behalf Of Ganesh Chand
+Sent: 02 March 2016 13:52
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Batch script for non-linear modulations in DCM
+
+
+
+Dear SPM team,
+
+
+
+I am having confusion how to write batch script for non-linear modulations in DCM.
+
+DCM.options.nonlinear  = 1;
+Suppose I have THREE ROIs and they are intrinsically connected so I define
+
+DCM.a = [1 1 1; 1 1 1; 1 1 1];
+
+No bilinear modulation: DCM.b = zeros(3,3,0); No external input to a node: DCM.c = zeros(3,3,0);
+
+
+%model 1:
+DCM.d = zeros(3,3,1);DCM.d(3,2,1) = 1;  DCM.d(2,3,1) = 1; % First ROI has nonlinear modulation in the connections between second ROI and third ROI save DCMM1 DCM
+
+%model 2:
+DCM.d = zeros(3,3,1);DCM.d(3,1,1) = 1;  DCM.d(1,3,1) = 1; % Second ROI has nonlinear modulations in the connections between first ROI and third ROI save DCMM2 DCM
+
+%model 3:
+DCM.d = zeros(3,3,1);DCM.d(2,1,1) = 1;  DCM.d(1,2,1) = 1; %Third ROI has nonlinear modulation in the connections between first ROI and  second ROI save DCMM3 DCM
+
+Are the models defined here the correct way for nonlinear modulations in DCM? If this is the correct way, my confusion is how the model 1 (for example) knows the first ROI is providing modulation effect?
+
+Your advice is greatly appreciated in advance.
+
+Best regards,
+
+Ganesh Chand
+
+
+Hi all, 
+
+During the realignment step of preprocessing SPM allows you to smooth the data using a default Gaussian kernel of 5 mm FWHM. My question is: Is it really necessary? What would be the consequence of lowering the filter to 0mm in order to preserve spatial resolution?
+
+Thanks in advance
+
+Dear Riccardo
+
+I you could leave it unchanged for the analysis part, the assumption is still that all slices were acquired simultaneously, which is likely to be a bit less incorrect with multiband where you often end up with lower TR. In the slice timing help text it is described how to take into account that multiple slices are acquired simultaneously.
+
+Best
+Torben
+
+
+
+Den 3. nov. 2023 kl. 10.25 skrev Riccardo Bonafini <riccardobonafini17@GMAIL.COM>:
+
+Hi all, 
+
+I'm a Master student working on fMRI data from a localizer experiment collected using multiband acquisition. 
+My question regards microtime resolution and microtime reference. In particular, I don't know whether I should leave the SPM default values of, respectively, 16 and 8, or set it following this formula: n°slices/multiband and (n°slices/multiband)/2. 
+
+Many thanks
+
+Riccardo
+
+
+Hi all, 
+
+I'm a Master student working on fMRI data from a localizer experiment collected using multiband acquisition. 
+My question regards microtime resolution and microtime reference. In particular, I don't know whether I should leave the SPM default values of, respectively, 16 and 8, or set it following this formula: n°slices/multiband and (n°slices/multiband)/2. 
+
+Many thanks
+
+Riccardo
+
+Dear all,
+
+
+There is a postdoc opening in the lab of Prof. Bianca van Kemenade (www.bvankemenade.com) at the Justus Liebig University Gießen, Germany. The position can be filled as soon as possible and is funded until December 2025.
+
+
+This is a DFG funded position on action and perception. In particular, the project will investigate the influence of action on visual perception and neural processing in visual cortex using fMRI (including MVPA and retinotopic mapping) and behavioural methods. We’re looking for someone with a PhD in psychology, neuroscience, or cognitive science (or a related field), fMRI experience, as well as good programming skills.
+
+
+This project is part of the SFB/TRR135, a large collaboration of many labs in Marburg and Giessen (https://www.sfb-perception.de/index-en/). Furthermore, the lab is affiliated with the research consortium “The Adaptive Mind” (http://www.theadaptivemind.de/). You will thus be part of a vibrant research environment with a supportive atmosphere and plenty of opportunities for collaboration and training!
+
+
+For more details, please see the job announcements. Please apply using the online submission form:
+
+English: https://www.uni-giessen.de/karriere/stellenangebote/ausschreibungen/wissenschaftliche-mitarbeiter/688-11-e
+
+
+German: https://www.uni-giessen.de/karriere/stellenangebote/ausschreibungen/wissenschaftliche-mitarbeiter/688-11
+
+
+
+Hi Jasmine
+
+Just pick a number close to 1 c1, c2 etc are posterior probability maps. If you want your mask to contain voxels where the probability of being GM is above 99% you should choose 0.99 as the threshold, another (more intuitive, but less correct) interpretation would be that least 99% of the voxel contains gray matter.
+
+Best
+Torben
+
+
+Dear SPMers,
+
+I was reading some manuals in my lab today when I saw something peculiar: In the artifact detection toolbox from nitric it recommends against including movement parameters. I was taught otherwise. My question is simple -- should movement and outlier parameters be included as regressors in the first level analysis or not? 
+
+Very Repsectfully, David
+
+Dear Jasmine,
+
+There is more than one way to do this but what you could do is first create binary masks of grey and white matter from the c1/c2 images obtained via segmentation (by thresholding using ImCalc) then compute the mean and stdev of your MR image within these two masks (using spm_summarise). If you need help with the implementation of these two steps, just let us know
+
+Best regards,
+
+Guillaume.
+
+
+
+On 31/10/2023 20:38, Jasmine Cakmak wrote:
+⚠ Caution: External sender
+
+
+Hello,
+
+Any help with this would be greatly appreciated.
+
+I am trying to define thresholds for binarizing a mask, and I need the mean and the standard deviation of the voxel intensities in both grey and white matter (separately) for a normalized/bias corrected MRI image. I was told that these values are provided as a part of the segmentation algorithm, but I am unable to find them anywhere (in both Segment and Old Segment). I was thinking to compute the values using the probability maps, but those values are meaningless since the intensity is almost homogenously white. Am I missing something in the segmentation output or is there a way to calculate these values?
+
+Thanks so much in advance,
+Jasmine
+-- 
+Guillaume Flandin, PhD
+Wellcome Centre for Human Neuroimaging
+UCL Queen Square Institute of Neurology
+London WC1N 3BG
+
+Dear Zhenhao,
+
+There was a discussion last week on this list about a similar issue when making statistical inference with very few degrees of freedom but I don't think this is your problem here as the freeze occurs at a slightly different time. As you are using macOS, my suspicion is that you are using a window manager (like Magnet or Tiles) that interacts badly with MATLAB - see the comment at the end of this page:
+
+https://www.fil.ion.ucl.ac.uk/spm/docs/development/compilation/macos/
+Compilation of SPM on macOS - SPM Documentation
+Documentation of the SPM Software for neuroimaging
+www.fil.ion.ucl.ac.uk
+
+If that's not the case, what happens when you press Ctrl-C at the MATLAB prompt?
+
+Best regards,
+
+Guillaume.
+
+We will have two positions starting from March 2024 for young postdoctoral researchers interested to work at the crossroads between Brain Imaging and Genetics.
+
+Projects overview
+
+The new researchers will be involved in two projects recently funded by the Italian Ministry of University and Research under the PRIN program. Both projects will involve the analysis of Brain Magnetic Resonance Imaging scans from public international datasets such as the UK Biobank and the Adolescent Brain Cognitive Development study (ABCD). The hired researchers will extract and analyze quantitative morphological phenotypes from these images and possibly enhance current extraction methods also through machine learning techniques.
+
+The subsequent analyses will focus on different aspects of these traits’ genetic bases. One project, held in collaboration with Prof. Gloria Menegaz at the University of Verona, will explore the neural foundations of aging and specifically aim to understand the molecular phenomena associated with aging (“age gap”) in healthy and pathological conditions. The other project, which will also involve Pagani Lab at the University of Padova, will include elements of evolutionary and population genetics with the goal to investigate the impact of Neanderthal-derived (and in general recently evolved) genetic variants.
+
+What we are looking for
+
+Young post-docs or post-lauream researchers (a recent PhD will be considered a plus but is not required) interested in the analysis of multimodal MRI images and, potentially, willing to learn about the genetics/genomics field. We require some experience in the analysis of large data sets, and working in a Linux command line environment. Coding skills in Python/R and previous experience in the analysis of MRI images will be considered a significant plus.
+
+What we are offering
+
+Two positions supervised by Prof. Fabrizio Pizzagalli for the imaging aspects and co-supervised by Dr. Davide Marnetto and Prof. Paolo Provero for the genomic and molecular aspects. The positions will be embedded within the NeuroImaging Genetics and Computational Biology labs community at the Dept. of Neuroscience 'Rita Levi Montalcini', Corso Massimo D’Azeglio 52, 10126, Turin, Italy.
+
+The NeuroImaging Genetics Lab, led by Prof. Pizzagalli, is dedicated to unraveling the intricate links between genetic factors and human brain anatomy and functions, delving into the mysteries of neurological disorders and cognitive processes. Prof. Pizzagalli, experienced in computational neuroanatomy and neuroimaging data analysis, leads the ENIGMA-SULCI group and collaborates internationally.
+
+The Computational Biology Unit is a medium-small purely computational group led by Prof Paolo Provero with decades of experience in bioinformatics and computational genomics, in addition to a great track record in mentoring young researchers towards expertise in computational biology research.
+
+Contract duration: 18-24 months
+
+Net monthly salary: approx. 1800 EUR/month after all income and local taxes
+
+Contract type: Assegno di Ricerca
+
+If interested please get in contact with us before November 15th 2023 by e-mail (fabrizio.pizzagalli@unito.it; davide.marnetto@unito.it; paolo.provero@unito.it enclosing a CV!
+
+Dear members
+
+Does anyone know whether CAT12 provides surface area maps?
+
+If yes, how can I obtain it?
+
+
+Thank you so much!
+
+Regards
+
+The Developmental Social Affective Neuroscience Lab at the University of Texas at Dallas (https://labs.utdallas.edu/dsanlab/), directed by Dr. Leehyun Yoon, is seeking a self-motivated and inquisitive postdoctoral scholar to take the lead on a project on the neural mechanisms of self-esteem updating through social comparison in social media and achievement-related contexts. The sample of this project will include emerging adults and adolescents. The desired start date is January 2024, but is flexible. Our research uses behavioral tasks, functional and structural neuroimaging, computational modeling, and longitudinal data analysis to investigate the mechanisms of self-referential processing and social motivation/behavior in young people (ages 10 – 25) and their link to mental health outcomes and social functioning. Dr. Yoon strives to build a collaborative and stimulating lab environment (see https://labs.utdallas.edu/dsanlab/values/ for lab values) and promote the careers of trainees. Our lab is a part of the Center for Vital Longevity (CVL), a research center where nine research labs are housed. The CVL is dedicated to understanding the brain and cognitive health across the lifespan from childhood to late adulthood. The postdoc will be able to interact with researchers at CVL and the department of psychology at UT Dallas. The CVL is located blocks away from the UTD imaging Center, where MRI equipment is housed. The lab is located in the heart of Dallas, a fun, dynamic, and affordable city.
+
+This position is funded for a period of 2 years. Position will work on site and in person.
+
+ 
+
+Preferred Education and Experience:
+
+· PhD by the start date in psychology, neuroscience, human development, or related field; an emphasis on social and affective neuroscience is desirable.
+· Strong interest in human social motivation, self-esteem, and the brain’s reward, emotion, and self-processing circuitry.
+· Experience with designing behavioral and/or fMRI experiments.
+· Experience with fMRI data analysis using any software.
+· Strong writing skills and emerging publication record.
+· Skills in computational modeling (e.g., fitting a reinforcement learning model) is preferred but not necessary.
+· Experience with structural MRI data analysis or advanced fMRI data analysis (e.g., MVPA, GIMME) is a plus.
+
+ 
+
+Duties and Responsibilities:
+
+· Designing novel behavioral/fMRI experiments
+
+· Programming experiments with psychtoolbox, cogent 2000, or Eprime
+
+· Supervising research assistants for data collection
+
+· Behavioral and fMRI data analysis with newly collected data
+
+· Behavioral and fMRI/structural MRI data analysis with the lab’s existing data related to social feedback processing
+
+· Data interpretation
+
+· Preparing manuscripts for publication and presenting findings at a conference
+
+ 
+
+Required documents:
+
+Interested applicants should submit their (1) CV, (2) a brief cover letter describing why they want to join the lab, research interest/experience, qualifications, future goals, and ideal start date, and (3) contact information for 2-3 references.
+
+ 
+
+Please contact Dr. Leehyun Yoon (leehyun.yoon@utdallas.edu) for any questions.
+
+ 
+
+Application site: https://jobs.utdallas.edu/postings/24799
+
+
+--
+Leehyun Yoon, PhD 
+Incoming Assistant Professor
+Department of Psychology
+Center for Vital Longevity
+The University of Texas at Dallas
+https://labs.utdallas.edu/dsanlab/
+
+
+The Developmental Social Affective Neuroscience Lab at the University of Texas at Dallas (https://labs.utdallas.edu/dsanlab/), directed by Dr. Leehyun Yoon, is seeking a full-time lab manager/Research Assistant I to begin in January 2024. The position requires a minimum of a one-year commitment. A two-year commitment is preferred. Our research uses behavioral tasks, functional and structural neuroimaging, computational modeling, and longitudinal data analysis to investigate the mechanisms of self-referential processing and social motivation/behavior in young people (ages 10 – 25) and their link to mental health outcomes and social functioning. Dr. Yoon strives to build a collaborative and stimulating lab environment (see https://labs.utdallas.edu/dsanlab/values/) and promote the careers of trainees. The lab’s ongoing projects include the neural mechanisms of updating self-esteem through social comparison in social media and achievement-related contexts. The Research Assistant I will be responsible for the general administration and supervision of the lab, as well as conducting experiments in collaboration with the PI and other lab members. The Research Assistant I will have an opportunity to experience all aspects of research processes and opportunities for authorship. This position would be ideal for candidates considering future graduate study in related fields. The desired start date is January 2024, but is flexible.
+
+ 
+
+Preferred Education and Experience:
+
+· BA or BS in psychology, neuroscience, human development, data science, or a related field.
+
+· Excellent organizational, planning, time management, problem-solving, interpersonal and communication skills.
+
+· Ability to efficiently search information on the web and follow complex instructions.
+
+· Prior experience with programming, data wrangling, human subject data collection, and behavioral/fMRI data analysis is highly desired, but not required.
+
+· Prior experience managing teams of people.
+
+· Prior experience working with children and adolescents.
+
+· Interest in human social motivation, self-esteem, adolescent depression, and the brain’s reward, emotion, and self-processing circuitry is a plus.
+
+ 
+
+Duties and Responsibilities:
+
+· Conducting systematic literature review
+
+· Setting up access to open datasets and arranging data of the lab’s interest
+
+· Recruiting, scheduling, and testing participants at ages 10 to 25
+
+· Coordinating and training research assistants
+
+· Ordering laboratory supplies as directed by senior research staff
+
+· Assisting with IRB applications and modifications
+
+· Assisting with or leading behavioral and fMRI data analysis
+
+· Assisting with the preparation of materials for reports or publication
+
+ 
+
+Required documents:
+
+Interested applicants should submit their (1) CV, (2) a brief cover letter describing why they want to join the lab, research interest/experience, qualifications, future goals, and ideal start date, and (3) contact information for 2-3 references.
+
+ 
+
+Please contact Dr. Leehyun Yoon (leehyun.yoon@utdallas.edu) for any questions.
+
+ 
+
+Application site: https://jobs.utdallas.edu/postings/24798 
+
+
+--
+Leehyun Yoon, PhD 
+Incoming Assistant Professor
+Department of Psychology
+Center for Vital Longevity
+The University of Texas at Dallas
+https://labs.utdallas.edu/dsanlab/
+
+

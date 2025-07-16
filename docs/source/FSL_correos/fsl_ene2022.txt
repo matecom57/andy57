@@ -1,0 +1,675 @@
+Dear Paul,
+
+Thank you for clarifying that we do not have to install cuda toolkit.
+
+It's my bad that I named the file as 'cuda-toolkit-102.sh'. The script actually installs cuda driver for cuda 10.2, not cuda toolkit.
+
+"sudo apt-get -y install --no-install-recommends cuda-10-2"
+
+I want to make sure that the file (cuda-10-2) is the one I need to install. Am I right?
+
+Best regards,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 10:22 PM paul mccarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Alessandra and Kiyotaka,
+
+The FSL wiki GPU page is out of date. As of FSL 6.0.6, you do not need to install the CUDA toolkit to run eddy_cuda (the 10.2 toolkit is statically linked into the binary) - you only need to install a CUDA driver.
+
+Alessandra, are you running eddy_cuda directly, or are you submitting it to a cluster via fsl_sub?
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi FSL Team,
+
+I am running a general linear model with parametric modulation for my first level analyses. However, there are some trials where participants did not input any rating. What value should I input (in the third column of the timing file) for these trials in order for FSL to run? I've initially put NaN, and that produces a problematic design.fsf file.
+
+Thank you!
+
+Best,
+Jo
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Alessandra and Kiyotaka,
+
+The FSL wiki GPU page is out of date. As of FSL 6.0.6, you do not need to install the CUDA toolkit to run eddy_cuda (the 10.2 toolkit is statically linked into the binary) - you only need to install a CUDA driver.
+
+Alessandra, are you running eddy_cuda directly, or are you submitting it to a cluster via fsl_sub?
+
+Paul
+
+########################################################################
+
+
+Hi
+
+please use this link to see the pdf
+https://www.dropbox.com/s/ir7f0h7sdhrbxz6/FSL_HCP1065_FA_template_20230119.pdf?dl=0
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Alessandra,
+
+In order to use eddy_cuda10.2 in Ubuntu 20.04, you need to install CUDA 10.2.
+
+The trick is that you need to use Ubuntu 18.04 repository for CUDA (not Ubuntu 20.04 repository)
+
+Attached is a script which installs CUDA 10.2 for Ubuntu 20.04.
+
+I myself use Ubuntu 20.04 and I wrote this script for myself.
+
+Save this script in Download and run this script sets up NVIDIA repository and install CUDA 10.2.
+
+After reboot, you can use eddy_cuda 10.2.
+
+Hope this helps,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 2:42 AM Alessandra Caporale <alessandra.stella.caporale@gmail.com> wrote:
+I found these information at
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GPU
+
+according to which, it seems that eddy_cuda is not supported by the 10.02 cuda suite!
+
+How could I install a cuda (9.1 or 8.0) that instead supports it?
+
+Thanks,
+
+Alessandra Stella
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+--
+Kiyotaka Nemoto, M.D., Ph.D.
+Associate Professor
+Department of Psychiatry
+Division of Clinical Medicine, Faculty of Medicine
+University of Tsukuba
+1-1-1 Tennodai Tsukuba, Ibaraki 305-8575, Japan
+E-mail: kiyotaka@nemotos.net
+
+I found these information at
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GPU
+
+according to which, it seems that eddy_cuda is not supported by the 10.02 cuda suite!
+
+How could I install a cuda (9.1 or 8.0) that instead supports it?
+
+Thanks,
+
+Alessandra Stella
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi FSL team,
+
+Some of my first level analyses are not running. In the report_log html and message in the feat1 log file, it says
+
+design.fsf /usr/local/fsl-6.0.5.2/bin/feat_model design terminate called after throwing an instance of 'std::runtime_error' what(): pinv(): svd failed Aborted (core dumped) FATAL ERROR ENCOUNTERED: COMMAND: /usr/local/fsl-6.0.5.2/bin/feat_model design ERROR MESSAGE: child process exited abnormally END OF ERROR MESSAGE
+
+How may I troubleshoot this?
+
+Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL experts,
+
+I intend to use the FSL_HCP1065_FA_1mm template in our processing streams.
+
+I noticed that the cortical rim in the FA template does not fully align with the cortical rim in the MNI152_T1_1mm_brain template. See page 1, 2 and 3 in the linked pdf below. This seems especially to be the case for the upper part of the brain (possibly biased to the right hemisphere), as well as occipital and frontal regions.
+
+I guess this might be due to the FA template containing non-brain/CSF voxel that are “squeezed” to fit the MNI brain template, which contains minimal non-brain/CSF voxels. At least with respect to the cortical rim. Non-brain/CSF voxels in the T1 template are clearly apparent in medial temporal, circle of Willis, optical nerves, sigmoid sinus, brainstem, and cerebellar regions.
+
+Consequences are likely minor, when sticking to FA MNI standard space, depending on the brain mask quality of to be warped individual subject FA volumes and employed warping strategies. 
+
+Nevertheless, ensuring a better fit between FA (MD, …) and T1 MNI templates would likely reduce possible “noise” in reported results in the literature, as MNI coordinates in T1 MNI standard space not necessary would match those in FA MNI standard space.
+ 
+Please your thoughts on this
+
+BW
+William
+
+pdf with examples: https://www.dropbox.com/s/mkz2beyossj8x8x/FSL_HCP1065_FA_template_20230119.pdf?dl=0
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Paul,
+
+Thank you! That makes our lives easier!
+
+Best regards,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 11:03 PM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Kiyotaka,
+
+You should simply install the latest available driver for your GPU. The FSL CUDA tools (eddy_cuda10.2, probtrackx2_gpu10.2, xfibres_gpu10.2) are statically linked against the CUDA 10.2 toolkit, but should work on any GPU with an up-to-date driver, and which supports CUDA 10.2 or newer.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Kiyotaka Nemoto <kiyotaka@NEMOTOS.NET>
+Sent: 20 January 2023 13:52
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSL - eddy_cuda
+ 
+Dear Paul,
+
+Thank you for clarifying that we do not have to install cuda toolkit.
+
+It's my bad that I named the file as 'cuda-toolkit-102.sh'. The script actually installs cuda driver for cuda 10.2, not cuda toolkit.
+
+"sudo apt-get -y install --no-install-recommends cuda-10-2"
+
+I want to make sure that the file (cuda-10-2) is the one I need to install. Am I right?
+
+Best regards,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 10:22 PM paul mccarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Alessandra and Kiyotaka,
+
+The FSL wiki GPU page is out of date. As of FSL 6.0.6, you do not need to install the CUDA toolkit to run eddy_cuda (the 10.2 toolkit is statically linked into the binary) - you only need to install a CUDA driver.
+
+Alessandra, are you running eddy_cuda directly, or are you submitting it to a cluster via fsl_sub?
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Kiyotaka,
+
+You should simply install the latest available driver for your GPU. The FSL CUDA tools (eddy_cuda10.2, probtrackx2_gpu10.2, xfibres_gpu10.2) are statically linked against the CUDA 10.2 toolkit, but should work on any GPU with an up-to-date driver, and which supports CUDA 10.2 or newer.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Kiyotaka Nemoto <kiyotaka@NEMOTOS.NET>
+Sent: 20 January 2023 13:52
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSL - eddy_cuda
+ 
+Dear Paul,
+
+Thank you for clarifying that we do not have to install cuda toolkit.
+
+It's my bad that I named the file as 'cuda-toolkit-102.sh'. The script actually installs cuda driver for cuda 10.2, not cuda toolkit.
+
+"sudo apt-get -y install --no-install-recommends cuda-10-2"
+
+I want to make sure that the file (cuda-10-2) is the one I need to install. Am I right?
+
+Best regards,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 10:22 PM paul mccarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Alessandra and Kiyotaka,
+
+The FSL wiki GPU page is out of date. As of FSL 6.0.6, you do not need to install the CUDA toolkit to run eddy_cuda (the 10.2 toolkit is statically linked into the binary) - you only need to install a CUDA driver.
+
+Alessandra, are you running eddy_cuda directly, or are you submitting it to a cluster via fsl_sub?
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+While using BET at the MRI graduate programme, we realised that there is a bug with the bet options. Running a command with capitalised options returns the error message "cannot open file: -" (screenshot below). However it does look like an output is being produced.
+
+This only occurs with capitalised options (I tested it with -B and -R).  Other options seem to work fine. I am running version 6.0.5.2:dc6f4207 on a macbook with OS Ventura.  I checked with Rick Lange during the practical and we tested in other computers and it seems to be an mac OS problem. It works fine in the previous OS version.
+
+Hope this helps.
+
+Best wishes,
+David Berhanu
+
+
+"
+
+--
+
+David Alves Berhanu
+
+Médico Interno de Neurorradiologia @ Centro Hospitalar Lisboa Norte
+
+Assistente de Neuroanatomia @ Faculdade de Medicina da Universidade de Lisboa 
+
+[@] david.berhanu@outlook.com  [t] +351 91 6062661
+
+
+
+Hi David,
+
+This is a known issue on Ventura - Apple have changed the command-line interface of the "dc" UNIX program - a number of FSL tools depend on this command, and so will crash on Ventura.
+
+We are updating the FSL tools for the next release, but as an interim work-around you can install a wrapper for the dc program into $FSLDIR/bin/ (or $FSLDIR/share/fsl/bin/ for FSL 6.0.6 and newer).
+
+1. Download the attached file
+2. Run these commands in a terminal. You may need to prefix the second and third commands with "sudo", which will prompt you for your administrator password.
+
+    cd $FSLDIR/bin/
+    unzip ~/Downloads/dc.zip
+    chmod a+x ./dc
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Nooshin,
+
+I'm guessing that you have FSL 6.0.5.2 installed. You should be able to fix this issue by upgrading to the latest FSL version (6.0.6.2), by following the steps at https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Maarten,
+
+On the surface this looks like a network error - is there anything unusual about your network connection? Have you tried again recently?
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Diederick,
+
+This sounds like an issue with the module command, e.g. improper use of the LD_LIBRARY_PATH environment variable. The FSL binaries as we release them should not need LD_LIBRARY_PATH (or simiilar) set - you will need to consult with your system administrators.
+
+Paul
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Lin,
+
+The "expanded functional image" option will cause a three-stage registration to take place (functional -> expanded functional -> structural). This option is useful for partial-FOV data, where one full-FOV volume has been acquired.
+
+The "alternative reference image" option will result in two-stage registration, using the alternative reference in place of the functional data. This option should only be used if the alternative reference is defined in the same space as the functional data.
+
+Paul
+
+########################################################################
+
+
+Hi Edward,
+
+I have reproduced the crash on one particular system (A100), and will hopefully have some time to look into it further next week. Strangely though, it appears to run fine on another system (Tesla K80), so you may have success if you can run it on a system with a different GPU.
+
+Paul
+
+########################################################################
+
+
+Hi FSL expert,
+
+I'm using FSLeyes to create mask from JHU ICBM atals however anytime I want to pick the relative tract it freeze and I cannot do anything else withing atlas options.
+
+I have tried restarting ubuntu, FSL, Fsleyes, and reopening the atals menu but no success.
+Any suggestions?
+
+Thanks,
+Nooshin
+
+########################################################################
+
+
+Hi FSL experts,
+
+I want to create masks using JHU ICBM atlas but anytime I want to pick the chosen area or even activating the atlas itself it keeps freezing. I have same problem with other atlases too. Any suggestion?
+I have tried restarting the ubuntu, fsl and FSLeyes and cleaned up my PC memory but problem still exist.
+
+Thanks,
+Nooshin
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+The Education and Brain Sciences Research Lab (ebrl.vkcsites.org) directed by Laurie E. Cutting, PhD, of Vanderbilt University in Nashville, Tennessee, USA, seeks a highly motivated postdoctoral researcher interested in developmental and educational neuroscience. The position provides an opportunity to work in a multidisciplinary research environment studying the neuroscience of child development, from birth through adolescents. Ongoing research includes the Healthy Brain and Cognitive Development (HBCD) study, a national study recruiting women during pregnancy and following their infants through the first five years of their lives; studies of typical and atypical reading and math development; and studies of other developmental disorders. Individuals will have the opportunity to work on large ongoing NIH-funded projects, including longitudinal neuroimaging studies focused on academic, cognitive, behavioral outcomes in early childhood development (starting at perinatal period) through adolescence. Research opportunities will include analysis and writing manuscripts using already collected multimodal MRI datasets, travel and conference presentations, and support for writing mentored grant proposals. Former post-doctoral fellows have been highly successful, including attaining tenure-track positions at R1 universities and getting independent NIH funding. 
+
+Ideal candidates should be highly motivated to publish first-author papers and present at conferences, and should possess a background in advanced statistics, strong experimental and scientific writing skills, ability to work in a team environment, and be self-motivated. Experience working with children in a research setting is also desired. Additional desired strengths include competence in MRI and/or EEG data acquisition/analysis and/or assessment training, including programming skills (e.g., Matlab, R, and/or Python) and experience with multimodal neuroimaging (DWI, fMRI, and/or EEG) analysis.
+
+This fulltime position is appointed in one-year intervals, with re-appointments anticipated in years 2 and 3 (contingent upon satisfactory performance). Compensation is in line with NIH postdoc salary guidelines.
+Basic Requirements:
+•       PhD in Neuroscience, Biomedical Engineering, Bioinformatics, Computer Science, Neuropsychology or related discipline.
+•       Programming skills (e.g., Python, Matlab, R)  
+•       Demonstrated record of innovative scientific research in neuroimaging
+•       Strong skills in the usage of one or more common neuroimaging packages (e.g., FSL, SPM, AFNI)
+•       Strong communication skills in spoken and written English
+•       Ability to work closely with an interdisciplinary team, providing training to students and researchers
+•       Authorized to work in the United States
+
+If you are interested in the position, please email Laurie Cutting (Laurie.Cutting@Vanderbilt.Edu) a recent CV, a brief statement of research interests (1 page), and the contact information for 2 references. Applications will be considered on a rolling basis until position(s) are filled. Salary is highly competitive and reimbursement for moving expenses will be considered.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+If you can upload the design.fsf file from one of the problematic feat directories to:
+
+https://oxfile.ox.ac.uk/oxfile/work/extBox?id=700839B35190E48BF
+
+We will be able to check what is happening locally.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+At the same page, it says:
+If an FSL GPU program is not distributed for the CUDA version you have, it is also possible to compile from source with the correct development environment configuration (instructions to come).
+
+It would be great to have such instructions!
+
+Thanks so much for your help and work!
+
+########################################################################
+
+Hi FSL community,
+
+I have succesfully installed FSL 6.0.6.2 on by Ubuntu 20.04 distribution. I checked the cuda version, and there is a 10.2 version, therefore I set up the link eddy_cuda >> eddy_cuda10.2, as illustrated in the FSL/EDDY user guide (for eddy_cuda 8.0 and 9.1):
+ln -sf ${FSLDIR}/bin/eddy_cuda9.1 ${FSLDIR}/bin/eddy_cuda.
+
+I am running eddy on my diffusion data with the command:
+eddy_cuda --imain=rawDWIs.nii.gz --mask=posb0_u_brain.nii.gz --acqp=acqparams.txt --index=index.txt --bvecs=bvecs.bvec --bvals=bvals.bval --topup=/home/stella/Documents/OUTPUTS/topup --out=eddy_unwarped_images --verbose
+
+and this is the output I get:
+
+Reading images
+ ????U
+
+EDDY::: Eddy failed with message ??G??????U
+
+Do you have any idea on why a proper error message doesn' show up?
+
+I have tried miswriting input names, such as rawDW1s.nii.gz instead of rawDWIs.nii.gz, and it catches them correctly, showing:
+Image Exception : #63 :: No image files match: rawDW1s
+Image Exception : #22 :: Failed to read volume rawDW1s.nii.gz
+Error : No image files match: rawDW1s
+ ????/OV
+Terminating program
+
+It is curious to have such symbols shown in the terminal. Could this depend on the CUDA drivers somehow?
+
+Thanks for your help,
+
+Alessandra Stella
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Alberto,
+If you could send a screenshot/photo of the Blue Screen that would be great. How long does the installer run for before the crash - e.g. does it crash instantly or run for some time?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 9 Jan 2023, at 16:48, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+
+Hi Alberto,
+Can you take a screenshot/photo of the Blue Screen error? Can you also confirm how much RAM your machine has?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Jan 2023, at 11:52, A.G. <alberto.galimberti1@GMAIL.COM> wrote:
+
+Hi everyone,
+I have a problem with installing fsl.
+I would install it from WSL, I followed instructions on the fsl page, all passages are completed but during the processing of the command "python /mnt/c/Users/<WindowsUserName>/Downloads/fslinstaller.py" , the blue screen appears with a system error every time.
+Does my pc (Dell Latitude 7490) not support fsl requirements?
+Thank you in advance
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I'm trying to install the latest fsl version on our compute system. However, I keep running into the same error each time.
+
+11:48:15 fslinstaller.py: 162:     This command returned an error: /opt/fsl/6.0.6/bin/mamba env update -n base -f /tmp/tmpy7eu57mp/fsl-6.0.6.2_linux-64.yml
+
+Which in the error log shows:
+
+'fsl-wire==1.0.0', 'fsl-xtract==1.5.1', 'fsl-xtract_data==1.3.4', 'fsl-znzlib==2111.0', 'ghalton==0.6.1', 'hlsvdpropy==2.0.1', 'libopenblas==0.3.18[build=*openmp*]', 'make', 'nidmresults==2.1.0', 'nidmresults-fsl==2.2.0', 'numpy=1.21', 'openslide-python==v1.1.2', 'pkg-config', 'python=3.10', 'tk=8.6', 'vtk==9.1', 'wxpython=4.1', 'zlib=1.2', 'fsl-cudabasisfield-cuda-10.2==1.1.1', 'fsl-eddy-cuda-10.2==2111.0', 'fsl-fdt-cuda-10.2==2202.5', 'fsl-ptx2-cuda-10.2==2111.4']
+11:46:55 fslinstaller.py: 929:  [stderr]:     Traceback (most recent call last):
+11:46:55 fslinstaller.py: 929:  [stdout]:
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda/exceptions.py", line 1129, in __call__
+11:46:55 fslinstaller.py: 929:  [stdout]:
+11:46:55 fslinstaller.py: 929:  [stderr]:         return func(*args, **kwargs)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda_env/cli/main.py", line 80, in do_call
+11:46:55 fslinstaller.py: 929:  [stderr]:         exit_code = getattr(module, func_name)(args, parser)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda/notices/core.py", line 72, in wrapper
+11:46:55 fslinstaller.py: 929:  [stderr]:         return_value = func(*args, **kwargs)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/conda_env/cli/main_update.py", line 130, in execute
+11:46:55 fslinstaller.py: 929:  [stderr]:         result[installer_type] = installer.install(prefix, specs, args, env)
+11:46:55 fslinstaller.py: 929:  [stderr]:       File "/opt/fsl/6.0.6/lib/python3.10/site-packages/mamba/mamba_env.py", line 153, in mamba_install
+11:46:55 fslinstaller.py: 929:  [stderr]:         transaction.fetch_extract_packages()
+11:46:55 fslinstaller.py: 929:  [stderr]:     RuntimeError: Resource temporarily unavailable
+
+AND
+
+11:46:55 fslinstaller.py: 929:  [stderr]:           conda version : 22.9.0
+11:46:55 fslinstaller.py: 929:  [stderr]:     conda-build version : not installed
+11:46:55 fslinstaller.py: 929:  [stderr]:          python version : 3.10.6.final.0
+11:46:55 fslinstaller.py: 929:  [stderr]:        virtual packages : __linux=4.19.94=0
+11:46:55 fslinstaller.py: 929:  [stderr]:                           __glibc=2.17=0
+11:46:55 fslinstaller.py: 929:  [stderr]:                           __unix=0=0
+11:46:55 fslinstaller.py: 929:  [stderr]:                           __archspec=1=x86_64
+11:46:55 fslinstaller.py: 929:  [stderr]:        base environment : /opt/fsl/6.0.6  (writable)
+11:46:55 fslinstaller.py: 929:  [stderr]:       conda av data dir : /opt/fsl/6.0.6/etc/conda
+11:46:55 fslinstaller.py: 929:  [stderr]:   conda av metadata url : None
+11:46:55 fslinstaller.py: 929:  [stderr]:            channel URLs : https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/linux-64
+11:46:55 fslinstaller.py: 929:  [stderr]:                           https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/public/noarch
+11:46:55 fslinstaller.py: 929:  [stderr]:                           https://conda.anaconda.org/conda-forge/linux-64
+11:46:55 fslinstaller.py: 929:  [stderr]:                           https://conda.anaconda.org/conda-forge/noarch
+11:46:55 fslinstaller.py: 929:  [stderr]:           package cache : /opt/fsl/6.0.6/pkgs
+11:46:55 fslinstaller.py: 929:  [stderr]:                           /home/mrstats/maamen/.conda/pkgs
+11:46:55 fslinstaller.py: 929:  [stderr]:        envs directories : /opt/fsl/6.0.6/envs
+11:46:55 fslinstaller.py: 929:  [stderr]:                           /home/mrstats/maamen/.conda/envs
+11:46:55 fslinstaller.py: 929:  [stderr]:                platform : linux-64
+11:46:55 fslinstaller.py: 929:  [stderr]:              user-agent : conda/22.9.0 requests/2.28.1 CPython/3.10.6 Linux/4.19.94-300.el7.x86_64 centos/7.6.1810 glibc/2.17
+11:46:55 fslinstaller.py: 929:  [stderr]:                 UID:GID : 10013:668
+11:46:55 fslinstaller.py: 929:  [stderr]:              netrc file : None
+11:46:55 fslinstaller.py: 929:  [stderr]:            offline mode : False
+
+We're running Centos 7
+I've tried with python 3.6, 3.7 and 3.10
+
+Thanks,
+Maarten
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL list,
+We have a new data analyst position open at Penn State.  Details are provided below.
+
+Cheers,
+Eric
+
+
+JOB DESCRIPTION AND POSITION REQUIREMENTS:
+
+The Cognitive Neuroscience of Addiction Laboratory in the Department of Biobehavioral Health and the Center for Safe and Healthy Children is seeking a full-time Data Management Specialist to work on multiple neuroimaging research studies. 
+
+The ideal candidate will have experience with the major neuroimaging software packages (FSL, Freesurfer, AFNI, SPM), Python, Matlab, and R.  In addition, the candidate should have experience with shell scripting and the UNIX/LINUX environment, familiarity with neuroanatomy and neurophysiology, and familiarity working within a high-performance computing environment is ideal.  The primary duties of this position will be to conduct analyses for several neuroimaging datasets, setup tracking logs for analysis, and assist with the implementation of new analysis approaches.  Applicants should possess very strong organizational skills, attention to detail, and good communication skills. Strong applicants will be independently motivated, have excellent time management skills, and work well in a team environment.
+
+Education and Experience:
+
+Typically requires a Bachelor's degree or higher, plus 4 years of relevant work experience, or an equivalent combination of education and experience. A degree in cognitive neuroscience, psychology, computer science, engineering or a related field is preferred.
+
+The Pennsylvania State University is committed to and accountable for advancing diversity, equity, and inclusion in all of its forms. We embrace individual uniqueness, foster a culture of inclusive excellence that supports both broad and specific diversity initiatives, leverage the educational and institutional benefits of diversity, and engage all individuals to help them thrive. We value inclusive excellence as a core strength and an essential element of our public service mission.
+
+Additional Information:
+
+This is a limited-term appointment funded for one year from the date of hire with the excellent possibility of re-funding.
+
+This position has the potential to be performed fully remote or as a hybrid of remote and on-site work.
+
+CAMPUS SECURITY CRIME STATISTICS:
+
+Pursuant to the Jeanne Clery Disclosure of Campus Security Policy and Campus Crime Statistics Act and the Pennsylvania Act of 1988, Penn State publishes a combined Annual Security and Annual Fire Safety Report (ASR). The ASR includes crime statistics and institutional policies concerning campus security, such as those concerning alcohol and drug use, crime prevention, the reporting of crimes, sexual assault, and other matters. The ASR is available for review here.
+
+Employment with the University will require successful completion of background check(s) in accordance with University policies.
+
+EEO IS THE LAW
+
+Penn State is an equal opportunity, affirmative action employer, and is committed to providing employment opportunities to all qualified applications without regards to race, color, religion, age, sex, sexual orientation, gender identify, national origin, disability or protected veteran status. If you are unable to use our online application process due to an impairment or disability, please contact 814-865-1473.
+
+Apply at https://psu.wd1.myworkdayjobs.com/en-US/PSU_Staff/details/Neuroimaging-Data-Management-Specialist_REQ_0000038689
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+

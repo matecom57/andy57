@@ -1,0 +1,613 @@
+Thanks. Another difference is the first row of fix4melview file. I am not 
+sure whether this difference is from HCP or FSL FIX. When I ran hcp_fix, 
+the former FIX's fix4melview had filtered_func_data.ica at the first row, 
+but the pyfix's fix4melview had fMRI_name.ica. Could you please check this 
+as well?
+
+Best,
+Joo-won
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Friday, September 27, 2024 12:35 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Motion parameter reading codes are different between 
+the python fix and MATLAB+R fix
+ 
+Hi Joo-Won,
+
+That's correct - 1.06.15 is the latest version of the original 
+MATLAB-based FIX.
+
+Paul
+
+Hi Andraws,
+
+The first command was:
+
+cat /mnt/wslg/versions.txt
+
+You need to be very precise when running commands in a terminal.
+
+Can you also open a Powershell (as administrator), and run "wsl --update", 
+and send me the output of running that command?
+
+Paul
+
+Hi Paul 
+I wrote your codes after restating my laptop,
+The outputs are in the attachment.
+Regards,
+Andraws
+ 
+
+Hi Andraws,
+
+Would you be able to reboot your computer and try again? Also note that 
+WSL / Ubuntu is case-sensitive, so "FSL" is not the same as "fsl" (the 
+latter is the correct command).
+
+If things are still not working after a reboot, can you run all of these 
+commands in a WSL terminal and send me the output:
+
+cat /mnt/wslg/versions.txt
+echo $DISPLAY
+ls -la /tmp/.X11-unix
+ls -la /tmp/.X11-unix/
+cat /mnt/c/Users/Andrwas/.wslconfig
+
+Hi Paul,
+The output for system version is in the attached photo.
+The output for wsl —version is :
+wsl --version
+
+Invalid command line option: --version
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+
+Usage: wsl.exe [Argument] [Options...] [CommandLine]
+
+
+
+Arguments for running Linux binaries:
+
+
+
+    If no command line is provided, wsl.exe launches the default shell.
+
+
+
+    --exec, -e <CommandLine>
+
+        Execute the specified command without using the default Linux 
+shell.
+
+
+
+    --
+
+        Pass the remaining command line as is.
+
+
+
+Options:
+
+    --cd <Directory>
+
+        Sets the specified directory as the current working directory.
+
+        If ~ is used the Linux user's home path will be used. If the path 
+begins
+
+        with a / character, it will be interpreted as an absolute Linux 
+path.
+
+        Otherwise, the value must be an absolute Windows path.
+
+
+
+    --distribution, -d <Distro>
+
+        Run the specified distribution.
+
+
+
+    --user, -u <UserName>
+
+        Run as the specified user.
+
+
+
+    --system
+
+        Launches a shell for the system distribution.
+
+
+
+Arguments for managing Windows Subsystem for Linux:
+
+
+
+    --help
+
+        Display usage information.
+
+
+
+    --install [Options]
+
+        Install additional Windows Subsystem for Linux distributions.
+
+        For a list of valid distributions, use 'wsl --list --online'.
+
+
+
+        Options:
+
+            --distribution, -d [Argument]
+
+                Downloads and installs a distribution by name.
+
+
+
+                Arguments:
+
+                    A valid distribution name (not case sensitive).
+
+
+
+                Examples:
+
+                    wsl --install -d Ubuntu
+
+                    wsl --install --distribution Debian
+
+
+
+            --no-launch, -n
+
+                Do not launch the distribution after install.
+
+
+
+    --mount <Disk>
+
+        Attaches and mounts a physical disk in all WSL2 distributions.
+
+
+
+        Options:
+
+            --bare
+
+                Attach the disk to WSL2, but don't mount it.
+
+
+
+            --type <Type>
+
+                Filesystem to use when mounting a disk, if not specified 
+defaults to ext4.
+
+
+
+            --options <Options>
+
+                Additional mount options.
+
+
+
+            --partition <Index>
+
+                Index of the partition to mount, if not specified defaults 
+to the whole disk.
+
+
+
+    --set-default-version <Version>
+
+        Changes the default install version for new distributions.
+
+
+
+    --shutdown
+
+        Immediately terminates all running distributions and the WSL 2
+
+        lightweight utility virtual machine.
+
+
+
+    --status
+
+        Show the status of Windows Subsystem for Linux.
+
+
+
+    --unmount [Disk]
+
+        Unmounts and detaches a disk from all WSL2 distributions.
+
+        Unmounts and detaches all disks if called without argument.
+
+
+
+    --update [Options]
+
+        If no options are specified, download and install WSL from the 
+Microsoft Store.
+
+
+
+        Options:
+
+            --rollback
+
+                Revert to the previous version of the WSL 2 kernel.
+
+
+
+            --inbox
+
+                Only update the inbox WSL 2 kernel. Do not install WSL 
+from the Microsoft Store.
+
+
+
+            --web-download
+
+                Download the most recent version of WSL from the internet 
+instead of the Microsoft Store.
+
+Arguments for managing distributions in Windows Subsystem for Linux:
+
+
+
+    --export <Distro> <FileName>
+
+        Exports the distribution to a tar file.
+
+        The filename can be - for standard output.
+
+
+
+    --import <Distro> <InstallLocation> <FileName> [Options]
+
+        Imports the specified tar file as a new distribution.
+
+        The filename can be - for standard input.
+
+
+
+        Options:
+
+            --version <Version>
+
+                Specifies the version to use for the new distribution.
+
+
+
+    --list, -l [Options]
+
+        Lists distributions.
+
+
+
+        Options:
+
+            --all
+
+                List all distributions, including distributions that are
+
+                currently being installed or uninstalled.
+
+
+
+            --running
+
+                List only distributions that are currently running.
+
+
+
+            --quiet, -q
+
+                Only show
+
+But I tried another code to see the wsl version :wsl -l -v
+Which its output the second attached photo 
+I currently run ubuntu 20.04.6.
+Regards ,
+andraws
+
+
+Hi Andraws,
+
+Can you confirm your WSL and Windows versions, by running these commands 
+in a PowerShell terminal, and sending me their output?
+
+wsl --version
+[System.Environment]::OSVersion.Version
+
+Paul
+
+Hi Paul, 
+The FSL GUI doesn’t run after even using  :export DISPLAY=:0
+All verifications steps run till this FSL & 
+and show that after running your code  export DISPLAY=:0
+
+Hi Andraws,
+
+Does the FSL GUI open if you run this command first?
+
+export DISPLAY=:0
+
+If the FSL GUI opens after doing that, also try opening FSLeyes.
+
+Paul
+
+Hi ,
+For your information,  my version of FSL is 6.0.7.13 and I use  wsl2 
+(unbuntu20.04.6)
+I don't think that I need  xserver.
+Regards,
+Andraws
+
+Hi ,
+I start again from scratch as you said and the verification process 
+complete untill this error occured while writing the fsl & command  as 
+showed in the attached picture .
+application-specific initialization failed: no display name and no 
+$DISPLAY environment variable
+
+Error in startup script: no display name and no $DISPLAY environment 
+variable
+
+    while executing
+
+"load /home/andrwas/fsl/lib/libtk8.6.so"
+
+    ("package ifneeded Tk 8.6.13" script)
+
+    invoked from within
+
+"package require Tk"
+
+    (file "/home/andrwas/fsl/tcl/fslstart.tcl" line 19)
+
+    invoked from within
+
+"source [ file dirname [ info script ] ]/fslstart.tcl"
+
+    (file "/home/andrwas/fsl/tcl/fsl.tcl" line 71)
+
+    invoked from within
+
+"source ${FSLDIR}/tcl/${origname}.tcl"
+
+    (file "/home/andrwas/fsl/bin/fsl" line 20)
+
+
+
+Best regards,
+
+Andraws
+
+Sent from Outlook for iOS
+
+Hi paul ,
+I will do that 
+But how can I remove the previously installed data for wsl and ubuntu from 
+my disk? 
+I cannot localize it manually and it take huge amount of my disk space!
+Thank you so much for your help.
+Best regards
+Andraws
+
+Sent from Outlook for iOS
+
+
+Are you using Windows 10 or Windows 11?
+ 
+In either case I think the easiest option may be to start again from 
+scratch, but making sure that you have the latest version of WSL installed 
+before proceeding with the installation, and ensuring that you make a note 
+of the username / password that you set up for the Ubuntu installation. 
+
+You should be able to follow the instructions here: 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/windows?id=install-wsl-ubuntu
+
+Paul
+
+Hi Dr. Matthew,
+I am sorry l cannot  determine Which user l set
+What I can remember that I set the path to my desktop username path as 
+instructed In the official web page : 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/index
+In this code python2 "mnt/c/Users/Andrwas/Downloads/fslinstaller.py
+I followed the instructions as it
+Can you help me
+Best Regards,
+Andraws
+Sent from Outlook for iOS
+
+Hi Andraws,
+If you originally installed under a different username, then you can 
+temporarily switch to that username with 
+
+su - <username>
+
+If FSL appears to be installed and working for that user, then there are 
+instructions online to make WSL login as that user by default ( as opposed 
+to root ). If you installed FSL as the “root” user then, as Paul says, you 
+may just need to manually set-up the environment.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Andraws,
+
+It looks like you have installed FSL as the root (admin) user. This is 
+generally only recommended when installing FSL onto a multi-user system. 
+When you run the fslinstaller script as the root user, the fslinstaller 
+script does not set up your shell profile, because it assumes that you are 
+a system administrator on a multi-user system.
+
+If you don't have a specific reason to do so, I would suggest setting up a 
+normal (non-root) user account, and installing FSL under that account.
+
+Otherwise, If you want to continue using your root account, you will need 
+to manually add the FSL configuration commands to your shell profile - you 
+should be able to to do this by following the instructions at 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/configuration
+
+Paul
+
+Hi Paul,
+
+Tried again and the stdout has changed:
+
+Memory Usage
+Total Memory: 5.8 GiB
+Used Memory: 621 MiB
+Free Memory: 5.0 GiB
+Shared Memory: 3.2 MiB
+Buffer/Cache: 379 MiB
+Available Memory: 5.2 GiB
+
+Swap Usage
+Total Swap: 2.0 GiB
+Used Swap: 0 B
+Free Swap: 2.0 GiB
+
+Kind regards
+Allegra
+
+Hi Andraws,
+
+The first command was:
+
+cat /mnt/wslg/versions.txt
+
+You need to be very precise when running commands in a terminal.
+
+Can you also open a Powershell (as administrator), and run "wsl --update", 
+and send me the output of running that command?
+
+Paul
+
+Dear FSL Community,
+
+I am attempting to perform a Two Groups with continuous covariate 
+interaction model, which includes:
+- a group explanatory variable (EV),
+- a postnatal age continuous covariate,
+- a scanner upgrade covariate,
+- and an interaction term between the group and postnatal age covariates.
+
+I have a total of 98 subjects (46 patients and 52 controls), and my aim is 
+to test whether there is are significant group differences and interaction 
+effects between the groups.
+I have followed the instructions from the documentation: 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/statistics/glm?id=two-groups-with-continuous-covariate-interaction.
+I merged the 98 volumes into a single file (named 
+BrainDNIU_ASL_all_new.nii.gz) after registering them to the same perfusion 
+template. Here is my current setup:
+
+Design Matrix
+- 1st column: Demeaned postnatal age,
+- 2nd and 3rd columns: Group EVs,
+- 4th column: Scanner upgrade covariate,
+- 5th and 6th columns: postnatal age*group Interaction effects.
+/NumWaves 6
+/NumPoints 98
+/PPheights 125 1 1 1 119 125
+/Matrix
+-35.79592 0 1 0 0 21
+-46.79592 0 1 0 0 10
+-15.79592 1 0 0 41 0
+-45.79592 0 1 0 0 11
+-49.79592 1 0 0 7 0
+-41.79592 0 1 0 0 15
+-36.79592 0 1 0 0 20
+...
+
+Contrast File
+NumWaves 6
+/NumContrasts 8
+/PPheights 125 1 1 1 119 125
+/Matrix
+1 0 0 0 0 0
+-1 0 0 0 0 0
+0 1 -1 0 0 0
+0 -1 1 0 0 0
+0 0 0 1 0 0
+0 0 0 -1 0 0
+0 0 0 0 1 -1
+0 0 0 0 -1 1
+
+Command line:
+randomise -i BrainDNIU_ASL_all_new.nii.gz -o 
+PNA_demean_IUGR_vs_control_CV4Group_ScannerUpgrade_Interaction -d 
+PNA_demean_IUGR_vs_control_CV4Group_ScannerUpgrade_Interaction.mat -t 
+PNA_demean_IUGR_vs_control_CV4Group_ScannerUpgrade_Interaction.con -m 
+BrainDNIU_ASL_mean_masked_mask_new.nii.gz -n 300 -D --T2
+
+
+Issue:
+When I run this command, I receive the following warning: "tfce has 
+detected a large number of integral steps. This operation may require a 
+great deal of time to complete."
+
+Initially, I encountered this problem while running the model with the 
+design matrix structured as follows:
+- 1st and 2nd columns: Group EVs,
+- 3rd column: Undemeaned postnatal age,
+- 4th column: Scanner upgrade,
+- 5th and 6th columns: postnatal age*group Interaction effects.
+I ran the same command with 500 permutations, but the warning appeared 
+after the first two rounds of permutations, specifically during the 
+evaluation of the postnatal age covariate.
+
+To address this, I:
+- Demeaned the postnatal age covariate,
+- Rearranged the matrix so the postnatal age column is the first,
+- Reduced the number of permutations from 500 to 300.
+However, the warning still persists, and the analysis takes an excessive 
+amount of time. Last time (with my previous design and contrast files), 
+the process got stuck for two weeks, and I had to terminate it.
+
+Could there be an issue with my design or contrast files?
+I would greatly appreciate any insights or suggestions to resolve this 
+issue.
+
+Kind regards,
+Seline
+
+
+Hi Paul, 
+
+I have successfully installed FSL - thank you for your help!!
+
+However, when running 'fsleyes -std &' the FSLeyes image viewer does open, 
+and displays the MNI152 template, but I also get this:
+
+amoodley@AllegraMoodley:~$ fsl &
+[1] 698
+amoodley@AllegraMoodley:~$ fsleyes -std &
+[2] 709
+amoodley@AllegraMoodley:~$ MESA: error: ZINK: failed to choose pdev
+glx: failed to create drisw screen
+** (fsleyes:710): WARNING **: 12:56:00.391: atk-bridge: 
+get_device_events_reply: unknown sign
+
+Kind regards
+Allegra
+
+

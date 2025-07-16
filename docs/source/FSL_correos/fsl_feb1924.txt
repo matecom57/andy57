@@ -1,0 +1,465 @@
+Join Our Dynamic Research Team!
+The Laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University invites applications for postdoctoral scholars. We are dedicated to pioneering research at the forefront of brain imaging and genetics, leveraging AI technology to analyze large datasets and uncover insights into brain aging and neurodegenerative diseases such as stroke, Alzheimer’s disease, and vascular dementia.
+Over the years, our lab has spearheaded numerous human studies focused on brain health and cognition in aging populations. With a repository of brain scans, cognitive assessments, genetic profiles, and environmental data from over 60,000 subjects across multiple time points, we are committed to unraveling the complexities of aging-related neurological conditions.
+Why Join Us?
+·     Cutting-Edge Facilities: Benefit from our state-of-the-art research center equipped with high-performance computing resources, including multiple H100 and A100 GPU systems for deep learning, and computing clusters tailored for large-scale data analysis. With access to over 5000T of medical data, spanning medical records, images, and pathology data, you'll have the tools needed to drive impactful research forward.
+·     Publication Excellence: Join a team that prides itself on academic excellence. Our laboratory has contributed over 180 papers to esteemed journals such as Nature, Nature Neuroscience, PNAS, and more, showcasing our commitment to advancing knowledge in the field.
+·     International Collaboration: Engage with our global network of researchers through our participation in an international consortium on brain aging. By collaborating with multiple cohorts worldwide, we aim to generate insights that will inform strategies for optimizing brain health across diverse populations.
+Position Requirements:
+1.   PhD Qualification: Hold a PhD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or a related discipline.
+2.   Proficient Communication: Demonstrate strong English writing and communication skills.
+3.   Cantonese Fluency: Fluency in Cantonese is essential for effective communication with patients
+4.   Experience on Brain Aging Cohort Studies: Prior experience in brain aging cohort studies will be highly advantageous.
+Responsibilities:
+1.   Contribute to Study Protocol Design: Assist in the development of brain aging study protocols, including the design of cognitive tasks, questionnaires, and other pertinent methodologies.
+2.   Supervise Research Assistants: Provide oversight and guidance to research assistants involved in participant recruitment and data collection, ensuring adherence to study protocols and ethical standards.
+3.   Conduct Aging Research: Undertake research activities utilizing both existing and newly collected data, employing advanced analytical techniques to investigate various aspects of aging and neurodegenerative diseases.
+4.   Collaborate on International Studies: Engage in collaborative efforts with international partners to contribute to large-scale aging studies, fostering cross-cultural insights and advancing the field of brain aging research on a global scale.
+The position offers a competitive package (up to HKD 558,000 annually) and benefits. We will apply for VISA for applicants. 
+The position will start at any time from 1 April 2024.
+
+How to Apply:
+Please submit your CV to Professor Qiu Anqi, Global STEM Scholar, an-qi.qiu@polyu.edu.hk.
+
+
+Hi Knut,
+
+The latest version of FSL comes with dcm2niix v1.0.20230411, although a new version (v1.0.20240202) was released just a couple of days ago. If the version in your FSL installation doesn't work, then you should be able to upgrade to the latest version by running:
+
+$FSLDIR/bin/mamba update dcm2niix
+
+Paul
+
+
+Hi Wendy,
+
+Yes, it looks like you have run out of memory. Are you running FEAT on a cluster system? You may need to get in touch with your IT team to check that the FEAT jobs are being submitted to a machine with sufficient RAM - typically you will need two to three times the size of your image data (X*Y*Z*timepoints*4 bytes).
+
+Paul
+
+
+Hi Knut,
+
+It looks like there has been a problem with image reconstruction / DICOM->NIFTI conversion for this image - I am able to load it into FSLeyes, but it looks like the image has been constructed such that all slices have been concatenated into one big 2D slice in the X / Y dimensions.
+
+What tool are you using for the DICOM->NIFTI conversion? We generally recommend Chris Rorden's dcm2niix, which gets installed as part of FSL.
+
+Paul
+
+
+Hi Knut,
+
+Can you share one of the problematic datasets with me so I can have a play? You should have received a link to a onedrive folder that you can upload the files into.
+
+Paul
+
+
+Hi Knut,
+
+What version of FSL / FSLeyes are you using? Do FSLeyes / bet work on other images?
+
+Paul
+
+
+Hi Cain,
+
+I can't assess the registration quality from those screenshots. Are you able to share all of the image files used in that command? You should have received a link to a onedrive folder where you can upload the files.
+
+Paul
+
+
+Hi Mira,
+
+You will need to correct your image orientations before attempting to perform any registration. You can find some recommendations on how to do this at this page:
+
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/other/orientation?id=the-labels-in-fsleyes-are-wrong-or-missing
+
+Paul
+
+
+Dear Meredith,
+
+I would be hesitant to use different warp resolutions because, as you say, this may introduce a bias. Imagine if the higher warp resolution (and therefore likely more accurate alignment) is more consistently selected for one group over another - we would not know whether differences in activation between those groups were real or simply an artefact of the registration.
+
+Have you tried an intermediate warp resolution to see if that produces more consistent results across participants?
+
+Best wishes,
+Rick
+
+
+
+Dear Community,
+
+I'm trying to run the smoothing and high-pass filter in FSL after preprocessing through fMRIPrep. I have just tried on one participant and it shows an error. This is the error in the log:
+
+Preprocessing:Stage 2
+
+/software/system/fsl/6.0.7.4/bin/fslstats prefiltered_func_data -p 2 -p 98
+0.000000 575.843750
+
+/software/system/fsl/6.0.7.4/bin/fslmaths prefiltered_func_data -thr 57.584375 -Tmin -bin mask -odt char
+
+/software/system/fsl/6.0.7.4/bin/fslstats prefiltered_func_data -k mask -p 50
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/software/system/fsl/6.0.7.4/bin/fslstats prefiltered_func_data -k mask -p 50
+ERROR MESSAGE:
+child killed: kill signal
+END OF ERROR MESSAGE
+child killed: kill signal
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+        -I {
+            incr arginde..."
+    (file "/software/system/fsl/6.0.7.4/bin/feat" line 312)
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=3643997.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+Error encountered while running in main feat script, halting.
+child killed: kill signal
+
+
+I wonder what the issue is here. Is it an out-of-memory issue? but I just tested one participant. If it's the memory issue how could I adjust? Can anyone kindly tell me what was wrong please?
+
+Thank you.
+Wendy
+
+########################################################################
+
+
+The Faculty of Psychology and Educational Sciences of the University of Coimbra Portugal (FPCE-UC) invites applications from rising and enthusiastic researchers in Cognitive Science and Cognitive Neuroscience for 2 Pre-doctoral Research Assistant positions to work with Alfonso Caramazza and Jorge Almeida.
+These positions are part of a transformative ERA Chair grant CogBooster from the European Union to FPCE-UC led by Alfonso Caramazza. The goal of CogBooster is to implement a strong and international line of research in Basic Cognitive Science and Cognitive Neuroscience to contribute to the ongoing renewal of the Psychological Sciences in Portugal over the next decade.
+ 
+Positions:
+As part of this expansion and renewal, we are searching for pre-doctoral research assistant applicants with expertise related to the following areas:
+·         1 position in anyone of the following areas: lexical processing, visual object recognition, reading, or action recognition.
+ 
+·         1 position on visual object recognition, in particular on how object knowledge is organized and represented neurally and cognitively, using fMRI (potentially with ultra-high field MRI), and population receptive field analysis/connective field modeling (or other more computational methods) to work on topics related to the following preprint: https://www.biorxiv.org/content/10.1101/2023.11.29.568856v1
+ 
+The selected applicants will work directly with Alfonso Caramazza and Jorge Almeida. They will be based in Coimbra.
+Qualifications:
+Applicants should have a Master’s degree in Cognitive Science, Psychology or related- field. They should also have their Master’s (and potentially BA) diploma recognized in Portugal at the time of the signing of the contract (diploma recognition could be requested here). The start date is negotiable (but should be no later than fall 2024).
+The successful applicant should have a record of research for their career level, and meet, or show promise of meeting, the following qualifications:
+·  Research potential and experience within the areas mentioned;
+·  Proficiency in English, both written and spoken (speaking Portuguese is not necessary);
+·  Good written and spoken communication skills;
+ 
+Offer:
+The salary is competitive for Portuguese standards – 1250 euro per month net value. The position will be for a maximum of 1 year, potentially renewable.
+ 
+About FPCE-UC and Coimbra:
+The University of Coimbra is a 700-year-old University and is a UNESCO world Heritage site. Coimbra is one of the liveliest university cities in the world, and it is a beautiful city with easy access to beaches and mountains. The Faculty of Psychology and Educational Sciences has been consistently ranked as the best, or one of the best Psychology Departments in Portugal. In the last decade it has become the leading department in Portugal on Psychological research, holding, for instance the only ERC grants in Psychology in Portugal. FPCE-UC has a major laboratory for Cognitive Science and Cognitive Neuroscience research – the Proaction Lab. We have access locally to two 3T MRI scanners, and access to one 7T MRI remotely, to tDCS, to a 256 channel EEG, and to a fully set behavioral lab.
+ 
+Application Instructions:
+All candidates should submit the following documents in English: (1) a curriculum vitae; (2) a motivation letter describing their interest in the position, and their track record; (3) at least two letters of reference submitted before the application deadline.
+ 
+Full consideration will be given to applications received by March 31, 2024.
+If you are interested in applying for one of the positions or know of any suitable applicants in your network of colleagues and former students who may be suitable for any of the positions, please direct them to the advertisement.   
+Equal Employment Opportunity statement:
+The University of Coimbra is an equal opportunity/affirmative action employer and has a Gender Equality Plan in place. We are committed to fostering a diverse and inclusive academic global community at the University. We particularly encourage applications from women, and from other under-represented groups in the University of Coimbra’s workforce and in the cognitive and brain sciences.   
+ 
+Further information:
+If you want to know more about the positions you can informally contact Alfonso Caramazza (caram@wjh.harvard.edu) and Jorge Almeida (jorgecbalmeida@gmail.com).
+
+
+The Faculty of Psychology and Educational Sciences of the University of Coimbra Portugal (FPCE-UC) seeks rising and enthusiastic researchers in Cognitive Science and Cognitive Neuroscience for a joint application to a doctoral fellowship funded by the Foundation for Science and Technology, Portugal to work with Alfonso Caramazza and Jorge Almeida.
+
+ 
+
+These positions are part of a transformative ERA Chair grant CogBooster from the European Union to FPCE-UC led by Alfonso Caramazza. The goal of CogBooster is to implement a strong and international line of research in Basic Cognitive Science and Cognitive Neuroscience to contribute to the ongoing renewal of the Psychological Sciences in Portugal over the next decade.
+
+ 
+
+Positions:
+
+As part of this expansion and renewal, we are searching for doctoral students with expertise related to the following areas:
+
+·         Lexical processing, visual object recognition, reading, or action recognition.
+
+ 
+
+·         Visual object recognition, in particular on how object knowledge is organized and represented neurally and cognitively, using fMRI (potentially with ultra-high field MRI), and population receptive field analysis/connective field modeling (or other more computational methods) to work on topics related to the following preprint: https://www.biorxiv.org/content/10.1101/2023.11.29.568856v1
+
+ 
+
+The selected applicants will work directly with Alfonso Caramazza and Jorge Almeida. They will be based in Coimbra.
+
+Qualifications:
+
+Applicants should have a Master’s degree in Cognitive Science, Psychology or related field. They should also have their Master’s and BA diploma recognized in Portugal at the time of application (diploma recognition could be requested here). The start date is September 2024.
+
+ 
+
+The successful applicant should have a record of research for their career level, and meet, or show promise of meeting, the following qualifications:
+
+·  Research potential and experience within the areas mentioned;
+
+·  Proficiency in English, both written and spoken (speaking Portuguese is not necessary);
+
+·  Good written and spoken communication skills;
+
+ 
+
+Joint Application and funding:
+
+ 
+
+Applications will first be evaluated by Alfonso Caramazza and Jorge Almeida. The selected applicants will joint apply with Alfonso Caramazza and Jorge Almeida to a doctoral fellowship from FCT, Portugal. This includes co-writing a project. We have been extremely successful in the past in getting these FCT doctoral fellowships.
+
+ 
+
+The salary is competitive for Portuguese standards – 1250 euro per month net value. The fellowship will also include tuition, and will be for 4 years.
+
+ 
+
+About FPCE-UC and Coimbra:
+
+The University of Coimbra is a 700-year-old University and is a UNESCO world Heritage site. Coimbra is one of the liveliest university cities in the world, and it is a beautiful city with easy access to beaches and mountains. The Faculty of Psychology and Educational Sciences has been consistently ranked as the best, or one of the best Psychology Departments in Portugal. In the last decade it has become the leading department in Portugal on Psychological research, holding, for instance the only ERC grants in Psychology in Portugal. FPCE-UC has a major laboratory for Cognitive Science and Cognitive Neuroscience research – the Proaction Lab. We have access locally to two 3T MRI scanners, and access to one 7T MRI remotely, to tDCS, to a 256 channel EEG, and to a fully set behavioral lab.
+
+ 
+
+Application Instructions:
+
+All candidates should submit the following documents in English: (1) a curriculum vitae; (2) a motivation letter describing their interest in the position, and their track record; (3) at least two letters of reference submitted before the application deadline.
+
+ 
+
+Full consideration will be given to applications received by March 18, 2024 (but please contact us ASAP).
+
+If you are interested in jointly applying for a doctoral fellowship with us, or know of any suitable applicants in your network of colleagues and former students who may be suitable for any of the positions, please direct them to the advertisement.  
+
+
+Equal Employment Opportunity statement:
+
+The University of Coimbra is an equal opportunity/affirmative action employer and has a Gender Equality Plan in place. We are committed to fostering a diverse and inclusive academic global community at the University. We particularly encourage applications from women, and from other under-represented groups in the University of Coimbra’s workforce and in the cognitive and brain sciences.   
+
+ 
+
+Further information:
+
+If you want to know more about the positions you can informally contact Alfonso Caramazza (caram@wjh.harvard.edu) and Jorge Almeida (jorgecbalmeida@gmail.com).
+
+
+
+Dear FSL experts,
+We have been noticing in one of our fMRI studies that different levels of nonlinear warp resolution work noticeably better for different participants. Is it acceptable to use different levels of this parameter across people in the same study in order to optimize the registration for each person or will that create bias in our analyses in some way?
+Thanks,
+Meredith Braskie
+
+Dear Tutors and Community,
+
+I hope this message finds you well. I'm seeking your expertise on a couple of challenges I've encountered in my neuroimaging analysis process.
+
+Post-Registration Concern: After completing the registration process, I observed an unexpected artefact—a circular region appearing outside the boundaries of the standard brain model. This occurrence seems unusual, and I'm uncertain about its commonality or implications. 
+
+Statistical Map Clusters: Similarly, in the group analysis statistical maps, I've identified several clusters located outside the brain's physical structure. I'm puzzled about whether this is a common finding or if it indicates a potential issue in the analysis pipeline.
+
+Given these observations, I have a few questions:
+
+Are these phenomena commonly encountered in neuroimaging analyses, and if so, what are their implications?
+What troubleshooting steps would you recommend to address these issues effectively?
+I've noticed that skull-stripping is not commonly applied to functional images in the pipelines I've reviewed online. Could introducing skull-stripping to functional images be a viable solution to my problem? Also, what potential 'side effects' or considerations should I know about if I choose to pursue this approach?
+Your insights and guidance on these matters would be immensely valuable to me. I am eager to learn from your experiences and to apply your advice to improve my analysis.
+PS: This is a task-fMRI analysis and I use ICA-aroma to remove motion artefact.
+
+Thank you very much for your time and support.
+
+
+Many thanks,
+Yiling Shi (she/her)
+
+
+Hi Paul
+
+
+
+I used dcm2niix-1.0.20220720-4.fc39.x86_64 which I installed with dnf install dcm2niix. I will try to use the version that is included in FSL.
+
+
+
+Knut Jørgen
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Monday, February 19, 2024 12:29 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Knut,
+
+It looks like there has been a problem with image reconstruction / DICOM->NIFTI conversion for this image - I am able to load it into FSLeyes, but it looks like the image has been constructed such that all slices have been concatenated into one big 2D slice in the X / Y dimensions.
+
+What tool are you using for the DICOM->NIFTI conversion? We generally recommend Chris Rorden's dcm2niix, which gets installed as part of FSL.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Knut J Bjuland <knutjorgen@OUTLOOK.COM>
+Sent: 19 February 2024 11:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Paul
+
+I had uploaded one DTi sequence that caused the problem and caused the bet to crash when I extracted the first image, as it is a b0 image.
+
+Knut jørge
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Monday, February 19, 2024 12:15 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Knut,
+
+Can you share one of the problematic datasets with me so I can have a play? You should have received a link to a onedrive folder that you can upload the files into.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Knut J Bjuland <knutjorgen@OUTLOOK.COM>
+Sent: 19 February 2024 11:07
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Paul
+
+I use fsl 6.0.7.7 on my pc and 6.0.5.1 on the cluster. FSLeye /bet works on some of the images from the same scanner. 
+
+In addition, I have fsleyes 1.10 installed on my computer.  Is there anything I could do to provide you with better debug information?
+
+
+
+Knut Jørgen
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Monday, February 19, 2024 11:51 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Knut,
+
+What version of FSL / FSLeyes are you using? Do FSLeyes / bet work on other images?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Knut J Bjuland <knutjorgen@OUTLOOK.COM>
+Sent: 19 February 2024 07:51
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Dear FSL expert,
+
+I have processed several DTI sequences with dcm2niix. However, when I tried to open them with FSLeyes or BET, it crashed for some of the files with a segmentation error. I am, however, able to open all files with Freeview from FreeSurfer. I have used these options when converting: dcm2niix -o "folder" -f '%f_%p_%t_%s' -z y -v 1 $dcmfolder. How can I debug this problem? It has crashed on Fedora 39 and Centos 9.
+
+When I open with FSLeye I got this error
+
+fsleyes 0011_Tra_ep2d_dti_mddw_30_p2_B0-6_B1000-1_anonymous_20191211153422_11.nii.gz 
+
+Segmentation fault (core dumped)
+knutjb@knut:~/subjects/lar/LAR-BARN/LAR-BARN_1032/nii_dti$ 
+
+
+Hi Paul
+
+I had uploaded one DTi sequence that caused the problem and caused the bet to crash when I extracted the first image, as it is a b0 image.
+
+Knut jørge
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Monday, February 19, 2024 12:15 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Knut,
+
+Can you share one of the problematic datasets with me so I can have a play? You should have received a link to a onedrive folder that you can upload the files into.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Knut J Bjuland <knutjorgen@OUTLOOK.COM>
+Sent: 19 February 2024 11:07
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Paul
+
+I use fsl 6.0.7.7 on my pc and 6.0.5.1 on the cluster. FSLeye /bet works on some of the images from the same scanner. 
+
+In addition, I have fsleyes 1.10 installed on my computer.  Is there anything I could do to provide you with better debug information?
+
+
+
+Knut Jørgen
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Monday, February 19, 2024 11:51 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Hi Knut,
+
+What version of FSL / FSLeyes are you using? Do FSLeyes / bet work on other images?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Knut J Bjuland <knutjorgen@OUTLOOK.COM>
+Sent: 19 February 2024 07:51
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Troubleshooting dcm2niix-Converted DTI Sequences: Crash in FSLeyes and BET but Not in Freeview
+ 
+Dear FSL expert,
+
+I have processed several DTI sequences with dcm2niix. However, when I tried to open them with FSLeyes or BET, it crashed for some of the files with a segmentation error. I am, however, able to open all files with Freeview from FreeSurfer. I have used these options when converting: dcm2niix -o "folder" -f '%f_%p_%t_%s' -z y -v 1 $dcmfolder. How can I debug this problem? It has crashed on Fedora 39 and Centos 9.
+
+When I open with FSLeye I got this error
+
+fsleyes 0011_Tra_ep2d_dti_mddw_30_p2_B0-6_B1000-1_anonymous_20191211153422_11.nii.gz 
+
+Segmentation fault (core dumped)
+knutjb@knut:~/subjects/lar/LAR-BARN/LAR-BARN_1032/nii_dti$ 
+
+
+Best regards
+
+Knut Jørgen Bjuland PhD
+
+Hi Paul
+
+I use fsl 6.0.7.7 on my pc and 6.0.5.1 on the cluster. FSLeye /bet works on some of the images from the same scanner. 
+
+In addition, I have fsleyes 1.10 installed on my computer.  Is there anything I could do to provide you with better debug information?
+
+
+
+Knut Jørgen
+
+Dear FSL expert,
+
+I have processed several DTI sequences with dcm2niix. However, when I tried to open them with FSLeyes or BET, it crashed for some of the files with a segmentation error. I am, however, able to open all files with Freeview from FreeSurfer. I have used these options when converting: dcm2niix -o "folder" -f '%f_%p_%t_%s' -z y -v 1 $dcmfolder. How can I debug this problem? It has crashed on Fedora 39 and Centos 9.
+
+When I open with FSLeye I got this error
+
+fsleyes 0011_Tra_ep2d_dti_mddw_30_p2_B0-6_B1000-1_anonymous_20191211153422_11.nii.gz 
+
+Segmentation fault (core dumped)
+knutjb@knut:~/subjects/lar/LAR-BARN/LAR-BARN_1032/nii_dti$ 
+
+
+Best regards
+
+Knut Jørgen Bjuland PhD
+
+
+
+Hi Paul,
+
+Thanks for your reply. Based on your suggestions, I first ran fslreorient2std for each input image, as follows:
+
+fslreorient2std T1.nii.gz T1_reo.nii.gz
+fslreorient2std T1_mask.nii.gz T1_mask_reo.nii.gz
+fslreorient2std EPI.nii EPI_reo.nii
+
+And then run the registration,
+
+epi_reg \
+--epi=EPI_reo.nii \
+--t1=T1_reo.nii.gz \
+--t1brain=T1_mask_reo.nii.gz \
+--out=epi_reg_d
+
+
+

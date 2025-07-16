@@ -1,0 +1,713 @@
+Hi Matthew,
+
+Thanks for the quick reply. I've retested this and it is behaving as you suggested. 
+
+All the best,
+Iain
+
+On Thu, 7 Dec 2023 at 16:18, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hello Iain,
+If you are ( e.g. ) running the “0 -1” second in the two-contrast test then a _slightly_ different set of permutations will be generated and so potentially slightly different p-values ( but no more or less correct ). If everything else is equal then moving the “0 -1” contrast to be run _first_ should give the same outputs as when it is the only contrast run ( the -P option can be used to output the permutation vectors used for each contrast ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Neuroimaging in chronic pain
+
+The Department of Psychiatry at the University of Rochester Medical Center in New York is offering a post-doctoral position in the Pain and Perception Lab. This role is focused on studying brain biomarkers associated with chronic pain, including the transition from acute to chronic pain. The position is funded by the National Institutes of Health. Candidates should have a PhD in neuroimaging, psychology, cognitive sciences, or a related field. Experience in fMRI experimental design, data collection, and analysis is required.
+
+Under the guidance of Dr. Paul Geha, the post-doctoral researcher will investigate the neurobiological underpinnings of chronic pain, including factors related to risk, resilience, and the transition to chronic pain, using structural and functional neuroimaging. In collaboration with Dr. Zhengwu Zhang at the University of North Carolina at Chapel Hill, the researcher will employ techniques in brain connectomics, shape and function analysis, and machine learning to analyze data.
+
+The role also includes collaborations with other imaging disciplines, such as PET, and with both local and national centers dedicated to the study of pain and opioid addiction.
+
+Ideal candidates should be proficient in spoken and written English, efficient, self-motivated, have experience in interfacing with clinical services for patient recruitment, and be able to work well in a team. The successful candidate will also have the opportunity to develop and further refine research projects.
+
+Interested applicants should send their application, which includes a C.V., contact information for two references, and a statement of interest, to paul_geha@urmc.rochester.edu. The position is available immediately."
+
+
+
+
+
+The laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University is searching for postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+
+ 
+
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. 
+
+ 
+
+Our research center and laboratory have great computing capacity, including multiple H100 and A100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical records, medical images, and pathological images. We published more than 170 peer-reviewed journal papers. Among them, 87% were published in the top 10% of peer-reviewed journals, such as Nature, Nature Neuroscience, Nature Mental Health, PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc.
+
+ 
+
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+
+ 
+
+The position offers a competitive salary (up to HKD 540,000 annually) and benefits. We will apply for VISA for applicants. 
+
+Requirements:
+
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or relevant fields in Top Universities
+
+2.     Experience with neuroimage analysis techniques;
+
+Good communication and writing skills in English.
+ 
+
+Please send cv/inquiries to Professor Anqi Qiu, Global STEM scholar an-qi.qiu@polyu.edu.hk.
+
+
+
+
+Hi Matthew,
+
+Thanks for the quick reply. I've retested this and it is behaving as you suggested. 
+
+All the best,
+Iain
+
+On Thu, 7 Dec 2023 at 16:18, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hello Iain,
+If you are ( e.g. ) running the “0 -1” second in the two-contrast test then a _slightly_ different set of permutations will be generated and so potentially slightly different p-values ( but no more or less correct ). If everything else is equal then moving the “0 -1” contrast to be run _first_ should give the same outputs as when it is the only contrast run ( the -P option can be used to output the permutation vectors used for each contrast ).
+
+Kind Regards
+Matthew
+
+Hi Paul,
+
+I really appreciate your guidance. 
+
+
+Kind regards,
+Zahra Rabiei
+
+On Monday, December 11, 2023 at 12:38:16 AM GMT+3:30, Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+
+
+Hi Zahra,
+
+There's a chance that you are running out of memory. How much RAM does your computer have? Are you using WSL? If so, you may need to increase the amount of RAM available to the Linux subsystem - you can do this by following the instructions in this post:
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;2ae9ad31.2205
+
+Paul
+
+Hi Keng-Yu,
+
+These results look reasonable, as depicted in the attached screenshot. Most of the activation is in the occipital region. If you look at the thresholded/statistically significant zstatistic image, my guess is that you will see little if any activation outside of the brain.
+
+ You are correct in that smoothing, along with the quality of your registrations, will have an effect on the spatial accuracy of your results. If you are concerned about this, then you may wish to revisit your first-level analysis to try and improve the registration, and perhaps use a different level of smoothing. But I don't see anything catastrophically wrong with this particular image.
+
+Paul
+
+
+Hi, Paul,
+
+Thanks so much for the response! I really appreciate it!
+I'm attaching the screenshots from fsleyes.
+
+The first screenshot (mismatched space.jpg) is the MNI152_T1_2mm_brain.nii.gz image (blue) overlaying on top of zstat image (zstat2.nii.gz) (yellow-green).
+The second screenshot (mismatched space2.jpg) is the MNI152_T1_2mm_brain.nii.gz image (blue) overlaying on top of thresholded zstat image (thresh_zstat2.nii.gz) (red-yellow).
+
+In both screenshots, the activations are outside of the MNI152_T1_2mm_brain template. The processed images are obtained in the higher level processing in FSL (second level), which I think might have already been converted into the standard space (but correct me if I got this wrong).
+
+Please let me know if I got your request wrong "can you share one with the statistic image overlaid on top of the MNI152?", as I'm kinda new to FSL analysis. Thanks!
+
+Keng-Yu
+
+########################################################################
+
+
+Thanks for the feedback. I just tried to overlay the thresholded image (thresh_zstat2.nii.gz) with the standard template. The result still looked a bit odd, as some activations are still outside of the standard template. Please refer to the attached screenshot. Thanks!
+
+########################################################################
+
+Hi, i managed to solve the issue by adding --data_is_shelled to the Eddy command.
+
+Thanks!
+
+########################################################################
+
+Hi,
+
+I encountered some problem of mismatched space in higher level modelling. That is, I ran higher level modelling that modelled different sessions within the same participants. If I understood it correctly, in the higher level modelling, the individual native space should be converted into a standard space (MNI152_T1_2mm_brain). However, when I overlaid the zstat1.nii.gz/tstat1.nii.gz/cope1.nii.gz with the standard template (MNI_152_2mm_brain), they did not seem to be in the same space; thus, some activations seemed to be outside of the brain (MNI_152_T1_2mm_brain). I was wondering what might have gone wrong or what might be the cause. Thanks!
+
+Please refer to the attached screenshot of overlaying the images with the standard template in fsleyes.
+
+Thanks!
+
+
+Hello FSL experts,
+
+After probtrackx I would like to obtain the value of mean intensity and volume of non-zero voxels by using command:
+              fslstats -t <output_seed> -M
+                                  and
+              fslstats -t <output_seed> -V
+
+My question are:
+1) is there a script to extract mean and volume values in one command
+2) can I obtain mean intensity (-M) from all output seeds using only one command?
+
+Thank you. Regards.
+
+
+Hi there. I am running some first level processing and everything runs through completely, yet I cannot find any pe*.nii.gz output files, only zstat images are produced.
+
+I'm not sure if there is an issue with my .fsf file, or if this is related to other processing steps that are used with the HCP taskfMRIAnalysis.
+
+I'm wondering if there is anything you can share specific to the .fsf file that is related to the pe*.nii.gz output files, perhaps I have not set something correctly.
+
+Thank you for reading this :)
+
+########################################################################
+
+To unsub
+
+Dear FSL experts, 
+
+I would like to perform a between-group comparison of structural data, where all the participants' images have been mapped to MNI space. I am only interested in white matter, so I would like to add a white matter mask to randomise. 
+
+I saved the Left Cerebral White Matter and Right Cerebral White Matter as images from FSL's Harvard-Oxford Subcortical atlas, and merged them into one image. However, this image is probabilistic, i.e. not binarized. Should I binarize this mask before running randomise? 
+
+Thanks in advance! 
+Darko
+I know eddy cuda has certain requirements, but do you know if it can be run on a NVIDIA quadro p1000?
+Thanks!
+
+########################################################################
+
+Hi Paul.
+
+Thank you for your reply.
+
+I set the FSL_FIX_R_CMD="${FSLDIR}/fslpython/envs/fslpython/bin/R” and FSL_FIX_MCRROOT="/Applications/MATLAB/MATLAB_Runtime/v96/mcr". However, I checked the ${FSLDIR}/fslpython/envs/fslpython/bin/ folder, there’s no R file in it. I tried to install R into it based on this part of README. But there is also no $FSLDIR/fslpython/bin/activate, the command dosen’t work. 
+
+macOS:
+======
+
+Install R
+---------
+
+. $FSLDIR/fslpython/bin/activate $FSLDIR/fslpython/envs/fslpython
+
+If your FSLDIR folder requires admin rights to modify (e.g. it's in /usr/local) then
+prepend these commands with sudo.
+
+$FSLDIR/fslpython/bin/conda install R=3.4
+$FSLDIR/fslpython/bin/conda install r-rocr=1.0_7 r-kernlab=0.9_25 r-randomForest=4.6_12 r-class=7.3_14 r-e1071=1.6_8 r-devtools
+
+The two conda install commands also failed for solving environment. 
+
+I will finally use FIX on ComputeCanada because the big data size. I don’t have sudo access on it. So I am also doubting if it will still work even I can finally set it up on my local Mac. Do you have suggestions?
+
+Thanks!
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+On Nov 29, 2023, at 4:44 AM, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Xiyue,
+
+Have you edited the settings.sh file? The setup instructions are given in the README file.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Xiyue Zhang <xiyue.zhang.2@ULAVAL.CA>
+Sent: 28 November 2023 02:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FIX error: Unable to find MATLAB Compiler Runtime
+ 
+Hi experts,
+
+I just found I also got a text file named 2 in my input folder. It says: 
+
+Can't find the MATLAB compiler runtime, please set FSL_FIX_MCRROOT in the settings.sh file.
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+
+Hi Zahra,
+
+There's a chance that you are running out of memory. How much RAM does your computer have? Are you using WSL? If so, you may need to increase the amount of RAM available to the Linux subsystem - you can do this by following the instructions in this post:
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;2ae9ad31.2205
+
+Paul
+
+
+Dear FSL Expert team,
+ 
+I am a problem when I doing full analysis in FEAT fmri analysis. The below error is appread, can you help me to fix the problem?
+
+Thank you very much in advance.
+
+Kind regards,
+Zahra Rabiei
+
+Progress Report / Log
+Started at Sun 10 Dec 19:22:53 GMT 2023
+
+Feat main script
+
+child killed: SIGABRT
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+    -I {
+        incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+Error encountered while running in main feat script, halting.
+child killed: SIGABRT
+
+/bin/cp /tmp/feat_rh2t64on.fsf design.fsf
+
+/usr/local/fsl/bin/feat_model design
+
+mkdir .files;cp /usr/local/fsl/doc/fsl.css .files;cp -r /usr/local/fsl/doc/images .files/images
+
+/usr/local/fsl/bin/fsl_sub -T 10 -l logs -N feat0_init   /usr/local/fsl/bin/feat /run/media/root/FLASHDEVICE/filtered2standard+.feat/design.fsf -D /run/media/root/FLASHDEVICE/filtered2standard+.feat -I 1 -init
+Error submitting job - child killed: SIGABRT
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+    -I {
+        incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/fsl_sub -T 10 -l logs -N feat0_init   /usr/local/fsl/bin/feat /run/media/root/FLASHDEVICE/filtered2standard+.feat/design.fsf -D /run/media/root/FLASHDEVICE/filtered2standard+.feat -I 1 -init
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+Initialisation
+
+
+/usr/local/fsl/bin/fslmaths /run/media/root/FLASHDEVICE/filtered2standard prefiltered_func_data -odt float
+Image Exception : #22 :: Failed to read volume /run/media/root/FLASHDEVICE/filtered2standard
+Error : std::bad_alloc
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume /run/media/root/FLASHDEVICE/filtered2standard
+Error : std::bad_alloc
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/fslmaths /run/media/root/FLASHDEVICE/filtered2standard prefiltered_func_data -odt float
+ERROR MESSAGE:
+child killed: SIGABRT
+END OF ERROR MESSAGE
+
+
+
+
+
+
+
+
+
+
+
+Hi, Paul,
+
+The attached is the zstat2.nii.gz that I overlay with the standard MNI152_T1_2mm_brain.nii.gz.
+
+The activation of zstat2.nii.gz seems to be outside of the standard template. But I have checked the information of the images, using fslhd. They should be in the same space and their x/y/z coordinates are the same.
+
+I've also consulted my colleague and we think that the spillover activation might be caused by the smoothing. We used 5mm as the smoothing parameter and our voxel size is 3x3x3 mm. We might use the standard template as a mask and chop off the activations outside the standard template. But please let me know if I got this wrong.
+
+The attached is the zstat2.nii.gz image. Thanks!
+
+########################################################################
+
+Hi,
+
+I would like to run a second level modelling that models different sessions within the same participant. I have 34 participants and each has 2 sessions. I would thus have 68 .feat directories (34*2). And for the EVs, I'll have a 68*34 matrix, which is a large matrix for working on FSL GUI for higher level modelling. I would thus like to perform it using manually created matrix.
+
+I have already created my design matrix and contrast matrix, following https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM/CreatingDesignMatricesByHand
+I have also converted them using the Text2Vest function.
+
+And now, I got stuck at how I can implement the matrix I created into the higher level modelling using the FSL Feat. I have dug into the documentation but did not find any. Any references/tutorials that I can refer to? Or any idea on how I can implement it with my own design and contrast matric that are created manually? Thanks!
+
+########################################################################
+
+
+Dear Paul
+
+Thanks for your message - I found the error !
+
+When configuring TICA, using the GUI, I added “96” for input data. Then, in the window “select input data” I clicked on “Paste” and made a copy-paste of the 96 filenames of the .nii files but WITHOUT the path name.
+There was no error message so I assumed that this was ok
+
+I now tried again but WITH full pathname.
+
+That was the trick ! Now it worked 
+
+THX
+Sven 
+
+On 4 Dec 2023, at 12:42, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Sven,
+
+Can you share the contents of the log files that are contained in the <analysi.feat>/logs/ directory?
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Sven HALLER <0000632b0bd11d08-dmarc-request@JISCMAIL.AC.UK>
+Sent: 02 December 2023 10:53
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] TICA error
+ 
+TICA is not running on my computer (MacBook M1, FSL 6.0.7.5)
+
+any help is highly appreciated
+
+
+sven@SVEN-MPP-M1 Y_FM_2B_TEST % The file /Users/sven/Y_FM_2B_TEST/fsl.fmrib.ox.ac.uk/fsl/fslwiki does not exist.
+child process exited abnormally
+    while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -init" -b 10 -N feat1a_init -l logs "
+    invoked from within
+"if { $done_something == 0 } {
+
+    if { ! $fmri(inmelodic) } {
+       if { $fmri(level) == 1 } {
+              for { set session 1 } { $session <= $fmri(mult..."
+    (file "/Users/sven/fsl/bin/feat" line 390)
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available athttps://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Dear Matthew
+
+See  my other post. I had a problem running TICA on my own computer. This now works !
+
+So I repeated the analysis of the 96 .nii files on my own computer
+
+Trying to do the dual_regression however unfortunately still does not run
+
+See below (and attached files)
+
+sven@SVEN-MPP-M1 X_FACEMASK-2BACK % dual_regression /Users/sven/X_FACEMASK-2BACK/C0003-Mask1-RUN-B.gica/groupmelodic.ica/melodic_IC.nii.gz 1 /Users/sven/X_FACEMASK-2BACK/nback-design.mat /Users/sven/X_FACEMASK-2BACK/nback-design.con 500 grot `cat /Users/sven/X_FACEMASK-2BACK/C0003-Mask1-RUN-B.gica/-filelist`
+
+cat: /Users/sven/X_FACEMASK-2BACK/C0003-Mask1-RUN-B.gica/-filelist: No such file or directory
+
+$creating common mask
+
+Error submitting job - Array task definition file fault: Unable to read 'grot/scripts+logs/drA'
+
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+
+               [--coprocessor_multi COPROCESSOR_MULTI]
+
+               [--coprocessor_class COPROCESSOR_CLASS]
+
+               [--coprocessor_class_strict]
+
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+
+               [--show_config] [-v] [-V] [-z file]
+
+               ...
+
+fsl_sub: error: argument -j/--jobhold: expected one argument
+
+doing the dual regressions
+
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+
+               [--coprocessor_multi COPROCESSOR_MULTI]
+
+               [--coprocessor_class COPROCESSOR_CLASS]
+
+               [--coprocessor_class_strict]
+
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+
+               [--show_config] [-v] [-V] [-z file]
+
+               ...
+
+fsl_sub: error: argument -j/--jobhold: expected one argument
+
+sorting maps and running randomise
+
+usage: fsl_sub [-h] [-a ARCH] [-c COPROCESSOR]
+
+               [--coprocessor_multi COPROCESSOR_MULTI]
+
+               [--coprocessor_class COPROCESSOR_CLASS]
+
+               [--coprocessor_class_strict]
+
+               [--coprocessor_toolkit COPROCESSOR_TOOLKIT] [-F] [-j JOBHOLD]
+
+               [--not_requeueable] [--array_hold ARRAY_HOLD] [-l LOGDIR]
+
+               [-m MAILOPTIONS] [-M MAILTO] [-n] [-N NAME] [-p PRIORITY]
+
+               [-q QUEUE] [-r RESOURCE] [--delete_job DELETE_JOB]
+
+               [--extra EXTRA] [-R GB] [-s PARALLELENV,THREADS]
+
+               [-t ARRAY_TASK] [--array_native ARRAY_NATIVE] [-x NUMBER]
+
+               [--keep_jobscript] [--has_coprocessor COPROCESSOR_NAME]
+
+               [--has_queues] [--project PROJECT] [-S] [-T MINUTES]
+
+               [--show_config] [-v] [-V] [-z file]
+
+               ...
+
+fsl_sub: error: argument -j/--jobhold: expected one argument
+
+sven@SVEN-MPP-M1 X_FACEMASK-2BACK % $
+
+
+
+Hi Keng-Yu,
+
+Perhaps it would be easier if you could share one of the zstat images that you are concerned about. If it is not too large, you can email it to me directly.
+
+Have you checked that the registrations to standard space were successful in your first level analyses?
+
+Paul
+
+
+Hi Yuliya,
+
+Can you share the full command that you are trying to run, along with all of the output messages that are produced?
+
+Paul
+
+
+I've installed FSL on at least 3-4 computers now, but I've run into problems with my latest that I can't understand. To describe:
+
+On this machine I can run fsl and get the GUI, fsleyes and launch it as normal, bet and get the command line argument help, but most commands launch a process I can see in the system monitor and they do nothing. I've installed FSL on a number of computers running Ubuntu and never run into this problem, and this is mostly a fresh install. Even the commands launched by the GUI fsl, other than BET, SUSAN, and FDT, I have to end the launched process in my system monitor before the GUI for the tool is displayed.
+
+The simple validation of the installation calling flirt -version just runs endlessly, despite calling "which flirt" returning the result I expect. eddy, counter to my previous experiences (on machines with NVIDIA GPUs and drivers included) launches eddy_cuda10.2, but outwardly doesn't do anything. Most of the commands with which I'm familiar using even as utilities fslmaths, flsmerge, etc., don't return their help information, they just consume some CPU resources and outwardly give no response.
+
+Anyone have any advice to get things working? I'm unsure of even first steps to understand the problem.
+
+Thanks for any advice you can provide.
+
+The University of Tulsa are seeking an Assistant Professor of Chemistry and Biochemistry with a neuroscience speciality.
+
+Position Title
+
+Assistant Professor of Chemistry and Biochemistry
+
+Job Description
+
+The Oxley College of Health and Natural Science and The Department of Chemistry and Biochemistry at The University of Tulsa invites applications for a tenure-track position as an Assistant Professor in Biochemistry with a neuroscience speciality starting August 2024.
+
+This Tenure-Track position comes with a generous start-up package that includes lab space in Keplinger Hall, protected time for establishing an independent research program, and mentoring by collegial and supportive faculty. The successful candidate will be expected to develop a strong extramurally funded research program to support the growth of TU to an R1 institution. For a more complete description of our program and facilities, please visit our website at https://healthsciences.utulsa.edu/chemistry-biochemistry/.
+
+Required Qualifications
+
+Ph.D. degree, postdoctoral experience, and a record of research excellence.
+
+Preferred Qualifications
+
+Applicants for the position should have a Ph.D. degree, postdoctoral experience, and a record of research excellence. Preference will be given to individuals that broadly complement existing faculty research, and who can contribute to undergraduate and graduate teaching in Biochemistry.
+
+Physical Demands
+
+Some lifting in lab work.
+
+https://universitytulsa.peopleadmin.com/postings/8150
+
+########################################################################
+
+Hello there! I have a question regarding the column timing file that I am using in my FEAT analysis. I've simplified my question in photo form and posted it to this link since it seems that I can't post a picture.
+
+This is the URL in case the in-text link doesn't work (https://sway.office.com/gXCznHwWjJl7QWfc?ref=Link).
+
+Basically I'm uncertain about the proper stimulus duration to use in column 2. The stimulus duration is confusing considering that the stimulus begins before the first volume is acquired. Thus it seems to me that column 2 should not be the actual stimulus duration, but rather the duration between the first obtain volume during a specific stimulus and the last volume obtained.
+
+In the photo I link I have represented an obtained volume by a bolded line, and I provide 2 altternative options for 3 column files (of course this is a simplified version of my scanning session, but it represents my issue.
+
+Really hoping you can be of help :)
+
+Warm regards from Montreal,
+
+Austin
+
+
+
+Hello,
+
+I am experiencing an issue using FSL 6.0.6.7 on MacOS 12.6.3. When trying to run probrackx2 through the command line (I am using the system command in MATLAB, 2022b) I am getting an error notifying me that the BET brain mask file directory (called after '-m' in the command line) is an unrecognized token. I have no problem running probtrackx through the GUI (where this step is automatically sorted when indicating the bedpostx input folder). I double checked by taking the command generated through GUI-initiated probtrackx procedure and trying to run it, but I encounter the same issue with the nodif_brain_mask being an unrecognized token.
+
+Do you perhaps have a suggestion of what might be an issue here?
+
+Thank you very much in advance.
+
+Kind regards,
+Yuliya Patsyuk
+
+Dear Michael,
+
+thank you very much for your support. Unfortunately, I couldn't find any obvious reason for the error with the tagging being correct and the overall quality of the image seems to be quite ok (dummy image shared here: https://drive.google.com/drive/folders/1A-IRmNJls9J1L9fK2xTQ3j4oHE9GTvpV?usp=sharing).
+Do you have any other suggestion on how to solve the error or how to bypass this issue?
+
+Thank you very much and best wishes,
+Christian
+
+########################################################################
+
+Hello Iain,
+If you are ( e.g. ) running the “0 -1” second in the two-contrast test then a _slightly_ different set of permutations will be generated and so potentially slightly different p-values ( but no more or less correct ). If everything else is equal then moving the “0 -1” contrast to be run _first_ should give the same outputs as when it is the only contrast run ( the -P option can be used to output the permutation vectors used for each contrast ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Dec 2023, at 15:54, Iain Croall <00007f8c66905265-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hello experts,
+
+Sorry if this is a rudimentary question. I have found this recently playing around with some TBSS data and would like to check first that this is correct (i.e. not some kind of processing error), and secondly understand this better so I can know the best approach in the future.
+
+I have DTI scans and a continuous variable indicating patient health, and have been seeking correlations via TBSS and then randomise. Ordinarily I set up the .mat and .con files so that there are 2 EVs, the first being a column of all 1's and the second being a column with the continuous variable (de-meaned). In the contrasts I set up 2, with a "0 1" which will identify positive correlations and a "0 -1" for negative correlations. I understand this is reasonable?
+
+What I have come across now is that if I am only interested in e.g. a negative correlation and so include a single "0 -1" contrast in the model, the results image I get from this is different compared to the equivalent results image when I set up both contrasts (generally showing greater statistical significance). Though this feels like the odder approach one would use for a correlation analysis it aligns closest with the example given in the fsl glm wiki page under "Single-Group Average with Additional Covariate".
+
+Assuming this difference is intended, could someone explain why? Is it maybe comparable to something like one tailed vs. two tailed hypothesis testing, meaning that a one-tailed analysis will more "easily" reach statistical significance? I am mostly curious what the best approach is to use if wanting to best replicate a straightforward, two-tailed correlation analysis where you would be interested in either direction.
+
+Many thanks,
+Iain
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear Matt,
+
+If you replace b02b0 by b02b0_1 it should work. That is an alternative config file with no sub-sampling that has been carefully crafted to give results as similar as possible to b02b0. 
+
+Jesper
+
+On 7 Dec 2023, at 02:52, Sherwood, Matt <matt.sherwood@wright.edu> wrote:
+
+﻿
+FSL users,
+
+ 
+
+I am having an issue with topup. I am trying to run a MB 3 sequence with an odd number of slices (to keep the number of slices per band odd and therefore limit cross-talk). However, when I try to analyze topup I get the error:
+
+ 
+
+topup subsampling levels incompatible with image data
+
+ 
+
+I see that in my FSL b02bo.cnf file, subsampling is set to 2 2 2 111, and when I comment this out topup will run – but I am sure I am affecting the algorithm performance.
+
+ 
+
+Does anyone have any potentially better workarounds?
+
+ 
+
+Matthew Sherwood
+
+ 
+
+
+
+Hello,
+         The custom timings file needs a timing value per-slice, starting from the ( z=0 ) slice. Assuming this is the most inferior slice then the first entry should be +0.5 as this slice needs to be shifted _forwards_ half a TR. For protocols which acquire multiple slices simultaneously then these ( repeated ) timings also need to be added at the appropriate lines - as you have 50 slices, the custom-timings file should have 50 lines in total.
+
+Kind Regards
+Matthew
+
+Dear Yan,
+These kind of repeated-measures designs do not allow for covariates that are constant within-subject ( e.g. age at start of study or IQ ) as they will be co-linear with ( some combination of ) the subject-defining EVs. You can add EVs that vary across a subject’s sessions ( e.g. a behavioural test taken before each scan ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+

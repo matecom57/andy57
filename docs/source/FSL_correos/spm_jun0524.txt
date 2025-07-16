@@ -1,0 +1,536 @@
+Dear SPMers.
+
+The approach-avoidance research training group (RTG 2660) at the University of Würzburg is inviting applications for 13 fully funded PhD positions to 
+work on a range of topics related to approach and avoidance behaviour across translational levels.
+
+See here for more info:
+
+https://www.uni-wuerzburg.de/en/grk2660/news/single/news/join-the-rtg-2660/
+
+Please share the call (attached) with any talented MSc students that may be interested. We are also happy to answer any question.
+
+Best wishes, Andrea
+
+
+Dear spm community,
+
+ 
+
+I have a question about how to transform images from one MNI space to another in spm12.
+
+ 
+
+More specifically, I have processed fMRI data in spm12 and obtained some clusters that I would now like to use as ROIs for my structural data processed 
+with cat12. Unfortunately, spm12 and cat12 seem to use different MNI spaces (i.e. MNI152NLin2009cAsym in cat12). Therefore, I need to transform my ROIs 
+coming from the functional data.
+
+What would be the best way to transform the clusters/ROIs from spm12 MNI space to cat12 MNI space?
+Could I use the tpm templates to compute a transformation matrix? How would that look like in spm?
+What do I do about the different matrix dimensions for tpm templates in spm and for my preprocessed functional images? (see details of the dimensions 
+below)
+ 
+
+matrix dimensions 
+
+spm12 fmri space:
+
+- 79x95x79 for my preprocessed and analyzed functional images
+
+- 121x145x121 for spm tpm templates
+
+ 
+
+cat12 smri space:
+
+- 113x137x113 for my preprocessed structural images
+
+- 113x137x113  for cat12 tpm templates
+
+ 
+
+Thank you in advance for your assistance!
+
+ 
+
+Best,
+
+Maike
+
+Dear SPMers.
+
+The approach-avoidance research training group (RTG 2660) at the University of Würzburg is inviting applications for 13 fully funded PhD positions to 
+work on a range of topics related to approach and avoidance behaviour across translational levels.
+
+See here for more info:
+
+https://www.uni-wuerzburg.de/en/grk2660/news/single/news/join-the-rtg-2660/
+
+Please share the call (attached) with any talented MSc students that may be interested. We are also happy to answer any question.
+
+Best wishes, Andrea
+
+
+
+
+
+
+
+Hi everyone
+
+Instats is offering four free Introductions to Path Analysis with Interactions and Indirect Effects in R, Stata, and Mplus. These workshops are 100% free 
+and cover everything from the basics of regression through to path analysis, interaction effects (moderation), indirect effects (mediation), and 
+conditional indirect effects (moderated mediation), as well as bootstrapping, plotting effects, and instrumental variable analysis. From everyone at 
+instats.org, we hope you enjoy and find these useful for your training and research!
+
+R workshop:
+https://instats.org/seminar/path-analysis-with-interactions-and-indi1124
+
+Stata workshop:
+https://instats.org/seminar/introducing-statas-sem-command-path-an7085
+
+Mplus workshop (English):
+https://instats.org/seminar/path-analysis-with-interactions-and-indi2902
+
+Mplus workshop (中文)
+https://instats.org/seminar/path-analysis-with-moderated-mediation-i3
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Hi Alfonso,
+
+thanks for the tip. That was my first thought too. Obviously it wasn't that. There is relatively little movement in the data.
+
+But I have found my "mistake": If you work with 4D Nifti files and exclude the first few scans, e.g. for the realignment, these are still written to the 
+4D files during reslicing, but without values or as 0. It took me a while to discover this by chance.
+But thanks for your tip regarding the movement. That was another reason for me to pay special attention to it!
+
+Cheers,
+Gregor
+
+Dear SPM users,
+
+While doing a first level model estimation using FIR basis functions, should one incorporate durations (ie., 10s) from their event/onset files or 
+incorporate events to the model with a duration of 0? 
+
+Would there be any use cases whereby one would need to define a duration while using FIR as a basis function?
+
+When I checked the design matrix for specifying the duration as 0, the corresponding value for my regressor was set to 16 (see picture below). I am also 
+curious why this number is set to 16. As for when specifying a duration, the design matrix was different than the one below.
+
+image.png
+
+Thank you for your interest,
+
+Tamer Gezici
+
+
+Hi Karina,
+
+I have a script that may help. It iterates over regions of an atlas for different contrasts. You can tweak it to do either task above,
+
+https://github.com/LLouedKhen/SinergiaProject_EPFLUNIGE_LABNICMIPLAB/blob/main/SchaeferExtractBetaTs_20230111.m
+
+Best,
+Leyla
+
+Hi everyone
+
+Last chance to sign up for the groundbreaking workshop Using ChatGPT for Advanced Data Analysis 3.0 running May 23 - 24. Imagine performing an entire 
+statistical analysis without writing a single line of code or even knowing how to use a given statistics program. In today's world of AI based language 
+models such as ChatGPT, plain English is sufficient. In this workshop, professor Peter Gruber will show you how to use ChatGPT and its Advanced Data 
+Analysis tool for statistical analysis without needing to use any statistics programs or programming languages - and with the newest version of ChatGPT 
+released just last week, it's even faster and more intuitive. The seminar covers a range of topics from data preparation and descriptive statistics to 
+regression analysis, advanced statistical tests, and data visualisations. Emphasis is placed on understanding the workings and limits of this and similar 
+AI models. 
+
+Places are limited so sign up today, and please feel free to tell your friends and colleagues!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Dear Gregor,
+
+it's described in the Quick Start guide:
+https://neuro-jena.github.io/cat12-help/#add_surf
+
+- Optionally Extract ROI-based Surface Values such as gyrification or fractal dimension to provide ROI analysis. Since version 12.7 extraction of 
+ROI-based thickness is not necessary anymore because this is now included in the segmentation pipeline.
+- Optionally estimate results for ROI analysis using Analyze ROIs. Here, the SPM.mat file of the already estimated statistical design will be used. For 
+more information, see Atlas Creation and ROI based Analysis.
+
+Thus, you have to extract the gyrification values first. Then new files in the label folder are saved (catROIs_*). Of course, you need an analysis of the 
+gyrification first to move on with the ROI analysis.
+
+Best,
+
+Christian
+
+
+Dear Christian, dear CAT experts,
+
+I have a problem with the ROI analysis regarding gyrification. When I start the ROI analysis, which files do I need so that I can evaluate the 
+gyrification? I have the ROI files in the labels folder. But when I use them, I can only select GM, WM or CSF in the further dialog. I must have left out 
+a step somewhere or taken a wrong turn. Although the CAT manual is great, I can't find the solution. Maybe someone can help me with a little hint. I'm 
+not sure if the description of the problem was clear.
+
+Thank you so much!
+Cheers, Gregor
+
+
+Hey all, beginner here!
+
+I am working on a modified/adapted version of the PEB tutorial scrip and I get the following error message:
+
+
+Error using spm_dcm_peb_bmc_fam
+Families should be a vector with one element per model
+
+Error in Run_second_level2 (line 76)
+[BMA_fam_task, fam_task] = spm_dcm_peb_bmc_fam(BMA, BMR, templates.task_family, 'ALL');
+
+Any ideas on how I can fix this? :)
+
+workspace variables:
+ans (6x1 cell), BMA (1x1 struct), BMA_B (1x1 struct), BMR (125x125 cell), dm (1x1), GCM(76x1 cell), labels(1x4 cell), M(1x1), PEB_B(1x1), RCM_B(76x1 
+ceoo), templates(1x1 struct), X(76x4double), X_labels(1x4 cell)
+
+
+Code below:
+
+
+ %% Load PEB prerequisites
+labels = {'Mean', 'Group', 'Factor', 'Time'};
+
+% Load design matrix
+dm = load('/home/joeh/Documents/fmri/results_and_scripts/design_matrix.mat');
+
+% Assign labels to a new field in dm structure
+dm.X_labels = labels;
+
+% Verify structure contents and field names
+disp('Updated contents of dm structure:');
+disp(dm);  % Display the updated structure contents
+
+% Identify the correct field name for X labels
+if isfield(dm, 'X')
+    X = dm.X;  % Get design matrix X from dm structure
+else
+    error('Field name "X" not found in dm structure. Check the correct field name.');
+end
+
+if isfield(dm, 'X_labels')
+    X_labels = dm.X_labels;  % Get X labels from dm structure
+else
+    error('Field name "X_labels" not found in dm structure. Check the correct field name.');
+end
+
+% Import downloaded GCM file if needed
+%if ~exist('../analyses/GCM_full.mat', 'file')
+%    copyfile('../analyses/GCM_full_pre_estimated.mat', '../analyses/GCM_full.mat');
+%end
+
+% Load GCM
+GCM = load('/home/joeh/Downloads/GCM_full_pre_estimated.mat');
+GCM = GCM.GCM;
+
+% PEB settings
+M = struct();
+M.Q = 'all';
+M.X = X;
+M.Xnames = X_labels;  % Use the correct field name for X labels
+M.maxit = 256;
+
+%% Build PEB (using B parameters)
+[PEB_B, RCM_B] = spm_dcm_peb(GCM, M, {'B'});
+save('PEB_B.mat', 'PEB_B', 'RCM_B');
+
+%% Automatic search
+BMA_B = spm_dcm_peb_bmc(PEB_B);
+save('BMA_search_B.mat', 'BMA_B');
+
+%% Hypothesis-based analysis (B)
+
+% Load estimated PEB
+load('PEB_B.mat');
+
+% Load template models
+templates = load('//home/joeh/Downloads/raph_GCM.mat');
+
+% Run model comparison
+[BMA, BMR] = spm_dcm_peb_bmc(PEB_B, templates.GCM);
+
+% Show connections in winning model 4
+BMA.Kname(BMA.K(4,:) == 1)
+
+% Show connections in winning model 15
+BMA.Kname(BMA.K(15,:) == 1)
+
+save('BMA_B_28models.mat', 'BMA', 'BMR');
+
+%% Family analysis
+
+Dear SPMers,
+Do any of you has a script that could be recursively used to extract the time series of a volume of interest?
+
+There are to scenarions that we are interested in:
+
+1. Selecting the coordinate for the peak activity for that VOI, example the amygdala for that participant.
+
+Or if the above is not possible to script.
+
+1. Selecting the same coordinate for that VOI for all the participants recursively.
+
+Warmly and please let us know?
+Karina
+
+
+Karina Quevedo, Ph.D., L.P.
+Associate Professor. Division of Child and Adolescent Psychiatry
+University of Minnesota. Department of Psychiatry
+2450 Riverside Avenue, Mpls, MN 55454
+612-273-9761 Fax: 612-273-9779 
+queve001@umn.edu
+
+
+Dear all,
+
+On behalf of the organization committee, I am pleased to announce that the Salzburg Mind Brain Annual Meeting 2024 will take place on July 11-12.
+We will once again host a lineup featuring top experts in cognitive neuroscience. There should be something of interest for everyone. This will also be 
+an excellent opportunity to present a poster and engage in discussions about your research.
+
+This year’s speakers lineup: 
+
+Beatrice de Gelder (Maastricht University), The body inside out
+Benjamin Morillon (Aix Marseille Université, INSERM), Neural dynamics and computations constraining music and speech processing
+Clare Press (University College London), The interdependence of statistical learning and perception
+Josef Rauschecker (Georgetown University and TU Munich), Learning and Plasticity in the Auditory System
+Kerstin Konrad (RWTH Aachen, Jülich Research Centre), Interpersonal synchrony: Neurobiological mechanism, methodological considerations and potential 
+pathways towards mental health interventions
+Natalie Sebanz (Central European University), Self and Other in Joint Action
+Roberto Bottini (University of Trento), Structuring knowledge across reference frames
+Surjo Soekadar (Charité - Universitätsmedizin Berlin), Neuromagnetic brain-computer interfaces for restoration of motor function and beyond
+Valentin Riedl (Friedrich-Alexander University Erlangen-Nuremberg), The energetic costs of the human brain
+Yulia Oganian (University Tübingen), The cognitive neurophysiology of speech comprehension
+
+
+For more info, just follow the link here:
+
+https://samba.ccns.sbg.ac.at/samba-2024
+
+Please register soon!
+
+
+Best,
+Gianpaolo Demarchi 
+
+
+
+
+
+Hi!
+On behalf of my supervisor, Dr. Jessica Grahn, I'd like to share this job opportunity with you. Please, see below. Information is all available at this 
+link: https://www.jessicagrahn.com/postdoctoral-position.html
+
+Best regards,
+Ana Luísa Pinho
+Postdoctoral Research Fellow position at the Department of Psychology/Brain and Mind, Western University, Canada.
+
+The post is based in the Music and Neuroscience lab (headed by Jessica Grahn). The lab explores the links between music, rhythm, and movement using 
+neuroscientific methods and various populations (e.g., healthy adults, neurological patient populations, non-human animals). The lab is committed to best 
+practices in Equity and Diversity.
+
+The post-holder will play a key role in neuroimaging and possibly neuropsychological patient investigations of rhythm, timing, and music. A background in 
+cognitive neuroscience or experimental psychology and expertise in fMRI, EEG, TMS/tDCS/tACS, or neuropsychological patient testing is preferred, but not 
+required. Comfort with computer programming (e.g., Matlab, Python, R) would be helpful. No musical background is necessary. The successful applicant will 
+enjoy working as part of an interdisciplinary team and be able to mentor members of the lab.
+
+For further details on Dr. Grahn’s research, see www.jessicagrahn.com. To learn more about Brain and Mind, please visit www.uwo.ca/bmi/. In addition to 
+excellent MRI infrastructure, the Institute has TMS, tDCS, tACS, EEG/EMG, motion capture, audiodome, sleep-monitoring facilities, and gait-monitoring 
+facilities.
+
+To apply, please send a detailed CV and cover letter explaining why the lab’s research interests you and how your skills and abilities are suitable to 
+jgrahn@uwo.ca with the subject line “Music & Neuroscience PDF”. The position will initially be for one year with an option to renew for a further one or 
+two years. At the time of appointment candidates will have obtained (or will be about to obtain) a PhD in a relevant discipline. Western University 
+limits postdoctoral applicants to no more than 5 years of experience post-PhD (with allowances given for leaves). Salary will be in the region of $45,000 
+CDN per year. Benefits include Employment Insurance, Canada Pension Plan, a health-care spending account (to cover eye and dental care, prescriptions, 
+etc.), and Western’s mentorship and professional development program for postdoctoral scholars, Competitive Edge.
+
+Please feel free to contact Dr. Grahn if you have any enquiries. The selection process will begin on June 30th, 2024 and continue until the position is 
+filled (late applications therefore may be considered).
+
+The post will begin in 2024 or 2025.
+
+Hello SPM-ers,
+
+I have been setting up some pretty simple batch scripts over the last two days, and have run into an issue - the inputs​ cell array is filled with my 
+arguments / options, etc., but the batch itself is not being filled. Running:
+
+spm_jobman('interactive', jobs, inputs{:});​
+
+to check this in the GUI, all of the open inputs remain open and unfilled. Attempting to run the job with spm_jobman('run', jobs, inputs{:})​ simply 
+produces the error: "Error using spm_jobman>fill_run_job No executable modules, but still unresolved dependencies or incomplete module inputs." No other 
+error or output is given.
+
+This is the second time this has happened - it first occurred on a completely different batch I was setting up last night, which is why I started fresh 
+with this one. The script is incredibly simple, just reading and cleaning up some file paths and sticking them in the cell array. I've double-checked the 
+entirety of inputs{:}​, which contains all the expected values in the right places. All of the targets are correct, confirmed with exist()​. For whatever 
+reason, this just does not seem to be reaching the batch system. This is stored on my own external drive that I have full read/write permissions for. 
+Script is below, just in case (I'm aware some of the inputs are probably the wrong type, but it isn't producing any relevant error messages for me so I 
+can't correct these at the moment):
+JD_dir = fullfile("D:\Research\WT\Imaging\Jacobian CAT12\JD\Maps\Masked\Original");​
+output_dir = fullfile("D:\Research\WT\Imaging\Jacobian CAT12\Statistics\SingleSubjects");​
+JDs = dir(fullfile(JD_dir, "*.nii"));​
+JDs = {JDs.name};​
+patient_JDs = JDs(~contains(JDs(:), 'CON'));​
+​
+substrings = ["wj_T1_asl_", ".nii"];​
+targets = string(0);​
+outputs = string(0);​
+
+for i = 1:length(patient_JDs)​
+      targets(i) = fullfile(JD_dir, patient_JDs(i));​
+      outputs(i) = fullfile(output_dir, erase(patient_JDs(i), substrings));​
+      disp(targets(i) + " => " + outputs(i));​
+end​
+
+% - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - %​
+nrun = length(targets);​
+jobfile = {'D:\Research\WT\Imaging\Jacobian CAT12\SingleSubject_JD_Driver_job.m'};​
+jobs = repmat(jobfile, 1, nrun);​
+inputs = cell(4, nrun);​
+for crun = 1:nrun​
+      inputs{1, crun} = cellstr(outputs{crun}); % Basic models: Directory - cfg_files​
+      inputs{2, crun} = cellstr(targets{crun}); % Basic models: Group 2 scans - cfg_files​
+      inputs{3, crun} = "FDR"; % Results Report: Threshold type - cfg_menu​
+      inputs{4, crun} = 0.05; % Results Report: Threshold - cfg_entry​
+end​
+spm('defaults', 'PET');​
+spm_jobman('run', jobs, inputs{:});
+I'm sure this is a really straightforward issue that I'm simply not seeing, so any advice would be appreciated!
+
+Best wishes,
+Rowan
+
+
+~
+GTA/PhD Candidate
+School of Health Sciences
+Zochonis G30, M13 9NT
+
+Postdoc positions are available at Zhejiang University (Hangzhou, China). The successful candidates are expected to work on multi-disciplinary projects 
+in cognitive neuroscience, neuroimaging and computational modelling related to individual differences in language/spatial navigation, relevant brain 
+networks, aging and disorders.
+
+The Cognomics Lab is led by Dr. Xiangzhen Kong, who has extensive experience in cognitive neuroscience and the application of computational modelling and 
+neuroimaging genetics to investigate functional architecture of the human brain and how it supports human-defining cognition. We conduct large-scale 
+studies using a variety of data sources including in-house datasets (e.g., fMRI, SEEG), and open data from UK Biobank and ENIGMA.
+
+We seek highly motivated candidates with a Ph.D. degree in cognitive neuroscience, psychology, bioinformatics, or computer science with biomedical 
+applications, etc. The ideal candidates should be highly motivated to publish first-author papers and present at conferences, and are expected to have 
+strong quantitative skills and experiences in programming and machine learning.
+ 
+Interested applicants should submit a CV, a letter briefing current research interests, and contact information for two individuals who can provide 
+letters of recommendation to Dr. Xiangzhen Kong (xiangzhen.kong@zju.edu.cn).
+
+Positions will remain open until filled.
+ 
+
+Hi Christian,
+
+I wanted to ping this thread, as I'm unsure how to resolve this GIFTI issue I'm having with the surface model estimation. I was able to successfully 
+perform the previous QA checks, so it appears that the GIFTI files are being properly read. I've tried modifying some of the underlying CAT12 code (e.g. 
+read_gifti_file.m), but this hasn't solved my problem.
+
+Is there some other way to assess the quality of the GIFTI files, or should I try a different approach?
+
+Thanks again,
+
+Dan
+
+Hi Martyn
+
+Thank you for the reply. I have indeed read your paper; it was very detailed and comprehensive.
+
+Could you possibly expand on how I would go about defining multiple contrasts at the first level between subjects? To clarify, I have 13 subjects, who 
+performed the same task 4 times, but each with a different condition (4).
+
+
+Thank you
+Michael
+
+Hi,
+
+If all images are already in MNI space, I believe a simple reslicing (without coregistration) should work. Maybe someone else will confirm this.
+
+Best,
+
+Michel
+
+On Wed, Jun 5, 2024 at 12:19 PM Hille, Maike <hille@mpib-berlin.mpg.de> wrote:
+Dear spm community,
+
+ 
+
+I have a question about how to transform images from one MNI space to another in spm12.
+
+ 
+
+More specifically, I have processed fMRI data in spm12 and obtained some clusters that I would now like to use as ROIs for my structural data processed 
+with cat12. Unfortunately, spm12 and cat12 seem to use different MNI spaces (i.e. MNI152NLin2009cAsym in cat12). Therefore, I need to transform my ROIs 
+coming from the functional data.
+
+What would be the best way to transform the clusters/ROIs from spm12 MNI space to cat12 MNI space?
+Could I use the tpm templates to compute a transformation matrix? How would that look like in spm?
+What do I do about the different matrix dimensions for tpm templates in spm and for my preprocessed functional images? (see details of the dimensions 
+below)
+ 
+
+matrix dimensions 
+
+spm12 fmri space:
+
+- 79x95x79 for my preprocessed and analyzed functional images
+
+- 121x145x121 for spm tpm templates
+
+ 
+
+cat12 smri space:
+
+- 113x137x113 for my preprocessed structural images
+
+- 113x137x113  for cat12 tpm templates
+
+ 
+
+Thank you in advance for your assistance!
+
+ 
+
+Best,
+
+Maike
+
+Dear Carles,
+
+Thanks for your suggestion! I removed the regressors including the site, age and gender from the GLM, however the issue remains unresolved. I think issue 
+might have occurred during preprocessing the T1W/T2W structural dataset and not due to the inclusion of regressors.
+
+                                                                                thanks,
+
+kind regards,
+Varun
+
+
+

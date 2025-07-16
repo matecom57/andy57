@@ -1,0 +1,274 @@
+Hi Debby,
+
+Assuming it is compatible with your task design, why not try a parametric modulation analysis at the first level and take the mean effect of stimulation for the second level analysis? That way, variations in intensity will have already been accounted for without requiring 4 separate covariates to eat up degrees of freedom at the second level. And, I think you can more easily assess whether there is actually an effect of intensity via the parametric regressor.
+
+Best,
+
+Tasha
+
+Dear spm-users,
+
+I am trying to investigate potential changes induced by an intervention (noninvasive brain stimulation) on rs-fMRI. So I am running a second level analysis based on a paired t-test with the inputs from my first-level analyses. So far so good. However, I would also like to correct for variations in the strength of the stimulation (4 scalar vectors for every subject). If I make a matrix for these covariate and put that in the 'multiple covariates' input in spm, I can indeed see that these are incorporated in the design matrix (see design here: https://www.dropbox.com/s/4fmvdgfh1sjeh5a/Schermafbeelding%202023-06-20%20om%2016.52.43.png?dl=0)
+
+Submissions for the Open Science Room at OHBM NOW OPEN !!! Looking for panelists, emergent sessions, and volunteers: https://ohbm.github.io/osr2023/submit/
+
+The Open Science Room (OSR) is a conference within a conference. It is part of the Organisation for Human Brain Mapping (OHBM) annual meeting (July 22-26, 2023, at the Palais de congres de Montréal, Canada).
+
+The OSR aims to be a welcoming and inclusive space for discussion around open practices within neuroimaging and science more generally.
+
+This year, you can self-nominate as a panelist for one of our panel discussions and/or submit your own emergent session.
+
+We are also always looking for volunteers to help us with the organisation of the OSR activities.
+
+Panel Sessions are moderated discussions amongst selected speakers and OSR attendees about various relevant topics, spanning across all aspects of open science practices.
+
+You can self-nominate as a speaker for the following hybrid panel discussions:
+8:00 GMT-4 July 23, 2023 (Sunday): Topic 1: Telehealth as a tool for open data research and sharing
+14:15 GMT-4 July 23, 2023 (Sunday): Topic 2: Evolution of open publishing (To do or not to do?/Lessons learnt)
+8:00 GMT-4 July 24, 2023 (Monday): Topic 3: Standardization of code
+10:30 GMT-4 July 25, 2023 (Tuesday): Topic 4: Open Data Governance and Infrastructure
+10:30 GMT-4 July 26, 2023 (Wednesday): Topic 5: Large open data repositories: sustainability and global implications of reuse
+
+Emergent sessions are live discussions among a small group of panel members, mediated by a host and open to audience of the OSR. The discussions may cover more advanced topics related to open-science or EDI (Equality, Diversity and Inclusion) issues.
+
+During the OSR attendees can hold hybrid emergent sessions.
+This year we offer 5 slots:
+10.30-11.30 (GMT -4) July 23 (Sunday) : OSR: Emergent Session #1
+10.30-11.30 (GMT -4) July 24 (Monday) : OSR: Emergent Session #2
+14.45-15.45 (GMT -4) July 24 (Monday) : OSR: Emergent Session #3
+8.00-9.00 (GMT -4) July 25 (Tuesday): OSR: Emergent Session #4
+14.45-15.45 (GMT -4) July 25 (Tuesday): OSR: Emergent Session #5
+
+Volunteers can be online or in person. Different options for tasks include (but are not limited to): website, social media, running events, prepare materials.
+
+For more info and sign-ups: https://ohbm.github.io/osr2023/submit/
+
+Hi Debby,
+
+Assuming it is compatible with your task design, why not try a parametric modulation analysis at the first level and take the mean effect of stimulation for the second level analysis? That way, variations in intensity will have already been accounted for without requiring 4 separate covariates to eat up degrees of freedom at the second level. And, I think you can more easily assess whether there is actually an effect of intensity via the parametric regressor.
+
+Best,
+
+Tasha
+
+PhD Position in Decision Neuroscience at Erasmus University Rotterdam
+
+Reference: ERIM PhD MKT 3814
+
+The Erasmus Center for Neuroeconomics (https://www.erim.eur.nl/neuroeconomics/) seeks a highly motivated PhD student looking to study decision-making using neuroscience methods (fMRI or EEG). Strong applicants have backgrounds in (cognitive/social) psychology, (cognitive/social) neuroscience or neuroeconomics, and are looking to pursue careers as world-class academic researchers. At our Center, students define and execute their own projects in consultation with their advisers, and thus need creativity, self-direction, and a passion for scientific research. Researchers in our group work on a wide range of topics in social and cognitive neuroscience such as understanding the neurological basis of emotions and persuasive communication, social conformity, dishonesty, charitable giving and predicting population-level outcomes from neural data. Some experience with EEG and/or fMRI data analysis is required for this position. Experience or interest in more advanced fMRI methods, such as multi-voxel pattern analysis (MVPA), representational similarity analysis (RSA), classification algorithms, prediction models, or multivariate approaches to EEG data analyses is a definite plus. Experience with, or at least affinity for programming, particularly in Python (or otherwise Matlab or R) is a must. For your application, we require a motivation letter, a CV, and the names of two references. It is not necessary to ask referents for letters at the application stage. Interested candidates can apply through the ERIM website (https://www.erim.eur.nl/doctoral-programme/phd-in-management/phd-vacancies/phd-position-in-decision-neuroscience-1/).
+
+Application deadline May 26, 2023. For more information about this position, please check out the ERIM website and/or contact Ale Smidts (asmidts@rsm.nl), Maarten Boksem (mboksem@rsm.nl), or Alex Genevsky (genevsky@rsm.nl).
+
+Dear all
+
+I am a new beginner of DCM (PEB) for fMRI. I have some questions regarding the contrast between conditions that serve as inputs for modulatory B. For example, I have two conditions, condition 1 and condition 2. I want to see whether the contrast between condition 1 and 2 (e.g., condition 1 - condition 2) can serve as significant input. So, I create a GLM design with 3 conditions 1, 2, and 1-2. However, when I open this design.mat using DCM. I can only find the condition 1 and 2, but not 1-2. (e.g., attachment). Could you guide me on how to use condition 1 - condition 2 as input?
+
+Thanks for your time.
+
+Best,
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+ 
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu). 
+
+ 
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+Noah Cryns | Assistant Clinical Research Coordinator
+
+Memory and Aging Center
+
+University of California – San Francisco
+
+
+Phone: (415) 514-7580
+
+https://perrylab.ucsf.edu/
+
+https://decisionlab.ucsf.edu/
+ 
+
+
+
+_______________________________________
+
+ 
+
+weill.ucsf.edu | neurology.ucsf.edu | ucsfhealth.org
+
+
+
+*Apologies for cross-posting*
+
+We are seeking a PhD student to work on a scientific project funded by the special research fund at Ghent University on early vision and selective attention. The goal of this project is to characterize and model the gating of sensory information in the visual cortex as a function of selective attention. To this end, state of the art EEG methods will be used in adult participants (in combination with psychophysics), and mathematical models able to estimate and model information’s flow in the visual cortex (such as Dynamic Causal Modeling) will be harnessed. This project is led by Prof. Gilles Pourtois and Prof. Daniele Marinazzo.
+
+Start date: 1 October 2023
+
+Duration: 4 years (2+2 years contract).
+
+Location: CAPLAB – Ghent University, Ghent, Belgium (https://www.cap-lab.be/)
+
+Requirements:
+
+*A master degree in Experimental Psychology or Biomedical Sciences
+
+*Strong research skills (data collection, processing and statistical analyses)
+
+*Programming skills 
+
+*Ability to work independently in an international and multidisciplinary work environment
+
+*Excellent writing and communication skills in English
+
+*Prior experience with EEG and/or eye-tracking is a plus
+
+## Offer
+
+- We offer you a contract of definite duration with a maximum term of 4
+years.
+- Your contract will start on 1/10/2023 at the earliest.
+- Your remuneration will be determined by salary scale WM1. See
+https://www.ugent.be/en/work/talent/welcoming-new-staff/salaryscales/wpwm2.htm
+for more information about our salary scales. Rough estimate, about 2.400 €/month.
+- All Ghent University staff members enjoy a number of benefits, such as
+a wide range of training and education opportunities, 36 days of holiday
+leave (on an annual basis for a full-time job) supplemented by annual
+fixed bridge days, a bicycle allowance and eco vouchers. See
+https://www.ugent.be/nl/jobs/personeelsvoordelen.htm for a complete
+overview of all the staff benefits (in Dutch).
+
+Interested? Please send to gilles.pourtois@ugent.be a cover letter in support of your application, along with an academic curriculum vitae, the contact details of two references, as well as your transcripts and diplomas for bachelor and master degrees. Application deadline is 31 July 2023.  
+
+Dear all,
+
+Has anyone analysed an fMRI experiment with both single-echo and multi-echo sessions within participant?
+
+3/4 of my participants have only multi-echo sessions, but 1/4 are half single-echo, half multi-echo,
+I'd like to have comparable outputs from the first-level analysis from everyone, to take everyone's beta maps to the second level.
+
+
+Is it possible to specify the parameters that differ between single-echo and multi-echo sequences,
+such as the repetition time within spm.stats.fmri_spec.sess , so that they can differ between different block within-participant?
+I'm used to each design matrix having multiple sessions,   spm.stats.fmri_spec.sess , but all to have the same
+spm.stats.fmri_spec.timing , as well as other fmri_spec fields.
+
+Thanks in advance,
+Michael
+Dr. Michael Moutoussis
+Neurocomputation in Psychotherapy Research, Wellcome Centre for Human Neuroimaging, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH: mmoutoussis@nhs.net
+
+
+There are some places remaining on this face-to-face course.....
+
+
+ 
+Human Brain Anatomy Course (in person) 
+Saturday 1st – Sunday 2nd July 2023 
+
+Anatomy dissection room, King's College London 
+
+**Places strictly limited - register now  
+
+ 
+
+
+ 
+
+TWO-DAY PROGRAMME (attendance-based) 
+
+Comprehensive introduction to human brain anatomy 
+
+  
+
+Suitable for undergraduates and postgraduates in neuroscience, psychology and medicine  
+
+ 
+
+- Covers topographic, functional, and MRI neuroanatomy 
+
+- Very clear and accessible delivery, assumes minimal prior knowledge 
+
+- Includes live neuroanatomy video demonstrations 
+
+- Opportunity to get 'hands-on' with preserved human brain specimens!
+
+ 
+
+- Includes instant access to 8 high-quality ONLINE preparatory modules 
+
+- Mean feedback: 4.9 / 5.0 
+
+ 
+
+Places strictly limited - register now 
+
+ 
+
+Price: £395 (with instant access to 8 online preparatory modules) 
+
+ 
+
+Option to pay in 4 x £99 monthly instalments 
+
+ 
+
+PROGRAMME OVERVIEW 
+
+This exciting 2-day course (10am-4pm) consists of a series of in-person lectures covering all aspects of human brain anatomy in a very clear and accessible way. These are integrated with live neuroanatomy video demonstrations and 'hands-on' practical sessions using preserved human brain specimens and detailed anatomical models. Guided by a team of experienced anatomy demonstrators, the practical component will help consolidate your learning and give you a solid, three-dimensional understanding of the human brain. 
+
+ 
+
+ONLINE PREPARATORY MODULES 
+
+Once you register you will receive instant access to a series of high-quality online modules to help you prepare for the attendance course: 
+
+Overview of the human brain - parts 1 and 2 
+Brain development and anatomy 
+Motor and sensory areas of the cerebral cortex 
+Rise and fall of the limbic system concept 
+Anatomy of memory and emotion (limbic lobe, hippocampus, amygdala) 
+Anatomy review - using a detailed brain model 
+Consolidation module - using coronal sections of a preserved human brain 
+These modules, prepared and narrated by Dr Johns, provide a broad introduction to structural and functional neuroanatomy - and include self-test questions at the end of each section. The online materials will also be available after the in-person course, for review and consolidation. 
+
+ 
+
+COURSE DIRECTOR 
+
+Dr Paul Johns, BSc BM MSc FAcadMEd FRSB FRCPath
+Consultant Neuropathologist, Reader in Clinical Neuroanatomy 
+
+Author of Clinical Neuroscience: An Illustrated Colour Text 
+
+   
+
+ 
+
+DELEGATE FEEDBACK COMMENTS 
+
+ 
+
+"Dr Johns makes a challenging topic easy to understand" 
+
+"an excellent teacher... simple explanations of complicated processes" 
+
+"Excellent... full of information, presented at the right pace"
+"Tremendously helpful - brilliant insights into why structures were given their names"
+"Fantastic use of [memory aids] to explain Latin names and difficult concepts"
+"Dr Johns was very clear in his explanations... I never left feeling confused"
+"The quiz seemed easier than expected! [It was] a really good way of testing what we learnt"
+"Brilliant!"  
+
+ 
+
+See more course reviews on our Facebook page 
+
+Follow us on Twitter 
+
+
+This email, its contents and any attachments are intended solely for the addressee and may contain confidential information. In certain circumstances, it may also be subject to legal privilege. Any unauthorised use, disclosure, or copying is not permitted. If you have received this email in error, please notify us and immediately and permanently delete it. Any views or opinions expressed in personal emails are solely those of the author and do not necessarily represent those of Royal Holloway, University of London. It is your responsibility to ensure that this email and any attachments are virus free.
+

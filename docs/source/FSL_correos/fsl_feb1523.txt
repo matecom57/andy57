@@ -1,0 +1,591 @@
+Hello,
+
+I am running a set of analyses using randomise on the WM skeleton. The first analysis is examining the association between a continuous variable (e.g., age) and WM microstructure. The second analysis is examining group differences (CN vs MCI) in WM microstructure. I've read into the archives on this subject and I am confused about when to include the global mean (i.e., EV of all 1s) into the design matrix. Is it correct that when modeling no groups (e.g., a continuous covariate) you must include the global mean as an EV in the model, but when modeling groups the global mean can be inferred across the group EVs?
+
+Thank you in advance,
+Jenna
+
+########################################################################
+
+
+Hi:
+
+  I have FSL 6.0.6.1 in Ubuntu 22.04.1 LTS (I installed it using fslinstaller.py). How can I upgrade it to 6.0.6.2 version? Using fslinstaller.py also?
+
+ Sincerely,
+
+
+Gonzalo Rojas Costa
+
+########################################################################
+
+Hi Roman,
+
+If you want to get ROIxROI connectivity you should use the --network flag (option 1). Option 2 would also work, but does not give you any benefits. Options 3-4 give biased resutls. The reason is that a single streamline might hit multiple voxels in your target mask. Hence, when you sum over the target mask, most streamlines will be counted multiple times because they hit multiple voxels.
+
+Best wishes,
+
+Michiel
+
+On 13 Feb 2023, at 21:50, Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear FSL developers and users,
+
+I am trying to compute connectivity between GM regions. It seems there are few options, I would like to understand pros and cons of each.
+
+Use --network. This produces table of connectivity between GM ROIs directly, exactly what is needed.
+Use single seed (GM mask) with a table of target GM masks --targetmasks and --os2t. This will produce voxels to ROIs table. I would have to gather seed voxels into GM ROIs to obtain ROI to ROI table as in 1. 
+Use --matrix1 with GM as seed mask. This will give voxel to voxel connectivity. I will have to gather start and end voxels according to ROI assignment to obtain ROI to ROI table as in 1.
+Use --matrix3 with WM as seed and GM as target. Then as in 3, I will have to gather start and end voxels according to ROI assignment to obtain ROI to ROI table as in 1.
+
+Method 4 is the only one that guarantees symmetric connectivity output, but is the most involved in terms of bookkeeping to gather the results (same level of complexity as approach 3). Overall, approaches 2-4 appear to be overkill compared to approach 1. What is the advantage of implementing each approach, especially approach 4?
+
+Would applying fiber length correction be warranted in any of the approaches and why?
+
+Roman
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi Keita,
+
+I'm afraid I haven't yet been able to gain access to a suitable GPU, so have been unable to reproduce the problem. If you have access to different GPU models, you could try running your job on them.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Keita Suzuki <k_suzuki@ATR.JP>
+Sent: 15 February 2023 10:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] CUDA Runtime Error during probtrackx2_gpu
+ 
+Dear Paul,
+
+I'm worried about whether you could reproduce the problem or not.
+Please let me know if you have any trouble conducting the shared code.
+
+I look forward to hearing from you.
+
+Best,
+Keita
+
+On Thu, 29 Dec 2022 04:26:50 +0000, Keita Suzuki <k_suzuki@ATR.JP> wrote:
+
+>Dear Paul,
+>
+>That sounds excellent suggestion!
+>
+>I uploaded the zipped files to reproduce the error.
+>After unzipping it, please run "make_commands.m".
+>Then, generated file "data/cmd_track/L_1.sh" is the command for probtrackx2_gpu.
+>
+>For some reference, I also attached the preprocess code as "_preproc.m".
+>It generated all required materials for "make_commands.m".
+>
+>Thank you for your help.
+>
+>Best,
+>
+>Keita
+>
+>
+>On Thu, 29 Dec 2022 00:51:06 +0000, paul mccarthy <pauldmccarthy@GMAIL.COM> wrote:
+>
+>>Hi Keita,
+>>
+>>There is probably another bug in the probtrackx2_gpu code. Is there any
+>>chance you could share all of your input files so I can try and reproduce
+>>the error? You can upload the files to:
+>>
+>>https://oxfile.ox.ac.uk/oxfile/work/extBox?id=121062026119D5F7F24
+>>
+>>Paul
+>>
+>>On Wed, 28 Dec 2022 at 09:01, Keita Suzuki <k_suzuki@atr.jp> wrote:
+>>
+>>> Dear Paul,
+>>>
+>>> Unfortunately, the same error appeared when I used probtrackx2_gpu10.2.
+>>>
+>>> To check the reproducibility on different CUDA settings, I have built new
+>>> FSL6.0.6 and probtrackx2_gpu environments via docker on another GPU node.
+>>> Then I got the error with CUDA10.0 and 10.2 as the same as CUDA10.1.
+>>>
+>>> Is there any other way around this?
+>>>
+>>> Best,
+>>>
+>>> On Tue, 27 Dec 2022 02:41:08 +0000, paul mccarthy <pauldmccarthy@GMAIL.COM>
+>>> wrote:
+>>>
+>>> >Hi Keita,
+>>> >
+>>> >The version that you downloaded from spmic-uon.github.io is probably of a
+>>> >similar vintage to the version that you already had installed with FSL
+>>> >6.0.4.
+>>> >
+>>> >Can you try calling $FSLDIR/bin/probtrackx2_gpu10.2 instead of
+>>> >$FSLDIR/bin/probtrackx2_gpu ?
+>>> >
+>>> >Paul
+>>> >
+>>> >On Mon, 26 Dec 2022 at 08:52, Keita Suzuki <k_suzuki@atr.jp> wrote:
+>>> >
+>>> >> Dear Paul,
+>>> >>
+>>> >> Using the latest FSL (6.0.6), I got this message.
+>>> >>
+>>> >> "Cannot find a suitable probtrackx2_gpu executable in
+>>> >> /home/cbi-data20/common/software/external/fsl/fsl6.0.6!"
+>>> >>
+>>> >> So I replaced "probtrackx2_gpu" in fsl6.0.6 with
+>>> probtrackx_gpu_cuda_10.1
+>>> >> from
+>>> >> https://spmic-uon.github.io/conilab/software/probtrackx
+>>> >>
+>>> >> Then it worked, but the problem still arose with the same iteration (122
+>>> >> out of 199).
+>>> >>
+>>> >> Would you have any good ideas...?
+>>> >>
+>>> >> Best,
+>>> >>
+>>> >> Keita
+>>> >>
+>>> >> On Sat, 24 Dec 2022 04:15:02 +0000, paul mccarthy <
+>>> pauldmccarthy@GMAIL.COM>
+>>> >> wrote:
+>>> >>
+>>> >> >Hi Keita,
+>>> >> >
+>>> >> >Would you be able to update your FSL installation to the latest
+>>> available,
+>>> >> >to see if the most recent version of probtrackx2_gpu also suffers from
+>>> >> this
+>>> >> >problem?
+>>> >> >
+>>> >> >Paul
+>>> >> >
+>>> >> >On Fri, 23 Dec 2022 at 04:03, Keita Suzuki <k_suzuki@atr.jp> wrote:
+>>> >> >
+>>> >> >> Dear Paul,
+>>> >> >>
+>>> >> >> Thanks for your quick reply.
+>>> >> >>
+>>> >> >> My FSL version is
+>>> >> >> 6.0.4:ddd0a010
+>>> >> >>
+>>> >> >> Best regards,
+>>> >> >>
+>>> >> >>
+>>> ########################################################################
+>>> >> >>
+>>> >> >> To unsubscribe from the FSL list, click the following link:
+>>> >> >> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>> >> >>
+>>> >> >> This message was issued to members of www.jiscmail.ac.uk/FSL, a
+>>> mailing
+>>> >> >> list hosted by www.jiscmail.ac.uk, terms & conditions are available
+>>> at
+>>> >> >> https://www.jiscmail.ac.uk/policyandsecurity/
+>>> >> >>
+>>> >> >
+>>> >>
+>>> >########################################################################
+>>> >> >
+>>> >> >To unsubscribe from the FSL list, click the following link:
+>>> >> >https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>> >> >
+>>> >> >This message was issued to members of www.jiscmail.ac.uk/FSL, a
+>>> mailing
+>>> >> list hosted by www.jiscmail.ac.uk, terms & conditions are available at
+>>> >> https://www.jiscmail.ac.uk/policyandsecurity/
+>>> >> >
+>>> >>
+>>> >> ########################################################################
+>>> >>
+>>> >> To unsubscribe from the FSL list, click the following link:
+>>> >> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>> >>
+>>> >> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing
+>>> >> list hosted by www.jiscmail.ac.uk, terms & conditions are available at
+>>> >> https://www.jiscmail.ac.uk/policyandsecurity/
+>>> >>
+>>> >
+>>> >########################################################################
+>>> >
+>>> >To unsubscribe from the FSL list, click the following link:
+>>> >https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>> >
+>>> >This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing
+>>> list hosted by www.jiscmail.ac.uk, terms & conditions are available at
+>>> https://www.jiscmail.ac.uk/policyandsecurity/
+>>> >
+>>>
+>>> ########################################################################
+>>>
+>>> To unsubscribe from the FSL list, click the following link:
+>>> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>>
+>>> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing
+>>> list hosted by www.jiscmail.ac.uk, terms & conditions are available at
+>>> https://www.jiscmail.ac.uk/policyandsecurity/
+>>>
+>>
+>>########################################################################
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>
+>>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>>
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Allesandra,
+
+I am afraid that didn't really help. It looks like you get past the "checking of the input" to where it starts running. Can I ask you to try and run it again, this time adding the --very_verbose flag and ending the command with
+
+&> eddy_output.txt
+
+That will write a _lot_ of info about how it is running to the file eddy_output.txt. And can you then please email me that file (directly to my mail)?
+
+Best regards Jesper
+
+﻿On 14/02/2023, 11:15, "FSL - FMRIB's Software Library on behalf of Alessandra Caporale" <FSL@JISCMAIL.AC.UK on behalf of alessandra.stella.caporale@GMAIL.COM> wrote:
+
+    Dear Jesper,
+   
+    thank you so much for your reply!
+    Please find below the outputs of fslhd for the DWIs and the b0 file.
+   
+    FOR THE DWIs:
+    fslhd 2019*009a001.nii.gz
+    filename    20191127_144200CHARMEDb200500120024004000600060dirshuffs009a001.nii.gz
+    sizeof_hdr  348
+    data_type   INT16
+    dim0                4
+    dim1                88
+    dim2                88
+    dim3                42
+    dim4                266
+    dim5                1
+    dim6                1
+    dim7                1
+    vox_units   mm
+    time_units  s
+    datatype    4
+    nbyper              2
+    bitpix              16
+    pixdim0             -1.000000
+    pixdim1             2.500000
+    pixdim2             2.500000
+    pixdim3             2.500000
+    pixdim4             3.000000
+    pixdim5             1.000000
+    pixdim6             0.375000
+    pixdim7             55099.359375
+    vox_offset  352
+    cal_max             0.000000
+    cal_min             0.000000
+    scl_slope   1.000000
+    scl_inter   0.000000
+    phase_dim   0
+    freq_dim    0
+    slice_dim   3
+    slice_name  alternating_increasing_2
+    slice_code  5
+    slice_start 0
+    slice_end   41
+    slice_duration      33.000034
+    toffset             0.000000
+    intent              Unknown
+    intent_code 0
+    intent_name
+    intent_p1   0.000000
+    intent_p2   0.000000
+    intent_p3   0.000000
+    qform_name  Scanner Anat
+    qform_code  1
+    qto_xyz:1   -2.500000 0.000000 -0.000000 110.000000
+    qto_xyz:2   0.000000 2.338610 -0.883687 -80.034943
+    qto_xyz:3   0.000000 0.883687 2.338610 -52.807503
+    qto_xyz:4   0.000000 0.000000 0.000000 1.000000
+    qform_xorient       Right-to-Left
+    qform_yorient       Posterior-to-Anterior
+    qform_zorient       Inferior-to-Superior
+    sform_name  Scanner Anat
+    sform_code  1
+    sto_xyz:1   -2.500000 0.000000 0.000000 110.000000
+    sto_xyz:2   0.000000 2.338610 -0.883687 -80.034943
+    sto_xyz:3   0.000000 0.883687 2.338610 -52.807503
+    sto_xyz:4   0.000000 0.000000 0.000000 1.000000
+    sform_xorient       Right-to-Left
+    sform_yorient       Posterior-to-Anterior
+    sform_zorient       Inferior-to-Superior
+    file_type   NIFTI-1+
+    file_code   1
+    descrip             TE=85;sec=55099.3600;phaseDir=+;dwell=0.375
+    aux_file    Unaliased MB2/PE4/LB
+   
+    FOR THE B0 FILE:
+    fslhd b0_brain_mask.nii.gz
+    filename    b0_brain_mask.nii.gz
+    sizeof_hdr  348
+    data_type   INT16
+    dim0                3
+    dim1                88
+    dim2                88
+    dim3                42
+    dim4                1
+    dim5                1
+    dim6                1
+    dim7                1
+    vox_units   mm
+    time_units  s
+    datatype    4
+    nbyper              2
+    bitpix              16
+    pixdim0             -1.000000
+    pixdim1             2.500000
+    pixdim2             2.500000
+    pixdim3             2.500000
+    pixdim4             3.000000
+    pixdim5             1.000000
+    pixdim6             0.375000
+    pixdim7             55099.359375
+    vox_offset  352
+    cal_max             1.000000
+    cal_min             0.000000
+    scl_slope   1.000000
+    scl_inter   0.000000
+    phase_dim   0
+    freq_dim    0
+    slice_dim   0
+    slice_name  Unknown
+    slice_code  0
+    slice_start 0
+    slice_end   0
+    slice_duration      0.000000
+    toffset             0.000000
+    intent              Unknown
+    intent_code 0
+    intent_name
+    intent_p1   0.000000
+    intent_p2   0.000000
+    intent_p3   0.000000
+    qform_name  Scanner Anat
+    qform_code  1
+    qto_xyz:1   -2.500000 0.000000 -0.000000 110.000000
+    qto_xyz:2   0.000000 2.338610 -0.883687 -80.034943
+    qto_xyz:3   0.000000 0.883687 2.338610 -52.807503
+    qto_xyz:4   0.000000 0.000000 0.000000 1.000000
+    qform_xorient       Right-to-Left
+    qform_yorient       Posterior-to-Anterior
+    qform_zorient       Inferior-to-Superior
+    sform_name  Scanner Anat
+    sform_code  1
+    sto_xyz:1   -2.500000 0.000000 0.000000 110.000000
+    sto_xyz:2   0.000000 2.338610 -0.883687 -80.034943
+    sto_xyz:3   0.000000 0.883687 2.338610 -52.807503
+    sto_xyz:4   0.000000 0.000000 0.000000 1.000000
+    sform_xorient       Right-to-Left
+    sform_yorient       Posterior-to-Anterior
+    sform_zorient       Inferior-to-Superior
+    file_type   NIFTI-1+
+    file_code   1
+    descrip             2203.6-dirty 2022-09-08T15:38:56+01:00
+    aux_file    Unaliased MB2/PE4/LB
+   
+    I made sure that all the needed files are in the folder where I run eddy, to exclude pathname errors, including the topup outputs. By repeating the command, I got some other symbols:
+     eddy_cuda --imain=20191127_144200CHARMEDb200500120024004000600060dirshuffs009a001.nii.gz --mask=b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs.txt --bvals=bvals.txt --topup=topup --out=eddy_unwarped --data_is_shelled --very_verbose
+    Reading images
+    Performing volume-to-volume registration
+    Running Register
+    @??N????U
+    7N????U
+   
+   
+    EDDY::: Eddy failed with message ??FR????U
+   
+   
+    Thank you so much in advance for taking the time to try solving this!
+   
+    Stella
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+
+oh, I have already opened an issue https://github.com/freesurfer/freesurfer/issues/1071
+
+########################################################################
+
+Hi Maurilio,
+
+Great, thanks for getting back to me - I will send a message to the Freesurfer developers to update this for their next version.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Maurilio Genovese <mauriliogenovese@GMAIL.COM>
+Sent: 15 February 2023 10:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsl python "hides" system python in PATH
+ 
+I found, it's freesurfer!
+In freesurfer configuration (SetUpFreeSurfer.sh which calls FreeSurferEnv.sh) there is this code:
+export FSL_BIN=$FSL_DIR/bin
+[...]
+PATH=$FSL_BIN:$PATH
+
+########################################################################
+
+
+I found, it's freesurfer!
+In freesurfer configuration (SetUpFreeSurfer.sh which calls FreeSurferEnv.sh) there is this code:
+export FSL_BIN=$FSL_DIR/bin
+[...]
+PATH=$FSL_BIN:$PATH
+
+########################################################################
+
+Hi Nooshin,
+
+You can use fslmaths to add the four separate masks together, and then binarise the result, e.g.
+
+fslmaths mask1.nii.gz -add mask2.nii.gz -add mask3.nii.gz -bin out.nii.gz
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Nooshin Safari <nsafari@GMU.EDU>
+Sent: 14 February 2023 20:54
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Overalpping multiple masks
+ 
+Hi FSL experts,
+
+I'm interested in building a mask that overlap the 4 Cingulum right, Cingulum left, superior longitudinal fasciculus L and superior longitudinal fasciculus right using JHU ICBM atlas. I know how to make mask for each one within FSLeyes but I'm not sure how to make a single mask while overlapping all of them together.
+Thanks for your help in advance.
+
+Sincerely,
+Nooshin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Maurilio,
+
+I'm guessing that $FSLDIR/bin/ is being added to your $PATH somewhere in your profile configuration (e.g. ~/.profile, ~/.bashrc, etc) - if you can find and remove that, then you should be able to resolve this problem.
+
+In versions of FSL prior to 6.0.6, $FSLDIR/bin/ needed to be added to the $PATH. But for FSL 6.0.6 and newer, $FSLDIR/share/fsl/bin/ needs to be added instead.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Maurilio Genovese <mauriliogenovese@GMAIL.COM>
+Sent: 15 February 2023 07:54
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsl python "hides" system python in PATH
+ 
+Hi all,
+I'm facing an issue after installing fsl in both linux and mac.
+After installing fsl, if I try to use python3 command in a shell the system calls the fsl python3 executable instead of my main system python3 installation.
+To be clear, if I type <which python3> I will get: /home/username/fsl/bin/python3
+
+In .profile I have the standard fsl setup added during installation:
+FSLDIR=/home/username/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+my PATH variable after fsl installation is:
+/home/username/freesurfer/bin:/home/username/freesurfer/fsfast/bin:/home/username/freesurfer/tktools:/home/username/fsl/bin:/home/username/fsl/share/fsl/bin:/home/username/freesurfer/mni/bin:/home/username/fsl/share/fsl/bin:/home/username/fsl/share/fsl/bin:/home/username/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+
+Moreover in the last few weeks I instaled fsl on various computers and this problem only sometimes appears.
+Am I doing something wrong during installation? Is it a known or expected behaviour?
+
+Thank you
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi all,
+I'm facing an issue after installing fsl in both linux and mac.
+After installing fsl, if I try to use python3 command in a shell the system calls the fsl python3 executable instead of my main system python3 installation.
+To be clear, if I type <which python3> I will get: /home/username/fsl/bin/python3
+
+In .profile I have the standard fsl setup added during installation:
+FSLDIR=/home/username/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+my PATH variable after fsl installation is:
+/home/username/freesurfer/bin:/home/username/freesurfer/fsfast/bin:/home/username/freesurfer/tktools:/home/username/fsl/bin:/home/username/fsl/share/fsl/bin:/home/username/freesurfer/mni/bin:/home/username/fsl/share/fsl/bin:/home/username/fsl/share/fsl/bin:/home/username/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+
+Moreover in the last few weeks I instaled fsl on various computers and this problem only sometimes appears.
+Am I doing something wrong during installation? Is it a known or expected behaviour?
+
+Thank you
+
+########################################################################
+
+Thanks for your swift reply Matt, will run through as suggested!
+
+Best
+Warren
+
+########################################################################
+
+Hi FSL experts,
+
+I'm interested in building a mask that overlap the 4 Cingulum right, Cingulum left, superior longitudinal fasciculus L and superior longitudinal fasciculus right using JHU ICBM atlas. I know how to make mask for each one within FSLeyes but I'm not sure how to make a single mask while overlapping all of them together.
+Thanks for your help in advance.
+
+Sincerely,
+Nooshin
+
+########################################################################
+
+Dear FSL developers and users,
+
+I am trying to compute connectivity between GM regions. It seems there are few options, I would like to understand pros and cons of each.
+
+Use --network. This produces table of connectivity between GM ROIs directly, exactly what is needed.
+Use single seed (GM mask) with a table of target GM masks --targetmasks and --os2t. This will produce voxels to ROIs table. I would have to gather seed voxels into GM ROIs to obtain ROI to ROI table as in 1.
+Use --matrix1 with GM as seed mask. This will give voxel to voxel connectivity. I will have to gather start and end voxels according to ROI assignment to obtain ROI to ROI table as in 1.
+Use --matrix3 with WM as seed and GM as target. Then as in 3, I will have to gather start and end voxels according to ROI assignment to obtain ROI to ROI table as in 1.
+
+Method 4 is the only one that guarantees symmetric connectivity output, but is the most involved in terms of bookkeeping to gather the results (same level of complexity as approach 3). Overall, approaches 2-4 appear to be overkill compared to approach 1. What is the advantage of implementing each approach, especially approach 4?
+
+Would applying fiber length correction be warranted in any of the approaches and why?
+
+Roman
+

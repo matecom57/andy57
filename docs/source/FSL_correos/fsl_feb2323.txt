@@ -1,0 +1,913 @@
+Hello everyone,
+
+I'm running a DTI analysis and am including TOPUP/EDDY steps, so currently I'm preparing my pairs of b0 images acquired in different phase directions. In my dataset, it seems a single subject's "reverse blip" b0 was acquired with double the voxel #s in the X and Y direction (i.e. the intended resolution is 128x128x75, but this one case instead has 256x256x75). I know during acquisition the radiographers implement a step to resize the image to 128x128 version, so I'm confident that the core acquisition was the same and this was just forgotten this one time.
+
+My main question is how to go about downsampling this b0 so that it matches 128x128x75 and can be processed further. I know flirt can be used for this, but seems mainly geared around making a new isotropic resolution. I can see previous jiscmail posts talking about a way of using the "applyxfm GUI" to create a new header, but I'm not familiar with this and as those posts are over a decade old I don't know if this might not even exist any more?
+
+As a more general followup question I'd welcome any advise on the most scientifically robust method of downsampling, given that this is being used as a step in a quantitative analysis. Mainly thinking about minimising interpolation noise.
+
+Thanks very much in advance,
+Iain
+
+########################################################################
+
+
+We are pleased to announce an exceptional postdoctoral position available within our team at Janssen Pharmaceuticals, a Johnson & Johnson company. The position involves working on neuroimaging projects and is open to candidates located in Europe or the USA. However, remote options may also be arranged.
+
+Please check the following link for more information:
+https://jobs.jnj.com/en/jobs/2306106495w/post-doctoral-scientist-data-science/
+
+Best regards
+Rouhi Abdollahi
+
+########################################################################
+
+We are pleased to announce the 2023 edition of the FSL course to be held as an online course between Sept 11th and Sept 22nd 2023.
+
+Both new and existing users of FSL are welcome on the course as it aims to cover both basic and more advanced features of FSL. This course covers the theory and practice of functional, structural, diffusion and resting state brain image analysis.
+
+Similar to 2021, the 2023 edition of the course we will be purely online and we welcome attendees from all countries.
+
+To strike a balance between broad accessibility and the benefits of in-person interaction, the FSL course intends to follow an approximately alternating pattern of fully in-person and fully online courses. The only option to attend the FSL Course in 2023 will be the fully online course 11-22 September. We anticipate that the 2024 course will take place in person (information regarding dates and location will become available at a later date).
+ 
+So that we can cater for a variety of timezones there will be two parallel courses repeating the same content. Each session will consist of a self-paced practical, with guidance available from our expert tutors via zoom (or equivalent), and all FSL software and course data pre-installed and ready to go on a cloud-enabled virtual desktop. All lectures will be pre-recorded and available as video podcasts and speakers will be available for questions and discussions. So all you need is a computer that can do video conferencing and host the remote desktop client (which even works on an ipad) as well as a reasonable internet connection that is good enough for video conferencing.
+
+Registration for the course will open later this year - please see the main FSL Course website for updates at
+
+https://open.win.ox.ac.uk/pages/fslcourse/website/index.html
+
+Save the dates - we hope to see you on the course!
+
+The FSL Course team
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL expert,
+
+I am currently running tbss randomize on 3 independent subject groups to investigate whether there is a man effect of groups.
+
+The glm design as
+EV1. EV2. EV3.   Age (Covariate). Sex (Covariate)
+1       0       0       -9.945454545    -0.4   
+1       0       0       3.054545455     -0.4   
+1       0       0       -10.94545455    0.6    
+1       0       0       8.054545455     0.6    
+1       0       0       8.054545455     0.6    
+1       0       0       7.054545455     0.6    
+1       0       0       -2.945454545    -0.4   
+1       0       0       -5.945454545    -0.4   
+1       0       0       -9.767857143    0.6    
+1       0       0       -10.94545455    -0.4   
+1       0       0       32.05454545     -0.4   
+1       0       0       -3.945454545    -0.4   
+1       0       0       5.054545455     0.6    
+1       0       0       5.054545455     0.6    
+1       0       0       -5.945454545    -0.4   
+1       0       0       -0.945454545    -0.4   
+1       0       0       0.054545455     -0.4   
+1       0       0       -10.94545455    0.6    
+1       0       0       -7.945454545    -0.4   
+1       0       0       -13.94545455    -0.4   
+1       0       0       -10.94545455    -0.4   
+0       1       0       -7.945454545    -0.4   
+0       1       0       -2.945454545    -0.4   
+0       1       0       -0.945454545    0.6    
+0       1       0       4.054545455     0.6    
+0       1       0       -8.945454545    0.6    
+0       1       0       -8.945454545    -0.4   
+0       1       0       -10.94545455    -0.4   
+0       1       0       0.054545455     0.6    
+0       1       0       38.05454545     0.6    
+0       1       0       27.05454545     0.6    
+0       1       0       16.05454545     0.6    
+0       1       0       32.05454545     0.6    
+0       1       0       2.054545455     -0.4   
+0       1       0       33.05454545     0.6    
+0       1       0       17.05454545     0.6    
+0       1       0       -3.945454545    0.6    
+0       1       0       -6.945454545    -0.4   
+0       1       0       -1.945454545    -0.4   
+0       1       0       -13.94545455    -0.4   
+0       1       0       -9.945454545    -0.4   
+0       1       0       -2.945454545    -0.4   
+0       1       0       -6.945454545    -0.4   
+0       1       0       -2.945454545    -0.4   
+0       1       0       5.054545455     -0.4   
+0       1       0       -6.945454545    0.6    
+0       0       1       5.054545455     0.6    
+0       0       1       -6.945454545    0.6    
+0       0       1       -4.945454545    -0.4   
+0       0       1       -13.94545455    -0.4   
+0       0       1       -5.945454545    -0.4   
+0       0       1       -5.945454545    0.6    
+0       0       1       3.054545455     -0.4   
+0       0       1       -7.945454545    -0.4   
+0       0       1       -7.945454545    -0.4   
+0       0       1       -4.945454545    -0.4   
+
+The f contrast is set as
+1       0       0       0       0      
+0       1       0       0       0      
+0       0       1       0       0      
+
+The number of f tests was selected as 1 and I made sure I clicked all 3 of boxes underneath F1.
+
+When I looked at the results from tfce_corrp_fstats1.nii.gz, it gave me max of 0.94934. Then I thought I would like to get more of a feel of the dataset and looked into a less stringent threshold, so I explored the result from tbss_p_fstats_1.nii.gz (without multiple comparison). Surprisingly and very odd, the max was 0.0040192 only? I don't think this is correct or I've set up anything wrong in the glm?
+
+Many thanks for your help in advance,
+Sarah
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+I'm running a DTI analysis and am including TOPUP/EDDY steps, so currently I'm preparing my pairs of b0 images acquired in different phase directions. In my dataset, it seems a single subject's "reverse blip" b0 was acquired with double the voxel #s in the X and Y direction (i.e. the intended resolution is 128x128x75, but this one case instead has 256x256x75). I know during acquisition the radiographers implement a step to resize the image to 128x128 version, so I'm confident that the core acquisition was the same and this was just forgotten this one time.
+
+    
+
+    My main question is how to go about downsampling this b0 so that it matches 128x128x75 and can be processed further. I know flirt can be used for this, but seems mainly geared around making a new isotropic resolution. I can see previous jiscmail posts talking about a way of using the "applyxfm GUI" to create a new header, but I'm not familiar with this and as those posts are over a decade old I don't know if this might not even exist any more?
+
+   
+
+One way to do this would be to use applywarp instead of flirt.
+
+ 
+
+The “problem” with downsampling is that if done naively you end up not using you data well. Let’s take your case as an example, where you want to downsample by a factor of 2 in two directions. Let’s further say that in your downsampling your sample points end up exactly on voxel centres in the original highres image. That would mean that your downsampling effectively ends considering only a fourth of the voxels, completely ignoring the remaining ¾ voxels. And that means much poorer SNR than you could/should have.
+
+ 
+
+In applywarp there is an option to “super-sample” the new image, which effectively first creates an image with twice the requested resolution, followed by a downsampling that is a straight averaging of neighbouring voxels. So something like
+
+ 
+
+applywarp --in=my_highres_image --ref=an_image_with_my_desired_resolution --out=my_output --premat=unity_matrix --interp=spline --super
+
+ 
+
+should do the job. Where the final --super is what makes it do the super-sampling, and where I don’t think “--interp=spline” matters, but it can’t hurt.
+
+ 
+
+    As a more general followup question I'd welcome any advise on the most scientifically robust method of downsampling, given that this is being used as a step in a quantitative analysis. Mainly thinking about minimising interpolation noise.
+
+ 
+
+I think the strategy implemented in applywarp is a sensible general approach.
+
+ 
+
+Best regards Jesper
+
+ 
+
+   
+
+    Thanks very much in advance,
+
+    Iain
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+
+Hello FSL community,
+
+I have been trying to do a Fixed Effects/FLAME second level group analysis for 90 individual inputs from the first level analyses. They are categorized into 4 EVs with more EVs included to act as dummy variables to account for the within-subject session variance (we have 2 different sessions per subject, some don’t). I was able to run the group analysis with Fixed effects model without errors for a grouping of a lesser number of inputs i.e 12 and 14 for a couple of previous trial runs. But when I try to run a bigger set of data, I run into an error which is hard to decipher.
+
+Also, for the same GLM design model for FLAME1+2, it seemed to run fine when I ran the feat file separately for cope1 and cope 2 files. So, it seems to look like if it’s just question of data overload as input or GLM incompatible with statistic model choices.
+
+Error message:
+
+child process exited abnormally
+
+    while executing
+
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -poststats 1" -b 60 -N feat4_post -h $ID -l logs "
+
+    invoked from within
+
+"if { $done_something == 0 } {
+
+
+
+    if { ! $fmri(inmelodic) } {
+
+       if { $fmri(level) == 1 } {
+
+      for { set session 1 } { $session <= $fmri(mult..."
+
+    (file "/Users/suja/fsl/bin/feat" line 390)
+
+
+Please offer any insight on how to fix it- I attached the corresponding design.fsf file for reference.
+
+Thanks in advance,
+Suja
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello everyone,
+
+I'm running a DTI analysis and am including TOPUP/EDDY steps, so currently I'm preparing my pairs of b0 images acquired in different phase directions. In my dataset, it seems a single subject's "reverse blip" b0 was acquired with double the voxel #s in the X and Y direction (i.e. the intended resolution is 128x128x75, but this one case instead has 256x256x75). I know during acquisition the radiographers implement a step to resize the image to 128x128 version, so I'm confident that the core acquisition was the same and this was just forgotten this one time.
+
+My main question is how to go about downsampling this b0 so that it matches 128x128x75 and can be processed further. I know flirt can be used for this, but seems mainly geared around making a new isotropic resolution. I can see previous jiscmail posts talking about a way of using the "applyxfm GUI" to create a new header, but I'm not familiar with this and as those posts are over a decade old I don't know if this might not even exist any more?
+
+As a more general followup question I'd welcome any advise on the most scientifically robust method of downsampling, given that this is being used as a step in a quantitative analysis. Mainly thinking about minimising interpolation noise.
+
+Thanks very much in advance,
+Iain
+
+########################################################################
+
+Thanks for your response, Paul.
+
+I have installed fsl (5.0.6) when I used macos with high sierra. I recently update the system and find the fslview does not work. Then,  I want to reinstall  fsl with lastest version. It seems the environment still contains the revious fsl 5.0.6. 
+
+Best wishes
+
+Kangcheng
+---------------------------------------------------
+
+[kangcheng:~] kangcheng% env
+__CFBundleIdentifier=com.apple.Terminal
+TMPDIR=/var/folders/xy/d76x67kx6ng_3b1qwybknw_c0000gn/T/
+XPC_FLAGS=0x0
+TERM=xterm-256color
+LANG=en_GB.UTF-8
+DISPLAY=/private/tmp/com.apple.launchd.izAAdht3ph/org.xquartz:0
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.iUWgoMiZpV/Listeners
+XPC_SERVICE_NAME=0
+TERM_PROGRAM=Apple_Terminal
+TERM_PROGRAM_VERSION=445
+TERM_SESSION_ID=DE0E4BF5-9EE3-4D90-9C41-06E637B43962
+SHELL=/bin/zsh
+HOME=/Users/kangcheng
+LOGNAME=kangcheng
+USER=kangcheng
+PATH=/Users/kangcheng/software/fsl/5.0.6/bin:/Users/kangcheng/software/freesurfer/7.3.2//bin:/Users/kangcheng/software/freesurfer/7.3.2//fsfast/bin:/Users/kangcheng/software/freesurfer/7.3.2//mni/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/VMware:Fusion.app/Contents/Public:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/MRIcron:/usr/local/afni_2012
+HOSTTYPE=amd
+VENDOR=apple
+OSTYPE=darwin
+MACHTYPE=x86_64
+SHLVL=1
+PWD=/Users/kangcheng
+GROUP=staff
+HOST=kangcheng
+FREESURFER_HOME=/Users/kangcheng/software/freesurfer/7.3.2/
+SUBJECTS_DIR=/Users/kangcheng/software/freesurfer/7.3.2/subjects/
+FUNCTIONALS_DIR=/Users/kangcheng/software/freesurfer/7.3.2//sessions
+OS=Darwin
+FS_OVERRIDE=0
+FSFAST_HOME=/Users/kangcheng/software/freesurfer/7.3.2//fsfast
+MINC_BIN_DIR=/Users/kangcheng/software/freesurfer/7.3.2//mni/bin
+MNI_DIR=/Users/kangcheng/software/freesurfer/7.3.2//mni
+MINC_LIB_DIR=/Users/kangcheng/software/freesurfer/7.3.2//mni/lib
+MNI_DATAPATH=/Users/kangcheng/software/freesurfer/7.3.2//mni/data
+LOCAL_DIR=/Users/kangcheng/software/freesurfer/7.3.2//local
+FSF_OUTPUT_FORMAT=nii.gz
+FMRI_ANALYSIS_DIR=/Users/kangcheng/software/freesurfer/7.3.2//fsfast
+MNI_PERL5LIB=/Users/kangcheng/software/freesurfer/7.3.2//mni/lib/../Library/Perl/Updates/5.12.3
+PERL5LIB=/Users/kangcheng/software/freesurfer/7.3.2//mni/lib/../Library/Perl/Updates/5.12.3
+DYLD_LIBRARY_PATH=/Users/kangcheng/software/freesurfer/7.3.2//lib/gcc/lib
+FREESURFER=/Users/kangcheng/software/freesurfer/7.3.2/
+FIX_VERTEX_AREA=
+DCMDIR=/Applications/MRIcron/
+AFNIDIR=/usr/local/afni_2012
+FSLDIR=/Users/kangcheng/software/fsl/5.0.6
+FSLOUTPUTTYPE=NIFTI_GZ
+FSLMULTIFILEQUIT=TRUE
+FSLTCLSH=/Users/kangcheng/software/fsl/5.0.6/bin/fsltclsh
+FSLWISH=/Users/kangcheng/software/fsl/5.0.6/bin/fslwish
+FSLLOCKDIR=
+FSLMACHINELIST=
+FSLREMOTECALL=
+FSLGECUDAQ=cuda.q
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Kangcheng,
+
+Would you be able to run the command "env" in a terminal, and send its output to me?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Kangcheng Wang <v1kwan12@EXSEED.ED.AC.UK>
+Sent: 22 February 2023 21:43
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] error FSL Installation Mac OS Monterey
+ 
+Hello,
+ 
+I am attempting to install FSL (python3.7) on my MacBook Pro with macOS Monterey (Version 12.6.3) and am having some problems. I paste the error and also attach the log file. 
+
+%: python3.7 fslinstaller.py
+FSL installer version: 3.3.0
+Press CTRL+C at any time to cancel installation
+Installation log file: /var/folders/xy/d76x67kx6ng_3b1qwybknw_c0000gn/T/fslinstaller_kk8t0dlt.log
+
+FSL 6.0.6.2 selected for installation
+
+
+ERROR occurred during installation!
+    This command returned an error: /Users/kangcheng/fsl/bin/mamba env update -n base -f /private/var/folders/xy/d76x67kx6ng_3b1qwybknw_c0000gn/T/tmppauomvpu/fsl-6.0.6.2_macos-64.yml
+
+
+
+Thanks very much
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+We are pleased to announce an exceptional postdoctoral position available within our team at Janssen Pharmaceuticals, a Johnson & Johnson company. The position involves working on neuroimaging projects and is open to candidates located in Europe or the USA. However, remote options may also be arranged.
+
+Please check the following link for more information:
+https://jobs.jnj.com/en/jobs/2306106495w/post-doctoral-scientist-data-science/
+
+Best regards
+Rouhi Abdollahi
+
+########################################################################
+
+In this case it probably was just interpolation with zeropadding on the scanner (interpolation checkbox on), so perhaps the approach to downsampling doesn’t matter as much.
+
+ 
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Thursday, February 23, 2023 at 7:12 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Best way to downsample b0 from DTI data
+
+ 
+
+ 
+
+Dear Iain,
+
+   
+
+    I'm running a DTI analysis and am including TOPUP/EDDY steps, so currently I'm preparing my pairs of b0 images acquired in different phase directions. In my dataset, it seems a single subject's "reverse blip" b0 was acquired with double the voxel #s in the X and Y direction (i.e. the intended resolution is 128x128x75, but this one case instead has 256x256x75). I know during acquisition the radiographers implement a step to resize the image to 128x128 version, so I'm confident that the core acquisition was the same and this was just forgotten this one time.
+
+    
+
+    My main question is how to go about downsampling this b0 so that it matches 128x128x75 and can be processed further. I know flirt can be used for this, but seems mainly geared around making a new isotropic resolution. I can see previous jiscmail posts talking about a way of using the "applyxfm GUI" to create a new header, but I'm not familiar with this and as those posts are over a decade old I don't know if this might not even exist any more?
+
+   
+
+One way to do this would be to use applywarp instead of flirt.
+
+ 
+
+The “problem” with downsampling is that if done naively you end up not using you data well. Let’s take your case as an example, where you want to downsample by a factor of 2 in two directions. Let’s further say that in your downsampling your sample points end up exactly on voxel centres in the original highres image. That would mean that your downsampling effectively ends considering only a fourth of the voxels, completely ignoring the remaining ¾ voxels. And that means much poorer SNR than you could/should have.
+
+ 
+
+In applywarp there is an option to “super-sample” the new image, which effectively first creates an image with twice the requested resolution, followed by a downsampling that is a straight averaging of neighbouring voxels. So something like
+
+ 
+
+applywarp --in=my_highres_image --ref=an_image_with_my_desired_resolution --out=my_output --premat=unity_matrix --interp=spline --super
+
+ 
+
+should do the job. Where the final --super is what makes it do the super-sampling, and where I don’t think “--interp=spline” matters, but it can’t hurt.
+
+ 
+
+    As a more general followup question I'd welcome any advise on the most scientifically robust method of downsampling, given that this is being used as a step in a quantitative analysis. Mainly thinking about minimising interpolation noise.
+
+ 
+
+I think the strategy implemented in applywarp is a sensible general approach.
+
+ 
+
+Best regards Jesper
+
+ 
+
+   
+
+    Thanks very much in advance,
+
+    Iain
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Matthew,
+Here's the file. Thank you.
+
+Best
+Sheng
+
+########################################################################
+
+Hello,
+ 
+I am attempting to install FSL (python3.7) on my MacBook Pro with macOS Monterey (Version 12.6.3) and am having some problems. I paste the error and also attach the log file. 
+
+%: python3.7 fslinstaller.py
+FSL installer version: 3.3.0
+Press CTRL+C at any time to cancel installation
+Installation log file: /var/folders/xy/d76x67kx6ng_3b1qwybknw_c0000gn/T/fslinstaller_kk8t0dlt.log
+
+FSL 6.0.6.2 selected for installation
+
+
+ERROR occurred during installation!
+    This command returned an error: /Users/kangcheng/fsl/bin/mamba env update -n base -f /private/var/folders/xy/d76x67kx6ng_3b1qwybknw_c0000gn/T/tmppauomvpu/fsl-6.0.6.2_macos-64.yml
+
+
+
+Thanks very much
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hello,
+ I’ve answered the question for your specific age/sex/site design in the other thread, but in general the global mean must be represented either as a specific EV _or_ combination of other EVs - for group designs the “group-identity” EVs often perform this function, as each subject will be in one, and only one, group.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 14 Feb 2023, at 15:57, Jenna Blujus <jenna_blujus@BROWN.EDU> wrote:
+
+Hello,
+
+I am running a set of analyses using randomise on the WM skeleton. The first analysis is examining the association between a continuous variable (e.g., age) and WM microstructure. The second analysis is examining group differences (CN vs MCI) in WM microstructure. I've read into the archives on this subject and I am confused about when to include the global mean (i.e., EV of all 1s) into the design matrix. Is it correct that when modeling no groups (e.g., a continuous covariate) you must include the global mean as an EV in the model, but when modeling groups the global mean can be inferred across the group EVs?
+
+Thank you in advance,
+Jenna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello Jenna,
+   From your example it sounds like you have an age EV ( the EV of interest ) a demeaned sex EV, and 4 “site-difference” EVs. In this case you will want to add a column of ones to account for the global mean. Note for this specific design you _could_ code the sites as _5_ EVs ( coding 1 for a site, and 0 otherwise ) as that will also represent the group-mean. The “site-difference” approach is more generally useful ( e.g. for a 2-group design where the group EVs also account for the global mean ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear FSL community
+
+I would like to know from the outputs post running group ICA with 20 components, which .txt file can be used for statistical analysis?
+Is it melodic_ICstats or melodic_Tmodes? For melodic_ICstats, there are four columns and 20 rows, rows I think are 20 components but what are the 4 columns for?
+
+I would appreciate quick response.
+
+
+Best Wishes
+Divesh Thaploo
+
+########################################################################
+
+Hi Paul:
+
+I downloaded the attached file that you sent me, and then BASIL works without any problem... I am processing my first PCASL images.
+
+Sincerely
+
+
+Gonzalo Rojas Costa
+
+
+
+El mar, 21 de feb de 2023, 07:31, Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> escribió:
+Hi Gonzalo,
+
+Can you download the attached file, and copy it into FSLDIR/lib/python3.10/site-packages/oxford_asl/gui/__init__.py  (overwriting the existing file)?
+
+Paul
+From: Gonzalo Rojas Costa <gonzalo.rojas.costa@GMAIL.COM>
+Sent: 17 February 2023 18:00
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk>
+Subject: Re: BASIL error...
+ 
+Hi Paul:
+
+  I made the correction in $FSLDIR/lib/python3.10/site-packages/oxford_asl/gui/__init__.py that you told me... But, then I ran BASIL, I specified an ASL input Image (4D NIFTI file), appears the message "%s - failed to read data shape - check image file is not corrupted"... Why ?
+
+  Sincerely,
+
+
+
+Gonzalo Rojas Costa
+
+
+
+
+Hi Sheng,
+Can you attached the report_log.html file as well?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 21 Feb 2023, at 14:17, Sheng Yang <sheng.yang@NDCN.OX.AC.UK> wrote:
+
+Hi,
+I was trying to perform preprocessing step in feat, and encountered the following message.
+
+/usr/local/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png
+can't read "relrms": no such variable
+   while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+   switch -- [ lindex $argv $argindex ] {
+
+   -I {
+       incr arginde..."
+   (file "/usr/local/fsl/bin/feat" line 312)
+Error encountered while running in main feat script, halting.
+can't read "relrms": no such variable
+
+
+I tried to google for solution but could not find one. I’ve attached the report file from the run.
+What should I fix?
+
+Thank you!
+
+Best
+Sheng
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+FEAT Report
+/Users/shengalexyang/Desktop/MRI/lu/fMRIana06_materials/1BACK_brain_..feat
+Finished at Tue Feb 21 12:49:11 GMT 2023
+Registration  -  Pre-stats  -  Stats  -  Post-stats  -  Log
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Yes - the tissue mask will have only ~75 non-zero values per slice (cross sectional area of cord is ~60-90mm2) with typically ~18 slices. The current mask has 1330 non-zero voxels which is typical of our cervical diffusion scans. The total mask is greater than the default --nvoxhp of 1000 but the slices are an order of magnitude less.
+
+Eddy does successfully run with the same mask, and with --ol_nvox set to anything >250. It only terminates when <250. I'm beginning to think its just my lack of programming experience here and not correctly compiling my changes to EddyCommandLineOptions.cpp. I will spend some time making sure I'm doing this correctly!
+
+Thank you again for the fast responses.
+Kurt
+
+########################################################################
+
+Hi again,
+
+ 
+
+    Thank you for the fast response. That is reasonable - indeed all of my slices have approximately similar number of voxels. I see that eddy gives an error when this parameter is set <250 (EddyInputError:  --ol_nvox value below 250).
+
+    
+
+    I thought I could change this hard threshold in the EddyCommandLineOptions.cpp (line 319 in FSL 6.0.6.1) to:
+
+    if (_ol_nvox.value() < 25) throw EddyInputError("--ol_nvox value below 25");
+
+   
+
+    However, eddy now just terminates with no error messages. I'm guessing this is maybe throwing off some other parameters or consistency checks?
+
+ 
+
+hmm, I can’t say for sure, but might it be that it cannot find all the voxels that it expects for estimating the GP hyper-parameters? I.e. your mask has less than “--nvoxhp” non-zero values?
+
+ 
+
+Jesper
+
+ 
+
+   
+
+    Thank you again,
+
+    Kurt
+
+   
+
+    ########################################################################
+
+Thank you for the fast response. That is reasonable - indeed all of my slices have approximately similar number of voxels. I see that eddy gives an error when this parameter is set <250 (EddyInputError:  --ol_nvox value below 250).
+
+I thought I could change this hard threshold in the EddyCommandLineOptions.cpp (line 319 in FSL 6.0.6.1) to:
+if (_ol_nvox.value() < 25) throw EddyInputError("--ol_nvox value below 25");
+
+However, eddy now just terminates with no error messages. I'm guessing this is maybe throwing off some other parameters or consistency checks?
+
+Thank you again,
+Kurt
+
+########################################################################
+
+Hi,
+I was trying to perform preprocessing step in feat, and encountered the following message.
+ 
+/usr/local/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png
+can't read "relrms": no such variable
+    while executing
+"if { [ catch {
+ 
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+ 
+    -I {
+        incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+Error encountered while running in main feat script, halting.
+can't read "relrms": no such variable
+ 
+ 
+I tried to google for solution but could not find one. I’ve attached the report file from the run.
+What should I fix?
+ 
+Thank you!
+ 
+Best
+Sheng
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+I was trying to perform preprocessing step in feat, and encountered the following message.
+
+ 
+
+/usr/local/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png
+
+can't read "relrms": no such variable
+
+    while executing
+
+"if { [ catch {
+
+ 
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+
+    switch -- [ lindex $argv $argindex ] {
+
+ 
+
+    -I {
+
+        incr arginde..."
+
+    (file "/usr/local/fsl/bin/feat" line 312)
+
+Error encountered while running in main feat script, halting.
+
+can't read "relrms": no such variable
+
+ 
+
+ 
+
+I tried to google for solution but could not find one. I’ve attached the report file from the run.
+
+What should I fix?
+
+ 
+
+Thank you!
+
+ 
+
+Best
+
+Sheng
+Dear Kurt,
+
+I think it would be worth a shot.
+
+The 250 limit is not so much that 250 is such a small number that it is meaningless to attempt to get some stats from it. The problem is more that I don't want the "precision" to vary to wildly between slices. If you have one mean difference based on 10000 voxels and one based on 10 voxels, it would be a little silly to assume that they were drawn from the same distribution. So then one ends up instead building separate distributions for each slice, which would lead to an overall loss of sensitivity. The choice of a minimum of 250 voxels is just a pragmatic compromise that allows me to use a single distribution, while at the same time covering most slices of interest.
+
+In your case you don't have that problem. If all your "mean differences" are based on, let's say 50 voxels, they can still be considered drawn from the same distribution. You are likely to be less sensitive than would be the case in the brain, but yes, worth a shot.
+
+Best regards Jesper
+
+
+﻿On 20/02/2023, 23:15, "FSL - FMRIB's Software Library on behalf of Kurt Schilling" <FSL@JISCMAIL.AC.UK on behalf of kurt.g.schilling.1@VUMC.ORG> wrote:
+
+    Hi Jesper and team,
+   
+    Related to the question below on --ol_nvox. What would you suggest for non-brain anatomy, for example spinal cord? With a structure with cross-sectional area <100mm2 and typical voxel size of 1x1mm (with typically anisotropic 5mm slice thickness) - there will never be >250 voxels in a slice (within the tissue). Slice dropout is indeed visually easy to spot, but would this be meaningless to even attempt to detect and replace outliers using eddy? Another challenge is that even at moderate diffusion weightings a majority of the directions are already at the noise floor.
+   
+    Thank you,
+    Kurt
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Gonzalo,
+
+Can you download the attached file, and copy it into FSLDIR/lib/python3.10/site-packages/oxford_asl/gui/__init__.py  (overwriting the existing file)?
+
+Paul
+From: Gonzalo Rojas Costa <gonzalo.rojas.costa@GMAIL.COM>
+Sent: 17 February 2023 18:00
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk>
+Subject: Re: BASIL error...
+ 
+Hi Paul:
+
+  I made the correction in $FSLDIR/lib/python3.10/site-packages/oxford_asl/gui/__init__.py that you told me... But, then I ran BASIL, I specified an ASL input Image (4D NIFTI file), appears the message "%s - failed to read data shape - check image file is not corrupted"... Why ?
+
+  Sincerely,
+
+
+
+Gonzalo Rojas Costa
+
+
+
+
+Hi Jesper and team,
+
+Related to the question below on --ol_nvox. What would you suggest for non-brain anatomy, for example spinal cord? With a structure with cross-sectional area <100mm2 and typical voxel size of 1x1mm (with typically anisotropic 5mm slice thickness) - there will never be >250 voxels in a slice (within the tissue). Slice dropout is indeed visually easy to spot, but would this be meaningless to even attempt to detect and replace outliers using eddy? Another challenge is that even at moderate diffusion weightings a majority of the directions are already at the noise floor.
+
+Thank you,
+Kurt
+
+########################################################################
+
+Hi Everyone,
+
+I have been going through the forum to make sure I can set my contrasts correctly. I also have questions about mean centering listed below.
+
+I have DTI scans of a group of participants measured at two timepoints (0 & 6 months). We also measured two different behavioral measures that have different units and ranges of measurement values at the same two timepoints.
+
+The question I wanted to address is whether the change in FA over time is correlated with change in measure 1 and change in measure 2 as well as their interaction. So basically,
+
+1) FA change x Measure 1 change
+2) FA change x Measure 2 change
+3) FA change x Measure 1 change x Measure 2 change
+
+DTI images have been analyzed through TBSS. Change in FA was calculated by subtracting skeletonized FA images at one timepoint from the other. Change in FA images of all subjects was merged into a single 4D file and used as input.
+
+Since Measure 1 and Measure 2 had different units, they were converted into z-scores. The first-level and second-level designs were as follows:
+
+First-level:
+
+Measure 1 change (EV1) | Measure 2 change(EV2) | Measure 1 change x Measure 2 change (EV3)
+
+
+Second-level:
+
+C1: 1    0    0
+C2: 0    1    0
+C3: 0    0    1
+
+and the negative correlations as well.
+
+My questions are:
+
+1) Am I correct to assume that C1 and C2 are measuring FA change x Measure 1 change and FA change x Measure 2 change, and C3 is a three-way interaction? And if it is correct.
+
+2) Since the change scores of both behavioral measures were converted to z-scores and would have zero means, I did not demean the regressors. Is that the correct way to think about it?
+
+I would be grateful if someone can comment.
+
+Thanks.
+
+Zaeem Hadi
+
+Research Assistant
+Imperial College London
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

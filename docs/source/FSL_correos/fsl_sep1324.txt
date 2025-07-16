@@ -1,0 +1,896 @@
+Hi everyone,
+
+ 
+
+We recently upgraded our High Performance Computation Center with A100 
+GPUs and my lab just received a node with an A6000.
+
+We are running into problems running probtrackx2_gpu on these GPUs. 
+Processes get killed or aborted with an illegal data access issue, or out 
+of memory error, even though there is plenty of space available.
+
+After trying different CUDA versions and FSL versions, and different 
+combinations, always with the same problem, we don’t know what else we can 
+do to get probtrackx2_gpu running on Ampere cards. Everything is running 
+as expected on our older V100s or K80s.
+
+I tried reaching out to Moisés Hernández Fernández, the original author, 
+but with no luck as his Oxford mail address is not working anymore. On the 
+original website 
+https://users.fmrib.ox.ac.uk/~moisesf/Probtrackx_GPU/Installation.html it 
+says “Ampere architecture, and CUDA 11.x binaries will be supported within 
+FSL installer starting from FSL 6.0.6” but I still can’t get it to work.
+
+Any suggestions would be highly appreciated.
+
+ 
+
+Best wishes,
+
+ 
+
+Norman
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Zhen-Qi Liu <zhenqi.liu@MAIL.MCGILL.CA>
+Date: Sunday, April 21, 2024 at 21:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] CUDA Runtime Error: out of memory when running 
+probtrackx2_gpu
+
+Dear FSL experts,
+
+I'm running probtrackx2_gpu with the latest version of Qunex (0.99.2d, FSL 
+6.0.7.1). I met the following error when running it on Nvidia A100.
+
+...................Allocated GPU 0...................
+Device memory available (MB): 48412 ---- Total device memory(MB): 48685
+Memory required for allocating data (MB): 897
+CUDA Runtime Error: out of memory
+Device memory available after copying data (MB): 47476
+Running 456412 streamlines in parallel using 2 STREAMS
+Total number of streamlines: 577848000
+
+There is clearly enough memory but probtrackx2_gpu reports OOM. I reduced 
+the number of samples but the issue still persists.
+The error occurs on A100 but did not occur on V100. I have also tried 
+multiple versions of CUDA.
+The previous steps of HCP Pipelines, gpu version of eddy and bedpostx, 
+work fine with the same setting (A100, CUDA 10.2).
+I have also tried a potential solution by others (running a concurrent 
+program on the gpu), but it did not work for me.
+
+Any help would be greatly appreciated! Thank you!
+
+Here are other reports of the same issue on the Qunex forum and on this 
+list:
+
+https://urldefense.com/v3/__https://forum.qunex.yale.edu/t/resolved-issues-with-dwi-probtrackx-dense-gpu/996__;!!HXCxUKc!0LMQUt8VEevx_u1HG7LHtTo8JB9D_U495ThCT_jGrvnzhDngSoEitYKwcD9UTLegw3V6Em7lZswRBTgiNoY9ZEEY$
+https://urldefense.com/v3/__https://forum.qunex.yale.edu/t/resolved-dwi-probtrackx-dense-gpu-error/881/7__;!!HXCxUKc!0LMQUt8VEevx_u1HG7LHtTo8JB9D_U495ThCT_jGrvnzhDngSoEitYKwcD9UTLegw3V6Em7lZswRBTgiNlA0o2Hn$
+https://urldefense.com/v3/__https://forum.qunex.yale.edu/t/resolved-probtrackx-with-cuda-10-1-and-ubuntu-20-04/773__;!!HXCxUKc!0LMQUt8VEevx_u1HG7LHtTo8JB9D_U495ThCT_jGrvnzhDngSoEitYKwcD9UTLegw3V6Em7lZswRBTgiNsERFVtK$
+
+https://urldefense.com/v3/__https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2404&L=FSL&P=R55148__;!!HXCxUKc!0LMQUt8VEevx_u1HG7LHtTo8JB9D_U495ThCT_jGrvnzhDngSoEitYKwcD9UTLegw3V6Em7lZswRBTgiNnEY0usB$
+https://urldefense.com/v3/__https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1902&L=FSL&D=0&P=332507__;!!HXCxUKc!0LMQUt8VEevx_u1HG7LHtTo8JB9D_U495ThCT_jGrvnzhDngSoEitYKwcD9UTLegw3V6Em7lZswRBTgiNo5IaAHe$
+
+Best,
+Zhen-Qi Liu
+
+Hello FSL experts,
+
+ 
+
+I am trying to create design and contrast files for use in the FSL 
+randomise tool. I wish to study differences between disease (DS) and 
+healthy control (HC) subjects. I have 4 different studies, each study with 
+its own disease and control subjects. I would like the analysis to control 
+for the study of origin, study A controls vs study A disease, study B 
+controls vs study B disease, etc. I have attempted an approach previously 
+described in JISCMail - FSL Archives, where an EV or dummy variable is 
+created for each study, and 1s and 0s to represent study assignment.
+
+ 
+
+I would like my contrast matrix to test for HC > DS and DS > HC. Does the 
+following setup test for what I am wanting?
+
+ 
+
+Design matrix: Each row corresponding to a subject, with 1s representing 
+their designation of phenotype and study of origin.
+
+ 
+
+HC1
+
+HC2
+
+HC3
+
+HC4
+
+DS1
+
+DS2
+
+DS3
+
+DS4
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+…
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+0
+
+1
+
+ 
+
+ 
+
+Contrast
+
+HC1
+
+HC2
+
+HC3
+
+HC4
+
+DS1
+
+DS2
+
+DS3
+
+DS4
+
+1
+
+0
+
+0
+
+0
+
+-1
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+-1
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+-1
+
+0
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+-1
+
+-1
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+-1
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+-1
+
+0
+
+0
+
+0
+
+1
+
+0
+
+0
+
+0
+
+0
+
+-1
+
+0
+
+0
+
+0
+
+1
+
+ 
+
+I’ve run this analysis and am skeptical of the results. From how I had set 
+up my contrast matrix, I was expecting tstat1 to represent HC > DS and 
+tstat2 to represent DS > HC. However, referencing results from a prior 
+randomise analysis where I did not control for study of origin, it appears 
+that the results I am getting are that tstat1 represents DS > HC and 
+tstat2 represents HC > DS.
+
+ 
+
+I would like feedback on if my approach is correct. Any help is greatly 
+appreciated!
+
+ 
+
+Best Regards,
+
+An Tieu
+
+
+UT Southwestern
+
+Medical Center
+
+The future of medicine, today.
+
+
+Hi Paul,
+
+thanks for the feedback. Just to check we're on the same page. When you 
+say running FSLeyes over VNC - you also mean running FSLeyes within a 
+remote desktop session that is accessed via VNC. As that is what we are 
+using here. We access a remote desktop through VNC and in that desktop 
+open FSLeyes.
+
+FSLeyes works fine with this setup on one server, but not on the other. So 
+my suspicion is that it has to do with the way fsl is installed and access 
+to libraries on that one server (which unfortunately is where I have to 
+install FSL as a module, but otherwise don't have access to server 
+management).
+
+Maarten
+
+On Wed, Sep 11, 2024 at 6:42 PM Paul McCarthy 
+<0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Maarten,
+
+Running FSLeyes (or any OpenGL application) over VNC is fraught with 
+issues, and there is not a single/general solution. There are some 
+troubleshooting tips in the FSLeyes documentation that are worth going 
+through: 
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/troubleshooting.html#running-fsleyes-remotely
+
+At WIN/FMRIB, we are now using noVNC (https://novnc.com/info.html), which 
+overall provides a much smoother experience than any other VNC option I 
+have used. So I would recommend switching to noVNC if that is an option 
+for you.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Maarten Mennes <mennes.maarten.lists@GMAIL.COM>
+Sent: 11 September 2024 16:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSLeyes & bedpostx problem
+ 
+Hi Paul,
+
+I'm encountering the same issue as Brooke with fsleyes (1.12.4) in fsl 
+version 6.0.7.13. This is on a native Linux installation accessed through 
+VNC. I also get a pop-up at fsleyes startup that says 'Couldn't create 
+OpenGL context'.
+
+When I then try to add an image fsleyes crashes with a core dump error. 
+Our sysadmin indicates this error in the logs:
+
+[Tue Sep 10 18:16:33 2024] traps: python3.11[4019646] trap int3 
+ip:7fa609ea1bb8 sp:7ffdc224fb30 error:0 in 
+libglib-2.0.so.0.8000.2[7fa609e5c000+9a000]
+
+Thanks,
+Maarten
+
+On Mon, Aug 19, 2024 at 10:35 AM Paul McCarthy 
+<0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Brooke,
+
+Can you share some more details about your system? I.e. is this a native 
+linux installation, or are you running FSLeyes over SSH/X11, or on Windows 
+via WSL?
+
+P+aul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Brooke Bellas <brooke.bellas@UMONTREAL.CA>
+Sent: 13 August 2024 19:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSLeyes & bedpostx problem
+ 
+ Hi Paul, 
+
+Thanks for your response. I am using version 6.0.7.13 on a Linux. 
+
+Brooke
+
+Get Outlook for iOS
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Tuesday, August 13, 2024 4:27:16 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSLeyes & bedpostx problem
+ 
+Hi Brooke,
+
+Can you confirm what version of FSL you are using? You can find out by 
+running "cat $FSLDIR/etc/fslversion".
+
+Paul
+Hi Sean
+
+ 
+
+The quantification step combines both grey and white matter contributions. 
+It accounts for tissue partial volume estimates from the segmentation, and 
+for relaxation properties, as explained in 
+https://open.win.ox.ac.uk/pages/fsl/fsl_mrs/quantitation.html.
+
+ 
+
+Separating the contributions of grey and white matter is not 
+straightforward and would require a specialised acquisition (e.g. varying 
+echo time etc) and bespoke modelling.
+
+ 
+
+Cheers
+
+Saad
+
+Hi everyone,
+
+ 
+
+We recently upgraded our High Performance Computation Center with A100 
+GPUs and my lab just received a node with an A6000.
+
+We are running into problems running probtrackx2_gpu on these GPUs. 
+Processes get killed or aborted with an illegal data access issue, or out 
+of memory error, even though there is plenty of space available.
+
+After trying different CUDA versions and FSL versions, and different 
+combinations, always with the same problem, we don’t know what else we can 
+do to get probtrackx2_gpu running on Ampere cards. Everything is running 
+as expected on our older V100s or K80s.
+
+I tried reaching out to Moisés Hernández Fernández, the original author, 
+but with no luck as his Oxford mail address is not working anymore. On the 
+original website 
+https://users.fmrib.ox.ac.uk/~moisesf/Probtrackx_GPU/Installation.html it 
+says “Ampere architecture, and CUDA 11.x binaries will be supported within 
+FSL installer starting from FSL 6.0.6” but I still can’t get it to work.
+
+Any suggestions would be highly appreciated.
+
+ 
+
+Best wishes,
+
+ 
+
+Norman
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Zhen-Qi Liu <zhenqi.liu@MAIL.MCGILL.CA>
+Date: Sunday, April 21, 2024 at 21:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] CUDA Runtime Error: out of memory when running 
+probtrackx2_gpu
+
+Dear FSL experts,
+
+Hello,
+
+Just installed fsl using the instructions on Ubuntu 22.04 linux.
+
+
+sudo python fslinstaller.py
+
+Version: FSL 6.0.7.13
+
+
+Discovered with this installation that it overrides the Ubuntu system's 
+python
+
+%which python
+/usr/local/fsl/bin/python
+
+Compared to pre fsl installation
+
+/usr/bin/python
+
+We had an older linux computer, Ubuntu 20.04 with fsl 6.0.5 installed on 
+it and we never experienced this python conflict. Noticed that a python 
+directory is not located in /usr/local/fsl/lib like python3.11 folder is 
+for fsl 6.0.7.13.
+
+Is there a way to install and use the more recent versions of FSL without 
+overriding the operating system python and its respective packages?
+
+Thanks.
+
+d.m.
+
+Hi,
+
+As I understand it, it is usually recommended to use TFCE with TBSS. 
+However, my data has three groups and I need to run a F test. After 
+reading some posts 
+(https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=FSL;ef4412d0.1407), I 
+realize that there are some controversies regarding the interpretation of 
+p value in TFCE of F test.
+
+I was wondering if it is acceptable to use cluster-based thresholding 
+instead of TFCE in TBSS? Or is there another recommended method?
+
+Thanks,
+Xinyu
+
+Hi FSL team, 
+
+I am currently using FSL_MRS to try to quantify metabolites from the R 
+inferior frontal gyrus in single voxel spectroscopy 
+
+I wanted to ask two questions regarding svs_segment and fsl_mrs:
+
+When we use fsl_mrs in the quantification of metabolite concentrations and 
+we use the .json files produced from svs_segmentation, are the metabolites 
+in grey matter quantified as a baseline? or is it a combination of grey 
+and white matter? 
+
+If I wanted fsl_mrs to selectively quantify the metabolites in the grey or 
+white matter or a combination of both what additional flags/commands would 
+need to be added for this to be possible? 
+
+Thanks very much, 
+Sean 
+
+Hi There,
+
+I am trying to download FSL 6.0.7.13 for MacOS 10.12 Sierra, but I receive 
+the error pasted below. I searched through this forum and have tried 
+suggested fixes such as using an ethernet cable over wifi and using the 
+--throttle_downloads and export SYSTEM_VERSION_COMPAT=0 commands, but so 
+far no luck. Any help would be greatly appreciated. Thank you!
+
+14:55:19 fslinstaller.py:1371:  [stderr]:    ├─ wxpython 4.2.1 would 
+require
+14:55:19 fslinstaller.py:1371:  [stderr]:    │  └─ libjpeg-turbo 
+>=2.1.5.1,<3.0a0 , which can be installed;
+14:55:19 fslinstaller.py:1371:  [stderr]:    └─ wxpython 4.2.1 would 
+require
+14:55:19 fslinstaller.py:1371:  [stderr]:       └─ python_abi 3.12.* 
+*_cp312, which can be installed.
+14:55:19 fslinstaller.py:1371:  [stderr]:
+14:55:19 fslinstaller.py:1126: 3 / 3 [                                                           
+] 0 / 100 %
+14:55:19 fslinstaller.py:3535:
+ERROR occurred during installation!
+14:55:19 fslinstaller.py:3536:     This command returned an error: 
+/Users/NNRL/fsl/bin/conda env update -p /Users/NNRL/fsl -f 
+fsl-6.0.7.13_macos-64.yml
+
+14:55:19 fslinstaller.py:3540:   File 
+"/Users/NNRL/Downloads/fslinstaller.py", line 3532, in handle_error
+    yield
+  File "/Users/NNRL/Downloads/fslinstaller.py", line 3668, in main
+    func(*funcargs, prefix=prefix)
+  File "/Users/NNRL/Downloads/fslinstaller.py", line 2788, in install_fsl
+    retry_on_error(ctx.run, ctx.args.num_retries, 
+Process.monitor_progress,
+  File "/Users/NNRL/Downloads/fslinstaller.py", line 592, in 
+retry_on_error
+    raise e
+  File "/Users/NNRL/Downloads/fslinstaller.py", line 587, in 
+retry_on_error
+    return func(*args, **kwargs)
+  File "/Users/NNRL/Downloads/fslinstaller.py", line 1943, in run
+    return process_func(admin=self.need_admin,
+  File "/Users/NNRL/Downloads/fslinstaller.py", line 1343, in 
+monitor_progress
+    raise RuntimeError('This command returned '
+
+########################################################################
+
+Hi Sorcha (and everyone else),
+
+ 
+
+I just thought I should jump in with a little clarification.
+
+ 
+
+The reference (Eklund 2016) does not claim that a 3.1 voxel wise threshold 
+is "stringent". What they say is that when calculating a voxel-wise 
+threshold using Gaussian Random Field Theory (RFT), then the test based on 
+that threshold (typically ~4.5) is "conservative", i.e. the true false 
+positive rate is lower than the nominal rate (typically 0.05).
+
+ 
+
+The main finding of Eklund 1026 is that a cluster-base test with a 
+cluster-forming threshold of 2.3, when the cluster-size threshold is 
+calculated using RFT, then the test is very "liberal", as in the true 
+false positive rate being significantly greater than the nominal rate.
+
+ 
+
+For me the take home message from the Eklund paper is: Always use 
+randomise (or some other tool based on permutation testing) instead of 
+RFT. If you do that you will never be far off the nominal false positive 
+rate, regardless of voxel-based or cluster-based inference.
+
+ 
+
+As for cluster-based tests with a low cluster-forming threshold (e.g. 2.3) 
+they will be "valid" if you use randomise to calculate the cluster-size 
+threshold. But, in my mind they will not always be very useful. The 
+cluster-size threshold will inevitable be high with such a low 
+cluster-forming threshold. That means that any cluster you find will have 
+a large spatial extent, potentially spanning several functionally distinct 
+areas. And then you will not be able to make any clear claims about any of 
+those areas since the inference pertains to the cluster as a whole.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of 
+Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Thursday, 12 September 2024 at 10:12
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Z Threshold - 3.1 or 2.3?
+
+ 
+
+Hi Sorcha,
+
+ 
+
+To add to Matthew's response, the reference that you cite found a 
+threshold of 3.1 to be stringent for _voxel-based_ thresholding; for 
+cluster-based thresholding (which is the default in the major neuroimaging 
+software packages), a threshold of 3.1 is recommended.
+
+ 
+
+Paul
+
+Hi Sorcha,
+
+To add to Matthew's response, the reference that you cite found a 
+threshold of 3.1 to be stringent for _voxel-based_ thresholding; for 
+cluster-based thresholding (which is the default in the major neuroimaging 
+software packages), a threshold of 3.1 is recommended.
+
+Paul
+
+Hi Sorcha,
+ The problem with lowering to 2.3 ( for parametric statistics ) is that 
+certain assumptions start to break down and the actual error rate at a 
+nominal significance threshold of 5% will potentially be _much_ higher. To 
+use an arbitrary cluster-forming threshold you can switch to a 
+non-parametric method ( e.g. randomise with cluster-thresholding in FEAT 
+).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------
+
+Dear Lisa,
+A subject with a high depression score ( and potentially effect ) isn’t 
+necessarily any more likely to be an outlier than any of your other 
+subjects. It might to help to think of outliers as subjects with excessive 
+variance _after_ the GLM has been been fitted - that it they don’t appear 
+to fit the ( Gaussian ) error distribution of the other subjects. 
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Martyn,
+
+Your reply has indeed helped a lot! I have decided to pursue the approach 
+you have mentioned of specifying "the comparison of interest at the 
+1st-level and then create the main effects and interaction tests using 
+one-sample and two-sample t-tests at the 2nd-level". I assume what you 
+mean is similar to the 'Example 2: Three Factors' on this page: 
+https://en.wikibooks.org/wiki/SPM/Group_Analysis#Example_2:_Three_Factors
+
+I haven't tried the analysis yet but the only doubt I can imagine I will 
+have will be how to calculate the post hoc contrasts of the interactions, 
+hopefully I will manage it.
+
+And regarding what you have explained to me about the complexity of doing 
+this analysis using the flexible factorial module in SPM or in FEAT is 
+greatly appreciated as this was definitely not obvious to me.
+
+Cheers,
+Harry
+
+Hi Maarten,
+
+Running FSLeyes (or any OpenGL application) over VNC is fraught with 
+issues, and there is not a single/general solution. There are some 
+troubleshooting tips in the FSLeyes documentation that are worth going 
+through: 
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/troubleshooting.html#running-fsleyes-remotely
+
+At WIN/FMRIB, we are now using noVNC (https://novnc.com/info.html), which 
+overall provides a much smoother experience than any other VNC option I 
+have used. So I would recommend switching to noVNC if that is an option 
+for you.
+
+Paul
+
+Dear all,
+
+I would like to run a higher level FEAT analysis and include a covariate 
+(depression score) to examine whether my contrasts vary with depression. 
+The depression scores are not uniformly distributed and there are a few 
+participants with much higher scores than the others. Usually (when 
+running higher level FEAT without any covariates), I would switch on 
+outlier deweighting. In this case, however, I wonder whether this would be 
+appropriate because I am interested in the inter-individual differences 
+related to depression.
+Could you give me any guidance on this? (i.e. when it is appropriate or 
+not to switch on outlier detection if one also has additional covariates 
+in higher level FEAT)
+
+Any help is much appreciated.
+
+Best wishes
+Lisa
+
+Hi Paul,
+
+I'm encountering the same issue as Brooke with fsleyes (1.12.4) in fsl 
+version 6.0.7.13. This is on a native Linux installation accessed through 
+VNC. I also get a pop-up at fsleyes startup that says 'Couldn't create 
+OpenGL context'.
+
+When I then try to add an image fsleyes crashes with a core dump error. 
+Our sysadmin indicates this error in the logs:
+
+[Tue Sep 10 18:16:33 2024] traps: python3.11[4019646] trap int3 
+ip:7fa609ea1bb8 sp:7ffdc224fb30 error:0 in 
+libglib-2.0.so.0.8000.2[7fa609e5c000+9a000]
+
+Thanks,
+Maarten
+
+
+

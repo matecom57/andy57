@@ -1,0 +1,83 @@
+Dear FSL experts,
+will there be a registration fee for the FSL online course this autumn and if yes is the amount already decided on? Will a schedule be available?
+Best, Melissa
+
+
+The mind of a bee
+
+This worked! Thank you so much!
+
+surf2surf has some undocumented behavior that should either be eliminated or at least documented in the help. Specifically, these two function calls create different outputs:
+
+surf2surf -i cortex_5124.surf.gii -o mygifti.gii
+surf2surf -i cortex_5124.surf.gii -o mygifti.surf.gii
+
+If the output filename does not include "surf.gii", a new property named `MyScalars` is created with all the vectors specified as having an intensity of zero. Since this vector has no variability, this bloated data has no additional information, but subsequent tools may behave in unexpected ways when handling this data. In general, I would advise against adding uninformative information to files in an interchange format.
+
+The problem can be seen here:
+  https://github.com/muschellij2/FSL6.0.0/blob/3c3dd651066ee189bc8c290f744ca48cb3d1f156/src/ptx2/csv_mesh.cc#L287
+I can not imagine why anyone would ever want a dummy vector created, but if there is a use case perhaps surf2surf could have the user explicitly request this:
+  surf2surf -i surf.surf.gii -o surf2.surf.gii --scalar=MyScalars
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear reader,
+
+What program is recommended to use for the conversion of DICOM files to NIfTI format?
+
+Regards,
+Aleta
+
+########################################################################
+
+Dear FSL experts,
+will there be a registration fee for the FSL online course this autumn and if yes is the amount already decided on? Will a schedule be available?
+Best, Melissa
+
+
+yep, but it would not necessarily harm if you set up a prospective study __
+however, it in of our earlier works https://doi.org/10.1371/journal.pone.0049451 it wasn't matched either...
+
+﻿Am 14.03.23, 17:27 schrieb "FSL - FMRIB's Software Library im Auftrag von Glasser, Matt" <FSL@JISCMAIL.AC.UK im Auftrag von glasserm@WUSTL.EDU>:
+
+    You don't necessarily need the data in the same voxel grid to do that.
+   
+    Matt.
+   
+    ﻿On 3/13/23, 10:10 PM, "Zack Guo" <gzt2019@MAIL.BNU.EDU.CN <mailto:gzt2019@MAIL.BNU.EDU.CN>> wrote:
+   
+   
+   
+    Hi，I want to investgate the relationship between brain structure and function in a group of people.
+   
+   
+    Zack
+   
+   
+   
+   
+   
+   
+    ________________________________
+    The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

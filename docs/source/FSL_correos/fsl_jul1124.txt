@@ -1,0 +1,1250 @@
+Join Our Dynamic Research Team!
+
+The Laboratory of Artificial Intelligence in Medicine at the Hong Kong 
+Polytechnic University invites applications for postdoctoral scholars. We 
+are dedicated to pioneering research at the forefront of brain imaging and 
+genetics, leveraging AI technology to analyse large datasets and uncover 
+insights into brain development in early life.
+
+Over the years, our lab has spearheaded numerous human studies focused on 
+brain health and cognition in children. With a repository of brain scans, 
+cognitive assessments, genetic profiles, and environmental data from over 
+60,000 subjects across multiple time points, we are committed to 
+unravelling the complexities of developmental conditions.
+
+Why Join Us?
+
+·     Cutting-Edge Facilities: Benefit from our state-of-the-art research 
+centre equipped with high-performance computing resources, including 
+multiple H100 and A100 GPU systems for deep learning, and computing 
+clusters tailored for large-scale data analysis. With access to over 5000T 
+of medical data, spanning medical records, images, and pathology data, 
+you'll have the tools needed to drive impactful research forward.
+
+·     Publication Excellence: Join a team that prides itself on academic 
+excellence. Our laboratory has contributed over 180 papers to esteemed 
+journals such as Nature, Nature Neuroscience, Nature Mental Health, PNAS, 
+and more, showcasing our commitment to advancing knowledge in the field.
+
+·     International Collaboration: Engage with our global network of 
+researchers through our participation in an international consortium on 
+brain development from infancy onwards. By collaborating with multiple 
+cohorts worldwide, we aim to generate insights that will inform strategies 
+for optimizing brain health across diverse populations.
+
+Position Requirements:
+
+1.   PhD Qualification: Hold a PhD in Cognitive Neuroscience, Psychology, 
+Neuroscience, Data Science, or a related discipline.
+
+2.   Experience in Brain Development Studies: strong publications in brain 
+imaging research.
+
+Responsibilities:
+
+1.   Supervise Research Assistants: Provide oversight and guidance to 
+research assistants involved in participant recruitment and data 
+collection, ensuring adherence to study protocols and ethical standards.
+
+2.   Conduct Brain Development Research: Undertake research activities 
+utilizing both existing and newly collected data, employing advanced 
+analytical techniques to investigate various aspects of aging and 
+neurodegenerative diseases.
+
+3.   Collaborate on International Studies: Engage in collaborative efforts 
+with international partners to contribute to large-scale infant studies, 
+fostering cross-cultural insights and advancing the field of brain 
+development research on a global scale.
+
+The position offers a competitive package (up to HKD 558,000 annually) and 
+benefits. We will apply for VISA for applicants. 
+
+How to Apply:
+
+Please submit your CV to Professor Qiu Anqi, Global STEM Scholar, 
+an-qi.qiu@polyu.edu.hk.
+
+ 
+Attached files:
+rotated_bvec: the 26 vector "standard rotated eddy output file" from eddy 
+that is fed into the Matlab dyad script
+rotated_dyad: the 13 vector file output created by my own Matlab dyad 
+script and currently fed into dtifit
+rotated_bvecs_for_SLR: the 13 vector file SLR output from eddy
+
+Dear Jesper,
+
+Thank you for your comments. I resend the files as their names became a 
+bit messy the last time.
+
+In my mind, the sign swap occurs in my Matlab dyad file, whereas the 
+output in the SLR file from eddy keeps the sign, see for example the 
+x-coord of the 5th vector in the attached files. But when you provided me 
+the matlab code a few years ago, I think you mentioned that that may occur 
+and that it is of no relevance. Dyad Matlab code according to (read from 
+the 26 vector "standard eddy output file" as bvec_rot_in):
+for j=1:13
+       v_down=bvec_rot_in(:, j);
+       v_up=bvec_rot_in(:, j+13);
+            mat_dyad=(kron(v_down,v_down') + kron(v_up,v_up'))/2;
+            [V_eig,D_eig]=eig(mat_dyad);
+            [D_eig,ind]=sort(diag(D_eig));
+            v_avg=V_eig(:,ind(end));
+            bvec_rot_out=[bvec_rot_out, v_avg];
+
+The largest difference I could find in the attached files was the x-coord 
+of the 7th vector (apart from sign swaps of course):
+my dyad file: -0.76367312
+Your eddy SLM file: -0.763636905
+Difference: 3.655E-5
+
+Hence, there are occasional coordinates where the difference exceeds 1E-5, 
+but in most cases it is around or below 1E-5. I have not checked all 
+scans, but assumingly the differences look similar for the other scans.
+
+This should not be a concern as long as my matlab code is correct, should 
+it?
+
+All the best,
+
+Nick
+
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Jesper 
+Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 4 juli 2024 11:49
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] Push - VB: [FSL] Sv: [FSL] eddy - some minor questions
+ 
+Hi again Niklas,
+
+ 
+
+I would be really grateful if you had the time to comment on my below 
+concerns regarding eddy_rotated_bvecs_for_SLR.
+
+ 
+
+I can't remember exactly how I "average" the rotated bvecs when I generate 
+the .eddy_rotated_bvecs_for_SLR, but it would need to take polarity into 
+account so I expect I average outer product matrices and take the first 
+eigenvector of that. Or some such thing.
+
+ 
+
+If you get the same results down to the 5th decimal you should be fine. It 
+is interesting that you get sign swaps though. Come to think of it, I 
+guess that my "outer product method" doesn't necessarily preserve the 
+sign. If you look at the cases where the two methods give different signs, 
+is it your method or the "eddy method" that preserves it?
+
+ 
+
+Having said that, I can't think of a case where preserving the sign is 
+necessary.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+All the best,
+
+ 
+
+Nick
+
+ 
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Niklas 
+Lenfeldt <niklas.lenfeldt@UMU.SE>
+Skickat: den 13 juni 2024 18:36
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: [FSL] Sv: [FSL] Sv: [FSL] eddy - some minor questions
+
+ 
+
+I use flm=cubic; slm=quadratic throws the exception, slm=linear gets the 
+previously "warnings", but eddy completes the execution. Nontheless, 
+slm=linear should do the job. I have 2 x (b0 +12) gradients, that is dual 
+polarity collected for b0 and the 12 gradients; thus 26 volumes in total 
+and 26 bvecs fed into eddy (2 x (b0 + 12grad)). The gradient directions 
+are exactly the same for both polarities and I use resamp=lsr.
+
+ 
+
+Then I take the 26 vector rotated bvec output from eddy and feed it into 
+dyad in matlab as:
+
+for j=1:13
+
+       v_down=bvec_rot_in(:, j);
+
+       v_up=bvec_rot_in(:, j+13);
+
+            mat_dyad=(kron(v_down,v_down') + kron(v_up,v_up'))/2;
+
+            [V_eig,D_eig]=eig(mat_dyad);
+
+            [D_eig,ind]=sort(diag(D_eig));
+
+            v_avg=V_eig(:,ind(end));
+
+            bvec_rot_out=[bvec_rot_out, v_avg];
+
+ 
+
+This output looks correct when I study the output, and it is similar to 
+your eddy_rotated_bvecs_for_SLR up to the 5th decimal apart from opposing 
+signs in some cases. I have attached four text files with examples:
+
+HTA_05_000_30T_GE_V02_Bvectors.bvec= the 26 vector original bvec
+
+HTA_05_000_30T_GE_V02_eddy_DTI= the 26 vector rotated bvec output from 
+eddy
+
+HTA_05_000_30T_GE_V02_Bvectors_rotated_dyad= the 13 vector output from 
+dyad matlab
+
+HTA_05_000_30T_GE_V02_eddy_DTI.eddy_rotated_bvecs_for_SLR= 13 vector 
+rotated eddy SLR output.
+
+ 
+
+The way you describe it, it seems that my way of collecting data could 
+benefit from using the rotated SLR file as input to dtifit, but is there 
+any reason to think it would change the results in a significant manner 
+compared to my current dyad version?
+
+ 
+
+best,
+
+ 
+
+Nick
+
+ 
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Jesper 
+Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 12 juni 2024 13:00
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] Sv: [FSL] eddy - some minor questions
+
+ 
+
+Dear Niklas,
+
+ 
+
+Regarding slm, qudratic actually throws the following error message and 
+terminates (it was slm=linear that worked the way described in the 
+previous mail, I misprinted):
+
+Iter: 0, scan: 23, gpu_mss = 2.34497
+
+Iter: 0, scan: 24, gpu_mss = 2.00589
+
+Iter: 0, scan: 25, gpu_mss = 2.27136
+
+Iter: 0, Total mss = 2.54118
+
+Performing 2nd level modelling of estimated parameters
+
+Mat::operator(): index out of bounds
+
+EDDY::ECScanClasses.cpp:::  arma::mat 
+EDDY::ECScanManager::quadratic_design_matrix(EDDY::ScanType) const:  
+Exception thrown
+
+EDDY::ECScanClasses.cpp:::  void 
+EDDY::ECScanManager::SetPredictedECParam(EDDY::ScanType, 
+EDDY::SecondLevelECModelType):  Exception thrown
+
+EDDY::eddy.cpp:::  EDDY::ReplacementManager* EDDY::Register(const 
+EDDY::EddyCommandLineOptions&, EDDY::ScanType, unsigned int, const 
+std::vector<float, std::allocator<float> >&, EDDY::SecondLevelECModelType, 
+bool, EDDY::ECScanManager&, EDDY::ReplacementManager*, NEWMAT::Matrix&, 
+NEWMAT::Matrix&):  Exception thrown
+
+EDDY::: Eddy failed with message EDDY::eddy.cpp:::  
+EDDY::ReplacementManager* EDDY::DoVolumeToVolumeRegistration(const 
+EDDY::EddyCommandLineOptions&, EDDY::ECScanManager&):  Exception thrown
+
+[niklasl@localhost HTA5]$ 
+
+
+The foot is placed in iso-centre and the volume is small, so in my mind 
+slm=linear should be sufficient, but I do not really understand why it 
+throws the above exception. Any ideas?
+
+ 
+
+Hmm, I don't think I have seen that before. Am I right in thinking that 
+you have a limited number of unique diffusion gradient directions? The 
+quadratic model uses 9 regressors, so you will need at least that number 
+of unique directions.
+
+I think that in a previous email I misread, I thought you were talking 
+about the first level model (i.e. --flm). That is what I think in your 
+case might be sufficient with a linear model (given the small size of your 
+object). For the second level (--slm) it is pretty much always sufficient 
+with linear, and often you don't need it at all (if you have sampled the 
+diffusion on the whole sphere).
+
+Please let me know if you have more than 9 unique directions. In that case 
+I would want to hunt down the reason for your crash.
+
+ 
+
+I do not quite follow you regarding SLR, so I start by asking what SLR 
+actually means in this case, is it second level registration (that is what 
+I thought before your last answer, but now I am not so sure)?
+
+ 
+
+You mention "matched pair", what are you referring to, is it matched pair 
+of polarity or something else? Because I remember that you once mentioned 
+that you intended to address the fact that if one has collated data using 
+dual polarity for both b0 and gradients, then one has do "dyad" the 
+rotated bvec output from eddy before feeding it to dtifit. Has SLR got to 
+do with that or is it something entirely different?
+
+ 
+
+What --resamp=lsr does is that instead of using a "traditional" 
+interpolation kernel eddy attempts to "solve for the true intensity" in 
+each voxel based on an overdetermined model. In order to make the model 
+overdetermined one needs to have two volumes with opposing PE for each 
+unique diffusion gradient. Those two together will then yield a single 
+solution, hence two input volumes (a matched pair with opposing PE and 
+identical diffusion gradient) will result in a single output volume. The 
+--resamp=lsr method is able to better resolve the "true" intensity in 
+areas where the images have been severely stretched/compressed.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+best
+
+ 
+
+nick
+
+ 
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neurosciences
+
+University of Umeå
+
+Sweden
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Jesper 
+Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 10 juni 2024 11:45
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] eddy - some minor questions
+
+ 
+
+Hi Niklas,
+
+ 
+
+If there is a more detailed explanation of the -flags and output/input for 
+the newest version of eddy, I would very much appreciate a link.
+
+ 
+
+the output (format) of eddy is about to change quite a lot. The image 
+output will remain much the same as before, but all the text output will 
+change. Instead of having individual text files for EC, 
+slice-to-vol-movement, outliers etc, they will all be included in a single 
+.JSON file. That will also allow me to output more and more detailed 
+information that will aid with QC. The "old" text files will still be 
+optionally available (and are likely to be for some time) so as not to 
+break existing pipelines. These changes are expected to go live with the 
+next eddy release. People who use the latest version will have noticed 
+that eddy already output a .JSON file, but I still haven't decided on the 
+final format so please don't write/base any scripts based on what they 
+currently look like.
+
+The documentation is also in the process of being updated accordingly (and 
+getting a face lift).
+
+ 
+
+Again, my study is not on the brain, it targeted the ankle and the tibial 
+nerve with 25 axial slices.
+
+ 
+
+I think my concerns are benign, but I just want to check.
+
+ 
+
+When running eddy_cuda linked to cuda10.2, I now get several 
+EddyInternalGpuUtils: param_update: updates rejected for volume #1 (and 
+further volumes, which I assume in my case are slices). Then it refers to 
+Levenberg-lamda and writes the mss and then an updated mss.
+
+ 
+
+Yes, that was mainly for my own sake to monitor some changes I made to the 
+optimisation. If there is anything of genuine concern eddy will terminate. 
+Can I just check that you only see those if you specify the --very_verbose 
+flag?
+
+ 
+
+The end slices of the 25-slices are in many cases empty or corrupt, but in 
+some cases it mentions #7, which should not be affected. I also use 
+slm=quadratic as I have relatively few gradients and also --resamp=lsr. 
+Eddy never halts and the output looks fine and the time for running it is 
+similar as before (12 min with one core). Is this something to be 
+concerned about?
+
+ 
+
+It is unlikely that this indicates a problem. My guess is that it has 
+identified slice 7 as an outlier, correctly or not, in some volume. It 
+would only be a source of concern if you see the same slice implicated in 
+many of the volumes.
+
+I am sure that slm=quadratic is sufficient (it almost always is). Given 
+that your object (ankle) is quite small compare to a head, and as long as 
+it is placed close to the iso-centre, I would even think that slm=linear 
+might be sufficient.
+
+ 
+
+Furthermore, there is an bvec-output, bvecs_for_SLR that at least I have 
+not observed before. When is this useful and is it associated with any 
+particular flags to get is as output?
+
+ 
+
+When using SLR you get one output volume per matched pair of input 
+volumes. The "bvecs_for_SLR" are the rotated bvecs suitable for use with 
+such an output, and the rotation for each pair is the geometric average of 
+the two input images.
+
+ 
+
+Regarding inputs, is it enough to include the output from topup as input, 
+or should one now explicitly set the --field flag as well, assuming it 
+refers to the field output of topup? There is also a file field_mat 
+mentioned, but I cannot find that file as output from topup, what does 
+that file refer to?
+
+ 
+
+No, you don't need to worry about those. They are for when you have a 
+fieldmap that you have acquired in some other way, i.e. a dual echo-time 
+fieldmap.
+
+ 
+
+Jesper
+
+Join Our Dynamic Research Team!
+
+The Laboratory of Artificial Intelligence in Medicine at the Hong Kong 
+Polytechnic University invites applications for postdoctoral scholars. We 
+are dedicated to pioneering research at the forefront of brain imaging and 
+genetics, leveraging AI technology to analyse large datasets and uncover 
+insights into brain development in early life.
+
+Over the years, our lab has spearheaded numerous human studies focused on 
+brain health and cognition in children. With a repository of brain scans, 
+cognitive assessments, genetic profiles, and environmental data from over 
+60,000 subjects across multiple time points, we are committed to 
+unravelling the complexities of developmental conditions.
+
+Why Join Us?
+
+·     Cutting-Edge Facilities: Benefit from our state-of-the-art research 
+centre equipped with high-performance computing resources, including 
+multiple H100 and A100 GPU systems for deep learning, and computing 
+clusters tailored for large-scale data analysis. With access to over 5000T 
+of medical data, spanning medical records, images, and pathology data, 
+you'll have the tools needed to drive impactful research forward.
+
+·     Publication Excellence: Join a team that prides itself on academic 
+excellence. Our laboratory has contributed over 180 papers to esteemed 
+journals such as Nature, Nature Neuroscience, Nature Mental Health, PNAS, 
+and more, showcasing our commitment to advancing knowledge in the field.
+
+·     International Collaboration: Engage with our global network of 
+researchers through our participation in an international consortium on 
+brain development from infancy onwards. By collaborating with multiple 
+cohorts worldwide, we aim to generate insights that will inform strategies 
+for optimizing brain health across diverse populations.
+
+Position Requirements:
+
+1.   PhD Qualification: Hold a PhD in Cognitive Neuroscience, Psychology, 
+Neuroscience, Data Science, or a related discipline.
+
+2.   Experience in Brain Development Studies: strong publications in brain 
+imaging research.
+
+Responsibilities:
+
+1.   Supervise Research Assistants: Provide oversight and guidance to 
+research assistants involved in participant recruitment and data 
+collection, ensuring adherence to study protocols and ethical standards.
+
+2.   Conduct Brain Development Research: Undertake research activities 
+utilizing both existing and newly collected data, employing advanced 
+analytical techniques to investigate various aspects of aging and 
+neurodegenerative diseases.
+
+3.   Collaborate on International Studies: Engage in collaborative efforts 
+with international partners to contribute to large-scale infant studies, 
+fostering cross-cultural insights and advancing the field of brain 
+development research on a global scale.
+
+The position offers a competitive package (up to HKD 558,000 annually) and 
+benefits. We will apply for VISA for applicants. 
+
+How to Apply:
+
+Please submit your CV to Professor Qiu Anqi, Global STEM Scholar, 
+an-qi.qiu@polyu.edu.hk.
+
+ 
+Dear Yiling,
+ The design below looks fine, the only additional requirement is to pass 
+randomise an exchangeability file ( via the -e option ) to correctly pair 
+each subject’s measurements - you can create this as a simple text file 
+and then convert with Text2Vest.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 28 Jun 2024, at 11:11, SUBSCRIBE FSL Yiling Shi 
+<0000b00fa4582965-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Dear FSL Expert's,
+
+I am currently involved in a functional MRI study examining the effects of 
+intervention versus Placebo conditions on the BOLD signal, incorporating a 
+metabolite level as a covariate. Each subject in our study has paired 
+measurements under both conditions.
+
+We plan to use FSL’s randomise tool for permutation testing. Our design 
+matrix for group-level analysis includes:
+
+A binary condition indicator (0 for Placebo, 1 for intervention).
+Continuous values.
+An interaction term between the condition and metabolite level.
+Individual columns for each subject to account for intra-subject 
+variability, reflecting the paired nature of the data.
+Our goals are to assess:
+
+The effect of metabolite level under the Placebo condition.
+The combined effect of metabolite level under the intervention condition.
+The interaction effect between the condition and metabolite level.
+Design Matrix Description:
+
+Condition Column: 0 for Placebo and 1 for intervention.
+Glx Column: Contains continuous values of metabolite level.
+Interaction Column: Product of the Condition and metabolite level columns.
+Subject Columns: Binary, specific to each subject, indicating the presence 
+of their data.
+Contrast Vectors Defined for Testing:
+
+metabolite level under Placebo: [0, 1, 0, 0, 0, 0] (targets 𝛽2)
+metabolite level under intervention: [0, 1, 1, 0, 0, 0] (sums 𝛽2 and 𝛽3)
+Interaction Effect: [0, 0, 1, 0, 0, 0] (isolates 𝛽3)
+Could you please advise if this setup is appropriate for our objectives, 
+or if there are any adjustments you would recommend to enhance the 
+accuracy and efficacy of our analyses using FSL’s randomise?
+
+Thank you for your time and assistance.
+
+Best regards,
+Yiling
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing 
+list hosted by www.jiscmail.ac.uk, terms & conditions are available at 
+https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Dear Mingtong,
+The cope images in the “stats” subdirectory of your FEAT will contain the 
+parameter estimates ( i.e. changes in connectivity for PPI ) for each 
+contrast, so you would select the numbered cope image corresponding to the 
+PPI effect and then extract values with ( e.g. fslstats and the relevant 
+mask in subject space ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear Mariana,
+If you delete the .msf files corresponding to the two subjects in your 
+previous email, then a re-run of tbss_2_reg should just try to create the 
+warps for these two subjects alone. It might be a good idea to check 
+“tbss_logs” first to see if any more errors were generated when trying to 
+register the subjects.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear FSL experts,
+
+I am using the Psychophysiological Interactions (PPIs) analysis function 
+in the fsl and hope to see individual differences in connectivity between 
+the amygdala and MFG when participants view affective images. Is there a 
+way to extract the connectivity value between the seed ROI and another ROI 
+for each individual? 
+
+Best,
+
+Mingtong
+
+
+
+Hi Elizabeth,
+
+You appear to be using quite an old version of FSL - the most recent 
+version of FSLeyes requires Python 3.9 or newer, and your FSL installation 
+has Python 3.8.
+
+I think the easiest option for you would be to replace your FSL 
+installation with the latest version - you should be able to do this by 
+downloading and running the fslinstaller.py script (it will replace your 
+existing installation) from 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/index
+
+Paul
+
+Hi Unnah,
+
+Have you updated your shell profile as outlined in my last email? i.e. 
+edit your ~/.bash_profile file (e.g. run "gedit ~/.bash_profile" in an 
+Ubuntu terminal), and remove all lines that start with "export DISPLAY=" 
+and "export LIBGL_ALWAYS_INDIRECT=". Then open a new Ubuntu terminal and 
+try running FSLeyes.
+
+Paul
+
+
+T1w/T2w is a relative measure that requires a consistently acquired study 
+to analyze quantitatively.  See Glasser et al., 2022 Neuroimage for more 
+details.
+
+Matt.
+
+﻿On 7/4/24, 9:57 AM, "FSL - FMRIB's Software Library on behalf of Varun 
+Arunachalam Chandran" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on 
+behalf of varunchandran28@GMAIL.COM <mailto:varunchandran28@GMAIL.COM>> 
+wrote:
+
+
+Hi everyone,
+
+
+I pre-processed some T1-weighted and T2-weighted structural images (using 
+FSL tools) to look at cortical myelin differences in a clinical population 
+compared to the healthy controls (HCP-Development Dataset). Some 
+individual T1W/T2W ratio (Native space) mean values for the cortical 
+myelin seems to be much higher in GM (36.268) and WM (62.007) in the 
+clinical population and HCP-Development dataset. Then, all the T1W/T2W 
+ratio maps were spatially normalised to the MNI standard template, which 
+yielded consistent mean values for the GM (1.861) and WM (2.365) across 
+the HCP-Development Dataset. However, many individual mean T1W/T2W ratio 
+values remain unchanged, and some mean values has gone even little higher 
+in the clinical population. Please can anyone provide some advice on this 
+issue.
+
+
+thanks,
+
+
+kind regards,
+Varun
+
+Hi everyone,
+
+I pre-processed some T1-weighted and T2-weighted structural images (using 
+FSL tools) to look at cortical myelin differences in a clinical population 
+compared to the healthy controls (HCP-Development Dataset). Some 
+individual T1W/T2W ratio (Native space) mean values for the cortical 
+myelin seems to be much higher in GM (36.268) and WM (62.007) in the 
+clinical population and HCP-Development dataset. Then, all the T1W/T2W 
+ratio maps were spatially normalised to the MNI standard template, which 
+yielded consistent mean values for the GM (1.861) and WM (2.365) across 
+the HCP-Development Dataset. However, many individual mean T1W/T2W ratio 
+values remain unchanged, and some mean values has gone even little higher 
+in the clinical population. Please can anyone provide some advice on this 
+issue.
+
+                                                                    
+thanks,
+
+kind regards,
+Varun
+
+########################################################################
+
+Hi again Niklas,
+
+ 
+
+I would be really grateful if you had the time to comment on my below 
+concerns regarding eddy_rotated_bvecs_for_SLR.
+
+ 
+
+I can't remember exactly how I "average" the rotated bvecs when I generate 
+the .eddy_rotated_bvecs_for_SLR, but it would need to take polarity into 
+account so I expect I average outer product matrices and take the first 
+eigenvector of that. Or some such thing.
+
+ 
+
+If you get the same results down to the 5th decimal you should be fine. It 
+is interesting that you get sign swaps though. Come to think of it, I 
+guess that my "outer product method" doesn't necessarily preserve the 
+sign. If you look at the cases where the two methods give different signs, 
+is it your method or the "eddy method" that preserves it?
+
+ 
+
+Having said that, I can't think of a case where preserving the sign is 
+necessary.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+All the best,
+
+ 
+
+Nick
+
+ 
+
+With Regards,
+
+Dear Joseph,
+
+ 
+
+I am trying to run level 1 feat stats using multi-echo data pre-processed 
+in fmriprep and tedana. I believe the data has been mean centered already 
+which leads to an empty mask generated by 
+
+fslmaths filtered_func_data -Tmin -bin mask -odt char
+
+ 
+
+This causes all the stats to be empty as well. 
+
+ 
+
+Is there a workaround for this other than just running all the level 1 
+steps manually and substituting a mask generated in fmriprep? For example, 
+is the mask generated differently if I run pre-stats and use a SBref as an 
+"Alternative reference image" or re-run registration? I ran feat with 
+Statistics only. 
+
+ 
+
+I haven't come across this before, so I'm really just thinking aloud here. 
+If you have a mask from fmriprep, can you not just add that mask back in? 
+Obviously that would preclude doing anything spatial, but you have already 
+done all that with fmriprep.
+
+ 
+
+But as I said, just thinking aloud so anyone with a different suggestion 
+please weigh in.
+
+ 
+
+Jesper
+
+ 
+
+Thanks,
+
+Joe
+
+Looks like the job is being killed. Mostly likely due to the size of the 
+data – you’re running it with ~112k vertices at 1mm resolution. That’s 
+trying to generate a 112k by >100k matrix which big…. To avoid such large 
+matrices with huge memory requirements we suggest the standard 32k 
+vertices and using 2/3mm res for the target mask.
+
+ 
+
+Thanks,
+
+Shaun.
+
+Hi Paul,
+
+ 
+
+Sorry for the delay.
+
+ 
+
+I’ve tried this today, but I just get the error message: “Unable to access 
+the X display. Is $DISPLAY set properly?
+
+ 
+
+Unnah
+
+Hi Iman
+
+ 
+
+I am afraid the current implementation of eddy_squad, as far as I know, 
+requires all subjects to have the same protocol.
+
+ 
+
+The easiest way to do what you need would be to write a python scripts 
+that loads the individual JSON QC files and does the stats that you want 
+to do, thus bypassing eddy_squad. Sorry about that!
+
+ 
+
+Cheers
+
+Saad
+
+Hi Shaun:
+
+I have changed the script to:
+
+xtract_blueprint -bpx 
+./output_controls/BC009/outdwi_BC009/preprocessed_data/diffusion.bedpostX 
+-xtract ../outputs/tractography/controls/BC009 -seeds 
+../prerprocessed_data_clean/Results_FreeSurfer/Control_Group/subj_BC009_control/surf/l.white.surf.gii 
+-target 
+/home/acamargofb/Documents/Attunes/ssdfiles/code/output_controls/BC009/outdwi_BC009/preprocessed_data/white_matter_MNI.nii.gz 
+-warp /home/acamargofb/fsl/data/standard/MNI152_T1_1mm_brain.nii.gz  
+/home/acamargofb/Documents/Attunes/ssdfiles/code/output_controls/BC009/outdwi_BC009/preprocessed_data/standard2diff_warp.nii.gz 
+/home/acamargofb/Documents/Attunes/ssdfiles/code/output_controls/BC009/outdwi_BC009/preprocessed_data/diff2standard_warp.nii.gz 
+-rois 
+/home/acamargofb/Documents/Attunes/ssdfiles/code/output_controls/BC009/outdwi_BC009/preprocessed_data/l.temporal_lobe.shape.gii  
+-tract_list bamigdala_l,Insula_l -res 1 -gpu
+
+
+The script runs and then I am getting this:
+
+Dear fsl experts
+
+I aim to quantify WM CBF in a large cohort (3D single TI pCASL, GE) and 
+want to use partial volume correction using my own supplied PV estimates 
+of GM and WM (registered to ASL).
+
+The issue is that I obtain quite high WM CBF values now
+For a voxel with 100% WM (according to the PV image), I obtain a CBF value 
+of 54 ml/100gr/min, whereas in the non-pvcorrected CBF map, that voxel has 
+a CBF value of 31.8 ml/100gr/min, which is closer to what is expected 
+(healthy control).
+I find this odd as for a voxel with 100% of 1 tissue type, the CBF value 
+should be the same or very similar to the non-pvcorrected CBF map, right?
+
+Or is the pvcorr option not to be used for WM CBF estimates?
+The GM values after pvcorr go up a bit as expected, but I would expect the 
+WM values to go down somewhat after pvcorr as some contamination with GM 
+is removed....
+
+
+Thank you for any tips or instructions on what to try, and your time!
+
+Best Jeroen
+
+I am trying to run level 1 feat stats using multi-echo data pre-processed 
+in fmriprep and tedana. I believe the data has been mean centered already 
+which leads to an empty mask generated by 
+fslmaths filtered_func_data -Tmin -bin mask -odt char
+
+This causes all the stats to be empty as well. 
+
+Is there a workaround for this other than just running all the level 1 
+steps manually and substituting a mask generated in fmriprep? For example, 
+is the mask generated differently if I run pre-stats and use a SBref as an 
+"Alternative reference image" or re-run registration? I ran feat with 
+Statistics only. 
+
+Thanks,
+Joe
+
+--
+Joseph M. Orr, Ph.D. (he/him/his)
+Associate Professor | Associate Department Head
+Department of Psychological and Brain Sciences
+Texas A&M Institute for Neuroscience
+Texas A&M University
+College Station, TX
+https://tamu.zoom.us/my/josephorr
+
+Hi,
+
+This problem is due to a breaking change in matplotlib; it should be 
+resolved in the latest FSL release, so you may need to get in touch with 
+your IT team to update your FSL installation.
+
+Paul
+
+
+Hi Anthony,
+  The first column says that the subject blocks in the second cannot be 
+shuffled ( required as they are of different sizes and/or intervals ). The 
+second column defines each subject block as “shuffling” ( positive sign ) 
+to force sign-flipping to take place at this level. The third column 
+defines each subject's observations to be in a single block ( essentially 
+one set of of observations ) this is done to ensure a subject’s data is 
+flipped as a whole _and_ to prevent within-subject permutations ( in case 
+-ee was accidentally selected ). The final column could actually just be a 
+column of ones ( as the indices are unique to the block above ) but 
+mirroring the second column makes the structure clearer to follow.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hello,
+
+ 
+
+Inaccuracies in the skull stripping are likely to cause problems 
+(specifically false positives) if the tissue that is included has similar 
+properties to the lesions you are trying to detect (i.e. hyperintense 
+tissue), but otherwise I don’t think it would be a big issue (although I 
+am not aware of studies examining this in detail).
+
+ 
+
+Since BIANCA is optimised for lesions in the white matter, further masking 
+of cortex and subcortical structures is usually beneficial (more info 
+here). The script to create the exclusion mask is based on tissue 
+segmentation so you would need to check that the quality of skull 
+stripping doesn’t lead to a bad exclusion mask.
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+Hi,
+
+ 
+
+You’ve provided the seeds from xtract in the xtract_blueprint call. This 
+is incorrect. The purpose of xtract_blueprint is to generate connectivity 
+blueprints (https://elifesciences.org/articles/35237). The documentation 
+(https://fsl.fmrib.ox.ac.uk/fsl/docs/#/diffusion/xtract?id=xtract-blueprint) 
+describes providing cortical seeds as blueprints are cortical by tract 
+connectivity matrices.
+
+ 
+
+Thanks,
+
+Shaun.
+
+Hi Yilei,
+Any of the options should be fine - they are just used for download 
+statistics and don’t affect the actual install process.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+It looks like there are problems with your input data. The -d flag should 
+point to a directory containing e.g. dtifit results (plus any prefix on 
+file names). For example, if you have run dtifit and you have 
+/subdir/dtifit/dti_FA.nii.gz,  /subdir/dtifit/dti_MD.nii.gz, etc… you 
+should use -d /subdir/dtifit/dti_ in xtract_stats.
+
+ 
+
+I’m not sure why it’s giving the “intended to be a single 3D volume has 
+multiple timepoints” error. This suggests a potential issue with your 
+xtract results. It would be worth visually checking the results.
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+-----------------------------------------------------------
+Shaun Warrington, PhD
+Research Fellow
+
+Computational Neuroimaging Laboratory
+
+Sir Peter Mansfield Imaging Centre
+
+Mental Health & Clinical Neurosciences, School of Medicine
+
+University of Nottingham
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications 
+for a NIH-funded postdoctoral fellowship position in his lab at the 
+University of California, San Francisco (UCSF) Memory and Aging Center. 
+The goal of our lab’s research is to elucidate brain-behavior 
+relationships in neurodegenerative disease in order to improve diagnostic 
+certainty and identify therapeutic targets.
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the 
+Department of Neurology and Weill Institute for Neurosciences. It has an 
+extensive research infrastructure, with over 250 full-time research 
+faculty and staff. The postdoctoral fellow will have the opportunity to 
+participate in our innovative, interdisciplinary research environment. We 
+are looking for candidates who have a background in neuroimaging, strong 
+statistical training, and programming experience. The start date is 
+flexible; review of applications is ongoing. Applicants should send a 
+brief cover letter describing interests and relevant prior experience, CV, 
+and contact information for three references to (david.perry@ucsf.edu).
+
+The postdoctoral fellow will work on our lab's study investigating 
+abnormalities in reward processing in neurodegenerative diseases and mood 
+disorders. Reward processing involves a determination of what an 
+individual will work for or pursue, such as food, money, or social 
+approval. Patients with neurodegenerative and mood disorders have profound 
+changes in their reward valuation. We propose that a greater understanding 
+of reward-seeking behavior in these illnesses and their underlying neural 
+mechanisms will improve diagnostic accuracy and lead to therapeutic 
+targets for behavioral symptoms that currently have no adequate treatment. 
+Our studies of reward processing use behavioral paradigms with tools such 
+as psychophysiology, as well as structural and functional neuroimaging.
+
+Thanks Matthew. This appears to be working as expected. If you have a 
+minute, can you explain to me the setup of this EB file and what this is 
+actually doing?
+
+On Wed, Jun 26, 2024 at 10:37 AM Matthew Webster 
+<0000bb75d3c794d0-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Anthony,
+  Looking a bit further into this style of design, there is actually a way 
+to do this with a 3 column EB file. The first file should be a column of 
+“-1”s and the second and third columns should be the same as the column in 
+your original design.grp e.g. something like:
+
+-1 1 1
+-1 1 1
+-1 1 1
+-1 2 2
+-1 2 2
+-1 3 3
+…….
+-1 194 194
+
+You can verify the flips occur along subject boundaries by adding the 
+-saveperms option to the PALM call.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Thanks Matthew. This appears to be working as expected. If you have a 
+minute, can you explain to me the setup of this EB file and what this is 
+actually doing?
+
+On Wed, Jun 26, 2024 at 10:37 AM Matthew Webster 
+<0000bb75d3c794d0-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Anthony,
+  Looking a bit further into this style of design, there is actually a way 
+to do this with a 3 column EB file. The first file should be a column of 
+“-1”s and the second and third columns should be the same as the column in 
+your original design.grp e.g. something like:
+
+-1 1 1
+-1 1 1
+-1 1 1
+-1 2 2
+-1 2 2
+-1 3 3
+…….
+-1 194 194
+
+You can verify the flips occur along subject boundaries by adding the 
+-saveperms option to the PALM call.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi FSL experts,
+
+I ran TBSS with ROI masks (made w/ JHU atlas) and used the following code 
+as an example:
+
+randomise -i all_FA_skeletonised -o tbss \
+  -m jhu_uf_mask -d design.mat -t design.con --T2
+
+However, I got a comment from a reviewer stating that it would be better 
+to use all_FA instead of all_fa_skeletonised. I thought using the skeleton 
+was standard practice for TBSS methodology. Would it be enough to justify 
+this and cite the TBSS methodology or should all_FA be used to examine the 
+whole tract when using an ROI mask?
+
+Any input would be greatly appreciated!
+Thank you
+
+########################################################################
+
+Hi Shaun:
+
+I am using now this script, and I am still getting errors (differents, but 
+there are errors):
+
+xtract_stats -xtract ../outputs/tractography/controls/BC009/ -d 
+/home/acamargofb/BC009/preprocessed_data/diffusion/da -warp 
+/home/acamargofb/BC009/preprocessed_data/standard2diff_warp.nii.gz 
+/home/acamargofb/BC009/outdwi_BC009/preprocessed_data/diff2standard_warp.nii.gz
+
+__  _______ ____      _    ____ _____    _        _
+\ \/ /_   _|  _ \    / \  / ___|_   _|__| |_ __ _| |_ ___
+ \  /  | | | |_) |  / _ \| |     | |/ __| __/ _  | __/ __|
+ /  \  | | |  _ <  / ___ \ |___  | |\__ \ || (_| | |_\__ \
+/_/\_\ |_| |_| \_\/_/   \_\____| |_||___/\__\__ _|\__|___/
+
+ 
+Getting stats for all tracts under "-xtract"
+Tracts: ['ALPFC_l', 'ALPFC_r', 'FPC_l', 'FPC_r', 'Insula_l', 'Insula_r', 
+'bamigdala_l', 'bamigdala_r', 'putamen_l', 'putamen_r']
+
+Getting summary stats for: ['vol', 'prob', 'length', 'FA', 'MD']
+
+Thanks a lot Shaun!!!
+
+What files should be in the folder: -d <folder_basename> 
+
+Required arguments:
+..
+  -d <folder_basename>  Path to microstructure folder and basename of data
+                        (e.g. /home/DTI/dti_)
+
+
+Have a nice day,
+
+Aldo
+
+
+
+
+
+

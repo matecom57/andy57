@@ -1,0 +1,533 @@
+Hi folks,
+
+Can we use CAT12 for white matter volume analysis?
+ It’s so popular with gray matter analysis. Can we still use it for white matter volume analysis in cases where DTI couldn’t be acquired? 
+
+
+Dear colleagues, 
+
+Could you please share the following advertisement to anyone would might be interested?
+
+Thank you!
+
+Emilie
+
+---
+
+We are recruiting a 4-year PhD student in social and cognitive neuroscience 
+
+
+
+The project is a part of the ERC Starting Grant (DISOBEY) granted to Prof. dr. Emilie Caspar. The core goal of DISOBEY is to understand why some people are more likely to resist orders to hurt another person than others. The project is uniquely focused on developing a social neuroscience approach to understanding the neuro-cognitive mechanisms through which resistance to immoral orders may develop in a given situation. For this project, the PhD student will focus on a work package involving neuromodulation techniques in order to test a causal relationship between different neuro-cognitive processes and their link to resistance to immoral orders. The project seeks, based on these results, to develop interventions that could be implemented by partner NGOs whose aims are to prevent illegitimate violence on the ground of compliance to an authoritative figure.  
+
+
+
+Educational Degree / Diploma 
+
+
+
+Master’s degree in neuroscience, experimental psychology, or other relevant social science. The degree requirements need to be fulfilled at the start of your appointment. For diplomas awarded outside the European Union, a certificate of equivalence (NARIC) must be submitted. 
+
+
+
+Job description 
+
+A full-time 4-year PhD position in social and cognitive neuroscience is available at Ghent University. The position is funded by an ERC Starting Grant (DISOBEY). The research will be led by Prof. dr. Emilie A. Caspar and co-supervised by Prof. Md. Michael Nitsche.  
+The successful applicant will join the Moral & Social Brain Lab (
+https://moralsocialbrain.com/) and the Leibniz Research Centre for Working Environment and Human Factors.  
+In this project, the applicant conduct several studies using mostly neuromodulation techniques and electroencephalography to establish what key neuro-cognitive mechanisms could be linked to an increased resistance to orders to hurt another person, despite a monetary gain received.  
+The successful applicant will be responsible for conducting the studies, collection and analysis of data, publication and dissemination of the results, and can be involved in the supervision of MSc students. 
+Key tasks as a PhD fellow are: 
+To manage and carry through your research project; 
+To collect and analyze data for the project; 
+To write peer-reviewed articles in English and merge them into a PhD dissertation; 
+To disseminate your research results by presenting intermediate results at scientific conferences and publish findings in academic journals; 
+To participate in a PhD training program. 
+The main research group is located in Ghent University (Belgium), but the position implies to also visit the Leibniz Research Centre for Working Environment and Human Factors. 
+The successful applicant will also be invited to apply to his/her own grants (FWO doctoral fellowship, BOF doctoral grant)  
+
+We offer 
+We offer you a full-time PhD Fellowship (Dehousse-bursaal) of definite duration, consisting of an initial period of 12 months, which-upon positive evaluation-will be extended to a maximum of 48 months
+. Click here for more information about the PhD fellowship. 
+The contract will start on 1 October 2023 at the earliest. The exact starting date will be determined by mutual agreement. 
+On top of your salary, Ghent University also offers a number of social benefits, including 36 days of paid holiday leave (on an annual basis, for a full-time job) supplemented by annual fixed bridge days, hospitalization insurance, a wide range of training and education opportunities, access to university restaurants and university sports facilities. Click here for more information about our staff benefits. 
+It is possible to make arrangements for remote work and flexible office hours. 
+We strive to achieve a healthy work-life balance and nurture a healthy and rewarding work environment in which individual differences are welcomed and valued. 
+
+
+Job profile 
+
+We are looking for a highly motivated candidate with: 
+
+An excellent profile and excellent grades during your master’s degree. 
+Having already conducted research projects in neuroscience or experimental psychology 
+Previous experience in electroencephalography or neuromodulation will be considered as an asset 
+Good English writing and communication skills are mandatory.  
+
+How to apply 
+
+To apply, please send a motivation letter, detailed CV, copies of the grades of your master’s degree, and letters and contact information of minimum two academic referees as a single pdf to Emilie Caspar (Emilie.Caspar@ugent.be)
+For further information on the project or details about the position, please also contact Emilie Caspar (Emilie.Caspar@UGent.be). 
+The recruitment will involve at least two steps. A selection on the first round will lead to an oral interview with the two co-supervisors. Based on the number of candidates, a second interview might be considered.  
+Closing date: 5 July 2023. 
+
+
+
+Dear Vasileios,
+some years ago I collaborated in the development of a toolbox called FocusDET, mainly based on SPM functions, to perform SISCOM. I don’t know whether it is still available. Please look for details in:: doi: 10.1007/s12021-012-9158-x
+
+In short, to perform SISCOM you should coregister and reslice ictal over interictal (or viceversa), perform an intensity normalisation and a subtraction. If a T1-w MRI image were available you would prefer to corregister and reslice both ictal and interictal SPECT to T1 and, even, to mask SPECT images with a GM mask obtained from T1 image (segmentation + binarization of c1 using spm_imcalc). It could be advantageous to slightly smooth your images before subtraction, depending on how noisy were them, which depends on what filter/ reconstruction algorithm you used to obtain STECT images from sinograms.
+
+The most challenging point is to find a proper intensity normalisation. You could just level the mean value of a reference region (ROI) supposed not to be affected by the ictal episode (cerebellum GM?). Intensity normalisation and subtraction can be performed in the same step using spm_imcalc with the expression i1-k*i2 where k is the normalisation factor previously computed by spm_sumarize, for instance, or any equivalent tool (mean value of ROI in image 1 divided by mean value of the same ROI in image2). If the ROI were obtained from an ATLAS in MNI space you could easily transport it to native space by applying i_y* file obtained in the segmentation of T1 image (using NN interpolation). The election of the region of reference is not always trivial. There are some literature on alternative methods to perform intensity normalisation, that would require some extra Matlab programming
+
+Hope this helps
+
+Best,
+Carles Falcon
+
+
+El 27 abr 2023, a les 23:11, Vasileios Kokkinos <info@VASILEIOSKOKKINOS.GR> va escriure:
+
+To all SPM12 experts,
+
+I have been looking for instructions on how to do implement SISCOM (ictal vs interictal SPECT) in SPM12, but haven't found any related information in past email threads or in the SPM12 manual. I would appreciate it if someone could either provide me with a step-by-step outline or point me to a relevant online resource.
+
+Thank you in advance,
+
+Vasileios Kokkinos, PhD, PhD, PhD, FACNS
+Epilepsy Surgery Neurophysiologist, R. EEG/PSG/EP T., CNIM, NA-CLTM, MMedSci, MSc, PhD
+Functional Neuroimagist, PhD
+Neuroscientist, MNeuroSci, PhD
+Philosopher, BSc
+Electrical and Computer Engineer, Dipl, MSCE.
+Epilepsy Clinical Neurophysiology and Image Processing Specialist
+Comprehensive Epilepsy Center
+Northwestern Medicine
+Department of Neurology
+675 N St. Clair St., Galter 7-109
+Chicago, Illinois 60611
+
+
+Dear colleagues,
+I was faced with a question during analysis of my MSc project, I am analysing EEG informed fMRI from 32 subject's data which were obtained from a gambling task during EEG-fMRI sessions. I did my EEG analysis and observed my ERPs single trial exact onset time points during this experiment (so I have an onset time for my events) . The task has gains and losses numeric feedback values which were shown to subjects as reward or punishment, also the numbers differ from each other randomly and also for more info they are positive numbers (in each trial subjects lose or gain a numeric positive value from zero to 100) . I am going to add these random gains and losses as parametric modulators to SPM with ERPs onset time.
+My first question is how to make contrast to find which location of the brain is responsible for these ERPs by considering that the ERP amplitudes are related to the gain and loss values, I have the onsets of exact ERPs and have a numeric value for each of them. 
+My second question is do you think it is ok to find the exact location which is responsible for changing ERPs amplitude through this way of analysis?
+I appreciate your time.
+Thank you.
+
+Dear all,
+
+I am currently looking for a PostDoc in my Lab at the University of Innsbruck. 
+Please see the job description below.
+
+For further information please contact:
+Carmen Morawetz
+University of Innsbruck
+www.affectiveneuro.at
+neurolab-psychology@uibk.ac.at
+
+
+Hi folks,
+
+Can we use CAT12 for white matter volume analysis?
+ It’s so popular with gray matter analysis. Can we still use it for white matter volume analysis in cases where DTI couldn’t be acquired? 
+
+Applications for Sept 2023/24 are now OPEN. Apply now to meet 26th May 2023 deadline.
+
+The i4health CDT will train the UK’s future leaders in next-generation medical imaging research, development and enterprise, to produce intelligent, radical healthcare innovations focused on either imaging or imaging-enabled systems.
+
+Our centre will provide the vital doctoral training to supply a pipeline of world-leading innovators in future medical-imaging technologies equipped with the philosophy and the technical tools to deliver next-generation context-aware imaging and image analysis techniques through to integrated patient-centred therapeutic platforms.
+
+UCL’s internationally leading positions in medical imaging and devices, data science and AI, robotics, and human-centred design, together with unique access to healthcare data and equipment, ideally place our centre to lead this transformation. We are looking for ambitious individuals to join our world-leading PhD programme in this exciting endeavour.
+
+Please visit http://ucl.ac.uk/i4health
+
+Dear all,
+
+I have been using the TFCE toolbox developed for SPM (I am using SPM12) and I have encountered some problems. I am using diffusion images (DTI and NODDI) as input and I have a flexible factorial design computed from CAT12, with two groups (12 healthy controls and 18 Multiple Sclerosis patients). When I try to use TFCE with this design, I set the number of permutations to 5000 but this number is never reached, and the number of possible permutations decreases to 4096. Furthermore, I get a warning saying "WARNING: Large discrepancy between parametric and non-parametric statistic found (cc=0.471878)! Probably your design was not correctly recognized", but the design is recognised as a repeated measures ANOVA, which seems fine. Finally, I computed an F-contrast to investigate interactions between Group and Time, and when I analysed the interaction clusters from TFCE, I noted that some of them fell outside the diffusion image, which seems strange. I also computed this contrast using SPM and everything seemed fine.
+Does any of this happen because of my data? Or is there something else?
+
+Thank you,
+Maria Caranova
+
+Dear Jérémie,
+
+The relevant error message is:
+
+Cannot load /Volumes/analyses/analysescerebrales/sansaccuracy/data/p99/run1/._p99run1.mat
+It means a file named ._p99run1.mat was selected instead of p99run1.mat. This file with a ._ prefix was created by macOS to store some metadata. A fix would be to change your script to more restrictively select multiple conditions files that start with a p:
+
+inputs{6,sub} = cfg_getfile('FPList',fullfile(inputs{1,sub}{1},'run1'),'^p.*run1\.mat$');
+
+You might have to apply this change in multiple locations within your script.
+
+Best regards,
+Guillaume.
+
+
+
+On 02/05/2023 17:36, Jérémie Blanchette Sarrasin wrote:
+
+Hello.
+ 
+Please post the note below, regarding several courses at the Martinos Center this autumn.  Most of these programs will be "in person" (as well as available to attend via zoom) for the first time since 2019.
+ 
+Thank you
+Robert Savoy,
+Director, fMRI Education
+ 
+
+Announcement Type:
+Conference/Symposium/Event
+ 
+
+Headline:
+Brain Imaging Workshops; Martinos Center, Autumn, 2023
+ 
+
+Department:
+Functional, Structural, MRI Imaging and Data Analysis
+ 
+
+Department:
+Athinoula A. Martinos Center for Biomedical Imaging
+
+Institution/Company: 
+Massachusetts General Hospital
+ 
+
+The Martinos Center is continuing its research training workshops.  The well-established programs on Functional MRI; Structural and Functional Connectivity Analysis; and the CONN Toolbox are being continued; the Spinal Cord workshop and the MR Spectroscopy workshop, each first held in 2021, will be held again in 2023; and at least one new program, Laminar fMRI, will be held this autumn.  Two other workshops are still tentative (on Diffusion Imaging Data Analysis and Brain Stimulation Techniques.) These are all multi-day workshops. 
+
+NOTE:  For the first time since 2019, they will be held IN PERSON as well as via Zoom.
+
+NOTE: The Connectivity Workshop, first held in 2012, has been substantially updated and extended.   In addition to basics of structural and functional connectivity (using DTI/DSI and Resting State FMRI Connectivity data), there will be three new 1/2 day sessions: One focused on the using the latest version of the powerful CONNECTOME 2 Scanner; another focused on Brain Stimulation via TMS/TDCS and related technologies; and the last focused on Combining fMRI-Based Modalities to Facilitate Real-Time Feedback and Event-Triggered Tasks.
+
+All of the workshops include some discussion of software tools, but only one of these workshops (the CONN Toolbox) is primarily a software training workshop.  It is helpful to hold such workshops over several weeks, to provide time for more extensive and interesting homework assignments.  All the other workshops will be held at the Martinos Center in Charlestown, MA both Live and via Zoom over a period of 4 or 5 days in a single week.  The CONN Toolbox with be via zoom only, and spread over 5 weeks. 
+
+For the most uptodate information and registration regarding these, and other educational programs hosted by the Martinos Center, see: https://education.martinos.org/
+ 
+
+Admission to all programs is on a first-come, first-served basis. All programs require tuition.  A minimum attendance of 15 people will be required to hold the workshops.  (None of the past programs has been canceled for this reason.) The maximum number of “in person” attendees will be between 25 and 50, depending on the program.  We do not anticipate limiting the remote attendance.
+ 
+
+
+FACULTY: The core faculty is drawn from the staff of the Athinoula A. Martinos Center (of the Massachusetts General Hospital and Massachusetts Institute of Technology) and affiliated faculty from Harvard University, McLean Hospital Northeastern University, and other local institutions.  Guest lecturers from institutions around the world have also participated.
+ 
+
+For questions regarding these programs, contact Stacey Ladieu via e-mail: fmrivfp@mgh.harvard.edu
+
+Website
+
+https://education.martinos.org
+
+ 
+FUNCTIONAL MRI Course
+Autumn, 2023. Mon-Fri October 16-20. Registration Open (In Person + Virtual)
+This longstanding program provides a firm grounding in the fundamentals of fMRI, including the basic physics of MR imaging, the biology and biophysics of the hemodynamic responses to neural activity, data analysis, the design of perceptual and cognitive experiments, and more.
+   For more information and registration, go to:  Functional MRI
+ 
+CONNECTIVITY Course 
+Autumn, 2023. Mon-Fri, October 23-27. Registration Open (In Person + Virtual)
+MRI has proven to be a valuable tool for examining both structural and functional connectivity in the human brain. The coordinated activities of neural networks (using BOLD-based fMRI data collected during rest and during tasks) illuminates functional connections, and MR imaging based on Diffusion contrast yields measures of structural anatomy of white matter pathways of the brain. Participants will learn about the technical challenges in acquisition, data processing and visualization of brain networks. Primary topics will include various approaches to the analysis of resting state fMRI data (including correlation, ICA, graph theory and others); analysis and limitations of diffusion data; use of databases; dynamic functional connectivity, and selected clinical applications.   This program will prepare students for the intensive software training programs on functional connectivity ("CONN Toolbox") and structural connectivity ("Analysis of Diffusion MRI Data")
+   NOTE: The Connectivity Workshop, first held in 2012, has been substantially updated and extended.   In addition to basics of structural and functional connectivity (using DTI/DSI and Resting State FMRI Connectivity data), there will be three new 1/2 day sessions: One focused on the using the latest version of the powerful CONNECTOME 2 Scanner; another focused on Brain Stimulation via TMS/TDCS and related technologies; and the last focused on Combining fMRI-Based Modalities to Facilitate Real-Time Feedback and Event-Triggered Tasks.
+   For more information and registration, go to:  Connectivity Course 
+ 
+USING THE CONN TOOLBOX Course
+Autumn, 2023. Five Mondays, starting November 20, 2023. Registration Open (Virtual)
+The two classes described above (fMRI and Connectivity) are oriented around the concepts and processes involved in the design, data acquisition, and data analysis for MRI-based experiments. This program is a software training course, devoted to the many ways in which resting state function MRI data can be analyzed using one specific package: the "conn" toolbox. See: https://web.conn-toolbox.org or https://www.nitrc.org/projects/conn 
+Concepts are thoroughly discussed, but the focus is on actually using the toolbox to analyze a wide variety of data. Each day will end with a homework assignment that is reviewed during the next class. 
+For details and registration, see:  Using the CONN Toolbox
+ 
+MARTINOS SPINAL CORD WORKSHOP 
+Autumn, 2023. November 14-16, 2023. Registration Open (In Person + Virtual)
+This course is designed for researchers and clinicians who are interested in using MRI to study the human spinal cord. Imaging the spinal cord entails a number of complications compared to whole-brain imaging: the cord is a thin, flexible, 3-dimensional organ surrounded by pulsating cerebrospinal fluid and a complex vertebral structure. We hope to spare you various pitfalls and failures based upon our years of experience in spinal cord imaging.
+For details and registration, see: Martinos Spinal Cord Workshop
+ 
+LAMINAR fMRI COURSE 
+Autumn, 2023. October 2-5, 2023. Registration Open (In Person + Virtual)
+The combination of ultra-high field (7Tesla and above) imaging with increasingly sophisticated data analysis tools has led to a surge of research using functional MRI acquisitions to examine the behavior of individual cortical layers of the brain.  This course will focus on teaching the acquisition and analysis tools needed to contribute to this research.For details and registration, see: Laminar fMRI Course
+
+
+
+ 
+FACULTY:  The core faculty is drawn from the staff of the Athinoula A. Martinos Center (of the Massachusetts General Hospital and Massachusetts Institute of Technology) and affiliated faculty from Harvard University, McLean Hospital Northeastern University, the Brigham and Women's Hospital and other local institutions.  Guest lecturers in past programs have included faculty from the Child Mind Institute of New York, NIH, Stanford University, The Donders Institute, the University of Cambridge, UK, The Mind Research Network of the University of New Mexico, UCLA and others.  For the CONN TOOLBOX Course, the primary faculty member is the author of the software, with several guest lecturers.
+ 
+For administrative questions regarding these three programs, contact Stacey Ladieu via e-mail:  fmrivfp@mgh.harvard.edu
+ 
+For technical and content questions for any of the programs, contact Robert Savoy via the same email address.
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+Hi,
+
+I’m trying to run first-level analysis on one participant (p99). Here is the error message I get when using this script and this onset file.
+
+I’m using SPM8 with Matlab_R2016a. Does anyone know how to help me with that?
+
+Thanks,
+
+Jérémie
+
+
+Hi everyone,
+
+I'm running DCM on some resting state data and hoping someone could help check the design matrices for the analyses below. Apologies for the lengthy message but we wanted to give you as much detail as possible and organized in a manner it was presented on the Wiki website.
+
+Data: Resting State
+4 ROIs (assuming full model): L and R Nucleus Accumbens (NACC), lateral habenula (LHAB) and ventral tegmental area (VTA)
+Participants: Patients and Controls; Patients are further broken down down into two groups: treatment responders and non-responders
+Time: All participants completed resting state scan pre and post treatment. Controls completed pre and post scan without intervention.
+
+Separate DCM was fitted for each of these 6 experimental conditions for each subject. The names in the brackets are example variable names to store the DCMs for each condition
+1. Responders Pre (GCM_R_Pre)
+2. Responders Post (GCM_R_Post)
+3. Non-Responders Pre (GCM_NR_Pre)
+4. Non-Responders Post (GCM_NR_Post)
+5. Controls Pre (GCM_HC_Pre)
+6. Controls Post (GCM_HC_Post)
+
+There are 24 responders, 20 non-responders and 23 controls with pre and post scans. Thus, we would need to mean center since we have an unbalanced design.
+
+On the Wiki website we were able to find the hierarchical experimental design example for two groups, but since we have 3, we wanted to make sure that the PEB design below was correct. Here's the Option 1 on Wiki adapted to our data set.
+
+1. Overall mean (all 1s)
+2. Main effect of TwoGroup (1s for Patients, -1s for Controls, and then mean-centered)
+3. Main effect of ThreeGroup (-1s for Responders, 1s for Non-Responders, 0s for Controls, and then mean-centered)
+4. Main effect of Time (-1s for pre, 1s for post, and then mean-centered)
+5. Interaction of TwoGroup x Time (the mean corrected main effects 2. and 4. element-wise multiplied)
+6. Interaction of ThreeGroup x Time (the mean corrected main effects 3. and 4. element-wise multiplied)
+
+and then we are also including the covariates:
+Treatment type: CBT vs SSRI
+Sex: Male vs Female
+Age
+
+7. Covariate 1. Treatment Type (1s for CBT, -1s for SSRIs, and 0s for controls; and then mean-centered)
+8. Covariate 2. Sex (1s for Men, -1s for Women, and then mean-centered)
+9. Covariate 3. Age (mean centered)
+
+Attached is the design matrix of what these regressors would look like (look at the mean centered tab). Is the design matrix correct?
+
+We would then fit this PEB models to all DCMS across subs and time points (in the right order to match the regressors we created):
+GCM = {GCM_R_Pre; GCM_R_Post; GCM_NR_Pre; GCM_NR_Post; GMC_HC_Pre; GCM_HC_Post};
+PEB = spm_dcm_peb(GCM, x);
+
+We also wanted to compare the free energy between Option1 and Option 2 on Wiki and see which approach would be better for us.
+
+Here's how we understand Option 2 (PEB-of-PEBs approach) should be set up and please correct us if we are wrong:
+
+For patients we will have a design matrix X1 with regressors:
+
+1. Main effect of patients
+2. Effect of Time on Patients (-1 for pre, 1s for post; and then mean-corrected)
+
+GCM_P = {GCM_P_pre; GCM_P_post};
+PEB1 = spm_dcm_peb(GCM_P, X1);
+
+For Healthy Controls we will have a design matrix X2 with regressors:
+
+1. Main effect of controls
+2. Effect of Time on Controls (-1s for pre, 1s for post; and then mean-corrected)
+
+GCM_HC = {GCM_HC_pre; GCM_HC_post};
+PEB2 = spm_dcm_peb(GCM_HC, X2);
+
+For Responders we will have a design matrix X3 with regressors:
+
+1. Main effect of responders
+2. Effect of Time on Responders (-1s pre, 1s for post; and then mean-corrected)
+
+GCM_R = {GCM_R_pre; GCM_R_post};
+PEB3 = spm_dcm_peb(GCM_R, X3);
+
+For Non-Responders we will have a design matrix X4 with regressors:
+
+1. Main effect of non-responders
+2. Effect of Time on Non-Responders (-1s pre, 1s for post; and then mean-corrected)
+
+GCM_NR = {GCM_NR_pre; GCM_NR_post};
+PEB4 = spm_dcm_peb(GCM_NR, X4);
+
+We are assuming that if we wanted to include the three covariates we mentioned in Option 1 (treatment type, sex and age), they should be included in each of these individual design matrix X1-X4, correct?
+
+In order to then assess all possible combinations, would the right third level PEBs be:
+
+# Patients vs Controls
+PEBs_a = {PEB1; PEB2};
+PEB5 = spm_dcm_peb(PEBs_a; X5); where X5 is a 2x2 matrix with values [1 -1; 1 1]
+
+# Responders vs Controls
+PEBs_b = {PEB3; PEB2};
+PEB6 = spm_dcm_peb(PEBs_b; X6); where X6 is a 2x2 matrix with values [1 -1; 1 1]
+
+# Non Responders vs Controls
+PEBs_c = {PEB4; PEB2};
+PEB7 = spm_dcm_peb(PEBs_c; X7); where X7 is a 2x2 matrix with values [1 -1; 1 1]
+
+#Responders vs Non-Responders
+PEBs_d = {PEB3; PEB4};
+PEB8 = spm_dcm_peb(PEBs_d; X8); where X8 is a 2x2 matrix with values [1 -1; 1 1]
+
+If the PEBs 1-4 included covariates; would we need to change how design matrices X5-8 look?
+
+Sorry for this long message - we are just trying to understand how to properly run the analysis.
+
+Thank you so much in advance!
+K&M
+
+
+
+
+Several postdoctoral scholar positions are currently open at the laboratory of Professor Maurizio Corbetta, within the Department of Neuroscience at the University of Padova. The project aims to achieve three main goals: 1) to comprehend the neurophysiology of stroke; 2) to develop computer models based on biological principles of the injury and its effects on brain network dynamics; 3) to correct these functional abnormalities utilizing invasive and non-invasive brain stimulation in both human and animal models.
+
+ 
+
+Applicants must hold a Ph.D. or an M.D./Ph.D. in neuroscience, cognitive science, computer science, engineering, biostatistics, physics, psychology, or a related field. The complete details of the announcement can be found in the attachment.
+
+ 
+
+To apply, please submit your CV and a research statement (1-2 pages) or cover letter that describes your research experience, your specific interests in this position, and how this position aligns with your career objectives to andreea.radu@unipd.it.
+
+
+--
+Lorenzo Pini, PhD
+Padova Neuroscience Center, PNC
+Università degli Studi di Padova
+
+Hi Vajdi,
+
+I suppose the coordinates were already recorded during the individual MRI acquisition. There should be a file attached to your data set containing the coordinates, or an individual 3D head model captured by a structural sensor. 
+
+If there are no such files, I cannot think of a way to get the individual fiducial points' coordinates due to my limited experience.  Maybe other experts have some more constructive ideas. 
+
+Best,
+Mu Nan
+
+Dear SPM users,
+I want to register M/EEG data to MRI images using fiducial points by typing their coordinates. How can I find the exact coordinate of Pre-auricular points in individual MRI images? It is not an easy task. Any suggestion?
+Thank you,
+
+Dear all,
+
+In our DFG-funded project "Tools and practices for reproducible open neuroscience" we are looking for a new team member for the development of a python based software for research data management with a focus on neuroimaging data, such as MEG and MRI data.
+
+Please circulate this among your students and other potential applicants.
+
+The research data management software should be based on the Brain Imaging Data Structure (BIDS). The project has two stages. The first stage is the development of a tool to convert all data acquired at the main devices of our facility (MEG and MRI) into the BIDS standard. The second part is adding additional features to this tool, such as extracting and annotating metadata in a standardized form to accompany the converted datasets in order to make them better understandable and increase the efficiency of the data.
+
+The salary level is approximately 38000-40000 Euros p.a.  with 40h/week. The position can be split. 
+
+We are looking for a highly motivated individual to fill this position. The successful applicant has finished an apprenticeship as a software technician or a bachelor's degree in a STEM field and has prior experience with programming in python. Experience in the domain of software engineering and working with BIDS data are welcome.  Students looking to finance their studies are highly encouraged to apply for this position.
+
+For enquiries, please contact Aaron Reer: aaron.reer@uol.de or Prof. Dr. Jochem Rieger: jochem.rieger@uol.de. Send your application preferred in one single pdf document (letter of motivation, CV, certificates) to Aaron Reer, E-mail: aaron.reer@uol.de. The deadline for applications is May, 15th, 2023.
+
+The Applied NeuroCognitive Psychology lab (ANCP lab) is located at the Carl-von-Ossietzky University, Oldenburg, Germany. Remote work is possible. Conditions can be negotiated.
+
+________________________________________
+
+Best,
+Aaron
+-- 
+Jochem Rieger
+Prof. Dr. rer. nat. habil.
+Applied Neurocognitive Psychology
+DFG Center for Open and Reproducible Neuroscience Tools
+NFDI sections ELSA and metadata 
+
+Carl-von-Ossietzky University Oldenburg
+Phone: +49 (0)441 798 4533
+Web: https://uol.de/en/applied-neurocognitive-psychology
+github: https://github.com/ANCPLabOldenburg
+
+Dear all,
+
+
+
+We are seeking for a highly motivated PhD student to join the Action Recognition and Concepts Group at CIMeC (Center for Mind/Brain Sciences), University of Trento, Italy. The research project will focus on a MEG-based dynamic extension to representational similarity analysis (dynamic RSA) that we have recently developed in our lab to investigate predictive representations of temporally extended unfolding events. The successful candidate should have a background in cognitive neuroscience (preferably M/EEG or fMRI, MVPA/RSA) and strong programming skills (preferably Matlab). Deadline to apply is May 31. Please get in touch with me (moritz.wurm@unitn.it) as soon as possible if you are interested or have questions. Find more information on CIMeC’s doctoral program here.
+
+
+
+All the best,
+
+Moritz Wurm
+
+
+
+
+
+-- 
+Moritz Wurm, PhD
+Center for Mind/Brain Sciences (CIMeC), University of Trento
+Corso Bettini 31, 38068 Rovereto (TN), Italy
+moritz.wurm@unitn.it
++39 0461-28 8632
+https://sites.google.com/site/moritzfwurm
+
+
+Hello, 
+
+You can use the following GUI for SISCOM:
+
+https://github.com/jeremymoreau/mnisiscom
+
+
+On Fri, 28 Apr, 2023, 2:52 am Vasileios Kokkinos, <info@vasileioskokkinos.gr> wrote:
+To all SPM12 experts,
+
+I have been looking for instructions on how to do implement SISCOM (ictal vs interictal SPECT) in SPM12, but haven't found any related information in past email threads or in the SPM12 manual. I would appreciate it if someone could either provide me with a step-by-step outline or point me to a relevant online resource.
+
+Thank you in advance,
+
+Vasileios Kokkinos, PhD, PhD, PhD, FACNS
+Epilepsy Surgery Neurophysiologist, R. EEG/PSG/EP T., CNIM, NA-CLTM, MMedSci, MSc, PhD
+Functional Neuroimagist, PhD
+Neuroscientist, MNeuroSci, PhD
+Philosopher, BSc
+Electrical and Computer Engineer, Dipl, MSCE.
+Epilepsy Clinical Neurophysiology and Image Processing Specialist
+Comprehensive Epilepsy Center
+Northwestern Medicine
+Department of Neurology
+675 N St. Clair St., Galter 7-109
+Chicago, Illinois 60611
+
+Hi Vasileios,
+
+The principle is relatively simple:
+- Register the SPECT images to the (structural) MRI using SPM Coreg. You may need to experiment with various cost functions.
+- Subtract interictal from ictal SPECT
+- Threshold and overlay
+
+I have successfully used this approach in https://doi.org/10.1016/j.yebeh.2008.08.017.
+
+Kind regards,
+Tibor
+ 
+Auer, Tibor M.D. Ph.D.
+Lecturer in Biological Psychology
+School of Psychology, Faculty of Health and Medical Sciences
+University of Surrey, Guildford GU2 7XH
+T.Auer@surrey.ac.uk
+@TiborAuer
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Vasileios Kokkinos
+Sent: Thursday, April 27, 2023 10:12 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] SISCOM procedure
+
+To all SPM12 experts,
+
+I have been looking for instructions on how to do implement SISCOM (ictal vs interictal SPECT) in SPM12, but haven't found any related information in past email threads or in the SPM12 manual. I would appreciate it if someone could either provide me with a step-by-step outline or point me to a relevant online resource.
+
+Thank you in advance,
+
+Vasileios Kokkinos, PhD, PhD, PhD, FACNS Epilepsy Surgery Neurophysiologist, R. EEG/PSG/EP T., CNIM, NA-CLTM, MMedSci, MSc, PhD Functional Neuroimagist, PhD Neuroscientist, MNeuroSci, PhD Philosopher, BSc Electrical and Computer Engineer, Dipl, MSCE.
+Epilepsy Clinical Neurophysiology and Image Processing Specialist Comprehensive Epilepsy Center Northwestern Medicine Department of Neurology
+675 N St. Clair St., Galter 7-109
+Chicago, Illinois 60611
+

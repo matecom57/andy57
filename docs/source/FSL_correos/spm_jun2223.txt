@@ -1,0 +1,142 @@
+Dear all,
+
+We are pleased to announce that the annual call for 8 fully-funded positions for our Phd Program in Cognitive Science at the Department of Psychology and Cognitive Science of the University of Trento is NOW OPEN.
+
+The Department of Psychology and Cognitive Science offers an integrated approach to the study of human mind, brain and behavior in an international research environment. The Department of Psychology and Cognitive Science recently granted the title of “Department of Excellence” by the Italian Ministry of Research and Universities (MUR) between 2018 – 2022 with the highest evaluation possible (100/100). Moreover, the quality of the research has been consistently ranked as the second best Department in Psychology in Italy since 2004. The University of Trento provides access to several state-of-the-art cognitive neuroscience methodologies, including a 3T Siemens MR scanner, MEG, EEG, TMS, tDCS and fNIRS.
+
+The call is open to several fields of cognitive science research, including cognitive and behavioral neuroscience. To know more about research possibilities in the area of associative learning, socioemotional behavior, neural interfaces and neuromodulation, please contact prof. Andrea Carìa, andrea.caria@unitn.it 
+
+
+• Announcement: https://www.unitn.it/en/node/1941
+• PhD Application link: http://www.unitn.it/apply/dott
+• Application Deadline: Tuesday July 18, 2023, at 4pm (Italian time)
+
+The Cognitive Science PhD programme:
+• 3-yr program (Nov. 1, 2023- Oct. 31, 2026).
+• Courses are in English
+• 8 positions, 100% funded (6 positions in any of these research fields; 2 positions reserved for these specific topics)
+• 6 months of research in a foreigner institution (+ 50% salary increase)  
+• Salary: starting at approximately €1.200,00/mo., net
+• Winners receive a €4.887,00 tax-free research/mobility budget
+• PI and research topics: https://www.unitn.it/drsc/en/node/181
+• The PhD programme: https://www.unitn.it/drsc/en/node/184 
+• Why choose UNITRENTO
+
+Please feel free to browse our website for further information. For information about selection procedure please contact the Doctoral Course Secretariat at phd.dipsco@unitn.it.
+
+
+Best Regards,
+Andrea Carìa
+
+
+
+
+Andrea Carìa, Ph.D. M.Sc.
+Professore associato di Psicobiologia e Bioingegneria
+Università degli Studi di Trento
+Dipartimento di Psicologia e Scienze Cognitive
+Rovereto, Trento 38068, Italy
+Corso Bettini, 31
+Tel. +390464808465
+andrea.caria@unitn.it
+
+
+Hi Debby,
+
+Assuming it is compatible with your task design, why not try a parametric modulation analysis at the first level and take the mean effect of stimulation for the second level analysis? That way, variations in intensity will have already been accounted for without requiring 4 separate covariates to eat up degrees of freedom at the second level. And, I think you can more easily assess whether there is actually an effect of intensity via the parametric regressor.
+
+Best,
+
+Tasha
+________________________________________
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Debby <0000a58198cd877f-dmarc-request@JISCMAIL.AC.UK>
+Sent: Tuesday, June 20, 2023 5:00 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] How are covariates handled in second level analyses?
+
+Dear spm-users,
+
+I am trying to investigate potential changes induced by an intervention (noninvasive brain stimulation) on rs-fMRI. So I am running a second level analysis based on a paired t-test with the inputs from my first-level analyses. So far so good. However, I would also like to correct for variations in the strength of the stimulation (4 scalar vectors for every subject). If I make a matrix for these covariate and put that in the 'multiple covariates' input in spm, I can indeed see that these are incorporated in the design matrix (see design here: https://www.dropbox.com/s/4fmvdgfh1sjeh5a/Schermafbeelding%202023-06-20%20om%2016.52.43.png?dl=0). But when I look into my results, I do not see any differences to my analysis without covariates so clearly I am doing something wrong.
+
+If anyone has any advice on how to solve this issue, it would be highly appreciated.
+
+Thank you so much.
+Best,
+Debby
+
+Hi everyone, 
+
+I need help from a MATLAB programmer for the PCA for spike data and classification.
+
+Thank you,
+Hajar.
+
+
+British and Irish Chapter ISMRM annual conference - REGISTRATION IS OPEN!
+
+The BIC-ISMRM conference will take place at the University of Aberdeen
+
+13th September - Workshop on Low-Field MRI
+
+14th-15th September - Main conference
+
+Full details can be found at this link.
+
+You can register for the Workshop and conference at this link. 
+
+Note that Earlybird rates are available until 13th July.
+
+Don’t forget to submit your abstracts! ABSTRACT SUBMISSION IS OPEN UNTIL 6th JULY.
+
+David J. Lurie
+
+Emeritus Professor, University of Aberdeen
+
+Chair of local organising committee
+
+Dear all
+
+ 
+
+For my master thesis, I will perform a DCM EEG- analysis. I’m a psychology student with no SPM-experience. With some help, I was able to set up a DCM-model, but I keep getting some error messages.
+
+ 
+
+Important to know: Since  I am a student, I’m using Mathlab and thus, SPM via an online platform by my university. I don’t own a license to install a local version.
+
+ 
+
+The first error message I get occurs when setting up the time window. When I enter a standard value of 100 000 ms in the DCM GUI, no errors occur. But however, when I enter the actual time window of the measurements (being 3 - 429 000ms), I get the following error message: ‘Please ensure trial selection and data are consistent, data have not been changed.’ I checked the time window of my measurements through the graphics display, by using the convert function.
+
+ 
+
+When continuing the analysis with the (erroneous) value of 100 000 ms, another problem occurs. After running the DCM-analysis I get unreliable results. The model does not seem to fit any of the data properly as the results show a strange pattern. I already checked these results together with my mentor. The model seems to be correct and, apart from the time window, and my input is also correct. I hope the attached DCM-script works, because I also had some trouble loading it into the GUI. Therefore, I had to type the input in manually each time I tried to carry out an DCM-analysis. 
+
+ 
+
+Finally, no DCM variable is saved after running the analysis. This variable also does not show up in my workspace and therefore, cannot be consulted. At first, after analysis I got the following error message: ‘Warning: Variable ‘DCM’ was not saved. For variables larger than 2GB use MAT-file version 7.3 or later.’ I was able to solve this by using: >> save (‘subj_DCM.mat’, ‘DCM’, ‘-v7.3’). But later on, this didn’t work anymore as the following message appeared: ‘Error using save. Variable ‘DCM’ not found.’
+
+ 
+
+The script and data files can be found via this WeTransfer link as they are too large to send via email.  
+
+https://we.tl/t-lnpeueAIzV
+
+ 
+
+Thanks in advance for your help!
+
+ 
+
+Kind regards
+
+Neri Spitaels
+
+Please, check out the incredible post-doc position for a full-time MR physicist that will be developing new acquisition/reconstruction/processing methodologies on the new 7T MRI MAGNETOM Terra.X located in the Human NeurosciencePlatform at the Campus Biotech in Geneva.
+
+ 
+
+Full details below!
+
+
+

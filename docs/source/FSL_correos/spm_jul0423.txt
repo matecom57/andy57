@@ -1,0 +1,411 @@
+COMPUTATIONAL PSYCHIATRY COURSE (04 – 09 SEPTEMBER 2023) – IN ZURICH OR ONLINE
+
+
+Dear all,
+
+The next international Computational Psychiatry Course (CPC) will take place 04 – 09 September 2023 (http://www.translationalneuromodeling.org/cpcourse/). This annual course is organised by the Translational Neuromodeling Unit (TNU) at the University of Zurich and ETH Zurich.
+
+After last year's success, we are offering a HYBRID course again: this means you can either join online via Zoom or in person in Zurich.
+
+Registration is open! https://events.eventzilla.net/e/computational-psychiatry-course-cpc-zurich-2023--hybrid-2138601232?preview=1677865209506
+Please note that spaces are limited and are made available on a first-come first-served basis.
+
+
+DETAILS
+The CPC is a 6-day course that features clinical and modeling lectures on Monday-Thursday, application talks on Friday, and tutorials on Saturday.
+
+The course is designed to be practically useful for students and scientists at all levels (Master, PhD, Postdoc) and from diverse backgrounds (neuroscience, psychology, medicine, engineering, physics, etc.), who would like to apply modeling techniques to study cognition or brain physiology in mental health. The course will teach not only the theory of computational modeling, but also demonstrate open-source software in application to example data sets.
+
+All participants receive a certificate of attendance. Students enrolled at ETH and University of Zurich can earn 3 ECTS upon passing an exam after the course.
+
+We would be grateful if you could distribute this information amongst interested students and colleagues.
+
+
+We look forward to welcoming you at Zurich or online.
+ 
+Your CPC Zurich Team
+
+
+Dear Colleagues,
+
+I would appreciate your help in sharing the information below with relevant members of your department:
+
+ 
+
+%%%%%%
+
+A 3 year, RNID – funded, PhD studentship in auditory cognitive neuroscience is available at the UCL Ear Institute for a Sept/Oct 2023 start date. The student will be supervised by Prof. Maria Chait and Prof. Doris Bamiou. The project will use behavioural measures, eye tracking, and EEG brain imaging to develop new methods for assessing listening effort and selective auditory attention.
+
+ 
+
+The Ear Institute, situated within one of the strongest neuroscience communities in the world at University College London, provides state-of-the-art research facilities and is one of the foremost centres for hearing-related research within Europe.  Neuroscience at UCL is ranked first in Europe and second in the world according to Thomson Reuters Essential Science Indicators.  UCL is a highly interdisciplinary and collaborative environment that provides excellent opportunities for training and career development. 
+
+ 
+
+Key Requirements
+
+Applicants should have a 1St class, or upper 2nd MSc/MRes degree in a relevant discipline (e.g. Audiology, Psychology, Neuroscience, Engineering).
+Previous experience with auditory research, signal processing and/or acoustics is desirable.
+ 
+
+For an informal discussion, or to submit an application please contact Prof.  Maria Chait (m.chait@ucl.ac.uk). Applicants should submit a supporting statement, a CV, and the details of two academic referees.  The studentship includes fees (UK rate) and a yearly stipend at the standard UCL rate (tax free).  Application deadline: 15/07/2023
+
+ 
+
+ 
+
+ 
+
+Maria Chait PhD
+
+m.chait@ucl.ac.uk
+
+Professor of  Auditory Cognitive Neuroscience
+
+Lab site: http://www.ucl.ac.uk/ear/research/chaitlab/
+
+UCL Ear Institute
+
+332 Gray's Inn Road
+
+London WC1X 8EE
+
+ 
+
+Dear SPM users,
+
+
+
+we are having some preprocessing issues with one particular subject of our sample group.
+
+
+
+As you can see in the attached .pdf, the finished preprocessed image (including smoothing 6mm) shown below is not correctly alligned to the spm standard T1 image in MNI space. This is the case for sub-31_ses-01_SST and Stroop task and sub31_ses-02_Stroop task. In sub31_ses-02_SST alligned correctly with no preprocessing issues.
+
+
+
+For simplicity I will show you the example of sub-31_ses-01_Stroop task. In the .png file you can see the movement is within inclusion limits.
+
+
+
+We have performed the same preprocessing steps on 54 subjects for two sessions and two tasks per session without any other subject showing this phenomenon.
+Does anyone have any ideas as to what else could have caused this misallignment?
+
+
+
+Thank you for your help,
+
+Daniela Rodriguez M.
+
+Dear All,
+
+My lab is advertising a Postdoctoral Position on a research project entitled Measuring the impact of ageing on the physiological mechanisms of action control, funded by the Academy of Medical Sciences. 
+
+ 
+
+This project combines advanced brain stimulation methods (transcranial magnetic stimulation) and electrophysiology to investigate the impact of healthy ageing on motor control.
+
+
+
+The position is for 2 years, starting on 1st September 2023 or soon thereafter. 
+
+
+
+Deadline for applications 31st July 2023. 
+
+
+
+Details here: https://vacancies.essex.ac.uk/tlive_webrecruitment/wrd/run/etrec179gf.open?WVID=9918109NEm&LANG=USA&VACANCY_ID=897349T8kt 
+
+
+Lab website: https://alexsel8.wixsite.com/selab
+
+Informal enquiries are welcome - alex.sel@essex.ac.uk
+
+Best wishes,
+
+******************************************************
+Dr. Alex Sel
+Lecturer
+Departmental Research Coordinator 
+Room 4.719
+Centre for Brain Science
+Department of Psychology, University of Essex
+Wivenhoe Park, Colchester, CO4 3SQ
+
+T: +44 (0)1206 873817
+E: alex.sel@essex.ac.uk
+www.essex.ac.uk/people/selde07303/alex-sel
+@AlexBrainSel  
+******************************************************
+
+
+Dear all,
+
+In a pre-surgical fMRI exam, we use a language task that consisted of silently generating words for 20 seconds, alternating with 20 seconds of rest. Commands for generating words or resting were given by voice. The acquisition has the follow characteristics:
+TR = 2 sec
+1-sec silent gap between volumes
+slices = 35
+n volumes = 90
+
+How I should set the TR and TA for slice timing correction? In this case, my TR should be 2s or 3s?
+How I can model that in the 1st level analyses? I should consider the TR = 3s (actual TR + gap).
+
+Thanks in advance!
+
+Best,
+Fernanda
+
+Dear CAT experts,
+
+I would like to know how I can estimate the mean cortical thickness within a specific cluster that I have previously defined. I know how to do it with ROIs from the CAT atlas, but I am unsure about how to proceed with my own ROIs.
+
+Thank you.
+
+The misalignment suggests that either the coregistration (between EPI and T1w) or the nonlinear alignment (spatial normalisation) could have gone wrong.  Try the following:
+Check Reg between the EPI and T1w after running Coreg.  This would show whether the coregistration has worked.
+Check Reg between a spatially normalised version of the T1w scan and one of the "canonical" images released with SPM12.  This would tell you whether the spatial normalisation has worked.
+Another potential reason is that the conversion from DICOM to NIfTI introduced incorrect voxel sizes by not properly accounting for gaps between slices. If the original NIfTI EPI scans (or the original T1w scans) seem squashed, then this could cause coregistration problems.
+
+Best regards,
+-John
+
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Daniela Rodriguez Manrique <daniela.rodriguez@TUM.DE>
+Sent: 03 July 2023 12:36
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Preprocessign allignmet Errors
+ 
+⚠ Caution: External sender
+
+
+Dear SPM users,
+
+
+
+we are having some preprocessing issues with one particular subject of our sample group.
+
+
+
+As you can see in the attached .pdf, the finished preprocessed image (including smoothing 6mm) shown below is not correctly alligned to the spm standard T1 image in MNI space. This is the case for sub-31_ses-01_SST and Stroop task and sub31_ses-02_Stroop task. In sub31_ses-02_SST alligned correctly with no preprocessing issues.
+
+
+
+For simplicity I will show you the example of sub-31_ses-01_Stroop task. In the .png file you can see the movement is within inclusion limits.
+
+
+
+We have performed the same preprocessing steps on 54 subjects for two sessions and two tasks per session without any other subject showing this phenomenon.
+Does anyone have any ideas as to what else could have caused this misallignment?
+
+
+
+Thank you for your help,
+
+Daniela Rodriguez M.
+
+Dear SPM12 Package Mailing List,
+
+I hope this email finds you all well. I am writing to seek your assistance regarding the implementation of the Jansen and Rit model in SPM12. Specifically, I am trying to run the model using parameters inferred from fitting experimental spectra, and I am facing some challenges in the process.
+
+I have successfully fitted the experimental spectra and obtained the relevant parameter estimates.
+However, I am uncertain about how to simulate the Jansen and Rit model using these inferred parameters. I would like to compute the firing rates of the populations composing the circuit and I would greatly appreciate it if someone could provide guidance on the steps and procedure.
+
+I have reviewed the SPM12 documentation, but I haven't been able to find a clear solution to my specific query. Therefore, I am turning to the expertise of this mailing list community, hoping that someone can offer some insights or point me in the right direction.
+
+Any help or suggestions would be highly appreciated. If you require any additional information or specific details about my experimental setup or the parameters obtained from the fitting process, please let me know, and I will be glad to provide them.
+
+Thank you very much for your time and consideration. I look forward to hearing from you soon.
+
+Best regards,
+
+Gabriele Mancini
+Bologna University
+
+Dear Neri,
+
+DCM is usually done on short data segments of a few 100s of ms. If you want to run DCM-CSD on a continuous recording, I'd suggest you epoch it into arbitrary segments of 1sec or so and then set your window to [0 1000].
+
+Best,
+
+Vladimir
+
+On Mon, Jul 3, 2023 at 11:14 AM Neri Spitaels <0000a5c8d35ae1f7-dmarc-request@jiscmail.ac.uk> wrote:
+Dear all,
+
+ 
+
+I’m trying to perform a DCM EEG- analysis, but I keep getting some error messages.
+
+ 
+
+The first error message I get occurs when setting up the time window. When I enter a standard value of 100 000 ms in the DCM GUI, no errors occur. But however, when I enter the actual time window of the measurements (being 3 - 429 000ms), I get the following error message: ‘Please ensure trial selection and data are consistent, data have not been changed.’ I checked the time window of my measurements through the graphics display, by using the convert function.
+
+ 
+
+When continuing the analysis with the (erroneous) value of 100 000 ms, another problem occurs. After running the DCM-analysis I get unreliable results. The model does not seem to fit any of the data properly as the results show a strange pattern. I already checked these results together with my mentor. The model seems to be correct and, apart from the time window, and my input is also correct. I hope the attached DCM-script works, because I also had some trouble loading it into the GUI. Therefore, I had to type the input in manually each time I tried to carry out an DCM-analysis. 
+
+ 
+
+Finally, no DCM variable is saved after running the analysis. This variable also does not show up in my workspace and therefore, cannot be consulted. At first, after analysis I got the following error message: ‘Warning: Variable ‘DCM’ was not saved. For variables larger than 2GB use MAT-file version 7.3 or later.’ I was able to solve this by using: >> save (‘subj_DCM.mat’, ‘DCM’, ‘-v7.3’). But later on, this didn’t work anymore as the following message appeared: ‘Error using save. Variable ‘DCM’ not found.’
+
+ 
+
+The script and data files can be found via this WeTransfer link as they are too large to send via email.  
+
+https://we.tl/t-ParAzBMgMF
+
+ 
+
+Thanks in advance for your help!
+
+ 
+
+Kind regards,
+
+Neri Spitaels
+
+ 
+
+Dear all,
+
+ 
+
+I’m trying to perform a DCM EEG- analysis, but I keep getting some error messages.
+
+ 
+
+The first error message I get occurs when setting up the time window. When I enter a standard value of 100 000 ms in the DCM GUI, no errors occur. But however, when I enter the actual time window of the measurements (being 3 - 429 000ms), I get the following error message: ‘Please ensure trial selection and data are consistent, data have not been changed.’ I checked the time window of my measurements through the graphics display, by using the convert function.
+
+ 
+
+When continuing the analysis with the (erroneous) value of 100 000 ms, another problem occurs. After running the DCM-analysis I get unreliable results. The model does not seem to fit any of the data properly as the results show a strange pattern. I already checked these results together with my mentor. The model seems to be correct and, apart from the time window, and my input is also correct. I hope the attached DCM-script works, because I also had some trouble loading it into the GUI. Therefore, I had to type the input in manually each time I tried to carry out an DCM-analysis. 
+
+ 
+
+Finally, no DCM variable is saved after running the analysis. This variable also does not show up in my workspace and therefore, cannot be consulted. At first, after analysis I got the following error message: ‘Warning: Variable ‘DCM’ was not saved. For variables larger than 2GB use MAT-file version 7.3 or later.’ I was able to solve this by using: >> save (‘subj_DCM.mat’, ‘DCM’, ‘-v7.3’). But later on, this didn’t work anymore as the following message appeared: ‘Error using save. Variable ‘DCM’ not found.’
+
+ 
+
+The script and data files can be found via this WeTransfer link as they are too large to send via email.  
+
+https://we.tl/t-ParAzBMgMF
+EEG_data_Neri_Spitaels
+3 files sent via WeTransfer, the simplest way to send your files around the world
+we.tl
+
+ 
+
+Thanks in advance for your help!
+
+ 
+
+Kind regards,
+
+Neri Spitaels
+
+ 
+
+Dear All,
+
+We are currently recruiting for a PhD student to start in September 2023 as part of a Precision Medicine Doctoral Training Partnership cohort (https://www.ed.ac.uk/usher/precision-medicine/about-the-programme/programme-structure). Unfortunately, due to funding restrictions only candidates with Home fees status (typically UK citizens or EU citizens with (pre)settled) can be considered. If you may be interested or know of someone who may be please let me know.
+
+Best wishes,
+
+Michael Stringer
+
+Research Fellow in Magnetic Resonance Imaging, University of Edinburgh
+
+Determining cerebral small vessel function and flow in small vessel disease
+
+Supervisors: Dr Michael Stringer, Dr Michael Thrippleton, Prof Joanna Wardlaw
+
+Description: Small vessel disease (SVD) causes many cases of stroke and dementias.1 While what causes SVD is poorly understood, in patients with higher SVD severity their blood vessels are less responsiveness to increased demand.1 We can measure cerebrovascular reactivity (CVR), how well blood vessels respond to increased demand, using magnetic resonance imaging (MRI) scans during hypercapnic gas challenge. However, existing methods to calculate CVR have several limitations.2 More accurate quantification would improve understanding of SVD pathophysiology and patient stratification.1
+
+In this project, the successful student will:
+
+support acquisition of brain MRI scans and further their MRI physics knowledge
+develop novel CVR methods to analyse several large existing datasets with extensive contextual data
+learn about clinical brain imaging, how scans are interpreted and clinical presentations of SVD
+expand their statistical skills to run complex multifactorial analyses
+develop their scientific writing and presentation skills
+References
+
+1. Wardlaw JM, Smith C, Dichgans M. Small vessel disease: Mechanisms and clinical implications. The Lancet Neurology. 2019;18:684-696
+
+2. Sleight E, Stringer MS, Marshall I, Wardlaw JM, Thrippleton MJ. Cerebrovascular reactivity measurement using magnetic resonance imaging: A systematic review. Frontiers in Physiology. 2021
+
+Small Vessel Diseases Research Group
+
+The post will be based in the Small Vessel Diseases Research Group (Prof Joanna Wardlaw) linked with the Row Fogo Centre for Research into Ageing and the Brain and UK DRI: UK Dementia Research Institute at the University of Edinburgh. The group also has exceptional links with other world leading SVD research centres in the UK and internationally. 
+
+Precision Medicine Doctoral Training Programme
+
+The Precision Medicine Doctoral Training Programme is a 3.5-4 year PhD programme funded by the Medical Research Council, University of Edinburgh and University of Glasgow. It trains PhD in both quantitative skills and their application to medical data sources giving the interdisciplinary skills needed to put precision medicine into practice.
+
+For full details see: https://www.ed.ac.uk/usher/precision-medicine/about-the-programme
+
+Contact details
+
+If you would like to apply or have any questions, please contact Dr Michael Stringer (m.stringer@ed.ac.uk).
+
+Dear everyone,
+
+Hello! 
+
+I am using marsbar to extract time series from a functional image. The system used is a Macbook Pro with Apple M2 max chip and OS is Ventura 13. The matlab version is MATLAB_R2023a.
+
+Strangely, the function is running without error on the Windows based system with the MATLAB_R2021a version.
+
+Running the 'maroi' function gives the following error:
+Note: The variable roi_files is a 116X1 cell array with each cell having the path to the .mat file corresponding to the region of interest (1 to 116).
+
+If anyone has come across this issue, please let me know the workaround.
+
+ROIs = maroi('load_cell', roi_files);
+
+Error: Warning: Loading file /Users/Documents/MATLAB/codes/ATLASES/AAL3/region_116.mat
+did not return an ROI
+> In my_loadroi (line 21)
+In maroi (line 138)
+In maroi (line 148)
+In maroi (line 131) 
+
+
+
+PS: if there is an active forum dedicated to marsbar, please let know. 
+
+Best Regards,
+Arun
+
+Dear Christia,
+
+Yes, this is possible if you use the 'Convert' tool set the 'Reading mode' to 'Continuous' and 'Check trial boundaries' to 'no'. The error you are getting is not related to this and has something to do with issues accessing the file on your system (e.g. wrong path or wrong permissions).
+
+Best,
+
+Vladimir
+
+On Thu, Jun 29, 2023 at 12:07 PM Christia Kai <s2156522@ed.ac.uk> wrote:
+Dear SPM experts,
+
+I am trying to save and export MEEG data from SPM, converted from epoched to continuous format. However, matlab is having trouble opening the file ("could not open file C:").
+
+Is what I'm attempting to do even possible? If yes, could someone guide me through the process?
+
+Furthermore, is there a way to export the data into edf format?
+
+
+Thanks in advance!
+
+Dear SPM experts,
+
+I am trying to save and export MEEG data from SPM, converted from epoched to continuous format. However, matlab is having trouble opening the file ("could not open file C:").
+
+Is what I'm attempting to do even possible? If yes, could someone guide me through the process?
+
+Furthermore, is there a way to export the data into edf format?
+
+
+Thanks in advance!
+

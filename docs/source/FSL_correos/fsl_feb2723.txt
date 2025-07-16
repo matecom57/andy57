@@ -1,0 +1,719 @@
+Thank your very much doctor Glasser!
+Best regards,
+Diego.
+
+Enviado do meu iPhone
+
+Em 25 de fev. de 2023, à(s) 12:49, Andreas Bartsch <bartsch@radvisory.net> escreveu:
+
+﻿ Yes, you are right, Matt.
+The difference is that this one seems to need no template which may be of advantage in certain situations.
+Cheers,
+Andreas
+
+Von meinem iPhone gesendet
+
+Am 25.02.2023 um 16:14 schrieb Glasser, Matt <glasserm@wustl.edu>:
+
+﻿
+This one I am a bit more dubious of.  They claim to do better than a gold standard correction at times, which isn’t really possible.  At one point they were claiming that there was no reason to still acquire fieldmaps or phase reversed scans and to just use their method, but that claim may have been walked back during peer review (this preprint was originally posted back in 2021 and it doesn’t look like it has been published yet).
+ 
+Matt.
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET> Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Date: Friday, February 24, 2023 at 8:15 AM To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] DTI analysis
+ 
+ 
+Yes, like this
+https://doi.org/10.1101/2021.03.13.435270
+ 
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Maurizio Bergamino <maurizio.bergamino@GMAIL.COM> Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Datum: Donnerstag, 23. Februar 2023 um 20:58 An: <FSL@JISCMAIL.AC.UK> Betreff: Re: [FSL] DTI analysis
+ 
+Yes,
+there are other methods.
+For example, you can use FUGUE:
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
+ 
+or there are other machine learning methods that often use high resolution images, such as the T1-w 
+Check on pubmed
+ 
+Additionally, try to take a look at tortoise software: 
+https://tortoise.nibib.nih.gov
+ 
+Maurizio
+ 
+On Thu, Feb 23, 2023 at 10:18 AM Marina Di Stefano <marinadistefano99@hotmail.it> wrote:
+Dear all, I'm new to DTI analysis. I would like to know what is an alternative step to TOPUP for distorsions correction, since if I'm not wrong this tool requires two encoding-phase directions while I've just one in my data. Any suggestion is appreciated. Kind regards, Marina  ########################################################################  To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1  This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+ 
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+ 
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+ 
+
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hello, 
+
+Dtiexolorer is an excellent alternative for the distortion correction! It uses t1/t2wi!
+
+Chers,
+Diego.
+
+Enviado do meu iPhone
+
+Em 23 de fev. de 2023, à(s) 16:58, Maurizio Bergamino <maurizio.bergamino@gmail.com> escreveu:
+
+﻿
+Yes,
+there are other methods.
+For example, you can use FUGUE:
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
+
+or there are other machine learning methods that often use high resolution images, such as the T1-w 
+Check on pubmed
+
+Additionally, try to take a look at tortoise software: 
+https://tortoise.nibib.nih.gov
+
+Maurizio
+
+On Thu, Feb 23, 2023 at 10:18 AM Marina Di Stefano <marinadistefano99@hotmail.it> wrote:
+Dear all,
+I'm new to DTI analysis. I would like to know what is an alternative step to TOPUP for distorsions correction, since if I'm not wrong this tool requires two encoding-phase directions while I've just one in my data. Any suggestion is appreciated.
+Kind regards,
+Marina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hi all,
+
+I need to generate a figure within the 3D view of fsleyes (ver 1.5.0).
+I can load the nifty file (T1), tck (tracks), and pial surface (fs output) successfully.
+However, I can't get the vtk file I created. I have tried to generate vtk file using itksnap or 3dslicer, but no luck and get the error below.
+The vtk file is coming from a simple binary mask (nifti format).
+
+3dSlicer: "Details: 'utf-8' codec can't decode byte 0xde in position 99: invalid continuation byte"
+itksnap: "Details: invalid literal for int() with base 10: '0.643618'"
+Note, these vtk files are fine, I can open them properly in SurfIce.
+
+Did I miss anything when converting or loading the vtk files? I can share the file if needed.
+The alternative question is: is there a way to convert a binary mask to vtk file that is compatible with fsleyes?
+
+Thanks,
+Chao
+
+########################################################################
+
+
+I agree with Jesper.  This is the first of these fieldmap-less distortion correction methods that actually looks good.  They clearly show the best result compared to a gold standard correction.
+
+ 
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, February 24, 2023 at 5:49 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] DTI analysis
+
+ 
+
+ 
+
+Dear Marina,
+
+ 
+
+just to add to Maurizio’s suggestion there is also the method by Kurt Schilling (Distortion correction of diffusion weighted MRI without reverse phase-encoding scans or field-maps, Schilling et al.). They create a synthetic, undistorted, EPI image from an anatomical scan (T1), and that can then be used in topup together with the actual distorted EPI image. It has the advantage that after that first step you can then proceed with your processing as if you had had the two phase-encoding directions.
+
+ 
+
+I should add that I haven’t actually tried the method myself, but had heard good things about it.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Maurizio Bergamino <maurizio.bergamino@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Thursday, 23 February 2023 at 19:58
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] DTI analysis
+
+ 
+
+Yes,
+
+there are other methods.
+
+For example, you can use FUGUE:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
+
+ 
+
+or there are other machine learning methods that often use high resolution images, such as the T1-w 
+
+Check on pubmed
+
+ 
+
+Additionally, try to take a look at tortoise software: 
+
+https://tortoise.nibib.nih.gov
+
+ 
+
+Maurizio
+
+ 
+
+On Thu, Feb 23, 2023 at 10:18 AM Marina Di Stefano <marinadistefano99@hotmail.it> wrote:
+
+Dear all,
+I'm new to DTI analysis. I would like to know what is an alternative step to TOPUP for distorsions correction, since if I'm not wrong this tool requires two encoding-phase directions while I've just one in my data. Any suggestion is appreciated.
+Kind regards,
+Marina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+Dear Marina,
+
+ 
+
+just to add to Maurizio’s suggestion there is also the method by Kurt Schilling (Distortion correction of diffusion weighted MRI without reverse phase-encoding scans or field-maps, Schilling et al.). They create a synthetic, undistorted, EPI image from an anatomical scan (T1), and that can then be used in topup together with the actual distorted EPI image. It has the advantage that after that first step you can then proceed with your processing as if you had had the two phase-encoding directions.
+
+ 
+
+I should add that I haven’t actually tried the method myself, but had heard good things about it.
+
+ 
+
+Best regards Jesper
+
+Hi Paul,
+  The output of "which stat" shows, "/usr/local/bin/stat", which is different with "/usr/bin/stat".
+   I would try with your suggestion and response you.
+
+Thanks
+
+Kangcheng
+
+########################################################################
+
+Hi Kangcheng,
+
+I think that you might have a non-standard "stat" command which is masking the system one - could you send me the output of running "which stat" in a terminal?
+
+If the output is not "/usr/bin/stat", would you be able to try the installation again, with these commands?
+
+export PATH=/usr/bin:$PATH
+python3.7 fslinstaller.py
+
+Paul
+
+Hi Daisuke,
+
+Sorry - this is a bug which we will fix for the next FSL version. In the meantime, you could pass the file extension as part of the glob pattern, e.g. "imrm img_????.nii.gz"
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Daisuke Matsuyoshi <matsuyoshi.daisuke@QST.GO.JP>
+Sent: 26 February 2023 12:25
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] imrm and bash
+ 
+
+Hello,
+I was using feat for higher-level analysis, and in the Data tab, I came across the following problems:
+1. I could not change the input of numbers by typing (no response when in i press the numbers on my keyboard), but have to use the up/down button
+2. In the select feat directories tab, I pressed PASTE, but could not paste (with control y) the list of groups, or type into the window.
+ 
+I am using Mac with M1 chip, mac OS 13, XQuartz is up-to-date.
+Thank you,
+ 
+Best
+Sheng
+
+########################################################################
+
+
+Dear FSL List members,
+
+On Ubuntu 22.04 LST and FSL 6.0.6.2, the pattern matching character
+("?") seems not to work as intended in "imrm" using bash.
+https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html#Pattern-Matching
+
+Any changes in imrm or am I missing something?
+
+EXAMPLE CODE:
+---------------------------------------------------
+#!/bin/bash
+mkdir temp; cd temp
+touch test_1_000{1,2,3,4}.nii.gz  # three-zero nii.gz
+touch test_1_000{1,2,3,4}.bval    # three-zero bval
+touch test_1_0000{1,2,3,4}.nii.gz # four-zero nii.gz
+ls
+
+# Had deleted image files in FSL 6.0.4 or earlier
+# but do not delete them in FSL 6.0.6.2
+imrm test_1_???? # Fail, not delete anything
+ls
+imrm test_1_????.* # OK, delete three-zero nii.gz, while preserving
+four-zero nii.gz
+ls
+---------------------------------------------------
+
+Best,
+D
+
+--
+Daisuke MATSUYOSHI, Ph.D.
+Research Scientist
+Functional Brain Imaging Research
+National Institutes for Quantum Science and Technology (QST)
+(f.k.a. National Institute of Radiological Sciences)
+4-9-1 Anagawa, Inage, Chiba 263-8555, Japan
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Thank your very much doctor Glasser!
+Best regards,
+Diego.
+
+Enviado do meu iPhone
+
+Em 25 de fev. de 2023, à(s) 12:49, Andreas Bartsch <bartsch@radvisory.net> escreveu:
+
+﻿ Yes, you are right, Matt.
+The difference is that this one seems to need no template which may be of advantage in certain situations.
+Cheers,
+Andreas
+
+Von meinem iPhone gesendet
+
+Am 25.02.2023 um 16:14 schrieb Glasser, Matt <glasserm@wustl.edu>:
+
+﻿
+This one I am a bit more dubious of.  They claim to do better than a gold standard correction at times, which isn’t really possible.  At one point they were claiming that there was no reason to still acquire fieldmaps or phase reversed scans and to just use their method, but that claim may have been walked back during peer review (this preprint was originally posted back in 2021 and it doesn’t look like it has been published yet).
+
+ 
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, February 24, 2023 at 8:15 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] DTI analysis
+
+ 
+
+ 
+
+Yes, like this
+
+https://doi.org/10.1101/2021.03.13.435270
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Maurizio Bergamino <maurizio.bergamino@GMAIL.COM>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Donnerstag, 23. Februar 2023 um 20:58
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] DTI analysis
+
+ 
+
+Yes,
+
+there are other methods.
+
+For example, you can use FUGUE:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
+
+ 
+
+or there are other machine learning methods that often use high resolution images, such as the T1-w 
+
+Check on pubmed
+
+ 
+
+Additionally, try to take a look at tortoise software: 
+
+https://tortoise.nibib.nih.gov
+
+ 
+
+Maurizio
+
+ 
+
+On Thu, Feb 23, 2023 at 10:18 AM Marina Di Stefano <marinadistefano99@hotmail.it> wrote:
+
+Dear all,
+I'm new to DTI analysis. I would like to know what is an alternative step to TOPUP for distorsions correction, since if I'm not wrong this tool requires two encoding-phase directions while I've just one in my data. Any suggestion is appreciated.
+Kind regards,
+Marina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Yes, you are right, Matt.
+The difference is that this one seems to need no template which may be of advantage in certain situations.
+Cheers,
+Andreas
+
+Von meinem iPhone gesendet
+
+Am 25.02.2023 um 16:14 schrieb Glasser, Matt <glasserm@wustl.edu>:
+
+﻿
+This one I am a bit more dubious of.  They claim to do better than a gold standard correction at times, which isn’t really possible.  At one point they were claiming that there was no reason to still acquire fieldmaps or phase reversed scans and to just use their method, but that claim may have been walked back during peer review (this preprint was originally posted back in 2021 and it doesn’t look like it has been published yet).
+
+ 
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, February 24, 2023 at 8:15 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] DTI analysis
+
+ 
+
+ 
+
+Yes, like this
+
+https://doi.org/10.1101/2021.03.13.435270
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Maurizio Bergamino <maurizio.bergamino@GMAIL.COM>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Donnerstag, 23. Februar 2023 um 20:58
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] DTI analysis
+
+ 
+
+Yes,
+
+there are other methods.
+
+For example, you can use FUGUE:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FUGUE
+
+ 
+
+or there are other machine learning methods that often use high resolution images, such as the T1-w 
+
+Check on pubmed
+
+ 
+
+Additionally, try to take a look at tortoise software: 
+
+https://tortoise.nibib.nih.gov
+
+ 
+
+Maurizio
+
+ 
+
+On Thu, Feb 23, 2023 at 10:18 AM Marina Di Stefano <marinadistefano99@hotmail.it> wrote:
+
+Dear all,
+I'm new to DTI analysis. I would like to know what is an alternative step to TOPUP for distorsions correction, since if I'm not wrong this tool requires two encoding-phase directions while I've just one in my data. Any suggestion is appreciated.
+Kind regards,
+Marina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This one I am a bit more dubious of.  They claim to do better than a gold standard correction at times, which isn’t really possible.  At one point they were claiming that there was no reason to still acquire fieldmaps or phase reversed scans and to just use their method, but that claim may have been walked back during peer review (this preprint was originally posted back in 2021 and it doesn’t look like it has been published yet).
+
+ 
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, February 24, 2023 at 8:15 AM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] DTI analysis
+
+Hi paul
+   Great thanks for your further help. Here I paste the report of the command.
+
+Best 
+
+Kangcheng
+
+[kangcheng:~/Downloads] kangcheng% ./test  fsl_sub fsl_sub_config fsl_sub_plugin
+This is a test - it will not modify anything on your computer
+Creating wrapper for fsl_sub
+Wrapper has same name:
+  target:  fsl_sub
+  wrapper: fsl_sub
+Absolute paths:
+  target:  FSLDIR/bin/fsl_sub
+  wrapper: FSLDIR/share/fsl/bin/fsl_sub
+Final values:
+  target:  FSLDIR/bin/fsl_sub
+  wrapper: FSLDIR/share/fsl/bin/fsl_sub
+Creating wrapper for fsl_sub_config
+Wrapper has same name:
+  target:  fsl_sub_config
+  wrapper: fsl_sub_config
+Absolute paths:
+  target:  FSLDIR/bin/fsl_sub_config
+  wrapper: FSLDIR/share/fsl/bin/fsl_sub_config
+Final values:
+  target:  FSLDIR/bin/fsl_sub_config
+  wrapper: FSLDIR/share/fsl/bin/fsl_sub_config
+Creating wrapper for fsl_sub_plugin
+Wrapper has same name:
+  target:  fsl_sub_plugin
+  wrapper: fsl_sub_plugin
+Absolute paths:
+  target:  FSLDIR/bin/fsl_sub_plugin
+  wrapper: FSLDIR/share/fsl/bin/fsl_sub_plugin
+Final values:
+  target:  FSLDIR/bin/fsl_sub_plugin
+  wrapper: FSLDIR/share/fsl/bin/fsl_sub_plugin
+
+ 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Chao,
+
+Would you be able to send the problematic files to me, so I can try and reproduce the issue?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Chao Suo <0000171bf1c6344d-dmarc-request@JISCMAIL.AC.UK>
+Sent: 24 February 2023 20:53
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Error of loading vtk files (from itksnap/3dslicer) in fsleyes
+ 
+Hi all,
+
+I need to generate a figure within the 3D view of fsleyes (ver 1.5.0).
+I can load the nifty file (T1), tck (tracks), and pial surface (fs output) successfully.
+However, I can't get the vtk file I created. I have tried to generate vtk file using itksnap or 3dslicer, but no luck and get the error below.
+The vtk file is coming from a simple binary mask (nifti format).
+
+3dSlicer: "Details: 'utf-8' codec can't decode byte 0xde in position 99: invalid continuation byte"
+itksnap: "Details: invalid literal for int() with base 10: '0.643618'"
+Note, these vtk files are fine, I can open them properly in SurfIce.
+
+Did I miss anything when converting or loading the vtk files? I can share the file if needed.
+The alternative question is: is there a way to convert a binary mask to vtk file that is compatible with fsleyes?
+
+Thanks,
+Chao
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Kangcheng,
+
+I'm not sure why the installation is failing - would you be able to download the attached file, run it, and send me the output that it produces? It might give me some more information as to what is going wrong. Once you have downloaded it, run these commands in a terminal:
+
+cd ~/Downloads
+chmod a+x  test
+./test fsl_sub fsl_sub_config fsl_sub_plugin
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Kangcheng Wang <v1kwan12@EXSEED.ED.AC.UK>
+Sent: 24 February 2023 18:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] error FSL Installation Mac OS Monterey
+ 
+Hi paul,
+   I  change the permission. It reports the same error and is attached.
+
+Best
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi paul,
+   I  change the permission. It reports the same error and is attached.
+
+Best
+
+########################################################################
+
+Dear respected experts,
+
+I have created a binarized mask created from adding ICA components output from Melodic. I created this using fslmaths mask1.nii.gz -add mask2.nii.gz -add mask3.nii.gz -bin out.nii.gz. I would like to merge this onto an anatomical image so that they are stored as the same file versus displaying the mask as an overlay. I would appreciate if you could inform me on the simplest way to go about doing this.
+
+Thank you!
+
+########################################################################
+
+Dear Maurizio,
+Thank you for your kind answer. I don't know if I should have to find a 'FUGUE' button directly in the FSL initial GUI. Looking for it I've found that in FEAT Tool the Pre-stats section includes B0 unwarping that is carried out using a combination of BBR and FUGUE (I'm using FSL FEAT v6.00). Is this the right way or is there a command-line instruction run by the terminal? If so, I noticed the fieldmap is required. Is something that I have to find among my acquired data or can I create it (the acquisition machine is not Siemens)?
+Thank you in advance if you want to clarify
+Marina
+
+########################################################################
+
+Hi Kangcheng,
+
+Would you be able to run:
+
+  sudo chown -R $USER:$USER ~/.conda/
+
+entering your password when prompted, and then try installing FSL again?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Kangcheng Wang <v1kwan12@EXSEED.ED.AC.UK>
+Sent: 23 February 2023 08:35
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] error FSL Installation Mac OS Monterey
+ 
+Thanks for your response, Paul.
+
+I have installed fsl (5.0.6) when I used macos with high sierra. I recently update the system and find the fslview does not work. Then,  I want to reinstall  fsl with lastest version. It seems the environment still contains the revious fsl 5.0.6. 
+
+Best wishes
+
+Kangcheng
+

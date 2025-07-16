@@ -1,0 +1,716 @@
+Hi there, I have what is hopefully a basic question about topup.
+I have a 4D diffusion file with 9 b=0 images acquired AP interspersed throughout 120 b=500,1000,2000 images. I have extra, separate, 3 b=0 images in PA directions.
+When I go to create my AP_PA_b0 file, I will combine the 3x PA b0 images with 3x AP b0 images.
+My question is, does it matter which 3 AP b0 images I choose from the 9 that are in the 4D diffusion when I am making this file?
+Thanks!
+
+########################################################################
+Hi,
+I want to extract a mask based on Juelich atlas, considering only voxels that have 50% of belonging to a specific region (amygdala nuclei).
+I thought I should do it with the "fslmaths [FILENAME] -thr 50 [OUTPUT_NAME]".
+However, I it appears that this command uses some activation threshold that does not 100% overlap with the atlas probabilities.
+For example, in the attached screenshot, the probability of being part of the lateralobasal amygdala is 56% and the threshold on the right is 43.  Accordingly, the value in the mask is zero although it is supposed to be 1.
+
+How can I extract a mask BASED ON THE ATLAS PROBABILITIES?
+
+Thank you very much,
+Lior
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Ben,
+
+ 
+
+    Hi there, I have what is hopefully a basic question about topup.
+
+    I have a 4D diffusion file with 9 b=0 images acquired AP interspersed throughout 120 b=500,1000,2000 images. I have extra, separate, 3 b=0 images in PA directions.
+
+    When I go to create my AP_PA_b0 file, I will combine the 3x PA b0 images with 3x AP b0 images.
+
+    My question is, does it matter which 3 AP b0 images I choose from the 9 that are in the 4D diffusion when I am making this file?
+
+ 
+
+I tend to recommend running topup with no more than two pairs of images. There is nothing wrong with using more (in your case three pairs, or even 9 vs 3), but my experience is that it doesn’t improve the estimation, while increasing the execution time of topup.
+
+ 
+
+The reason I recommend having at least three for each PE-direction is simply to minimise the risk that all of them are “broken”. For example if you only have a single b=0 in the PA direction, and it turns out that the subject moved exactly during the acquisition of that scan. Then it would be “broken”, and if it was the only one you had it would mean that you had nothing to calculate a fieldmap from.
+
+ 
+
+Finally, does it matter which you choose?  Yes, it does. You always want to use the first b=0 volume of your full data set (the one where you have the diffusion weighted data) as the first volume in the 4D file that you feed into topup. The reason for that is that the first b=0 volume in the full data set defines that “space” that all other volumes get resampled into. And the first volume in the 4D topup file defines that space that your fieldmap is in. And those two spaces should be the same. If it turns out that the first b=0 volume in your full data set is broken I recommend deleting it, and replacing it with a non-broken one (i.e. one of the other b=0 volumes).
+
+ 
+
+I hope that helps.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Aaron,
+
+If you don't want to create a resampled copy of the input image, just omit the -out option, e.g.:
+
+flirt -in to_transform.nii.gz -ref ref_image.nii.gz -omat transform.mat
+
+If you want to resample the image, but at a different (isotropic) resolution, you can ask flirt to resample the output, e.g.:
+
+flirt -in to_transform.nii.gz -ref ref_image.nii.gz -applyisoxfm 2 -init transform.mat  -out transformed_2mm.nii.gz
+
+Paul
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Aaron Capon <000093e8d7598f93-dmarc-request@JISCMAIL.AC.UK>
+Sent: 21 January 2023 22:38
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Rigid body transform without resampling
+ 
+Hi all,
+
+ I would like to use FSL to perform a rigid body registration between two different modality scans. The following commands register the two images,
+```
+ flirt -v -in to_transform.nii.gz -ref ref_image.nii.gz -out transformed_image.nii.gz -omat transform.mat
+ flirt -v -in to_transform.nii.gz -ref ref_image.nii.gz -out transformed_image.nii.gz -omat transform.mat -init -applyxfm transform.mat
+```
+However, I do not want to reslice the transformed image into the reference image space, as the input image has a much higher resolution than the reference image. Is there a way to do this using FLIRT/FLS?
+
+Thanks in advance!
+
+Cheers,
+Aaron Capon
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Sayantan,
+
+Are you running Ubuntu natively, or within a WSL environment? Are you running locally, or over a SSH/X11 connection?
+
+Can you confirm the FSL version by running "cat $FSLDIR/etc/fslversion"?
+
+Can you try experimenting with the GDK_BACKEND and PYOPENGL_PLATFORM environment variables, e.g.:
+
+GDK_BACKEND=x11 fsleyes
+PYOPENGL_PLATFORM=egl fsleyes
+
+Paul
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Sayantan Mandal <s.mandal@EVERSINCECHOMSKY.COM>
+Sent: 21 January 2023 07:47
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes "X Window System Error"
+ 
+Hi,
+
+I am using the latest release of FSL on Ubuntu 22.10. While FSL launches just fine, and tools like BET appear to be working as well, fsleyes is crashing on launch with this error: 'BadValue (integer parameter out of range for operation) Details: serial 1081 error_code 2 request_code 152 minor_code 3)'.
+
+I have tried downloading and running the fslinstaller.py all over again, but this bug seems to be present in the latest version of fsl(eyes) as well.
+
+Thanks
+Sayantan
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Malathi,
+
+Could you:
+
+ - make sure you are using the latest version of the fslinstaller.py script (re-download it from https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/)
+
+ - Make sure that rosetta emulation is enabled before running the script - you can do this by running the following command in a terminal:
+
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Malathi Thothathiri <000093e27667ac26-dmarc-request@JISCMAIL.AC.UK>
+Sent: 21 January 2023 00:42
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Install fails on macos Monterey - Failed to create FSL Python environment
+ 
+Hi,
+
+Tried multiple times to install fsl on macos Monterey using "python3 fslinstaller.py". Each time, the same thing happened. Downloads and installs fine, post-install fails with the error - "Failed to create FSL Python environment".
+
+None of the commands like "fsl" are then recognized even though it looks like fsl has been installed under /usr/local/fsl.
+
+Thoughts on how to fix the re-do the install and/or fix the environment variables to account for the post-install problem?
+
+Thanks in advance,
+Malathi
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Applications are open for 11 three-year PhD positions in the German Research Council (DFG) funded program “Neurobiology of Social and Emotional Dysfunctions (GRK 2174)”. The program is interdisciplinary and internationally oriented. Details can be found at
+https://www.uni-regensburg.de/research/grk-emotion/application/index.html
+
+Two of these projects (C11 & C12) are looking for candidates with a background in (human) neuroimaging and an interest in combining neuroimaging and machine learning. Project C11 is covering clinical neuroscience aspects whereas project C12 is biased towards basic research and computational neuroscience. Interest in clinical neuroscience, brain imaging, and machine learning/statistical methods are essential. Positions are planned to start between May and July, 2023. The positions are funded for up to three years, according to the German pay scale TV-L E13 (65%).
+
+-------------
+Project C11: “Changes in brain communication and cognition in depressive patients who undergo electroconvulsive therapy”
+Major depressive disorder (MDD) is a severe mental disorder that is estimated to affect as many as one in five adults during their lifetime. 15-30% of MDD patients have a treatment resistant depression, i.e. they do not show a clinical response to two successive antidepressant (psychological or pharmacological) interventions of adequate dose and duration. One of the most effective options to treat treatment resistant depression is electroconvulsive therapy (ECT), in which a series of brief seizures is intentionally triggered by electrical stimulation of the brain under general anesthesia.
+In this project we follow patients throughout ECT treatment compared to patients receiving treatment as usual (TAU) and regularly assess cognitive and affective parameters using behavioral testing as well as biomarkers for brain communication using functional magnetic resonance imaging and blood sampling. We use machine learning methods to characterize patients in terms of cognition, affect and brain communication and to predict their responses to ECT. The PhD candidate will interact with the patients, and will be involved in acquiring, analyzing and interpreting behavioral and imaging data and developing prediction models. The lab’s language is English, but in project C11 interacting with patients requires the ability to converse on a good level in German.
+
+Contact:
+
+Prof. Dr. Caroline Nothdurfter
+Department of Psychiatry and Psychotherapy Molecular Psychopharmacology Group University of Regensburg
+Caroline.Nothdurfter@medbo.de
+https://www.uni-regensburg.de/medizin/psychiatrie-psychotherapie/forschung/molekulare- neurowissenschaften/index.html
+
+Prof. Dr. Jens Schwarzbach
+Department of Psychiatry and Psychotherapy Biomedical Imaging Group
+University of Regensburg
+Jens.Schwarzbach@ukr.de
+https://www.uni-regensburg.de/medizin/psychiatrie-psychotherapie/forschung/biomedizinische-bildgebung/index.html
+
+------------
+Project C12: “Brain Representations of Emotional States in Humans”
+There are many ways to feel happy, sad, angry, or surprised. Is there a way to identify such emotional states reliably from brain activity? The Biomedical Imaging Group at the Department of Psychiatry and Psychotherapy at the University of Regensburg works on developing brain-based biomarkers of emotions for basic as well as clinical research on emotion and emotion related disorders.
+In this project we aim at inducing emotional states and investigating the resulting patterns of brain activity in terms of classification and individualized representational aspects using machine learning approaches such as statistical classifiers, deep neural networks and representational similarity analysis.
+We are looking for a PhD candidate from Psychology, Computer Science, Physics, Mathematics, or related fields, preferably with a strong background in computational (neuro-)science.
+
+Contact:
+Prof. Dr. Jens Schwarzbach
+Department of Psychiatry and Psychotherapy Biomedical Imaging Group
+University of Regensburg
+Jens.Schwarzbach@ukr.de
+https://www.uni-regensburg.de/medizin/psychiatrie-psychotherapie/forschung/biomedizinische-bildgebung/index.html
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear colleagues,
+
+The Signal Processing in Neuroimaging research group at the BCBL is looking for a motivated postdoctoral researcher in the development of a neuroimaging platform using fNIRS and fMRI for the rapid computation (i.e., on-the-fly or in real-time) of cerebrovascular reactivity (CVR) maps. The ideal candidate would have excellent programming skills using Python and/or Matlab and proven experience in the preprocessing and analysis of fMRI and/or fNIRS data. Of particular interest to the research group is the latest evolution of fNIRS towards wearable and high-density systems, hence familiarity with instruments and methods for diffuse optical tomography (DOT) are considered a plus. Preference will be given to candidates with prior experience in real-time biomedical signal processing or neuroimaging applications (e.g., neurofeedback, brain-computer interfaces). In addition, the selected candidate will have the opportunity to develop original experiments under the supervision and guidance of the PIs, as well as participate in the supervision of undergraduate and doctoral students. The selected candidate will also have the opportunity to integrate into other projects of the group and pursue collaborations within the team, the BCBL, as well as our international collaborators. The SPIN BCBL provides an inclusive and supportive environment with plenty of opportunities for career growth, scientific and cultural curiosity, and community involvement, depending on the candidate's skills and aspirations. We welcome all applicants. 
+
+More information about the position and the project is available at:
+https://www.bcbl.eu/en/join-us/job-offers/funded-postdoctoral-position-signal-processing-neuroimaging-group
+
+Please do not hesitate to contact me for more information about the position.
+
+Best wishes,
+Cesar
+
+
+
+----------------------------------------------------------------------
+We are working flexibly at BCBL.  I am sending this message at a time that suits me. Please feel comfortable knowing that I do not expect you to read, respond to, or action it outside of regular working hours.
+----------------------------------------------------------------------
+César Caballero-Gaudes
+Group Leader Signal Processing in Neuroimaging (SPIN)
+Ramon y Cajal Fellow & MRI engineer
+Coordinator Master in Cognitive Neuroscience of Language UPV/EHU
+Basque Center on Cognition, Brain and Language, Spain
+
+https://www.bcbl.eu/en/research/research-groups/signal-processing-neuroimaging
+https://www.bcbl.eu/es/conocenos/equipo/cesar-caballero
+Twitter: @caballerogaudes
+
+Legal disclaimer/Aviso legal/Lege-oharra: www.bcbl.eu/legal-disclaimer
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi there, I have what is hopefully a basic question about topup.
+I have a 4D diffusion file with 9 b=0 images acquired AP interspersed throughout 120 b=500,1000,2000 images. I have extra, separate, 3 b=0 images in PA directions.
+When I go to create my AP_PA_b0 file, I will combine the 3x PA b0 images with 3x AP b0 images.
+My question is, does it matter which 3 AP b0 images I choose from the 9 that are in the 4D diffusion when I am making this file?
+Thanks!
+
+########################################################################
+
+To
+
+Hi everyone,
+
+I created a contrast in the GLM GUI and it has the following information:
+
+EV1 = G2 pre
+EV2 = G2 post
+EV3 = G1 pre
+EV4 = G1 post
+EV5 = Age
+EV6 = MoCA
+
+Contrast Title                EV1    EV2    EV3    EV4    EV5     EV6  
+G1post < G2 post.          0         1       0       -1       0         0
+
+My question is... does inputting 0 into EV1 and EV3 control for the pre- (baseline) for both G1 and G2?
+
+Hope to hear back soon!
+
+Best,
+Ryu    
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Applications for Sept 2023/24 are now OPEN. Apply now to meet 12th February deadline.
+
+The i4health CDT will train the UK’s future leaders in next-generation medical imaging research, development and enterprise, to produce intelligent, radical healthcare innovations focused on either imaging or imaging-enabled systems.
+
+Our centre will provide the vital doctoral training to supply a pipeline of world-leading innovators in future medical-imaging technologies equipped with the philosophy and the technical tools to deliver next-generation context-aware imaging and image analysis techniques through to integrated patient-centred therapeutic platforms.
+
+UCL’s internationally leading positions in medical imaging and devices, data science and AI, robotics, and human-centred design, together with unique access to healthcare data and equipment, ideally place our centre to lead this transformation. We are looking for ambitious individuals to join our world-leading PhD programme in this exciting endeavour.
+
+Please visit http://ucl.ac.uk/i4health for details on PhD studentships on offer and how to apply.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi all,
+
+ I would like to use FSL to perform a rigid body registration between two different modality scans. The following commands register the two images,
+```
+ flirt -v -in to_transform.nii.gz -ref ref_image.nii.gz -out transformed_image.nii.gz -omat transform.mat
+ flirt -v -in to_transform.nii.gz -ref ref_image.nii.gz -out transformed_image.nii.gz -omat transform.mat -init -applyxfm transform.mat
+```
+However, I do not want to reslice the transformed image into the reference image space, as the input image has a much higher resolution than the reference image. Is there a way to do this using FLIRT/FLS?
+
+Thanks in advance!
+
+Cheers,
+Aaron Capon
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Following up on this,
+
+Can one assume that the waytotal is an estimate of total fibers entering the termination mask and hence provide useful information?  I know it's probabilistic.  
+
+Is there a way of getting fiber dispersion values entering the termination mask?
+
+Thank you 
+
+On Sat, Jan 21, 2023, 10:41 Roman Fleysher <000091d32badfb02-dmarc-request@jiscmail.ac.uk> wrote:
+Dear Saad,
+
+How is it possible for a streamline to enter several voxels inside termination mask? I would assume it can enter only one voxel and tracking stops right away.
+
+Roman
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK>
+Sent: Saturday, January 21, 2023 5:43 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] waytotal
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi
+
+ 
+
+If a streamline enters more than one voxel in your waypoint/termination mask, it will be counted more than once in the fdt_paths, but only once in the waytotal file.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Date: Saturday, 21 January 2023 at 01:57
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] waytotal
+
+Dear FSL developers and users,
+
+ 
+
+What does waytotal output of protrackx exactly represent?
+
+ 
+
+I use this command:
+
+ 
+
+probtrackx --mode=seedmask -x seed --stop=termination --waypoints=termination ....
+
+ 
+
+note that --stop and --waypoints files are the same file because I am looking for only fibers that end at the termination region.
+
+ 
+
+After I get the tract, I expect I can intersect it with the termination mask to see fibers entering the termination region. I expect the total count of pixel values within is the number of tracts that reached termination. In my case, it adds up to 3399, but the waytotal file has 3370. Why the small discrepancy? Why do they differ?
+
+ 
+
+Thank you,
+
+ 
+
+Roman
+
+ 
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi,
+
+I am using the latest release of FSL on Ubuntu 22.10. While FSL launches just fine, and tools like BET appear to be working as well, fsleyes is crashing on launch with this error: 'BadValue (integer parameter out of range for operation) Details: serial 1081 error_code 2 request_code 152 minor_code 3)'.
+
+I have tried downloading and running the fslinstaller.py all over again, but this bug seems to be present in the latest version of fsl(eyes) as well.
+
+Thanks
+Sayantan
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL developers and users,
+
+What does waytotal output of protrackx exactly represent?
+
+I use this command:
+
+probtrackx --mode=seedmask -x seed --stop=termination --waypoints=termination ....
+
+note that --stop and --waypoints files are the same file because I am looking for only fibers that end at the termination region.
+
+After I get the tract, I expect I can intersect it with the termination mask to see fibers entering the termination region. I expect the total count of pixel values within is the number of tracts that reached termination. In my case, it adds up to 3399, but the waytotal file has 3370. Why the small discrepancy? Why do they differ?
+
+Thank you,
+
+Roman
+
+
+
+
+Hi,
+
+Tried multiple times to install fsl on macos Monterey using "python3 fslinstaller.py". Each time, the same thing happened. Downloads and installs fine, post-install fails with the error - "Failed to create FSL Python environment".
+
+None of the commands like "fsl" are then recognized even though it looks like fsl has been installed under /usr/local/fsl.
+
+Thoughts on how to fix the re-do the install and/or fix the environment variables to account for the post-install problem?
+
+Thanks in advance,
+Malathi
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Diederick,
+
+This sounds like improper use of the LD_LIBRARY_PATH environment variable - you will need to consult with your system administrators.
+
+Paul
+
+On Wed, 18 Jan 2023 at 19:56, Diederick Stoffers <00009383e293e00e-dmarc-request@jiscmail.ac.uk> wrote:
+Hi,
+
+After loading the environment module for FSL6.0.6.2, FreeSufer’s freeview stopped working.
+
+$ freeview
+This application failed to start because no Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vnc, wayland-egl, wayland, wayland-xcomposite-egl, wayland-xcomposite-glx, webgl, xcb.
+
+Freeview starts without problems when FSL 6.0.5.2 is loaded in the environment.
+
+Any clue what could be the problem here? Would like to be able to have both in my environment.
+
+Best,
+
+Diederick
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Lin,
+
+The "expanded functional image" option will cause a three-stage registration to take place (functional -> expanded functional -> structural). This option is useful for partial-FOV data, where one full-FOV volume has been acquired.
+
+The "alternative reference image" option will result in two-stage registration, using the alternative reference in place of the functional data. This option should only be used if the alternative reference is defined in the same space as the functional data.
+
+Paul
+
+On Tue, 17 Jan 2023 at 21:30, Lin Qiu <lin.qiu@spc.ox.ac.uk> wrote:
+Hi there,
+
+ 
+
+I am doing registration for multiband func data and have found 2 different ways to add a high-contrast alternative reference volume:
+
+ 
+
+One is on the Registration practical of the MRI course, which uploaded the image to ‘registration’ -> ‘Expanded functional image’
+Another one is in the ICA practical of the MRI course, which used ‘Pre-stat’  ‘Alternative reference image’.
+ 
+
+I may misunderstood but they look the same to me. I had a test run for both methods, however had the registration a little bit different.
+
+ 
+
+Please can you suggest?
+
+ 
+
+Thank you!
+
+ 
+
+Best wishes,
+
+Lin
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Thanks so much for the reply! 
+I am trying to run eddy_cuda directly, after having created the link to eddy_cuda10.2 (sudo ln -sf ${FSLDIR}/bin/eddy_cuda10.2 ${FSLDIR}/bin/eddy_cuda. 
+On my machine running Ubuntu 20.04 Focal Fossa I have an Nvidia Unix x86-64 kernel module (cat /proc/driver/Nvidia/version) with Cuda version 10.1.243. 8 am using the fsl-built gcc (${FSLDIR}/bin/gcc)  
+
+On Fri, Jan 20, 2023, 7:32 PM paul mccarthy <pauldmccarthy@gmail.com> wrote:
+Hi Alessandra and Kiyotaka,
+
+The FSL wiki GPU page is out of date. As of FSL 6.0.6, you do not need to install the CUDA toolkit to run eddy_cuda (the 10.2 toolkit is statically linked into the binary) - you only need to install a CUDA driver.
+
+Alessandra, are you running eddy_cuda directly, or are you submitting it to a cluster via fsl_sub?
+
+Paul
+
+On Thu, 19 Jan 2023 at 17:59, Kiyotaka Nemoto <kiyotaka@nemotos.net> wrote:
+Dear Alessandra,
+
+In order to use eddy_cuda10.2 in Ubuntu 20.04, you need to install CUDA 10.2.
+
+The trick is that you need to use Ubuntu 18.04 repository for CUDA (not Ubuntu 20.04 repository)
+
+Attached is a script which installs CUDA 10.2 for Ubuntu 20.04.
+
+I myself use Ubuntu 20.04 and I wrote this script for myself.
+
+Save this script in Download and run this script sets up NVIDIA repository and install CUDA 10.2.
+
+After reboot, you can use eddy_cuda 10.2.
+
+Hope this helps,
+
+Kiyotaka
+
+
+On Fri, Jan 20, 2023 at 2:42 AM Alessandra Caporale <alessandra.stella.caporale@gmail.com> wrote:
+I found these information at
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GPU
+
+according to which, it seems that eddy_cuda is not supported by the 10.02 cuda suite!
+
+How could I install a cuda (9.1 or 8.0) that instead supports it?
+
+Thanks,
+
+Alessandra Stella
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+--
+Kiyotaka Nemoto, M.D., Ph.D.
+Associate Professor
+Department of Psychiatry
+Division of Clinical Medicine, Faculty of Medicine
+University of Tsukuba
+1-1-1 Tennodai Tsukuba, Ibaraki 305-8575, Japan
+E-mail: kiyotaka@nemotos.net
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Matthew,
+sorry for the delay of my answer,
+I will send you the photo of the screen, It's in italian
+The pc crashes when fsl is ultimating the installation, specifically when it's 100%.
+I'm trying to install fsl for ubuntu20 on a ubuntu22 environment.
+Thank you very much for the support
+Sincerely
+Alberto
+
+On Thu, Jan 19, 2023 at 5:52 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Alberto,
+If you could send a screenshot/photo of the Blue Screen that would be great. How long does the installer run for before the crash - e.g. does it crash instantly or run for some time?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 9 Jan 2023, at 16:48, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+
+Hi Alberto,
+Can you take a screenshot/photo of the Blue Screen error? Can you also confirm how much RAM your machine has?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 7 Jan 2023, at 11:52, A.G. <alberto.galimberti1@GMAIL.COM> wrote:
+
+Hi everyone,
+I have a problem with installing fsl.
+I would install it from WSL, I followed instructions on the fsl page, all passages are completed but during the processing of the command "python /mnt/c/Users/<WindowsUserName>/Downloads/fslinstaller.py" , the blue screen appears with a system error every time.
+Does my pc (Dell Latitude 7490) not support fsl requirements?
+Thank you in advance
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi SPM people,
+
+I recently implemented an excellent package for Mapper analysis (from Topological Data Analysis) on neuroimaging data. I'm sure it will have a larger audience if I integrate it into SPM12.
+
+Is there any documentation on how to create a new toolbox in SPM? If not, can you point me to some simple toolboxes that I can use as an example? Preferably something using GUIs for picking configurations. 
+
+Best,
+Daniel Hasegan
+

@@ -1,0 +1,117 @@
+Hi Kikuko,
+
+This is indeed a challenging problem, there is another approach you could try to get rid of the issue of the distortion corrections:
+
+- register your subject's FA to an FA template derived also from the dHCP: https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2021.661704/full
+
+- register this FA template (using the T2w) to the Schuh low res template
+
+- concatenate both registrations into one and apply it to the subject's FA
+
+I would use ANTs for both registrations and then transform them to FSL format.
+
+I hope this helps.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+Dear FSL users,
+                          We are pleased to announce the release of FSL 6.0.7.10.
+
+Release highlights:
+
+- This is a minor bug-fix release
+
+The full changelog can be found at:
+
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/development/history/changelog-6.0.7.10.md
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+
+Apologies for cross-posting
+
+The University of Chicago's Department of Neurology is recruiting several faculty members at any rank to join the Healthy Aging & Alzheimer’s Research Care (HAARC) Center. We welcome candidates with research interests that align with our mission including topics and methods such as digital biomarkers, blood-based biomarkers, imaging biomarkers (MRI, PET), large-dataset curation, social determinants of health, assessment of cognition, memory, psychosocial wellbeing, functional outcomes, neuropathologic, nonpharmacologic interventions, and implementation science.
+
+We are looking for (1) a tenure track faculty (any rank, with or without tenure), (2) a non-tenure track faculty (any rank), (3) a behavioral neurologist, and (4) a full professor of neuroimmunology to direct a program in neuroinflammation.
+
+Clinical neuropsychologists, behavioral neurologists, and cognitive neuroscientists with an interest in contributing to a collaborative multidisciplinary research center are encouraged to apply. We especially welcome applicants from URM groups, which are African American, Latino, Native American, Pacific Islanders, women, and individuals with disabilities.
+
+For more information see our website: https://haarc.center.uchicago.edu/employment-opportunities
+Tenure track faculty position: https://apply.interfolio.com/141590
+Non-tenure track faculty position: http://apply.interfolio.com/141591
+Behavioral neurologist: https://apply.interfolio.com/119788
+Tenured full professor in neuroimmunology, with endowed chair: https://apply.interfolio.com/140371
+
+--
+Adam Martersteck, PhD (he/him)
+Assistant Professor of Neurology | The University of Chicago,
+Healthy Aging & Alzheimer's Research Care (HAARC) Center
+Address | 850 East 58th Street | Chicago, IL 60637
+Phone | 773-795-1683
+
+Email | martersteck@uchicago.edu
+
+Study Coordinator: Full-time Paid Postbaccalaureate Research Assistant
+University of Maryland, College Park, MD
+
+Candidates are being considered for a NIMH/NIAAA-funded post-baccalaureate Study Coordinator position in the laboratory of Dr. Alex Shackman in the Department of Psychology at the University of Maryland at College Park.
+
+The overarching mission of the lab is to have a deep impact on the fields of affective and clinical/translational neuroscience. To that end, we do our best to perform innovative studies that can lead to significant discoveries, to disseminate our discoveries as widely as possible, and to mentor trainees to become top-notch scientists.
+
+Under the supervision of Dr. Shackman and other senior staff, the Study Coordinator will play a central role in ongoing NIAAA- and NIMH-sponsored projects aimed at understanding the neurocomputational architecture of fear and anxiety and its role in adult anxiety and alcohol use disorders. This position will provide opportunities to gain experience with neuroimaging (fMRI), smartphone ecological momentary assessment (EMA), and structured clinical interviews. This is an exciting opportunity to receive top-notch mentorship and establish a competitive research record—including publications and conference presentations—in preparation for graduate training in clinical psychology, affective neuroscience, or medicine. You can learn more about former Study Coordinators on our Alumni page.
+
+This is a 1-year position that is renewable, contingent on performance and funding. Duties may include, but are not limited to, subject recruitment and scheduling; data acquisition, processing, and archiving; study/database management; general grant and lab administration; and manuscript/figure preparation. Some duties (e.g. MRI sessions) will occur during evening or weekend hours.
+
+Applicants should send: (1) a Cover Letter summarizing relevant experiences, skills, and interests—please be specific and concrete; (2) a CV/Resume, (3) relevant Transcripts (unofficial copies are fine), and (4) Contact Information for 2-4 references. Please send your materials to Dominique Ewing (dewing1@umd.edu). Formal letters of recommendation are not required for the initial application and will only be requested for short-listed applicants.
+
+Read more about the NIMH and NIAA projects here.
+
+This is a fantastic opportunity to live in and explore DC, MD, and Northern VA!
+
+Learn more about the revitalization of College Park at the Greater College Park website, in the Fall 2018 issue of Terp Magazine (flip to page 38) and in a special section of the Washington Business Journal
+College Park recently made Washingtonian magazine’s annual Best of the DMV list
+College Park and neighboring Hyattsville were highlighted again in the Washingtonian and the Washington Post
+Hyattsville deemed a ‘hot’ neighborhood by the Washingtonian
+Applicants will be considered until the position is filled. The position will begin in Summer 2024. The ideal candidate would be able to make a 2-year commitment to the position.
+
+The University of Maryland is an equal opportunity affirmative action employer with a commitment to racial, cultural, and gender diversity.  We do not discriminate in hiring on the basis of sex, gender identity, sexual orientation, race, color, religious creed, national origin, physical or mental disability, Veteran status, or any other characteristic protected by federal, state, or local law.
+
+Employment is contingent on proof of COVID vaccination (or approved religious/medical exemption) and completion of a background check. A prior criminal conviction(s) will not automatically disqualify employment.
+
+
+
+--
+Alexander J. Shackman, Ph.D., Associate Professor
+Department of Psychology and Neuroscience and Cognitive Science (NACS) Program
+University of Maryland
+4094 Campus Drive (Biology/Psychology Building)
+College Park, MD 20742-4411
+
+Telephone: +1 (608) 358-5025
+Email: shackman@umd.edu
+Web: http://shackmanlab.org 
+
+Office: 1147D BPS
+Affective and Translational Neuroscience Laboratory: 0144 BPS | (301) 405-9842
+
+

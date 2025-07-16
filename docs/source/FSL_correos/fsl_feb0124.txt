@@ -1,0 +1,860 @@
+Hello,
+
+I have been trying to install on two computers: a MacBook Pro with OS Ventura and FSL 6.0.5 and a Mac Studio with a M2 chip and OS Sonoma and FSL 6.0.7.7. I am running into issues.
+
+1. In both computer, the R environment and packages are not created/installed. the FSL folder of the MacBook has the fslpython environment. I just got the Mac Studio last week and installed FSL without any issues but there is no fslpython. I found in the archives a command to install it with conda, but it did not work either. is it normal to no longer have the fslpython in the newer version?
+
+2. In the MacBook Pro, I installed mcr and adjusted the path to it in settings.sh, but when I try to run fix, it tells me that it cannot find mcr.
+
+Could you please advise me on what else I can try?
+
+Thank you,
+
+Marie
+
+Hi Alger,
+I’ve answered this in your other thread.
+
+Kind Regards
+Matthew
+
+Hi Alger,
+If the images are aligned when viewed in FSLeyes, then you can use the Tools->"Resample image” panel to resample one image to the dimensions of another.
+
+Kind Regards
+Matthew 
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Saad,
+
+ 
+
+I’ve also tried running SQUAD using three scans from one site that I’m sure have the same protocol, and this results in the same error.
+
+ 
+
+Best wishes,
+George
+
+Hello Marie,
+   For FSL 6.0.6 or newer, “fslpython” needs to be removed from the paths in the installation calls, e.g.
+
+$FSLDIR/fslpython/bin/conda create -n fslR
+
+would become:
+
+$FSLDIR/bin/conda create -n fslR
+
+And
+
+$FSLDIR/fslpython/envs/fslR/bin/R
+
+would become
+
+$FSLDIR/envs/fslR/bin/R
+
+For your FSL 6.0.5 install, can you confirm you installed the MCR version that matches the FIX version - R2019a for FIX 1.06.15?
+
+Kind Regards
+Matthew
+
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 31 Jan 2024, at 19:40, Marie-Eve Hoeppli <marie-eve.hoeppli@MAIL.MCGILL.CA> wrote:
+
+Hello,
+
+I have been trying to install on two computers: a MacBook Pro with OS Ventura and FSL 6.0.5 and a Mac Studio with a M2 chip and OS Sonoma and FSL 6.0.7.7. I am running into issues.
+
+1. In both computer, the R environment and packages are not created/installed. the FSL folder of the MacBook has the fslpython environment. I just got the Mac Studio last week and installed FSL without any issues but there is no fslpython. I found in the archives a command to install it with conda, but it did not work either. is it normal to no longer have the fslpython in the newer version?
+
+2. In the MacBook Pro, I installed mcr and adjusted the path to it in settings.sh, but when I try to run fix, it tells me that it cannot find mcr.
+
+Could you please advise me on what else I can try?
+
+Thank you,
+
+Marie
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi Keng-Yu,
+  I’ve had a look at the uploaded data - the problem is due to exactly how the various transforms are concatenated, the quickest fix here is to create a “padded” version of the sbref image - e.g. for your data:
+
+fslroi sub-WF99015_ses-2_task-LanguageLocalizer_run-1_sbref sub-WF99015_ses-2_task-LanguageLocalizer_run-1_sbref_padded -1 66 -1 66 -1 52 
+
+will add a single layer of zeros around the edge of the image, and this should allow the functional data to be registered normally.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Saad,
+
+ 
+
+Would the issue be if some scans within a site have different protocols? I’ve screened for this but can check again. We have approx. 600 scans so I could well have missed something.
+
+ 
+
+It looks like none of the individual QC results have been updated by SQUAD. The group_db.json file also contains the right number of subjects. Do you have any tips on identifying the scan / scans causing an issue?
+
+ 
+
+BW,
+
+George
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <0000bd064f960caf-dmarc-request@JISCMAIL.AC.UK>
+Date: Thursday, 1 February 2024 at 14:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] SQUAD Updating single subject reports error
+
+Hi
+
+It looks like the group QC results were successfully generated, but the program fails to update the individual QC files with extra results putting the subjects in the context of the group. This bit might fail if some of the subjects don’t have the same protocol (I think).
+
+To diagnose what might be happening: (i) make sure the group QC has been successfully generated (i.e. there is a PDF and associated JSON with sensible looking results), (ii) look to see if some of the subjects have had their JSON/PDF files updated by SQUAD, and if there are, look to see if there is anything different with the individual that caused a failure.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of George Gifford <0000bbce4e48ad33-dmarc-request@JISCMAIL.AC.UK>
+Date: Thursday, 1 February 2024 at 14:19
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] SQUAD Updating single subject reports error
+
+Hi Saad,
+
+ 
+
+Thanks for your reply!
+
+ 
+
+Yes, it’s a multisite project with multiple protocols. I thought though that this shouldn’t matter as site membership is defined in the list_SQUAD_grouping.txt file.
+
+ 
+
+Best wishes,
+
+George
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <0000bd064f960caf-dmarc-request@JISCMAIL.AC.UK>
+Date: Thursday, 1 February 2024 at 14:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] SQUAD Updating single subject reports error
+
+Hi George
+
+Do all your subjects haver the exact same protocol?
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of George Gifford <0000bbce4e48ad33-dmarc-request@JISCMAIL.AC.UK>
+Date: Thursday, 25 January 2024 at 18:11
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] SQUAD Updating single subject reports error
+
+Hi there,
+
+I am having trouble running SQUAD:
+
+os.system('eddy_squad ' + dwi_analysis_folder + 'list_QUAD_folders.txt -u -g ' +\
+          dwi_analysis_folder + 'list_SQUAD_grouping.txt -o' + dwi_analysis_folder + 'squad')
+Generating group database...
+Group database generated and stored. Writing group QC report...
+Group QC report generated
+Updating single subject reports...
+Traceback (most recent call last):
+  File "/nan/ceph/network/system/el8/fsl/6.0.5.2/fslpython/envs/fslpython/bin/eddy_squad", line 42, in <module>
+    main(args.list, args.grouping, args.group_db, args.update, args.output_dir)
+  File "/nan/ceph/network/system/el8/fsl/6.0.5.2/fslpython/envs/fslpython/lib/python3.8/site-packages/eddy_qc/SQUAD/squad.py", line 127, in main
+    squad_update.main(db, sList, group, group_db)
+  File "/nan/ceph/network/system/el8/fsl/6.0.5.2/fslpython/envs/fslpython/lib/python3.8/site-packages/eddy_qc/SQUAD/squad_update.py", line 105, in main
+    ol_colour_idx[1+sData['data_no_shells']:][(common_pe[:,1])] = (np.clip(np.floor((np.array(sData['qc_outliers_pe'])[common_pe[:,1]]-ol_avg[1+sData['data_no_shells']+common_pe[:,0]])/ol_std[1+sData['data_no_shells']+common_pe[:,0]]),0,2)).astype(int)   
+IndexError: index 1 is out of bounds for axis 0 with size 1
+
+I've checked the qc.json / group_db.json files for any unusual values. Any advice would be much appreciated!
+
+BW,
+George
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hi
+
+It looks like the group QC results were successfully generated, but the program fails to update the individual QC files with extra results putting the subjects in the context of the group. This bit might fail if some of the subjects don’t have the same protocol (I think).
+
+To diagnose what might be happening: (i) make sure the group QC has been successfully generated (i.e. there is a PDF and associated JSON with sensible looking results), (ii) look to see if some of the subjects have had their JSON/PDF files updated by SQUAD, and if there are, look to see if there is anything different with the individual that caused a failure.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+Hi Saad,
+
+ 
+
+Thanks for your reply!
+
+ 
+
+Yes, it’s a multisite project with multiple protocols. I thought though that this shouldn’t matter as site membership is defined in the list_SQUAD_grouping.txt file.
+
+ 
+
+Best wishes,
+
+George
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <0000bd064f960caf-dmarc-request@JISCMAIL.AC.UK>
+Date: Thursday, 1 February 2024 at 14:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] SQUAD Updating single subject reports error
+
+Hi George
+
+Do all your subjects haver the exact same protocol?
+
+ 
+
+Cheers
+
+Saad
+
+It’s likely that some error occurred during these “bad” subjects, probably with some output in the terminal. Are you able to re-run xtract for one of the bad subjects and check the terminal output?
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+Hi Yuliya
+
+ 
+
+It is difficult to advise you on this without looking at the data ourselves, but one thing you could try if you have difficulties tracking all the way from A to B or from B to A is to seed from the whole brain and use both A and B as waypoint masks (and termination masks). This would increase the robustness of the streamlining. This however is assuming you are only interested in reconstructing the course of the pathway, as opposed to quantifying the probabilities of streamlines from A going to B etc.
+
+ 
+
+Cheers
+
+Saad
+
+Hi Shaun,
+
+Thank you very much for your quick response.
+I have checked the folder Xtract_output for a "good" subject which has a complete output. In this folder, there are 2 files (commands.txt, stats.csv) and 2 folders(logs, tracts).
+And if I checked a tract ( /tracts/ac), I found the following outputs:
+density.nii.gz  densityNorm.nii.gz  density_lengths.nii.gz  probtrackx.log  sum_density.nii.gz  sum_waytotal  targets.txt  tractsInv  waytotal
+
+But if I did the same thing for another "bad" subject, I only found two files (probtrackx.log, targets.txt) for a missing tract.
+Moreover, for these two subjects, I did not find any log files in the logs folder, which is an empty folder.
+I think there must be something wrong with my processing.
+Could you give more hints to debug my issues?
+
+Best regards,
+Lin
+
+
+Hi,
+
+ 
+
+To understand what’s happening, best to look at the log files under the xtract folder and look to see what the output files are.
+
+ 
+
+Does xtract create any files for these tracts, or is it only the dentisyNorm file missing?
+
+ 
+
+Thanks,
+
+Shaun.
+
+Dear Michael and Martin,
+
+thanks for your help. Because I have processed the data with fsl_anat, I was able to run oxford_asl_roi_stats at the beginning (the regions from the Oxford atlas were listed), but then the
+script crashed. The problem seems to be related to the numpy version (I updated some weeks before to the version 1.26.2)   
+
+ - Right Pallidum...DONE
+ - Right Hippocampus...DONE
+ - Right Amygdala...DONE
+ - Right Accumbens...DONE
+
+Getting stats - minimum of 10 voxels to report in region
+Traceback (most recent call last):
+  File "/opt_prg/fsl/fsl-6.0.6.4/bin/oxford_asl_roi_stats", line 10, in <module>
+    sys.exit(main())
+  File "/opt_prg/fsl/fsl-6.0.6.4/lib/python3.10/site-packages/oxford_asl/roi_stats.py", line 733, in main
+    if isinstance(v, (float, np.float, np.float32, np.float64)):
+  File "/opt_prg/fsl/fsl-6.0.6.4/lib/python3.10/site-packages/numpy/__init__.py", line 324, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'float'.
+`np.float` was a deprecated alias for the builtin `float`. To avoid this error in existing code, use `float` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.float64` here.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations. Did you mean: 'cfloat'?
+
+Some people suggest to downgrade the numpy version (before 1.24) or to change np.float = float.
+I don't know in which script (roi_stats.py) or where (which line) I should change this. How should I solve this problem?
+
+Ralf
+
+Hi Nazirah,
+
+This should be fixed in the latest version of FSLeyes - you can update your installation by running "update_fsl_package fsleyes".
+
+Paul
+
+FSL,
+
+ 
+
+It would be good to have ZStandard support for compression of NIFTI files; i.e. to use .nii.zst over .nii.gz generally. ZStandard is much faster at compression and decompression and the file sizes are smaller. Although I/O is a small part of a pipeline in general the savings would add up over time. It would also require support in other major neuroimaging packages to make it worth it but I think it is worth considering. I thought I would start by putting this thought on the FSL list.
+
+ 
+
+Thanks for your thoughts,
+
+ 
+
+Chris Adamson.
+
+Dear FSL experts,
+
+Recently, I used FSL xtract and xtract_stats functions to extract mean micro-structural indices from 42 tracts.
+But the problem is there are no values for some tracts due to the missing images for those tracts when I used xtract_stats.
+
+The processing steps that I tried are as follows,
+
+Step 1. The raw structural images were preprocessed by HCP structural pipelines including PreFreeSurfer, FreeSurfer, and PostFreeSurfer pipelines.
+Step 2. The raw DWI data was preprocessed by HCP diffusion preprocessing pipeline. After this step, the diffusion data in the structural space (data.nii.gz) was obtained (../derivatives/HCPpipeline/${sub}/T1w/Diffusion/data.nii.gz).
+Step 3. The diffusion data in the structural space (data.nii.gz) along with bvecs, bvals, nodif_brain_mask.nii.gz) was used to conduct the DTI fitting using DIPY toolbox. After this step, FA.nii.gz and other metrics files were obtained.
+Step 4. BedpostX was applied to data.nii.gz (from step 2) to estimate fiber orientations.
+Step 5. FSL xtract function was used to extract 42 tracts according to the following commands.
+           BPX_DIR='Diffusion.bedpostX'
+           xtract -bpx $BPX_DIR -out XTRACT_output -species HUMAN -stdwarp ../MNINonLinear/xfms/standard2acpc_dc.nii.gz ../MNINonLinear/xfms/acpc_dc2standard.nii.gz -gpu
+
+## Because HCP pipeline has provided transforms, I directly used those two files (standard2acpc_dc.nii.gz; acpc_dc2standard.nii.gz) which are transforms between standard space and native structural space. Here, I did not use registration within FDT to produce transforms.
+
+Step6. I used xtract_stats to get the mean values for each microstructural indices by the following command.
+
+           xtract_stats -d ../derivatives/HCPpipeline/${sub}/T1w/Diffusion/dti_ -xtract ../derivatives/HCPpipeline/${sub}/T1w/XTRACT_output/ -w ../derivatives/HCPpipeline/sub-K2008061630/MNINonLinear/xfms/standard2acpc_dc.nii.gz -r ../derivatives/HCPpipeline/${sub}/T1w/Diffusion/dti_FA.nii.gz -meas FA,MD,RD,AD
+
+According to all steps above mentioned, I found for most participant data, the following errors were seen.
+Could you please help me check which step was wrong? Thank you in advance for FSL experts or users having experiences with Xtract.
+
+Processing ac
+Processing af_l
+Processing af_r
+Processing ar_l
+Couldn't find images for ar_r - skipping..
+Processing atr_l
+Processing atr_r
+Processing cbd_l
+Couldn't find images for cbd_r - skipping..
+Processing cbp_l
+Processing cbp_r
+Processing cbt_l
+Processing cbt_r
+Processing cst_l
+Processing cst_r
+Processing fa_l
+Processing fa_r
+Processing fma
+
+
+
+
+
+
+Hi Marie,
+
+Myself and other colleagues have run into issues installing FIX.  (And BTW, thanks to Salimi-Khorshidi & Griffantinfor the FIX tool!)
+
+That said, it is hard to install.  I highly recommend the work of this gentleman: https://neurosnippets.com/posts/fslfix-in-a-box/
+One container to rule them all: FSL-FIX in a box
+“Use a container” is the new “You need a virtual machine” I have to be sincere: the first time I heard about containers I was not impressed. It sounded like an exotic approach, and I couldn’t see why would you need that. A few years later, I have changed my mind a lot about it: not only containers can be used to create reproducible workflows, but they are also useful in several applications (taken to the extreme in some cases).
+neurosnippets.com
+He has created a Docker container with all necessary software and libraries.
+
+While it involves a wee learning curve regarding Docker and subsequent command-line or coding interactions (well, for me, anyway), it will be a far better experience than your last few weeks, I'll bet.
+
+I've never met Dr Mancini, but thanks!
+
+C
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Marie-Eve Hoeppli <marie-eve.hoeppli@MAIL.MCGILL.CA>
+Sent: Wednesday, January 31, 2024 12:40 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FIX installation failing
+ 
+[△EXTERNAL]
+
+
+
+Hello,
+
+I have been trying to install on two computers: a MacBook Pro with OS Ventura and FSL 6.0.5 and a Mac Studio with a M2 chip and OS Sonoma and FSL 6.0.7.7. I am running into issues.
+
+1. In both computer, the R environment and packages are not created/installed. the FSL folder of the MacBook has the fslpython environment. I just got the Mac Studio last week and installed FSL without any issues but there is no fslpython. I found in the archives a command to install it with conda, but it did not work either. is it normal to no longer have the fslpython in the newer version?
+
+2. In the MacBook Pro, I installed mcr and adjusted the path to it in settings.sh, but when I try to run fix, it tells me that it cannot find mcr.
+
+Could you please advise me on what else I can try?
+
+Thank you,
+
+Marie
+
+
+Hello,
+
+I have been trying to install on two computers: a MacBook Pro with OS Ventura and FSL 6.0.5 and a Mac Studio with a M2 chip and OS Sonoma and FSL 6.0.7.7. I am running into issues.
+
+1. In both computer, the R environment and packages are not created/installed. the FSL folder of the MacBook has the fslpython environment. I just got the Mac Studio last week and installed FSL without any issues but there is no fslpython. I found in the archives a command to install it with conda, but it did not work either. is it normal to no longer have the fslpython in the newer version?
+
+2. In the MacBook Pro, I installed mcr and adjusted the path to it in settings.sh, but when I try to run fix, it tells me that it cannot find mcr.
+
+Could you please advise me on what else I can try?
+
+Thank you,
+
+Marie
+
+########################################################################
+
+Hi Raphael,
+
+Thanks for the report - this is a bug - the netmats function should return a (subjects, nodes) array containing a separate amplitude value for each subject / node. I'll get it fixed for the next FSL release.
+
+Paul
+
+Hi Matt,
+
+a) How is fsleyes creating the initial transform for alignment? 
+b) Can we calculate this info without manually going into fsleyes -> Tools -> Nudge -Save Affine?
+FSLeyes is just combining the s/qforms of both images. You can accomplish the same on the command line using the -usesqform option to flirt, e.g.:
+
+flirt -applyxfm -usesqform -in epi.nii.gz -ref t1.nii.gz -omat epi2ref.mat -out epi2ref.nii.gz
+
+Paul
+
+COGNESTIC
+
+Cognitive Neuroimaging Skills Training In Cambridge
+
+16-27 September 2024
+
+MRC Cognition and Brain Sciences Unit
+
+University of Cambridge
+
+The two-week Cognitive Neuroimaging Skills Training In Cambridge (COGNESTIC) summer school will provide researchers with training in state-of-the-art methods for open neuroimaging analysis and related methods, focusing on MRI, fMRI and EEG/MEG. We will use a variety of open-source software and data formats (e.g. DiPy, Nilearn, MNE-Python, FSL, Freesurfer, fMRIprep, BIDS) and software packages to demonstrate and explain reproducible analysis pipelines for neuroimaging data, mostly based on Python. The sessions will provide theory and practical demonstrations of these analysis pipelines, with opportunities for attendees to practice them hands-on. We will supply extensive online materials on the theoretical background of the methods in advance, e.g. in bespoke videos created by our tutors. Special guest lectures by principal investigators will showcase the application of neuroimaging methods in cognitive and clinical neuroscience. We will also offer tours of the CBU’s lab facilities with an opportunity to discuss best practice in data acquisition. There will be ample time for attendees to interact with tutors and fellow attendees. The event is aimed at researchers who are starting or are planning to start their own neuroimaging research. Basic knowledge of neuroimaging techniques and coding would be useful but is not essential.
+
+The registration fee for COGNESTIC 2024 is £900. Registration deadline is 31 July 2024. The fee will include lunches, refreshments and two social events, but not accommodation and dinners. We offer a discount of 50% to attendees from UNESCO low and lower-middle income countries.
+
+Find more info at https://www.mrc-cbu.cam.ac.uk/events/cognestic-2024/.
+
+To pre-register your interest in COGNESTIC 2024, please contact olaf.hauk@mrc-cbu.cam.ac.uk.
+
+ 
+
+ 
+
+ 
+
+ 
+
+---------------------------------------------------------------
+
+ 
+
+Prof Richard (Rik) Henson, MA, MSc, PhD, FBA
+
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+
+President-Past, British Neuroscience Association
+
+Fellow of the British Academy
+
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+
+ 
+
+Hi Ralf, yes this is possible. A typical command would be:
+
+oxford_asl_roi_stats --oxasl-output <output dir> --fslanat <fslanat dir> --add-arrival --add-standard-atlases
+
+There are other options available, e.g. to specify custom atlases, try oxford_asl_roi_stats --help for more information
+
+If you don't have an fsl_anat directory you will need to specify the structural image, segmentation partial volumes and a structural->standard space transformation. Let me know if you need any help with these or any other options.
+
+Bw
+Martin
+
+
+The BASIL preview (and Siemens PWI) doesn’t look right to me – that doesn’t look like typical perfusion, for example there are very bright ventricles, but there should be negligible perfusion signal there. That does make me wonder what volumes you have in your data, as something doesn’t appear to be right at the label-control subtraction stage.
+
+ 
+
+Michael
+
+Depending upon how you extract a parameter related to the residue function remain near 1 (the rei not specific segment of the model where the residue function remains strictly at 1) I would expect it to have a relationship to Tmax, but it wouldn’t be the same parameter and I am not sure how strongly correlated the two would be.
+
+ 
+
+Michael
+
+Dear FSL-ers,
+
+Background:
+We are using FLIRT to co-register an EPI brainstem only volume to a whole-brain T1-weighted volume scan acquired in the same person in the same session.  (We don't have a whole brain EPI, alas).
+
+We have performed successful coregistration using the strategy described by Mark Jenkinson here:
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind0709&L=FSL&P=R51829
+
+To do this requires loading EPI and volume scans in fsleyes.  It notes that 'orientations and voxel sizes may not match' but provides a pretty decent job of aligning them on screen, presumably based on info in the NIFTI header.
+
+Using 'Tools -> Nudge' we can export the transformation matrix used by fsleyes to do this coregistration.  No additional manual 'nudging' is required.
+
+As MJ suggested, using this transformation matrix as a -init argument to flirt, along with -nosearch, is proving to be successful.
+
+Question(s):
+
+a) How is fsleyes creating the initial transform for alignment? 
+b) Can we calculate this info without manually going into fsleyes -> Tools -> Nudge -Save Affine?
+
+We have a lot of participants to work through and achieving b) would facilitate scripting for speed.
+
+Many thanks in advance,
+
+Matt
+ 
+
+Yes, it is possible as the ROI analysis is done by a separate script which oxford_asl calls. I am going to defer to Martin to remind me what it is called and how to use it.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Sir Peter Mansfield Imaging Centre 
+
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+ 
+
+Dianne,
+
+ 
+
+We could improve our documentation on this. The cortical and cerebral versions were our attempt to exclude sub-cortical structures which can be counted as a mixture of GM and WM using a volumetric partial volume estimate (i.e. from FAST), but do not necessarily represent GM and WM as we might observe from PV estimates elsewhere in the brain. Thus the cerebral WM is WM beneath the cortex, but excluding structures that would be counted as subcortical and not the volume that includes the white matter tracts. We didn’t have a perfect name for that ROI hence ‘cerebral’.
+
+ 
+
+Michael
+
+ 
+
+Hello!
+
+Thank you for your work in bringing FSLNets to python!
+
+When you use nets.netmats with method 'amp' it appears to call np.std with the default arguments for it, i.e.:
+
+np.std(
+    a,
+    axis=None,
+    dtype=None,
+    out=None,
+    ddof=0,
+    keepdims=<no value>,
+    *,
+    where=<no value>,
+)
+
+This then calculates the std on a flattened array, giving us arrays with the same value for each node within each subject.
+
+We can change this by calling nets.netmats(ts, 'amp', axis=0) to get the results expected, but this is not immediately obvious from the nets documentation and might lead to unexpected outputs.
+
+Best,
+Raphael
+
+Hi everyone,
+
+ 
+
+I am currently trying to get my head around scrubbing/censoring for a book chapter I am writing. I haven't got any personal experience of using scrubbing, though have been aware of it from the literature.
+
+ 
+
+My question is about the terminology that is used, which, from a quick browse of the literature, I find a little confusing and inconsistent. My tentative understanding is that "scrubbing" refers to actually "physically" removing offending volumes, while "censoring" refers to modelling them as "single-one-regressors" in the GLM.
+
+ 
+
+Am I correct in that? And which of these options is currently "most popular" within the task-fMRI/rs-fMRI community?
+
+ 
+
+Thanks Jesper
+
+ 
+
+Our main image processing tool is FSL but we use freesurfer for cortical parcellation. The original MRI image is (512,512,215). Freesurfer’s output images are in voxel grid size of (256, 256, 256). FSL output size heavily depend on the original MRI size. In our case, FSL outputs are in voxel grid size of (512, 512, 215). We have a difficulty matching the results of Freesurfer with the results we obtain from FSL. Specifically we want to combine the image results of these two images. How can we do this?
+
+########################################################################
+
+We use FSL to segment tissue for white matter, gray matter and csf. We use Freesurfer for cortical parcellation, in order to form lobes. The original size of the MRI image is (512,512,215). Freesurfer’s output images are in voxel grid size of (256, 256, 256). However FSL output heavily depend on the original MRI size. In our case, FSL outputs are in voxel grid size of (512, 512, 215). We may have a difficulty matching the dimensions of tissue segmentation outputs from FSL and lobe segmentation outputs from Freesurfer. Specifically, we want to combine the lobe structures we obtained from Freesurfer and the tissue segmentation images we obtain from FSL. How can we do this? How can we match their voxel grid size? We tried some interpolation methods, and resampling using python but seems not working.
+
+########################################################################
+
+Hi all,
+I am currently trying to run ASL analyses on a dataset that has a large area of intensity loss due to the presence of a focused ultrasound transducer in the MRI. While I know the final perfusion outputs will not be fully quantitative, we are hoping to get outputs that are accurate enough that we can compare pre and post-stimulation perfusion for each subject, given that the distortion is in the same place for the pre and post scans. However, when I run the data through BASIL, the final output image has almost no contrast between GM and WM, which I believe would mean that the entire image is invalid, since there is such a significant difference in true perfusion between those regions. Interestingly, the contrast is somewhat preserved in the original perfusion preview image in BASIL, as well as in the autocreated Siemens perfusion image. I’ve attached an image with example outputs at each stage of the process for reference. I’ve tested running it with and without moco, pvcorr, label duration, spatial regularization, distortion correction, and calibration, but the output looks the same every time. It’s a 3D PCASL sequence with bolus time 700ms and PLD 2.0s, perfusion mode FAIR Q2T.
+
+Does anyone know what could be happening during the analysis process to cause this issue? How can I go about getting usable output data from this input data?
+
+
+Thanks!
+Natalie
+
+
+########################################################################
+
+
+Dear FSL experts,
+
+Hello. I was encountering this issue when I use FSL Eddy correction for my recent series of brain diffusion MR scans. After Eddy correction, these "worm"-like artifacts occurred. Please refer to my attached screenshots.
+
+Here are the acquisition parameters if they help with troubleshooting:
+ 
+        A multishell diffusion scheme was used, and the b-values were 350 and 700 s/mm². The number of diffusion sampling directions were 20 and 20, respectively. The in-plane resolution was 0.595238 mm. The slice thickness was 1.65 mm. The images were resampled to 0.595200 mm isotropic resolution. The tensor metrics were calculated using DWI with b-value lower than 1750 s/mm².
+
+Would you help me troubleshoot it? Thank you for taking your time reviewing my questions.
+
+Best,
+Richard
+
+Dear friends and colleagues,
+
+I am pleased to announce two summer schools on neural data analysis, in the alluring Bucharest (Romania).
+
+There are two separate week-long courses on neuroscience data analysis: One about time-frequency/synchronization/statistics (*note: this same course is offered twice due to popular demand*), and one about linear algebra and dimension-reduction/source-separation. Both courses include discussions and demos on ethically incorporating generative AI into coding, writing, analysis, and hypothesis-generation.
+
+Below is the direct link to the course pages with application information. Please pass this link around to your colleagues/students who might be interested in one or both of these courses.
+https://sincxpress.com/summerschool.html
+
+Analyzing neural time series data
+(29 July - 2 August *and* 12-16 August). Fourier transform, convolution, time-frequency analysis, synchronization, nonparametric statistics, simulating time series data. (Note: the second session is recommended for people taking both courses.)
+
+Linear algebra for neuroscientists
+(19-23 August). Matrix algebra, least-squares model fitting, eigendecomposition, multivariate source separation, simulating multicomponent and multichannel time series data.
+
+https://sincxpress.com/summerschool.html
+
+Please note that applications, if accepted, are selected on a first-come-first-serve basis, and that the number of participants for each course is limited to 30.
+
+If you have questions about the courses, please feel free to contact me.
+
+I look forward to welcoming you to Bucharest this summer!
+
+--
+Mike X Cohen, PhD
+Fresh look: mikexcohen.com
+
+
+
+Hello dear fsl experts.
+Sorry if this seems like a foolish answer, but I'm having problems with the fsl_prepare_fieldmap command. It comments an error stating:
+"Phase image values do not have expected range
+Expecting at least 90% of 0 to 4096, but found 0.000000 to 2851.000000
+Please re-scale or find correct image, or force executation of this script with --nocheck"
+
+I was wondering, what does re-scale specifically mean? To scale the intensity values of the voxels in my image so that the max value is 4096? Or do I need to do another type of procedure? Is it possible to do it with fslmath or do I need another type of script??
+
+Thank you for your time and your patience.
+Have a nice day.
+
+Alejandro Garma
+
+Applications are currently being invited for a Data Manager at the Nathan Kline Institute (NKI - https://www.nki.rfmh.org/), in the Computational Neuroimaging Laboratories within the Center for the Biomedical Imaging and Neuromodulation (C-BIN), under the direction of Alexandre R. Franco, PhD. Primary responsibilities for this position will be to work with Neuroimaging (including MRI, EEG, electrophysiology) and Phenotypical data. The Data Manager will play a key role in organizing, curating, converting, storing, securing, and sharing these data to C-BIN researchers and external collaborators. You will be working on a large NIH funded project that consists of collaborators across several universities.
+
+Successful candidates must have sufficient technical skills (e.g., Python, R, MATLAB, bash scripts) to independently modify and create scripts to organize data. The candidate must also have experience working with databases (e.g., SQL). As experience grows, the analyst will be expected to provide supervision for junior researchers in their analytic efforts.
+
+JOB DUTIES:
+
+Develop/modify script to transform raw data into standard formats.
+Maintain and manage a research database (Longitudinal Online Research and Imaging System - LORIS).
+Upload data to the NIH NIMH Data Archive.
+Monitor data security.
+Generate written and visual progress reports.
+Liaise with C-BIN members and collaborators.
+Mentor and in some cases supervise junior lab members such as other research associates and graduate students.
+Maintain and support open data initiatives, including the NKI-Rockland Sample and International Data Sharing Initiative (INDI).
+JOB QUALIFICATIONS:
+
+The minimum qualifications for a successful candidate include:
+
+BS in Biomedical Engineering, Computer Engineering, Computer Science, or other related scientific fields. MS preferred.
+Proficient in programming Python, MATLAB, or R.
+Experience in Linux environment and software versioning (e.g. GitHub).
+Experience in working with Databases (e.g. SQL).
+Experience generating plots and graphs (e.g. Matplotlib).
+Knowledge with virtual containers and cloud computing is preferred.
+Knowledge with one or more MRI data analysis packages (e.g., AFNI, FSL, SPM, of Freesurfer) is preferred.
+Ability to work effectively in a very collaborative and multidisciplinary environment.
+
+
+Anticipated start date: as soon as possible
+
+Use the following link to apply for the position:
+
+ https://nki.applicantpro.com/jobs/3214318 
+
+Applications are currently being invited for a Data Manager at the Nathan Kline Institute (NKI - https://www.nki.rfmh.org/), in the Computational Neuroimaging Laboratories within the Center for the Biomedical Imaging and Neuromodulation (C-BIN), under the direction of Alexandre R. Franco, PhD. Primary responsibilities for this position will be to work with Neuroimaging (including MRI, EEG, electrophysiology) and Phenotypical data. The Data Manager will play a key role in organizing, curating, converting, storing, securing, and sharing these data to C-BIN researchers and external collaborators. You will be working on a large NIH funded project that consists of collaborators across several universities.
+
+Successful candidates must have sufficient technical skills (e.g., Python, R, MATLAB, bash scripts) to independently modify and create scripts to organize data. The candidate must also have experience working with databases (e.g., SQL). As experience grows, the analyst will be expected to provide supervision for junior researchers in their analytic efforts.
+
+JOB DUTIES:
+
+Develop/modify script to transform raw data into standard formats.
+Maintain and manage a research database (Longitudinal Online Research and Imaging System - LORIS).
+Upload data to the NIH NIMH Data Archive.
+Monitor data security.
+Generate written and visual progress reports.
+Liaise with C-BIN members and collaborators.
+Mentor and in some cases supervise junior lab members such as other research associates and graduate students.
+Maintain and support open data initiatives, including the NKI-Rockland Sample and International Data Sharing Initiative (INDI).
+JOB QUALIFICATIONS:
+
+The minimum qualifications for a successful candidate include:
+
+BS in Biomedical Engineering, Computer Engineering, Computer Science, or other related scientific fields. MS preferred.
+Proficient in programming Python, MATLAB, or R.
+Experience in Linux environment and software versioning (e.g. GitHub).
+Experience in working with Databases (e.g. SQL).
+Experience generating plots and graphs (e.g. Matplotlib).
+Knowledge with virtual containers and cloud computing is preferred.
+Knowledge with one or more MRI data analysis packages (e.g., AFNI, FSL, SPM, of Freesurfer) is preferred.
+Ability to work effectively in a very collaborative and multidisciplinary environment.
+
+
+Anticipated start date: as soon as possible
+
+Use the following link to apply for the position:
+
+ https://nki.applicantpro.com/jobs/3214318
+
+########################################################################
+
+
+Hello FSL expert,
+
+I am using Verbena to process some DSC data.  I understand that it uses the vascular model (from K. Mouridsen,  Bayesian estimation of cerebral perfusion using a physiological model of microvasculature)  where the residue function start at 1 and can stays at 1 for a certain time until it decreases.
+In your opinion, could you consider this time (from which the residue function stays flat) to be Tmax?
+
+Thank you,
+
+Julien.
+

@@ -1,0 +1,961 @@
+Hello Volkmar,
+
+thank you very much for the quick answer, that is good to know.
+
+Best wishes,
+Falko
+
+Am 29.11.2023 um 14:19 schrieb Volkmar Glauche:
+> Dear Falko,
+>
+> to be on the safe side, you will have to list each frame (e.g. via spm_select('ExtList',...)) that you want to normalise, but you don't need to split the 4D image stack into separate 3D files.
+>
+> Volkmar
+
+--
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+
+Dear Falko,
+
+to be on the safe side, you will have to list each frame (e.g. via spm_select('ExtList',...)) that you want to normalise, but you don't need to split the 4D image stack into separate 3D files.
+
+Volkmar
+
+Dear all, 
+
+
+
+I have troubles with preprocessing some of my data. I have aquired anatomical, functional BOLD images and field maps. In SPM, in previously used Realign&Unwarp in order to carry out realignment with integrating voxel deformation maps that can be calculated with the field maps. 
+
+
+
+This has all worked fine with most of my data. Now, with some of my sessions, the module still runs just fine and I don't get any warnings there. I can also work with the data in upcoming steps. However, I eventually cannot estimate models when my data was previously realigned with taking field maps into account. I get the error message "no significant voxels". It seems not to be due to the specific field map itself because the images do not seem to deal with any other field map (I tried it with a different field map of the same subject but from a different session). Using realignment without creating voxel deformation maps before also works with the data.  
+
+
+
+It is also strange that this occurs only with some of my data within the same subject, even though every session was aquired exactly analogously. 
+
+
+
+Has anyone dealt with problems like this before and might share some experience on that? Thank you very much in advance for your help and advice, I am grateful for any insight on that issue. 
+
+
+
+
+
+Best, 
+
+Lisa 
+
+
+
+
+
+
+Lisa Jeschke
+PhD student
+lisa.jeschke@tu-dresden.de
++49 351 463-43897
+
+Cognitive and Clinical Neuroscience / Professur für Kognitive und Klinische Neurowissenschaft
+TUD Dresden University of Technology 
+https://tu-dresden.de/mn/psychologie/ifap/kknw
+
+
+
+Hello experts,
+
+I am a PhD student, who's new to SPM. I am currently performing a task which involves - 
+
+Normalize an FDG brain PET scan to MNI space and extract activity concentrations from multiple brains regions.
+
+So far, I have managed the first part, of normalizing my image to MNI space (using the GUI). 
+
+I'm getting stumped on the second part. I have no idea how to define and draw the ROIs on my own scan.
+
+Things I have tried so far -
+
+Downloaded the Marsbar toolbox (0.45). It also has .mat files of defined ROIs in MNI space. However, I can only view those ROIs on a template available on SPM, but can't find anything where I can apply those ROIs on my own, spatially normalized FDG PET.
+
+I also built ROIs with coordinates, spheres and had no trouble viewing them on the template available on SPM, but couldn't find a way to apply them on my own, spatially normalized FDG PET.
+
+My MATLAB version is 2022b.
+
+I don't know if there's a way to do it on the GUI or if it's better to learn batch scripting and do it that way.
+
+Lastly, I'd like to apologize if my question isn't following the etiquette of the community. I'm not originally from a Neuroimaging background, please excuse the silliness of my question.
+
+
+Hello dear DARTEL experts,
+
+just a quick question: I want to use DARTEL to normalise 4D-fMRI images
+to MNI space. I was wondering if I can just feed the 4D image directly
+into DARTEL or if I need to use spm_select('ExtList', ...) to select the
+individual images (or even split the 4D image into 3D before). I am a
+bit confused because the DARTEL batch tool does not have the filter for
+4th image dimension like in 'vanilla' SPM.
+
+Thank you very much in advance!
+Best wishes,
+Falko
+
+--
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+
+Hello Volkmar,
+
+thank you very much for the quick answer, that is good to know.
+
+Best wishes,
+Falko
+
+Am 29.11.2023 um 14:19 schrieb Volkmar Glauche:
+> Dear Falko,
+>
+> to be on the safe side, you will have to list each frame (e.g. via spm_select('ExtList',...)) that you want to normalise, but you don't need to split the 4D image stack into separate 3D files.
+>
+> Volkmar
+
+
+Dear Peter,
+
+I really appreciate your response!
+
+In our exploration analysis, we included six of our experimental conditions for DCM. We defined three between-trial effects, each comparing two of the six conditions. We use this code for the between-trial effects:
+DCM.options.trials   = [1:6]; % index of ERPs within ERP/ERF file
+
+DCM.xU.X =[ 1 -1 0 0 0 0
+
+0 0 1 -1 0 0
+
+0 0 0 0 1 -1]’;% X matrix
+
+So, each B-parameter measures the difference between two conditions. What about the A-parameters? Do they establish the baseline in a general linear model regression with the matrix X as the design matrix? Or do the A-parameters hold no significance in this context?
+
+Cheers,
+Luna
+
+20231128 21:15 差出し人： peter.zeidman@ucl.ac.uk:
+Dear Luna
+
+Not a silly question! The interpretation of the A-parameters depends on how you set up the between-trials design. For example, let’s say you had two conditions, specified [0 1]. Then the first condition would be the baseline connectivity encoded by A, and the B-parameters would quantify how much you’d add to (or subtract from) the A parameters to transition from the first condition to the second condition. How was it set up for your design?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Luna Sato
+Sent: 23 November 2023 16:57
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] How do we refer to the connections defined in the A matrix in ERP DCM?
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hello experts,
+
+ 
+
+When conducting fMRI DCM analysis, the A matrix serves to establish intrinsic connections. However, in the context of ERP DCM, this definition doesn't apply as intrinsic connections specifically denote self-connections.
+
+ 
+
+When reporting results in ERP DCM, what term should we use for the connections in the A matrix? The manual suggests that the A matrix represents the connection strength parameters for the initial evoked response.
+
+ 
+
+Could we refer to it as the baseline connectivity? For instance, can we state that 'The values in the A matrix reflect the baseline connectivity?’
+
+ 
+
+I'm a beginner, so I apologize if my question is silly.
+
+Cheers,
+
+Luna
+
+ 
+
+ 
+
+Hello experts,
+
+I am a PhD student, who's new to SPM. I am currently performing a task which involves - 
+
+Normalize an FDG brain PET scan to MNI space and extract activity concentrations from multiple brains regions.
+
+So far, I have managed the first part, of normalizing my image to MNI space (using the GUI). 
+
+I'm getting stumped on the second part. I have no idea how to define and draw the ROIs on my own scan.
+
+Things I have tried so far -
+
+Downloaded the Marsbar toolbox (0.45). It also has .mat files of defined ROIs in MNI space. However, I can only view those ROIs on a template available on SPM, but can't find anything where I can apply those ROIs on my own, spatially normalized FDG PET.
+
+I also built ROIs with coordinates, spheres and had no trouble viewing them on the template available on SPM, but couldn't find a way to apply them on my own, spatially normalized FDG PET.
+
+My MATLAB version is 2022b.
+
+I don't know if there's a way to do it on the GUI or if it's better to learn batch scripting and do it that way.
+
+Lastly, I'd like to apologize if my question isn't following the etiquette of the community. I'm not originally from a Neuroimaging background, please excuse the silliness of my question.
+
+UT Southwestern
+
+Medical Center
+
+The future of medicine, today.
+
+
+
+Hello experts,
+
+I'm having some trouble using spm12 results GUI all of a sudden.
+I'm using Apple Silicon M1 MacOS Sonoma (14.1.1, up to date), MATLAB 2023b (update 4, up to date).
+After the update to MATLAB 2023b, I've been using the development version of spm12, where mex files are already compiled, with no issue.
+
+But for some unknown reason, when using Results GUI, it goes to the contrast manager, and when i click "done", everything gets stuck. The spinning wheel of death appears and it doesn't go to the next step no matter how long i wait.
+
+Tried redownloading the development version and maintenance version of spm, but still the same issue.
+Also tried using MATLAB 2023a (also worked fine before), but still gets stuck.
+
+Another post with a similar issue said GUI problems could be caused by Magnet/Tiles apps, but I do not have any window manager apps.
+
+Now sure what I can do to fix this.
+Any help would be so so appreciated.
+
+Thank you so much in advance!
+
+
+Hi everybody,
+
+We are pleased to announce that the application portal is still open for the NIH funded 2024 session of the course, “Training in Advanced Statistical Methods in Neuroimaging and Genetics”.
+
+ 
+
+We hope you pass this email on to your local neuroimaging community.
+
+ 
+
+The course will start on Monday, April 15, 2024 and finish on April 26, 2024 and is to be held in person, in Salt Lake City, Utah, United States at the University Guest House Conference Center. Our course also includes an ongoing (throughout the year) continuing education portion.
+
+ 
+
+The course is an intensive 2-weeks, about 8 hours per day of a mix of lectures and hands-on computer labs.
+
+ 
+
+neurostatsbootcamp.org
+
+ 
+
+Due to recently increased funding, we are pleased to announce we can drop our tuition this year to $2250. Strictly financial need scholarships will also still be offered.
+
+Tuition includes hotel accommodations at the University Guest House (arrival on April 14 with departure on April 26), breakfast, lunch, day time snacks, three dinners out as a group, and the planned evening activities. All course attendees will arrange for their own transportation to Salt Lake City. The course cost does include a daily pass to the Salt Lake City Trax light rail/commuter system. (Please note that the course instructors' effort is supported by the NIH grant thus avoiding that cost being passed on to the course attendees. This course is strictly not-for-profit.)
+
+Because of the limited size and advanced nature of the course, attendance is by application only – please make sure to fully read the website instructions. In general, applicants must be a US citizen, permanent resident, or working with an appointment at a US institution, though we do have the ability to accommodate 3 to 6 individuals that do not meet this criteria. We anticipate the total class size to be between 22 and 25 students.
+
+ 
+
+There are opportunities for scholarships which can partially offset hotel accommodations. These are based on true financial need and you will be instructed how to apply if you are admitted to the course.
+
+ 
+
+We look forward to seeing you in SLC in 2024!
+
+ 
+
+Late application deadline is Dec 1, 2023; decisions by Jan 5th, 2024.
+
+ 
+
+For more information email us at neurostats@g.ucla.edu (or advancedstatisticscourse@utah.edu)
+
+ 
+
+Robert and Anna
+
+ 
+
+------------------------------
+
+Robert Welsh, PhD
+
+Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+rcwelsh@g.ucla.edu
+
+robert.c.welsh@utah.edu
+
+ 
+
+Anna Docherty, PhD
+
+Associate Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+anna.docherty@utah.edu
+
+ 
+
+Christina Caldera
+
+Course Administrator
+
+neurostats@g.ucla.edu
+
+ 
+
+Dear all,
+
+We are setting up a new Siemens Vida with a 64-channel headcoil using a multiband sequence. We established most configurations with the help of Siemens engineers and ran some initial tests. For one configuration we are however not sure. The sequence includes “Distortion correction” and we are not sure of whether to switch it on or off. (1) If we set to OFF  gre_fielmap would be acquired and used for offline distortion correction, or would it make sense to (2) set it to ON and benefit from the correction, or (3) set it to ON and include the additional offline field correction? A general concern is whether the online distortion correction may lead to changes in the brain shape or signal that may later reduce the sensitivity for analyzing changes related to neural processing.
+
+Many thanks in advance and best wishes,
+Ben
+
+______________________
+Benjamin Becker, PhD
+Professor of Cognitive and Affective Neuroscience
+
+State Key Laboratory of Brain and Cognitive Sciences
+Department of Psychology
+The University of Hong Kong
+ 
+E-mail: bbecker@hku.hk / ben_becker@gmx.de
+Googlescholar: https://bit.ly/2NRESie
+Researchgate: https://bit.ly/3utehIU
+Twitter: @bn_becker
+
+Hi Carles,
+
+That makes sense. Thank you very much for your help!!
+
+Best
+Xinyu
+From: carles falcon <carlesfalcon@gmail.com>
+Sent: Tuesday, November 14, 2023 11:12
+To: Xinyu Liu <xinyuliu1999@HOTMAIL.COM>
+Cc: SPM@jiscmail.ac.uk <SPM@JISCMAIL.AC.UK>
+Subject: Re: [SPM] Contrast for mixed design ANOVA
+ 
+Dear Xinyu,
+SPM provides the statistic of the combination of regressors being > 0
+
+If you want to check whether
+
+-1 1 0 0 > 0 0 -1 1
+
+ Is equivalent to check
+
+ (-1 1 0 0) - (0 0 -1 1) > 0
+
+which leads to contrast
+
+-1 1 1 -1 > 0
+
+Hope this helps
+Carles
+
+El 14 nov 2023, a les 11:01, Xinyu Liu <xinyuliu1999@HOTMAIL.COM> va escriure:
+
+Dear SPM experts,
+
+I am trying to set up an analysis for subjects divided in two groups (between-subject factor) , each was measured two times (within-subject factor). After reading tutorials I realize that I should use flexible factorial design to test the interaction effect.
+In CAT12 manual, it says that to test the interaction effect:
+
+For Time 1 > Time 2 & Group A > Group B (interaction)
+1 -1 -1 1
+
+But in my study, what I want is to test whether there is a larger increase in an intervention group compared to a control group (i.e., time 1 < time 2 and Group A > Group B if I understand it correctly).
+I am a bit confused how to modify this to achieve my goal. Should it be [-1 1 1 -1]? Any help would be greatly appreciated.
+
+Thank you very much.
+Xinyu
+
+
+Dear SPM experts,
+
+I am trying to set up an analysis for subjects divided in two groups (between-subject factor) , each was measured two times (within-subject factor). After reading tutorials I realize that I should use flexible factorial design to test the interaction effect.
+In CAT12 manual, it says that to test the interaction effect:
+
+For Time 1 > Time 2 & Group A > Group B (interaction)
+1 -1 -1 1
+
+But in my study, what I want is to test whether there is a larger increase in an intervention group compared to a control group (i.e., time 1 < time 2 and Group A > Group B if I understand it correctly).
+I am a bit confused how to modify this to achieve my goal. Should it be [-1 1 1 -1]? Any help would be greatly appreciated.
+
+Thank you very much.
+Xinyu
+
+Dear Vladimir,
+
+Thank you!
+
+Could you please explain the physiological meaning of self-connections in the ERP DCM analysis? And under what circumstances are self-connections supposed to be modulated by experimental conditions?
+
+In the fMRI DCM analysis, self-connections in the A matrix can be set to not exist, if you mean self-connections by intrinsic connections.
+
+Best,
+Ling
+
+Nov 8, 2023, 12:44 by litvak.vladimir@gmail.com:
+Dear Ling,
+
+Intrinsic connections in MEEG models always exist, no matter what you put in the diagonal of the A matrix (the diagonal entries are ignored and that's why they are disabled in the GUI). I'm not sure if that's also the case for fMRI models.
+
+Best,
+
+Vladimir
+
+On Tue, Nov 7, 2023 at 10:15 PM Ling Quan <lingquan@tutanota.com> wrote:
+Dear Vladimir,
+
+
+Thank you!
+
+In fMRI DCM analysis, self-connection is defined in matrix A (which are used to define intrinsic connectivity or endogenous connections), and modulation of self-connection by experimental conditions is defined in matrices B.
+
+However, I noticed that in the ERP DCM example you provided, the modulation of self-connection was defined in matrices B, without any self-connections specified in matrices A. Aren't modulation effects supposed to be linked to endogenous connections? Having modulation effects in matrices B without self-connections in matrices A appears somewhat unusual.
+
+I found the differences between DCM analyses for ERP and fMRI very confusing. For example, the definition of intrinsic connections itself seems to vary. Some papers refer to intrinsic connections as the parameters defined in matrices A, while others restrict the term to self-connections alone.
+
+Best,
+Ling
+
+
+Nov 7, 2023, 13:26 by litvak.vladimir@gmail.com:
+Dear Ling,
+
+If you are modelling a single condition, the self-connections will always be present. You can enable or disable condition-specific effects on these connections if you add experimental effects. See the mismatch negativity example https://www.fil.ion.ucl.ac.uk/spm/docs/tutorials/MEEG/mmn/.
+
+Best,
+
+Vladimir
+
+On Tue, Nov 7, 2023 at 5:18 AM Ling Quan <00008a3cc04aa399-dmarc-request@jiscmail.ac.uk> wrote:
+Hi all,
+
+I am using SPM GUI to perform DCM analysis on evoke responses. However, I noticed that the self-connection option is grayed out and cannot be selected. Is this because self-connection is not mathematically or physiologically correct in ERP DCM analysis?
+
+Do SPM experts recommend against using self-connection in this case? However, I found some papers that enable self-connection in DCM analysis on evoke responses. Could you please help me understand this issue?
+
+Best,
+Ling
+
+
+Dear Vladimir,
+
+Thank you!
+
+In fMRI DCM analysis, self-connection is defined in matrix A (which are used to define intrinsic connectivity or endogenous connections), and modulation of self-connection by experimental conditions is defined in matrices B.
+
+However, I noticed that in the ERP DCM example you provided, the modulation of self-connection was defined in matrices B, without any self-connections specified in matrices A. Aren't modulation effects supposed to be linked to endogenous connections? Having modulation effects in matrices B without self-connections in matrices A appears somewhat unusual.
+
+I found the differences between DCM analyses for ERP and fMRI very confusing. For example, the definition of intrinsic connections itself seems to vary. Some papers refer to intrinsic connections as the parameters defined in matrices A, while others restrict the term to self-connections alone.
+
+Best,
+Ling
+
+
+Nov 7, 2023, 13:26 by litvak.vladimir@gmail.com:
+Dear Ling,
+
+If you are modelling a single condition, the self-connections will always be present. You can enable or disable condition-specific effects on these connections if you add experimental effects. See the mismatch negativity example https://www.fil.ion.ucl.ac.uk/spm/docs/tutorials/MEEG/mmn/.
+
+Best,
+
+Vladimir
+
+On Tue, Nov 7, 2023 at 5:18 AM Ling Quan <00008a3cc04aa399-dmarc-request@jiscmail.ac.uk> wrote:
+Hi all,
+
+I am using SPM GUI to perform DCM analysis on evoke responses. However, I noticed that the self-connection option is grayed out and cannot be selected. Is this because self-connection is not mathematically or physiologically correct in ERP DCM analysis?
+
+Do SPM experts recommend against using self-connection in this case? However, I found some papers that enable self-connection in DCM analysis on evoke responses. Could you please help me understand this issue?
+
+Best,
+Ling
+
+
+
+Hi all,
+
+I am using SPM GUI to perform DCM analysis on evoke responses. However, I noticed that the self-connection option is grayed out and cannot be selected. Is this because self-connection is not mathematically or physiologically correct in ERP DCM analysis?
+
+Do SPM experts recommend against using self-connection in this case? However, I found some papers that enable self-connection in DCM analysis on evoke responses. Could you please help me understand this issue?
+
+Best,
+Ling
+
+Dear Sophie
+
+That’s great. So to summarise the story so far… GLM analyses showed an interaction between task (task > control) and session (session 2 – session 1) in a particular brain region. PPI analyses showed increased connectivity between this seed region and three other areas in session 1, whereas this was not found in session 2. Although we can’t conclude there’s a *difference* in PPI connectivity between sessions, because no statistical test was performed, we can say there’s circumstantial evidence pointing towards that. Onto the DCM…
+
+ 
+
+> This led to my hypothesis that, in session 1, there might be more effective connectivity between brain regions, and that after our intervention, in session 2, there is a more localized system, where there is more effective connectivity of an area with itself instead of with other areas so to say.
+
+ 
+
+OK
+
+ 
+
+> For my DCM, I used a simple model of the two brain areas that popped up with my general GLM, leading to four model options. I did this for session 1 and session 2 separately, but am now thinking that it might be better to concatenate those sessions in the GLM set-up and then use them as modulators so that there is a direct comparison in the results between sessions 1 and 2. Do you think this makes sense?
+
+ 
+
+There are a couple of ways to address this.
+
+ 
+
+One is as you suggested – concatenate onsets and data and make a new GLM. Then, for each subject, specify a new DCM with modulators for the task effects in each session (or the difference between them). You may find it helpful to use the session concatenation tool, described on our old Wiki - https://en.wikibooks.org/wiki/SPM/Concatenation . This is the most elegant approach.
+
+ 
+
+The alternative would be to use the “summary statistic approach”. Have a DCM for each session and subject, then take the connectivity parameters up to the group level and model the between-session and between-subjects effects using PEB. This may be the more convenient approach, albeit less elegant, because you wouldn’t have to change the DCMs you have already made.
+
+ 
+
+And does it then make sense to have the modulator effect on all possible connections? 
+
+ 
+
+Try to be hypothesis-driven, where possible. Place the modulators on the minimum number of connections to express your hypotheses. Self-connections tend to be the most impactful; these control the sensitivity of regions to their inputs from the network.
+
+The other question is regarding my tasks. I have the task and the control task and am interested in the effective connectivity during the task. Do I take the task as a modulator as well in my model, also on all possible connections? Should I then leave the control condition out of it or also use it as a modulator in my model? 
+
+It's important that the DCM knows about all your experimental conditions, to enable it to deconvolve BOLD responses that overlap in time. A common approach is to have a single driving input that includes all trials, and then separate modulators corresponding to the individual conditions. This forces any differences between conditions to be expressed in terms of interesting modulations, rather than un-interesting driving inputs.
+
+ 
+
+Let us know if you have further questions, I appreciate it can be a steep learning curve!
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: Hof, S.R. van 't (SR) <s.r.vanthof@amsterdamumc.nl>
+Sent: 28 November 2023 11:39
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: Re: DCM set-up multiple sessions
+
+ 
+
+Dear prof. Zeidman,
+
+ 
+
+Thank you so much for your quick response. To answer your questions:
+
+ 
+
+Do you mean that in session 2, you see an effect of task > control in one area? Or, do you mean that you see this area when you compare task > control in session 2 vs session 1 (i.e., an interaction between session and task)?
+
+The latter indeed. If we contrast task>control and then compare session 2 >session 1, we see increased activity in one area.
+ 
+
+Did you do the whole analysis separately for each session? How did you define the seed region – were identical voxels used for both analyses? Or did you use session 2 to define the seed ROI for analysing both sessions?
+
+From the findings mentioned above, I took the ROI from this result (i.e., the area that had larger activity session 2 > session 1) and used this as the seed region for 1. the PPI analysis that I did for session 1, and 2. the PPI analysis I did for session 2. So I indeed did two seperate PPI analyses, one for session 1, one for session 2. 
+ 
+
+That’s clear – and to check, did you test for whether difference between sessions was significant?
+
+I did not check whether there was a significant difference between sessions. Since I saw three significant areas at the PPI with my seed region in session 1, but 0 regions in session 2, I thought it would be strange to do any statistics, as there are no results for session 2. If you think differently about this, I am ofcourse interested to hear your thoughts!
+ 
+
+I hope this is clear, if not, please let me know!
+
+Again, thank you very much for thinking along.
+
+ 
+
+Best,
+
+Sophie
+
+ 
+
+ 
+
+ 
+
+Van: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Verzonden: dinsdag 28 november 2023 12:28
+Aan: Hof, S.R. van 't (SR) <s.r.vanthof@amsterdamumc.nl>
+CC: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Onderwerp: RE: DCM set-up multiple sessions
+
+ 
+
+Dear Sophie
+
+Starting with your PPI analysis, it would be helpful to have some clarification please. Going one sentence at a time:
+
+ 
+
+> I have two sessions where participants were presented in the scanner with one task and one control task.
+
+ 
+
+Sure, that’s clear.
+
+ 
+
+> In session 2, we see an increased brain response in mainly one area and a bit in another area with a general GLM.
+
+ 
+
+Do you mean that in session 2, you see an effect of task > control in one area? Or, do you mean that you see this area when you compare task > control in session 2 vs session 1 (i.e., an interaction between session and task)?
+
+ 
+
+> To investigate further, I did a PPI analysis. I made a contrast of the task and control task of [1 -1] and from there exported the VOIs for my seed region (the one region where I saw the most brain activity increases). I did this separately for the first and the second session.
+
+ 
+
+Did you do the whole analysis separately for each session? How did you define the seed region – were identical voxels used for both analyses? Or did you use session 2 to define the seed ROI for analysing both sessions?
+
+ 
+
+> I saw that there was effective connectivity between my seed region in session 1 with three other areas (one of which was the area that I also found in the general GLM). However, in session 2, there was no effective connectivity between my seed region and any other regions.
+
+ 
+
+That’s clear – and to check, did you test for whether difference between sessions was significant?
+
+ 
+
+Once we’ve heard back from you on these points, we can move onto the DCM 😊
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: Hof, S.R. van 't (SR) <s.r.vanthof@amsterdamumc.nl>
+Sent: 23 November 2023 11:27
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: DCM set-up multiple sessions
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear prof. Zeidman,
+
+ 
+
+I am working on a DCM analysis and have several questions regarding the set-up which I would love to hear your thoughts on.
+
+ 
+
+A quick description of my data: I have two sessions where participants were presented in the scanner with one task and one control task. In session 2, we see an increased brain response in mainly one area and a bit in another area with a general GLM. To investigate further, I did a PPI analysis. I made a contrast of the task and control task of [1 -1] and from there exported the VOIs for my seed region (the one region where I saw the most brain activity increases). I did this separately for the first and the second session. I saw that there was effective connectivity between my seed region in session 1 with three other areas (one of which was the area that I also found in the general GLM). However, in session 2, there was no effective connectivity between my seed region and any other regions.
+
+ 
+
+This led to my hypothesis that, in session 1, there might be more effective connectivity between brain regions, and that after our intervention, in session 2, there is a more localized system, where there is more effective connectivity of an area with itself instead of with other areas so to say.
+
+ 
+
+For my DCM, I used a simple model of the two brain areas that popped up with my general GLM, leading to four model options. I did this for session 1 and session 2 separately, but am now thinking that it might be better to concatenate those sessions in the GLM set-up and then use them as modulators so that there is a direct comparison in the results between sessions 1 and 2. Do you think this makes sense? And does it then make sense to have the modulator effect on all possible connections? 
+
+ 
+
+The other question is regarding my tasks. I have the task and the control task and am interested in the effective connectivity during the task. Do I take the task as a modulator as well in my model, also on all possible connections? Should I then leave the control condition out of it or also use it as a modulator in my model? 
+
+ 
+
+As you can read, I find it hard to determine the set-up regarding modulators. I have read several papers now on the topic but can't seem to find a paper that has a similar setup as mine. I am really looking forward to hearing your thoughts on this.
+
+ 
+
+Thank you very much in advance.
+
+ 
+
+Best,
+
+Sophie
+
+
+
+Dear prof. Zeidman,
+
+Thank you so much for your quick response. To answer your questions:
+
+Do you mean that in session 2, you see an effect of task > control in one area? Or, do you mean that you see this area when you compare task > control in session 2 vs session 1 (i.e., an interaction between session and task)?
+The latter indeed. If we contrast task>control and then compare session 2 >session 1, we see increased activity in one area.
+
+Did you do the whole analysis separately for each session? How did you define the seed region – were identical voxels used for both analyses? Or did you use session 2 to define the seed ROI for analysing both sessions?
+From the findings mentioned above, I took the ROI from this result (i.e., the area that had larger activity session 2 > session 1) and used this as the seed region for 1. the PPI analysis that I did for session 1, and 2. the PPI analysis I did for session 2. So I indeed did two seperate PPI analyses, one for session 1, one for session 2. 
+
+That’s clear – and to check, did you test for whether difference between sessions was significant?
+
+I did not check whether there was a significant difference between sessions. Since I saw three significant areas at the PPI with my seed region in session 1, but 0 regions in session 2, I thought it would be strange to do any statistics, as there are no results for session 2. If you think differently about this, I am ofcourse interested to hear your thoughts!
+
+I hope this is clear, if not, please let me know!
+
+Again, thank you very much for thinking along.
+
+Best,
+Sophie
+
+Van: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Verzonden: dinsdag 28 november 2023 12:28
+Aan: Hof, S.R. van 't (SR) <s.r.vanthof@amsterdamumc.nl>
+CC: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Onderwerp: RE: DCM set-up multiple sessions
+ 
+Dear Sophie
+
+Starting with your PPI analysis, it would be helpful to have some clarification please. Going one sentence at a time:
+
+ 
+
+> I have two sessions where participants were presented in the scanner with one task and one control task.
+
+ 
+
+Sure, that’s clear.
+
+ 
+
+> In session 2, we see an increased brain response in mainly one area and a bit in another area with a general GLM.
+
+ 
+
+Do you mean that in session 2, you see an effect of task > control in one area? Or, do you mean that you see this area when you compare task > control in session 2 vs session 1 (i.e., an interaction between session and task)?
+
+ 
+
+> To investigate further, I did a PPI analysis. I made a contrast of the task and control task of [1 -1] and from there exported the VOIs for my seed region (the one region where I saw the most brain activity increases). I did this separately for the first and the second session.
+
+ 
+
+Did you do the whole analysis separately for each session? How did you define the seed region – were identical voxels used for both analyses? Or did you use session 2 to define the seed ROI for analysing both sessions?
+
+ 
+
+> I saw that there was effective connectivity between my seed region in session 1 with three other areas (one of which was the area that I also found in the general GLM). However, in session 2, there was no effective connectivity between my seed region and any other regions.
+
+ 
+
+That’s clear – and to check, did you test for whether difference between sessions was significant?
+
+ 
+
+Once we’ve heard back from you on these points, we can move onto the DCM 😊
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: Hof, S.R. van 't (SR) <s.r.vanthof@amsterdamumc.nl>
+Sent: 23 November 2023 11:27
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: DCM set-up multiple sessions
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear prof. Zeidman,
+
+ 
+
+I am working on a DCM analysis and have several questions regarding the set-up which I would love to hear your thoughts on.
+
+ 
+
+A quick description of my data: I have two sessions where participants were presented in the scanner with one task and one control task. In session 2, we see an increased brain response in mainly one area and a bit in another area with a general GLM. To investigate further, I did a PPI analysis. I made a contrast of the task and control task of [1 -1] and from there exported the VOIs for my seed region (the one region where I saw the most brain activity increases). I did this separately for the first and the second session. I saw that there was effective connectivity between my seed region in session 1 with three other areas (one of which was the area that I also found in the general GLM). However, in session 2, there was no effective connectivity between my seed region and any other regions.
+
+ 
+
+This led to my hypothesis that, in session 1, there might be more effective connectivity between brain regions, and that after our intervention, in session 2, there is a more localized system, where there is more effective connectivity of an area with itself instead of with other areas so to say.
+
+ 
+
+For my DCM, I used a simple model of the two brain areas that popped up with my general GLM, leading to four model options. I did this for session 1 and session 2 separately, but am now thinking that it might be better to concatenate those sessions in the GLM set-up and then use them as modulators so that there is a direct comparison in the results between sessions 1 and 2. Do you think this makes sense? And does it then make sense to have the modulator effect on all possible connections? 
+
+ 
+
+The other question is regarding my tasks. I have the task and the control task and am interested in the effective connectivity during the task. Do I take the task as a modulator as well in my model, also on all possible connections? Should I then leave the control condition out of it or also use it as a modulator in my model? 
+
+ 
+
+As you can read, I find it hard to determine the set-up regarding modulators. I have read several papers now on the topic but can't seem to find a paper that has a similar setup as mine. I am really looking forward to hearing your thoughts on this.
+
+ 
+
+Thank you very much in advance.
+
+ 
+
+Best,
+
+Sophie
+
+Dear prof. Zeidman,
+
+Thank you so much for your quick response. To answer your questions:
+
+Do you mean that in session 2, you see an effect of task > control in one area? Or, do you mean that you see this area when you compare task > control in session 2 vs session 1 (i.e., an interaction between session and task)?
+The latter indeed. If we contrast task>control and then compare session 2 >session 1, we see increased activity in one area.
+
+Did you do the whole analysis separately for each session? How did you define the seed region – were identical voxels used for both analyses? Or did you use session 2 to define the seed ROI for analysing both sessions?
+From the findings mentioned above, I took the ROI from this result (i.e., the area that had larger activity session 2 > session 1) and used this as the seed region for 1. the PPI analysis that I did for session 1, and 2. the PPI analysis I did for session 2. So I indeed did two seperate PPI analyses, one for session 1, one for session 2. 
+
+That’s clear – and to check, did you test for whether difference between sessions was significant?
+
+I did not check whether there was a significant difference between sessions. Since I saw three significant areas at the PPI with my seed region in session 1, but 0 regions in session 2, I thought it would be strange to do any statistics, as there are no results for session 2. If you think differently about this, I am ofcourse interested to hear your thoughts!
+
+I hope this is clear, if not, please let me know!
+
+Again, thank you very much for thinking along.
+
+Best,
+Sophie
+
+Dear Sophie
+
+Starting with your PPI analysis, it would be helpful to have some clarification please. Going one sentence at a time:
+
+ 
+
+> I have two sessions where participants were presented in the scanner with one task and one control task.
+
+ 
+
+Sure, that’s clear.
+
+ 
+
+> In session 2, we see an increased brain response in mainly one area and a bit in another area with a general GLM.
+
+ 
+
+Do you mean that in session 2, you see an effect of task > control in one area? Or, do you mean that you see this area when you compare task > control in session 2 vs session 1 (i.e., an interaction between session and task)?
+
+ 
+
+> To investigate further, I did a PPI analysis. I made a contrast of the task and control task of [1 -1] and from there exported the VOIs for my seed region (the one region where I saw the most brain activity increases). I did this separately for the first and the second session.
+
+ 
+
+Did you do the whole analysis separately for each session? How did you define the seed region – were identical voxels used for both analyses? Or did you use session 2 to define the seed ROI for analysing both sessions?
+
+ 
+
+> I saw that there was effective connectivity between my seed region in session 1 with three other areas (one of which was the area that I also found in the general GLM). However, in session 2, there was no effective connectivity between my seed region and any other regions.
+
+ 
+
+That’s clear – and to check, did you test for whether difference between sessions was significant?
+
+ 
+
+Once we’ve heard back from you on these points, we can move onto the DCM 😊
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: Hof, S.R. van 't (SR) <s.r.vanthof@amsterdamumc.nl>
+Sent: 23 November 2023 11:27
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: DCM set-up multiple sessions
+
+ 
+
+Dear Luna
+
+Not a silly question! The interpretation of the A-parameters depends on how you set up the between-trials design. For example, let’s say you had two conditions, specified [0 1]. Then the first condition would be the baseline connectivity encoded by A, and the B-parameters would quantify how much you’d add to (or subtract from) the A parameters to transition from the first condition to the second condition. How was it set up for your design?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Luna Sato
+Sent: 23 November 2023 16:57
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] How do we refer to the connections defined in the A matrix in ERP DCM?
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hello experts,
+
+ 
+
+When conducting fMRI DCM analysis, the A matrix serves to establish intrinsic connections. However, in the context of ERP DCM, this definition doesn't apply as intrinsic connections specifically denote self-connections.
+
+ 
+
+When reporting results in ERP DCM, what term should we use for the connections in the A matrix? The manual suggests that the A matrix represents the connection strength parameters for the initial evoked response.
+
+ 
+
+Could we refer to it as the baseline connectivity? For instance, can we state that 'The values in the A matrix reflect the baseline connectivity?’
+
+ 
+
+I'm a beginner, so I apologize if my question is silly.
+
+Cheers,
+
+Luna
+
+ 
+

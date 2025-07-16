@@ -1,0 +1,241 @@
+Postdoctoral Scholar in Neuroimaging and Big Data Analyses of Survival Decisions 
+We have an opening for one or two postdoctoral scholars to study the ecological models of survival decisions in humans. The positions will be for two years with the possibility of extension. The postdoctoral scholar will strive to improve the basic scientific understanding of human decision making under threat, with implications for improving related psychiatric disorders.  
+The postdoctoral scholar will work under the supervision of Prof. Dean Mobbs (www.deanmobbslab.com), in close collaboration with an interdisciplinary team. We invite ALL talented applicants. Applicants should hold or be completing a PhD in neuroscience, psychology, physics, or math and computer science. In addition, applicants should have some of the following skills: 
+	•	Advanced knowledge of neuroimaging data analyses (machine learning; MVPA for fMRI data, neural networks).  
+	•	Ability to scrape web data, clean, and manage large data sets.   
+	•	Python, Psych Toolbox, Matlab, R or Stata, Prolific, Unity, Qualtrics. 
+	•	The ability to create virtual environments using PHP, Erlang, Java and C++ and the like. 
+	•	Skill and appreciation for interdisciplinary thinking and communication. 
+ 
+Requirements: Positions are contingent upon completion of the PhD. Interested candidates should send a CV, a 2-3-page Research Statement, and three names of reference letter writers (as well as two letters) to: dmobbs@caltech.edu. The Research Statement should contain a section that addresses past and/or potential contributions to diversity, equity, and inclusion (e.g., mentoring activities, committee service, research, or teaching activities). A cover letter (maximum 1 page) is optional.  
+Applications will be reviewed starting on July 30, 2023, and will remain open until positions are filled.  
+Hiring Salary:  $68,000 per year  
+As one of the largest employers in Pasadena, CA, Caltech is committed to providing comprehensive benefits to eligible employees and their eligible dependents. Our benefits package includes competitive compensation, health, dental, and vision insurance, retirement savings plans, generous paid time off, parental leave, tuition reimbursement, and more. Learn more about our benefits and who is eligible. 
+ 
+We are an equal opportunity employer and all qualified applicants will receive consideration for employment without regard to age, race, color, religion, sex, sexual orientation, gender identity, or national origin, disability status, protected veteran status, or any other characteristic protected by law.  
+ 
+ 
+ 
+ 
+
+
+Dean Mobbs PhD                                                                                                 
+Professor of Cognitive Neuroscience
+Director: The Fear Lab
+Director: Caltech Brain Imaging Center (CBIC)                                                                                                                    
+California Institute of Technology                                                                     
+Pasadena, California 91125, MC 228-77                                                            
+Phone +1 626 714 8913                                                                                      
+Email: dmobbs@caltech.edu                                                                             
+URL: www.deanmobbslab.com
+
+
+Dr. Arpana Gupta (https://www.uclahealth.org/departments/medicine/gastro/gupta-lab) is now inviting applications for a NIH-funded postdoctoral fellowship position in her lab at the University of California, Los Angeles (UCLA) and the Goodman-Luskin Microbiome Center (https://www.uclahealth.org/departments/medicine/gastro/microbiome). The goal of our lab’s research is to elucidate brain-gut microbiome relationships in various stress-based disorders such as obesity, altered eating behaviors and cognitive decline. The goal of the lab is to understand underlying mechanisms and to develop brain-gut based treatments for these disorders.
+ 
+Our research group values open communication, motivation, optimism, mutual respect, teamwork, and innovative thinking. Dr. Gupta is highly committed to individualized mentoring to help trainees achieve the most out of their postdoctoral candidature and to move forward in their career. At a minimum, the training environment will include professional development, one-on-one meetings, group lab meetings, frequent seminars and journal clubs, opportunities to present their work at national and international scientific conferences, collaboration with partners within and outside UCLA, and manuscript preparation for publication in high impact journals. In addition, Dr. Gupta has a strong funding record and will strongly encourage and provide mentorship in grant applications. 
+
+The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment using multiple existing multi’omic datasets and will also be involved with data collection in current projects. 
+
+ The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to AGupta@mednet.ucla.edu. 
+ 
+Requirements: Candidates should have a Ph.D. in Cognitive Neuroscience, Computational Neuroscience, Neuroimaging, Psychology (Biological), Microbiome, Biostatistics or related disciplines. Strong analytical, quantitative and programming skills are essential. Experience in connectomics  and physiological modeling would be beneficial.  A real necessity is a passion for science, strong scientific writing and organizational skills, and a positive attitude. 
+
+
+Arpana "Annie" Gupta, Ph.D.
+Associate Professor
+Director: Neuroimaging Core
+G. Oppenheimer Center for Neurobiology of Stress and Resilience
+Ingestive Behavior and Obesity Program
+UCLA Vatche and Tamar Manoukian Division of Digestive Diseases
+David Geffen School of Medicine
+UCLA CHS 42-210, 10833 Le Conte Avenue | Los Angeles, CA 90095-7378
+Email: agupta@mednet.ucla.edu
+ https://www.uclahealth.org/gastro/gupta-lab  | Twitter: @AGuptaCNS
+
+This message (including any attachments) contains confidential
+information intended for a specific individual and purpose, and is
+protected by law. If you are not the intended recipient, you should
+delete this message and any disclosure, copying, or distribution of
+this message, or the taking of any action based on it, by you is
+strictly prohibited.
+
+
+Postdoc position in locus coeruleus connectomics of resilience
+
+at Massachusetts General Hospital / Harvard Medical School
+
+The Gordon Center for Medical Imaging (GCMI) in the Department of Radiology at Massachusetts General Hospital (MGH) and Harvard Medical School (HMS) in Boston, Massachusetts, has an opening for highly qualified individuals at the post-doctoral level to work with Dr. Heidi Jacobs and Dr. Sepulcre. The Jacobs lab is part of the Gordon Center for Medical Imaging at MGH and focused on improving the early detection and early treatment of Alzheimer’s disease. The lab focuses on the neuromodulatory subcortical nuclei, in particular the locus coeruleus, using a variety of approaches, including 7T MRI, PET imaging, pupil measurements, physiological recording, blood-based markers, cognitive assessments and non-invasive vagus nerve stimulation. The Sepulcre lab is focused on connectomics, brain organization methods and the integration with genomics in neurodegenerative diseases. This project is focused on identifying locus coeruleus functional network properties conferring resilience against Alzheimer’s disease-cognitive decline in the face of pathology and identifying network properties indicating risk of Alzheimer’s disease. This project will require pulling and harmonizing large imaging datasets together to investigate locus coeruleus function across the disease continuum (e.g. ADNI, HABS, A4, 7T lifespan dataset,..). The Jacobs Lab consists of a multidisciplinary team of one instructor, five postdocs, three PhD-students, three clinical research coordinators and one project manager. The Sepulcre lab consists of one Assistant Professor, three postdocs and several students.
+
+Most of the work in this project will be performed at the Athinoula A. Martinos Center for Biomedical Imaging, Charlestown Navy Yard. The candidate will be part of ongoing collaborations and be able to work in a stimulating and inspiring environment. The Department of Radiology at MGH is equipped with the first mobile PET/CT, the first brain PET/MRI, the first whole-body PET/MRI in the USA and several MRI scanners, including two 7T ultra-high-field scanner. It is equipped with a large-scale shared memory computing facility for parametric image analysis, tomographic reconstruction, Monte Carlo simulation, and other computationally intensive research applications.
+
+Our research group values open communication, motivation, optimism, mutual respect, teamwork, and innovative thinking. Dr. Jacobs and Dr. Sepulcre are highly committed to individualized mentoring to help trainees achieve the most out of their postdoctoral candidature and to move forward in their career. At a minimum, the training environment will include professional development, one-on-one meetings, group lab meetings, frequent seminars and journal clubs, opportunities to present their work at national and international scientific conferences (i.e. Human Amyloid Imaging, Alzheimer’s Association International Conference, OHBM), collaboration with partners within and outside MGH, and manuscript preparation for publication in high impact journals. In addition, both Dr. Jacobs and Dr. Sepulcre have a strong funding record and will strongly encourage and provide mentorship in grant applications.
+
+ 
+
+Requirements: Candidates should have a Ph.D. in Cognitive Neuroscience, Computational Neuroscience, Neuroimaging, Psychology (Biological) or related disciplines. Strong analytical, quantitative and programming skills and experience in fMRI are essential. Experience in connectomics or graph theory and physiological modeling would be beneficial. The candidate should be highly motivated, a strong communicator, possess internal drive to learn independently, but also be comfortable with working as part of a larger collaborative team. A real necessity is a passion for science, strong scientific writing and organizational skills, and a positive attitude. Experience in Alzheimer’s disease dementia or aging would be beneficial.
+
+MGH & HMS are equal-opportunity, affirmative action employers. Women and minority candidates are encouraged to apply.
+
+ 
+
+Apply: The successful candidate will have joint appointments at MGH and HMS. If interested, please send your CV, letter describing interests, background, major achievements, skills, goals and contact information for three professional references. Please send application materials to Dr. Heidi Jacobs, Associate Professor of Radiology, at hjacobs@mgh.harvard.edu
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dr. Heidi Jacobs
+
+Associate Professor of Radiology
+
+ 
+
+Massachusetts General Hospital 
+
+Harvard Medical School
+
+Department of Radiology
+
+Gordon Center for Medical Imaging
+
+149 13th Street
+
+Charlestown, MA 02129
+
+hjacobs@mgh.harvard.edu
+
+www.heidijacobs.org
+
+twitter: @HeidiJacobsLab
+
+Linkedin: https://www.linkedin.com/in/heidijacobs/
+
+ 
+
+Something like this happening would definitely makes sense and we already had similar issues in the past with antiviruses and backup systems. Tamer and Kristina, could you check whether Windows Defender is running on your machine and what its settings are? It is running on my test Windows 10 machine (Windows Security > Virus & threat protection) with real-time protection on but I don't observe any slowdown.
+
+
+
+Best regards,
+
+Guillaume.
+
+
+
+Dear all,
+
+I'm trying to run a batch script to perform the first-level analysis in SPM 12 and getting the following errors:
+
+Error using spm_jobman>fill_run_job (line 472)
+No executable modules, but still unresolved dependencies or incomplete module inputs.
+
+Error in spm_jobman (line 247)
+        sts = fill_run_job('run', cjob, varargin{3:end});
+
+Error in run_preproc_job (line 110)
+spm_jobman('run', matlabbatch);
+
+The script was running fine for one subject, however, I encountered these errors after adding the for loop. I've attached the script to this email. I would appreciate any help or suggestions!
+
+Thank you,
+Sunah 
+
+Dear Guillaume, Kristina, Tamer et al.,
+
+In the past, I encountered issues with large binary file writing on a Windows computer. The problem stemmed from Windows Defender setup (possibly linked to an update): it was scanning the whole file every time Matlab was reading or writing some bits. Switching to a lower level of "security" fixed the problem.
+Might be worth a hot.
+
+Best,
+Chris
+
+Dear Guillaume, 
+
+wow! Thank you so much, this was it. 
+I’m not using Magnet, but I do use tiles, another window manager for mac. I always have it in the background, so I never ran SPM without. I just quit it and tried it again, now the SPM GUI runs without any problems. 
+Thank you so much for pointing this out. 
+
+And thanks for the pointer with the MEX files, SPM no runs on my 2023b Matlab version just fine. 
+
+Jonas
+
+On 28. Jul 2023, at 07:18, Guillaume Flandin <g.flandin@ucl.ac.uk> wrote:
+
+Dear Jonas,
+
+I have been aware of significant slowdown on Mac with the GUI when a window manager called Magnet was installed: would that be your case? If not, it would be interesting to hear if others are observing a similar issue.
+
+Concerning MEX files for macOS Apple Silicon, you can find them in the development version of SPM on GitHub:
+
+  https://github.com/spm/spm
+
+Best regards,
+
+Guillaume.
+
+
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+ 
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu). 
+
+ 
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+Noah Cryns | Assistant Clinical Research Coordinator
+
+Memory and Aging Center
+
+University of California – San Francisco
+
+
+Phone: (415) 514-7580
+
+https://perrylab.ucsf.edu/
+
+https://decisionlab.ucsf.edu/
+
+Dear Kristina and Tamer,
+
+This is indeed an issue we are slowly investigating with Tamer. This is not something I manage to reproduce myself so if others observe a similar issue, please let us know. You report 5h for slice timing correction: is it the slowest task within preprocessing? Also, this didn't seem to be the issue with Tamer but you don't have an antivirus or a backup system running in the background when the large NIfTI files are repeatedly accessed?
+
+Best regards,
+
+Guillaume.
+
+
+
+Dear Susanne,
+
+As Leyla pointed out, the SPM.mat file only contains links to the data so if the original data are moved then all the links are broken (you could fix them with spm_changepath.m if needed). The timeseries extraction step to create the VOI.mat files requires access to the data as it is effectively computing a weighted average of them within a region of interest. After this step, specifying and estimating a DCM won't require access to the original data any more.
+
+Best regards,
+
+Guillaume.
+
+Dear Jonas,
+
+I have been aware of significant slowdown on Mac with the GUI when a window manager called Magnet was installed: would that be your case? If not, it would be interesting to hear if others are observing a similar issue.
+
+Concerning MEX files for macOS Apple Silicon, you can find them in the development version of SPM on GitHub:
+
+  https://github.com/spm/spm
+
+Best regards,
+
+Guillaume.
+

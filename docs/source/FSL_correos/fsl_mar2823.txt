@@ -1,0 +1,1209 @@
+Hi!
+
+Is it possible to break down the zstat map into left and right hemispheres? I'm hoping to plot the zstat map onto an inflated brain surface using the python package surfplot, which requires input from the LH and RH: https://surfplot.readthedocs.io/en/latest/auto_examples/index.html.
+
+Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Michael,
+
+Thank you for your reply. I'm glad to know that these results are not so implausible, and they do seem better after correcting --slicedt, as you pointed out. I'll be sure to examine each patient carefully as you suggested. Also, I should really have mentioned that I'm working with chronic stroke patients, so I believe reduced perfusion + longer arrival times could be contributing to the lower CBF values, in addition to the issues you mentioned.
+
+Thanks again,
+Phil
+
+On Thu, Mar 23, 2023 at 5:20 AM Michael Chappell <000079f9f909e19d-dmarc-request@jiscmail.ac.uk> wrote:
+Phil,
+
+If you are getting calibrated whole brain mean GM vales around 35 - as you are in one subject here - that wouldn’t surprise me. The one that is lower than that is a little more concerning, but not impossible. Two factors worth considering when interpreting these numbers: the resolution of your data - likely you have substantial partial volume effects and thus 30-40 for GM is not implausible since it won’t be particularly pure GM (even with the in built thresholds). For similar reasons the mean GM ROI is often imperfect, worth taking a looks, you find it is a fairly sparse sample. Good to also look at your calibration perfusion image and examine what values you are getting in regions of the cortex and whether you are seeing a reasonable GM/WM contrast in the images.
+
+You appear to have single TI data, thus you will not get a ATT estimate as such, it will just be using the default value (0.7 s) in this case. I don’t think your slicedt value will be that short - it is not the same as the dwell time, it should be the time it takes to acquire a complete slice of data before moving on to the more superior slice in the stack, normally 30-50 ms.
+
+Michael
+
+---
+Michael Chappell MEng DPhil SFHEA 
+Professor of Biomedical Imaging 
+Deputy Head of School – School of Medicine
+ 
+
+Sir Peter Mansfield Imaging Centre 
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+Precision Imaging Beacon Hub 
+Room A39f, A floor 
+Medical School, QMC 
+Nottingham, NG7 2UH 
+ 
+
+Books for biomedical engineering (physiology and imaging): 
+PhysiologyforEngineers.org 
+ 
+
+Books for neuroimaging: 
+NeuroimagingPrimers.org
+
+On 17 Mar 2023, at 17:11, Phillip R Johnston <pjohnston@RESEARCH.BAYCREST.ORG> wrote:
+
+Hi FSL/ASL experts,
+
+I’m attempting to process some PASL data with oxford_asl, but I’m struggling to get plausible results. Specifically, I’m receiving very low perfusion/CBF/arrival time values, as well as low GM/WM ratio. I’m concerned that this indicates an SNR issue with the original scans, but I’m not sure how to verify that.  Details below - any insight or suggestions would be greatly appreciated!
+
+Thanks,
+Phil
+
+ASL parameters:
+Scanner: 3T Siemens TIM Trio
+# control-tag pairs: 75
+Sequence type: PASL (Q2TIPS)
+T1 (first saturation pulse): 0.7 s
+T1s (last saturation pulse): 1.6 s
+T2 (readout starts): 1.8 s
+Readout: GRAPPA 2D EPI
+TR: 3 s
+TE: 13 ms
+Dwell time: 3.5e-06 s
+Calibration: 2D gradient echo EPI
+Calibration TR: 10 s
+
+My call to oxford_asl:
+oxford_asl -i /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/perf/sub-10306_asl.nii.gz -o /project/def-rmcintos/pjohns/stroke_BIDS/derivatives/oxford_asl/sub-10306 --mc --iaf=ct --tis=1.8 --bolus=0.7 --slicedt=0.0000035 -s /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/anat/sub-10306_T1w.nii.gz -c /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/perf/sub-10306_m0scan.nii.gz --tr=10 --cmethod=voxel --te=13 –fixbolus
+
+Results for one participant:
+Initial MVN for BASIL is: /tmp/fsl_L5WaAP_ox_asl/init/finalMVN
+Using BASIL step /tmp/fsl_L5WaAP_ox_asl/basil/step2
+Final registration
+T1t (for calibration): 1.3
+Calibration is voxelwise
+Mean perfusion in gm is 6.521789
+Mean arrival in gm is 0.701403
+Mean perfusion in wm is 4.667348
+Mean arrival in wm is 0.700210
+Mean perfusion_calib in gm is 36.749582
+Mean perfusion_calib in wm is 25.817282
+
+And another:
+Initial MVN for BASIL is: /tmp/fsl_llVy34_ox_asl/init/finalMVN
+Using BASIL step /tmp/fsl_llVy34_ox_asl/basil/step2
+Final registration
+T1t (for calibration): 1.3
+Calibration is voxelwise
+Mean perfusion in gm is 3.863853
+Mean arrival in gm is 0.689751
+Mean perfusion in wm is 3.567006
+Mean arrival in wm is 0.699921
+Mean perfusion_calib in gm is 22.510351
+Mean perfusion_calib in wm is 19.085984
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Phil Johnston, MA
+PhD Candidate
+University of Toronto | Rotman Research Institute
+pjohnston@research.baycrest.org
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Phil,
+
+If you are getting calibrated whole brain mean GM vales around 35 - as you are in one subject here - that wouldn’t surprise me. The one that is lower than that is a little more concerning, but not impossible. Two factors worth considering when interpreting these numbers: the resolution of your data - likely you have substantial partial volume effects and thus 30-40 for GM is not implausible since it won’t be particularly pure GM (even with the in built thresholds). For similar reasons the mean GM ROI is often imperfect, worth taking a looks, you find it is a fairly sparse sample. Good to also look at your calibration perfusion image and examine what values you are getting in regions of the cortex and whether you are seeing a reasonable GM/WM contrast in the images.
+
+You appear to have single TI data, thus you will not get a ATT estimate as such, it will just be using the default value (0.7 s) in this case. I don’t think your slicedt value will be that short - it is not the same as the dwell time, it should be the time it takes to acquire a complete slice of data before moving on to the more superior slice in the stack, normally 30-50 ms.
+
+Michael
+
+---
+Michael Chappell MEng DPhil SFHEA 
+Professor of Biomedical Imaging 
+Deputy Head of School – School of Medicine
+ 
+
+Sir Peter Mansfield Imaging Centre 
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+Precision Imaging Beacon Hub 
+Room A39f, A floor 
+Medical School, QMC 
+Nottingham, NG7 2UH 
+ 
+
+Books for biomedical engineering (physiology and imaging): 
+PhysiologyforEngineers.org 
+ 
+
+Books for neuroimaging: 
+NeuroimagingPrimers.org
+
+On 17 Mar 2023, at 17:11, Phillip R Johnston <pjohnston@RESEARCH.BAYCREST.ORG> wrote:
+
+Hi FSL/ASL experts,
+
+I’m attempting to process some PASL data with oxford_asl, but I’m struggling to get plausible results. Specifically, I’m receiving very low perfusion/CBF/arrival time values, as well as low GM/WM ratio. I’m concerned that this indicates an SNR issue with the original scans, but I’m not sure how to verify that.  Details below - any insight or suggestions would be greatly appreciated!
+
+Thanks,
+Phil
+
+ASL parameters:
+Scanner: 3T Siemens TIM Trio
+# control-tag pairs: 75
+Sequence type: PASL (Q2TIPS)
+T1 (first saturation pulse): 0.7 s
+T1s (last saturation pulse): 1.6 s
+T2 (readout starts): 1.8 s
+Readout: GRAPPA 2D EPI
+TR: 3 s
+TE: 13 ms
+Dwell time: 3.5e-06 s
+Calibration: 2D gradient echo EPI
+Calibration TR: 10 s
+
+My call to oxford_asl:
+oxford_asl -i /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/perf/sub-10306_asl.nii.gz -o /project/def-rmcintos/pjohns/stroke_BIDS/derivatives/oxford_asl/sub-10306 --mc --iaf=ct --tis=1.8 --bolus=0.7 --slicedt=0.0000035 -s /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/anat/sub-10306_T1w.nii.gz -c /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/perf/sub-10306_m0scan.nii.gz --tr=10 --cmethod=voxel --te=13 –fixbolus
+
+Results for one participant:
+Initial MVN for BASIL is: /tmp/fsl_L5WaAP_ox_asl/init/finalMVN
+Using BASIL step /tmp/fsl_L5WaAP_ox_asl/basil/step2
+Final registration
+T1t (for calibration): 1.3
+Calibration is voxelwise
+Mean perfusion in gm is 6.521789
+Mean arrival in gm is 0.701403
+Mean perfusion in wm is 4.667348
+Mean arrival in wm is 0.700210
+Mean perfusion_calib in gm is 36.749582
+Mean perfusion_calib in wm is 25.817282
+
+And another:
+Initial MVN for BASIL is: /tmp/fsl_llVy34_ox_asl/init/finalMVN
+Using BASIL step /tmp/fsl_llVy34_ox_asl/basil/step2
+Final registration
+T1t (for calibration): 1.3
+Calibration is voxelwise
+Mean perfusion in gm is 3.863853
+Mean arrival in gm is 0.689751
+Mean perfusion in wm is 3.567006
+Mean arrival in wm is 0.699921
+Mean perfusion_calib in gm is 22.510351
+Mean perfusion_calib in wm is 19.085984
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+
+Se invita a la comunidad TAB a participar en el curso virtual QIIME2 para principiantes dirigido a personas que son nuevos en el campo de la bioinformática, que no tienen experiencia previa en línea de comandos y que desean adquirir las habilidades para realizar análisis de datos de secuenciación masiva del 16S rRNA a través de QIIME2. 
+
+
+Para más detalles del objetivo del curso y temario:
+
+https://microbioma-lab.com/inicio/cursos-virtuales-de-microbioma/
+
+
+Fecha: 10 al 14 de abril
+
+Horario: 10 am a 2 pm (CDMX)
+
+
+Costo especial de $1,800 (mil ochocientos, moneda nacional) para la comunidad TAB escribiendo el código FEDETAB en el formulario de inscripción.
+
+
+Para inscribirse: https://forms.gle/pZjCQt5U4sWCbYpG6
+
+
+Selene Gómez
+
+Microbioma lab
+
+contacto@microbioma-lab.com
+
+
+
+--
+Fede Bioquímica es un grupo de difusión e información de interés para la comunidad científica.
+Departamento de Bioquímica, Facultad de Medicina, UNAM
+---
+Has recibido este mensaje porque estás suscrito al grupo "FedeBioquímica" de Grupos de Google.
+Para cancelar la suscripción a este grupo y dejar de recibir sus mensajes, envía un correo electrónico a fedetab+unsubscribe@bq.unam.mx.
+Para ver esta conversación en el sitio web, visita https://groups.google.com/a/bq.unam.mx/d/msgid/fedetab/SA2PR16MB4252F6A422BDB26E6E1255F3E8869%40SA2PR16MB4252.namprd16.prod.outlook.com.
+
+
+Hello again. Upon inspecting the design efficiency of the task, I found indications that the paradigm might indeed be the issue (rank-deficiency?). Here's a link to an image of the design matrix and efficiency: https://pasteboard.co/2klAgUgNma3P.png
+
+Any thoughts or experiences regarding similar paradigms/results (and the interpretation of them!) would be much appreciated. We're trying to work out how to move on from here.
+
+Best,
+Alexander 
+
+########################################################################
+
+Hello Paul,
+
+Thanks for your kind reply, here is the log file:
+
+-------------------------------------------
+ 
+
+21:21:17 fslinstaller.py:2327: fslinstaller.py 
+
+21:21:17 fslinstaller.py: 167: Installation log file: /tmp/fslinstaller_r7o2btu_.log 
+
+ 
+
+21:21:17 fslinstaller.py: 467: Downloading FSL installer manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json 
+
+21:21:17 fslinstaller.py: 410: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json ... 
+
+21:21:21 fslinstaller.py:1956: Installer is up to date (this version: 3.5.0, latest version: 3.4.1) 
+
+21:21:21 fslinstaller.py: 167: FSL 6.0.6.4 selected for installation 
+
+21:21:21 fslinstaller.py: 167: 
+
+Where do you want to install FSL? 
+
+21:21:21 fslinstaller.py: 167: Press enter to install to the default location [/home/lena/fsl] 
+
+ 
+
+21:21:22 fslinstaller.py: 181: FSL installation directory [/home/lena/fsl]:: 
+
+21:21:22 fslinstaller.py: 167: Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.6.4_linux-64.yml... 
+
+21:21:22 fslinstaller.py: 410: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.6.4_linux-64.yml ... 
+
+21:21:24 fslinstaller.py: 167: 
+
+Installing FSL in /home/lena/fsl 
+
+ 
+
+21:21:24 fslinstaller.py: 167: Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/22.11.1-4/Mambaforge-22.11.1-4-Linux-x86_64.sh... 
+
+21:21:24 fslinstaller.py: 410: Downloading https://github.com/conda-forge/miniforge/releases/download/22.11.1-4/Mambaforge-22.11.1-4-Linux-x86_64.sh ... 
+
+21:48:19 fslinstaller.py: 167: 
+
+ERROR occurred during installation! 
+
+21:48:19 fslinstaller.py: 167:     File miniconda.sh does not match expected checksum (16c7d256de783ceeb39970e675efa4a8eb830dcbb83187f1197abfea0bf07d30) 
+
+ 
+
+21:48:19 fslinstaller.py:2279:   File "/mnt/c/Users/wang_/Downloads/fslinstaller.py", line 2271, in handle_error 
+
+    yield 
+
+  File "/mnt/c/Users/wang_/Downloads/fslinstaller.py", line 2367, in main 
+
+    download_miniconda(ctx) 
+
+  File "/mnt/c/Users/wang_/Downloads/fslinstaller.py", line 1577, in download_miniconda 
+
+    sha256('miniconda.sh', checksum) 
+
+  File "/mnt/c/Users/wang_/Downloads/fslinstaller.py", line 348, in sha256 
+
+    raise Exception('File {} does not match expected checksum ' 
+
+-----------------------------------------------------------
+
+I'm wondering maybe there are some incompatible issue between fslinstaller.py and the system I'm using?
+
+Looking forward to your reply.
+
+Yours,
+Lena
+
+发件人: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> 代表 Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+发送时间: 2023年3月23日 21:08
+收件人: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+主题: Re: [FSL] installation error occured " File miniconda.sh does not match expected checksum"
+ 
+Hi Lena,
+
+It looks like the download was interrupted. Is there any additional information in the log file that is mentioned?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Lena Wang <wang_1218@OUTLOOK.COM>
+Sent: 23 March 2023 14:11
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] installation error occured " File miniconda.sh does not match expected checksum"
+ 
+I'm currently using Ubuntu 22.04.2 Jammy on WSL2 under Windows 11 system. When I try to install FSL, this error occured:
+
+---------------------------------------------------------------------------------------
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/22.11.1-4/Mambaforge-22.11.1-4-Linux-x86_64.sh...
+[#########                                                                                             ] 7.3 / 85.0 MB \
+ERROR occurred during installation!
+    File miniconda.sh does not match expected checksum (16c7d256de783ceeb39970e675efa4a8eb830dcbb83187f1197abfea0bf07d30)
+
+
+FSL installation failed!
+
+Please check the log file - it may contain some more information to help you diagnose the problem: /home/lena/fsl_installation_20230323214819.log
+---------------------------------------------------------------------------------------
+
+Is there any method to fix this problem?
+
+Thanks very much,
+Lena
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear FSL friends,
+
+I hope one of you has an idea on this issue - we’ve basically tried everything, and don’t understand the results.
+
+I have a paradigm set up as such:
+1 second fixation cross
+20 second stimulus
+1 second fixaton cross
+20 second nonsense
+…
+12 stimulus trials interleaved with 12 nonsense trials. I have triple-checked timings and matrices, and everything looks normal.
+
+However, the results are perplexing:
+For the stimulus (1 0), there is a small cluster with plausible z-statistics (peak z = 4.03, voxels ca 625)
+For nonsense (1 0), there is a small cluster with similar statistics (peak z = 3.87, voxels ca. 450)
+For the stimulus minus nonsense (1 -1), however, I get massively significant results (peak z = 6.83, voxel sizes range between 400-13500 for the clusters)
+For the nonsense minus stimulus (-1 1), I get even more wonky results: z = 7.29, voxels 52300)
+
+Again, timings, first-levels and second-levels are seemingly set up correct.
+Is it the nature of the paradigm that is too noisy? Do any of you have experience with this issue?
+
+Best, and thanks for your time,
+Alex
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi FSL Community!  ^V^
+    Although l have viewed some questions about  ANOVA and regression of GLM on the website of JISCMail and FSL-Wiki , l'm still a little puzzled,here are the questions.
+1、l have three groups(group1-HC, group2-mild patient, group3-severe patient ), then l want to find the difference between these groups where the demeaned age is a  nuisance covariate. According to the 1-factor 4-level in FSL-Wiki, my design and contrast matrix are shown below:
+                                                                                                  A      B     C     age        F 1
+EV1   EV2   EV3  age                                                C1   C-B        0      -1     1       0        yes
+1          0        0      -1                                             C2   C-A        -1      0     1      0          yes 
+1          0        0      -0.2
+0          1        0       0.3
+0          1        0       -0.1
+0          0        1       1.1
+0          0        1       -0.9
+
+so the questions are: (1) wheather my design and contrast matrix are correct?  (2)  How can we understand these two results (tfce_corrp_tstat1.nii.gz/tfce_corrp_tstat2.nii.gz) ?  Are they the results of post hoc?  since ANOVA in SPSS just show one result of difference between three groups, but here are two results.
+
+2、I also want to do voxel-based correlation. EV1 is what l'm interested in,  others are not, while these varients are all demened. Now, l'm not sure wheather the design and contrast matrix are corrcet, do we need to add column of constant, such as 1 ?
+Group     EV1     EV2    EV3                                        title                      EV1    EV2   EV3
+    1           0.2       0.1       -0.1                              C1    EV1-positive        1          0       0 
+    1           1          -0.2      0.2                               C2    EV1-negative       -1          0      0 
+    1           -2         0.1       -0.1
+3、What are the difference between those two pictures in the part of Single-Group Average with Additional Covariate GLM - (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM#Single-Group_Average_with_Additional_Covariate)? Are these all analysis of correlations?
+Since I'm new in GLM, and l would be very appreciated if you can provide some suggestions for me. 🙂
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+I'm currently using Ubuntu 22.04.2 Jammy on WSL2 under Windows 11 system. When I try to install FSL, this error occured:
+
+---------------------------------------------------------------------------------------
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/22.11.1-4/Mambaforge-22.11.1-4-Linux-x86_64.sh...
+[#########                                                                                             ] 7.3 / 85.0 MB \
+ERROR occurred during installation!
+    File miniconda.sh does not match expected checksum (16c7d256de783ceeb39970e675efa4a8eb830dcbb83187f1197abfea0bf07d30)
+
+
+FSL installation failed!
+
+Please check the log file - it may contain some more information to help you diagnose the problem: /home/lena/fsl_installation_20230323214819.log
+---------------------------------------------------------------------------------------
+
+Is there any method to fix this problem?
+
+Thanks very much,
+Lena
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi FSL Community!  ^V^
+    Although l have viewed some questions about  ANOVA and regression of GLM on the website of JISCMail and FSL-Wiki , l'm still a little puzzled,here are the questions.
+1、l have three groups(group1-HC, group2-mild patient, group3-severe patient ), then l want to find the difference between these groups where the demeaned age is a  nuisance covariate. According to the 1-factor 4-level in FSL-Wiki, my design and contrast matrix are shown below:
+                                                                                               A      B     C     age      F 1
+EV1   EV2   EV3  age                                                C1   C-B        0      -1     1       0           yes
+1          0        0      -1                                                 C2   C-A        -1      0     1      0            yes  
+1          0        0      -0.2
+0          1        0       0.3
+0          1        0       -0.1
+0          0        1       1.1
+0          0        1       -0.9
+
+so the questions are: (1) wheather my design and contrast matrix are correct?  (2)  How can we understand these two results(tfce_corrp_tstat1.nii.gz/tfce_corrp_tstat2.nii.gz) ?  Are they the results of post hoc?  since ANOVA in SPSS just show one result of difference between three groups, but here are two results.
+
+2、I also want to do voxel-based correlation. EV1 is what l'm interested in,  others are not, while these varients are all demened. Now, l'm not sure wheather the design and contrast matrix are corrcet, do we need to add column of constant, such as 1 ?
+Group     EV1     EV2    EV3                                        title                      EV1    EV2   EV3
+    1           0.2       0.1       -0.1                              C1    EV1-positive        1          0       0  
+    1           1          -0.2      0.2                               C2    EV1-negative       -1          0      0  
+    1           -2         0.1       -0.1
+3、 I wander what are the difference between these two pictures，are these all analysis of correlations?
+I'm new in GLM, and l would be very appreciated if you can provide some suggestions for me.
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+I would turn on pre-scan normalize for both the main diffusion series and the b0 images.  What is most important is that you are consistent across the two; however, eddy does not have any built in model or correction for the effects of a moving head within a static receive sensitivity/intensity field, so taking care of these effects with pre-scan normalize on the scanner will improve your data and may make eddy work slightly better too. 
+
+Hi, Lyam. 
+Ok.
+Best regards,
+Luis
+
+El jue, 16 jun 2022 a las 17:37, Lyam Bailey (<Lyam.Bailey@dal.ca>) escribió:
+Hi Luis
+
+The func image is the output from a multivariate searchlight analysis, with 1 value at each voxel. Without going into too much detail, it has all the same properties (dimensions etc) as a cope image that one would get from a first-level FEAT analysis.
+
+Lyam Bailey, B.Sc., M.Sc. 
+He / Him
+Lecturer, Doctoral student
+Department of Psychology & Neuroscience
+Dalhousie University
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Luis Tuset Sanchis <ltuset@UMH.ES>
+Sent: Thursday, June 16, 2022 11:19:33 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT unable to transform functional image to structural
+ 
+CAUTION: The Sender of this email is not from within Dalhousie.
+Hi again Lyam:
+I think the problem is that your functional image looks more like a weird B0 map.
+Can you check that your functional data consists of brain volumes that are sampled at multiple time points?
+Best,
+Luis
+
+El jue, 16 jun 2022 a las 16:01, Lyam Bailey (<Lyam.Bailey@dal.ca>) escribió:
+Hi Luis,
+
+slices.png shows the output of the 'slices' function applied to the functional image I am trying to transform. I included this because it is recommended in the FLIRT user manual as a sanity check when debugging poor registration (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/FAQ#My_FLIRT_registration_doesn.27t_work_well_-_what_can_I_do.3F). This is the relevant line of the manual:  "Check that the input image looks fine and that the voxel size is correct by (a) looking at the images with slices (none of the views should look squashed or stretched) and (b) checking the voxel dimensions (pixdim) with `fslhd (Note: voxel size can be fixed using fslchpixdim)"
+
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Luis Tuset Sanchis <ltuset@UMH.ES>
+Sent: Thursday, June 16, 2022 10:50 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT unable to transform functional image to structural
+ 
+CAUTION: The Sender of this email is not from within Dalhousie.
+Hi Lyam:
+What is 'slices.png' supposed to be?
+Best,
+Luis
+
+El jue, 16 jun 2022 a las 15:17, Lyam Bailey (<Lyam.Bailey@dal.ca>) escribió:
+Hi Matthew, 
+
+Here's an update since last post, which might help to solve the problem...
+
+I thought that the error I'm seeing might be problem with resampling. So, I manually resampled the functional image to the resolution of the structural t1 (using the Resample tool in the fsleyes GUI) , and then tried the transformation again using flirt. Unfortunately, this made no difference - I still get the same skewed output. 
+
+I then tried manually transforming the functional image (using the Nudge tool in fsleyes). The transformation matrix that I got from the manual transform looks radically different from the one produced by flirt.
+
+Manual matrix:
+
+0.9206933335 0.0000000000 0.0000000000 0.6442943651
+0.0000000000 0.9406866666 -0.0000000007 -2.7545588490
+0.0000000000 0.0000000007 1.0000000644 26.0669964932
+0.0000000000 0.0000000000 0.0000000000 1.0000000000
+
+Matrix generated by flirt:
+
+-0.3601316576  -0.09417549977  0.9281358112  85.79749761  
+-0.9218417253  0.1886649494  -0.3385460887  220.9184927  
+-0.1432239679  -0.9775155096  -0.1547591246  235.2612522  
+0  0  0  1  
+
+
+I don't understand why flirt is generating such inaccurate transformations? Any advice you can offer would be greatly appreciated!
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lyam Bailey <Lyam.Bailey@DAL.CA>
+Sent: Tuesday, June 14, 2022 5:01 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT unable to transform functional image to structural
+ 
+Dear Matthew,
+
+Thank you for the swift reply, and for this suggestion. I tried using epi_reg, which seemed to run okay (without errors), but the output actually looks worse than what I got with flirt - the alignment/orientation looks about the same, but now there are non-zero values outside the brain (see attached image).
+
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Tuesday, June 14, 2022 4:26 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT unable to transform functional image to structural
+ 
+CAUTION: The Sender of this email is not from within Dalhousie.
+Dear Lyam,
+  It might be worth trying to do this with the epi_reg script rather than solely with flirt ( the script automates some of the steps needed to use the BBR cost-function ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 14 Jun 2022, at 17:30, Lyam Bailey <Lyam.Bailey@DAL.CA> wrote:
+
+Dear users,
+
+I am having trouble transforming a functional image (shown in red in the attached IM1.png) to highres structural space (shown in grey). Both images are from the same subject. I am using the following command:    
+
+flirt -in [FUNC_IMAGE] -ref [T1_STRUCT_IMAGE] -o [OUTPUT_IMAGE] -omat [TRANSFORMATION_MATRIX] -cost corratio -dof 6 -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -interp trilinear.
+
+The transformed functional image (shown in blue in IM2.png) is completely misaligned. I have tried using robustfov and reorient2std prior to transformation, but these steps make very little difference. As far as I can tell, the voxel dimensions in the functional image are as they should be, and the output from slices looks okay (but see the attached slices.png in case I've misinterpreted). I also cannot see any major BET errors. 
+
+Any advice would be greatly appreciated!
+
+Regards
+Lyam
+
+---------------------------------------------------------
+Lyam Bailey, B.Sc., M.Sc. 
+He / Him
+Doctoral student & Lecturer
+Department of Psychology & Neuroscience
+Dalhousie University
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<IM1.png><IM2.png><slices.png>
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Luis Tuset-Sanchis
+Magnetic Resonance Imaging Unit
+Instituto de Neurociencias (CSIC-UMH)
+Avda D. Santiago Ramón y Cajal S/N
+E-03550 Sant Joan d'Alacant (Alicante)
+Tfno: (+34) 965 91 9223
+Fax: (+34) 965 91 9561
+
+'To succeed in life requires a total inability to do anything that makes you uncomfortable when you look at yourself in the mirror.' Nassim Nicholas Taleb
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Luis Tuset-Sanchis
+Magnetic Resonance Imaging Unit
+Instituto de Neurociencias (CSIC-UMH)
+Avda D. Santiago Ramón y Cajal S/N
+E-03550 Sant Joan d'Alacant (Alicante)
+Tfno: (+34) 965 91 9223
+Fax: (+34) 965 91 9561
+
+'To succeed in life requires a total inability to do anything that makes you uncomfortable when you look at yourself in the mirror.' Nassim Nicholas Taleb
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Luis Tuset-Sanchis
+Magnetic Resonance Imaging Unit
+Instituto de Neurociencias (CSIC-UMH)
+Avda D. Santiago Ramón y Cajal S/N
+E-03550 Sant Joan d'Alacant (Alicante)
+Tfno: (+34) 965 91 9223
+Fax: (+34) 965 91 9561
+
+'To succeed in life requires a total inability to do anything that makes you uncomfortable when you look at yourself in the mirror.' Nassim Nicholas Taleb
+
+
+Dear Zack,
+
+first of all I would say that there is very rarely, if ever, a practical need for you to understand the difference between --rel and --abs. That is because applywarp, and I think all other FSL tools, will be able to automatically decide if a warp field is relative or absolute. So a very strong recommendation is to always leave that parameter out and let the tool work it out itself.
+
+Here is a short attempt at an explanation. Let us say that you are in a location x,y,z in brain A and you want to know what location x',y',z' that corresponds to in volume B. The model we use in FSL (and I think this is true of any non-linear registration tool) is to say that
+
+x' = x + d_x
+y' = y + d_y
+z' = z + d_z
+
+where the d_i:s are displacements in the x, y and z directions. Now, let's say we have a tool, like for example fnirt, that has calculated the d_i:s for all voxels in the brain, and we now want to communicate that information to a tool, like applywarp, that needs to use it. We can then chose to pass that information either as x',y',z' for all voxels. That would be an example of an "absolute field". Or we can chose to pass it as d_x,d_y,d_z for all voxels. And that would be an example of a "relative field". It doesn't matter what you chose, but it is important that whoever is going to use the field, e.g. applywarp, know which it is.
+
+Jesper
+
+
+﻿On 28/03/2023, 11:10, "FSL - FMRIB's Software Library on behalf of Zack Guo" <FSL@JISCMAIL.AC.UK on behalf of gzt2019@MAIL.BNU.EDU.CN> wrote:
+
+    Hi Rick,
+   
+    Thanks for your reply.
+   
+    I have understood the --aff option in fnirt according to your answer~
+    And for the --rel option in applywarp, maybe I could not fully understand the true meaning of that option. Could you please give me some examples, please? And in the general registration process (such as T1 to MNI152), which one should we choose, --rel or --abs?
+   
+    Thanks again~~~
+   
+    Cheers,
+    Zack
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Rick,
+
+Thanks for your reply.
+
+I have understood the --aff option in fnirt according to your answer~
+And for the --rel option in applywarp, maybe I could not fully understand the true meaning of that option. Could you please give me some examples, please? And in the general registration process (such as T1 to MNI152), which one should we choose, --rel or --abs?
+
+Thanks again~~~
+
+Cheers,
+Zack
+
+########################################################################
+
+Dear Zack,
+If I use --aff option in fnirt, does the final transformation my_nonlinear_transf contain the affine transformation specified by --aff?
+Yes it does. The FNIRT coefficient file stores a copy of both the nonlinear and the affine transformation in it. You therefore do not need to supply the affine to applywarp explicitly.
+Moreover, I cannot understand the --rel option in applywarp, could you please interpret it for me? Thanks  you very much!
+That option specifies that applywarp should interpret the nonlinear transformation as describing relative displacements from the coordinates in the reference image space, rather than as the absolute positions where the coordinates in the reference space would end up after the transformation (which would be specified using the --abs option).
+
+Cheers,
+Rick
+
+
+Dear FSL experts,
+
+In the manual of FNIRT, I have some confusion about options of some command.
+I donnot  understand the option --aff in fnirt well. In the official example:
+
+bet my_structural my_betted_structural
+flirt -ref ${FSLDIR}/data/standard/MNI152_T1_2mm_brain -in my_betted_structural -omat my_affine_transf.mat
+fnirt --in=my_structural --aff=my_affine_transf.mat --cout=my_nonlinear_transf --config=T1_2_MNI152_2mm
+applywarp --ref=${FSLDIR}/data/standard/MNI152_T1_2mm --in=my_structural --warp=my_nonlinear_transf --out=my_warped_structural
+
+If I use --aff option in fnirt, does the final transformation my_nonlinear_transf contain the affine transformation specified by --aff? In other word, when I use applywarp command above and I specify --warp=my_nonlinear_transf, does the transformation from --in to --ref contain my_affine_transf.mat and my_nonlinear_transf?
+
+Moreover, I cannot understand the --rel option  in applywarp, could you please interpret it for me? Thanks  you very much!
+
+Thanks~~~
+
+Best,
+Zack
+
+########################################################################
+
+
+Hi all,
+
+For my resting-state fMRI analyses, I’m planning to use FIRST to get my subcortical ROIs. I am running FIRST on T1s and then translating the ROIs into functional space and concatenating them with the HCP cortical atlas. For some subjects, I am getting a FIRST segmentation that is misaligned in places. For example, in the attached image, left caudate is off, and right thalamus is a little off as well. Is there any way to correct this?
+
+Thanks,
+Caroline
+
+########################################################################
+
+Postdoctoral Position in Cognitive and Translational Neuroscience at Brown University
+
+
+Area: Cognitive Neuroscience of Visual Memory, Aging, and Alzheimer’s disease
+
+ 
+
+Depts. of Cognitive, Linguistic, and Psychological Sciences (CLPS) and Psychiatry and Human Behavior
+
+
+Brown University
+
+
+We are seeking a highly motivated postdoctoral researcher to lead an NIH-funded project in the Laboratory for Cognitive and Translational Neuroscience directed by Dr. Hwamee Oh at Brown University. The project is to use fMRI and PET to study visual memory networks in healthy young, cognitively normal older adults, and older adults who are considered as preclinical Alzheimer's disease.  
+
+
+Applicants with a Ph.D. degree in cognitive neuroscience, computational neuroscience, biomedical engineering, or a relevant field are encouraged to apply. Prior experience with human neuroimaging, a strong background in cognitive neuroscience and experimental design, and/or familiarity with programming in relevant languages (e.g., Python, MATLAB) are required. Applicants with experience with multivariate analyses on task-fMRI data are especially encouraged to apply. The successful candidate is expected to demonstrate communication skills, motivation and interest in the area of cognitive neuroscience of visual perception and memory, brain aging or Alzheimer’s disease, and the ability to independently develop research questions and work in collaboration with other team members.
+
+
+An expected start date is early summer or fall 2023. The position is primarily affiliated with Brown CLPS.
+
+ 
+
+Interested applicants should email a brief description of research background and career goals, and CV with a list of 3 references to Dr. Hwamee Oh at hwamee_oh@brown.edu.
+
+
+
+Contact Website 
+
+https://sites.brown.edu/oh-ctnlab/available-positions/
+
+
+Twitter @OhLabBrown
+
+
+--
+Elizabeth Sharp
+Research Assistant
+Oh Lab
+Brown University 
+
+Hi Reuben,
+  What does running:
+
+which cluster
+
+return?If It still points to a binary in $FSLDIR/bin, then you will need to double-check your profile is updated ( or make sure to restart your terminal session ). If it points to a binary elsewhere on the system then you will need to investigate how that was installed. Note you can explicitly call
+
+$FSLDIR/bin/fsl-cluster
+
+Which is a safe name for the same FSL tool.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 24 Mar 2023, at 16:27, Addison, Reuben <RAddison@MGHIHP.EDU> wrote:
+
+I have tried updating my shell profile but still same problem persist.
+I shouldn’t have reinstalled fsl
+ 
+Reuben A.
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Date: Friday, March 24, 2023 at 11:49 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Cluster function not working on Mac ventura
+
+        External Email - Use Caution        
+
+Hi Reuben,
+ 
+Did updating your FSL installation fix the FSLeyes atlas panel issue?
+ 
+Regarding the cluster issue, there is an unrelated software package called graphviz which also has a cluster command - it appears that you are calling the graphviz cluster rather than the FSL cluster command.
+ 
+You should be able to resolve this by adjusting your shell profile to ensure that $FSLDIR/share/fsl/bin/ is added to your $PATH, rather than $FSLDIR/bin/.
+ 
+If you are using a modern macOS version, your shell profile setup is probably in ~/.zprofile, but it could also be in any of ~/.zshrc, ~/.profile, ~/.bashrc or ~/.bash_profile
+ 
+Some more information on FSL shell configuration can be found athttps://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/ShellSetup
+ 
+Paul
+ 
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Addison, Reuben <RAddison@MGHIHP.EDU>
+Sent: 24 March 2023 15:19
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Cluster function not working on Mac ventura
+ 
+I was trying to fix a problem with my atlas panel so I decided to unintall fsl and reinstall the latest edition.
+Now I am unable to use previous functions such as “ cluster”
+ 
+I am using the latest edition of fsl 6.0.6.4, I solved one problem but created another
+ 
+ 
+cluster -i TMM44_TMS_1-0001_Magstim_70mm_Fig8_scalar_magBMM44_TMS_1-0001_Magstim_70mm_Fig8_scalar_magnE.nii.gz -t 0 -o cluster_index > info.txt
+ 
+The error message below
+ option -i unrecognized
+Usage: cluster <options> graphfile
+    -C k - generate no more than k clusters (0)
+       0 : no limit
+    -c k - use clustering method k (0)
+       0 : use modularity
+       1 : use modularity quality
+    -o <outfile> - output file (stdout)
+    -v   - verbose mode
+    -?   - print usage
+ 
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+ 
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+ 
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail.  
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hi Reuben,
+
+Did updating your FSL installation fix the FSLeyes atlas panel issue?
+
+Regarding the cluster issue, there is an unrelated software package called graphviz which also has a cluster command - it appears that you are calling the graphviz cluster rather than the FSL cluster command.
+
+You should be able to resolve this by adjusting your shell profile to ensure that $FSLDIR/share/fsl/bin/ is added to your $PATH, rather than $FSLDIR/bin/.
+
+If you are using a modern macOS version, your shell profile setup is probably in ~/.zprofile, but it could also be in any of ~/.zshrc, ~/.profile, ~/.bashrc or ~/.bash_profile
+
+Some more information on FSL shell configuration can be found at https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/ShellSetup
+
+Paul
+
+
+I was trying to fix a problem with my atlas panel so I decided to unintall fsl and reinstall the latest edition.
+
+Now I am unable to use previous functions such as “ cluster”
+
+ 
+
+I am using the latest edition of fsl 6.0.6.4, I solved one problem but created another
+
+ 
+
+ 
+
+cluster -i TMM44_TMS_1-0001_Magstim_70mm_Fig8_scalar_magBMM44_TMS_1-0001_Magstim_70mm_Fig8_scalar_magnE.nii.gz -t 0 -o cluster_index > info.txt
+
+ 
+
+The error message below
+
+ option -i unrecognized
+
+Usage: cluster <options> graphfile
+
+    -C k - generate no more than k clusters (0)
+
+       0 : no limit
+
+    -c k - use clustering method k (0)
+
+       0 : use modularity
+
+       1 : use modularity quality
+
+    -o <outfile> - output file (stdout)
+
+    -v   - verbose mode
+
+    -?   - print usage
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+
+Dear all,
+
+I am using FSL for task fMRI analysis. I would like to show evidence for the null hypothesis (no difference in activity between 2 conditions). However, frequentist statistics don't provide this. No significant activity could be just due to an underpowered study.
+
+So, I wanted to get a Bayes factor for each voxel instead of a Z or t value, in order to see if there is evidence FOR the null hypothesis.
+
+I have read that FSL is fundamentally Bayesian.
+https://pubmed.ncbi.nlm.nih.gov/19059349/
+
+But I did not find any way to extract voxel wise Bayes factors from it...
+
+Is there a way to get Bayes Factor with FSL? How one should proceed?
+
+Best regards,
+Gabriel Vogel
+
+Dear FSL experts,
+
+I have questions related to a previous thread: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1703&L=FSL&P=R23505&X=ED9A41891D9A52B819&Y=ankwiatkowsk%40ukaachen.de
+
+For my analysis, I use RANDOMISE to perform Single-Group Average analysis using difference maps with multiple categorical covariates (demeaned; 2-levels or 4-levels -> added as 3 dummy variables).
+
+EV1= group mean
+
+EV2= gender (demeaned)
+
+EV3= research-site – level1 (demeaned)
+EV4= research-site – level2 (demeaned)
+EV5= research-site – level3 (demeaned)
+
+EV6= group-variable – level1 (demeaned)
+EV7= group-variable – level2 (demeaned)
+EV8= group-variable – level3 (demeaned)
+
+
+
+design.mat
+EV1  EV2  EV3   EV4   EV5   EV6   EV7   EV8
+1     ...  demeaned values...
+1      
+1      
+1      
+1      
+..
+
+design.con
+1 0 0 0 0 0 0 0
+
+When entering the covariates one-by-one, each shows widespread significant effects on the change scores. However, the design is non-orthogonal, the covariates are highly correlated. My questions are:
+-        Is this an issue when I only want to look at the mean change while controlling for all covariates at once?
+-       Do I need to restrict my model to a single of these covariates?
+-       If I include all covariates, could the order in which the covariates are added change my results?
+
+As I understood from the previous thread, when using the full model, I would expect to find non-significant results for the single covariates, as the shared variance will not contribute to the specific t-contrasts (covariate with 2-levels) and f-contrasts (covariate with > 2 levels). So it would be meaningless to interpret the effect of the single covariates?
+
+I am looking forward to your response!
+Anna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Reuben,
+
+What version of FSL / FSLeyes are you using? Did you start FSLeyes from a terminal? If so, were there any error messages printed?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Addison, Reuben <RAddison@MGHIHP.EDU>
+Sent: 24 March 2023 00:59
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Issues with my atlas panel in fsleyes
+ 
+I am trying to create an anatomical mask from the Juelich histological atlas . For some reasons when I select the atlas from the atlas search menu, I see the brain areas, but they are geeyed out and I am unable to make a selection. See image attached. I don’t know what is wrong.
+
+ 
+
+My computer is the MacBook pro-2022
+
+ 
+Dear FSL experts,
+
+I’m processing the fMRI data from the HCP young adult project. The fMRI data was registered to MNI space, and the template is ICBM 2009c Nonlinear Asymmetric template (maybe). And the MNI template of atlas (I used cammoun2012 atlas downloaded via netneurotools) is ICBM 2009a Nonlinear Symmetric. The two MNI templates are different. How should I do to make the two templates aligned?
+
+Thanks~~~
+
+Best,
+Zack
+
+I am trying to create an anatomical mask from the Juelich histological atlas . For some reasons when I select the atlas from the atlas search menu, I see the brain areas, but they are geeyed out and I am unable to make a selection. See image attached. I don’t know what is wrong.
+
+ 
+
+My computer is the MacBook pro-2022
+
+ 
+
+ 
+
+ 
+
+Reuben N. Addison
+
+Postdoctoral Fellow 
+
+Brain Recovery lab
+
+MGH Institute of Health Professions 
+
+Charlestown Navy Yard | 36 1st Avenue, Boston MA 02129
+
+p. 225-439-5354 | raddison@mghihp.edu
+
+ 
+
+ 
+
+ 
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+
+Hello,
+I am looking to create figures of my FIRST results in 3D but need to convert my .nii output files from FIRST into .vtk files for the software I’m using. In this post in 2011 (https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;20cdbc88.1107) I saw that that first_utils might be used to do this but it requires an ASCII vtk mesh. I can’t quite figure out how to acquire this file. Any advice would be greatly appreciated!
+Thank you,
+Sophie.
+
+########################################################################
+
+Hi,
+
+I have never registered images the way you are describing, but I think maybe one problem with applying the pipeline (transforming your uncropped T1 image to the MNI image) to the diffusion image is that they are only aligned, but are not in the same space. I imagine the transformation matrix would not fit since the resolution is different. So I would first try transforming the diffusion image to structural space with FLIRT.
+
+########################################################################
+
+
+Hi Rebecca,
+
+Sure, the pipeline is described here: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3720813/pdf/nihms479144.pdf in the "HCP Pipelines: PreFreeSurfer" section for the structural, "Diffusion Processing" for the diffusion images.
+
+The original structural and diffusion images are visually aligned (i can overlay both of them and look perfectly aligned) but they do not share the same image size or voxel resolution. They are aligned because the dataset was shared with the diffusion and structural images from the same session registered onto the same space, to allow some intra-session studies.
+
+"The transformation from uncropped T1 to MNI space should not work with the cropped image." The thing is that the cropped image is already roughly aligned with MNI, then cropped, and then is treated as a new image: FLIRT -> OMAT -> FNIRT -> WARP -> APPLYWARP. If I would get the diffusion image in the same space as the cropped image (using the affine transformation from the first step and then cropping it the same way), I think the next steps should be the ones you were describing in your first mail (FLIRT -> FNIRT -> APPLYWARP). Any ideas?
+
+Thank you,
+Guillem
+
+########################################################################
+
+

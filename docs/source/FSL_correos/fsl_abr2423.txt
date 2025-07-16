@@ -1,0 +1,1484 @@
+I saw the fslswapdim function but I am not sure how to use that.
+ 
+The anterior superior correction is correct. I need to change the left/right orientation only. Can I specify that to fslswapdim function?
+ 
+Sent: Monday, April 24, 2023 at 1:59 PM
+From: "Matthew Webster" <matthew.webster@NDCN.OX.AC.UK>
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Convert a 3D MR image to RAS system
+Hi Gina,
+You can use a combination of the fslorient and fslswapdim commands to do this, but some care is required to make sure the anatomical labels remain “correct” ( unless this change is needed to fix the labels ) - the link https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Orientation%20Explained has some details on how to use these commands.
+ 
+Kind Regards
+Matthew
+ 
+ 
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+ 
+On 24 Apr 2023, at 11:27, Georgina Carts <g_na@MAIL.COM> wrote:
+ 
+Hi,
+
+I have a 3D MRI volume and I would like to change its coordinate system to RAS (right-anterior-superior). Is there any way to do that using fsl?
+
+Thank you,
+Gina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+ 
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hi,
+
+I have a 3D MRI volume and I would like to change its coordinate system to RAS (right-anterior-superior). Is there any way to do that using fsl?
+
+Thank you,
+Gina
+
+########################################################################
+
+
+Hello, 
+
+I'm currently trying to run Eddy correct on a diffusion phantom dataset but I'm getting the following error:
+	•	UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd0 in position 2
+I have previously run Eddy on another dataset of the same phantom and everything worked fine. 
+Would you mind helping sort this out? Thank you. 
+
+Best regards, 
+
+Mattia
+
+
+Hi FSL developers,
+
+I wanted to know the difference between the mean Cpoe/Z value I get from an ROI using featquery, fslmeants, and fslstats. Both fslmeants and featquery give the same value, but fslstats gives a different value. Which one is more reliable to compare with physiological parameters across subjects? 
+
+Thank you,
+Tal
+
+
+Hi Matthew,
+Thanks for your response. 
+The FLAIR -> T1 registration works perfectly. I tried to resample the lesion to fit the dimensions of the FLAIR image. But even without it, the same problem persists. 
+Kindly guide further. 
+Warm regards,
+Adrija. 
+
+Get Outlook for Android
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Monday, April 24, 2023 12:10:11 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Lesion mask registration
+ 
+
+
+Hi Adrija,
+                If you add the _registered_ FLAIR image to the display below is the lesion in the wrong place on the FLAIR image as well - that is checking the FLAIR->T1 registration is correct? Also the lesion input filename is “lesion_resampled.nii.gz”: has any other processing been carried out on the lesion image or is it still in the original ( including voxel-size, FOV etc ) space of the FLAIR image used in the FLAIR->T1 registration?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 21 Apr 2023, at 18:04, Mahapatra, Adrija <adrija.mahapatra21@imperial.ac.uk> wrote:
+>
+> Hi there,
+> I have lesion masks drawn on FLAIR, and am trying to register them to the T1 space. I have registered FLAIR to T1 (since it is within subject, used six dof). However, when sing the registration matrix to convert the lesion mask to the T1 space, I run into an issue, and the registration is misaligned. It is 1-2 cm off from where it is supposed to be (it remains in the FLAIR space).
+>
+> This is the code sed to convert the lesion from the FLAIR to T1 space.
+> /home/am3221/fsl/bin/flirt -in /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/lesion_resampled.nii.gz -applyxfm -init /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/FLAIR_2_T1_brain.mat -out /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/lesionT1v9.nii.gz -paddingsize 0.0 -interp trilinear -ref /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/T1_brain.nii.gz
+>
+> And this is the output I get. As you can see, the registered lesion (in yellow) is about 1-2 cm off. <image.png>
+>
+> The lesions were done on the FLAIR image, and the registration was done on the skull-stripped FLAIR image. However, when looking the lesion on the brain extracted FLAIR image, it is where it is supposed to be.
+>
+> Kindl guide further.
+> Thank you so much for the help.
+> Kind regards,
+> Adrjia.
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Gina,
+You can use a combination of the fslorient and fslswapdim commands to do this, but some care is required to make sure the anatomical labels remain “correct” ( unless this change is needed to fix the labels ) - the link https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Orientation%20Explained has some details on how to use these commands.
+
+Kind Regards
+Matthew
+
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi everyone,
+Bumping this message again, curious to see what everyone thinks.
+
+Thanks.
+
+Khai
+
+########################################################################
+
+
+Hi
+ 
+Streamlines are seeded in two opposite directions from the seed point. Depending on the application, you may want to consider the two halves jointly as a single streamline, or as two separate streamlines. This option allows such flexibility. If you use it, then the two halves are considered as separate streamlines when it comes to whether they pass through the waypoint mask and are therefore kept.
+Cheers
+Saad
+ 
+ 
+ 
+
+
+Hi there, 
+I have lesion masks drawn on FLAIR, and am trying to register them to the T1 space. I have registered FLAIR to T1 (since it is within subject, used six dof). However, when sing the registration matrix to convert the lesion mask to the T1 space, I run into an issue, and the registration is misaligned. It is 1-2 cm off from where it is supposed to be (it remains in the FLAIR space). 
+
+This is the code sed to convert the lesion from the FLAIR to T1 space. 
+/home/am3221/fsl/bin/flirt -in /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/lesion_resampled.nii.gz -applyxfm -init /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/FLAIR_2_T1_brain.mat -out /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/lesionT1v9.nii.gz -paddingsize 0.0 -interp trilinear -ref /mnt/c/Users/hiya2/Imaging_data/PT_lesion/00005/T1_brain.nii.gz
+
+And this is the output I get. As you can see, the registered lesion (in yellow) is about 1-2 cm off. 
+
+The lesions were done on the FLAIR image, and the registration was done on the skull-stripped FLAIR image. However, when looking the lesion on the brain extracted FLAIR image, it is where it is supposed to be. 
+
+Kindl guide further. 
+Thank you so much for the help. 
+Kind regards, 
+Adrjia. 
+
+
+The Developmental Social Neuroscience (DSN) lab has an opening for a postdoctoral position in the Department of Psychological and Brain Sciences at the George Washington University (GWU) under the supervision of Dr. Gabriela Rosenblau, who is also affiliated with the Autism and Neurodevelopmental Disorders Institute (ANDI) at GWU. This position is a 2-year, full time position, with potential for an extension.
+
+The focus of the postdoc position is on developing novel algorithms for specifying social learning on the behavioral and neural levels and understanding the heterogeneity and differences in social learning in individuals with profound social deficits, particularly those diagnosed with Autism Spectrum Disorder. The newly developed computational algorithms will be validated and applied to large data sets that measure learning performance (i.e., ‘big data’). They will also be used to understand behavioral and clinical outcomes more broadly and applied to functional magnetic resonance imaging (fMRI) datasets. These projects will be performed in the context of a collaborative research grant between Dr. Christoph Korn, at Heidelberg University, Germany and Dr. Gabriela Rosenblau at GWU (NIH funded study (R01MH132236) and as part of a grant funded by the Simons Foundation for Autism Research (SFARI) to constrain the heterogeneity of autism.
+
+Required Qualifications:
+· Doctoral degree in psychology, (cognitive) neuroscience, data science, or a related discipline
+· Strong programming skills
+· Extensive experiences with data analytic methods
+· Some experience with statistical or computational modeling and prediction
+
+
+Preferred Qualifications:
+·  Familiarity with image processing
+·  Experience in autism or a closely related neurodevelopmental condition
+
+Timeline:
+The postdoc could start immediately, but later start dates are also available for appropriate candidates. 
+
+
+Teaching:
+The position does not require any teaching, but teaching opportunities and teaching mentorship are available if the candidate is interested.
+
+Contact:
+Interested applicants can informally contact Dr. Gabriela Rosenblau through email, and formally apply to this post https://www.gwu.jobs/postings/101770. We are strongly committed to a diverse academic environment and place high priority on attracting underrepresented candidates who will enrich GWU’s academic and culturally inclusive environment.
+ 
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+No, this does not mean that these subjects to not have an IFOF white matter tract. Instead it likely reflects one of the following:
+1. In those subjects the IFOF might not run through all of the waypoints masks (or start from the seed mask). Such mask misalignment with the tract could arise due to an inaccurate registration or the IFOF having a (slightly) different trajectory in those subjects. You might be able to solve this by expanding the seed/waypoint masks used (although this has the disadvantage of allowing more spurious, non-IFOF streamlines to be retained).
+2. Alternatively, it could be that a lack of data quality makes it impossible to reconstruct the IFOF in these subjects. The most likely cause of this is that bedpostX was unable to find some of the crossing fibres necessary to reconstruct the IFOF.
+
+Best wishes,
+
+Michiel
+
+> On 22 Apr 2023, at 14:25, Nooshin Safari <nsafari@GMU.EDU> wrote:
+>
+> Hi FSL experts,
+>
+> I have used FDT from GUI in waypoint mode for CIng_L, CIng_R, SLF_L and SLF_R masks and it’s been successful so far for all my subjects. However, I’m having difficulty with IFOF_L and IFOF_R masks. I’ve got empty outputs and subsequently value of 0 while running fslstats fdt_paths.nii.gz -R, for about 45 percent of my subjects? Does this mean a technical problem or there is actually no IFOF white matter tract in those subjects, which is odd?
+>
+> Thanks,
+> Nooshin
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+You may be right, and I probably need help in determining the source of the problem. I just re-ran one of my participant's diffusion data using the qunex container v0.97.3 and eddy_cuda, and I attached here the qunex logs with the error. I will send you a link to download these data for the same participant off the list. Thank you.
+
+Estephan
+
+On Fri, Apr 21, 2023 at 7:53 PM Chidi Ugonna <chidi_ugonna@hotmail.com> wrote:
+Hi Estephan,
+So from your last example it looks like eddy was not run from within Qunex at all.  So it looks like you also have access to eddy outside of the Qunex container? We will need to isolate which eddy is actually causing problems - could there be a path clash between eddy in the container and eddy on the system?
+
+Alternatively, I wonder if there is something amiss with the data? Do you have other data you can test with?
+
+I just run eddy_cuda10.2 within the Qunex singularity container (v0.97.3) on our cluster (CudaToolkit v12) and it seemed to run fine on some example data that I have.
+
+Would you be able to make your data available to see if your error can be recreated?
+
+
+
+From: Estephan J. Moana-Filho <moana004@UMN.EDU>
+Sent: Friday, April 21, 2023 10:45 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Chidi Ugonna <chidi_ugonna@HOTMAIL.COM>
+Subject: Re: Eddy cryptic error message
+ 
+Thanks for the reply. I did try using the "--nv" flag only, but got the same error. More importantly, I tried using the non-cuda eddy version and still got the same error. I will try to paste it below, but it may cut my msg short for some reason like my initial post.
+
+Command #1:
+date; eddy   --cnr_maps   --imain=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg   --mask=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/nodif_brain_mask   --index=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/index.txt   --acqp=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/acqparams.txt   --bvecs=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvecs   --bvals=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvals   --fwhm=0   --topup=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/topup/topup_Pos_Neg_b0   --out=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/eddy_unwarped_images --very_verbose &> eddy_output2.txt; \
+> date
+Fri Apr 14 13:40:54 CDT 2023
+Fri Apr 14 13:41:32 CDT 2023
+
+Command #2:
+cn2107:~ moana004$ date; eddy   --cnr_maps   --imain=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg   --mask=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/nodif_brain_mask   --index=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/index.txt   --acqp=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/acqparams.txt   --bvecs=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvecs   --bvals=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvals   --fwhm=0   --topup=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/topup/topup_Pos_Neg_b0   --out=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/eddy_unwarped_images --data_is_shelled --very_verbose &> eddy_output3.txt; date
+Fri Apr 14 13:43:07 CDT 2023
+Fri Apr 14 13:43:30 CDT 2023
+
+
+
+--
+Estephan J. Moana-Filho, DDS, MS, PhD
+Assistant Professor
+Division of TMD, Orofacial Pain and Dental Sleep Medicine
+Graduate Faculty in Oral Biology
+Department of Diagnostic and Biological Sciences
+UMN School of Dentistry
+moana004@umn.edu
+
+6-320d Moos Tower
+515 Delaware St. SE
+Minneapolis, MN 55455-0329
+Office: (612) 624-3338  Clinic: (612) 626-0140  Fax: (612) 626-0138
+
+Clinical referrals: z.umn.edu/TMDrefer
+
+UMN profile: https://experts.umn.edu/en/persons/estephan-j-moana-filho
+ORCID ID: http://orcid.org/0000-0001-9642-944X
+Publons: https://publons.com/researcher/O-9726-2016/
+My Bibliography (NCBI): https://www.ncbi.nlm.nih.gov/myncbi/estephan.moana-filho.1/bibliography/public/
+
+
+
+The information transmitted in this e-mail is intended only for the person or entity to which it is addressed and may contain confidential and/or privileged material, including "protected health information." If you are not the intended recipient, you are hereby notified that any review, retransmission, dissemination, distribution, or copying of this message is strictly prohibited. If you have received this communication in error, please destroy and delete this message from any computer and contact us immediately by return e-mail.
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi FSL experts,
+
+I have used FDT from GUI in waypoint mode for CIng_L, CIng_R, SLF_L and SLF_R masks and it’s been successful so far for all my subjects. However, I’m having difficulty with IFOF_L and IFOF_R masks. I’ve got empty outputs and subsequently value of 0 while running fslstats fdt_paths.nii.gz -R, for about 45 percent of my subjects? Does this mean a technical problem or there is actually no IFOF white matter tract in those subjects, which is odd?
+
+Thanks,
+Nooshin
+
+########################################################################
+
+
+Dear Jesper,
+
+ 
+
+Thank you for the swift and extensive response. It turns out it was the slspec.txt, indeed, in which the newlines weren’t recognized by the system.
+
+ 
+
+Having run the correction on one subject, the intra-volume motion correction seems to show substantial improvement!
+
+ 
+
+It ran impressively fast on the GPU, too, so we’re happy we don’t have to resort to using the CPU version.
+
+ 
+
+Have a great weekend, Jesper!
+
+ 
+
+Kind regards,
+
+Simon
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Date: Friday, 21 April 2023 at 12:29
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] eddy_cuda's intra-volume motion correction using a container
+
+Dear FSL developers and users,
+
+I need clarification what --onewaycondition option does. The help message states:
+
+Apply waypoint conditions to each half tract separately
+
+How is "each half tract" defined? Is it defined by the seed point, i.e. the halves could be of different lengths?
+
+For example, if seed point happens to be inside the waypoint, then both halves will meet the waypoint condition automatically, right?
+If seed point is outside the waypoint mask, then both ends of the tract must pass through the waypoint mask for the tracts to be counted, right?
+
+Thank you,
+
+Roman
+
+Thanks for the reply. I did try using the "--nv" flag only, but got the same error. More importantly, I tried using the non-cuda eddy version and still got the same error. I will try to paste it below, but it may cut my msg short for some reason like my initial post.
+
+Command #1:
+date; eddy   --cnr_maps   --imain=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg   --mask=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/nodif_brain_mask   --index=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/index.txt   --acqp=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/acqparams.txt   --bvecs=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvecs   --bvals=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvals   --fwhm=0   --topup=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/topup/topup_Pos_Neg_b0   --out=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/eddy_unwarped_images --very_verbose &> eddy_output2.txt; \
+> date
+Fri Apr 14 13:40:54 CDT 2023
+Fri Apr 14 13:41:32 CDT 2023
+
+Command #2:
+cn2107:~ moana004$ date; eddy   --cnr_maps   --imain=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg   --mask=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/nodif_brain_mask   --index=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/index.txt   --acqp=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/acqparams.txt   --bvecs=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvecs   --bvals=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/Pos_Neg.bvals   --fwhm=0   --topup=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/topup/topup_Pos_Neg_b0   --out=/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10021/hcp/10021/Diffusion/eddy/eddy_unwarped_images --data_is_shelled --very_verbose &> eddy_output3.txt; date
+Fri Apr 14 13:43:07 CDT 2023
+Fri Apr 14 13:43:30 CDT 2023
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+On Fri, 21 Apr 2023 15:46:07 +0000, Chidi Ugonna <chidi_ugonna@HOTMAIL.COM> wrote:
+
+>Hi Estephan,
+>I feel your pain - I haven't used Qunex and so not sure how that container is built. When I have run eddy_cuda in a singularity container on a gpu node on our cluster I have usually just used the --nv parameter and have usually had no problems. In these custom singularity containers I have usually installed the relevant cuda toolkit without the GPU drivers for the version of eddy_cuda I intend to run. So for example for eddy_cuda9.1 I woud install cuda toolkit 9.1 in the container but not the cuda driver for the GPU itself. I notice in one of your calls to start Qunex you are binding to the system cuda library as follows
+>
+>-B /panfs/roc/msisoft/cuda/11.2:/usr/local/cuda
+>
+>I wonder how things run if you omit this line and just use --nv on its own?
+>
+>
+>________________________________
+>From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Estephan J. Moana-Filho <000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>
+>Sent: Friday, April 21, 2023 7:13 AM
+>To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+>Subject: Re: [FSL] Eddy cryptic error message
+>
+>I'm bumping this. When I sent the original message, it got cut for some reason. Below is my request and the previous messages show an example of the eddy error message I'm referring to. Thank you.
+>
+>On Fri, 14 Apr 2023 22:43:32 +0100, Estephan J. Moana-Filho <moana004@UMN.EDU> wrote:
+>
+>>Another try.
+>>
+>>Dear all, I have diffusion data collected using the HCP Lifespan protocol (98 and 99 directions, AP and PA directions). I am using the QuNex apptainer to process these data and I am having troubles doing so. Basically the processing has an error at the eddy stage which is not helpful in identifying the error (FSL version in QuNex container is FSL 6.0.6.2). I posted it in the QuNex forum and tried some of their proposed solutions but it seems that the error might be related to eddy itself: https://forum.qunex.yale.edu/t/hcp-diffusion-error-with-qunex-0-97-2/827
+>>
+>>I also found this post in this list that mentions an error very similar to the one I found: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2302&L=FSL&D=0&P=69009
+>>
+>>Following the suggestion in that post, I ran eddy (non-cuda version, FSL 6.0.6.4) with the "--very_verbose" flag, starting with the semi-processed data from QuNex but the output was again not that helpful. I list below the commands issued and the output as captured by the "&>" redirection flag. Any thoughts on the next step would be appreciated. Thank you.
+>>
+>>Estephan
+>>
+>>########################################################################
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>
+>>This message was issued to members of www.jiscmail.ac.uk/FSL<http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by www.jiscmail.ac.uk<http://www.jiscmail.ac.uk>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL<http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by www.jiscmail.ac.uk<http://www.jiscmail.ac.uk>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi
+
+Can we use slicesdir (failed for me) or any other function to convert fsl derived txt and png files to be viewed as a single HTML file?
+
+Thank you
+
+########################################################################
+
+
+Dear Simon,
+
+ 
+
+I don’t think your error is anything to do with any problems related to the GPU. From your output below it looks like it has made use of the GPU.
+
+ 
+
+From what I can tell you problem is caused by a “close to singular” movement matrix for the volume that eddy is attempting to use as shape-reference. It is not clear to me how that has happened though. One thing that could cause problems is if your slspec has not been correctly specified. You can also test to reduce --mporder, alternatively increase --s2v_lambda (default is 1, so set it to something larger).
+
+ 
+
+I should also add that if you use the latest version of FSL you should be able to run slice-to-volume with the CPU version too (although it would take a long time).
+
+ 
+
+Finally, looking at the mss for your b=0 volumes makes me think that you don’t have much of a movement problem in this particular data set.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Simon Poortman <s.poortman@ERASMUSMC.NL>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Friday, 21 April 2023 at 10:19
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] eddy_cuda's intra-volume motion correction using a container
+
+ 
+
+Dear experts,
+
+ 
+
+To run eddy’s intra-volume movement correction on our DWI data, we need to make use of the eddy_cuda command. As the environment we use for our processing does not include any of the required CUDA versions, one of the things we have been trying is to create an FSL container with the right libraries.
+
+ 
+
+Using that, we run the following command on a GPU node (see the resulting long error message at the bottom of this e-mail):
+
+ 
+
+“
+
+apptainer exec --nv --pwd ${projectdir}/processed_data/dwi/${pp}/${ses} ${paramsdir}/singularity-fsl/fsl-6.0.6.sif eddy_cuda10.2 --imain=${pp}_${ses}_dwi.nii.gz --mask=${pp}_b0_brain_mask.nii.gz --index=${paramsdir}/index.txt --acqp=${paramsdir}/acqparams.txt --bvecs=bvecs --bvals=bvals --topup=topup_output --repol --mporder=12 --slspec=${paramsdir}/slspec.txt --resamp=lsr --fep --out=${pp}_${ses}_eddycor -v
+
+“
+
+ 
+
+Running other commands from the container works fine, for which we receive the expected output (from e.g., the --help flag, but also CPU-related commands that do not require CUDA, such as eddy_openmp), so it seems to be failing specifically when eddy_cuda is relying on the GPU. The error message we receive is so vague, however, that we are uncertain as to how to proceed from here. Do you know what this error message means, and what we might be able to do solve this?
+
+ 
+
+The error message:
+
+ 
+
+“
+
+INFO:    underlay of /usr/bin/nvidia-cuda-mps-control required more than 50 (419) bind mounts
+
+Reading images
+
+Filling empty planes
+
+Performing volume-to-volume registration
+
+Running Register
+
+ 
+
+...................Allocated GPU # 0...................
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 63.4131
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 63.2859
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 63.2616
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 63.2746
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 63.2746
+
+Setting scan 0 as b0 shape-reference.
+
+Running sm.ApplyB0LocationReference
+
+Running Register
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 44.4016
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 35.5768
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 33.3148
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 32.565
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 31.774
+
+Setting scan 20 as shell shape-reference for shell 0 with b-value= 1000
+
+Running sm.ApplyDWILocationReference
+
+Checking shell alignment along PE-direction (running PostEddyAlignShellsAlongPE)
+
+Aligning shells (running PostEddyAlignShells)
+
+Performing slice-to-volume registration
+
+Setting slice-to-volume order to 12
+
+Running Register
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 66.098
+
+Running sm.ApplyB0ShapeReference
+
+matrix multiplication: problem with matrix inverse; suggest to use solve() instead
+
+`Z+▒RV
+
+▒
+
+,▒RV
+
+ 
+
+EDDY::: Eddy failed with message ▒
+
+                                  ,▒RV
+
+“
+
+ 
+
+ 
+
+Thank you.
+
+ 
+
+Kind regards,
+
+Simon Poortman
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Ken,
+
+would you be happy to upload an example of a dataset where you get that blurring in the --iout image?
+
+If so, can you please tar up all the data referred to on the topup command line (essentially the --datain and --imain files) and upload the tar file to
+https://oxfile.ox.ac.uk/oxfile/work/extBox?id=72139C7E463068D5F
+?
+
+When you have done that, can you please also email me the exact command line you used?
+
+Best regards Jesper
+
+
+
+
+
+﻿On 14/04/2023, 22:52, "FSL - FMRIB's Software Library on behalf of Ken Sakaie" <FSL@JISCMAIL.AC.UK on behalf of sakaiek@CCF.ORG> wrote:
+
+    Jesper,
+   
+    Thanks for the advice. I will implement it.
+   
+    To answer your question, the blurring was in the --iout image.
+   
+    Ken
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Addison,
+
+ 
+
+there are two ways to measure/calculate a fieldmap. One is a quite direct way of measuring the field by looking at how the phase changes between two gradient echo images with different echo times. This is the method that gives you magnitude and phase images.
+
+ 
+
+The other way is to acquire two EPI images with different polarity so that the distortions caused by the field go in opposing directions. It is then possible to calculate the field from the difference between these two images. It sounds like this is the kind of data you have. You will then use a tool called “topup” to estimate the field (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup).
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Addison, Reuben" <RAddison@MGHIHP.EDU>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Sunday, 16 April 2023 at 03:50
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Echo fieldmaps for EPI field map distortions -Rookie question
+
+ 
+
+I am using a pipeline for a resting state analysis and I want to perform a fieldmap correction. I am supposed to provide the pipeline with two magnitude images and a phase difference image, however our Siemens scanner only recorded two magnitude images in two phase directions (fieldmap_AP and fieldmap_PA). How do I get my phasediff image? Is there a way to get that?
+
+ 
+
+ 
+
+ 
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+ 
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Michael,
+
+
+Thank you very much for answering my email.
+
+My M0 from the calib folder is this one, I am not sure about the approximate scaling that is why I am sending it to you. I attach you the perfusion and the perfusion_calib image in native space as well.
+
+Please, if you need any other information to help me just let me know. I am really lost here.
+
+Kind regards,
+Rosalia
+
+
+On Fri, Apr 21, 2023 at 11:20 AM Michael Chappell <000079f9f909e19d-dmarc-request@jiscmail.ac.uk> wrote:
+Rosalia,
+
+ 
+
+The command line looks reasonable and your differenced data looks like a perfusion weighted image. What is the approximate scaling between the difference image and the M0 image?
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM>
+Date: Friday, 14 April 2023 at 10:49
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Problems with BASIL
+
+Dear Michael,
+
+ 
+
+Sorry for posting again. I have not received any follow-up answer since I sent my email to the FSL list.
+
+ 
+
+My calibration with BASIL seems not to work properly.
+
+ 
+
+The parameters I am using are as follows:
+
+ 
+
+These are the parameters I am using:
+
+ 
+
+oxford_asl -i $DATADIR/${d}_asl.nii.gz --iaf diff --ibf tis --bolus 0.7 --rpts 1 --tis 1.8 --fslanat $STUDYDIR/FSL_ANAT/$d/${d}_T1w.anat -c $DATADIR/${d}_M0_AP.nii.gz --cmethod voxel --tr 6 --cgain 1 --echospacing 0.001 --pedir y --cblip $DATADIR/${d}_M0_PA.nii.gz -o $ASLDIR --bat 0 --t1 1.65 --t1b 1.65 --alpha 0.98 --spatial --fixbolus --mc --pvcorr --artoff --wp
+
+ 
+
+The diff image and the .json file are attached.
+
+ 
+
+I appreciate your help.
+
+ 
+
+Kind regards,
+
+Rosalia
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Rosalia,
+
+ 
+
+The command line looks reasonable and your differenced data looks like a perfusion weighted image. What is the approximate scaling between the difference image and the M0 image?
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM>
+Date: Friday, 14 April 2023 at 10:49
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Problems with BASIL
+
+Dear Michael,
+
+ 
+
+Sorry for posting again. I have not received any follow-up answer since I sent my email to the FSL list.
+
+ 
+
+My calibration with BASIL seems not to work properly.
+
+ 
+
+The parameters I am using are as follows:
+
+ 
+
+These are the parameters I am using:
+
+ 
+
+oxford_asl -i $DATADIR/${d}_asl.nii.gz --iaf diff --ibf tis --bolus 0.7 --rpts 1 --tis 1.8 --fslanat $STUDYDIR/FSL_ANAT/$d/${d}_T1w.anat -c $DATADIR/${d}_M0_AP.nii.gz --cmethod voxel --tr 6 --cgain 1 --echospacing 0.001 --pedir y --cblip $DATADIR/${d}_M0_PA.nii.gz -o $ASLDIR --bat 0 --t1 1.65 --t1b 1.65 --alpha 0.98 --spatial --fixbolus --mc --pvcorr --artoff --wp
+
+ 
+
+The diff image and the .json file are attached.
+
+ 
+
+I appreciate your help.
+
+ 
+
+Kind regards,
+
+Rosalia
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear experts,
+
+ 
+
+To run eddy’s intra-volume movement correction on our DWI data, we need to make use of the eddy_cuda command. As the environment we use for our processing does not include any of the required CUDA versions, one of the things we have been trying is to create an FSL container with the right libraries.
+
+ 
+
+Using that, we run the following command on a GPU node (see the resulting long error message at the bottom of this e-mail):
+
+ 
+
+“
+
+apptainer exec --nv --pwd ${projectdir}/processed_data/dwi/${pp}/${ses} ${paramsdir}/singularity-fsl/fsl-6.0.6.sif eddy_cuda10.2 --imain=${pp}_${ses}_dwi.nii.gz --mask=${pp}_b0_brain_mask.nii.gz --index=${paramsdir}/index.txt --acqp=${paramsdir}/acqparams.txt --bvecs=bvecs --bvals=bvals --topup=topup_output --repol --mporder=12 --slspec=${paramsdir}/slspec.txt --resamp=lsr --fep --out=${pp}_${ses}_eddycor -v
+
+“
+
+ 
+
+Running other commands from the container works fine, for which we receive the expected output (from e.g., the --help flag, but also CPU-related commands that do not require CUDA, such as eddy_openmp), so it seems to be failing specifically when eddy_cuda is relying on the GPU. The error message we receive is so vague, however, that we are uncertain as to how to proceed from here. Do you know what this error message means, and what we might be able to do solve this?
+
+ 
+
+The error message:
+
+ 
+
+“
+
+INFO:    underlay of /usr/bin/nvidia-cuda-mps-control required more than 50 (419) bind mounts
+
+Reading images
+
+Filling empty planes
+
+Performing volume-to-volume registration
+
+Running Register
+
+ 
+
+...................Allocated GPU # 0...................
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 63.4131
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 63.2859
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 63.2616
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 63.2746
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 63.2746
+
+Setting scan 0 as b0 shape-reference.
+
+Running sm.ApplyB0LocationReference
+
+Running Register
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 44.4016
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 35.5768
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 33.3148
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 32.565
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Checking for outliers
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 31.774
+
+Setting scan 20 as shell shape-reference for shell 0 with b-value= 1000
+
+Running sm.ApplyDWILocationReference
+
+Checking shell alignment along PE-direction (running PostEddyAlignShellsAlongPE)
+
+Aligning shells (running PostEddyAlignShells)
+
+Performing slice-to-volume registration
+
+Setting slice-to-volume order to 12
+
+Running Register
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 0, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 1, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 2, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 3, Total mss = 66.098
+
+Loading prediction maker
+
+Evaluating prediction maker model
+
+Calculating parameter updates
+
+Iter: 4, Total mss = 66.098
+
+Running sm.ApplyB0ShapeReference
+
+matrix multiplication: problem with matrix inverse; suggest to use solve() instead
+
+`Z+▒RV
+
+▒
+
+,▒RV
+
+ 
+
+EDDY::: Eddy failed with message ▒
+
+                                  ,▒RV
+
+“
+
+ 
+
+ 
+
+Thank you.
+
+ 
+
+Kind regards,
+
+Simon Poortman
+
+ 
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Do you get an obvious error in the command line outputs when you are running the regional analysis flag? It should be possible to get outputs from that option.
+
+ 
+
+Yes, it is possible to run a group analysis using the GLM. The best option is to create your GLM using GLM_gui and then use either flameo or randomise, rather than using FEAT directly. There is an example of doing something like that here: https://users.fmrib.ox.ac.uk/~chappell/asl_primer/ex4/index.html
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Emma <00008fd4374a06cf-dmarc-request@JISCMAIL.AC.UK>
+Date: Tuesday, 18 April 2023 at 17:56
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] ASL ROI analysis
+
+Hi,
+
+I have used both standard space outputs for this and t1w outputs. my question is how do i get those regional tables from BASIL? i tried running the regional analysis flag but nothing outputs from it.
+
+Additionally, can we use the fsl GLM function (FEAT) to run this to run a group comparison?
+
+Thanks!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Experts,
+
+ 
+
+I have the following problem. I have a dataset in which everyone has been scanned using the same task. I would like to analyze this data with tensor ICA (TICA) in MELODIC.
+
+ 
+
+However, halfway through data acquisition, the scanner was upgraded. I have already run TICA and I have found that it captures components whose subject weights are substantially different in the subjects scanned before/after upgrade. In other words, TICA might be recovering a scanner component.
+
+ 
+
+What I would like to do is to eliminate the effect of scanner from this data before the ICA decomposition. Is there a way I can feed the scanner information to TICA? If not, is there something like COMBAT to correct for site effects, but on whole brain timeseries data? Is there anything else you would recommend?
+
+Thank you very much,
+
+ 
+
+ 
+
+Leonardo Tozzi, MD, PhD
+
+Director of Computational Neuroscience & Neuroimaging Program
+
+Stanford Center for Precision Mental Health and Wellness
+
+Stanford University
+
+ltozzi@stanford.edu | (650) 5615738
+
+ 
+
+Connect with us!
+
+signature_1075933358  signature_1282923475  signature_911042299
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Tricia,
+
+ 
+
+Please, see a suggested design and contrasts here: https://s3-us-west-2.amazonaws.com/andersonwinkler/mailinglist/design_patricia.ods
+
+ 
+
+EVs 1-8 cover the 8 measurements (treatments A and B, sham and active, before and after). There is more than one way of coding, and the way as proposed should make it easy to prepare the contrasts.
+
+ 
+
+The file suggests 9 contrasts (you can reverse their signs, for a total of 18 contrasts), and can include others that you may be interested on. The interaction ones (C3, C6, C8 and C9) can have more than one interpretation. For example, C3 tests:
+
+ 
+
+(A/active (after) - A/active (before)) > (A/sham (after) - A/sham (before))
+
+ 
+
+but that can also be interpreted as:
+
+ 
+
+(A/active (after) - A/sham (after)) > (A/active (before) - A/sham (before))
+
+ 
+
+Also, note the use of multi-level exchangeability blocks (in blue italic).
+
+ 
+
+Hope this helps!
+
+ 
+
+All the best,
+
+ 
+
+Anderson
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Resnick, Patricia" <resnick.95@OSU.EDU>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Wednesday, April 19, 2023 at 1:25 PM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] 2x4 repeated measures ANOVA
+
+ 
+
+  External Mail
+
+  This email originated outside of The University of Texas Rio Grande Valley.
+  Please exercise caution when clicking on links or opening attachments.
+
+Hi Anderson,
+
+Yes, each subject has 8 total scans with 4 possible combinations of treatment types. A/sham and B/sham are different from the perspective of the subject and some have been able to tell the difference. Thank you so much for your help!
+
+Best,
+
+Tricia
+
+ 
+
+​Tricia Stefancin
+
+ 
+
+Lab manager
+
+Z-lab
+
+Department of Psychology
+
+The Ohio State University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Anderson Winkler <anderson.winkler@UTRGV.EDU>
+Sent: Tuesday, April 18, 2023 11:38 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] 2x4 repeated measures ANOVA
+
+ 
+
+
+
+Hi Patricia,
+
+Let's call the treatment types A and B. Then, let's see if I understood: each person receives 4 possible types of stimulation: A/sham, A/active, B/sham, B/active. Participant comes for a certain visit and receives in that visit only one of these 4 possible combinations. Before each of the 4 visits, they do an MRI scanning session. After each of the 4 visits, they do another, hence 8 scanning sessions in total. Each person receives all 4 possible combinations over the course of (presumably) several days/weeks. Is this right?
+
+Also, are A/sham and B/sham any different from the viewpoint of the subject? If so, we could consider 3 stimulation conditions instead of 4, i.e., A/active, B/active, and simply "sham". This should increase power a bit for such small sample, but only if the subject can't tell the difference, say, because of noise or vibration, or whatever.
+
+Happy to draft a design after you have provided these details.
+
+All the best,
+
+Anderson
+
+
+
+On 4/17/23, 10:37 AM, "FSL - FMRIB's Software Library on behalf of Patricia Stefancin" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of resnick.95@OSU.EDU <mailto:resnick.95@OSU.EDU>> wrote:
+
+
+External Mail
+This email originated outside of The University of Texas Rio Grande Valley.
+Please exercise caution when clicking on links or opening attachments.
+
+
+Hello,
+I am trying to run a repeated measures ANOVA using tbss. We have 6 subjects who received 2 treatment types, with either active or sham stimulation, and we measured their brain structure and activation both pre and post each treatment. So we have a total of 8 conditions for each participant. We want to compare each type of stimulation for stim and sham, as well as across stim types, for pre and post. I have attached the mat and con files as I am not sure they are set up correctly. Would someone be able to advise me on the best way to set up the files.
+Best,
+Tricia
+
+
+########################################################################
+
+
+To unsubscribe from the FSL list, click the following link:
+https://urldefense.com/v3/__https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FYhI_9eb$  <https://urldefense.com/v3/__https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FYhI_9eb$ >
+
+
+This message was issued to members of https://urldefense.com/v3/__http://www.jiscmail.ac.uk/FSL__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FRsJSAzX$  <https://urldefense.com/v3/__http://www.jiscmail.ac.uk/FSL__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FRsJSAzX$ >, a mailing list hosted by https://urldefense.com/v3/__http://www.jiscmail.ac.uk/__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FSFWw-rD$  <https://urldefense.com/v3/__http://www.jiscmail.ac.uk/__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FSFWw-rD$ >, terms & conditions are available at https://urldefense.com/v3/__https://www.jiscmail.ac.uk/policyandsecurity/__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FSnBwofF$  <https://urldefense.com/v3/__https://www.jiscmail.ac.uk/policyandsecurity/__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FSnBwofF$ >
+
+
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://urldefense.com/v3/__https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FYhI_9eb$
+
+This message was issued to members of https://urldefense.com/v3/__http://www.jiscmail.ac.uk/FSL__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FRsJSAzX$ , a mailing list hosted by https://urldefense.com/v3/__http://www.jiscmail.ac.uk__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FZ8P8kIi$ , terms & conditions are available at https://urldefense.com/v3/__https://www.jiscmail.ac.uk/policyandsecurity/__;!!KGKeukY!x_80ZFPto-X_5KRvZcfrZD-JveowYoiAPnbGgpu_sxrroQY-WI8CC_AI8To_dAEHPRGJgHPOs3hel8NT5f3l36B5FSnBwofF$
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+

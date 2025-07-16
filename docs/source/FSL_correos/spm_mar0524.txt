@@ -1,0 +1,574 @@
+Dear Sanaz,
+
+the SPM batch system and the various extension mechanisms (toolboxes, spm_orthviews, fieldtrip...) require more knowledge than just compiling spm.m as a target function. SPM comes with a MATLAB .m-file spm_make_standalone.m that will take care of the necessary steps to compile SPM from within MATLAB. You should give it a try on your SPM installation. If you want to customize your standalone SPM (by e.g. adding extra toolboxes etc) you may need to make some changes to the code.
+
+Hope this helps
+Volkmar
+
+The newly established Cognitive Neuroscience & Neurotechnology group led by Dr. Romy Lorenz is looking for two enthusiastic PhD students (m/f/d) to join our growing team at the Max Planck Institute for Biological Cybernetics in Tübingen, Germany.
+Our lab focuses on advancing our understanding of the frontoparietal brain network mechanisms that underpin high-level cognition and adaptive behaviour. For this, we pursue an interdisciplinary research programme that allows studying this brain system at multiple levels of granularity. Our methodology involves subject-specific brain-computer interface technology, fMRI at 3T and ultrahigh (i.e., 7T and 9.4T) magnetic field strengths (for resolving cortical layers), EEG, non-invasive brain stimulation as well as machine learning. You can find out more about our work at:    https://www.kyb.tuebingen.mpg.de/711763/cognitive-neuroscience-neurotechnology
+We are seeking two ambitious PhD students who will work on the exciting field of ultrahigh resolution fMRI that allows to investigate the human cortex at the scale of layers and columns. 
+The ideal candidates should have a master’s degree in cognitive (neuro)science, psychology, computer science, biomedical or electrical engineering, physics, or related disciplines. A strong background in fMRI data analysis (e.g., FSL, Freesurfer, ANTS) and very good programming skills in Bash on Linux, Matlab and/or Python are required. Prior experience in MRI data acquisition and experience with ultrahigh resolution fMRI (e.g., at 7T) is desirable but not necessary. Equally, experience with machine learning-methods, code sharing platforms (e.g. GitHub) and high-performance computing clusters are highly desirable.
+The Max Planck Institute for Biological Cybernetics offers a world-leading research environment with access to the latest cutting-edge MRI hardware (including a Siemens 9.4T and Prisma 3T for humans as well as a 14.2T small animal system) and other excellent research facilities (EEG, eye-tracking, fMRI-TMS). The PhD student will receive generous support for professional travel and research needs (~2500€/year). Additionally, the student will have the opportunity to become part of the Graduate Training Centre of Neuroscience that provides training courses, summer schools and conferences to further educate doctoral students. Further, the Institute is part of the TübingenNeuroCampus (with more than 100 active groups), offering a vibrant community of international researchers and enriching environment of collaboration.
+The position is available from May 2024 on and remains open until filled. The salary is paid in accordance with the collective agreement for the public sector (65% TVL-E13, amounting to ~2000€ net per month).
+For more details about the two advertised PhD positions and how to apply, please see: https://www.kyb.tuebingen.mpg.de/729399/join-the-lab
+ 
+Dr. Romy Lorenz
+ Max Planck Research Group Leader
+Research Group Cognitive Neuroscience & Neurotechnology
+Max Planck Institute for Biological Cybernetics
+Tübingen, Germany
+romy.lorenz@tuebingen.mpg.de
+www.kyb.tuebingen.mpg.de/711763/cognitive-neuroscience-neurotechnology
+ 
+ 
+ 
+ 
+ 
+
+
+Dear experts,
+Based on page 643 of EANM guideline for brain PET imaging (Guedj, Eur J Nucl Med Mol Imaging, 2022, 49:632-651), “since version 8, SPM is available as a stand-alone tool”. However, I have not found the executable file of SPM 12 but the m files. Please kindly let me know if the exe file is available and the method to obtain it.
+Best regards,
+Sanaz Hariri
+
+
+On Saturday, March 2, 2024 at 03:40:28 PM GMT+3:30, Sanaz Hariri <shanraiz@yahoo.com> wrote:
+
+
+Dear experts,
+I want to change the SPM12 to a standalone executable file. I used the deploytool of MATLAB and added all files and directories of SPM folder to it while the main file was spm_Menu.m. However, running the built exe file resulted in an error message: “Can’t obtain SPM Revision information. Error in = > spm_Menu.m at line 25”.
+In addition, I checked the built exe file when spm.m was selected as the main file. Again, an error message was appeared as “Can’t obtain SPM Revision information. Error in = > spm.m at line 299”. In this line the spm_Welcome function is called which had been added to the list of accompanying files, before.
+Any help will be appreciated.
+Best regards,
+Sanaz
+
+
+
+Dear Sanaz,
+
+the SPM batch system and the various extension mechanisms (toolboxes, spm_orthviews, fieldtrip...) require more knowledge than just compiling spm.m as a target function. SPM comes with a MATLAB .m-file spm_make_standalone.m that will take care of the necessary steps to compile SPM from within MATLAB. You should give it a try on your SPM installation. If you want to customize your standalone SPM (by e.g. adding extra toolboxes etc) you may need to make some changes to the code.
+
+Hope this helps
+Volkmar
+
+
+Dear experts,
+Just following up on my query regarding the spm implementation of high pass filtering, in case anyone had insights,
+Thank you,
+Mayank
+
+On Sun, Feb 25, 2024 at 12:49 PM Mayank Jog <mayankjog@gmail.com> wrote:
+Hello experts!
+I was trying to understand an oddity I observed with high-pass filtering in spm. 
+
+Basically, I constructed a signal = y1+ a*y2; 
+y1 = sinusoid whose freq > hpf_cutoff, ie. it shouldn't be filtered out
+y2 = sinusoid whose freq < hpf_cutoff, ie. it should be filtered out. 
+
+The issue I'm having is that the filter gives different results based on "a" above (MATLAB code @ end of this email). Thinking from a brick wall** -type filtering POV, this shouldn't happen... the result of filtering "signal" above should be y1 everytime, independent of "a".  
+
+1.  Reading the documentation, I realized that SPM implements high-pass filtering using DCT.... why do we prefer filtering fMRI data with a DCT filter, since as the above case shows, a brick wall filter seems to be more accurate? 
+2. Thinking of y2 as "noise", it's almost as if the output is dependent on the scale of noise (captured by the scaling factor "a" above). Is this the right way to think about it/ Am I missing something here?
+
+Thank you!
+Mayank
+
+
+**By brick wall, I mean doing an fft, and nulling all frequencies above hpf_cutoff, followed by an inverse fft. 
+
+MATLAB Code: ===================
+L = 1024; %<length of signal
+filter_100s = ...          %< filter with hpf_cutoff = 100s
+                     spm_filter(   struct('RT', 1, 'HParam', 100, 'row', 1:L)   );
+
+
+y1 = sin(2*pi*[1:L]/50 )';         %< sinusoid with period = 50s,  shouldn't be filtered
+y2 = sin(2*pi*[ylim1:L]/350)'; %< sinusoid with period = 350s, should be filtered
+
+
+y_filter_test1 = spm_filter(filter_100s,    y1+50*y2); %< 'a' = 50
+y_filter_test2 = spm_filter(filter_100s,    y1+.1*y2);  %< 'a'=0.1
+
+figure; subplot(3,1,1); plot([y1 y2]);
+           subplot(3,1,2); plot(y_filter_test1);
+           subplot(3,1,3); plot(y_filter_test2);
+%============================
+
+
+Great, now it worked all the way without glitches. Thanks for your help.
+
+Estephan
+
+On Fri, 1 Mar 2024 14:15:07 +0000, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+>Hi Estephan,
+>
+>I think you will still need to have the FSLOUTPUTTYPE environment variable set to NIFTI2_GZ in order for the randomise call to correctly save the output files. I'll add this to the fslnets code for the next version.
+>
+>Paul
+
+Dear colleagues,  
+The Laboratory of Neuropsychophysiology (Faculty of Psychology and Education Sciences of the University of Porto) is pleased to announce the 11th Cognitive and Affective Neurophysiology Summer School from 08-12 July 2024 (35h course).
+ 
+This summer school is focused on the application of Electroencephalography (EEG) and Event Related Potential (ERP) techniques to the study of cognitive and affective processes. The course is designed as an introduction to these techniques and does not require prior knowledge or experience with EEG/ERP. However, participants with some degree of experience also considered the course helpful. Basic knowledge of statistics is expected (general understanding of statistical tests, correlation, ANOVA, regression).
+ 
+This year's program will include:
+1) Introduction to the EEG/ERP techniques in Cognitive and Affective Neuroscience
+2) Collecting EEG data and ERP Research Design
+3) Electrophysiological signal processing
+4) Statistical analysis of ERP data
+ 
+This course has a 360€ fee. You can find more details and registration on the course website: https://sites.google.com/view/can-summerschool-porto
+ 
+If you have any additional questions, please do not hesitate to contact us at labnpf@fpce.up.pt.
+ 
+
+
+Dear experts,
+I want to change the SPM12 to a standalone executable file. I used the deploytool of MATLAB and added all files and directories of SPM folder to it while the main file was spm_Menu.m. However, running the built exe file resulted in an error message: “Can’t obtain SPM Revision information. Error in = > spm_Menu.m at line 25”.
+In addition, I checked the built exe file when spm.m was selected as the main file. Again, an error message was appeared as “Can’t obtain SPM Revision information. Error in = > spm.m at line 299”. In this line the spm_Welcome function is called which had been added to the list of accompanying files, before.
+Any help will be appreciated.
+Best regards,
+Sanaz
+
+
+Dear DIPY community,
+We created this video to showcase our upcoming workshop. 🚀 Join us for a thrilling journey at the upcoming DIPY workshop in just 10 days 🧠✨!
+If you like the video please like, share and subscribe. 
+Register today at https://workshop.dipy.org
+Thank you,
+Mansi Ranka
+@dipymri
+
+p.s.
+https://twitter.com/dipymri/status/1763726195902869647
+https://www.linkedin.com/feed/update/urn:li:activity:7169488982668525568
+
+
+I am posting on behalf of Johannes Fuß, Director of the Institute of
+Forensic Psychiatry and Sex Research at the University Duisburg-Essen.
+Please direct all queries to him.
+
+
+
+The Institute of Forensic Psychiatry and Sex Research at the University
+Duisburg-Essen is looking for a dynamic individual in the fields of
+Neuroscience, Psychology or Medicine (or a related discipline) to lead a
+prospective study in forensic psychiatry. We want to compare how the
+placement of offenders with mental disorders in forensic facilities
+versus prison affects their mental health, brain and behaviour. The
+study will involve experimental behavioural research methods, diagnostic
+interviews, and imaging techniques, and is a follow-up to a DFG-funded
+project.
+
+Preferred qualifications include a PhD and publication experience in
+international peer-reviewed journals. Working knowledge of German will
+be advantageous as the role will involve supervising PhD students at the
+Institute and coordinating with the Ministries of Justice as well as
+visits to prisons and forensic clinics. The role will also involve
+securing external funding, developing new research questions, and the
+scientific preparation and publication of research results. Strong
+communication and statistical skills are essential, as well as excellent
+methodological expertise in at least one area (MRI studies and/or
+behavioural experiments and/or statistical methods). The position offers
+opportunities for interdisciplinary collaboration in an international
+team characterised by flat hierarchies.
+
+The Institute is located in the city of Essen (West Germany, near
+Cologne). The position is to be filled immediately, for an initial
+period of 5 years, on a full-time or part-time basis, and will be
+remunerated according to remuneration group 14 (TvÖD).
+
+
+Further information and access to the application portal can be found
+at:
+https://jobs.lvr.de/index.php?ac=jobad&code=%2B877KW8tyjSDGH%2FkbOdCcx27jMDTxJth5BzZKhMJoNniwUfx%2BNQh62OEgE%2FFtDYNjF8hx1ZdV484LxfTDlEqzeGZ1np3J8S3
+
+Unfortunately the portal is in German but Johannes
+(Johannes.Fuss@lvr.de) is more than happy to answer all your questions
+and help with the portal.
+
+I am posting on behalf of Johannes Fuß, Director of the Institute of
+Forensic Psychiatry and Sex Research at the University Duisburg-Essen.
+Please direct all queries to him.
+
+
+
+The Institute of Forensic Psychiatry and Sex Research at the University
+Duisburg-Essen is looking for a dynamic individual in the fields of
+Neuroscience, Psychology or Medicine (or a related discipline) to lead a
+prospective study in forensic psychiatry. We want to compare how the
+placement of offenders with mental disorders in forensic facilities
+versus prison affects their mental health, brain and behaviour. The
+study will involve experimental behavioural research methods, diagnostic
+interviews, and imaging techniques, and is a follow-up to a DFG-funded
+project.
+
+Preferred qualifications include a PhD and publication experience in
+international peer-reviewed journals. Working knowledge of German will
+be advantageous as the role will involve supervising PhD students at the
+Institute and coordinating with the Ministries of Justice as well as
+visits to prisons and forensic clinics. The role will also involve
+securing external funding, developing new research questions, and the
+scientific preparation and publication of research results. Strong
+communication and statistical skills are essential, as well as excellent
+methodological expertise in at least one area (MRI studies and/or
+behavioural experiments and/or statistical methods). The position offers
+opportunities for interdisciplinary collaboration in an international
+team characterised by flat hierarchies.
+
+The Institute is located in the city of Essen (West Germany, near
+Cologne). The position is to be filled immediately, for an initial
+period of 5 years, on a full-time or part-time basis, and will be
+remunerated according to remuneration group 14 (TvÖD).
+
+
+Further information and access to the application portal can be found
+at:
+https://jobs.lvr.de/index.php?ac=jobad&code=%2B877KW8tyjSDGH%2FkbOdCcx27jMDTxJth5BzZKhMJoNniwUfx%2BNQh62OEgE%2FFtDYNjF8hx1ZdV484LxfTDlEqzeGZ1np3J8S3
+
+Unfortunately the portal is in German but Johannes
+(Johannes.Fuss@lvr.de) is more than happy to answer all your questions
+and help with the portal.
+
+
+Neuroimaging Postdoctoral Fellowship - Examining the Neurobiological Impacts of Trauma and Stressor-Related Disorders using EEG and fMRI
+
+ 
+
+Are you passionate about exploring the intricate workings of the human brain? Are you committed to improving mental health outcomes for those impacted by trauma and stressor-related disorders? If so, consider joining the dynamic team at the Nicholson Lab, housed within the prestigious School of Psychology at the University of Ottawa/Institute of Mental Health Research, Royal Ottawa Hospital. 
+
+ 
+
+Position: Postdoctoral Fellowship
+
+Duration: 2-3 years
+
+Location: University of Ottawa/Royal Ottawa Hospital
+
+ 
+
+About Us: The Nicholson Lab brings together a diverse group of neuroscientists, biophysicists, and clinicians dedicated to advancing our understanding of the neurobiological impacts of trauma and stressor-related disorders. We utilize cutting-edge EEG and fMRI modalities to delve into the depths of the human brain, aiming to shed light on conditions such as post-traumatic stress disorder (PTSD). As part of our team, you'll have the opportunity to shape research questions, drive experimental approaches, and collaborate on national and international levels.
+
+ 
+
+Key Responsibilities:
+
+Engage in all facets of EEG and/or fMRI data acquisition and analysis.
+Develop, refine, and implement analysis protocols and paradigms.
+Conduct behavioral and clinical assessments with research participants.
+Prepare high-impact publications for peer-reviewed scientific journals and present findings at major conferences.
+Mentor graduate students and research staff.
+ 
+
+Qualifications and Skills:
+
+PhD or MD/PhD in Neuroscience, Psychology, Biomedical Engineering, Biophysics, MR Physics, or related fields.
+Proficiency in human brain imaging techniques, particularly EEG and fMRI.
+Strong programming skills in Python, R, MATLAB, and familiarity with statistical package is required.
+Demonstrated expertise in neuroimaging analysis methods.
+Familiarity with advanced techniques such as machine learning and neural modeling is advantageous.
+Outstanding academic record with a history of publications.
+Excellent written and verbal communication abilities.
+Experience mentoring graduate-level trainees.
+Ability to manage multiple projects independently.
+Willingness to travel within Canada.
+ 
+
+This full-time position commences on June 1st, 2024. Compensation will be commensurate with experience. If you're ready to contribute to groundbreaking research in a collaborative environment, we encourage you to apply. We eagerly anticipate welcoming qualified and enthusiastic individuals to our team.
+
+ 
+
+Application Instructions
+
+To apply, please submit the following attachments as pdf(s) to Dr. Andrew Nicholson at Andrew.Nicholson@theroyal.ca
+
+ 
+
+(1)   Curriculum vitae (CV)
+
+(2)   Statement of interest (1-2 pages)
+
+(3)   Names and contact information of three academic/research references (letters are not necessary for the initial application)
+
+(4)   Three sample publications
+
+ 
+
+Thank you for your consideration.
+
+Sincerely,
+
+ 
+
+Dr. Andrew Nicholson, PhD, BSc 
+
+Atlas Institute Chair of Minority Stress and Trauma Research
+
+Director of Clinical Research, Atlas Institute for Veterans and Families
+
+Assistant Professor, School of Psychology, University of Ottawa
+
+Scientist, Institute of Mental Health Research, University of Ottawa
+
+ 
+
+Hello,
+
+Background : I'm currently running a study in which I wish to examine the effects of cognitive training on brain activity across time, in pre-selected specific ROIs. I have 3 cognitive training groups and 3 timepoints (therefore 3 fMRI scans per participant that each represent a different timepoint).
+
+Problem : Using MarsBar, I am extracting parameter estimates (betas) within specific ROIs from pre-existing One T-tests done in SPM. However, when extracted, I noticed that the values change slightly depending on the N (number of participants included in the One T-test) and on the timepoints included.
+
+More specifically, this is what was done :
+1. The first time extracting betas, I used a One T-test that included a single training group's scans across all 3 timepoints.
+2. The second time extracting betas, I used a One T-test that included all three training groups across one time point only.
+
+Interestingly, beta values at Time 1 stayed the same regardless of the One T-test used. However, beta values at Time 2 and Time 3 changed slightly at the decimal level.
+
+Question : I have two questions.
+1. First, what is the reason these beta values can change?
+2. Second, what is the most appropriate One T-test to use, given my research question?
+
+Thank you for your help.
+Sam.
+
+ 
+
+ 
+
+Sent from Mail for Windows
+
+ 
+
+Hello,
+
+Background : I'm currently running a study in which I wish to examine the effects of cognitive training on brain activity across time, in pre-selected specific ROIs. I have 3 cognitive training groups and 3 timepoints (therefore 3 fMRI scans per participant that each represent a different timepoint).
+
+Problem : Using MarsBar, I am extracting parameter estimates (betas) within specific ROIs from pre-existing One T-tests done in SPM. However, when extracted, I noticed that the values change slightly depending on the N (number of participants included in the One T-test) and on the timepoints included.
+
+More specifically, this is what was done :
+1. The first time extracting betas, I used a One T-test that included a single training group's scans across all 3 timepoints.
+2. The second time extracting betas, I used a One T-test that included all three training groups across one time point only.
+
+Interestingly, beta values at Time 1 stayed the same regardless of the One T-test used. However, beta values at Time 2 and Time 3 changed slightly at the decimal level.
+
+Question : I have two questions.
+1. First, what is the reason these beta values can change?
+2. Second, what is the most appropriate One T-test to use, given my research question?
+
+Thank you for your help.
+Sam.
+
+
+Marie Curie PhD position
+
+
+
+MetaLab, University College London (PI: Stephen Fleming)
+
+We are recruiting for a fully-funded Marie Curie "CODE" PhD student to join Prof. Stephen Fleming’s lab at University College London. The project will focus on neurocomputational approaches to information seeking, offloading and metacognitive control across the lifespan. Research methods include psychophysics, computational modeling and brain imaging (fMRI, MEG).
+
+The position will be affiliated with an international network of 9 research labs located throughout Europe. See https://metacoglab.org and https://sites.google.com/view/confidentdecisions/ for more information. The successful candidate will receive interdisciplinary training in theories and methods for the study of decision confidence and metacognition. This includes many network-wide events and other (international) training opportunities. Salary is offered at £38,859 - £47,459 per annum (inclusive of London allowance), dependent on fellow circumstances.
+
+Candidates should have a Master’s degree (or equivalent) in neuroscience, computer science, psychology, or related fields. Previous experience with computational modelling, computer programming, or other quantitative experience, is highly preferred. Experience with perceptual psychophysics, fMRI, MEG, and/or data analysis is desired. Candidates must comply with the Marie Curie Actions rule for mobility, which holds that they have spent no more than 12 months of the past 3 years in the UK. Moving expenses for relocating to the UK will be covered if applicable.
+
+For more information, and to apply, please see: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?jobId=19656&jobTitle=Marie+Curie+Trainee+Fellow
+
+Applications close 12th March 2024 (extended deadline)
+
+-- 
+Stephen M. Fleming PhD
+Professor of Cognitive Neuroscience
+Sir Henry Dale Wellcome/Royal Society Fellow
+CIFAR Fellow, Brain, Mind and Consciousness Program
+Group Leader, Max Planck UCL Centre for Computational Psychiatry & Ageing Research
+Principal Investigator, Wellcome Centre for Human Neuroimaging
+
+Mobile: +44 7980 057221
+Lab manager: Sarah Kalwarowsky (s.kalwarowsky@ucl.ac.uk)
+Address: Room 504, UCL Department of Experimental Psychology, 26 Bedford Way, London WC1H 0AP
+Web: metacoglab.org
+
+
+
+We are excited to invite proposals for the International Society for Contemplative Research Conference 2024 which is scheduled to take place in Padova, Italy, on June 19th- 23rd 2024. The conference is a collaborative effort between the International Society for Contemplative Research, Mind and Life Europe, the Italian Buddhist Union Research Center and the University of Padova (Contemplative Studies Post-graduate Program). This second annual conference aims to foster the emerging field of Contemplative Science through rich interdisciplinary dialogue that brings together the fields of neuroscience, philosophy, religious studies, psychology, developmental science and education, in the rigorous study and integration of the profound insights of the world’s prominent contemplative traditions. There will be a focus on “Embodied Cognition”, including highlighted research that helps build our scientific understanding of mind-brain-body interactions. Attendees can look forward to invited speaker presentations, moderated dialogues, and panel discussions.  
+
+ 
+
+Submission Invitation: We are presently welcoming abstracts for consideration. Please visit our submission portal to access our submission guidelines and further details. Remember, the deadline for submissions is March 1st. 
+
+ 
+
+Best regards, 
+
+Program Planning Committee, ISCR
+
+Dr. Cope Feurer at the University of North Carolina at Chapel Hill (UNC) is seeking a full-time Assistant Clinical Research Coordinator to assist with an NIMH-funded research project integrating affective neuroscience (fMRI, EEG), physiology, and ecological momentary assessment (EMA) to examine predictors of stress generation and depression risk in female adolescents. This position is ideal for someone who is planning on applying to PhD programs in Clinical Psychology with an interest in neurobiological risk factors for youth internalizing psychopathology. Please see application link below with more information. 
+
+ 
+
+https://unc.peopleadmin.com/postings/275510
+
+
+Cope Feurer, PhD
+Pronouns: she/her
+Assistant Professor
+Department of Psychiatry
+University of North Carolina at Chapel Hill 
+Phone: 919-445-0638
+
+
+Dear Christian, 
+
+I am trying to install the CAT12.9 version on a linux computer (matlab R2015a version) and I got this error when tried to open cat12 through the bottom toolbox of the spm. Previous versions of cat12 worked perfectly.
+
+Please, can you provide any insight about this?
+
+
+/mnt/hd/mri/scripts/spm12/toolbox/cat12/cat_defaults.m
+
+Error using cell/strfind (line 32)
+If any of the input arguments are cell arrays, the first must be a cell array of strings and the second must be a character array.
+
+Error in cat_io_contains (line 38)
+      TF = ~cellfun('isempty', strfind( str , pat(1))); %#ok<STRCL1>
+
+Error in cat_vol_ctype (line 56)
+    type  = types{cat_io_contains(types, type)};
+
+Error in cat12>cat_interp_menuimgs (line 993)
+for i=1:3, I2(:,:,i) = cat_vol_ctype(interp2(double(I(:,:,i)),X2,Y2)); end %#ok<AGROW>
+
+Error in cat12_cat12_LayoutFcn (line 364)
+h01 = uicontrol(...
+
+Error in cat12>gui_mainfcn (line 1142)
+        gui_hFigure = feval(gui_State.gui_LayoutFcn, gui_SingletonOpt);
+
+Error in cat12 (line 118)
+    gui_mainfcn(gui_State, varargin{:});
+
+Error in spm_cat12 (line 331)
+cat12('fig');
+ 
+Your version of CAT12 is up-to-date.
+
+
+
+
+Thank you very much in advance.
+
+Best regards,
+
+--
+Miguel Ángel Rivas Fernández
+
+
+Brain, Body, and Self Laboratory, Department of Neuroscience, Karolinska Institutet
+
+ 
+
+The Department of Neuroscience comprises multiple research groups focusing on diverse aspects of nervous system function in both normal and diseased states. Our research encompasses a wide array of studies, ranging from molecular and cellular levels to neuron networks and the overall organization of the nervous system. This includes four labs dedicated to cognitive neuroscience. The Department maintains a flat organizational structure with 40 research group leaders, including 24 full professors, alongside 65 PhD students and 35 postdocs.
+
+ 
+
+The Brain, Body, and Self Laboratory (Group Ehrsson) uses neuroimaging and behavioral methods to study how we perceive our own bodies as unique objects distinct from the external environment (www.ehrssonlab.se). We aim to characterize the perceptual rules and brain mechanisms whereby a central representation of one's own body is constructed by integrating signals from the different sensory modalities (e.g., vision, touch, and proprioception). We also investigate how central body representation influences how we think, feel, and remember ourselves and how the external world looks to us. Our laboratory has expertise in functional magnetic resonance imaging (fMRI), electroencephalography (EEG), transcranial magnetic stimulation (TMS), psychophysics, and other behavioral approaches (including virtual reality technology and robotically controlled bodily illusion setups). We have local access to two state-of-the-art 3T MRI scanners, one 7T scanner, and one MEG scanner.
+
+ 
+
+We are seeking a highly talented, innovative, and enthusiastic researcher who has been awarded a Ph.D. in cognitive neuroscience or a related field within the past two years. The successful candidate will work on projects focused on body representation, bodily illusions, multisensory integration, embodied cognition, or processes related to bodily self-awareness, including the sense of body ownership.
+
+ 
+
+The ideal candidate should possess expertise in experimental psychology or cognitive neuroscience, with a preference for skills in psychophysics and computational modeling, and/or proficiency in neuroimaging methods, especially multivoxel pattern analyses, and/or experience with human electrophysiology (EEG, MEG) or brain stimulation methods (e.g., TMS). The candidate will be expected to work within the framework of our research program (www.ehrssonlab.se), yet will have considerable freedom to develop their own ideas and project proposals. The ability to work independently, initiate and lead novel research projects, and prepare high-quality draft manuscripts for research articles is crucial. Applicants must demonstrate an excellent academic track record, including high-quality publications in international peer-reviewed journals.
+
+ 
+
+The application must me uploaded via the Karolinska job recruitment portal: http://ki.varbi.com/what:job/jobID:687736/
+
+ 
+
+An application must contain the following documents in English or Swedish:
+
+A complete curriculum vitae, including date of the thesis defence, title of the thesis, previous academic positions, academic title, current position, academic distinctions, and committee work
+A complete list of publications
+A summary of current work (no more than one page)
+ 
+
+Deadline: April 22nd, 2024 (extended deadline)
+
+ 
+
+/Henrik Ehrsson
+
+ 
+
+ 
+
+
+
+Dear Benedetta, 
+
+Apologies for the late response. I think a 0 is missing in DCM.C, for now it is a vector of size 6, so n = size(C,1) in spm_erp_priors has value 5, and the matrix Q is initialised with shape (5,5) instead of (6,6), causing the error. 
+
+Hope that helps, 
+
+All the best, 
+Johan 
+
+Dear experts,
+
+I conducted a traditional PPI analysis in SPM. However, the group analysis results of this PPI appear odd:
+
+The whole-brain activation pattern of the PPI interaction regressor closely resembles the activation pattern of the total of all conditions in my experiment (contrast: condition 1+ condition 2+ condition 3+condition 4+ condition 5 + condition 6). They're pretty the same.
+
+I’m uncertain what went wrong. Could this be due to the necessity of using gPPI in this case? Any insights would be appreciated.
+
+Experiment setup:
+• Conditions: 6 (condition 1, 2, 3, 4, 5, 6)
+• Contrast for testing experimental manipulation:
+(condition 1+ condition 2+ condition 3) – (condition 4+ condition 5 + condition 6)
+
+Analysis:
+Used standard PPI with a weight matrix: [1 1 1 -1 -1 -1]
+The code is:
+
+
+	 abatch{1}.spm.stats.ppi.type.ppi.u =     [1 1 1
+	                                           2 1 1
+	                                           3 1 1
+	                                           4 1 -1
+	                                           5 1 -1
+	                                           6 1 -1];
+
+Thank you !
+
+Cheers,
+Luna
+
+Dear colleagues,
+
+We have an open PhD position on concurrent TMS-fMRI and accelerated rTMS
+treatment in MDD patients as a joined venture of the Neuroimaging Center
+(Til Ole Bergmann) and the Department of Psychiatry (Florian
+Müller-Dahlhaus) at the University Medical Center Mainz, Germany.
+
+German language proficiency is required for work with patients.
+
+For more details see job advertisement: https://t.co/SgmNEH746W
+
+Please forward this email to potentially interested candidates!
+
+Thank you and best wishes,
+Til
+
+--
+Univ.-Prof. Dr. Til Ole Bergmann
+Associate Professor of Neurostimulation
+Deputy Head, NeuroImaging Center (NIC)
+Johannes Gutenberg University Medical Center
+Langenbeckstr. 1, Bldg. 308c, 55131 Mainz
+tobergmann@uni-mainz.de | www.tobergmann.de
+
+

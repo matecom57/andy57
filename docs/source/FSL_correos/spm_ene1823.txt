@@ -1,0 +1,69 @@
+Hi,
+ 
+Our NIH-funded course, “Training in Advanced Statistical Methods in Neuroimaging and Genetics”, will be held in-person in Salt Lake City, UT, from April 3 – April 14, 2023. This is a course geared to advanced undergraduate students graduate students, postdocs, and junior faculty.
+ 
+Topics include: Bayesian methods of functional connectivity and activation, longitudinal modeling, network neuroscience, polygenic risk scores, multimodal modeling and predictive modeling.
+ 
+The course is a mix of lectures and hands-on computer labs. Our main lecturers include:
+ 
+Martin Lindquist, Johns Hopkins University
+Mandy Mejia, Indiana University
+Rick Betzel, Indiana University
+Anna Docherty, University of Utah
+ 
+To read more about the course and to apply please see:
+ 
+https://medicine.utah.edu/advancedstatisticscourse/
+ 
+Due to a previously unrecognized issue with the web, we are keeping the application portal open till Jan 27th.
+ 
+For more information please email : advancedstatisticscourse@utah.edu
+ 
+Best,
+ 
+Robert Welsh and Anna Docherty
+
+
+The Holsen Lab in the Departments of Medicine and Psychiatry at Brigham and Women’s Hospital/Harvard Medical School is seeking a full-time post-bac research assistant (Clinical Research Coordinator I) with a strong interest in neuroscience and psychology. The individual will assist with a study using both neuroimaging (transcranial magnetic stimulation) and neuroimaging (fMRI) to validate a novel cerebellar satiety network and identify therapeutic targets in individuals with hyperphagia and Prader-Willi syndrome (PWS). The post-bac clinical research coordinator will be mentored primarily by PI Dr. Laura Holsen (Brigham and Women’s Hospital), along with co-mentorship from Drs. Mark Halko (McLean Hospital) and Roscoe Brady (Beth Israel Deaconess Medical Center).
+
+Fostering diversity in the scientific research workforce is a key goal of Drs. Holsen, Halko, and Brady. Thus, additional funding, support, and mentorship is available for individuals from a diverse background, including those from groups demonstrated to be underrepresented in the biomedical, behavioral, clinical, and social sciences.
+
+GENERAL SUMMARY/ OVERVIEW STATEMENT:
+The Holsen Lab in the Departments of Medicine and Psychiatry at Brigham and Women’s Hospital/Harvard Medical School is seeking a full-time post-bac research assistant (Clinical Research Coordinator I) with a strong interest in neuroscience and psychology. The individual will assist with a study using both neuroimaging (transcranial magnetic stimulation) and neuroimaging (fMRI) to validate a novel cerebellar satiety network and identify therapeutic targets in individuals with hyperphagia and Prader-Willi syndrome (PWS). The post-bac clinical research coordinator will be mentored primarily by PI Dr. Laura Holsen (Brigham and Women’s Hospital), along with co-mentorship from Drs. Mark Halko (McLean Hospital) and Roscoe Brady (Beth Israel Deaconess Medical Center). Under their mentorship, the Clinical Research Coordinator will carry out a broad range of neuroimaging, neuromodulation, and data analytic research activities and procedures as indicated below.
+
+PRINCIPAL DUTIES AND RESPONSIBILITIES:
+Please note, the functions below are representative of major duties that are typically associated with these positions. Specific responsibilities may vary based upon departmental needs. Similarly, not all duties that have been outlined will be assigned to each position.
+
+The coordinator will work with local organizations and families to recruit and screen individuals with PWS, schedule and coordinate study visits, assist with data collection along with trained RAs in the Halko Lab at McLean Hospital, and organize and analyze behavioral and fMRI data. Neuroimaging processing responsibilities include DICOM unpacking, conversion of data to NIfTI (BIDS) format, visual inspection of structural and functional data quality, editing and running MATLAB-based SPM12 preprocessing scripts, and quality assessment of motion for functional data. Additional responsibilities include interacting with individuals with PWS and their families/caregivers, preparing detailed agendas and data updates for meetings, and training new staff members in neuroimaging analyses.
+
+This is a great position for those wanting research experience before applying for graduate school or medical school. Our team has a strong track record of mentoring research assistants who have gone on to pursue medical school or doctoral programs in clinical psychology, cognitive neuroscience, neuroscience, and public health.
+
+Ideal applicants for the position should:
+• Have a strong background and interest in neuroscience, cognitive neuroscience, psychology, and/or biology.
+• Have a strong background and interest in quantitative subjects such as mathematics, statistics, or computer science.
+• Be in good academic standing with a strong GPA and have completed coursework in psychology and neuroscience.
+
+SKILLS/ABILITIES/COMPETENCIES REQUIRED:
+• Careful attention to details
+• Good organizational skills
+• Ability to follow directions
+• Good communication skills
+• Working knowledge of clinical research protocols
+• Ability to demonstrate respect and professionalism for subjects’ rights and individual needs
+• Ability to work independently and as a team player
+• Analytical skills and ability to resolve technical problems
+• Ability to interpret acceptability of data results
+• Working knowledge of data management program
+• Strong computer, statistical, and managerial skills are essential
+• Programming skills (previous R experience is preferred, with a combination of MATLAB, bash, python)
+• Comfort with Linux environment
+• Experience using R, MATLAB, SPM12, and fMRIPrep
+
+EDUCATION:
+• Bachelor’s degree in psychology, cognitive science, neuroscience, or related field required.
+
+EXPERIENCE:
+• Those with a minimum of 1-2 years of experience working in a research lab with neuroimaging and/or working with individuals with intellectual disabilities will be considered for the Clinical Research Coordinator II position.
+
+The full ad and application can be found here: https://docs.google.com/forms/d/e/1FAIpQLScDj3wpoRz32lI5yxdvU4Io4EP0t1KDnIW7QXdu-wRedPn7Ug/viewform?usp=sf_link
+

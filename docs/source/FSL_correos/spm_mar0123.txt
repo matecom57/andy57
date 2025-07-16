@@ -1,0 +1,567 @@
+Research Fellow (Postdoctoral)
+University of Birmingham - School of Psychology - Centre for Human Brain Health
+Salary: £32,348 to £42,155 full time starting salary range, with potential progression once in post to £44,737, Grade 7
+Hours:  Full Time
+Closes: 22nd March 2023
+Contract:   Fixed Term contract up to two years with potential extension
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by Fellowships and grants from the BBSRC, ERC, Wellcome Trust and Jacobs Foundation, totalling over £4m.
+
+An initial 2 year postdoctoral position (with possibility of extension) is available from 1st April 2023, or as soon as possible thereafter.
+
+The main focus of this role will be on the design, collection and analysis of novel model-based behavioural, and neuroimaging experiments with the potential for novel neuroimaging methods (e.g. Spinal fMRI or OPM-MEG). In addition, the post holder may also be involved in behavioural, psychopharmacology, and neuroimaging studies involving children, adolescents and older adults. The position is broad and can be in part tailored to the applicants interest, and there is the opportunity to analyse existing data. There will be opportunities to collaborate with colleagues in the University of Oxford (Prof. Masud Husain and Prof. Catherine Harmer), University of California, San Francisco (Dr. Simon Little) and in Berlin (Prof. Radek Cichy).
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) is essential and experience of computational modelling, studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary.
+
+The work will build on studies such as this:
+1.    Müller, T., Klein-Flügge, M. C., Manohar, S. G., Husain, M. & Apps, M. A. J. Neural and computational mechanisms of momentary fatigue and persistence in effort-based choice. Nature Communications. 12, 4593 (2021).
+2.    Lockwood, P. L. … Apps, M.A. Distinct neural representations for prosocial and self-benefiting effort. Current Biology 32, 4172–4185 (2022).
+3.    Apps, M. A. J., Rushworth, M. F. S. & Chang, S. W. C. The Anterior Cingulate Gyrus and Social Cognition: Tracking the Motivation of Others. Neuron 90, 692–707 (2016).
+4.    Le Heron, C. et al. Dopamine modulates dynamic decision-making during foraging. Journal of Neuroscience. 40, 5273–5282 (2020).
+
+Main Duties
+
+- Contributing to the design and programming of behavioural and/or neuroimaging experiments
+- Running experiments involving behavioural and neuroimaging measures (e.g. fMRI, MEG)
+- Recruiting and contacting participants
+- Analysing behavioural and brain imaging data using advanced analysis tools (e.g. computational modelling)
+- Writing and contributing to manuscripts for research publications, and presenting data
+- Work collaboratively with other members of the group, the centre and wider school
+- Helping to look after and ordering relevant equipment when required
+- Assisting the laboratory head with supervision of student projects and outreach activities
+
+Person Specification
+
+- Have or be close to the completion of a PhD in cognitive neuroscience, neuroimaging, experimental psychology or a closely related discipline
+- Experience in designing/conducting or analysing neuroimaging data (e.g. fMRI and/or MEG)
+- Experience in the design, coding and analysis of behavioural experiments
+- Strong quantitative and programming skills, and knowledge of one or more relevant programming languages (e.g. Matlab; Python; R)
+- Experience of writing and publishing peer reviewed scientific papers or preprints
+- Ability to work independently
+- Resourcefulness and organisational skills to act on own initiative
+- Strong presentation skills including the ability to present research proposals and results, and represent the lab at meetings
+
+For informal enquiries contact Matthew Apps (m.a.j.apps@bham.ac.uk)
+
+To download the full job description and details of this position and submit an electronic application online please click on the link below or visit our careers website; https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/job/537/?utm_medium=jobshare .
+
+Hi Noelia,
+
+First off, a design with two within-subjects is a tricky beast because you also have to accommodate the interactions between each condition and the subject factor. In order to test the highest-order interaction, the correct error term is W1 x W2 x Sub (where W1 and W2 are your within-subject factors). In order to get SPM to use this, you need Sub, Sub x W1 and Sub x W2 as additional effects in the model. In addition, your Sub factor shouldn't be encoded in a single column, there should be as many columns as subjects in the design matrix.
+
+For more on this, please see my paper (https://www.frontiersin.org/articles/10.3389/fnins.2019.00352/full
+
+Modeling Group-Level Repeated Measurements of Neuroimaging Data Using the Univariate General Linear Model
+www.frontiersin.org
+), where the specification of these types of model in SPM using the Flexible Factorial module is outlined. After this, you may wish to consider whether you want to use this type of design, or whether using the traditional approach of running simple group-level models with contrasts from each subject would be preferable.
+
+Best wishes,
+Martyn
+
+Dear all,
+
+ 
+
+I am trying to run a DCM analysis with resting-state fMRI data collected from different scanners. To my knowledge, there have been some attempts to diminish scanner differences in multi-site resting-state fMRI postacquisition (e.g., ComBat harmonization). These toolboxes/approaches, however, could not work with dynamic analysis, such as DCM. I was wondering if anyone had experience of DCM with multi-site resting-state fMRI data, or if there is a way to harmonize resting-state fMRI data for dynamic analysis? Any help is appreciated!
+
+ 
+
+Many thanks!
+
+Sherry
+
+Hello all,
+
+
+
+We are excited to announce a new release of DIPY: DIPY 1.6.0 is out from the oven! 
+
+
+
+In addition, registration for the oceanic DIPY workshop 2023 (April 24-28) is now open! Our comprehensive program is designed to equip you with the skills and knowledge needed to master the latest techniques and tools in structural and diffusion imaging.  An intense hands-on experience in Santa Monica, Los Angeles! See the exquisite program here for this highly anticipated event.
+
+
+
+
+
+DIPY 1.6.0 (Monday, 16 January 2023)
+
+
+The release 1.6.0 received contributions from 22 developers (the full release notes are at: https://dipy.org/documentation/1.6.0./release_notes/release1.6/). 
+
+
+
+Thank you all for your contributions and feedback!
+
+
+
+Please click here to check 1.6.0 API changes. 
+
+
+
+Highlights of 1.6.0 release include:
+
+NF: Unbiased groupwise linear bundle registration added.
+
+NF: MAP+ constraints added.
+
+Generalized PCA to less than 3 spatial dims.
+
+Added positivity constraints to QTI.
+
+New functionality to apply Symmetric Diffeomorphic Registration to points/streamlines.
+
+New Human Connectome Project (HCP) data fetcher added.
+
+New Healthy Brain Network (HBN) data fetcher added.
+
+Multiple Workflows updated (DTIFlow, LPCAFlow, MPPCA) and added (RUMBAFlow).
+
+Ability to handle VTP files.
+
+Large codebase cleaning.
+
+Large documentation update.
+
+Closed 75 issues and merged 41 pull requests.
+
+To upgrade or install DIPY
+
+
+
+Run the following command in your terminal: 
+
+
+
+pip install --upgrade dipy
+
+
+
+or
+
+
+
+conda install -c conda-forge dipy
+
+
+
+This version of DIPY depends on nibabel (3.0.0+). 
+
+For visualization you need FURY (0.8.0+).
+
+
+
+Please support us by citing DIPY in your papers using the following DOI: 10.3389/fninf.2014.00008  
+
+
+
+Questions or suggestions?
+
+ 
+
+For any questions go to https://dipy.org, or send an e-mail to dipy@python.org  
+
+We also have an instant messaging service and chat room available at https://gitter.im/dipy/dipy
+
+Finally, a new forum is available at https://github.com/dipy/dipy/discussions
+
+
+
+Have a wonderful time using the new version. 
+
+
+
+On behalf of the DIPY developers,
+
+Eleftherios Garyfallidis, Ariel Rokem, Serge Koudoro
+
+https://dipy.org/contributors
+
+
+
+
+
+Research Fellow (Postdoctoral)
+University of Birmingham - School of Psychology - Centre for Human Brain Health
+Salary: £32,348 to £42,155 full time starting salary range, with potential progression once in post to £44,737, Grade 7
+Hours:  Full Time
+Closes: 22nd March 2023
+Contract:   Fixed Term contract up to two years with potential extension
+
+We are seeking a motivated postdoctoral researcher to join the Motivation and Social Neuroscience lab (https://www.msn-lab.com) led by Dr. Matthew Apps. The lab studies the cognitive, computational and neurobiological basis of motivation and decision-making in healthy young adults, across the lifespan and in neurological and psychiatric disorders. This post is funded by Fellowships and grants from the BBSRC, ERC, Wellcome Trust and Jacobs Foundation, totalling over £4m.
+
+An initial 2 year postdoctoral position (with possibility of extension) is available from 1st April 2023, or as soon as possible thereafter.
+
+The main focus of this role will be on the design, collection and analysis of novel model-based behavioural, and neuroimaging experiments with the potential for novel neuroimaging methods (e.g. Spinal fMRI or OPM-MEG). In addition, the post holder may also be involved in behavioural, psychopharmacology, and neuroimaging studies involving children, adolescents and older adults. The position is broad and can be in part tailored to the applicants interest, and there is the opportunity to analyse existing data. There will be opportunities to collaborate with colleagues in the University of Oxford (Prof. Masud Husain and Prof. Catherine Harmer), University of California, San Francisco (Dr. Simon Little) and in Berlin (Prof. Radek Cichy).
+
+The successful candidate will be resourceful with the ability to act on their own initiative, excellent quantitative skills including programming (e.g. Matlab, R or Python) for the design and analysis of experiments. Experience of neuroimaging (e.g. fMRI or MEG) is essential and experience of computational modelling, studies with diverse populations (children, adolescents, older adults), and advanced neuroimaging techniques (model-based imaging, MVPA or RSA) is desirable but not necessary.
+
+The work will build on studies such as this:
+1.    Müller, T., Klein-Flügge, M. C., Manohar, S. G., Husain, M. & Apps, M. A. J. Neural and computational mechanisms of momentary fatigue and persistence in effort-based choice. Nature Communications. 12, 4593 (2021).
+2.    Lockwood, P. L. … Apps, M.A. Distinct neural representations for prosocial and self-benefiting effort. Current Biology 32, 4172–4185 (2022).
+3.    Apps, M. A. J., Rushworth, M. F. S. & Chang, S. W. C. The Anterior Cingulate Gyrus and Social Cognition: Tracking the Motivation of Others. Neuron 90, 692–707 (2016).
+4.    Le Heron, C. et al. Dopamine modulates dynamic decision-making during foraging. Journal of Neuroscience. 40, 5273–5282 (2020).
+
+Main Duties
+
+- Contributing to the design and programming of behavioural and/or neuroimaging experiments
+- Running experiments involving behavioural and neuroimaging measures (e.g. fMRI, MEG)
+- Recruiting and contacting participants
+- Analysing behavioural and brain imaging data using advanced analysis tools (e.g. computational modelling)
+- Writing and contributing to manuscripts for research publications, and presenting data
+- Work collaboratively with other members of the group, the centre and wider school
+- Helping to look after and ordering relevant equipment when required
+- Assisting the laboratory head with supervision of student projects and outreach activities
+
+Person Specification
+
+- Have or be close to the completion of a PhD in cognitive neuroscience, neuroimaging, experimental psychology or a closely related discipline
+- Experience in designing/conducting or analysing neuroimaging data (e.g. fMRI and/or MEG)
+- Experience in the design, coding and analysis of behavioural experiments
+- Strong quantitative and programming skills, and knowledge of one or more relevant programming languages (e.g. Matlab; Python; R)
+- Experience of writing and publishing peer reviewed scientific papers or preprints
+- Ability to work independently
+- Resourcefulness and organisational skills to act on own initiative
+- Strong presentation skills including the ability to present research proposals and results, and represent the lab at meetings
+
+For informal enquiries contact Matthew Apps (m.a.j.apps@bham.ac.uk)
+
+To download the full job description and details of this position and submit an electronic application online please click on the link below or visit our careers website; https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/job/537/?utm_medium=jobshare .
+
+Dear all,
+
+I have two GLMs:  The 1st one includes the outcome as the category regressor and the prediction error (PE) as the parametric modulator; the 2nd is similar to the 1st one, except separating the outcome as outcome_win and outcome_lose and the corresponding PE as positive and negative PE(PE+; PE-).
+
+For the 1st GLM, I set 1 to get PE results; for the 2nd GM, I set 1/2 1/2 can also get a PE result.
+
+I'm wondering why the two kinds of results can be quite different. If I want to get the PE result, which one I should use?  Thanks in advance.
+
+Best,
+Sasa
+
+Hello experts,
+
+I am writing a machine learning classifier that will classify a series of brain images as belonging to one of many conditions. Previously when writing classifiers, I've used the beta outputs from SPM's design specification and estimation procedure as these beta estimates have been de-noised by any regressors included in the model. When working with a time course of brain images, however, I do not know how to perform the same temporal de-noising.
+
+So far, I have found a bandpass filter in FSL that will help denoise the data of any slow-wave drift, but I would also like to remove fluctuations that correlate with physiological signals and motion.
+
+Does anyone know of a way to have SPM write a temporally de-noised series of brain images?
+
+Thanks,
+
+Matthew Heard
+University of Texas at Dallas
+
+Dear SPM community,
+
+
+The Brain Imaging, Development, and Genetics (BRIDGE) lab, part of Stanford University’s Division of Brain Sciences, is seeking two full-time Postdoctoral Fellows in brain imaging and/or human genetic modeling. Ideal candidates will have a solid neuroscience, neuroimaging, and/or human genetics background.
+
+BRIDGE focuses on neuropsychiatric disorders, specifically those associated with RASopathies, such as Noonan syndrome and neurofibromatosis 1 (NF1). In our NIH-funded research, we employ three unique approaches: 1. Taking a genetics-first approach, we study children with known genetic conditions who exhibit attention problems, irritability, and deficits in social cognition. The approach differs from traditional research, which begins with the child's symptoms. 2. We apply in-depth phenotyping of the child's brain, genes, and behavior using brain imaging, genetic testing, and behavioral assessment. 3. We use large publicly available data sets (>10K children) focusing on child brain and behavioral development. Our goal is, therefore, to uncover how genetic variation and its associated downstream pathways affect children's developmental disorders.
+
+If interested, please see the official posting for additional details at
+https://postdocs.stanford.edu/prospective/opportunities/open-postdoctoral-position-faculty-mentor-tamar-green
+
+Thank you,
+Mira Raman, Research Data Analyst
+BRIDGE, Stanford University
+
+A PhD position in a collaborative project with the Memory and Decision Lab at Brown University (https://sites.brown.edu/mattlab/) is available at the Chair of Developmental Psychology (https://www.hammerer-lab.com) in Innsbruck. 
+
+The project focuses on understanding the relevance of neuromodulatory systems for flexible and context-specific behaviour using a combination of computational modeling of behavioral data and brain imaging. The role of the PhD in Innsbruck in this collaboration will be in particular to analyse brainstem imaging data and pupillometric data from younger adults in collaboration with computational modeling experts at Brown University. 
+
+More information in the attached pdf. 
+
+Deadline for applications is the 23.3.23, applications via this link only please: https://lfuonline.uibk.ac.at/public/karriereportal.details?asg_id_in=13320
+
+
+
+Feel free to email me if you have any questions about this position! 
+
+Cheers, 
+
+Dorothea Hämmerer
+
+Dear SPM Community,
+
+I am running an fMRI experiment in which there are two groups (Group 1 and 2), each one performing a task in two conditions (conditions 3 and 4). I am running a second level analysis using SPM flexible factorial  (please, see the attached design matrix). 
+Now, I am struggling in entering the T-contrasts using the SPM batch.  I found out how to get the contrast for the group factor (Group 1 vs Group 2) and the condition factor (Condition 3 vs Condition 4), but I did not find a way to enter the contrasts for the interactions. In particular, I need to get for both Group 1 and Group 2 the contrast between Condition 3 vs Condition 4. 
+
+How to enter these contrasts?
+Thank you in advance,
+
+Best regards,
+Damiano Terenzi
+
+
+Dear all
+Please see details below about an in-person brain anatomy course, taking place in 2 weeks' time. 
+
+ 
+Human Brain Anatomy Course (in person)
+Saturday 11th - Sunday 12th March, 2023
+
+Anatomy dissection room, King's College London
+
+**Places strictly limited - register now
+
+
+
+https://www.neurocourses.com/book/attendance-courses/
+
+
+
+
+
+
+TWO-DAY PROGRAMME (attendance-based)
+
+Comprehensive introduction to human brain anatomy
+ 
+Suitable for undergraduates and postgraduates in neuroscience, psychology and medicine
+
+
+
+- Covers topographic, functional, and MRI neuroanatomy
+
+- Very clear and accessible delivery, assumes minimal prior knowledge
+
+- Includes live neuroanatomy video demonstrations
+
+- Opportunity to get 'hands-on' with preserved human brain specimens!
+
+
+- Includes instant access to 8 high-quality ONLINE preparatory modules
+- Mean feedback: 4.9 / 5.0
+
+
+
+
+Places strictly limited - register now
+
+
+Price: £395 (with instant access to 8 online preparatory modules)
+
+Option to pay in 4 x £99 monthly instalments
+
+
+
+
+PROGRAMME OVERVIEW
+
+This exciting 2-day course (10am-4pm) consists of a series of in-person lectures covering all aspects of human brain anatomy in a very clear and accessible way. These are integrated with live neuroanatomy video demonstrations and 'hands-on' practical sessions using preserved human brain specimens and detailed anatomical models. Guided by a team of experienced anatomy demonstrators, the practical component will help consolidate your learning and give you a solid, three-dimensional understanding of the human brain.
+
+
+
+ONLINE PREPARATORY MODULES
+
+Once you register you will receive instant access to a series of high-quality online modules to help you prepare for the attendance course:
+
+Overview of the human brain - parts 1 and 2
+Brain development and anatomy
+Motor and sensory areas of the cerebral cortex
+Rise and fall of the limbic system concept
+Anatomy of memory and emotion (limbic lobe, hippocampus, amygdala)
+Anatomy review - using a detailed brain model
+Consolidation module - using coronal sections of a preserved human brain
+These modules, prepared and narrated by Dr Johns, provide a broad introduction to structural and functional neuroanatomy - and include self-test questions at the end of each section. The online materials will also be available after the in-person course, for review and consolidation.
+
+
+
+
+COURSE DIRECTOR
+
+Dr Paul Johns, BSc BM MSc FAcadMEd FRSB FRCPath
+Consultant Neuropathologist, Reader in Clinical Neuroanatomy
+
+Author of Clinical Neuroscience: An Illustrated Colour Text
+
+ 
+
+
+
+
+DELEGATE FEEDBACK COMMENTS
+
+
+
+"Dr Johns makes a challenging topic easy to understand"
+"an excellent teacher... simple explanations of complicated processes"
+"Excellent... full of information, presented at the right pace"
+"Tremendously helpful - brilliant insights into why structures were given their names"
+"Fantastic use of [memory aids] to explain Latin names and difficult concepts"
+"Dr Johns was very clear in his explanations... I never left feeling confused"
+"The quiz seemed easier than expected! [It was] a really good way of testing what we learnt"
+"Brilliant!"
+
+See more course reviews on our Facebook page
+
+Follow us on Twitter
+
+
+
+
+
+
+
+
+
+
+
+This email, its contents and any attachments are intended solely for the addressee and may contain confidential information. In certain circumstances, it may also be subject to legal privilege. Any unauthorised use, disclosure, or copying is not permitted. If you have received this email in error, please notify us and immediately and permanently delete it. Any views or opinions expressed in personal emails are solely those of the author and do not necessarily represent those of Royal Holloway, University of London. It is your responsibility to ensure that this email and any attachments are virus free.
+
+
+Dear SPM experts,
+
+I'm trying clustering analysis of patients with a neurological disease (Parkinson's disease), and I obtained 4 groups (G1-4) from 160 patients.
+
+I want to compare the GM atrophy patterns of patients in each cluster to 58 healthy control (HC) data.
+First, I ran TFCE analysis with a combined design matrix, i.e., one design matrix included all 218 images and nuisance covariates with 5 levels (HC, G1-4) (Fig.1). As a result, patients in G2 showed larger GM volumes in the basal ganglia and the cerebellum, and no GM atrophy (Fig.2).
+Then, I ran TFCE analysis with 4 separate design matrices, i.e., each design matrix included images and nuisance covariates of HC and only one group (G2 for Fig.3 as an example). Surprisingly, patients in G2 showed mild temporo-parietal GM atrophy in this analysis, and no GM enlargement (Fig.4).
+In both cases, nuisance covariates were handled with Smith method.
+
+My question is, which result is correct, or which analysis should I use?
+I think this matter is quite important in the case of multiple group comparison, nevertheless I was unable to find a consensus opinion. Does anyone know which way is appropriate?
+
+Thanks in advance,
+Best regards.
+
+=============================================
+Department of Neurology
+Graduate School of Medicine, Kyoto University
+Kenji Yoshimura M.D.
+
+54 Shogoin-Kawahara-cho
+Sakyo-ku, Kyoto, Japan
+606-8507
+TEL: 075-751-3773
+FAX: 075-753-4257
+Mail: yoshiken@kuhp.kyoto-u.ac.jp
+=============================================
+
+Dear all,
+
+
+
+In our DFG-funded project "Tools and practices for reproducible open neuroscience" we are looking for a new team member for the development of a python based software for research data management with a focus on neuroimaging data, such as MEG and MRI data.
+
+
+
+Please circulate this among your students and other potential applicants.
+
+
+
+The research data management software will be based on the Brain Imaging Data Structure (BIDS). The project has two stages. The first stage is the development of a tool to convert all data acquired at the main devices of our facility (MEG and MRI) into the BIDS standard. The second part is adding additional features to this tool, such as extracting and annotating metadata in a standardized form to accompany the converted datasets in order to make them better understandable and increase the efficiency of the data.
+
+
+
+The salary level is approximately 38000-40000 Euros p.a.  with 40h/week. The position can be split. 
+
+
+
+We are looking for a highly motivated individual to fill this position. The successful applicant has finished an apprenticeship as a software technician or a bachelor's degree in a STEM field and has prior experience with programming in python. Experience in the domain of software engineering and working with BIDS data are welcome.  Students looking to finance their studies are highly encouraged to apply for this position.
+
+
+
+For enquiries, please contact Aaron Reer: aaron.reer@uol.de or Prof. Dr. Jochem Rieger: jochem.rieger@uol.de. Send your application preferred in one single pdf document (letter of motivation, CV, certificates) to Aaron Reer, E-mail: aaron.reer@uol.de. The deadline for applications is March, 10th, 2023.
+
+
+
+The Applied NeuroCognitive Psychology lab (ANCP lab) is located at the Carl-von-Ossietzky University, Oldenburg, Germany. Remote work is possible. Conditions can be negotiated.
+
+
+
+
+
+
+
+
+
+-- 
+
+Jochem Rieger
+Prof. Dr. rer. nat. habil.
+Applied Neurocognitive Psychology
+DFG Center for Open and Reproducible Neuroscience Tools
+Carl-von-Ossietzky University Oldenburg
+Phone: +49 (0)441 798 4533
+Web: https://uol.de/en/applied-neurocognitive-psychology  
+
+Dear SPM community
+
+ 
+
+I seem to have an error with the utilisation of the ROI option in the CAT12 toolbox and was wondering if you were able to provide any input.
+
+ 
+
+I am running a VBM analysis using the CAT12 toolbox in SPM (latest version for both). I am using the default options (with TIV ANCOVA correction and multiple regression) based on the installation guide and I am using a Ubuntu 22.04 environment. After setting up the model and visualising the results I am trying to use the same SPM.mat file to run the ROI option. After selecting p value level, Neuromorphic atlas and Vgm I receive the error:
+
+ 
+
+Unable to perform assignment because the left and right sides have a different number of elements.
+
+ 
+
+Error in cat_stat_analyze_ROIs (line 402)
+
+  Pcorr{3}(defined_measure) = p_tissue;
+
+ 
+
+Error in cat12>pushROIAnalysis_Callback (line 236)
+
+cat_stat_analyze_ROIs;
+
+ 
+
+Error in cat12>gui_mainfcn (line 1090)
+
+        feval(varargin{:});
+
+ 
+
+Error in cat12 (line 118)
+
+    gui_mainfcn(gui_State, varargin{:});
+
+ 
+
+Error in cat12>@(hObject,eventdata)cat12('pushROIAnalysis_Callback',hObject,eventdata,guidata(hObject)) (line 710)
+
+  'Callback',@(hObject,eventdata)cat12('pushROIAnalysis_Callback',hObject,eventdata,guidata(hObject)),...
+
+ 
+
+Error while evaluating UIControl Callback.
+
+ 
+
+I have tried rerunning everything and this did not solve this issue.
+
+ 
+
+Any help would be greatly appreciated.
+
+ 
+
+George
+
+Dear all,
+
+I am in the midst of formulating my analysis strategy and wanted to gain inputs/thoughts for options available to me. Here is some info on my data:
+
+I have 2 groups, patient and controls. They played a 20 rounds task. Based on the decisions, I am able to classify the participants into 3 further sub groups, for simplicity, let’s call the sub groups fast, immediate and slow. My aim is to investigate the differences between patients and controls. However, I am not sure how to model this in SPM as there are also the further 3 sub-groups. My questions are therefore:
+
+1)      How to set up within SPM to help me investigate differences between patients and controls whilst also considering the 3 further sub groups
+
+2)      Is there anything I need to note for the 1st level analyses within SPM in view of my above data structure?
+
+3)      For group comparisons, I am considering comparing the groups 1st level boxcar from trial onset to decision; is there anything I need to consider in view of my above data structure?
+
+Any inputs/ questions will be greatly appreciated, thank you.
+
+ 
+
+Nat 
+

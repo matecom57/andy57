@@ -1,0 +1,256 @@
+Hello,
+
+We are upgrading our MRI Lab servers and workstations to Rocky Linux 8. We have used ext4 for the past 10 years, however we are considering using XFS for its better performance with larger files and parallel processing. I'm curious to hear which file systems other FSL users use.
+
+Thanks,
+Eddie
+
+
+Dear Sven,
+  That should be fine - it’s just a small text file.
+
+Kind Regards
+Matthew
+
+/Please circulate – apologies for cross-posting and for reposting: the job app is now live!/
+
+We have an exciting opportunity for a motivated postdoc to join the Learning, Memory, and Decision Lab at UCL in London (https://lmdlab.github.io/), within the Max Planck UCL Centre for Computational Psychiatry & Ageing Research.
+
+Expertise in neuroimaging of memory *or* decision-making is desirable.
+For brief information, see ex-Twitter:  https://x.com/gelliott_wimmer/status/1717562876368408820 (or bluesky: @elliottwimmer.bsky.social)
+
+The aim of the project is to better understand the role of memory, mood, and mood disorders in goal-directed decision-making.  The position is funded by the UK MRC for behavioral and neuroimaging research in the area of memory and goal-directed decision making.  The postdoc would be designing and conducting neuroimaging experiments investigating the role of memory reactivation and replay using multivariate neuroimaging approaches to MEG data.
+
+Using a transdiagnostic approach, the fellow can also investigate the influence of mood as well as depression and anxiety on learning & decision-making.  We investigate these questions using large-scale online experiments and in-lab behavioral studies.
+
+The University College London job posting link is here: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7861&nPostingTargetId=18042&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+Informal inquiries are welcome.  Prior to submitting an application, please submit a current CV including publication list and a brief statement describing your experience and interests to Dr Elliott Wimmer (e.wimmer@ucl.ac.uk).
+
+Review is rolling, but the current deadline is January 2nd!
+
+Relevant publications:
+[1] Wimmer, G.E., Liu, Y., McNamee, D., Dolan, R.J. (2023). Distinct replay signatures for prospective decision-making and memory preservation. PNAS, 120(6): e2205211120.
+[2] Wimmer, G.E., Büchel, C. (2021). Reactivation of single-episode pain patterns in the hippocampus and decision making. Journal of Neuroscience, 41(37): 7894-7908.
+[3] Wimmer, G.E.*, Liu, Y.*, Vehar, N., Behrens, T.E.J., Dolan, R.J. (2020). Episodic memory retrieval success is associated with rapid replay of episode content. Nature Neuroscience. 23: 1025–1033.
+
+--
+
+G. Elliott Wimmer, Ph.D.
+MRC Fellow / Senior Research Fellow
+Learning Memory and Decision Group PI
+Max Planck UCL Centre for Computational 
+Psychiatry & Ageing Research
+Wellcome Centre for Human NeuroImaging
+University College London
+10-12 Russell Square, London
+
+Email: e.wimmer@ucl.ac.uk
+
+Web: https://lmdlab.github.io
+
+########################################################################
+
+Hi,
+
+You probably need to install gradunwarp. As mentioned on the UK biobank pipeline README (https://git.fmrib.ox.ac.uk/falmagro/UK_biobank_pipeline_v_1), you can install that using one of the provided installation scripts. You should be able to find those in the following directory:
+ /home/fs0/pry648/scratch/Biobank/bb_python/python_installation
+
+Best wishes,
+
+Michiel
+
+On 29 Nov 2023, at 17:38, Fitzroy Wickham <fitzroy.wickham@new.ox.ac.uk> wrote:
+
+Hello,
+
+I keep having the same error when I try to run my diffusion script in the Jalapeno cluster. It seems there is a missing module called gradunwarp.core
+Please see below:
+
++ echo ' START: GradientDistortionUnwarp'
+START: GradientDistortionUnwarp
++ mkdir -p /home/fs0/pry648/scratch/BIDS_SVD_imran/P1019/fieldmap//fieldmap_iout_GDC/
++ /opt/fmrib/fsl/bin/fslroi /home/fs0/pry648/scratch/BIDS_SVD_imran/P1019/fieldmap/fieldmap_iout_mean.nii.gz /home/fs0/pry648/scratch/BIDS_SVD_imran/P1019/fieldmap//fieldmap_iout_GDC//fieldmap_iout_mean_vol1.nii.gz 0 1
+++ /home/fs0/pry648/scratch/Biobank/bb_pipeline_tools/bb_fsl_abspath /home/fs0/pry648/scratch/Biobank/bb_data/bb_GDC_coeff.grad
++ InputCoeffs=/vols/Scratch/pry648/Biobank/bb_data/bb_GDC_coeff.grad
+++ pwd
++ ORIGDIR=/home/fs0/pry648/scratch
++ cd /home/fs0/pry648/scratch/BIDS_SVD_imran/P1019/fieldmap//fieldmap_iout_GDC/
++ /home/fs0/pry648/scratch/Biobank/bb_pipeline_tools/bb_gradient_unwarp.py fieldmap_iout_mean_vol1.nii.gz trilinear.nii.gz siemens -g /vols/Scratch/pry648/Biobank/bb_data/bb_GDC_coeff.grad -n
+Traceback (most recent call last):
+ File "/home/fs0/pry648/scratch/Biobank/bb_pipeline_tools/bb_gradient_unwarp.py", line 11, in <module>
+   from gradunwarp.core import (globals, coeffs, utils)
+ImportError: No module named gradunwarp.core
+
+########################################################################
+
+Hi,
+
+I can't tell anything from those screenshots - can you share one with the statistic image overlaid on top of the MNI152?
+
+Paul
+
+Hi,
+
+The statistic images are masked according to the functional data, which may be slightly different to the MNI152 brain mask. Do the thresholded results look sensible?
+
+Paul
+
+Hi Phoenix,
+   That should be enough to pass the checks - are the inputs “lower-level feat directories” or “3D cope images from feat directories” ( and if the second are the inputs in the <blah>.feat/stats folder )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear FSL experts,
+
+I was analysing resting state networks extracted by group ICA. And I'd like to compare the network activity of three repeated sessions using the design matrix for Repeated measures ANOVA on https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Randomise/UserGuide#Repeated_measures_ANOVA. However, I'd also like to control for age and IQ. After I added age and IQ -- demeaned -- as two nuisance variables in the matrix, it showed the warning that "at least one EV is (close to) a linear combination of the others." I have checked the design matrix that age and IQ (demeaned) were not correlated with each other. I wonder if that warning would influence my results greatly.
+
+Thank you for your help in advance!
+
+Best wishes
+Yan
+
+Hi Dianne,
+
+Thanks - that's an as yet unresolved issue with the math/latex formatter. We don't have a fixed date for the transition to the new documentation (and the URL is going to change), so I'd recommend sticking with the wiki for the time being.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Patterson, Dianne K - (dkp) <dkp@ARIZONA.EDU>
+Sent: 05 December 2023 03:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Nice new documentation! But typo, I think
+ 
+https://open.win.ox.ac.uk/pages/fsl/docdev/#/install/configuration
+
+The paths are weird latex commands!!:
+
+Sure - thanks for your help
+
+What do you mean by “upload” ? Send it by replying to this e-mail ?
+
+
+On 4 Dec 2023, at 17:19, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+
+Dear Sven,
+ That’s quite odd - can you upload the design file?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hello,
+
+We are upgrading our MRI Lab servers and workstations to Rocky Linux 8. We have used ext4 for the past 10 years, however we are considering using XFS for its better performance with larger files and parallel processing. I'm curious to hear which file systems other FSL users use.
+
+Thanks,
+Eddie
+
+
+Hi,
+
+ 
+
+Yes, that helps a lot! I will do that 😊
+
+ 
+
+Thanks for all your help!
+
+ 
+
+Annelies
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Date: Monday, 4 December 2023 at 17:23
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coefficient of variation
+
+Hi Annelies,
+                   For a general contrast you will need to manually combine the EVs ( in the python script ) to form the effective EV corresponding to each contrast - so assuming a [1 -1] contrast for "Encoding Experimental vs Encoding Control” the effective EV would be EV1-EV3.
+
+Hope this helps
+Kind Regards
+Matthew
+
+Hi Annelies,
+                   For a general contrast you will need to manually combine the EVs ( in the python script ) to form the effective EV corresponding to each contrast - so assuming a [1 -1] contrast for "Encoding Experimental vs Encoding Control” the effective EV would be EV1-EV3.
+
+Hope this helps
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Dear All,
+
+ 
+
+I’m currently recruiting for a Postdoctoral Researcher at the Wellcome Centre for Integrative Neuroimaging (FMRIB), at Oxford. The post aims to develop new encoding methods and sequences for functional magnetic resonance spectroscopic imaging (fMRSI) in the human brain. Experience of spectroscopy is not a requirement. The post details are attached, and in the official job posting. Feel free to get in touch for more details by replying to this email, and please pass it on to anyone you think might be interested.
+
+ 
+
+Will Clarke
+
+Wellcome Career Development Fellow
+
+University of Oxford
+
+Hi Sven,
+
+Can you share the contents of the log files that are contained in the <analysi.feat>/logs/ directory?
+
+Paul
+
+Hi Austin,
+
+Have you checked inside the stats/ sub-directory?
+
+Paul
+
+TICA is not running on my computer (MacBook M1, FSL 6.0.7.5)
+
+any help is highly appreciated
+
+
+sven@SVEN-MPP-M1 Y_FM_2B_TEST % The file /Users/sven/Y_FM_2B_TEST/fsl.fmrib.ox.ac.uk/fsl/fslwiki does not exist.
+child process exited abnormally
+    while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -init" -b 10 -N feat1a_init -l logs "
+    invoked from within
+"if { $done_something == 0 } {
+
+    if { ! $fmri(inmelodic) } {
+       if { $fmri(level) == 1 } {
+              for { set session 1 } { $session <= $fmri(mult..."
+    (file "/Users/sven/fsl/bin/feat" line 390)
+
+########################################################################
+
+
+Hi FSL,
+
+I am currently on tbss_2_reg step of the TBSS analysis and our team was wondering if we should use both timepoints (baseline, endpoint) for the -n option (option is to align every FA image to every other one, identify the "most representative" one, and use this as the target image).
+
+Hope to hear back soon!
+
+Best,
+Ryu
+
+########################################################################
+

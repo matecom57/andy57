@@ -1,0 +1,621 @@
+Thanks Andreas. I will use one of them. How about questions 2 and 3?
+
+Best
+Paul 
+
+On Thu, Jun 8, 2023 at 1:09 PM Andreas Bartsch <bartsch@radvisory.net> wrote:
+there will be a fat-water shift between the two magnitude echos, I’d use the one that serves the registration better (if it makes a difference)
+
+
+Dear FSL experts,
+
+I have functional data where we used dual echo GRE field mapping.  I am trying to derive the fieldmap magnitude and the fieldmap; in this case there are two fieldmap magnitude maps images and one fieldmap phase image.   I am trying to use fsl_prepare_fieldmap which takes a  magnitude  image. 
+
+1- Which magnitude image do I use ? (either or both or an average?)
+2-does the output need re-scaling to be in rad?  How can I tell ?
+3- in B0 unwarping in FEAT, do I use the an average of the magnitude images or both?
+
+I attached the  3 .json files of the fieldmap images obtained from the SIEMENS scanner.
+
+Thanks!
+Paul Geha.
+
+
+Hello!
+I am having the same error message. And I wonder how it's fixed in the end. Is it a rights problem? I have drwxrwx as permission for folder and rwxrwx for files in the folder.
+Thanks
+Shuo
+
+########################################################################
+
+Join the ReproPsy & e-ReproNim Fellowship Programmes!
+
+Are you passionate about robust, rigorous, and transparent research practices in Psychology and/or Neuroscience? Do you want up to €1,000 to fund training to enhance your skills in software and data management? Do you want to join a vibrant community of practice? Look no further!
+
+We are thrilled to announce the first edition of two Fellowship programmes, ReproPsy and e-ReproNim. These are unique opportunities to become part of a vibrant community dedicated to advancing open and robust data practices in Psychological and Neuroscientific research.
+
+By becoming a ReproPsy Fellow, you will join a network of like-minded researchers dedicated to advancing data practices in Psychology and Neuroscience. Our programmes offer more than just financial support—it provides a platform for collaboration, knowledge sharing, and professional growth.
+
+The projects are led by Dr Jim Grange (Keele University, UK) and Dr Etienne Roesch (University of Reading, UK). They are part of the repro.school collective, and funded by the Research Data Alliance (RDA), in collaboration with the European Open Science Cloud (EOSC Future), and the UK Reproducibility Network’s Open Research Programme. 
+
+The RDA aims to develop and adopt infrastructure that promotes data-sharing and data-driven research, thereby grounding the fellowship programmes in networks of data specialists.
+	•	ReproPsy is part of the RDA Psychology Data Interest Group;
+	•	e-ReproNim is part of the RDA Neuroimaging Data Working Group, and the European sister project to the North American repronim.org.
+
+The UK Reproducibility Network is a grassroot movement, created organically by researchers in the UK in 2019, in response to the so-called reproducibility crisis. It now gathers active representatives of 70 research-intensive Universities in the UK and lead major projects. Other national Reproducibility Networks exist; there might be one closer to you? If not, contact us and we’ll help you set up.
+
+Open Data in Psychology & Neuroimaging
+In a context where results of research are questioned, open data is transforming the landscape of our practices, enabling collaboration, reproducibility, and innovation. As Psychology & Neuroscience embraces this paradigm shift, we aim to equip researchers like you with the necessary skills and resources to adopt and adapt your data practices, ensuring greater impact and scientific progress, and helping you help your community.
+
+Project overview
+The mission of the Fellowship programme is to empower communities to excel in open data practices. In each programme we are offering 15 fellowships (5 for UK applicants), each worth up to €1,000, to support early career researchers (ECRs) from both EU and UK institutions. ECRs typically donate their time to upskill and transmit this new knowledge to their local communities. We expect the funding awarded to be directed towards helping you create opportunities for learning and teaching, helping you fund your own software and data management training, and organise bespoke training sessions at your home institution. The funding could for instance be used to organise training from the Carpentries (http://carpentries.org) or similar venues; or, should your local policies on workload allocation permit, you could use the funding to offset time commitment towards such training, in agreement with your line manager.
+
+What we ask of you in return is a commitment to participate in the online events organised (at least once a month) and in the projects that may arise, such as scoping and designing training needs, contributing to writing training material, and other projects that you may bring to the table!
+
+More information about the programmes and to access the application form, please visit https://repro.school/2023/05/31/join-the-repropsy-e-repronim-fellowship-programmes/. 
+
+Application Process
+Applying for our Open Data Fellowship Program is simple! The link to the application form is at the bottom, but here's a brief outline of what you will need to consider before applying:
+
+	•	Field(s) of research (Up to 1000 char with spaces): What you do.
+	•	Training Needs (Up to 2000 char with spaces): In your application, highlight the training needs for yourself and your local research community. How can open data practices benefit your institution and Psychology as a whole?
+	•	Training Plan (Up to 2000 char with spaces): Describe the aim, motivation, and relevant prior experience related to the training you envision. How will this training empower your research and contribute to the open data movement?
+	•	Scope of Impact (Up to 2000 char with spaces): Outline the scope of your local community that would benefit from the training. Show us how this initiative can create a ripple effect, benefiting multiple researchers at your institution.
+	•	Special circumstances (Up to 2000 char with spaces): This is a gather-it-all section that allows you to bring anything you think might be relevant to the evaluators. Use this category to describe aspects related to equity, diversity and inclusion we ought to know about.
+	•	Justification of resources (Up to 5000 char with spaces): Provide itemised costs (including tax if applicable) describing how you plan to use the funding allocated in the Fellowship. Each Fellow can request up to €1,000.
+	•	Host Institution Support (signed pdf with letterhead): Upload a letter of support from your host institution, as a PDF file, signed by your line manager, confirming their commitment to supporting your training and supporting you to organise training in your community. This could involve allocating time, which must be clearly stated (in number of hours estimated), or providing you with other necessary resources. Files must be uploaded onto the public dropbox link provided in the application form. You will be asked for your name, and your email address; we only need your name to link your file to your application, and the email address does not have to be real. Any issue with uploading a file, please email e.b.roesch@reading.ac.uk. 
+
+Please also note:
+	•	The maximum number of characters allowed are not targets to be met. Be as concise as needed.
+	•	We are committed to supporting typically under-represented communities, and will apply a process of positive action towards supporting equity, diversity and inclusion. Specifically, after applications are graded by our evaluators and ranked, we will assert the landscape of the selection and adjust the selection if needed. Please use the Special Circumstances box to raise to the attention of the evaluators anything you think may deserve consideration.
+	•	The ReproPsy and e-ReproNim Fellowship programmes are separate projects, yet have lots in common–starting with the application form! We thus regret to say that we will not accept applications to both programmes, and you must specify one or the other on the application form.
+	•	Funding is only available to applicants from institutions hosted in the EU and the UK. Because of the structure of the funding allocation, we are reserving 5 fellowships to UK applicants in each of the fellowship programmes, 10 out of 30 in total.
+	•	Information related to the transfer of the award will be shared with successful applicants after selection. Fellows will be required to have identified who at their host institution will be managing this financial transaction: typically a post-award or a finance office.
+	•	Applications are managed using Google Forms, and PDF uploads with Dropbox. Neither of these platforms require you to create an account on Google or Dropbox. We collect your name and email addresses on the Google Form to identify your applications. This information is not shared with anyone, and only used for general statistics and logistics of the selection process. If you wish to be kept in the loop of what we do, please register to the Psychology Data Interest Group and Neuroimaging Data Working Group, with the Research Data Alliance. Alternatively, you can also visit our website.
+
+
+
+
+Dear FSL experts,
+
+I have functional data where we used dual echo GRE field mapping.  I am trying to derive the fieldmap magnitude and the fieldmap; in this case there are two fieldmap magnitude maps images and one fieldmap phase image.   I am trying to use fsl_prepare_fieldmap which takes a  magnitude  image. 
+
+1- Which magnitude image do I use ? (either or both or an average?)
+2-does the output need re-scaling to be in rad?  How can I tell ?
+3- in B0 unwarping in FEAT, do I use the an average of the magnitude images or both?
+
+I attached the  3 .json files of the fieldmap images obtained from the SIEMENS scanner.
+
+Thanks!
+Paul Geha.
+
+
+Hi Batel
+ 
+Yes you can use the registration from TBSS. Also, you can improve your own warp in two ways. (1) use the brain-extracted MNI space as a reference (in your example you are using the MNI with skull), and (2) use the T1-weighted image as an intermediate, i.e. register T1w to MNI (nonlinear) and T1w to diffusion (linear) and combine the two.
+ 
+Cheers
+Saad
+ 
+
+
+Post-Doctoral Research Scholar position at the Laureate Institute for Brain Research (LIBR) https://www.laureateinstitute.org
+
+Position: Dr. Maria Ironside is currently seeking a post-doctoral scholar to be involved in mechanistic studies investigating (1) processes and brain circuits underlying threat sensitivity as a targetable process in depression, anxiety and comorbid depression and anxiety, using a pharmacological probe and (2) acute effects of non-invasive brain stimulation on threat sensitivity in comorbid depression and anxiety. This post-doctoral position provides specialized training and experience in basic experimental studies involving humans, functional magnetic resonance imaging (fMRI) data analysis, and mechanistic research design with the aim of contributing to research to better characterize patients and optimize mental health treatments. A successful candidate will: (1) analyze fMRI, startle EMG, behavioral, and self-report data; (2) work with research participants and LIBR staff; (3) gain experience in the implementation of mechanistic trials; (4) prepare and publish papers, give presentations, and write K-level National Institutes of Health (NIH) grant applications; and (5) progress toward an independent career.
+
+Institute: Located in Tulsa, Oklahoma, LIBR is a privately-funded non-profit clinical neuroscience research institute attached to a major psychiatric hospital (Laureate Psychiatric Clinic & Hospital). Our mission is to reduce the suffering of psychiatric patients by leveraging leading talent and technology to discover novel therapies. LIBR offers excellent training opportunities in a dynamic, interactive, and multidisciplinary environment with a diverse team of collaborators. LIBR is an Equal Opportunity/Affirmative Action employer, compliant with the Americans with Disabilities Act and seeks to hire scholars from a wide variety of backgrounds and is committed to supporting a culture of diversity and respect.
+
+Facilities: A state-of-the-art neuroimaging research environment, including two 3-Tesla MRI scanners (GE Discovery MR750; fully research-dedicated), equipped with blood-oxygen-level-dependent and arterial spin labeling pulse sequencing, a custom-developed real-time fMRI system, an fMRI-compatible electroencephalography (EEG) system, a stand-alone EEG system and other physiological testing systems.
+
+Requirements: (1) Ph.D. in Clinical Psychology, Clinical Science, Developmental Psychology, Cognitive Psychology, Experimental Psychology, Psychiatry or Neuroscience; and (2) a solid foundation in statistics.
+
+Preferred skills: (1) experience analyzing fMRI and/or startle EMG data; (2) experience with fMRI analysis software (FSL, SPM, AFNI and/or fMRIprep) and scripting; (3) experience with R statistical analysis software.
+
+Salary/Benefits: This is a full-time research position for 2 years with renewable funding up to 3-5 years. A full benefits package is available. We welcome international applicants and can support a H1B visa.
+
+Start Date: Autumn 2023.
+
+How to Apply: Interested candidates should email a CV, a brief statement of long-term career goals, and contact information for 3 references to Dr. Maria Ironside, LIBR Principal Investigator: mironside@laureateinstitute.org.
+
+
+Ok well just to close this out,  I think I solved the problem, which was that my Susan threshold was too strict. I don't exactly understand how Susan calculates it, but I mimicked what is done in FEAT (75% of the 50th percentile of the remasked data, plus an USAN of the mean image with the same threshold) and it seems better now.
+
+########################################################################
+
+
+Ok just an update, I actually think the problem is with my Susan call. Perhaps I need an USAN, based off a structural image or similar? I'm having a hard time finding help online for how to choose Susan options. I guess I could just go back to standard gaussian smoothing
+
+########################################################################
+
+Thank you Saad.
+
+I have now tried to repeat the process with a bigger number of patients and controls. I have re-run eddy_qc and checked all qc.json (they appear normal to me) with the patients and controls groups.
+
+The code looks like this: 
+
+echo "group" > QC_group_PSP.txt
+
+for control in 15581    23085 25896 18066 13756 ; do
+
+echo `ls -d $dir/sub-$control/ses-*/preproc/dwifslpreproc-tmp-*/eddy_qc/qc.json` >> $dir/QC_list_PSP.txt
+
+echo "0" >> $dir/QC_group_PSP.txt
+
+done
+
+echo "done controls"
+
+for PSP in 16257  20400       21490 21153 19471; do
+
+echo `ls -d $dir/sub-$PSP/ses-*/preproc/dwifslpreproc-tmp-*/eddy_qc/qc.json` >> $dir/QC_list_PSP.txt
+
+echo "1" >> $dir/QC_group_PSP.txt
+
+done
+
+echo "done PSP"
+
+eddy_squad $dir/QC_list_PSP.txt \
+          -g $dir/QC_group_PSP.txt \
+          -o $dir/TEST_M
+
+echo 'done'
+
+
+However, I am still getting error:
+
+Generating group database...
+Traceback (most recent call last):
+  File "/usr/local/software/fsl/6.0.4/bin/eddy_squad", line 42, in <module>
+    main(args.list, args.grouping, args.group_db, args.update, args.output_dir)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/SQUAD/squad.py", line 87, in main
+    db = squad_db.main(out_dir + '/group_db.json', 'w', sList)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/SQUAD/squad_db.py", line 42, in main
+    raise ValueError(qc_json + ' does not appear to be a valid qc.json file')
+ValueError: /home/mt892/rds/rds-rowe-k1PgZFWfeZY/group/p00259/DTI_preproc/test1/testing_squad_5x/sub-15581/ses-20081106/preproc/dwifslpreproc-tmp-RKIAAZ/eddy_qc/qc.json/qc.json does not appear to be a valid qc.json file
+done
+
+
+Any suggestions on what may be happening please? 
+
+Mariana
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK>
+Sent: 17 May 2023 10:28
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] eddy_squad query
+ 
+Hi Mariana
+ 
+I think eddy_squad expects the grouping variable to have a name. Try to ass that to the file, for example:
+ 
+echo “group” > QC_group.txt
+echo 0 >> QC_group.txt
+echo 0 >> QC_group.txt
+echo 1 >> QC_group.txt
+ 
+Cheers
+Saad
+ 
+ 
+ 
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Mariana Silva <mt892@CAM.AC.UK> Date: Tuesday, 16 May 2023 at 18:24 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] eddy_squad query
+Hi there,
+ 
+QC_group.txt contains the code 0 - control and 1-patient
+ 
+0
+0
+1
+ 
+ 
+QC_list.txt contains
+ 
+sub-10036/ses-20081106/preproc/eddy_qc
+sub-10036/ses-20140303/preproc/eddy_qc
+sub-10043/ses-20080630/preproc/eddy_qc
+ 
+ 
+Maybe I misunderstood it but how can I compare between subjects (control vs patients) if I do not run QC_group.txt?
+ 
+Mariana
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK> Sent: 16 May 2023 17:22 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] eddy_squad query
+ 
+Hi
+ 
+Looks like the problem now is with the QC_group.txt file. Not sure what’s in it, but you should make sure it matches the length of the QC_list.txt file (also not sure you need it for this particular case)
+ 
+Cheers
+Saad
+ 
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Mariana Silva <mt892@CAM.AC.UK> Date: Tuesday, 16 May 2023 at 16:14 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] eddy_squad query
+Hi Saad,
+ 
+I did what you suggested (removing the folder name). It creates the output that it should but the group_qc.pdf file does not open and this is, I believe, linked with the output error I get:
+ 
+Generating group database...
+Group database generated and stored. Writing group QC report...
+Traceback (most recent call last):
+  File "/usr/local/software/fsl/6.0.4/bin/eddy_squad", line 42, in <module>
+    main(args.list, args.grouping, args.group_db, args.update, args.output_dir)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/SQUAD/squad.py", line 109, in main
+    squad_var.main(pp, db, group, None, None)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/SQUAD/squad_var.py", line 48, in main
+    seaborn.violinplot(x=grp[grp.dtype.names[0]][1:], y=db['qc_motion'][:,0], palette='Set3', scale='width', width=0.5, linewidth=1, inner='point', ax=ax1)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/seaborn/categorical.py", line 2387, in violinplot
+    color, palette, saturation)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/seaborn/categorical.py", line 562, in __init__
+    self.establish_variables(x, y, hue, data, orient, order, hue_order)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/seaborn/categorical.py", line 207, in establish_variables
+    group_names)
+  File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/seaborn/categorical.py", line 249, in _group_longform
+    grouped_vals = vals.groupby(grouper)
+  File "/home/mt892/.local/lib/python3.7/site-packages/pandas/core/series.py", line 1894, in groupby
+    dropna=dropna,
+  File "/home/mt892/.local/lib/python3.7/site-packages/pandas/core/groupby/groupby.py", line 897, in __init__
+    dropna=self.dropna,
+  File "/home/mt892/.local/lib/python3.7/site-packages/pandas/core/groupby/grouper.py", line 889, in get_grouper
+    if not isinstance(gpr, Grouping)
+  File "/home/mt892/.local/lib/python3.7/site-packages/pandas/core/groupby/grouper.py", line 469, in __init__
+    self.grouping_vector = _convert_grouper(index, grouper)
+  File "/home/mt892/.local/lib/python3.7/site-packages/pandas/core/groupby/grouper.py", line 923, in _convert_grouper
+    raise ValueError("Grouper and axis must be same length")
+ValueError: Grouper and axis must be same length
+ 
+Any suggestions on how to resolve this issue please?
+ 
+Mariana
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK> Sent: 16 May 2023 09:52 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] eddy_squad query
+ 
+Hi
+ 
+In the QC_list.txt file, can you remove the last bit in each line (the bit that says “qc.json”) and try again?
+ 
+Cheers
+Saad
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Mariana S <mt892@CAM.AC.UK> Date: Tuesday, 16 May 2023 at 09:25 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: [FSL] eddy_squad query
+Dear FSL team,  I am learning diffusion MRI(dMRI) and have used squad for quality control on two subjects one of which has two dMRI sessions.  The command I passed was:  eddy_squad $dir/QC_list.txt \            -g $dir/QC_group.txt \            -o $dir/eddy_squad_QC  The error message is below:  Traceback (most recent call last):   File "/usr/local/software/fsl/6.0.4/bin/eddy_squad", line 42, in <module>     main(args.list, args.grouping, args.group_db, args.update, args.output_dir)   File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/SQUAD/squad.py", line 87, in main     db = squad_db.main(out_dir + '/group_db.json', 'w', sList)   File "/usr/local/software/fsl/6.0.4/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/SQUAD/squad_db.py", line 42, in main     raise ValueError(qc_json + ' does not appear to be a valid qc.json file') ValueError: sub-10036/ses-20081106/preproc/eddy_qc/qc.json/qc.json does not appear to be a valid qc.json file  I have done:  vi QC_list.txt  output is correct:  sub-10036/ses-20081106/preproc/eddy_qc/qc.json sub-10036/ses-20140303/preproc/eddy_qc/qc.json sub-10043/ses-20080630/preproc/eddy_qc/qc.json  Any suggestions please, on how to solve this issue and what may be happening?  Regards, Mariana  ########################################################################  To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1  This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi there -
+
+I have an experimental design with 5 separate runs, and where the conditions are not evenly distributed across the runs. Therefore, I think it is not really possible for me to estimate COPEs for each run individually and then combine them in a 2-level analysis for each participant.
+
+I am therefore resorting to concatenation, so that I can run a single first-level analysis on all 5 runs together.
+
+I've done this previously (but its been a while), and have typically done some form of signal normalization in each scan before concatenating, in order to properly scale the data of each scan to a similar mean and variance, hopefully improving model fits. In my current iteration, I am trying to do percent-signal change (PSC) before concatenating. However, I'm running into a number of issues regarding how PSC and spatial smoothing interact.
+
+So, I have 2 general questions:
+
+1) should I not be doing PSC and concatenation at all? Or perhaps I can still concatenate to estimate all 5 runs simultaneously, but don't really need to worry about PSC? My sense from looking at the data is that I do indeed need to care about the potential differences from run to run in mean and variance, and so PSC is helpful. Is there a different procedure I should consider?
+
+2) What are best practices for the order of operations? Currently my pipeline looks like this:
+
+a) fMRIPrep on each run individually
+b) convert to floating point
+c) spatially smooth using Susan
+d) high-pass filter, adding back in mean
+e) PSC conversion, only in a brain mask
+f) concatenation across runs
+
+However, it seems that the PSC conversion after smoothing may be re-introducing some problems with the data, because the result after modeling (in FEAT) is not at all smooth, but rather very patchy. I would note that in FEAT I am including a constant term for 4 of the 5 runs, to allow for independent estimation of the means for each scan. I could of course do this even if I don't to PSC, but of course I can't separately estimate the variance/scaling in each run.
+
+Here is the snippet of code I'm using for each run:
+
+#set some parameters
+smooth_mm=5  #amount of smoothing, in mm
+hpf_v=38.333333333 #high-pass filter, in volumes (not sec)
+
+#### loop for runs
+for run in ${runs[@]}; do
+echo $run
+##### set variables names
+maskData=sub-$sub\_task-$task\_$run\_space-$space\_desc-brain_mask.nii.gz
+inputData=sub-$sub\_task-$task\_$run\_space-$space\_desc-preproc_bold.nii.gz
+meanData=sub-$sub\_task-$task\_$run\_space-$space\_desc-preproc_bold_sm_hpf_mean.nii.gz
+outputData=sub-$sub\_task-$task\_$run\_space-$space\_desc-preproc_bold_sm_hpf_PSC.nii.gz
+
+##### generate floating point version of data
+(set -x; fslmaths "$input_dir"/$inputData temp_prefiltered_func_data -odt float)
+
+##### Spatial Smoothing
+#create temp_mask_dilF
+fslmaths "$input_dir"/$maskData -dilF temp_mask_dilF
+# create temp_func_data_thresh
+fslmaths temp_prefiltered_func_data -mas temp_mask_dilF temp_prefiltered_func_data_thresh
+#create masked temp_mean_func
+fslmaths temp_prefiltered_func_data_thresh -Tmean temp_mean_func
+# default bt is 10% of the 98th percentile: auto set by using -1
+(set -x; susan temp_prefiltered_func_data_thresh -1 $smooth_mm 3 1 0 temp_prefiltered_func_data_smooth)
+#remask result: use original mask, not dilated!
+fslmaths temp_prefiltered_func_data_smooth -mas "$input_dir"/$maskData temp_prefiltered_func_data_smooth
+
+##### Temporal filtering
+fslmaths temp_prefiltered_func_data_smooth -Tmean temp_mean_func_smooth
+(set -x; fslmaths temp_prefiltered_func_data_smooth -bptf $hpf_v -1 -add temp_mean_func_smooth temp_func_data_sm_hpf)
+
+
+##### calculate PSC
+
+# calculate mean of time series
+(set -x; fslmaths temp_func_data_sm_hpf -Tmean $meanData)
+
+# PSC, in Mask only!
+(set -x; fslmaths temp_func_data_sm_hpf -div $meanData -mul 100 -mul "$input_dir"/$maskData $outputData)
+echo N volumes
+fslnvols $outputData
+
+
+Some general info about the data:
+data is 2x2x2.5 mm, TR=1.5s, and has been written out in MNI152 space (from fMRIPrep).
+
+Best,
+Ed
+
+########################################################################
+
+
+Thanks Andreas. I will use one of them. How about questions 2 and 3?
+
+Best
+Paul 
+
+On Thu, Jun 8, 2023 at 1:09 PM Andreas Bartsch <bartsch@radvisory.net> wrote:
+there will be a fat-water shift between the two magnitude echos, I’d use the one that serves the registration better (if it makes a difference)
+
+
+
+Dear All,
+
+I am now working with TBSS preprocessed data, and I would like to do the stats using randomise tool. 
+
+Before running, it requires to generate a design matrix (design.mat) and contrasts file (design.con). In my case, it is Single-Group Paired Difference (Paired T-Test), so I can not use design_ttest2, instead I try to follow https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM#Randomise_details-11 with GLM GUI. However, the number of my input is pretty big, i.e., 80 (40x2), and the number of main EVs will be 41 (40+1).  It seems that GLM GUI just break down (stop responding) every time when I input the numbers, probably due to the large value. Does anyone know how to solve this problem? Besides GLM GUI, is there any other way to generate the design matrix and contrasts?
+
+Thanks, and any help will be highly appreciated.
+
+
+Kind regards,
+Erin
+
+
+Hi Erin,
+ 
+You can use the example in the link and start from it, but if you think you may need to test interactions, it’s probably easier to build the design in a different but equivalent way.
+ 
+EV1: intercept
+EV2: code as +1/-1 for the two groups
+EV3: age
+EV4: code as +1/-1 for the two sexes
+EV5 (optional): if you decide to test the interaction group by sex, code this as the product of EV2 and EV4.
+ 
+The contrasts then are straightforward: all zeroes, except 1 or -1 for each of the EVs being tested.
+ 
+All the best,
+ 
+Anderson
+ 
+
+
+Hi everyone, I hope that you are good.
+I'm an PhD student and I'm working with POSSUM, I installed successfully FSL_5.0.10 which is the version that works and where the spin echo sequence was created, so I run the simulation with a GE sequences and works perfectly, but for my research I need to use a fast spin echo sequence therefore I download the code from GitHub and replace the older folder, but when I try to compile the POSSUM project with make, it gave me the next error.
+#@if [ ! -d /etc/matlab ] ; then /bin/mkdir -p /etc/matlab ; /bin/chmod -R g+w /etc ; fi
+#/bin/cp read_pulse.m write_pulse.m /etc/matlab
+#mkdir bin
+/bin/mv possum spharm_rm signal2image pulse systemnoise possum_sum b0calc possum_matrix tcalc bin/
+mv: bin/ is not a directory
+make: *** [matlabfiles] Error 1
+Also I tried with ./build but I have not success, I appreciate if someone could help me.
+
+########################################################################
+
+Hi Antonio,
+
+Can you check whether you have sufficient hard drive space in the destination directory? I would recommend having at least 20GB free.
+
+Also, can you ensure that you are installing FSL into a folder within the virtual machine, and not into a folder on your host system (which I'm assuming is Windows) - FSL cannot be installed natively into a Windows file system at the moment.
+
+Finally, I would recommend using the Windows Subsystem for Linux (WSL) over a virtual machine, as it usually provides a much nicer experience.
+
+Paul
+
+
+Hi,
+
+I tried to install the FSL 6.0.6.5 latest version in linux environment (kubuntu 22) and Oracle virtual box, but the process crashes.
+The error messages in the log file are:
+
+[stdout]: fsl-data_first_models_336_bin-2006.0-0.tar.bz2 extraction failed
+
+[stderr]: error    libmamba Error when extracting package: Write failed
+
+How can I solve this problem?
+
+Thank you,
+
+Antonio
+
+Hi Maryam,
+
+It sounds like you are trying to install an older version of FSL - I would suggest trying to install the most recent version - you can download an updated version of the fslinstaller script from https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Maryam Shapourjani <shapourjani.maryam@GMAIL.COM>
+Sent: 08 June 2023 09:49
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Installation problem
+ 
+Hi,
+
+
+Hello,
+
+We have conducted a group vertex analysis on the thalamus and found a significant area that showed thinning in the patient group. I am wondering what is the best way to transform this significant area into the subject's native space? Is flirt sufficient?
+We hope to use this as seed for a functional connectivity analysis. We are not sure what might be the best way of selecting a seed in this case (cube around the most significant voxel vs. the specific thalamic nucleus vs. the significant thinning area). We would really appreciate advice and suggestions.
+
+Thank you!
+
+Best,
+Rae
+
+
+While using fslroi command, the series description in the header information is getting updated. Previously there was TE value and some other timing information and now it's updated  to some other descriptions and a timing in yr:dd:mm and  hrs:min:sec. Does this mean that the data is losing the header information regarding TE. Does this affect analysis in any way? Especially while doing slice time correction or any other steps?
+
+Regards
+
+
+Hi Matthew
+
+Thank you for the response!
+
+We are actually using FEAT rather than fsl_glm by itself to analyze the data.
+
+We have several questions within a run, and several runs for a task. And we are running a trial/question level glm. However, we are interested in only a subset of questions across runs, and the number of questions we want is different for each run (e.g., 7 questions in run 1, and 1 in run 2), which is why we want to concatenate the runs to deal with the imbalanced design. Would using a second-level analysis account for the imbalanced design? How does the second-level analysis does the comparison?
+
+Thanks
+Alaric
+
+Thank you, Michiel, for your prompt response.
+I made the change from 'postmat' to 'premat' in the command like you suggested. However, unfortunately, when I apply the warp to the diffusion space, the result is still unsatisfactory (please refer to the attached file).
+I used the following command to apply the warp:
+
+'applywarp --ref=${FSLDIR}/data/standard/MNI152_T1_2mm --in=hifi_nodif_brain.nii.gz --warp=diff2standard.nii --out=diff_regist_QA.'
+
+In addition, is it possible to use the warp that is generated as an output of the tbss process? It appears to yield much better results when applied.
+
+I greatly appreciate all your assistance.
+
+Thank you very much,
+Batel
+
+
+Dear ASL experts,
+
+For pcASL analyis, I want to apply distortion correction using phase-encode-reversed calibration image (TOPUP) in the oxford_asl command. Unfortunately, the output with pedir=y and pedir=-y are exactly the same.
+
+Acquisition parameters for the cblib image only differ from those of the M0 in the phase encoding direction, which is set to P>>A for the M0 and to A>>P for the cblib image. From these images, I can see that distortion is indeed visible in the A-P direction (which is the y-direction). Effective echo time is set to 2.9e-06 [s] which I got from the .json file from dcm2niix. As advised, I ran the ASL analysis using pedir=y and pedir=-y, but the resulting perfusion maps are exactly the same. Hence, there seems to be no distortion correction applied.
+
+
+What am I missing here? Anybody else tried distortion correction in the oxford_asl or asl_gui?
+
+Best regardsm
+
+Joost de Jong
+
+########################################################################
+
+
+*** Please forward to any potential candidates in your networks who may be interested in these positions ***
+
+I am currently advertising two positions to join my lab, the Cognitive Hearing Lab, at UCL (London, UK). My lab combines behavioural techniques (e.g., auditory psychophysics), cognitive neuroscience (e.g., EEG, MEG, and fMRI), and computational modelling. Both positions are part of a Wellcome-funded grant to examine how central cognitive pathways interact with hearing loss.
+
+(1) Postdoc position (3+ years) - Application deadline: 23rd June 2023
+The appointed candidate will examine how central cognitive pathways interact with hearing loss, leading work using 7-Tesla MRI, which will allow us to estimate laminar-specific cortical responses in humans. The preferred start date for the position is September 2023. Full details and application portal: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?jobId=10852&jobTitle=Resarch%20Fellow
+
+(2) Funded PhD opportunity (3-4 years) - CLOSING SOON (Application deadline: 8th June 2023)
+The appointed candidate will lead work using behaviour and pupillometry, to examine how central cognitive pathways interact with hearing loss. UK students will receive a salary at Grade 6 and their PhD fees fully covered. International students will receive a salary at Grade 6 and their PhD fees partially covered. The preferred start date for the position is 25th September 2023. Full details and application portal: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?jobId=10345&jobTitle=Research%20Assistant%20(with%20MPhil%2FPhD%20enrollment)
+
+Feel free to get in touch with me (emma.holmes@ucl.ac.uk) for informal queries about either position
+
+Best wishes,
+
+Emma
+
+ 
+
+
+Hi Lyam,
+
+Another option could be to use fsleyes render instead of slicer/overlay, as it has many more options, including the ability to choose between radiological and neurological orientation.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lyam Bailey <Lyam.Bailey@DAL.CA>
+Sent: 06 June 2023 17:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Image orientation and overlay / slicer
+ 
+Hi Matthew,
+
+Thanks for the help, I will use fslswapdim and remove the L-R label as you suggested.
+
+Kind regards
+Lyam
+
+
+
+Dear Alaric,
+   If you are analysing timeseries ( first-level ) data then we would _strongly_ recommend using the FEAT pipeline rather than fsl_glm by  itself. Similarly the best way to combine runs is via higher-level FEAT analyses rather than simple temporal concatenation. I would still expect fsl_glm to handle an input with 600 volumes in general though - can you let me know which version of FSL you are using ( more $FSLDIR/etc/fslversion and the result of running fslhd on the image? )
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+
+Dear Users
+
+We are trying to run a run-level GLM in the volume, and our task contains around 600 volumes. But FSL GLM seems to fail too-long volume files especially when we run the GLM in the volume, so we have to truncate the task volumes (and then the model runs through). So, there seems to be an upper limit for GLM. Originally, we are also thinking about concatenating several runs into one file to run GLM, but again it fails since the file is too long. I wonder if there is any workaround to deal with this issue (i.e., run the GLM without truncating volumes and potentially handle concatenated runs [again, this is an issue with the seemingly upper volume limit in FSL]).
+
+Thank you in advance! Really appreciate any help!
+
+Alaric
+
+
+Hi Lyam,
+I believe slicer will always output in radiological orientation ( effectively flipping a neurological input to match ). If you use fslswapdim ( so reversing the data order only ) and pass slicer the -u option _before_ any other output options then the output images will appear “correct” ( in that the anatomical right of the subject will be on the physical right of the output image, without the R label nothing will appear inconsistent ) - but the flipped data itself should not be used for any other purpose as it now incorrectly reflects the true L-R labelling.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi
+If you are interested in getting number of streamlines and distance from A to B, I would use the –network option with the –pd flag. For example:
+ 
+>> echo region_A.nii.gz region_B.nii.gz > roi_list.txt
+>> probtrackx2 –network –seed=roi_list.txt –pd [remaining options]
+ 
+The output fdt_network_matrix.txt file will have entries equal to the number of streamlines times their average length.
+ 
+Cheers
+Saad
+
+
+Hi Saad,
+Thanks! Is there a way to correct the output from waytotal for distance? What is the usual approach to get a streamline count with distance correction from region A to B?
+I noticed the seeds_to_B_lengths.nii.gz is saved, but how can I use this file to correct the waytotal count for the distance between A and B?
+Best regards,
+Sam
+
+
+On Tue, Jun 6, 2023 at 10:13 AM Saad Jbabdi <saad.jbabdi@ndcn.ox.ac.uk> wrote:
+
+
+
+Hi
+ 
+In your example, if you set V5 as a waypoint mask (aka inclusion mask), then only streamlines that reach V5 are counted, regardless of whether you have a termination mask or not. If the streamline hits the termination mask before reaching V5, it is discarded. If it reaches the termination mask after passing through V5, it is kept.
+ 
+Cheers
+Saad
+
+

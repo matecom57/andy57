@@ -1,0 +1,229 @@
+Assistant/Associate/Full Professor, Radiology, Human Ultra-High-Field MR 
+Division: Radiological Sciences 
+Track: Tenure 
+Rank: Commensurate w/Experience 
+
+Position Description: 
+The Mallinckrodt Institute of Radiology (MIR) at the Washington University School of Medicine in St. Louis -- consistently ranked among the top five departments in NIH radiology funding (fourth in 2020, second in 2021, and third in 2022) -- invites applications for two full-time faculty positions on the investigator (tenure) track in human ultra-high field (UHF) MR imaging and spectroscopy. Applications are particularly encouraged from candidates with research interests focused on UHF RF coil and hardware development or novel acquisition and reconstruction methods. 
+
+Qualifications: 
+	•	PhD, MD/PhD or equivalent degree in the physical sciences or engineering; 
+	•	Experience and skill in the development of UHF MR hardware or data acquisition and reconstruction methods; 
+	•	Demonstrated potential or success in obtaining extramural funding; 
+	•	Demonstrated potential or success in mentoring graduate students and post-doctoral fellows; 
+	•	Outstanding communication, writing, and interpersonal skills. 
+
+Biomedical MR Center (BMRC): 
+The selected candidates will join the Biomedical Magnetic Resonance Center (BMRC), one of five research centers housed within MIR. The BMRC comprises approximately 20 faculty members and 50 students, postdoctoral fellows, staff, and clinical fellows. BMRC investigators are pioneers in the development and application of MR techniques and data analytics, providing an understanding of the complex microstructure and biophysical and physiological determinants that govern healthy and diseased tissues. The BMRC offers a collaborative environment for diverse interdisciplinary research initiatives. More information about the BMRC can be found here: https://www.mir.wustl.edu/research/research-centers/biomedical-mr-center-bmrc/. The selected candidates will be encouraged to collaborate with the BMRC faculty and the broader imaging community in MIR and other departments at Washington University in St. Louis. 
+
+Facilities: 
+MIR is a preeminent research institute with excellence in magnetic resonance imaging, optical imaging, neuroimaging, PET tracer development and translation, and imaging informatics. MIR has extensive collaborations with other top-ranked departments across the School of Medicine and the University. MIR supports world-class research imaging facilities, including magnetic resonance, nuclear, molecular, and optical imaging resources, and cyclotrons for preclinical and translational research. Human MR research scanners include a Siemens whole-body Terra.X 7T (anticipated delivery in summer 2024), four Siemens Prisma 3T, a Siemens Vida 3T, a Siemens Biograph mMR PET/MR, and two PET/CT (Vision). The MIR small-animal imaging resources include 9.4 T, 4.7 T, and 11.74 T MR scanners, PET/CT and simultaneous PET/MR scanners, and a GE SPINlab hyperpolarization unit. MIR radiologists serve nine hospitals, including the nationally ranked Barnes-Jewish and St. Louis Children's Hospitals, bridging cutting-edge MRI science with clinical excellence. 
+
+Benefits: 
+Washington University provides faculty with generous benefits that include health, life, disability coverage, retirement, and tuition assistance. In addition to these competitive benefits, the university offers a variety of time off and quality-of-life programs. We are a diverse group and wholly encourage diversity to reflect the rich community in which we live and serve. We are committed to promoting an environment that is inclusive and welcoming to all individuals. All qualified applicants will receive consideration for employment without regard to race, color, age, religion, sex, sexual orientation, gender identity or expression, national origin, veteran status, disability, or genetic information. 
+
+Application Instructions 
+Candidates are invited to submit their applications through Opportunity Details - Faculty Opportunities (wustl.edu), including a cover letter detailing qualifications and career goals, a research plan, and a curriculum vitae addressed to Dr. Pam Woodard, Elizabeth E. Mallinckrodt Professor and Chair of the Department of Radiology. 
+
+Contact for questions 
+Hongyu An, D.Sc, Chair of the Search Committee 
+hongyuan@wustl.edu 
+314-3625805 
+www.mir.wustl.edu 
+
+--
+Jennifer Elam, Ph.D.
+Scientific Outreach, Human Connectome Project
+Washington University School of Medicine
+Department of Neuroscience, Box 8108
+660 South Euclid Avenue
+St. Louis, MO 63110
+314-362-9387
+elam@wustl.edu
+www.humanconnectome.org
+
+
+Hi Keng-Yu Lin,
+
+I have seen similar issues arising here from time to time, but I don't have a good workaround or fix at hand. For me, the issue seems to be related to MATLABs web/HTML engine (maybe in combination with the Java Virtual Machine version used by MATLAB or other programs). Sometimes it helps to remove cached MATLAB data from the .matlab/R2018a/HtmlPanel, but this solution does not always work.
+
+Best,
+
+Volkmar
+
+Hi all,
+
+I keep getting this error when trying to run a full factorial model on SPM12 for structural MRI data, but not when running a two sample T test.
+
+Completed                               :          12:29:14 - 12/02/2024
+12-Feb-2024 12:29:14 - Done    'Factorial design specification'
+12-Feb-2024 12:29:14 - Running 'Model estimation'
+
+SPM12: spm_spm (v7738)                             12:29:14 - 12/02/2024
+========================================================================
+
+SPM12: spm_est_non_sphericity (v7577)              12:29:14 - 12/02/2024
+========================================================================
+Warning: Returning NaN for out of range arguments
+> In spm_invFcdf (line 109)
+In spm_est_non_sphericity (line 95)
+In spm_spm (line 433)
+In spm_run_fmri_est (line 36)
+In cfg_run_cm (line 29)
+In cfg_util>local_runcj (line 1717)
+In cfg_util (line 972)
+In cfg_ui>MenuFileRun_Callback (line 710)
+In gui_mainfcn (line 95)
+In cfg_ui (line 53)
+Chunk   1/1                             :                        ...done
+12-Feb-2024 12:29:18 - Failed  'Model estimation'
+Error using spm_est_non_sphericity (line 208)
+Please check your data: There are no significant voxels.
+In file "/usr/local/spm/spm12/spm_est_non_sphericity.m" (v7577), function "spm_est_non_sphericity" at line 208.
+In file "/usr/local/spm/spm12/spm_spm.m" (v7738), function "spm_spm" at line 433.
+In file "/usr/local/spm/spm12/config/spm_run_fmri_est.m" (v7354), function "spm_run_fmri_est" at line 36.
+
+I've been using SPM in PET mode but it's still not working. Can anyone advise what I should do?
+
+Dear all, we are trying to do group comparisons in SPM12 in three groups (2 types of dementia and healthy controls). However, in the 2ndLvl analysis with ANOVA or Full Factorial design the values of the covariates (age and sex) change after model estimation. Also the values of the groups in the model (which were '1'), change to a value around 1 and become greyish. I never ran into this issue with structural analyses (VBM). Is this normal in SPM or should we change some settings in our settings? Thank you!
+
+We have a vacancy for a PhD student in our Alzheimer Nederland (Dutch Alzheimer Society) project
+'Multi-layer brain networks in Alzheimer’s disease':
+
+https://werkenbij.amsterdamumc.org/en/vacatures/research/multi-layer-brain-networks-in-alzheimers-disease
+https://www.linkedin.com/posts/alle-meije-wink-b185609_vacatures-multi-layer-brain-networks-in-activity-7159110239894577154-rAHR
+
+Do you have experience with neuroimage processing and analyses, programming skills, a fascination for the brain, and would you like to work in an international and collaborative group? Please visit the website for more info and application procedures. Feel free to mail me for any further questions.
+
+bw
+
+Dr. Ir. Alle Meije Wink | Assistant Professor
+
+A 3-year fully funded PhD studentship is available at Aston University, United Kingdom to investigate the link between neurovascular ageing and early age-related decline in mobility and cognition.
+The project will study healthy older adults and samples from older individuals experiencing walking speed decline and subjective memory complaints. As part of your PhD, you will use cutting-edge brain and retina imaging techniques to characterise participants’ brain vascular profiles linked to their functional status. You will also investigate the correlation between inflammation markers present in blood and the vascular profile.
+
+
+
+Expected starting date – October 2024
+
+
+These studentships include a fee bursary to cover the Home fees rate, plus a maintenance allowance. The allowance for 2024/5 is yet to be announced, but it is expected to be around £19,000. Up to £17750 of research and training support will also be provided over the period of the project.
+
+Qualifications from overseas institutions will be also considered but performance must be equivalent to that described above, and the University reserves the right to ascertain this equivalence according to its own criteria. For financial reasons, this studentship is only available to Home students.
+
+Applications should be made to the Aston Graduate School [https://lnkd.in/ezZqRzZz].
+
+On the initial application portal:
+- Select the College of Health and Life Sciences,
+- October Entry,
+- Full-Time attendance,
+- Postgraduate Research.
+- Under degree programme select Research in Health Sciences.
+
+When asked to provide a project proposal, please indicate the title of the project and the name of the supervisor as listed above. Then detail how your knowledge and experience will benefit the project accompanied by a brief review of relevant research literature.
+
+ 
+
+ 
+
+ 
+
+Dr Valia Rodriguez, MD PhD -  FHEA
+
+Aston Research Centre for Health in Ageing – ARCHA
+
+College of Health and Life Sciences
+
+Aston University                                    
+
+ 
+
+Aston Triangle
+Birmingham, B4 7ET, UK
+0121 204 4422        
+v.rodriguez@aston.ac.uk
+https://research.aston.ac.uk/en/persons/valia-rodriguez
+
+  
+
+ 
+
+ 
+
+The Faculty of Psychology and Educational Sciences of the University of Coimbra Portugal (FPCE-UC) invites applications from rising and enthusiastic researchers in Cognitive Science and Cognitive Neuroscience for 3 Post-Doctoral positions to work with Alfonso Caramazza and Jorge Almeida.
+
+These positions are part of a transformative ERA Chair grant CogBooster from the European Union to FPCE-UC led by Alfonso Caramazza. The goal of CogBooster is to implement a strong and international line of research in Basic Cognitive Science and Cognitive Neuroscience to contribute to the ongoing renewal of the Psychological Sciences in Portugal over the next decade.
+
+ 
+
+Positions:
+
+As part of this expansion and renewal, we are searching for Post-doctoral applicants with expertise related to the following areas:
+
+·         1 Post-doctoral position in any of the following areas: lexical processing, visual object recognition, reading, or action recognition.
+
+ 
+
+·         1 Post-doctoral position on visual object recognition, in particular on how object knowledge is organized and represented neurally and cognitively, using fMRI (potentially with ultra-high field MRI), and potentially ECoG/sEEG.
+
+ 
+
+·         1 Post-doctoral position on object dimensionality and dimensional mapping, using population receptive field analysis/connective field modeling to work on topics related to the following preprint: https://www.biorxiv.org/content/10.1101/2023.11.29.568856v1
+
+ 
+
+The selected applicants will work directly with Alfonso Caramazza and Jorge Almeida. They will be based in Coimbra, but will have the opportunity to spend some time at Harvard University, at Alfonso Caramazza’s laboratory.
+
+Qualifications:
+
+Applicants should be recent graduates – the date in their PhD diploma should not be before October 2021 (i.e., no more than 3 years from the signing of the contract). They should also have their diploma recognized in Portugal at the time of the signing of the contract (diploma recognition could be requested here). The start date is negotiable (but should be no later than fall 2024).
+
+The successful applicant should have a strong record of research for their career level, and meet, or show promise of meeting, the following qualifications:
+
+·  Research potential through publications with impact in the field;
+
+·  Proficiency in English, both written and spoken (speaking Portuguese is not necessary);
+
+·  Good written and spoken communication skills;
+
+ 
+
+Offer:
+
+The positions do not involve formal teaching. They do involve, however, lab mentoring.
+
+ 
+
+The salary is competitive for Portuguese standards – 1800 euro per month net value. According to Numbeo, 1800 euro in Coimbra correspond to a local purchasing power of about 3230 euro in Paris, 3520 pounds in London (UK), 2685 euro in Brussels, 2385 euro in Rome, 2890 euro in Munich, about 4750 USD in Los Angeles, Boston or Washington, 4830 CAD in Toronto, or 5940 AUD euro in Sydney.
+
+The position will be for a maximum of 3 years, renewable every year.
+
+ 
+
+About FPCE-UC and Coimbra:
+
+The University of Coimbra is a 700-year-old University and is a UNESCO world Heritage site. Coimbra is one of the liveliest university cities in the world, and it is a beautiful city with easy access to beaches and mountains. The Faculty of Psychology and Educational Sciences has been consistently ranked as the best, or one of the best Psychology Departments in Portugal. In the last decade it has become the leading department in Portugal on Psychological research, holding, for instance the only ERC grants in Psychology in Portugal. FPCE-UC has a major laboratory for Cognitive Science and Cognitive Neuroscience research – the Proaction Lab. We have access locally to two 3T MRI scanners, and access to one 7T MRI remotely, to tDCS, to a 256 channel EEG, and to a fully set behavioral lab.
+
+ 
+
+Application Instructions:
+
+All candidates should submit the following documents in English: (1) a curriculum vitae; (2) a motivation letter describing their interest in the position, and their track record; (3) at least two letters of reference submitted before the application deadline.
+
+ 
+
+Full consideration will be given to applications received by March 31, 2023.
+
+If you are interested in applying for one of the positions or know of any suitable applicants in your network of colleagues and former students who may be suitable for any of the positions, please direct them to the advertisement.  
+
+
+Equal Employment Opportunity statement:
+
+The University of Coimbra is an equal opportunity/affirmative action employer and has a Gender Equality Plan in place. We are committed to fostering a diverse and inclusive academic global community at the University. We particularly encourage applications from women, and from other under-represented groups in the University of Coimbra’s workforce and in the cognitive and brain sciences.   
+
+ 
+
+Further information:
+
+If you want to know more about the positions you can informally contact Alfonso Caramazza (caram@wjh.harvard.edu) and Jorge Almeida (jorgecbalmeida@gmail.com). Please mention the profile(s) you would fit, from the three proposed. 
+

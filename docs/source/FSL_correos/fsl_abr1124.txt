@@ -1,0 +1,143 @@
+Postdoc position 2.5 years at the Research Centre Jülich and Heinrich-Heine-University: Build fully reproducible pipelines for image quality control of large scale MRI data and design machine learning models for dataset comparison and harmonization. This project provides a unique opportunity to work flexibly with very large publicly available datasets in a highly collaborative environment using HTC and HPC systems.
+Full description: https://fz-juelich.sciebo.de/s/E2yKO8bGFXbSe7F
+
+########################################################################
+
+
+Hi Paul,
+
+Thank you for the clarification.
+
+Could you please provide guidance on how to ensure that the ROI image has the same voxel grid as the diffusion data? Specifically, I would appreciate instructions on how to achieve this alignment or any preprocessing steps required to ensure compatibility.
+
+Thank you for your assistance.
+
+Best,
+
+D
+
+Hi Davide,
+
+How did you create the ROI image, and what exactly are you trying to accomplish? I originally understood that you had an ROI in DWI space, and were trying to resample that ROI into T1 space.
+
+When you use FLIRT or FNIRT to calculate a transformation between a source and reference image, the resulting transformation can only be applied to images that have the same voxel grid and orientation as your source image.  
+
+Here you have calculated a transformation from your DWI image to your T1 image, which means that the resulting transformation can only be applied to images that have the same voxel grid and orientation as your DWI image.
+
+However, your ROI image appears to have been originally generated in the same space as your T1 image (it has the same dimensions and resolution), but it has an orientation which does not match the T1.
+
+Perhaps you have run some other commands on either the ROI image or the T1 image which has changed their orientation?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Davide Momi <momi.davide89@GMAIL.COM>
+Sent: 10 April 2024 22:57
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Help Needed: Applying ROI Transformation to DWI Space
+ 
+Hi Paul,
+
+Thank you for the clarification.
+
+Could you please provide guidance on how to ensure that the ROI image has the same voxel grid as the diffusion data? Specifically, I would appreciate instructions on how to achieve this alignment or any preprocessing steps required to ensure compatibility.
+
+Thank you for your assistance.
+
+Best,
+
+D
+
+
+Dear Ionana,
+
+I am not expert on randomise, I am in fact learning to use it myself, and therefore also interested in the answer to your question. However, on general grounds, I would never de-mean.
+
+De-meaning is consuming one degree of freedom. When de-meaned data is passed to standard statistical tests, the test must know data was de-meaned. One way tests could use this knowledge is to remove one dataset and one row from the design matrix because this row can be recovered knowing the mean in each column is zero. I do not know what randomise does. I would simply add one additional column to the design matrix, column of 1's, to reflect the mean. You are not interested in its value, therefore, third column in the contrast file should be 0. Then run without de-meaning.
+
+(De-meaning is sometimes used in calculations to mitigate loss of precision. This is internal detail of algorithms of which users should not care.)
+
+You have two contrasts which are in fact the same. You are asking for different tails of the same distribution. Since randomise is very time consuming, I am struggling with why both contrasts are needed. It seems p-value outputs are one-tailed and this forces both contrasts, doubling run time. Maybe there is a way to get second tail in the first run. I do not know how.
+
+Roman
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ioana Varvari <0000c850142731c3-dmarc-request@JISCMAIL.AC.UK>
+Sent: Saturday, March 30, 2024 8:57 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL Randomise - demeaning -D question
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+
+Hello!
+
+I'm a newbie to FSL and I am currently at the stage of running statistical analysis on my data. I hope someone can elucidate my issue.
+
+I want to run FSL's randomise on a set of 154 inputs (3d connectivity maps of shape 97, 115, 97) which I have combined in one 4D image to use as input.
+I have created the design and contrast matrix using a template from a FEAT run (design.mat & contrast.con).
+_____
+design.mat:
+/NumWaves 2
+/NumPoints 154
+/PPheights 1 1
+
+/Matrix
+1   0
+1   0
+...
+0   1
+0   1
+_____
+contrast.con:
+/ContrastName1 Control-Sz
+/ContrastName2 Sz-Control
+/NumWaves 2
+/NumContrasts 2
+/PPheights 1 1
+
+/Matrix
+1   -1
+-1   1
+_____
+I use the below randomise options in the terminal:
+randomise
+ -i 4d_input.nii.gz
+ -o output_folder
+ -d design.mat
+ -t contrast.con
+ -n 500
+ -D
+ -T
+
+and it stalls forever at Permutation 2 with the below output:
+randomise options: -i 4d_inputs.nii.gz -o output_folder -d design.mat -t contrast.con -n 500 -D -T
+Loading Data:
+Data loaded
+Warning: Data demeaning selected, but at least one design column has non-zero mean - therefore invoking automatic demeaning of design matrix
+6.7798e+44 permutations required for exhaustive test of t-test 1
+Doing 500 random permutations
+Starting permutation 1 (Unpermuted data)
+Starting permutation 2
+Warning: tfce has detected a large number of integral steps. This operation may require a great deal of time to complete.
+_____
+
+I have also tried running the same but without the -D option and this worked.
+
+_____
+
+Could someone please clarify why it stalls when trying to run with -D option and how I could fix it? I would like to run with demeaning as well.
+
+I am using FSL Version: 6.0.7.8 which is installed and set up on the Oxford BMRC cluster1.
+
+If you require any other information to kindly help me with this, please let me know and I'm happy to provide it.
+
+Thank you,
+Best wishes,
+Ioana
+
+
+Hello
+
+In the analysis of rsfMRI, we've an ROI that is connected with six other ROIs. Could you clarify whether performing partial correlation or semi-partial correlation to control for the effects of these other ROIs is the appropriate approach? If either method is suitable, could you provide guidance on how to implement it in FSL PALM?
+
+Thanks,
+Shruti
+

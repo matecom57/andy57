@@ -1,0 +1,1045 @@
+About the lab
+Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, focuses on developing novel multi-modal neuroimaging and interventional techniques to define and modulate brain network essential for cognition. Their recent works published on Nature Communications and PNAS have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs causal for memory formation. Further development of these techniques in rodent models and humans will facilitate the diagnosis and treatment of cognitive impairment and dementia. We are recruiting two PhD students and a Postdoc to investigate neuroimaging, neuro-engineering and neural modelling.
+
+Projects
+1. Understanding neurophysiology and circuitry of influential hub of memory formation.
+We have recently identified brain network hubs that causally involved in memory formation (Li et al, Nature Communications 2023). This project will further pinpoint specific cell type and connection that mediate this process using simultaneous calcium photometry and fMRI recording in rodents. The knowledge will provide information for targeted neuromodulation and brain modelling.
+ 
+2. Develop closed-loop feedback for modulating brain network function.
+Cognition requires a coordinated activity of brain network. However, current neuromodulation technique only targets a specific brain area but not a network. This project will develop new techniques to selectively modulate the functional connectivity in order to enhance memory.
+
+3. Develop whole-brain neural modelling for predicting the effects of neuromodulation.
+The brain is a complex network that perturbation of a brain area could lead to complicated or unpredictable changes in the brain function. This project will collaborate with Prof Bernard Lab to develop a computational model based on The Virtual Mouse Brain platform to simulate and predict brain network under targeted neuromodulation with validation by empirical data.
+
+Requirement
+Students with background in biology, psychology, biomedical engineering, computer science, medicine or related fields are welcome to apply.
+Experiences with computer programming (eg, MATLAB, Python), animal fMRI, and/or neurophysiology are desirable but not required.
+
+Enquiry 
+A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+Kai-Hsiang
+
+Dear Peter,
+If I use the template for East Asian brains in the segmentation step (matlabbatch{1}.spm.spatial.preproc.warp.affreg = 'eastern') and then do normalization (write), are the coordinates in my normalized images are still in MNI space?
+Best,
+Luna
+
+Date: Jan 22, 2024, 8:34 PM
+From: lunamitsukisato@keemail.me
+To: peter.zeidman@ucl.ac.uk
+Subject: RE: All-complex-number T maps from first-level analysis
+
+Dear Peter,
+Thank you very much!
+Your understanding is right.
+And thanks for mentioning the east asian templates. We will give it a try.
+Best,
+Luna
+
+About the lab
+Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, focuses on developing novel multi-modal neuroimaging and interventional techniques to define and modulate brain network essential for cognition. Their recent works published on Nature Communications and PNAS have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs causal for memory formation. Further development of these techniques in rodent models and humans will facilitate the diagnosis and treatment of cognitive impairment and dementia. We are recruiting two PhD students and a Postdoc to investigate neuroimaging, neuro-engineering and neural modelling.
+
+Projects
+1. Understanding neurophysiology and circuitry of influential hub of memory formation.
+We have recently identified brain network hubs that causally involved in memory formation (Li et al, Nature Communications 2023). This project will further pinpoint specific cell type and connection that mediate this process using simultaneous calcium photometry and fMRI recording in rodents. The knowledge will provide information for targeted neuromodulation and brain modelling.
+ 
+2. Develop closed-loop feedback for modulating brain network function.
+Cognition requires a coordinated activity of brain network. However, current neuromodulation technique only targets a specific brain area but not a network. This project will develop new techniques to selectively modulate the functional connectivity in order to enhance memory.
+
+3. Develop whole-brain neural modelling for predicting the effects of neuromodulation.
+The brain is a complex network that perturbation of a brain area could lead to complicated or unpredictable changes in the brain function. This project will collaborate with Prof Bernard Lab to develop a computational model based on The Virtual Mouse Brain platform to simulate and predict brain network under targeted neuromodulation with validation by empirical data.
+
+Requirement
+Students with background in biology, psychology, biomedical engineering, computer science, medicine or related fields are welcome to apply.
+Experiences with computer programming (eg, MATLAB, Python), animal fMRI, and/or neurophysiology are desirable but not required.
+
+Enquiry 
+A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+Kai-Hsiang
+
+The Holsen Lab in the Departments of Medicine and Psychiatry at Brigham and Women’s Hospital/Harvard Medical School is seeking a full-time post-bac research assistant (Research Assistant I or II) with a strong interest in neuroscience, psychology, and quantitative subjects including data analysis or computer science. The individual will assist with a clinical trial using both neuroimaging (transcranial magnetic stimulation) and neuroimaging (fMRI) to validate a novel cerebellar satiety network in healthy adults. Under the supervision of Dr. Laura Holsen and a postdoctoral fellow, the post-bac clinical research assistant will carry out a broad range of neuroimaging, biostatistics, and computer science-based research activities and procedures as indicated below. This is a great position for those wanting research experience before applying for graduate school or medical school. Our team has a strong track record of mentoring research assistants who have gone on to pursue medical school or doctoral programs in clinical psychology, cognitive neuroscience, neuroscience, public health, and bioinformatics.
+
+Fostering diversity in the scientific research workforce is a key goal of Dr. Holsen and her team. Thus, additional funding, support, and mentorship are available for individuals from diverse backgrounds, including those from groups demonstrated to be underrepresented in the biomedical, behavioral, clinical, and social sciences.
+
+PRINCIPAL DUTIES AND RESPONSIBILITIES:
+- DICOM unpacking, conversion of data to NIfTI (BIDS) format
+- Creation of bash scripts for data organization
+- Visual inspection of structural and functional data quality
+- Editing and running MATLAB-based SPM12 preprocessing scripts
+- Quality assessment of motion for functional data
+- Editing and running first- and second-level models in SPM12 and fMRIPrep
+- Develop and implement strategies to recruit volunteers to participate in clinical trials
+- Interview (prescreen) prospective volunteers and determine their eligibility to participate in the study with guidance from study clinicians and PIs
+- Schedule and conduct study visits with volunteers
+- Develop meeting agendas, present/guide discussion related to agenda topics, and document meeting notes
+- Complete applications, periodic reports, and related forms and ensure timely submission to regulatory bodies overseeing the clinical study
+- Contribute to the collection, coding, management, and analysis of behavioral data
+
+SKILLS/ABILITIES/COMPETENCIES REQUIRED:
+- Have a strong background and interest in neuroscience, cognitive neuroscience, psychology, biology, mathematics, statistics, or computer science
+- Be in good academic standing with a strong GPA
+- Strong computer and statistical skills
+- Programming skills (previous R experience is required, with a combination of MATLAB, bash, Python)
+- Comfort with Linux environment
+- Experience using R, MATLAB, SPM12, and fMRIPrep
+- Familiarity with BIDS format
+
+QUALIFICATIONS:
+- Bachelor’s degree in neuroscience, computer science, psychology, cognitive science, or related field required
+- New graduates with some relevant course/project work will be considered for the Research Assistant I position.
+- Those with a minimum of 1-2 years of experience working in a research lab with neuroimaging will be considered for the Research Assistant II position.
+
+For more information and to apply, see full job listing on jobrxiv: https://jobrxiv.org/job/brigham-and-womens-hospital-harvard-medical-school-27778-research-assistant-in-neuromodulation-and-neuroimaging-2/
+
+Me,
+O across this problem.. And I have no idea how to solve this problem. Can anyone help me to solve it?
+Thanx
+
+Sent from my iPhone
+
+On 21 Jan 2024, at 20:22, Staff, R <000066b12c6e5463-dmarc-request@jiscmail.ac.uk> wrote:
+
+﻿
+ 
+
+All
+
+I keep getting this error using the longitudinal segmentation function in CAT 12
+
+<image001.png>
+Has anyone come across this?
+
+Roger
+
+ 
+
+
+
+The University of Aberdeen is a charity registered in Scotland, No SC013683.
+Tha Oilthigh Obar Dheathain na charthannas clàraichte ann an Alba, Àir. SC013683.
+
+All
+
+I keep getting this error using the longitudinal segmentation function in CAT 12
+
+
+
+Has anyone come across this?
+
+Roger
+
+ 
+
+
+
+The University of Aberdeen is a charity registered in Scotland, No SC013683.
+Tha Oilthigh Obar Dheathain na charthannas clàraichte ann an Alba, Àir. SC013683.
+
+The ReproNim team is happy to announce that applications are Now Open for the 2024 ReproNim/INCF Fellowship program. The application window is from now until Jan 31, 2024.
+Please click here to apply (https://forms.gle/2N15KvtytH5Xf2999). We will award five to ten fellowships for this year; the total number of Fellows pending availability of funds.
+We will conduct a hybrid kickoff workshop held in conjunction with the OHBM BrainHack, typically preceding the OHBM annual conference scheduled for June 23-27, 2024, Seoul, South Korea. Some travel assistance may be available to the Fellows.
+For more information about the Fellowship program, click here (https://www.repronim.org/fellowship). Note: Prior applicants who were not selected last year are welcome to re-apply!
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+ 
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu). 
+
+ 
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+
+Noah Cryns | Assistant Clinical Research Coordinator
+
+Memory and Aging Center
+
+University of California – San Francisco
+
+Phone: (415) 514-7580
+
+https://perrylab.ucsf.edu/
+
+https://decisionlab.ucsf.edu/
+
+Hi everyone
+
+Instats is pleased to present three exclusive livestreaming seminars on integrating AI into your research, demystifying the fundamentals of AI and large language models with a deep dive into the theory and practice of their use in various research fields. They offer a cutting-edge exploration of how AI in general and generative AI specifically can revolutionize your research, empowering you with the knowledge and tools you need to advance your research agenda in the ever-evolving landscape of AI technology.
+
+A Gentle Introduction to Artificial Intelligence by computer science professor Ricardo Vilalta, running Jan 25 - 26, offers a comprehensive overview of AI with hands-on applications and an overview of AI's relevance in academic research -- including discussions of ethical considerations and future trends in AI.
+
+Using Generative AI for Qualitative Research by professor Christina Silver, running Feb 1 - 2, is a comprehensive workshop that will equip researchers with the skills to utilize AI appropriately in qualitative analyses, covering a range of topics from understanding AI software tools to ethical considerations as well as troubleshooting typical roadblocks to integrating AI into your research.
+
+Large Language Models: AI Foundations and Applications in Python by former CERN physicist and senior data scientist Dr. Jayanti Prasad, running Feb 5 - 9, provides a comprehensive understanding of large language models, their AI foundations, and applications in Python including hands-on coding sessions, case studies, and discussions on the future of large language models in academic research.
+
+We also have a few places left for the upcoming workshops on Using ChatGPT for Advanced Data Analysis 2.0, offered Jan 18 - 19 for the Americas/Australasian time zones as well as Feb 21 - 23 for European time zones. With the tools these workshops are offering you'll be able to seamlessly incorporate AI into your research. Please tell your friends and colleagues, and we hope to see you there!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Dear Vladimir,
+
+Many thanks, I can continue. 
+
+Perhaps, if the subject's head is smaller, it may impact the inverse/forward modeling of the EEG? Or is there something other particular about the subject's own T1 space, like cortical folding(s), that should be more optimal than the template? 
+
+In this case, the subject's head(and brain) was about 0.9 x the size of the MNI template brain, and not scaling/transforming the electrode positions resulted in a cap that was too big for the participant; our caps are elastic. 
+
+I should probably then also try to validate the electrode locations with an actual measurement of these locations, and  also check if the results/signals between the template approach vs this approach gives something insightful!
+
+Many thanks and best wishes
+
+Johan
+
+
+'d suggest not removing it because this would mess up the geometry.  Replacing it would be the better option.  There are probably better strategies, but the easiest approach would be to simply replace it with the average of the adjacent slices.
+
+After making a copy of the image (in case something goes wrong), one way might be to do:
+
+P = 'name_of_image.nii';
+z = 20; % Slice number (where the first slice is 1)
+Nii = nifti(P); % read the header
+f1 = Nii.dat(:,:,z-1); % Slice before
+f2 = Nii.dat(:,:,z+1); % Slice after
+avg = (f1+f2)./2; % Average
+Nii.dat(:,:,z) = avg; % Write the average slice to the file
+
+Best regards,
+-John
+
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Elaine Bearer <elaine.bearer@GMAIL.COM>
+Sent: 17 January 2024 21:19
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Correcting MR scanner artifacts
+ 
+⚠ Caution: External sender
+
+
+We have some slice artifacts in our MRI--a single coronal slice in a 3D 100µm isotropic voxel image of mouse brain. What are best practices to remove or replace it?
+
+Elaine L. Bearer, MD-PhD, FAAAS, FCAP
+The Harvey Family Professor, Dept of Pathology
+Professor, Department of Music (secondary)
+University of New Mexico Health Sciences Center
+Albuquerque, NM 87131
+https://hsc.unm.edu/medicine/departments/pathology/research/labs/bearer.html
+https://en.wikipedia.org/wiki/Elaine_Bearer
+
+Also, Visitor
+California Institute of Technology
+
+Dear Johan,
+
+I'm not sure whether using individual T1 without individual electrode
+position measurement provides any advantages over the template. My
+guess would be that it's unlikely but the answer probably also depends
+on the exact analysis pipeline at least to some extent. Your
+coregistration looks OK. If some of the electrodes are a bit inside
+the head, it's not a problem as their locations are projected to the
+head surface at the forward modelling step which you can verify if you
+display the forward model. I think the blue circles correspond to the
+fiducials. You are somehow using all the electrodes as fiducials but 3
+should be enough. In any case, I don't think it's a problem as long as
+the forward model display looks OK.
+
+Best,
+
+Vladimir
+
+On Thu, Jan 18, 2024 at 5:55 AM Johan <johanvandermeer@gmail.com> wrote:
+>
+> Dear SPM users,
+>
+> I am working with EEG data and would like to use SPM to get the signal from different anatomical sources using the forward/inverse modeling procedure, and the OSL pipeline scripts later on. A critical step in this procedure is the co-registration of the electrodes to the subject's T1 image.
+>
+> While there is a Template-based approach, I believe that using the subject's own T1 would improve source localization. Is this correct?
+>
+> I did some work to do this co-registration without any fiducial information, but just re-calculating standardized electrode positions based on the transformation from MNI T1 -> Subject T1 space. The following figure is the result of that work. I'd like an assurance (or a rejection) of the co-registration result I've come up with?
+>
+>
+>
+>
+> Does the co-registration using the subject's own T1 figure (right figure) look right to you? On the left is the co-registration using the MNI Template brain. Am I right into assuming the diamonds are the initial positions, and the circles are the final positions? Or should I think about it differently?
+>
+> Many thanks for your insights
+> Johan
+>
+>
+>
+>
+> --
+>
+> Some more information:
+>
+> I do not have any fiducials or anything; just the electrode positions, from the electrode position file from the EEG cap manufacturer (ANT-Neuro).
+>
+> Assuming the electrodes are somewhat closely aligned to MNI space, I thought I could figure out how to transform the electrode positions (that are well aligned to the MNI template image) to the subject's own T1 scan. So, I used rotation, scaling and offset information from co-registering the MNI T1 to the subject's own T1, to re-calculate calculate the position(s), and then to try match electrodes to the MRI, by specifying each electrode as a point, and using 'use headshape points' in the matlabbatch GUI. I compare this approach with the 'template' approach and compare:
+>
+> Some electrodes are within the skin, but seem to be pushed 'out' of the red lineout. I think that the standard MNI template head has a different head size to brain size ratio, than my particular test subject.
+>
+> If this approach seems to work, and assuming that the cap is put on correctly to the subject, this might make it possible to do co-registration of EEG to the head just based on the T1 without measurement of the Fiducials. Fiducials were sometimes measured, but in many cases were not reliable.
+>
+>
+>
+
+Dear SPM users,
+
+I am working with EEG data and would like to use SPM to get the signal from different anatomical sources using the forward/inverse modeling procedure, and the OSL pipeline scripts later on. A critical step in this procedure is the co-registration of the electrodes to the subject's T1 image.
+
+While there is a Template-based approach, I believe that using the subject's own T1 would improve source localization. Is this correct?
+
+I did some work to do this co-registration without any fiducial information, but just re-calculating standardized electrode positions based on the transformation from MNI T1 -> Subject T1 space. The following figure is the result of that work. I'd like an assurance (or a rejection) of the co-registration result I've come up with?
+
+image.png
+
+
+Does the co-registration using the subject's own T1 figure (right figure) look right to you? On the left is the co-registration using the MNI Template brain. Am I right into assuming the diamonds are the initial positions, and the circles are the final positions? Or should I think about it differently?
+
+Many thanks for your insights
+Johan
+
+
+
+
+--
+
+Some more information:
+
+I do not have any fiducials or anything; just the electrode positions, from the electrode position file from the EEG cap manufacturer (ANT-Neuro).
+
+Assuming the electrodes are somewhat closely aligned to MNI space, I thought I could figure out how to transform the electrode positions (that are well aligned to the MNI template image) to the subject's own T1 scan. So, I used rotation, scaling and offset information from co-registering the MNI T1 to the subject's own T1, to re-calculate calculate the position(s), and then to try match electrodes to the MRI, by specifying each electrode as a point, and using 'use headshape points' in the matlabbatch GUI. I compare this approach with the 'template' approach and compare:
+
+Some electrodes are within the skin, but seem to be pushed 'out' of the red lineout. I think that the standard MNI template head has a different head size to brain size ratio, than my particular test subject.
+
+If this approach seems to work, and assuming that the cap is put on correctly to the subject, this might make it possible to do co-registration of EEG to the head just based on the T1 without measurement of the Fiducials. Fiducials were sometimes measured, but in many cases were not reliable.
+
+
+
+
+
+
+We have some slice artifacts in our MRI--a single coronal slice in a 3D 100µm isotropic voxel image of mouse brain. What are best practices to remove or replace it?
+
+Elaine L. Bearer, MD-PhD, FAAAS, FCAP
+The Harvey Family Professor, Dept of Pathology
+Professor, Department of Music (secondary)
+University of New Mexico Health Sciences Center
+Albuquerque, NM 87131
+https://hsc.unm.edu/medicine/departments/pathology/research/labs/bearer.html
+https://en.wikipedia.org/wiki/Elaine_Bearer
+
+Also, Visitor
+California Institute of Technology
+
+Hi,
+
+I’ve been using CAT12 for segmentation of T1 weighted MRI scans. However, though it says CAT12 has completed segmentation successfully, I can see the scans are clearly not aligned. I can’t see how to manually align the scans using the CAT12 toolbox, can someone advise how to do this?
+
+
+Thank you
+
+Dear Christian,
+
+Thank you very much for your quick response and suggestions.
+We will try that.
+Kind regards,
+Carlos
+
+Information about subscribing and unsubscribing to the SPM JISCmail list can be found at:
+https://www.fil.ion.ucl.ac.uk/spm/support/
+
+Simply go to https://www.jiscmail.ac.uk/cgi-bin/webadmin?SUBED1=spm&A=1 , enter your name and email address and click the Unsubscribe (SPM) button.
+
+Best regards,
+-John
+
+Dears,
+
+Could you please unsubscribe from this list?
+
+Thank you,
+Hajar.
+
+
+Hi,
+
+I'm currently looking for volunteers to take part in my PhD research. I'm looking for experts in fMRI analysis and some form of teaching/training novices to discuss their experience of working with those new to fMRI including who they think is a 'novice', what skills they have and what they find challenging. More details can be found in the attached poster.
+
+Best Wishes,
+
+Emma
+This message and any attachment are intended solely for the addressee and may contain confidential information. If you have received this message in error, please contact the sender and delete the email and attachment. Any views or opinions expressed by the author of this email do not necessarily reflect the views of the University of Nottingham. Email communications with the University of Nottingham may be monitored where permitted by law.
+
+Dear Carlos,
+
+You touch on an important issue that is not always easy to deal with. Here are my thoughts:
+- When quality measures differ between groups, it is always difficult to decide on the best strategy. It is known that motion artifacts cause underestimation of GM, and usually we see more motion artifacts and lower IQR for the patient group. If you try to covary these differences in the statistical model, you also remove the group differences. So this is a bit tricky and I don't recommend including quality measures in the model in this case. There seem to be better methods to deal with this, such as the work of Lutti et al. (https://doi.org/10.1002/hbm.25767), which may be worth trying, but I have not personally tested it.
+- A lot of quality issues (e.g. noise) can be corrected during preprocessing in CAT12, so I recommend checking both effects, IQR before preprocessing and sample homogeneity (z-score) after preprocessing. The latter may be more important to consider, but rather to decide which subjects to exclude. Personally, I use IQR and z-score for this decision and define reasonable thresholds for excluding subjects.
+
+Best,
+
+Christian
+
+On Tue, 16 Jan 2024 19:51:40 +0000, Carlos Murillo Ezcurra <carlos.murilloezcurra@UGENT.BE> wrote:
+
+>Dear CAT12 users, dear Dr Christian Gaser,
+>
+>We are currently using CAT12 to compare GMV between patients and controls. We adjusted for age and TIV. One of the groups has better image quality metrics than the other one (though none of the subjects in either group has IQR<75).
+>We also computed MRIqc for the T1s and there is no clear tendency. While one group is slightly better in some quality measures (e.g., coefficient of joint variation or contrast to noise ration) the other is better in others (e.g., signal to noise ratio in grey matter)
+>
+>Should we adjust in addition for IQR in the model? Or given that all IQR values are fairly good it should be ok?
+>We found that it is slightly colinear with Group factor and the Group differences disappear (we found 8 clusters adjusting for age and TIV with TFCE and FWE 0.05). When we use global scaling, the Group differences also disappear.
+>is there any other approach that we should take?
+>
+>Thank you very much in advance for your help,
+>Kind regards,
+>Carlos,
+
+Dear Cat12 users,
+
+Our team is currently engaged in a research project focused on cortical layer analysis. We have observed that CAT12 is typically employed for extracting central surface data.
+
+We are curious to explore if CAT12 can be utilized to acquire surface data from other specific locations within the grey matter, such as at 20% and 40% cortical depth. We are interested in understanding how this approach might differ from the traditional method of extracting the central surface and the potential impact on morphological indices derived from these measurements.
+
+If you have any insights or experiences related to this, your input would be greatly appreciated. Your expertise could provide significant value to our research.
+
+Thank you for your time and assistance. Looking forward to your valuable feedback.
+
+Best regards,
+Changwen
+
+Dear CAT12 users, dear Dr Christian Gaser,
+
+We are currently using CAT12 to compare GMV between patients and controls. We adjusted for age and TIV. One of the groups has better image quality metrics than the other one (though none of the subjects in either group has IQR<75).
+We also computed MRIqc for the T1s and there is no clear tendency. While one group is slightly better in some quality measures (e.g., coefficient of joint variation or contrast to noise ration) the other is better in others (e.g., signal to noise ratio in grey matter)
+
+Should we adjust in addition for IQR in the model? Or given that all IQR values are fairly good it should be ok?
+We found that it is slightly colinear with Group factor and the Group differences disappear (we found 8 clusters adjusting for age and TIV with TFCE and FWE 0.05). When we use global scaling, the Group differences also disappear.
+is there any other approach that we should take?
+
+Thank you very much in advance for your help,
+Kind regards,
+Carlos,
+
+This is almost always due to poor starting estimates.  If you can modify the headers so that the origin is close to the AC before you begin (and the image orientations are similar), then things should work better.  If you use SPM to convert the MRI DICOM to NIfTI, then the origin is usually set reasonably well.  I'm not sure how the SPECT is converted, but it's possible that the origin of the scanner coordinate system is a bit different (i.e., not in the middle of the bore).
+
+Sometimes you can reposition a load of images in a similar way.  Suppose you want to translate in z by 30 mm, then you can do:
+
+filename = 'SPECT.nii'
+T = spm_matrix([0 0 30]);
+Affine = spm_get_space(filename);
+newAffine = T*Affine;
+spm_get_space(filename, newAffine);
+
+Best regards,
+-John
+
+Hi all,
+
+I'm trying to analyze SPECT data by SPM. However, I'm facing an issue when attempting to coregister my SPECT image with the T1 image. The images appear to be cut, and since I'm using an automated script, I can't manually adjust the orientation (please see attached image). Despite experimenting with various options, the problem persists. Do you have any suggestions for fixing the problem?
+
+Thanks,
+Batel
+
+
+Hi all,
+
+I thought worth adding - I am running into this exact issue today with my Macbook M1 (Intel) - MATLAB R2023b - I'm still yet to find a solution.
+
+Thank you,
+Cihan
+
+
+
+For what it is worth: I have SPM installed and working (MEX files okay) on Matlab 2023b, Mac OS Ventura Mac Studio with M2 Max chip.  So, the problem may be with Sonoma.
+
+-Dianne
+
+Dianne Patterson, Ph.D
+dkp@arizona.edu
+Office: BSRL, Room 235
+RII Neuroimaging Staff Scientist 
+Program Coordinator Neuroimaging Methods Certificate 
+Cognitive Science GIDP affiliate member
+Faculty Lead OpenClass.ai
+Mastodon: @dpat@scicomm.xyz
+
+Hello,
+
+I am having issues installing spm; here are my settings:
+- spm12
+- Matlab2023b
+- MacOS Sonoma 14.2.1
+
+The error is as follows:
+
+"Error using spm_check_installation>check_basic
+SPM uses a number of MEX files, which are compiled functions.
+These need to be compiled for the various platforms on which SPM
+is run. It seems that the compiled files for your computer platform
+are missing or not compatible. See
+   https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)
+for information about how to compile MEX files for MACI64
+in MATLAB 23.2.0.2459199 (R2023b) Update 5.
+
+Error in spm_check_installation (line 28)
+        check_basic;
+
+Error in spm (line 290)
+spm_check_installation('basic’);"
+ 
+I tried what is advised on Wikibooks but it didn’t work and according to some forum discussions I found, it is not adapted to M1 chips.
+Can you help me ?
+
+Thank you very much for your time,
+
+Julie Boyer, MD, PHD student
+Université Paris Cité - INCC laboratory
+
+Hi everyone
+
+Back by popular demand and with updated content, Instats is offering two newly updated versions of professor Gruber's seminar: Using ChatGPT for Advanced Data Analysis 2.0.
+
+Imagine performing an entire statistical analysis without writing a single line of code or even knowing how to use a statistics program. In today's world of AI based language models such as ChatGPT, plain English is sufficient. This is the promise of ChatGPT, which is revolutionising the world of data science. Its specialised but little understood Advanced Data Analysis tool allows the user to perform all relevant steps, from data import and analysis to table and figure generation, and even verbal interpretations of results. Learn how to harness the power of this incredible tool and start your journey towards a totally new and more intuitive way of analyzing data.
+
+In these new workshops by professor Gruber (who has dual PhDs in physics and economics), participants will learn how to use ChatGPT and its new Advanced Data Analysis tool for rapid and automated data manipulation and analysis. Special emphasis is placed on understanding the workings and limits of AI models such as ChatGPT and reflecting on its implications for data analysis and ethics. The January Seminar here is timed to start at a time that will be convenient for those in the US and Australasia. The February seminar here is timed for European participants.
+
+Places are limited so sign up today to secure your spot, and please feel free to tell your friends and colleagues about these unique seminars!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Rob
+
+I thought the medial hyperintensity above the LC might be choroid plexus in the cerebral aqueduct.
+
+https://www-ncbi-nlm-nih-gov.ezp.lib.cam.ac.uk/books/NBK540988/
+
+However, other illustrations never show choroid plexus in this position and the choroid plexus appears dark in the lateral ventricles but maybe that is some sort of cancellation with calcification. So, I don't really know.
+
+Simon
+
+[Apologize for cross-posting]
+
+We are delighted to invite proposals for special sessions at the first International Conference on Artificial Intelligence in Healthcare (AIiH 2024), which will be held in Swansea from 4 September to 6 September 2024. A special session is designed to delve into a specific research theme or showcase innovative applications. Each special session will feature a minimum of five presentations. For topics of interest, please see the conference website (https://aiih.cc).
+
+Special session chairs will receive one free full registration. For a special session with more than five accepted papers, the organisers may invite one invited speaker, whose registration to the conference will also be free. Papers submitted to special sessions are reviewed in the same way as submissions to the conference's main sessions. Author guidance and paper submission details can be found here (https://aiih.cc/paper-submission). Presenting speakers are required to register at the conference. Special session papers will be included in the conference proceedings, published by Springer Lecture Notes in Computer Science.
+
+Procedure for Submitting Special Session Proposals
+
+Each proposal should include:
+Session title. The title will be published in the conference programme.
+Abstract (250 words). The abstract will be published in the conference program.
+Name and affiliation of the special session organisers.
+Name and affiliation of invited speakers who will contribute to the special session. Please note that the invited speakers will need to submit their papers (https://aiih.cc/paper-submission). Papers submitted for special sessions undergo the same review process as open submissions and will be included in the conference proceeding.
+You can propose an open special session, which allows other delegates to submit their papers to the proposed session.
+
+Please email your proposal to contact@AIiH.cc by the deadline of January 26th, 2024.
+
+The conference committee will assess special session proposals based on the quality of the proposal and the broad appeal of the topic.
+
+
+Top image looks like alias artefact due to misplaced acquisition
+https://en.wikipedia.org/wiki/MRI_artifact#Wrap-around
+
+My guess is old normalise failed because you normalised to the standard T1 template (which has the scalp visible), not the EPI template. Old normalise just matches image intensity, so it perhaps expanded the brain to fill the whole head.
+The new normalise segments to grey/white matter and normalises those, and tends to work better.
+
+Generally best to use New segment for MRI adult head images
+Michael
+
+Hi everyone
+
+Instats invites you to join our 5-part seminar on Statistical Methods for Fundamental Science starting Jan 15, being led by the acclaimed CERN physicist Tommaso Dorigo (who has over 270,000 citations and has contributed to Nobel Prize winning research at CERN).
+
+This is a once in a lifetime opportunity to discover the critical role of correct and powerful statistical practices in analysing complex data from one of the world's leading particle physicists. Whether you’re a social, health, or natural scientist, the seminar will provide you with essential insight into how to think about and conduct statistical analyses, setting the stage for you to develop a deeper understanding of the sources of uncertainty and how to control them. This is a unique opportunity for cross-disciplinary learning, crucial for today's interconnected research landscape.
+
+We are expecting this seminar to fill up fast, so register now to secure your place! Please feel free to let your friends and colleagues know.
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Hello All,
+
+      The first picture is the original structural image of a subject, the second picture is the original functional phase of his first TR, and the third image is an Old Normalise using the MNI152 template, but the image is distorted.
+The fourth image is  obtained by Normalise: Estimate&Wite using the template in the spm 12 package, the image is normal. 
+
+      I have two questions about these images. First , please why the original image of the subject looks like this. Secondly, please why the results of the new version of Normalise are normal, but the images obtained by the old version of Old Normalise are distorted.
+
+Dear all,
+
+ 
+
+We're seeking a visionary Digital Research Computing Manager to lead our expanding Digital Research Computing Team, driving the execution of a cutting-edge digital research computing strategy, closely aligned to our Digital Strategy.
+
+ 
+
+Key Responsibilities:
+
+In this role, you'll be accountable for strategically engaging with the research community and leading the development and delivery of digital technology services in support of research. Your responsibilities will include initiating and executing development projects, understanding customer needs, fostering collaboration between research groups and DTS, and establishing a robust strategy that aligns with DTS best practices. You'll also lead the strategic development of digital research computing, ensuring they meet the evolving needs of our dynamic research community. Your team consists of Research Software Engineers, Senior Research Computing Engineers and Research Computing Engineers, with PHD educated staff and a wealth of experience in the different research fields.
+
+ 
+
+https://jobs.reading.ac.uk/Job/JobDetail?JobId=12855
+
+ 
+
+Happy new year!
+
+ 
+
+Etienne
+
+ 
+
+—
+Prof. dr. Etienne B. Roesch   |   Professor of Applied Statistics & Cognitive Science   |   Univ. Reading 
+Institutional Lead for Open and Reproducible Research, UK Reproducibility Network
+Discipline Hopping Fellow, Natural Environment Research Council
+
+Hello everybody
+
+Based on Vizza et al. paper (DOI 10.1007/s13721-013-0035-9), they showed that the SPM template can be considered as a valid substitute of MR image for co-registration. I cannot find the normal MR database of SPM (SPM template) to load as the reference image in co-registration menu. Please help.
+
+Best regards,
+
+Sanaz Hariri
+
+Hello All, 
+
+
+
+Please see this postdoctoral position with a near future start date, although there is some flexibility. The starting salary is highly competitive: $70,000 + benefits.
+
+
+
+Description: The Adise lab in the Division of Endocrinology, Diabetes, and Metabolism, Department of Pediatrics, Children's Hospital of Los Angeles, University of Southern California seeks a postdoctoral fellow to work on NIH funded studies investigating neurocognitive development of obesity and appetite regulation during childhood and adolescence.
+
+ 
+
+This research combines multimodal techniques including behavioral, magnetic resonance imaging (MRI), biological markers of metabolic health (e.g., BMI, physical activity, sleep, blood pressure), and neurocognitive development (e.g., executive function, cognition). The postdoctoral fellow will be using Big Data methods to analyze large-scale questions in the NIH-funded ABCD Study geared at understanding how social determinants of health may influence the relationship between neurocognitive development and obesity risk. There will also be opportunities to be involved in smaller scale studies. Additionally, the candidate will work alongside leaders of the field of ingestive behavior, neuroimaging, and neurocognitive development.
+
+ 
+
+Minimum qualifications/Work experience: Candidates should have a PhD in a relevant discipline (e.g., psychology, neuroscience, computer science, engineering, nutrition). A background in one or more of the following is essential: neuroimaging, neurocognition, obesity/eating behavior, nutrition, biostatistics, big data analytics.  Programming experience (Python, R etc.) will be highly valuable but is not absolutely required as a prerequisite (however, learning to program is an absolute must). Strong data analysis and writing skills required. 
+
+ 
+
+If interested, please send a CV, statement of research interests (e.g., what you have done, what you want to learn in this postdoc, and how this postdoc will add to your overall goals), one or more PDFs of representative publications, and contact details of two references to sadise@chla.usc.edu. Incomplete applications (e.g., missing documents) will not be considered.
+
+ 
+
+ 
+
+About CHLA/USC: Children's Hospital of Los Angeles is one of the top 5 research pediatric hospitals in the United States, while the University of Southern California is an R1 institution. Postdoctoral fellows will have the unique opportunity to be involved in projects and resources at both institutions. Los Angeles is a large metropolitan with lots of activities including hiking trails, music, arts, and entertainment all accessible. 
+
+
+Shana Adise, Ph.D. (she/her/ella)
+Assistant Professor of Research Pediatrics
+Division of Endocrinology, Diabetes, and Metabolism
+
+Children's Hospital of Los Angeles
+
+Department of Pediatrics
+
+Keck School of Medicine | University of Southern California
+4650 Sunset Blvd Mailstop #61, Los Angeles, CA 90027
+
+shanaadise@gmail.com
+
+http://shanaadise.weebly.com/
+
+
+** While I may have sent this email outside of regular office hours, I value your personal time and wellbeing. Therefore, I do not expect a response outside of your normal working hours **
+
+Please note, to help me achieve work/life balance, I do not have email, slack, teams etc., on my phone. As such, I am only able to respond to emails once per day during my working hours. Therefore, there may be a delay in my response and I will respond as soon as I can. 
+
+
+You can book a meeting with me and see my availability here:  https://calendly.com/shanaadise 
+
+Peter,
+
+I have attached a listing of the fbirn sequence. This is for a very old scanner -- 17 years! -- but I run the same thing on our newer scanners. The parameters are very close to the low resolution 64x64 fmri we run on clinical patients.
+
+Ha det so bra!
+
+Jim Lee
+
+
+On Tue, Jan 9, 2024 at 4:46 AM Peter Lundberg <0000819975e9d869-dmarc-request@jiscmail.ac.uk> wrote:
+Dear Spinlanders,
+
+What are the most recent/recommended scan parameters that can be used for the fBIRN-protocol? At 3 T and 1.5 T. Any suggestions? FA, matrix, TR, rBW, etc. What do you use?
+
+73, Peter 
+
+Peter Lundberg, PhD, Professor
+Affiliations:
+University of Linköping and University Hospital of Linköping
+Radiation Physics & MR-Physics, Radiology and Center for Medical Imaging and Visualization (CMIV)
+
+Visiting address:
+MR-Physics
+Entrance 4, Level 10
+(The Black Box)
+University Hospital of Linköping
+
+Postal address: 
+Peter Lundberg
+Radiation Physics, Entrance 34
+University Hospital of Linköping
+S-581 85 Linköping, Sweden
+ 
+
+ ISO 9001
+
+Mail Peter.Lundberg@liu.se
+Ph (voice) +46-(0)10-103 2790
+Ph (text) +46-(0)72-503 5327
+
+On MR-Education http://edunmrsoft.wordpress.com/
+'To a poet nothing can be useless.' [SJ]
+
+
+Use the "Coregister: Reslice" option to reslice one image to match another. The "Image defining space" would be one of the contrast images that is the right size.  The "Images to reslice" would be wrongly sized contrast image.
+
+Best regards,
+-John
+
+
+Dear Spinlanders,
+
+What are the most recent/recommended scan parameters that can be used for the fBIRN-protocol? At 3 T and 1.5 T. Any suggestions? FA, matrix, TR, rBW, etc. What do you use?
+
+73, Peter 
+
+Peter Lundberg, PhD, Professor
+Affiliations:
+University of Linköping and University Hospital of Linköping
+Radiation Physics & MR-Physics, Radiology and Center for Medical Imaging and Visualization (CMIV)
+
+Visiting address:
+MR-Physics
+Entrance 4, Level 10
+(The Black Box)
+University Hospital of Linköping
+
+
+hanks John!
+
+Can you give me some practical advice for how would I go about this? I did try to manually crop the voxels and update the V.mat affine transform (my original email last week), but the scaling of the image I got back had changed from the rest when I overlaid them
+
+Yes this contrast image is one of a several dozen going into a 2nd level analysis.
+
+Best wishes,
+Liam
+
+I'm not sure why images for this one subject were written with a different spatial normalisation bounding box (or voxel size).
+
+In principle, you could simply reslice the contrast image to match one of the contrast images that is of the desired size.  There may be slight systematic differences for this subject if this involves interpolation (i.e. not purely shifting the image by a whole number of voxels) and due to smoothing effects (the boundary conditions of the spatial smoothing will impact the brain depending on the field of view). If the differently sized subject is unrelated to your question (e.g., not a comparison between the group and this one subject) then I don't think this should be an issue.
+
+Best regards,
+-John
+
+Dear list,
+
+I'm following up on this query as it is time-sensitive (and also I didn't receive a copy of the email, so unsure if it definitely posted - apologies for duplicating if so)
+
+The query was about whether a contrast image for a single subject could be cropped to match other subjects, without altering the scaling of the image / affine transformation that would remove the normalisation. Alternatively, we would consider enlarging the contrast images for all other participants/runs (ie padding with zeros or similar) if that is more straightforward, and wouldn't change normalisation or have knock-on effects for taking the voxels into our ROI analysis
+
+Further details below!
+
+Many thanks,
+Liam
+
+Dear Peter,
+It turns out that the all-zero T maps are due to calculated T values being complex numbers. I tracked this issue back to the function spm_contrasts.m (line 214-220), where the standard error (SE) becomes complex because of a negative variance-covariance value (Vc).
+
+Line 214-220:
+
+                cB  = spm_data_read(xCon(ic).Vcon,'xyz',XYZ);
+
+                l   = spm_data_read(VHp,'xyz',XYZ);    % get hyperparamters
+
+                Vc  = xCon(ic).c'*SPM.xX.Bcov*xCon(ic).c;
+
+                SE  = sqrt(l*Vc);                      % and standard error
+
+                Z   = cB./SE;
+
+                str = sprintf('[%.1f]',SPM.xX.erdf);
+
+ 
+
+The Vc turns negative mainly because many values in SPM.xX.Bcov are negative. Interestingly, there’s a weird row in SPM.xX.Bcov with a range from around -400 to 1500, linked to head motion regressors. Maybe excessive head motion has led to the GLM fitting failure. However, after checking the head motion parameters, the hypothesis seems incorrect as the maximum value in the head motion file is only 0.25.
+
+ 
+
+I think this problem may be related to some non-sphericity causes.
+
+ 
+
+Do you have any suggestions regarding this?
+
+Cheers,
+Luna
+
+
+Date: Jan 5, 2024, 11:45 PM
+From: lunamitsukisato@keemail.me
+To: peter.zeidman@ucl.ac.uk
+Cc: spm@jiscmail.ac.uk
+Subject: RE: [SPM] SPM gets stuck during the extraction of a VOI
+
+Dear Peter,
+Thank you!
+
+I've reviewed the beta and contrast maps, and they appear normal. I've re-run all preprocessing steps for this subject, but the all-zero issues persist.
+
+The description in the file header of the spmT files seems unusual:
+descrip: 'SPM{T_[0.9]} - contrast 2: effect1'
+
+Is the number 0.9 representing the degrees of freedom for the t-test?
+
+Any thoughts on why the all-zero issues persist?
+
+Best,
+Luna
+
+Jan 5, 2024, 10:59 PM by peter.zeidman@ucl.ac.uk:
+Thanks Luna
+
+Great. I am not surprised that a t-value map of all zeros broke your analysis 😊 . Take a look at the beta maps, then the contrast maps, then the t-maps, to determine at which stage the all-zero issue arose. Let us know if we can be of further help.
+
+ 
+
+Best
+
+P
+
+ 
+
+From: lunamitsukisato@keemail.me <lunamitsukisato@keemail.me>
+Sent: 04 January 2024 23:32
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: RE: [SPM] SPM gets stuck during the extraction of a VOI
+
+ 
+
+Dear Peter,
+
+Thank you very much!
+
+I checked the statistical results of the contrast. And found only zero values in the spmT file. I think this is the reason why VOI extraction procedure couldn’t overcome the while circle.
+
+Besides, I checked all the beta files and con files of this subjects, which look normal. But there are only zero values in all spmT files of this subject.
+
+This makes me confused. Because the analysis code for all subjects are the same. An other subjects’ contrast results look fine and even perfect. 
+
+Next, I plan to re-run GLM for this subject and see what will happen.
+
+ 
+
+What do you think?
+
+ 
+
+1.1.1.Is this an analysis of BOLD fMRI data?
+yes
+
+2. Were spm1 and spm2 in your 
+
+I think I got it working now, thank you so much for your help, Peter.
+
+To anyone else running into this issue, writing a script which collates all GCMs at the same time seems to have created GCMs with the same amount of models per subject.
+Not sure why my previous attempts did not work I must have made some mistakes somewhere.
+
+
+Here is my script which goes through the files and checks the number of models per subject and then creates the GCMs
+
+
+% Define paths to the folders containing DCMs and corresponding names
+folder_paths = {
+    '/home/joeh/Documents/fmri/Pre_CBT', 'pre_cbt',
+    '/home/joeh/Documents/fmri/Post_CBT', 'post_cbt',
+    '/home/joeh/Documents/fmri/Pre_TAU', 'pre_tau',
+    '/home/joeh/Documents/fmri/Post_TAU', 'post_tau'
+};
+
+% Initialize arrays to store all GCMs and corresponding folder names
+all_GCMs = {};
+all_folder_names = {};
+
+% Display the number of models for each file in all folders
+disp('Displaying the number of models for all files in all folders:');
+for i = 1:length(folder_paths)
+    % Get folder path and corresponding name
+    folder_path = folder_paths{i};
+   
+    % Get a list of all .mat files in the folder
+    files = dir(fullfile(folder_path, '*.mat'));
+   
+    % Extract file names and paths
+    file_names = {files.name}';
+    file_paths = fullfile(folder_path, file_names);
+   
+    % Load the DCM file to check the number of models
+    for j = 1:length(file_paths)
+        loaded_DCM = load(file_paths{j});
+        num_models = numel(fieldnames(loaded_DCM)); % Count the number of fields
+        disp(['Folder: ', folder_paths{i}, ', File: ', file_names{j}, ', Number of models: ', num2str(num_models)]);
+    end
+   
+    % Collate DCMs into a GCM file for the current folder
+    GCM = cellstr(file_paths);
+   
+    % Estimate each subject's model for the current folder
+    GCM = spm_dcm_fit(GCM);
+   
+    % Append GCMs and folder names to the arrays
+    all_GCMs{end + 1} = GCM;
+    all_folder_names{end + 1} = folder_paths{i};
+end
+
+% Save the GCMs separately for each folder
+for k = 1:length(all_GCMs)
+    % Get the current folder's GCM and folder name
+    GCM = all_GCMs{k};
+    folder_name = all_folder_names{k};
+   
+    % Remove invalid characters from folder_name for file naming
+    folder_name = strrep(folder_name, '/', '_');
+    folder_name = strrep(folder_name, '\', '_');
+   
+    % Save the GCM for the current folder
+    save(fullfile('/home/joeh/Documents/fmri/Processed_GCMs/', ['GCM_', folder_name, '.mat']), 'GCM');
+end
+
+Cheers!
+-Johannes
+
+On Fri 5 Jan 2024, 14:16 Jeg er bims, <jegerbims@gmail.com> wrote:
+Dear Peter
+
+I think you are absolutely right!
+
+Thanks so much and sorry for all the questions.
+
+I will try to collate the GCMs in a way that has the same number of models for each subject.
+If you know any clever ways of doing this it would be greatly appreciated but you have already helped
+so much, so only if you can be bothered of course!!
+
+All the best :)
+-Johannes
+
+Den tirs. 2. jan. 2024 kl. 10.54 skrev Zeidman, Peter <peter.zeidman@ucl.ac.uk>:
+Dear Johannes
+You're welcome. It's not obvious to me how uneven group sizes would cause the error you mentioned. Are you sure that it's not that the four GCM files containing different numbers of models per subject (i.e., a different number of columns?).
+
+Otherwise, what line does the error occur one?
+
+Re: mean-centring - that is already in the script I sent.
+
+Best
+P
+
+-----Original Message-----
+From: Johannes Wibroe <jegerbims@GMAIL.COM>
+Sent: 22 December 2023 19:47
+To: SPM@JISCMAIL.AC.UK; Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Subject: Re: Spm error message
+
+⚠ Caution: External sender
+
+
+Dear Peter
+
+Thank you so much for your help that seems to have worked!
+
+My only remaining issue now is that my groups have unequal sizes, and so I get the error that the arrays being concatenated are not consistent.
+
+Would you consider mean-centering appropriate in this situation?
+
+Thank you!
+
+All the best,
+Johannes
+
+
+Dear SPM community, 
+
+I have struggled for a few weeks with the SPM gui crashing on my MacBookPro (M2, MacOS Sonoma 14.2.1, Matlab R2023b). 
+There seems to be a problem with Matlab and the most recent OS (Sonoma) where Matlab crashes every time figures are closed (e.g. see thread here). So it’s not an SPM but more a Matlab and OS general issue. 
+
+The one solution that has finally worked for me is to open all SPM figures as docked in the main Matlab window. This way the crahs doesn’t occur. It’s not quit as pretty as opening all the SPM windows as seperate ones, but it works! To do so, you can either enter the following lines in the startup.m file or type them every time you startup Matlab: 
+
+% avoid hangs when closing a figure
+set(groot, 'defaultFigureCloseRequestFcn', 'close(gcf)');
+set(groot, 'defaultFigureWindowStyle', 'docked');
+warning('off', 'MATLAB:close:RecursionOnClose');
+% Additional settings for docked figures to prevent hanging
+set(groot, 'defaultFigureDockControls', 'on‘);
+
+Hope none of you is facing the same problem, and if you do that the above solution works for you too. 
+
+
+Dear SPM community
+
+
+
+Just a reminder that we are looking for 3 people (2 post-docs and 1 support scientist) to work with Optically Pumped Magnetometers (OPMs) at UCL.
+
+
+
+The roles will involve substantial methods development in real-time signal processing, computational modeling, and electronic circuit design. You'll also get to be part of the SPM team and contribute to the software's growth. If any of the above interests you please apply or forward the links below to someone who you think might be interested. 
+
+
+
+Best
+
+
+
+Tim Tierney 
+
+ 
+
+OPM Research Fellow to develop methods for measurement outside the MSR - B02-06258: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7965&nPostingTargetId=18663&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+ 
+
+OPM Research Fellow developing methods to expand the range and quality of naturalistic neuroscience experiments with OPMs - B02-06268: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7989&nPostingTargetId=18660&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+ 
+
+OPM Support Scientist assisting researchers in conducting experiments and overseeing the operations of the OPM suite - B02-06270: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?nPostingId=7985&nPostingTargetId=18665&id=Q1KFK026203F3VBQBLO8M8M07&LG=UK&languageSelect=UK&mask=ext
+
+
+
+
+Dear SPM experts,
+I conducted the first-level analysis using gifti data that was converted from preprocessed Freesurfer functional surface data via command mri_convert. However, I encountered the following error in SPM:
+
+In file "F:\Program Files (x86)\mytoolbox\spm12\@gifti\subsref.m" (v6345), function "subsref" at line 48.
+In file "F:\Program Files (x86)\mytoolbox\spm12\spm_fmri_spm_ui.m" (v7018), function "spm_fmri_spm_ui" at line 337.
+In file "F:\Program Files (x86)\mytoolbox\spm12\config\spm_run_fmri_spec.m" (v6562), function "spm_run_fmri_spec" at line 386.
+
+I read the gii data using the "gifti" function in Matlab, and the content of the image is shown in the following picture. I suspect that the structure of the image is incorrect, causing SPM to be unable to read the data.
+

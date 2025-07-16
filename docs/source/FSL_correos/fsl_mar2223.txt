@@ -1,0 +1,196 @@
+Hi FSL/ASL experts,
+
+I’m attempting to process some PASL data with oxford_asl, but I’m struggling to get plausible results. Specifically, I’m receiving very low perfusion/CBF/arrival time values, as well as low GM/WM ratio. I’m concerned that this indicates an SNR issue with the original scans, but I’m not sure how to verify that.  Details below - any insight or suggestions would be greatly appreciated!
+
+Thanks,
+Phil
+
+ASL parameters:
+Scanner: 3T Siemens TIM Trio
+# control-tag pairs: 75
+Sequence type: PASL (Q2TIPS)
+T1 (first saturation pulse): 0.7 s
+T1s (last saturation pulse): 1.6 s
+T2 (readout starts): 1.8 s
+Readout: GRAPPA 2D EPI
+TR: 3 s
+TE: 13 ms
+Dwell time: 3.5e-06 s
+Calibration: 2D gradient echo EPI
+Calibration TR: 10 s
+
+My call to oxford_asl:
+oxford_asl -i /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/perf/sub-10306_asl.nii.gz -o /project/def-rmcintos/pjohns/stroke_BIDS/derivatives/oxford_asl/sub-10306 --mc --iaf=ct --tis=1.8 --bolus=0.7 --slicedt=0.0000035 -s /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/anat/sub-10306_T1w.nii.gz -c /project/def-rmcintos/pjohns/stroke_BIDS/NIFTI/sub-10306/perf/sub-10306_m0scan.nii.gz --tr=10 --cmethod=voxel --te=13 –fixbolus
+
+Results for one participant:
+Initial MVN for BASIL is: /tmp/fsl_L5WaAP_ox_asl/init/finalMVN
+Using BASIL step /tmp/fsl_L5WaAP_ox_asl/basil/step2
+Final registration
+T1t (for calibration): 1.3
+Calibration is voxelwise
+Mean perfusion in gm is 6.521789
+Mean arrival in gm is 0.701403
+Mean perfusion in wm is 4.667348
+Mean arrival in wm is 0.700210
+Mean perfusion_calib in gm is 36.749582
+Mean perfusion_calib in wm is 25.817282
+
+And another:
+Initial MVN for BASIL is: /tmp/fsl_llVy34_ox_asl/init/finalMVN
+Using BASIL step /tmp/fsl_llVy34_ox_asl/basil/step2
+Final registration
+T1t (for calibration): 1.3
+Calibration is voxelwise
+Mean perfusion in gm is 3.863853
+Mean arrival in gm is 0.689751
+Mean perfusion in wm is 3.567006
+Mean arrival in wm is 0.699921
+Mean perfusion_calib in gm is 22.510351
+Mean perfusion_calib in wm is 19.085984
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi all,
+
+I’m using fslpy to run xfibres. Is there a way to reduce the quantity of print statements it outputs?
+
+I’m not running -v as an option and my call is:
+
+bedpost.xfibres(‘data, mask,bvecs,bvals’) 
+
+All the best,
+
+James
+
+
+
+Hi Matthew,
+
+Thank you for your reply! I tried running the export command in a terminal before running dual_regression but it still said it was using 10 cores. I then tried adding it to the dual_regression script and running it which also proceeded to use 10 cores. Is there somewhere else I need to add this line to get it working?
+
+Thank you,
+Graham
+
+Graham Warner
+
+PhD Student, Joseph Lab
+
+Department of Neuroscience
+
+Medical University of South Carolina
+
+135 Cannon St
+
+Charleston, SC 29424
+
+Chris,
+Thank you for your very helpful reply. I hadn't heard about gdcmdump before. I appreciate the highlighting of this tool which looks like a useful tool. BTW thank you for all work on dcm2niix - it's truly the backbone of all our pipelines.
+
+Using the --csa flag seems to confirm that the PixelBandwidthPerPixelPhaseEncode information is not stored in the dicom header. This is what I see:
+
+79 - 'BandwidthPerPixelPhaseEncode' VM 1, VR FD, SyngoDT 4, NoOfItems 0, Data
+
+Thank you
+Chidi
+
+########################################################################
+Dear all,
+
+ 
+
+I’ve got 4D T1 files, where the last dimension is singleton. How to get rid of it? Perhaps using fslutils?
+
+ 
+
+Many thanks in advance.
+
+ 
+
+Dear FSL users,
+
+ 
+
+Please find below a call for papers for a special issue on "Brain Imaging and Personalized Medicine in Neuropsychiatric Disorders" in Journal of Personalized Medicine. This special issue will include research articles as well as review articles focused on developing and optimizing image processing methods in brain imaging, including but not limited to neuropsychiatric disorder diagnosis and prognosis, as well as neuroimaging data registration and segmentation.
+
+ 
+
+This Special Issue will cover important methodological questions and novel applications in neuroimaging data analysis for fetal, infant, adolescent, and adult brain images. It will benefit neuroscientists and clinicians by introducing advanced techniques that will elevate the accuracy and efficiency of neuroimaging data processing. As a result, this will advance the understanding of the pathophysiological mechanisms and find biomarkers that would be valuable for clinical diagnosis, monitoring disease progression, and evaluating treatment effects.
+
+ 
+
+Authors can submit their manuscripts via the Manuscript Tracking System at
+
+https://www.mdpi.com/journal/jpm/special_issues/5EME151RX0#info
+
+Manuscript Due 15 May 2023 (will be extended)
+
+ 
+
+ 
+
+Best regards,
+
+ 
+
+Dr. Feng Liu
+
+Dr. Yang Yang
+
+Dr. Xiaoke Hao
+
+Dr. Chao Li
+
+Guest Editors
+
+
+
+Hi FSL experts,
+
+My FSL GUI had stopped working all of sudden. I have reinstalled the software entirely several times based on the "https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/Windows"  however I'm still having problem with GUI not opening.
+Anytime I call the fsl or fsleyes while having the Xlaunch properly running at the background, I end up waiting forever while no error message showing up nor the GUI start working.
+Thanks for your help in advance.
+
+Sincerely,
+Nooshin Safari
+
+########################################################################
+
+
+Hi,
+
+you could probably try
+find_the_biggest
+
+Cheers,
+Andreas
+
+﻿Am 18.03.23, 20:27 schrieb "FSL - FMRIB's Software Library im Auftrag von Lior Abramson Vaisman" <FSL@JISCMAIL.AC.UK im Auftrag von labramson87@GMAIL.COM>:
+
+    Dear community,
+    I want to create three ROI masks for the three amygdala nuclei according to the Juliech probabilistic atlas. My challenge is that I want to allocate each voxel only to one mask so that the masks won't have overlap. For example, if there is more probability that the voxel belongs to the LB amygdala than to the CM amygdala, I want the voxel to be allocated only to the LB mask.
+   
+    Does anyone have an idea how to do it with fslmaths?
+   
+    Thank you very much,
+    Lior
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

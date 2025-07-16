@@ -1,0 +1,1078 @@
+Dear Jose,
+
+during model setup SPM uses so called "stick functions" to model responses. These have a value of "1" for some time points, and "0" everywhere else. If you specify zero duration SPM will place just one "1" at the time where you specified the onset. If you specify a longer duration, SPM models a sequence of "1"s beginning at your onset and ending at onset+duration. Later on, these stick functions are convolved with your basis function (set) and the resulting time series are placed in your design matrix.
+
+You observed that a strictly event related design does not capture the time course in your data, while a design using prolonged events does. There might be technical, physiological or neuropsychological reasons for this.
+
+Technical: your timing is slightly off (e.g. due to incorrect synchronisation between scanner and experiment, wrong calculation of timing offsets if you manually discarded some scans at the beginning of your MR measurement). In that case, fixing the timing should get you a good chance to analyse the data as planned.
+
+Physiological or neuropsychological: The timing is correct, but you are observing responses that have longer or delayed BOLD responses compared to a canonical hemodynamic response (e.g. reaction time experiments). These differences may even be region specific, and you should model them accordingly. Some possible solutions include using temporal and dispersion derivatives together with the hemodynamic response function or explicit modelling of responses as separate experimental conditions. The latter will only work if stimulus presentation and response are far enough separated in time or e.g. variable according to reaction times.
+
+Best regards,
+Volkmar
+
+Dear Jose,
+
+during model setup SPM uses so called "stick functions" to model responses. These have a value of "1" for some time points, and "0" everywhere else. If you specify zero duration SPM will place just one "1" at the time where you specified the onset. If you specify a longer duration, SPM models a sequence of "1"s beginning at your onset and ending at onset+duration. Later on, these stick functions are convolved with your basis function (set) and the resulting time series are placed in your design matrix.
+
+You observed that a strictly event related design does not capture the time course in your data, while a design using prolonged events does. There might be technical, physiological or neuropsychological reasons for this.
+
+Technical: your timing is slightly off (e.g. due to incorrect synchronisation between scanner and experiment, wrong calculation of timing offsets if you manually discarded some scans at the beginning of your MR measurement). In that case, fixing the timing should get you a good chance to analyse the data as planned.
+
+Physiological or neuropsychological: The timing is correct, but you are observing responses that have longer or delayed BOLD responses compared to a canonical hemodynamic response (e.g. reaction time experiments). These differences may even be region specific, and you should model them accordingly. Some possible solutions include using temporal and dispersion derivatives together with the hemodynamic response function or explicit modelling of responses as separate experimental conditions. The latter will only work if stimulus presentation and response are far enough separated in time or e.g. variable according to reaction times.
+
+Best regards,
+Volkmar
+
+Dear Colleagues, 
+
+ 
+
+Research Fellow/postdoctoral positions are available in the Meditation Research Program at Harvard Medical School and Mass General in Boston, MA. 
+
+ 
+
+The successful candidate(s) will develop the neuroscience of advanced meditation using cutting-edge neuroimaging/electrophysiology. Please see the full description and instructions for applying here. 
+
+ 
+
+Please feel free to forward this announcement to anyone who may be interested.
+
+ 
+
+Kind regards, 
+
+ 
+
+Megan
+
+ 
+
+ 
+
+Megan Eckman (she/her)
+
+Program Manager, Meditation Research Program, Massachusetts General Hospital
+
+W​ebsite: https://meditation.mgh.harvard.edu
+
+Email: meckman@mgh.harvard.edu 
+
+Athinoula A. Martinos Center for Biomedical Imaging 
+
+CNY Building #149 
+
+149 13th St., Charlestown, MA 02129-4522 
+
+
+
+Center for TBI Research, Kessler Foundation 
+
+Dr. Ekaterina Dobryakova is inviting applicants for a Research Assistant position to work on the NIH funded R01 that focuses on examining learning in individuals with traumatic brain injury and clinical depression. 
+
+Responsibilities include the following: recruit/enroll research participants, schedule and coordinate study visits, interview participants according to research protocols (structured clinical interview), administer neuropsychological test batteries, coordinate/monitor MRI data collection, conduct and/or assist with data analyses, manage electronic and paper databases.
+
+Qualifications include the following: Bachelor's or Masters degree in behavioral or biological sciences or a related discipline; Previous experience in academic and/or clinical research; Excellent administrative and problem-solving skills; Proficient computer skills (especially Word and Excel); Strong communication skills. Candidates must be comfortable working in a medical setting.
+Experience/familiarity with data analysis software and coding is a plus.
+
+Qualified candidates should send their CV to edobryakova@kesslerfoundation.org
+
+
+Hello everyone,
+While preprocessing the fMRI data for spatial noise we get multiple options in the realignment. I am a bit confused about the options "Ralign:Estimate & Realice" v/s "Realign & Unwarp" in SPM12. Can someone please help me understand the difference between the two and explain the basis to choose one of the 2 options for realignment step.
+
+Best
+Amrendra
+
+The Depression and Anxiety Center for Discovery and Treatment (DAC) is pleased to announce the opening of a postdoctoral fellowship position in clinical neuroscience and cognitive neuroimaging. Located within the Icahn School of Medicine at Mount Sinai -- internationally acclaimed for excellence in scientific research, clinical care, and education -- DAC conducts clinical and translational research across the mood and anxiety disorder spectrum. The primary mission of DAC is to identify the fundamental mechanisms of disease and to discover novel treatments for patients suffering from mood and anxiety disorders.
+
+We are seeking a candidate with experience in experimental design and neuroimaging methodology (e.g., functional, structural, diffusion MRI). A Ph.D. in psychology, cognitive science, neuroscience, computer science or related field is required. Experience in computational methods used in neuroimaging and psychophysiology (e.g., Matlab, Python, UNIX, LINUX, AFNI, FSL, SPM, Freesurfer) and computer programing is desirable. Advanced skill in experimental design, quantitative methods, statistical modeling, and the ability to carry out independent statistical analyses using standard software packages (e.g., SPSS, SAS, R) are particularly desirable. The successful candidate will have demonstrated academic productivity in the form of peer reviewed scientific publications.
+
+Candidates must be highly motivated to develop expertise in applying cognitive science and neuroimaging methods to problems in neuropsychiatric research. The candidate will have the opportunity to analyze and interpret multi-modal MRI data from ongoing or completed projects. Example projects include mechanistic studies of depression utilizing high-field 7-Tesla MRI, neuroimaging studies of the effects of treatment interventions in the context of clinical trials, and digital phenotyping studies using smartphone applications and wearables to track active and passive measures in the real-world. Postdoctoral fellows will receive one on one mentoring in research methodology and work in a collaborative, multi-disciplinary environment to gain experience in patient-centered research. Fellows will have the opportunity to draw from the substantial resources of the Icahn School of Medicine, including resources located within the Friedman Brain Institute and the BioMedical Engineering and Imaging Institute in order to carry out high-impact research across Departments. Upon completion, fellows will be well positioned to pursue an independent research career in clinical neuroscience and cognitive neuroimaging.
+
+We offer a competitive salary plus full benefits. Please email a CV and cover letter to Dr. Laurel Morris (laurel.morris@mssm.edu).
+
+Mount Sinai Medical Center is an equal opportunity/affirmative action employer. We recognize the power and importance of a diverse employee population and strongly encourage applicants with various experiences and backgrounds.
+
+
+Laurel S. Morris, Ph.D. she/her
+
+Assistant Professor
+
+Department of Psychiatry
+
+Icahn School of Medicine at Mount Sinai
+
+
+One Gustave L. Levy Place
+
+New York, NY 10029
+
+https://labs.icahn.mssm.edu/morrislab/
+
+
+
+The Depression and Anxiety Center for Discovery and Treatment (DAC) is pleased to announce the opening of a postdoctoral fellowship position in clinical neuroscience and cognitive neuroimaging. Located within the Icahn School of Medicine at Mount Sinai -- internationally acclaimed for excellence in scientific research, clinical care, and education -- DAC conducts clinical and translational research across the mood and anxiety disorder spectrum. The primary mission of DAC is to identify the fundamental mechanisms of disease and to discover novel treatments for patients suffering from mood and anxiety disorders.
+
+We are seeking a candidate with experience in experimental design and neuroimaging methodology (e.g., functional, structural, diffusion MRI). A Ph.D. in psychology, cognitive science, neuroscience, computer science or related field is required. Experience in computational methods used in neuroimaging and psychophysiology (e.g., Matlab, Python, UNIX, LINUX, AFNI, FSL, SPM, Freesurfer) and computer programing is desirable. Advanced skill in experimental design, quantitative methods, statistical modeling, and the ability to carry out independent statistical analyses using standard software packages (e.g., SPSS, SAS, R) are particularly desirable. The successful candidate will have demonstrated academic productivity in the form of peer reviewed scientific publications.
+
+Candidates must be highly motivated to develop expertise in applying cognitive science and neuroimaging methods to problems in neuropsychiatric research. The candidate will have the opportunity to analyze and interpret multi-modal MRI data from ongoing or completed projects. Example projects include mechanistic studies of depression utilizing high-field 7-Tesla MRI, neuroimaging studies of the effects of treatment interventions in the context of clinical trials, and digital phenotyping studies using smartphone applications and wearables to track active and passive measures in the real-world. Postdoctoral fellows will receive one on one mentoring in research methodology and work in a collaborative, multi-disciplinary environment to gain experience in patient-centered research. Fellows will have the opportunity to draw from the substantial resources of the Icahn School of Medicine, including resources located within the Friedman Brain Institute and the BioMedical Engineering and Imaging Institute in order to carry out high-impact research across Departments. Upon completion, fellows will be well positioned to pursue an independent research career in clinical neuroscience and cognitive neuroimaging.
+
+We offer a competitive salary plus full benefits. Please email a CV and cover letter to Dr. Laurel Morris (laurel.morris@mssm.edu).
+
+Mount Sinai Medical Center is an equal opportunity/affirmative action employer. We recognize the power and importance of a diverse employee population and strongly encourage applicants with various experiences and backgrounds.
+
+
+Laurel S. Morris, Ph.D. she/her
+
+Assistant Professor
+
+Department of Psychiatry
+
+Icahn School of Medicine at Mount Sinai
+
+
+One Gustave L. Levy Place
+
+New York, NY 10029
+
+https://labs.icahn.mssm.edu/morrislab/
+
+
+
+The Depression and Anxiety Center for Discovery and Treatment (DAC) is pleased to announce the opening of a postdoctoral fellowship position in clinical neuroscience and cognitive neuroimaging. Located within the Icahn School of Medicine at Mount Sinai -- internationally acclaimed for excellence in scientific research, clinical care, and education -- DAC conducts clinical and translational research across the mood and anxiety disorder spectrum. The primary mission of DAC is to identify the fundamental mechanisms of disease and to discover novel treatments for patients suffering from mood and anxiety disorders.
+
+We are seeking a candidate with experience in experimental design and neuroimaging methodology (e.g., functional, structural, diffusion MRI). A Ph.D. in psychology, cognitive science, neuroscience, computer science or related field is required. Experience in computational methods used in neuroimaging and psychophysiology (e.g., Matlab, Python, UNIX, LINUX, AFNI, FSL, SPM, Freesurfer) and computer programing is desirable. Advanced skill in experimental design, quantitative methods, statistical modeling, and the ability to carry out independent statistical analyses using standard software packages (e.g., SPSS, SAS, R) are particularly desirable. The successful candidate will have demonstrated academic productivity in the form of peer reviewed scientific publications.
+
+Candidates must be highly motivated to develop expertise in applying cognitive science and neuroimaging methods to problems in neuropsychiatric research. The candidate will have the opportunity to analyze and interpret multi-modal MRI data from ongoing or completed projects. Example projects include mechanistic studies of depression utilizing high-field 7-Tesla MRI, neuroimaging studies of the effects of treatment interventions in the context of clinical trials, and digital phenotyping studies using smartphone applications and wearables to track active and passive measures in the real-world. Postdoctoral fellows will receive one on one mentoring in research methodology and work in a collaborative, multi-disciplinary environment to gain experience in patient-centered research. Fellows will have the opportunity to draw from the substantial resources of the Icahn School of Medicine, including resources located within the Friedman Brain Institute and the BioMedical Engineering and Imaging Institute in order to carry out high-impact research across Departments. Upon completion, fellows will be well positioned to pursue an independent research career in clinical neuroscience and cognitive neuroimaging.
+
+We offer a competitive salary plus full benefits. Please email a CV and cover letter to Dr. Laurel Morris (laurel.morris@mssm.edu).
+
+Mount Sinai Medical Center is an equal opportunity/affirmative action employer. We recognize the power and importance of a diverse employee population and strongly encourage applicants with various experiences and backgrounds.
+
+
+Laurel S. Morris, Ph.D. she/her
+
+Assistant Professor
+
+Department of Psychiatry
+
+Icahn School of Medicine at Mount Sinai
+
+
+One Gustave L. Levy Place
+
+New York, NY 10029
+
+https://labs.icahn.mssm.edu/morrislab/
+
+
+
+Hi Noelia, 
+
+To my knowledge, I suppose they are statistically comparable and both suitable for your aim. Actually, they are roughly the same in terms of reducing the number of comparisons. In most cases, they should generate similar results.
+
+However, there is a minor difference in the scope of the generated statistical map. 
+
+When using SVC, a statistical map is generated based on the whole brain, and SVC segments a piece of the map without influencing the remainder. Then, SVC only adjusts the statistical threshold within that piece of the map, i.e., the topological features (smoothness, peak, cluster, etc.) won't change from start to finish.
+
+When adding an explicit mask, the statistical map is generated based on the inner-mask voxels, i.e. ,the topological features differ from those of the whole-brain statistical map, because it is technically a whole new statistical map. 
+
+Intuitively, due to the distinction of the topological features, the cluster-level inferences might produce more discernible disparities than the voxel-level inferences would. 
+
+Sorry but I could only provide some general opinions, which method to adopt still depends on your experimental design and many other factors. 
+
+Best regards,
+Mu Nan
+
+Dear experts,
+
+In our fMRI study, there are three blocks (Block 1, Block 2, Block 3) and in each block, there are 25 trials. In each trial, there are five conditions (Baseline, Computation, Anticipation, Feedback, Win/Loss Status). In Block 1, participants win at a 80% rate, in Block 2 they win at 48% and in Block 3 at 20%. The order is Block 1-Block 2-Block 3 for all participants.
+
+We expect connectivity differences in different networks depending on the block (e.g. default mode network during Block 1, frontoparietal network during Block 2, salience network during Block 3). We want to perform a gPPI analysis on our data but we want to make sure that it is okay to compare the blocks overall (Block 3 > Block 1, Block 3 > Block 2 etc), disregarding the conditions.
+
+Would it be problematic to do this? Would aggregating all conditions in one block prevent us from detecting expected network differences that could be related to the effects of the conditions?
+
+Thank you in advance.
+
+Best,
+Birce
+
+Dear SPM experts,
+
+I'd appreciate if you could help us resolve a methodological question concerning a group-level analysis.
+
+In our study, we are interested in looking at the activations within the singing network in stroke patients performing a singing task. The singing network was determined using an independent dataset of demographically-matched healthy participants based on our a priori hypothesis that the patients will show different activation within this network.
+
+Our first approach was to use this singing network from healthy controls as a small volume correction in the results from the patients group. The volume of this singing network represents 12.5% of the total number of voxels.
+
+The second approach was to use the singing network as an explicit mask during the 2nd level specification.
+
+Are both approaches statistically comparable? Which one would be more suitable to test our hypothesis?
+
+Thank in you in advance for your help.
+
+Best wishes,
+Noelia
+
+Postdoctoral Researcher Positions: Section on Affective Neuroscience and Pain, Division of Intramural Research
+
+https://www.nccih.nih.gov/about/jobs/postdoctoral-researcher-positions-section-on-affective-neuroscience-and-pain-division-of-intramural-research
+
+ 
+
+Dr. Lauren Atlas’s laboratory is recruiting one to two postdoctoral researchers with expertise in fMRI and affective science to join the Section on Affective Neuroscience and Pain (ANP) to lead new projects on the psychological modulation of pain and emotional experience. Dr. Atlas’s lab is part of the National Center for Complementary and Integrative Health’s (NCCIH) intramural research program, and affiliated with the Intramural Research Programs of the National Institute of Mental Health (NIMH) and National Institute on Drug Abuse (NIDA). Learn more about the NIH Intramural Training Program.
+
+ 
+
+Research in the ANP Lab focuses on the mechanisms by which expectations, learning, and other cognitive and affective factors influence pain, emotion, and clinical outcomes. We combine approaches from experimental psychology, neuroimaging, psychophysiology, and computational modeling to investigate pain and emotional experience in healthy individuals as well as individuals with chronic pain and/or affective disorders. We are particularly interested in the intersection of appetitive and aversive learning, how psychosocial factors influence pain and clinical outcomes, and questions motivated by pain’s central role in the opioid crisis. Postdoctoral researchers are expected to develop their own projects, with guidance, and to collaborate with other researchers in the lab as well as in the broader NIH community. We are looking for someone to spearhead new projects using high field imaging (7T-FMRI) to examine pain and perception across domains and/or using simultaneous PET-MRI to study the role of dopamine and opioids in pain modulation. Clinical collaborations to look at the intersection between pain, mental health, and/or substance use disorders are also possible. 
+
+ 
+
+The candidate should have a strong background in psychology and neuroscience and must have received a Ph.D. in a relevant field by the time of appointment. Candidates with successful publications in the fields of pain, emotion, and/or computational modeling are encouraged to apply. Postdoctoral positions require experience with 1) design of behavioral and fMRI experiments, 2) analysis of fMRI data using statistical parametric mapping packages (SPM, AFNI, etc.), and 3) programming and analysis skills in MATLAB, R, and/or Python. These requirements will be flexible for candidates with clinical experience or experience in psychopharmacology, as we are currently planning clinical collaborations. Appointments and salary are commensurate with research experience and accomplishments (www.training.nih.gov/programs/postdoc_irp).
+
+ 
+
+The candidate will be supported with the excellent intramural NIH fellowship in a stimulating and interactive research environment at NIH. NIH has exceptional multidisciplinary research facilities including structural and functional MRI, MEG, PET, and TMS. Our lab is fully funded with dedicated weekly scan time, a full-time data analyst, and the opportunity to work alongside some of the world’s foremost fMRI experts. Training in advanced imaging and other techniques is available, as are courses in grant writing and career development. Trainees can also apply to be fellows in the Center on Compulsive Behaviors, a trans-NIH fellowship program. This is an exciting and collaborative environment for those interested in pursuing a career in clinical or cognitive neuroscience.
+
+ 
+
+How To Apply
+Applicants should submit a CV, a brief description of research interests and career goals, and the names of three references to Dr. Lauren Atlas (Investigator/Chief, Section on Affective Neuroscience and Pain, NCCIH/NIMH/NIDA, NIH). Applications will be reviewed on a rolling basis.
+
+ 
+
+Applications will be accepted until the position is filled.
+
+The Department of Health and Human Services and NIH are equal opportunity employers committed to equity, diversity, and inclusion.
+
+ 
+
+ 
+
+The Medical University of Vienna invites applications for all currently open PhD positions in its 18 PhD programs. Our university is a leader in transnational basic and applied (medicine) research and has an excellent infrastructure that invites you to do research, learn state-of-the-art methods and network with your fellow researchers. Our research community is international and constantly growing, as is our campus. Three more research buildings will be added in the next few years. Last but not least, Austria, as a research location, offers young scientists many opportunities after graduation.
+
+We currently offer up to 32 fully funded Ph.D. positions to ambitious and creative researchers with a background in (Bio) Physics, (Bio) Engineering, Mathematics, (Bio) Informatics, Computer Science, (Bio) Chemistry, Biology or Cell/Molecular biology or a related field to take their first steps as professional researchers with us.
+
+We offer
+- Interdisciplinary Ph.D. programme that gives you the freedom to tailor parts of your curriculum to suit your individual interests
+- Cutting-edge basic and applied (medical) research
+- Interesting projects and tasks
+- Like-minded colleagues
+- Supportive environment for personal and professional growth
+- Modern and highly specialised equipment, such as the Tesla7
+- A triple-track system that allows easy access to patients (data) for clinical trials or user feedback
+- An international and well-connected research community
+- Advanced training and mentoring programmes
+- Live and work in one of the most liveable places - Vienna
+
+You have/are
+- Master's degree or equivalent in (bio)physics, (bio)engineering, mathematics, (bio)informatics, computer science, (bio)chemistry, biology or cell/molecular biology, medicine or a related field.
+-       First practical experiences in a relevant research area in the context of an internship, job or project.
+-       Interest in developing new and creative solutions for humans and their health.
+-       Passion for science and interest in a career in research.
+-       Interest in conducting your own research and leading your own project.
+-        Willingness to travel abroad for conferences.
+-       Ability to work both in a team and independently.
+-       Excellent English skills (at least B2 level) - we are an international crowd and English is our working language!
+
+About us
+The Medical University of Vienna (briefly: MedUni Vienna) was founded in 1365 and is now the largest medical university in Europe with about 8.000 students. Within its 30 university hospital departments, two clinical institutes, one museum, 12 theoretical medicine centres and numerous highly specialized laboratories, it is included among the most important cutting-edge research institutes of Europe in the area of biomedicine and biotechnology.
+
+Terms
+The initial contract of the Ph.D. is limited to one year and can be extended until the end of the training (three to four years). The salary is based either on the Austrian collective agreement for university employees and researchers or on the FWF salary agreement. An individual start date is a possibility.
+
+Application information
+Application period: 15.3-30.04.2023
+Online application portal: https://oc.meduniwien.ac.at/open-positions
+Questions? Contact us at  phdrecruitment@muv.ac.at
+
+Dear Martina
+
+Thanks for posting this great reference. Am I correct that figure 3 shows, that physiological modelling is needed even if FAST18 is used? It would have been great to see if Volterra expanded motion regressors (24 parameters) can reduce/remove the peak at low frequencies still present in the “No Model” data after HP filtering and RETROICOR modelling, or if we need to do both RETROICOR and FAST when TR is sufficiently low. I think the reason for FAST not being able to remove the cardiac peak in figure 3 TR=0,35s is that the cardiac frequency is not constant through time, and that there is considerable spatial variation both in phase and magnitude. At lower TR it makes the noise look like it is white (because it is aliased into a range of frequencies). I also found it a bit puzzling that the area under the yellow curve sometimes look smaller than or equal to those of the the red and green curve, but I guess you might have used normalised residuals, as those outputted from the SPM model estimation, correct?
+
+
+Dear Psychtoolbox users,
+
+ 
+
+For only a short time, we are offering you a heavily discounted winter sale of our Psychtoolbox paid support membership licenses, for a substantially reduced price of only 99 Euros (plus tax), instead of the regular 150 Euros for a 12 months membership license!
+
+Buying such a license once a year is a good way to support Psychtoolbox's continued existence and health, and also the potential needs of your lab for expert support. Your financial support of PsychToolbox is needed.
+
+Buy a discounted license: https://www.psychtoolbox.net/#service
+
+ 
+
+For an overview of what larger improvements have been made to Psychtoolbox over the last two years, its continued popularity and importance to the field, and also about our urgent need for financial support by our users, please watch Celia Fosters talk from VSS 2022 under this link: https://youtu.be/afKbkOx62dQ
+
+
+As you can see from that presentation, in recent years the Psychtoolbox Team has worked hard to improve Psychtoolbox itself and its services on Psychtoolbox.net. We also kindly ask you to fill out our current user survey if your lab has not done so already, so that we can better understand the needs and wishes of our community. So far participation has been too low. Your careful answers will help us to shape the future of Psychtoolbox.
+
+Fill out our survey: https://forms.office.com/r/8NESnHGGAQ
+
+
+As a thank you for your valuable feedback, you will find an additional discount code for your “Psychtoolbox Support Membership license” purchase after submitting your answers.
+
+Many Thanks for your support and stay healthy!
+Mario, Dee, Celia, Ingo and Anna
+
+Dear SPM-community, 
+The Diedrichsen Lab is looking to recruit a new postdoctoral associate with interest in studying the human cerebellum. The successful candidate will join an inter-disciplinary research group that uses behavioral, neuroimaging, and neurophysiological approaches to investigate the role of the cerebellum in motor control, cognition, and language . The main approach of the lab is to gain insight about the functional organization of the cerebellum from big data and machine learning methods, which then forms the basis for targeted experiments. The enthusiastic and supportive environment will enable the candidate to develop their own research program.
+The lab is located in the Western Institute of Neuroscience in London, Ontario, Canada, and is part of the Sensorymotor Superlab and the Computational Brain Sciences group at Western. Systems and cognitive neuroscience is a key area of research strength at Western University, with more than 70 Principal Investigators and 200 trainees. High-resolution imaging at 9.5T, 7T, and 3T is available in-house. 
+Full application details can be found here. The review of applications will begin on March 24th and will continue until position is filled.
+
+Jörn Diedrichsen
+Western Institute of Neuroscience 
+Email: jdiedric@uwo.ca
+
+
+
+Dear Brandon
+
+Hopefully you would find this article, and references therin, useful: https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.24218
+
+Best wishes
+
+Martina
+
+Hi All,
+
+I am trying to learn about the FAST model for Serial Correlation Correction in SPM.
+
+I have been having some trouble finding resources or documentation describing this model and wondered if anyone could recommend some.
+
+I have found several papers from the last few years showing that the FAST model is better than AR(1) for faster TR's, but I haven't been able to find a detailed explanation for what the fast model does, how it works, or how it's different from AR(1).
+
+The closest I have found to an explanation is from an old JISCmail chain which says that the FAST model "uses a dictionary of covariance
+components based upon exponential covariance functions." But I would like to know how it uses that dictionary and more generally understand the method better.
+
+Any suggestions or advice are appreciated.
+
+Thank you!
+
+Cheers,
+Brandon
+
+Hello, experts.
+
+I created the seed-based Z map for each subject as a first-level analysis using the Fisher's Z transformation formula using my own matlab script.
+Then I want to perform second-level analyses (group analysis like two-sample ttest) using these Zmaps with SPM.
+Then, is it OK if I use these Zmaps for the second-level analyses as well as I use the con.nii files which were normally created by the first-level analyses using SPM software without using my own script?
+
+Any advice will be appreciated.
+
+Thank you.
+
+Best
+Kip
+
+POSTDOC RESEARCH ASSOCIATE ON PROJECT “A TECHNOLOGY TO EXTRACT MEMORIES FROM THE HUMAN BRAIN USING EFIT6 AND THE FRINGE-P3 BRAINWAVE METHOD”
+
+ 
+
+School of Psychology and Centre for Human Brain Health, University of Birmingham, UK.
+
+ 
+
+The Fringe-P3 method (Bowman et al, 2013; Alsufyani et al, 2019) developed out of a line of theoretical work focussed on temporal attention and perception on the fringe of awareness (Bowman & Wyble, 2007; Avilés et al, 2020; Bowman & Avilés, 2022). The method provides a means to present a large number of visual stimuli very rapidly to a participant’s brain and then determine with EEG, which of those stimuli the participant finds salient. A very simple form of salience that we look at is familiarity, with stimuli that are familiar breaking into participants’ awareness and thereby generating a P3 (or a variant of it), which we detect with EEG. The method has been proposed as a deception detector, specifically, a (countermeasures-resistant) concealed-knowledge test (Bowman et al, 2013, 2014; Alsufyani et al, 2019; Harris et al, 2021).
+
+ 
+
+Our recent Innovate UK project with the company Visionmetric (https://visionmetric.com/) provided a prototype system for extracting the memory of a face. This is done by generating a facial morph that is a weighted average of the faces presented in rapid serial visual presentation, with weight determined by the strength of the P3 that face generated. A demo of the system developed in this project can be seen here:
+
+ 
+
+https://www.cs.kent.ac.uk/people/staff/hb5/EEGFIT_prototype_demo_cut.mp4
+
+ 
+
+The Research Associate will be employed on a recently awarded EPSRC Impact Acceleration account at the University of Birmingham, which, with Visionmetric, will improve the efficiency with which P3s are detected with machine learning and will also explore alternative detection modalities, such as pupil dilation.
+
+ 
+
+The position is for one year in the first instance, but with the possibility of follow-on funding.
+
+ 
+
+Direct enquiries to the Principal Investigator, Howard Bowman (H.Bowman@bham.ac.uk). Professor Howard Bowman (Psychology, University of Birmingham; Computing, University of Kent and Wellcome Centre for Human Neuroimaging, UCL [honorary]).
+
+ 
+
+To apply for this job, search for it on the following site,
+
+ 
+
+https://edzz.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_6001/
+
+ 
+
+Alsufyani, A., Hajilou, O., Zoumpoulaki, A., Filetti, M., Alsufyani, H., Solomon, C. J., ... & Bowman, H. (2019). Breakthrough percepts of famous faces. Psychophysiology, 56(1).
+
+ 
+
+Avilés, A., Bowman, H., & Wyble, B. (2020). On the limits of evidence accumulation of the preconscious percept. Cognition, 195, 104080.
+
+ 
+
+Bowman, H., & Avilés, A. (2022). No Subliminal Memory for Spaced Repeated Images in Rapid-Serial-Visual-Presentation Streams. Psychological Science, 33(11), 1959-1965.
+
+ 
+
+Bowman, H., Filetti, M., Janssen, D., Su, L., Alsufyani, A., & Wyble, B. (2013). Subliminal salience search illustrated: EEG identity and deception detection on the fringe of awareness. PLoS One, 8(1).
+
+ 
+
+Bowman, H., Filetti, M., Alsufyani, A., Janssen, D., & Su, L. (2014). Countering countermeasures: Detecting identity lies by detecting conscious breakthrough. PloS one, 9(3), e90595.
+
+ 
+
+Bowman, H., & Wyble, B. (2007). The simultaneous type, serial token model of temporal attention and working memory. Psychological review, 114(1), 38.
+
+ 
+
+Harris, K., Miller, C., Jose, B., Beech, A., Woodhams, J., & Bowman, H. (2021). Breakthrough percepts of online identity: Detecting recognition of email addresses on the fringe of awareness. European Journal of Neuroscience, 53(3), 895-901.
+
+ 
+
+ 
+
+--------------------------------------------
+
+Professor Howard Bowman (PhD)
+
+Professor of Cognition & Logic in Computing at Uni Kent, and
+
+Professor of Cognitive Neuroscience in Psychology at Uni Birmingham
+
+(honorary at Wellcome Centre for Human Neuroimaging, University College London)
+
+ 
+
+Centre for Cognitive Neuroscience and Cognitive Systems and the School of Computing, University of Kent at Canterbury, Canterbury, Kent, CT2 7NF, UK
+
+email: H.Bowman@kent.ac.uk
+
+WWW: http://www.cs.kent.ac.uk/people/staff/hb5/
+
+ 
+
+School of Psychology, University of Birmingham, Edgbaston, Birmingham B15 2TT, UK
+
+ 
+
+Dear colleagues,
+
+After doing realignment and unwarp, I want to get the postscript file that includes the information of the head movements (i.e., the line graphs).
+While I can get them for some subjects, I cannot for the other subjects.
+For all the subjects, I measured the data using the same setting and tried to analyze them using the same parameters.
+So far, I cannot find the obvious mistake in my scripts.
+I'm using the codes which I got from the SPM batch file for preprocessing(realignment and unwarp, slice timing correction, corregister, and segmentation).
+
+I would be very glad if someone could give me a clue to work this out.
+
+Best regards,
+
+Rui
+
+Dear colleagues,
+
+For the sixth time, the Lund University Humanities Lab, Lund, Sweden, offers a three-day intensive course in eye-tracking methodology. The course - A practical introduction to eye tracking - takes place June 7 - June 9, 2023 at the Humanities Lab.
+
+For more information about the course, visit the course webpage:
+https://www.humlab.lu.se/education/commissioned-education/
+
+Please feel free to share the link with people who you think would be interested.
+
+Best wishes,
+Marcus Nyström and Diederick Niehorster
+Lund University Humanities Lab
+
+There will be more local spatial correlations in the 2mm warped data, but whether this has any impact will depend on the assumptions made by the machine learning approach that is applied.  If it assumes i.i.d. noise, then this could cause problems, but if it is some form of kernel approach, then I'd expect all to be fine (although worth double-checking with simulations). If it involves deep learning, then I have no idea what the consequences might be.
+
+When spatially normalising, some regions expand, and some shrink.  This means that you don't have a uniform sampling of the data.  If a region is shrunk during warping, then having 2mm resolution for the warped images would prevent some much information loss in these regions.
+
+Best regards,
+-John
+Dear Experts,
+
+I have some data which was acquired in low-resolution: 4 mm isotropic. Standard preprocessing would lead to 2mm isotropic images but that seems like a massive amount of upsampling. My goal is to use these images for MVPA - I understand that using a 4mm normalization, rather than 2mm, would be helpful because of lower space requirement and fewer features (so speed). One of the reviewers raises an argument that normalization to 2mm would lead to more correlated voxels which might make an impact on the performance of ML algorithms.
+
+Are there any reasons (other than space/time/convenience) to not upsample to regular 2mm but stick to acquisition voxel size during normalization? Are there papers that have studied the impact of spatial normalization voxel size on fMRI?
+
+
+Thanks
+PB
+
+Hi Daniel,
+I am using few toolboxes via SPM GUI. some, such as WFUPickAtlas , Marsbar, ArtRepair, are available in the GUI under "toolbox"
+Other toolboxes are avaiable in the GUI batch under the SPM>tools. All folders of these tools are in the SPM folder under "spm12/toolbox"/.
+
+Here is a link to installation manual and how to implement it in SPM: https://www.nitrc.org/projects/clinicaltbx/
+Maybe you could find relevnt info for how to implement your tool
+
+hope this helps.
+Tammar
+
+Dear yang
+
+I'll leave the expert's response to Dr Peter zeidman
+Nevertheless, I had the same hasitation in my study and i chose the approach you are suggesting - peb of pebs
+
+You can take a look in my paper:
+https://pubmed.ncbi.nlm.nih.gov/34679395/
+
+Simultaneous Normalization and Compensatory Changes in Right Hemisphere Connectivity during Aphasia Therapy - PubMed
+Changes in brain connectivity during language therapy were examined among participants with aphasia (PWA), aiming to shed light on neural reorganization in the language network. Four PWA with anomia following left hemisphere stroke and eight healthy controls (HC) participated in the study. Two fMRI …
+pubmed.ncbi.nlm.nih.gov
+
+
+Cheers
+Tammar
+
+Dear everyone,
+
+I ran into an error message "[GIFTI] Parsing of XML file" during surface reconstruction as part of the segmentation with CAT12.8.2 r2170 / SPM12 r7771 under Matlab R2021a. See below for the complete message (the same for other subjects). Any ideas what this might refer to? As I don't use the default settings, which might possibly have led to the issue, please find the batch at WeTransfer https://we.tl/t-ETAmdM5pQt
+
+preproc.m
+1 file sent via WeTransfer, the simplest way to send your files around the world
+we.tl
+
+
+Thank you very much,
+
+Helmut
+
+
+------------------------------------------------------------------------
+CAT12.8.2 r2170: 1/18:      ./sxxxxx_struc.img
+------------------------------------------------------------------------
+SANLM denoising (medium)                                             77s
+Internal resampling (1.00x1.00x1.10mm > 1.00x1.00x1.00mm)             2s
+APP: Rough bias correction                                       
+  Initialize                                                         11s
+  Estimate background                                                 8s
+  Initial correction                                                  6s
+  Refine background                                                   4s
+  Final correction                                                    5s
+  Final scaling                                                       5s
+                                                                     47s
+Correct center-of-mass                                                7s
+Affine registration                                                   9s
+SPM preprocessing 1 (estimate 1 - TPM registration):                 88s
+SPM preprocessing 1 (estimate 2):                                   157s
+SPM preprocessing 2 (write)                                      
+  Write Segmentation                                                 22s
+  Update Segmentation                                                18s
+  Update Skull-Stripping                                             42s
+  Update probability maps                                             7s
+                                                                     90s
+Global intensity correction                                          18s
+SANLM denoising after intensity normalization (medium)               11s
+Fast Optimized Shooting registration                                 58s
+Local adaptive segmentation (LASstr=0.50)                        
+  Prepare maps                                                        4s
+  Prepare partitions                                                  2s
+  Prepare segments (LASmod = 1.16)                                   11s
+  Estimate local tissue thresholds (WM)                              19s
+  Estimate local tissue thresholds (GM)                              26s
+  Intensity transformation                                            0s
+  SANLM denoising after LAS (medium)                                 31s
+                                                                     95s
+ROI segmentation (partitioning)                                  
+  Atlas -> subject space                                              7s
+  Major structures                                                    3s
+  Ventricle detection                                                10s
+  Blood vessel detection                                              9s
+  WMH detection (WMHCstr=0.50 > WMHCstr'=0.13)                       20s
+  Manual stroke lesion detection                                      0s
+  Closing of deep structures                                          2s
+  Side alignment                                                      3s
+  Final corrections                                                   3s
+                                                                     57s
+Blood vessel correction (BVCstr=0.50)                                 1s
+Amap using initial SPM12 segmentations (MRF filter strength 0.06)    23s
+    AMAP peaks: [CSF,GM,WM] = [0.36±0.05,0.68±0.08,0.98±0.05]
+Final cleanup (gcutstr=0.25)                                     
+  Level 1 cleanup (ROI estimation)                                    4s
+  Level 1 cleanup (brain masking)                                     2s
+  Level 2 cleanup (CSF correction)                                    1s
+  Level 3 cleanup (CSF/WM PVE)                                        2s
+                                                                      9s
+Optimized Shooting registration with 2.50:-0.38:1.00 mm (regstr=0.50)
+  Template: "/spm12/toolbox/cat12/templates_MNI152NLin2009cAsym_1mm/Template_0_GS1mm.nii"
+    1 | 2.50 | 0.0725  0.0000  0.0725 |  32.0000
+    2 | 2.50 | 0.0701  0.0011  0.0711 |  29.4886
+    3 | 2.50 | 0.0693  0.0016  0.0710 |  26.9772
+    4 | 2.50 | 0.0690  0.0018  0.0708 |  24.6107
+    5 | 2.50 | 0.0687  0.0020  0.0707 |  22.6548
+    6 | 2.50 | 0.0684  0.0021  0.0705 |  20.6989
+    7 | 2.50 | 0.0682  0.0022  0.0703 |  18.9688
+    8 | 2.50 | 0.0679  0.0022  0.0702 |  17.4455
+    9 | 2.50 | 0.0677  0.0023  0.0700 |  15.9223
+   10 | 2.50 | 0.0674  0.0024  0.0698 |  14.6627
+   11 | 2.50 | 0.0671  0.0025  0.0696 |  13.4764
+   12 | 2.50 | 0.0668  0.0025  0.0693 |  12.3015
+   13 | 2.50 | 0.0665  0.0026  0.0691 |  11.3776
+   14 | 2.50 | 0.0662  0.0027  0.0689 |  10.4537
+   15 | 2.12 | 0.0660  0.0028  0.0688 |   9.5920
+   16 | 2.12 | 0.0629  0.0043  0.0672 |   8.8725
+   29 | 1.75 | 0.0652  0.0020  0.0672 |   3.3283
+   30 | 1.75 | 0.0580  0.0047  0.0627 |   3.1221
+   31 | 1.75 | 0.0556  0.0059  0.0614 |   2.9160
+   43 | 1.38 | 0.0549  0.0034  0.0583 |   1.5785
+   44 | 1.38 | 0.0497  0.0060  0.0557 |   1.5194
+   45 | 1.38 | 0.0480  0.0068  0.0548 |   1.4626
+   57 | 1.00 | 0.0459  0.0051  0.0510 |   1.0900
+   58 | 1.00 | 0.0427  0.0070  0.0497 |   1.0730
+   59 | 1.00 | 0.0417  0.0075  0.0492 |   1.0579
+Shooting registration with 2.50:-0.38:1.00 mm takes                 598s
+  Prepare output                                                     23s
+                                                                    621s
+  Jacobian determinant (RMS): 0.010 0.038 0.061 0.094 0.122 |  0.129694
+           Template Matching: 0.072 0.189 0.167 0.144 0.125 |  0.125069
+Write result maps                                                    68s
+Surface and thickness estimation                                 
+lh:
+  Thickness estimation (0.50 mm³)                                
+    WM distance:                                                     27s
+    CSF distance:                                                    13s
+    PBT2x thickness:                                                 49s
+                                                                     95s
+  Create initial surface                                             62s[Warning: [GIFTI] Parsing of XML file
+./lh.layer4x.sxxxxx_struc.gii
+failed.]
+[> In read_gifti_file (line 17)
+In gifti (line 108)
+In cat_surf_fun>cat_surf_evalCS (line 1295)
+In cat_surf_fun (line 200)
+In cat_surf_createCS2 (line 1084)
+In cat_main1639 (line 795)
+In cat_run_job1639 (line 1269)
+In cat_run_newcatch (line 40)
+In cat_run>run_job (line 1170)
+In cat_run (line 706)]
+
+  Topology correction:                                           
+------------------------------------------------------------------------
+CAT Preprocessing error for sf85g3_struc:
+------------------------------------------------------------------------
+Surface file ./lh.central.sxxxxx_struc.gii could not be found due to previous processing errors.
+------------------------------------------------------------------------
+ 1882 - loadSurf
+ 1148 - cat_surf_createCS2
+  795 - cat_main1639
+ 1269 - cat_run_job1639
+   40 - cat_run_newcatch
+ 1170 - run_job
+  706 - cat_run
+------------------------------------------------------------------------
+
+Print 'Graphics' figure to:
+  /media/neh27422/TOSHIBA1/Data/MD_Helmut/DataPreproc/CAT12_Var1/Regensburg/AMD/catreport_sf85g3_struc.pdf
+
+Hi all,
+
+I hope to get some advice during the DCM-PEB analysis if I don't want to concatenate multi sessions.
+
+In my project, each subject has six sessions (runs) with identical scans (333 scans of TR = 2s). According to some studies, I should concatenate the sessions, then extract the time series from VOI. However, I am unsure how to add head motion parameters to the first-level GLM. Say the data was preprocessed session-wise, and each session has its head motion parameters, if the six sessions were combined into one session, which head motion parameters should I add?
+
+So I plan to create a DCM for each session and do the PEB-of-PEBs for group analysis. I want to ask your advice if I think correctly as below:
+
+Generally, I will have a 3-level design, first-level: DCM for each run, second-level: PEB for each subject, third-level: PEB for the group.
+
+GCM_subject1 = [DCM_sbuject1run1, DCM_sbuject1run2, ..., DCM_sbuject1run6];
+PEB_subject1 = spm_dcm_peb(GCM_subject1, X1); X1 contains six rows of 1, as the mean of this group.
+
+GCM_all = [PEB_subject1,..., PEB_sbuject50]
+PEB_all = [GCM_all, X2]; X2 contains one column of mean (i.e. 1) and other columns of covariates.
+
+Do you think this approach is correct, or do you have other suggestions?
+
+Best wishes,
+Yang
+
+Dear all,
+
+According to the description of the Toro’s gyrification index (surface ratio) provided in CAT12, it seems that it is computed in a different way than that originally described. After reading the descriptions of both methods, one difference that I spotted is that the original method (described in Toro et al., 2008) calculates gyrification considering the area of the pial surface, while CAT12 calculates it considering the area of the central surface (Gaser et al., 2022). Am I right? Is this the only difference between the two methods?
+
+Thank you.
+
+Hi Guillaume,
+I am following up on this message from 2017. It looks like output of processing done using CAT12 misses the mesh geometry information which gives an error. For example, I did 'Threshold and transform spmT surfaces' using CAT12 and the output only has only cdata. The fields faces, vertices etc. are missing. See error below.
+
+SPM12: spm_render (v7577)                          12:51:58 - 14/02/2023
+========================================================================
+Error using spm_render
+Cannot find a surface mesh to be displayed.
+
+Error in spm (line 1004)
+    evalin('base',CB)
+ 
+Error while evaluating UIControl Callback.
+
+
+Thanks,
+Raghavan
+
+
+On Wed, 18 Jan 2017 13:31:48 +0000, Guillaume Flandin <g.flandin@UCL.AC.UK> wrote:
+
+>Dear Nick,
+>
+>It looks like one of the small issues we have to iron out between SPM12
+>and CAT12, where the mesh geometry information gets somehow lost.
+>
+>Can you display the output file with SPM?
+>>> spm_mesh_render disp out.gii
+>
+>What is returned by:
+>  g1 = gifti('rh.dicom.resampled.D15_27.gii');
+>  g1.private.metadata
+>  g2 = gifti('rh.dicom.resampled.D15_27_2.gii');
+>  g2.private.metadata
+>  g = gifti('out.gii');
+>  g.private.metadata
+>
+>Best regards,
+>Guillaume.
+>
+>
+>On 18/01/17 13:22, nick judd wrote:
+>> Hey Guillaume,
+>>
+>> It’s something to do with spam_mesh_calc, it works using the files
+>> before the subtraction.
+>> Also it doesn’t even let me display the surfaces using the surface tool
+>>> displace surface in CAT12.
+>> (this works on the files before subtraction)
+>>
+>> spm_mesh_calc({'rh.dicom.resampled.D15_27_2.gii','rh.dicom.resampled.D15_27.gii'},’out.gii',
+>> 's1-s2')
+>>
+>> Display /data/nicjud/scans_sorted/R_surf_15mm/out.gii
+>> Error using cat_surf_render (line 838)
+>> Unknown action.
+>>
+>> Error in cat_surf_display (line 156)
+>>           h = cat_surf_render(Pmesh);
+>>
+>> Error in cat12>pushbutton8_Callback (line 221)
+>> cat_surf_display;
+>>
+>> Error in gui_mainfcn (line 95)
+>>         feval(varargin{:});
+>>
+>> Error in cat12 (line 76)
+>>     gui_mainfcn(gui_State, varargin{:});
+>>
+>> Error in
+>> @(hObject,eventdata)cat12('pushbutton8_Callback',hObject,eventdata,guidata(hObject))
+>>
+>> 
+>> Error while evaluating uicontrol Callback
+>>
+>>
+>> best,
+>> nick
+>>
+>> On January 18, 2017 at 1:54:07 PM, Guillaume Flandin
+>> (g.flandin@ucl.ac.uk <mailto:g.flandin@ucl.ac.uk>) wrote:
+>>
+>>> Dear Nick,
+>>>
+>>> I don't know. Do you have a longer version of the error message
+>>> (including function names and line numbers)? Does it only happen with
+>>> data created by spm_mesh_calc?
+>>>
+>>> Best regards,
+>>> Guillaume.
+>>>
+>>>
+>>> On 17/01/17 13:40, nick judd wrote:
+>>> > Hey Guillaume,
+>>> > 
+>>> > Thanks for your response, I used spm_mesh_calc. Yet when I go to
+>>> > ‘estimate surface model’ in CAT12, I get Error using subsref
+>>> > *Index exceeds matrix dimensions*. Any idea why? 
+>>> > 
+>>> > Thanks,
+>>> > Nick
+>>> > 
+>>> > On Wed, Jan 11, 2017 at 3:30 PM, Guillaume Flandin <g.flandin@ucl.ac.uk <mailto:g.flandin@ucl.ac.uk>
+>>> > <mailto:g.flandin@ucl.ac.uk <mailto:g.flandin@ucl.ac.uk>>> wrote:
+>>> > 
+>>> >     Dear Nick,
+>>> > 
+>>> >     If you want to evaluate an expression from data on surfaces you can
+>>> >     possibly use spm_mesh_calc.m. For example:
+>>> >       spm_mesh_calc({'file1.gii','file2.gii'},'diff.gii','s1-s2')
+>>> > 
+>>> >     Best regards,
+>>> >     Guillaume.
+>>> > 
+>>> > 
+>>> >     On 11/01/17 13:30, Nicholas Judd wrote:
+>>> >     > I used CAT12 on longitudinal pediatric data (pre & post) to get
+>>> >     WM, GM and surface data. The WM & GM segmentation were in .nii so I
+>>> >     could just use FSL maths to subtract post-pre before using a
+>>> >     multiple regression analysis on the delta images. I also used FSL to
+>>> >     threshold.
+>>> >     >
+>>> >     > I tried to use the surface calculator (subject-wise) in CAT12. I
+>>> >     renamed my files so they would conform (eg.
+>>> >     lh.text.resampled.D14_001.gii & lh.text.resampled.D14_001_2.gii);
+>>> >     separated each subject and entered the expression s2-s1. When I run
+>>> >     the batch it just simply says 'output.... failed'. Does anyone know
+>>> >     what I am doing wrong? Or know of an alternative way to derive delta
+>>> >     images from .gii files? (and threshold)
+>>> >     >
+>>> >     > Thanks,
+>>> >     > Nick
+>>> >     >
+>>> > 
+>>> >     --
+>>> >     Guillaume Flandin, PhD
+>>> >     Wellcome Trust Centre for Neuroimaging
+>>> >     University College London
+>>> >     12 Queen Square
+>>> >     London WC1N 3BG
+>>> > 
+>>> > 
+>>> > 
+>>> > 
+>>> > --
+>>> > *
+>>> > Nicholas Judd* | MSc
+>>> > Klingberg Laboratory
+>>> > Department of Neuroscience | Karolinska Institutet
+>>> > Retzius väg 8 | 171 77 Stockholm 
+>>> > nicholas.judd@student.uva.nl <mailto:nicholas.judd@student.uva.nl>
+>>> > <mailto:nicholas.judd@student.uva.nl <mailto:nicholas.judd@student.uva.nl>> |
+>>> klingberglab.se <http://klingberglab.se>
+>>> > <http://klingberglab.se/>
+>>> > 
+>>>
+>>> --
+>>> Guillaume Flandin, PhD
+>>> Wellcome Trust Centre for Neuroimaging
+>>> University College London
+>>> 12 Queen Square
+>>> London WC1N 3BG
+>
+>--
+>Guillaume Flandin, PhD
+>Wellcome Trust Centre for Neuroimaging
+>University College London
+>12 Queen Square
+>London WC1N 3BG
+
+Post-Doctoral Research Scholar position at the Laureate Institute for Brain Research (LIBR) https://www.laureateinstitute.org
+
+Laureate Institute for Brain Research
+The Laureate Institute for Brain Research in Tulsa, Oklahoma is a scientific research institute that focuses on discovering brain-based technologies to improve mental health.
+www.laureateinstitute.org
+
+
+Position: Dr. Maria Ironside is currently seeking a post-doctoral scholar to be involved in mechanistic studies investigating (1) processes and brain circuits underlying threat sensitivity as a targetable process in depression, anxiety and comorbid depression and anxiety, using a pharmacological probe and (2) acute effects of non-invasive brain stimulation on threat sensitivity in comorbid depression and anxiety. This post-doctoral position provides specialized training and experience in basic experimental studies involving humans, functional magnetic resonance imaging (fMRI) data analysis, and mechanistic research design with the aim of contributing to research to better characterize patients and optimize mental health treatments. A successful candidate will: (1) analyze fMRI, startle EMG, behavioral, and self-report data; (2) work with research participants and LIBR staff; (3) gain experience in the implementation of mechanistic trials; (4) prepare and publish papers, give presentations, and write K-level National Institutes of Health (NIH) grant applications; and (5) progress toward an independent career.
+
+Institute: Located in Tulsa, Oklahoma, LIBR is a privately-funded non-profit clinical neuroscience research institute attached to a major psychiatric hospital (Laureate Psychiatric Clinic & Hospital). Our mission is to reduce the suffering of psychiatric patients by leveraging leading talent and technology to discover novel therapies. LIBR offers excellent training opportunities in a dynamic, interactive, and multidisciplinary environment with a diverse team of collaborators. LIBR is an Equal Opportunity/Affirmative Action employer, compliant with the Americans with Disabilities Act and seeks to hire scholars from a wide variety of backgrounds and is committed to supporting a culture of diversity and respect.
+
+Facilities: A state-of-the-art neuroimaging research environment, including two 3-Tesla MRI scanners (GE Discovery MR750; fully research-dedicated), equipped with blood-oxygen-level-dependent and arterial spin labeling pulse sequencing, a custom-developed real-time fMRI system, an fMRI-compatible electroencephalography (EEG) system, a stand-alone EEG system and other physiological testing systems.
+
+Requirements: (1) Ph.D. in Clinical Psychology, Clinical Science, Developmental Psychology, Cognitive Psychology, Experimental Psychology, Psychiatry or Neuroscience; and (2) a solid foundation in statistics.
+
+Preferred skills: (1) experience analyzing fMRI and/or startle EMG data; (2) experience with fMRI analysis software (FSL, SPM, AFNI and/or fMRIprep) and scripting; (3) experience with R statistical analysis software.
+
+Salary/Benefits: This is a full-time research position for 2 years with renewable funding up to 3-5 years. A full benefits package is available.
+
+Start Date: Summer/Fall, 2023.
+
+How to Apply: Interested candidates should email a CV, a brief statement of long-term career goals, and contact information for 3 references to Dr. Maria Ironside, LIBR Associate Investigator: mironside@laureateinstitute.org.
+
+The Biomarker and Dimensional Psychiatry Center at PRIME, a program within the Department of Psychiatry and Behavioral Sciences at Albert Einstein College of Medicine (Einstein), is seeking highly motivated postdoctoral scholars in the field of human neuroimaging. Available positions will focus on analyzing fMRI and proton MR spectroscopy data as well as acquiring or processing related MRI and biological measures.
+
+Candidates should either have completed or be near completing a PhD in neuroscience, psychology, cognitive neuroscience, radiology, engineering, biostatistics, or a related field, and should have a strong background in quantitative analysis. Proficiencies with at least one major neuroimaging software suite (e.g. FSL, AFNI, SPM, Freesurfer, Caret, Connectome Workbench, etc.) and Unix/Linux environment are expected. Familiarity with Matlab, Python, and/or R programming languages is a plus. The primary responsibility for this postdoctoral fellow will be to run scans, analyze neuroimaging data from multiple ongoing and recently concluded research projects, and write manuscripts. The position is hybrid, and 2 days a week can be remote. Neuroimaging scans are conducted at the Leon and Norma Hess Center of the Icahn School of Medicine at Mount Sinai located in the Upper East Side, Manhattan. Salaries are highly competitive for the area!     
+ 
+Under the mentorship of Vilma Gabbay, MD and Benjamin Ely, PhD, postdoctoral scholars will be expected to advance clinical and methodological knowledge through their postdoctoral training. Our lab is dedicated to the study and treatment of mood, anxiety, and substance use disorders in adolescent and high-risk adult (e.g. HIV+) populations using innovative neuroimaging and immunological methodologies. The neuroimaging program features high-resolution data acquisition and analysis techniques modeled on the Human Connectome Project (HCP) and is dedicated to advancing the fields of magnetic resonance imaging and spectroscopy.
+
+The lab is funded by 5 ongoing NIH R01 studies (R01MH120601, R01DA054885, R01MH128878, R01MH131207, and R01MH126821) as well as an NIH center grant (P30AI124414) and several smaller grants, providing unparalleled funding for active and exploratory studies. Major research topics include longitudinal studies of adolescent mood and anxiety disorders; comorbidity of depression, cannabis use, and HIV infection; and an intervention study aimed at improving well-being among healthcare workers with parental responsibilities during the COVID-19 pandemic. Project abstracts with further details can be found on NIH RePORTER.
+
+Resources available on-campus and through long-standing collaborations include multiple research-dedicated 3T MRI scanners (Siemens Skyra/Prisma, Philips Elition) with cutting-edge accelerated and multi-echo fMRI sequences, high-performance scientific computing clusters, and an extensive library of analytic and statistical software.
+
+The PIs are fully committed to fostering the trainee's research independence through publication of first-authored manuscripts in top journals and mentorship in grant applications. In addition to assisting with the PI’s proposals, the successful applicant will be highly encouraged to develop and pursue funding for their own research project through federal (e.g. NIH F32) or foundation grant programs by the end of their first year.
+
+The initial employment period for this position is two years, with the possibility of extension. Salary will be competitive and commensurate with experience and the cost of living in New York City. Subsidized housing dedicated to postdocs at the Rhinelander residence is available within walking distance to the Einstein campus in the Morris Park neighborhood of The Bronx. The position is hybrid, and scans take place at Mount Sinai in Upper East Side, Manhattan. Public transit options between Manhattan and the Einstein campus include the BxM10 express bus (stop right on campus) and the 2/5/6 trains.
+
+Please send a CV, statement of interest, and contact information for three references to gabbay.lab@einsteinmed.edu or vilma.gabbay@einsteinmed.edu. Albert Einstein College of Medicine is an equal opportunity employer, and all qualified candidates will be given equal consideration. Priority will be given to candidates available to start sooner. Compensation will be proportional to experience and exceed standard postdoctoral fellowship rates posted by Albert Einstein College of Medicine ($70,000 - $80,000).
+
+The Biomarker and Dimensional Psychiatry Center at PRIME, a program within the Department of Psychiatry and Behavioral Sciences at Albert Einstein College of Medicine (Einstein), is seeking highly motivated postdoctoral scholars in the field of human neuroimaging. Available positions will focus on analyzing fMRI and proton MR spectroscopy data as well as acquiring or processing related MRI and biological measures.
+
+Candidates should either have completed or be near completing a PhD in neuroscience, psychology, cognitive neuroscience, radiology, engineering, biostatistics, or a related field, and should have a strong background in quantitative analysis. Proficiencies with at least one major neuroimaging software suite (e.g. FSL, AFNI, SPM, Freesurfer, Caret, Connectome Workbench, etc.) and Unix/Linux environment are expected. Familiarity with Matlab, Python, and/or R programming languages is a plus. The primary responsibility for this postdoctoral fellow will be to run scans, analyze neuroimaging data from multiple ongoing and recently concluded research projects, and write manuscripts. The position is hybrid, and 2 days a week can be remote. Neuroimaging scans are conducted at the Leon and Norma Hess Center of the Icahn School of Medicine at Mount Sinai located in the Upper East Side, Manhattan. Salaries are highly competitive for the area!  
+    
+Under the mentorship of Vilma Gabbay, MD and Benjamin Ely, PhD, postdoctoral scholars will be expected to advance clinical and methodological knowledge through their postdoctoral training. Our lab is dedicated to the study and treatment of mood, anxiety, and substance use disorders in adolescent and high-risk adult (e.g. HIV+) populations using innovative neuroimaging and immunological methodologies. The neuroimaging program features high-resolution data acquisition and analysis techniques modeled on the Human Connectome Project (HCP) and is dedicated to advancing the fields of magnetic resonance imaging and spectroscopy.
+
+The lab is funded by 5 ongoing NIH R01 studies (R01MH120601, R01DA054885, R01MH128878, R01MH131207, and R01MH126821) as well as an NIH center grant (P30AI124414) and several smaller grants, providing unparalleled funding for active and exploratory studies. Major research topics include longitudinal studies of adolescent mood and anxiety disorders; comorbidity of depression, cannabis use, and HIV infection; and an intervention study aimed at improving well-being among healthcare workers with parental responsibilities during the COVID-19 pandemic. Project abstracts with further details can be found on NIH RePORTER.
+
+Resources available on-campus and through long-standing collaborations include multiple research-dedicated 3T MRI scanners (Siemens Skyra/Prisma, Philips Elition) with cutting-edge accelerated and multi-echo fMRI sequences, high-performance scientific computing clusters, and an extensive library of analytic and statistical software.
+
+The PIs are fully committed to fostering the trainee's research independence through publication of first-authored manuscripts in top journals and mentorship in grant applications. In addition to assisting with the PI’s proposals, the successful applicant will be highly encouraged to develop and pursue funding for their own research project through federal (e.g. NIH F32) or foundation grant programs by the end of their first year.
+
+The initial employment period for this position is two years, with the possibility of extension. Salary will be competitive and commensurate with experience and the cost of living in New York City. Subsidized housing dedicated to postdocs at the Rhinelander residence is available within walking distance to the Einstein campus in the Morris Park neighborhood of The Bronx. The position is hybrid, and scans take place at Mount Sinai in Upper East Side, Manhattan. Public transit options between Manhattan and the Einstein campus include the BxM10 express bus (stop right on campus) and the 2/5/6 trains.
+
+Please send a CV, statement of interest, and contact information for three references to gabbay.lab@einsteinmed.edu or vilma.gabbay@einsteinmed.edu. Albert Einstein College of Medicine is an equal opportunity employer, and all qualified candidates will be given equal consideration. Priority will be given to candidates available to start sooner. Compensation will be proportional to experience and follow standard postdoctoral fellowship rates posted by Albert Einstein College of Medicine.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello DCM experts,
+
+ 
+
+I’m preparing my data for spectral DCM, and I encountered this error:
+
+ 
+
+ 
+
+Contrasts folder                        :      ./data/run01
+
+1  0  0  0  0  0  0  0  0  0  0  <-  !invalid contrast
+
+0  1  0  0  0  0  0  0  0  0  0  <-  !invalid contrast
+
+0  0  1  0  0  0  0  0  0  0  0  <-  !invalid contrast
+
+0  0  0  1  0  0  0  0  0  0  0  <-  !invalid contrast
+
+0  0  0  0  1  0  0  0  0  0  0  <-  !invalid contrast
+
+0  0  0  0  0  1  0  0  0  0  0  <-  !invalid contrast
+
+0  0  0  0  0  0  1  0  0  0  0  <-  !invalid contrast
+
+0  0  0  0  0  0  0  1  0  0  0  <-  !invalid contrast
+
+0  0  0  0  0  0  0  0  1  0  0  <-  !invalid contrast
+
+0  0  0  0  0  0  0  0  0  1  0  <-  !invalid contrast
+
+0  0  0  0  0  0  0  0  0  0  1  <-  !invalid contrast
+
+09-Feb-2023 18:34:06 - Failed  'Contrast Manager'
+
+Error using spm_run_con
+
+Error in contrast specification
+
+In file "/Users/winsonyang/matlab_packages/spm12/config/spm_run_con.m" (v7738), function "spm_run_con" at line 254.
+
+ 
+
+The following modules did not run:
+
+Failed: Contrast Manager
+
+ 
+
+ 
+
+Could anyone help me figure what the issue is, as I did not encounter this with my previous dataset?
+
+ 
+
+Kind regards,
+
+Winson
+
+Dear Pia
+
+The TE should be chosen to maximise the sensitivity to differences in T2* between oxygenated and deoxygenated haemoglobin. A few milliseconds does not mak a lot of difference, so if that is what it takes to get you an extra slice it might be worth it. But you will loose sensitivity to the BOLD signal if you go to TE=20ms at 3T.
+
+
+Best
+Torben 
+
+Den 9. feb. 2023 kl. 11.16 skrev Pia Rotshtein <p.rotshtein@bham.ac.uk>:
+
+Hi,
+Final question, from your experience will you recommend changing the scanning parameters? For example, shorten the TE (it is now TE=30ms), or change other parameters.
+I have seen papers that assess these parameters for BOLD, but I do not think any of them was with the new multi-channel coils on the MAGNETOM scanners.
+Thank you
+ 
+Pia   
+ 
+From: Torben Lund <torbenelund@me.com> 
+Sent: Wednesday, February 8, 2023 12:08 PM
+To: Pia Rotshtein (Psychology) <p.rotshtein@bham.ac.uk>
+Cc: spm Parametric Mapping) <SPM@JISCMAIL.AC.UK>
+Subject: Re: [SPM] fMRI signal in deep structure 64 channels - VIDA XA31
+ 
+In the future you may want to enable "Prescan Normalize” directly on the scanner.
+ 
+Best
+Torben
+ 
+ 
+<image001.jpg>
+
+
+Den 8. feb. 2023 kl. 11.02 skrev Torben Lund <torbenelund@me.com>:
+ 
+Dear Pia
+ 
+You can change the masking threshold (see screenshot). Lower values will give you more voxels, try 0.1 instead of the default 0.8 and use -inf to include all voxels.
+ 
+Best
+Torben
+ 
+ 
+<Skærmbillede 2023-02-08 kl. 11.00.19.png>
+
+
+Den 8. feb. 2023 kl. 08.34 skrev Pia Rotshtein <P.Rotshtein@BHAM.AC.UK>:
+ 
+Dear SPM community,
+We had started to work with a brand new 3T VIDA scanner from Siemens, with an XA31 operating system. We have acquired fMRI data using the 64 channels coil with various acceleration parameters. 
+Eyeballing the data there is a massive drop in the signal in deep structures, especially the Putamen. Though it still gives 10 folds more signal than air. When analyzing the data using the default set-up, SPM creates a mask that does include the Putamen.
+Any tips, suggestion on how to overcome this problem?
+ 
+Kind regards
+ 
+Pia
+ 
+ 
+
+
+Dear all,
+
+Please share this with whoever may be interested.
+
+We are looking for a Postdoc to work on pulse sequence development and image reconstruction methods in Leipzig, Germany. Projects could include e.g. non -Cartesian trajectories, pTx, parallel imaging, MR fingerprinting and correction of artifacts using optical motion tracking and field cameras.
+
+We offer:
+* the possibility to conduct truly fundamental research to change the field of neuroimaging,
+* an international, friendly and highly supportive interdisciplinary environment (working language English),
+* the chance to work with top researchers (inc. experienced IDEA programmers) from diverse backgrounds in an internationally leading neuroimaging center within the renowned Max Planck Society,
+* access to world-leading facilities, including a Siemens 7T Terra MRI scanner (64-ch Rx, 16-ch Tx), 3T Connectom (300 mT/m gradients) and numerous other 3T scanners, all dedicated to fundamental research with excellent scanner access, outstanding technical support, and the latest peripherals (Skope field camera system, Kineticor PMC).
+
+Informal enquiries to weiskopf@cbs.mpg.de or myself, thanks!
+
+There is more information on the department and links to the formal job description and application details at:
+
+https://www.cbs.mpg.de/departments/neurophysics
+
+Cheers,
+Kerrin
+
+
+
+--
+Dr Kerrin Pine (kpine@cbs.mpg.de)
+Max Planck Institute for Human Cognitive and Brain Sciences
+Stephanstr. 1a, 04103 Leipzig, Germany
+

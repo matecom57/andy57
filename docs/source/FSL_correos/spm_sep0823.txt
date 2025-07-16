@@ -1,0 +1,250 @@
+Hi,
+ 
+I am having an issue with the SPM12 normalization procedure. My original data dimension is 64x64x33, after normalizing using SPM12 default options (voxel size: [2 2 2], bounding box: [-78 -112 -70; 78 76 85]) the dimension of it returns 79x95x79. However, a normal MNI space is 91x109x91. I also checked the registration, and the image dimension look generally the same and the alignment looks good.
+ 
+Can anyone help me with this? I am not sure what’s going wrong as these are the only parameters might be messing up the dimensionality. So, there should not be any other problems in other steps while I did check them as well.
+ 
+Thank you so much!
+ 
+Regards,
+Shikang
+
+Hi,
+
+ 
+
+I would like to join the SPM course in October but, I cannot find where to apply.
+
+Could you please help me with that?
+
+ 
+
+Best regards,
+
+Rumeysa
+
+You could use Dartel to spatially normalise the WM that the segmentation gave, average and threshold at 0.5.
+
+Best regards,
+-John
+
+SPM writes spatially normalised images according to the voxel sizes and bounding box that you specify.  By default, this is not the same as the bounding box of the template data.  Ideally, templates should have full head coverage, but people generally only want brain coverage in their spatially normalised images.
+
+If you want the same resolution and bounding box as the tpm/TPM.nii data, then you can enter
+[NaN NaN NaN]
+as the voxel sizes and
+[NaN NaN NaN
+ NaN NaN NaN]
+for the bounding box. NaNs will default to the template values.
+
+If you want the same as the canonical/avg152T1.nii, then enter:
+[-2  2  2]
+and:
+[  -90  -126   -72
+    90    90   108]
+
+These values were derived by:
+[bb,vx] = spm_get_bbox(fullfile(spm('dir'),'canonical','avg152T1.nii'))
+
+Best regards,
+-John
+
+
+
+Hello!
+
+I have normalized my subjects using DARTEL. Now, I'm looking for a way to create a white matter and grey matter mask  from some DARTEL standard template.
+I tried to find a DARTEL template of white matter in the different subfolders in the spm12 folder, but had no success.
+Is it possible to generate a white matter mask in DARTEL standard space that I can use with my normalized subjects?
+
+Best regards,
+Sam
+
+Registration for our October SPM course is not open yet, but it should be soon.
+
+Best regards,
+-John
+
+
+Postdoctoral Fellow Neuroimaging and Cognitive Research
+University of Michigan - Ann Arbor, MI (On-Site)
+
+The Research Program on Cognition and Neuromodulation Based Interventions (RP-CNBI) at the University of Michigan (https://rpcnbi.medicine.umich.edu) announces an opening for a full-time research post-doctoral position. The program's mission is to implement novel and effective non-pharmacological treatments for individuals with cognitive impairments due to neurologic injury and/or disease. RP-CNBI integrates neuropsychological theory with multi-modal neuroimaging techniques and non-pharmacological treatments.
+
+The research fellow will be jointly supervised by Drs. Alexandru Iordan and Benjamin Hampstead and perform advanced analyses of multi-modal neuroimaging data from ongoing projects/clinical trials supported by 11 grants totaling over 13 million in NIH/DOD funding.
+
+The fellow will have access to a variety of research techniques, including:
+- Multi-modal imaging: fMRI, fNIRS, MRS/fMRS, PET, ASL, DWI
+- Neuromodulation: tDCS, tACS, TMS
+- Cognitive rehabilitation using computerized tasks and virtual reality
+
+The Department of Psychiatry at the University of Michigan is committed to creating an environment what is welcoming to all.  We value the unique contributions of individuals and support a culture of inclusivity and inquiry among our employees and learners.
+
+How to apply
+
+Please apply to job posting 238510 at this  link for full description and application instructions: https://careers.umich.edu/job_detail/238510/research-fellow
+
+For more information, please contact Dr. Alexandru Iordan at adiordan@med.umich.edu
+
+Dear Lisa,
+
+It is not uncommon to perform the 1st level analysis, aka FFX or within-subject GLM, in subject space. The resulting beta or contrasts images can then be warped into MNI space and entered in the 2nd level analysis, aka RFX or between-subject GLM.
+For that 2nd level analysis, the SPM.mat files from each individual are not needed, as you summarize your effect of interest of interest with one contrast image per subject and the build a new GLM.
+
+One quick technical note though.
+When warping those contrast images be careful with potential resampling issues. Depending on 1/ the source and destination resolution and 2/ interpolation methods, some artefacts can appear within the image and the edge of the masked-out background can become blurry.
+
+Best,
+Christophe
+
+
+Dear colleague,
+
+
+
+Sorry for cross-posting!
+
+
+
+Poster submission for the first edition of the Seeing and Acting Workshop (SAW) is approaching!  
+
+
+
+Send us your abstract - submission closes on September 8 (anywhere on earth)!
+
+
+
+SAW will take place at the Faculty of Psychology and Educational Sciences of the University of Coimbra, September 21-23, 2023 in Coimbra, Portugal.
+
+
+
+For the first edition of SAW, we have an exciting and stimulating group of Invited Speakers:
+
+·  Laurel Buxbaum, Moss Rehabilitation Research Institute, USA
+
+·  Erez Freud, York University, Canada
+
+·  Leyla Isik, Johns Hopkins University, USA
+
+·  Nancy Kanwisher, Massachusetts Institute of Technology, USA
+
+·  Bradford Mahon, Carnegie Mellon University, USA
+
+·  Alex Martin, National Institute of Health, USA
+
+·  Ricarda Schubotz, University of Münster, Germany
+
+
+
+ABSTRACT SUBMISSION AND REGISTRATION ARE OPEN!!
+
+
+
+Abstract submission for posters closes on September 8, 2023. The five best abstracts whose first author is a student or postdoc will receive a 200 euro award sponsored by ANTneuro. 
+
+
+
+To register, submit a poster abstract, or for more information, please visit:
+
+https://www.uc.pt/cogbooster/saw/2023/
+
+ 
+
+
+
+
+The goal of SAW is to provide a forum for cognitive science/neuroscience researchers from a range of perspectives who are interested in Perception and Action, broadly construed, to come together to discuss their research and develop new directions and collaborations. The format of the workshop is intended to encourage extensive discussion among participants. To this end, we have scheduled only a small number of invited speakers, and there are no concurrent talks. In addition to the individual seminars, there will be a poster session for students, postdocs and other researchers to present their work.
+
+ 
+
+SAW is powered by the ERA Chair CogBooster, and by the Faculty of Psychology and Educational Sciences of the University of Coimbra, Portugal.
+
+Workshop Organizers:
+Jorge Almeida, Alfonso Caramazza, Paul Downing, Mel Goodale, Zoe Kourtzi, Angelika Lingnau, and Isabel Pavão Martins
+
+
+Thank you so very much for your response, this works.
+
+On Mon, Sep 4, 2023 at 5:55 AM Ashburner, John <j.ashburner@ucl.ac.uk> wrote:
+This is because of the subsampling used by the segmentation to save time, where voxels are (by default) sampled every 3 mm.  This gives a small deformation field that is zoomed up at the end of the processing.  Sometimes this zooming misses the end voxels.  For 1 mm voxels and a dimension of 256, this is fine because max(1:3:256) is 256.  However, in a case such as max(1:3:150), the answer is 148.  This means that the last few voxels fall outside the field of view when zoomed up, and the settings are such that attempts to sample voxels outside the field of view gives NaNs (used to denote unknown values).
+
+The generative model used by the segmentation algorithm is parameterised by a displacement field that gives a mapping from individual to template.  This gives the iy_*.nii deformation (because spatially normalising typically uses a mapping from template to individual). This is why the iy_*.nii has the NaNs.
+
+NaNs don't appear in the y_*.nii deformation that is constructed by inverting this deformation because there's a bit of extra code (spm_extrapolate_def.m) used to remove any NaNs.
+
+I've just pushed a fix that involves making a change around line 511 of spm_preproc_write8.m to include the following:
+
+x1  = min(max(x1,1),size(sol{1},1));
+y1  = min(max(y1,1),size(sol{1},2));
+z1  = min(max(z1,1),size(sol{1},3));
+
+Best regards,
+-John
+
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Pratik Jain <pj44@NJIT.EDU>
+Sent: 01 September 2023 21:03
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Getting NAN values in the inverse deformation (iy_*.nii) file
+ 
+⚠ Caution: External sender
+
+
+Hey Everyone,
+
+I am getting NAN values in the inverse deformation file (iy_*.nii) when I perform Segmentation in SPM. Note, that the deformation field (y_*.nii) file does not contain any NAN values but the iy_*.nii file does. When I tried to find the source of this problem, I realized the spm_bsplins function (at line 473 of the function spm_preproc_write8.m) gives NAN values at 3 rightmost columns and 3 bottom rows. I checked none of the inputs given to the spm_bsplins function have NAN values, it's something in this function that gives the output as NANs. This function may use a C compiler, hence the code for this function is not present in the MATLAB file. Can anyone help me understand why am I getting these NAN values in the iy_*.nii file.
+
+Thank you in advance.
+
+Best,
+Pratik Jain
+
+
+
+--
+Regards 
+
+
+
+Dear Soroor
+
+> 1. In this situation, is the uncertainty of ECs considered in average connections? or just each effective connection (expectation of estimated parameters) is averaged across all participants?
+
+Yes, the uncertainty is taken into account. This means that more confidently estimated ECs will have a greater impact on the group-level result than less confidently estimated ECs.
+
+> 2. The average of each connection in the PEB analysis is different from the average of connections calculated in the t-test analysis (two-sample t-test), Is the reason for this difference not removing outliers in the PEB analysis?
+
+I think you may be conflating three things here - the form of the model, whether classical or frequentist statistics are used, and whether a single-level or multi-level (hierarchical PEB) model is used.
+
+Regarding the form of the model, a two-sample t-test implies a general linear model (GLM) has been used with two regressors in the design matrix - parameters from group 1 and parameters from group 2. You said that in your PEB model, you just have a single regressor, encoding the group average, because you only have one group. So your model is more like a one-sample t-test than a two-sample t-test. However, the PEB approach differs from conducting a classical (frequentist) one-sample t-test by hand or in external software such as SPSS, in a few respects:
+
+- Each DCM estimates a multivariate normal distribution over the parameters. In PEB, this full distribution - both effect sizes and uncertainty (covariance) is conveyed to the group level, which a classical t-test would miss.
+
+- The PEB model is a hierarchical random effects model, with DCMs at the first level (within-subject) and a GLM at the between-subjects level. The model says that across subjects, there is some (normally distributed) effect size, and the individual subjects' connection strengths inherit from this. The model estimates both this between-subject variability (random effects) and the regression parameters. Hence, you'll get a different result than simply conducting a one-sample test.
+
+- Bayesian statistics are used rather than classical statistics. You will get posterior probabilities for different candidate PEB models that you compare. That's different from a classical p-value (which is the probability that your effects are unlikely under the null hypothesis that parameters are exactly zero.)
+
+I hope that helps,
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Soroor Sh
+Sent: 31 August 2023 08:37
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] PEB analysis
+
+⚠ Caution: External sender
+
+
+Dear experts,
+
+The benefit of PEB analysis compared to other classical tests such as the t-test is the consideration of the uncertainty of estimated ECs (variance) in addition to the expectation of each ECs parameter (strength of ECs).
+I used PEB analysis for ECs which was estimated by spDCM (for a rs-fMRI study) and I didn't define any covariate so the design matrix just has a column of ones; therefore, I get the average connectivities in the PEB analysis. now I have a couple of questions:
+
+1. In this situation, is the uncertainty of ECs considered in average connections? or just each effective connection (expectation of estimated parameters) is averaged across all participants?
+
+2. The average of each connection in the PEB analysis is different from the average of connections calculated in the t-test analysis (two-sample t-test), Is the reason for this difference not removing outliers in the PEB analysis?
+
+Kind regards,
+Soroor
+

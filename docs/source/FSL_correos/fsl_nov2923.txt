@@ -1,0 +1,1620 @@
+Hello,
+
+when using FSL feat, my fmri image intensities skyrocket to values of about 10.000, even though I would expect values of about 800 known from previous projects.
+
+I checked my scripts and also all the settings from the fsf file and still do not know, what could be causing this.
+
+Thanks for any hints!
+
+Best
+
+########################################################################
+
+Hi Lin,
+
+This looks like a recent incompatibility between ipython and a library called prompt_toolkit. It should hopefully be resolved by updating the version of prompt_toolkit, which you should be able to do by running this command:
+
+sudo $FSLDIR/bin/mamba update -p $FSLDIR prompt_toolkit
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lin Qiu <lin.qiu@SPC.OX.AC.UK>
+Sent: 29 November 2023 12:26
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Fslnets glm not running
+
+Hi Will,
+
+That is no problem! How can I send you the data?
+
+Thank you,
+Eva
+
+########################################################################
+
+Hi Paul,
+
+
+
+Thank you for your e-mail! Now the problem seems to be with the Matlab Runtime Compiler. In the logMatlab file I got these new output:
+
+
+
+
+
+------------------------------------------
+Setting up environment variables
+---
+LD_LIBRARY_PATH is .:/usr/local/MATLAB/MATLAB_Runtime/v93/runtime/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v93/bin/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v93/sys/os/glnxa64:/usr/local/MATLAB/MATLAB_Runtime/v93/sys/opengl/lib/glnxa64
+bold1.ica/
+    47     1
+
+
+------------------------------------------------------------------------
+       Segmentation violation detected at Wed Nov 29 11:25:32 2023
+------------------------------------------------------------------------
+
+Configuration:
+  Crash Decoding      : Disabled - No sandbox or build area path
+  Crash Mode          : continue (default)
+  Current Graphics Driver: Unknown software 
+  Current Visual      : None
+  Default Encoding    : UTF-8
+  Deployed            : true
+  GNU C Library       : 2.27 stable
+  Host Name           : DESKTOP-RVDGA3H
+  MATLAB Architecture : glnxa64
+  MATLAB Entitlement ID: Unknown
+  MATLAB Root         : /usr/local/MATLAB/MATLAB_Runtime/v93
+  MATLAB Version      : 9.3.0.713579 (R2017b)
+  OpenGL              : software
+  Operating System    : Linux 5.15.133.1-microsoft-standard-WSL2 #1 SMP Thu Oct 5 21:02:42 UTC 2023 x86_64
+  Processor ID        : x86 Family 6 Model 140 Stepping 1, GenuineIntel
+  Virtual Machine     : Java 1.8.0_121-b13 with Oracle Corporation Java HotSpot(TM) 64-Bit Server VM mixed mode
+  Window System       : No active display
+
+Fault Count: 1
+
+
+Abnormal termination:
+Segmentation violation
+
+Register State (from fault):
+  RAX = 0000000000000000  RBX = 00007f3d0b76ad10
+  RCX = 00007f3d0ba67578  RDX = 0000000000000009
+  RSP = 00007f3da69e3ff0  RBP = 00007f3da69e4100
+  RSI = 0000000000000000  RDI = 00007f3d0b755380
+
+   R8 = 0000000000000048   R9 = 0000000000000004
+  R10 = 00007f3d25a7ac70  R11 = 000000000000003d
+  R12 = 0000000000000006  R13 = 00007f3d0b755530
+  R14 = 00007f3d25a7ac70  R15 = 0000001200000006
+
+  RIP = 00007f3dc34a4c78  EFL = 0000000000010206
+
+   CS = 0033   FS = 0000   GS = 0000
+
+Stack Trace (from fault):
+[  0] 0x00007f3dc34a4c78                        /lib64/ld-linux-x86-64.so.2+00052344
+[  1] 0x00007f3dc34ad25d                        /lib64/ld-linux-x86-64.so.2+00086621
+[  2] 0x00007f3dc28b116f                    /lib/x86_64-linux-gnu/libc.so.6+01470831 _dl_catch_exception+00000111
+[  3] 0x00007f3dc34ac96a                        /lib64/ld-linux-x86-64.so.2+00084330
+[  4] 0x00007f3dc2546f96                   /lib/x86_64-linux-gnu/libdl.so.2+00003990
+[  5] 0x00007f3dc28b116f                    /lib/x86_64-linux-gnu/libc.so.6+01470831 _dl_catch_exception+00000111
+[  6] 0x00007f3dc28b11ff                    /lib/x86_64-linux-gnu/libc.so.6+01470975 _dl_catch_error+00000047
+[  7] 0x00007f3dc2547745                   /lib/x86_64-linux-gnu/libdl.so.2+00005957
+[  8] 0x00007f3dc2547051                   /lib/x86_64-linux-gnu/libdl.so.2+00004177 dlopen+00000113
+[  9] 0x00007f3db9f513f6                               bin/glnxa64/libut.so+00365558
+[ 10] 0x00007f3db9f54565                               bin/glnxa64/libut.so+00378213 _Z11utGetModuleRKSbIDsSt11char_traitsIDsESaIDsEEPi+00000229
+[ 11] 0x00007f3db764fafe                   bin/glnxa64/libmwm_dispatcher.so+00482046
+[ 12] 0x00007f3db763fab2                   bin/glnxa64/libmwm_dispatcher.so+00416434 _ZN13Mlm_MATLAB_fn8try_loadEv+00000066
+[ 13] 0x00007f3db76367fa                   bin/glnxa64/libmwm_dispatcher.so+00378874 _ZN13Mlm_MATLAB_fn4loadEv+00000042
+[ 14] 0x00007f3db7633c4c                   bin/glnxa64/libmwm_dispatcher.so+00367692 _ZN13Mfh_MATLAB_fn11dispatch_fhEiPP11mxArray_tagiS2_+00000060
+[ 15] 0x00007f3db25dec85                          bin/glnxa64/libmwm_lxe.so+12487813
+[ 16] 0x00007f3db26a7a79                          bin/glnxa64/libmwm_lxe.so+13310585
+[ 17] 0x00007f3db26ab64a                          bin/glnxa64/libmwm_lxe.so+13325898
+[ 18] 0x00007f3db2669b0a                          bin/glnxa64/libmwm_lxe.so+13056778
+[ 19] 0x00007f3db1f35e50                          bin/glnxa64/libmwm_lxe.so+05504592
+[ 20] 0x00007f3db1f380e4                          bin/glnxa64/libmwm_lxe.so+05513444
+[ 21] 0x00007f3db1f348d1                          bin/glnxa64/libmwm_lxe.so+05499089
+[ 22] 0x00007f3db1f30861                          bin/glnxa64/libmwm_lxe.so+05482593
+[ 23] 0x00007f3db1f30c89                          bin/glnxa64/libmwm_lxe.so+05483657
+[ 24] 0x00007f3db1f34100                          bin/glnxa64/libmwm_lxe.so+05497088
+[ 25] 0x00007f3db1f341cf                          bin/glnxa64/libmwm_lxe.so+05497295
+[ 26] 0x00007f3db20341d1                          bin/glnxa64/libmwm_lxe.so+06545873
+[ 27] 0x00007f3db2036f53                          bin/glnxa64/libmwm_lxe.so+06557523
+[ 28] 0x00007f3db24e64ce                          bin/glnxa64/libmwm_lxe.so+11470030
+[ 29] 0x00007f3db25d7123                          bin/glnxa64/libmwm_lxe.so+12456227
+[ 30] 0x00007f3db76a4c83                   bin/glnxa64/libmwm_dispatcher.so+00830595 _ZN8Mfh_file16dispatch_fh_implEMS_FviPP11mxArray_tagiS2_EiS2_iS2_+00000947
+[ 31] 0x00007f3db76a557e                   bin/glnxa64/libmwm_dispatcher.so+00832894 _ZN8Mfh_file22dispatch_fh_with_reuseEiPP11mxArray_tagiS2_+00000030
+[ 32] 0x00007f3db26c6454                          bin/glnxa64/libmwm_lxe.so+13435988
+[ 33] 0x00007f3db26c64ee                          bin/glnxa64/libmwm_lxe.so+13436142
+[ 34] 0x00007f3db24a44c6                          bin/glnxa64/libmwm_lxe.so+11199686
+[ 35] 0x00007f3db24a4942                          bin/glnxa64/libmwm_lxe.so+11200834
+[ 36] 0x00007f3db2522358                          bin/glnxa64/libmwm_lxe.so+11715416
+[ 37] 0x00007f3db252413a                          bin/glnxa64/libmwm_lxe.so+11723066
+[ 38] 0x00007f3db7236f30                  bin/glnxa64/libmwm_interpreter.so+02432816 _Z44inCallFcnWithTrapInDesiredWSAndPublishEventsiPP11mxArray_tagiS1_PKcbP15inWorkSpace_tag+00000080
+[ 39] 0x00007f3db5fddc9c                            bin/glnxa64/libmwiqm.so+00683164 _ZN3iqm15BaseFEvalPlugin7executeEP15inWorkSpace_tagRN5boost10shared_ptrIN14cmddistributor17IIPCompletedEventEEE+00000460
+[ 40] 0x00007f3db89d0b51                            bin/glnxa64/libmwmcr.so+00654161
+[ 41] 0x00007f3db5fd38b8                            bin/glnxa64/libmwiqm.so+00641208
+[ 42] 0x00007f3db5fc1522                            bin/glnxa64/libmwiqm.so+00566562
+[ 43] 0x00007f3db5fc3759                            bin/glnxa64/libmwiqm.so+00575321
+[ 44] 0x00007f3db7b7aaba                       bin/glnxa64/libmwservices.so+02702010
+[ 45] 0x00007f3db7b7c06f                       bin/glnxa64/libmwservices.so+02707567
+[ 46] 0x00007f3db7b7c81a                       bin/glnxa64/libmwservices.so+02709530 _Z25svWS_ProcessPendingEventsiib+00000186
+[ 47] 0x00007f3db89b9f0e                            bin/glnxa64/libmwmcr.so+00560910
+[ 48] 0x00007f3db89ba2b4                            bin/glnxa64/libmwmcr.so+00561844
+[ 49] 0x00007f3db89a7c06                            bin/glnxa64/libmwmcr.so+00486406
+[ 50] 0x00007f3dc2b426db              /lib/x86_64-linux-gnu/libpthread.so.0+00030427
+[ 51] 0x00007f3dc286b61f                    /lib/x86_64-linux-gnu/libc.so.6+01185311 clone+00000063
+[ 52] 0x0000000000000000                                   <unknown-module>+00000000
+
+
+If this problem is reproducible, please submit a Service Request via:
+    http://www.mathworks.com/support/contact_us/
+
+A technical support engineer might contact you with further information.
+
+Thank you for your help.** This crash report has been saved to disk as /home/duartesaraiva/matlab_crash_dump.772-1 **
+
+
+
+MATLAB is exiting because of fatal error
+Killed
+
+
+
+Any idea about what is leading to this error? I am using Ubuntu 18.04.
+
+Best regards,
+Duarte
+
+De: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> em nome de Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Enviado: 29 de novembro de 2023 09:42:46
+Para: FSL@JISCMAIL.AC.UK
+Assunto: Re: [FSL] Problems with FIX and Matlab Runtime Compiler
+ 
+Hi Duarte,
+
+I think there is a bug somewhere in the code which is breaking because the $PATH environment variable contains spaces.
+
+Could you try setting the PATH variable as below, and then re-running FIX?
+
+export PATH=/home/duartesaraiva/fsl/share/fsl/bin:/home/duartesaraiva/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Duarte Saraiva <dfsaraiva@CIENCIAS.ULISBOA.PT>
+Sent: 27 November 2023 17:38
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Problems with FIX and Matlab Runtime Compiler
+ 
+I also send the output of the environment variables.
+
+De: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> em nome de Duarte Saraiva <dfsaraiva@CIENCIAS.ULISBOA.PT>
+Enviado: 27 de novembro de 2023 17:35:23
+Para: FSL@JISCMAIL.AC.UK
+Assunto: Re: [FSL] Problems with FIX and Matlab Runtime Compiler
+ 
+Hi Paul,
+
+
+
+Thank you very much for your response!
+
+
+
+I did that, but I still get this:
+
+
+
+FIX Feature extraction for Melodic output directory: bold1.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+FIX Classifying components in Melodic directory: bold1.ica using training file: fix/training_files/Standard.RData and threshold 20
+FIX features not already generated, so creating them now.
+FIX Feature extraction for Melodic output directory: bold1.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+No valid labelling file specified
+
+
+
+I send now the updated files with the errors again. 
+
+It would very good if you could help me.
+
+
+
+Best regards,
+
+Duarte
+
+Hi Paul,
+
+ 
+
+I have just updated my local fsl to 6.0.7.6, and fsl-nets to 0.8.3.
+
+ 
+
+However, fslipython or ipython does not work anymore. Jupyter notebook works fine.
+
+ 
+
+Please could you kindly refer to the error message after typing in fslipython in terminal:
+
+ 
+
+Python 3.11.6 | packaged by conda-forge | (main, Oct  3 2023, 10:40:37) [Clang 15.0.7 ]
+
+Type 'copyright', 'credits' or 'license' for more information
+
+IPython 8.18.1 -- An enhanced Interactive Python. Type '?' for help.
+
+ 
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/IPython/__main__.py", line 15, in <module>
+
+    start_ipython()
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/IPython/__init__.py", line 129, in start_ipython
+
+    return launch_new_instance(argv=argv, **kwargs)
+
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/traitlets/config/application.py", line 1077, in launch_instance
+
+    app.start()
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/IPython/terminal/ipapp.py", line 317, in start
+
+    self.shell.mainloop()
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/IPython/terminal/interactiveshell.py", line 887, in mainloop
+
+    self.interact()
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/IPython/terminal/interactiveshell.py", line 872, in interact
+
+    code = self.prompt_for_code()
+
+           ^^^^^^^^^^^^^^^^^^^^^^
+
+  File "/usr/local/fsl/lib/python3.11/site-packages/IPython/terminal/interactiveshell.py", line 813, in prompt_for_code
+
+    text = self.pt_app.prompt(
+
+           ^^^^^^^^^^^^^^^^^^^
+
+TypeError: PromptSession.prompt() got an unexpected keyword argument 'inputhook'
+
+ 
+
+If you suspect this is an IPython 8.18.1 bug, please report it at:
+
+    https://github.com/ipython/ipython/issues
+
+or send an email to the mailing list at ipython-dev@python.org
+
+ 
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+
+to interactively debug it.
+
+ 
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+
+    %config Application.verbose_crash=True
+
+ 
+
+Thanks.
+
+Lin
+
+From: Lin Qiu <lin.qiu@spc.ox.ac.uk>
+Date: Wednesday, 29 November 2023 at 10:06
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: Fslnets glm not running
+
+Thank you so much!
+
+ 
+
+Best,
+
+Lin 
+
+ 
+
+Sent from Outlook for iOS
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Wednesday, November 29, 2023 9:55:10 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Fslnets glm not running
+
+ 
+
+Hi Lin,
+
+ 
+
+This is due to a bug in the code which was causing nets.glm to fail when run on a HCP cluster, and which I fixed a few days ago. If you have a recent version of FSL, you should be able to install the updated version by running:
+
+ 
+
+update_fsl_package fsl-nets
+
+ 
+
+Although looking at your error, it appears that you are working on the FMRIB cluster. We will hopefully be able to update the FSL installation later on today.
+
+ 
+
+Paul
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lin Qiu <lin.qiu@SPC.OX.AC.UK>
+Sent: 29 November 2023 00:34
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Fslnets glm not running
+
+ 
+
+Hi experts,
+
+ 
+
+Please can you kindly help with the following error when running nets.glm on netmats?
+
+ 
+
+Using the same script it used to work perfectlt. Yet from last week it got no response (without errors) and now with the following error.
+
+ 
+
+Thank you so much!
+
+ 
+
+In [11]: p_corr,p_uncorr = nets.glm(ts, Pnetmats, '../designfiles/2_group_t_test
+
+    ...: .mat', '../designfiles/2_group_t_test.con');
+
+    ...: 
+
+78378
+
+78379
+
+---------------------------------------------------------------------------
+
+PathError                                 Traceback (most recent call last)
+
+Cell In[11], line 1
+
+----> 1 p_corr,p_uncorr = nets.glm(ts, Pnetmats, '../designfiles/2_group_t_test.mat', '../designfiles/2_group_t_test.con');
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/nets/glm.py:83, in glm(ts, netmats, design, contrasts, nperms, plot, title)
+
+     81 for con in range(ncontrasts):
+
+     82     constr       = ' '.join([f'{c:g}' for c in contrasts[con]])
+
+---> 83     tstat        = Image(f'output_tstat{con+1}')          .data.flatten()
+
+     84     cpuncorr     = Image(f'output_vox_p_tstat{con+1}')    .data.flatten()
+
+     85     cpcorr       = Image(f'output_vox_corrp_tstat{con+1}').data.flatten()
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1249, in Image.__init__(self, image, name, header, xform, loadData, calcRange, threaded, dataSource, loadMeta, dataMgr, **kwargs)
+
+   1246 if isinstance(image, (str, Path)):
+
+   1247     # resolve path to source if it is a sym-link
+
+   1248     image      = Path(image).resolve()
+
+-> 1249     image      = op.abspath(addExt(image))
+
+   1250     nibImage   = nib.load(image, **kwargs)
+
+   1251     header     = nibImage.header
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1955, in addExt(prefix, mustExist, unambiguous)
+
+   1953 if str(e).startswith('More than'):
+
+   1954     log.warning(e)
+
+-> 1955 raise e
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1942, in addExt(prefix, mustExist, unambiguous)
+
+   1938 """Adds a file extension to the given file ``prefix``.  See
+
+   1939 :func:`~fsl.utils.path.addExt`.
+
+   1940 """
+
+   1941 try:
+
+-> 1942     return fslpath.addExt(prefix,
+
+   1943                           allowedExts=ALLOWED_EXTENSIONS,
+
+   1944                           mustExist=mustExist,
+
+   1945                           defaultExt=defaultExt(),
+
+   1946                           fileGroups=FILE_GROUPS,
+
+   1947                           unambiguous=unambiguous)
+
+   1948 except fslpath.PathError as e:
+
+   1949     # hacky: if more than one file with
+
+   1950     # the prefix exists, we emit a
+
+   1951     # warning, because in most cases
+
+   1952     # this is a bad thing.
+
+   1953     if str(e).startswith('More than'):
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/utils/path.py:196, in addExt(prefix, allowedExts, mustExist, defaultExt, fileGroups, unambiguous)
+
+    193 # Could not find any supported file
+
+    194 # with the specified prefix
+
+    195 if nexists == 0:
+
+--> 196     raise PathError('Could not find a supported file '
+
+    197                     'with prefix "{}"'.format(prefix))
+
+    199 # If ambiguity is ok, return
+
+    200 # all matching paths
+
+    201 if not unambiguous:
+
+ 
+
+PathError: Could not find a supported file with prefix "/vols/Scratch/qiulin/BBB_COVID/DualRegress/output_tstat1"
+
+ 
+
+ 
+
+Best wishes,
+
+Lin
+
+Hello,
+Feat performs "grand mean scaling” ( to standardise for higher-level inputs ) automatically on the functional data.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 29 Nov 2023, at 09:57, Anonymous <viktor.neumaier@TUM.DE> wrote:
+
+Hello,
+
+when using FSL feat, my fmri image intensities skyrocket to values of about 10.000, even though I would expect values of about 800 known from previous projects.
+
+I checked my scripts and also all the settings from the fsf file and still do not know, what could be causing this.
+
+Thanks for any hints!
+
+Best
+
+
+Dear BASIL-developer,
+we are using oxford_asl for analyzing a pASL experiment. However, we are currently facing an error that I am not able to figure out.
+
+You can find the terminal output attached.
+
+Thank you very much and best wishes,
+
+Christian
+
+ 
+
+ 
+
+Terminal output:
+
+(base) christian@xlsserver:/data/Christian/sub-021/ses-03$ oxford_asl -i perf/sub-021_ses-03_run-01_asl -c perf/sub-021_ses-03_run-01_m0scan_flirt --fslanat=anat/sub-021_ses-03_run-01_T1w.anat --mc --wp --spatial --tis 1.99 --iaf=tc -o perf/cbf_run-01 --bolus 0.7 --tr=4.6 --cmethod=voxel --fmap=fmap/sub-021_ses-03_run-01_phasediff --fmapmagbrain=fmap/sub-021_ses-03_run-01_magnitude1_fsl-bet --fmapmag=fmap/sub-021_ses-03_run-01_magnitude1 --pedir=-y --echospacing=0.00061 --region-analysis
+
+
+
+Dear FSL team,
+
+I am performing a classical group-comparison (clinical population vs control group) of DTI metrics and other diffusion-spectrum indexes (Kurtosis, Quantitative anisotropy) in TBSS. From what I can tell, when I use randomise to do the permutation test I'm performing a one-sided t-test.
+
+Does it make sense to go two-sided for this analysis? I guess that the answer for Fractional Anisotropy is that there could be compelling evidence that lower FA = white matter loss of integrity (and higher FA has no pathological meaning). However, this is not the case for the other indexes and I could expect differences in both directions...
+
+What are your thoughts on this?
+
+Thank you,
+Nelson
+
+########################################################################
+
+
+Hi,
+
+I found the issue, for some reason when I process the data using QSIprep, xtract doesn't work. I applied fslreorient2std to the output images and vectors. When I do the processing using fsl commands by myself, everything works as expected.
+
+Dianne, my guess is that the reconstruction workflow reorient_fslstd does something more than applying fslreorient2std. Unfortunately, I can not apply it as the workflows require a structural image and I'm calling qsiprep with the flags -infant and -dwi-only. I hope it makes sense.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+
+Hi,
+
+I found the issue. Now xtract works perfectly. By some reason, when I process the data in qsiprep and then (after reorient it) run xtract it doesn't work. If I process the data using fsl command by myself it works.
+
+Dianne, my guess is that the module reorient-fslstd does something else, not just reorienting the data with fslreorient2std. In this dataset I can not use any of the precomputed reconstruction nodes, as I'm doing dwi-only and -infant, and for the nodes to work you need a T1w. I hope this makes sense.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+Dear Paul,
+
+Thank you very much. It is updated to the latest version.
+
+Thanks
+Mugundhu
+
+On Mon, Nov 27, 2023 at 7:55 PM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Mugundhu,
+
+Instead of using the fslinstaller.py script, you should just be able to run "update_fsl_release" to update your FSL installation in-place, 
+
+More generally, when using the fslinstaller.py script, you can tell it where you would like FSL installed via the -d option, and you can tell it to not touch your existing shell/MATLAB configuration with the -n option, e.g.:
+
+python3 fslinstaller.py -d /usr/local/fsl/ -n
+
+Paul
+
+
+Hi experts,
+
+I just found I also got a text file named 2 in my input folder. It says: 
+
+Can't find the MATLAB compiler runtime, please set FSL_FIX_MCRROOT in the settings.sh file.
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+
+
+Hi experts,
+
+I am trying to run FIX on my Melodic results. My code is as below. 
+
+/home/xiyuezh/fix/fix errts.F002_GroupICAResults_TTN27.ica /home/xiyuezh/fix/training_files/Standard.RData 20
+
+I have set LD_LIBRARY_PATH environment variable in the .bashrc:
+
+export LD_LIBRARY_PATH=/home/xiyuezh/v93/runtime/glnxa64:/home/xiyuezh/v93/bin/glnxa64:/home/xiyuezh/v93/sys/os/glnxa64
+
+But I always got below messages. Could you please help to have a look? Thanks!
+
+FIX Feature extraction for Melodic output directory: errts.F002_GroupICAResults_TTN27.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+Unable to find MATLAB Compiler Runtime
+/home/xiyuezh/fix/call_matlab.sh [-z <mode>] [-o <options>] [-p <path>] [-h <fix path>]
+[-c <mcr path>] [-b <binaries path>] [-l <logfile>]
+{-r <"MATLAB code">|-m <script>|-f <function> [arguments...]}
+
+-z <mode>: This overrides the environment variable
+FSL_FIX_MATLAB_MODE which would otherwise control this.
+0 = Use compiled MATLAB function specified by
+-m <function name>
+1 = Use MATLAB - requires -r or -m option
+2 = Use Octave - requires -r or -m option
+-r <"MATLAB code">: Evaluate the double-quoted MATLAB/Octave
+code. Equivalent to 'matlab -r "MATLAB code"' or
+'octave --eval "MATLAB code"'
+Ensure that any double quotes in this string are escaped
+with '\'.
+-m <script>:
+-z = 0 or not provided, run as -z = 1
+-z = 1|2 - Run <script> in MATLAB/Octave
+Equivalent to 'matlab \< <script>.m' or 'octave <script>.m'
+-f <function> [arguments]:
+-z = 0 - Call compiled MATLAB <function>
+Arguments to be passed are given in the remainder of the
+command line.
+-z = 1|2 - Run <function> script in MATLAB/Octave
+Equivalent to 'matlab -r "<function>([arguments])"' or
+'octave --eval "<function>([arguments])"'
+Arguments to be passed are given in the remainder of the
+command line.
+-o <options>: Double quoted list of MATLAB/Octave command line
+options. Defaults to ${FSL_FIX_MLOPTS} or ${FSL_FIX_OCOPTS}
+respectively
+-p <path>: Path to MATLAB/Octave startup script/binary.
+Defaults to: ${FSL_FIX_MATLAB} or ${FSL_FIX_OCTAVE}
+respectively
+-h <path>: Path to folder containing the Fix programs
+-w <path>: Path to FSL MATLAB helper functions, defaults to
+/home/xiyuezh/fsl/etc/matlab
+-c <mcr path>: Path to MATLAB Compiler Runtime for the version
+of MATLAB Fix was compiled under. Defaults to ${FSL_FIX_MCR}
+-b <compiled path>: Path to the folder containing the compiled MATLAB
+functions. Defaults to ${FSL_FIX_MLCDIR}
+-l <logfile>: Append console and error output to <logfile>\n
+FIX Classifying components in Melodic directory: errts.F002_GroupICAResults_TTN27.ica using training file: /home/xiyuezh/fix/training_files/Standard.RData and threshold 20
+FIX features not already generated, so creating them now.
+FIX Feature extraction for Melodic output directory: errts.F002_GroupICAResults_TTN27.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+Unable to find MATLAB Compiler Runtime
+/home/xiyuezh/fix/call_matlab.sh [-z <mode>] [-o <options>] [-p <path>] [-h <fix path>]
+[-c <mcr path>] [-b <binaries path>] [-l <logfile>]
+{-r <"MATLAB code">|-m <script>|-f <function> [arguments...]}
+
+-z <mode>: This overrides the environment variable
+FSL_FIX_MATLAB_MODE which would otherwise control this.
+0 = Use compiled MATLAB function specified by
+-m <function name>
+1 = Use MATLAB - requires -r or -m option
+2 = Use Octave - requires -r or -m option
+-r <"MATLAB code">: Evaluate the double-quoted MATLAB/Octave
+code. Equivalent to 'matlab -r "MATLAB code"' or
+'octave --eval "MATLAB code"'
+Ensure that any double quotes in this string are escaped
+with '\'.
+-m <script>:
+-z = 0 or not provided, run as -z = 1
+-z = 1|2 - Run <script> in MATLAB/Octave
+Equivalent to 'matlab \< <script>.m' or 'octave <script>.m'
+-f <function> [arguments]:
+-z = 0 - Call compiled MATLAB <function>
+Arguments to be passed are given in the remainder of the
+command line.
+-z = 1|2 - Run <function> script in MATLAB/Octave
+Equivalent to 'matlab -r "<function>([arguments])"' or
+'octave --eval "<function>([arguments])"'
+Arguments to be passed are given in the remainder of the
+command line.
+-o <options>: Double quoted list of MATLAB/Octave command line
+options. Defaults to ${FSL_FIX_MLOPTS} or ${FSL_FIX_OCOPTS}
+respectively
+-p <path>: Path to MATLAB/Octave startup script/binary.
+Defaults to: ${FSL_FIX_MATLAB} or ${FSL_FIX_OCTAVE}
+respectively
+-h <path>: Path to folder containing the Fix programs
+-w <path>: Path to FSL MATLAB helper functions, defaults to
+/home/xiyuezh/fsl/etc/matlab
+-c <mcr path>: Path to MATLAB Compiler Runtime for the version
+of MATLAB Fix was compiled under. Defaults to ${FSL_FIX_MCR}
+-b <compiled path>: Path to the folder containing the compiled MATLAB
+functions. Defaults to ${FSL_FIX_MLCDIR}
+-l <logfile>: Append console and error output to <logfile>\n
+/home/xiyuezh/fix/fix: line 250: CMD: command not found
+No valid labelling file specified
+
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+
+Hi Dianne and Saad,
+
+I redid all the process (copying the qform to the sform in the template), and the results are the same, the process doesn't crash, but the final results are bad, a lot of tracts missing or very bad delineated. I inspected that the images were aligned and the directions in mean_f1samples sensible.
+
+Next thing to try is to run the preprocessing without qsiprep and see the results then.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+Hi Paul,
+
+ 
+
+I am afraid that did not correct the issue. I got the same error message in the terminal after updating the version of prompt_toolkit.
+
+ 
+
+Also, as I tried to run nets.glm in Jupyter notebook – still I got an error message below:
+
+ 
+
+--------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+Cell In[7], line 1
+
+----> 1 p_corr,p_uncorr = nets.glm(ts, Pnetmats, 'design_files/2_group_t_test.mat', 'design_files/2_group_t_test.con');
+
+ 
+
+File /usr/local/fsl/lib/python3.11/site-packages/fsl/nets/glm.py:71, in glm(ts, netmats, design, contrasts, nperms, plot, title)
+
+     66 netmats = avgmats
+
+     68 # Store files cwd, in case we are
+
+     69 # running on a cluster where $TMPDIR
+
+     70 # may not be shared between nodes
+
+---> 71 with tempdir(root=os.getcwd(), prefix='.fslnets', changeto=False) as tdir:
+
+     72
+
+     73     # TODO NIFTI2 required if nedges >= 32768
+
+     74     netmats = netmats.T.reshape((nedges, 1, 1, nsubjs))
+
+     75     nmfile  = op.join(tdir, 'netmats')
+
+ 
+
+File /usr/local/fsl/lib/python3.11/contextlib.py:289, in contextmanager.<locals>.helper(*args, **kwds)
+
+    287 @wraps(func)
+
+    288 def helper(*args, **kwds):
+
+--> 289     return _GeneratorContextManager(func, args, kwds)
+
+ 
+
+File /usr/local/fsl/lib/python3.11/contextlib.py:105, in _GeneratorContextManagerBase.__init__(self, func, args, kwds)
+
+    104 def __init__(self, func, args, kwds):
+
+--> 105     self.gen = func(*args, **kwds)
+
+    106     self.func, self.args, self.kwds = func, args, kwds
+
+    107     # Issue 19330: ensure context manager instances have good docstrings
+
+ 
+
+TypeError: tempdir() got an unexpected keyword argument 'prefix'
+
+[ ]:
+
+Meanwhile I can still wait till the fslnets package to be upgraded on Jalapeno.
+
+ 
+
+Thank you so much!
+
+Best,
+
+Lin
+
+Thank you so much!
+
+Best,
+Lin 
+
+Sent from Outlook for iOS
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Wednesday, November 29, 2023 9:55:10 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Fslnets glm not running
+ 
+
+Hi Narlon,
+
+We don't have an official container definition for FSL, but it is easy to create one. There is an example on our new documentation site, although note that the new documentation site is incomplete, and its URL is going to change in the near future:
+
+https://open.win.ox.ac.uk/pages/fsl/docdev/#/install/container
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Narlon Cassio Boa Sorte Silva <nboasort@UWO.CA>
+Sent: 29 November 2023 01:23
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL in Docker or Singularity
+ 
+Dear FSL experts,
+
+ 
+
+I wanted to ask if there is an official Docker or Singularity container for FSL?
+
+ 
+
+Thank you,
+
+Hi Lin,
+
+This is due to a bug in the code which was causing nets.glm to fail when run on a HCP cluster, and which I fixed a few days ago. If you have a recent version of FSL, you should be able to install the updated version by running:
+
+update_fsl_package fsl-nets
+
+Although looking at your error, it appears that you are working on the FMRIB cluster. We will hopefully be able to update the FSL installation later on today.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lin Qiu <lin.qiu@SPC.OX.AC.UK>
+Sent: 29 November 2023 00:34
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Fslnets glm not running
+ 
+Hi experts,
+
+ 
+
+Please can you kindly help with the following error when running nets.glm on netmats?
+
+ 
+
+Using the same script it used to work perfectlt. Yet from last week it got no response (without errors) and now with the following error.
+
+ 
+
+Thank you so much!
+
+ 
+
+In [11]: p_corr,p_uncorr = nets.glm(ts, Pnetmats, '../designfiles/2_group_t_test
+
+    ...: .mat', '../designfiles/2_group_t_test.con');
+
+    ...: 
+
+78378
+
+78379
+
+---------------------------------------------------------------------------
+
+PathError                                 Traceback (most recent call last)
+
+Cell In[11], line 1
+
+----> 1 p_corr,p_uncorr = nets.glm(ts, Pnetmats, '../designfiles/2_group_t_test.mat', '../designfiles/2_group_t_test.con');
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/nets/glm.py:83, in glm(ts, netmats, design, contrasts, nperms, plot, title)
+
+     81 for con in range(ncontrasts):
+
+     82     constr       = ' '.join([f'{c:g}' for c in contrasts[con]])
+
+---> 83     tstat        = Image(f'output_tstat{con+1}')          .data.flatten()
+
+     84     cpuncorr     = Image(f'output_vox_p_tstat{con+1}')    .data.flatten()
+
+     85     cpcorr       = Image(f'output_vox_corrp_tstat{con+1}').data.flatten()
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1249, in Image.__init__(self, image, name, header, xform, loadData, calcRange, threaded, dataSource, loadMeta, dataMgr, **kwargs)
+
+   1246 if isinstance(image, (str, Path)):
+
+   1247     # resolve path to source if it is a sym-link
+
+   1248     image      = Path(image).resolve()
+
+-> 1249     image      = op.abspath(addExt(image))
+
+   1250     nibImage   = nib.load(image, **kwargs)
+
+   1251     header     = nibImage.header
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1955, in addExt(prefix, mustExist, unambiguous)
+
+   1953 if str(e).startswith('More than'):
+
+   1954     log.warning(e)
+
+-> 1955 raise e
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1942, in addExt(prefix, mustExist, unambiguous)
+
+   1938 """Adds a file extension to the given file ``prefix``.  See
+
+   1939 :func:`~fsl.utils.path.addExt`.
+
+   1940 """
+
+   1941 try:
+
+-> 1942     return fslpath.addExt(prefix,
+
+   1943                           allowedExts=ALLOWED_EXTENSIONS,
+
+   1944                           mustExist=mustExist,
+
+   1945                           defaultExt=defaultExt(),
+
+   1946                           fileGroups=FILE_GROUPS,
+
+   1947                           unambiguous=unambiguous)
+
+   1948 except fslpath.PathError as e:
+
+   1949     # hacky: if more than one file with
+
+   1950     # the prefix exists, we emit a
+
+   1951     # warning, because in most cases
+
+   1952     # this is a bad thing.
+
+   1953     if str(e).startswith('More than'):
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/utils/path.py:196, in addExt(prefix, allowedExts, mustExist, defaultExt, fileGroups, unambiguous)
+
+    193 # Could not find any supported file
+
+    194 # with the specified prefix
+
+    195 if nexists == 0:
+
+--> 196     raise PathError('Could not find a supported file '
+
+    197                     'with prefix "{}"'.format(prefix))
+
+    199 # If ambiguity is ok, return
+
+    200 # all matching paths
+
+    201 if not unambiguous:
+
+ 
+
+PathError: Could not find a supported file with prefix "/vols/Scratch/qiulin/BBB_COVID/DualRegress/output_tstat1"
+
+ 
+
+ 
+
+Best wishes,
+
+Lin
+
+
+
+Hi Xiyue,
+
+Have you edited the settings.sh file? The setup instructions are given in the README file.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Xiyue Zhang <xiyue.zhang.2@ULAVAL.CA>
+Sent: 28 November 2023 02:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FIX error: Unable to find MATLAB Compiler Runtime
+ 
+Hi experts,
+
+I just found I also got a text file named 2 in my input folder. It says: 
+
+Can't find the MATLAB compiler runtime, please set FSL_FIX_MCRROOT in the settings.sh file.
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+On Nov 27, 2023, at 8:14 PM, Xiyue Zhang <xiyue.zhang.2@ULAVAL.CA> wrote:
+
+Hi experts,
+
+I am trying to run FIX on my Melodic results. My code is as below. 
+
+/home/xiyuezh/fix/fix errts.F002_GroupICAResults_TTN27.ica /home/xiyuezh/fix/training_files/Standard.RData 20
+
+I have set LD_LIBRARY_PATH environment variable in the .bashrc:
+
+export LD_LIBRARY_PATH=/home/xiyuezh/v93/runtime/glnxa64:/home/xiyuezh/v93/bin/glnxa64:/home/xiyuezh/v93/sys/os/glnxa64
+
+But I always got below messages. Could you please help to have a look? Thanks!
+
+FIX Feature extraction for Melodic output directory: errts.F002_GroupICAResults_TTN27.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+Unable to find MATLAB Compiler Runtime
+/home/xiyuezh/fix/call_matlab.sh [-z <mode>] [-o <options>] [-p <path>] [-h <fix path>]
+[-c <mcr path>] [-b <binaries path>] [-l <logfile>]
+{-r <"MATLAB code">|-m <script>|-f <function> [arguments...]}
+
+-z <mode>: This overrides the environment variable
+FSL_FIX_MATLAB_MODE which would otherwise control this.
+0 = Use compiled MATLAB function specified by
+-m <function name>
+1 = Use MATLAB - requires -r or -m option
+2 = Use Octave - requires -r or -m option
+-r <"MATLAB code">: Evaluate the double-quoted MATLAB/Octave
+code. Equivalent to 'matlab -r "MATLAB code"' or
+'octave --eval "MATLAB code"'
+Ensure that any double quotes in this string are escaped
+with '\'.
+-m <script>:
+-z = 0 or not provided, run as -z = 1
+-z = 1|2 - Run <script> in MATLAB/Octave
+Equivalent to 'matlab \< <script>.m' or 'octave <script>.m'
+-f <function> [arguments]:
+-z = 0 - Call compiled MATLAB <function>
+Arguments to be passed are given in the remainder of the
+command line.
+-z = 1|2 - Run <function> script in MATLAB/Octave
+Equivalent to 'matlab -r "<function>([arguments])"' or
+'octave --eval "<function>([arguments])"'
+Arguments to be passed are given in the remainder of the
+command line.
+-o <options>: Double quoted list of MATLAB/Octave command line
+options. Defaults to ${FSL_FIX_MLOPTS} or ${FSL_FIX_OCOPTS}
+respectively
+-p <path>: Path to MATLAB/Octave startup script/binary.
+Defaults to: ${FSL_FIX_MATLAB} or ${FSL_FIX_OCTAVE}
+respectively
+-h <path>: Path to folder containing the Fix programs
+-w <path>: Path to FSL MATLAB helper functions, defaults to
+/home/xiyuezh/fsl/etc/matlab
+-c <mcr path>: Path to MATLAB Compiler Runtime for the version
+of MATLAB Fix was compiled under. Defaults to ${FSL_FIX_MCR}
+-b <compiled path>: Path to the folder containing the compiled MATLAB
+functions. Defaults to ${FSL_FIX_MLCDIR}
+-l <logfile>: Append console and error output to <logfile>\n
+FIX Classifying components in Melodic directory: errts.F002_GroupICAResults_TTN27.ica using training file: /home/xiyuezh/fix/training_files/Standard.RData and threshold 20
+FIX features not already generated, so creating them now.
+FIX Feature extraction for Melodic output directory: errts.F002_GroupICAResults_TTN27.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+Unable to find MATLAB Compiler Runtime
+/home/xiyuezh/fix/call_matlab.sh [-z <mode>] [-o <options>] [-p <path>] [-h <fix path>]
+[-c <mcr path>] [-b <binaries path>] [-l <logfile>]
+{-r <"MATLAB code">|-m <script>|-f <function> [arguments...]}
+
+-z <mode>: This overrides the environment variable
+FSL_FIX_MATLAB_MODE which would otherwise control this.
+0 = Use compiled MATLAB function specified by
+-m <function name>
+1 = Use MATLAB - requires -r or -m option
+2 = Use Octave - requires -r or -m option
+-r <"MATLAB code">: Evaluate the double-quoted MATLAB/Octave
+code. Equivalent to 'matlab -r "MATLAB code"' or
+'octave --eval "MATLAB code"'
+Ensure that any double quotes in this string are escaped
+with '\'.
+-m <script>:
+-z = 0 or not provided, run as -z = 1
+-z = 1|2 - Run <script> in MATLAB/Octave
+Equivalent to 'matlab \< <script>.m' or 'octave <script>.m'
+-f <function> [arguments]:
+-z = 0 - Call compiled MATLAB <function>
+Arguments to be passed are given in the remainder of the
+command line.
+-z = 1|2 - Run <function> script in MATLAB/Octave
+Equivalent to 'matlab -r "<function>([arguments])"' or
+'octave --eval "<function>([arguments])"'
+Arguments to be passed are given in the remainder of the
+command line.
+-o <options>: Double quoted list of MATLAB/Octave command line
+options. Defaults to ${FSL_FIX_MLOPTS} or ${FSL_FIX_OCOPTS}
+respectively
+-p <path>: Path to MATLAB/Octave startup script/binary.
+Defaults to: ${FSL_FIX_MATLAB} or ${FSL_FIX_OCTAVE}
+respectively
+-h <path>: Path to folder containing the Fix programs
+-w <path>: Path to FSL MATLAB helper functions, defaults to
+/home/xiyuezh/fsl/etc/matlab
+-c <mcr path>: Path to MATLAB Compiler Runtime for the version
+of MATLAB Fix was compiled under. Defaults to ${FSL_FIX_MCR}
+-b <compiled path>: Path to the folder containing the compiled MATLAB
+functions. Defaults to ${FSL_FIX_MLCDIR}
+-l <logfile>: Append console and error output to <logfile>\n
+/home/xiyuezh/fix/fix: line 250: CMD: command not found
+No valid labelling file specified
+
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+
+Hi Duarte,
+
+I think there is a bug somewhere in the code which is breaking because the $PATH environment variable contains spaces.
+
+Could you try setting the PATH variable as below, and then re-running FIX?
+
+export PATH=/home/duartesaraiva/fsl/share/fsl/bin:/home/duartesaraiva/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib
+
+Paul
+
+
+Dear FSL experts,
+
+ 
+
+I wanted to ask if there is an official Docker or Singularity container for FSL?
+
+ 
+
+Thank you,
+
+Hi experts,
+
+ 
+
+Please can you kindly help with the following error when running nets.glm on netmats?
+
+ 
+
+Using the same script it used to work perfectlt. Yet from last week it got no response (without errors) and now with the following error.
+
+ 
+
+Thank you so much!
+
+ 
+
+In [11]: p_corr,p_uncorr = nets.glm(ts, Pnetmats, '../designfiles/2_group_t_test
+
+    ...: .mat', '../designfiles/2_group_t_test.con');
+
+    ...: 
+
+78378
+
+78379
+
+---------------------------------------------------------------------------
+
+PathError                                 Traceback (most recent call last)
+
+Cell In[11], line 1
+
+----> 1 p_corr,p_uncorr = nets.glm(ts, Pnetmats, '../designfiles/2_group_t_test.mat', '../designfiles/2_group_t_test.con');
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/nets/glm.py:83, in glm(ts, netmats, design, contrasts, nperms, plot, title)
+
+     81 for con in range(ncontrasts):
+
+     82     constr       = ' '.join([f'{c:g}' for c in contrasts[con]])
+
+---> 83     tstat        = Image(f'output_tstat{con+1}')          .data.flatten()
+
+     84     cpuncorr     = Image(f'output_vox_p_tstat{con+1}')    .data.flatten()
+
+     85     cpcorr       = Image(f'output_vox_corrp_tstat{con+1}').data.flatten()
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1249, in Image.__init__(self, image, name, header, xform, loadData, calcRange, threaded, dataSource, loadMeta, dataMgr, **kwargs)
+
+   1246 if isinstance(image, (str, Path)):
+
+   1247     # resolve path to source if it is a sym-link
+
+   1248     image      = Path(image).resolve()
+
+-> 1249     image      = op.abspath(addExt(image))
+
+   1250     nibImage   = nib.load(image, **kwargs)
+
+   1251     header     = nibImage.header
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1955, in addExt(prefix, mustExist, unambiguous)
+
+   1953 if str(e).startswith('More than'):
+
+   1954     log.warning(e)
+
+-> 1955 raise e
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/data/image.py:1942, in addExt(prefix, mustExist, unambiguous)
+
+   1938 """Adds a file extension to the given file ``prefix``.  See
+
+   1939 :func:`~fsl.utils.path.addExt`.
+
+   1940 """
+
+   1941 try:
+
+-> 1942     return fslpath.addExt(prefix,
+
+   1943                           allowedExts=ALLOWED_EXTENSIONS,
+
+   1944                           mustExist=mustExist,
+
+   1945                           defaultExt=defaultExt(),
+
+   1946                           fileGroups=FILE_GROUPS,
+
+   1947                           unambiguous=unambiguous)
+
+   1948 except fslpath.PathError as e:
+
+   1949     # hacky: if more than one file with
+
+   1950     # the prefix exists, we emit a
+
+   1951     # warning, because in most cases
+
+   1952     # this is a bad thing.
+
+   1953     if str(e).startswith('More than'):
+
+ 
+
+File /opt/fmrib/fsl/lib/python3.11/site-packages/fsl/utils/path.py:196, in addExt(prefix, allowedExts, mustExist, defaultExt, fileGroups, unambiguous)
+
+    193 # Could not find any supported file
+
+    194 # with the specified prefix
+
+    195 if nexists == 0:
+
+--> 196     raise PathError('Could not find a supported file '
+
+    197                     'with prefix "{}"'.format(prefix))
+
+    199 # If ambiguity is ok, return
+
+    200 # all matching paths
+
+    201 if not unambiguous:
+
+ 
+
+PathError: Could not find a supported file with prefix "/vols/Scratch/qiulin/BBB_COVID/DualRegress/output_tstat1"
+
+ 
+
+ 
+
+Best wishes,
+
+Lin
+
+
+
+Hi Eva,
+
+ 
+
+Yes, though I’ve got a lot on at the moment, so I can’t promise a quick turnaround.
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Eva Hensenne <e.hensenne@STUDENT.MAASTRICHTUNIVERSITY.NL>
+Date: Thursday, 23 November 2023 at 13:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] rda files conversion
+
+Hi,
+
+I am still really interested in sharing some rda files to test them in fsl_mrs. Does the proposal still stand?
+
+Best wishes,
+Eva
+
+
+Hi Matthew, 
+
+Yes, I can confirm that the first-level analysis was set up with that configuration. 
+
+Kind regards,
+Phoenix 
+
+
+Hi Paul,
+
+
+
+Thank you very much for your response!
+
+
+
+I did that, but I still get this:
+
+
+
+FIX Feature extraction for Melodic output directory: bold1.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+FIX Classifying components in Melodic directory: bold1.ica using training file: fix/training_files/Standard.RData and threshold 20
+FIX features not already generated, so creating them now.
+FIX Feature extraction for Melodic output directory: bold1.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+No valid labelling file specified
+
+
+
+I send now the updated files with the errors again. 
+
+It would very good if you could help me.
+
+
+
+Best regards,
+
+Duarte
+
+I don't have all the context here, but after you run QSIprep, if you want to run data through FSL processing, I suggest you run the qsirecon reorient-fslstd:
+
+https://qsiprep.readthedocs.io/en/latest/reconstruction.html#reorient-fslstd
+
+This definitely changes the bvecs file.
+
+-Dianne
+
+Dianne Patterson, Ph.D
+dkp@arizona.edu
+Office: BSRL, Room 235
+RII Neuroimaging Staff Scientist 
+Program Coordinator Neuroimaging Methods Certificate 
+Cognitive Science GIDP affiliate member
+Faculty Lead OpenClass.ai
+Mastodon: @dpat@scicomm.xyz
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Saad Jbabdi <saad.jbabdi@NDCN.OX.AC.UK>
+Sent: Monday, November 27, 2023 3:59 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [EXT]Re: [FSL] Xtract/Probtrackx2 error
+ 
+
+Hi,
+Can you confirm that the first-level analyses were run with a “dummy’ registration ( e.g. 6 DOF ) to MNI space?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 27 Nov 2023, at 11:47, Phoenix Byrne <jk015241@STUDENT.READING.AC.UK> wrote:
+
+Hi,
+
+I'm using FSL to analyse my data, which has been preprocessed with fMRIPrep. I began by following the FEAT workaround set out by Mumford Brain Stats, however, upon running my group-level analysis I was notified that my inputs weren't registered. I then saw on a forum that people were running 'updatefeatreg' after the workaround.
+
+I implemented this ('updatefeatreg FirstLevelAnalysis_run-5_rerun.feat -gifs') just before my group analysis but this didn't solve my issue.
+
+Any insights would be greatly appreciated!
+
+Thank you in advance,
+Phoenix
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Harin,
+ Can you clarify what kind of data/sequence this is ( and is it the same as the other subjects )? Did the initial input data look _broadly_ the same?
+
+Kind regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 26 Nov 2023, at 07:33, Harin Oh <harinoh818@GMAIL.COM> wrote:
+
+Dear FSL experts,
+
+Hi, I am relatively new to FSL and analyzing fMRI data.
+I tried to perform preprocessing steps using FSL commands with following steps:
+1) slice removal 2) slice timing 3) motion correction 4) spatial distortion 5) bbr 6) nuisance regression 7) temporal bandpass filtering 8) 2mm MNI resampling
+
+The image looks different to other examples so wanted to double check if I could use this image for my actual fMRI analysis?
+I have attached a test image for reference.
+
+Many thanks,
+Harin 
+ Sub1_test_prepFinal.nii.gz
+
+Hi Jesper,
+
+Thank you for the response and explanation for the truncation issue. Would you recommend removing "--resamp=lsr" from the eddy call?
+
+I have also tried to run eddy_cuda instead after padding the images prior to processing with "dummy" zero slices (to incorporate an --slspec file). However, I am now running into the below issue:
+
+...................Allocated GPU # 0...................
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 60.7202, after update mss = 60.7298
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 75.6504, after update mss = 75.6935
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 79.0918, after update mss = 79.1847
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 66.6709, after update mss = 66.6882
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 77.2129, after update mss = 77.217
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 59.7546, after update mss = 59.7705
+EddyInternalGpuUtils::param_update: updates rejected
+EddyInternalGpuUtils::param_update: original mss = 64.7542, after update mss = 64.7746
+(This is repeated many more times in the slurm output).
+
+I found a similar question on the listserv (https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2010&L=FSL&D=0&P=145119) but I am not sure if there was a solution posted for this. Could you please let me know if there is a fix for the above error?
+
+Thank you so much!
+
+Best,
+Ann
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Sent: Tuesday, November 14, 2023 10:48 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Truncated eddy corrected images
+ 
+Dear Ann,
+
+ 
+
+there is always a risk of "truncation" of images when doing motion correction. If a part of the brain that is inside the FOV in the first volume is subsequently, due to motion, shifted outside the FOV, then that part was simply not scanned in that later volume. When then registering that image to the first, that part of the brain will be "truncated", i.e. contain zeros since we cannot know what is really should be.
+
+ 
+
+This can get worse when one uses --resamp=lsr, i.e. use "least-squares reconstruction" instead of a more traditional interpolation. In that case eddy uses a whole column along the PE-direction from each of the two acquisitions (with opposing PE) to reconstruct a "correct" column, which becomes that column in the reconstructed image. The problem then becomes: How much of that column can be outside the FOV before I say - "I don't know all of this column, so I cannot reconstruct it". In eddy I err on the side of caution, and perhaps too much so.
+
+ 
+
+I saw in some other mail someone suggested truncating the images, and that may be a good solution in the case when eddy is too cautious.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of "Lee, Ann" <lee.9951@BUCKEYEMAIL.OSU.EDU>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Wednesday, 8 November 2023 at 17:21
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Truncated eddy corrected images
+
+ 
+
+Hello,
+
+ 
+
+We noticed that the many of our eddy corrected images are truncated (mostly superior slices), with some images having large truncations. We checked the eddy_outlier_report, but it doesn't seem like the images with larger truncations necessarily have more slices identified as motion. The raw images and topup corrected images do not have this problem.
+
+ 
+
+Below is our eddy call:
+
+eddy --imain="$OUT_DIR"/$iSub/AP_PA_scan \
+     --mask="$OUT_DIR"/$iSub/hifi_nodif_brain_mask \
+     --index="$OUT_DIR"/$iSub/index.txt \
+     --acqp="$OUT_DIR"/$iSub/acqparams.txt \
+     --bvecs="$OUT_DIR"/$iSub/bvecs \
+     --bvals="$OUT_DIR"/$iSub/bvals \
+     --fwhm=0 \
+     --topup="$OUT_DIR"/$iSub/topup_AP_PA_b0 \
+     --flm=quadratic \
+     --out="$OUT_DIR"/$iSub/eddy_unwarped_images \
+     --data_is_shelled \
+     --fep \
+     --resamp=lsr
+ 
+
+Could we please have some help on this issue? I am happy to send over example images privately if needed. Our diffusion images are concatenated 98 AP, 99 AP, 98 PA, 99 PA directions.
+
+ 
+
+Thank you so much for the help.
+
+ 
+
+Best,
+
+Ann
+

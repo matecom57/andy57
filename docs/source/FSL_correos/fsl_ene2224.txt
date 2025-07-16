@@ -1,0 +1,674 @@
+About the lab
+Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, focuses on developing novel multi-modal neuroimaging and interventional techniques to define and modulate brain network essential for cognition. Their recent works published on Nature Communications and PNAS have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs causal for memory formation. Further development of these techniques in rodent models and humans will facilitate the diagnosis and treatment of cognitive impairment and dementia. We are recruiting two PhD students and a Postdoc to investigate neuroimaging, neuro-engineering and neural modelling.
+
+Projects
+1. Understanding neurophysiology and circuitry of influential hub of memory formation.
+We have recently identified brain network hubs that causally involved in memory formation (Li et al, Nature Communications 2023). This project will further pinpoint specific cell type and connection that mediate this process using simultaneous calcium photometry and fMRI recording in rodents. The knowledge will provide information for targeted neuromodulation and brain modelling.
+ 
+2. Develop closed-loop feedback for modulating brain network function.
+Cognition requires a coordinated activity of brain network. However, current neuromodulation technique only targets a specific brain area but not a network. This project will develop new techniques to selectively modulate the functional connectivity in order to enhance memory.
+
+3. Develop whole-brain neural modelling for predicting the effects of neuromodulation.
+The brain is a complex network that perturbation of a brain area could lead to complicated or unpredictable changes in the brain function. This project will collaborate with Prof Bernard Lab to develop a computational model based on The Virtual Mouse Brain platform to simulate and predict brain network under targeted neuromodulation with validation by empirical data.
+
+Requirement
+Students with background in biology, psychology, biomedical engineering, computer science, medicine or related fields are welcome to apply.
+Experiences with computer programming (eg, MATLAB, Python), animal fMRI, and/or neurophysiology are desirable but not required.
+
+Enquiry 
+A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+
+
+
+Dear Matthew,
+
+Thank you so much for your support! Your feedback was incredibly helpful, and I now have a much better understanding of the design matrices and the dual regression worked well.
+
+I hope you don't mind if I bother you with one more question regarding a randomise error that occurred later.
+
+After the dual regression, I used randomise for further tests on the output of the 2nd dual regression stage. The command I used looked like this:
+
+randomise -i dr_stage2_ic00${IC}.nii.gz -o IC-${IC} -d design.mat -t design.con -f design.fts -n 5000 -D -T
+
+While seeking group differences between controls (EV1), patients with local (EV2), and those with widespread pain (EV3), I encountered the following warning:
+
+Warning: The unpermuted statistic image for the current image contains no positive values, and cannot be processed with TFCE. A blank output image will be created.
+
+Could you please explain what this warning means and how I can address it? I've searched the archives for this error, but the responses to previous posts didn't provide a solution that was helpful in this particular case.
+
+My design matrix, contrasts and f tests look like this (similar to what we discussed previously):
+
+/NumWaves 3
+/NumPoints 79
+/Matrix
+0 0 1
+0 0 1
+0 0 1
+0 1 0
+1 0 0
+0 0 1
+1 0 0
+1 0 0
+
+...  (Full matrix attached)
+
+Contrasts:
+/NumWaves 3
+/NumPoints 2
+/Matrix
+1 -1 0
+0 1 -1
+
+F-tests:
+/NumWaves 2
+/NumPoints 1
+/Matrix
+1 1
+
+Can you spot any errors? As I've run several analyses on the same input data without any issues, I don't think the error is in the input data. What else could it be?
+
+Also, regarding the -D flag: the randomise wiki suggested using this when the group mean is not modeled, which is not the case here (my contrasts are only asking for group differences). However, a previous post on this list suggested that this might not be entirely true. Is it correct here to use -D, and can I still trust my results if I unnecessarily used it?
+
+Thanks again for your assistance!
+
+Best,
+Madeleine
+
+
+Dear ASL experts,
+
+I have already successfully completed the CBF analysis with BASIL. Unfortunately, I only recently noticed that you can use the --region-analysis flag to extract the CBF values ​​of the individual regions from the Harvard-Oxford atlas. Is it possible to carry out the "region analysis" later (as a separate process) or do I have to run the entire analysis again?
+
+Best,
+Ralf
+
+########################################################################
+
+
+About the lab
+Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, focuses on developing novel multi-modal neuroimaging and interventional techniques to define and modulate brain network essential for cognition. Their recent works published on Nature Communications and PNAS have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs causal for memory formation. Further development of these techniques in rodent models and humans will facilitate the diagnosis and treatment of cognitive impairment and dementia. We are recruiting two PhD students and a Postdoc to investigate neuroimaging, neuro-engineering and neural modelling.
+
+Projects
+1. Understanding neurophysiology and circuitry of influential hub of memory formation.
+We have recently identified brain network hubs that causally involved in memory formation (Li et al, Nature Communications 2023). This project will further pinpoint specific cell type and connection that mediate this process using simultaneous calcium photometry and fMRI recording in rodents. The knowledge will provide information for targeted neuromodulation and brain modelling.
+ 
+2. Develop closed-loop feedback for modulating brain network function.
+Cognition requires a coordinated activity of brain network. However, current neuromodulation technique only targets a specific brain area but not a network. This project will develop new techniques to selectively modulate the functional connectivity in order to enhance memory.
+
+3. Develop whole-brain neural modelling for predicting the effects of neuromodulation.
+The brain is a complex network that perturbation of a brain area could lead to complicated or unpredictable changes in the brain function. This project will collaborate with Prof Bernard Lab to develop a computational model based on The Virtual Mouse Brain platform to simulate and predict brain network under targeted neuromodulation with validation by empirical data.
+
+Requirement
+Students with background in biology, psychology, biomedical engineering, computer science, medicine or related fields are welcome to apply.
+Experiences with computer programming (eg, MATLAB, Python), animal fMRI, and/or neurophysiology are desirable but not required.
+
+Enquiry 
+A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+
+
+
+Hi FSL community,
+
+I tried running eddy on dwi data with b-values = 100 s/mm^2 but it fails and I get a strange error (no message, only symbols). I've tried various options, including with and without --data_is_shelled, but it doesn't work.
+
+---
+command line:
+eddy --imain=data --mask=my_hifi_b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs --bvals=bvals --topup=my_topup_results --out=eddy_corrected_data --verbose --data_is_shelled
+
+error:
+?A.??
+Terminating program
+---
+
+However on a whim, when I modify the bval file to have 1000, instead of 100, eddy runs and it gives the expected output files.
+
+Has anyone encountered this before or know what the problem might be? Can share the data if needed, thanks!
+
+E'Jane
+
+########################################################################
+
+
+Hi,
+    initial_highres_distorted2highrest.nii.gz is the original image ( the distortion is what we need to correct ) transformed to the structural image’s space. If initial_highres2highres.nii.gz looks worse it might we worth checking that the sign of the fieldmap correction is correct - otherwise the “correction” will actually distort the image even more.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 15 Jan 2024, at 13:54, Keng-Yu Lin <linkengyulky@GMAIL.COM> wrote:
+
+Hi, everyone,
+
+I have a quick confirmation question about the preprocessed output files in the .feat folder.
+
+I have applied B0 unwarping for my data in the preprocessing step and there are different files and folders within this .feat folder.
+
+In the "reg" folder, we have "initial_highres2highres.nii.gz".
+In the "unwarp" folder inside "reg" (i.e., /reg/unwarp), we have "initial_highres_distorted2highrest.nii.gz".
+
+I was wondering which of the images is the corrected image?
+
+My understanding is that the initial_highrest_distorted2highrest.nii.gz is the corrected image and it also looks better aligned with the highres.nii.gz in my case. But in the FSL practicals, it mentions "For example, the uncorrected registration result is in the file unwarp/example_func_distorted2highres.nii.gz......". It seems to be conflicting with my understanding and the results I observed in my case. So, I'm a bit confused as to which one is the corrected image. Thanks!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Matt is right.
+
+I just want to add the following:
+> except in a rare occasion to track down an artifact in the calculated images
+You may actually not see the artifact well in, for example, the TRACE which is calculated inline as the geometric mean of the diffusion dirs., clinically often just 3 orthogonal to each other.
+But remember - any motion or signal loss, e.g. from table vibrations, that affects one diffusion direction more than the others will propagate into the TRACE.
+That is why I recommend to save out all recorded directions separately. Looking at these will help even in some clinical instances.
+
+Cheers,
+Andreas
+
+
+﻿Am 15.01.24, 15:46 schrieb "FSL - FMRIB's Software Library im Auftrag von Glasser, Matt" <FSL@JISCMAIL.AC.UK im Auftrag von 0000b98cc5a1e91c-dmarc-request@JISCMAIL.AC.UK>:
+
+    I am a neuroradiologist.  Clinically we are not looking at the raw diffusion data (b0 and at least six diffusion directions) except in a rare occasion to track down an artifact in the calculated images.  We mainly look at the trace (or "DWI") and the ADC.  On rare occasions a color FA map could be useful.  Sometimes the scanner does not even send the raw diffusion data to the PACS depending upon how it is configured.  In that case, the data may be lost.  Also it is possible to compute trace and ADC with only three diffusion directions and a b0 image.  It would not be possible to use the DTI model on that.  You will have to learn what a b0 looks like and what raw diffusion directions look like to find them in the PACS.  Perhaps look at some of your existing data to figure that out.  You should only state as potentially usable data with at least 1 b0 image and six unique diffusion directions.
+   
+    There is another problem with using clinical diffusion data for research.  Traditionally MRI data were acquired with very thick slices and gaps between the slices.  This made sense when these data were printed on film and put on a light box, but now can be reformatted in multiple planes after the fact.  Practice has been slow to change.  Research data is typically acquired with isotropic spatial resolution and no gaps.  In my practice, we now acquire isotropic diffusion data clinically when we can, but this is something that I instituted.  Now we can find ALL of the small strokes...
+   
+    Matt.
+   
+    ﻿On 1/14/24, 11:22 PM, "FSL - FMRIB's Software Library on behalf of Elisabeth Maria Galas" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 0000b9dfa2ca2909-dmarc-request@JISCMAIL.AC.UK <mailto:0000b9dfa2ca2909-dmarc-request@JISCMAIL.AC.UK>> wrote:
+   
+   
+    Dear Robert,
+    thank you so much for your reply! I highly appreciate it!
+   
+   
+    My situation is a bit different though. If I had access to the images, I could probably answer all my questions myself by doing exactly what you suggest - I always use that procedure to get the diffusion metrics. The problem is that I am usually given ready, nice and raw diffusion-weighted data with which I work.
+   
+   
+    Now, on the contrary - I need to dig into these scans and pick up which images are usable myself (I cannot download them but just look at them from one of our clinical systems). Only afterward, I will be allowed to request them and someone who has permission to download them will download them for me. Therefore, I was kind of trying to "understand" what the radiologists did (as I have no idea who they are in order to ask them either). In the system I use, I only see the images with their labels, but I cannot download them and my supervisor expects me to say "which are usable".
+   
+   
+    That is new to me and I don't understand it very well. That is why I asked those silly questions about dwi to dti conversion. As far as my understanding goes, dwi are the images acquired during the scanning + some diffusion metrics such as the directions + the non-dwi b0 etc images. During the analysis, I apply the DTI model and this turns the dwi data into dti data. Is that correct so?
+   
+   
+    So, sometimes I see the radiologists have labeled some dwi images and no b-values are around. In that case, I should just assume that this is not usable for DTI analysis.
+    In other cases, I see b-values and dwi images, but I have no idea whether directions were acquired. Where to look for that info? How can I understand that by just looking at a list of labels? Is there a separate image that would usually contain that "direction" info? I guess it is best to assume that since there is a b0 image, there shoudl be also something linked to "directions" somewhere and just request the dwi image and hope I will get the bvec and bvals?
+    In the best scenario (i.e., 3rd case), the radiologists labeled the images "dti" which is great as I know that all is there. However, that is rare.
+   
+   
+    Thank you again for your time and trying to help me and apologies for the lengthy reply!
+    best wishes,
+    Elisabeth M
+   
+   
+    ########################################################################
+   
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+   
+   
+    This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+   
+   
+   
+   
+    ________________________________
+    The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Annie,
+
+Please disregard my last email - it looks like you are using an old version of the fslinstaller script. Can you download an updated version from the following webpage and try again?
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation
+
+Paul
+
+Hi Annie,
+
+Can you share the output that the fslinstaller script produces, including the log file?
+
+Regarding FSLView, this has not been included in FSL for several years now (it has been replaced by FSLeyes), so I am guessing this is from an old version of FSL.
+
+Paul
+
+Hi All. The ReproNim team is happy to announce that applications are Now Open for the 2024 ReproNim/INCF Fellowship program. The application window is from now until Jan 31, 2024.
+Please click here to apply (https://forms.gle/2N15KvtytH5Xf2999). We will award five to ten fellowships for this year; the total number of Fellows pending availability of funds.
+We will conduct a hybrid kickoff workshop held in conjunction with the OHBM BrainHack, typically preceding the OHBM annual conference scheduled for June 23-27, 2024, Seoul, South Korea. Some travel assistance may be available to the Fellows.
+For more information about the Fellowship program, click here (https://www.repronim.org/fellowship). Note: Prior applicants who were not selected last year are welcome to re-apply!
+
+
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu).
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+########################################################################
+
+Also when I try installing, I get this message before the question about what directory to put fsl in: "[Warning] apple 23 not officially supported - trying to locate support for an earlier version - this may not work". Attempting to reinstall after a failed installation returns this: "The requested version matches the installed version - do you wish to re-install FSL? [no]:".
+
+########################################################################
+
+Hi Paul,
+
+Thanks for your response! I've tried installing FSL the same way on a Mac with M1 and another with M3 -- it runs on the M1, but on the M3, installation keeps failing. Also on the M3, I see fslview in Applications (which I don't see on the M1) and when I click on it, a box appears saying: "'fslview' need to be updated. The developer of this app needs to update it to work with this version of macOS. Contact the developer for more information." For reference I'm running macOS Sonoma 14.2.1. Thanks!
+
+########################################################################
+
+We're pleased to announce the Neuroimaging Statistics satellite event to OHBM 2024 in Seoul, South Korea. It will be held at Seoul National University's Main Campus, Thursday and Friday 20th and 21st of June *before* the main conference.
+
+The Keith Worsley lecture will be given by Michael I. Miller, a keynote lecture by Paul M. Thompson, and we have an impressive array of confirmed speakers that will present work at the interface of statistics and neuroimaging. Registration free but required.
+
+For more information see: https://sites.google.com/view/neuroimaging2024
+
+For the organisers,
+
+Moo K. Chung, University of Wisconsin-Madison, USA
+Inah Lee, Seoul National University, Korea (local organizer)
+Tom Nichols, University of Oxford, UK
+Hernando Ombao, King Abdullah University of Science and Technology (KAUST), Saudi Arabia
+Jean-Baptise Poline, Montreal Neurological Institute, McGill University
+Anqi Qiu, Hong Kong Polytechnic University, China
+
+Hi Annie,
+
+FSL will work fine on M3 - we just haven't updated the docs yet.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Annie Abay <akabay@STANFORD.EDU>
+Sent: 18 January 2024 21:04
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL for Mac with M3
+ 
+I am attempting to install FSL on a Mac desktop, but realize there may be a compatibility issue between FSL and the new M3 chip. I see on the installation for MacOS page that FSL works with Linux/M1/M2. Wondering if anyone has suggestions for how we may be able to use FSL with the M3 chip, in the short and long term?
+
+########################################################################
+
+Hello experts,
+
+I am using PALM to analyze data from a 20 site imaging study that included some children who were siblings. 
+
+I have done my best to read Wilker 2015 “Multi-level block permutation”  and replicate the logic of hcp2blocks.m
+
+I have tried to set up my exchangeability blocks with the following structure:
+Level 1 -
+Level 2 - data collection site
+Level 3 - family type (1, 2 or 3 kids)
+Level 4 - family ID
+Level 5  - child ID (1, 2 or 3 depending on the family type)
+
+For example, if I had three families, A) site-10 family-11 including three kids, B) site-6 family-4 including one kid, and, C) site-4 family -5 including two kids, my csv would be formatted:
+
+-1, -10, 3, 11, 1
+-1, -10, 3, 11, 2
+-1, -10, 3, 11, 3
+-1,  -6, 1, 4, 1
+-1, -4, 2, 15, 1
+-1, -4, 2, 15, 2
+
+Can someone help to understand what the error means and how to correct it? 
+
+Thank you,
+
+
+Claire Laubacher
+
+
+Hi, everyone,
+
+Something looked odd in the FEAT Output after I ran preprocessing. The example_func image seemed missing. I'm attaching the screenshot here.
+
+In the sections of "Summary registration, FMRI to standard space", "Registration of example_func to highres", and "Registration of example_func to standard", the example_func seemed missing as it looked empty. However, in the section of "Registration of example_func to initial_highres", it was there. So, I had no idea what went wrong.
+
+I checked the output folders of running the preprocessing step from 2 participants/datasets. The example_func that looked odd in the FEAT Output had a rather small size (i.e., 1.0 kB) compared with the other participant/dataset (i.e., 546.7 kB), as shown in the attached screenshot. I also checked the functional images in the BIDS folder, using fslinfo. Things looked fine. I also re-ran the dataset and the same problem occurred. So, I was wondering what might be the cause.
+
+Thanks a lot!
+
+
+I am attempting to install FSL on a Mac desktop, but realize there may be a compatibility issue between FSL and the new M3 chip. I see on the installation for MacOS page that FSL works with Linux/M1/M2. Wondering if anyone has suggestions for how we may be able to use FSL with the M3 chip, in the short and long term?
+
+Hi Annelies,
+Correct - the group comparisons can be interpreted as normal.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+Great, this is what I was suspecting. But the group comparison can still be interpreted as usual right? So the control participants have greater Tstd in the cerebellum than our patient group?
+
+In this case this issue is finally solved, thanks a lot for your help!
+
+Annelies
+
+Sent from Outlook for iOS
+
+Hi Annelies,
+   Glad to hear the analysis completed! The transformed cope inputs will contain all positive values ( due to the “abs” call added to your script ) since we take the signal variability/Tstd to be a positive quantity. This means the group-average maps ( testing for > 0 ) can detect an response over the entire-brain - which really just (re-)confirms the data contains positive values!
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear all,
+
+The 2024 edition of the FSL Course is tentatively planned in-person for June 17th – 21st in Osaka, Japan, co-hosted by the Riken Center for Biosystems Dynamics Research. More details will be posted, and the registration will be opened in the next few weeks - please check the main FSL Course website for updates ( https://open.win.ox.ac.uk/pages/fslcourse/website/index.html ). Please do not book your journey until final details are posted.
+
+ 
+
+Both new and existing users of FSL are welcome on the course as it aims to cover both basic and more advanced features of FSL. This intensive course covers the theory and practice of functional, structural, diffusion and resting state brain image analysis. Background concepts and the practicalities of analyses are taught in detailed lectures. These lectures are interleaved with hands-on practical sessions where attendees learn how to carry out analysis for themselves on real data. The contents covered in the course are primarily aimed at applications in basic science and clinical research (not clinical practice).
+
+ 
+
+Save the date - we hope to see you at the course!
+
+The FSL Course team
+
+
+
+Hi Matthew,
+
+ 
+
+It seems it worked now! 😃  I have gotten output. There seems to be a group difference in Tstd in the Cerebellum, which is exactly in line with our other findings and what we would have expected. I’m just a bit worried about the group means. Is it to be expected to look like this? Would you mind double checking in the folder in the OneDrive before I apply this analyses to the other contrasts and tasks?
+
+ 
+
+Thanks a million!
+
+ 
+
+Annelies
+
+ 
+
+Upon further investigation, I have come to the conclusion that FSL 6+ eddy results are depending on both hardware and operating system.
+
+I have run the following tests:
+eddy_openmp, FSL 6.0.4, CentOS machine, 3 re-runs, parallelised
+eddy_cpu, FSL 6.0.6, CentOS machine, 3 re-runs, NOT parallelised
+eddy_cpu, FSL 6.0.6, Debian machine-1, 3 re-runs, NOT parallelised
+eddy_cpu, FSL 6.0.6, Debian machine-2, 1 run, NOT parallelised
+eddy_cpu, FSL 6.0.7.6, CentOS machine, 3 re-runs, parallelised
+
+With the following results (from one random voxel in the corpus callosum):
+2691.30 | 2688.98 | 2689.86 (sd=0.96)
+2705.05 | 2705.05 | 2705.05 (sd=0)
+2692.03 | 2692.03 | 2692.03 (sd=0)
+2692.03
+2700.94 | 2704.81 | 2695.90 (sd=3.65)
+
+Different standard deviations (sd) are obtained in different voxels for (1) and (5), which may be higher or lower.
+To conclude, it seems to me that eddy_openmp/cpu is only reproducible when run single-core ((2) or (3)) and on the same operating system ((3) and (4)).
+Can anyone else confirm this is in fact the case for them as well?
+
+NOTES:
+parallelisation was not enforced explicitly. FSL 6.0.4 and FSL 6.0.6.7 ran multi-core, while FSL 6.0.6 ran single-core by default.
+the code was run inside a python script. The specific eddy_cpu call was:
+
+eddy_cpu --imain=tmp/bDWIdu.nii.gz --mask=tmp/bb0du-ref-mask.nii.gz --index=tmp/qmri_seqpars/eddy_datain.txt --acqp=tmp/qmri_seqpars/topup_datain.txt --bvecs=tmp/bDWI.bvec --bvals=tmp/bDWI.bval --out=tmp/bDWIduc 
+--nvoxhp=50000 --initrand=42 --estimate_move_by_susceptibility=true --topup=tmp/topup_out
+
+Best regards,
+Antonio
+
+Dear Madeleine,
+ I think I understand your data now, dropping EV2 sounds like the best approach. How the contrasts are then structured depends on the question you want to ask the ot the averages - e.g. a:
+
+3 -1 -1 -1
+
+contrast would test for where the control group was greater than the average of the 3 patient sub-group averages ( note that unless the sub-groups are balanced, this is not necessarily the same as the overall patient average ).
+
+or you could create 3 difference EVs to test each sub-group and control ( and potentially seta F-test across those ).
+
+For the “Model 2” question, if the HC data is left in, you would still want an EV for controls ( the final option ) to model the HC mean - so this model is the same as the single model above, just without the control-patient contrasts.
+
+
+Dear Matthew,
+
+I have to apologize; I've expressed myself unclearly. All patients do have a pain score, classified as low, medium, and high pain.
+I created an EV for each pain score (low, medium, and high pain). Each input referring to a patient received a value of 1 once, for the pain score EV corresponding to the patients pain, and 0 for the other pain score EVs.
+For example, a patient with low pain has the following EVs: EV1(HC): 0; EV2(Pat): 1; EV3(low pain): 1; EV4(medium pain): 0; EV5(high pain): 0. All healthy controls have a value of 1 for EV1 and 0s for all the other EVs.
+
+So, EV2(PAT) is indeed a linear combination of EV3-5!
+
+I was a bit confused about demeaning EVs that contain only 0s and 1s. However, I tried that yesterday, and the GLM tool gave me a warning that rank deficiency is still present.
+
+But, what about leaving the Patient EV (EV2) out and working with F-tests instead?
+
+I fully agree with you that doing it in one model would be the best solution. However, may I still ask a follow-up question on the two-model solution (just to improve my understanding of GLMs)? Model 1 (Group difference) is clear to me.
+Regarding Model 2 (effect of low vs medium vs high pain in patients), would I need an EV for the HC to have that as a covariate of no interest in my design matrix?
+The group-level ICs are on Controls and Patients, as such I need a design matrix including all subjects (otherwise, I get an error of too few datapoints in the matrix).
+So, do I need a matrix only containing EVs for the pain score, and the HC inputs get only 0s, e.g.:
+EV1: low pain, EV2: medium pain, EV3: high pain
+Input1(healthy control): 0 0 0
+Input2(Pat  with low pain): 1 0 0
+Input3 (Pat with high pain): 0 0 1
+...
+Contrasts:
+C1 (linear increase): -1 0 1
+C2 (linear decrease): 1 0 -1 
+
+Or do i need an EV for the controls but setting this to 0 in the contrasts, e.g.:
+EV1: healthy control EV2: low pain, EV3: medium pain, EV4: high pain
+Input1(contol): 1 0 0 0
+Input2(Pat  with low pain): 0 1 0 0
+Input3 (Pat with high pain): 0 0 0 1
+...
+Contrasts:
+C1: 0 -1 0 1
+C2: 0 1 0 -1
+
+
+My apologies for the long email, and thank you very much for taking the time to help improve my understanding of GLMs. I highly appreciate that
+Best,
+Madeleine
+ 
+
+he good news is that the analysis seems to be running! Looking at the logs ( feat3b_flame.o33607.1 ) the analysis was about 10% through the 10000 permutations ( for the first contrast of the four ) when the transfer was made:
+
+Starting permutation 1188
+Starting permutation 1189
+Starting permutation 1190
+Starting permutation 1191
+Starting permutation 1192
+
+So while the analysis might take a while to run, I think it should complete - you can check that the randomise job is still running with “top -o cpu” or by checking the flame3b log is being updated with new permutations.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi FSL experts,
+
+I'm comparing longitudinal differences in activation between two groups, patients and controls. I'd like to the interaction of group by puberty, controlling for age at scan and cognitive score at scan.
+
+I have the following EVs coded in my design.mat file:
+
+EV1: 1 for control, 0 for patient
+EV2: 0 for control, 1 for patient
+EV3: average (across time points) age for controls, mean centered
+EV4: average (across time points) age for patients, mean centered
+EV5: time interval (age at scan minus average age) for controls, mean centered
+EV6: time interval (age at scan minus average age) for patients, mean centered
+EV7: average (across time points) cognitive score for controls, mean centered
+EV8: average (across time points) cognitive score for patients, mean centered
+EV9: score interval (score at scan minus average cognitive score) for controls, mean centered
+EV10: score interval (score at scan minus average cognitive score) for patients, mean centered
+EV11: average (across time points) pubertal stage for controls, mean centered
+EV12: average (across time points) pubertal stage for patients, mean centered
+EV13: pubertal interval (pubertal stage at scan minus average pubertal stage) for controls, mean centered
+EV14: pubertal interval (pubertal stage at scan minus average pubertal stage) for patients, mean centered
+
+...however, I'm wondering if EVs 3-6 and EVs 7-10 are necessary. Instead, is is sufficient to distill this model down to the following?
+
+EV1: 1 for control, 0 for patient
+EV2: 0 for control, 1 for patient
+EV3: age at scan for controls, mean centered
+EV4: age at scan for patients, mean centered
+EV5: cognitive score at scan for controls, mean centered
+EV6: cognitive score at scan for patients, mean centered
+EV7: average (across time points) pubertal stage for controls, mean centered
+EV8: average (across time points) pubertal stage for patients, mean centered
+EV9: pubertal interval (difference in puberty at scan from average pubertal stage) for controls, mean centered
+EV10: pubertal interval (difference in puberty at scan from average pubertal stage) for patients, mean centered
+
+The contrast for the interaction of group by puberty would then be:
+[0 0 0 0 0 0 0 0 1 -1]
+
+Thanks for your help!
+Lara
+
+########################################################################
+
+
+Hi Annelies,
+  Can you tar and upload the output *.gfeat folder to ( e.g. ) your OneDrive folder, as I think it would be quicker to debug if I could see the whole thing?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Matthew, again,
+
+ 
+
+I have tried with this approach (replacing the cope1 and cope3 images and moving stats to stats_old) and it seems to go some steps further. I tried the higher level analyses with only the cope1 that I made. However, it seems to get stuck at a different stage this time.
+
+ 
+
+It loads the images and registrations, but gets stuck at this step:
+
+ 
+
+/Users/anneliesvantwesteinde/fsl/bin/fslmaths varcope1 -mas mask varcope1
+
+ 
+
+printf '1 ' >> design.lcon
+
+ 
+
+printf '1 ' >> design.lcon
+
+ 
+
+printf '1 ' >> design.lcon
+
+ 
+
+printf '1 ' >> design.lcon
+
+ 
+
+printf '1 ' >> design.lcon
+
+ 
+
+It does not start the randomize procedure and for some reason prints design.lcon five times. There is no error, it just does not seem to continue. Could there anyway be an issue with the varcope images?
+
+ 
+
+Thanks!
+
+ 
+
+Annelies
+
+Dear Matthew,
+
+Thank you very much for your swift response.
+
+Just to ensure I understood you correctly: Demeaning the EV3-5 (despite it being only a 1 for being part of that pain group or 0 for not being part of that pain group) would resolve the issue of rank-deficiency? Would the interpretation of Contrasts 3 and 4 be the same? A linear trend from low to high pain?
+
+Would it also be an option to run a single dual_regression without randomise and perform randomise for the two analyses separately? Once with a design matrix containing EV1-2 and Contrasts 1 & 2, and once with a design matrix containing EV3-4 and Contrasts 3 & 4?
+
+Thank you again,
+Madeleine
+
+########################################################################
+
+
+Dear Madeleine,
+  The contrasts below will correctly test your hypotheses _but_ the design itself is rank deficient ( EV2 can be expressed as the sum of EVs 3-5 ). One way to resolve this would be to demean the pain EVs. A single 1,2,3 regressor _could_ be used - the zeros could be interpreted as “no-pain”, but this would test a more specific hypothesis - that each pain condition is exactly one “unit” of stimulus different to the next, which may not be correct or easily determined.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear Experts,
+
+I am currently working on resting-state functional connectivity of patients and healthy controls. My primary objective is to explore group differences between patients and healthy controls and, secondarily, to investigate subgroups within the patient population.
+
+However, I am not sure if I can achieve this using a single dual regression or if I need to run separate one for patients only.
+
+Specifically, I would like to compare differences in resting-state networks (RSN) between healthy controls (HC) and patients (PAT) and if there is a correlation with pain levels in the patient group. My current consideration is to construct a design matrix and contrasts as follows (illustrated with 2 HC and 3 PAT here):
+
+               EV1(HC) EV2(PAT)    EV3(high pain)     EV4(intermediate pain) EV5(low pain)
+Input1         1              0                    0                                0                    0
+Input2         1              0                    0                                0                    0
+Input3         0              1                    1                                0                    0
+Input4         0              1                    0                                1                    0
+Input5         0              1                    0                                0                    1
+
+C1 (HC > PAT): 1 -1 0 0 0
+C2 (HC< PAT): -1  1 0 0 0
+C3 (linear increase of pain): 0 0 1 0 -1
+C4 (linear decrease of pain):0 0-1 0 1
+
+Would these contrast do what I am looking for?
+I have also considered using the pain as a covariate with three values (1,2 and 3) but this would lead to a lot of zeros (all HC and some PAT with no pain), which might be problematic for a correlation, right?
+
+Could someone provide brief feedback on whether my design approach appears to be on the right track?
+
+Thank you and all the best!
+Madeleine
+
+########################################################################
+
+

@@ -1,0 +1,422 @@
+Hi, I am planning hoping to attend the FSL course this year and I wondered if any knew when/where it is likely to be so I can plan ahead?
+Thanks!
+
+########################################################################
+
+Hi Paul,
+
+I followed your suggestion and it´s working now.
+
+Thanks a lot!
+Helka
+
+########################################################################
+
+
+Dear FSL experts,
+
+I just finished running randomise looking at the association between the independent variable and white matter FA. Could you please let me know how I can check the direction of the results? Should it be through fsleyes or something other options are available? Thank you!
+
+Best,
+JW
+
+Hi Paul,
+Excellent, it absolutely makes sense.
+Thanks so much for your this! 
+Kind regards,
+Olga
+
+On Feb 7, 2023, at 4:10 PM, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Olga, 
+
+It is not unusual for a small number of voxels within the brain mask to be negative, as long as the brain mask is reasonable, and there are only a small number of negative voxels. You may need to use a more conservative mask for your tSnR calculations.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Olga Kepinska <olga.kepinska@UNIVIE.AC.AT>
+Sent: 07 February 2023 07:40
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] filtered_func_data not masked?
+ 
+Dear FSL experts,
+I'm reaching out again regarding the below issue with single-level FEAT preprocessing.
+Your input will be much appreciated.
+Many thanks,
+Olga Kepinska
+
+
+
+On Feb 2, 2023, at 9:28 AM, Olga Kepinska <olga.kepinska@univie.ac.at> wrote:
+
+Dear experts,
+I encountered a strange issue with some of my single-subject preprocessing output.
+Data from some of the runs seem to have been fully brain-extracted, and from others are not, i.e. voxels outside of the brain have non-zero (negative) values (please see the 2 screenshots from FSLEYES attached, together with the design files of both examples).
+
+Normally, I don't believe it's a problem for stats calculation or otherwise (but please correct me if I'm wrong!) but we're using the filtered_func_data.nii.gz to calculate tSNR and the negative values outside of the brain are skewing our calculations. Besides, the inconsistency of masking is a bit worrisome, especially since we're using the same design file looped over the different runs/participants.
+NB. the mask.nii.gz file in the feat output folder is created correctly.
+
+I have rerun the datasets in question and the output remains the same.
+Would you have any idea why this would happen and how to solve this?
+
+Many thanks in advance.
+Kind regards,
+Olga Kepinska
+
+
+
+
+--
+Olga Kepinska, PhD 
+she/her
+Postdoctoral Researcher
+Brain and Language Lab, University of Vienna
+https://www.olgakepinska.com
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<pp001-music-run01.png>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<pp001-music-run01_design.fsf>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<pp001-music-run02.png>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<pp001-music-run02_design.fsf>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear FSL experts,
+I'm reaching out again regarding the below issue with single-level FEAT preprocessing.
+Your input will be much appreciated.
+Many thanks,
+Olga Kepinska
+
+
+
+On Feb 2, 2023, at 9:28 AM, Olga Kepinska <olga.kepinska@univie.ac.at> wrote:
+
+Dear experts,
+I encountered a strange issue with some of my single-subject preprocessing output.
+Data from some of the runs seem to have been fully brain-extracted, and from others are not, i.e. voxels outside of the brain have non-zero (negative) values (please see the 2 screenshots from FSLEYES attached, together with the design files of both examples).
+
+Normally, I don't believe it's a problem for stats calculation or otherwise (but please correct me if I'm wrong!) but we're using the filtered_func_data.nii.gz to calculate tSNR and the negative values outside of the brain are skewing our calculations. Besides, the inconsistency of masking is a bit worrisome, especially since we're using the same design file looped over the different runs/participants.
+NB. the mask.nii.gz file in the feat output folder is created correctly.
+
+I have rerun the datasets in question and the output remains the same.
+Would you have any idea why this would happen and how to solve this?
+
+Many thanks in advance.
+Kind regards,
+Olga Kepinska
+
+
+
+
+--
+Olga Kepinska, PhD 
+she/her
+Postdoctoral Researcher
+Brain and Language Lab, University of Vienna
+https://www.olgakepinska.com
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<pp001-music-run01.png>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<pp001-music-run01_design.fsf>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<pp001-music-run02.png>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<pp001-music-run02_design.fsf>
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I am trying to run my first level fMRI analysis and it takes some time to run on my local machine. As a result I am thinking of running some subjects on the cluster of my university as well, to save up time. The issue is that my version is FSL 6.0.5 and on the cluster they have FSL version 6.0.3 installed. For them to install the updated version it takes them around or more than a week (with unclear results if it will work) so I wanted to ask if it is possible to use some subjects analysed with the version 6.0.3 and some with the 6.0.5 for the second level analysis.
+
+For clarity the steps that I am using in the first level are:
+BET extraction, spatial smooting with 5 mm, highpass filter (50 s), FILM prewhitening, but no thresholding on the post stats. Also while I am doing a simple registration, my data are from fmriprep and already registered.
+
+Would anyone have any input around the feasability of this?
+
+Best,
+
+George
+
+########################################################################
+
+
+Hi Paul,
+
+thank you very much for the answer. I followed the instructions, but it didn't work at first.
+With Tom Nichol's help it worked after we copied dc to $FSLDIR/share/fsl/bin/.
+
+Gina
+
+--
+Gina-Isabelle Henze, PhD
+DAAD scholarship holder at the Big Data Institute (PostDoc Position)
+Nuffield Department of Population Health | University of Oxford
+Big Data Institute | Li Ka Shing Centre for Health Information and Discovery
+Old Road Campus | Headington | Oxford | OX3 7LF | United Kingdom
+
+########################################################################
+
+
+Hi Ludovica,
+
+I am planning to assist this year.
+
+How much it will cost?
+
+Thank you!
+Rosie
+
+El mié, 8 feb 2023 11:33, Ludovica Griffanti <ludovica.griffanti@psych.ox.ac.uk> escribió:
+Hello,
+
+The 2023 FSL course will be held online in September over 2 weeks and 2 timezones.
+
+We will announce the dates officially very soon.
+
+Hope it helps with the planning.
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ben Moloney <ben.moloney@AUCKLAND.AC.NZ>
+Date: Wednesday, 8 February 2023 at 01:40
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] date/location fsl course 2023?
+
+Hi, I am planning hoping to attend the FSL course this year and I wondered if any knew when/where it is likely to be so I can plan ahead?
+Thanks!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+The 2023 FSL course will be held online in September over 2 weeks and 2 timezones.
+
+We will announce the dates officially very soon.
+
+Hope it helps with the planning.
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ben Moloney <ben.moloney@AUCKLAND.AC.NZ>
+Date: Wednesday, 8 February 2023 at 01:40
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] date/location fsl course 2023?
+
+Hi, I am planning hoping to attend the FSL course this year and I wondered if any knew when/where it is likely to be so I can plan ahead?
+Thanks!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscma
+
+Dear Jun,
+To find the direction ( of significant results ) you just need to refer back to the original design/contrasts.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear Abhineet,
+The process below assumes parametric stats and so will not use randomise’s non-parametric calculations. To run FDR on FEAT/randomise outputs, you could change the correction mode to “Uncorrected” in the GUI - after running the analysis the “pstat<blah>” images in the .feat folders’ stats subdirectory will contain the uncorrected ( 1-p ) values that could then be processed with FDR.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 1 Feb 2023, at 13:01, Abhineet Ojha <abhineetojha@GMAIL.COM> wrote:
+
+Dear Matthew,
+
+Thanks for the quick reply.
+
+I run randomise inside the FEAT GUI and choose uncorrected as thresholding option. I want to perform FDR correction. Should I use the following command on stats/cope1.nii.gz?
+
+            https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDR:
+           Use with FEAT
+
+            Change directory into the stats sub-directory. It is then necessary to convert a give cope and varcope image into a p-value image. For example:
+
+            ttologp -logpout logp1 varcope1 cope1 `cat dof`
+           (this outputs the log(p) image)
+
+          fslmaths logp1 -exp p1
+       ◦ (this creates the p-value image)
+
+          fdr -i p1 -m ../mask -q 0.05
+
+       ◦ Probability Threshold is:  0.00339819 (this tells you the FDR threshold - p-values below 0.00339819 are significant)
+
+        fslmaths p1 -mul -1 -add 1 -thr .99660181 -mas ../mask thresh_1_minus_p1
+       ◦ (this creates a 1-p image for ease of display, thresholds that at 1-thresh and then remasks)
+
+
+
+
+
+
+Hi Holly,
+My mistake - please read “zstat” as “tstat” in my previous email. Other answers inline with questions below.
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 6 Feb 2023, at 19:33, Holly Sullivan-Toole <hollysully@GMAIL.COM> wrote:
+
+Hi Matt,
+Thank you. Hmm, I have not created a z-stat image but only have a raw t-stat image and a corrp t-stat image. From there, I used the below command, which gives a list of clusters, peak coords, and a COPE-MAX for each cluster. (this is a DTI TBSS analysis if it matters)
+
+   - Corrected 1-p values with associated t-statistics (as output from randomise):
+
+   cluster -i blah_blah_corrp_tstat1 -t 0.95 -c blah_blah_tstat1 --scalarname="1-p" > cluster_corrp1.txt
+
+
+Since I have not created a z-stat image, are the COPE-MAX values t-stats?
+Correct, for the “all-in-one” call like this, the COPE-MAX values would be the ones to report ( and will be t-statistics )
+
+If I made a z-stat image and inserted it here [-c blah_blah_tstat1], would the COPE-MAX value then be a z-stat?  
+Yes, although since we are dealing with non-parametric stats, if you are transforming the tstat image to a zstat image, this is essentially producing "parametric equivalent" z-scores.
+
+
+Hope this helps,
+Kind Regards
+Matthew
+Many thanks!!!
+Holly
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Helka,
+Paul has resolved this in the other thread.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 2 Feb 2023, at 18:51, Helka Ozelo <helka.ozelo@GMAIL.COM> wrote:
+
+Hi Artur!
+
+I am getting the same error to BET analysis. Did you solve this problem?
+
+Thanks
+Helka
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+

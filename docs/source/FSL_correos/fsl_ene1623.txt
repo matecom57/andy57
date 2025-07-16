@@ -1,0 +1,397 @@
+S
+Hi Erin and Alex,
+
+ 
+
+I got a pretty satisfactory fit with low first-order phase (3 deg/ppm) running what I think is a fairly default set of processing steps.
+
+I ran the following for pre-processing:
+
+fsl_mrs_preproc –data metabolite_data.nii.gz –reference water_data.nii.gz –output processed –hlsvd –overwrite –report –align_limits 0 3.5
+
+There are two things to note. 1) I used the alignment limits as there is a small spurious echo in the data at around 4 ppm. 2) I didn’t remove any FID points. However I note that the first FID point appears to have a significantly smaller value than the others. I think this must arise from deliberate processing (maybe online on the scanner) or treatment in hardware. What route was this data generated from?
+
+ 
+
+For fitting I then ran:
+
+fsl_mrs --data processed/metab.nii.gz --basis TRISP_pad_basis/ --output wtc_fit --overwrite --metab_groups MM09 MM12 MM14 MM16 MM21 MM30 MM39 --report
+
+I didn’t try it but I might suggest trimming the list of some very small metabolites. As ever I would certainly suggest investigating empirically generated MM rather than simulated.
+
+ 
+
+Report hopefully attached.
+
+ 
+
+Will
+
+ 
+
+From: MacMillan, Erin <erin.macmillan@ubc.ca>
+Date: Wednesday, 11 January 2023 at 00:28
+To: William Clarke <william.clarke@ndcn.ox.ac.uk>, FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>, Alex Ensworth <alexe@phas.ubc.ca>
+Subject: RE: [FSL] FSL-MRS: Limit First Order Phase?
+
+Hi Will,
+
+Great to hear that you took some time off for a holiday!
+
+ 
+
+I will email you a link to a OneDrive folder with some sample data and our basis set.
+
+Thank you so much for all your help, we really appreciate your support and your work to build FSL-MRS.
+
+ 
+
+Best,
+
+Erin
+
+ 
+
+ 
+
+From: William Clarke <william.clarke@ndcn.ox.ac.uk>
+Sent: Friday, January 6, 2023 8:35 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Cc: MacMillan, Erin <erin.macmillan@ubc.ca>
+Subject: Re: [FSL] FSL-MRS: Limit First Order Phase?
+
+ 
+
+[CAUTION: Non-UBC Email]
+
+Hi Erin,
+
+ 
+
+Sorry for the long delay in replying, I took some time off before Christmas for a holiday and have just returned to the lab.
+
+ 
+
+Thank you for checking those couple of things. I’m sure we can make some tweaks to the fitting code to improve this. Would you be able to send us an example of your data and basis set so we can test against it making any changes?
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Erin L. MacMillan <erin.macmillan@UBC.CA>
+Date: Monday, 2 January 2023 at 18:50
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL-MRS: Limit First Order Phase?
+
+Dear Will and Saad,
+
+Happy New Year!
+
+We are continuing to find that FSL-MRS is imparting a significant first order phase when fitting our data (>20 deg/ppm).
+
+In response to your previous questions:
+
+1. There is not a first order phase on the basis set. This is a basis set for semi-LASER that was simulated with FID-A and converted with the makebasis function in LCModel, all with pretty well default settings. Attached is the output of basis_tools vis.
+
+2. Yes, we have removed the first point in the FID, though it doesn't change the appearance of the real part of the spectrum very much. I suspect that the deviation of the first point from a pure FID is related to some residual water that is out of phase, not to errors in the timing of the pulse sequence that would lead to a first order phase effect.
+
+It would be great if we could place a limit on how much first order phase could be allowed on the basis set.
+
+Please let me know if you need any further info.
+
+Thank you so much for your help,
+Erin
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi Jo,
+This may be due to something like a path containing a space, or other whitespace character, or maybe a field was inadvertently left blank in the GUI?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi all,
+
+I ran into this error while running a 2nd level analysis (averaging parameter estimates across runs for each participant):
+
+/bin/cp /var/folders/3c/7wl0zrqn4d9_y5m8ncsj0cch0000gn/T/feat_phee3c4s.fsf design.fsf
+
+/usr/local/fsl/bin/feat_model design
+
+mkdir .files;cp /usr/local/fsl/doc/fsl.css .files;cp -r /usr/local/fsl/doc/images .files/images
+
+/usr/local/fsl/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/local/fsl/bin/feat /Volumes/johezz/SocialRegfMRI/.gfeat/design.fsf -D /Volumes/johezz/SocialRegfMRI/.gfeat -gfeatprep
+Error submitting job - child killed: SIGABRT
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+        -I {
+            incr arginde..."
+    (file "/usr/local/fsl/bin/feat" line 312)
+
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/fsl_sub -T 60 -l logs -N feat2_pre   /usr/local/fsl/bin/feat /Volumes/johezz/SocialRegfMRI/.gfeat/design.fsf -D /Volumes/johezz/SocialRegfMRI/.gfeat -gfeatprep
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+This only comes up for cope3. Is there something amiss with my design.fsf file? How may I fix this? I will appreciate any leads on this. Thank you so much!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL Developers,
+
+I'm trying to build an environment for FSL 6.0.5.2, but it fails no matter how many times I try.
+I think I was successful last month. It always fails at Stage2.
+I'm not sure if it's a network issue. If you have time, could you take a look at the fslpython_miniconda_installer.log?
+ttps://drive.google.com/file/d/1Z6uGciKkPS6EuNzWrQ9fXE-gyuo6SuSi
+
+After decompressing the FSL6.0.5.2 compressed file, I run the following installation command.
+$>fsl/etc/fslconf/fslpython_install.sh -f fsl
+
+Best regards
+ryo
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Faculty of Psychology (TU Dresden, Germany)
+
+At the Chair of Lifespan Developmental Neuroscience offers a project position as Research Associate / Postdoc (m/f/x)
+
+(subject to personal qualification employees are remunerated according to salary group E 13 TV-L)
+
+starting as soon as possible. The position is limited for 4 years, with a possibility of extension subject to the availability of resources. The period of employment is governed by § 2 (2) Fixed Term Research Contracts Act (Wissenschaftszeitvertragsgesetz - WissZeitVG).
+
+ 
+
+The Chair of Lifespan Developmental Neuroscience investigates neurocognitive mechanisms underlying perceptual, cognitive, and motivational development across the lifespan. The main themes of our research are neurofunctional mechanisms underlying lifespan development of episodic and spatial memory, cognitive control, reward processing, decision making, perception and action. We also pursue applied research to study effects of behavioral intervention, non-invasive brain stimulation, or digital technologies in enhancing functional plasticity for individuals of difference ages. We utilize a broad range of neurocognitive (e.g., EEG, fNIRs, fMRI, tDCS) and computational methods. Our lab has several testing rooms and is equipped with multiple EEG (64-channel and 32-channel) and fNIRs systems, as well as eye-tracking and virtual-reality devices. The MRI scanner (3T) and TMS-device can be accessed through the university’s NeuroImaging Center. TU Dresden is a university of excellence supported by the DFG, which offers outstanding research opportunities. Researchers in this chair are involved in large research consortium and cluster, such as the DFG SFB 940 „Volition and Cognitive Control“ and DFG EXC 2050 „Tactile Internet with Human-in-the-Loop“.
+
+The here announced position is embedded in a newly established research group funded by the DFG (FOR5429), with a focus on modulating brain networks for memory and learning by using focalized transcranial electrical stimulation (tES). The subproject with which this position is associated will study effects of focalized tES on value-based sequential learning at the behavioral and brain levels in adults. Within the research group we closely collaborate with the project sites at Center for Cognitive Neuroscience of the Freie Universität Berlin (Free University of Berlin) and the Department of Neurology at the University Medicine Greifswald and other partner institutions. The data collection for this subproject will mainly be carried out at the Berlin site (Center for Cognitive Neuroscience, FU Berlin).
+
+ 
+
+Tasks: conduct project-related research (data collection and analyses); develop own research ideas in the areas of value-based learning and neurocognitive aging; publishing scientific articles. 
+
+Requirements: university and PhD degree (e.g. Dr. rer. nat. or PhD) in Psychology, Neuroscience or related fields; experiences with cognitive neuroscience methods (i.e., fMRI); excellent language skills in English. Language skills in German is not required but will be welcomed. Prior experience with tES is not required but will be preferred. Interests and experiences in computational neuroscience will be highly welcomed.
+
+ 
+
+Please contact Prof. Shu-Chen Li (shu-chen.li@tu-dresden.de) for questions about the position.
+
+Applications from women are particularly welcome. The same applies to people with disabilities.
+
+Please submit your application materials (cover letter, research interests, CV, degree certificates and names of 3 referees) by February 3, 2023 (stamped arrival date of the university central mail service applies) with the subject heading: Postdoc-Brain Stimulation to: TU Dresden, Fakultät Psychologie, Institut für Pädagogische Psychologie und Entwicklungspsychologie, Professur für Entwicklungspsychologie und Neurowissenschaft der Lebensspanne, Frau Prof. Dr. Shu-Chen Li, Helmholtzstr. 10, 01069 Dresden or via the TU Dresden SecureMail Portal https://securemail.tu-dresden.de by sending it as a single pdf document to shu-chen.li@tu-dresden.de. Please submit copies only, as your application materials will not be returned to you. Expenses incurred in attending the interviews cannot be reimbursed.
+
+___________________
+
+**Reference to data protection: Your data protection rights, the purpose for which your data will be processed, as well as further information about data protection is available to you on the website: https://tu-dresden.de/karriere/datenschutzhinweis.
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Michele,
+
+it is very hard to say anything specific without seeing the data. What do you see if you look at the first volume in 'outfname'.eddy_cnr_maps? My prediction is that you will have one, or a few, voxels with very extreme values. And that they completely dominate your mean across voxels (and hence also standard deviation).
+You may not see that initially, depending on what visualisation software you use and how it sets the display range. You may need to set the range manually to see them. Another option is to use fslstats with the -t and -R options.
+With only two b0 images it is not surprising that you would see something like this. "You" calculate a standard deviation from only two values, and you do that for all voxels. So there is a fair chance one of these will be _very_ close to zero, which you then divide the mean by.
+
+Jesper
+ 
+﻿On 09/01/2023, 16:37, "FSL - FMRIB's Software Library on behalf of Michele Valotti" <FSL@JISCMAIL.AC.UK on behalf of michele.valotti@OXFORDBRAINDIAGNOSTICS.COM> wrote:
+
+    Hi FSL experts,
+    I have come across a scan for which eddy gives very high mean and stdev SNR values. I have inspected the DTI image (which has 2 b0 volumes) manually and it visually looks ok to me (most values in the b0 volumes are between ~100 and ~1500 with a max of ~2500), without much noise outside the brain. Unfortunately, I cannot share the original data as it is confidential, but this is the extract from "qc.json" with the high values.
+   
+        "qc_cnr_avg": [
+            165.6999969482422,
+            1.3899999856948853,
+            1.7599999904632568,
+            1.3700000047683716
+        ],
+        "qc_cnr_flag": true,
+        "qc_cnr_std": [
+            8781.919921875,
+            1.0800000429153442,
+            1.0700000524520874,
+            0.7699999809265137
+        ],
+   
+    Most of the other scans I have encountered have SNR avgs and stdevs below ~50.
+    Does anybody know what the cause of these values could be?
+   
+    Thank you!
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello Melissa,
+                        Without seeing the full script_name.sh, so assuming the fslmaths command is the one seg-faulting, it might be worth checking that the files with background 1 don’t contain any NaNs or other problematic values, e.g.
+
+fslmaths ./FW_f.nii.gz -nanm tempmask
+fslstats tempmask -V
+
+If the fslstats call reports a non-zero number of voxels then this is the issue.
+
+If everything looks good, then if you tar up the input files ( mask.nii.gz and FW_f.nii.gz ) and upload to:
+
+https://oxfile.ox.ac.uk/oxfile/work/extBox?id=700839B35190E48BF
+
+I’ll be able to check the data locally.
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 9 Jan 2023, at 21:11, Melissa McSweeney <mrm596@NYU.EDU> wrote:
+>
+> Hello FSL Users,
+>
+> I came across an error when I used fslmaths in FSL version 6.0.4 to multiply one value of a mask (voxel values that equal 2) by some free water metrics. It works fine for most of my nifti images except for files where the background space in the image is set to 1, while the images that work have the background value set to 0. In the below example, the “problem file” is FW_f.nii.gz
+> fslmaths ./mask.nii.gz -thr 2 -uthr 2 -mul ./FW_f.nii.gz ./mask_FW_f.nii.gz
+>
+> Then that command generates the message:
+> ./script_name.sh: line 35: 33768 Segmentation fault
+>
+> That context being given, I have the following questions:
+> 1. I’m wondering if FSL version 6.0.4 has some sort of expectation that the background of an image should be equal to 0 instead of 1, and if that could raise a “Segmentation fault” warning? (Interestingly, the segmentation appears to still run, but I am not sure how accurate it is given the “Segmentation fault” message.)
+>
+> 2. If this is the case, is there an fslmaths or other FSL command where I can either change all of the voxels that equal 1 to 0, or subtract the value of 1 from all voxels that are equal to 1 in the image while keeping all other values constant?
+>
+> I searched the archives and could not find a question that matched what I am experiencing.
+>
+> Thank you,
+> M
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Postdoctoral position
+
+A post-doctoral position is available at the Anticipation, Cognition and Emotion lab at the University of Pittsburgh (https://www.ace.pitt.edu) to work with Dr. Anna Manelis and her team. A successful candidate will work on the NIMH funded research project that uses multimodal neuroimaging (fMRI, MRI, DTI and fNIRS) to understand the contribution of anticipatory processing to cognitive and emotional dysfunction in individuals with mood disorders.
+
+Required Qualifications: a PhD degree in psychology, cognitive neuroscience, or a related discipline. A strong research background in the analysis and interpretation of neuroimaging data is required. Excellent writing skills are a must. Candidates with a strong computational background are encouraged to apply. Experience with FSL, Freesurfer and E-prime is preferred. The ability to program in Shell, Matlab, Python and/or R is preferred.  Experience with fNIRS, graph modeling, and pattern classification analyses is a plus. While prior experience with clinical populations is not necessary, we expect candidates to be interested in neuroimaging research of working and episodic memory in individuals with mood disorders.
+
+Responsibilities: A successful candidate will analyze clinical, behavioral, and neuroimaging data, write manuscripts, and present at conferences.
+
+This is a 1- to 2-year position. If you are interested in this position, please send a CV, research statement, preprints/reprints of papers, and the names and contact information for two references to Anna Manelis (manelisa@upmc.edu).
+
+ 
+
+ 
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Julien,
+
+Unfortunately the FSLeyes command-line interface can only be used to set up a single scene at the moment. However, you could set up an arbitrary scene using the FSLeyes API via a custom Python script (which you can run with "fsleyes -r <script.py>"), for example:
+
+std = Image(op.expandvars('$FSLDIR/data/standard/MNI152_T1_2mm'))
+overlayList.append(std)
+
+ortho    = frame.addViewPanel(OrthoPanel)
+lightbox = frame.addViewPanel(LightBoxPanel)
+
+ortho   .defaultLayout()
+lightbox.defaultLayout()
+
+Paul
+
+On Sun, 8 Jan 2023 at 16:16, Julien Cohen-Adad <julien.cohenadad@gmail.com> wrote:
+Hello!
+
+I am setting up a CLI-based SOP to perform QC with FSLeyes, and I would like to display two "default" scenes (with options -xh -yh). Is it possible to do it via the CLI?  I've tried doubling the argument pair: `--scene default --scene default` (only one default scene appears) or doubling the argument value: `--scene default default` (crashes).
+
+I know I can save a custom scene, but it is saved under `~/.fsleyes`, hence not "easily" portable to a public-facing SOP.
+
+Many thanks!
+Julien
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I would like to confirm what the "E" and "H" values are for the default -T option in PALM.
+
+I am conducting a functional connectivity analysis using PALM with the -T option selected for threshold free cluster enhancement (TFCE). I found in the FSL Randomise User Guide that it is recommended to use the default -T setting for the related "E", "H", and neighborhood-connectivity parameters which have already been optimized.
+
+I also see in the FSL Threshold Free Cluster Enhancement (FMRIB Technical Report TR08SS1) paper, that it was empirically determined that parameter values of H=2, E=0.5 appear to be optimal, allowing for the avoidance of hand-tuning of the parameters.
+
+I just want to confirm that H=2 and E=0.5 are the default setting values for the -T (TFCE) option in PALM/Randomize?
+
+Thank you,
+Kyle Woisard
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+

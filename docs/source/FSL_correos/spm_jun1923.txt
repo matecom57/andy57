@@ -1,0 +1,1827 @@
+Thank you, Meenakshi! Is there any documentation of this step? I could not find anything in the SPM manual.  Thanks in advance and best wishes, Falko
+Am 17.06.2023 um 06:24 schrieb MEENAKSHI MALVIYA 2190042:
+Hi,
+SPM use the slice order option for this issue if the scan type was interleaved then it will correct the odd even slices and if continuous then conventional correction.
+
+On Fri, Jun 16, 2023 at 6:13 PM Falko Mecklenbrauck <f_meck01@uni-muenster.de> wrote:
+Dear SPM experts,  during research on the preprocessing steps for resting-state-fMRI data for an autocorrelation decay analysis I came across an unfamiliar (for me at least) preprocessing step, that I could not make sense of. Mostly before the slice timing the authors using this (I believe FSL based, but not further specified) preprocessing pipeline, describe the following step: elimination of systematic odd-even slice intensity differences due to interleaved acquisition. The ealiest occasion I could find was in Ojemann et al. (1997) https://doi.org/10.1006/nimg.1997.0289, but it appears constantly in publications that were produced this and related labs.  Does anybody know what algorithm is referenced by this description? Does SPM apply such a correction during any step? And do I even need to worry about this step, if I have fMRI data with a TR = 1000ms and an multi-band factor of 6?  Thank you very much in advance and best wishes, Falko
+-- 
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+-- 
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+
+
+
+Dear SPM experts,  during research on the preprocessing steps for resting-state-fMRI data for an autocorrelation decay analysis I came across an unfamiliar (for me at least) preprocessing step, that I could not make sense of. Mostly before the slice timing the authors using this (I believe FSL based, but not further specified) preprocessing pipeline, describe the following step: elimination of systematic odd-even slice intensity differences due to interleaved acquisition. The ealiest occasion I could find was in Ojemann et al. (1997) https://doi.org/10.1006/nimg.1997.0289, but it appears constantly in publications that were produced this and related labs.  Does anybody know what algorithm is referenced by this description? Does SPM apply such a correction during any step? And do I even need to worry about this step, if I have fMRI data with a TR = 1000ms and an multi-band factor of 6?  Thank you very much in advance and best wishes, Falko
+-- 
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+
+
+Dear everyone, 
+I would like to ask a question about specifying a mixed effects model.
+Currently I have 31 subjects in my fmri dataset. Each first level GLM has 4 regressors of interest, modelled as 10s block, and 6 movement parameters. I try to follow the SPM handbook paradigm in specifying a MFX model.
+1. I specify a FFX model that looks like the picture below 
+
+
+
+Join the ReproPsy & e-ReproNim Fellowship Programmes!
+
+Are you passionate about robust, rigorous, and transparent research practices in Psychology and/or Neuroscience? Do you want up to €1,000 to fund training to enhance your skills in software and data management? Do you want to join a vibrant community of practice? Look no further!
+
+We are thrilled to announce the first edition of two Fellowship programmes, ReproPsy and e-ReproNim. These are unique opportunities to become part of a vibrant community dedicated to advancing open and robust data practices in Psychological and Neuroscientific research.
+
+By becoming a ReproPsy Fellow, you will join a network of like-minded researchers dedicated to advancing data practices in Psychology and Neuroscience. Our programmes offer more than just financial support—it provides a platform for collaboration, knowledge sharing, and professional growth.
+
+The projects are led by Dr Jim Grange (Keele University, UK) and Dr Etienne Roesch (University of Reading, UK). They are part of the repro.school collective, and funded by the Research Data Alliance (RDA), in collaboration with the European Open Science Cloud (EOSC Future), and the UK Reproducibility Network’s Open Research Programme. 
+
+The RDA aims to develop and adopt infrastructure that promotes data-sharing and data-driven research, thereby grounding the fellowship programmes in networks of data specialists.
+ReproPsy is part of the RDA Psychology Data Interest Group;
+e-ReproNim is part of the RDA Neuroimaging Data Working Group, and the European sister project to the North American repronim.org.
+
+The UK Reproducibility Network is a grassroot movement, created organically by researchers in the UK in 2019, in response to the so-called reproducibility crisis. It now gathers active representatives of 70 research-intensive Universities in the UK and lead major projects. Other national Reproducibility Networks exist; there might be one closer to you? If not, contact us and we’ll help you set up.
+
+Open Data in Psychology & Neuroimaging
+In a context where results of research are questioned, open data is transforming the landscape of our practices, enabling collaboration, reproducibility, and innovation. As Psychology & Neuroscience embraces this paradigm shift, we aim to equip researchers like you with the necessary skills and resources to adopt and adapt your data practices, ensuring greater impact and scientific progress, and helping you help your community.
+
+Project overview
+The mission of the Fellowship programme is to empower communities to excel in open data practices. In each programme we are offering 15 fellowships (5 for UK applicants), each worth up to €1,000, to support early career researchers (ECRs) from both EU and UK institutions. ECRs typically donate their time to upskill and transmit this new knowledge to their local communities. We expect the funding awarded to be directed towards helping you create opportunities for learning and teaching, helping you fund your own software and data management training, and organise bespoke training sessions at your home institution. The funding could for instance be used to organise training from the Carpentries (http://carpentries.org) or similar venues; or, should your local policies on workload allocation permit, you could use the funding to offset time commitment towards such training, in agreement with your line manager.
+
+What we ask of you in return is a commitment to participate in the online events organised (at least once a month) and in the projects that may arise, such as scoping and designing training needs, contributing to writing training material, and other projects that you may bring to the table!
+
+More information about the programmes and to access the application form, please visit https://repro.school/2023/05/31/join-the-repropsy-e-repronim-fellowship-programmes/. 
+
+Application Process
+Applying for our Open Data Fellowship Program is simple! The link to the application form is at the bottom, but here's a brief outline of what you will need to consider before applying:
+
+Field(s) of research (Up to 1000 char with spaces): What you do.
+Training Needs (Up to 2000 char with spaces): In your application, highlight the training needs for yourself and your local research community. How can open data practices benefit your institution and Psychology as a whole?
+Training Plan (Up to 2000 char with spaces): Describe the aim, motivation, and relevant prior experience related to the training you envision. How will this training empower your research and contribute to the open data movement?
+Scope of Impact (Up to 2000 char with spaces): Outline the scope of your local community that would benefit from the training. Show us how this initiative can create a ripple effect, benefiting multiple researchers at your institution.
+Special circumstances (Up to 2000 char with spaces): This is a gather-it-all section that allows you to bring anything you think might be relevant to the evaluators. Use this category to describe aspects related to equity, diversity and inclusion we ought to know about.
+Justification of resources (Up to 5000 char with spaces): Provide itemised costs (including tax if applicable) describing how you plan to use the funding allocated in the Fellowship. Each Fellow can request up to €1,000.
+Host Institution Support (signed pdf with letterhead): Upload a letter of support from your host institution, as a PDF file, signed by your line manager, confirming their commitment to supporting your training and supporting you to organise training in your community. This could involve allocating time, which must be clearly stated (in number of hours estimated), or providing you with other necessary resources. Files must be uploaded onto the public dropbox link provided in the application form. You will be asked for your name, and your email address; we only need your name to link your file to your application, and the email address does not have to be real. Any issue with uploading a file, please email e.b.roesch@reading.ac.uk. 
+
+Please also note:
+The maximum number of characters allowed are not targets to be met. Be as concise as needed.
+We are committed to supporting typically under-represented communities, and will apply a process of positive action towards supporting equity, diversity and inclusion. Specifically, after applications are graded by our evaluators and ranked, we will assert the landscape of the selection and adjust the selection if needed. Please use the Special Circumstances box to raise to the attention of the evaluators anything you think may deserve consideration.
+The ReproPsy and e-ReproNim Fellowship programmes are separate projects, yet have lots in common–starting with the application form! We thus regret to say that we will not accept applications to both programmes, and you must specify one or the other on the application form.
+Funding is only available to applicants from institutions hosted in the EU and the UK. Because of the structure of the funding allocation, we are reserving 5 fellowships to UK applicants in each of the fellowship programmes, 10 out of 30 in total.
+Information related to the transfer of the award will be shared with successful applicants after selection. Fellows will be required to have identified who at their host institution will be managing this financial transaction: typically a post-award or a finance office.
+Applications are managed using Google Forms, and PDF uploads with Dropbox. Neither of these platforms require you to create an account on Google or Dropbox. We collect your name and email addresses on the Google Form to identify your applications. This information is not shared with anyone, and only used for general statistics and logistics of the selection process. If you wish to be kept in the loop of what we do, please register to the Psychology Data Interest Group and Neuroimaging Data Working Group, with the Research Data Alliance. Alternatively, you can also visit our website.
+
+
+Application Form: https://bit.ly/repro-school-fellowships
+Deadline: 11/07/2023 midnight anywhere in the world.
+
+
+
+Dear all,
+
+I have a question about controlling for confounding variables in SPM12. My task included 2 categorical conditions (A and B), which were modeled as separate condition regressors. I would like to control for a trialwise confounding variable (C). Can I include C as a nuisance regressor (like head motion parameters)? If so, where should I assign the C values?
+
+I have 200 scans (TR = 2s) for each subject. Can I add C values to scans that cover the onsets of the corresponding trials, and leave other scans as zeros? For example, if the onset of trial 1 is 2.5s and the RT for that trial is 0.9, should I set scan 2 (2-4s) to 0.9?
+
+Or should I add C as a parametric modulator for each condition? I am not sure if it works for the categorical design too.
+
+Thanks a lot!
+
+Best,
+Frodo
+
+Thank you, Meenakshi!
+Is there any documentation of this step? I could not find anything in the SPM manual.
+
+Thanks in advance and best wishes, Falko
+
+Am 17.06.2023 um 06:24 schrieb MEENAKSHI MALVIYA 2190042:
+Hi,
+SPM use the slice order option for this issue if the scan type was interleaved then it will correct the odd even slices and if continuous then conventional correction.
+
+On Fri, Jun 16, 2023 at 6:13 PM Falko Mecklenbrauck <f_meck01@uni-muenster.de> wrote:
+Dear SPM experts,
+
+during research on the preprocessing steps for resting-state-fMRI data for an autocorrelation decay analysis I came across an unfamiliar (for me at least) preprocessing step, that I could not make sense of.
+Mostly before the slice timing the authors using this (I believe FSL based, but not further specified) preprocessing pipeline, describe the following step: elimination of systematic odd-even slice intensity differences due to interleaved acquisition.
+The ealiest occasion I could find was in Ojemann et al. (1997) https://doi.org/10.1006/nimg.1997.0289, but it appears constantly in publications that were produced this and related labs.
+
+Does anybody know what algorithm is referenced by this description? Does SPM apply such a correction during any step?
+And do I even need to worry about this step, if I have fMRI data with a TR = 1000ms and an multi-band factor of 6?
+
+Thank you very much in advance and best wishes,
+Falko
+
+-- 
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+-- 
+Falko Mecklenbrauck, M.Sc.
+PhD Student
+University of Münster
+Institute of Psychology
+Biological Psychology
+Fliednerstr. 21
+Room 310b
+Tel.: +49 251 83 34101
+
+Dear everyone,
+
+I have a GLM model with 4 event regressors. 3/4 events occur 7-12 times per scanning session, and one event occurs 1-4 times per scanning session. I have a total of 31 participants.
+
+However, for some participants, the sparse event occurs more frequent than for others, resulting in an unbalanced count both across participants and across conditions.
+
+Is there a way to do inference on such a GLM?
+
+Kindly,
+
+Boulakis Paris
+
+Post-Doctoral Research Scholar position at the Laureate Institute for Brain Research (LIBR) https://www.laureateinstitute.org
+
+Laureate Institute for Brain Research
+The Laureate Institute for Brain Research in Tulsa, Oklahoma is a scientific research institute that focuses on discovering brain-based technologies to improve mental health.
+www.laureateinstitute.org
+
+
+Position: Dr. Maria Ironside is currently seeking a post-doctoral scholar to be involved in mechanistic studies investigating (1) processes and brain circuits underlying threat sensitivity as a targetable process in depression, anxiety and comorbid depression and anxiety, using a pharmacological probe and (2) acute effects of non-invasive brain stimulation on threat sensitivity in comorbid depression and anxiety. This post-doctoral position provides specialized training and experience in basic experimental studies involving humans, functional magnetic resonance imaging (fMRI) data analysis, and mechanistic research design with the aim of contributing to research to better characterize patients and optimize mental health treatments. A successful candidate will: (1) analyze fMRI, startle EMG, behavioral, and self-report data; (2) work with research participants and LIBR staff; (3) gain experience in the implementation of mechanistic trials; (4) prepare and publish papers, give presentations, and write K-level National Institutes of Health (NIH) grant applications; and (5) progress toward an independent career.
+
+Institute: Located in Tulsa, Oklahoma, LIBR is a privately-funded non-profit clinical neuroscience research institute attached to a major psychiatric hospital (Laureate Psychiatric Clinic & Hospital). Our mission is to reduce the suffering of psychiatric patients by leveraging leading talent and technology to discover novel therapies. LIBR offers excellent training opportunities in a dynamic, interactive, and multidisciplinary environment with a diverse team of collaborators. LIBR is an Equal Opportunity/Affirmative Action employer, compliant with the Americans with Disabilities Act and seeks to hire scholars from a wide variety of backgrounds and is committed to supporting a culture of diversity and respect.
+
+Facilities: A state-of-the-art neuroimaging research environment, including two 3-Tesla MRI scanners (GE Discovery MR750; fully research-dedicated), equipped with blood-oxygen-level-dependent and arterial spin labeling pulse sequencing, a custom-developed real-time fMRI system, an fMRI-compatible electroencephalography (EEG) system, a stand-alone EEG system and other physiological testing systems.
+
+Requirements: (1) Ph.D. in Clinical Psychology, Clinical Science, Developmental Psychology, Cognitive Psychology, Experimental Psychology, Psychiatry or Neuroscience; and (2) a solid foundation in statistics.
+
+Preferred skills: (1) experience analyzing fMRI and/or startle EMG data; (2) experience with fMRI analysis software (FSL, SPM, AFNI and/or fMRIprep) and scripting; (3) experience with R statistical analysis software.
+
+Salary/Benefits: This is a full-time research position for 2 years with renewable funding up to 3-5 years. A full benefits package is available. We welcome international applicants and can support a H1B visa.
+
+Start Date: Autumn 2023.
+
+How to Apply: Interested candidates should email a CV, a brief statement of long-term career goals, and contact information for 3 references to Dr. Maria Ironside, LIBR Associate Investigator: mironside@laureateinstitute.org.
+
+Ph.D. studentship in Cognitive, Social and Affective Neurosciences (CoSAN), Sapienza University of Rome
+
+
+Call for applications.
+
+
+
+Ph.D. coordinator: Prof. Matteo Candidi
+
+CoSAN coordinator: Prof. Salvatore Maria Aglioti
+
+
+WHAT
+
+Four positions with full-time stipend granted by the Italian Ministry of Education (MUR) to Sapienza.
+
+Two positions with full-time stipend granted by PNRR (D.M. 118).
+
+Two positions with no stipend.
+
+The program offers, to at least one of the selected candidates, the possibility to achieve a joint PhD degree in agreement with City, University of London (UK).
+
+
+
+WHERE
+Department of Psychology, Sapienza University of Rome http://dippsi.psi.uniroma1.it
+Santa Lucia Foundation, Rome http://www.hsantalucia.it
+
+
+
+APPLICATION DEADLINE
+June 2023 the 22nd, 2:00 pm CEST
+
+
+HOW TO APPLY
+
+Please follow the Application Tutorials available here:
+
+https://www.uniroma1.it/sites/default/files/user/1824/eng_applicationssubmitiontutorial_39cycle_0.pdf
+
+(TUTORIAL 39° CALL 2023)
+
+(Procedure to apply for admission to Sapienza’s PhD courses 39° call)
+
+General Sapienza PhD Call rules:
+
+https://www.uniroma1.it/sites/default/files/user/1824/call_for_applications_39th_cycle_-_phds_english_version_2.pdf
+
+Specific Psychology & Social Neuroscience PhD Call:
+
+https://phd.uniroma1.it/web/concorso39.aspx?s=&i=3533&m=&l=EN&p=&a=
+
+
+
+KEY TOPICS 
+
+Embodiment, Corporeal Awareness, Interoception, Embodied Morality, Body Image Disorders, Empathy, Performance Monitoring, Pleasure, Pain, Autism, Social an Intimate Touch, Existential Neuroscience, Social Actions & Interactions, Social Decision Making, Neuroleadership.
+
+
+KEY TECHNIQUES
+NIBS (TMS, tDCS, tACS, tFUS), EEG, LEPs, fMRI, Physiological measures (EKG, EGG, EMG, Thermal lmaging), lmmersive Virtual Reality, Motion kinematics, Eye tracking, Brain lesion analysis, Computational Modeling
+
+
+
+LANGUAGE
+All PhD activities take place in English.
+
+
+SALARY
+Minimum euro 16.243 per year (before 11,41% taxes for health insurance).
+Scholarships can be raised by 50% for research periods abroad.
+A special track is reserved to self-funded non-Italian applicants.
+
+
+CONTACT INFO
+Scientific info: matteo.candidi@uniroma1.it, giuseppina.porciello@uniroma1.it, salvatoremaria.aglioti@uniroma1.it
+Administrative info: cosanphd@uniroma1.it
+
+
+
+--
+Chiara Verga, PhD 
+Social and Cognitive Neuroscience Lab
+Department of Psychology
+Sapienza University of Rome
+Via dei Marsi, 78
+00185 Rome (Italy)
+https://agliotilab.org
+ 
+Santa Lucia Foundation
+via Ardeatina, 306
+00179 Rome (Italy)
+
+Hello Peter,
+
+this is with fMRI. The conditions are A-B-C in one single run. Then this was repeated a few more times in a total of 6 times. Thanks for the help!
+
+Kind regards,
+Winson
+
+On Thu, Jun 8, 2023 at 2:30 AM Zeidman, Peter <peter.zeidman@ucl.ac.uk> wrote:
+Dear Winson
+
+Please could you tell us whether this was fMRI or M/EEG?
+
+ 
+
+And can you tell us more about the timing of the experiment? How are conditions A,B,C arranged in time?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Winson Yang
+Sent: Monday, May 22, 2023 4:38 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] DCM contrast for case study
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hello DCM experts,
+
+ 
+
+I am running a DCM analysis for a case study. How would you create the contrasts at second-level to compare between conditions? My design is as follows: Participant completed 10 runs of meditation conditions A, B, C, which are also in progressive order in a single run. 
+
+ 
+
+Is there a way to look at the changes in effective connectivity from A-B-C while accounting for the repeated runs? If not, what is the simplest manner to investigate this? If not, should i compare between two conditions then, and how would the contrast look like?
+
+ 
+
+Kind regard,
+Winson
+
+Hi everyone
+
+To aid in the process of research and grant writing, Instats is offering a new three-part seminar series: Using ChatGPT for Academic Publications and Grants (running July, October, and December). Through hands-on applications, the seminars cover AI-driven research methods in a way that is specifically designed for researchers, graduate students, and professionals seeking to leverage the power of ChatGPT to enhance their research -- especially in the domain of grant writing, which as we all know can be quite tedious (even as it becomes increasingly important due to funding cuts). These seminars should be especially useful for those who need help in the process of manuscript preparation and grant writing, including ESL students/researchers.
+
+Delivered through three separate seminars, the series takes participants on a journey through the new world of large language models using AI, focusing on its applications in 1) streamlining literature reviews, 2) academic paper writing/publication (including automating the R&R process), and 3) grant application writing. The interactive lectures and hands-on exercises will help participants master practical applications and best practices to unlock the full potential of ChatGPT for research workflows. By the end of this immersive set of seminars, participants will be armed with the knowledge and skills to effectively utilize ChatGPT in conducting efficient, comprehensive research and automated grant funding applications, while navigating ethical considerations and potential biases.
+
+Don't miss this unique opportunity to revamp and augment your research by harnessing the capabilities of ChatGPT (and Google Bard).
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Dear Clément
+Sorry for the delay in replying. In case this is still helpful...
+
+I suggest you do not go back to the first level DCMs using the second output from spm_dcm_peb. Rather, make all your inferences by comparing PEB models (spm_dcm_peb_bmc), and look at the parameter estimates that result. The outputs will include the probability for an effect of group on each connection. There's no need to do a t-test.
+
+Best
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Clément Tarrano
+Sent: Thursday, March 30, 2023 6:02 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Overall inhibitory/excitatory effect using DCM PEB
+
+⚠ Caution: External sender
+
+
+Dear DCM experts,
+  
+I would like to compare the effective connectivity at rest in a network containing a cerebellar region and several cortical nodes between patients and controls.  
+I am also interested to study the overall effect of the cerebellum on the cortex in term of excitation/inhibition and differences between the groups.
+
+  For this, I constructed a full model and used the PEB framework. This is my model matrix M : a first column of  "1" and a second column with "1" for patients and "-1" for controls (then mean centered). I used the option "search over the nested model" to prune away non-relevant connections.  
+This analysis gave me two A-matrix contrasts: A first one for the entire group of participants and the second one for the between groups contrast.  
+
+Now, I would like to investigate the overall difference in term of inhibition of the cerebellum on the cortical nodes between groups.  I used [PEB,DCM ]    = spm_dcm_peb(GCM,M) to get the subjects parameters updated with the group priors.  
+
+Then, I calculated the mean of the extrinsic connectivity parameters (with a posterior probability >99 for the entire group of participants - given by the first A-matrix contrast) directed from the cerebellum to the cortex in each groups.
+Then I compared these means which were both negative, but more negative in controls compared to patients.
+
+I have following questions :
+-          Can I simply  assume from the above, that the cerebellum had a lower inhibitory effect on the cortex in the patients group ?
+-          Or do I need to perform a statistic test to compare these means (such as a t-test) or the update of the parameters made by the PEB has already taken into account the group difference?
+-          Is there a better way to resolve this question?  
+
+Thank you very much for your help.
+
+Best,
+Clément
+
+Dear Winson
+
+Please could you tell us whether this was fMRI or M/EEG?
+
+ 
+
+And can you tell us more about the timing of the experiment? How are conditions A,B,C arranged in time?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Winson Yang
+Sent: Monday, May 22, 2023 4:38 PM
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] DCM contrast for case study
+
+ 
+
+⚠ Caution: External sender
+
+
+
+Dear K&M
+That looks excellent. A couple of suggestions:
+
+- You might want to z-score age so it's roughly in the same range as the other variables, but this is not mandatory.
+- Your second design (PEB-of-PEBs) is overly complicated, which might reduce statistical efficiency. You've correctly got a PEB for each group (PEB 1-4), including effects of time and confounds. Now you just need one more PEB (PEB-of-PEBs), with covariates for the overall mean and group differences - i.e., combine PEBs 5-8 into a single model.
+
+I am hoping your much simpler first design will have the better (more positive) free energy :-)
+
+Best
+Peter
+
+Dear colleagues,
+
+ 
+
+I would be grateful if you could circulate details about a 1-year Research Assistant position available at the University of Sussex, Brighton, UK. This position would suit a recent BSc or MSc graduate with experience of running EEG experiments.
+
+ 
+
+Many thanks,
+
+ 
+
+Ed
+
+ 
+
+We are seeking a research assistant to join an exciting one-year research project examining how our brains use top-down mechanisms to predict upcoming words in speech (‘predictive coding’). The project will use electroencephalography (EEG) recordings of brain activity from healthy volunteers.
+
+The project is funded by a BIAL Foundation grant awarded to Dr Ediz Sohoglu. The post-holder will join the Auditory Cognition Group, which conducts research into the psychology and neuroscience of how we listen, with a particular focus on speech perception.
+
+The project will take place at the University of Sussex, using the on-campus EEG facilities within the School of Psychology. The post-holder will join the highly collaborative and interdisciplinary Sussex Neuroscience research community, which includes over 50 research groups, forming one of the highest densities of Neuroscience faculty in any UK University.
+
+The post-holder will support Dr Sohoglu in the day-to-day running of the project, including participant recruitment, data collection and management, and analysis.
+
+The post is likely to be of most interest to applicants with research interests in perception and language, studied using methods from cognitive neuroscience (e.g. EEG or other neuroimaging method). The post-holder should have experience in the acquisition of EEG data. Experience of EEG data analysis is desirable.
+
+Please contact Dr Ediz Sohoglu (e.sohoglu@sussex.ac.uk) for informal enquiries. Further details, including how to apply, can be found here: https://www.sussex.ac.uk/about/jobs/research-assistant-ref-20854
+
+ 
+
+ 
+
+Dear Vasilis
+
+The only tool I know is the gradunwarp tool found here: https://github.com/Washington-University/gradunwarp you also need the scanner specific file with coefficients for the Legendre polynomials describing the specific gradient set, but you can probably get those the same place you got the data. In principle it should be possible to derive a deformation field which could be used in SPM, but I do not know of anyone who has done so.
+
+Best
+Torben
+
+
+Dear SPM community,
+
+I'm getting in touch because I'm looking for a way to correct for gradient inhomogeneities in fMRI data. Are there any tools in SPM that can use B0 maps to correct for such artefacts?
+
+The data is collected in a 3T Connectome scanner, and it has been suggested to me that there is susceptibility for gradient inhomogeneities with the ultra strong gradient of the scanner, so I was wondering if there's a preprocessing step directly in the SPM pipeline or any plug-ins that can be used for that purpose.
+
+Many thanks,
+
+Vasilis
+
+Technische Universität Dresden (TUD), as a University of Excellence, is one of the leading and most dynamic research institutions in the country. Founded in 1828, today it is a globally oriented, regionally anchored top university as it focuses on the grand challenges of the 21st century. It develops innovative solutions for the world's most pressing issues. In research and academic programs, the university unites the natural and engineering sciences with the humanities, social sciences and medicine. This wide range of disciplines is a special feature, facilitating interdisciplinarity and transfer of science to society. As a modern employer, it offers attractive working conditions to all employees in teaching, research, technology and administration. The goal is to promote and develop their individual abilities while empowering everyone to reach their full potential. TUD embodies a university culture that is characterized by cosmopolitanism, mutual appreciation, thriving innovation and active participation. For TUD diversity is an essential feature and a quality criterion of an excellent university. Accordingly, we welcome all applicants who would like to commit themselves, their achievements and productivity to the success of the whole institution.
+
+ 
+
+At the Faculty of Psychology, Institute of Educational and Developmental Psychology, the Chair of Lifespan Developmental Neuroscience offers a position as
+
+ 
+
+Research Associate (m/f/x)
+
+ 
+
+(subject to personal qualification employees are remunerated according to salary group E 13 TV-L)
+
+starting October 1, 2023. The position is initially limited to 2 years with the option for extension. The period of employment is governed by the Fixed Term Research Contracts Act (Wissenschaftszeitvertragsgesetz - WissZeitVG).
+
+The Chair of Lifespan Developmental Neuroscience investigates neurocognitive mechanisms underlying perceptual, cognitive, and motivational development across the lifespan. The main themes of our research are neurofunctional mechanisms underlying lifespan development of memory, cognitive control, reward processing, decision making, and multisensory perception. We also pursue applied research to study effects of behavioral intervention, non-invasive brain stimulation, or digital technologies in enhancing functional plasticity for individuals of difference ages. We utilize a broad range of neurocognitive (e.g., EEG, fNIRs, fMRI, tDCS) and computational methods. The lab has several testing rooms and is equipped with multiple EEG (64-channel and 32-channel) and fNIRs systems, as well as eye-tracking and virtual-reality devices. The MRI scanner (3T) and TMS-device can be accessed through the university’s NeuroImaging Center. TU Dresden is a university of excellence supported by the DFG, which offers outstanding research opportunities. Researchers in this chair are involved in large research consortium and cluster, such as the DFG SFB 940 „Volition and Cognitive Control“ and DFG EXC 2050 „Tactile Internet with Human-in-the-Loop“.
+
+Tasks: The position will involve research and teaching export courses on child and youth development for students who pursue teaching degrees, esp. scientific teaching (2 bachelor-level seminars per semester in German to students pursuing teaching degrees) and conduct research in the field of lifespan developmental cognitive neuroscience. Topics for the seminars need to cover neurocognitive mechanism of cognitive, motivation, or perceptual development. The research topics are subject to the fits between the candidate’s research interests, expertise, and ongoing research projects in the chair.
+
+ 
+
+Requirements: university degree (Diploma/Master) and – if applicable – PhD degree in Psychology, Cognitive Neuroscience, or Cognitive Science; experiences with cognitive neuroscience methods (EEG, fNRIs, MRT); excellent language skills in German and in English.
+
+Please contact Shu-Chen Li (shu-chen.li@tu-dresden.de) for questions about the position.
+
+ 
+
+TUD strives to employ more women in academia and research. We therefore expressly encourage women to apply. The University is a certified family-friendly university and offers a Dual Career Service. We welcome applications from candidates with disabilities. If multiple candidates prove to be equally qualified, those with disabilities or with equivalent status pursuant to the German Social Code IX (SGB IX) will receive priority for employment.
+
+Please send your application materials (cover letter, research interests, CV, degree certificates and names of 2 referees by July 7, 2023 (stamped arrival date of the university central mail service applies) to: TU Dresden, Fakultät Psychologie, Institut für Pädagogische Psychologie und Entwicklungspsychologie, Professur für Entwicklungspsychologie und Neurowissenschaft der Lebensspanne, Frau Prof. Dr. Shu-Chen Li, Helmholtzstr. 10, 01069 Dresden, Germany or via the TU Dresden SecureMail Portal https://securemail.tu-dresden.de by sending it as a single pdf file (with the subject heading: Research Associate) to shu-chen.li@tu-dresden.de. Please submit copies only, as your application will not be returned to you. Expenses incurred in attending interviews cannot be reimbursed.
+
+----------------------
+
+Reference to data protection: Your data protection rights, the purpose for which your data will be processed, as well as further information about data protection is available to you on the website: https://tu-dresden.de/karriere/datenschutzhinweis.
+
+ 
+
+ 
+
+_______________________________________________________________________________________________________________________
+
+Prof. Shu-Chen Li, Ph.D.
+
+Lehrstuhl Entwicklungspsychologie und Neurowissenschaft der Lebensspanne
+
+(Chair of Lifespan Developmental Neuroscience)
+
+Fakultät Psychologie (Faculty of Psychology) 
+
+Zellescher Weg 17, Rm. A233
+
+D-01062 Dresden, Germany
+
+E-mail: Shu-Chen.Li@tu-dresden.de
+
+URL: http://tu-dresden.de/mn/psy/epsy
+
+Tel.: +49-351-46334162/Fax:+49-351-46342194
+
+ 
+
+Excellence Cluster – Centre for Tactile Internet with Human-in-the-Loop
+
+URL: https://www.ceti.one
+
+ 
+
+Technische Universität Dresden (TU Dresden)
+
+A brain imaging course advert from Matthew Brett and the Nipraxis team.
+
+========================================================================
+
+Dear all,
+
+This is just to let you know that we are now accepting requests to
+join our second full version of the Neuroimaging Practice and Theory
+Course, running over 8 weeks, from the week beginning 31 July through
+the week ending 22nd September, 2023
+
+The course teaches reproducible brain imaging analysis, and is for
+anyone with sound basic knowledge of Python and the Numpy array library.
+
+The course is free in terms of money, but we ask for a substantial
+commitment in terms of your time :
+https://nipraxis.org/summer-2023/#how-much-time-will-it-take
+
+See https://nipraxis.org/ for more on the course in general, and
+https://nipraxis.org/summer-2023/ for more on this iteration.
+
+To apply, please read the introduction in
+https://nipraxis.org/summer-2023/ and then fill out this form:
+
+https://docs.google.com/forms/d/e/1FAIpQLSeF9mg2ZMCbmh5EFWpenQH_EHjRokJRofg2r6mxsKPOBEyZ1g/viewform
+
+Cheers,
+
+Matthew (for the Nipraxis team)
+
+*** Please forward to any potential candidates in your networks who may be interested in these positions ***
+
+
+I am currently advertising two positions to join my lab, the Cognitive Hearing Lab, at UCL (London, UK). My lab combines behavioural techniques (e.g., auditory psychophysics), cognitive neuroscience (e.g., EEG, MEG, and fMRI), and computational modelling. Both positions are part of a Wellcome-funded grant to examine how central cognitive pathways interact with hearing loss.
+
+
+
+(1) Funded PhD opportunity (3-4 years) - CLOSING SOON (Application deadline: 8th June 2023)
+
+The appointed candidate will lead work using behaviour and pupillometry, to examine how central cognitive pathways interact with hearing loss. UK students will receive a salary at Grade 6 and their PhD fees fully covered. International students will receive a salary at Grade 6 and their PhD fees partially covered. The preferred start date for the position is 25th September 2023. Full details and application portal: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?jobId=10345&jobTitle=Research%20Assistant%20(with%20MPhil%2FPhD%20enrollment)
+
+(2) Postdoc position (3+ years) - Application deadline: 23rd June 2023
+The appointed candidate will examine how central cognitive pathways interact with hearing loss, leading work using 7-Tesla MRI, which will allow us to estimate laminar-specific cortical responses in humans. The preferred start date for the position is September 2023. Full details and application portal: https://www.ucl.ac.uk/work-at-ucl/search-ucl-jobs/details?jobId=10852&jobTitle=Resarch%20Fellow
+
+Feel free to get in touch with me (emma.holmes@ucl.ac.uk) for informal queries about either position
+
+Best wishes,
+
+Emma
+ 
+
+Emma Holmes
+Lecturer in Speech and Hearing Science, UCL
+(she/her)
+
+e-mail: emma.holmes@ucl.ac.uk
+website: https://emmaholmes.co.uk/
+twitter: @Emma_Holmes_90
+
+Mailing Address:
+Department of Speech Hearing and Phonetic Sciences
+Chandler House
+2 Wakefield Street
+London WC1N 1PF
+United Kingdom
+
+Let me know if I can make any adjustments related to disability or neurodivergence to improve how we interact. Please note that I don't expect you to respond to emails outside of your normal working hours.
+
+Dear neuroimagers,
+
+We have a dataset of 23 subjects and some of our subjects' brains are very small. When we do second level analysis, our second level mask becomes very dilated (as in, it becomes small). For example, when I overlay one subject's normalized structural image (or EPI) onto the MNI template, I can see that the margins of the skull is within the MNI template, so this subject is way small for the MNI template (see the figure below) as you can see at the occipital lobe, the outmost margin is the MNI template and the patient's skull is inside the MNI template.
+
+Due to this subject, our second level mask becomes very tiny and we miss a huge part of the occipital pole which is relevant to the study. How can we solve this problem? 
+
+Thank you.
+
+Tamer Gezici
+
+
+Just reposting this in case it was missed.
+
+Thanks in advance for your help!
+Milena
+
+Dear SPM community,
+
+I am reaching out for assistance regarding an issue converting a Fieldtrip structure into an SPM D file. Currently, I am utilizing the following code to remove cardiac field components using FieldTrip:
+
+clean_data= ft_rejectcomponent(cfg, ic_data, raw_data);
+
+This FieldTrip function relies on raw EEG data. Once I successfully remove the artifacts, I need to convert the data back into a D file (m/EEG object) to perform further data processing tasks such as re-filtering and epoching within SPM. However, I have encountered a problem when using the spm_eeg_ft2spm function for this conversion.
+
+The resulting D file no longer contains crucial objects necessary for subsequent SPM pre-processing steps. Notably, the objects D.events and D.nSamples are empty, and D.coor2D contains incorrect channel coordinates.
+
+As a workaround, I have been converting my FieldTrip EEG structure into an EEGlab structure, adding the missing objects, and then converting it to SPM format. Unfortunately, this approach introduces conflicts between EEGlab and FieldTrip. Hence, I am reaching out to inquire whether anyone else has encountered this problem and if there is a more straightforward way to directly convert a FieldTrip structure into a D SPM file while preserving the D method objects.
+
+I would greatly appreciate any assistance or insights that you can provide. 
+
+Best, 
+
+Caroline
+
+Dear SPM M/EEG experts,
+
+May I ask what' the unit of power in time-frequency analysis for MEG? According to my understanding, the unit of power in time-frequency analysis for EEG is uV^2, is that the same in MEG? And what's dB and personal changes? Many thanks for any suggestions.
+
+Best,
+
+Li Zhi
+
+[2nd announcement]
+
+The Neuroimaging Statistics Workshop, a satellite event to the 2023 Organisation for Human Brain Mapping (OHBM) meeting, is a venue to foster collaboration and generate ideas among statisticians working with brain data. We're pleased to announce that the full programme is now set and limited spaces remain available for (free!) registration.
+
+The schedule is below and all details are here https://neurodatascience.github.io/events.html
+
+Warmly,
+Jean-Baptiste Poline & Tom Nichols
+
+
+Program
+9:30-10:30
+
+Introductory remarks: Tom Nichols, JB Poline
+Keynote: Inaugural Keith Worsley lecture: Jonathan Taylor: Random field theory meets the LASSO
+10:30:11:45
+
+Samuel Davenport: Accurate voxelwise FWER control in fMRI using Random Field Theory
+Sarah Weinstein: Spatially-enhanced clusterwise inference for testing and localizing intermodal correspondence
+Break
+
+Bertrand Thirion: False Discovery Proportion control for aggregated Knockoffs
+Chris Camp: Contextualizing classification accuracy within effect sizes
+11:45-12:30
+
+Keynote: Mandy Meija : Rethinking scrubbing in fMRI from a statistical perspective
+12:30-13:30 Lunch break (sponsored by ASA Section on Statistics in Imaging)
+13:30-2:15
+
+Keynote: Jelle Goeman : Rethinking scrubbing in fMRI from a statistical perspective
+2:15-3:30
+
+Yifan Yu: Neuroimaging Meta Regression for Coordinate Based Meta Analysis Data with a Spatial Model
+Jun Young Park: SAN-GP: Mitigating inter-scanner biases in high-dimensional neuroimaging data via spatial Gaussian process
+Break
+
+Ian-Christopher Tanoh: A scalable multivariate Bayesian polygenic model for heritability-based principal
+Habib Ganjgahi: Scalable Hierarchical Bayesian Model for Multiple Sclerosis Progression using Brain Imaging and Clinical Features
+3:30-4:30
+
+Keynote: Martin Linquist :Individualized spatial topography in functional neuroimaging
+Venue: De Grand Pré Conference Centre
+De grand pré, Montreal Neurological Institute, McGill University, 3801 Rue University, Montréal, QC H3A 2B4, Canada
+
+
+
+Hi,
+
+
+
+the row of zeros may be explained by this being the first of several sessions, and the others being registered to it. The numbers generally refer to the change in position w.r.t. the previous volume, so simply averaging them may not be very meaningful. Also, only looking at translations alone severely underestimates the true extent of subject motion (https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0106498
+
+Isolated Assessment of Translation or Rotation Severely Underestimates the Effects of Subject Motion in fMRI Data
+journals.plos.org
+).
+
+
+
+To get a more comprehensive idea about subject motion, you could look at my motion fingerprint toolbox which contains a little script (mw_anamot) that analyzes these realignment parameter files and summarizes subject motion.
+
+
+
+Cheers
+
+Marko
+
+
+
+Von: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> im Auftrag von Tayla Williams <taylawilliams@UNSW.EDU.AU>
+Gesendet: Donnerstag, 1. Juni 2023 04:40
+An: SPM@JISCMAIL.AC.UK
+Betreff: [SPM] Motion Parameters
+ 
+Dear SPM Experts,
+
+ 
+
+We have a text file per person (one for each run, 864 volumes across two runs). 6 rows, our understanding is that the 6 rows correspond to:  
+
+x            y             z          roll         pitch   yaw
+
+(see examples attached)
+
+ 
+
+Are you able to please advise if we are able to get 6 motion parameters per person by just averaging all the volumes or if we need to do take the zeros in to consideration for the first volume of each run. There does not appear to be a pattern to the zeros, as some have zeros in the entire first row (attachment 2) and others do not (attachment 1).
+
+ 
+
+Many thanks,
+
+Tayla Williams
+
+ 
+
+School of Clinical Medicine, UNSW Medicine & Health
+
+Discipline of Psychiatry & Mental Health
+
+Level 1, AGSM Building 
+UNSW SYDNEY
+
+ 
+
+Dear SPM Experts,
+
+ 
+
+We have a text file per person (one for each run, 864 volumes across two runs). 6 rows, our understanding is that the 6 rows correspond to:  
+
+x            y             z          roll         pitch   yaw
+
+(see examples attached)
+
+ 
+
+Are you able to please advise if we are able to get 6 motion parameters per person by just averaging all the volumes or if we need to do take the zeros in to consideration for the first volume of each run. There does not appear to be a pattern to the zeros, as some have zeros in the entire first row (attachment 2) and others do not (attachment 1).
+
+ 
+
+Many thanks,
+
+Tayla Williams
+
+ 
+
+School of Clinical Medicine, UNSW Medicine & Health
+
+Discipline of Psychiatry & Mental Health
+
+Level 1, AGSM Building 
+UNSW SYDNEY
+
+ 
+
+Dear SPM users,
+
+I hope you’re having a lovely week!
+I have a question regarding the second-level analysis.
+Does SPM support analysis for the interaction effect of a continuous between-subject variable by categorical within-subject condition? Does anyone have experience running this type of analysis?
+
+I have experience running categorical between-subject variable x categorical within-subject variable with factorial design in SPM, but I would like to learn whether this case is also possible.
+
+Thank you!
+
+Best wishes,
+Leehyun
+
+--
+Leehyun Yoon, PhD 
+Postdoctoral Scholar
+Center for Mind and Brain
+University of California, Davis
+
+Dear colleagues,
+
+Machine learning has attracted huge attention in social sciences and neuroscience, delivering predictions that exceed any insight that a human researcher would be able to obtain with common theory-driven approaches. However, applications are often criticized as being mainly exploratory and inductive, and their utility for theory development is not yet clear. for this reason we are organizing a free interdisciplinary online workshop with the title:
+
+Machine Learning and Theory Development
+
+taking place from 10 - 12 July 2023 (3 three-hour-sessions),
+sponsored by Jacobs Foundation and CIFAR.
+
+In this workshop renowned experts from various fields will discuss how machine learning methods can be used to advance theory development. Presentations will be followed by panel discussions on similarities and differences, possibilities and limitations of the approaches. The workshop is targeted for applied researchers in any discipline interested in using machine learning methods to advance their field. 
+
+Our wonderful speakers are:
+
+Dr. Ryota Kanai, founder and CEO of Araya
+Dr. Katharina Dobs, University Giessen
+Dr. Blake Richards, McGill University Dr. Mayank Agrawal (Princeton University)
+Dr. Filiz Garip (Princeton University)
+Dr. Anna Ivanova (MIT)
+Dr. Rebecca Johnson, Georgetown University
+Dr. Caspar van Lissa, Tilburg University
+Dr. Justin Grimmer, Stanford University 
+The workshop is free of charge but it is still necessary to register to give us an idea of who will be attending and to enable us to communicate with you more efficiently.
+
+More information, the workshop programme, and the registration link can be found on our website: www.ml-theory.com.
+
+
+
+We would be honoured to have you join us for another workshop.
+
+Best Regards,
+
+Alexander Jung,
+Drew Bailey,
+Catherine Lebel
+Julia Moeller,
+Adeel Razi,
+Baobao Zhang,
+Kou Murayama
+
+Dear Gabriella
+
+This is most likely a movement artefact (most likely pitch rotation). To identify it please do the following. Use the command:
+
+P=spm_select
+
+and select all of your original images. Now use the command:
+
+spm_check_registration(P)
+
+this will (if you have selected more than 24 images) open a movie function and by clicking the play button in the lower right corner you will start the movie. (If you have less than 24 volumes and still want to display them as a movie use
+
+spm_ov_browser('ui',P)
+
+If you right click on the image you can select Browse-Display Profile. This should help you identify volumes that are behaving strange, if not try to look at the estimated motion parameters at the same time.
+
+if only a few volumens are affected you may consider including scan-nulling regressors, or expanded motion parameters in your design matrix, or even a combination.
+
+Best
+Torben
+
+
+
+Den 11. maj 2023 kl. 18.20 skrev gabriella Imbriano <0000721c2513eedd-dmarc-request@JISCMAIL.AC.UK>:
+
+Has anyone seen something similar in their data as the image I have attached? This pattern is apparent in the subject level stat maps (photo attached) and seems to with emerge or start becoming very apparent after coregistration. For context my preprocessing stream converts dicom into nii files, then slice timing, realignment, coregistration, normalization, then smoothing. I looked through the raw data and it seems to be clean and free of striping at that stage.
+<Screen Shot 2023-05-11 at 9.19.52 AM.png>
+
+
+Dear EEGlab List members, 
+
+please find below an internship announcement :
+
+Internship M2
+1 Description of the internship
+This project is based on experimental results (Lelard et al., 2013; Lelard et al., 2017; Beaumont et al., 2021; Mouras and Lelard, 2021) from the collaboration between the LNFP (UR-UPJV 4559, contact: H Mouras) and APERE (UR-UPJV 3300, contact: T Lelard) laboratories . Particularly in the functional context of the perception of painful stimuli, this collaboration between the APERE (UR-UPJV 3300) and LNFP (UR-UPJV 4559) teams has been fruitful (Lelard et al., 2013; Lelard et al., 2017; Beaumont et al, 2021; Mouras and Lelard, 2021) demonstrating: (i) a mean differential modulation of postural control in response to the perception of painful versus non-painful stimuli (approach behavior in passive condition vs. avoidance behavior in mental simulation situation - "imagining being in the represented situation") ; (ii) a time effect allowing the complexity of the modulating effect of mental simulation on these correlates to emerge, with an "early" effect (4 s after stimulation) and a later effect (11 to 12 s after stimulation); (iii) dichotomy effects between subjective reports and objective measures, questioning the importance of the level of awareness of the postural modulation operating. Collaboration with the Belgian team involved in this project has demonstrated different patterns of postural modulation among subjects with alcohol use disorders between "relapsers" or "abstainers" (Noel et al., 2021). However, the use of posturography to study the peripheral correlates of socioemotional information processing remains recent and the nature of the central processes at work in the modulation of postural control at work during socioemotional information processing remains to be clarified. In this sense, electroencephalography (EEG) could be a technique of choice to collect central neural markers in conjunction with peripheral posturographic markers. In this respect, some studies have, for example, provided results on eeg markers of approach-avoidance behavior whose correlates are explored in posturography (Lange et al., 2022; Marrero et al., 2022 etc...). 
+For several years, we have been able to set up a collaboration with a Belgian team (Prfs Campanella and Noel, ULB and CHU Brugmann, Brussels, Belgium) to apply posturography to the field of addictions. Interestingly, postural markers have been used to discriminate between "abstainers" and "relapsers" (Noel et al., 2021). The Belgian team with which we work has developed an expertise in the collection and analysis of electroencephalographic correlates of social and emotional information processing. In this project, we wish to combine the expertise developed within the LNFP (UR-UPJV 4559) and APERE (UR-UPJV 3300) units of the UPJV in the analysis of postural control related to the processing of social and emotional information with that of the Belgian team in EEG. This project will provide preliminary results on the covariations of postural and neural correlates at work during the processing of socioemotional stimuli. Moreover, important development perspectives appear when considering the importance of mental simulation (Mouras and Lelard, 2021). The modulatory effect of mental simulation could be seen as an indication of increased embodiment of the situation. The complexity of its effect, especially with respect to the temporal variable, remains to be characterized. The coupling of eeg and posturography will shed considerable light on the nature of the cognitive processes at work to exert the modulating effect of mental simulation.
+2 Practical information
+Possible internship period: 6 months during the academic year 2023-2024
+Prerequisite:
+Complete M1 at the end of the academic year 2022-2023 in Neurosciences or related subjects
+Internship bonus according to the classic scale (about 3600 euros)
+Send CV, cover letter and transcripts if available to harold.mouras@u-picardie.fr
+Skills / Interests : Social neuroscience, affective neuroscience, EEG, time-frequency analysis
+Best regards, 
+Harold Mouras
+
+
+
+
+————
+Harold Mouras
+Professeur de Neurosciences
+
+Laboratoire de Neurosciences Fonctionnelles et Pathologies (LNFP) EA 4559
+CHU Amiens Picardie - Site Sud
+Centre Universitaire de Recherche en Santé (Bâtiment CURS)
+Avenue René Laënnec
+80054 Amiens Cedex 1
+
+Tél : +33 7 83 62 93 31
+E-mail: harold.mouras@u-picardie.fr
+Site labo : https://lnfp.u-picardie.fr/accueil/
+Google Scholar | ResearchGate 
+
+
+
+**ANNOUNCEMENT OF POSTDOCTORAL FELLOWSHIP** 
+
+ 
+
+IN: CLINICAL NEUROSCIENCE AND COGNITIVE NEUROIMAGING 
+
+ 
+
+DEPRESSION AND ANXIETY CENTER FOR DISCOVERY AND TREATMENT 
+
+DEPARTMENT OF PSYCHIATRY 
+
+ICAHN SCHOOL OF MEDICINE AT MOUNT SINAI  
+
+ 
+
+The Depression and Anxiety Center for Discovery and Treatment (DAC) is pleased to announce the opening of a postdoctoral fellowship position in clinical neuroscience and cognitive neuroimaging. Located within the Icahn School of Medicine at Mount Sinai — internationally acclaimed for excellence in scientific research, clinical care, and education — DAC conducts clinical and translational research across the mood and anxiety disorder spectrum. The primary mission of DAC is to identify the fundamental mechanisms of disease and to discover novel treatments for patients suffering from mood and anxiety disorders.  
+
+ 
+
+We are seeking a candidate with experience in experimental design and MRI neuroimaging methodology. A Ph.D. in psychology, cognitive science, neuroscience, computer science, engineering or related field is required. Experience in methods used in neuroimaging and psychophysiology is desirable.  
+
+ 
+
+Candidates must be highly motivated to develop expertise in applying cognitive science and neuroimaging methods to problems in neuropsychiatric research. The candidate will have the opportunity to analyze and interpret MRI data from ongoing or completed projects. Postdoctoral fellows will receive one on one mentoring in clinical research methodology and work in a collaborative, multi-disciplinary environment to gain experience in patient-centered research. Fellows will have the opportunity to draw from the substantial resources of the Icahn School of Medicine, including resources located within the Friedman Brain Institute and the Translational and Molecular Imaging Institute in order to carry out high-impact research across Departments. Upon completion, fellows will be well positioned to pursue an independent research career in clinical neuroscience and cognitive neuroimaging. 
+
+ 
+
+We offer a competitive salary plus full benefits.  Please email a CV and cover letter to Dr. Laurel Morris (laurel.morris@mssm.edu). 
+
+ 
+
+Mount Sinai Medical Center is an equal opportunity/affirmative action employer. We recognize the power and importance of a diverse employee population and strongly encourage applicants with various experiences and backgrounds. 
+
+
+
+
+Laurel S. Morris, Ph.D. she/her
+
+Assistant Professor
+
+Department of Psychiatry
+
+Icahn School of Medicine at Mount Sinai
+
+
+One Gustave L. Levy Place
+
+New York, NY 10029
+
+https://labs.icahn.mssm.edu/morrislab/
+
+Dear Gian,
+
+if you use a newer CAT12 version it will automatically recognize that the images are already skull-stripped. To be on the safe side you can call CAt12 in expert mode and set the option for "Skull-Stripping" to "none (already skull-stripped)".
+
+Best,
+
+Christian
+
+On Thu, 11 May 2023 15:12:19 +0100, Gian Marco Duma <gmduma90@GMAIL.COM> wrote:
+
+>Dear SPM experts,
+>I generated the t1/t2 and t1/flair ratio images with an external software. The results are skull stripped images and I only have the brain tissue in the image. I would like to use CAT12 to segment the GM, to create thickness and gyrification maps. Does the segmentation work if the input images are only brain tissue without the head? And in case, is there a way to make it work?
+>Thanks
+
+Dear Gabriella,
+I don't know if it is the case, but I observed that behaviour some years ago and in that case the problem was the dicom to nifti conversion. The problem was that there are two dicom labels that are being used by converters to determine z component: slice thickness and interslice distance. When there is not interslice gap in the acquisition, both are the same. Otherwise interpolation routines fill the gaps with zeros, which makes interpolation to result in that zebra pattern. The solution I found that time was to manually change slice thickness by inter-slice distance in nifti images before any interpolation
+
+Hope this helps
+
+Best
+Carles Falcin
+
+-------- Missatge original --------
+De: gabriella Imbriano <0000721c2513eedd-dmarc-request@JISCMAIL.AC.UK>
+Data: 11/5/23 18:21 (GMT+01:00)
+A: SPM@JISCMAIL.AC.UK
+Assumpte: [SPM] Striping
+
+Has anyone seen something similar in their data as the image I have attached? This pattern is apparent in the subject level stat maps (photo attached) and seems to with emerge or start becoming very apparent after coregistration. For context my preprocessing stream converts dicom into nii files, then slice timing, realignment, coregistration, normalization, then smoothing. I looked through the raw data and it seems to be clean and free of striping at that stage.
+
+Several postdoctoral scholar positions are currently open at the laboratory of Professor Maurizio Corbetta, within the Department of Neuroscience at the University of Padova. The project aims to achieve three main goals: 1) to comprehend the neurophysiology of stroke; 2) to develop computer models based on biological principles of the injury and its effects on brain network dynamics; 3) to correct these functional abnormalities utilizing invasive and non-invasive brain stimulation in both human and animal models.
+
+ 
+
+Applicants must hold a Ph.D. or an M.D./Ph.D. in neuroscience, cognitive science, computer science, engineering, biostatistics, physics, psychology, or a related field. 
+
+
+
+The complete details of the announcement can be found at:
+
+
+
+https://github.com/pinilorenzo/position_available/blob/main/POSTDOC%20POSITIONS%20AVAILABLE.pdf
+
+
+To apply, please submit your CV and a research statement (1-2 pages) or cover letter that describes your research experience, your specific interests in this position, and how this position aligns with your career objectives to andreeastefania.radu@unipd.it.
+
+
+
+--
+Lorenzo Pini, PhD
+Padova Neuroscience Center, PNC
+Università degli Studi di Padova
+
+Dear SPMers,
+
+ 
+
+Apologies for the cross-posting!
+
+ 
+
+Join us for Assembly, hosted once again on the Gather platform! We are currently looking for speakers for two investigator-led sessions, poster presenters, and of course Assembly registrants. Our annual Assembly is a unique venue where neuroscience researchers, tool developers, standards developers, and infrastructure providers can meet with potential collaborators and hear about the latest advancements in neuroinformatics and FAIR neuroscience.
+
+ 
+
+Submit an abstract (poster)
+
+Submit an abstract (investigator-led session)
+
+ 
+
+Our program this year stretches from September 19 to September 21, and is centered around workshops proposed by our community. Sessions comprise presentations, investigator-led talks, round-table discussions, tutorials, and hands-on workshops.
+
+ 
+
+Register for Assembly
+
+See the program
+
+Learn more
+
+ 
+
+You don’t have to be an INCF member to participate, but this is a good occasion to become one - registration for Assembly is heavily discounted for members!
+
+ 
+
+Become a member
+
+ 
+
+Important dates:
+
+ 
+
+May 11: Abstract submission opens
+
+May 11: Registration opens
+
+Jun 23: Deadline for abstract submission
+
+Sep 18-20: Neuroinformatics Assembly 2023
+
+ 
+
+Kind regards,
+
+Tibor
+
+ 
+
+Auer, Tibor M.D. Ph.D.
+
+Lecturer in Biological Psychology
+
+School of Psychology, Faculty of Health and Medical Sciences
+
+University of Surrey, Guildford GU2 7XH
+
+T.Auer@surrey.ac.uk
+
+@TiborAuer
+
+ 
+
+ 
+
+Has anyone seen something similar in their data as the image I have attached? This pattern is apparent in the subject level stat maps (photo attached) and seems to with emerge or start becoming very apparent after coregistration. For context my preprocessing stream converts dicom into nii files, then slice timing, realignment, coregistration, normalization, then smoothing. I looked through the raw data and it seems to be clean and free of striping at that stage.
+
+Dear SPM experts,
+I generated the t1/t2 and t1/flair ratio images with an external software. The results are skull stripped images and I only have the brain tissue in the image. I would like to use CAT12 to segment the GM, to create thickness and gyrification maps. Does the segmentation work if the input images are only brain tissue without the head? And in case, is there a way to make it work?
+Thanks
+
+Spaces still available!   Please register soon if interested!
+
+MRI Image Acquisition and Analyses Course with SPM and ICA - ONLINE!
+
+June 14-16, 2023.
+
+Celebrating our 22nd year!
+
+The course faculty include:
+Kent Kiehl (The Mind Research Network and the University of New Mexico)
+Vince Calhoun (Georgia State University, Georgia Institute of Technology and Emory University)
+Tor Wager (Dartmouth College)
+
+Dates and Time: June 14-16, from 8:00am to 6:00pm EST.
+Location:  Zoom - online course.  
+
+Description: The course is designed for fMRI researchers who range from beginning to intermediate skill levels. Novice fMRI researchers benefit from a comprehensive set of tools and software, and intermediate/advanced researchers benefit from a custom code and supplements to standard analyses developed by the instructors. The course covers Statistical Parametric Mapping (SPM8/12), independent component analyses (ICA) of fMRI data, mediation analysis of fMRI, statistical non-parametric mapping (SnPM), and provides a comprehensive coverage of all aspects of experimental design, image acquisition, image pre-processing, and analysis.  We now include a special emphasis on multiband/multislice fMRI.
+
+The course is unique in that it pairs interactive lectures with hands-on demonstrations and work-through sessions. Each student works on their own laptop. Software will be installed on each student's laptop during the beginning of the course, including Matlab (a trial version), SPM8/12, the Group ICA of fMRI Toolbox (GIFT), and related SPM toolboxes, including statistical non-parametric mapping (SnPM) and the multi-level mediation fMRItoolbox (M3). In addition, participants will be trained to analyze example fMRI data using these tools. The course will be small and interactive, with many opportunities to work closely with the faculty. Registration will be on a first-come, first-served basis; we apologize in advance if we cannot accommodate all who wish to attend, but we will admit as many people as possible given the interactive nature of the course.
+
+For more information or to register visit: https://sites.google.com/dartmouth.edu/mind-fmri-course/home
+
+Email: Dr. Kent Kiehl at kkiehl@unm.edu with questions.
+
+
+
+Kent A. Kiehl, Ph.D.
+Executive Science Officer and Director of Mobile Brain Imaging
+The nonprofit Mind Research Network (www.mrn.org), a partner with Lovelace Biomedical, Inc
+&
+Professor of Psychology, Neuroscience and Law
+University of New Mexico (www.unm.edu)
+
+Mailing Address:
+Mind Research Network
+1101 Yale Blvd NE
+Albuquerque, NM, 87106
+Office: 505-925-4516
+kkiehl@unm.edu
+
+
+Hello SPM experts, 
+
+I have used SPM to conduct an EEG analysis, which involved a time-frequency computation with a log ratio rescale. This was followed by averaging over frequency bands (alpha, and beta) and converting the data to scalp x time images at the single trial level.
+
+When projecting from the 3D sensor space to the scalp x time plane, are the spherical distances between sensor pairs distorted? And would this distortion impact or distort the smoothing process when using a Gaussian kernel? 
+
+Thank you, 
+Jess
+
+Dear all,
+
+ 
+
+We are excited to announce that a software developer position for PET imaging data processing at LMU Hospital is available.
+
+ 
+
+Your responsibilities in this position will include:
+
+Developing and implementing software for PET image processing and analysis
+Collaborating with interdisciplinary teams of researchers and clinicians to integrate software into clinical workflows
+Contributing to research projects by developing customized software tools and applications
+Maintaining and updating existing software applications and systems
+ 
+
+To be considered for this position, you should have:
+
+A Master’s/PhD degree in computer science, biomedical engineering, neuroscience/imaging or a related field
+Experience in software development using programming languages such as R, bash, Python, and MATLAB
+Knowledge of medical imaging and image processing techniques, particularly in the context of PET and MRI imaging
+Experience working in interdisciplinary teams and collaborating with clinicians and researchers
+Strong problem-solving skills and attention to detail
+ 
+
+If you meet these qualifications and are passionate about using software to improve patient care and advance medical research, we encourage you to apply for this position.
+
+ 
+
+For more information about the position and to apply, please visit the job posting on our website.
+
+ 
+
+Kind regards,
+
+Dr. Amir Dehsarvi
+
+ 
+
+Postdoctoral Researcher
+
+ 
+
+LMU Hospital
+
+Institute for Stroke and Dementia Research (ISD)
+
+                 
+
+Campus Großhadern | Feodor-Lynen-Straße 17 | 81377 Munich
+
+phone +49 (0)89 4400-46157
+
+ 
+
+amir.dehsarvi@med.uni-muenchen.de 
+
+www.isd-research.de
+
+www.lmu-klinikum.de/isd
+
+Dear Arian,
+
+The IQR is the best measure of data quality before pre-processing. If the IQR is below 75%, you should consider whether you should include the data. 65% is probably a no go and 70% is a bit borderline and also depends on your sample. For ADHD data you will probably have a different threshold.
+The sample homogeneity measure (in older versions the correlation coefficient, now the z-score) shows homogeneity after pre-processing and also reflects anatomical variation. A good quality scan may deviate because of large ventricles, but a not so good scan with some noise may show the anatomy as expected and will not show up in the homogeneity check.
+While the IQR may allow you to set a hard threshold below which you will not accept quality, the homogeneity check will only give you an indication of which data are most off. This does not necessarily mean that you have to exclude these data, but you should check these scans carefully.
+
+Best,
+
+Christian
+
+On Mon, 8 May 2023 14:35:23 -0400, Arian Klows <arianklows31@GMAIL.COM> wrote:
+
+>Hi,
+>
+>I have a question related to the quality checking of data in CAT12.
+>Previously, I used to assess data quality by reviewing the IQR values in
+>the report after each preprocessing step. My usual threshold for selecting
+>subjects was a 75% IQR cutoff.
+>Here, for subject, PT-123, the IQR was 68.81% (see below).
+>[image: image.png]
+>
+>
+>Interestingly, when I performed the "check sample homogeneity of 3D data"
+>analysis, this subject was not identified as an outlier. Instead, the
+>analysis suggested that subjects 019, 022, 026, 060, and 126 should be
+>excluded (detailed below).
+>
+>I am now wondering what the appropriate method is for excluding patients
+>based on data quality. Could you provide some guidance on this?
+>
+>------------------------------------------------------------------------
+>08-May-2023 13:53:59 - Running job #11
+>------------------------------------------------------------------------
+>08-May-2023 13:53:59 - Running 'Check sample homogeneity of 3D data'
+>Corresponding xml-files were found.
+>
+>Compressed filenames sample 1:
+>/bme/home/ak/MRI/Study/smri/mwp1PT_{001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028,029,030,031,032,033,034,035,036,037,038,039,040,041,042,043,044,045,046,047,048,049,050,051,052,053,054,055,056,057,058,059,060,061,062,063,064,065,066,067,068,069,070,071,072,073,074,075,076,077,078,079,080,081,082,083,084,085,086,087,088,089,090,091,092,093,094,095,096,097,098,099,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144}.nii
+>
+>
+>These data have a mean correlation below 2 standard deviations.
+>This does not necessarily mean that you have to exclude these data.
+>However, these data have to be carefully checked:
+>/bme/home/ak/MRI/Study/smri/mwp1PT_126.nii: 0.811
+>/bme/home/ak/MRI/Study/smri/mwp1PT_060.nii: 0.811
+>/bme/home/ak/MRI/Study/smri/mwp1PT_026.nii: 0.807
+>/bme/home/ak/MRI/Study/smri/mwp1PT_019.nii: 0.779
+>/bme/home/ak/MRI/Study/smri/mwp1PT_022.nii: 0.747
+>08-May-2023 13:54:39 - Done    'Check sample homogeneity of 3D data'
+>08-May-2023 13:54:39 - Done
+>
+
+Dear All,
+
+ 
+
+Abstract submission is now open for the British & Irish Chapter of ISMRM annual scientific meeting, which will take place in Aberdeen in September 2023. Full details are listed below.
+
+ 
+
+David Lurie
+
+Chair of Local Organising Committee
+
+ 
+
+ 
+
+David J. Lurie, PhD, DUniv (h.c.), FInstP, FIPEM, FISMRM
+Emeritus Professor
+
+School of Medicine, Medical Sciences & Nutrition
+University of Aberdeen, Scotland, UK
+
+ 
+
+Hi,
+
+I have a question related to the quality checking of data in CAT12. Previously, I used to assess data quality by reviewing the IQR values in the report after each preprocessing step. My usual threshold for selecting subjects was a 75% IQR cutoff. 
+Here, for subject, PT-123, the IQR was 68.81% (see below).
+image.png
+ 
+
+Interestingly, when I performed the "check sample homogeneity of 3D data" analysis, this subject was not identified as an outlier. Instead, the analysis suggested that subjects 019, 022, 026, 060, and 126 should be excluded (detailed below).
+
+I am now wondering what the appropriate method is for excluding patients based on data quality. Could you provide some guidance on this?
+
+------------------------------------------------------------------------
+08-May-2023 13:53:59 - Running job #11
+------------------------------------------------------------------------
+08-May-2023 13:53:59 - Running 'Check sample homogeneity of 3D data'
+Corresponding xml-files were found.
+
+Compressed filenames sample 1: /bme/home/ak/MRI/Study/smri/mwp1PT_{001,002,003,004,005,006,007,008,009,010,011,012,013,014,015,016,017,018,019,020,021,022,023,024,025,026,027,028,029,030,031,032,033,034,035,036,037,038,039,040,041,042,043,044,045,046,047,048,049,050,051,052,053,054,055,056,057,058,059,060,061,062,063,064,065,066,067,068,069,070,071,072,073,074,075,076,077,078,079,080,081,082,083,084,085,086,087,088,089,090,091,092,093,094,095,096,097,098,099,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144}.nii  
+
+These data have a mean correlation below 2 standard deviations.
+This does not necessarily mean that you have to exclude these data. However, these data have to be carefully checked:
+/bme/home/ak/MRI/Study/smri/mwp1PT_126.nii: 0.811
+/bme/home/ak/MRI/Study/smri/mwp1PT_060.nii: 0.811
+/bme/home/ak/MRI/Study/smri/mwp1PT_026.nii: 0.807
+/bme/home/ak/MRI/Study/smri/mwp1PT_019.nii: 0.779
+/bme/home/ak/MRI/Study/smri/mwp1PT_022.nii: 0.747
+08-May-2023 13:54:39 - Done    'Check sample homogeneity of 3D data'
+08-May-2023 13:54:39 - Done
+
+Dear list,
+
+We have a post doc position at the University of Oldenburg (Germany) in the field of auditory cognitive neuroscience and neuroimaging. The post doc will work in the Department of Psychology, joining the Cluster of Excellence Hearing4all. For details, see: https://uol.de/stellen?stelle=69563
+
+Kind regards
+
+Sebastian
+
+-- 
+Dr. Sebastian Puschmann
+Biological Psychology Lab
+Department of Psychology
+School of Medicine and Health Sciences
+Carl von Ossietzky University Oldenburg 
+26111 Oldenburg
+Germany
+
+Dear SPM experts, 
+
+
+
+I want to examine the significant activity for certain a contrast in my task, but there are some subjects with problem of brain coverage during scanning. I searched the SPM Archives and found that using GLM Flex to do second level analyses can allow the analysis with the non-missing data in a voxel. However, I encountered some questions about GLM_Flex, I will appreciate it if you could give me some advice. 
+
+ 
+
+I learned about the GLM_Flex_fast2, but I found it can only perform anova. Thus, I plan to perform repeated measures ANOVA on con*.nii for single condition (e.g,condition1, condition2 and condition3) and used the posthoc t contrast (e.g, condition2-condition1, condition3-condition1) to get the T*.nii. However, I found the df may be weird (I tested with 4 con*.nii, of 4 subjects, and the df of T test is 9). If I just perform one-t test, the df is 3, so I am wondering if the analysis I descried above is OK to test the activity for a contrast. 
+Regarding the viewer FIVE, there are some bugs when I use it, and I can’t get the info after FDR or FEW correction, and it seems that there is something wrong with peak_nii.m. Thus, I would like to view the results of GLM_Flex and do multipe correction in XJview. I am just wondering if it is OK to use xjview.  Because GLM_Flex is relatively independent of SPM, I am worried that if there is special algorithm in its own viewer. However, I think it should be Ok to do classical multiple correction (e.g., FDR). 
+
+ 
+Thanks in advance for your help. Any advice is important for me. 
+
+ 
+
+Best regards, 
+
+Shanshan 
+
+
+
+Hi all,
+
+My lab is looking to hire a postdoc in auditory cognitive neuroscience
+and fMRI. We are located at the Rotman Research Institute at Baycrest
+Academy in Toronto, Canada. The position is for two years with the
+possibility for extension, starting in the fall of 2023 or after
+(flexible). The application deadline is the 16th of June 2023. More
+details can be found here (or reach out to
+bherrmann@research.baycrest.org).
+
+https://www.auditoryaging.com/postdocpositionaudcogneuro
+
+The successful applicant will use behavioral methods and functional
+neuroimaging (fMRI) in younger and older adults to study how speech is
+processed by the brain. The postdoc must have advanced quantitative
+and computer skills, including the ability to program in Matlab or
+Python for experimental design and modern data analysis (e.g., machine
+learning, natural language processing models). The postdoc will
+further have the opportunity to develop other projects depending on
+their skills, interests, and the interaction with other lab members.
+
+We are committed to employment equity and diversity in the workplace
+and welcome applications from women, members of racialized
+groups/visible minorities, Indigenous persons, persons with
+disabilities, persons of any sexual orientation, persons of any gender
+identity or gender expression, or any other aspect which makes them
+unique.
+
+Please forward to people you may think could be interested.
+Best wishes,
+
+Bjorn
+
+
+----------
+Björn Herrmann (PhD)
+
+Canada Research Chair in Auditory Aging (Tier II)
+Scientist, Rotman Research Institute
+Assistant Professor, Psychology, University of Toronto
+
+phone: +1 (416) 785 2500 ext. 2614
+email: herrmann.b@gmail.com
+web: www.auditoryaging.com
+
+Note: I may send emails on weekends, holidays, or late at night. This
+does not mean that I expect to hear back at these times.
+
+Dear SPM experts, 
+
+
+
+I want to examine the significant activity for certain a contrast in my task, but there are some subjects with problem of brain coverage during scanning. I searched the SPM Archives and found that using GLM Flex to do second level analyses can allow the analysis with the non-missing data in a voxel. However, I encountered some questions about GLM_Flex, I will appreciate it if you could give me some advice. 
+
+ 
+
+I learned about the GLM_Flex_fast2, but I found it can only perform anova. Thus, I plan to perform repeated measures ANOVA on con*.nii for single condition (e.g,condition1, condition2 and condition3) and used the posthoc t contrast (e.g, condition2-condition1, condition3-condition1) to get the T*.nii. However, I found the df may be weird (I tested with 4 con*.nii, of 4 subjects, and the df of T test is 9). If I just perform one-t test, the df is 3, so I am wondering if the analysis I descried above is OK to test the activity for a contrast. 
+Regarding the viewer FIVE, there are some bugs when I use it, and I can’t get the info after FDR or FEW correction, and it seems that there is something wrong with peak_nii.m. Thus, I would like to view the results of GLM_Flex and do multipe correction in XJview. I am just wondering if it is OK to use xjview.  Because GLM_Flex is relatively independent of SPM, I am worried that if there is special algorithm in its own viewer. However, I think it should be Ok to do classical multiple correction (e.g., FDR). 
+
+ 
+Thanks in advance for your help. Any advice is important for me. 
+
+ 
+
+Best regards, 
+
+Shanshan 
+
+
+
+Dear Arian,
+
+Of course, CAT12 can examine white matter (WM). However, keep in mind that there are more sensitive methods for WM, such as DTI, and the sensitivity for WM may be lower compared to grey matter. This is because white matter regions are often quite homogeneous in T1-weighted images, making it more difficult to find differences.
+However, if you do find something, all is fine, but if you do not, it may simply be due to the lower sensitivity.
+
+Best,
+
+Christian
+
+On Wed, 3 May 2023 21:37:46 -0400, Arian Klows <arianklows31@GMAIL.COM> wrote:
+
+>Hi folks,
+>
+>Can we use CAT12 for white matter volume analysis?
+> It’s so popular with gray matter analysis. Can we still use it for white
+>matter volume analysis in cases where DTI couldn’t be acquired?
+>
+
+If the headers of T1 and ME encode the correct affine transformation in the sform matrices, such that the images appear in rigid alignment with each other (Check Reg), then the Deformations Utility should implicitly do what you are after.  This is how deformations can be computed from anatomical scans and applied to functional scans with different resolution and positioning.
+
+The way that warps are encoded in SPM is that each voxel in the Nx x Ny x Nz x 1 x 3 volume points to a mm coordinate.  When warps are composed, the coordinate that each voxel points to is converted to voxel indices according to the sform matrix in the header of the deformation to be sampled from.
+
+Best regards,
+-John
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Matthias Müller-Schrader <mueller-schrader@BIOMED.EE.ETHZ.CH>
+Sent: 04 May 2023 17:46
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Combining deformation fields with affine transformations
+ 
+⚠ Caution: External sender
+
+
+Dear SPM experts
+
+For an fMRI-study, we have obtained two different types of anatomical images (T1/ME) and
+would like to access the quality of the coregistration of T1 on ME (with affine transformation Aff).
+
+We have segmented both images and obtained the deformation-fields y_T1/y_ME.
+Now we would like to calculate (and analyse) the transformation iy_ME \circ Aff \circ Y_T1,
+which should (ideally) be equal to the identity map.
+
+Is there a way to calculate this transformation in SPM? The deformation-utils look
+promising, but can we include the affine transformation there?
+
+Thank you very much for your help and best wishes!
+Matthias Müller-Schrader
+
+The SLAM (Speech, Language, and Music) Lab at the University of Texas at Dallas (PI: Yune S. Lee) is seeking to fill a 2-year postdoctoral position (with possible extension). The SLAM Lab aims to understand the connections between Speech, Language, and Music in the context of communication disorders with the goal of developing music-based intervention programs. Our multidisciplinary studies involve extensive behavioral testing, multimodal MRI/EEG studies, genotyping assays, and non-invasive brain stimulation studies for several funded projects. See our lab website for more information about the lab.
+
+The applicant must have research experience and publications on neuroimaging studies and strong data analytic background (e.g., statistics, signal processing, machine-learning).
+Interested candidates should contact Dr. Yune S. Lee at yune.lee@utdallas.edu with a CV describing prior/current research, relevant skills, and a list of 3 referees. The starting date is flexible.
+
+Dear SPM experts, 
+I'm analyzing a data set using SPM12. There are some problematic subjects in our dataset which does not cover parts of the cerebellum and precentral gyrus due to the small FOV. Thus, the results of first level lose signals in these areas. I have looked at the first level masks and its coverage was smaller than the brain I have scanned. The mask in second level is much smaller, because any voxels which are not present in all participants will not be included in the second level mask. We are so annoyed that it lost information in so many areas, even in some regions we are interested in. I had tried to switch the implicit masking off and using an explicit grey matter mask, but this didn’t work.  
+I searched the Archives and mainly found two resolutions. One is to lower the masking threshold setting (from default 0.8, ie 80% of the global mean) in fMRI model specification, and another is to use GLM Flex to do second level analyses. In my knowledge, lowering the masking threshold could include more voxels with low intensity, and using GLM Flex would allow the analysis with the non-missing data in a voxel.  
+I would like to confirm if my understanding is correct, and if these two solutions applied together will be better, or one solution is OK. Besides, regarding to lower the masking threshold, is there a recommended threshold (e.g., 0.2or 0.5)? I will also appreciate it if you have any other solutions to this problem. 
+ 
+Many thanks in advance for helping. 
+
+ 
+
+Best regards, 
+
+Shanshan Ma
+
+Dear SPM experts
+
+For an fMRI-study, we have obtained two different types of anatomical images (T1/ME) and
+would like to access the quality of the coregistration of T1 on ME (with affine transformation Aff).
+
+We have segmented both images and obtained the deformation-fields y_T1/y_ME.
+Now we would like to calculate (and analyse) the transformation iy_ME \circ Aff \circ Y_T1,
+which should (ideally) be equal to the identity map.
+
+Is there a way to calculate this transformation in SPM? The deformation-utils look
+promising, but can we include the affine transformation there?
+
+Thank you very much for your help and best wishes!
+Matthias Müller-Schrader
+
+Segmentation in SPM requires tissue priors to be overlaid on the image to segment, which is done by nonlinear registration. It looks to me like the nonlinear registration might be too heavily regularised so it is unable to stretch the ventricles in the tissue priors so they overlay those in your scans.  I'd suggest decreasing the amount of regularisation by changing where it says:
+    Warping Regularisation 
+
+from the default [0 0.001 0.5 0.05 0.2] to about [0 0.0002 0.1 0.01 0.04]  (simply multiplying all the values by 0.2).  This should give it more flexibility, but not too much more.  Maybe try this out on some of the more difficult images before running it on your entire dataset.
+
+Best regards,
+-John
+
+
+
+Hi all,
+
+I'm new to SPM and I am attempting to use it to complete a tissue segmentation on my T1 images. I'm primarily interested in extracting the volume of the lateral ventricles using the produced CSF image. Grey and white matter segmentation isn't a priority.
+
+I'm having an issue regarding patients with significantly enlarged ventricles due to hydrocephalus. The ventricles are so large that the code is not able to successfully complete a tissue segmentation in a meaningful way. In the resulting CSF image, only a small portion of the CSF is identified. Examining the GM and WM images, the majority of the ventricle is labelled as white matter in the segmentation and then the surrounding grey and white matter are labelled as grey matter in the segmentation.
+
+Has anyone else come across this issue previously and if so how have you handled the incorrect segmentation?
+
+For reference, the T1 image that is warped into MNI space looks decent (albeit the image still obviously has noticeably enlarged ventricles that are much larger than the atlas image and is likely the cause of the incorrect tissue segmentation).
+
+Best wishes,
+
+Emily
+The Computational Brain Research and Intervention Lab (C-Brain) in the Department of Psychiatry and Behavioral Sciences at Stanford University’s School of Medicine is seeking a Neuroimaging Research Coordinator Associate to lead and assist with various aspects of multimodal neuroimaging studies in human including neuroimaging data collection, preprocessing and analysis as well as taking part in manuscript preparation. 
+ 
+
+The focus of neuroimaging studies in C-BRAIN Lab is on investigating alterations in the organization of human connectome in health and disease (Alzheimer’s disease, ADHD, etc.) using state of the art neuroimaging techniques (qMRI, NODDI, DWI, fMRI, fNIRS) and novel computational methods (network and multivariate pattern analyses). The lab also utilizes advanced technologies such as Virtual Reality, wearable brain imaging, physiological and behavioral tracing to build a more detailed profile of brain-behavior relationship in real-life settings. We also develop and test personalized interventions that integrate computerized cognitive rehabilitation and real-time functional brain imaging tailored toward targeted rehabilitation of the affected brain networks in patients with neurocognitive disorders. More information about the lab can be found on the Stanford C-BRAIN Lab. 
+
+
+
+Interested candidates should include their resume/CV and a cover letter (optional) with their application.
+
+
+
+For more information and to apply visit Stanford Career website:
+
+ https://careersearch.stanford.edu/jobs/neuroimaging-research-coordinator-associate-21325
+
+
+
+ 
+
+DESIRED QUALIFICATIONS:
+
+      Bachelors in Neuroscience, Psychology, Biology, Computer Science, Statistics, Physics, Chemistry, Engineering, or a related field.    
+      Previous experience with human subject (behavioral/neuroimaging) research.
+      Experience with programming in MATLAB, Python, R and/or other related computing languages.
+      Strong analytical skills.
+      Strong interpersonal and organizational skills.
+      Experience with multimodal neuroimaging (fMRI, fNIRS, DWI) and related analysis packages (FSL, SPM, AFNI, HOMER, NIRS Toolbox, AnalyzIR, etc.).
+      Strong written communication skills.
+
+
+ Salary range: $56,000 - $78,000 USD
+
+
+
+To all SPM12 experts,
+
+I have been looking for instructions on how to do implement SISCOM (ictal vs interictal SPECT) in SPM12, but haven't found any related information in past email threads or in the SPM12 manual. I would appreciate it if someone could either provide me with a step-by-step outline or point me to a relevant online resource.
+
+Thank you in advance,
+
+Vasileios Kokkinos, PhD, PhD, PhD, FACNS
+Epilepsy Surgery Neurophysiologist, R. EEG/PSG/EP T., CNIM, NA-CLTM, MMedSci, MSc, PhD
+Functional Neuroimagist, PhD
+Neuroscientist, MNeuroSci, PhD
+Philosopher, BSc
+Electrical and Computer Engineer, Dipl, MSCE.
+Epilepsy Clinical Neurophysiology and Image Processing Specialist
+Comprehensive Epilepsy Center
+Northwestern Medicine
+Department of Neurology
+675 N St. Clair St., Galter 7-109
+Chicago, Illinois 60611
+
+The Human Motor Control and Neuromodulation Lab under Dr. Helen Bronte-Stewart (https://med.stanford.edu/bronte-stewart-lab.html) part of the Stanford Movement disorders Center within the Department of Neurology and Neurological Sciences at Stanford University’s School of Medicine, is seeking a postdoctoral scholar with neuroimaging expertise to investigate cognitive-motor dysfunction in Parkinson’s disease. 
+
+ 
+
+The current position is for a project where we will be conducting a pilot clinical trial using a novel deep brain stimulation approach for cognitive and cognitive-motor dysfunction in Parkinson’s disease. The candidate will help validate the use of a novel target for deep brain stimulation using a combination of tractography and DBS modeling (e.g., volume of tissue activated). You will work together with neurosurgeons, radiologists, and neurologists on the trial to validate various trajectories and targets. You will work with stimulation modeling software to individualize stimulation parameters for participants to optimize efficacy. In addition to your role on this project, you will get the chance to investigate structural differences in brain morphology between different neurodegenerative diseases. The current position offers an exceptional opportunity for neuroscientists with a background in structural neuroimaging and/or cognition to apply these skills in a clinically-relevant domain. 
+
+ 
+
+The desired candidate would have a PhD in Neuroscience or a related discipline with experience in neuroimaging, cognition, and motor control. Preferred start date is before September 2023 but is flexible. 
+
+ 
+
+Job Requirements 
+
+ 
+
+Required: 
+
+ 
+
+PhD in Neuroscience or related disciplines with expertise in data science 
+
+ 
+
+Experience in structural neuroimaging (tractography, voxel-based morphometry, etc.) 
+
+ 
+
+Experience working in the area of cognition and motor control 
+
+ 
+
+Comfortable analyzing data in Matlab, Python, or similar languages 
+
+ 
+
+Strong data science skills 
+
+ 
+
+Ability to work well in a diverse team 
+
+ 
+
+Effective oral and written communication skills 
+
+ 
+
+Excellent organization skills and demonstrated ability to complete detailed work accurately 
+
+ 
+
+Excellent problem-solving ability 
+
+ 
+
+ 
+
+ 
+
+Preferred: 
+
+ 
+
+Experience with Parkinson’s disease or other clinical populations 
+
+ 
+
+Experience with deep brain stimulation modeling (volumes of tissue activated, etc.) 
+
+ 
+
+Experience with larger data sets 
+
+ 
+
+ 
+
+ 
+
+How to Apply: 
+
+ 
+
+Apply by sending the following to Kevin Wilkins (wilkins2 at stanford.edu) 
+
+ 
+
+CV 
+
+ 
+
+Cover letter describing interest and relevant experience for the project 
+
+ 
+
+Three potential reference contacts (We will not contact references until confirming with you) 
+
+ 
+
+
+
+The expected base pay for this position is the Stanford University required minimum for all postdoctoral scholars appointed through the Office of Postdoctoral Affairs. The FY23 minimum is $68,238. 
+
+ 
+
+Stanford University is an affirmative action and equal opportunity employer, committed to increasing the diversity of its workforce. It welcomes applications from women, members of minority groups, veterans, persons with disabilities, and others who would bring additional dimensions to the university's research and teaching mission 
+
+
+
+Dear all
+Is there any simple toolbox to detect outlier subjetc according to there pattern of activation (for one contrast, for instance).
+I have clinical subjects, some of them with frequent movement.
+I used a toolbox named 'distance' by the past, that doesnt exist anymore. Any toolbox compatible with SPM12?
+thanks for your time and help
+
+Philipp Pinel
+
+Dear SPM experts,
+ 
+I would like to extract mean ROI values from qMRI maps (e.g. MT) using a surface-based atlas. For that purpose, I projected the qMRI map of a subject onto the individual surface using the "Map Volume (Native Space) to individual Surface" function in CAT12. After that, I tried the "Extract ROI-based Surface Values" function to get the actual ROI values but I received the following error message:   
+ 
+26-Apr-2023 14:53:00 - Running 'Extract ROI-based surface values'
+26-Apr-2023 14:53:13 - Failed  'Extract ROI-based surface values'
+Invalid field name: '002_Balance_002_02_MT'.
+In file "C:\Matlab_Toolboxen\SPM12\toolbox\cat12\cat_surf_surf2roi.m" (???), function "cat_surf_surf2roi" at line 196.
+ 
+Can anybody help me with this error and point me to a solution?
+ 
+Thank you in advance!
+ 
+Best,
+Marco
+
+A postdoctoral scholar position is available in the Brain, Body, and Perception Research Program at the University of Toronto and Centre for Addiction and Mental Health to study neural and behavioural phenotypes associated with visual perception, body processing, emotion, and reward.
+
+Description: Our clinical neuroscience lab studies brain and behavioural phenotypes across disorders of body image including body dysmorphic disorder and eating disorders. We are passionate and committed to understanding these understudied disorders to improve treatment strategies, and we have produced seminal research studies in the field. Our group uses neuroimaging (fMRI, EEG, diffusion MRI, and structural MRI), neuromodulation (TMS), and physiological tools (ECG, eye-tracking, and psychophysics). We also develop and use novel digital 3D tools to assess body experiences in those with gender dysphoria as well as in those with disorders of body image. We employ machine learning and other computational techniques for modelling behavioural, physiological, and neural responses and for predicting clinical outcomes. Our research is funded by the U.S. NIH and foundation grants.
+       
+The University of Toronto and the Centre for Addiction and Mental Health have a wealth of neuroimaging and clinical resources and career development support. You will be joining a productive and collaborative group using advanced neuroimaging techniques and creative software and hardware development that is grounded in strong clinical understandings of the phenomenology of psychiatric and other populations. The PI (Dr. Feusner) will provide mentoring and guidance including grant writing for developing independent projects.
+
+Requirements: Ph.D. or M.D./Ph.D. in neuroscience, cognitive science, computer science, engineering, biostatistics, physics, psychology, or related fields. We are looking for candidates with experience in analyzing fMRI data – including statistical analysis software such as FSL, AFNI, SPM, or others. The successful applicant will be able to function independently, work on more than one project at a time in a team setting, and lead and mentor students and research assistants. The successful applicant will have excellent computing and programming skills (Matlab, Python, R, bash scripting), verbal English skills, and writing skills.
+
+To apply: Please send your CV and either a research statement (1-2 pages) or cover letter that describes your research experience, your specific interests in this position, and how this position fits with your career goals to Dr. Jamie Feusner: jamie.feusner@utoronto.ca
+
+Or, apply here: https://jobs.humanbrainmapping.org/job/post-doctoral-researcher/68641721
+
+The Centre for Cognitive Neuroimaging at the School of Psychology and Neuroscience is seeking to appoint a Senior Lecturer or Lecturer to conduct and lead on internationally competitive research in the area of development and/or ageing neuroimaging (using 3T and 7T MRI, (M)EEG, and/or TMS/tES), consistent with the research strategy of the Centre and College.
+
+You will also make a substantial and positive contribution to the strategic direction of the School/College through leading and contributing to research of international standard as well as high quality teaching at both undergraduate and postgraduate level.
+
+The School of Psychology & Neuroscience has recently been rated 4th in the UK and 1st in Scotland, REF 2021 research output in Times Higher Psychology, Psychiatry and Neuroscience category.
+
+Inclusion, Equality, and Diversity are at the core of the University of Glasgow experience, and at the heart of the School of Psychology & Neuroscience. We strive to create a diverse and inclusive culture through our commitment to diversity awards including the Athena Swan Award and The Equality, Diversity and Inclusion Times Higher Education Award. Glasgow is a Stonewall Scotland Diversity Champion, a Disability Confident employer and hosts supporting networks including the LGBT+ Equality, Disability Equality, Neurodiversity and Race Equality groups.
+
+Within the School of Psychology & Neuroscience, we celebrate diversity and intersectionality by promoting profiles of LGBTQ+, ethnic minority, and neurodiverse staff and engage in work to decolonise and diversify our curriculum. Our school hosts an LGBTQ+ reading group alongside Rainbow Office Hours, a Race and Equality Network and a Neurodiversity Network open to all staff and students within our school.
+
+Applications are invited from candidates with an appropriate record of academic achievement in Cognitive Neuroimaging and a track record in development and/or aging research and who hold a Scottish Credit and Qualification Framework level 12 [PhD] or equivalent in related discipline with a growing reputation for scholarship within the subject area.
+
+This post is full time and open ended.
+
+Visit our website for further information on The University of Glasgow’s School of Psychology & Neuroscience, https://www.gla.ac.uk/schools/psychologyneuroscience/
+
+Informal Enquiries should be directed to Professor Gregor Thut, Gregor.Thut@glasgow.ac.uk
+
+Apply online at: https://my.corehr.com/pls/uogrecruit/erq_jobspec_version_4.jobspec?p_id=108808
+
+Closing Date: 01 May 2023
+
+We believe that we can only reach our full potential through the talents of all. Equality, diversity and inclusion are at the heart of our values. Applications are particularly welcome from across our communities and in particular people from the Black, Asian and Minority Ethnic (BAME) community, and other protected characteristics who are under-represented within the University. Read more on how the University promotes and embeds all aspects of equality and diversity within our community https://www.gla.ac.uk/myglasgow/humanresources/equalitydiversity/
+
+We endorse the principles of Athena Swan https://www.gla.ac.uk/myglasgow/humanresources/equalitydiversity/athenaswan/
+
+and hold bronze, silver and gold awards across the University.
+
+We are investing in our organisation, and we will invest in you too.
+
+The University of Glasgow, charity number SC004401.
+
+Dear experts
+
+we are currently investigating the effects of ageing on associative memory related encoding and retrieval in both young and old subjects. We found common activation in the anterior insular cortex in both groups. Afterwards, we extracted the Eigenvariates in this region under both conditions and in both groups in order to compare the activations in this region. This procedure has been done descriptively in previous investigations as well (cf. Fu et al., 2020). However, we would like to go a step further and test whether the mean eigenvariates also differed significantly between the groups using t-tests.
+
+Therefore, our question is, whether this procedure makes sense from a statistical point of view or are there any concerns regarding the validity of this approach?
+
+I attached an image of the results for clarification purposes. (Reference paper: DOI: 10.1016/j.nlm.2020.107251)
+
+Thank you in advance for your time and efforts.
+
+Kind regards
+Marko Rajkovic
+
+
+
+Call for papers - Journal "Tomography": Special Issue on "Innovative Approaches in Neuronal Imaging and Mental Health"
+
+ 
+
+Short summary:
+
+Despite the growth of research on neuroimaging in mental health, progress in understanding the neurobiological bases of psychopathology remains limited. In this special issue of the journal Tomography, we invite submissions presenting innovative approaches in neuroimaging (understood broadly to include measures of brain structure or function) in mental health (for instance, studies that employ a dimensional approach to symptoms, that include transdiagnostic samples, and/or address the issue of within-diagnosis heterogeneity).
+
+ 
+
+For more details please see the website of the Special Issue:
+
+https://www.mdpi.com/journal/tomography/special_issues/B797OPC019
+
+ 
+
+Deadline for submissions:
+
+October 2023
+
+ 
+
+Guest editors:
+
+Fernando Ferreira-Santos (University of Porto)
+
+Miguel Castelo-Branco (University of Coimbra)
+
+ 
+
+ 
+
+ 
+
+(Submitting to a few mailing lists, so apologies for cross-postings)
+
+Fernando Ferreira-Santos
+Professor Auxiliar | Assistant Professor
+Coordenador Lab. Neuropsicofisiologia | Coordinator Lab. Neuropsychophysiology
+Diretor do Mestrado em Psicologia | Director of the Master’s Degree in Psychology
+
+Laboratório de Neuropsicofisiologia | Laboratory of Neuropsychophysiology
+Faculdade de Psicologia e de Ciências da Educação da Universidade do Porto
+Faculty of Psychology and Education Sciences – University of Porto
+Rua Alfredo Allen, 4200–135 Porto, Portugal
+https://www.fpce.up.pt | frsantos@fpce.up.pt | (+351) 22 607 97 00 (ext. 409)
+
+Lab: https://www.fpce.up.pt/labpsi
+Personal: http://ferreira-santos.eu
+
+ 
+

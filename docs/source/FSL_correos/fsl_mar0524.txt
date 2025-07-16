@@ -1,0 +1,1223 @@
+Great, now it worked all the way without glitches. Thanks for your help.
+
+Estephan
+
+On Fri, 1 Mar 2024 14:15:07 +0000, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+>Hi Estephan,
+>
+>I think you will still need to have the FSLOUTPUTTYPE environment variable set to NIFTI2_GZ in order for the randomise call to correctly save the output files. I'll add this to the fslnets code for the next version.
+>
+>Paul
+>________
+
+The newly established Cognitive Neuroscience & Neurotechnology group led by Dr. Romy Lorenz is looking for two enthusiastic PhD students (m/f/d) to join our growing team at the Max Planck Institute for Biological Cybernetics in Tübingen, Germany.
+
+Our lab focuses on advancing our understanding of the frontoparietal brain network mechanisms that underpin high-level cognition and adaptive behaviour. For this, we pursue an interdisciplinary research programme that allows studying this brain system at multiple levels of granularity. Our methodology involves subject-specific brain-computer interface technology, fMRI at 3T and ultrahigh (i.e., 7T and 9.4T) magnetic field strengths (for resolving cortical layers), EEG, non-invasive brain stimulation as well as machine learning. You can find out more about our work at:    https://www.kyb.tuebingen.mpg.de/711763/cognitive-neuroscience-neurotechnology
+
+We are seeking two ambitious PhD students who will work on the exciting field of ultrahigh resolution fMRI that allows to investigate the human cortex at the scale of layers and columns. 
+
+The ideal candidates should have a master’s degree in cognitive (neuro)science, psychology, computer science, biomedical or electrical engineering, physics, or related disciplines. A strong background in fMRI data analysis (e.g., FSL, Freesurfer, ANTS) and very good programming skills in Bash on Linux, Matlab and/or Python are required. Prior experience in MRI data acquisition and experience with ultrahigh resolution fMRI (e.g., at 7T) is desirable but not necessary. Equally, experience with machine learning-methods, code sharing platforms (e.g. GitHub) and high-performance computing clusters are highly desirable.
+
+The Max Planck Institute for Biological Cybernetics offers a world-leading research environment with access to the latest cutting-edge MRI hardware (including a Siemens 9.4T and Prisma 3T for humans as well as a 14.2T small animal system) and other excellent research facilities (EEG, eye-tracking, fMRI-TMS). The PhD student will receive generous support for professional travel and research needs (~2500€/year). Additionally, the student will have the opportunity to become part of the Graduate Training Centre of Neuroscience that provides training courses, summer schools and conferences to further educate doctoral students. Further, the Institute is part of the TübingenNeuroCampus (with more than 100 active groups), offering a vibrant community of international researchers and enriching environment of collaboration.
+
+The position is available from May 2024 on and remains open until filled. The salary is paid in accordance with the collective agreement for the public sector (65% TVL-E13, amounting to ~2000€ net per month).
+
+For more details about the two advertised PhD positions and how to apply, please see: https://www.kyb.tuebingen.mpg.de/729399/join-the-lab
+
+ 
+
+Dr. Romy Lorenz
+
+
+Max Planck Research Group Leader
+
+Research Group Cognitive Neuroscience & Neurotechnology
+
+Max Planck Institute for Biological Cybernetics
+
+Tübingen, Germany
+
+romy.lorenz@tuebingen.mpg.de
+
+www.kyb.tuebingen.mpg.de/711763/cognitive-neuroscience-neurotechnology
+
+ 
+
+ 
+
+ 
+
+ 
+
+Hi Sean,
+
+It looks like some network connections are being blocked - I'm guessing you are connecting to the internet though an institutional network (e.g. a hospital)? Do you have a local IT administrator who might be able to help?
+
+An alternative option would be to try installing FSL whilst connected to a different network (e.g. home, university, etc).
+
+Paul
+
+
+That all sounds fine to me. You shouldn’t need to do any further smoothing etc. It is also fine to use with nay of the calibration options. The only thing you might want to look out for is motion (and whether you need motion correction or not). But, in practice that it much more of an issue for perfusion images, the residual effects of motion when you average over the control images on the calibration shouldn’t be that substantial.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Sir Peter Mansfield Imaging Centre 
+
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+ 
+
+Precision Imaging Beacon Hub 
+
+Room A39f, A floor 
+
+Medical School, QMC 
+
+Nottingham, NG7 2UH 
+
+Hi there, 
+
+I am trying to install FSL on my Mac (OS - Monterey v 12.6.6). However on running the FSL installer script It has terminated with message below - can I ask what this error implies and how I can fix this? 
+
+Many thanks,
+Sean 
+
+Hi Estephan,
+
+ 
+
+Sorry about the bug and the delay in responding (I was on leave).
+
+ 
+
+I have now resolved the bug and the new version should be released shortly. Please update your FSL and this should be resolved.
+
+ 
+
+To update, please run:
+
+ 
+
+$FSLDIR/bin/conda update conda libmamba -y --solver=classic
+
+ 
+
+And then:
+
+ 
+
+update_fsl_package fsl-xtract
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+Dear FSL developers and users,
+
+I would like to use randomise with several (say two) voxel-dependent EV (aka images). Each of them has their validity masks (FOV over which they were measured). As I understand, the design matrix will have two columns for the EVs themselves and two sets of identity matrixes for confounding. For example, if I have 4 subjects:
+
+1 1   1 0 0 0   1 0 0 0
+1 1   0 1 0 0   0 1 0 0
+1 1   0 0 1 0   0 0 1 0
+1 1   0 0 0 1   0 0 0 1
+
+The contrast file would be, for example (I am interested in effects of the two EVs):
+
+1 0   0 0 0 0   0 0 0 0
+0 1   0 0 0 0   0 0 0 0
+
+To supply data to randomise, I will create 4D NIFTI with EV1, a separate 4D NIFTI with EV2 and two separate 4D NIFTIs with the confounding validity masks CONF1 and CONF2.
+
+The call to randomise will then be, and this is the crux of the question:
+
+ransomise --vxf ev1.nii.gz ev2.nii.gz conf1.nii.gz conf2.nii.gz --vxl 1 2 -3 -4
+
+Is the above logic correct?
+
+In other words, the identity matrix in the design that sets up confounding is counted as one when used in --vxl list.
+
+Equivalently, if design matrix first lists confounders and then EVs:
+
+1 0 0 0   1 0 0 0   1 1
+0 1 0 0   0 1 0 0   1 1
+0 0 1 0   0 0 1 0   1 1
+0 0 0 1   0 0 0 1   1 1
+
+the contrast will be
+
+0 0 0 0   0 0 0 0   1 0
+0 0 0 0   0 0 0 0   0 1
+
+and the call:
+
+ransomise --vxf conf1.nii.gz conf2.nii.gz  ev1.nii.gz ev2.nii.gz --vxl -1 -2 3 4
+
+Is that right?
+
+Roman
+
+Here is the eddy command:
+
+ 
+
+eddy_cpu --imain=eddy_in.nii --mask=eddy_mask.nii --acqp=eddy_config.txt --index=eddy_indices.txt --bvecs=bvecs --bvals=bvals --field= fmap_hz2dwi_12dof_applyxfm --slm=linear --data_is_shelled --out=dwi_post_eddy --verbose
+
+ 
+
+I’ve uploaded all relevant files (eddy_file.tar.gz).
+
+ 
+
+I’m not sure how the readout time is inferred. From my quick search, it looks like readout time = echo spacing x 0.001 x EPI Factor. Our sequence is from ADNI (adni.loni.usc.edu/wp-content/uploads/2010/05/Siemens-Advanced-Protocol-Prisma-VE11C.pdf). In that case, the readout time should be 0.55 ms x 0.001 x 116, or 0.0638. Does that seem right? It appears that I can incorporate that into the dwifslpreproc command with -readout_time 0.0638.
+
+ 
+
+Thanks again for looking into this!
+
+ 
+
+Best,
+
+Bram
+
+I am posting on behalf of Johannes Fuß, Director of the Institute of
+Forensic Psychiatry and Sex Research at the University Duisburg-Essen.
+Please direct all queries to him.
+
+
+
+The Institute of Forensic Psychiatry and Sex Research at the University
+Duisburg-Essen is looking for a dynamic individual in the fields of
+Neuroscience, Psychology or Medicine (or a related discipline) to lead a
+prospective study in forensic psychiatry. We want to compare how the
+placement of offenders with mental disorders in forensic facilities
+versus prison affects their mental health, brain and behaviour. The
+study will involve experimental behavioural research methods, diagnostic
+interviews, and imaging techniques, and is a follow-up to a DFG-funded
+project.
+
+Preferred qualifications include a PhD and publication experience in
+international peer-reviewed journals. Working knowledge of German will
+be advantageous as the role will involve supervising PhD students at the
+Institute and coordinating with the Ministries of Justice as well as
+visits to prisons and forensic clinics. The role will also involve
+securing external funding, developing new research questions, and the
+scientific preparation and publication of research results. Strong
+communication and statistical skills are essential, as well as excellent
+methodological expertise in at least one area (MRI studies and/or
+behavioural experiments and/or statistical methods). The position offers
+opportunities for interdisciplinary collaboration in an international
+team characterised by flat hierarchies.
+
+The Institute is located in the city of Essen (West Germany, near
+Cologne). The position is to be filled immediately, for an initial
+period of 5 years, on a full-time or part-time basis, and will be
+remunerated according to remuneration group 14 (TvÖD).
+
+
+Further information and access to the application portal can be found
+at:
+https://jobs.lvr.de/index.php?ac=jobad&code=%2B877KW8tyjSDGH%2FkbOdCcx27jMDTxJth5BzZKhMJoNniwUfx%2BNQh62OEgE%2FFtDYNjF8hx1ZdV484LxfTDlEqzeGZ1np3J8S3
+
+Unfortunately the portal is in German but Johannes
+(Johannes.Fuss@lvr.de) is more than happy to answer all your questions
+and help with the portal.
+
+########################################################################
+
+
+Hi Ruben,
+                I can’t see the full command in the screenshot, but it looks like the very first fslmaths call is failing. Can you let me know the dimensions of the functional data ( e.g. with fslhd ) and if the command is being run locally or submitted to a compute cluster or similar? If you copy the command and manually run it in a terminal does it error in the same way?
+
+Kind Regards
+Matthew
+
+Hi Paul,
+
+Thank you so much for the update.
+
+Regards,
+Archith
+
+On Fri, Mar 1, 2024 at 11:28 AM Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Archith,
+
+The latest version of FSL has an updated version of eddy which will probably still crash, but will give you a more useful error message.
+
+Paul
+
+Hi Archith,
+
+The latest version of FSL has an updated version of eddy which will probably still crash, but will give you a more useful error message.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of archith rajan <00006c96305b0df0-dmarc-request@JISCMAIL.AC.UK>
+Sent: 01 March 2024 16:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] eddy_cuda error: Eddy failed with message �W��g+
+ 
+Hi FSL experts,
+
+Currently facing a similar problem, after I'd updated the cuda toolkit.Any help would be much appreciated
+
+Regards,
+Archith
+
+Hi Archith,
+
+The latest version of FSL has an updated version of eddy which will probably still crash, but will give you a more useful error message.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of archith rajan <00006c96305b0df0-dmarc-request@JISCMAIL.AC.UK>
+Sent: 01 March 2024 16:24
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] eddy_cuda error: Eddy failed with message �W��g+
+ 
+Hi FSL experts,
+
+Currently facing a similar problem, after I'd updated the cuda toolkit.Any help would be much appreciated
+
+Regards,
+Archith
+
+Hi Keng-Yu,
+
+A first-level FEAT analysis is performed in the native functional space, and so is not necessarily aligned with the structural image. Do the results look ok when you view them on top of the example_func image?
+
+Paul
+
+A one year (renewable) postdoctoral fellowship position is available at The Pennsylvania State University in the laboratory of Dr. Eric Claus.  The candidate will be involved in projects examining structural and functional changes in treatment and non-treatment seeking individuals with an alcohol use disorder using longitudinal neuroimaging (structural MRI/diffusion MRI/task and rest fMRI, MEG). 
+
+Primary responsibilities of this position include overseeing analyses and implementation of longitudinal analyses, machine learning for outcome prediction, and integration of multimodal neuroimaging data.  Candidates will be expected to contribute to ongoing data analyses and will have opportunities to contribute to and lead multiple manuscripts. 
+
+Requires a PhD in a related discipline (e.g., neuroscience, psychology, statistics, electrical engineering, computer science) and experience conducting neuroimaging analyses.  Experience using R/python and major neuroimaging packages (FSL, SPM, AFNI) is preferred. Prior experience with longitudinal modeling is preferred, but not required. 
+
+Interested candidates should upload a CV, cover letter, and up to 3 relevant publications at https://psu.wd1.myworkdayjobs.com/PSU_Academic/job/Penn-State-University-Park/Postdoctoral-Researcher_REQ_0000046115-1. In addition, applicants should have 3 professional references submit letters to Eric Claus (edc5208@psu.edu).
+ 
+Penn State is an equal opportunity, affirmative action employer, and is committed to providing employment opportunities to all qualified applicants without regard to race, color, religion, age, sex, sexual orientation, gender identity, national origin, disability or protected veteran status.
+If you are unable to use our online application process due to an impairment or disability, please contact HR Services at 814-865-1473. Employment with the University will require successful completion of background check(s) in accordance with University policies.
+
+Pursuant to the Jeanne Clery Disclosure of Campus Security Policy and Campus Crime Statistics Act and the Pennsylvania Act of 1988, Penn State publishes a combined Annual Security and Annual Fire Safety Report (ASR). The ASR includes crime statistics and institutional policies concerning campus security, such as those concerning alcohol and drug use, crime prevention, the reporting of crimes, sexual assault, and other matters. The ASR is available for review at https://police.psu.edu/annual-security-reports.
+
+########################################################################
+
+
+Dear Alejandro,
+
+I am afraid that in older versions of eddy there is a bug in the error handling ☹ The intention is for eddy to write something informative, but before it has a chance to the relevant text is overwritten (by something random). Hence it is perfectly possible (and I would say it is the most likely explanation) that there is a problem with your command, one of the files in your command etc.
+
+If you are able to download the latest version (released earlier in the week) that problem will have been fixed and you will get a useful error message.
+
+Also, is INPUTS by any chance an environment variable that needs a $ in front of it?
+
+Best regards Jesper
+
+I was trying to use Eddy cuda 10.2, but I get a weird output from the command line and I am not entirely sure what to do.
+Eddy open mp does indeed work, and just two weeks ago, eddy cuda 10.2 also worked. While I am not completly certain that my inputs are correct, I dont think thats the issue here.
+
+
+sphyrna@sphyrna:~/thesis/structural/synbotest/subcovid$ eddy --imain=dwi.nii.gz --mask=dwi_mask.nii.gz \
+--acqp=INPUTS/acqparams.txt --index=index.txt \
+--bvecs=dwi.bvec --bvals=dwi.bval \
+--topup=topup/topup_results --out=eddy/eddy_unwarped_images
+
+...................Allocated GPU # 0...................
+�`
+
+Hi Estephan,
+
+I think you will still need to have the FSLOUTPUTTYPE environment variable set to NIFTI2_GZ in order for the randomise call to correctly save the output files. I'll add this to the fslnets code for the next version.
+
+Paul
+
+
+Dear Paul,
+
+Thank you for the answers. The reason for so many questions is that language of help/web is not precise enough. For example, it seems that default I asked about is "--coordSpace affine" which is easier for me to understand than "world", especially since in NIFTI "world" is not well defined. "World" is s-form or q-form or this depending on ...
+
+Thank you for clarifying.
+
+Roman
+
+Hi Roman,
+
+Does this mean that s-/q-form is taken from the paired NIFTI and applied to GIFTI (instead of reading from GIFTI directly)?
+Yes - FSLeyes does not use the orientation information in GIFTI files for reasons that I have already outlined.
+ The "--coordSpace" option to fsleyes further specifies modification to s-/q-form transform being applied, for example when "affine", no transform from NIFTI will be used?
+Essentially yes, however the surface still needs to be associated with a reference image, as the same code pathway is used within FSLeyes for all surface file types.
+When "id", then the same transform as for NIFTI pixels will be used?
+Setting "--coordSpace id" tells FSLeyes that the surface vertex coordinates are defined in the voxel coordinate system of the reference image.
+If --coordSpace is not set, what is the (default) transformation applied to GIFTI?
+For GIFTI files, FSLeyes assumes by default that the vertex coordinates are defined in the "world" coordinate system, which is the same coordinate system that NIFTI images are projected into via their s/qform.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 28 February 2024 16:55
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes does not load GIFTI
+ 
+Dear Paul,
+
+I know you explained options before. I am asking from a different angle.
+
+The link you send states: "For other overlay types (e.g. GIFTI and VTK meshes), FSLeyes uses the the transformation matrix of that model’s reference image to position the mesh in the display coordinate system."
+
+Does this mean that s-/q-form is taken from the paired NIFTI and applied to GIFTI (instead of reading from GIFTI directly)? The "--coordSpace" option to fsleyes further specifies modification to s-/q-form transform being applied, for example when "affine", no transform from NIFTI will be used? When "id", then the same transform as for NIFTI pixels will be used?
+
+If --coordSpace is not set, what is the (default) transformation applied to GIFTI?
+
+Thank you,
+
+Roman
+
+P.S. I would add copysqformtogii in the fslorient tool which would also take --coordSpace options and produce proper GIFTI so that fsleyes (and other tools) does not have to deal with it.
+
+
+
+
+
+Forwarded at the request of Vidya Rajagopalan:
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+FRIEND Lab (Fostering Resilience in Early Neurodevelopment) seeking a talented Data Manager and Analyst to contribute to our groundbreaking studies aimed at unraveling early neurodevelopment of the human brain. Our research focuses on advancing non-invasive methods imaging and computational modeling methods to understand healthy and pathological human brain development during the prenatal to pre-K period.
+ 
+As a Data Manager and Analyst, you will play a crucial role in managing and analyzing complex multimodal datasets (such as neuroimaging, histopathology, psychosocial data). You will work closely with our interdisciplinary team of researchers to ensure the efficient organization, storage, and analysis of data. Your expertise will be instrumental in extracting meaningful insights from large-scale datasets and contributing to groundbreaking discoveries in the field of early brain development.
+Key Responsibilities:
+Develop and implement robust data management protocols to ensure the integrity, security, and accessibility of neuroimaging datasets.
+Perform preprocessing, quality control, and statistical analysis of neuroimaging data using advanced software tools and techniques.
+Collaborate with researchers to design and execute data analysis pipelines tailored to specific research questions and objectives.
+Assist in the development of data visualization techniques to effectively communicate research findings.
+Assist in the preparation of research communications such as manuscript, presentation, grant applications, and progress reports
+Stay updated on the latest developments in neuroimaging methodologies and contribute to the integration of innovative techniques into research projects.
+Requirements:
+Bachelor's or Master's degree biomedical engineering, computer science, statistics, or a related field.
+Proven experience in managing and analyzing neuroimaging datasets, with proficiency in neuroimaging software packages (e.g., FSL, SPM, AFNI, FreeSurfer).
+Strong programming skills in languages such as Python, R, or similar, with experience in scripting for data analysis and automation.
+Familiarity with statistical methods and machine learning techniques applied to neuroimaging data analysis.
+Excellent organizational skills and attention to detail, with the ability to handle multiple tasks and prioritize effectively.
+Effective communication and interpersonal skills, with the ability to collaborate within a multidisciplinary team environment.
+Preferred Qualifications:
+Experience working in a research or academic environment, particularly in the field of neuroscience or neuroimaging.
+Knowledge of database management systems and data visualization tools.
+Experience with version control systems (e.g., Git) and software development best practices.
+Prior experience with advanced neuroimaging modalities and techniques (e.g., resting-state fMRI, diffusion MRI tractography).
+How to Apply:
+Interested candidates should submit a cover letter, resume/CV, and any relevant portfolio or project work demonstrating their expertise in data management and analysis. Please include contact information for references. Applications should be sent to vrajagopalan@chla.usc.edu with the subject line "Data Manager and Analyst Application - [Your Name]".
+Join us in unraveling the complexities of the human brain and making breakthrough discoveries that have the potential to transform our understanding of neurological disorders and cognitive function. We look forward to welcoming you to our team!
+
+
+
+Hi, everyone,
+
+I encountered some alignment/registration problems between functional images and the structural image after performing preprocessing and first-level modelling. I would like to seek for suggestions/help as to what might cause the problem and what I can do to fix it.
+
+I'm attaching the screenshot of the FEAT report.
+
+Overall, the preprocessing looks fine and MCFLIRT estimated displacement is fine as well (btw, our voxel size is 3x3x3 mm).
+In the design matrix, I have added temporal derivative and applied temporal filtering. Also, I have added the conventional standard motion parameters as well as motion censoring to regress out some volumes/time series.
+The effect required (%) seems fine as well.
+
+However, when I looked into the results (zstats images overlaying on top of the participant's T1w image) using fsleyes, the functional images (which were smoothed using 5mm spatial smoothing FWHM) did not seem to align well with the structural image (note: this is the first level modelling so the functional images and structural image should be in the individual's T1w image as far as I understood it). I have no clue what might be the cause and would like to seek for some suggestions/help.
+
+BTW, I remember that if we overlay the smoothed functional images on top of the structural image, it might be possible that some activations might lightly spillover outside of the brain if the activations are big. But in the screenshot, I don't think it's like the case. Instead, it looks more like an issue of misalignment (but correct me if I got it wrong).
+
+Thanks so much!
+
+########################################################################
+
+
+Hi, Matthew,
+
+Thank you! : )
+
+########################################################################
+
+
+
+Thanks Paul. I got our computing cluster admin to install FSL 6.0.7.8 and I re-run the analysis using jupyter notebook. It resolved some but not issues in the analysis. I am now finding errors for the nets.glm for analysis using all nodes (n=441), while the analysis for selected nodes (n=23) completed without issues. The error happened for both full and partial correlations. Below is the error message for full correlations. Plase advise. Thank you. Estephan.
+
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[25], line 3
+      1 ## Cross-subject comparison with netmats
+      2 # All nodes, Full Correlations
+----> 3 Fnet_all_p_corr,Fnet_all_p_uncorr = nets.glm(ts_allnodes, Fnetmats_all, 'GLM_files/RestfMRI_02_CtlxTMDlowxTMDhigh_03_PairwiseComparisons.mat', 'GLM_files/RestfMRI_02_CtlxTMDlowxTMDhigh_03_PairwiseComparisons.con', nperms=5000, plot=True, title='Between-group pairwise, full corr,All nodes')
+
+File /common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/fsl/nets/glm.py:89, in glm(ts, netmats, design, contrasts, nperms, plot, title)
+     87 for con in range(ncontrasts):
+     88     constr       = ' '.join([f'{c:g}' for c in contrasts[con]])
+---> 89     tstat        = Image(f'{outpref}_tstat{con+1}')          .data.flatten()
+     90     cpuncorr     = Image(f'{outpref}_vox_p_tstat{con+1}')    .data.flatten()
+     91     cpcorr       = Image(f'{outpref}_vox_corrp_tstat{con+1}').data.flatten()
+
+File /common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/fsl/data/image.py:1453, in Image.data(self)
+   1448 # The internal cache has real image shape -
+   1449 # this makes code in __getitem__ easier,
+   1450 # as it can use the real shape regardless
+   1451 # of how the data is accessed
+   1452 if self.__data is None:
+-> 1453     self.__data = self.nibImage.dataobj[:]
+   1455 return self.__data.reshape(self.shape)
+
+File /common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/nibabel/arrayproxy.py:463, in ArrayProxy.__getitem__(self, slicer)
+    462 def __getitem__(self, slicer):
+--> 463     return self._get_scaled(dtype=None, slicer=slicer)
+
+File /common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/nibabel/arrayproxy.py:424, in ArrayProxy._get_scaled(self, dtype, slicer)
+    422     scl_inter = scl_inter.astype(use_dtype)
+    423 # Read array and upcast as necessary for big slopes, intercepts
+--> 424 scaled = apply_read_scaling(self._get_unscaled(slicer=slicer), scl_slope, scl_inter)
+    425 if dtype is not None:
+    426     scaled = scaled.astype(np.promote_types(scaled.dtype, dtype), copy=False)
+
+File /common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/nibabel/arrayproxy.py:394, in ArrayProxy._get_unscaled(self, slicer)
+    390 if canonical_slicers(slicer, self._shape, False) == canonical_slicers(
+    391     (), self._shape, False
+    392 ):
+    393     with self._get_fileobj() as fileobj, self._lock:
+--> 394         return array_from_file(
+    395             self._shape,
+    396             self._dtype,
+    397             fileobj,
+    398             offset=self._offset,
+    399             order=self.order,
+    400             mmap=self._mmap,
+    401         )
+    402 with self._get_fileobj() as fileobj:
+    403     return fileslice(
+    404         fileobj,
+    405         slicer,
+   (...)
+    410         lock=self._lock,
+    411     )
+
+File /common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/nibabel/volumeutils.py:464, in array_from_file(shape, in_dtype, infile, offset, order, mmap)
+    462 infile.seek(offset)
+    463 if hasattr(infile, 'readinto'):
+--> 464     data_bytes = bytearray(n_bytes)
+    465     n_read = infile.readinto(data_bytes)
+    466     needs_copy = False
+
+ValueError: negative count
+
+
+On Thu, 22 Feb 2024 18:25:30 +0000, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+
+Hi Matthew,
+
+ 
+
+Yes, of course. I am attempting to do a first-level analysis of task data in a clinical population. This data has mostly been preprocessed using Poldrack’s fMRIPrep.
+
+ 
+
+FEAT fails shortly after running `feat design.fsf`. I am attaching the log report here, but I did not see anything very helpful in it.
+
+ 
+
+Thank you for your help.
+
+Hi Keng-Yu,
+   The interim functional images ( e.g. pre-smoothing ) are deleted at the end of preprocessing. If you need the data without a specific preprocessing step being applied then you will have to rerun the pre-processing - but steps like standard-space registration could be turned off to save time.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi Ruben,
+This might be easier to debug if you could briefly describe your analysis and any error messages generated ( e.g. from report_log.html )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Keng-Yu,
+    The command below will pad the original image by 1 voxel at each edge. For sbrefs of the same size, then the call will not need to change, for images of different sizes then the ( 66, 66, 52 ) limits will need to be changed to ( dim1+2, dim2+2, dim3+2 ) - that is the x,y,z dimensions of the image each increased by 2. As long as the lower-level functional data/statistics look fine, then higher-level analyses should be OK. If this bug affected the functional data, then I would expect it to be similarly “NaN”.
+
+Kind Regards
+Matthew
+
+Hi again Bram,
+
+ 
+
+I had a look at the Hz fieldmap, and the values look reasonable in there.
+
+ 
+
+Looking back at your emails it looks like your "eddy command" is
+
+ 
+
+dwifslpreproc -force -eddy_mask $sess_dwi/mean_b0_synthstrip_mask.nii.gz dwi_den_unr.mif dwi_den_unr_preproc.mif -pe_dir j- -rpe_none -eddy_options " --field$sess_dwi/fmap_hz2dwi_12dof_applyxfm --slm=linear --data_is_shelled"
+ 
+
+I must admit I have no idea how to translate that into an actual eddy command. Can you please let me know what that is translated to by the dwifslpreproc script, and please also tar up and upload all of the files referred to on the command line (--acqp, --bvals etc) that you haven't already uploaded. And can you please also let me know how dwifslpreproc infers on the readout time (that goes into the --acqp file). I can guess that "-pe_dir j-" translates into a PE-vector of "0 -1 0", but cannot guess where it gets the readout time from.
+
+ 
+
+Best regards Jesper
+
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Bram Diamond <bramdiamond@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Tuesday, 27 February 2024 at 20:37
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+ 
+
+Hi Jesper,
+
+ 
+
+I just uploaded the fmap in Hz which I have run fsl_prepare_fieldmap on.
+
+ 
+
+I haven’t looked into the SPM fieldmap toolbox. I can take a look if this is still problematic.
+
+ 
+
+Thanks,
+
+Bram
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Date: Tuesday, February 27, 2024 at 11:08 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+Dear Bram,
+
+ 
+
+the fieldmap you sent me has not been scaled to Hz. The values in there are more than an order of magnitude greater than you would expect from a fieldmap. There is also a region of wrapped phase. Did you run fsl_prepare_fieldmap on it?
+
+ 
+
+Slightly unrelated, did you take a look at the SPM fieldmap toolbox as I suggested? The very sharp edges in the fieldmaps from fsl_prepare_fieldmap is a real problem for eddy (which relies on an invertible field), and the fieldmaps you get from SPM tend to work much better. This would be true regardless of the scaling issue.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Bram Diamond <bramdiamond@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Tuesday, 27 February 2024 at 16:44
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+ 
+
+Thanks, Jesper.
+
+ 
+
+I’ve uploaded the DWI, phase fmap in DWI space (brain mask and raw), and the original phase fmap.
+
+ 
+
+Bram
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Date: Tuesday, February 27, 2024 at 8:59 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+Hi there Bram,
+
+ 
+
+I have just sent you a link. Can you please start by uploading the Hz fieldmap in the space of the diffusion data, and we'll take it from there.
+
+ 
+
+Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Bram Diamond <bramdiamond@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Tuesday, 27 February 2024 at 14:14
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+ 
+
+Hi Jesper,
+
+ 
+
+Are you free to look at my data this week?
+
+ 
+
+Thanks,
+
+Bram
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Date: Tuesday, January 16, 2024 at 4:02 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+Dear Bram,
+
+ 
+
+I am afraid that I am too busy to take a look at your data right now. I'd be happy to look at it after Feb 5th. If you would want me to, please send me an email at that time and I will give you instructions for how to upload your data. Sorry.
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Bram Diamond <bramdiamond@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Monday, 15 January 2024 at 21:11
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+ 
+
+Just circling back on this.
+
+ 
+
+Best,
+
+Bram
+
+ 
+
+From: Bram Diamond <bramdiamond@gmail.com>
+Date: Thursday, January 11, 2024 at 2:33 PM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+Thanks, Jesper.
+
+ 
+
+I corrected the conversion from rad/s to Hz, but the output looks quite similar. How can I ensure that the fieldmap is properly resampled? FSL’s flirt appeared to work just fine; the resolution and matrix size match.
+
+ 
+
+What should the range of values be for my fieldmap?
+
+ 
+
+I do not have experience with SPM, let alone the fielmap toolbox. I am working with a phase map derived from multi-echo GRE. Is SPM suitable for this sequence? Do you have helpful resources?
+
+ 
+
+Many thanks,
+
+Bram
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Date: Tuesday, January 9, 2024 at 4:49 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Eddy Fieldmap Wrapping
+
+Dear Bram,
+
+ 
+
+it is a little hard to say what is going on just from these images, but I have a couple suggestions that might help you get further.
+
+ 
+
+It looks like in step 2 below you multiply by 6.28 to go from rad/s to Hz. I think that should be a division instead.
+Looking at the transversal slice in your "corrected" images below it looks like intensity has been displaced towards the back, resulting in a "half circle" band of hyperintensities on both sides of the brain. This is clearly visible also further down where the field is overlayed on top of the "corrected" image. But strangely it looks like the field is low/close to zero in the areas from which the intensity has been moved. I would look into the registration, and in particular make sure that the fieldmap has been resampled into the space of the diffusion data.
+fsl_prepare_fieldmap isn't neccesarily the best for preparing dual echo-time fieldmaps for use with eddy. The algorithm in eddy hinges on the displacement field being invertible, which is typically not the case for fieldmaps prepared with fsl. I would suggest using instead the SPM fieldmap toolbox.
+ 
+
+Good luck Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Bram Diamond <bramdiamond@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Monday, 8 January 2024 at 19:06
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Eddy Fieldmap Wrapping
+
+ 
+
+Hello,
+
+ 
+
+I’m having trouble converting my phase and magnitude maps into a fieldmap for eddy.
+
+ 
+
+I have tried the following:
+
+fsl_prepare_fieldmap SIEMENS $sess_fmap/fmap_phase.nii.gz $sess_fmap/fmap_mag_synthstrip.nii.gz $sess_fmap/fmap_rads.nii.gz 2.46
+fslmaths $sess_fmap/fmap_rads.nii.gz -mul 6.28 $sess_fmap/fmap_hz.nii.gz
+flirt -in $sess_fmap/fmap_mag_synthstrip.nii.gz -ref $sess_dwi/mean_b0_synthstrip.nii.gz -dof 12 -omat $sess_dwi/fmap2dwi_mean_b0_12dofmat -out $sess_dwi/fmap2dwi_mean_b0_12dof.nii.gz
+flirt -in $sess_fmap/ fmap_hz.nii.gz
+-ref $sess_dwi/mean_b0_synthstrip.nii.gz -applyxfm -init $sess_dwi/fmap2dwi_mean_b0_12dofmat -o $sess_dwi/fmap_hz2dwi_12dof_applyxfm.nii.gz
+dwifslpreproc -force -eddy_mask $sess_dwi/mean_b0_synthstrip_mask.nii.gz dwi_den_unr.mif dwi_den_unr_preproc.mif -pe_dir j- -rpe_none -eddy_options " --field$sess_dwi/fmap_hz2dwi_12dof_applyxfm --slm=linear --data_is_shelled"
+ 
+
+I’ve ensured that the masks and registrations are all correct. However, the “corrected” image looks like eddy is not working for the whole brain. The occipital lobe looks to be untouched and there is a line where voxels appear to have been summed between the parietal and occipital junction (see image attached).
+
+ 
+
+A collage of images of a brain
+
+Description automatically generated
+
+ 
+
+This is drastically worse than the raw image (see image below).
+
+ 
+
+A collage of images of a brain
+
+Description automatically generated
+
+ 
+
+The fieldmap max value is 361.447174 and min value is -281.117462 (see attached).
+
+ 
+
+A collage of images of a brain
+
+Description automatically generated
+
+ 
+
+Any help would be greatly appreciated.
+
+ 
+
+Best,
+
+Bram
+
+ 
+
+Bram R. Diamond, MS
+
+Clinical Psychology Doctoral Candidate
+
+Northwestern University Feinberg School of Medicine
+
+Mesulam Center for Cognitive Neurology & Alzheimer’s Disease
+
+300 E. Superior Street | Tarry 8 | Chicago, IL 60611
+
+www.brain.northwestern.edu
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+
+
+Dear Victoria,
+
+it can indeed happen that you get different rotations when running eddy on a shell in isolation compared to together with the other shells. The rule is that all rotations are relative the first b=0 volume in the data set you submit to eddy.
+
+In general our recommendation is to _always_ run eddy jointly on any data that you might want to analyse together. And there is really no good reason to run the separately even if you don't want to analyse them together. If you run eddy on the different shells separately there will always be a risk (quite likely) that there is some unknown movement between the two. The only way that they can be ensured to be in the same space, is if eddy is given access to them all at the same time.
+
+So, if for example you have some multi-shell data and you want to run NODDI and also calculate FA. Run eddy on all data jointly, _then_ extract a suitable shell to calculate FA from and run NODDI on all the data.
+
+Best regards Jesper
+
+Dear Aaron,
+
+ 
+
+I am afraid that must be a misunderstanding. If you have multi-shell data you should always run eddy on all of your data (shells) jointly.
+
+ 
+
+Maybe you are thinking of dtifit, where we usually recommend using only a single shell (out of your multi shell data).
+
+ 
+
+Best regards Jesper
+
+ 
+
+Dear Finn,
+
+ 
+
+I am afraid that there aren't any "hard and fast" rules for inclusion/exclusion. The traffic light system is not intended to mean "red--throw away", it is more an indicator that you need to take an extra look at that data set, and _maybe_ at the end decide to exclude the subject.
+
+ 
+
+It is also the case that some of the metrics in quad/squad tell you something about what the data is like to start with. For example if you see that eddy has estimated very large movement parameters; that indicates that the subject has moved a lot. But that doesn't necessarily mean that eddy hasn't been able to correct the movement (in which case there would be little need to exclude that subject).
+
+ 
+
+Other metrics, in particular the CNR maps, tell you something about the data after all the corrections, and may therefore be more useful. If you for example have two subjects scanned in the same scanner with the same protocol, and one of them have half the CNR of the other (after all the corrections). That is a strong indication that there is problem with the data from the former subject. But it is still possible that you can "resolve" that by for example looking at the movement traces, identify periods of excessive movement and then remove the volumes associated with that period.
+
+ 
+
+When to exclude/include subjects will depend very much on the population you scan. Some populations (like neonatals) move a lot more than a normal population, and if you were to apply rules from a "general" population, chances are you would not have any subjects left. Also, the "value" of the data will be different for different populations. A lot more work will have gone into recruiting and scanning a baby, then when sticking a student in the scanner.
+
+ 
+
+So, with extra "valuable" populations, such as yours, I suggest using quad/squad as one of the tools for assessing the quality of the data. And don't forget your most valuable tool, which is still eyeballing the data.
+
+ 
+
+Jesper
+
+
+ 
+
+Dear Antonio,
+
+ 
+
+    thank you again, I have just updated my fsl version to the latetest: it helped me to find my mistake.
+
+    I used a wrong echo spacing value, so now eddy is running perfectly.
+
+ 
+
+That's great. Just remember that you need to have the same readout-time (fourth column) in your acqparams.txt for topup and eddy. So if you change it you will also need to re-run topup with the new value.
+
+   
+
+    I studied your advice to remove applytopup function to process dti data and I achieved the following results:
+
+   
+
+    - applytopup is used to correct the susceptibility distorsons calculated by topup;
+
+   
+
+    - hifi_nodif is calculated by fslmaths based on topup images output called topup_AP_PA_b0_iout;
+
+   
+
+    - hifi_nodif_brain and hifi_nodif_brain_mask are achieved using bet and previous hifi_nodif;
+
+   
+
+    - hifi_nodif_brain_mask is the mask input used in eddy function.
+
+   
+
+    Briefly I used applytopup to check topup results, but I always feed hifi_nodif_brain_mask to eddy as input mask.
+
+   
+
+    Is it ok?
+
+ 
+
+Yes, that would work well. It wouldn't really matter if you use "topup_AP_PA_b0_iout" or the output of applytopup to generate your brain mask. Either is fine.
+
+ 
+
+Best regards Jesper
+
+ 
+
+   
+
+    Best regards,
+
+   
+
+    Antonio
+
+   
+
+    ########################################################################
+
+   
+
+Dear Jesper,
+
+thank you again, I have just updated my fsl version to the latetest: it helped me to find my mistake.
+I used a wrong echo spacing value, so now eddy is running perfectly.
+
+I studied your advice to remove applytopup function to process dti data and I achieved the following results:
+
+- applytopup is used to correct the susceptibility distorsons calculated by topup;
+
+- hifi_nodif is calculated by fslmaths based on topup images output called topup_AP_PA_b0_iout;
+
+- hifi_nodif_brain and hifi_nodif_brain_mask are achieved using bet and previous hifi_nodif;
+
+- hifi_nodif_brain_mask is the mask input used in eddy function.
+
+Briefly I used applytopup to check topup results, but I always feed hifi_nodif_brain_mask to eddy as input mask.
+
+Is it ok?
+
+Best regards,
+
+Antonio
+
+########################################################################
+
+
+Dear Antonio,
+
+    first of all I thank you for replying to help me.
+    Tomorrow I will update FSL to the new version, so I will send you the eddy function error message.
+    I am available to send you the dti nifti and bvals, bvecs text files, please send me a link to upload files or I will share them by means of onedrive.
+
+Cheers. Hopefully it will be enough for you to send me the new error message, and we will be able to solve it by that. If not I will send you a link.
+   
+    Moreover I use applytopup to achieve hifi_nodif images, that I will feed to eddy function in the mask input = hifi_nodif_brain_mask.
+    I follow FSL Diffusion Toolbox Practical instructions (https://fsl.fmrib.ox.ac.uk/fslcourse/2019_Beijing/lectures/FDT/fdt1.html#topup).
+    Is the procedure I use correct?
+
+Yes, you are absolutely right. I'm sorry about that.
+
+Best regards Jesper
+
+
+Hello, I tried to run xtract_qc on my dataset (n=52) and it showed an error about file not found. I looked at the python code for xtract_qc, and it seems to be an intermediate file created during the processing. Any idea on what is going on? I'm using FSL 6.0.7.8. Thank you. Estephan
+
+acn21:~ moana004$ date; xtract_qc -subject_list ${subjs_xtractoutput_folderlist} -out ${output_folder_qc} -thr 0.001 -n_std 2; date
+Wed Feb 28 16:57:04 CST 2024
+
+__  _______ ____      _    ____ _____ ___   ____
+\ \/ /_   _|  _ \    / \  / ___|_   _/ _ \ / ___|
+ \  /  | | | |_) |  / _ \| |     | || | | | |
+ /  \  | | |  _ <  / ___ \ |___  | || |_| | |___
+/_/\_\ |_| |_| \_\/_/   \_\____| |_| \__\_\____|
+
+ 
+Warning: Output folder already exists. Some of the files may be overwritten
+1 of 52Traceback (most recent call last):
+  File "/common/software/install/manual/fsl/6.0.7.8/bin/xtract_qc", line 167, in <module>
+    filecheck_all.loc[ns, :], tract_waytotal_all.loc[ns, :], tract_volume_all.loc[ns, :] = get_metrics(sub_path, sub_out, tracts, thr)
+                                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/software/install/manual/fsl/6.0.7.8/bin/xtract_qc", line 142, in get_metrics
+    np.savetxt(os.path.join(sub_out, 'filecheck'), filecheck, fmt='%i')
+  File "/common/software/install/manual/fsl/6.0.7.8/lib/python3.11/site-packages/numpy/lib/npyio.py", line 1556, in savetxt
+    open(fname, 'wt').close()
+    ^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/sessions/10001/hcp/10001/T1w/xtract/xtract_qc/filecheck'
+Wed Feb 28 17:05:04 CST 2024
+
+########################################################################
+
+
+Dear Paul,
+
+I know you explained options before. I am asking from a different angle.
+
+The link you send states: "For other overlay types (e.g. GIFTI and VTK meshes), FSLeyes uses the the transformation matrix of that model’s reference image to position the mesh in the display coordinate system."
+
+Does this mean that s-/q-form is taken from the paired NIFTI and applied to GIFTI (instead of reading from GIFTI directly)? The "--coordSpace" option to fsleyes further specifies modification to s-/q-form transform being applied, for example when "affine", no transform from NIFTI will be used? When "id", then the same transform as for NIFTI pixels will be used?
+
+If --coordSpace is not set, what is the (default) transformation applied to GIFTI?
+
+Thank you,
+
+Roman
+
+Dear Cain,
+
+I am not sure this is still true, but it definitely used to be true: Definition of two images being registered to each other includes them having identical voxel sizes and number of pixels. According to this definition it is impossible to preserve original resolution.
+
+For example:
+
+fslroi image1 image2 0 -1 0 -1 1 -1
+
+According to this definition, image2 is not registered to image1 despite it is produced from it by cutting one z-slice.
+
+At the same time, it must be understood that registration process will likely have to interpolate "moving" image is some way due to rotation/translation even if voxel size of the target image were the same as of the moving one.
+
+On the other hand, it is possible to obtain transformation between T1 and EPI and then modify q-/s-forms of the EPI in such a way that overlay of EPI on T1W using new header will result in a registered image. According to the definition above, new EPI is not yet registered to T1W, but perhaps for the purposes you need, its because no new information is needed to overlay them. In this process, EPI image itself is never modified in any way. Images 1 and 2 in the above example are still registered to each other in the sense of q-/s-form described here for EPI.
+
+
+Roman
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Wednesday, February 28, 2024 3:58 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] registration with epi_reg
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi Cain,
+
+Do you have a specific need for preserving the resolution? For most types of analyses, the work is usually performed in the native image space, and the functional->structural registration is only used to transform results from native functional space into a standard space, for group analysis/visualisation.
+
+In any case, when resampling an image using flirt, you can enforce an isotropic output resolution using the -applyisoxfm option.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Z Sha <zkypis@126.COM>
+Sent: 27 February 2024 01:04
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] registration with epi_reg
+ 
+Hi Paul,
+
+Thanks again for your suggestions. The original resolution of the EPI image is 0.8*0.8*0.8, and the original resolution of the T1 image is 0.5*0.5*0.5. But, after applying 'flirt' function, I found the EPI registered to the T1 image became 0.5*0.5*0.5, instead of 0.8*0.8*0.8. Do you have any thoughts on performing registration, while keeping the original resolution of EPI?
+
+Thanks. I am looking forward to your reply.
+
+Best,
+Cain
+
+Dear list,
+
+I'm using probtrackX2 in --network mode with default options (-l --onewaycondition -c 0.2 -S 2000 -stehplength=0.5 -P 5000 --fibthresh=0.01 --distthresh=0 --sampvox=0) on 3 ROIs (V1, N. caudatus, and orbitofrontal cortex volume masks from an atlas).
+
+I'd like to understand better how the streamline density map is to be interpereted when running ROIxROI tractography. Does a value on any given voxel represent the number of  "successful" streamlines (i.e., the ones that reached the target ROI) that passed through, or does it count the number of any streamline that passed thorugh regardless of their success, in other words, ALL streamlines tested by the probtrackX2 run?
+
+If the former is true, then it would mean that the density map is a visualization of all streamlines counted in 'fdt_network_matrix'. My ultimate goal is to take this matrix for further analyses. Ideally, all streamlines counted therein should have a decent degree of biological plausibilty. But as the attached example image illustrates (min. value = 0), few streamlines go all over the place, far from any single plausible tract. This is of course best corrected by setting termination/exclusion and waypoint masks. However, I'm planning to run tractography on 425 ROIs, which makes it highly impractical and too time consuming to come up with a sensible selection of termination/exclusion- and waypoint masks for every conceivable ROI pair.
+Is there a way to correct 'fdt_network_matrix' such that it contains only counted streamlines that travel through high probability voxels specific for a particular ROI pair (as a proxy index of biological plausibilty) in a run containing many many more regios at the same time  without recurring to the use of aforementioned masks?
+
+This of course if only the first interpretation of the density map is true. If the second interpretation is correct, I would then like to find a way to visualize only "successful" streamlines to evaluate biological plausibility visually. Do you have any suggestions on how to achieve that using fsl tools?
+
+Kind regards,
+
+Javier
+
+########################################################################
+
+
+Hi Karl,
+
+In that case you should be able to accomplish the same thing by running these commands:
+
+cp $FSLDIR/src/fsl-bianca/* $FSLDIR/bin/
+
+chmod a+x $FSLDIR/bin/*bianca*
+
+PREFIX=$FSLDIR $FSLDIR/share/fsl/sbin/createFSLWrapper -f \
+    bianca bianca_overlap_measures make_bianca_mask \
+    bianca_cluster_stats bianca_perivent_deep
+
+Paul
+
+Hello Paul, thank you for the response. I do not seem to have a folder python-scripts. There’s a folder “python”, that has two folders: mist and possum. 
+
+On Wed, Feb 28, 2024 at 4:54 AM Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Karl,
+
+I think there is an issue with how the bianca files are packaged, and am looking into it. In the meantime you should be able to run these two commands to install the bianca scripts:
+
+cp $FSLDIR/python-scripts/* $FSLDIR/bin/
+
+PREFIX=$FSLDIR $FSLDIR/share/fsl/sbin/createFSLWrapper -f \
+    bianca bianca_overlap_measures make_bianca_mask \
+    bianca_cluster_stats bianca_perivent_deep
+
+Paul
+
+Hi Roman,
+
+I gave an outline of the options in a previous post: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;92bf53f7.2401
+
+And there is some more information on this page: https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/display_space.html
+
+In FSLeyes, all surfaces have to be associated with a NIFTI image in order to be positioned correctly. FSLeyes can sometimes automatically determine the reference image, e.g. if a surface is loaded along with any NIFTI file contained in the same directory, it is set as the reference image.
+
+FSLeyes will also make an educated guess as to the coordinate system (the "mesh coordinate space") in which the surface vertices are defined, e.g. GIFTI surfaces are usually defined i n the world/mm coordinate system, FIRST VTK files are defined in a scaled voxel coordinate system with a L/R flip, and freesurfer surfaces are defined in a freesurfer-specific coordinate system.
+
+I implemented things this way because I have personally come across many GIFTI files (and other surface formats) with unknown/untrustworthy/incorrect orientation information, and which have vertices defined in a range of different coordinate systems. For most "good" files, FSLeyes will generally do the right thing.
+
+Paul
+

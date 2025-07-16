@@ -1,0 +1,420 @@
+Hi all, what is the best way to run the FEAT stats on the cleaned output from ICA-AROMA?  I can just overwrite the filtered_func_data.nii.gz file with the denoised_func_data_aggr.nii.gz file, but is there a better way?
+
+Thanks,
+
+Keith
+########################################################################
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST/UserGuide#Create_a_design_matrix:
+
+For Vertex Analysis, I need a .fts file - would I use the model you've provided, with F-tests turned on for both contrasts?
+
+Best,
+
+Noah Lee
+
+
+On Tue, Jun 20, 2023 at 3:47 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hello Noah,
+  You can see an example of this style of design here:
+
+
+Hello!
+
+I wish to perform GLM for a paired t-test for 4 subjects (baseline and followup for each) for vertex analysis. How would I set up my design files in GLM?
+
+Best,
+
+Noah Lee
+
+
+Hi Saad,
+
+ Now I did see both your replies. It worked deleting -wls
+
+Thank you
+Mariana
+
+
+Dear Paul
+
+Thanks a lot for your help
+
+It seems to be a hidden file, yet it seems to exist (see screenshot of the folder content, hidden files visible)
+
+Hi
+
+I successfully installed fsl on the vmware machine but on ubuntu 20.04 .
+Now I try to install fsl on another system again on Ubuntu 20.04 but I have the same problem.
+
+The attached file is the image of the error message.
+
+
+Dear FSL Experts, 
+
+I would appreciate it if someone can help with the question below. Thank you. 
+
+Regards,
+Paul Geha.
+
+On Tue, Jun 13, 2023 at 11:57 AM paul geha <paul.geha@gmail.com> wrote:
+Dear FSL Experts, 
+
+Is TFCE a valid method to use in thresholding group statistics when running randomise using (FIRST) vertex data from sub-cortical structures?
+
+Thanks, 
+Paul Geha.
+
+Hello, we are trying to run melodic and dual regression on a dataset that has been previously pre-processed with fmriprep and tedana. As a consequence, we have data that have been already normalized to MNI and denoised.
+
+It appears that the Melodic gui has an undefeatable normalization step. Even if I edit the .fsf file changing the line
+
+set fmri(regstandard_yn) 1
+to
+set fmri(regstandard_yn) 0
+
+and then I runit, it appears that the registration to atlas is performed. This is obviously suboptimal because of the potential misregistration (especially if no structural data are entered), and in any case because of the unneded resampling.
+
+I have read similar questions on this list, and the answer was to use the command line version of melodic.
+
+I'm more than keen to use the command line to automatize the processes, however the overall "Melodic" gui pipeline is very involved and does not include just  a simple call to melodic... In the interest of reproducibility of results, I would like to just skip preprocessing, but reproduce the standard melodic multi-subject pipeline. Is there a "master" script used by Melodic (gui) I can edit? alternatively, is there a way to trick Melodic into a registration search that ends in the identity? I have seen that feat looks for  a .mat in the registration step, perhaps adding a standard (unitary) .mat in place can work?
+
+Thank you & best regards,
+
+Federico
+
+########################################################################
+
+Submissions for the Open Science Room at OHBM NOW OPEN !!! Looking for panelists, emergent sessions, and volunteers: https://ohbm.github.io/osr2023/submit/
+
+The Open Science Room (OSR) is a conference within a conference. It is part of the Organisation for Human Brain Mapping (OHBM) annual meeting (July 22-26, 2023, at the Palais de congres de Montréal, Canada).
+
+The OSR aims to be a welcoming and inclusive space for discussion around open practices within neuroimaging and science more generally.
+
+This year, you can self-nominate as a panelist for one of our panel discussions and/or submit your own emergent session.
+
+We are also always looking for volunteers to help us with the organisation of the OSR activities.
+
+Panel Sessions are moderated discussions amongst selected speakers and OSR attendees about various relevant topics, spanning across all aspects of open science practices.
+
+You can self-nominate as a speaker for the following hybrid panel discussions:
+8:00 GMT-4 July 23, 2023 (Sunday): Topic 1: Telehealth as a tool for open data research and sharing
+14:15 GMT-4 July 23, 2023 (Sunday): Topic 2: Evolution of open publishing (To do or not to do?/Lessons learnt)
+8:00 GMT-4 July 24, 2023 (Monday): Topic 3: Standardization of code
+10:30 GMT-4 July 25, 2023 (Tuesday): Topic 4: Open Data Governance and Infrastructure
+10:30 GMT-4 July 26, 2023 (Wednesday): Topic 5: Large open data repositories: sustainability and global implications of reuse
+
+Emergent sessions are live discussions among a small group of panel members, mediated by a host and open to audience of the OSR. The discussions may cover more advanced topics related to open-science or EDI (Equality, Diversity and Inclusion) issues.
+
+During the OSR attendees can hold hybrid emergent sessions.
+This year we offer 5 slots:
+10.30-11.30 (GMT -4) July 23 (Sunday) : OSR: Emergent Session #1
+10.30-11.30 (GMT -4) July 24 (Monday) : OSR: Emergent Session #2
+14.45-15.45 (GMT -4) July 24 (Monday) : OSR: Emergent Session #3
+8.00-9.00 (GMT -4) July 25 (Tuesday): OSR: Emergent Session #4
+14.45-15.45 (GMT -4) July 25 (Tuesday): OSR: Emergent Session #5
+
+Volunteers can be online or in person. Different options for tasks include (but are not limited to): website, social media, running events, prepare materials.
+
+For more info and sign-ups: https://ohbm.github.io/osr2023/submit/
+
+########################################################################
+
+
+Hi Noah,
+The F-test should only be on one contrast ( as it tests both directions ).
+
+Kind Regards
+Matthew
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu).
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+########################################################################
+
+
+Hello everyone,
+
+I am trying to figure out how – and whether I should – perform a repeated-measures analysis with a covariate.
+
+ 
+
+In my study, I collect simultaneous MRI & behavioral performance data from participants in two groups. Simply put, we are trying to find performance-correlated brain areas. Each participant has 3 runs of data. Thus far, I have analyzed the data by creating 2nd-level analyses (average across runs, within a participant), and then creating 3rd-level analyses (across participants) to with behavioral performance as a covariate, following this approach.
+
+ 
+
+However, this process has an implicit extra step: converting “behavioral performance data” into a single average value per participant. In reality we have rich data and could easily calculate a robust performance score for each individual run.
+
+ 
+
+Does it make sense to skip the 2nd-level (across runs, within participant) analysis, and instead run one big omnibus higher-level analysis with all 3 runs/participant, with a separate performance score for each run? This would essentially treat the 3 runs as a repeated-measures design. There is obviously a signal/noise tradeoff with reduced data per condition, but we could try it – unless there’s some philosophical/conceptual problem I’m missing. (FWIW the study is a block design, and each run has 230 TRs of time on task.)
+
+ 
+
+If it makes sense, how to organize it? I *think* we’d do one EV for “performance” and then separate EVs for each subject (i.e. a “sub1” EV that would be 1 for the three runs of that subject), but I’d love a second opinion since the FSL GLM page doesn’t provide examples for repeated-measures with covariate.
+
+ 
+
+Thanks,
+
+ 
+
+-----
+
+Benjamin A. Philip, Ph.D.
+
+Assistant Professor, Program in Occupational Therapy, Neurology, and Surgery
+
+Neuroscience and Rehabilitation Laboratory
+
+Washington University School of Medicine
+
+4444 Forest Park Ave, MSC-8505-66-1
+
+Saint Louis, MO 63108
+
+bphilip@wustl.edu
+
+Pronouns: he/him
+
+ 
+
+Hi,
+
+I am encountering an error while running "eddy_quad" and I can't find what I am doing wrong regarding this error.
+
+The command I run in the following:
+
+eddy_quad eddy_corrected -idx eddy_index.txt -par eddy_acqp.txt -m topup_imain_corrected_avg_brain_mask.nii.gz -b new.bval -g new.bvec -f fieldmap_HZ.nii.gz -s slspec_EcriPark.txt -o qc -v
+
+And the output i get is:
+
+Warning: Cannot open eddy_corrected.eddy_values_of_all_input_parameters
+found b-shell of 14 orientations with b-value 0.000000
+found b-shell of 12 orientations with b-value 300.000000
+found b-shell of 64 orientations with b-value 1000.000000
+found b-shell of 128 orientations with b-value 2000.000000
+Eddy parameters file detected
+CNR outuput files detected
+!!!Warning!!! NaNs detected in the CNR maps!!!
+Topup fieldmap file detected
+Traceback (most recent call last):
+  File "/usr/local/fsl/fslpython/envs/fslpython/bin/eddy_quad", line 54, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.verbose)
+  File "/usr/local/fsl/fslpython/envs/fslpython/lib/python3.8/site-packages/eddy_qc/QUAD/quad.py", line 353, in main
+    raise ValueError('Motion estimates and/or eddy estimated parameters are missing!')
+ValueError: Motion estimates and/or eddy estimated parameters are missing!
+
+And here is the list of the content of folder from which I launch the command (it is a bit messy because I gather the output of qsiprep to run "eddy_quad":
+
+_0x494c41001f5c22c7c33be04c96535847.json
+_inputs.pklz
+_node.pklz
+command.txt
+eddy_acqp.txt
+eddy_corrected.eddy_cnr_maps.nii.gz
+eddy_corrected.eddy_command_txt
+eddy_corrected.eddy_outlier_n_sqr_stdev_map
+eddy_corrected.eddy_parameters
+eddy_corrected.eddy_rotated_bvecs
+eddy_corrected.nii.gz
+eddy_index.txt
+fieldmap_HZ.nii.gz
+new.bval
+new.bvec
+new_temp.bval
+result_eddy.pklz
+slspec_EcriPark.txt
+sub-CTR14_space-T1w_desc-preproc_dwi.bval
+sub-CTR14_space-T1w_desc-preproc_dwi.bvec
+topup_imain_corrected_avg_brain.nii.gz
+topup_imain_corrected_avg_brain_mask.nii.gz
+topup_reg_image_flirt.mat
+
+My question is: why do I get this error (" Motion estimates and/or eddy estimated parameters are missing!" ) while the file "eddy_corrected.eddy_parameters" is present?
+
+Thank you very much for your help!
+
+Julien
+
+########################################################################
+
+
+Hello,
+
+I am looking to run a MANCOVA to examine white matter differences across three groups (accounting for several covariates), and I was hoping to get input on whether I am setting up my design matrix correctly.
+
+Groups: 3
+Covariates: Age (demeaned), disease duration (DD; demeaned), sex
+
+Simplified Example:
+Group   EV1(Grp1)    EV2(Grp2)     EV3(Grp3)     EV4(age)    EV5(DD)    EV6(sex)
+1            1                     0                  0                0.25           0.75            -1
+1            1                     0                  0                0.25           0.25            -1
+1            0                     1                  0               -0.75          -0.25            1
+1            0                     1                  0                0.5            -0.75            1
+1            0                     0                  1               -0.5             0.5              1
+1            0                     0                  1                0.25           0.25            -1
+
+Questions:
+
+1. Is this an appropriate way to do a three-group comparison with covariates? Or, is it better to just run three separate t-tests (including covariates)?
+
+2. Regarding post-hoc testing, would I just do three follow-up t-tests? This issue here, I imagine, is that the individual t-test results may not reflect the original MANCOVA results (e.g., post-hoc testing reveals a new significant area that was not significant in the MANCOVA).
+
+3. One other option is to run the initial MANCOVA within a statistical program (i.e., using values for global white matter) and then follow up with postdoc testing within FSL (i.e., t-tests). Would this make sense?
+
+Thanks in advance for your time and help,
+Cristina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear matthew,
+
+Thanks for your email. Yes, both .img and .hdr are found for the sane image file name. I tried fsleyes and it works. However, when I try any of the fsltools (fslmaths for example), it complains that there is not such file. So how can fsleyes find the file while fslmaths can not?
+
+Thanks,
+Ali
+
+########################################################################
+
+es indeed.
+I also tried using the full path to fsl instead of $FSLDIR but same problem...
+
+On Wed, Jun 14, 2023 at 6:36 PM Mark Wagshul <0000a4d86aeec50b-dmarc-request@jiscmail.ac.uk> wrote:
+You’re right, I was thinking of flirt, which has a different format. Are you using an = sign, i.e. --ref=filename (no spaces)?
+
+ 
+
+Mark
+
+Hi Alaric,
+The imbalanced design isn’t necessarily a problem in itself, whether a second-level analysis is needed before running ( e.g. ) the final cross-subject analysis depends on the nature of the questions - if the questions are different across runs, then there may not be a need for a second-level analysis ( which would essentially combine/average repeated questions across runs ) and you could proceed directly to group-level statistics.
+
+Kind Regards
+Matthew
+
+Hi Mark and Rona,
+
+Mark - flirt uses single-dash arguments, e.g. "-ref", but fnirt uses double-dash (they were written in different eras).
+
+Rona - are there any spaces in any of your file paths? If so, can you try surrounding them in double quotes?
+
+Paul
+
+Hello,
+I was reading this thread since I was also facing the same difficulty, but couldn't quite understandthis:
+
+> Hello,
+>           The command line melodic does not perform _any_ preprocessing - this is all done by scripts that are called by the GUI. If you are happy with the default melodic behaviour, then you can script GUI-like behaviour by setting up the GUI for one input file, and save the design.fsf. The design.fsf can then be modified for other inputs - minimally the values of the input and output files need to be changed, these values are defined by the following keyed entries in the design.fsf
+>
+> set fmri(outputdir) "/path/to/dir"
+> set feat_files(1) "/path/to/file"
+>
+> this fsf can then be run, by passing it to the feat script ( this script handles both FEAT and MELODIC generated fsfs )
+>
+> $FSLDIR/bin/feat design.fsf
+>
+> Hope this helps,
+> Kind Regards
+> Matthew
+
+What did you mean by "this fsf can then be run, by passing it to the feat script"?
+If I have a design.fsf created in MELODIC, can I run it using the command line of FEAT and it will do the ICA analysis just like MELODIC?
+Or do you mean I need to load the design.fsf manually for every subject?
+
+What would be the cleanest way to do MELODIC ICA analysis (including preprocessing, B0 unwarping, registration etc...) for around 90 scans automatically?
+
+Thank a lot,
+Rona
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+(Apologies if this is a repost, I wasn't sure if my first message went through)
+
+I am following this thread where Anderson kindly explains how to proceed with checking the directionality after finding a significant interaction: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1605&L=FSL&P=R53172
+
+In my analysis, I find different associations between two continuous variables in Group A and Group B (a significant interaction). In the cluster where I find the significant interaction, the tstat mean for Group A is -3.91 and 1.52 for Group B. Is there anything that I can claim about the associations based on the t statistics? Can I say that the association is strongly negative in Group A and weakly positive or zero in Group B using t=1.96 as a reference? Also, why is it suggested to look at tstat and not zstat? Thank you!
+
+Best wishes,
+Jane
+
+
+Dear Ben,
+
+by far the most common reason for a significant F-test, and yet no significant t-tests is when regressors/independent variables are highly correlated. A typical example would be when someone uses both age and disease duration in a design. The older you are, the more likely it is that you have been ill for a while, so these are often correlated.
+
+The "problem" is that when you perform a t-test you test for that effect _after_ you have explained as much variance as you can with the other variables (those not implicated in the t-test). So let's say in the age/illness example above that there is strong evidence in the data for a dependence on age _or_ illness (it isn't possible to say which if they are strongly correlated). Let's further say that you use a t-test to see if there is a dependence on age. Chances are you will not find any, because it has already been explained by illness duration. And exactly the same can happen when you use a t-test for illness duration. So you will not find anything with either.
+
+The F-test spanning both age and illness duration on the other hand answers the question "is there a dependence on age _and_/_or_ on illness duration". And the answer to that question will be "yes".
+
+Best regards Jesper
+
+
+﻿On 14/06/2023, 04:50, "FSL - FMRIB's Software Library on behalf of Ben Moloney" <FSL@JISCMAIL.AC.UK on behalf of ben.moloney@AUCKLAND.AC.NZ> wrote:
+
+    Hi Matthew,
+   
+    Thank you for your response. I composed my f-test contrast file in the glm gui as
+   
+    ev1 ev2 ev3 f
+    1  0  0  x
+    0  1  0  x
+    0  0  1  x
+   
+    Is this a correct? Or possibly if not, a reason that my t-tests are non-significant?
+   
+    Kind regards,
+    Ben
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Anderson,
+
+Thanks! I managed to make it work, but using a different approach to the statistical analysis. Instead of using the pre scan as a regressor, I would like to try analyzing the data using a 2-way repeated anova and see what is the interaction between group/time.
+As I wrote before, I have a two groups design (a task group and a control - for which participant where randomly assigned) with MD measurements for two time points (pre and post) for each participant in both groups.
+I would like to see in which areas I had a decrease of MD in the post-task scan, but not the post-control scan.
+
+If you can, I would appreciate your input on my design, contrast and EB file.
+The files can be found here (including the PALM config file I'm running):
+https://drive.google.com/drive/folders/1wi1kn6cW5-l1aft87SGOh16oPmZrKGOD?usp=share_link
+
+Thank you for all the help,
+Naama
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

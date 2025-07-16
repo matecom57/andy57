@@ -1,0 +1,175 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 ArialMT;\f2\fswiss\fcharset0 Helvetica-Bold;
+\f3\fswiss\fcharset0 Helvetica;\f4\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red27\green27\blue27;\red255\green255\blue255;\red0\green0\blue0;
+\red0\green0\blue233;}
+{\*\expandedcolortbl;;\cssrgb\c14118\c14118\c14118;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c0\c0\c93333;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hi all,\
+\
+Just wanted to follow up and see if anyone knows the answer to this; to be more specific, by "x-,y-, and z-directions" I am referring to the convention +x = right, +y = anterior, and +z = superior.\
+\
+Thanks!\
+\
+########################################################################\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs32 \cf0 \cb3 \strokec4 Hi Thomas,\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 You can probably resolve this by adding $FSLDIR/share/fsl/bin to your $PATH, instead of $FSLDIR/bin/.\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 Paul\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b\fs29\fsmilli14667 \cf2 \strokec4 From:
+\f3\b0 \'a0FSL\'a0- FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Thomas DeRamus <tpderamus@GMAIL.COM>\cf0 \cb1 \
+
+\f2\b \cf2 \cb3 Sent:
+\f3\b0 \'a027 April 2023 19:02\cf0 \cb1 \
+
+\f2\b \cf2 \cb3 To:
+\f3\b0 \'a0FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>\cf0 \cb1 \
+
+\f2\b \cf2 \cb3 Subject:
+\f3\b0 \'a0[FSL] Muting or Changing the QT path in\'a0FSL?
+\f0\fs30 \strokec2 \
+\
+\
+Thanks\cf2 \cb1 \strokec2 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \
+On Tue, 9 May 2023 at 16:41, Matthew Webster <{\field{\*\fldinst{HYPERLINK "mailto:matthew.webster@ndcn.ox.ac.uk"}}{\fldrslt \cf5 \cb3 \ul \ulc5 \strokec5 matthew.webster@ndcn.ox.ac.uk}}> wrote:\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 Hi,\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 \'a0 \'a0 \'a0I think you need to select the \'93render\'94 subcommand, e.g.\cf2 \cb1 \strokec2 \
+\
+\cf2 \cb3 \strokec2 fsleyes render --scene 3d <all> <other> <options>\cf2 \cb1 \strokec2 \
+\
+\cf2 \cb3 \strokec2 also\cf2 \cb1 \strokec2 \
+\
+\cf2 \cb3 \strokec2 fsleyes render --fullhelp\'a0\cf2 \cb1 \strokec2 \
+\
+\cf2 \cb3 \strokec2 will output the render-specific options.\cf2 \cb1 \strokec2 \
+\
+\cf2 \cb3 \strokec2 Kind Regards\cf2 \cb1 \strokec2 \
+\cf2 \cb3 \strokec2 Matthew\cf2 \cb1 \strokec2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs24 \cf0 \strokec4 Thank you for your reply, the mask is the same size as the input images and is generated using\'a0fslmaths -bin, so it should be binary.\'a0\
+\
+Kristian\
+\
+fre. 5. maj 2023 kl. 12.44 skrev Michael Chappell <{\field{\*\fldinst{HYPERLINK "mailto:000079f9f909e19d-dmarc-request_at_JISCMAIL_AC_UK_9p9g59tnt87673_0950d6fb@icloud.com"}}{\fldrslt \cf5 \ul \ulc5 \strokec5 000079f9f909e19d-dmarc-request_at_JISCMAIL_AC_UK_9p9g59tnt87673_0950d6fb@icloud.com}}>:\
+\pard\pardeftab720\sa300\partightenfactor0
+
+\f0\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Kristian,
+\fs30 \cb1 \
+
+\fs29\fsmilli14667 \cb3 \'a0
+\fs30 \cb1 \
+
+\fs29\fsmilli14667 \cb3 Nothing leaps out at me that is wrong with your command line call here, but I will admit that the dual echo part of fabber is not something I have used recently. What size if your mask image and it is binary values?
+\fs30 \cb1 \
+
+\fs29\fsmilli14667 \cb3 \'a0
+\fs30 \cb1 \
+
+\fs29\fsmilli14667 \cb3 Michael
+\fs30 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f4\fs24 \cf0 \strokec4 Hi,\
+\'a0 \'a0 \'a0I think you need to select the \'93render\'94 subcommand, e.g.\
+\
+fsleyes render --scene 3d <all> <other> <options>\
+\
+also\
+\
+fsleyes render --fullhelp\'a0\
+\
+will output the render-specific options.\
+\
+Kind Regards\
+Matthew\
+\pard\pardeftab720\partightenfactor0
+
+\f3 \cf0 \strokec4 --------------------------------\
+Dr Matthew Webster\
+FMRIB Centre\'a0\
+John Radcliffe Hospital\
+University of Oxford\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \cb3 \strokec2 I have been trying to find out some information about the FSL course, I can see that there is preliminary info ({\field{\*\fldinst{HYPERLINK "https://open.win.ox.ac.uk/pages/fslcourse/website/"}}{\fldrslt \cf5 \cb3 \ul \ulc5 \strokec5 https://open.win.ox.ac.uk/pages/fslcourse/website/}}); however, I was wondering if anyone knew how the course works when it is online?\
+\
+Is it regular attendance each day, and is there are registration fee?\
+\
+Also, does anyone know when registration is due?\
+\
+Many thanks,\
+Gordon\
+\
+########################################################################\
+\
+Dear Maeve,\
+\
+The fout is saved in a \'93raw\'94 format, meaning that it ignores the s/qform. So the order is first volume is the direction that changes fastest, which is usually the x-direction, the second volume is the direction that changes the second fastest etc. It also ignores any signs, so a positive value means pointing towards the \'93forward direction\'94 when traversing the voxels.\
+\
+I hope that helps?\
+\
+Jesper\
+\
+> echo /home/randd/Project/Tracking/Final/VDTP/ADNI_068_S_2187_MR_MPRAGE_br_raw_20121214120746696_101_S177672_I351554_brain_APC4FM3Dir3DPool8_120_15_max_pt_test_4_3D.png; fsleyes --scene 3d --outfile /home/randd/Project/Tracking/Final/VDTP/ADNI_068_S_2187_MR_MPRAGE_br_raw_20121214120746696_101_S177672_I351554_brain_APC4FM3Dir3DPool8_120_15_max_pt_test_4_3D.png --size 1920 1080 --worldLoc 171.76407704863158 107.948066687434 102.46693696315933 --displaySpace world --cameraRotation\'a0 0.00\'a0 0.00 -0.00 --zoom 75.0 --lightPos 0.0 0.0 0.0 --lightDistance 2.0 --offset 0.0 0.0 --cursorWidth 1.0 --bgColour 1.0 1.0 1.0 --fgColour 0.0 0.0 0.0 --cursorColour 0.0 1.0 0.0 --colourBarLocation top --colourBarLabelSide top-left --colourBarSize 100.0 --labelSize 12 --movieSync /home/randd/Desktop/newops/newop/ADNI_068_S_2187_MR_MPRAGE_br_raw_20121214120746696_101_S177672_I351554_brain_APC4FM3Dir3DPool8_120_15_max_pt_test_4.nii --name "ADNI_068_S_2187_MR_MPRAGE_br_raw_20121214120746696_101_S177672_I351554_brain_APC4FM3Dir3DPool8_120_15_max_pt_test_4" --overlayType volume --alpha 100.0 --cmap hsv --negativeCmap hsv --useNegativeCmap --displayRange 123299.2 202042.5778125 --clippingRange 123299.2 202042.5778125 --modulateRange 0.0 200042.15625 --gamma 0.0 --cmapResolution 8 --interpolation spline --numSteps 150 --blendFactor 0.96001 --noBlendByIntensity --smoothing 0 --resolution 100 --numInnerSteps 10 --clipMode intersection --volume 0;\
+\
+\
+I get ...\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs30 \cf2 \cb3 \strokec2 Hi, I think that you can use the b=5 as no-dif image, therefore, you can chose one acquisition (e.g. the first one) as main acquisition where you can calculate the DTI metrics and the second one only the b=5 (you can split the sequence and average all b=5) to have the b0 (inverted) that you will use with TOPUP\'a0and with the main sequence.\
+Also, the lower b value that you have is 1500, you are outside the gaussian model where DTI works. Because you have a multi-shell acquisition, maybe\'a0it might be better to use a better model of analysis, e.g. kurtosis or DSI...\
+Hope that someone can confirm\'a0my answer...\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 Maurizio\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear community,\
+I have done two group analyses for a contrast of interest in fsl. when I looked more carefully in fsleyes at the cope and zstats files, I saw that there are some voxels, in both analyses, where the cope (and zstats) values equal zero. These voxels are concentrated at the edges between the two hemispheres, but they are definitely part of the brain. When I look at the files from level-1 for different subjects, there is nothing special in these voxels and everything looks normal.\
+\
+Does anyone have an idea what does this mean?\
+\
+Thank you\
+\
+########################################################################\
+\
+}

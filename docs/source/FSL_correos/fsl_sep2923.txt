@@ -1,0 +1,379 @@
+Dear All,
+
+We are excited to invite you to our upcoming DIPY workshop that will take place from March 11 to March 15, 2024 where we promise you will be having an enriching experience diving in the world of advanced imaging technology and data analytics.
+
+This year our distinguished keynotes are Prof. Paul Thompson (USC), Prof. Gary Zhang (UCL) and Prof. Markus Nilsson (Lund). In addition, Prof. Garyfallidis, Rokem, Tax, Grusso, Harezlak, Esteban and others will be talking about a variety of techniques involving the process of medical imaging including but not limited to Preprocessing, Reconstruction, Denoising, Microstructure modeling, Knowledge Distillation, Tractography and Visualization. 
+
+The DIPY workshop aims to train the next generation of scientists, doctors, and engineers who will shape the future of imaging. Your participation will greatly contribute to the success of the event. 
+
+Please note that as it is customary for the DIPY workshop: 
+
+	•	Sessions for guided practice (hands-on) will be available every day.
+	•	Attendees can present their work or problems of interest.
+	•	We provide Certificates of Attendance.
+
+To register for the workshop, or if you have any questions please visit our website here or feel free to reach out to our support team here. We look forward to your participation and look forward to exploring the exciting work of imaging science together.
+
+Register Now!!!
+
+On behalf of the DIPY team,
+Eleftherios Garyfallidis
+Associate Professor
+Intelligent Systems Engineering
+Indiana University
+Luddy Hall 700 N Woodlawn
+Bloomington, IN 47408
+GRG | DIPY | FURY
+
+Dear FSL team,
+
+I recently did the FSL course and we are trying to apply FSL FIRST to our data - however when we have tried to do so we have come up with some problems. 
+
+I have been running the command  line run_first_all -i xx -b -s L_Thal,R_Thal -o xx
+
+This seemed to work fine with the output of all_first_firstseg, however, now inexplicably the output file is called all_none_firstseg - is there a reason for this and is there a problem?
+
+I cannot see anything that I have changed within the command line to explain this.
+
+I put onto jisc without any response but would appreciate your help.
+
+Gordon
+
+Dear All,
+
+
+We are excited to invite you to our upcoming DIPY workshop that will take place from March 11 to March 15, 2024 where we promise you will be having an enriching experience diving in the world of advanced imaging technology and data analytics.
+
+
+This year our distinguished keynotes are Prof. Paul Thompson (USC), Prof. Gary Zhang (UCL) and Prof. Markus Nilsson (Lund). In addition, Prof. Garyfallidis, Rokem, Tax, Grusso, Harezlak, Esteban and others will be talking about a variety of techniques involving the process of medical imaging including but not limited to Preprocessing, Reconstruction, Denoising, Microstructure modeling, Knowledge Distillation, Tractography and Visualization. 
+
+
+The DIPY workshop aims to train the next generation of scientists, doctors, and engineers who will shape the future of imaging. Your participation will greatly contribute to the success of the event. 
+
+
+Please note that as it is customary for the DIPY workshop: 
+
+
+Sessions for guided practice (hands-on) will be available every day.
+
+Attendees can present their work or problems of interest.
+
+We provide Certificates of Attendance.
+
+
+To register for the workshop, or if you have any questions please visit our website here or feel free to reach out to our support team here. We look forward to your participation and look forward to exploring the exciting work of imaging science together.
+
+Dear FSL users,
+                        We are pleased to announce the release of FSL 6.0.7.4.
+
+Release highlights:
+
+- FSLeyes 1.9.0 - Updates for compatbility with newer versions of matplotlib; new "FSLView" mode for viewing legacy data sets.
+- FSL-MRS 2.1.13 - Add group level f-tests to the “fmrs_stats" tool.
+- New "open_fsl_report" command for opening PNM HTML report files.
+
+The full changelog can be found at:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew?action=AttachFile&do=view&target=6.0.7.4.md
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+Kind Regards
+Matthew
+
+Dear all,
+
+I am preprocessing BOLD images using fMRIprep with the plan to use them for 1st & 2nd level analysis in FEAT. Is the best way to smooth the images using susan? e.g.
+
+$ susan input_image output_image -susan fwhm_in_millimeters
+
+Do I also need to scale the smoothed output e.g.
+
+$ fslmaths smoothed_normalized_bold.nii.gz -ing 10000 scaled_smoothed_normalized_bold.nii.gz
+
+Cheers,
+Julian
+
+
+Hi
+
+ 
+
+Yes – if you want the waytotal to reflect the number of streamlines reaching your target masks, then you need to add these masks as waypoint masks.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Anonymous <neurolab792@GMAIL.COM>
+Date: Thursday, 28 September 2023 at 15:41
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Tractography results
+
+Hi thank you for your reply! We made a mistake in our original posting - we actually meant that the waytotals are the same for both tractography analyses. Did you mean that we should have put the target ROI as a waypoint mask instead of as a classification target? Or do we put it for both when running the analysis?
+
+Thank you for your help!
+
+########################################################################
+
+Hi Gordon,
+
+The output files are called <basename>_all_<method>_firstseg, where "<method>" denotes the boundary correction method that is used.
+
+By default for most structures, FAST is used, but for the thalamus, putamen and pallidum no boundary correction is performed. You can override this default behaviour via the -m flag. You can read more about this on the FSL wiki:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST/UserGuide#run_first_all
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST/UserGuide#first_boundary_corr
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Gordon Sloan <0000901c251ce1f0-dmarc-request@JISCMAIL.AC.UK>
+Sent: 28 September 2023 15:52
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL FIRST
+ 
+Dear FSL team,
+
+I recently did the FSL course and we are trying to apply FSL FIRST to our data - however when we have tried to do so we have come up with some problems. 
+
+I have been running the command  line run_first_all -i xx -b -s L_Thal,R_Thal -o xx
+
+This seemed to work fine with the output of all_first_firstseg, however, now inexplicably the output file is called all_none_firstseg - is there a reason for this and is there a problem?
+
+I cannot see anything that I have changed within the command line to explain this.
+
+I put onto jisc without any response but would appreciate your help.
+
+Gordon
+
+
+Hi, everyone,
+
+I have a few questions regarding the fmri preprocessing, Hoping to get some help here.
+First, the effective EPI echo spacing in Feat. It’s said that “If you are using an accelerated sequence (parallel imaging) then the number you need here is the echo spacing for the acquired lines divided by the in-plane acceleration factor”. I found some parameters in the json file (bids) associated with my 4d fmri file.
+1 "EffectiveEchoSpacing": 0.000269996,
+2 "ParallelReductionFactorInPlane": 2,
+3 "MultibandAccelerationFactor": 3,
+The third one means acquire 3 slices simultaneously I think. However, I don’t understand the second one, does it mean that in-plane acceleration was used in my data? What value should I enter?
+
+Second, the unwarp direction. In my json file, I found "PhaseEncodingDirection": "j-". However, in Feat, x y z are used. Also in DICOM, I found this: “InPlanePhaseEncodingDirection”: “COL”. I’m rather confused,What is their correspondence to each other?
+
+Third, Slice timing correction. I found a field called “SliceTiming” in the json file, which has been upload. It seems that “interleaved” is my option, However, with multiband used in the acquisition, is “interleaved” the right one? If I need to generate a slice order file or a slice timings file, what will that be?
+
+Looking forward to an answer
+
+Best,
+Yijun
+
+Hi thank you for your reply! We made a mistake in our original posting - we actually meant that the waytotals are the same for both tractography analyses. Did you mean that we should have put the target ROI as a waypoint mask instead of as a classification target? Or do we put it for both when running the analysis?
+
+Thank you for your help!
+
+Hi Jeff,
+
+If you don't mind having approximately the same resolution, you can use the -applyisoxfm option to flirt, which will resample the output image to a desired isotropic resolution.
+
+Otherwise you can create a dummy reference image with the desired resolution/FOV, and use that as the reference in your second FLIRT call. You can create the dummy reference with fslcreatehd, or from within FSLeyes with the Tools -> resample image dialog.
+
+Paul
+
+I would like to align an EPI (roughly 3mm spatial resolution, the
+actual voxels are anisotropic) with an anatomical (roughly 1mm spatial
+resolution, again the actual voxels are anisotropic) in a way that
+transforms the EPI but keeps the transformed EPI at its original
+spatial resolution. If I do something like
+
+flirt -in epi.nii.gz \
+      -ref anat.nii.gz \
+      -omat epi-to-anat.mat \
+      -bins 256 \
+      -cost normmi \
+      -searchrx -180 180 \
+      -searchry -180 180 \
+      -searchrz -180 180 \
+      -dof 6
+
+flirt -in epi.nii.gz \
+      -ref anat.nii.gz \
+      -out epi-aligned.nii.gz \
+      -applyxfm -init epi-to-anat.mat \
+      -interp sinc \
+      -sincwidth 7 \
+      -sincwindow hanning
+
+This will make epi-aligned.nii.gz have the spatial resolution of the
+anatomical. Is there a way to either apply the transform but keep the
+spatial resolution (prefered) or alternatively downsample/decimate the
+result back to the desired spatial resolution (less prefered since it
+involved upsampling followed by downsampling)? (I would also like to
+keep the axis orientation of the origina EPI.)
+
+    Thanks,
+    Jeff (http: //engineering.purdue.edu/~qobi)
+
+
+That worked, thanks! 😃
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Date: Wednesday, 27 September 2023 at 12:41
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] installation failed
+
+You don't often get email from matthew.webster@ndcn.ox.ac.uk. Learn why this is important
+
+Hi Annelies,
+
+    Is it possible you already have a conda environment active in /Users/anneliesvantwesteinde/miniconda3? If so can you try running the command
+
+ 
+
+. /Users/anneliesvantwesteinde/miniconda3/bin/deactivate 
+
+ 
+
+As well as temporarily moving 
+
+ 
+
+$HOME/.condarc to ( e.g. ) $HOME/.condarc.bak
+
+ 
+
+And then re-running the installer?
+
+ 
+
+Kind Regards
+
+Matthew
+
+-------------------------------
+
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hello,
+
+I am currently trying to preprocess rda files (converted into nifti). I am using the following command:
+fsl_mrs_preproc --data data_name.nii.gz --reference reference_name.nii.gz --output name -ecc ecc_name.nii.gz --t1 T1_biscorr_brain.nii.gz --leftshift --hlsvd --noaverage --overwrite --report.
+
+However, I receive a message: "This data contains no unaveraged transients or uncombined coils. Please carefully ascertain what pre-processing has already taken place before running appropriate individual steps using fsl_mrs_proc".
+
+Would someone maybe use a specific preproc command with rda files? Indeed, the one that I use was originally for twix. I tried to add "noaverage" but it did not solve the problem.
+
+Thank you so much! :)
+
+Hi
+
+ 
+
+The main Eddy paper addresses this question of how many directions. See e.g. Figure 8 in https://www.sciencedirect.com/science/article/pii/S1053811915009209
+
+ 
+
+ 
+
+Cheers
+
+Saad
+
+Hello,
+
+I converted rda files into nifti files using this command:
+spec2nii rda -f ... -o data ....rda
+
+And I received the following warning message: "UserWarning: The orientation calculations for rda data is mostly untested. Please contribute test data if you can!"
+
+What does it mean? Can I still use my converted data (because it worked)?
+
+Thank you for your help! :)
+
+
+Hi Annelies,
+    Is it possible you already have a conda environment active in /Users/anneliesvantwesteinde/miniconda3? If so can you try running the command
+
+. /Users/anneliesvantwesteinde/miniconda3/bin/deactivate 
+
+As well as temporarily moving 
+
+$HOME/.condarc to ( e.g. ) $HOME/.condarc.bak
+
+And then re-running the installer?
+
+Kind Regards
+Matthew
+
+Dear experts
+
+I would like to analyze my data for DTI. I have doubts about the minimun directions valid (if any) to run eddy (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide).
+
+I am using the version 6.0.7.3 of FSL and the diffusion weights 32 uniformly distributed directions (b=1,000 s/mm2, and 1 b=0s/mm2).
+
+Thank you in advance
+
+Regards,
+
+I keep getting this message when trying to install FSL on my Mac Ventura system. I think I read somewhere in this maillist that it could have to do with an unstable internet connection, but my connection was stable, I think at least as I was using it for other things while it was installing.
+
+
+ERROR occurred during installation!
+    This command returned an error: /Users/anneliesvantwesteinde/fsl/bin/mamba env update -n base -f /private/var/folders/_p/zfkm9kf17qlc306l4hhm450r0000gn/T/tmp9554x6f6/fsl-6.0.7.3_macos-64.yml
+
+Any other possible explanations for this?
+
+Thanks!
+
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu).
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+Hi FSL experts,
+
+I am attempting to transform an image from its own space (T1w atlas) to my subject's native T1w space. However, I only have access to part of the image (aka an isolated image of the cerebellum). I do not have the original whole brain image it was created from.
+
+I have tried the instructions from the FLIRT UserGuide "Using FLIRT to Register a Few FMRI Slices". However, the results have been poor. I assume this is because I have more than a few slices in the image I want to transform.
+
+I was wondering if it would be worth my time to isolate the cerebellum in a similar manner in my data and register the images that way. Is that feasible? Beyond,t hat, do I have any way to do this successfully? The whole-brain image is not something I will have access to at all, so if this is not possible with the data that I already have, I would like to know sooner rather than later.
+
+Any advice would be appreciated!
+
+Best Wishes,
+Katie
+
+
+Hi, everyone,
+
+I have a few questions regarding the fmri preprocessing, Hoping to get some help here.
+First, the effective EPI echo spacing in Feat. It’s said that “If you are using an accelerated sequence (parallel imaging) then the number you need here is the echo spacing for the acquired lines divided by the in-plane acceleration factor”. I found some parameters in the json file (bids) associated with my 4d fmri file. 
+1 "EffectiveEchoSpacing": 0.000269996, 
+2 "ParallelReductionFactorInPlane": 2, 
+3 "MultibandAccelerationFactor": 3, 
+The third one means acquire 3 slices simultaneously I think. However, I don’t understand the second one, does it mean that in-plane acceleration was used in my data? What value should I enter?
+
+Second, the unwarp direction. In my json file, I found "PhaseEncodingDirection": "j-". However, in Feat, x y z are used. Also in DICOM, I found this: “InPlanePhaseEncodingDirection”: “COL”. I’m rather confused,What is their correspondence to each other?
+
+Third, Slice timing correction. I found a field called “SliceTiming” in the json file, which has been upload. It seems that “interleaved” is my option, However, with multiband used in the acquisition, is “interleaved” the right one? If I need to generate a slice order file or a slice timings file, what will that be?
+
+Looking forward to an answer
+
+Best,
+Yijun
+

@@ -1,0 +1,882 @@
+Hi Michael and Catarina,
+Thank you for this thread. As a follow up question to you both and anyone else who might have expertise with using fieldmaps with 3D GRASE: Do we have to take the fact that GRASE is a hybrid between FSE and EPI into consideration when applying a previously obtained fieldmap in BASIL? I have obtained the echo spacing value from the siemens protocol pdf (0.5ms) for the 3D GRASE PASL implementation on our scanner. Am i correct in assuming that this echo spacing value is an overestimation of the actual off-resonance phase accrual that the GRASE acquisition will actually experience? If this assumption is correct then is there a robust mathematical approach for adjusting this echo-spacing value for use in BASIL from some of the GRASE parameters?
+Thank you for any advice on this.
+Best
+Chidi
+
+Chidi Ugonna
+Research Specialist
+Biomedical Engineering
+University of Arizona
+
+########################################################################
+
+
+For those interested, a funded postdoctoral position has opened at the University of Toronto and Centre for Addiction and Mental Health in Toronto, Canada under the supervision of Drs. Doug VanderLaan and Meng-Chuan Lai. The position announcement is attached as PDF and can also be found following the link below. Please feel free to share among your networks and with those who might be interested to apply.
+
+Position summary: The Margaret and Wallace McCain Centre for Child, Youth and Family Mental Health is seeking an outstanding candidate for a Research Postdoctoral Fellowship focused on gender diversity and neuroscience. The Fellow will join a team led by Drs. Doug VanderLaan and Meng-Chuan Lai to work on a fully funded study of brain development among transgender youth. The anticipated start date is July 2023. The fellowship position is for 1 year, with the possibility of renewal. Review of applications will begin on March 15, 2023, and will continue until the position is filled.
+
+https://www.camh.ca/en/science-and-research/institutes-and-centres/the-margaret-and-wallace-mccain-centre-for-child-youth-and-family-mental-health/meet-our-people
+
+
+
+########################################################################
+
+Hi all,
+I' m trying to model a mixed-effects model with random slope and random intercept in PALM.
+However, a rank deficiency error appeared when I was running PALM, I suspected I didn't create the correct design matrix or contrast. I hope you experts can tell me how to create a design matrix with random slope and random intercept in PALM, any suggestion would be greatly appreciated.
+ 
+Suppose I only have 2 subjects and 2 factors, each at 2 levels. The data in my 4D file looks like:
+Sub1 A1B1
+Sub2 A1B1
+Sub1 A1B2
+Sub2 A1B2
+Sub1 A2B1
+Sub2 A2B1
+Sub1 A2B1
+Sub2 A2B2
+Sub2 A2B2
+
+Here are the formula used in MATLAB’s function fitlme:
+Y ~ A + B + A*B + age + (1 + A + B | subject)
+The effect A and B are set to random slope, each subject has random intercept. Then I tried to create design matrix used in PALM, the fixed effect part looks like:
+A1B1    A1B2    A2B1    A2B2    age
+1       0       0       0       21
+1       0       0       0       26
+0       1       0       0       23
+0       1       0       0       24
+0       0       1       0       25
+0       0       1       0       27
+0       0       0       1       28
+0       0       0       1       23
+The random effect part looks like:
+1       0       1       0       0       0
+0       0       0       1       0       1
+1       0       0       0       0       0
+0       0       0       1       0       0
+1       1       1       0       0       0
+0       0       0       1       1       1
+1       1       0       0       0       0
+0       0       0       1       1       0
+The contrast looks like:
+1       1       -1      -1      0       0       0       0       0       0       0
+1       -1      1       -1      0       0       0       0       0       0       0
+1       -1      -1      1       0       0       0       0       0       0       0
+The command running PALM looks like:
+palm
+-i 4D.func.gii
+-s L.midthickness.32k_fs_LR.surf.gii
+-d design_matrix.mat
+-t T_contrast.con
+-o test
+-n 1000
+-accel gamma
+-T
+-C 3.29
+-Cstat extent
+-twotail
+-saveuncorrected
+-savemask
+-saveparametric
+-savemax
+Then a rank deficiency error appeared when I was running PALM, the error message is:
+Error using palm_takeargs>testrank (line 2784)
+The following contrasts try to test regressor(s) also fully represented by
+by nuisance variable(s), but such tests are not possible (rank deficiency):
+- Design 1, Contrast 1, at least 1 regressors
+- Design 1, Contrast 2, at least 1 regressors
+- Design 1, Contrast 3, at least 1 regressors
+
+All the best,
+
+Xiangyu
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Martin,
+
+thanks, the command you suggested works.
+
+Ralf
+
+########################################################################
+
+Michael,
+
+thank you very much for your insightful comments. Actually, there is a difference listed in the parameter card between ACQ voxels (3.75 x 3.75 x 6) and the Recon voxel size (3 x 3 x 6). This can be certainly an issue, but the slice thickness is the same. For that, I don’t know how this affects the PSF. Overall, the variability is much higher in the pvgm image compared to the uncorrected CBF image. I still have the impression that voxels with low GM portion will be excessively augmented, when the uncorrected CBF value is already quite high (e.g. initial: 64 pvgm: 0.35 corrected: 156). Therefore some thresholding might be useful.
+
+One simple solution would be to calculate the CBF values with and without PV correction and compare the results.
+
+Ralf
+
+########################################################################
+
+Testing: A Hybrid JASP Workshop
+ 
+July 15–16, 2023
+
+The JASP Team is excited to announce that registration for our annual two-day hybrid Amsterdam workshop is now open. The workshop will be happening both on-site and via Zoom and it takes place on July 15–16, 2023. Below is a summary of the program. For more information on program and fees visit the workshop website: https://jasp-stats.org/workshop
+ 
+
+Event Description
+The main purpose of this workshop is to familiarize participants with key Bayesian concepts in hypothesis testing. Concrete examples illustrate how to compute, report, and interpret Bayesian hypothesis tests for popular statistical models such as correlation, regression, t-test, ANOVA, and contingency tables. To facilitate the learning process we use JASP, a program whose attractive graphical user interface allows us to focus on core Bayesian concepts and principles, unburdened by the need to explain the detailed workings of an unfamiliar software program such as WinBUGS.
+ 
+
+Target Audience
+This workshop is relevant to psychologists, economists, biologists, and generally any student or researcher who wishes to draw conclusions from empirical data. No background in Bayesian statistics is required. At the end of this workshop, participants should be able to carry out statistical analyses in JASP, interpret the output, and report the results.
+ 
+
+Details
+For more information visit the workshop website:
+
+https://jasp-stats.org/workshop
+
+Register
+
+Workshop Fees
+(PhD) student	 	150 €
+Faculty	 	250 €
+Other	 	450 €
+Copyright © 2023 JASP, All rights reserved.
+You are receiving this email because you opted in via our website.
+
+Our mailing address is:
+JASP
+Nieuwe Achtergracht 129B
+Amsterdam, Nh 1018 WS
+Netherlands
+
+Add us to your address book
+
+
+Want to change how you receive these emails?
+You can update your preferences or unsubscribe from this list.
+
+Email Marketing Powered by Mailchimp
+
+Dear all,
+
+Does FSL version 6.0.6.2 include fslview_deprecated? I am getting the message "bash: fslview_deprecated: command not found". Other fsl commands word without a problem.
+
+Best,
+Rebecca
+
+########################################################################
+
+Hi Domenico,
+
+what do you get if you add --very_verbose to your command line?
+
+Best regards Jesper
+
+
+﻿On 05/03/2023, 10:04, "FSL - FMRIB's Software Library on behalf of Domenico" <FSL@JISCMAIL.AC.UK on behalf of domenico.aquino@GMAIL.COM> wrote:
+
+    Hi all,
+   
+    I have a problem with eddy and I don't understand the possible reason.
+    I have a multi shell sequence, composed by many shells (from 0 to 3000).
+   
+    When I run eddy (with the option --data_is_shelled=true) it starts but, after some steps, it freezes:
+   
+    Reading images
+    Performing volume-to-volume registration
+    Running Register
+    Loading prediction maker
+    Evaluating prediction maker model
+    Calculating parameter updates
+    ..........................................
+   
+    The nifti file contains a number of volumes equal to the number of b-values and to the number of columns (or rows if transposed) of the bvec file.
+   
+    The command I use is:
+   
+    eddy --imain=DWI_001 --mask=DWI_001_deskulled_mask --index=index --acqp=acqp --topup=DWI_001_topup --bvecs=DWI_001.bvec --bvals=DWI_001.bval --data_is_shelled=true -v --out=DWI_001_eddy
+   
+    If in topup, instead, I use the option "warpres=3" (my DWI volumes are 1.72x1.72x2.2) eddy works till the end but it does not correct the distorsions.
+   
+    Anyone have any idea what it could be?
+   
+    Thanks a lot,
+   
+    Domenico
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Alex,
+
+This suggests that xtract did not run without issue. Have you looked at the output of xtract for any example subjects, particularly those failing with xtract_stats?
+
+I’m guessing they will be missing some tract files (you’re looking for the densityNorm.nii.gz files). For subjects with the empty mask error, open some tracts and see what they look like. Do you look like the tract as expected? Or is it an empty nifti file?
+
+Once we verify whether it’s xtract failing (i.e. the nifti files are empty/non-existent), or xtract_stats failing, we can dig into the problem more easily.
+
+Thanks,
+Shaun.
+
+-----------------------------------------------------------
+Shaun Warrington
+Research Fellow
+
+Division of Clinical Neuroscience, School of Medicine
+University of Nottingham
+
+w: https://swarrington1.github.io/
+-----------------------------------------------------------
+
+On 1 Mar 2023, at 12:43, Alex Sheehan <a.sheehan@PGR.READING.AC.UK> wrote:
+
+Dear FSL experts,
+
+I'm running a diffusion tractography on a relatively large dataset, and having run preprocessing and xtract without issue, am now trying to generate the tract statistics using xtract_stats. When running this on the vast majority of subjects, I receive the message "Couldn't find images for [tract name]" on a number of tracts. Some others show the "ERROR: Empty mask image" message instead. I've tried re-running both registration and xtract (using scripts and commands in terminal, and batch array scripts on a cluster in case of any differences) but seem to be running into the same issues. Strangely, after re-running xtract on a number of subjects, xtract_stats ran just fine on a couple of the ones that showed errors previously, but many more are still showing them.
+
+I can't seem to find anything about the "couldn't find images" message anywhere on the forum and can't seem to figure out why it keeps cropping up. Any help or suggestions you could give would be a huge help. I can show my scripts/commands if needed.
+
+Kind regards,
+Alex Sheehan
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+
+Hi Michael,
+
+Thanks for your response. Yes, the mask.nii.gz generated automatically is not complete and cuts off the inferior parts of the brain. Could a simple fslmaths command to binarize the asl input image be alright for use as a native space mask?
+
+I'm guessing the native space grey matter and white matter masks are generated by overlaying this brain mask with the segmented structural image in struc.anat?
+
+Thanks
+
+Ashwati
+
+########################################################################
+
+Hi all,
+
+I have a problem with eddy and I don't understand the possible reason.
+I have a multi shell sequence, composed by many shells (from 0 to 3000).
+
+When I run eddy (with the option --data_is_shelled=true) it starts but, after some steps, it freezes:
+
+Reading images
+Performing volume-to-volume registration
+Running Register
+Loading prediction maker
+Evaluating prediction maker model
+Calculating parameter updates
+..........................................
+
+The nifti file contains a number of volumes equal to the number of b-values and to the number of columns (or rows if transposed) of the bvec file.
+
+The command I use is:
+
+eddy --imain=DWI_001 --mask=DWI_001_deskulled_mask --index=index --acqp=acqp --topup=DWI_001_topup --bvecs=DWI_001.bvec --bvals=DWI_001.bval --data_is_shelled=true -v --out=DWI_001_eddy
+
+If in topup, instead, I use the option "warpres=3" (my DWI volumes are 1.72x1.72x2.2) eddy works till the end but it does not correct the distorsions.
+
+Anyone have any idea what it could be?
+
+Thanks a lot,
+
+Domenico
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Martin, 
+
+I'm running FSL 6.0.6.2 on WSL. The error occurred first with FSL 6.0.4 which I updated due to the error after I had run the program several times without any error.
+Thank you very much for your support.
+
+Best,
+Christian
+
+
+Am Fr., 3. März 2023 um 11:15 Uhr schrieb Martin Craig <00007afe94206d68-dmarc-request@jiscmail.ac.uk>:
+HI Christian, from the error you're getting  it looks like a failure to find the oxford_asl_roi_stats script.
+
+Could you let me know what FSL version you are using and what platform you're running on (Mac, Linux, WSL etc). I will look into why this is happening.
+
+Thanks,
+Martin
+
+Hello FSL experts,
+
+I'm trying to run randomise as a 2 x 4 between-subjects ANOVA. I have two groups with four conditions each. I would like to examine both the interaction effect and the main effect. Basically Group*Condition, Condition1(group1-group2) in randomise. I have done t-test in randomise before but for this 2x4 between subject Anova, I don't know how to set the design matrix and contracts.
+
+Thank you in advance,
+Mohammadreza
+
+########################################################################
+
+This looks like a potential FSL bug:
+
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 208, in main
+    'mask':mask_vol.get_data(),
+  File "/usr/local/fsl/lib/python3.10/site-packages/nibabel/deprecator.py", line 185, in deprecated_func
+    raise error_class(message)
+nibabel.deprecator.ExpiredDeprecationError: get_data() is deprecated in favor of get_fdata(), which has a more predictable return type. To obtain get_data() behavior going forward, use numpy.asanyarray(img.dataobj).
+
+* deprecated from version: 3.0
+* Raises <class 'nibabel.deprecator.ExpiredDeprecationError'> as of version: 5.0
+
+Matt.
+
+﻿On 3/3/23, 8:18 AM, "FSL - FMRIB's Software Library on behalf of Lin Cai" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of bertram0611@GMAIL.COM <mailto:bertram0611@GMAIL.COM>> wrote:
+
+
+
+Dear FSL experts,
+
+I am using HCP diffusion pipeline (v4.3) to process my own data for testing whether a new GPU (Gefore RTX 4090) are usable. (FSL 6.0.6 and cuda10.2 are used)
+It seems that the Eddy processing was succeed, but there are error messages for post-eddy.
+Specifically, I thinks there was something wrong with eddy_quad command.
+Just in case, I attached two log files (DiffPreprocPipeline.sh.o24417 & DiffPreprocPipeline.sh.e24417)
+Could you please help me to fix this issue?
+
+Thank you very much
+Lin
+
+From the logfile named DiffPreprocPipeline.sh.o24417, you could find the following error messages for the current subject data.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+...................Allocated GPU # 0...................
+Fri Mar  3 15:13:36 JST 2023:run_eddy.sh: Completed with return value: 0
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline_Eddy.sh: Completed!
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline.sh: Invoking Post-Eddy Steps
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline.sh: post_eddy_cmd: /usr/local/HCPpipelines/DiffusionPreprocessing/DiffPreprocPipeline_PostEddy.sh  --path=/mnt/data2/DiffusionTest/derivatives/HCPpipeline  --subject=sub-K2009231730  --dwiname=Diffusion  --gdcoeffs=/mnt/data2/DiffusionTest/code/SimensPrismaKomaba_coeff.grad  --dof=6  --combine-data-flag=1  --printcom=
+========================================
+  DIRECTORY: /usr/local/HCPpipelines
+    PRODUCT: HCP Pipeline Scripts
+    VERSION: v4.3.0
+========================================
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline_PostEddy.sh: HCPPIPEDIR: /usr/local/HCPpipelines
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline_PostEddy.sh: FSLDIR: /usr/local/fsl
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline_PostEddy.sh: HCPPIPEDIR_Global: /usr/local/HCPpipelines/global/scripts
+-- DiffPreprocPipeline_PostEddy.sh: Specified Command-Line Parameters - Start --
+   StudyFolder: /mnt/data2/DiffusionTest/derivatives/HCPpipeline
+   Subject: sub-K2009231730
+   DWIName: Diffusion
+   GdCoeffs: /mnt/data2/DiffusionTest/code/SimensPrismaKomaba_coeff.grad
+   DegreesOfFreedom: 6
+   runcmd:
+   CombineDataFlag: 1
+   SelectBestB0: false
+-- DiffPreprocPipeline_PostEddy.sh: Specified Command-Line Parameters - End --
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline_PostEddy.sh: Gradient nonlinearity distortion correction coefficients found!
+Fri Mar  3 15:13:36 JST 2023:DiffPreprocPipeline_PostEddy.sh: Running Eddy PostProcessing
+
+ START: eddy_postproc
+Generating eddy QC report in /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/QC
+found b-shell of 14 orientations with b-value 5.000000
+found b-shell of 92 orientations with b-value 1495.000000
+found b-shell of 92 orientations with b-value 2995.000000
+found b-shell of 6 orientations with b-value 200.000000
+found b-shell of 12 orientations with b-value 497.000000
+Fri Mar  3 15:13:38 JST 2023:eddy_postproc.sh: ERROR: '/usr/local/fsl/bin/eddy_quad' command failed with return code: 1
+
+===> ERROR: Command returned with nonzero exit code
+---------------------------------------------------
+         script: eddy_postproc.sh
+stopped at line: 35
+           call: "${qc_command[@]}"
+  expanded call: /usr/local/fsl/bin/eddy_quad /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/eddy/eddy_unwarped_images -idx /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/eddy/index.txt -par /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/eddy/acqparams.txt -m /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/eddy/nodif_brain_mask.nii.gz -b /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/eddy/Pos_Neg.bvals -g /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/eddy/eddy_unwarped_images.eddy_rotated_bvecs -o /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/QC -f /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/topup/topup_Pos_Neg_b0_field.nii.gz -v
+      exit code: 1
+---------------------------------------------------
+
+===> Aborting execution!
+
+Fri Mar  3 15:13:38 JST 2023:DiffPreprocPipeline_PostEddy.sh: Running Diffusion to Structural Registration
+
+ START: DiffusionToStructural
+Running FAST segmentation
+FLIRT pre-alignment
+Running BBR
+Fri Mar  3 15:21:49 JST 2023:DiffusionToStructural.sh: ERROR: '/usr/local/fsl/bin/applywarp' command failed with return code: 134
+
+===> ERROR: Command returned with nonzero exit code
+---------------------------------------------------
+         script: DiffusionToStructural.sh
+stopped at line: 59
+           call: ${FSLDIR}/bin/applywarp --rel --interp=spline -i "$DataDirectory"/"$regimg" -r "$T1wImage" --premat="$WorkingDirectory"/"$regimg"2T1w_initII_init.mat -o "$WorkingDirectory"/"$regimg"2T1w_init.nii.gz
+  expanded call: /usr/local/fsl/bin/applywarp --rel --interp=spline -i /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif -r /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/T1w_acpc_dc --premat=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg/nodif2T1w_initII_init.mat -o /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg/nodif2T1w_init.nii.gz
+      exit code: 134
+---------------------------------------------------
+
+===> Aborting execution!
+
+Fri Mar  3 15:21:49 JST 2023:DiffPreprocPipeline_PostEddy.sh: Copying eddy log files to package location: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/Diffusion/eddylogs
+Could not find a supported file with prefix "/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/Diffusion/cnr_maps"
+Fri Mar  3 15:21:49 JST 2023:DiffPreprocPipeline_PostEddy.sh: Completed!
+Fri Mar  3 15:21:49 JST 2023:DiffPreprocPipeline.sh: Completed!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+From the DiffPreprocPipeline.sh.e24417, you could see the following messages.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Traceback (most recent call last):
+  File "/usr/local/fsl/bin/eddy_quad", line 52, in <module>
+    main(args.eddyBase, args.eddyIdx, args.eddyParams, args.mask, args.bvals, args.bvecs, args.output_dir, args.field, args.slspec, args.json, args.verbose)
+  File "/usr/local/fsl/lib/python3.10/site-packages/eddy_qc/QUAD/quad.py", line 208, in main
+    'mask':mask_vol.get_data(),
+  File "/usr/local/fsl/lib/python3.10/site-packages/nibabel/deprecator.py", line 185, in deprecated_func
+    raise error_class(message)
+nibabel.deprecator.ExpiredDeprecationError: get_data() is deprecated in favor of get_fdata(), which has a more predictable return type. To obtain get_data() behavior going forward, use numpy.asanyarray(img.dataobj).
+
+* deprecated from version: 3.0
+* Raises <class 'nibabel.deprecator.ExpiredDeprecationError'> as of version: 5.0
+Fri Mar  3 15:13:38 JST 2023:eddy_postproc.sh: While running '/usr/local/HCPpipelines/DiffusionPreprocessing/scripts/eddy_postproc.sh /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion /mnt/data2/DiffusionTest/code/SimensPrismaKomaba_coeff.grad 1 0':
+Fri Mar  3 15:13:38 JST 2023:eddy_postproc.sh: ERROR: '/usr/local/fsl/bin/eddy_quad' command failed with return code: 1
+Image Exception : #63 :: No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/data
+No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/data
+Image Exception : #63 :: No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Image Exception : #22 :: Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Image Exception : #63 :: No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Image Exception : #22 :: Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Could not open matrix file /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg/nodif2T1w_initII.mat
+Image Exception : #63 :: No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Image Exception : #22 :: Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+/usr/local/HCPpipelines/global/scripts/epi_reg_dof: line 386: 13696 Aborted                 (core dumped) $FSLDIR/bin/applywarp -i ${vepi} -r ${vrefhead} -o ${vout} --premat=${vout}.mat --interp=spline
+Could not open matrix file /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg/nodif2T1w_initII_init.mat
+Image Exception : #63 :: No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Image Exception : #22 :: Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Failed to read volume /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+Error : No image files match: /mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data/nodif
+/usr/local/HCPpipelines/DiffusionPreprocessing/scripts/DiffusionToStructural.sh: line 59: 13726 Aborted                 (core dumped) ${FSLDIR}/bin/applywarp --rel --interp=spline -i "$DataDirectory"/"$regimg" -r "$T1wImage" --premat="$WorkingDirectory"/"$regimg"2T1w_initII_init.mat -o "$WorkingDirectory"/"$regimg"2T1w_init.nii.gz
+Fri Mar  3 15:21:49 JST 2023:DiffusionToStructural.sh: While running '/usr/local/HCPpipelines/DiffusionPreprocessing/scripts/DiffusionToStructural.sh --t1folder=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w --subject=sub-K2009231730 --workingdir=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg --datadiffdir=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/data --t1=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/T1w_acpc_dc --t1restore=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/T1w_acpc_dc_restore --t1restorebrain=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/T1w_acpc_dc_restore_brain --biasfield=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/BiasField_acpc_dc --brainmask=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/brainmask_fs --datadiffT1wdir=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/T1w/Diffusion --regoutput=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg/Scout2T1w --QAimage=/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/reg/T1wMulEPI --dof=6 --gdflag=1 --diffresol=0.00':
+Fri Mar  3 15:21:49 JST 2023:DiffusionToStructural.sh: ERROR: '/usr/local/fsl/bin/applywarp' command failed with return code: 134
+cp: cannot stat '/mnt/data2/DiffusionTest/derivatives/HCPpipeline/sub-K2009231730/Diffusion/QC/*': No such file or directory
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+p.s.
+I start thinking about the maximum intensity voxel and the Peak voxel (which should actually ALSO be a maximum intensity of its kind) based on the distribution of the data = voxels in the cluster.
+
+If we have bell-shaped (i.e. normal) distribution, then we will have the maximum intensity voxel match the Peak voxel.
+If it is non-normal distribution, then the median will be = "the maximum intensity voxel" from the cluster command, and the Peak voxel = will be the REALLY REAL maximum intensity within this cluster. And here, they will point to different MNI coordinates.
+
+########################################################################
+
+
+Ashwati,
+
+This sounds like the brain mask is incomplete in some cases. The output should include the automatically generated mask and that would be the first thing I would check. If that is the problem you might need to investigate ways of generating your own brain has for subjects where the automated method fails.
+
+Michael
+
+> On 3 Mar 2023, at 02:25, Ashwati Vipin <0000859e7d588b57-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Hello,
+>
+> I have been running BASIL on 3D PASL images and I find that for some subjects the region analysis is complete whereas for other subjects consistently inferior brain regions are excluded. I looked at the perfusion image and it clearly shows the exclusion of almost half of the brain, thus the values are also missing for these regions of the brain.
+>
+> I'm not sure why this would be the case since the commands work totally fine for some subjects but not others. The raw image data is fine too so I'm not sure where the problem lies.
+>
+> Could you please advise?
+>
+> Thank you so much!
+>
+> Best,
+> Ashwati
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment.
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored
+where permitted by law.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Ralf,
+
+The extrapolation command that is used in asl_calib is:
+
+asl_file --data=calib_ero --ntis=1 --mask=mask --extrapolate --neighbour=5 --out=m0map
+
+Here calib_ero is an eroded M0 image and mask is the non-eroded mask. It should extrapolate to the edge of the mask using median filtering. Perhaps adding the --ntis=1 would help with your command?
+
+If this doesn't work, let me know the error message and I'll see what I can figure out.
+
+Best regards,
+Martin
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ralf Veit <ralf.veit@UNI-TUEBINGEN.DE>
+Sent: Wednesday, March 1, 2023 9:33 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] PCASL partial volume correction
+ 
+Dear ASL team, I'm analyzing ASL data (FSL version: 6.0.4) from Philips using a 3D PCASL sequence with GRASE readout. We have an inplane resolution of 3x3 mm and a slice thickness of 6 mm. We selected voxel-wise calibration using an M0 image. The images were distortion corrected using a separate M0 image with reversed PE direction. For the segmentation we run fsl_anat. I have a question regarding the partial volume correction. In particular, in voxels with a quite low gray matter portion the correction produces relative high CBF values (gm portion 0.1 to 0.3 or 0.4) that seems to me unrealistic (up to 150 or even higher). The values corresponds roughly to uncorrected CBF values divided by GM portion. What is the exact formula for the calculation? Does it make sense to threshold the perfusion images with more stringent criteria, like 0.3? Attached is an image with uncorrected CBF values at the top (scaled 0 – 100), the pvgm_inasl image in the middle (scaled 0-1) and the PV corrected image at the bottom (scaled 0 to 100). The most noticeable differences are in the middle frontal area, lower temporal areas and at the edges. Should I use a cut-off for CBF values beyond a certain threshold (i.e. 150)? The second question relates to the extrapolation of the M0 image using asl_file (partial volume correction at the edges). The following command does not work. asl_file --data=M0n.nii.gz --extrapolate --out=M0n_extrapol.nii asl_file expects a time series or a difference image, but not a M0 image. How can I do this? Best regards, Ralf
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+Hi Tugan,
+
+Apologies for this - the bug has been fixed for the next upcoming FSL release. I think the error message about being unable to determine the image shape is also due to get_data->get_fdata - this is used in two places in oxford_asl/gui/__init__.py so if you can find and change the second instance as well it should work. Let me know if you have any trouble doing this.
+
+Best regards,
+Martin
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tugan Muftuler <00007d336bf1eee7-dmarc-request@JISCMAIL.AC.UK>
+Sent: Wednesday, March 1, 2023 12:39 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] BASIL asl_gui input image loading problem
+ 
+Hi everyone,
+
+I have been using asl_gui for sometime and everything worked without a problem. I recently updated to the latest fsl version and it is having problems loading the asl image series. When i try to load the image series (input image), an error message shows up in the terminal (using ubuntu 22.04) complaining that nibabel depracated the get_data(). I replaced the get_data() with get_fdata() as recommended in the error message. Then I can see that it reads the file and the correct number of volumes shows up in the lower right corner. But a red error message shows up at the bottom of the gui complaining that it cannot determine the size of the image. "%s - failed to read data shape - check image file is not corrupted". I was uploading these files into asl_gui before, and i tried a bunch of images that I processed before. So, I know that they are not corrupted. I can also view them with fsleyes.
+
+I also tried reading shape of the file myself in the fslpython environment using shape = nib.load(fname).get_fdata().shape, and  it reads the image and gets the shape correctly. So, I don't know where it fails.
+
+I will be grateful if anyone can suggest some solutions.
+
+best wishes,
+-Tugan
+ 
+
+Here's the error message that shows up:
+(base) tgn@tgn-HP-Z2-Mini-G3:.../S906-27Feb2023$ Traceback (most recent call last):
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/oxford_asl/gui/main.py", line 136, in update_options
+    widget.option_changed(options, diff_key, options.get(diff_key, None))
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/oxford_asl/gui/input_tab.py", line 115, in option_changed
+    self._nvols = get_nvols(self.data_picker.GetPath())
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/oxford_asl/gui/__init__.py", line 164, in get_nvols
+    shape = nib.load(fname).get_data().shape
+  File "/home/tgn/Applications/fsl/lib/python3.10/site-packages/nibabel/deprecator.py", line 185, in deprecated_func
+    raise error_class(message)
+nibabel.deprecator.ExpiredDeprecationError: get_data() is deprecated in favor of get_fdata(), which has a more predictable return type. To obtain get_data() behavior going forward, use numpy.asanyarray(img.dataobj).
+
+* deprecated from version: 3.0
+* Raises <class 'nibabel.deprecator.ExpiredDeprecationError'> as of version: 5.0
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+
+Ralf,
+
+There is not an explicit formula for partial volume correction in BASIL: the voxelwise signal formula is the sum of a WM and GM perfusion component weighted by the input partial volume estimate, but the way the perfusion values are calculated include a spatial prior which depends on the values in the neighbouring voxels (it is broadly equivalent to the approach taken by the linear regression method, but adaptive based on the data). That said, for partial volume correction I would not be surprise if the output perfusion values are roughly the scaled version of the non-corrected values, since the main contribution in any given voxel is the GM perfusion - the WM is smaller and the CSF zero.
+
+Of course, all of this raises the question as to why you are seeing unexpectedly large values. Apart from the normal presumption that GM is 60 everywhere (based on techniques that also suffer from partial volume effects), any microvascular/arterial contamination in the data will be amplified by the PV correction. Since you have GRASE data a possible issue could be a mismatch between the voxel size for your matrix and the ’true’ resolution of the data. The correction assumes that the partial volumes reflect those that causes the signal mixing in the ASL data. If there is a mismatch in the resolution assumed based on the data matrix and the actual resolution of the point spread function then the partial voluming might be greater in thhe ASL data than it appears in the partial volume map, the consequence would be greater amplification of the GM values. I suspect this could be relevant as we know that GRASE readouts often have a PSF that isn’t matched so well to the matrix.In fact, I think you can see a difference in the inferior-superior direction between the (non-corrected) ASL perfusion and the GM partial volumes that would fit with this.
+
+If I am right, thresholding won’t fix the issue. Although you might inherently not trust voles with low PV and/or extremely high perfusion and thus seek to exclude them for the reasons outlined.
+
+Michael
+
+On 1 Mar 2023, at 09:33, Ralf Veit <ralf.veit@UNI-TUEBINGEN.DE> wrote:
+
+Dear ASL team, I'm analyzing ASL data (FSL version: 6.0.4) from Philips using a 3D PCASL sequence with GRASE readout. We have an inplane resolution of 3x3 mm and a slice thickness of 6 mm. We selected voxel-wise calibration using an M0 image. The images were distortion corrected using a separate M0 image with reversed PE direction. For the segmentation we run fsl_anat. I have a question regarding the partial volume correction. In particular, in voxels with a quite low gray matter portion the correction produces relative high CBF values (gm portion 0.1 to 0.3 or 0.4) that seems to me unrealistic (up to 150 or even higher). The values corresponds roughly to uncorrected CBF values divided by GM portion. What is the exact formula for the calculation? Does it make sense to threshold the perfusion images with more stringent criteria, like 0.3? Attached is an image with uncorrected CBF values at the top (scaled 0 – 100), the pvgm_inasl image in the middle (scaled 0-1) and the PV corrected image at the bottom (scaled 0 to 100). The most noticeable differences are in the middle frontal area, lower temporal areas and at the edges. Should I use a cut-off for CBF values beyond a certain threshold (i.e. 150)? The second question relates to the extrapolation of the M0 image using asl_file (partial volume correction at the edges). The following command does not work. asl_file --data=M0n.nii.gz --extrapolate --out=M0n_extrapol.nii asl_file expects a time series or a difference image, but not a M0 image. How can I do this? Best regards, Ralf
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<example_pv_corr.jpg>
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+
+Hi Matt,
+
+Thank you for your information about the version of FSL.
+I have already reinstalled the FSL 6.0.6 without any problem.
+
+Best wishes,
+Lin 
+
+########################################################################
+
+Hi Matthew,
+
+Today I tried to install FSL6.0.5 again and found the same error, if though I first type the command that you recommended.
+Because the HCP pipeline recommends us to use FSL 6.0.5, it seems safe to use this version when I run HCP pipelines.
+
+Best,
+Lin
+
+klab@DELL-Ubuntu02:~/Downloads$ CONDA_CHANNEL_PRIORITY=disabled
+klab@DELL-Ubuntu02:~/Downloads$ CONDA_LOCAL_REPODATA_TTL=0
+klab@DELL-Ubuntu02:~/Downloads$ sudo python2 fslinstaller.py
+--- FSL Installer - Version 3.3.0 ---
+When asked a question, the default answer is given in square brackets.
+Hit the Enter key to accept this default answer.
+Where would you like the FSL install to be (including the FSL folder name)? [/usr/local/fsl]:
+Downloading...
+Checking FSL package       
+[OK] File downloaded
+Installing FSL software version 6.0.5.2...
+[OK] FSL software installed.
+Performing post install tasks
+Stage 1
+By installing this python distribution you agree to the license terms in
+/usr/local/fsl/fslpython/LICENSE.txt
+100%
+Stage 2
+100%
+
+----- ERROR -----
+Failed to create FSL Python environment - see /tmp/fslpythonwXJP/fslpython_miniconda_installer.log for details
+
+Post install setup failed
+[OK] Post installation setup complete
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ear FSL,
+what is the difference between maximum intensity voxel and peak voxel? Based on my DTI analysis, they appear to be different voxels.
+
+Here is my analysis:
+
+I have a statistically significant contrast, and with the cluster command, I get:
+
+Two clusters: with 166, and with 194 voxels.
++ MNI coordinates.
+
+FSL Wiki says that these MNI coordinates point to the maximum intensity value in the cluster, which I interpret as a specific voxel which I call a "maximum intensity voxel".
+("MAX: the value of the maximum "intensity" within the cluster (e.g. the maximum z-statistic if the input was a z-statistic image").
+
+However, I need the Peak voxel that best correlates with my cognitive tests (as the maximum intensity voxel does not give me a good p-value). Thus, I use (cluster, fslmaths and fslmeants) to get all the individual voxels within the 194-voxel cluster. I do a simple correlation between the cognitive test results and the individual patients' voxels and, based on the highest p-value, get my Peak voxel.
+
+However, the coordinates are different from the maximum intensity voxel. Then, what is the maximum intensity voxel?
+
+Thank you and cheers,
+Said
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+I have been running BASIL on 3D PASL images and I find that for some subjects the region analysis is complete whereas for other subjects consistently inferior brain regions are excluded. I looked at the perfusion image and it clearly shows the exclusion of almost half of the brain, thus the values are also missing for these regions of the brain.
+
+I'm not sure why this would be the case since the commands work totally fine for some subjects but not others. The raw image data is fine too so I'm not sure where the problem lies.
+
+Could you please advise?
+
+Thank you so much!
+
+Best,
+Ashwati
+
+########################################################################
+Hello Everyone,
+
+In my dataset, the fix_training. RData file is generated for all the other subjects; however, for two subjects, the. Rdata is not created.
+I have tried the following:
+- Re-ran the feat preprocessing thrice.
+- Checked the hand_labels_noise.txt for commas, space, and brackets and made sure that there was an empty final line after that.
+- Checked the.Rlog file which shows:   Error in knn(train.data[, -dim(train.data)[2]], train.data[, -dim(train.data)[2]],  :
+  no missing values are allowed
+  Execution halted
+
+Please take a look at the attached .Rlog file & sample hand_labels_noise.txt
+
+Looking forward to your response!
+Thanks in advance!
+
+Best,
+Priyanka
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Shen,
+
+Did you rename/move the FSL directory after installing? The error refers to both /opt/fsl6/, and /opt/fsl/. FSL directories are not presently relocatable, so it is not possible to move the directory after installation.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of SUBSCRIBE FSL Anonymous <000098e55d219b8f-dmarc-request@JISCMAIL.AC.UK>
+Sent: 27 February 2023 18:49
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] New installation. commands did not work in terminal
+ 
+Hi,
+
+I have just installed FSL 6.0.6.2 on my Centos 7. During the installation, I didn't get any error messages.
+However, when I ran the following command in terminal:
+bet my_hifi_b0 testMASK -m
+
+I got this error message:
+/opt/fsl6/bin/bet: /opt/fsl6/bin/remove_ext: /opt/fsl/bin/python3.10: bad interpreter: No such file or directory
+/opt/fsl6/bin/bet failed during command:my_hifi_b0 testMASK -m
+
+How to fix it? Thanks for helping in advance,
+Shen
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear FSL community,
+
+
+The Brain Imaging, Development, and Genetics (BRIDGE) lab, part of Stanford University’s Division of Brain Sciences, is seeking two full-time Postdoctoral Fellows in brain imaging and/or human genetic modeling. Ideal candidates will have a solid neuroscience, neuroimaging, and/or human genetics background.
+
+BRIDGE focuses on neuropsychiatric disorders, specifically those associated with RASopathies, such as Noonan syndrome and neurofibromatosis 1 (NF1). In our NIH-funded research, we employ three unique approaches: 1. Taking a genetics-first approach, we study children with known genetic conditions who exhibit attention problems, irritability, and deficits in social cognition. The approach differs from traditional research, which begins with the child's symptoms. 2. We apply in-depth phenotyping of the child's brain, genes, and behavior using brain imaging, genetic testing, and behavioral assessment. 3. We use large publicly available data sets (>10K children) focusing on child brain and behavioral development. Our goal is, therefore, to uncover how genetic variation and its associated downstream pathways affect children's developmental disorders.
+
+If interested, please see the official posting for additional details at
+https://postdocs.stanford.edu/prospective/opportunities/open-postdoctoral-position-faculty-mentor-tamar-green
+
+Thank you,
+Mira Raman, Research Data Analyst
+BRIDGE, Stanford University
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+I have just installed FSL 6.0.6.2 on my Centos 7. During the installation, I didn't get any error messages.
+However, when I ran the following command in terminal:
+bet my_hifi_b0 testMASK -m
+
+I got this error message:
+/opt/fsl6/bin/bet: /opt/fsl6/bin/remove_ext: /opt/fsl/bin/python3.10: bad interpreter: No such file or directory
+/opt/fsl6/bin/bet failed during command:my_hifi_b0 testMASK -m
+
+How to fix it? Thanks for helping in advance,
+Shen
+
+########################################################################
+

@@ -1,0 +1,745 @@
+Dear Vadim,
+
+in measured data, the origin is defined by the hardware and image reconstruction parameters of the measurement device. MR scanners usually set the origin to the center of the magnet. If you position the head of your subject in a standard head coil and position this coil correctly in the scanner, images should actually be quite close to what MNI/Talairach define as origin.
+If it is not absolutely necessary, I would not mess around with this. Unless your data are really far off the origin, SPM does a pretty good job moving your data to the correct location during spatial normalisation or segmentation.
+
+Best regards.
+
+Hi everyone,
+
+I am reaching out due to a curious problem with DCM to seek any insights you might offer. Our analysis involves a comprehensive first-level full model that includes 10 regions of interest (ROIs). To streamline the model's complexity, we strategically reduced the connections from an the initial pool of 10x10 = 100 down to 57. (This reduction was based on the posterior probability (>0.95) obtained by inverting the A matrix in a preparatory step for the actual analysis.)
+
+Consequently, in the single-subject full models, we set these 57 connections as active (value of 1), while the remaining connections were inactivated / pruned (value of 0) in our A and B matrices.
+
+Following Zeidman et al. 2019, we then ran BMA+PEB on the inverted single subject model for both, the A and the B matrix. The results from the B matrix's PEB model appeared sensible and only included those 57 connections. However, the A matrix presented an unexpected outcome: 21 connections, which were previously pruned and set to 0 in the original single-subject DCMs, were part of the A matrix PEB model. I'm confused why PEB would have different parameters for A and B matrices because it is done on the same single-subject models. If I understand correctly, it should only calculate the Bayesian averages of those parameters.
+
+I double checked the specifications etc. and I am not sure whether something has gone wrong. I would greatly appreciate any input, advice, or suggestions. Thank you very much in advance for your time.
+
+Best,
+Sabrina
+
+Lecturer in Psychology (2 posts)  
+REF: ATR1682
+
+Salary on appointment will be £46,974 per annum, dependent on skills and experience, with an annual increment up to £54,395 per annum. 
+
+An exciting opportunity has arisen for two new Lecturers to join the School of Psychology. The posts will augment our current excellence in research and take an active role in the delivery of research-led teaching. 
+
+In REF 2021, 96% of our research in Psychology, Psychiatry and Neuroscience was recognised as world-leading or internationally excellent, with a 100% 4* world leading research environment. The School has outstanding laboratory equipment and facilities including a Siemens Prisma 3T MRI scanner in the UEA Wellcome-Wolfson Brain Imaging Centre (UWWBIC: https://uwwbic.uea.ac.uk/).
+
+You will join a network of researchers within the School of Psychology, with clinical colleagues in the School of Medicine and others across the University and the wider Norwich Research Park, consistent with the multidisciplinary ethos at UEA. You will have the opportunity to develop your research profile which should compliment the existing research strengths, producing high quality proposals to secure external research funding, disseminate finding through academic publications and external impact.  
+
+Teaching is a key part of this role and as such you will be expected to plan, teach and assess at undergraduate and postgraduate levels and supervise PhD students.
+
+We are seeking candidates specialising in any area of Psychology who will expand and enhance our existing research strengths. Those working in Social Psychology, Cognitive and/or Social Development, Cognitive Neuroscience, Social Neuroscience, or Developmental Neuroscience would complement the School’s approach to psychological science and would be especially welcome. 
+
+You must have a PhD (or equivalent) in a relevant subject area or equivalent experience, with experience of undergraduate teaching and student assessment. A strong publication record is also essential, and the ability to supervise PhD students would be advantageous. 
+
+These full-time posts are available from 1 August 2024 on an indefinite basis.  
+
+UEA offers a variety of flexible working options and although these roles are advertised on a full-time basis, we encourage applications from individuals who would prefer a flexible working pattern including   part time, or job share arrangements. Details of any preferred flexible hours should be stated in the personal statement and will be discussed further at interview. 
+
+Benefits include: 
+
+44 days annual leave inclusive of Bank Holidays and University Customary days (pro rata for part-time). 
+Family and Work-life balance policies including hybrid working and considerable maternity, paternity, shared parental leave and adoption leave. 
+Generous pension scheme with life cover for dependants, plus incapacity cover. 
+Health and Wellbeing: discounted access to Sportspark facilities, relaxation rooms, 320 acres of rolling parkland, wellbeing walks, Wellbeing Ambassador network, medical centre, Occupational Health and a 24/7 Employee Assistance Programme. 
+Campus Facilities: Sportspark, library, nursery, supermarket, post office, bars and catering outlets. 
+Exclusive shopping discounts to help cut the cost of household bills, childcare salary sacrifice scheme, Cycle to Work scheme and public transport discounts. 
+Personal Development: unlimited access to LinkedIn Learning courses, specialist advice and training from our Organisational Development and Professional Learning Team. 
+Closing date: 12 April 2024
+
+We strongly encourage applicants from Black, Asian or other minority ethnic backgrounds and welcome applications from all protected groups as defined by the Equality Act 2010. Appointment will be made on merit.
+
+The University holds an Athena Swan Silver Institutional Award in recognition of our advancement towards gender equality.
+
+Further Information
+For further information, including the Job Description and Person Specification, please see the attached Candidate Brochure. 
+
+For an informal discussion about the post please contact the Head of School, Professor Neil Cooper via neil.cooper@uea.ac.uk. 
+
+
+
+Hi Luna
+
+DCM.U.idx is used by the “specify group”  batch GUI when replicating a template DCM over subjects. It allows the GUI to know which experimental conditions to import from the subjects’ SPMs. The first column in DCM.U.idx is the condition number (within the Matlab structure SPM.Sess.U in your SPM.mat), and the second column is the regressor number (1 for the main regressor, 2 for the first parametric regressor, 3 for the second parametric regressor etc).
+
+ 
+
+It will only have an impact on your results if you are using the “specify group” batch to generate your subject-specific DCMs from a template. Is that the case here?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: lunamitsukisato@keemail.me <lunamitsukisato@keemail.me>
+Sent: 17 March 2024 08:50
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Cc: SPM@JISCMAIL.AC.UK
+Subject: RE: [SPM] What is the DCM.U.idx parameter for?
+
+ 
+
+Hi Peter,
+
+Thank you!
+
+Initially, I thought I understood the logic behind the numbers in the DCM.U.idx generated by the DCM GUI. The matrix looked like this:
+
+DCM.U.idx=[1 1
+
+                    2 1
+
+                    3 1
+
+                    4 1]
+
+ 
+
+I interpreted it as follows: the first column ranging from 1 to 4 corresponds to the four experimental conditions, and the second column consists entirely of ones.
+
+ 
+
+Based on this understanding, I defined all DCMs in my code using the same idx matrix.  Namely, I applied this matrix to DCM.U.idx in all subjects' DCM files.
+
+ 
+
+However, I later discovered that the DCM GUI generates the DCM.U.idx for another DCM (including parametric modulation regressors) in this format:
+
+ 
+
+DCM.U.idx=[1 1
+
+                    1 2
+
+                    1 3
+
+                    1 4]
+
+This discrepancy has left me uncertain whether my approach of defining the same matrix for all subjects' DCM.U.idx was incorrect.
+
+Would defining the DCM.U.idx matrix incorrectly in the code have a significant impact on the results?
+
+Cheers, Luna
+
+ 
+
+12 Mar 2024, 18:07 by peter.zeidman@ucl.ac.uk:
+
+Hi Luna
+
+This is nothing to worry about. If I remember correctly, I added that field to help with specifying DCMs using the batch editor. Its omission won’t alter your results.
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Luna Sato
+Sent: 06 March 2024 03:23
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] What is the DCM.U.idx parameter for?
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hi experts,
+
+ 
+
+When checking DCM results, I found certain subjects' DCM fields include the parameter DCM.U.idx, while others don't. I suspect this variation might be due to different SPM versions used.
+
+ 
+
+I'm wondering about the significance of DCM.U.idx. Can I combine subjects with and without this parameter in group analysis? Or should I consider redoing some DCM analyses?
+
+ 
+
+Best regards,
+
+Luna
+
+ 
+
+ 
+
+Dear SPMlers, 
+
+
+
+This email is to inform you about the upcoming 3rd Locus Coeruleus meeting which will take place at the Grillhof in Innsbruck from 9th to the 11th of September 2024.
+
+
+
+As in the last meetings, we aim to bring together researchers with a background in clinical research, cognitive neuroscience, MRI Physics, neuroscience in animal models and other relevant disciplines with an interest in neuromodulatory systems and in particular the noradrenergic locus coeruleus in health and disease. 
+
+
+
+For more information on the meeting and to register please see the meeting website. (https://www.uibk.ac.at/de/congress/lc-meeting-2024/)
+
+
+
+Registration will be open until the 15th of April 2024. Please do not hesitate to email us (using LCMeeting2024 ‘at’ uibk.ac.at) should you have any questions!
+
+  
+
+Please feel also free to forward  information about the meeting to other people you think might be interested. 
+
+ 
+
+We hope to be able to welcome you at our 3rd LC Meeting! 
+
+  
+
+Best wishes, 
+
+
+
+Dorothea Haemmerer 
+
+
+
+Professor for Developmental Psychology
+Department of Psychology, University of Innsbruck
+
+Principal Investigator,
+Institute of Cognitive Neurology and Dementia Research,
+Medical Faculty, Otto von Guericke University Magdeburg
+
+Associate research fellow,
+Institute of Cognitive Neuroscience, University College London
+
+lab homepage @d_haemmerer   google scholar  Research gate 
+
+
+Dear Zach
+
+I hope you don’t mind me CC’ing the SPM mailing list so others can benefit.
+
+ 
+
+You asked how to interpret the self-connections in SPM. In brief, writing out the DCM for fMRI neural model (ordinary differential equation) for a self-connection:
+
+ 
+
+dz/dt = (-0.5 * exp[A + Bu(t)] ) * z + CU
+
+ 
+
+Where u(t)>0 at times when the modulatory input is switched on and u(t)=0 at other times. Details of the terms of the equation are in the DCM tutorial paper (https://doi.org/10.1016/j.neuroimage.2019.06.031) . Equivalently this can be written as:
+
+ 
+
+dz/dt = (-0.5 * exp(A) * exp(Bu(t))) * z + Cu
+
+ 
+
+So you can see the default connection strength is -0.5Hz, which is scaled by the exponential of the A matrix, and by the exponential of the B matrix (at times when modulation is switched on).
+
+ 
+
+To answer your direct question, you are correct, and you can confirm this by plugging in numbers to the formula. E.g. if the modulatory input is on, so u(t)=1, and if A=0 and B=0, then the self-connection is -0.5 * exp(0) * exp(0) = -0.5Hz (the default value for a self-connection). If you increase the B parameter from zero to two, then it’s -0.5 * exp(0) * exp(2) = -3.7Hz, so much more inhibitory.
+
+ 
+
+I hope that helps
+
+Peter
+
+ 
+
+Subject: Inquiry regarding interpretation of self-connection in one-state fMRI DCM
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear Professor Zeidman,
+
+ 
+
+I apologize for reaching out once again, but I've been grappling with the interpretation of self-connection in one-state DCM for quite some time.
+
+ 
+
+There is the equation:
+
+
+
+So, large 'a' parameter will cause faster neural decay than a small 'a' parameter.
+
+ 
+
+For one-state fMRI DCM, the relationship between the values on the diagonal of matrix A and 'a' is:
+
+
+
+So large values on the diagonal of matrix A (DCM.Ep.A) will cause slower decay than small values on the diagonal of matrix A. 
+
+ 
+
+However, the values on the diagonal of matrix of B matrices are NOT log scaling parameters.
+
+So larger values on the diagonal of matrix of B matrices (DCM.Ep.B) indicate the corresponding experimental effects faster decay than small values on the diagonal of matrix of B.
+
+ 
+
+Am I correct?
+
+ 
+
+Thank you!
+
+ 
+
+Best,
+
+Zach
+
+ 
+
+ 
+
+Dear Vadim,
+
+in measured data, the origin is defined by the hardware and image reconstruction parameters of the measurement device. MR scanners usually set the origin to the center of the magnet. If you position the head of your subject in a standard head coil and position this coil correctly in the scanner, images should actually be quite close to what MNI/Talairach define as origin.
+If it is not absolutely necessary, I would not mess around with this. Unless your data are really far off the origin, SPM does a pretty good job moving your data to the correct location during spatial normalisation or segmentation.
+
+Best regards.
+
+Dear colleagues,
+
+ 
+
+For the eighth time, the Lund University Humanities Lab, Lund, Sweden, offers a three-day intensive course in eye-tracking methodology: A practical introduction to eye tracking. An important part of the course comprises hands-on exercises, where participants will work individually with state-of-the-art eye tracker hardware and software.
+
+The course takes place May 29 - 31, 2024 at the Humanities Lab.
+
+ 
+
+For more information about the course, visit the course webpage:
+
+https://www.humlab.lu.se/education/commissioned-education/
+
+Dear experts,
+
+I have to revise at some point for a project. Do I have to pay ? How much does the course cost? Is there a discount if you have done it before?
+
+Are there any free data I can use for a prototype?
+
+I am aPhD student at the University of Otago and cyrrently writing a proposal for one little study.
+
+Many thanks
+Fani 
+
+
+Research Assistant Position in the Neuroscience of Memory
+
+
+
+A research assistant position is available in Dr. Noa Herz’s laboratory in the Department of Neurology at Thomas Jefferson University. Research in the lab focuses on the neural substrates underlying episodic memory. We use direct brain recording and stimulation collected from neurosurgical patients who have implanted electrodes for seizure mapping. Our research focuses on characterizing memory deficits in psychopathological (depression, anxiety, post-traumatic stress disorder) and neurological (epilepsy) disorders and on developing direct stimulation approaches to address them. 
+
+We are closely collaborating and holding routine meetings with Prof. Michael Kahana's research group at the University of Pennsylvania. Duties will include assisting with all aspects of data collection, experiment preparation, data postprocessing and report generation. Data analyses and manuscript writing are offered to interested individuals.
+
+Review of applications will start immediately and will continue until the position is filled. 
+
+ 
+
+Requirements:
+
+BA/BS in cognitive science, neuroscience, biology, psychology, computer science, engineering, or other related scientific fields.
+Strong computing skills (knowledge of python/R/Matlab is a plus)
+An ability to solve technical problems independently
+Strong organization skills and high attention to detail
+High motivation and work commitment
+Ability to work well with patients in a hospital environment
+At least one, but preferably a 2-year commitment
+The Department of Neurology, located in the city center of Philadelphia, is among the ten best neuroscience departments in the country. The work includes collaboration with top neurologists, neurosurgeons, and neuropsychologists and is, therefore, ideal for students thinking about an MD. The Herz lab is currently under development, allowing the selected applicant to shape future work in the lab and assist in forming new research collaborations.
+
+
+
+For inquiries, please email: noa.herz@jefferson.edu
+
+
+
+To apply, please submit a resume (including a description of computer skills, relevant coursework, grades, previous research, and contact information for at least two references) and a cover letter describing academic and research interests on:
+
+https://recruit.jefferson.edu/psc/hcmp/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_JBPST_FL&Action=U&FOCUS=Applicant&SiteId=1&JobOpeningId=9298395&PostingSeq=1
+
+
+
+We are thrilled to announce an opening for a Postdoctoral Position at the Tee Lab, Department of Neurology, University of California, San Francisco (UCSF). This is a unique opportunity for a passionate researcher to contribute to groundbreaking work in the field of neuroimaging and neurodegenerative diseases.
+
+Job Summary: The selected candidate will participate in projects that focus on establishing MRI protocols with cutting-edge methodologies and applying neuroimaging techniques, such as tractography, graph theory analysis, and machine learning algorithms. Our focus spans a range of neurodegenerative diseases, including Alzheimer’s disease, primary progressive aphasia, and frontotemporal dementia, particularly in the context of diverse populations and bilingualism.
+
+Laboratory Mission: The Tee Lab is dedicated to promoting equal representation in cognitive and dementia research, enhancing our understanding of brain aging and neurodegenerative diseases. We collaborate internationally, aiming to understand bilingualism and dementia syndromes and promote language diversity in cognitive research.
+
+Required Qualifications:
+
+Ph.D. in neurology, radiology, neuropsychology, cognitive neuroscience, biomedical engineering, or related fields.
+Experience with MRI/PET data analysis.
+Proficiency in neuroimaging tools and programming/scripting languages.
+Preferred Qualifications:
+
+Experience in connectomics, tractography, functional MRI, bilingualism, and cross-linguistic studies.
+Proficiency in Mandarin and/or Cantonese is a plus.
+Application Process: Interested candidates should send a cover letter, CV, and contact information for three references to BoonLead.Tee@ucsf.edu and Stephanie.Kwan3@ucsf.edu.
+
+For more information about the Tee Lab and our projects, please visit our website: Tee Lab - UCSF
+
+To view the detailed job posting, please visit: Tee Lab Open Positions - UCSF
+
+We look forward to welcoming a new member to our dynamic team!
+
+
+
+Postdoctoral Fellowship in Cognitive Electrophysiology of Human Memory
+
+
+
+We are looking for a postdoctoral scientist to join our emerging team and carry out a research program in electrophysiology. The successful applicant will collaborate with the research group of Dr. Noa Herz and Dr. Michael Sperling at the Comprehensive Epilepsy Center of Thomas Jefferson University.
+
+
+
+The purpose of the post is to conduct cutting-edge research on the neural basis of episodic memory in humans using direct brain recordings and stimulation. We are seeking to develop a memory mapping procedure to reduce the risk of memory loss following neurosurgery, as well as a direct stimulation intervention to treat memory-related disorders such as post-traumatic stress disorder. We use data collected from epilepsy patients undergoing seizure monitoring at the hospital as well as patients implanted with a responsive neurostimulation system (RNS).
+
+
+
+The successful candidate will undertake project management, analyze data and will be expected to submit publications to top journals, assist in applying for external research funding, and promote collaborations with research groups outside of Jefferson.
+
+
+
+This post offers an excellent opportunity for those interested in state-of-the-art translational research, bridging cognitive and clinical neuroscience. The selected researcher will become an early member of an inclusive and interdisciplinary team of neurologists, neurosurgeons, and neuroscientists working to study and develop treatment interventions for memory problems in psychopathological and neurological disorders. We are closely collaborating and holding routine meetings with Prof. Michael Kahana's research group at the University of Pennsylvania.
+
+
+
+The ideal candidate will have expertise in analyzing electrophysiological data (either in humans or animals) and strong computing skills, including coding experience. Knowledge of machine learning methods will be an advantage.  
+
+We are located at the Center City Campus of Thomas Jefferson University (The Vickie & Jack Farber Institute for Neuroscience). Applications will be reviewed on a rolling basis and salary will be based on the NIH postdoctoral scale.
+
+
+
+Applicant must have a Ph.D. in neuroscience/biology/psychology/computer science or a related field. Applicants close to completion of their PhDs will also be considered where experience is directly relevant.
+
+
+
+Queries relating to the position should be directed to Dr. Noa Herz: noa.herz@jefferson.edu.
+
+ 
+
+Apply here:
+https://recruit.jefferson.edu/psc/hcmp/EMPLOYEE/HRMS/c/HRS_HRAM_FL.HRS_CG_SEARCH_FL.GBL?Page=HRS_APP_SCHJOB_FL&Action=U
+
+ 
+
+Key Responsibilities:
+
+Analyses of behavioral and intracranial data
+Take initiative in the planning and conduct of research
+Acquire and interpret research data and results
+Ensure the validity and reliability of collected data
+Prepare publications for submission in top refereed journals
+Assist in the preparation of research grant proposals
+Assist with designing and building experimental tasks, as well as in data collection
+Required Experience:
+
+Proven track record of electrophysiology research.
+Experience in data analyses and coding (e.g., using Python/Matlab/R/C++).
+Experience in delivering research project results, as exemplified by a track record of peer-reviewed publications in a relevant area.
+Skills and Abilities
+
+Capable of working collaboratively with neurologists and neurosurgeons in a hospital environment.
+Capable of working independently, exercising a high degree of initiative, and demonstrating a proactive approach to work.
+Strong quantitative background (multivariate methods such as machine learning are a plus)
+Ability to conduct a detailed review of recent literature.
+Demonstrated ability to conduct independent research.
+Creative approach to problem-solving.
+Excellent written communication skills in scientific English and the ability to write clearly and succinctly at a level suitable for international conferences and peer-reviewed journal publications.
+Self-motivation and ability to exercise initiative and judgment in carrying out research tasks.
+ 
+
+Interested applicants should upload a cover letter including a statement of research interests (describing how past experience and future plans fit the advertised position), a CV, and the details of at least two referees.
+
+ 
+
+We are committed to equality of opportunity, eliminating discrimination, and creating an inclusive working environment for all. We therefore encourage candidates to apply irrespective of age, disability, marriage or civil partnership status, pregnancy or maternity, race, religion and belief, gender reassignment, sex, or sexual orientation. 
+
+Dear Julia,
+
+On Mon, Mar 18, 2024 at 2:45 PM Júlia Soares <julii.f.soares@gmail.com> wrote:
+
+What do you mean with "native images coregistered with MNI" and " write out the results of your source analysis in the native space on a template MNI mesh"?
+
+I mean coregistering your images to the MNI template (Coregister/Estimate) so that their coordinate system doesn't have a big offset or some rotation with respect to MNI coordinates. Then in my opinion locations specified in this MNI-aligned native space will be similar enough to MNI coordinates for the purposes of EEG analysis. Also by default your results image for source reconstruction is generated in MNI template space no matter how your priors are specified.
+
+ 
+Does this mean to transform my structural images to MNI using the "normalise write" function from SPM,
+to build the head models and then do source reconstruction in this space? 
+
+No, that's not what I mean.
+ 
+
+About the epoching step, just to make sure: do you suggest separating my continuous signal into the periods of time of my conditions and then separating each condition into epochs of 1-2s like a sub epoching step ? 
+
+
+I'm not sure how your conditions are recorded. If they are in separate files then you could just epoch each one into 1 sec epochs and then merge the resulting files. Otherwise you could convert each epoch separately (by specifying a time window) and then epoch it and merge. The most straightforward way to do this kind of custom epoching is write your own function for specifying the trl and conditionlabels variables that the epoching function takes as the input. But if you want to only use the GUI, you could do as suggested above.
+
+Best,
+
+Vladimir
+
+
+
+
+ 
+
+Em sex., 15 de mar. de 2024 às 16:28, Vladimir Litvak <litvak.vladimir@gmail.com> escreveu:
+Dear Julia,
+
+On Fri, Mar 15, 2024 at 4:20 PM Júlia Soares <julii.f.soares@gmail.com> wrote:
+1) Regarding the source locations in MNI I didn't quite understand why this doesn't matter. The DCM model requires an EEG signal after source reconstruction, right? So the space will be the source space instead of the sensor space (the actual electrodes), right? If so, how come the resolution of the coordinates doesn't make a difference? Isn't it possible that sources are several mm misaligned with corresponding locations in MNI ?
+
+The kind of differences in source locations that make a difference in EEG are on the order of cm so if your native images are coregistered to MNI and the head sizes are not unusually large or small I wouldn't expect the mm differences to matter. But you can always write out the results of your source analysis in the native space on a template MNI mesh and then you won't have that problem at all.  
+
+
+ 
+2) About data epoching: I have a continuous signal acquired during performance of a task constituted by 4 conditions: 8 periods of "baseline" (22 seconds), 5 periods of "condition A" (18 seconds), 4 periods of "condition B" (18 seconds) and 3 periods of "condition C" (18 seconds). I was thinking about separating my continuous signal into epochs of equal length to the periods of each condition. So, for example for "condition A" I would have 5 epochs of 18 seconds each corresponding to "condition A " which would then be averaged into one single epoch. Does this make sense?
+
+
+The implementation assumes short epochs 1-2 sec at most so I'd suggest you epoch your conditions into epochs of that length and then the differences in duration won't matter.
+
+Best,
+
+Vladimir
+ 
+Regards,
+Júlia Soares 
+
+
+
+Em ter., 12 de mar. de 2024 às 15:24, Vladimir Litvak <litvak.vladimir@gmail.com> escreveu:
+Dear Julia,
+
+On Tue, Mar 12, 2024 at 2:55 PM Júlia Soares <julii.f.soares@gmail.com> wrote:
+1) Is it only possible to do DCM in MNI space since the prior source locations should be given in MNI coordinates or is it possible to conduct DCM analysis in native space for each specific subject ? 
+
+
+I think this distinction is too fine to matter for DCM if you are doing it at the sensor level. So I'd just define source locations in MNI space and not worry too much about it. 
+
+ 
+2) In source reconstruction I inverted a continuous signal, i.e., I did not separate the signal into epochs (trials). However I have a task which has 3 conditions in which I intend to study connectivity in each of them. Is there a way to separate my signal after source reconstruction so I can include them in the DCM model? 
+
+Both source analysis and DCM were not intended to work on long continuous data segments. I'd suggest you epoch your data into arbitrary 1-2 sec epochs. There is a way to do it in the epoching tool. Then I would do both steps on these epoched data.
+
+Best,
+
+Vladimir
+
+ 
+
+Thank you in advance. 
+Regards,
+Júlia Soares 
+
+Dear Vladimir, 
+
+What do you mean with "native images coregistered with MNI" and " write out the results of your source analysis in the native space on a template MNI mesh"? Does this mean to transform my structural images to MNI using the "normalise write" function from SPM, to build the head models and then do source reconstruction in this space? 
+
+About the epoching step, just to make sure: do you suggest separating my continuous signal into the periods of time of my conditions and then separating each condition into epochs of 1-2s like a sub epoching step ? 
+
+I apologize for my insistence and appreciate your help, 
+Júlia Soares 
+
+
+Em sex., 15 de mar. de 2024 às 16:28, Vladimir Litvak <litvak.vladimir@gmail.com> escreveu:
+Dear Julia,
+
+On Fri, Mar 15, 2024 at 4:20 PM Júlia Soares <julii.f.soares@gmail.com> wrote:
+1) Regarding the source locations in MNI I didn't quite understand why this doesn't matter. The DCM model requires an EEG signal after source reconstruction, right? So the space will be the source space instead of the sensor space (the actual electrodes), right? If so, how come the resolution of the coordinates doesn't make a difference? Isn't it possible that sources are several mm misaligned with corresponding locations in MNI ?
+
+The kind of differences in source locations that make a difference in EEG are on the order of cm so if your native images are coregistered to MNI and the head sizes are not unusually large or small I wouldn't expect the mm differences to matter. But you can always write out the results of your source analysis in the native space on a template MNI mesh and then you won't have that problem at all.  
+
+
+ 
+2) About data epoching: I have a continuous signal acquired during performance of a task constituted by 4 conditions: 8 periods of "baseline" (22 seconds), 5 periods of "condition A" (18 seconds), 4 periods of "condition B" (18 seconds) and 3 periods of "condition C" (18 seconds). I was thinking about separating my continuous signal into epochs of equal length to the periods of each condition. So, for example for "condition A" I would have 5 epochs of 18 seconds each corresponding to "condition A " which would then be averaged into one single epoch. Does this make sense?
+
+
+The implementation assumes short epochs 1-2 sec at most so I'd suggest you epoch your conditions into epochs of that length and then the differences in duration won't matter.
+
+Best,
+
+Vladimir
+ 
+Regards,
+Júlia Soares 
+
+
+
+Em ter., 12 de mar. de 2024 às 15:24, Vladimir Litvak <litvak.vladimir@gmail.com> escreveu:
+Dear Julia,
+
+On Tue, Mar 12, 2024 at 2:55 PM Júlia Soares <julii.f.soares@gmail.com> wrote:
+1) Is it only possible to do DCM in MNI space since the prior source locations should be given in MNI coordinates or is it possible to conduct DCM analysis in native space for each specific subject ? 
+
+
+I think this distinction is too fine to matter for DCM if you are doing it at the sensor level. So I'd just define source locations in MNI space and not worry too much about it. 
+
+ 
+2) In source reconstruction I inverted a continuous signal, i.e., I did not separate the signal into epochs (trials). However I have a task which has 3 conditions in which I intend to study connectivity in each of them. Is there a way to separate my signal after source reconstruction so I can include them in the DCM model? 
+
+Both source analysis and DCM were not intended to work on long continuous data segments. I'd suggest you epoch your data into arbitrary 1-2 sec epochs. There is a way to do it in the epoching tool. Then I would do both steps on these epoched data.
+
+Best,
+
+Vladimir
+
+ 
+
+Thank you in advance. 
+Regards,
+Júlia Soares 
+
+
+Dear all,
+I was wondering if there is a state of the art procedure for subjects with no parametric modulation.
+One subject has same ratings for one contrast (therefore no modulation).
+Should the contrast be excluded, or can we add some slight modulation..
+Or are there some polynomial expansion that can deal with such cases?
+Thanks
+J.A.
+
+Dear all,
+I was wondering if there is a state of the art procedure for subjects with no parametric modulation.
+One subject has same ratings for one contrast (therefore no modulation).
+Should the contrast be excluded, or can we add some slight modulation..
+Or are there some polynomial expansion that can deal with such cases?
+Thanks
+J.A.
+
+Dear SPM experts,
+
+We used the default CMM_NMDA model in SPM12 to model the first 50ms of a TMS-evoked response registered with EEG. With PEB we then tested which (if any) parameter of the model was related to an external variable. 
+I have issues interpreting the effect we see on the GABAa parameter as I do not fully understand what information it is conveying in the model:
+Is GABAa mediating all the inhibitory connections allowed in the model (thus both the inhibitory feedback loops and the projections from the inhibitory interneuron to the other subpopulations)? 
+Is it mediating just the inhibitory connections from the inhibitory interneuron to the other subpopulations?
+Or is it conveying another type of information?
+
+Thank you a lot in advance for your time and help.
+
+Best,
+Ilenia
+
+Dear Vladmir,
+
+thank you for your answer.
+
+I managed to plot multiple topographies (for con images) modifying the SPM function "spm12/toolbox/MEEGtools/spm_eeg_img2maps.m". In case it might be useful to others, I attach the modified function here, and an example script for plotting 16 topographies at specified time points, customizing colormap, style and scale.
+
+Regarding the t-maps, I saw that in other thread you had recommended not to use the function spm_eeg_img2maps.m because of biased outputs: https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=spm;b735448.1202.. Is this still the case? If yes, I found this very nice and easy to use toolbox to plot t-maps. Again, I attach the links in case they may be useful to others: (https://link.springer.com/article/10.1007/s12021-019-09447-6#Sec24) and scripts:https://github.com/JeremyATaylor/Porthole
+
+GitHub - JeremyATaylor/Porthole
+Contribute to JeremyATaylor/Porthole development by creating an account on GitHub.
+github.com
+
+
+Porthole and Stormcloud: Tools for Visualisation of Spatiotemporal M/EEG Statistics - Neuroinformatics
+Electro- and magneto-encephalography are functional neuroimaging modalities characterised by their ability to quantify dynamic spatiotemporal activity within the brain. However, the visualisation techniques used to illustrate these effects are currently limited to single- or multi-channel time series plots, topographic scalp maps and orthographic cross-sections of the spatiotemporal data structure. Whilst these methods each have their own strength and weaknesses, they are only able to show a subset of the data and are suboptimal at articulating one or both of the space-time components.Here, we propose Porthole and Stormcloud, a set of data visualisation tools which can automatically generate context appropriate graphics for both print and screen with the following graphical capabilities: Animated two-dimensional scalp maps with dynamic timeline annotation and optional user interaction; Three-dimensional construction of discrete clusters within sparse spatiotemporal volumes, rendered with ‘cloud-like’ appe
+link.springer.com
+
+Best,
+Benedetta
+
+From: Vladimir Litvak <litvak.vladimir@gmail.com>
+Sent: Friday, March 15, 2024 5:19 AM
+To: BENEDETTA CECCONI <bcecconi@wisc.edu>
+Cc: SPM@jiscmail.ac.uk <SPM@jiscmail.ac.uk>
+Subject: Re: [SPM] SPM EEG - Displaying contrast and T maps in SPM ?
+ 
+Dear Benedetta,
+
+
+
+On Thu, Mar 14, 2024 at 3:42 PM BENEDETTA CECCONI <00006e6f00386e18-dmarc-request@jiscmail.ac.uk> wrote:
+
+MEEG Tools > `Plot Scalp maps from M/EEG image` and input my contrast image but I can't adjust the scale (nor select multiple time points, but this is less of a problem)
+
+The function has an option S.clim that you can use to adjust the scale. You would need to run it from a script to specify that.
+ 
+ for T maps,  I opened the SPM.mat in Results and saved the thresholded image. I tried to open it with MEEG Tools > `Plot Scalp maps from M/EEG image` again but it didn't work. I then tried to collapse the thresholded t image in time using `Images > Collapse time` (input: original spmT-map) and then tried to input the output image in MEEG Tools > `Plot Scalp maps from M/EEG image` (selecting time 1 1) but it doesn't work...
+
+
+
+I'm not sure what you mean by 'didn't work'. If you send your error message I might be able to say more.
+
+Best,
+
+Vladimir
+ 
+
+Hi everyone
+
+Instats is incredibly pleased to be offering a 2-day workshop on Using ChatGPT and Copilot for Efficient Data Analysis in R, running March 20 - 21, by professor Peter Gruber (who holds dual PhDs in physics and economics). This workshop provides a 21st-century introduction to Statistical Analysis with R, focusing on the efficient use of AI assistants including ChatGPT and Github Copilot to automate R coding with plain language requests. Because R is free, this revolution will help democratize access to basic and advanced analysis tools without having to suffer the steep learning curve of coding in R. Participants will learn step by step how to install AI tools and how to harness their power for efficient data analysis in R, making them many times more efficient. They will be able to create R code in the blink of an eye and with unprecedented ease of use, while learning some of the underlying principles of the R language as this relates to competently assessing and using AI-generated code.
+
+Register now and don't miss out on this unique opportunity to learn how to easily and rapidly code all of your analyses in R, and please feel free to tell your friends and colleagues!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Are you all having fun? 
+
+On Wed, 13 Mar 2024, 4:25 am Vladimir Litvak, <litvak.vladimir@gmail.com> wrote:
+Dear Julia,
+
+On Tue, Mar 12, 2024 at 2:55 PM Júlia Soares <julii.f.soares@gmail.com> wrote:
+1) Is it only possible to do DCM in MNI space since the prior source locations should be given in MNI coordinates or is it possible to conduct DCM analysis in native space for each specific subject ? 
+
+
+I think this distinction is too fine to matter for DCM if you are doing it at the sensor level. So I'd just define source locations in MNI space and not worry too much about it. 
+
+ 
+2) In source reconstruction I inverted a continuous signal, i.e., I did not separate the signal into epochs (trials). However I have a task which has 3 conditions in which I intend to study connectivity in each of them. Is there a way to separate my signal after source reconstruction so I can include them in the DCM model? 
+
+Both source analysis and DCM were not intended to work on long continuous data segments. I'd suggest you epoch your data into arbitrary 1-2 sec epochs. There is a way to do it in the epoching tool. Then I would do both steps on these epoched data.
+
+Best,
+
+Vladimir
+
+ 
+
+Thank you in advance. 
+Regards,
+Júlia Soares 
+
+Dear all,
+
+Clicking on the "Origin" button in the display window brings the crosshair to a coordinate which is a so-called origin. What is this "origin" coordinate from the point of view of the scanning operator? What's the name of this original coordinate? Maybe  someone knows how to set its location in 7T SIEMENS MAGNETOM Terra. I am asking because for different subjects I get different origin locations. While the volumes can obviously be reoriented in SPM, a more straightforward way would be to fix in the location at the scanner side.
+
+Thank you for the help.
+Vadim  
+
+Dear all,
+
+Clicking on the "Origin" button in the display window brings the crosshair to a coordinate which is a so-called origin. What is this "origin" coordinate from the point of view of the scanning operator? What's the name of this original coordinate? Maybe  someone knows how to set its location in 7T SIEMENS MAGNETOM Terra. I am asking because for different subjects I get different origin locations. While the volumes can obviously be reoriented in SPM, a more straightforward way would be to fix in the location at the scanner side.
+
+Thank you for the help.
+Vadim  
+

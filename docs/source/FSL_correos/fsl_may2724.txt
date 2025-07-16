@@ -1,0 +1,787 @@
+The 16th Annual Meeting of the Society for the Neurobiology of Language, will be held in Brisbane, Australia, October 24-26.
+ 
+Abstract Submissions – Deadline May 31!
+ 
+Some additional cheap hotel options for the Brisbane @SNLmtg are available here, all of which are in easy walking distance of the convention centre!
+ 
+Brisbane (traditional name, Meanjin) is a modern, sub-tropical capital city with the river at its heart. With almost year-round sunshine, the city and surrounds offer a range of appealing visitor experiences including easy access to the nearby Gold and Sunshine Coasts and to the Great Barrier Reef. The SNL meeting will convene at the Brisbane Convention and Exhibition Centre, situated across from the 1.5 hectare South Bank Parklands precinct with its lagoon beach, the Queensland Cultural Centre and Gallery of Modern Art (GOMA).
+ 
+Brisbane named by Frommer's guide as “one of the best places to go in 2024”, and by the New York Times as a “must see” for 2024.
+ 
+Lonely Planet named Brisbane’s Tangalooma Beach  one of the Top 100 in the world!
+ 
+Exchange rates as of May 2024: 
+1 US dollar = 1.5 Australian dollars
+1 Euro = 1.6 Australian dollars
+1 British pound = 1.9 Australian dollars
+
+
+The squirrel data sharing format is now available in beta format and we're looking for public comment. The squirrel format is designed to use the minimum number of objects to describe all parts of neuroimaging analysis. From experiments and raw data to analysis methods and results, all information can be categorized into 10 object types. Using a hierarchical storage, the format can store any number of subjects, any number of imaging sessions, any number of visits, and any modality of data. It handles not just imaging data, but demographics, measures, vitals, and drugs.
+
+Simple to use, simple to share.
+* convert from DICOM to squirrel
+* convert from BIDS to squirrel
+* modify existing packages
+* packages are in 7zip format, and JSON is human readable
+* available for RHEL8, RHEL9, and Debian12/Ubuntu22
+
+The squirrel utilities are in beta, so not all parts work, but we're looking for testers and feedback!
+
+Download the squirrel utils from https://github.com/gbook/squirrel/releases
+Documentation and the squirrel specification: https://docs.neuroinfodb.org/nidb/contribute/squirrel-data-sharing-format/squirrel-utilities
+
+
+
+Hi,
+Not that I’m aware of, but if you multiply the image beforehand by 1000 (e.g., fslmaths image -mul 1000 tmpimage), or some other appropriate value, you can achieve what you are looking for. 
+
+Niels Bergsland
+Integration Director / Assistant Professor of Neurology
+Buffalo Neuroimaging Analysis Center / University at Buffalo
+77 Goodell St, Suite 450C, Buffalo, NY 14203
+npbergsland@bnac.net
+
+
+On Sat, May 25, 2024 at 6:13 PM Niklas Lenfeldt <niklas.lenfeldt@umu.se> wrote:
+Hi dear list
+
+I am wondering if there is any way to get fslstats to deliver more then 6 decimals as output for for instance mean or SD for a ROI?
+
+best
+
+nick
+
+
+Hello there,
+
+I am having an error that says the following:
+
+Log directory is: stats
+paradigm.getDesignMatrix().Nrows()=304
+paradigm.getDesignMatrix().Ncols()=33
+sizeTS=304
+numTS=208192
+Calculating residuals...
+Completed
+Estimating residual autocorrelation...
+Calculating raw AutoCorrs... Completed
+mode = 6531.94
+sig = 6944
+Spatially smoothing auto corr estimates
+................
+Completed
+Tukey M = 17
+Tukey estimates... Completed
+Completed
+Prewhitening and Computing PEs...
+Percentage done:
+pinv(): svd failed
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/usr/local/fsl/bin/film_gls --in=filtered_func_data --rn=stats --pd=design.mat --thr=1000.0 --sa --ms=5 --con=design.con 
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+I saw someone had this issue but solved by themselves (should it be the answer) with motion outlier correction.
+
+I have run fsl motion outliers command and successfully included the matrices for all my subjects. I did verify my matrices and they seem fine to me and according to my design. I ran other subjects the same exact way before that gave me no error.
+
+So to provide the information that was required in that 2019 message to someone else, that Mathew Webster answered:
+My data is processed on macOS Mojave with 24 GB RAM.
+Where can I send the required files? i.e  files of the 3 matrices (1 x 3 runs), the filtered_func_data.nii.gz and the desing .mat, con and fts files.
+
+Thank you so much!
+
+Kind regards,
+Aude.
+
+########################################################################
+
+Hi dear list
+
+I am wondering if there is any way to get fslstats to deliver more then 6 decimals as output for for instance mean or SD for a ROI?
+
+best
+
+nick
+
+The mission of the Dementia Imaging Genetics lab at the UCSF Memory and Aging Center is to understand the underlying biology of genetic dementias to improve the diagnosis and monitoring of preclinical and early-stage disease. Using neuroimaging techniques, we map the neural circuits targeted in genetic neurodegenerative diseases such as frontotemporal dementia (FTD) and Alzheimer’s disease (AD).
+
+The postdoctoral fellow will contribute to ongoing experiments and pursue innovative clinical research projects. Studies include neuroimaging research in patients with genetic neurodegenerative diseases and their asymptomatic family members. The fellow will work with multimodal structural and functional neuroimaging methods, such as task-free MRI and diffusion tensor imaging, and will integrate neuroimaging techniques with behavioral and biofluid marker data to study the clinical, anatomical, and neuropathological correlates of disease. These projects are funded by grants from the National Institutes of Health, the Tau Consortium, and the Bluefield Project.
+
+This position provides an exciting opportunity to become a key player in developing novel research projects with a dynamic team of lab members whose backgrounds and interests lie in neurodegenerative disease, brain development and neuroscience. Our multidisciplinary team includes neurologists, neuropsychologists, and neuroscientists. Research recruitment is supported by an extensive network of collaborative research projects at the UCSF Memory and Aging Center, with large datasets of archived MRI data available for analysis.
+
+We are seeking creative, motivated, fun people to help improve the lives of our patients and families.
+
+Qualifications: A PhD in neuroscience, psychology, or related field and expertise in neuroimaging and computer programming (Matlab, R, Python, etc.) are required. Competitive candidates will have a strong interest in neurodegenerative diseases. Previous experience working with clinical neuroimaging is preferred.
+
+About UCSF: The UCSF Memory and Aging Center is located at the Mission Bay campus in San Francisco, CA. The Memory and Aging Center has over 300 employees and is the largest center in the United States focused on the study of neurodegenerative diseases. Our center includes a multidisciplinary team of neurologists, neuroscientists, neuropsychologists, postdoctoral fellows, nurses and research coordinators who form a rich and highly collaborative learning environment for trainees. The current National Institutes of Health rankings show that UCSF Neurology is ranked #1 nationally among departments of neurology at US medical schools.
+
+UCSF is an Equal Opportunity/Affirmative Action Employer. All qualified applicants will receive consideration for employment without regard to race, color, religion, sex, sexual orientation, gender identity, national origin, age, protected veteran or disabled status, or genetic information.
+
+Application: To apply, please send a cover letter describing your research interests and qualifications, a curriculum vitae, and at least three references to suzee.lee@ucsf.edu. Applications will be reviewed on an ongoing basis.
+
+########################################################################
+
+Hello Matthew, 
+
+Thank you for your reply. The standard space mask did work. 
+
+Jingyi
+
+
+
+Thank you Jerome, very helpful as well. This is a great fora, everyone is so kind and assisting.
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neuroscience
+
+University of Umeå
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Jerome Maller <000035f632f956c3-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 18 maj 2024 00:08
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] Sv: eddy cuda versus open_mp
+ 
+I may be a bit late on this but I published an article on CUDA vs openmp a few years ago:
+
+https://pubmed.ncbi.nlm.nih.gov/32501890/
+
+Regards,
+
+Jerome
+
+
+On Sat, 18 May 2024 at 07:47, Niklas Lenfeldt <niklas.lenfeldt@umu.se> wrote:
+That is great news. Thank you very much for the update. I am just about to install the new fsl as I have been off my diffusion research for a while. But I just managed to get eddy working by linking eddy_cuda to cuda10.2 for an older fsl version, but I will change to the new version shortly.
+
+I also just found the specifications for the new eddy version, I will read it intently.
+
+Again, many thanks, you do a really great job! Thankyou!
+
+best
+
+Nick
+
+With Regards,
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Department of Clinical Sciences
+
+Division of Neuroscience
+
+University of Umeå
+
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+
+Från: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> för Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Skickat: den 17 maj 2024 17:16
+Till: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Ämne: Re: [FSL] eddy cuda versus open_mp
+ 
+Hi Nick,
+
+I'm guessing that you are using a slightly older version of FSL - eddy has undergone some fairly substantial changes over the past few FSL versions, so I would recommend reinstalling the latest version of FSL (6.0.7.11 at the time of writing).
+
+eddy_openmp performs similarly but slower that eddy_cuda, but slice timing corrections are only available with cuda. Correct?
+The CUDA and CPU versions of eddy are both feature-complete, but the CPU version is obviously slower than the GPU version. The CPU version of eddy now uses native C++ threading for parallelising instead of OpenMP; you can specify the number of threads to use via the --nthr option.
+
+You should be able to just call the "eddy" command - this is a wrapper script which will call the CPU or GPU version depending on whether a GPU is detected.
+
+Which is the latest version of cuda that the current fsl version is compatible with? 12.1?
+The FSL GPU tools are compiled against CUDA 10.2, and should work on any GPU that supports that version or newer.
+
+is there any new information on how to circumvent the "error while loading shared libraries: libcublas.so.9.1: cannot open shared object file: No such file or directory"?
+This problem should not affect recent FSL versions, as we now statically link the CUDA libraries into the executables. So all you need to do is make sure that your system has a NVIDIA CUDA driver installed - you don't need to install the full CUDA toolkit.
+
+Paul
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Niklas Lenfeldt <niklas.lenfeldt@UMU.SE>
+Sent: 17 May 2024 15:58
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] eddy cuda versus open_mp
+ 
+Ladies and Gents,
+
+I am having issues with cuda-eddy after performing a major file clean up on my computer.
+
+I just want to check:
+eddy_openmp performs similarly but slower that eddy_cuda, but slice timing corrections are only available with cuda. Correct?
+
+Which is the latest version of cuda that the current fsl version is compatible with? 12.1?
+
+is there any new information on how to circumvent the "error while loading shared libraries: libcublas.so.9.1: cannot open shared object file: No such file or directory"?
+I managed to solve that issue before I did my major file clean up, and now I cannot remember the solution....I am getting old.
+
+Any help much appreciated.
+
+best
+
+nick
+
+Dear Ruiqing,
+
+ 
+
+    1. There is only one phase encoding direction of the DTI data which is "PhaseEncodingDirection": "j-", can I skip "topup" and start from "eddy" in DTI processing?
+
+ 
+
+Yes, you can do that and in that case "eddy" will still correct your data for eddy current-induced distortions and subject movement. But the data will still be "in the wrong space", i.e. be distorted.
+
+An alternative would be to use Synb0 (https://github.com/MASILab/Synb0-DISCO) to generate a distortion free "synthetic" distortion free b=0 volume from your T1 structural data. You can then use that in "topup" together with your actual b=0 volume to estimate the susceptibility field.
+
+ 
+
+    2. There is "Binary brain mask" input option in "eddy", and also "BET binary brain mask" input option in "DTIFIT Reconstruct diffusion tensors". How many times shall I conduct BET? Once or twice? If once, when shall i conduct the BET, before or after "eddy"?
+
+ 
+
+It should be enough to run BET once. If running topup I would recommend running it on the --iout output from topup. If not, you can just run it on the first b=0 volume in your data set. You may need to experiment a little with the -f parameter of bet, I find that I often have to lower it (from the default of 0.5) on diffusion data.
+
+   
+
+    3. How to set acqparams.txt (Acquisition parameters file) and index.txt (Index file) needed for "eddy"?  I have "PhaseEncodingDirection": "j-" and "TotalReadoutTime": 0.0507233 in the JSON file, and set the acqparams.txt as "0 -1 0 0.0507233". Is this method correct? Since I have only one phase encoding direction in my DTI data, there is only one line in my acquisition parameters file. Is it acceptable?
+
+ 
+
+That looks good to me.
+
+ 
+
+I've seen on the internet that the index file can be set from the bval file, can you provide a code on how to get the index file?
+
+ 
+
+Hmm, guess that if you want to involve the bvals file you could do something like.
+
+ 
+
+nvol=`wc bvals |  awk '{print $2}'`
+
+ones=""
+
+for ((i=1; i<=$nvol; i++)) do
+
+  ones="$ones 1"
+
+done
+
+echo $ones > my_index.txt
+
+ 
+
+I agree that is a little awkward, and in the future there will be an option to just specify --index=ones in eddy, and that will automatically be expanded to the correct number of ones.
+
+ 
+
+Jesper
+
+ 
+
+   
+
+    Thank you very much!
+
+   
+
+    Best regards
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+
+Thank you Paul. 
+I have attached to the message the requested files.
+
+
+On 24 May 2024, at 14:51, Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Tom,
+
+Would you be able to share your design.fsf file, and of the files in the logs directory (e.g. as a zip file)?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tom Eek <00009a22cadcbcab-dmarc-request@JISCMAIL.AC.UK>
+Sent: 24 May 2024 11:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] MELODIC error
+ 
+Hi Paul, 
+
+Thank you for the response. 
+I have some messages in the log feat1: 
+
+
+/bin/cp /var/folders/ry/yrvqqvbd2yb6_d5zh5549f0m0000gs/T/feat_wunlz_l4.fsf design.fsf
+
+mkdir .files;cp /Users/tomee08/fsl/doc/fsl.css .files;cp -r /Users/tomee08/fsl/doc/images .files/images
+
+/Users/tomee08/fsl/bin/fsl_sub -T 10 -l logs -N feat1a_init   /Users/tomee08/fsl/bin/feat /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica/design.fsf -D /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica -I 1 -init
+50266
+
+/Users/tomee08/fsl/bin/fsl_sub -T 68 -l logs -N feat2_pre -j 50266  /Users/tomee08/fsl/bin/feat /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica/design.fsf -D /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica -I 1 -prestats
+50328
+
+/Users/tomee08/fsl/bin/fsl_sub -T 1 -l logs -N feat5_stop -j 50328  /Users/tomee08/fsl/bin/feat /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica/design.fsf -D /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica -stop
+51027
+
+/Users/tomee08/fsl/bin/fsl_sub -T 10 -l logs -N feat1a_init   /Users/tomee08/fsl/bin/feat /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/4/4_rs_rs.ica/design.fsf -D /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/4/4_rs_rs.ica -I 2 -init
+Error submitting job - child killed: SIGABRT
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+-I {
+   incr arginde..."
+    (file "/Users/tomee08/fsl/bin/feat" line 312)
+
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/Users/tomee08/fsl/bin/fsl_sub -T 10 -l logs -N feat1a_init   /Users/tomee08/fsl/bin/feat /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/4/4_rs_rs.ica/design.fsf -D /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/4/4_rs_rs.ica -I 2 -init
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+
+Thank you for your guidance/ Tom 
+
+
+
+
+
+
+On 24 May 2024, at 11:25, Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Tom,
+
+Can you check the files in the <analysis>.feat/logs/ directory to see if there are any more useful error messages?
+
+Paul
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tom Eek <00009a22cadcbcab-dmarc-request@JISCMAIL.AC.UK>
+Sent: 24 May 2024 09:54
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] MELODIC error
+ 
+Dear experts, 
+
+I would like to add that this problem occur only when running multi-session analysis (both temporal concatenation and tensor-ICA).
+No problem occur when running single-session ICA. 
+
+Best wishes, 
+                    Tom
+
+Hi Tom,
+
+Would you be able to share your design.fsf file, and of the files in the logs directory (e.g. as a zip file)?
+
+Paul
+
+I forgot to mention - after creating the .wslconfig file, you will need to run restart WSL - you can do this from a WSL / Ubuntu terminal by running:
+
+wsl.exe --shutdown
+
+And then opening a new WSL / Ubuntu terminal.
+
+Paul
+
+Hi Aziz,
+
+It sounds like you are still using the built-in Wayland server. You may need to disable this by creating a file called .wslconfig in your Windows home directory (i.e. "C:\Users\<your-username>\.wslconfig")
+which contains the following text:
+
+[wsl2]
+guiApplications=false
+
+But note that I am hoping to have a new version of FSLeyes released very soon which will with the built-in WSL Wayland server, and will not require VcxSrv to be installed.
+
+Paul
+
+
+Thank you for this suggestion; this is for sure something we will consider.
+I have carefully reviewed the documentation of the HCP pipeline, but I am afraid this doesn't fully answer my question yet.
+
+I am still trying to understand if there is a relationship between the dimensionality of the group-level ICA and the SNR in the group-level components resembling RSNs and/or the power of the subsequent analysis on these components (e.g. group comparisons).
+Do you have any insights on that?
+
+########################################################################
+
+Hi Paul, 
+
+Thank you for the response. 
+I have some messages in the log feat1: 
+
+
+/bin/cp /var/folders/ry/yrvqqvbd2yb6_d5zh5549f0m0000gs/T/feat_wunlz_l4.fsf design.fsf
+
+mkdir .files;cp /Users/tomee08/fsl/doc/fsl.css .files;cp -r /Users/tomee08/fsl/doc/images .files/images
+
+/Users/tomee08/fsl/bin/fsl_sub -T 10 -l logs -N feat1a_init   /Users/tomee08/fsl/bin/feat /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica/design.fsf -D /Users/tomee08/Library/CloudStorage/OneDrive-Linköpingsuniversitet/fsl_data/data_nii_gz/pd/2/2_rs_rs.ica -I 1 -init
+50266
+
+Hi Tom,
+
+Can you check the files in the <analysis>.feat/logs/ directory to see if there are any more useful error messages?
+
+Paul
+
+Hi Tiago,
+
+You should be able to install FSL  6.0.6.1 with the fslinstaller.py script, which you can download from https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+And run with a command such as:
+
+python3 ~/Downloads/fslinstaller.py -V 6.0.6.1 -d ~/fsl-6.0.6.1 --miniconda  <miniconda-url>
+
+where you should replace "<miniconda-urL>" with one of the following URLs, depending on the system you are installing FSL onto:
+https://repo.anaconda.com/miniconda/Miniconda3-py310_24.4.0-0-Linux-x86_64.sh
+https://repo.anaconda.com/miniconda/Miniconda3-py310_24.4.0-0-MacOSX-arm64.sh
+https://repo.anaconda.com/miniconda/Miniconda3-py310_24.4.0-0-Linux-x86_64.sh
+
+And replace "~/fsl-6.0.6.1" with a path to where you want to install FSL to.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tiago de Oliveira Paiva <tiago.paiva1989@GMAIL.COM>
+Sent: 23 May 2024 14:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Tequest for installation file fsl-6.0.6.1.tar.gz
+ 
+Hi,
+
+I would like to have access to the 6.0.6.1 version of fsl. How can I get the installation file fsl-6.0.6.1.tar.gz?
+
+Thank you in advance.
+Tiago O. Paiva
+
+########################################################################
+
+Dear experts,
+
+I would like to add that this problem occur only when running multi-session analysis (both temporal concatenation and tensor-ICA).
+No problem occur when running single-session ICA.
+
+Best wishes,
+                    Tom
+
+########################################################################
+
+Hello Matthew,
+
+I installed VcXsrv as indicated in the fsl documentation. I confirmed that it was working with the command glxgears. I still can't select items in the setting windows in fsleyes. In addition, I should add that it is only the settings windows that do not work. I can add files and take screenshots using the windows for that. Do you have any more advice for troubleshooting this?
+
+All the best,
+Aziz
+
+########################################################################
+
+You may wish to do your processing with the HCP Pipelines if you are going for HCP quality results.
+
+Matt.
+
+﻿On 5/23/24, 12:53 PM, "Madeleine Hau" <madeleine.hau@UZH.CH <mailto:madeleine.hau@UZH.CH>> wrote:
+
+
+Sorry, I am not 100% sure what multi-run FIX means ( I am quite new to the field). We ran FIX once on the single subject ICA as shown in the practical of the FSL course (https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/index.html#cleaning <https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/index.html#cleaning>). I suppose this refers to the single run FIX?
+
+
+
+Hello Aziz,
+ I would recommend installing VcXsrv for now. It might also be worth trying the simpler DISPLAY setup as well:
+
+echo "export DISPLAY=:0.0" >> ~/.bashrc
+
+Instead of 
+
+echo "export DISPLAY=\$(grep nameserver /etc/resolv.conf  | awk '{print \$2; exit}'):0" >> ~/.bashrc
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hello Paul,
+
+I looked at the installation instructions in the documentation and they mention that you need to install a x11 server only if you have windows 10, but my computer is running windows 11. Should I still install vcxsrv?
+
+########################################################################
+
+Sorry, I am not 100% sure what multi-run FIX means ( I am quite new to the field). We ran FIX once on the single subject ICA as shown in the practical of the FSL course (https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/index.html#cleaning). I suppose this refers to the single run FIX?
+
+########################################################################
+
+Was it multi-run FIX or single run FIX?
+
+Matt.
+
+﻿On 5/23/24, 12:26 PM, "Madeleine Hau" <madeleine.hau@UZH.CH <mailto:madeleine.hau@UZH.CH>> wrote:
+
+
+Hi Matt,
+
+
+Thank you for your swift response.
+It could well be that there is some noise left. Our imaging parameters are quite similar to HCP (3T Siemens, TR/TE: 846/30ms, 840 volumes, 2.2mm isotropic voxel size, MB factor of 6) but not identical. However, we used the FIX version pretrained on the HCP data as none of us are very experienced in manually labeling components.
+Would you recommend any additional cleanup steps?
+
+
+Also, our cohort is substantially older than the HCP-YA (mean age of 50 years). Would you expect the age of the cohort to influence the optimal dimensionality? And is there a measure one could use to estimate the optimal dimensionality?
+
+
+Thanks again and best,
+Madeleine
+
+
+
+
+
+
+________________________________
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+########################################################################
+
+Hi Matt,
+
+Thank you for your swift response.
+It could well be that there is some noise left. Our imaging parameters are quite similar to HCP (3T Siemens, TR/TE: 846/30ms, 840 volumes, 2.2mm isotropic voxel size, MB factor of 6) but not identical. However, we used the FIX version pretrained on the HCP data as none of us are very experienced in manually labeling components.
+Would you recommend any additional cleanup steps?
+
+Also, our cohort is substantially older than the HCP-YA (mean age of 50 years). Would you expect the age of the cohort to influence the optimal dimensionality? And is there a measure one could use to estimate the optimal dimensionality?
+
+Thanks again and best,
+Madeleine
+
+########################################################################
+
+
+After sICA and tICA denoising, we found d=76 to be optimal for the 3T HCP-YA data.  If you are finding group level noise components at low dimensionalities, perhaps the sICA+FIX cleanup left in some noise?
+
+Matt.
+
+﻿On 5/23/24, 10:55 AM, "FSL - FMRIB's Software Library on behalf of Madeleine" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of madeleine.hau@UZH.CH <mailto:madeleine.hau@UZH.CH>> wrote:
+
+
+
+Dear Experts,
+
+
+I am running an analysis of HCP-like resting state data of 45 patients and 34 healthy controls.
+I have implemented the minimal processing according to the HCP pipeline and used ICA-FIX (pre-trained version of FIX) for cleanup.
+I have also already run several group-level ICAs with different dimensionalities (ranging from 10 to 35 in steps of 5), and now I am trying to decide which one to use for further analysis (e.g., group differences with dual regression and permutation tests using randomise).
+
+
+I was wondering whether the chosen dimensionality might influence the SNR of the data and thus the power of the subsequent analysis. I noted that using a larger number of components, e.g., 30, leads to more group-level noise components which I could regress out (i.e., not use them for further analysis). On the other hand, I assume (and please correct me if I am wrong, this is just my assumption) that the splitting of large RSNs (e.g., the default-mode network) into several components might lead to less power for finding group differences within that RSN. Or am I completely off track with that assumption?
+
+
+Does anyone have any insights on whether and, if so, how the dimensionality affects SNR of the decomposed data and the power of the analysis? Is there a way to estimate (t)SNR of the decomposed data and/or power?
+
+
+Thanks a lot in advance for your support.
+
+
+Best regards,
+Madeleine
+
+
+########################################################################
+
+
+
+Dear Experts,
+
+I am running an analysis of HCP-like resting state data of 45 patients and 34 healthy controls.
+I have implemented the minimal processing according to the HCP pipeline and used ICA-FIX (pre-trained version of FIX) for cleanup.
+I have also already run several group-level ICAs with different dimensionalities (ranging from 10 to 35 in steps of 5), and now I am trying to decide which one to use for further analysis (e.g., group differences with dual regression and permutation tests using randomise).
+
+I was wondering whether the chosen dimensionality might influence the SNR of the data and thus the power of the subsequent analysis. I noted that using a larger number of components, e.g., 30, leads to more group-level noise components which I could regress out (i.e., not use them for further analysis). On the other hand, I assume (and please correct me if I am wrong, this is just my assumption) that the splitting of large RSNs (e.g., the default-mode network) into several components might lead to less power for finding group differences within that RSN. Or am I completely off track with that assumption?
+
+Does anyone have any insights on whether and, if so, how the dimensionality affects SNR of the decomposed data and the power of the analysis? Is there a way to estimate (t)SNR of the decomposed data and/or power?
+
+Thanks a lot in advance for your support.
+
+Best regards,
+Madeleine
+
+########################################################################
+
+Dear FSL Team,
+
+I have a question in regards to going about a gPPI-Analysis in FSL. I have a "Multiple Subject - Multiple Session"-Design with 2 Tasks I want to compare and 2 Groups of people I want to compare. I have set up my different level analysis as follows:
+
+First Level:
+EV1: Task Regressor Task 1
+EV2: Task Regressor Task 2
+EV3: Seed Physiological Regressor
+EV4: Interaction Task1*Phys
+EV5: Interaction Task2*Phys
+
+Contrasts:
+C1: [1 0 0 0 0]
+C2: [0 1 0 0 0]
+C3: [0 0 1 0 0]
+C4: [0 0 0 1 0]
+C5: [0 0 0 0 1]
+C6: [0 0 0 1 -1] -> These are to compare my two tasks
+C7: [0 0 0 -1 1] -> These are to compare my two tasks
+
+
+
+The Second Level now simply takes the mean of the runs across one subject for each contrast 5-7 (relevant to my analysis).
+
+On the third Level the setup looks as follows (for every of the 4 copes I passed up from the second Level):
+EV1: Regressor for group 1
+EV2: Regressor for group 2
+
+Contrasts:
+C1: [1 0 ]
+C2: [0 1]
+C3: [1 -1] -> to compare my groups
+C4: [-1 1] -> to compare my groups
+
+
+Does this design makes sense to compare how the difference in the tasks changes across two groups?
+
+If I am not providing crucial information, please let me know and thank you in advance for your time and help!
+
+
+Best regards,
+
+Leon Scholz
+
+########################################################################
+
+Hi Aziz,
+
+At the moment, you need to install and use vcxsrv (or similar) in order to use FSLeyes under WSL. You need to make sure that you have started xlaunch before starting FSLeyes - this is outlined in the FSL installation documentation at https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/windows?id=install-a-x11-server-vcxsrv
+
+Paul
+
+Hi,
+
+I would like to have access to the 6.0.6.1 version of fsl. How can I get the installation file fsl-6.0.6.1.tar.gz?
+
+Thank you in advance.
+Tiago O. Paiva
+
+########################################################################
+
+Dear FSL-team,
+
+ 
+
+we tried to run a seed-based resting-state functional connectivity analysis using feat. Even though we exactly followed the instructions provided on this website (https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/fsl_fmri_restingstate-sbc.html), our higher-level output indicates perfect correlations between the OFC (our seed region) and regions all across the brain (see attached), which seems very unlikely.
+
+ 
+
+During the analysis, we started by extracting our ROI (i.e.: the OFC) from the harvardoxford atlas in 2mm thr50. After binarizing this mask, we put it into the functional space of each subject. Subsequently, the ROI timeseries was extracted using the following command:
+
+
+
+Then, we ran the first-level analysis (see design attached) and higher level (design attached), putting the wholebrain standard mask in ‘pre-threshold masking’ and received the suspicious results that you will find in the attachment. Since the first-level results already show correlations of the OFC with the whole brain we suspected that this part of the analysis might not correctly display the brain regions that show correlations with the mean OFC activity.
+
+ 
+
+Furthermore, we ran the exact same design with a centromedial-amygdala mask as ‘pre-threshold masking’ and the results for this one seem more reasonable. However, since the OFCxwholebrain analysis appears suspicious we were wondering whether something within the feat analyses went wrong.
+
+ 
+
+Any help on how to check whether the analysis went correctly/how to fix this issue would be very much appreciated!
+
+ 
+
+Best regards,
+
+Frieda
+
+ 
+
+ 
+
+ 
+
+Dear experts,
+
+
+I am trying to conduct a resting-state analysis with MELODIC.
+When feat starts the software crushes. The following output is shown in the terminal:
+
+child process exited abnormally
+    while executing
+"fsl:exec "${FSLDIR}/bin/feat ${fsfroot}.fsf -D $FD -I $session -init" -b 10 -N feat1a_init -l logs "
+    invoked from within
+"if { $done_something == 0 } {
+
+    if { ! $fmri(inmelodic) } {
+       if { $fmri(level) == 1 } {
+              for { set session 1 } { $session <= $fmri(mult..."
+    (file "/Users/tomee08/fsl/bin/feat" line 390)
+
+
+I am using a Mac with an M3 pro processor and with Sonoma 14.5.
+The Python version is 3.12.
+
+Thank you for helping me to continue further with the analysis.
+
+Sincerely,
+               Tom
+
+########################################################################
+
+
+Hello,
+
+I am new to fsl. I just installed it and opened fsleyes. It works great but I can't modify the overlay display settings or the view settings. I click on the settings button, a new window opens and I can't interact with it. I try checking/unchecking things or using the sliders but the window does not respond. I can't even close it. I have to go back to the main fsleyes window and click a second time on the settings button.
+
+Any help would be appreciated. Thank you in advance!
+
+########################################################################
+
+FIX requires:
+
+melodic_mix – component timeseries in a text file as columns.
+melodic_IC.nii.gz – component spatial maps as z-stats after mixture modelling (can do only mixture modelling with melodic).
+ 
+
+We are enabling FIX after ICASSO in the HCP pipelines. 
+
+ 
+
+Matt.
+

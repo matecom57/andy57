@@ -1,0 +1,790 @@
+I am using FSL FIRST to perform vertex analysis to compare structural differences between a healthy control group and disease group.
+
+All of our subjects in the healthy group were scanned using one MRI scanner and all subjects in the disease group were scanned with a different scanner, so there is perfect multicollinearity with scanner type and disease status. We want to account for scanner effect, so we want to apply ComBat harmonization to the data in the .bvars files generated from first_run_all.
+
+Is it acceptable/valid to apply ComBat directly to all the numbers in the .bvars files, thus treating each number as a separate feature with its own data distribution? Or should ComBat be applied to select numbers only in each .bvars file?
+
+We greatly appreciate any assistance and advice you can provide! Thank you for all your work.
+
+########################################################################
+
+
+Hello Matthew,
+
+Thank you for the suggestion. I tried them both and they didn’t work. 
+
+I am still getting the same error:
+
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.7_macos-M1.yml...
+
+
+
+Installing FSL in /usr/local/fsl
+
+
+
+Downloading miniconda from https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh...
+
+[#############################################################################################################################################################] 102.3 / 102.3 MB \
+
+Installing miniconda at /usr/local/fsl...
+
+[#                                                                                                                                                                   ] 0 / 100 % /
+
+Hello Matthew, 
+
+Thank you for your response. I have Miniconda installed in my user profile. Could I use this?
+
+Thanks,
+
+Marie
+
+On Feb 2, 2024, at 4:18 AM, Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hello Marie,
+Does your system have an existing conda installation and/or $HOME/.condarc?
+
+Kind Regards
+Matthew
+
+Hi Matthew,
+
+Thanks for the suggestion, this indeed worked! I'm now installing FSL and the progress of 'Installing FSL into /Users/lisaspiering/fsl...' is at 90% now. Hopefully this works!
+
+Best
+Lisa
+
+########################################################################
+
+
+Hi Lisa,
+Can you try running 
+
+curl -O https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+
+And then
+
+grep 3.8.2 fslinstaller.py
+
+( the output should contain __version__ = ‘3.8.2’ )
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi,
+
+I'm using FSL on my mac (mac Sonoma 14.2.1), and like other people with sonoma, I'm unable to open fsleyes. I saw that to solve this, it was suggested to update FSL. I've already uninstalled FSL but now I can't reinstall it. I've also tried installing FSL with conda (using the --conda argument) but this has failed as well.
+Would anyone be able to help with this? I've attached two log files that were generated from my installation attempts (the default with no suffix, my attemot with conda with the _conda suffix).
+
+Any help is much appreciated!
+
+Best
+Lisa
+
+Hi Paul,
+
+Yes, good point. I've deleted the previous downloads, restarted my terminal and Chrome, and downloaded it again onto a new folder on my desktop. But I still get FSL installer version 3.8.0. I could try again in an hour, just in case it's just that the file upload of the new fslinstaller on the website is not yet complete?
+
+Best
+Lisa
+
+########################################################################
+
+Hi Lisa,
+
+There's a chance that your web browser renamed the file to e.g. "fslinstaller(1).py","fslinstaller(2).py", etc - Can you make sure you are calling the most recently downloaded one?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lisa Spiering <0000bdcfcdce7961-dmarc-request@JISCMAIL.AC.UK>
+Sent: 06 February 2024 12:13
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] sonoma fsleyes and reinstall issues
+ 
+Hi Paul,
+
+Thanks for your help. I've redownloaded it but the FSL installer version still says 3.8.0, not 3.8.2. I've tried the link another time but I don't think I can get 3.8.2 there. Is the file maybe not uploaded yet?
+
+Sorry if I'm missing something obvious here!
+
+Best
+Lisa
+
+Hi Paul,
+
+Thanks for your help. I've redownloaded it but the FSL installer version still says 3.8.0, not 3.8.2. I've tried the link another time but I don't think I can get 3.8.2 there. Is the file maybe not uploaded yet?
+
+Sorry if I'm missing something obvious here!
+
+Best
+Lisa
+
+########################################################################
+
+
+Hi Lisa,
+Is the “python3” process using significant %CPU in Activity Monitor? Can you also check the most recent lines in the new install log?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 6 Feb 2024, at 11:43, Lisa Spiering <0000bdcfcdce7961-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Matthew,
+
+Thanks so much for your quick reply. I've tried this (I have an intel macbook) but the progress bar 'Installing FSL into /Users/lisaspiering/fsl...' was stuck at 0/100% for 40min. I then cancelled the installation because I saw the other email chain where Paul recommended downloading the fslinstaller from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+I'm currently executing this installer file, still using your suggested command: python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+But so far, for 20min it's again been at 0/100% for 'Installing FSL into /Users/lisaspiering/fsl...'
+
+In my activity monitor I can see that python 3 is still running but I wonder whether it's normal that the fsl installation is stuck at 0% for so long?
+
+Thanks again!
+
+Best,
+Lisa
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+
+Hi Lisa,
+
+Can you try re-downloading the installer (again) from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py (when you run it, it should report version 3.8.2) and then just running it without any options (i.e. without --conda or --miniconda). 
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lisa Spiering <0000bdcfcdce7961-dmarc-request@JISCMAIL.AC.UK>
+Sent: 06 February 2024 11:43
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] sonoma fsleyes and reinstall issues
+ 
+Hi Matthew,
+
+Thanks so much for your quick reply. I've tried this (I have an intel macbook) but the progress bar 'Installing FSL into /Users/lisaspiering/fsl...' was stuck at 0/100% for 40min. I then cancelled the installation because I saw the other email chain where Paul recommended downloading the fslinstaller from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+I'm currently executing this installer file, still using your suggested command: python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+But so far, for 20min it's again been at 0/100% for 'Installing FSL into /Users/lisaspiering/fsl...'
+
+In my activity monitor I can see that python 3 is still running but I wonder whether it's normal that the fsl installation is stuck at 0% for so long?
+
+Thanks again!
+
+Best,
+Lisa
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Matthew,
+
+Thanks so much for your quick reply. I've tried this (I have an intel macbook) but the progress bar 'Installing FSL into /Users/lisaspiering/fsl...' was stuck at 0/100% for 40min. I then cancelled the installation because I saw the other email chain where Paul recommended downloading the fslinstaller from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+I'm currently executing this installer file, still using your suggested command: python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+But so far, for 20min it's again been at 0/100% for 'Installing FSL into /Users/lisaspiering/fsl...'
+
+In my activity monitor I can see that python 3 is still running but I wonder whether it's normal that the fsl installation is stuck at 0% for so long?
+
+Thanks again!
+
+Best,
+Lisa
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Actually, it is probably safer to re-download the latest version of the fslinstaller script from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fslinstaller.py
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: 06 February 2024 10:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Installation error Mac Sonoma
+ 
+Hi Jordan,
+
+This should be fixed - can you try re-running the installer script without the --conda option? It should automatically update itself.
+
+Hi Jordan,
+
+This should be fixed - can you try re-running the installer script without the --conda option? It should automatically update itself.
+
+Paul
+
+
+Hi Lisa,
+   Can you try the following modified install command:
+
+M1/M2/M3 Mac:
+python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+
+Intel Mac:
+python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+
+( assuming “python3” is your main Python interpreter ) 
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi, Matthew,
+
+Thanks so much! I have some follow-up questions as below.
+1. I was wondering why the problem of the missing example_func only (randomly) occurred in some datasets but not all (as I used the same script that looped over all the datasets).
+2. Is the preprocessing still working fine for the datasets that have the missing example_func? Or will the missing example_func cause any problem for later modelling? (I have tried later modelling with the preprocessed datasets that have the missing example_func and things worked fine. But just in case there's any issue for the modelling with the missing example_func, I would like to check in again).
+
+Thanks so much!
+
+Best,
+Keng-Yu
+
+########################################################################
+
+Hi Jordan,
+                We’ve just found a bug in the installer when installing to "/usr/local/fsl” so in addition to the options below, we hope to have a new installer version out shortly…
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 6 Feb 2024, at 10:08, Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Hi Jordan,
+>  It looks like you might already have another conda environment active? If so can you deactivate the environment and temporarily move your main .condarc file to a temporary location - e.g.:
+>
+> mv ~/.condarc  ~/.condarc.bak
+>
+> And then rerun the installer without the --conda option? If that fails then you can mv .condarc.bak back to its original location.
+>
+> After that the next thing to try is adding the following to the install command:
+>
+> M1/M2/M3 Mac:
+> python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+>
+> Hope this helps,
+> Kind Regards
+> Matthew
+> --------------------------------
+> Dr Matthew Webster
+> FMRIB Centre
+> John Radcliffe Hospital
+> University of Oxford
+>
+>> On 5 Feb 2024, at 23:37, JORDAN MORRISON-HAM <0000bdbc98a44151-dmarc-request@JISCMAIL.AC.UK> wrote:
+>>
+>> Hi there,
+>>   I recently upgraded my Mac to the Sonoma operating system and had issues getting fsleyes to open. I thought something may have changed in the operating system and it would be best to delete fsl, and reinstall. Now I can’t get fsl to install at all, I keep getting the error:
+>>   ERROR occurred during installation!
+>>     This command returned an error: /usr/local/fsl/bin/mamba env update -p /usr/local/fsl -f /private/var/folders/gb/xqt0rxl10v1712c3p9dckjv40000gn/T/tmp2_cgwl9x/fsl-6.0.7.7_macos-64.yml
+>>   I’ve tried installing using the code python3 fslinstaller.py with --conda on the end, and get a similar error message. I’ve attached the log here for the python3 fslinstaller.py error – are you able to point me in the direction of where it may be going wrong?
+>>   Thanks,
+>> Jordan
+>>  
+>> To unsubscribe from the FSL list, click the following link:
+>> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>> <fsl_installation_20240206102138.log>
+>
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Jordan,
+ It looks like you might already have another conda environment active? If so can you deactivate the environment and temporarily move your main .condarc file to a temporary location - e.g.:
+
+mv ~/.condarc  ~/.condarc.bak
+
+And then rerun the installer without the --conda option? If that fails then you can mv .condarc.bak back to its original location.
+
+After that the next thing to try is adding the following to the install command:
+
+M1/M2/M3 Mac:
+python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 5 Feb 2024, at 23:37, JORDAN MORRISON-HAM <0000bdbc98a44151-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi there,
+ 
+I recently upgraded my Mac to the Sonoma operating system and had issues getting fsleyes to open. I thought something may have changed in the operating system and it would be best to delete fsl, and reinstall. Now I can’t get fsl to install at all, I keep getting the error:
+ 
+ERROR occurred during installation!
+    This command returned an error: /usr/local/fsl/bin/mamba env update -p /usr/local/fsl -f /private/var/folders/gb/xqt0rxl10v1712c3p9dckjv40000gn/T/tmp2_cgwl9x/fsl-6.0.7.7_macos-64.yml
+ 
+I’ve tried installing using the code python3 fslinstaller.py with --conda on the end, and get a similar error message. I’ve attached the log here for the python3 fslinstaller.py error – are you able to point me in the direction of where it may be going wrong?
+ 
+Thanks,
+Jordan
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<fsl_installation_20240206102138.log>
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Jay,
+           The text below looks to be “doubled”, was the actual command run:
+
+python3 fslinstaller.py --miniconda https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+
+Note the URL domain should be “repo.anaconda.com” without “urldefense.com” - maybe that was added by your email client?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+> On 5 Feb 2024, at 21:50, Jeschke, Jay <0000bdbb0ce639ee-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> <!-- .EmailQuote { margin-left: 1pt; padding-left: 4pt; border-left: #800000 2px solid; } --> <!-- p {margin-top:0; margin-bottom:0} --> Hi Matthew,
+>
+> I tried intel version you pasted before and I get:
+>
+>
+> zsh: event not found: YnA9Zk
+> python3 fslinstaller.py --miniconda https://urldefense.com/v3/__https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh__;python3 fslinstaller.py --miniconda https://urldefense.com/v3/__https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh__;export PATH=$PATH:/sbinMXfaZl3lEMw21A7AbmlVCFfbHX_dHTevkUTkLIStNNBqZeJn4em2oGRL0yIvYr0FRDckQLOhy1t7p83-xVD93Q9r1T1AdMmsOB6RWIUoy$
+> MXfaZl3lEMw21A7AbmlVCFfbHX_dHTevkUTkLIStNNBqZeJn4em2oGRL0yIvYr0FRDckQLOhy1t7p83-xVD93Q9r1T1AdMmsOB6RWIUoy$
+>
+>
+> Please advise,
+>
+> Jay Jeschke, M.A.
+> Research Coordinator
+> Comprehensive Epilepsy Center
+> NYU Langone Medical Center
+> 227 East 30th St.
+> New York, NY 10016
+> Phone:  646-501-0488
+> Fax: 646-754-9880
+> From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Annie Abay <akabay@STANFORD.EDU>
+> Sent: Monday, February 5, 2024 3:46:35 PM
+> To: FSL@JISCMAIL.AC.UK
+> Subject: Re: [FSL] FSL for Mac with M3   [EXTERNAL]
+>
+> Hi Marie,
+>
+> Glad to hear this has worked! I hadn't yet been able to get it to work on my M3 but this has now installed for me as well!
+>
+> - Annie
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://urldefense.com/v3/__https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1__;!!MXfaZl3l!fFpUfNX_FUjzzQMeaq0bygylfByL1FOcOogM0qS0eXj2LSN_MYb8ZYGjNznqDynk5lu1g-_vA3nn3B03Yx-Y4Cw64Q$
+>
+> This message was issued to members of https://urldefense.com/v3/__http://www.jiscmail.ac.uk/FSL__;!!MXfaZl3l!fFpUfNX_FUjzzQMeaq0bygylfByL1FOcOogM0qS0eXj2LSN_MYb8ZYGjNznqDynk5lu1g-_vA3nn3B03Yx-SzLEM1Q$ , a mailing list hosted by https://urldefense.com/v3/__http://www.jiscmail.ac.uk__;!!MXfaZl3l!fFpUfNX_FUjzzQMeaq0bygylfByL1FOcOogM0qS0eXj2LSN_MYb8ZYGjNznqDynk5lu1g-_vA3nn3B03Yx9lfyFsMw$ , terms & conditions are available at https://urldefense.com/v3/__https://www.jiscmail.ac.uk/policyandsecurity/__;!!MXfaZl3l!fFpUfNX_FUjzzQMeaq0bygylfByL1FOcOogM0qS0eXj2LSN_MYb8ZYGjNznqDynk5lu1g-_vA3nn3B03Yx93XpLtsg$
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi,
+
+The -std1mm option is a "global" option which needs to come before any image/overlay options, e.g.
+
+fsleyes -s lightbox -std1mm  "${dir}/${task}/${contrast}.gfeat/cope1.feat/stats/zstat1.nii.gz" -cm red-yellow -dr 3.1 7.1
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Keng-Yu Lin <linkengyulky@GMAIL.COM>
+Sent: 05 February 2024 23:10
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] configuration for fsleyes -std1mm?
+ 
+Hi,
+
+I tried downgrading numpy to a version before 1.20, but it failed to build numpy (downgrade to 1.23.5 worked). I think that the problem with float and np.float had to be adjusted in the code.
+File "/opt_prg/fsl/fsl-6.0.6.4/lib/python3.10/site-packages/oxford_asl/roi_stats.py", line 733, in main
+    if isinstance(v, (float, np.float, np.float32, np.float64)):
+  File "/opt_prg/fsl/fsl-6.0.6.4/lib/python3.10/site-packages/numpy/__init__.py", line 324, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'float'.
+
+should I delete in roi_stats.py in line 733 np.float and rename np.float32 and np.float64 to float32 and float 64?
+
+########################################################################
+
+Hi there,
+
+ 
+
+I recently upgraded my Mac to the Sonoma operating system and had issues getting fsleyes to open. I thought something may have changed in the operating system and it would be best to delete fsl, and reinstall. Now I can’t get fsl to install at all, I keep getting the error:
+
+ 
+
+ERROR occurred during installation!
+
+    This command returned an error: /usr/local/fsl/bin/mamba env update -p /usr/local/fsl -f /private/var/folders/gb/xqt0rxl10v1712c3p9dckjv40000gn/T/tmp2_cgwl9x/fsl-6.0.7.7_macos-64.yml
+
+ 
+
+I’ve tried installing using the code python3 fslinstaller.py with --conda on the end, and get a similar error message. I’ve attached the log here for the python3 fslinstaller.py error – are you able to point me in the direction of where it may be going wrong?
+
+ 
+
+Thanks,
+
+Jordan
+
+ 
+
+Hi,
+
+I would like to use the command line interface for fsleyes -std1mm. According to the manual, to use "-std" or "-std1mm", the command line environment has to be correctly configured to use FSL (e.g. the $FSLDIR environment variable is set). I was wondering whether there are further elaborations about how to set up the configuration in the command line.
+
+I was trying to overlay the zstats.nii.gz on top of the standard 1mm MNI template, with the following command but failed to do so.
+
+fsleyes -s lightbox "${dir}/${task}/${contrast}.gfeat/cope1.feat/stats/zstat1.nii.gz" -cm red-yellow -dr 3.1 7.1 -std1mm \
+
+Thanks so much!
+
+########################################################################
+
+
+Dear Anna,
+
+I was told by our GE colleagues that ratio of two outputs of their 3D ASL (based on spiral acquisition) is basically CBF map up to a scale factor. Perhaps you should consult your local GE expert/representative to confirm.
+
+At the same time, maybe there are variants of ASL sequences. We do not get raw, un-subtracted pairs.
+
+Roman
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Anna Kavkova <akavkova.rdg@GMAIL.COM>
+Sent: Sunday, February 4, 2024 5:22 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] GE 3DpCASL analysis in BASIL
+
+Hi Matthew,
+
+
+
+I tried intel version you pasted before and I get:
+
+
+
+zsh: event not found: YnA9Zk
+python3 fslinstaller.py --miniconda https://urldefense.com/v3/__https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh__;python3 fslinstaller.py --miniconda https://urldefense.com/v3/__https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh__;export PATH=$PATH:/sbinMXfaZl3lEMw21A7AbmlVCFfbHX_dHTevkUTkLIStNNBqZeJn4em2oGRL0yIvYr0FRDckQLOhy1t7p83-xVD93Q9r1T1AdMmsOB6RWIUoy$
+MXfaZl3lEMw21A7AbmlVCFfbHX_dHTevkUTkLIStNNBqZeJn4em2oGRL0yIvYr0FRDckQLOhy1t7p83-xVD93Q9r1T1AdMmsOB6RWIUoy$
+
+
+Please advise,
+
+
+
+Hi Marie,
+
+Glad to hear this has worked! I hadn't yet been able to get it to work on my M3 but this has now installed for me as well!
+
+- Annie
+
+########################################################################
+
+
+I am using FSL FIRST to perform vertex analysis to compare structural differences between a healthy control group and disease group.
+
+All of our subjects in the healthy group were scanned using one MRI scanner and all subjects in the disease group were scanned with a different scanner, so there is perfect multicollinearity with scanner type and disease status. We want to account for scanner effect, so we want to apply ComBat harmonization to the data in the .bvars files generated from first_run_all.
+
+Is it acceptable/valid to apply ComBat directly to all the numbers in the .bvars files, thus treating each number as a separate feature with its own data distribution? Or should ComBat be applied to select numbers only in each .bvars file?
+
+We greatly appreciate any assistance and advice you can provide! Thank you for all your work.
+
+########################################################################
+
+Dear Rick,
+thank you for you help! I did indeed use my multi-shell data and after using only b1000 or b3000 the visual differences disappeared.
+
+I tried to find a citable source, but only found a single mention of this in the "FSL Diffusion Toolbox Practical". Moreover I also found a mention in this forum, that dtifit does not handle higher b values well (probably the reason you recommended using the b1000?). Would you happen to have a source for these information available, so I can justify in a paper using only b1000 if I have multishell data?
+
+Also, just to be sure, these limitations do not apply to bedpostX and probtrackX, right?
+
+Best regards,
+Stan
+
+########################################################################
+
+Dear FSL experts,
+
+I got the following error message when running command VERBENA (v4.0.3-dirty) under CentOS:
+
+Could not find a supported file with prefix "/home/USERS/chouy/tmp/fsl_t6wnrvja_verbena/vm/mean_cbf"
+
+Any suggestion will be appreciated.
+Thanks !!
+
+Yiyu
+
+########################################################################
+
+Hello again, 
+
+I was able to create new reg sub-directories from the prior first level folders for running the registration for group stats. Apparently, for one of my group runs, the registration seems to be off as seen in a displacement/shifting effect even when the individual registration results from results/html page look good. I'd appreciate if anyone could someone pls provide an idea what may have gone wrong in this particular run - attaching the log file for reference.
+
+Thanks.
+Suja
+
+Dear FSL experts,
+
+Please could you explain how to get around this error?
+
+I've run tbss_1 and _2 sucessfully. I have the output successfully in my FA folder for each participants.
+
+FA_mask.nii.gz
+FA_to_target_warp.msf
+FA_to_target_warp.nii.gz
+
+However, when I run tbss_3_postreg -S I get the below error:
+
+merging all upsampled FA images into single 4D image
+/Users/orlamitchell/fsl/bin/tbss_3_postreg: line 179: 16448 Killed: 9               ${FSLDIR}/bin/fslmerge -t ../stats/all_FA `$FSLDIR/bin/imglob *_FA_to_target.*`
+creating valid mask and mean FA
+Image Exception : #63 :: No image files match: all_FA
+libc++abi: terminating due to uncaught exception of type std::runtime_error: No image files match: all_FA
+/Users/orlamitchell/fsl/bin/tbss_3_postreg: line 184: 16502 Abort trap: 6           $FSLDIR/bin/fslmaths all_FA -max 0 -Tmin -bin mean_FA_mask -odt char
+Image Exception : #63 :: No image files match: all_FA
+libc++abi: terminating due to uncaught exception of type std::runtime_error: No image files match: all_FA
+/Users/orlamitchell/fsl/bin/tbss_3_postreg: line 185: 16504 Abort trap: 6           $FSLDIR/bin/fslmaths all_FA -mas mean_FA_mask all_FA
+Image Exception : #63 :: No image files match: all_FA
+libc++abi: terminating due to uncaught exception of type std::runtime_error: No image files match: all_FA
+/Users/orlamitchell/fsl/bin/tbss_3_postreg: line 186: 16506 Abort trap: 6           $FSLDIR/bin/fslmaths all_FA -Tmean mean_FA
+skeletonising mean FA
+Image Exception : #63 :: No image files match: mean_FA
+Image Exception : #22 :: Failed to read volume mean_FA
+Error : No image files match: mean_FA
+libc++abi: terminating due to uncaught exception of type std::runtime_error: Failed to read volume mean_FA
+Error : No image files match: mean_FA
+/Users/orlamitchell/fsl/bin/tbss_3_postreg: line 197: 16507 Abort trap: 6           $FSLDIR/bin/tbss_skeleton -i mean_FA -o mean_FA_skeleton
+now view mean_FA_skeleton to check whether the default threshold of 0.2 needs changing, when running:
+tbss_4_prestats <threshold>
+orlamitchell@Orlas-MacBook-Air-2 mytbss % fsleyes all_FA -dr 0 0.8 mean_FA_skeleton -dr 0.2 0.8 -cm Green
+unrecognized arguments: all_FA -dr 0 0.8 mean_FA_skeleton -dr 0.2 0.8 -cm Green
+FSLeyes version 1.10.0
+Usage: fsleyes [options] file [displayOpts] file [displayOpts] ...
+
+I found a similar error in a previous thread where the advice was to run fslmerge -t ../stats/all_FA `$FSLDIR/bin/imglob *_FA_to_target.*`. I ran this in the FA folder as instructed, with the following error.
+
+/Users/orlamitchell/fsl/share/fsl/bin/fslmerge: line 2: 17318 Killed: 9               /Users/orlamitchell/fsl/bin/fslmerge "$@"
+
+I was wondering if you had any insight into why I keep getting this error?
+
+Any advice would be greatly appreciated.
+
+Thank you in advance,
+Orla
+
+########################################################################
+
+
+Hi Tommaso,
+
+ 
+
+Given this description “objective to test the contrast between the age^2 beta of the 2 level factors, at average values of the Continuous variable”, the model would be like this:
+
+ 
+
+EV1: FactorV (coded as 1 and -1)
+
+EV2: ContinuousV
+
+EV3: Age (also, I like to mean-center as it makes the numbers for age^2 better behaved, but this isn’t strictly necessary)
+
+EV4: EV3 squared
+
+EV5: EV1*EV3
+
+EV6: EV1*EV4
+
+EV7: sex (coded as 1 and -1)
+
+EV8: intercept (a column full of 1)
+
+ 
+
+The contrast of interest is then EV6:
+
+ 
+
+C1: 0 0 0 0 0 1 0 0
+
+C2: 0 0 0 0 0 -1 0 0
+
+ 
+
+The above doesn’t include interactions that you aren’t interested on. You can add them back to the model following the same idea, i.e., with new regressors for the respective products; for interactions involving age^2, include also the same interactions but with simple age.
+
+ 
+
+However, I note that in the attached files you seem to be interested on the interactions with new_gpx, which, according to the description below, is the Continuous V. If that’s the case, you’d edit EV5 and EV6 such that these are interactions with EV2 instead of with EV1.
+
+ 
+
+If neither of these is what you want, please feel free to post again with more details then.
+
+ 
+
+Hope this helps!
+
+ 
+
+All the best,
+
+ 
+
+Anderson
+
+ 
+
+ 
+
+Dear E'Jane,
+
+I am sorry for the strange error message. It is a "bug in the bug handling" that has long since been fixed and that will soon be rolled out.
+
+As for your actual error I can't figure out why that would happen off the top of my head. Can you please tar up all the field referred to on your command line and upload the tar-ball to a folder to which you will get an invitation shortly via email?
+
+Best regards Jesper
+
+
+
+
+﻿On 22/01/2024, 11:00, "FSL - FMRIB's Software Library on behalf of E'Jane Li" <FSL@JISCMAIL.AC.UK on behalf of ejane.li.22@UCL.AC.UK> wrote:
+
+    Hi FSL community,
+   
+    I tried running eddy on dwi data with b-values = 100 s/mm^2 but it fails and I get a strange error (no message, only symbols). I've tried various options, including with and without --data_is_shelled, but it doesn't work.
+   
+    ---
+    command line:
+    eddy --imain=data --mask=my_hifi_b0_brain_mask --acqp=acqparams.txt --index=index.txt --bvecs=bvecs --bvals=bvals --topup=my_topup_results --out=eddy_corrected_data --verbose --data_is_shelled
+   
+    error:
+    ?A.??
+    Terminating program
+    ---
+   
+    However on a whim, when I modify the bval file to have 1000, instead of 100, eddy runs and it gives the expected output files.
+   
+    Has anyone encountered this before or know what the problem might be? Can share the data if needed, thanks!
+   
+    E'Jane
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+
+Hello Marie,
+   The miniconda command is failing as it can’t find the “md5” tool - it looks like your PATH has been modified to remove the usual location ( /sbin ). If in a terminal you run
+
+export PATH=$PATH:/sbin
+
+Then run the installer command, does it get any further?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Stan,
+
+For your second protocol, did you fit the tensor to the entire dataset or only to the b=1000 shell? If the former, then you should extract only the b=0 and b=1000 volumes from your data (you can use the "select_dwi_vols" tool for this) before performing tensor fitting.
+
+Best,
+Rick
+
+
+Dear FSL experts,
+
+I am writing to seek advice regarding the analysis of GE 3D ASL sequence in BASIL. I am new in ASL analysis and I would like to generate an absolute CBF map in ml/100g/min from GE outputs (the subtracted PWI image and PD M0 image).
+Despite attempting several approaches and searching in the the mailing list archives, I remain uncertain about the correct setup of BASIL to produce correct number, and thus, I am reaching out for assistance. As far as I understand, analysis of GE data should be possible with Presubtracted Label/Control Pairing and providing PD image for Calibration with adjusting the calibration gain. My current setup is as follows:
+
+oxford_asl -i=pwi.nii --iaf=diff --ibf=rpt --casl --bolus=1.45 --rpts=1 --tis=3.475 -c=m0.nii --cmethod=voxel --tr=4.77 --cgain=96 -o=output_dir --bat=1.7 --t1=1.3 --t1b=1.65 --alpha=0.85 --spatial=1 --fixbolus --pvcorr --artoff
+
+Are there any other considerations regarding differences in GE acquisition or changes in settings that I should make to ensure correct CBF values?
+
+
+Thank you very much for your help.
+Best regards,
+Anna
+
+
+Dear colleagues,
+I have encountered an interesting problem:
+We have two MRI machines and have used different DWI protocols for them.
+1 is 2mm isotropic, 1x b0 and 30x b=1000
+2 is 1.8mm isotropic, 7x b0, 47x b=1000 and 46x b=3000.
+
+When reviewing dti_tensor files, which I plan to use for x-y-z axis diffusion in DTI-ALPS, I noticed stark differences in images between these two protocols. The diffusion axes seem to be recognizable in both (e.g. hyperintense corticospinal tract in z axis), but otherwise they look quite different. Is it possible these differences are caused by the different protocols? Or have I made a mistake somewhere?
+In the attachment I send the z-axis (6th volume of dti_tensor).
+
+Best regards,
+Stan
+
+

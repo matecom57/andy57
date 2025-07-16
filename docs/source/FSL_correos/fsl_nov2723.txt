@@ -1,0 +1,1302 @@
+Hi Mugundhu,
+
+Instead of using the fslinstaller.py script, you should just be able to run "update_fsl_release" to update your FSL installation in-place, 
+
+More generally, when using the fslinstaller.py script, you can tell it where you would like FSL installed via the -d option, and you can tell it to not touch your existing shell/MATLAB configuration with the -n option, e.g.:
+
+python3 fslinstaller.py -d /usr/local/fsl/ -n
+
+Paul
+
+
+
+Hi,
+
+I'm using FSL to analyse my data, which has been preprocessed with fMRIPrep. I began by following the FEAT workaround set out by Mumford Brain Stats, however, upon running my group-level analysis I was notified that my inputs weren't registered. I then saw on a forum that people were running 'updatefeatreg' after the workaround.
+
+I implemented this ('updatefeatreg FirstLevelAnalysis_run-5_rerun.feat -gifs') just before my group analysis but this didn't solve my issue.
+
+Any insights would be greatly appreciated!
+
+Thank you in advance,
+Phoenix
+
+########################################################################
+
+Hi Manuel
+ 
+I don’t know QSIprep. The first thing you should do is to check that the warps from and to diffusion space are correct. You can do that by resampling a diffusion image to the template space and resampling the template to diffusion space and visualising the results in fsleyes.
+ 
+Cheers
+Saad
+ 
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Manuel Blesa <mblesac@GMAIL.COM> Date: Monday, 27 November 2023 at 10:57 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] Xtract/Probtrackx2 error
+Hi,  By doing that, the error is gone and not it runs. However, the results are wrong. Both with GPU and without, the waytotal for the cst_l is 0 and for the cst_r is 8, and the image only has few voxels here and there (following the way of the tract). Is it possible that is related of how QSIprep stores the results?  Best regards,  Manuel
+
+
+Hi both,
+
+My preferred method for doing this is to use Paul's FSLeyes suggestion. I've found it to be very reliable in creating a reference image that behaves as expected when used as the "-r" input to applywarp.
+
+Best,
+Rick
+
+
+----------------------------------------------------
+Frederik Lange
+Postdoctoral Researcher in Advanced Image Analysis
+FMRIB | Wellcome Centre for Integrative Neuroimaging
+University of Oxford | frederik.lange@ndcn.ox.ac.uk
+----------------------------------------------------
+
+
+Hi James,
+
+You need to create an with the desired resolution to use as the reference in your applywarp call. You can do this in any number of ways, for example  using fslcreatehd, fsledithd, or from within FSLeyes via the Tools -> resample image option.
+
+But your image is still going to be resampled into the FOV of your reference image, whatever its resolution. Do you specifically need your image in MNI space, or can you perform your analysis in the native space, and only transform results into MNI?
+
+Paul
+
+
+Hi Mostafa,
+
+FSL tools will use the sform if it is set, otherwise will use the qform, otherwise will fall back to a scaling matrix. The logic controlling this is in the newimage library:
+
+https://git.fmrib.ox.ac.uk/fsl/newimage/-/blob/master/newimage.cc?ref_type=heads#L2098-2119
+
+Paul
+
+
+Hi Peter,
+
+If you have OSMesa installed, you should be able to set the PYOPENGL_PLATFORM environment variable, e.g.:
+
+export PYOPENGL_PLATFORM=osmesa
+
+fsleyes render ...
+
+Paul
+
+Dear Rachel,
+
+This design isn't really right I'm afraid... it's necessary to add an additional regressor for the differences between pre and post. However, doing so could complicate your contrasts (though not make it impossible, just needlessly complicated, and error-prone too). My suggestion is to code as in the design_lauren.ods (indicated below). In that design, there are 4 regressors spanning all subjects that represent the 4 conditions, plus additional regressors to code between-subject differences, such that you are left only with within-subject effects.
+
+For the EBs, also some changes are needed. You have two options, both of which will require multi-level EBs. One is to permute the timepoints first, then allow the two conditions to be permuted, the other is to permute the conditions first, then the timepoints. I don't know if these will give the same result (please, let me know, I'm curious!). For 2 subjects, the two ways would be coded as this in the EB file:
+
+Option 1:
+-1,1,1,1
+-1,1,1,2
+-1,1,2,3
+-1,1,2,4
+-1,2,1,5
+-1,2,1,6
+-1,2,2,7
+-1,2,2,8
+
+Option 2:
+-1,1,1,1
+-1,1,2,2
+-1,1,1,3
+-1,1,2,4
+-1,2,1,5
+-1,2,2,6
+-1,2,1,7
+-1,2,2,8
+
+Neither of these two options cover all possible permutations that respect the dependence structure, though, but jointly they do. We could combine the permutations produced by Option 1 and Option 2 into one larger set of permutations. Unfortunately, PALM doesn't do that. If you want to experiment, send me an email off-list and I can prepare a customized version for this.
+
+It's only worth testing if Option 1 and Option 2 give different results. If they give the same results, the combination will also give the same results.
+
+A third option is to simply assume everything is freely exchangeable within subject, in which case, there is no need for multi-level EBs: Just define 1 block per subject and use the option "-within" (which is the default anyway). This is a riskier option, though, as the dependencies between all observations may not be the same. If the time difference between observations is short, it's probably ok to do that. If long, then the assumption that allows such free shuffling within subject (compound symmetry) becomes ever less tenable.
+
+Hope this helps!
+
+All the best,
+
+Anderson
+
+
+﻿On 11/9/23, 2:57 PM, "FSL - FMRIB's Software Library on behalf of Rachel Phillips" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of rachel.phillips@UNC.EDU <mailto:rachel.phillips@UNC.EDU>> wrote:
+
+
+External Mail
+This email originated outside of The University of Texas Rio Grande Valley.
+Please exercise caution when clicking on links or opening attachments.
+
+
+Hi,
+
+
+I adapted the design.ods file (below) for my dataset, and would like to know if this looks appropriate for a single-group (within-subjects) design, examining the effects of time (T1, T2) on conditions of interest ("neutral", "reward").
+
+
+If this is an appropriate design, is it correct to also model exchangeability by this convention, where there are two blocks per individual subject for the effects of time (T1, T2)? That is, if I'm using this model with PALM.
+
+
+Thank you in advance for your consideration and guidance!
+
+
+--Rachel
+
+
+On Wed, 25 Oct 2017 15:41:45 -0200, Anderson M. Winkler <winkler@FMRIB.OX.AC.UK <mailto:winkler@FMRIB.OX.AC.UK>> wrote:
+
+
+>Hi Lauren,
+>
+>In the first case, the 2x2 means four conditions within-subject, whereas
+>the second the 2x3 means six conditions. So the design would consider,
+>respectively, 4 or 6 measurements per subject, and the contrasts would be
+>assembled accordingly.
+>
+>Please see an example for the 2x2 case here: https://s3-us-west-2.
+>amazonaws.com/andersonwinkler/mailinglist/design_lauren.ods
+>
+>For the 2x3 you'd expand the design to accommodate the 6 conditions and
+>then build the contrasts in the same way.
+>
+>Hope this helps.
+>
+>All the best,
+>
+>Anderson
+>
+>
+>On 12 October 2017 at 00:36, Lauren Zajac <lauren.e.zajac@gmail.com <mailto:lauren.e.zajac@gmail.com>> wrote:
+>
+>> Hello FSL experts!
+>>
+>> I'm having some trouble setting up two different repeated measures ANOVAs
+>> in FEAT with 15 subjects. The first repeated measures ANOVA has 2 factors
+>> with 2 levels each, both factors are fixed effects. The second repeated
+>> measures ANOVA has 2 factors, one with 2 levels and the other with 3
+>> levels, both fixed effects. I've looked through the GLM page but haven't
+>> been able to figure out how to translate the examples to my data. Any
+>> guidance you have would be appreciated!!
+>>
+>> Best,
+>> Lauren
+>>
+>
+
+
+
+
+Hi Beatrice
+
+ 
+
+As far as I know, epi_reg uses FLIRT under the hood with the BBR cost function. This means it will be “optimised” for best alignment of cortex, but might not be optimal overall (e.g. subcortical structures). So it might be worth also running FLIRT and comparing visually.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+Because you have only a small number of volumes in the data and a single TI oxford_asl is setting the noise prior based on an assumed SNR of 10 and the magnitude of the label-control subtracted data. It looks like that latter value is the problem, which could arise from a number of things. My first sanity check would be to ensure you have the label-control order right – if not the values in the post subtraction image could be all negative and could cause this error (and the whole analysis in general to be incorrect). Generally, I would scrutinise the perfusion-weighted image to see if that looks okay – you can do that in the GUI or using asl_file. If that doesn’t reveal a problem, we can look to override this setting and the rest of the analysis should run.
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Christian Schmitz <christian.n.schmitz@GMAIL.COM>
+Date: Friday, 24 November 2023 at 09:35
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] BASIL error
+
+Hi Duarte,
+
+This looks like a problem with your environment. Do you have LD_LIBRARY_PATH or LD_PRELOAD environment variables set? Try unsetting them and re-running fix.
+
+Paul
+
+Hi Sungoku,
+
+This is due to an issue with mamba, which is used to perform the update. The easiest option is to re-install FSL using the fslinstaller.py scrpt, which will overwrite your existing installation. The in-place update process is becoming more stable, so you will hopefully be able to use the update_fsl_release script for future updates.
+
+You can have several versions of FSL installed alongside each other - just re-run the fslinstaler.py script, and choose a different destination directory. There are no built-in facilities for handling this scenario in your shell profile, but it is easy to set up a custom configuration.
+
+For example, on my computer I have several versions of FSL installed in ~/fsl/, with each directory named "fsl-<version>":
+
+
+Dear Saad, many thanks for your reply.
+So, in my case it should be:
+1. epi_reg  --epi=nodif_image t1=subj_t1 t1brain=subj_t1_brain --out=diff2struct --pedir=-y
+2. fnirt --in=subj_t1 -- ref=MNI152_T1_1mm --cout=T1_to_MNI_field --iout=T1_to_MNI_fnirted
+3. convertwarp --ref=MNI152_T1_1mm --out=nodif_to_standard_warp --premat=diff2struct.mat --warp1=T1_to_MNI_field
+4. invwarp -w nodif_to_standard_warp -o standard_to_nodif_warp -r MNI152_T1_1mm
+
+I used epi_reg since I read that for both diffusion and fmri images it should work better for linear registrations.
+Are the steps right?
+thanks
+
+
+Beatrice
+
+Dear BASIL-developer,
+we are using oxford_asl for analyzing a pASL experiment. However, we are currently facing an error that I am not able to figure out.
+
+You can find the terminal output attached.
+
+Thank you very much and best wishes,
+
+Christian
+
+ 
+
+ 
+
+Terminal output:
+
+(base) christian@xlsserver:/data/Christian/sub-021/ses-03$ oxford_asl -i perf/sub-021_ses-03_run-01_asl -c perf/sub-021_ses-03_run-01_m0scan_flirt --fslanat=anat/sub-021_ses-03_run-01_T1w.anat --mc --wp --spatial --tis 1.99 --iaf=tc -o perf/cbf_run-01 --bolus 0.7 --tr=4.6 --cmethod=voxel --fmap=fmap/sub-021_ses-03_run-01_phasediff --fmapmagbrain=fmap/sub-021_ses-03_run-01_magnitude1_fsl-bet --fmapmag=fmap/sub-021_ses-03_run-01_magnitude1 --pedir=-y --echospacing=0.00061 --region-analysis
+
+OXFORD_ASL - running
+
+Version: v4.0.29-dirty Mon Feb 20 16:19:06 2023
+
+Input file: perf/sub-021_ses-03_run-01_asl
+
+Analysis in white paper mode
+
+Pre-processing
+
+Using structural images (bias corrected) from fsl_anat: anat/sub-021_ses-03_run-01_T1w.anat
+
+
+
+Dear FSL Experts,
+
+I have tried the newly added update_fsl_release script to upgrade my FSL installation to the latest.
+The script failed each time.
+Below is the log file content, it complains that boost-cpp was not found in the providers.
+
+---------------------------------- LOG --------------------------------------------
+09:23:56 fslinstaller.py: 162: Log file: /var/folders/b0/b10gyphd4cq4dby5t6vm7v4h0000gn/T/update_fsl_release_51ufshy5.log
+
+09:23:56 fslinstaller.py: 463: Downloading FSL installer manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json
+09:23:56 fslinstaller.py: 406: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json ...
+09:23:59 fslinstaller.py: 162: FSL 6.0.7.6 selected for installation
+09:23:59 fslinstaller.py: 162: A new version of FSL is available
+  FSL installation directory: /Users/w/fsl
+  Installed version:          6.0.6.2
+  Latest available version:   6.0.7.6
+
+09:24:19 fslinstaller.py: 176: Do you want to update your FSL installation? [y/n]:: y
+09:24:19 fslinstaller.py: 162: Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.6_macos-64.yml...
+09:24:19 fslinstaller.py: 406: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.6_macos-64.yml ...
+09:24:21 fslinstaller.py: 162: Updating /Users/w/fsl from version 6.0.6.2 to 6.0.7.6...
+09:24:21 fslinstaller.py: 760: Running /Users/w/fsl/bin/mamba env update -f /private/var/folders/b0/b10gyphd4cq4dby5t6vm7v4h0000gn/T/tmpc9bon1i9/fsl-6.0.7.6_macos-64.yml -p /Users/w/fsl [as admin: False]
+09:24:50 fslinstaller.py: 929:  [stdout]:
+09:24:50 fslinstaller.py: 929:  [stdout]:
+09:24:50 fslinstaller.py: 929:  [stdout]: Looking for: ['boost-cpp=1.81', 'ciftilib==1.6.0', 'c-compiler', 'cxx-compiler', 'file-tree==1.2.1', 'file-tree-fsl==0.2.1', 'fmrib-unpack==3.7.1', 'fsleyes==1.10.0', 'fsleyes-plugin-mrs==0.1.2', 'fslpy==3.15.3', 'fsl-add_module==0.5.1', 'fsl-armawrap==0.6.0', 'fsl-asl_mfree==v1.0.2', 'fsl-avwutils==2209.2', 'fsl-base==2309.2', 'fsl-basil==v4.0.4', 'fsl-basisfield==2203.1', 'fsl-baycest==2111.0', 'fsl-bet2==2111.4', 'fsl-bianca==2209.3', 'fsl-biancadata==2006.0', 'fsl-bint==2111.0', 'fsl-cluster==2201.0', 'fsl-cprob==2111.0', 'fsl-cudimot==2006.0', 'fsl-data_atlases==2103.0', 'fsl-data_atlases_xtract==1.1.0', 'fsl-data_first_models_317_bin==2006.0', 'fsl-data_first_models_336_bin==2006.0', 'fsl-data_linearmni==1.0.0', 'fsl-data_omm==1.0', 'fsl-data_possum==2106.0', 'fsl-data_standard==2208.0', 'fsl-deface==1.3.1', 'fsl-discreteopt==2008.0', 'fsl-eddy==2111.0', 'fsl-eddy_qc==v1.2.3', 'fsl-fabber_core==4.0.11', 'fsl-fabber_models_asl==v2.0.8', 'fsl-fabber_models_cest==v2.1.6', 'fsl-fabber_models_dce==v2.1.5', 'fsl-fabber_models_dsc==v2.0.5', 'fsl-fabber_models_dualecho==v2.0.4', 'fsl-fabber_models_dwi==v2.0.3', 'fsl-fabber_models_pet==v1.0.1', 'fsl-fabber_models_qbold==v1.0.2', 'fsl-fabber_models_t1==v2.0.2', 'fsl-fast4==2111.3', 'fsl-fastpdlib==2111.1', 'fsl-fdt==2202.6', 'fsl-feat5==2201.5', 'fsl-film==2111.0', 'fsl-filmbabe==2111.0', 'fsl-first==2203.0', 'fsl-first_lib==2111.0', 'fsl-flameo==2111.0', 'fsl-flirt==2111.2', 'fsl-fnirt==2203.0', 'fsl-fugue==2201.4', 'fsl-get_standard==0.3.0', 'fsl-giftiio==2111.1', 'fsl-gps==2211.0', 'fsl-installer==3.5.7', 'fsl-lesions==2111.0', 'fsl-libgdc==2111.0', 'fsl-libmeshutils==2111.0', 'fsl-libvis==2111.0', 'fsl-mcflirt==2111.0', 'fsl-melodic==2111.3', 'fsl-meshclass==2111.0', 'fsl-misc_c==2111.0', 'fsl-misc_scripts==2111.0', 'fsl-misc_tcl==2303.0', 'fsl-miscmaths==2203.2', 'fsl-miscvis==2201.1', 'fsl-mist==2111.5', 'fsl-mm==2111.0', 'fsl_mrs==2.1.13', 'fsl-msm==2008.0', 'fsl-msmreglib==2008.0', 'fsl-mvdisc==2111.0', 'fsl-newimage==2203.11', 'fsl-nets==0.8.2', 'fsl-newmesh==2111.0', 'fsl-newnifti==4.1.0', 'fsl-newran==2111.0', 'fsl-oxford_asl==v4.0.29', 'fsl-pipe==1.0.1', 'fsl-possum==2111.2', 'fsl-ptx2==2111.4', 'fsl-pyfeeds==0.12.2', 'fsl-pyfeeds-tests==2302.0', 'fsl-qboot==2111.0', 'fsl-randomise==2203.3', 'fsl-shapemodel==2111.0', 'fsl-siena==2111.1', 'fsl-slicetimer==2111.0', 'fsl_sub==2.8.3', 'fsl_sub_plugin_sge==1.5.4', 'fsl_sub_plugin_slurm==1.6.1', 'fsl-surface==2111.1', 'fsl-susan==2111.0', 'fsl-swe==v1.1.0', 'fsl-tbss==2111.1', 'fsl-tirl==v2.2.1', 'fsl-topup==2203.2', 'fsl-utils==2203.4', 'fsl-vbm==2006.0', 'fsl-verbena==v4.0.3', 'fsl-vtkio==2111.0', 'fsl-warpfns==2203.0', 'fsl-wire==1.0.0', 'fsl-xtract==1.6.4.2', 'fsl-xtract_data==2.0.1', 'fsl-znzlib==2111.0', 'ghalton==0.6.1', 'hlsvdpropy==2.0.1', 'openblas==0.3.23[build=*openmp*]', 'make', 'matplotlib=3.8', 'nibabel=5', 'nidmresults==2.1.0', 'nidmresults-fsl==2.2.0', 'numpy=1.24', 'openslide-python==v1.1.2', 'pkg-config', 'python=3.11', 'spec2nii=0.7', 'tk=8.6', 'vtk=9.2', 'wxpython=4.2', 'zlib=1.2']
+09:24:50 fslinstaller.py: 929:  [stdout]:
+09:24:50 fslinstaller.py: 929:  [stdout]:
+09:24:50 fslinstaller.py: 929:  [stdout]: Encountered problems while solving:
+09:24:50 fslinstaller.py: 929:  [stdout]:   - package fsl-surface-2111.1-ha5a8b8e_2 requires boost-cpp >=1.81.0,<1.81.1.0a0, but none of the providers can be installed
+09:24:50 fslinstaller.py: 929:  [stdout]:   - package fsl-giftiio-2111.1-ha5a8b8e_0 requires boost-cpp >=1.81.0,<1.81.1.0a0, but none of the providers can be installed
+09:24:50 fslinstaller.py: 929:  [stdout]:
+
+------------------------------- LOG END --------------------------------------
+
+How can I fix this error and upgrade my FSL in-place?
+And, is there a way to install different versions of FSL in one system so I can choose different version to process data each time (to keep the same version as previous processed data).
+
+########################################################################
+
+Hi Cory,
+
+This is due to a bug in FSLeyes which is preventing edit mode from opening when there is more than one ortho view open. Until this bug is fixed, you can work around it by changing your script to contain something like:
+
+# an image must be loaded, otherwise edit mode is disabled
+overlayList.append(Image('some_image.nii.gz'))
+
+ortho1 = frame.addViewPanel(OrthoPanel)
+ortho1.toggleEditMode()
+ortho2 = frame.addViewPanel(OrthoPanel)
+
+ortho1.sceneOpts.showXCanvas = False
+ortho1.sceneOpts.showYCanvas = False
+ortho2.sceneOpts.showXCanvas = False
+ortho2.sceneOpts.showYCanvas = False
+
+Paul
+
+
+
+Dear Mariana,
+
+You have not specified the --cout option when calling fnirt. When that is not supplied, fnirt attempts to write the coefficient field out to the same folder as the file passed as the --n argument (in your case JHU-ICBM-FA-1mm), with _warpcoef appended to the name. You do not appear to have permission to write to that folder (/usr/local/software/fsl/6.0.4/data/atlases/JHU/). You can fix this by adding "--cout=JHU_to_DTITK_nl_warpcoef" to your fnirt call.
+
+Best wishes,
+Rick
+
+
+----------------------------------------------------
+
+Frederik Lange
+
+Postdoctoral Researcher in Advanced Image Analysis
+FMRIB | Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford | frederik.lange@ndcn.ox.ac.uk
+
+----------------------------------------------------
+
+
+
+Dear Sven,
+   The error log shows that the design is not in VEST format ( or is otherwise damaged ):
+
+ERROR: Program failed
+
+An exception has been thrown
+/Volumes/Drobo/45_EMPATHY/17_ANALYSES/05_N-BACK/02_nback-tica/nback-design.mat is not a valid vest file
+
+Exiting
+
+If the matrix is just a “plain” text matrix it can be converted to the right format with the Text2Vest tool.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear all,
+
+I am using the following commands to register my subjects.
+
+flirt -in /usr/local/software/fsl/6.0.4/data/atlases/JHU/JHU-ICBM-FA-1mm.nii.gz -ref mean_final_high_res_fa.nii.gz -omat JHU_to_DTITK_aff
+#output = JHU_to_DTITK_aff
+
+fnirt --in=/usr/local/software/fsl/6.0.4/data/atlases/JHU/JHU-ICBM-FA-1mm.nii.gz --ref=mean_final_high_res_fa.nii.gz --aff=JHU_to_DTITK_aff --fout=JHU_to_DTITK_nl_warp -v
+
+The output of flirt is correct, but when doing finite it throws the error:
+
+Saving Coefficient fields to /usr/local/software/fsl/6.0.4/data/atlases/JHU/JHU-ICBM-FA-1mm_warpcoef
+Error occured while writing output from fnirt
+Exception thrown with message: Error: cant open file /usr/local/software/fsl/6.0.4/data/atlases/JHU/JHU-ICBM-FA-1mm_warpcoef.nii.gz
+
+What the solution might be?
+
+Regards,
+Mariana
+
+########################################################################
+
+Hi,
+
+I am still really interested in sharing some rda files to test them in fsl_mrs. Does the proposal still stand?
+
+Best wishes,
+Eva
+
+########################################################################
+
+
+Hi Stan and Hi Rick
+
+I'm facing a similar problem in order to perform tractography on my data. Your cortical mask seems very well defined. Can I ask you if you used some existing atlas to obtain cortical masks, or if you manually segmented it? In the first case, which altas have you chosen?
+Also, when performing epi_reg (as suggested by Rick) the nodif volume has to be "betted"?
+And after epi_reg using FLIRT for T1 to MNI registration, how many degree of freedom do you set?
+Finally, when obtained the two matrices of the transformations I would concatenate them using "convert_xfm"
+Many thanks for your reply
+
+Beatrice
+
+########################################################################
+
+Dear Beatrice
+
+ 
+
+We generally recommend using a high resolution T1 structural as an intermediate, i.e. FNIRT T1->MNI concatenated with a FLIRT Diffusion->T1. This works better for aligning cortex, compared to registering FA to the FMRIB_FA template.
+
+ 
+
+As for the exclusion/inclusion/stop masks, I am afraid there are no hard rules. When you know which tracts you are interested in, you can base these masks on prior knowledge (see e.g. XTRACT). If you are more interested in exploring all possible cortical projections, then it helps if you can use some masks for cleanup (e.g. a pial surface as a stop-mask to avoid streamlines crossing thin CSF regions near cortex).
+
+ 
+
+Cheers
+
+Saad
+
+Dear Maeve,
+
+I am not sure that I understand your concern here. The main point of the one-step approach is precisely to maintain the sharpness of the images. And the difference between a "sharp" (high resolution) image is expected to be precisely along sharp edges in the image. If the image was flat then no amount of blurring would make any difference.
+
+The difference in sharpness is further amplified in your case by you using trilinear interpolation in your flirt call. In my opinion you should only use trilinear interpolation when the blurring is desired, i.e. if you want to use it as a light smoothing. For all other cases I would strongly recommend spline interpolation. You can try to repeat method 1, but now with -interp spline for the flirt call. You will still see a difference in sharpness between the two methods, but now it will be much less strong.
+
+Jesper
+
+
+Hello,
+
+I'm running "fsleyes render" in a bash loop to produce some nice images. However, fsleyes produces a popup every time it is called (that then closes automatically), which is quite disruptive when trying to do anything else at the same time. Is there a workaround for this? An example of what I'm running is:
+
+#!/bin/bash
+for i in {1..10}
+do
+    fsleyes render --scene ortho -of output${i}.png input${i}.nii.gz
+done
+
+I'm running fsleyes version 1.9.0.
+
+Peter
+
+########################################################################
+
+
+Hi there,
+
+I am trying to run Melodic on some data where I have already run ICA (using the multiecho processing software, tedana), and leveraging some of the data from that (spatial maps, mixing matrix) for Melodic
+
+image.png
+I have tried many different times to ask for logpower (e.g. I need to he melodic_FTmix file for AROMA) - but it runs without calculating power or the FT mixing matrix (and without any errors flagged)
+
+I have had to jump back to FSL 5.0.9 - which will calculate power for me - but I have had to resort to concatenating the f1.txt, f2.txt ... etc files in the report directory to create my own FT_mix file.
+
+I was wondering whether this was a bug? I was also wondering if there would be any foreseeable issues here, what with Tedana estimating ICA using FastICA - i.e., whether using that output as the mixing matrix would cause issues for Melodic.
+
+On a side note - is there any recommendations you have on preparing a melodic directory for FSL Fix when you have preprocessed the data with fMRIPrep? I found the following forum, but the suggestions seemed a bit tentative:
+https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=FSL;6e71614b.1911 
+
+Best wishes
+
+Toby
+PhD Candidate Monash Uni
+
+Hi all,
+
+I found what seems to be a weird artifact when applying a warp consisting of a concatenated linear transform from FLIRT and nonlinear transform from FNIRT. The attached image shows three volumes: (1) the sample volume after applying the linear transform with FLIRT, then subsequently applying the nonlinear warp volume to the linearly-registered image using “applywarp”; (2) the sample volume after concatenating the linear and nonlinear transforms using “convertwarp” and applying the combined transform to the original unregistered volume using applywarp; (3) the difference image between the the volumes warped in the first versus second way. The expectation was that applying the two transforms in two separate steps might result in some overall blurring in the image, but the difference image seems to indicate sharp differences at large intensity change boundaries. Any ideas as to why this might be happening and how I can avoid the “sharpness” of the one-step approach?
+
+The commands I used to get the images were, respectively:
+
+
+Method 1:
+
+flirt -in original_vol -applyxfm -init linear_xfm -out orig_vol_linearlycoreg -paddingsize 0.0 -interp trilinear -ref target_vol
+
+applywarp  --rel --interp=spline -i orig_vol_linearlycoreg -o orig_vol_nonlinearlycoreg -r target_vol -w FNIRT_warpvol
+
+Method 2:
+
+convertwarp --relout --ref=target_vol  --premat= linear_xfm --warp1= FNIRT_warpvol --out=concatenated_warpvol
+
+applywarp  --rel --interp=spline -i orig_vol -o orig_vol_nonlinearlycoreg -r target_vol -w concatenated_warpvol
+
+
+Thanks!
+
+Best,
+Maeve
+
+########################################################################
+
+Hi everybody,
+
+We are pleased to announce that the application portal is still open for the NIH funded 2024 session of the course, “Training in Advanced Statistical Methods in Neuroimaging and Genetics”.
+
+ 
+
+We hope you pass this email on to your local neuroimaging community.
+
+ 
+
+The course will start on Monday, April 15, 2024 and finish on April 26, 2024 and is to be held in person, in Salt Lake City, Utah, United States at the University Guest House Conference Center. Our course also includes an ongoing (throughout the year) continuing education portion.
+
+ 
+
+The course is an intensive 2-weeks, about 8 hours per day of a mix of lectures and hands-on computer labs.
+
+ 
+
+neurostatsbootcamp.org
+
+ 
+
+Due to recently increased funding, we are pleased to announce we can drop our tuition this year to $2250. Strictly financial need scholarships will also still be offered.
+
+Tuition includes hotel accommodations at the University Guest House (arrival on April 14 with departure on April 26), breakfast, lunch, day time snacks, three dinners out as a group, and the planned evening activities. All course attendees will arrange for their own transportation to Salt Lake City. The course cost does include a daily pass to the Salt Lake City Trax light rail/commuter system. (Please note that the course instructors' effort is supported by the NIH grant thus avoiding that cost being passed on to the course attendees. This course is strictly not-for-profit.)
+
+Because of the limited size and advanced nature of the course, attendance is by application only – please make sure to fully read the website instructions. In general, applicants must be a US citizen, permanent resident, or working with an appointment at a US institution, though we do have the ability to accommodate 3 to 6 individuals that do not meet this criteria. We anticipate the total class size to be between 22 and 25 students.
+
+ 
+
+There are opportunities for scholarships which can partially offset hotel accommodations. These are based on true financial need and you will be instructed how to apply if you are admitted to the course.
+
+ 
+
+We look forward to seeing you in SLC in 2024!
+
+ 
+
+Late application deadline is Dec 1, 2023; decisions by Jan 5th, 2024.
+
+ 
+
+For more information email us at neurostats@g.ucla.edu (or  advancedstatisticscourse@utah.edu)
+
+ 
+
+Robert and Anna
+
+ 
+
+------------------------------
+
+Robert Welsh, PhD
+
+Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+rcwelsh@g.ucla.edu
+
+robert.c.welsh@utah.edu
+
+ 
+
+Anna Docherty, PhD
+
+Associate Course Director, Training in Advanced Statistical Methods in Neuroimaging and Genetics
+
+anna.docherty@utah.edu
+
+ 
+
+Christina Caldera
+
+Course Administrator
+
+neurostats@g.ucla.edu
+
+ 
+
+When passing a Python script to fsleyes, we receive the following error when trying to go into edit mode:
+
+ 
+
+Traceback (most recent call last):
+
+  File "/home/apps/packages/fsl/current/lib/python3.10/site-packages/fsleyes/frame.py", line 798, in wrapper
+
+    self.__onViewPanelMenuItem(vp, aname, sc, **kwargs)
+
+  File "/home/apps/packages/fsl/current/lib/python3.10/site-packages/fsleyes/frame.py", line 948, in __onViewPanelMenuItem
+
+    func()
+
+  File "/home/apps/packages/fsl/current/lib/python3.10/site-packages/fsleyes/actions/base.py", line 347, in __call__
+
+    result  = Action.__call__(self, *args, **kwargs)
+
+  File "/home/apps/packages/fsl/current/lib/python3.10/site-packages/fsleyes/actions/base.py", line 200, in __call__
+
+    return self.__func(*args, **kwargs)
+
+TypeError: 'NoneType' object is not callable
+
+ 
+
+I removed calling the Python file and edit mode works fine.
+
+ 
+
+Therefore, do we need to enable edit mode in the Python file? I tried iterations like the last two lines in the screenshot below but have not found the correct permutation to get edit mode to toggle on:
+
+ 
+
+Dear FSL experts,
+
+
+I am trying to run FIX with Matlab Runtime Compiler, but I am now getting this output:
+
+
+
+FIX Feature extraction for Melodic output directory: bold1.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+/bin/cp: relocation error: /lib/x86_64-linux-gnu/libacl.so.1: symbol getxattr version ATTR_1.0 not defined in file libattr.so.1 with link time reference
+ extract features
+FIX Classifying components in Melodic directory: bold1.ica using training file: fix/training_files/Standard.RData and threshold 20
+FIX features not already generated, so creating them now.
+FIX Feature extraction for Melodic output directory: bold1.ica
+ create edge masks
+ run FAST
+ registration of standard space masks
+/bin/cp: relocation error: /lib/x86_64-linux-gnu/libacl.so.1: symbol getxattr version ATTR_1.0 not defined in file libattr.so.1 with link time reference
+ extract features
+No valid labelling file specified
+
+
+
+Attached to this e-mail I send the <subject.ica>/.fix_2b_predict.log and the fix/logMatlab.txt files. I am not understanding the errors.
+
+
+
+Can you help?
+
+
+
+Best regards,
+
+Duarte Saraiva
+
+
+
+
+Dear FSL users,
+I'm approaching bedpostX and probtrackx in order to: having ROI to ROI connectivity matrices (also whole brain voxel to voxel connectivity matrix), obtaining number of streamlines for some ROI (es. a particular WM fasciculus) in order to compare this measure between groups or using it for association statistical analyses, and also performing segmentation of structures based on the connectivity with other ROI.
+
+First I preprocessed my dwi images (eddy, bet, topup, and dtifit)
+Then I run bedpostX on a single subject
+Now I'm trying to understand how to proceed in probtrackx. I created some masks starting from HarvardOxford cortical atlas (can I assume that the masks created are in the same space of MNI152_T1_1mm, right? I need to know in order to calculate the trasformation from diffusion to masks spaces). Then I run FLIRT between the subject's dti_FA and FMRIB58_FA standard in order to obtain the .mat (seed to diff) file to insert in probtrackx since the space of diffusion is not the space of the seed masks.
+However, plotting fdt_paths on MNI152_T1_1mm, there wasn't a good space correspondence.
+So, my first question is which one of the following approach is the most correct:
+- register subj_T1 to MNI_T1 and then subj_T1 to subj_dti_FA and concatenate the two transformation
+- directly apply fnirt from subj_dti_FA to MNI_T1
+
+Then, what are the standards for exclusion/waypoint/termination masks? For example I read that for lateralised analyses a midsagittal mask as a termination mask could be useful.
+
+From FSL course on youtube, I understood that in the case I want to segment a region based on its connectivity paths I have to perform voxel by ROI. However I don't have a clear step-by-step procedure.
+The same for the voxel-by-voxel connectivity matrices. I have not clear the difference among Matrix1, Matrix2, and Matrix3.
+
+I know that my questions are wide. I am trying to build a "standardised" pipeline to perform tractography in my lab, however I usually perform TBSS analyses so, any help would be very useful.
+Sincerly
+
+Beatrice
+
+########################################################################
+
+
+Hi Sarah,
+I applied the affine transform ( very similar to the one I generated locally ) eg.
+
+flirt -in nodif_reorient.nii.gz -ref T1_reorient.nii.gz -init diff2str.mat -applyxfm -out NDR2TR
+
+And the output appears to be alligned with T1_reorient - does that match the command you used to generate the registered image ( as opposed to the matrix )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hello Sarah,
+    It’s hard to judge what is happening from the screenshots, can you upload the two re-oriented images for the same subjects as before, as well as the output image and transform matrix?
+
+Kind Regards
+Matthew 
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 22 Nov 2023, at 16:49, Sarah MARCHAND <sarah.marchand@CNRS.FR> wrote:
+
+Hello,
+
+Thank you for your answer.
+I tried to apply this method but this is the best I was able to obtain: https://i.goopics.net/305kze.jpg
+
+Also, here are the part of the code I used following (I believe) your advice (registration.py) and the full code I used (all the steps including registration in the end, but the old version of the registration, just so you can see the previous steps I'm doing): https://uploadnow.io/f/tR0RCqw
+
+Regarding the matrix inversion to avoid creating the six matrices from scratch, how would you do this?
+
+Thanks again for your help,
+
+Sarah
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello,
+
+Thank you for your answer.
+I tried to apply this method but this is the best I was able to obtain: https://i.goopics.net/305kze.jpg
+
+Also, here are the part of the code I used following (I believe) your advice (registration.py) and the full code I used (all the steps including registration in the end, but the old version of the registration, just so you can see the previous steps I'm doing): https://uploadnow.io/f/tR0RCqw
+
+Regarding the matrix inversion to avoid creating the six matrices from scratch, how would you do this?
+
+Thanks again for your help,
+
+Sarah
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello Sarah,
+   I was able to obtain better results by running fslreorient2std on the images before registration, e.g.
+
+fslreorient2std M03_TANZANIE_anat_nsu.nii T1_reorient
+fslreorient2std nodif_brain.nii nodif_reorient
+
+Note looking back at your script, I would also advise only directly registering up one “level” - e.g. calculating
+
+Diff->Struct
+Struct->Std
+
+And then generating the other transforms by concatenating and/or inverting the above matrices.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi Matthew,
+
+Thank you for your reply. Yes indeed, this is what I want to do. Is it correct that I need to create an effective EV.nii.gz image myself using fslroi based on the design.mat from each person's first level analyses? And then calculate the Tstd on those? Sorry for the many questions, I'm the sole neuroimaging person in my group at the moment.
+
+Thanks!
+
+Annelies
+
+Annelies van't Westeinde | Postdoctoral researcher
+Department of Women's and Children's Health | Karolinska Institutet
+171 76 Stockholm | Karolinskavägen 37A
++46 760967499
+annelies.vant.westeinde@ki.se | ki.se
+______________________________________
+Karolinska Institutet – a medical university
+
+Hi,
+Our servers are currently down for essential maintenance, we are hopeful that the FSL course website will be restored by the end of tomorrow.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hello Paul,
+
+Thank you for your answer!
+
+Here is a screenshot of the failed registration: https://i.goopics.net/utl35h.png
+Upper panel is the nodif_brain.nii image after the application of the diff2str matrix, and lower panel is the structural image.
+Also here is a video of the application of the matrix and display of the files, just in case I'd be missing something: https://we.tl/t-xOSQZzGYqE
+
+Brain extraction seems to work fine, but I've used the fslhd function to get information regarding the voxel orientation and FOV and here is what I've found:
+
+structural image >
+qto_xyz:1       -0.500000 0.000000 0.000000 31.750000
+qto_xyz:2       0.000000 -0.500000 0.000000 49.875000
+qto_xyz:3       0.000000 0.000000 0.500000 -7.875000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+pixdim0         1.000000
+pixdim1         0.500000
+pixdim2         0.500000
+pixdim3         0.500000
+pixdim4         0.000000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+dim0            3
+dim1            128
+dim2            156
+dim3            100
+
+standard image >
+qto_xyz:1       0.500000 0.000000 0.000000 -31.750000
+qto_xyz:2       0.000000 0.500000 0.000000 -27.625000
+qto_xyz:3       0.000000 0.000000 0.500000 -7.875000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+pixdim0         1.000000
+pixdim1         0.500000
+pixdim2         0.500000
+pixdim3         0.500000
+pixdim4         0.000000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+dim0            3
+dim1            128
+dim2            156
+dim3            100
+
+diffusion image >
+qto_xyz:1       -0.935265 0.048432 0.050328 58.701057
+qto_xyz:2       0.051438 0.933660 0.079048 -79.933556
+qto_xyz:3       0.039237 -0.069564 1.096001 1.203090
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+pixdim0         -1.000000
+pixdim1         0.937500
+pixdim2         0.937500
+pixdim3         1.100000
+pixdim4         8.916000
+pixdim5         1.000000
+pixdim6         1.000000
+pixdim7         1.000000
+dim0            3
+dim1            128
+dim2            128
+dim3            40
+
+
+I tried to fix it like this (as suggested by a colleague):
+***For new T1 brain and Std Brain:
+1. Remove orient info from header
+➢  fslorient -deleteorient <input_image>
+2. Set the SForm matrix
+➢  fslorient -setsform <matrix> <input_image>
+ *fslorient -setsform -0.5 0 0 0 0 0.5 0 0 0 0 1 0 0 0 0 1 <input_image>
+3. Apply the SForm to the image
+➢  fslorient -setsformcode 1 <input_image>
+4.  Set QForm code as SForm  
+➢  fslorient -copysform2qform <input_image>     
+***For hifi_nodif_brain (same but with its voxel size)
+1. Remove orient info from header
+➢  fslorient -deleteorient <input_image>
+2. Set the SForm matrix
+➢  fslorient -setsform <matrix> <input_image>
+ *fslorient -setsform -0.93 0 0 0 0 0.93 0 0 0 0 1 0 0 0 0 1 <input_image>
+3. Apply the SForm to the image
+➢  fslorient -setsformcode 1 <input_image>
+4.  Set QForm code as SForm  
+➢  fslorient -copysform2qform <input_image>  
+******
+And then registration.
+
+
+But I got this same result: https://i.goopics.net/53s7fq.png
+
+Are these information of any help?
+
+Thanks a lot for your time,
+
+Sarah
+
+########################################################################
+
+
+Hi all,
+
+I’m looking to register some CBF maps to MNI with these steps: 
+
+Flirt CBF to T1 MPRAGE
+
+FLIRT T1 to MNI then FNIRT call
+
+Apply warp for CBF to MNI for the transform from T1 to MNI space
+
+Currently, my CBF map is going from 2x2x4 to 2x2x2 when moving to MNI 2mm with apply warp. Is there a way to keep resolution of 2x2x4 for the applywarp call without just resampling the image at the end? 
+
+All the best,
+
+James
+
+Dear Batel,
+
+yes, there is a bug in eddy's reporting of errors, which sometimes leads to these nonsensical messages. It has been fixed, but the fixed version is not released yet.
+
+The following lines, " Could not open matrix file eddy_corrected_images.eddy_rotated_bvecs" and forward, do not come from eddy, but rather from additional commands that your script is attempting to run, but cannot since it doesn't have the output from eddy.
+
+Can I please ask you to run "just" the eddy command, and add -v (--verbose) to the eddy command. And after it crashes, please cut and paste the output to the screen to me. That will allow me to see if it is a simple matter of some problem with the input data or not.
+
+Best regards Jesper
+
+
+﻿On 18/11/2023, 21:20, "FSL - FMRIB's Software Library on behalf of Batel Yifrah" <FSL@JISCMAIL.AC.UK on behalf of batel.yifrah1@GMAIL.COM> wrote:
+
+    Hello everyone,
+   
+    I've been running topup and eddy, and they performed excellently. However, I've encountered an issue when attempting to run eddy on one of my patients. I'm receiving a strange error message:"
+   
+
+Hi,
+
+By doing that, the error is gone and not it runs. However, the results are wrong. Both with GPU and without, the waytotal for the cst_l is 0 and for the cst_r is 8, and the image only has few voxels here and there (following the way of the tract). Is it possible that is related of how QSIprep stores the results?
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+Dear all, Hi
+
+I'm looking for the convention of FSL which is used for reading a nifti Image.
+
+As we know, a nifti Image is saved as an array which then the Voxel Space obtained from that. From these "Voxel Space" every method (as FreeSurfer, FSL, ANTS, ...) will use One Matrix, converting these "Voxel Space" to the Anatomical Space taking care of orientation, Origin Definition, voxel size, ... .
+I'd appreciate it if you could show me the parts of FSL's source code which are responsible for this action.
+
+Bests,
+Mostafa
+
+########################################################################
+
+Dear FSL experts,
+
+Hi, I am relatively new to FSL and analyzing fMRI data.
+I tried to perform preprocessing steps using FSL commands with following steps:
+1) slice removal 2) slice timing 3) motion correction 4) spatial distortion 5) bbr 6) nuisance regression 7) temporal bandpass filtering 8) 2mm MNI resampling
+
+The image looks different to other examples so wanted to double check if I could use this image for my actual fMRI analysis?
+I have attached a test image for reference.
+
+Many thanks,
+Harin 
+ Sub1_test_prepFinal.nii.gz
+
+Dear FSL Developers,
+
+Thank you for providing such a wonderful tool. I already have FSL version 6.0.7.4 at /usr/local/fsl  location. I am updating it to the newest version. Earlier I used this command to install : sudo python3 fslinstaller.py --conda
+
+When I used same command to update for the newest version, I receiving some warning;
+$ sudo python3 fslinstaller.py --conda
+FSL installer version: 3.5.7
+Press CTRL+C at any time to cancel installation
+Running the installer script as root user is discouraged! You should run this script as a regular user - you will be asked for your administrator password if required.
+Installation log file: /tmp/fslinstaller_8jzfve4p.log
+FSL 6.0.7.6 selected for installation
+Where do you want to install FSL?
+Press enter to install to the default location [/usr/local/fsl/]
+
+Then I tried to install as instructed in the fsl website, but now the default location is changed.
+$ python fslinstaller.py
+FSL installer version: 3.5.7
+Press CTRL+C at any time to cancel installation
+Installation log file: /tmp/fslinstaller_cyi33ghy.log
+FSL 6.0.7.6 selected for installation
+Where do you want to install FSL?
+Press enter to install to the default location [/home/user/fsl]
+
+The old FSL installation is already linked to Freesurfer and MATLAB which are installed in /usr/local drive. All the instructions given in the website point to the default location as /usr/local/fsl. Now the fsl script for new version without sudo command points to the location /home/user/fsl
+
+When Freesurfer and MATLAB are in /usr/local drive, will there be any issue if I install fsl in /home/usr drive? Kindly advise me on the best way to install it without affecting the link with Freesurfer and MATLAB.
+
+Regards
+Mugundhu
+
+
+
+Dear Paul,
+
+Great! I decide to use your instructions to install a new version alongside the current one.
+Thank you.
+
+########################################################################
+
+
+Hi Saad,
+
+Thanks for your reply, here is the output from the mask:
+
+s1474782@EBC33:/EBC/home/mblesa/Network_analysis/TEBC-0Y_test$ fslhd sub-8018/derivatives/sub-8018/ses-01/dwi/sub-8018_ses-01_space-fslstd.bedpostX/nodif_brain_mask.nii.gz
+filename        sub-8018/derivatives/sub-8018/ses-01/dwi/sub-8018_ses-01_space-fslstd.bedpostX/nodif_brain_mask.nii.gz
+
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            3
+dim1            83
+dim2            101
+dim3            85
+dim4            1
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         1.000000
+pixdim1         1.500000
+pixdim2         1.500000
+pixdim3         1.500000
+pixdim4         3.200000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       0
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       1.500000 0.000000 0.000000 -61.500000
+qto_xyz:2       0.000000 1.500000 0.000000 -87.000000
+qto_xyz:3       0.000000 0.000000 1.500000 -58.000000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Left-to-Right
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       1.500000 0.000000 0.000000 -61.500000
+sto_xyz:2       0.000000 1.500000 0.000000 -87.000000
+sto_xyz:3       0.000000 0.000000 1.500000 -58.000000
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Left-to-Right
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         2203.11-dirty 2023-08-23T14:21:21+01:00
+aux_file
+
+
+And from the template:
+
+filename        /EBC/home/mblesa/fsl/data/xtract_data/standard/Schuh40week/mri/schuh_lowres.nii.gz
+
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            3
+dim1            117
+dim2            159
+dim3            126
+dim4            1
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         -1.000000
+pixdim1         0.859375
+pixdim2         0.859375
+pixdim3         0.859375
+pixdim4         1.000000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       0
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       -0.859375 0.000000 -0.000000 51.968750
+qto_xyz:2       0.000000 0.859375 -0.000000 -84.531258
+qto_xyz:3       0.000000 0.000000 0.859375 -39.007816
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Right-to-Left
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      0
+sto_xyz:1       0.000000 0.000000 0.000000 0.000000
+sto_xyz:2       0.000000 0.000000 0.000000 0.000000
+sto_xyz:3       0.000000 0.000000 0.000000 0.000000
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Unknown
+sform_yorient   Unknown
+sform_zorient   Unknown
+file_type       NIFTI-1+
+file_code       1
+descrip         6.0.2:a4f562d9
+aux_file
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+
+Hi,
+
+I want to run xtract in my neonatal cohort but after processing the data and run xtract (with GPU) the results were almost blank images. So I did a couple of experiments:
+
+a) changing the registration tool used (ANTs and mmorf)
+
+b) using the non GPU version
+
+The registration tool didn't affect, the results were the same, but when I changed to the non GPU version, the following error appears:
+
+SPECIES HUMAN_BABY
+ -- getting 'nsamples' from default structure file
+Preparing submission script...
+Log directory is: xtract3/tracts/cst_l
+basename   sub-8018/derivatives/sub-8018/ses-01/dwi/sub-8018_ses-01_space-fslstd.bedpostX//merged
+maskfile   sub-8018/derivatives/sub-8018/ses-01/dwi/sub-8018_ses-01_space-fslstd.bedpostX//nodif_brain_mask
+seeds      /EBC/local/fsl/data/xtract_data/Baby/cst_l/seed
+output     density
+verbose    1
+nparticles 3000
+nsteps     2000
+usef       0
+rseed      12345
+randfib    1
+fibst      1
+Running in seedmask mode
+load seeds
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  inv(): matrix is singular
+Aborted (core dumped)
+cat: xtract3/tracts/cst_l/waytotal: No such file or directory
+Image Exception : #63 :: No image files match: xtract3/tracts/cst_l/density
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: xtract3/tracts/cst_l/density
+Aborted (core dumped)
+
+As this is not related with the registration (both method work well, images are properly aligned), I thought this could be something internal of probtrackx2/gpu or something regarding the diffusion images or the template, but I have no clue of what's going on. The diffusion images were processed with QSIprep and reoriented with fslreorient2std. Here is the header:
+
+filename        sub-8018/derivatives/sub-8018/ses-01/dwi/sub-8018_ses-01_space-fslstd_desc-preproc_dwi.nii.gz
+
+sizeof_hdr      348
+data_type       FLOAT32
+dim0            4
+dim1            83
+dim2            101
+dim3            85
+dim4            150
+dim5            1
+dim6            1
+dim7            1
+vox_units       mm
+time_units      s
+datatype        16
+nbyper          4
+bitpix          32
+pixdim0         1.000000
+pixdim1         1.500000
+pixdim2         1.500000
+pixdim3         1.500000
+pixdim4         1.000000
+pixdim5         0.000000
+pixdim6         0.000000
+pixdim7         0.000000
+vox_offset      352
+cal_max         0.000000
+cal_min         0.000000
+scl_slope       1.000000
+scl_inter       0.000000
+phase_dim       0
+freq_dim        0
+slice_dim       0
+slice_name      Unknown
+slice_code      0
+slice_start     0
+slice_end       0
+slice_duration  0.000000
+toffset         0.000000
+intent          Unknown
+intent_code     0
+intent_name
+intent_p1       0.000000
+intent_p2       0.000000
+intent_p3       0.000000
+qform_name      Scanner Anat
+qform_code      1
+qto_xyz:1       1.500000 0.000000 0.000000 -61.500000
+qto_xyz:2       0.000000 1.500000 0.000000 -87.000000
+qto_xyz:3       0.000000 0.000000 1.500000 -58.000000
+qto_xyz:4       0.000000 0.000000 0.000000 1.000000
+qform_xorient   Left-to-Right
+qform_yorient   Posterior-to-Anterior
+qform_zorient   Inferior-to-Superior
+sform_name      Scanner Anat
+sform_code      1
+sto_xyz:1       1.500000 0.000000 0.000000 -61.500000
+sto_xyz:2       0.000000 1.500000 0.000000 -87.000000
+sto_xyz:3       0.000000 0.000000 1.500000 -58.000000
+sto_xyz:4       0.000000 0.000000 0.000000 1.000000
+sform_xorient   Left-to-Right
+sform_yorient   Posterior-to-Anterior
+sform_zorient   Inferior-to-Superior
+file_type       NIFTI-1+
+file_code       1
+descrip         2203.9-dirty 2023-07-05T17:05:00+01:00
+aux_file
+
+I observed that the q and s form of the neonatal template are different.
+
+Any clue what could be happening? Thanks in advance.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello Matthew,
+
+Thank you for your answer.
+Here are the files: https://drive.google.com/drive/folders/1QQp3oNK6L7tIkH5bq6xxpSCmyAvaIwiq?usp=drive_link
+
+I hope it helps!
+
+Sarah
+
+########################################################################
+
+Hello Matthew,
+
+Thank you for your answer.
+Here are the files: https://drive.google.com/drive/folders/1QQp3oNK6L7tIkH5bq6xxpSCmyAvaIwiq?usp=drive_link
+
+I hope it helps!
+
+Sarah
+
+########################################################################
+

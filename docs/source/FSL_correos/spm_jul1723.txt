@@ -1,0 +1,250 @@
+Dear colleagues,
+
+ 
+
+I am pleased to announce our upcoming Course in Neuroimaging: Analysis and results interpretation. The course will be held online starting from September 14th and will be taught in Spanish. It takes a practical approach and does not require qualifications or previous experience in neuroimaging.
+ 
+
+The multidisciplinary programme provides thorough training in the analysis of brain images from different MRI modalities and data modeling techniques, including voxel-based morphometry, cortical thickness, diffusion tensor imaging and fibre tracking, functional MRI and brain connectivity, as well as the statistical methods behind these techniques including elements of meta-analysis, and more.
+
+
+
+The course is organized by FIDMAG Research Foundation and this will be its 8th edition. For further information, please visit the website: https://cursoneuroimagen.com/es/
+
+
+
+Best regards,
+
+Hello all,
+
+I am having the same question as this previous post. Any insight please?
+
+I ran a flexible full factorial design on longitudinal data with 2 factors (subject = 1 group, time = Pre- and Post intervention) and 2 covariates (clinical scores at Pre and Post). What contrast should I use to analyze the effect of each covariate on the Pre-to-Post structural changes ? Is a [-1 1 1 0] contrast models the effect of covariate 1 on the pre-to-post changes ?
+
+Thank you,
+Best regards,
+Nabila
+
+Dear SPM community, 
+
+I am using SPM mainly with EEG data and found that when using the spm_eeg_spatial_confounds() function with the mode set to ’SVD’, the function does seem to take into account bad channels, but not bad trials. 
+
+Is there a specific reason for this behaviour which I don’t see? 
+
+Thank you very much for your help! 
+
+All the very best, 
+Florian  
+
+
+Dear Chambrez,
+
+yes, this error message is most likely caused by these "missing" conditions. If you did not include columns for these conditions in your model, your contrast vectors may need to be adjusted so that the contrast weights are set on the correct columns of the design matrix for each subject. If you did include columns for these conditions by e.g. placing a dummy onset near the end of the experiment, your design matrices will not vary across subjects, but SPM will still refuse to compute certain contrasts for the missing conditions because they simply can't be estimated.
+
+Best regards,
+Volkmar
+
+Dear Gloria,
+
+I am not sure whether it would make sense to include a motion covariate into a 2nd level design at all. Scan-to-scan motion has to be dealt with during 1st level time series analysis, as it may explain signal changes in each voxel's time series that might be due to e.g. slightly changing volume fractions of CSF and brain tissue induced by head motion. Also, I am not sure what you refer to regarding "average all the volumes".
+
+If you are interested in weighting subjects with their total movement over time, you may want to sum up scan-to-scan displacements over time (perhaps separately for translations and rotations).
+
+Hope this helps
+Volkmar
+
+Hi Jasmin,
+
+This could be an issue related to the high-pass filter. You can check this by setting the filter value to Inf (to effectively switch it off) and then re-estimating the model to see if the issue is resolved. Generally, I wouldn't recommend switching the filter off, but if the problem is originating from the filter then you need to consider your frequency cut-off carefully. Alternatively, this could also be due to the non-sphericity correction, which you can switch off by changing AR(1) to none. Again, I don't recommend doing this, but it will help you figure out where the issue is coming from.
+
+Best wishes
+Martyn
+
+Hi everyone
+
+Last chance to register for Instats's upcoming seminar Using ChatGPT for Automated Literature Reviews (July 18-19). This 2-day seminar is designed to help participants to discover the power of AI-driven tools that allow researchers to streamline their literature review process, showing you how to harness the capabilities of ChatGPT for conducting efficient and comprehensive literature reviews in various research fields. Through interactive lectures, hands-on exercises, and discussion, attendees will acquire the knowledge and skills necessary to effectively integrate ChatGPT into their research workflows. An official Instats certificate of completion is provided and offers 2 ECTS Equivalent points.
+
+Also, don't forget about other upcoming Instats seminars including Measure Development and Psychometrics, Path Analysis with Moderated Mediation (taught in Mandarin), and Statistical Machine Learning for Researchers. You can find all of our upcoming Instats seminars here and we look forward to seeing you in an Instats seminar soon!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Dear SPM development team,
+
+ 
+
+    I hope this email finds you well. I am writing to you regarding a software compatibility issue I have encountered. I am using a Mac Book Pro (Apple M1 chip, 16GB+512GB) and my Matlab version is r2023a. Whenever I use SPM, I frequently experience freezing and crashing problems. Initially, I thought it was a Matlab issue, so I downloaded the Matlab preview version (r2023b) that supports Apple Silicon chips. However, when I try to run SPM on this version of Matlab, I receive the following error message: "SPM uses a number of MEX files, which are compiled functions. These need to be compiled for the various platforms on which SPM is run. It seems that the compiled files for your computer platform are missing or not compatible."
+
+ 
+
+   I would like to inquire about the following:
+
+ 
+
+     1. How can I resolve this issue? Is there a solution available?
+
+     
+
+     2. Does your team have any plans to support the Apple M-series chips based on the ARM architecture?
+
+ 
+
+   I appreciate your attention to this matter and look forward to your prompt response. Thank you for your time and assistance.
+
+ 
+
+Best regards,
+
+Haorui
+
+
+
+Dear Haorui,
+
+MEX files for Apple Silicon are available in the development version of SPM that you can download here:
+
+https://github.com/spm/spm/archive/refs/heads/main.zip
+
+It should hopefully work fine with R2023b beta but please let us know if you have any issue with it. I am not aware of particular issues (freeze, crash) with R2023a so there might be another issue to look into.
+
+Best regards,
+
+Guillaume.
+
+
+
+On 16/07/2023 16:59, Haorui Zhang 张浩锐 wrote:
+
+Dear Florian,
+
+You are right, this should be corrected. https://github.com/spm/spm/commit/81dab042bb06dd839641fdcb2292451cf18d3823
+
+Thanks for reporting,
+
+Vladimir
+
+On Fri, Jul 14, 2023 at 1:25 PM Schönleitner Florian Marian <schoenleitner@biomed.ee.ethz.ch> wrote:
+Dear SPM community, 
+
+I am using SPM mainly with EEG data and found that when using the spm_eeg_spatial_confounds() function with the mode set to ’SVD’, the function does seem to take into account bad channels, but not bad trials. 
+
+Is there a specific reason for this behaviour which I don’t see? 
+
+Thank you very much for your help! 
+
+All the very best, 
+Florian  
+
+—————————————————— 
+
+
+ETH Zurich
+Florian Marian Schönleitner, M.Sc. 
+Translational Neuromodeling Unit 
+Institute for Biomedical Engineering 
+Wilfriedstr. 6, CH - 8032 Zürich, Switzerland
+
+e-mail: schoenleitner@biomed.ee.ethz.ch 
+Homepage: www.tnu.ethz.ch/en/team/florian-schoenleitner 
+
+
+
+
+
+
+
+Hello all,
+
+I am having the same question as this previous post. Any insight please?
+
+I ran a flexible full factorial design on longitudinal data with 2 factors (subject = 1 group, time = Pre- and Post intervention) and 2 covariates (clinical scores at Pre and Post). What contrast should I use to analyze the effect of each covariate on the Pre-to-Post structural changes ? Is a [-1 1 1 0] contrast models the effect of covariate 1 on the pre-to-post changes ?
+
+Thank you,
+Best regards,
+Nabila
+
+There is an exciting opportunity for a young postdoc to join the Advanced Imaging Research (AIR) Group at the Swiss Paraplegic Research (Switzerland).
+
+The project is on neuroimaging of cognitive functions in spinal cord injury.
+
+ 
+
+The Swiss Paraplegic Research (SPF) is an affiliate of the Swiss Paraplegic Foundation. The mission of SPF is sustainably improving the situation of people with spinal cord injury (SCI) through clinical and interdisciplinary research on a national and international level. Specific areas of its comprehensive research include functioning, movement and mobility, social integration, equality of opportunity, self-determination, quality of life, health services provision as well as morbidity and mortality. SPF is an extra-university research institution recognized and promoted by the Swiss federal government and the cantons and an active link to academic and industrial research and development at the national and international levels
+
+ 
+
+The Advanced Imaging Research (AIR) Group, is looking for a Postdoctoral Researcher in “Imaging of Spinal Cord Injury” 80 - 100%
+
+The Advanced Imaging Research Group is focussing on the investigation of the mechanisms of SCI beyond the sensorimotor domain. The aim of this postdoctoral project is to investigate the underlying processes of SCI with imaging techniques, and to establish methods for functional and structural connectivity analyses. The researcher is expected to contribute to the development of the research in SCI in close collaboration with the Group Leader.
+
+ 
+
+Responsibilities:
+
+•                  Contribution to the writing of grant proposals
+
+•                  Contribution to the conceptualization and design of research projects
+
+•                  Writing and submission of study documents for approval by ethics committees or authorities
+
+•                  Analysis and interpretation of imaging data of different modalities (e.g., fMRI, DTI, x-ray, etc.)
+
+•                  Writing and submission of publications in high impact, peer-reviewed journals
+
+•                  Presentation of research findings at national and international conferences
+
+•                  Supervision of PhD and Master Students
+
+ 
+
+Requirements:
+
+•                  PhD in neuroscience, psychology, biomedical engineering or similar, recognised by the Swiss University System.
+
+•                  Strong knowledge in neuroimaging methods, with particular focus on functional and structural connectivity analysis, as proved by track record of publications in the field.
+
+•                  Knowledge in Matlab and/or R-studio.
+
+•                  Ambitious, proactive, good communication skills and attitude to team-work
+
+•                  Willingness to work with patients in clinical settings
+
+•                  Excellent English skills, German is an advantage
+
+ 
+
+We offer:
+
+•                  Fully funded position in a young and dynamic environment
+
+•                  Multidisciplinary team, where engineers, neuroscientists and clinicians interact on a daily base
+
+•                  State-of-the-Art facilities, with a 3 Tesla Philips scanner for MRI dedicated to research
+
+•                  Excellent conditions for relevant patient-oriented research and possibility to be embedded in an academic career path
+
+•                  Friendly and person-oriented atmosphere
+
+ 
+
+The position is for 2 years with the possibility of extension.
+
+For further information please contact Giuseppe Zito, PhD, Group Leader, giuseppe.zito@paraplegie.ch, +41 41 939 55 86.
+
+ 
+
+Interested? We are looking forward to your full online application (in English, including your CV with a publication list, transcripts of University Diplomas with grades and reference letters and a cover letter with a personal statement regarding your suitability and motivation) on www.paraplegie.ch/jobs. Evaluation of applications will take place on an ongoing basis until successful recruitment of a candidate.
+
+ 
+
+Thank you very much for your attention,
+
+Giuseppe
+
+ 
+

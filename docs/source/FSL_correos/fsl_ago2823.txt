@@ -1,0 +1,480 @@
+Dear Jesper,
+ 
+Thanks so much for the reply. Can we find formula for "probability preserving transform", and are there references that we can cite?
+ 
+Thanks again!
+ 
+Jian
+ 
+Sent from Mail for Windows
+ 
+From: Jesper Andersson Sent: Friday, 25 August 2023 11:02 PM To: FSL@JISCMAIL.AC.UK Subject: Re: [FSL] Fisher Z transfer image
+ 
+Dear Jian,
+ 
+I want know how the z image is obtained from fsl_glm. We are about to reproduce t value (in t image) from other tool, but sure how the z value in same voxel has been calculated?
+ 
+it is done by a "probability preserving transform". I.e. by calculating the p-value for each t_df value, and then replacing that with the z-score (which is the same as t_inf) that has that same p-value.
+ 
+Best regards Jesper
+ 
+Dear Jian,
+
+ 
+
+I want know how the z image is obtained from fsl_glm. We are about to reproduce t value (in t image) from other tool, but sure how the z value in same voxel has been calculated?
+
+ 
+
+it is done by a "probability preserving transform". I.e. by calculating the p-value for each t_df value, and then replacing that with the z-score (which is the same as t_inf) that has that same p-value.
+
+ 
+
+Best regards Jesper
+
+ 
+
+Hello,
+
+I am trying to set up a repeated measures design to test whether change over 3 timepoints differs between electroconvulsive therapy patients and healthy controls in TBSS skeletonized images. I extensively searched earlier conversations, though unfortunately it is not yet clear to me, part due to example files that can not be accessed anymore.
+
+I found one example which is attached to this message. EV 1-3 is time in patients, EV 4-6 is time in controls.
+
+Is this design and contrasts correct? What is the function of EV's 7 to 13?
+
+Thank you in advance.
+
+Kind regards,
+Joey
+
+
+Dear FSL expert,
+
+ 
+
+I want know how the z image is obtained from fsl_glm. We are about to reproduce t value (in t image) from other tool, but sure how the z value in same voxel has been calculated?
+
+ 
+
+Thanks for your help.
+
+ 
+
+Jian
+
+ 
+
+Sent from Mail for Windows
+
+Hi Paul, 
+
+Here's the log file from my failed update. 
+
+Dianne
+
+Dianne Patterson, Ph.D
+dkp@arizona.edu
+Office: BSRL, Room 235
+RII Neuroimaging Staff Scientist 
+Program Coordinator Neuroimaging Methods Certificate 
+Cognitive Science GIDP affiliate member
+Faculty Lead OpenClass.ai
+Mastodon: @dpat@scicomm.xyz
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Wednesday, August 23, 2023 8:58 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [EXT]Re: [FSL] update_fsl_release failure
+ 
+External Email
+
+Hi Keith,
+
+That error is due to a bug in the update script, which will be fixed in the next FSL version. In the meantime, you should be able to update your installation by running the script like this:
+
+sudo -E update_fsl_release
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Keith Schneider <keithas@UDEL.EDU>
+Sent: 23 August 2023 15:11
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] update_fsl_release failure
+ 
+Hi Paul, I also want to report an error with the update_fsl_release script.  It hangs after accepting my admin password.  Here’s the log.
+
+Thanks,
+
+Keith
+
+10:09:19 fslinstaller.py: 167: Log file: /var/folders/xy/9hnt0p39799cjcyfkn2wy3fr0000gn/T/update_fsl_release_wphtng5i.log
+
+10:09:19 fslinstaller.py: 467: Downloading FSL installer manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json
+10:09:19 fslinstaller.py: 410: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json ...
+10:09:19 fslinstaller.py: 167: FSL 6.0.7.2 selected for installation
+10:09:19 fslinstaller.py: 167: A new version of FSL is available
+  FSL installation directory: /usr/local/fsl
+  Installed version:          6.0.7.1
+  Latest available version:   6.0.7.2
+
+10:09:22 fslinstaller.py: 181: Do you want to update your FSL installation? [y/n]:: y
+10:09:22 fslinstaller.py: 167: Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml...
+10:09:22 fslinstaller.py: 410: Downloading https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml ...
+10:09:23 fslinstaller.py: 167: Updating /usr/local/fsl from version 6.0.7.1 to 6.0.7.2...
+10:09:23 fslinstaller.py: 167: Your administrator password is needed to update FSL:
+10:09:27 fslinstaller.py: 167: Password accepted
+10:09:27 fslinstaller.py: 764: Running /usr/local/fsl/bin/mamba env update -f /private/var/folders/xy/9hnt0p39799cjcyfkn2wy3fr0000gn/T/tmp9le8fzik/fsl-6.0.7.2_macos-M1.yml -p /usr/local/fsl [as admin: True]
+10:09:29 fslinstaller.py: 933:  [stderr]: Password:Sorry, try again.
+
+
+On Aug 23, 2023, at 4:55 AM, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Dianne,
+
+It looks like the update did succeed.
+
+But the process then failed for some reason while updating $FSLDIR/etc/fslversion (which is just a text file that contains the installed version). There might be more information as to why this step failed in the log file.
+
+Would you be able to share the log file (/var/folders/yn/zq2njbnn6cd224b_4qkprb6w0000gn/T/update_fsl_release_r4qoja9e.log) if it still exists?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Patterson, Dianne K - (dkp) <dkp@ARIZONA.EDU>
+Sent: 23 August 2023 03:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] update_fsl_release failure
+ 
+I am on an M2 Mac studio. Ventura 13.5  
+
+I tried your new experimental update tool, but it failed (neat idea though):
+
+$FSLDIR/bin/update_fsl_release
+
+Log file: /var/folders/yn/zq2njbnn6cd224b_4qkprb6w0000gn/T/update_fsl_release_r4qoja9e.log
+
+
+FSL 6.0.7.2 selected for installation
+A new version of FSL is available
+FSL installation directory: /Users/dpat/fsl
+Installed version: 6.0.6.5
+Latest available version: 6.0.7.2
+
+Do you want to update your FSL installation? [y/n]: y
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.2_macos-M1.yml...
+
+Updating /Users/dpat/fsl from version 6.0.6.5 to 6.0.7.2...
+
+/
+
+Traceback (most recent call last):
+
+File "/Users/dpat/fsl/bin/update_fsl_release", line 10, in <module>
+sys.exit(main())
+File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/base/update_fsl_release.py", line 153, in main
+File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/base/update_fsl_release.py", line 71, in do_update
+File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 1787, in finalise_installation
+File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 1365, in run
+File "/Users/dpat/fsl/lib/python3.10/site-packages/fsl/installer/fslinstaller.py", line 836, in check_call
+
+RuntimeError: This command returned an error: cp fslversion /Users/dpat/fsl/etc
+
+
+-Dianne
+
+Dianne Patterson, Ph.D
+dkp@arizona.edu
+Office: BSRL, Room 235
+RII Neuroimaging Staff Scientist 
+Program Coordinator Neuroimaging Methods Certificate 
+Cognitive Science GIDP affiliate member
+Faculty Lead OpenClass.ai
+Mastodon: @dpat@scicomm.xyz 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+TLDR: 
+fslchfiletype for in-place conversion to anything other than the FSL default .nii.gz filetype seems to have been broken since fsl v5.0.11, including up to the current v6.0.7.2. It works fine in v5.0.10 and earlier. More recently also (sometime after v6.0.5; for example in v6.0.7.2), the NIFTI_PAIR option is no longer accepted as valid.
+ 
+Detail:
+The first problem occurs in fslchfiletype when the optional third argument is not provided (i.e. “inplace” conversion mode). In the fslchfiletype shell script, after the file conversion has succeeded to a temporary file, the following line
+
+      $FSLDIR/bin/immv $newfile ${oldfile}TMP
+
+is supposed to move the converted temporary file(s) from its present location (typically in /tmp/) into the source folder. However, in FSL versions after 5.0.10, the immv call seems also to convert the file(s) to the default FSL format (.nii.gz). Thus, for example, if one is attempting to convert from the default .nii.gz to NIFTI_PAIR, the end result is .nii.gz, rather than the expected change to .img and .hdr files, despite .img and .hdr files transiently appearing in /tmp/. I tested this in fsl v.5.0.11 and v6.0.5 and observed similar behaviour. Version 5.0.9 and 5.0.10 work fine. 
+
+Dear Esteemed Researchers,
+Greetings!
+
+We are thrilled to invite you to the upcoming Thalamus Anatomy and Connectomics Conference, funded by the SPP-2041. The conference aims to dive deep into the fascinating and intricate thalamus. This event promises to be an enriching experience, fostering discussions and collaborations.
+
+📅 Date: October 30 – 31, 2023
+📍 Location: Max Planck Campus Tübingen, Germany
+
+Registration:
+The conference is free of charge. The onsite-registration is limited to approx. 50 participants. Please apply.
+
+https://www.tuebingen.mpg.de/thalamus
+
+We look forward to welcoming you to an intellectually stimulating and inspiring conference.
+
+Kindest regards,
+Organizing Team
+Thalamus Anatomy and Connectomics Conference
+
+Vinod Kumar
+Max Planck Institute for Biological Cybernetics
+Tuebingen, Germany.
+
+
+I would really appreciate an answer. I don’t see how to fix this issue. Thanks for all the help in advance.
+
+Best,
+RA.
+
+> On 25 Aug 2023, at 14:54, Andrade Rey René <rene.andrade@edu.uah.es> wrote:
+>
+> Dear FSL experts:
+>
+> I am having an issue processing task-based fMRI. I input all the information required to the FEAT GUI in Mac OSX and then when I check the report of registration I see highres to standard and also example_func are not correct. The red line doesn’t match the image. I had this issue with T1 and I used reorient2std and I fixed it. I did the same for fMRI but it won’t change much and then the registrations fails. What should I do? Registrations fails means in this context the results are not correct not that it stops or anything. So I obtain results until stats but then I don’t know if they are correct because the registration is wrong.  Let me know if you need further information for helping out.
+
+Hi Liv
+
+ 
+
+It is difficult to diagnose the problem without seeing the data. One thing you could do is run XTRACT using a different protocol to help diagnose. For example, if you copy the protocol for the cortico-spinal tract and remove the inclusion/exclusion masks (i.e. only keep the seed mask) what do the tracts look like? You can provide your own protocol folder using the -p otion (and you can copy the protocols from $FSLDIR/data/xtract_data/Human
+
+ 
+
+Cheers
+
+Saad
+
+Hi,
+
+I'm Daniel Kovacs and I'm writing to you because it seems I've encountered the same problem Jee Wong mentioned earlier. I'm really interested in tractography which would be helpful for me as a neurosurgical resident. That's why I will attend the online course in September. I've done everything according to the FSL Course page, downloaded the data, done the UNIX Intro which was incredibly helpful for me (I have zero experience regarding Linux, let alone FSL). During the UNIX Intro I've encountered the problem with fsleyes:
+
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+
+First I disregarded it thinking during the FSL intro it will be mentioned. It happens to be not mentioned, so I've read the messages you had with Jee Wong and it happens no answer came from them regarding the X system being used.
+
+I would give this info if needed, but I have no idea how.
+
+I'm really looking forward to reading your answer and solving this problem.
+
+Thank you!
+
+Best regards,
+Daniel
+
+Thank you! For the rotated bvecs would it be accurate to assume that the first shell values from the joint preprocessing should match the rotated bvecs from when the first shell was previously preprocessed independently (I would still spot check a few files once I have run the preprocessing but I want to make sure the assumption is on track)? If that is the case, then I think I can easily pull in that file if I use the fslroi method without having to figure out the right number of columns in the rotated bvecs file from the joint preprocessing.
+
+ 
+
+It does look like the sequences both had the same TE so select_dwi_vols seems like a good option if the solution above is unlikely to be adequate, but I’d prefer not to mix the b0s if possible.
+
+
+Hello,
+I'm currently trying to generate tractography of the left and right corticospinal tract in a cohort of haemorrhagic stroke patients. I can generate the expected maps for about half of my patients, but the other half have either one missing side, or both sides missing. I have been conducting this in the native diffusion space, and in the "masks" folder generated by extract, the seeds and the targets look as expected.
+This doesn't seem to be due to the haematoma interrupting the tracts, as often, the contralateral side is the side missing. Of course, due to the pathology I don't expect this to work perfectly, but I'm not sure why it's often completely failing.
+I have tried running in in standard space instead of native, but this doesn't seem to help. Is this an issue you have encountered before, and do you have any advice on how i should proceed?
+Best wishes,
+Liv
+
+########################################################################
+
+
+Dear Victoria,
+
+ 
+
+    Thank you for the assistance! I am proceeding with plans to concatenate the shells prior to preprocessing (using fslmerge -t).
+
+    
+
+    Question 1: For the bval and bvec files I plan to use cat to concatenate them, but when I tested this I noticed in the concatenated file the second shell values start on a new line. Will this be a problem when I run the script or will the new line be ok?
+
+ 
+
+The "lines" need to continue for both bvals and bvecs. You can use "cat" when you want to concatenate vertically and "paste" when you want to concatenate horizontally.
+
+   
+
+    Looking ahead, after preprocessing I will need to extract the first shell for dtifit.
+
+   
+
+    I believe I could do this with fslroi using the following:
+
+    fslroi <eddy corrected data file> <output file name> 0 <# of volumes in first shell>
+
+    Question 2: For the bval and bvec files I believe I would be able to use the originals from the first shell before concatenation for dtifit, but I wasn’t sure if I would also need to somehow update the eddy_rotated_bvecs file or what this file is used for (I believe the original bvec file is what I should be using for --bvecs= in dtifit?)
+
+ 
+
+This would work. Technically you should really use the rotated bvecs file (so you would need to extract the right number of columns from it). In practice it tends to have very little effect (rotated vs original) for subjects who don’t move excessively.
+
+    
+
+    I also saw I could use select_dwi_vols with the following:
+
+    select_dwi_vols < eddy corrected data file > <concatenated bval file> <output filename> 0 -b 1000 -obv <bvec file – not sure if this is the concatenated original bvec file or the eddy_rotated_bvecs?>
+
+    Question 3: I would assume the results would include all the b0s from the second shell in addition to those from the first shell and wasn’t sure if this would be a problem.
+
+   
+
+This would also work, and make life easier for you in the sense that the relevant columns of .bvec would be automatically extracted for you. Mixing the b0s _might_ be a problem if the two shells were acquired with different TE. If you left it to the scanner to decide on optimal TE there is a risk that you have a longer TE for the higher b-value shell.
+
+ 
+
+    Question 4: If both options are feasible, please let me know if either of these approaches has advantages over the other for extracting the first shell data after joint preprocessing.
+
+ 
+
+No, they should be equivalent, except for the practicalities outlined above.
+
+ 
+
+Best regards Jesper
+
+ 
+
+    
+
+    Thanks!
+
+   
+
+    ######################################################################################
+
+   
+
+    Dear Victoria,
+
+    
+
+        I am currently working on a project with multi shell data that I intend to use for NODDI analyses.
+
+       
+
+        The first shell of the data set has previously been used for FA analyses but no processing was done on the second shell.
+
+       
+
+        For context, the scanner sequence was as follows
+
+        b = 0 scan P>A
+
+        b = 1000, 42 directions with 1 b = 0 at the beginning and 5 b = 0 interspersed, A>P (first shell)
+
+        b = 2855, 83 directions with 1 b = 0 at the beginning and 10 b = 0 interspersed, A>P (second shell)
+
+      
+
+        When preprocessing the first shell the PA b = 0 was merged with the AP b = 0 from the beginning of the first shell for topup and creating the acquisition parameters file.
+
+       
+
+        Question 1: Is it possible/advisable to preprocess the second shell data separately using the same procedures that were previously used for the first shell and then concatenate the preprocessed data files afterwards so as not to repeat the preprocessing that was previously done with the first shell, or will that produce different results than if I concatenate the raw data and then preprocess the concatenated dataset?
+
+    
+
+    In terms of eddy current correction and "within shell" motion correction it would make very little difference. But re-running eddy on a file merging the two shells would be your easiest option to ensure that the two shells are accurately aligned with each other.
+
+      
+
+        Question 2: I am trying to determine the best choice for which b = 0 volumes to include for topup? Looking online I saw frequent posts advising that is best to include b = 0 volumes from each scan sequence, but reading through the archives here it seems like only 1 pair would be fine and I should choose the AP b = 0 that was collected closest in time to the PA scan. Based on that information I believe proceeding with just the PA and the first b = 0 of the first shell (as was used in the previous preprocessing of the first shell data) would be advisable but please let me know if I am misunderstanding.
+
+    
+
+    My suggestion is your second option, " just the PA and the first b = 0 of the first shell".
+
+    
+
+    Best regards Jesper
+
+    
+
+       
+
+        Thanks you for your assistance!
+
+        
+
+        Victoria
+
+   
+
+    
+
+    
+
+Dear FSL experts:
+
+I am having an issue processing task-based fMRI. I input all the information required to the FEAT GUI in Mac OSX and then when I check the report of registration I see highres to standard and also example_func are not correct. The red line doesn’t match the image. I had this issue with T1 and I used reorient2std and I fixed it. I did the same for fMRI but it won’t change much and then the registrations fails. What should I do? Registrations fails means in this context the results are not correct not that it stops or anything. So I obtain results until stats but then I don’t know if they are correct because the registration is wrong.  Let me know if you need further information for helping out.
+
+
+Best,
+Rene Andrade.
+########################################################################
+
+
+Hi Jesper,
+
+Thank you for the assistance! I am proceeding with plans to concatenate the shells prior to preprocessing (using fslmerge -t).
+
+Question 1: For the bval and bvec files I plan to use cat to concatenate them, but when I tested this I noticed in the concatenated file the second shell values start on a new line. Will this be a problem when I run the script or will the new line be ok?
+
+Looking ahead, after preprocessing I will need to extract the first shell for dtifit.
+
+I believe I could do this with fslroi using the following:
+fslroi <eddy corrected data file> <output file name> 0 <# of volumes in first shell>
+Question 2: For the bval and bvec files I believe I would be able to use the originals from the first shell before concatenation for dtifit, but I wasn’t sure if I would also need to somehow update the eddy_rotated_bvecs file or what this file is used for (I believe the original bvec file is what I should be using for --bvecs= in dtifit?)
+
+
+I also saw I could use select_dwi_vols with the following:
+select_dwi_vols < eddy corrected data file > <concatenated bval file> <output filename> 0 -b 1000 -obv <bvec file – not sure if this is the concatenated original bvec file or the eddy_rotated_bvecs?>
+Question 3: I would assume the results would include all the b0s from the second shell in addition to those from the first shell and wasn’t sure if this would be a problem.
+
+Question 4: If both options are feasible, please let me know if either of these approaches has advantages over the other for extracting the first shell data after joint preprocessing. 
+
+Thanks!
+
+######################################################################################
+
+Dear Victoria,
+ 
+    I am currently working on a project with multi shell data that I intend to use for NODDI analyses.
+   
+    The first shell of the data set has previously been used for FA analyses but no processing was done on the second shell.
+   
+    For context, the scanner sequence was as follows
+    b = 0 scan P>A
+    b = 1000, 42 directions with 1 b = 0 at the beginning and 5 b = 0 interspersed, A>P (first shell)
+    b = 2855, 83 directions with 1 b = 0 at the beginning and 10 b = 0 interspersed, A>P (second shell)
+  
+    When preprocessing the first shell the PA b = 0 was merged with the AP b = 0 from the beginning of the first shell for topup and creating the acquisition parameters file.
+   
+    Question 1: Is it possible/advisable to preprocess the second shell data separately using the same procedures that were previously used for the first shell and then concatenate the preprocessed data files afterwards so as not to repeat the preprocessing that was previously done with the first shell, or will that produce different results than if I concatenate the raw data and then preprocess the concatenated dataset?
+ 
+In terms of eddy current correction and "within shell" motion correction it would make very little difference. But re-running eddy on a file merging the two shells would be your easiest option to ensure that the two shells are accurately aligned with each other.
+  
+    Question 2: I am trying to determine the best choice for which b = 0 volumes to include for topup? Looking online I saw frequent posts advising that is best to include b = 0 volumes from each scan sequence, but reading through the archives here it seems like only 1 pair would be fine and I should choose the AP b = 0 that was collected closest in time to the PA scan. Based on that information I believe proceeding with just the PA and the first b = 0 of the first shell (as was used in the previous preprocessing of the first shell data) would be advisable but please let me know if I am misunderstanding.
+ 
+My suggestion is your second option, " just the PA and the first b = 0 of the first shell".
+ 
+Best regards Jesper
+ 
+  
+    Thanks you for your assistance!
+    
+    Victoria
+
+########################################################################
+

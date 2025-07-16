@@ -1,0 +1,1476 @@
+Hi,
+
+Thank you for the suggestions! 
+
+I tried to turn off the registration. But I cannot uncheck the Standard space. (The settings as the figure shown). I left it blank. But I got error for the 1st participants lower-level analyse file. It says as below. Is there a way to turn it off completly? Or I need to copy the template I used in AFNI? 
+
+
+Registration
+
+/bin/mkdir -p /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/reg
+
+Error: you have not selected any images to register to!
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/home/xiyuezh/fsl/bin/mainfeatreg -F 6.00 -d /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica -l /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/logs/feat2_pre -R /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/report_unwarp.html -r /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/report_reg.html  -i /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/example_func.nii.gz  -s  -y 3 -z 0 
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+child process exited abnormally
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+-I {
+   incr arginde..."
+    (file "/home/xiyuezh/fsl/bin/feat" line 312)
+Error encountered while running in main feat script, halting.
+child process exited abnormally
+
+
+
+Thank you so much!
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+On Nov 8, 2023, at 9:34 AM, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Xiyue,
+
+In addition to Taylor's comments, I'd also recommend that all files you pass into melodic have had fslreorient2std applied to them, so that they all have consistent voxel storage order.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Taylor Hanayik <taylor.hanayik@NDCN.OX.AC.UK>
+Sent: 08 November 2023 10:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] MELODIC output issue - registration
+ 
+Hi, 
+ 
+These errors could be caused by mixing tools or pipelines. AFNI_proc.py can potentially do a lot of processing. It looks like you have already done a registration via AFNI, so maybe you can omit the registration step in melodic and just use the stats and post-stats tabs, get the results, and then use your AFNI registration to warp output images as necessary (The AFNI developers can likely help with that if needed). Also, it looks like you may have had some pre-stats options turned on still since mcflirt was run in one of your logs (and AFNI proc should have done that already). Be sure that all pre-stats settings are really disabled (for example, you have to set spatial smoothing to 0 to disable it).
+ 
+Taylor Hanayik, PhD
+Research Software Engineer
+Wellcome Centre for Integrative Neuroimaging
+University of Oxford
+ 
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Xiyue Zhang <xiyue.zhang.2@ULAVAL.CA> Date: Tuesday, 7 November 2023 at 23:33 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: [FSL] MELODIC output issue - registration
+Hi FSL members,
+ 
+I am running MELODIC ICA to my 106 participants. But 3 of them had some registration problems. Could you please help to have a look at it? Thanks in advance!
+ 
+I pre-processed the data and convert them into talairach TT_27 with AFNI_proc.py before putting them into MELODIC. So no Pre-Stats settings in MELODIC. The registration setting is linear normal search, BBR. Standard space is MNI152_T1_2mm_brain. Linear normal search 12 DOF (as shown in screenshot).
+ 
+<MELODIC_RegistrationSetting.png>
+ 
+The nii.gz files in ~/reg_standard have less resolusion (30*36*30 voxels) than the other participants (91*109*91). 
+ 
+The highres2standard and example_func2highres_fast_wmseg.nii.gz looks good. The following files in the reg folder are abnormal.
+example_func.nii.gz
+example_func2standard.nii.gz
+example_func2highres.png
+example_func2standard.png
+example_func2standard1.png
+ 
+For participant #1, the registration is good if I set the Seclet main structural Images as “No search, 6 DOF”, the Standard space as “Normal search 6 DOF”. But there will be more other participants have registration problems. The log is the same of the other participants.
+ 
+(example_func2highres.png attached) 
+<example_func2highres.png>
+ 
+ 
+For the participant #2 and #3, the first line of example_func2highres.png is empty. They cannot be fixed whatever settings I set. In the log they say: 
+ 
+Preprocessing:Stage 2
+
+/home/xiyuezh/fsl/bin/mcflirt -in prefiltered_func_data -out prefiltered_func_data_mcf -mats -plots -reffile example_func -rmsrel -rmsabs -spline_final
+WARNING::in calculating COG, total = 0.0
+WARNING::in calculating COG, total = 0.0
+……
+WARNING::in calculating COG, total = 0.0
+ 
+/bin/mkdir -p mc ; /bin/mv -f prefiltered_func_data_mcf.mat prefiltered_func_data_mcf.par prefiltered_func_data_mcf_abs.rms prefiltered_func_data_mcf_abs_mean.rms prefiltered_func_data_mcf_rel.rms prefiltered_func_data_mcf_rel_mean.rms mc
+ 
+/home/xiyuezh/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated rotations (radians)' -u 1 --start=1 --finish=3 -a x,y,z -w 640 -h 144 -o rot.png 
+ 
+/home/xiyuezh/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated translations (mm)' -u 1 --start=4 --finish=6 -a x,y,z -w 640 -h 144 -o trans.png 
+ 
+/home/xiyuezh/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png 
+ 
+/home/xiyuezh/fsl/bin/fslstats prefiltered_func_data_mcf -p 2 -p 98
+-0.766154 0.762543 
+ 
+/home/xiyuezh/fsl/bin/fslmaths example_func -mul 0 -add 1 mask -odt char
+ 
+/home/xiyuezh/fsl/bin/fslstats prefiltered_func_data_mcf -p 90
+0.161489 
+ 
+/home/xiyuezh/fsl/bin/fslmaths prefiltered_func_data_mcf -mul 61923.72235879843 prefiltered_func_data_intnorm
+ 
+/home/xiyuezh/fsl/bin/fslmaths prefiltered_func_data_intnorm filtered_func_data
+ 
+/home/xiyuezh/fsl/bin/fslmaths filtered_func_data -Tmean mean_func
+ 
+/home/xiyuezh/fsl/bin/fslstats filtered_func_data -R | awk '{ print  }' -
+-10269906.000000
+ 
+/bin/rm -rf prefiltered_func_data*
+ 
+ 
+<example_func2highres.png>
+ 
+ 
+ 
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+ 
+ 
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi,
+
+Thank you for the suggestions! 
+
+I tried to turn off the registration. But I cannot uncheck the Standard space. (The settings as the figure shown). I left it blank. But I got error for the 1st participants lower-level analyse file. It says as below. Is there a way to turn it off completly? Or I need to copy the template I used in AFNI? 
+
+Registration
+
+/bin/mkdir -p /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/reg
+
+Error: you have not selected any images to register to!
+
+FATAL ERROR ENCOUNTERED:
+COMMAND:
+/home/xiyuezh/fsl/bin/mainfeatreg -F 6.00 -d /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica -l /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/logs/feat2_pre -R /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/report_unwarp.html -r /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/report_reg.html  -i /scratch/xiyuezh/FRQNT_rs/AllParticipants/errts.F002_GroupICAResults++.ica/example_func.nii.gz  -s  -y 3 -z 0 
+ERROR MESSAGE:
+child process exited abnormally
+END OF ERROR MESSAGE
+child process exited abnormally
+    while executing
+"if { [ catch {
+
+for { set argindex 1 } { $argindex < $argc } { incr argindex 1 } {
+    switch -- [ lindex $argv $argindex ] {
+
+-I {
+   incr arginde..."
+    (file "/home/xiyuezh/fsl/bin/feat" line 312)
+Error encountered while running in main feat script, halting.
+child process exited abnormally
+
+
+
+Thank you so much!
+
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+On Nov 8, 2023, at 9:34 AM, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+Hi Xiyue,
+
+In addition to Taylor's comments, I'd also recommend that all files you pass into melodic have had fslreorient2std applied to them, so that they all have consistent voxel storage order.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Taylor Hanayik <taylor.hanayik@NDCN.OX.AC.UK>
+Sent: 08 November 2023 10:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] MELODIC output issue - registration
+ 
+Hi, 
+ 
+
+These errors could be caused by mixing tools or pipelines. AFNI_proc.py can potentially do a lot of processing. It looks like you have already done a registration via AFNI, so maybe you can omit the registration step in melodic and just use the stats and post-stats tabs, get the results, and then use your AFNI registration to warp output images as necessary (The AFNI developers can likely help with that if needed). Also, it looks like you may have had some pre-stats options turned on still since mcflirt was run in one of your logs (and AFNI proc should have done that already). Be sure that all pre-stats settings are really disabled (for example, you have to set spatial smoothing to 0 to disable it).
+ 
+
+Taylor Hanayik, PhD
+Research Software Engineer
+Wellcome Centre for Integrative Neuroimaging
+University of Oxford
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Xiyue Zhang <xiyue.zhang.2@ULAVAL.CA>
+Date: Tuesday, 7 November 2023 at 23:33
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] MELODIC output issue - registration
+
+Hi FSL members,
+ 
+
+I am running MELODIC ICA to my 106 participants. But 3 of them had some registration problems. Could you please help to have a look at it? Thanks in advance!
+ 
+
+I pre-processed the data and convert them into talairach TT_27 with AFNI_proc.py before putting them into MELODIC. So no Pre-Stats settings in MELODIC. The registration setting is linear normal search, BBR. Standard space is MNI152_T1_2mm_brain. Linear normal search 12 DOF (as shown in screenshot).
+ 
+
+<MELODIC_RegistrationSetting.png>
+ 
+
+The nii.gz files in ~/reg_standard have less resolusion (30*36*30 voxels) than the other participants (91*109*91). 
+ 
+
+The highres2standard and example_func2highres_fast_wmseg.nii.gz looks good. The following files in the reg folder are abnormal.
+example_func.nii.gz
+example_func2standard.nii.gz
+example_func2highres.png
+example_func2standard.png
+example_func2standard1.png
+ 
+
+For participant #1, the registration is good if I set the Seclet main structural Images as “No search, 6 DOF”, the Standard space as “Normal search 6 DOF”. But there will be more other participants have registration problems. The log is the same of the other participants.
+ 
+
+(example_func2highres.png attached) 
+<example_func2highres.png>
+ 
+
+ 
+
+For the participant #2 and #3, the first line of example_func2highres.png is empty. They cannot be fixed whatever settings I set. In the log they say: 
+ 
+
+Preprocessing:Stage 2
+
+/home/xiyuezh/fsl/bin/mcflirt -in prefiltered_func_data -out prefiltered_func_data_mcf -mats -plots -reffile example_func -rmsrel -rmsabs -spline_final
+WARNING::in calculating COG, total = 0.0
+WARNING::in calculating COG, total = 0.0
+……
+WARNING::in calculating COG, total = 0.0
+ 
+/bin/mkdir -p mc ; /bin/mv -f prefiltered_func_data_mcf.mat prefiltered_func_data_mcf.par prefiltered_func_data_mcf_abs.rms prefiltered_func_data_mcf_abs_mean.rms prefiltered_func_data_mcf_rel.rms prefiltered_func_data_mcf_rel_mean.rms mc
+ 
+/home/xiyuezh/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated rotations (radians)' -u 1 --start=1 --finish=3 -a x,y,z -w 640 -h 144 -o rot.png 
+ 
+/home/xiyuezh/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf.par -t 'MCFLIRT estimated translations (mm)' -u 1 --start=4 --finish=6 -a x,y,z -w 640 -h 144 -o trans.png 
+ 
+/home/xiyuezh/fsl/bin/fsl_tsplot -i prefiltered_func_data_mcf_abs.rms,prefiltered_func_data_mcf_rel.rms -t 'MCFLIRT estimated mean displacement (mm)' -u 1 -w 640 -h 144 -a absolute,relative -o disp.png 
+ 
+/home/xiyuezh/fsl/bin/fslstats prefiltered_func_data_mcf -p 2 -p 98
+-0.766154 0.762543 
+ 
+/home/xiyuezh/fsl/bin/fslmaths example_func -mul 0 -add 1 mask -odt char
+ 
+/home/xiyuezh/fsl/bin/fslstats prefiltered_func_data_mcf -p 90
+0.161489 
+ 
+/home/xiyuezh/fsl/bin/fslmaths prefiltered_func_data_mcf -mul 61923.72235879843 prefiltered_func_data_intnorm
+ 
+/home/xiyuezh/fsl/bin/fslmaths prefiltered_func_data_intnorm filtered_func_data
+ 
+/home/xiyuezh/fsl/bin/fslmaths filtered_func_data -Tmean mean_func
+ 
+/home/xiyuezh/fsl/bin/fslstats filtered_func_data -R | awk '{ print  }' -
+-10269906.000000
+ 
+/bin/rm -rf prefiltered_func_data*
+ 
+
+ 
+
+<example_func2highres.png>
+ 
+
+ 
+
+ 
+
+Best,
+Xiyue Zhang
+PhD candidate in Neuroscience/Doctorante en Neuroscience
+Speech and hearing Neuroscience Laboratory/Laboratoire des neurosciences de la parole et de l’audition
+Université Laval
+Email/Courrier: xiyue.zhang.2@ulaval.ca 
+Hear my name
+
+Hi,
+
+I adapted the design.ods file (below) for my dataset, and would like to know if this looks appropriate for a single-group (within-subjects) design, examining the effects of time (T1, T2) on conditions of interest ("neutral", "reward").
+
+If this is an appropriate design, is it correct to also model exchangeability by this convention, where there are two blocks per individual subject for the effects of time (T1, T2)? That is, if I'm using this model with PALM.
+
+Thank you in advance for your consideration and guidance!
+
+--Rachel
+
+On Wed, 25 Oct 2017 15:41:45 -0200, Anderson M. Winkler <winkler@FMRIB.OX.AC.UK> wrote:
+
+>Hi Lauren,
+>
+>In the first case, the 2x2 means four conditions within-subject, whereas
+>the second the 2x3 means six conditions. So the design would consider,
+>respectively, 4 or 6 measurements per subject, and the contrasts would be
+>assembled accordingly.
+>
+>Please see an example for the 2x2 case here: https://s3-us-west-2.
+>amazonaws.com/andersonwinkler/mailinglist/design_lauren.ods
+>
+>For the 2x3 you'd expand the design to accommodate the 6 conditions and
+>then build the contrasts in the same way.
+>
+>Hope this helps.
+>
+>All the best,
+>
+>Anderson
+>
+>
+>On 12 October 2017 at 00:36, Lauren Zajac <lauren.e.zajac@gmail.com> wrote:
+>
+>> Hello FSL experts!
+>>
+>> I'm having some trouble setting up two different repeated measures ANOVAs
+>> in FEAT with 15 subjects.  The first repeated measures ANOVA has 2 factors
+>> with 2 levels each, both factors are fixed effects.  The second repeated
+>> measures ANOVA has 2 factors, one with 2 levels and the other with 3
+>> levels, both fixed effects.  I've looked through the GLM page but haven't
+>> been able to figure out how to translate the examples to my data.  Any
+>> guidance you have would be appreciated!!
+>>
+>> Best,
+>> Lauren
+>>
+>
+
+
+Markus,
+
+ 
+
+That is strange and sounds like numerical issues with the two component (arterial plus tissue) model fitting. What are the PLDs in your data? It is possible that there is some artifact in the data that could be causing this, certainly something we haven’t seen in other data where the model is fine.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Sir Peter Mansfield Imaging Centre 
+
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+ 
+
+Precision Imaging Beacon Hub 
+
+Room A39f, A floor 
+
+Medical School, QMC 
+
+Nottingham, NG7 2UH 
+
+ 
+
+Books for biomedical engineering (physiology and imaging): 
+
+PhysiologyforEngineers.org 
+
+ 
+
+Books for neuroimaging: 
+
+NeuroimagingPrimers.org
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Markus Fahlström <markus.fahlstrom@UU.SE>
+Date: Tuesday, 7 November 2023 at 11:31
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Help on FSL Basil
+
+You don't often get email from markus.fahlstrom@uu.se. Learn why this is important
+
+Hi Michael,
+
+ 
+
+Thanks for your response, its highly appreciated.
+
+ 
+
+I have tested w/wo dispersion and that does not help. It runs as intended with –artoff. And I just tested with –artonly and it run nicely and produced similar results as displayed in Part 6 video.
+
+ 
+
+I also found the issue posted in oxasl github, https://github.com/physimals/oxasl/issues/14.
+
+So one conclusion could be that the data is simply not good enough.
+
+ 
+
+Markus
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Michael Chappell <000079f9f909e19d-dmarc-request@JISCMAIL.AC.UK>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Tuesday, 7 November 2023 at 11:26
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Help on FSL Basil
+
+ 
+
+If you run your analysis without the Gamma dispersion, does it complete okay? It would be good to confirm whether a standard analysis runs first. The dispersion model can be quite slow to run (as it involves a numerical convolution) and could be more prone to issues with convergence.
+
+ 
+
+Michael
+
+ 
+
+---
+
+Michael Chappell MEng DPhil SFHEA 
+
+Professor of Biomedical Imaging 
+
+Deputy Head of School – School of Medicine
+
+ 
+
+Sir Peter Mansfield Imaging Centre 
+
+School of Medicine 
+University of Nottingham 
+
+EA: Linda Allsop MS-SoM-Exec-Supp@exmail.nottingham.ac.uk
+
++44 (0) 115 82 32864 | physimals.org | nottingham.ac.uk 
+
+ 
+
+Precision Imaging Beacon Hub 
+
+Room A39f, A floor 
+
+Medical School, QMC 
+
+Nottingham, NG7 2UH 
+
+ 
+
+Books for biomedical engineering (physiology and imaging): 
+
+PhysiologyforEngineers.org 
+
+ 
+
+Books for neuroimaging: 
+
+NeuroimagingPrimers.org
+
+ 
+
+ 
+
+Hello everyone!
+I have a bit of a conundrum. I want to get a warp from my diffusion space to MNI152 space. I found 2 approaches:
+
+1) The more simple way is to use TBSS with the FMRIB58_FA_1mm template.
+2) The more complicated way is to coregister T1 to nodif image, T1 to MNI152 template, and then use convertwarp to get a singular transformation from diff to MNI152
+
+As the first approach is more elegant, I would prefer it to work. But when I checked the transformations, I noticed the edges of the brain from TBSS coregistration do not align with the MNI152 mask. I then noticed that the edges of the FMRIB58_FA_1mm template itself do not align with the MNI152 template. When I used the second approach, the alignment with MNI152 was fine.
+The reason I need the transformation is to get a cortical mask from MNI152 space to the native diffuction space. If I use the first approach, the mask overreaches. With the second one, the mask fits.
+
+The only explanation I can think of is that the FMRIB58_FA_1mm template does not perfectly fit the MNI152 template. Am I missing something?
+
+In the attachment I send images of the alignment in the standard space and the alignment of tranformed masks from FMRIB and MNI152 spaces.
+
+Best wishes,
+Stan
+
+########################################################################
+
+
+Hi experts,
+
+ 
+
+I am trying to run dual_regression but keep on getting Out-of-Memory errors:
+
+ 
+
+Warning: job on queue attempted to submit more jobs -running jobs using shell plugin instead.
+
+Error submitting job - Errors occured when running array task in shell plugin: Task 1 failed executing: /opt/fmrib/fsl/bin/fslmaths 001/001_clean_1dot5smooth_noPNM.feat/rest4d_standard -Tstd -bin Test_full_dual_ICA25.dr/mask_00000 -odt char (Image Exception : #99 :: Out of memory
+
+terminate called after throwing an instance of 'std::runtime_error'
+
+  what():  Out of memory
+
+)
+
+Task 2 failed executing: /opt/fmrib/fsl/bin/fslmaths 002/002_clean_1dot5smooth_noPNM.feat/rest4d_standard -Tstd -bin Test_full_dual_ICA25.dr/mask_00001 -odt char (Image Exception : #99 :: Out of memory
+
+terminate called after throwing an instance of 'std::runtime_error'
+
+  what():  Out of memory
+
+)
+
+Task 3 failed executing: /opt/fmrib/fsl/bin/fslmaths 003/003_clean_1dot5smooth.feat/rest4d_standard -Tstd -bin Test_full_dual_ICA25.dr/mask_00002 -odt char (Image Exception : #99 :: Out of memory
+
+terminate called after throwing an instance of 'std::runtime_error'
+
+  what():  Out of memory
+
+………
+
+script seems to have stopped at drA. If I run manually:
+
+ 
+
+fslmaths 001/001_clean_1dot5smooth_noPNM.feat/rest4d_standard.nii.gz -Tstd -bin Test3_10subj_dual_ICA25.dr/mask_00000 -odt char
+
+ 
+
+The Error message is:
+
+ 
+
+Image Exception : #22 :: Failed to read volume 001/001_clean_1dot5smooth_noPNM.feat/rest4d_standard.nii.gz
+
+Error : std::bad_alloc
+
+terminate called after throwing an instance of 'std::runtime_error'
+
+  what():  Failed to read volume 001/001_clean_1dot5smooth_noPNM.feat/rest4d_standard.nii.gz
+
+Error : std::bad_alloc
+
+Aborted
+
+ 
+
+I have a big dataset (68 subjects;7T; 400 time points), however the same errors appear when I test with only 4 subjects.
+
+ 
+
+Log file for one test run: /home/fs0/qiulin/scratch/BBB_COVID/SUBJ/Test4_4subj_dual_ICA25.dr/scripts+logs
+
+ 
+
+Look forward to hearing your suggestions!
+
+ 
+
+Best wishes,
+
+Lin
+
+-- 
+
+Lin Qiu
+DPhil Student
+
+University of Oxford, Nuffield Department of Clinical Neurosciences
+
+John Radcliffe Hospital, Oxford OX3 9DU
+Email: lin.qiu@ndcn.ox.ac.uk
+
+ 
+
+ 
+
+ 
+
+
+
+A quick followup: I just tested the same command mentioned in my first message, with the "--shiftdir" option using each direction (--shiftdir=x, --shiftdir=y, etc.) with the same shiftmap input, and the resulting warp volume was virtually identical in every case. Is there something I am missing in order for these volumes to appear identical regardless of the intended shift direction?
+
+Thanks!
+
+Maeve
+
+########################################################################
+
+
+Hi FSL users,
+
+ 
+
+I'm using an ARM64-based MacOS 13.6.1 and Python 3.11.6 installed via Homebrew. Upon running the latest fslinstaller.py 3.5.6, I encountered the following error:
+
+ssl.SSLError: [SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled (_ssl.c:1006)
+
+ 
+
+This error is a result of the latest SSL version disabling the old SSL protocol, as discussed in this thread: https://stackoverflow.com/questions/71603314/ssl-error-unsafe-legacy-renegotiation-disabled. To address this, I followed the workaround outlined in the thread to re-enable UnsafeLegacyRenegotiation. I hope this information proves helpful to other users on the mailing list.
+
+ 
+
+Now, I was stuck at Installing FSL into /Users/xxx/fsl... 10% like many other Mac users. Below is the last line of the log.
+
+Running /Users/xxx/fsl/bin/mamba env update -n base -f /private/var/folders/dm/xxx/T/tmpxldudbf8/fsl-6.0.7.4_macos-M1.yml [as admin: False]
+
+ 
+
+Cecil Chern-Chyi Yen
+
+Staff Scientist
+
+NINDS, National Institutes of Health
+
+Phone: +1 301-594-3031
+
+Address: 49 Convent Dr Rm 3C84, Bethesda MD 20892-4478
+
+IntraWeb: https://nif.nimh.nih.gov/
+
+
+
+
+Hi,
+
+I adapted the design.ods file (below) for my dataset, and would like to know if this looks appropriate for a single-group (within-subjects) design, examining the effects of time (T1, T2) on conditions of interest ("neutral", "reward").
+
+If this is an appropriate design, is it correct to also model exchangeability by this convention, where there are two blocks per individual subject for the effects of time (T1, T2)? That is, if I'm using this model with PALM.
+
+Thank you in advance for your consideration and guidance!
+
+--Rachel
+
+########################################################################
+
+
+Hello fellow FSLers,
+
+I have a longitudinal fMRI dataset that I'll be analyzing with SWE. I'd like to examine a main effect of diagnosis (2 groups), and the group by time interaction while controlling for age and site. Is the following model set up appropriately?
+
+design.mat:
+
+grp1      grp2     grp1age           grp2age         grp1ageDiff      grp2ageDiff    site
+1       0       -0.728  0       -1.023  0       -1
+1       0       -0.728  0       -0.023  0       1
+1       0       -0.728  0       1.046   0       -1
+0       1       0       0.277   0       -0.66   -1
+0       1       0       0.277   0       0.66    1
+
+Here, grp[x]age corresponds to mean across timepoints, with grand mean subtracted. grp[x]ageDiff corresponds to difference between grp[x]age and mean age for that participant across timepoints. Site is coded as -1 for one site, and 1 for the other site.
+
+design.sub:
+
+id      timepoint       group
+18411   1       1
+18411   3       1
+22501   3       1
+22585   1       1
+22585   3       1
+
+In our study, participants could have up to 4 timepoints. However, some participants however have fewer usable timepoints due to noise, etc (e.g., 18411's time 2 scan is too noisy). In this case, should we rename timepoints as 1 and 2 (instead of 1 and 3)?
+
+Thank you!
+Lara
+
+########################################################################
+
+
+Holly, could you please share resources for getting --index and --acqp to run eddy?
+
+Thanks!
+
+best,
+Linda
+
+
+On Fri, Oct 27, 2023 at 5:34 PM Holly Sullivan-Toole <hollysully@gmail.com> wrote:
+Hi Linda,
+You can run eddy without using topup (which requires a fieldmap). If the solution posted in the previous reply doesn't work, I am happy to share resources with you for getting --index    and --acqp to run eddy. I ran eddy without topup and used the data for TBSS and it worked fine. (I plan on trying the solution posted in the previous reply before I run tractography).
+
+Best,
+Holly
+
+########################################################################
+
+Hi all,
+
+I am running a test where I an trying to produce a distortion correction warp volume using the B0 map, and am running into an issue when confirming my results against topup. I ran topup using a phase encoding dwell time value of 0.0513 in the parameter acquisition file and output the estimated B0 field and a 3D warp volume. I then divided the topup-estimated B0 field by the dwell time (0.0513) to produce a pixel shift map, and used "convertwarp" to convert the shiftmap into a warp volume using:
+
+"convertwarp  --shiftmap=shiftmap --out=outputwarp --ref=reference volume"
+
+(I also tested the use of  "--shiftdir" to specify the phase encoding direction, which yielded an almost identical output warp as the one produced without a directional specification.)
+
+ My assumption was that these would have the same results; however, the y-volume of the shiftmap-produced warp is of a much smaller magnitude than y-volume of the topup-produced warp, and the shiftmap-produced warp had values in the x- and z-volumes whereas the topup-produced warp contained all zeros in the x- and z-volumes. Am I missing a step or making an incorrect assumption when taking the shiftmap approach, or is there something done in topup that I'm not aware of that would make the output warp different in y-magnitude and in x- and z-components?
+
+Thanks!
+
+Best,
+Maeve
+
+We've seen this before in some of our data sets when the FOV is tight.
+We padded the images prior to processing with "dummy" zero slices and this fixed the truncating in the eddy call.
+
+Just be aware of adjusting the slice timing file to reflect the dummy slices.
+
+Thanks,
+Jeanette
+
+Hello,
+
+We noticed that the many of our eddy corrected images are truncated (mostly superior slices), with some images having large truncations. We checked the eddy_outlier_report, but it doesn't seem like the images with larger truncations necessarily have more slices identified as motion. The raw images and topup corrected images do not have this problem.
+
+Below is our eddy call:
+eddy --imain="$OUT_DIR"/$iSub/AP_PA_scan \
+     --mask="$OUT_DIR"/$iSub/hifi_nodif_brain_mask \
+     --index="$OUT_DIR"/$iSub/index.txt \
+     --acqp="$OUT_DIR"/$iSub/acqparams.txt \
+     --bvecs="$OUT_DIR"/$iSub/bvecs \
+     --bvals="$OUT_DIR"/$iSub/bvals \
+     --fwhm=0 \
+     --topup="$OUT_DIR"/$iSub/topup_AP_PA_b0 \
+     --flm=quadratic \
+     --out="$OUT_DIR"/$iSub/eddy_unwarped_images \
+     --data_is_shelled \
+     --fep \
+     --resamp=lsr
+
+Could we please have some help on this issue? I am happy to send over example images privately if needed. Our diffusion images are concatenated 98 AP, 99 AP, 98 PA, 99 PA directions.
+
+Thank you so much for the help.
+
+Best,
+Ann
+
+
+Hi,
+
+ 
+
+In that case, the most likely reason for empty files is bad registrations. Have you checked whether the registrations worked? You could warp the FA map to MNI152 standard space to assess alignment.
+
+ 
+
+Also, have you checked the log files? These should be under /scratch/nsafari/Tractography/331.bedpostX/UF_R/logs. This may give some more insight into what is happening.
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+Hi Shaun,
+
+I am using SLURM to run xtract.
+This is the code I used in slurm:
+
+xtract -bpx /scratch/nsafari/Tractography/331.bedpostX -out /scratch/nsafari/Tractography/331.bedpostX/UF_R -species HUMAN -stdwarp /scratch/nsafari/Tractography/331.bedpostX/xfms/standard2diff.nii.gz /scratch/nsafari/Tractography/331.bedpostX/xfms/diff2standard.nii.gz
+
+You are right. This is my output folder for one of the subjects and all the .nii.gz files are blank.
+
+Hi Cory,
+
+This is not possible via the FSLeyes command line interface,  but can be accomplished with a custom script. For example, you can save the following code to a file e.g. "mylayout.py":
+
+ortho1 = frame.addViewPanel(OrthoPanel)
+ortho2 = frame.addViewPanel(OrthoPanel)
+
+ortho1.sceneOpts.showXCanvas = False
+ortho1.sceneOpts.showYCanvas = False
+ortho2.sceneOpts.showXCanvas = False
+ortho2.sceneOpts.showYCanvas = False
+
+And then call FSLeyes like:
+
+fsleyes -r mylayout.py image1 image2 image3
+
+All of the options available on ortho panels can be perused at: https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/apidoc/fsleyes.displaycontext.orthoopts.html
+
+Paul
+
+Hi Nooshin,
+
+ 
+
+Are you directly running xtract? What is your xtract call?
+
+ 
+
+fdt_paths.nii.gz isn’t an output of xtract so I’m not sure what you’re doing to obtain your results. When you call xtract, it will generate a file called densityNorm.nii.gz. This is your main result that you should check.
+
+ 
+
+Thanks,
+
+Shaun.
+
+ 
+
+-----------------------------------------------------------
+Shaun Warrington, PhD
+Research Fellow
+
+Sir Peter Mansfield Imaging Centre & Precision Imaging Beacon
+
+Division of Clinical Neurosciences, School of Medicine
+University of Nottingham
+
+w: https://swarrington1.github.io/
+----------------------------------------------------------- 
+
+Perfectly working! Thanks to all for your precious support and responsiveness!
+
+Il giorno 8 nov 2023, alle ore 15:08, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> ha scritto:
+
+Actually, after doing some more research, I suspect that my earlier suggestion won't work. This looks like an unresolved issue in mamba, the framework that we use for installing FSL.
+
+Could you try running the installer like this instead:
+
+python ./fslinstaller.py --conda
+
+Paul
+
+To Whom It May Concern,
+
+ 
+
+We are in the process of migrating users in our lab from fslview to fsleyes for image viewing.
+
+ 
+
+There are some series types the Medical Imaging Analysts (MIA) had two single mode, horizonal views in fslview that they need in fsleyes. The options passed to fslview were: fslview -m single,single -v 1,1 file [displayOpts] file [displayOpts] ...
+
+ 
+
+How can this be programmatically accomplished in fsleyes? I realize MIA can manually open another ortho view once fsleyes is started but they are requesting the application start with two axial views. They do this so they have the anatomy on one side why they edit the mask in the other.
+
+ 
+
+Once I had two ortho views open, I did save the layout, but that layout is saved as a pickle file in /home/<user>/.config/fsleyes. I considered deploying the pickle file to all users but that is cumbersome, especially as new users join the lab and may not wrk anyway as the pickle files contain many settings and layouts easily removed.
+
+ 
+
+We are currently using fsleyes -ms -s default --hidex --hidey -lo horizontal file [displayOpts] file [displayOpts] ... but that only gets us the one view in the layout.
+
+ 
+
+In sum, what are the options to programmatically start fsleyes with a similar view to the following where the layout is available to all users?
+
+Hi Xiyue,
+
+In addition to Taylor's comments, I'd also recommend that all files you pass into melodic have had fslreorient2std applied to them, so that they all have consistent voxel storage order.
+
+Paul
+Hi Shaun and XTRACT experts,
+
+Thanks a lot for such a thorough reply.
+Unfortunately, I am still getting my subjects to return empty outputs in fdt_paths.nii.gz -R while applying XTRACT. I don't have access to GPUs so I skipped that. And I stick with the default probtrackx options like you suggested. 
+Is there a way to troubleshoot?
+
+Thank you so much for your assistance.
+
+
+
+Warm regards,
+
+Nooshin
+
+
+Actually, after doing some more research, I suspect that my earlier suggestion won't work. This looks like an unresolved issue in mamba, the framework that we use for installing FSL.
+
+Could you try running the installer like this instead:
+
+python ./fslinstaller.py --conda
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: 08 November 2023 13:40
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FSL installation error
+ 
+Hi Michelangelo,
+
+We think that this is due to an issue with the latest version of macOS. Can you try re-running the installer like so?
+
+LC_MESSAGES=C python ./fslinstaller.py
+
+Hi Michelangelo,
+
+We think that this is due to an issue with the latest version of macOS. Can you try re-running the installer like so?
+
+LC_MESSAGES=C python ./fslinstaller.py
+
+Paul
+
+
+Hi,
+
+ 
+
+Could you share the contents of the log file that the installer created? It may contain more details to help diagnose the issue.
+
+ 
+
+/Users/michelangelo/fsl_installation_20231108134135.log
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+Apologize a typo, MacOS is Sonoma 14.1.1
+
+Il giorno 8 nov 2023, alle ore 13:49, Michelangelo Fabbrizzi <michefabb@gmail.com> ha scritto:
+
+Dear Sirs,
+
+I installed FSL for macOS Sonoma1.4.1.1 on a Mac with Apple Silicon M3Pro.
+I get the following message (see screenshot attached). Can you help me? I can send privately the log file if needed.
+
+Appreciated!
+
+Michelangelo
+
+Dear Sirs,
+
+I installed FSL for macOS Sonoma1.4.1.1 on a Mac with Apple Silicon M3Pro.
+I get the following message (see screenshot attached). Can you help me? I can send privately the log file if needed.
+
+Appreciated!
+
+Michelangelo
+
+This paper describes the problems in detail:
+
+ 
+
+https://www.pnas.org/doi/abs/10.1073/pnas.1801582115
+
+ 
+
+Matt.
+
+ 
+
+Hi Matt,
+
+ 
+
+Why?
+
+ 
+
+Please kindly note that the 1.5mm resolution is for each subject’s res4d.nii.gz files.
+
+ 
+
+Best,
+
+Lin
+
+Thank you, Taylor!
+
+ 
+
+Yes I am having melodic doing the concatenation for me by inputting the .txt file, as stated in the MRI course.
+
+ 
+
+I have just tried fsl_sub -R 96 last night and it worked.
+
+ 
+
+Thank you.
+
+ 
+
+Best wishes,
+
+Lin
+
+There is no way you are maintaining 1.5mm isotropic resolution across subjects with a volume-based registration to MNI space.
+
+ 
+
+Matt.
+
+Hi Saad,
+
+thank you for your email. This issue has been resolved by adding string "group" to the group.txt and making sure entries match in both list and group.
+
+Regards
+Mariana
+
+########
+
+Hi,
+
+ 
+
+That’s a large dataset if you have already done the concatenation yourself. You can roughly calculate the RAM required by doing:
+
+ 
+
+182*218*182*400*68*32 = 6285186252800 bits or 785.6 GB
+
+ 
+
+Where 182, 218, 182 are the spatial dimensions of the MNI 1mm template, 400 is the number of volumes for each participant, 68 is the number of participants, and 32 is the number of bits per voxel (assuming floating point data, change this if your data is not floating point).
+
+ 
+
+You can avoid this by having melodic do the concatenation for you if you pass in a text file with the names of the files to include. This will use a memory efficient method.
+
+ 
+
+The FSL course group ICA practical has some examples and additional info.  https://open.win.ox.ac.uk/pages/fslcourse/practicals/ica/index.html#gica
+
+ 
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+ 
+
+Hi,
+
+ 
+
+These errors could be caused by mixing tools or pipelines. AFNI_proc.py can potentially do a lot of processing. It looks like you have already done a registration via AFNI, so maybe you can omit the registration step in melodic and just use the stats and post-stats tabs, get the results, and then use your AFNI registration to warp output images as necessary (The AFNI developers can likely help with that if needed). Also, it looks like you may have had some pre-stats options turned on still since mcflirt was run in one of your logs (and AFNI proc should have done that already). Be sure that all pre-stats settings are really disabled (for example, you have to set spatial smoothing to 0 to disable it).
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+Hi FSL members,
+
+I am running MELODIC ICA to my 106 participants. But 3 of them had some registration problems. Could you please help to have a look at it? Thanks in advance!
+
+I pre-processed the data and convert them into talairach TT_27 with AFNI_proc.py before putting them into MELODIC. So no Pre-Stats settings in MELODIC. The registration setting is linear normal search, BBR. Standard space is MNI152_T1_2mm_brain. Linear normal search 12 DOF (as shown in screenshot).
+
+Hello experts,
+
+ 
+
+I am running Melodic on a concatenated data of N=68 subjects, each with 400 time points, and at 1.5 * 1.5 * 1.5 resolution registered to a 1mm MNI brain.
+
+ 
+
+Please can you suggest what RAM would be necessary to run this? I have tried 32GB and it doesn’t seem to be enough. I
+
+ 
+
+saw a previous mailing list questions suggesting 64GB for one subject. I do not wish to crash the cluster so your feedback would be very helpful!
+
+ 
+
+Thank you ever so much.
+
+Best wishes,
+
+Lin  
+
+
+
+
+Hi all
+
+Would you please help me with this issue?
+I have a 2x2x2 mixed-design experiment with three factors:
+1.      Conditions (drug and placebo, cross-over design)
+2.      Time (morning and afternoon, parallel design)
+3.      Method (injection and oral, parallel design)
+This results in four groups, each with 40 participants, and two sessions per participants (placebo and drug).
+For the design matrix, I've used ANOVA with three factors and two levels, as guided by the FSL website. I've created 8 EVs, 7 contrasts, and 7 F-tests. However, I've realized that this design doesn't account for the fact that I have the same subjects for both the placebo and drug sessions. Consequently, I'm getting different variances for the same group.
+I have two questions about my design:
+1.      Should I create one EV for each unique subject to consider the effect of the paired group?
+2.      If so, how should I go about this, especially given the large dataset that causes FSL to crash (when I use Full model setup)?
+I would greatly appreciate your assistance with this issue.
+
+All the best
+Alireza
+
+Hi Matthew,
+
+Thank you for the information. Are you suggesting I do the following? I would calculate the average for each primary EV (sex, apoe, dx1, dx2) and create demeaned values for each EV (see below). Then I would multiply these demeaned values to create the interaction terms. Can you elaborate on how this would help with interpretation?
+
+So far, if there is a significant interaction from the f-test, I have been creating a mask of the significant clusters and extracting the average FA values with fslmeants from the all_FA_skeletonised. I plot the results in R and run posthoc pairwise comparisons for interpretation. Is this approach okay or would you suggest an alternative strategy?
+
+Thanks in advance,
+Jenna
+
+-----
+
+------ DESIGN MATRICES ------
+#### Description
+column 1 = mean
+column 2 = sex (1 M; -1 F)
+column 3 = APOE (1 non-carrier; -1 carrier)
+column 4 = DX1 (1 HC, -1 AD)
+column 5 = DX2 (1 MCI, -1 AD)
+column 6 = age (demeaned; covariate)
+column 7= sex*e4 (col2*col3)
+column 8 = sex*dx1
+column 9 = sex*dx2
+column 10 = apoe*dx1
+column 11 = apoe*dx2
+column 12 = sex*apoe*dx1
+column 13 = sex*apoe*dx2
+column 14 = acquisition A vs. acquisition B (covariate)
+column 15 = acquisition A vs. acquisition C (covariate)
+column 16 = acquisition A vs. acquisition D (covariate)
+column 17 = acquisition A vs. acquisition E (covariate)
+column 18 = acquisition A vs. acquisition F (covariate)
+
+### File contents
+
+==> design.mat <==
+/NumWaves 18
+/NumPoints 431
+/Matrix
+1       -1.020881671    0.825986079     -0.399071926    0.767981439     9.60649652      -0.843234048    0.407405214     -0.784018174    -0.329627855    0.634341977     0.336511035     -0.647588097    0       0       0       0       1
+1       0.979118329     0.825986079     -0.399071926    0.767981439     11.60649652     0.80873811      -0.390738637    0.751944703     -0.329627855    0.634341977     -0.322744675    0.621095857     1       0       0       0       0
+1       0.979118329     0.825986079     -0.399071926    0.767981439     6.20649652      0.80873811      -0.390738637    0.751944703     -0.329627855    0.634341977     -0.322744675    0.621095857     0       0       1       0       0
+1       0.979118329     0.825986079     -0.399071926    0.767981439     8.90649652      0.80873811      -0.390738637    0.751944703     -0.329627855    0.634341977     -0.322744675    0.621095857     0       0       0       1       0                                                                                
+1       0.979118329     0.825986079     -1.399071926    -1.232018561    8.70649652      0.80873811      -1.369856967    -1.206291956    -1.155613934    -1.017630181    -1.131482785    -0.996380363    0       0       0       1       0                                                                                
+1       -1.020881671    0.825986079     -1.399071926    -1.232018561    13.80649652     -0.843234048    1.428286885     1.257745167     -1.155613934    -1.017630181    1.179745083     1.038879999     -1      -1      -1      -1      -1                                                                               
+1       0.979118329     0.825986079     0.600928074     -0.232018561    8.50649652      0.80873811      0.588379692     -0.227173626    0.496358224     -0.191644102    0.485993435     -0.187642253    0       0       0       1       0
+
+
+Description. The Department of Psychology & Neuroscience in the College of Liberal Arts (CLA) at Temple University is seeking to hire a tenure-track faculty member at the Assistant Professor or Associate Professor level. Candidates should be prepared to lead a dynamic and rigorous research program with strong potential for external funding. They should also be committed to excellence in teaching and mentoring at the undergraduate and graduate levels. We are particularly interested in candidates who work in cognition, cognitive development, or cognitive neuroscience. Priorities include some of the following: (a) candidates who study multiple age ranges, various ethnicities/cultures, or atypical as well as typical development; (b) candidates who use multiple techniques, including behavioral measures, neuroscientific measures, or computational modeling; (c) candidates whose research is relevant to education and science of learning. The earliest start date for the appointment would be July 1, 2024 although later dates are possible.
+
+ 
+
+Temple is a state-related Carnegie I Research University (highest research activity) located in the vibrant city of Philadelphia, where it has created a diverse educational community through innovative approaches to admissions and affordability, rigorous academic programs, a strong bond with the city of Philadelphia, and groundbreaking research. The successful applicant will have an appointment in the Department of Psychology & Neuroscience, which houses a large undergraduate major and a strong doctoral program that embraces collaboration across areas of study. Many faculty have significant funding from NIH, NSF, or private foundations, and some are among the most highly cited researchers in the entire discipline. Available resources include a brain imaging center that houses a Siemens 3T MRI machine as well as EEG and eye-tracking systems, and an in-house clinic that serves a diverse university and Philadelphia community.
+
+ 
+
+Qualifications. A Ph.D. is required by the time of appointment. 
+
+ 
+
+Application Instructions. Applicants should initially submit a cover letter, a curriculum vitae, a statement of research plans, copies of three representative publications, and contact information for three professional references who may be asked to provide letters of recommendation later. A teaching statement and diversity statement may also be requested at a later point. 
+
+ 
+
+Candidates are urged to apply before December 8, 2023 for fullest consideration but review of applications will continue until the position is filled.
+
+ 
+
+Applicants may contact Nora Newcombe, PhD (newcombe@temple.edu), chair of the Search Committee, with questions about the application or review process.
+
+ 
+
+Link to application: https://apply.interfolio.com/132419
+
+ 
+
+ 
+
+-- 
+
+David V. Smith, Ph.D.
+
+Associate Professor of Psychology & Neuroscience
+
+Temple University
+
+Weiss Hall, Room 825
+
+1701 North 13th Street
+
+Philadelphia, PA 19122
+
+Office Phone: 215-204-1552
+
+Lab Website: https://sites.temple.edu/neuroeconlab/
+
+
+
+Dear colleagues,
+
+We are pleased to announce the release of DPABI V8.0, DPABISurfSlurm and DPABI Harmonization module.
+
+New features of DPABI_V8.0_231111 (download at http://rfmri.org/dpabi, please also update the docker file by: docker pull cgyan/dpabi and docker pull cgyan/dpabifiber): 
+1. DPABI Harmonization module was released. 
+This module could be used to harmonizing the brain images (.nii/.nii.gz/.gii/.mat) to remove site effects for big data in statistical analysis. Please read our latest Reference: Wang, Y.W., Chen, X., Yan, C.G. (2023). Comprehensive evaluation of harmonization on functional brain imaging for multisite data-fusion. Neuroimage, 274, 120089, doi:10.1016/j.neuroimage.2023.120089. 
+2. DPABISurf 3.0. 
+2.1. DPABISurfSlurm: High Performance Computing Version of DPABISurf was released. Please read here for how to use it: http://rfmri.org/DPABISurfSlurm 
+2.2. Back engine updated to fMRIPrep V23.1.4, thus using FreeSurfer 7.3.2. 
+2.3. Segment subregions (Thalamus, Hippocampus, Amygdala and Brainstem) with FreeSurfer 7.3.2 was set to the default option now. 
+2.4. Added freesurfer atlases: {DPABISurf}/SurfTemplates/fsaverage5_lh_aparc_a2009s_annot.label.gii and fsaverage5_lh_aparc_annot.label.gii. 
+2.5. Could make use of DPABI Harmonization module. 
+3. DPABIFiber 1.1. 
+3.1. Back engine updated to QSIPrep V0.19.1. 
+3.2. Could make use of DPABI Harmonization module. 
+4. DPABINet 1.3. 
+4.1. Could make use of DPABI Harmonization module. 
+5. Fixed a bug in handling surface correlation analysis in y_Correlation_Image.m. 
+6. Fixed a bug of "Brace indexing is not supported for variables of this type" in DPABI_TDA.
+
+ 
+
+Appendix: DPABISurfSlurm
+
+DPABISurfSlurm is a high performance computing version of DPABISurf! You can use it on High Performance Computing (HPC, or supercomputing) center. The only requirement is Singularity!
+
+ 
+
+1.     Download the DPABISurfSlurm scripts to ${DPABISurfSlurmDIR}: https://github.com/Chaogan-Yan/DPABI/tree/master/DPABISurf/DPABISurfSlurm.
+
+2.     Download the singularity files: singularity pull dpabisurfslurm.sif docker://cgyan/dpabisurfslurm:latest and singularity pull freesurfer.sif docker://cgyan/freesurfer:latest. Or download from here. Place them in the directory under ${SingularityDIR}.
+
+3.     Prepare your data in BIDS format in the BIDS directory under ${DATADIR}. You should also have a subjects.txt under ${DATADIR}. E.g.,
+
+BIDS
+
+subjects.txt
+
+     sub-Sub001
+
+     sub-Sub002
+
+     sub-Sub003
+
+4.     In the *.slurm files under ${DPABISurfSlurmDIR}, you should revise this line:
+
+#SBATCH -p normal #指定分区名称
+
+normal is the partition you will use by Slurm. Ask your HPC administrator for the partition name you can use, and then revise “normal” to that partition name.
+
+You may also need to revise this line to correctly load the singularity module, please confirm with your HPC administrator.
+
+module load singularity/3.8.0
+
+5.     Copy DPABISurf_runSlurm.sh and SetEnv.sh from ${DPABISurfSlurmDIR} to your ${DATADIR}.
+
+6.     In DPABISurf_runSlurm.sh, you should define:
+
+export DPABISurfSlurmDIR="/work1/yancg/Scripts/DPABISurfSlurm"
+
+# Should have the DPABISurfSlurm files
+
+export SetEnvScriptDir="/work1/yancg/Data/Test/Test"
+
+# Should have SetEnv.sh
+
+# You should also go into SetEnv.sh to define your parameters!!!
+
+export DATADIR="/work1/yancg/Data/Test/Test"
+
+# Should have BIDS and subjects.txt
+
+7.     In SetEnv.sh, you should define:
+
+export DATADIR="/work1/yancg/Data/Test/Test"
+
+# Should have BIDS and subjects.txt
+
+export SingularityDIR="/work1/yancg/Soft/Singularity"
+
+# Should have dpabisurfslurm.sif. You can get it by singularity pull dpabisurfslurm.sif docker://cgyan/dpabisurfslurm:latest
+
+# Should have freesurfer.sif. You can get it by singularity pull freesurfer.sif docker://cgyan/freesurfer:latest
+
+export FreeSurferLicenseDIR="/work1/yancg/Soft/FreeSurferLicense"
+
+# Should have license.txt from FreeSurfer
+
+export RemoveFirstTimePoints="5"
+
+# Set up Number of time points needs to be removed
+
+export FunctionalSessionNumber="1"
+
+# Set up Number of Functional Sessions
+
+8.     Make a directory to save the log files under ${DATADIR} and cd to that directory.
+
+9.     source ../DPABISurf_runSlurm.sh. Submit your tasks! You can use squeue to check the status of running.
+
+10.  You will have all you want at ${DATADIR}/ResultsOrganized.tar.gz.
+
+
+Best,
+
+Chao-Gan
+
+
+--
+Chao-Gan YAN, Ph.D.
+Professor, Principal Investigator
+Director, International Big-Data Center for Depression Research
+Director, Magnetic Resonance Imaging Research Center
+Institute of Psychology, Chinese Academy of Sciences
+16 Lincui Road, Chaoyang District, Beijing 100101, China
+-
+Initiator
+DPABI, DPABISurf, DPARSF, and The R-fMRI Network (RFMRI.ORG)
+http://rfmri.org/yan
+http://scholar.google.com/citations?user=lJQ9B58AAAAJ
+
+
+Hi Jenna,
+As you’re not inferring on these EVs ( or the global mean ) then this coding should be fine. The rest of the design looks OK - although you may want to demean the “core” EVs ( sex, APOE, DX1, DX2 ) before constructing the interaction EVs, as the interpretation of these EVs will become more complex in the presence of significant interaction(s).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 Nov 2023, at 21:21, Jenna Blujus <jenna_blujus@BROWN.EDU> wrote:
+
+Hi Matthew,
+
+This is not a repeated design. EVs 14-18 are used to correct for the different sites in the study.
+
+Thank you,
+Jenna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi,
+
+ 
+
+Have you looked into using other metrics in fsl_motion_outliers rather than “fd”?
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLMotionOutliers. If there is a lot of large motion, then “refrms” and “dvars” might be better.
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of MINGTONG LIU <0000b2ee5c853566-dmarc-request@JISCMAIL.AC.UK>
+Date: Friday, 3 November 2023 at 20:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Seeking Guidance on Exclusion Criterion for the results from fsl_motion_outliers
+
+Hello FSL’ers,
+
+ 
+
+I hope this email finds you well.  I am seeking your guidance regarding the exclusion criterion for fsl Motion Outliers to exclude high motion runs. 
+
+ 
+
+I tested my database to exclude runs in which 25% of volumes exceed a 0.5 mm threshold of framewise displacement. However, almost 20% of the runs ( involving 40% of the participants) are excluded by this criterion. Could you please help me by recommending an exclusion criterion which is acceptable in this field that would allow me to retain as many participants as possible? 
+
+ 
+
+Sincerely, 
+
+ 
+
+Ming
+
+Hi Sarah,
+
+Could you please share a code snippet of how you are generating and applying the matrices?
+
+BW,
+Rick
+
+Hi Aaron,
+
+Thanks for your info. This is simply caused by the difference in the precision of the output sform between fslorient and fslhd. The next version of bet4animal adapted this and will be included in the next release of FSL. 
+
+Cheers
+Takuya
+
+Hello,
+I am running bet4animal. I noticed that the sform and qform matrix of the input image is different than the output image.  Attached are header info of the input image and the output brain mask. I know that these changes are very small and probably not an issue. They are a bit of an eye sore when I get multiple warnings from programs that multiple input images are not in the same space. Below is how I use it.
+
+bet4animal ${ScanID}_t2w_orig ${ScanID}_t2w_brain -m -r 40 -f .1 -z 1
+
+Thank you
+Aaron Tanenbaum
+
+
+

@@ -1,0 +1,336 @@
+--
+Prof. Dr. Dirk Ostwald
+Abteilung Methodenlehre I
+Institut für Psychologie 
+Otto-von-Guericke-Universität Magdeburg
+Universitätsplatz 2 Gebäude 24 
+39106 Magdeburg
+
+Von: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> im Auftrag von Simon Thibault <simon.thibault.research@GMAIL.COM>
+Gesendet: Montag, 24. April 2023 14:39:48
+An: SPM@JISCMAIL.AC.UK
+Betreff: [SPM] cluster correction in SPM
+ 
+Hi, 
+How the cluster correction is performed in SPM? What are the general principles? Are they the same than AFNI or/and FSL?
+What is the script name that allows to perform the cluster correction? Is it possible to use this script on stat maps that have not been processed within SPM and are not related to a SPM.mat file?
+Best,
+Simon
+
+
+Hi, 
+How the cluster correction is performed in SPM? What are the general principles? Are they the same than AFNI or/and FSL?
+What is the script name that allows to perform the cluster correction? Is it possible to use this script on stat maps that have not been processed within SPM and are not related to a SPM.mat file?
+Best,
+Simon
+
+Dear all,
+
+Join the fun & learn new skills at Neuroscience Alliance (NEURAL) - an OHBM chapter (9-11.05.23). 
+
+You can also test your skills during the event, compete for the stroke outcome prediction cup, and win a real cup!
+
+Don't forget to register here -->  https://www.neurosciencealliance.org 
+Location: BORDEAUX, IMN, Amphi Broca
+
+Aim of the event
+Neuroscience Alliance is a nonprofit organisation that works like a Brainhack and aims to promote interaction between scientists, developers, and artists interested in the brain. Questions may evolve around the study of brain anatomy and function using non-invasive imaging methods (e.g., MRI, EEG, MEG) and intraoperative brain mapping methods, or post-mortem dissection of the evolution of nervous systems across species, variability of brain characteristics in healthy participants, the insurgency of brain pathologies, and there is no limit to artistic reflections in any form.
+Participants can bring their dataset, discuss a project, and recruit a team of collaborators on-site. Access to large, free online databases of MRI images will also be available throughout the three days to test new creative ideas.
+The workshop, which incorporates all levels of expertise, is also an opportunity to learn methods, develop skills and collaborate with other participants.
+
+Program
+08/05 
+20:00 - Informal get-together (optional)
+ 
+09/05 Anatomy
+09:00 - 09:30 Welcome intro (Michel Thiebaut de Schotten, Bordeaux)
+09:30 - 10:00 Anatomical update: A novel occipitotemporal pathway supports early encoding of visuospatial attention? (Ahmad Beyh, UK)
+10:00 - 11:00 Project pitches
+- The stroke outcome prediction cup (100 strokes lesion, T1w, and behavior will be made available on-site for outcome prediction, success will be assessed with  an out-of-sample dataset of n = 50 from the same cohort) (Anna Matsulevits)
+- Neuroimaging of a unique genetical cohort from South Africa  (Aline Ferreira Correia)
+- A 3D fractal(-ish) dataset for machine learning data augmentation (Chris Foulon)
+- Project the MEG signal onto the white matter (Stephanie Forkel) 
+- Exploring the White Matter Circuits Associated with Patterns of Pathology in Alzheimer's Disease (Elinor Thompson)
+... And many more upon request :)
+
+11:00 - 12:30 Teamwork and hacking
+12:30 - Lunch trays provided
+12:30 - 18:00 Free hacking 
+
+10/05 Cognition
+09:00 - 09:30 Update on cognition: The fabric of cognition (Valentina Pacella, Italy)
+09:30 - 10:00 Update on cognition: Neural bases of creativity (Marcella Ovando-Tellez, France)
+10:00 - 12:30 Free hacking 
+12:30 - 13:30 Project update Need help? Last call!
+13:30 - Lunch trays provided
+13:30 - 16:00 Free hacking
+16:00 -18:00 screening of "my love affair with the brain" followed by a debate on brain plasticity.
+Optional hacking / free evening
+ 
+11/05 Clinical disorders
+Clinical update: Tracking the landscape of neuropsychology and neuroscience in southern Africa (Sabah Besharati, SA)
+Clinical Update: Neuroimaging in Huntington Disease-Like 2: current knowledge and future directions (Aline Ferreira Correia, SA)
+
+10:00 - 13:30 Open hacking session
+13:30 - 14:30 Lunch trays provided
+14:30 - 17:00 Last line of hacking!
+17:00 - 18:00 Report on projects/Wrap-up
+18:00 - ? ??      Farewell aperitif
+
+Location, BORDEAUX, IMN, Amphi Broca
+Contact email michel.thiebaut@gmail.com
+
+
+
+
+      _---~~(~~-_.
+    _{        )   )
+  ,   ) -~~- ( ,-' )_
+ (  `-,_..`., )-- '_,)
+( ` _)  (  -~( -_ `,  }
+(_-  _  ~_-~~~~`,  ,' )
+  `~ -^(    __;-,((()))
+        ~~~~ {_ -_(())
+               `\  }
+                 { }   
+
+Hello,
+
+We have 5 runs with 3 stimuli (e.g., A , B, and C).
+
+However:
+
+For the 2nd run, there is no B stimuli
+For the 4th run, there is no C stimuli
+
+How would I set up the contrasts of A,B,C and AvsB, AvsC, BvsC?
+
+I found this archive post on the forum:
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1102&L=SPM&D=0&P=17009
+
+Based on that thread, setting up the contrasts for each run:
+
+Contrast A  =  0.2 0 0   0.2 0 0  0.2 0 0   0.2 0 0  0.2 0 0   (6 motion parameters omitted for each run)
+
+Contrast B = 0 0.25 0    0 0 0    0 0.25 0  0 0.25 0  0 0.25 0
+
+Contrast C = 0  0 0.25   0 0 0.25    0  0 0.25   0  0 0    0 0 0.25
+
+contrast A-C =  1/5 0 -1/4     1/5 0 -1/4    1/5 0 -1/4     1/5 0 0        1/5 0 -1/4 
+
+Is the above correct?
+
+Another question is for Runs 2 and 4 with missing one stimuli, the number of cells for names onsets and durations would be one less than Runs 1,3,5 that received all 3 stimuli, A,B,and C. Wouldn't that change the number of indicies for runs 1 and 2? In the contrast setup above there are no missing indices , but just a value of 0 for the missing stimuli.  However, how would that correspond to the positioning of stimuli if the names, onsets, and durations are missing 1 value for runs 1 and 2.
+
+Thanks.
+
+h.
+
+Dear colleagues,
+
+We are looking for a PhD student interested in learning and decision making, the development of habits, their neural implementation and clinical application in substance use disorders starting this September. If you happen to know someone who might be interested in doing a PhD with us in this area, please forward this call for applications to them (also available at https://tinyurl.com/PhDhabit).
+
+Thank you!
+
+Cheers,
+
+Stephan Nebe
+
+ 
+
+**************************************************
+
+ 
+
+University of Zurich
+
+Department of Economics
+
+Zurich Center for Neuroeconomics
+
+ 
+
+Doctoral student in a project about the development of habits, its neural implementation and clinical application
+
+ 
+
+The Zurich Center for Neuroeconomics is a research center with the Laboratory for Social and Neural Systems Research (SNS Lab) at its heart. In this interdisciplinary laboratory, researchers explore the neural mechanisms that underlie decision making and learning. The SNS Lab is in a custom-built section of the MR Centre at the University Hospital Zurich and equipped with research-dedicated facilities for MRI, EEG, behavioral measurements, brain stimulation, and pharmacological manipulations.
+
+ 
+
+Your responsibilities
+
+The doctoral student position will be funded by SNSF project "The process of habitization, its neural implementation and clinical application." The goal of this project is to reveal how the process of shaping habits from instrumental learning experiences works on a formal level, how it is implemented in the human brain, and how it may become pathological in substance use disorders. The successful candidate will plan, conduct, and analyze studies about the development of human habits with a focus on the learning process and how learned associations influence later decision making. For this purpose, they will acquire behavioral, EEG, and/or MRI data with healthy and/or substance use disorder patients, apply computational models of behavior, prepare scientific manuscripts about the studies and the generated insights, and present their work at national and international conferences.
+
+ 
+
+Your profile
+
+The candidate should hold (or expect to hold by the end of July) a very good Master's degree in one of the following (or similar) domains: Psychology, Neuroscience, Physics, or Computer Science. They should have a strong interest in the basic mechanisms of learning and decision making. The candidate should have strong skills in research methods and scientific data analysis, good programming skills (demonstrated experience with MATLAB, R, or Python), a strong proactive, collaborative, and creative working approach, as well as strong organization, social and communication skills. They should possess excellent English skills (both written and oral). German is a plus (but not essential). They should also feel comfortable interacting with study participants. Preference will be given to applicants with experience in MRI or EEG data analysis and/or in conducting behavioral, EEG, or MRI experiments. The working language in the laboratory is English and all PhD courses are taught in English.
+
+ 
+
+What we offer
+
+We offer a PhD position funded for four years starting in September 2023; an inclusive, supportive, and stimulating environment to help you develop your unique academic profile; the opportunity to work under the supervision of Dr. Stephan Nebe and Prof. Philippe Tobler at an excellent research institute; facilities to run state-of-the-art experiments; and a salary in line with cantonal regulations. All qualified applicants are considered for employment regardless of their origin, ethnicity, religion, gender, sexual orientation, gender identity, citizenship, age, or disability.
+
+ 
+
+Place of work
+
+Blümlisalpstrasse 10, Zürich, Switzerland
+
+ 
+
+Start of employment
+
+Employment start date is September 1, 2023 (or later by mutual agreement). Please submit your application by May 15, 2023. Applications should be submitted in electronic form only; one single PDF file per applicant. These must include: CV, letter of motivation (max. 2 pages), transcript of MSc grades and MSc diploma if available, GRE score report if available, TOEFL score report if available, and the names and e-mail addresses of at least two referees. Informal inquiries about the position can be made to Dr. Stephan Nebe. The University of Zurich values transparent, reproducible, and replicable research and supports Open Science practices. As an applicant, you are asked to outline in your letter the ways in which you have already pursued these practices and/or would like to pursue them in the future.
+
+ 
+
+Please apply via our job portal at http://www.jobs.uzh.ch
+
+Dear colleagues,
+
+The book “Functional MRI Imaging and Applications” will be published by Nova Science Publishers. We welcome submissions of book chapters which may focus on theory, analysis and applications of fMRI.
+
+Please send the abstract/chapter to nova.main@novapublishers.com and the editor pengxuwei@buaa.edu.cn. Inclusion in Nova's edited collections is without charge to authors. The only exceptions are color figures if required and an English editing fee if it is determined to be necessary. Please see the detailed notes for contributors.
+
+The book will also be available in e-book format. 
+
+Best regards,
+Pengxu Wei PhD
+
+Dear all,
+
+
+Thank you for your attention. I am a PhD student working on foreign language learning in motor cotex.
+As a newbie user of matlab/spm, I would like to ask two questions about slice timing and physio data.
+
+(1) when entering the "Slice order" of "Slice Timing", I entered a vector suggested by the instruction as I am using a Simens scanner with multi-band.
+However, the following instruction made me doubt if I should apply the "TR - INTRASCAN TIME - SLICE_TIME VECTOR".
+Should I skip this step because my slice oder is not top to bottom or bottom to up, or I should still consider this regarding the scanner defult setting suggested by the instruction "Slice ordering is assumed to be from FEET to HEAD"?
+
+
+
+(2) Has anyone used the "Physio TaPas (SPM toolbox)" (from https://irmf.int.univ-amu.fr/en/research-support/data-and-processing/physiological-data/) please?
+I have followed the instruction but it didn't work even there was no error with the spm codes.
+Then I applied the Troubleshoot to "manually copy the PhysIO Toolbox PhysIO/code folder to spm/toolbox/PhysIO", but the PhysIO package is still not shown in the SPM toolbox.
+Has anyone had the same problem with the "Physio TaPas (SPM toolbox)" or is there any suggestion for adding the physio data into the spm pre-processing please?
+
+
+
+Thank you very much for your time and help.
+Please feel free to contact me via this email if there is anything unclear.
+
+
+
+Many thanks,
+Sincerely yours,
+
+Tzuyi Tseng
+
+--
+
+Doctorante / PhD Student 🔗
+Laboratoire Dynamique Du Langage
+UMR 5596 CNRS - Université Lumière Lyon 2
+14 avenue Berthelot - 69007 Lyon
+tzu-yi.tseng@cnrs.fr
+
+
+
+Dear colleagues, 
+
+
+
+We are pleased to announce our biannual SPM for MEG/EEG this year which is hosted by University College London and will take place from Tuesday, May 30 to Friday, 2nd of June, 2023. The course will be held in person at Queen Square, London, UK (exact details to be announced). This is the first in-person edition of the course after the COVID-19 pandemic, and we will aim to organize one in-person event per year from now on. 
+
+
+
+The course will present instructions on the analysis of MEG and EEG data. The first three days will combine theoretical presentations with practical demonstrations of the different data analysis methods implemented in SPM. On the last day, participants will have the opportunity to work on SPM tutorial data sets or on their own data under the supervision of the course faculty. A social event for all participants will also be organized on Wednesday evening. 
+
+The course is suitable for both beginners and more advanced users. The topics that will be covered range from pre-processing and statistical analysis to source localization and dynamic causal modelling. 
+
+
+
+Registration is now open. For full details see D07 Statistical Parametric Mapping For MEG/EEG 2023 | UCL Online Store where you can also register. Registration includes lunch and refreshments, and the social event. Wearing a face mask is not mandatory, but will be provided for those who want to wear one. 
+
+Available places are limited so please register as early as possible if you would like to attend! The registration fee is £400 for students and £600 for standard participants. 
+
+We are looking forward to meeting you in person, 
+
+The SPM M/EEG course team 
+
+
+
+Dear friends and colleagues,
+
+I am pleased to announce my new, shiny, improved summer schools! This year in the alluring Bucharest (Romania).
+
+*** NEW THIS YEAR *** I have developed several lectures and demos on integrating ChatGPT-4 (and AI-assistance more generally) into coding, writing, and analysis. Both summer-school courses include new discussions and coding/writing exercises aimed at effective and ethical use of ChatGPT in neuroscience research and data analysis. ***
+
+I will teach two separate week-long courses on neuroscience data analysis: One about time-frequency/synchronization/statistics (*note: this same course is offered twice due to popular demand!*), and one about linear algebra and dimension-reduction/source-separation.
+
+Below is the direct link to the course pages with application information. Please pass this link around to your colleagues/students who might be interested in one or both of these courses.
+https://sincxpress.com/summerschool.html
+
+Analyzing neural time series data
+(26-30 June *AND* 14-18 August). Fourier transform, convolution, time-frequency analysis, synchronization, nonparametric statistics, simulating time series data. (Note: the August session is recommended for people taking both courses.)
+
+Linear algebra for neuroscientists
+(21-25 August). Matrix algebra, least-squares model fitting, eigendecomposition, multivariate source separation, simulating multicomponent and multichannel time series data.
+
+https://sincxpress.com/summerschool.html
+
+Please note that applications, if accepted, are selected on a first-come-first-serve basis, and that the number of participants for each course is limited to 30. The courses are currently filling up but are not yet at capacity.
+
+If you have questions about the courses, please feel free to contact me.
+
+I look forward to welcoming you to Bucharest this summer!
+
+--
+Mike X Cohen, PhD
+Fresh look: mikexcohen.com
+
+
+I appreciate your prompt response to the second question. However, I noticed that you may have missed the first question about gray balance parameter. I am really interested in knowing the answer to that question, so I wanted to kindly remind you of it.
+
+For your convenience, I have attached the file again to this message.
+
+Actually, I am a freshman student, and my course teacher assigned me the task of understanding head motion correction and reproducing code that has the same functionality as spm_realign.m. To be honest, this is a difficult task for me because my math and programming foundations are still weak. However, after carefully reading and thinking about the relevant chapters in the book you mentioned, I have successfully written the code (at least it can run. As for the effect, who konws).
+
+I would like to know if I can explain my understanding of spm head motion correction to you so that I can know if my understanding of the principles is correct. If so, I will attach my understanding (and maybe code) in the next message.
+
+If not, please tell me directly.  I don't know anything about patents and such in the industry.
+
+I would greatly appreciate it if you could take a moment to respond to this question at your earliest convenience. Thank you very much for your time and assistance.
+
+Best regards,
+Xinyue Jiang
+
+There are no papers that accurately describe the motion correction method in SPM, although this book chapter will give an approximate description of what is done:
+https://www.fil.ion.ucl.ac.uk/spm/doc/books/hbf2/pdfs/Ch2.pdf
+
+If the matrix is singular, this might suggest that the overlap between images is poor or there aren't enough slices to compute everything needed.  You could use the pseudo-inverse (pinv in MATLAB ) or you could introduce a little bit of regularisation.
+
+Normally I solve this type of problem with:
+
+increment =  (A'*A + R)\(A'*b)
+
+where R is a positive definite matrix that serves as a regulariser.
+
+Best regards,
+-John
+
+
+
+Good Morning,
+my lab is working on DTI analysis on depressed people. We are analyzing differences and correlations for the different DTI metrics. However, we also have rest fMRI acquisition for the majority of our subjects. My Boss asked me if it is possible to analyze the correlations, at the voxel level, between DTI (e.g. FA) and functional connectivity.
+The rest fMRI was analyzed using the ICA method and the dual regression. Therefore, as outputs (from dual regression), we have the maps of the functional connectivity.
+My question is: can someone tell me if it is possible to run voxel-based correlations between FA (and the other DTI metrics) and the maps from the dual regression?
+
+Thanks,
+Manu
+

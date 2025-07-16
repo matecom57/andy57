@@ -1,0 +1,341 @@
+Dear all,
+
+I want to run probabilistic tractrography using a list of seeds (ROIs) 
+saved in seeds_list.txt for each of my patients. I have ran successfully 
+the following command for other patients, but now I get the following 
+error for the PSP group (below is one single subject example only):
+
+probtrackx2 --samples=merged     --mask=nodif_brain_epi_mask.nii     
+--seed=seeds_list.txt     --out=probtrackx_BN     --network     
+--seedref=/home/mt892/rds/rds-rowe-k1PgZFWfeZY/templates/freesurfer/freesurfer-6.0/mni_icbm152_t1_tal_nlin_asym_09c_brain/mri/mni_icbm152_t1_tal_nlin_asym_09c_brain.nii.gz     
+--nsamples=5000     --nsteps=2000     --steplength=0.5     --cthr=0.2     
+--loopcheck     --pd     --opd     --ompl
+Log directory is: logdir
+Running in network mode
+load seeds
+CSV::load_rois:Unknown file type: 
+/home/mt892/rds/rds-rowe-k1PgZFWfeZY/group/p00259/DTI_preproc/test1/63_dir_diag_Mariana/PSP/psp_first_sessions/sub-13672/ses-20120322/preproc/EPI_dist_corr/bpx_input.bedpostX/native_seeds/seed_list.txt
+
+Expecting:
+
+Log directory is: logdir
+Running in network mode
+load seeds
+Load bedpostx samples
+
+Dear Saad,
+thank you for your answer! I did not try to think of it that way, it was 
+quite enlightening.
+So, if I understand correctly, by converting it to absolute values I am 
+getting left with just the "proclivities" of the eigenvector to each of 
+the axes - for the price of losing the exact direction of the eigenvector?
+
+Best regards,
+Stan
+
+########################################################################
+
+
+Hi Paul,
+
+Still the same error. 
+I have tried to output more text to the log file to figure out what is 
+wrong. I think it might be because I am using a university computer and 
+have limited admin rights.
+
+/Emil
+
+
+
+########################################################################
+
+
+Hi Emil,
+
+From the log file, it looks like the same python interpreter 
+(/opt/anaconda3/bin/python3) was used for this latest attempt. Could you 
+specifically try running the installer with "/usr/bin/python 
+fslinstaller.py" ? Or, more generally, could you try running the installer 
+with a python interpreter that is not from your anaconda installation?
+
+Paul
+
+INTERNATIONAL CONFERENCE ON ARTIFICIAL INTELLIGENCE IN HEALTHCARE (AIiH)
+4 - 6 September 2024, Swansea, UK
+https://aiih.cc
+(2nd CALL FOR ABSTRACT)
+
+Submission deadline: Monday 1 July (FIRM)
+
+1. INTRODUCTION
+https://aiih.cc/abstracts/
+
+AIiH 2024 welcomes late-breaking short abstract submissions to be included 
+as poster or short spot-light presentation at the conference. This is to 
+both enable fast dissemination of promising preliminary findings and 
+encourage attendance by a broader audience of early career researchers 
+(including research students), healthcare professionals, and industrial 
+practitioners.
+
+AIiH 2024 is a single-track conference with oral and poster presentations 
+and will include a conference tutorial on generative DNNs and 5 keynote 
+presentations. The conference will also feature a plenary session, which 
+consists of 3 invited speakers who have extensive experience in related 
+areas.
+
+AIiH aims to provide a prominent platform for researchers and 
+practitioners who are devoted to improving healthcare using modern 
+artificial intelligence. We recognise that healthcare applications present 
+complex and sometimes unique challenges across a wide spectrum, from 
+ethics to technical developments, that generic AI methods are often 
+inadequate. By creating this dedicated forum, we encourage discussions and 
+disseminations of efficient and effective AI solutions and technologies 
+for healthcare, and in turn we hope to influence the research, technology 
+adoption, and decision making in healthcare.
+
+
+2. CONFERENCE TUTORIAL
+Title: Deep Generative Neural Networks
+https://aiih.cc/tutorial-generative-dnn/
+Dr. Amir Atapour-Abarghouei
+University of Durham
+
+
+3. KEYNOTE SPEAKERS
+https://aiih.cc/keynote-speakers/
+
+Prof. Hao Ni
+University College London
+
+Dr. Timothy Rittman
+Cambridge University
+
+Dr. Konstantinos Kamnitsas
+Oxford University
+
+Prof. Jacques Fleuriot
+Edinburgh University
+
+Prof. Eiichiro Tanaka
+Waseda University, Japan
+
+
+4. PLENARY SESSION ON TRANSLATING AI RESEARCH INTO PRACTICE
+https://aiih.cc/plenary-session/
+
+Dr. Alba Di Pardo
+IRCCS Istituto Neurologico Mediterraneo Neuromed
+
+Dr. Noura Al Moubayed
+Durham University & Evergreen Life
+
+Dr. Haoda Fu
+Eli Lilly and Company
+
+
+5. ABSTRACT SUBMISSION
+Submission instructions are available at the conference website: 
+https://aiih.cc/abstracts/
+
+IMPORTANT DATES
+Abstract deadline: Monday 1 July (FIRM)
+Abstract notification: Monday 8 July (FIRM)
+Abstract registration: Monday 15 July
+Late registration: Monday 12 August
+Main conference: Wednesday 4 – Friday 6 September 2024
+
+
+6. ORGANISERS
+
+CONFERENCE GENERAL CHAIRS
+Xianghua Xie, Swansea University, UK
+Iain Styles, Queen’s University Belfast, UK
+
+PROGRAMME CHAIRS
+Gibin Powathil, Swansea University, UK
+Marco Ceccarelli, University of Rome Tor Vergata, Italy
+
+SPECIAL SESSION CHAIRS
+Jiaxiang Zhang, Swansea University, UK
+Rex Ying, Yale University, USA
+
+SPONSORSHIP CHAIRS
+Daniele Cafolla, Swansea University, UK
+Raoul van Loon, Swansea University, UK
+
+PUBLICITY CHAIRS
+Lu Zhang, Swansea University, UK
+Beiyu Lin, University of Nevada, USA
+
+PUBLICATION CHAIR
+Jingjing Deng, Durham University, UK
+
+
+7. SPONSORS
+Gold:
+- Technis Blu
+- Infordata
+Silver:
+- Amicus Therapeutics
+Bronze:
+- Zienkiewicz Institute for Modelling, Data and AI
+- IET Institution of Engineering and Technology
+Your Researcher Sponsor:
+- Elsevier Journal of Theoretical Biology
+Best Paper Award Sponsor:
+- Springer
+ 
+
+8. CONTACT
+contact@aiih.cc 
+
+
+Dear expert,
+
+I'm trying to use easythresh_conj.sh 
+(https://warwick.ac.uk/fac/sci/statistics/staff/academic-research/nichols/scripts/fsl/easythresh_conj.sh) 
+to perform a conjunction analysis, and I run into a problem that I have 
+seen before on the forum, but that to my knowledge has not been resolved.
+
+My current working directory is the most upper level of a gfeat directory 
+and this is where the script is located -  it contains two copes, for 
+which I want to perform a conjunction analysis on zstat1,
+
+However, when I try:
+
+./easythresh_conj.sh -s ./cope1.feat/stats/smoothness 
+./cope1.feat/stats/zstat1.nii.gz ./cope2.feat/stats/zstat1.nii.gz 
+./mask.nii.gz 2.3 0.01 grot
+
+I only the help information returned but no results.
+ 
+Weirdly enough if I run this incorrect command (supplying the mask twice):
+
+./easythresh_conj.sh -s ./cope1.feat/stats/smoothness 
+./cope1.feat/stats/zstat1.nii.gz ./cope2.feat/stats/zstat1.nii.gz 
+./mask.nii.gz ./mask.nii.gz 2.3 0.01 grot
+ 
+I get all kinds of errors but the scripts seems to perform a non-cluster 
+corrected conjunction analysis, so I suspect that I am misunderstanding 
+something about what arguments need to be provided in what order.
+
+Thanks in advance for your time and best,
+
+Jurriaan Witteman
+Assistant Professor
+Leiden University 
+
+
+Oh dear,
+
+ 
+
+I am sorry about that. I haven't heard anyone else having problems like 
+that, so hopefully it is something in your data that causes the problems.
+
+ 
+
+Can I please ask you to collect all the files referred to on your eddy 
+command line into one tar-ball, and upload that? You will soon receive an 
+email with instructions where to upload it.
+
+ 
+
+Best regards Jesper
+
+Hi Stan – yes that’s right (and thank you for introducing the term 
+“proclivities” to me)
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+ 
+
+Hi Adriana,
+
+If the orientation labels in your raw data are incorrect, then this 
+indicates that a problem occurred during acquisition (e.g. a 
+misconfiguration in the scanner software). You need to fix this before 
+doing anything with your data. There are some instructions on how to do 
+this safely in the FSL documentation at 
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/other/orientation?id=the-labels-in-fsleyes-are-wrong-or-missing
+
+Once you have corrected your images (and are 100% positive that the image 
+orientations are correctly labelled when you view them in FSLeyes), then 
+you can proceed with your analysis, whatever that may be. 
+
+It is not particularly important If the two images are slightly out of 
+alignment when you view them in FSLeyes, and/or if FSLeyes warns you about 
+them being of different orientations, as the standard preprocessing steps 
+using topup and eddy will account for this difference in orientation.
+
+Paul
+From: Adriana Z <abz21@CAM.AC.UK>
+Sent: 09 June 2024 17:13
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>; Paul McCarthy 
+<paul.mccarthy@ndcn.ox.ac.uk>
+Subject: Re: Image out of bounds in FSLeyes
+ 
+Dear Paul,
+
+
+Dear Yiling,
+   You’re correct on the p-value threshold - it ultimately decides which 
+voxels are significant ( using the corrected p-value outputs from 
+randomise ). The “z-threshold” in the GUI will be _actually_ be applied to 
+the permuted t-statistics when generating the distribution of 
+cluster-sizes in randomise. Changing it from 3.1 to 2.3 will lower this 
+t-threshold used by randomise. The cluster probability threshold is the 
+p-value threshold, the full process is along the lines of:
+
+Randomise thresholds the unpermuted t-statistic image by 3.1 ( the 
+“z-threshold” ) and records the cluster sizes.
+Process above is repeated under permutation - building up a distribution 
+of cluster sizes.
+Each voxel is then assigned a _corrected_ p-value based on the size of its 
+cluster ( if any ) in the unpermuted case, using this distribution.
+Significant voxels/clusters are reported based on the p-value threshold.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Jesper,
+
+ 
+
+got it.
+
+And yes, invertibility and edges are an issue.
+
+Cheers,
+
+Andreas
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von 
+Jesper Andersson <0000bb6368d04018-dmarc-request@JISCMAIL.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Montag, 10. Juni 2024 um 14:19
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] eddy - some minor questions
+
+ 
+
+Hi Andreas,
+
+ 
+
+

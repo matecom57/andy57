@@ -1,0 +1,983 @@
+Hi everyone
+
+Last chance to register for the upcoming Instats seminar Teaching and Learning Statistics with ChatGPT (Nov 27 - 28), being offered by professor Peter Gruber.
+
+This two-day workshop responds to the disruption that the AI revolution introduces to statistics education and practice. This seminar will equip academics and PhD students with the skills and insights needed to integrate ChatGPT into their statistics teaching and learning. Participants will gain hands-on experience with ChatGPT in classroom and assessment settings, as well as using it to prepare course material and exercises, while gaining a deeper understanding of how to use it to enhance statistics learning and practice. The seminar will also explore the wider institutional and ethical ramifications that the use of AI brings to education institutions and the wider economy.
+
+Please feel free to share information about this upcoming seminar widely and we look forward to seeing you there!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+I'm not sure what was involved in FSL's coregistration, but if it did any image reslicing of the fMRI, maybe take a look at the time courses of these data to see where the effect has been introduced.
+
+What sort of interpolation did you use?  Have you looked at the fMRI as a movie (e.g., using the Browse functionality in Check Reg).
+
+Best regards,
+-John
+
+
+Display the maps using Check Reg and then use the "SPM Figure" pulldown of the Graphics window. Select Colours->Effects->Invert.  This will invert the colour scale.
+
+Best regards,
+-John
+
+
+Hello experts,
+
+When conducting fMRI DCM analysis, the A matrix serves to establish intrinsic connections. However, in the context of ERP DCM, this definition doesn't apply as intrinsic connections specifically denote self-connections.
+
+When reporting results in ERP DCM, what term should we use for the connections in the A matrix? The manual suggests that the A matrix represents the connection strength parameters for the initial evoked response.
+
+Could we refer to it as the baseline connectivity? For instance, can we state that 'The values in the A matrix reflect the baseline connectivity?’
+
+I'm a beginner, so I apologize if my question is silly.
+Cheers,
+Luna
+
+Open Call for PhD positions in Germany
+
+The Max Planck School of Cognition offers an international four-year doctoral program (Cognition Track and Clinician Scientist Track) starting with a one-year orientation period followed by three years of research for the doctorate. 
+
+Students can enter with a Bachelor’s (fast-track) or a Master’s degree.
+
+The current round of applications started on 1st of September, 2023 and closes on 1st of December, 2023 - i.e. applications and references have to be submitted through our online application portal by then.
+
+For more information and to submit your application here: https://cognition.maxplanckschools.org/en/application
+
+For any additional inquiries please contact Matthias Bolz: Matthias.Bolz@maxplanckschools.de.
+
+Dipl.-Psych. Matthias Bolz
+Max Planck Institute for Human Cognitive and Brain Sciences
+Stephanstraße 1A, 04103 Leipzig, Germany
+Phone: +49 341 - 99 40 - 2685
+E-Mail: bolz@cbs.mpg.de
+Homepage: http://www.cbs.mpg.de/~bolz
+Department: Max Planck School of Cognition
+Function: Media & Marketing Manager
+
+Dear all,
+
+I am happy to share a fully-funded PhD position (starting September 2024) supervised by Dominique Makowski at the University of Sussex in Brighton, UK,  that covers:
+University fees (£25,000 per year for international students)
+Salary of £18,622 per year (additionally paid teaching available, + ~£3000/year)
+Research/training funds of £750 per year
+Flexible research project (see examples of themes: https://realitybending.github.io/jobs/projects/)
+Please send CV and inquiries to D.Makowski@sussex.ac.uk 
+Deadline to apply: 5th January 2024
+More details at https://realitybending.github.io/
+
+It's a great opportunity, please don't hesitate to forward it to potentially interested candidates!
+
+--
+Dr Dominique Makowski
+
+Neuropsychologist & Lecturer
+
+Pevensey 1 - 2B7, School of Psychology, University of Sussex, Brighton BN1 9QH, UK
+
+
+
+• Personal Website: https://dominiquemakowski.github.io/
+• Reality Bending Lab: https://realitybending.github.io/
+• Google Scholar: https://scholar.google.fr/citations?user=bg0BZ-QAAAAJ
+• Twitter: @Dom_Makowski
+
+Dear prof. Zeidman,
+
+I am working on a DCM analysis and have several questions regarding the set-up which I would love to hear your thoughts on.
+
+A quick description of my data: I have two sessions where participants were presented in the scanner with one task and one control task. In session 2, we see an increased brain response in mainly one area and a bit in another area with a general GLM. To investigate further, I did a PPI analysis. I made a contrast of the task and control task of [1 -1] and from there exported the VOIs for my seed region (the one region where I saw the most brain activity increases). I did this separately for the first and the second session. I saw that there was effective connectivity between my seed region in session 1 with three other areas (one of which was the area that I also found in the general GLM). However, in session 2, there was no effective connectivity between my seed region and any other regions.
+
+This led to my hypothesis that, in session 1, there might be more effective connectivity between brain regions, and that after our intervention, in session 2, there is a more localized system, where there is more effective connectivity of an area with itself instead of with other areas so to say.
+
+For my DCM, I used a simple model of the two brain areas that popped up with my general GLM, leading to four model options. I did this for session 1 and session 2 separately, but am now thinking that it might be better to concatenate those sessions in the GLM set-up and then use them as modulators so that there is a direct comparison in the results between sessions 1 and 2. Do you think this makes sense? And does it then make sense to have the modulator effect on all possible connections? 
+
+The other question is regarding my tasks. I have the task and the control task and am interested in the effective connectivity during the task. Do I take the task as a modulator as well in my model, also on all possible connections? Should I then leave the control condition out of it or also use it as a modulator in my model? 
+
+As you can read, I find it hard to determine the set-up regarding modulators. I have read several papers now on the topic but can't seem to find a paper that has a similar setup as mine. I am really looking forward to hearing your thoughts on this.
+
+Thank you very much in advance.
+
+Best,
+Sophie
+
+
+Dear All,
+
+The Alpine Braim Imaging Meeting (ABIM 2024) abstract submission deadline is December 1st!!!
+
+All the essential details about the conference, taking place in Champéry from January 7th to January 11th, 2024, are on our official website: ABIM 2024 Website.
+
+For the latest updates following us on:
+
+Facebook: Alpine Brain Imaging Meeting
+Twitter: @ABIM_CH
+ 
+
+We have 3 travel grants, each worth 1000.-CHF for early career scientists (including students and postdocs)!!!
+
+HOW TO APPLY:
+
+After registration and abstract submission, please email the following application material (one single pdf: Surname_travelgrant.pdf) to contact-abim@unige.ch using the subject heading “2024travelgrant”:
+
+a motivation letter explaining how ABIM would benefit the advancement of your research project and your scientific career (max 1 page).
+your CV, including contact information, education, publications/presentations, extracurricular science related activities (max 2 pages).
+name and contact of one or two references.
+DEADLINE: December 1st, 2023
+
+Only complete and well drafted applications will be considered: carefully read the instructions above!
+
+Scientific excellence will be evaluated; priority will be given to under-represented and overseas attendees not receiving full support from their host lab.
+
+ 
+
+Best regards,
+
+The ABIM Organizing Team
+
+ 
+
+ 
+
+----------------------------------------------------------------
+
+Ilaria Sani, PhD
+
+SNSF-Assistant Professor
+
+http://www.theattentivebrain.com/
+
+Department of basic Neurosciences
+
+Campus Biotech, Chemin des Mines 9, 1202 Geneva, CH
+
+Phone: +41 223 790 383
+
+ 
+
+Dear SPM experts,
+I am new to SPM and trying to coregister fmri images (rest images, 200 volumes) to T1 images and then perform normalization to the MNI space.
+Coregistration has been performed with FSL and normalization with SPM and both of them work very well.
+But after performing normalization with SPM, i tried to visualize the timecourse of mean intensity of 3 different brain regions. We noticed the presence of several spikes at regular intervals, not present before, not in the original database and not even after FSL normalization.
+
+I can t explain their presence, if they are caused from some artifact, and how to remove them.
+
+Any help or explanation would be greatly appreciated!
+Best,
+Leonardo
+
+Join Our Research Team: Postdoctoral Fellowship on Neuroimaging for a new TUBITAK-funded Project: Brain mediators of recreational cannabis use and psychosis proneness: A neuroimaging and twin study of the vulnerability x stress model.
+
+ 
+
+Brain Development and Psychosis Lab
+
+National Magnetic Resonance Research Center (UMRAM) Aysel Sabuncu Brain Research Centre (ASBAM)
+
+Department of Psychology, Bilkent University, Turkey
+
+ 
+
+The Brain Development and Psychosis Lab at the National Magnetic Resonance Research Center (UMRAM) & Aysel Sabuncu Brain Research Centre (ASBAM) is excited to announce an exceptional opportunity for a Postdoctoral Fellowship on Neuroimaging for a newly funded TUBITAK Project: Brain mediators of recreational cannabis use and psychosis proneness: A neuroimaging and twin study of the vulnerability x stress model.
+
+Our lab is dedicated to advancing the understanding of adolescent brain development, with a specific focus on the cognitive, environmental, neurobiological, and genetic factors influencing susceptibility to severe mental illnesses like psychosis and schizophrenia.
+
+ 
+
+Position: Postdoctoral Fellowship on Neuroimaging  
+
+Location: Bilkent University, Ankara, Turkey  
+
+Duration: 36 months (renewable, subject to securing further funding)
+
+ 
+
+Qualifications:
+
+- Ph.D. in cognitive science, engineering, neuroscience, or a related field.
+
+- Strong experience in neuroimaging analysis as applied to human data (e.g., sMRI, rsfMRI, fMRI, or DWI) and computational methods used in neuroimaging (e.g., Matlab, Python, SPM, FreeSurfer)
+
+- Proficiency in computer programming
+
+- Advanced skill in statistical modeling and independent statistical analyses (SPSS, SAS, R)
+
+ 
+
+Responsibilities:
+
+- Analyze neuroimaging data from an ongoing project on brain development and take the lead on manuscript writing 
+
+- Collect, process, and have oversight of neuroimaging data for a newly funded project by The Scientific and Technological Research Council Of Turkey (TUBITAK): Brain mediators of recreational cannabis use and psychosis proneness: A neuroimaging and twin study of the vulnerability x stress model
+
+- Collaborate within a multidisciplinary team, including a medical doctor, a clinical psychologist, two psychologists, and molecular biologists on psychosis-centered research
+
+- Liaise with the lab's international collaborators and represent the Lab
+
+- Mentor graduate and undergraduate students
+
+- Contribute to the lab's mission of uncovering neurobiological insights into risk mechanisms associated with psychosis
+
+ 
+
+Benefits:
+
+-Mentorship in cutting-edge clinical/human research methodology from experts in the field
+
+-Work in a collaborative, dynamic, and intellectually stimulating environment
+
+-Opportunity to make significant contributions to cutting-edge research
+
+-Gain hands-on experience in data analysis and psychosis-centered research
+
+-Access to state-of-the-art research facilities and resources
+
+
+
+Application Process:
+
+Interested candidates are invited to submit the following documents to Prof. Dr. Timothea Toulopoulou at ttoulopoulou@bilkent.edu.tr:
+
+1. Curriculum vitae (CV)
+
+2. Cover letter highlighting your relevant experience and research interests
+
+ 
+
+Join us in our pursuit of unraveling the mysteries of adolescent brain development and its connection to mental health. Be a part of a dynamic team shaping the future of psychiatric research. 
+
+ 
+
+For inquiries, please contact Prof. Dr. Timothea Toulopoulou at ttoulopoulou@bilkent.edu.tr.
+
+
+
+
+Dear all,
+
+I would like to ask if there is any way to visualize the VBM maps on white background either through the SPM interface or using a specific matlab command.
+Thank you.
+
+Best regards,
+Ioanna Skampardoni
+
+Dear Christian
+
+I am still struggling with my model. 
+
+I have just realized that entering age in my model as you suggested I'm correcting my other covariate (cognitive scores - CVindex below) for age and not correcting my cortical thickness values for the effects of age.
+
+My main purpose is to check whether neurodevelopment related changes in cortical thickness are correlated with the cognitive scores, but I'm afraid that there are alterations in cortical thickness related to age that I would like to exclude (control). How can I do that? 
+
+Is this correct?
+
+How can I correct my model for the effects of age on thickness?
+
+JOB OPENING: PhD position
+Where: Cognitive Control & Habit Lab, CINC-CSIC, Alcalá de Henares Madrid, Spain
+When: early 2024
+Title: The role of habitual inhibition in cognitive and emotional control (PID2022-136996NB-I00)
+Websites: https://www.controlandhabit.com/               https://www.cinc.csic.es
+
+The project:
+The candidate will work on the Habit-Inhibit project funded by the Agencia Estatal de Investigación, Ministerio de Ciencia e Innovación (PID2022-136996NB-I00). We aim to define the behavioural and neural footprints behind cognitive and emotional habitual inhibition and their associated causal network, to also define the role of dopamine involved in cognitive and emotional habitual inhibition. The present doctoral project will focus on the design and validation of a novel and cutting-edge paradigms to capture a novel cognitive mechanism in healthy participants using neuroimaging and neuromodulation, as well as studies in patients with Parkinson’s disease.
+
+Our team:
+The hosting group is a growing multidisciplinary international and highly competitive team in the field of cognitive and clinical neuroscience. The PI Dr. Ignacio Obeso is a researcher at CINC-CSIC and collaborates with local hospitals. Our group’s main research objectives aim at elucidating the neurocognitive mechanisms behind cognitive control, reward and habits to uncover the neural basis of these behaviours. We also work to update and inform how these cognitive processes are dysfunctional in clinical scenarios (Parkinson’s disease, behavioural addictions). We employ various neuroscientific techniques (e.g., behavioral testing, eye-tracking, psycho-physiology, fMRI, PET, brain stimulation) and designs (cross-sectional, longitudinal, and training protocols) in health and disease conditions. 
+
+Required        Desirable
+       Psychologist, computer science or biomedical engineer
+       Excellent programming skills
+       Experience with neuroimaging
+       Good command of English        Good command of Spanish
+       Familiarity with statistical analysis
+
+
+Type of contract/Duration of Contract : Temporary,  4 years (Full-time)
+Payment: doctoral researcher contract for 4 years
+
+Want to join?
+Please send the following documents with “PhD_2024” in the subject: CV, a statement outlining research interests and motivation to apply for the position, contact details of 2-3 references.
+
+Deadline for application: 15/12/2023
+
+Contact details for enquiries: i.obesomartin@gmail.com
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+ 
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to ([log in to unmask]). 
+
+ 
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+
+Noah Cryns | Assistant Clinical Research Coordinator
+
+Memory and Aging Center
+
+University of California – San Francisco
+
+Phone: (415) 514-7580
+
+https://perrylab.ucsf.edu/
+
+https://decisionlab.ucsf.edu/
+ 
+
+
+
+Hello,
+
+I'm offering two PhD positions at the Faculty of Medicine, Masaryk University, Czech Republic, to study Prenatal programming of neurodevelopment in childhood. See more information at the links below and email me your CV at klara.mareckova@gmail.com if interested! :)
+
+Thanks,
+
+Klara Mareckova
+
+Dear Réka
+
+I would like to work out why you are experiencing this problem. I have tested both the stable release version of SPM from our website (https://www.fil.ion.ucl.ac.uk/spm/software/download/), and the latest development version from Github (https://github.com/spm/spm), and I’ve not yet managed to reproduce the issue (using Matlab 2021a on Windows).
+
+ 
+
+Please could I ask you to do the following, to install a clean version of SPM:
+
+ 
+
+Close MATLAB.
+Download and unzip SPM from whichever of the two sources above that you prefer.
+Open MATLAB. Click Set Path on the toolbar at the top, and remove any entries from the list related to SPM or its subfolders.
+Still in the Set Path window, click “Add Folder”, and select the top-level directory of the SPM you downloaded (there is no need to add subfolders).
+ 
+
+Then type spm fmri and press enter, click the large Dynamic Causal Modelling button, then click Specify.
+
+ 
+
+If the problem still persists, please could you tell me what version of SPM you downloaded, which version of Matlab you’re using, and which operating system?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: Rendes Réka <rendes.reka@pte.hu>
+Sent: 17 November 2023 19:11
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Subject: Re: question regarding error while tríing to run DCM
+
+ 
+
+Dear Peter, 
+
+ 
+
+yes, this is exactly the case. 
+
+ 
+
+All best, 
+
+Réka 
+
+Sent from Outlook for Android
+
+ 
+
+From: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Sent: Friday, November 17, 2023 4:01:08 pm
+To: Rendes Réka <rendes.reka@pte.hu>; SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: RE: question regarding error while tríing to run DCM
+
+ 
+
+Ritkán kap e-mailt a(z) peter.zeidman@ucl.ac.uk e-mail-címről. Miért fontos ez?
+
+Dear Réka
+
+To clarify – you click DCM, then you click Specify, then does this message appear immediately?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Rendes Réka
+Sent: 17 November 2023 12:58
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] question regarding error while tríing to run DCM
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear All, 
+
+ 
+
+I'm trying to conclude a DCM analysis, and VOIs should be set appropriately, but when I try to run 'specify' after clicking on "DCM", I get the following error message:
+
+ 
+
+Error in spm_dcm_ui (line 120)
+
+    spm_dcm_specify;
+
+ 
+
+Error while evaluating UIControl Callback.
+
+ 
+
+I'm not familiar with programming and coding, can anyone help me out with the problem? 
+
+ 
+
+Thank you all in advance. 
+
+ 
+
+All best, 
+
+Réka
+
+ 
+
+ 
+
+Dear Vladimir,
+
+Thank you for your response.
+I understand that SPM is unsuitable for this purpose and
+will explore alternative analytical methods.
+
+Best regards,
+
+Katsuki
+
+2023年11月18日(土) 18:11 Vladimir Litvak <litvak.vladimir@gmail.com>:
+Dear Katsuki,
+
+The SPM code is not suitable for inverting such long data segments. I suggest you epoch your data into shorter segments of about 1sec.
+
+Best,
+
+Vladimir
+
+On Sat, Nov 18, 2023 at 8:11 AM Katsuki Higo <kh.std.sci@gmail.com> wrote:
+
+Dear All,
+
+I have 60 seconds of EEG data and would like to perform 3D source reconstruction.
+My question is about the procedure after clicking the "3D Source Reconstruction" button and running "Invert".
+
+I want to do the 3D source reconstruction for the entire data from 0 to 60 seconds instead of specifying a time window.
+Should I input [0 60000] in the "Time window(s) (ms)" field after clicking the "Window" button to do this?
+This data would be weighted by the Gaussian, but is it not necessary to process whole data for 60 seconds with the same weight? Considering PST Hanning has already attenuated the beginning and end of the data in the Invert stage, I believe it is unnecessary to attenuate them again with the Gaussian.
+
+Thank you for your cooperation ,
+
+Best regards,
+
+---
+Katsuki Higo
+
+
+Dear Katsuki,
+
+The SPM code is not suitable for inverting such long data segments. I suggest you epoch your data into shorter segments of about 1sec.
+
+Best,
+
+Vladimir
+
+On Sat, Nov 18, 2023 at 8:11 AM Katsuki Higo <kh.std.sci@gmail.com> wrote:
+
+Dear All,
+
+I have 60 seconds of EEG data and would like to perform 3D source reconstruction.
+My question is about the procedure after clicking the "3D Source Reconstruction" button and running "Invert".
+
+I want to do the 3D source reconstruction for the entire data from 0 to 60 seconds instead of specifying a time window.
+Should I input [0 60000] in the "Time window(s) (ms)" field after clicking the "Window" button to do this?
+This data would be weighted by the Gaussian, but is it not necessary to process whole data for 60 seconds with the same weight? Considering PST Hanning has already attenuated the beginning and end of the data in the Invert stage, I believe it is unnecessary to attenuate them again with the Gaussian.
+
+Thank you for your cooperation ,
+
+Best regards,
+
+---
+Katsuki Higo
+
+Dear All,
+
+I have 60 seconds of EEG data and would like to perform 3D source reconstruction.
+My question is about the procedure after clicking the "3D Source Reconstruction" button and running "Invert".
+
+I want to do the 3D source reconstruction for the entire data from 0 to 60 seconds instead of specifying a time window.
+Should I input [0 60000] in the "Time window(s) (ms)" field after clicking the "Window" button to do this?
+This data would be weighted by the Gaussian, but is it not necessary to process whole data for 60 seconds with the same weight? Considering PST Hanning has already attenuated the beginning and end of the data in the Invert stage, I believe it is unnecessary to attenuate them again with the Gaussian.
+
+Thank you for your cooperation ,
+
+Best regards,
+
+
+Dear Réka
+
+To clarify – you click DCM, then you click Specify, then does this message appear immediately?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Rendes Réka
+Sent: 17 November 2023 12:58
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] question regarding error while tríing to run DCM
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear All, 
+
+ 
+
+I'm trying to conclude a DCM analysis, and VOIs should be set appropriately, but when I try to run 'specify' after clicking on "DCM", I get the following error message:
+
+ 
+
+Error in spm_dcm_ui (line 120)
+
+    spm_dcm_specify;
+
+ 
+
+Error while evaluating UIControl Callback.
+
+ 
+
+I'm not familiar with programming and coding, can anyone help me out with the problem? 
+
+ 
+
+Thank you all in advance. 
+
+ 
+
+All best, 
+
+Réka
+
+ 
+
+ 
+
+ 
+
+Dear All, 
+
+I'm trying to conclude a DCM analysis, and VOIs should be set appropriately, but when I try to run 'specify' after clicking on "DCM", I get the following error message:
+
+Error in spm_dcm_ui (line 120)
+    spm_dcm_specify;
+ 
+Error while evaluating UIControl Callback.
+
+I'm not familiar with programming and coding, can anyone help me out with the problem? 
+
+Thank you all in advance. 
+
+All best, 
+Réka
+
+
+Dear colleague,
+(Sorry for the cross posting and mass email)
+
+Please save the date for the second edition of the Seeing and Acting Workshop (SAW) that will take place at the Faculty of Psychology and Educational Sciences of the University of Coimbra, September 26-28, 2024 in Coimbra, Portugal.
+
+For the second edition of SAW, we have, once again, an exciting and stimulating group of Invited Speakers:
+
+·  Chris Baker, National Institute of Mental Health, USA
+
+·  Paolo Bartolomeo, Sorbonne University, France
+
+·  Marlene Behrmann, Carnegie Mellon University, USA
+
+·  Jody Culham, Western University, Canada
+
+·  Roland Fleming, Giessen University, Germany
+
+·  Sabine Kastner, Princeton University, USA
+
+·  Hans Op de Beeck, KU Leuven, Belgium
+
+ 
+
+The goal of SAW is to provide a forum for cognitive science/neuroscience researchers from a range of perspectives who are interested in Perception and Action, broadly construed, to come together to discuss their research and develop new directions and collaborations. The format of the workshop is intended to encourage extensive discussion among participants. To this end, we have scheduled only a small number of invited speakers, and there are no concurrent talks. In addition to the individual seminars, there will be a poster session for students, postdocs and other researchers to present their work.
+
+ 
+
+Abstract submission for posters closes on July 31, 2024. The five best abstracts whose first author is a student or postdoc will receive a 200 euro award sponsored by ANT Neuro.
+
+ 
+
+Registration for the workshop will be open in a couple of weeks. To register, submit a poster abstract, or for more information, please visit: https://www.uc.pt/cogbooster/saw/2024/
+
+ 
+
+Please note that there are a limited number of places (~120), which will be assigned on a first come, first served basis. To secure your place, please register as soon as possible. Note that you can register now and submit an abstract later (but before the July 31, 2024 deadline).
+
+ 
+
+SAW is powered by the ERA Chair CogBooster, and by the Faculty of Psychology and Educational Sciences of the University of Coimbra, Portugal.
+
+Workshop Organizers:
+Jorge Almeida, Alfonso Caramazza, Paul Downing, Mel Goodale, Zoe Kourtzi, Angelika Lingnau, and Isabel Pavão Martins
+
+Dear Sam
+
+This is a good question – one that I’ve been thinking about recently. I hope you don’t mind me CC’ing the SPM mailing list, so others can benefit. There are surprisingly many ways to model a 2x2 factorial design using DCM for fMRI, and the best approach isn’t always obvious. This can be resolved by trying different options and performing Bayesian model comparison, to see which option maximizes the free energy for your dataset. Your question was as follows (responses inline in black):
+
+ 
+
+I read one of your posts in the SPM mailing list in which you suggest two ways to model a 2x2 factorial design.
+
+ 
+
+Option 1: Drive the network with only level 1 of factor A (A1_B1 and A1_B2), leaving the other level unmodelled. Modulate particular connections using factor B, e.g. by computing an input vector (parametric regressor) which is the simple main effect of A1_B1-A1_B2.
+
+ 
+
+Option 2:  Drive the network by all four conditions (these could be combined into a single ‘Task’ input to capture the mean of the experimental conditions). Modulate particular connections either by the individual conditions, or contrasts of them. For example, the main effect of factor A: (A1_B1+A1_B2)-(A2_B1+ A2_B2) and the main effect of factor B: (A1_B1+A2_B1)-(A1_B2+A2_B2).
+
+ 
+
+Let's say I have factor A and B, each with two levels (so A1_B1, A1_B2, A2_B1 and A2_B2), and I hypothesize an interaction - a connection from region A to region B should be boosted by B1 only in the A1 condition.
+
+For option 1, this is how I constructed my 1st level GLM:
+
+Dear Luna,
+
+I can call it 'the imaging option' or 'distributed sources'. See https://www.sciencedirect.com/science/article/pii/S1053811909004285
+
+Best,
+
+Vladimir
+
+On Thu, Nov 16, 2023 at 6:43 AM Luna Sato <0000b4635ad2bbae-dmarc-request@jiscmail.ac.uk> wrote:
+Hello experts,
+We can use the spatial model IMG when conducting MEEG DCM analysis. The manual mentions that IMG utilizes a patch on the cortical surface. Could you please clarify the full name of IMG?
+I'm a beginner, so I apologize if my question is silly. 
+Cheers,
+Luna
+
+Hello experts,
+We can use the spatial model IMG when conducting MEEG DCM analysis. The manual mentions that IMG utilizes a patch on the cortical surface. Could you please clarify the full name of IMG?
+I'm a beginner, so I apologize if my question is silly. 
+Cheers,
+Luna
+
+Hi Ben,
+
+As far as i know, the "distortion correction " option on the sequence card you mention refers to the correction for gradient non-linearities, which I believe corrects for rather small effects with modern gradients in brain MRI. This correction applies to any kind of images (eg, structural and functional).
+
+Insread, the distortion correction you seem to be concerned about is the one for B0 inhomogeneities, particularly important for all EPI-based MRI (eg functional, perfusion, and diffusion). To correct this, you need a B0 field map, which you can acquire from a field map sequence directly or derive it from two short EPI acquisitions with opposite phase-encoding directions of the protocol you are using
+
+Best 
+Jorge 
+
+On Thu, Nov 16, 2023, 02:38 Ben Becker <beck13051@gmx.net> wrote:
+Dear all,
+
+We are setting up a new Siemens Vida with a 64-channel headcoil using a multiband sequence. We established most configurations with the help of Siemens engineers and ran some initial tests. For one configuration we are however not sure. The sequence includes “Distortion correction” and we are not sure of whether to switch it on or off. (1) If we set to OFF  gre_fielmap would be acquired and used for offline distortion correction, or would it make sense to (2) set it to ON and benefit from the correction, or (3) set it to ON and include the additional offline field correction? A general concern is whether the online distortion correction may lead to changes in the brain shape or signal that may later reduce the sensitivity for analyzing changes related to neural processing.
+
+Many thanks in advance and best wishes,
+Ben
+
+______________________
+Benjamin Becker, PhD
+Professor of Cognitive and Affective Neuroscience
+
+State Key Laboratory of Brain and Cognitive Sciences
+Department of Psychology
+The University of Hong Kong
+
+E-mail: bbecker@hku.hk / ben_becker@gmx.de
+Googlescholar: https://bit.ly/2NRESie
+Researchgate: https://bit.ly/3utehIU
+Twitter: @bn_becker
+
+Dear Jasmin,
+
+If you disable the serial orthogonalisation, SPM will leave the parametric modulator untouched - it will not orthogonalise it with respect to the main effect (the onset regressor as you call it), i.e. it will not mean-centre it. You can verify this visually by looking at the time series with Review > Design > Explore > Session s > Condition.
+
+Best regards,
+Guillaume.
+
+
+
+On 13/11/2023 09:13, Jasmin Stein wrote:
+Hi everyone,
+
+ 
+
+I have a model with one onset regressor and one corresponding parametric regressor. For the sake of some control analysis, I want the parametric regressor to NOT be orthogonal to the onset regressor. Is it enough to set the orthogonalization (.orth) to 0 in my batch script and enter the parametric regressor without mean-centering it? Or does .orth only affect serial orthogonalization between multiple parametric regressors and does not affect cases where only one parametric regressor is entered? In this case, how would I proceed?
+
+ 
+
+Thanks a lot for your help!
+
+Jasmin
+
+ 
+
+_______________________________
+
+Jasmin Stein (she/her)
+
+PhD Candidate
+
+Technische Universität Dresden
+
+SFB 940 Volition and Cognitive Control
+
+Bürogebäude Zellescher Weg A326
+
+E-Mail: jasmin.stein@tu-dresden.de
+
+Tel. +49 351 463 41155
+
+ 
+
+-- 
+Guillaume Flandin, PhD
+Wellcome Centre for Human Neuroimaging
+UCL Queen Square Institute of Neurology
+London WC1N 3BG
+
+Dear Jasmine,
+
+
+
+If you have an image image.nii and a mask mask.nii you can compute the mean and stdev of that image within the mask with:
+
+
+
+spm_summarise('image.nii','mask.nii',@(x) [mean(x) std(x)])
+
+
+
+Best regards,
+
+Guillaume.
+
+
+
+
+
+On 08/11/2023 16:05, Jasmine Cakmak wrote:
+Thank you very much! I have been able to create masks for the grey and white matter and have applied them to the bias corrected image. 
+I have used the command spm_summarise on these images but I can't find the mean voxel intensity and the standard deviation. If anyone could point me to where these values are, that would be great. 
+
+Thank you,
+Jasmine 
+From: Torben Lund <torbenelund@me.com>
+Sent: Thursday, November 2, 2023 5:03 AM
+To: Jasmine Cakmak <jasmine.cakmak@mail.mcgill.ca>
+Cc: spm Parametric Mapping) <SPM@JISCMAIL.AC.UK>
+Subject: Re: [SPM] Obtaining mean grey and white matter intensities
+ 
+
+You don't often get email from torbenelund@me.com. Learn why this is important
+
+Hi Jasmine
+
+Just pick a number close to 1 c1, c2 etc are posterior probability maps. If you want your mask to contain voxels where the probability of being GM is above 99% you should choose 0.99 as the threshold, another (more intuitive, but less correct) interpretation would be that least 99% of the voxel contains gray matter.
+
+Best
+Torben
+
+
+Den 1. nov. 2023 kl. 16.09 skrev Jasmine Cakmak <jasmine.cakmak@MAIL.MCGILL.CA>:
+
+Hi Guillaume,
+
+Thank you for the help. For the first step, how would you define the thresholds to be used in ImCalc?
+
+Thanks,
+Jasmine 
+From: Guillaume Flandin <g.flandin@ucl.ac.uk>
+Sent: Wednesday, November 1, 2023 6:38 AM
+To: Jasmine Cakmak <jasmine.cakmak@mail.mcgill.ca>; SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: Re: [SPM] Obtaining mean grey and white matter intensities
+ 
+
+You don't often get email from g.flandin@ucl.ac.uk. Learn why this is important
+
+Dear Jasmine,
+There is more than one way to do this but what you could do is first create binary masks of grey and white matter from the c1/c2 images obtained via segmentation (by thresholding using ImCalc) then compute the mean and stdev of your MR image within these two masks (using spm_summarise). If you need help with the implementation of these two steps, just let us know
+Best regards,
+Guillaume.
+
+On 31/10/2023 20:38, Jasmine Cakmak wrote:
+⚠ Caution: External sender
+
+
+Hello,
+
+Any help with this would be greatly appreciated.
+
+I am trying to define thresholds for binarizing a mask, and I need the mean and the standard deviation of the voxel intensities in both grey and white matter (separately) for a normalized/bias corrected MRI image. I was told that these values are provided as a part of the segmentation algorithm, but I am unable to find them anywhere (in both Segment and Old Segment). I was thinking to compute the values using the probability maps, but those values are meaningless since the intensity is almost homogenously white. Am I missing something in the segmentation output or is there a way to calculate these values?
+
+Thanks so much in advance,
+Jasmine
+-- 
+Guillaume Flandin, PhD
+Wellcome Centre for Human Neuroimaging
+UCL Queen Square Institute of Neurology
+London WC1N 3BG
+
+-- 
+Guillaume Flandin, PhD
+Wellcome Centre for Human Neuroimaging
+UCL Queen Square Institute of Neurology
+London WC1N 3BG
+
+The Virginia Tech Autism Clinic & Center for Autism Research is seeking two postdoctoral/research faculty positions. Visit this link below to view the ad for 2 Postdoctoral Associate, Senior Research Associate, or Research Scientist positions:
+
+https://careers.pageuppeople.com/968/cw/en-us/job/526794/postdoctoral-associate-senior-research-associate-or-research-scientist
+
+
+
+Dear SPM experts,
+
+I hope this email finds you well. I am currently working on a research project involving the use of the SPM software. I have a question regarding the Hemodynamic Response Function (HRF) function in the spm_hrf.m file.
+
+I have gone through the code and I understand that there are seven parameters (p(1) to p(7)) involved in modeling the HRF. However, I would appreciate some clarification on the specific meanings of each parameter.
+
+% Haemodynamic response function
+% FORMAT [hrf,p] = spm_hrf(RT,p,T)
+% RT   - scan repeat time
+% p    - parameters of the response function (two Gamma functions)
+%
+%                                                           defaults
+%                                                          {seconds}
+%        p(1) - delay of response (relative to onset)          6
+%        p(2) - delay of undershoot (relative to onset)       16
+%        p(3) - dispersion of response                         1
+%        p(4) - dispersion of undershoot                       1
+%        p(5) - ratio of response to undershoot                6
+%        p(6) - onset {seconds}                                0
+%        p(7) - length of kernel {seconds}                    32
+%
+% T    - microtime resolution [Default: 16]
+%
+% hrf  - haemodynamic response function
+% p    - parameters of the response function
+
+
+I am particularly interested in understanding the mathematical or physiological significance of each parameter and how they interact to define the HRF.
+Best regards,
+Xiangnan Tian
+
+Dear Xinyu,
+SPM provides the statistic of the combination of regressors being > 0
+
+If you want to check whether
+
+-1 1 0 0 > 0 0 -1 1
+
+ Is equivalent to check
+
+ (-1 1 0 0) - (0 0 -1 1) > 0
+
+which leads to contrast
+
+-1 1 1 -1 > 0
+
+Hope this helps
+Carles
+
+El 14 nov 2023, a les 11:01, Xinyu Liu <xinyuliu1999@HOTMAIL.COM> va escriure:
+
+Dear SPM experts,
+
+I am trying to set up an analysis for subjects divided in two groups (between-subject factor) , each was measured two times (within-subject factor). After reading tutorials I realize that I should use flexible factorial design to test the interaction effect.
+In CAT12 manual, it says that to test the interaction effect:
+
+For Time 1 > Time 2 & Group A > Group B (interaction)
+1 -1 -1 1
+
+But in my study, what I want is to test whether there is a larger increase in an intervention group compared to a control group (i.e., time 1 < time 2 and Group A > Group B if I understand it correctly).
+I am a bit confused how to modify this to achieve my goal. Should it be [-1 1 1 -1]? Any help would be greatly appreciated.
+
+Thank you very much.
+Xinyu
+
+
+Hi everyone
+
+Instats invites you to join our 5-part seminar on Statistical Methods for Fundamental Science starting Jan 15, being led by the acclaimed CERN physicist Tommaso Dorigo (who has over 270,000 citations and has contributed to Nobel Prize winning research).
+
+This is a once in a lifetime opportunity to discover the critical role of accurate statistical practices in analysing complex data from one of the world's leading particle physicists. Whether you’re a social, health, or natural scientist, the seminar will provide you with essential insight into how to think about and conduct statistical analyses, setting the stage for you to develop a deeper understanding of the sources of uncertainty that all researchers face in their work. This is a unique opportunity for cross-disciplinary learning, crucial for today's interconnected research landscape.
+
+We are expecting this seminar to fill up fast, so register now to secure your place! Please feel free to let your friends and colleagues know.
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Hi everyone,
+
+ 
+
+I have a model with one onset regressor and one corresponding parametric regressor. For the sake of some control analysis, I want the parametric regressor to NOT be orthogonal to the onset regressor. Is it enough to set the orthogonalization (.orth) to 0 in my batch script and enter the parametric regressor without mean-centering it? Or does .orth only affect serial orthogonalization between multiple parametric regressors and does not affect cases where only one parametric regressor is entered? In this case, how would I proceed?
+
+ 
+
+Thanks a lot for your help!
+
+Jasmin
+
+Hey everyone,
+
+
+
+does someone know if SPM can be used to unwarp with a AP and PA Spin Echo fieldmap and (if yes) where I can find a manual for that?
+
+
+
+Thanks a bunch!
+
+Marco
+

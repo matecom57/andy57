@@ -1,0 +1,314 @@
+Dear FSL Experts, 
+
+I would appreciate it if someone can help with the question below. Thank you. 
+
+Regards,
+Paul Geha.
+
+On Tue, Jun 13, 2023 at 11:57 AM paul geha <paul.geha@gmail.com> wrote:
+Dear FSL Experts, 
+
+Is TFCE a valid method to use in thresholding group statistics when running randomise using (FIRST) vertex data from sub-cortical structures?
+
+Thanks, 
+Paul Geha.
+
+Hi Sven,
+
+The first error message suggests that the file groupICA.gica/.filelist does not exist - can you check that the path you are using, in the embedded call to cat within your dual regression call, is correct?
+
+Paul
+
+Hi,
+
+I would like to ask if I create statistical parameter maps for PET data using FSL. If so, can someone suggest the relevant functions to do that?
+
+Thank you in advanced.
+Gina
+
+########################################################################
+
+
+Hi Naama,
+
+Looks like a 2x2 repeated measures ANOVA. Check out the design_ekaterina.ods, that was discussed in the mailing list a few times. A structure of the design is here: https://s3-us-west-2.amazonaws.com/andersonwinkler/mailinglist/design_ekaterina.ods
+
+Cheers,
+
+Anderson
+
+Hi,
+
+ 
+
+hard to tell. For the continuous part, it should be beneficial while for the volumes between the “pause”, it might not.
+
+My gut feeling would be it won’t hurt (much) but to be sure some in-depth testing would be necessary.
+
+Cheers,
+
+Andreas
+
+Hi Joost,
+
+One thing to try is to specify the echo spacing without scientific notation, i.e. as 0.0000029 rather than 2.9e-6. oxford_asl uses the 'bc' tool to do calculations on this value, and it cannot always handle scientific notation.
+
+If that doesn't help, you can you run oxford_asl with the --debug option. In the output directory you will find a temp dir starting with fsl_. Inside that there should be a file topup_params.txt, it would be good to compare this to the config file that you used when you ran it manually.
+
+Let me know if this helps at all,
+Martin
+
+
+Dear experts
+
+I would like to do a dual_regression, yet I get an error message which I do not understand
+
+any help is greatly appreciated !
+
+in short:
+2 groups x 36 each
+I did TICA (multi session)
+the resulting .gica looks ok to me
+
+
+I then tried to do dual_regression as indicated
+see below
+
+Dear Ali,
+Most of our command line tools work a bit differently to FSLeyes wrt to image basenames in that they only strip off the “header-bearing” extension when passed a filename. So for your image:
+
+aseg-in-rawavg_lower_thresholded_CC_Whole
+
+You could use 
+
+aseg-in-rawavg_lower_thresholded_CC_Whole.hdr
+or simply
+aseg-in-rawavg_lower_thresholded_CC_Whole
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Dear FSL team
+
+I have encountered the following error when processing some of my subjects:
+
+0 96 0 96 0 63
+0 slices processed
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  matrix multiplication: problem with matrix inverse; suggest to use solve() instead
+Aborted
+
+What is a possible solution please?
+
+Regards,
+Mariana
+
+
+Hi everyone,
+I am running a first-level analysis in fsl using FEAT and I am running to a few RAM related issues.
+I had originally inputed the confound regressors as a text file including information for motion exclusion (DVARS estimated) and initial dummy scans. This was originally inputed as separate columns for each number of volumes to be removed, each with the number 1 in the row corresponding to the volume to be excluded and the rest rows with 0. Becuase for a few subjects I end up with a lot of columns and I ran out of RAM, I tried grouping the different confound EVs into one (e.g. having 1 for the volumes to be excluded and 0 for the volumes to not be excluded all in one column). Is that a valid strategy? In my design matrix I don't seem to have any input for confound regressors when I do this (hence my question).
+Is there another alternative?
+Thanks in advance for your help.
+
+Hi Mariana
+
+ 
+
+Since it has failed on the very first slice, could it be that there are voxels in your brain mask where the data is all zeros? (this should not be an issue for the GLM, but might cause problems if you are using WLS)
+
+ 
+
+Cheers
+
+Saad
+
+I have a problem with regards to my data analysis. My study design is longitudinal and my data are DTI data on which we applied TBSS; A group of patients were randomized to either active treatment or placebo and the were scanned once before randomization (baseline) and once after the treatment (follow-up). I am interested in assessing the time by treatment interaction effect. How I would go about it, would be a repeated measures ANOVA, in which time would be the repeated measures factor with two levels (baseline and follow-up) and the treatment the between subjects factor. However, such model, is not yet available to be run in randomize (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM#ANOVA:_2-groups.2C_2-levels_per_subject_.282-way_Mixed_Effect_ANOVA.29).
+
+I was then wondering if you would have any ideas how to go about it. We did the suggestion by the developers, namely to substract the images from one timepoint to the other and then run a 2 sample t-test on the change between the two treatment groups. However some co-authors object and believe a 2*2 ANOVA is more appropriate, which I am not sure about, since it is not really treating the time variable as repeated measurements.
+
+An additional issue is that we have difference between the two treatment groups in a few clusters even before randomization (at baseline).
+
+I would love your input!
+
+Cheers,
+Liza
+
+########################################################################
+
+
+Hi Michael,
+
+ 
+
+Yes, I did. The distortion is in AP / PA direction and for both images in opposite too each other, so acquisition-wise the images are good.
+
+ 
+
+When I run calculate the displacement field apart directly with topup and apply it to the images with applytopup, the output is corrected and as expected. So neither the input images, parameter file or topup are the problem. I suspect there is something in the code of oxford_asl but as far as I can tell there is nothing strange going on. Again, I am in the dark on why the distortion correction in oxford_asl is not working in my case.
+
+ 
+
+Best regards,
+
+ 
+
+Joost
+
+Hi Rona,
+
+What did you mean by "this fsf can then be run, by passing it to the feat script"?
+If I have a design.fsf created in MELODIC, can I run it using the command line of FEAT and it will do the ICA analysis just like MELODIC?
+Correct - you can use the MELODIC GUI to set up an analysis, save the analysis (the "Save" button along the bottom row of the MELODIC GUI) then run it from the command line by running "feat design.fsf"
+
+What would be the cleanest way to do MELODIC ICA analysis (including preprocessing, B0 unwarping, registration etc...) for around 90 scans automatically?
+After you have set up the analysis and saved a design.fsf file for one subject, you can then modify that design.fsf file for your remaining subjects. You can do this automatically in a range of ways - a simple option would be to use the sed command to replace the input file paths for each subject.
+
+Paul
+
+
+
+Hi Rona,
+
+I think my last message may have been lost - are there any spaces in any of your file paths (including the $FSLDIR installation location)? If so, can you try surrounding all file paths in double quotes?
+
+Also, can you give some more details about your setup - is this a Windows machine, with FSL installed via WSL? Or are you using MobaX to SSH to a remote Linux system? Are your files, and your FSL installation, all on the same file system, or spread across different file systems?
+
+Paul
+
+Hi Anderson,
+
+Thank you so much for your reply, this is extremely helpful. I do have a significant interaction and then I added contrasts to find out the directionality in each group. I have N=24 in group A and N=19 in Group B and am using FSL FEAT for this analysis. 
+
+I just wanted to make sure that I am interpreting the associations in each group correctly. I now know the directionality and I would like to know if the association is meaningful in one group and not in the other. Is there a way that I can determine whether or not the association (simple slope) in each group is meaningful? Thank you again!
+
+Best wishes,
+Jane
+
+
+
+----
+
+Hi Jane,
+
+ 
+
+If the contrast that tests the interaction is significant (i.e., with a corrected p-value below some test level, such as 0.05), you can say that there is a significant difference in the association between the variables between the groups.
+
+ 
+
+The t-stats alone aren’t sufficient to indicate that, even if they seem high, or their difference even higher.
+
+ 
+
+For the 2nd question, 1.96 resembles very much a z-stat for 0.05/2. It isn’t bad, but we’d prefer to refer to the distribution of the t-statistic, particularly if the sample size is small (say, less than 25-ish). But even better than the distribution of the t-stat, is the distribution of the maximum t-stat across voxels, as that accounts for multiple testing. To have that, you need either permutation or the random-field theory (or some other approximation). So the 1.96 reference isn’t of much help other than a very rough heuristic…
+
+ 
+
+All the best,
+
+
+Anderson
+
+
+
+
+Dear everyone,
+
+I have a GLM model with 4 event regressors. 3/4 events occur 7-12 times per scanning session, and one event occurs 1-4 times per scanning session. I have a total of 31 participants.
+
+However, for some participants, the sparse event occurs more frequent than for others, resulting in an unbalanced count both across participants and across conditions.
+
+Is there a way to do inference on such a GLM?
+
+Kindly,
+
+Boulakis Paris
+
+########################################################################
+
+Dear everyone,
+
+I have a GLM model with 4 event regressors. 3/4 events occur 7-12 times per scanning session, and one event occurs 1-4 times per scanning session. I have a total of 31 participants.
+
+However, for some participants, the sparse event occurs more frequent than for others, resulting in an unbalanced count both across participants and across conditions.
+
+Is there a way to do inference on such a GLM?
+
+Kindly,
+
+Boulakis Paris
+
+Hello,
+
+We have three groups and wish to compare their TBSS (difference between means) with randomise. On the GLM wiki page there is an example for 3 groups called "F-Tests (Inter-Group differences, no repeated measures)" and a different design for a one-way ANOVA (the example used is for 4 groups). Could someone please give an example of a situation where you would use each option instead of the other? i.e. when would you use the F-test for 3 groups instead of the one-way ANOVA design?
+
+Thank you for any advice you may impart,
+
+Anna Forsyth
+
+
+Hi Jane,
+
+ 
+
+If the contrast that tests the interaction is significant (i.e., with a corrected p-value below some test level, such as 0.05), you can say that there is a significant difference in the association between the variables between the groups.
+
+ 
+
+The t-stats alone aren’t sufficient to indicate that, even if they seem high, or their difference even higher.
+
+ 
+
+For the 2nd question, 1.96 resembles very much a z-stat for 0.05/2. It isn’t bad, but we’d prefer to refer to the distribution of the t-statistic, particularly if the sample size is small (say, less than 25-ish). But even better than the distribution of the t-stat, is the distribution of the maximum t-stat across voxels, as that accounts for multiple testing. To have that, you need either permutation or the random-field theory (or some other approximation). So the 1.96 reference isn’t of much help other than a very rough heuristic…
+
+ 
+
+All the best,
+
+Hi Christina,
+
+You make no mention to the dependent variables, so the design you describe may refer to either ANCOVA or MANCOVA. Responding to the questions:
+
+1) Yes, design is fine for ANCOVA or MANCOVA. While not necessary for group comparisons, if you decide to test the means of any individual group, you should mean-center age, DD, and sex.
+
+2) Do you mean post-hoc tests between groups or for the multiple dependent variables in a MANCOVA test? Since you mention MANCOVA, I assume you'd be running this in PALM. If so, better than do a first pass then post-hoc tests is to simply go straight to what would have been post-hoc tests, and correct with -corrcon (for the multiple between-group comparisons) and -corrmod for correction between the various dependent variables. You can also use NPC as a global test instead of MANCOVA (option -npc).
+
+3) I would not run summary stats in another program since spatial specificity would be lost, correction for multiple testing as relevant for imaging would be lost, and possibly even the permutation inference would be lost. And it'd be more work too...
+
+All the best,
+
+Anderson
+
+
+﻿On 6/14/23, 2:50 PM, "FSL - FMRIB's Software Library on behalf of Cristina" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of cristina.a.roman@GMAIL.COM <mailto:cristina.a.roman@GMAIL.COM>> wrote:
+
+
+External Mail
+This email originated outside of The University of Texas Rio Grande Valley.
+Please exercise caution when clicking on links or opening attachments.
+
+
+Hello,
+
+
+I am looking to run a MANCOVA to examine white matter differences across three groups (accounting for several covariates), and I was hoping to get input on whether I am setting up my design matrix correctly.
+
+
+Groups: 3
+Covariates: Age (demeaned), disease duration (DD; demeaned), sex
+
+
+Simplified Example:
+Group EV1(Grp1) EV2(Grp2) EV3(Grp3) EV4(age) EV5(DD) EV6(sex)
+1 1 0 0 0.25 0.75 -1
+1 1 0 0 0.25 0.25 -1
+1 0 1 0 -0.75 -0.25 1
+1 0 1 0 0.5 -0.75 1
+1 0 0 1 -0.5 0.5 1
+1 0 0 1 0.25 0.25 -1
+
+
+Questions:
+
+

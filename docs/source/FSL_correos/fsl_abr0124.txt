@@ -1,0 +1,1492 @@
+Matthew,
+
+Thanks. No wonder I haven’t used them or seen them used in the GLM tutorials. That is all I changed, I didn’t move the data or change anything else. Really strange but like you just glad it’s working. 
+
+Matthew Sherwood, Ph.D., MBA
+Director, Center of Neuroimaging and Neuro-Evaluation of Cognitive Technologies
+Research Associate Professor College of Science and Mathematics, Department of Neuroscience, Cell Biology & Physiology Wright State University | 3640 Colonel Glenn Hwy. | Dayton, OH 45435 Located in 133 NEC cell: 937-524-3924  matt.sherwood@wright.edu | wright.edu/connect-lab
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK>
+Sent: Tuesday, March 26, 2024 1:57:30 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+ 
+CAUTION: This Message Is From an External Sender
+Exercise caution when opening attachments or clicking links.
+
+Hi Matt,
+These boxes just control if the contrasts are included in the HTML report, so I’m not sure why it resolved the issue but glad to hear things are working now!
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 22 Mar 2024, at 06:50, Sherwood, Matt <matt.sherwood@WRIGHT.EDU> wrote:
+
+Matthew,
+
+Ok I think I resolved it by bringing up a fresh model. I’ve never checked these boxes before nor do I see any tutorials or boxes checked on the home page, but the model ran when I checked the boxes next to each contrast on the full model setup -> contrast tab. 
+
+Do you know what these boxes are doing and why that solved the issue? See attached picture. 
+
+
+
+Matt
+
+
+From: Sherwood, Matt <matt.sherwood@wright.edu>
+Sent: Thursday, March 21, 2024 9:35:52 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+ 
+In my log directory, I have:
+ 
+feat0    1kb
+feat1    3kb
+feat2_pre         283kb
+feat2_pre.e###            0kb     
+feat2_pre.o###            0kb
+feat9    1kb
+ 
+I did just submit another post regarding this issue. It’s weird because my first level folders do not contain reg_standard despite not selected cleanup firstlevel standard space images. 
+ 
+I’m including here the feat2_pre, but also report_poststats.html and feat3c_flame from cope1.feat. Also the design.fsf file.
+ 
+-Matt
+ 
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK> Date: Tuesday, March 19, 2024 at 18:25 To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK> Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+Hi Matt, Can you upload the full log file? Kind Regards Matthew -------------------------------- Dr Matthew Webster FMRIB Centre John Radcliffe Hospital University of Oxford On 13 Mar 2024, at 17: 55, Sherwood, Matt <matt. sherwood@ WRIGHT. EDU> 
+ZjQcmQRYFpfptBannerStart
+CAUTION: This Message Is From an External Sender
+Exercise caution when opening attachments or clicking links.
+ 
+ZjQcmQRYFpfptBannerEnd
+Hi Matt, 
+Can you upload the full log file?
+ 
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+On 13 Mar 2024, at 17:55, Sherwood, Matt <matt.sherwood@WRIGHT.EDU> wrote:
+ 
+I am getting an error when running group feat on the poststats side. The error is saying that it cannot find tmpreport_poststats.html (line 312 of feat). Has anyone encountered this and discovered a solution.
+ 
+-Matt
+ 
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+ 
+ 
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<original-67807A3B-2C4F-4866-8BE4-65FC8E82A30E.jpeg>
+
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Hi Roman,
+
+No, there is no need to associate a reference image with tractogram overlays, as MRtrix3 .tck files are defined with respect to the NIfTI "world" coordinate system, and TrackVis .trk files contain information about the voxel and world coordinate system for the associated image.
+
+https://mrtrix.readthedocs.io/en/latest/getting_started/image_data.html#coordinate-system
+
+https://trackvis.org/docs/?subsect=fileformat
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 29 March 2024 17:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes: piece-wise curve
+ 
+Thank you, Paul !
+
+I see description of Tracks File Format (*.tck), text header followed by binary values.
+
+To load *tck file in fsleyes do I use the same "-s id -r *nii" mechanism to set up coordinate system and attach to refence NIFTI file as done for surfaces? Tranfromation in *.tck is to RAS coordinate system but RAS in qform may differ from RAS in sform.
+
+Thank you,
+
+Roman
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Thursday, March 28, 2024 2:51 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes: piece-wise curve
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi Roman,
+
+Not directly, but you might be able to abuse one of the supported tractogram formats to achieve what you want. You can use nibabel to create your own tractogram files: https://nipy.org/nibabel/reference/nibabel.streamlines.html
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 28 March 2024 17:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes: piece-wise curve
+ 
+Dear FSL developers,
+
+Is it possible to visualize a piece-wise curve in fsleyes? Such curve would be given by an ordered set of triplets of (x,y,z) marking edges of the straight segments. If yes, what is the input format, VTK?
+
+Thank you,
+
+Roman
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Dear Ionana,
+
+I am not expert on randomise, I am in fact learning to use it myself, and therefore also interested in the answer to your question. However, on general grounds, I would never de-mean.
+
+De-meaning is consuming one degree of freedom. When de-meaned data is passed to standard statistical tests, the test must know data was de-meaned. One way tests could use this knowledge is to remove one dataset and one row from the design matrix because this row can be recovered knowing the mean in each column is zero. I do not know what randomise does. I would simply add one additional column to the design matrix, column of 1's, to reflect the mean. You are not interested in its value, therefore, third column in the contrast file should be 0. Then run without de-meaning.
+
+(De-meaning is sometimes used in calculations to mitigate loss of precision. This is internal detail of algorithms of which users should not care.)
+
+You have two contrasts which are in fact the same. You are asking for different tails of the same distribution. Since randomise is very time consuming, I am struggling with why both contrasts are needed. It seems p-value outputs are one-tailed and this forces both contrasts, doubling run time. Maybe there is a way to get second tail in the first run. I do not know how.
+
+Roman
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Ioana Varvari <0000c850142731c3-dmarc-request@JISCMAIL.AC.UK>
+Sent: Saturday, March 30, 2024 8:57 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL Randomise - demeaning -D question
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+
+Hello!
+
+I'm a newbie to FSL and I am currently at the stage of running statistical analysis on my data. I hope someone can elucidate my issue.
+
+I want to run FSL's randomise on a set of 154 inputs (3d connectivity maps of shape 97, 115, 97) which I have combined in one 4D image to use as input.
+I have created the design and contrast matrix using a template from a FEAT run (design.mat & contrast.con).
+_____
+design.mat:
+/NumWaves 2
+/NumPoints 154
+/PPheights 1 1
+
+/Matrix
+1   0
+1   0
+...
+0   1
+0   1
+_____
+contrast.con:
+/ContrastName1 Control-Sz
+/ContrastName2 Sz-Control
+/NumWaves 2
+/NumContrasts 2
+/PPheights 1 1
+
+/Matrix
+1   -1
+-1   1
+_____
+I use the below randomise options in the terminal:
+randomise
+ -i 4d_input.nii.gz
+ -o output_folder
+ -d design.mat
+ -t contrast.con
+ -n 500
+ -D
+ -T
+
+and it stalls forever at Permutation 2 with the below output:
+randomise options: -i 4d_inputs.nii.gz -o output_folder -d design.mat -t contrast.con -n 500 -D -T
+Loading Data:
+Data loaded
+Warning: Data demeaning selected, but at least one design column has non-zero mean - therefore invoking automatic demeaning of design matrix
+6.7798e+44 permutations required for exhaustive test of t-test 1
+Doing 500 random permutations
+Starting permutation 1 (Unpermuted data)
+Starting permutation 2
+Warning: tfce has detected a large number of integral steps. This operation may require a great deal of time to complete.
+_____
+
+I have also tried running the same but without the -D option and this worked.
+
+_____
+
+Could someone please clarify why it stalls when trying to run with -D option and how I could fix it? I would like to run with demeaning as well.
+
+I am using FSL Version: 6.0.7.8 which is installed and set up on the Oxford BMRC cluster1.
+
+If you require any other information to kindly help me with this, please let me know and I'm happy to provide it.
+
+Thank you,
+Best wishes,
+Ioana
+
+########################################################################
+
+Hi All,
+
+ sorry to have to ask this question again (the last time I could find was 2015..). I ran fsl_anat on a large database to do a vertex analysis. Now I would like to also do VBM. Am I understanding correctly that, at best, I can skip doing the first step of the VBM pipeline (e.g., I can create a struct folder and copy in there both the T1_biascorr_brain and the T1_biascorr files created by fsl_anat) and then I would run steps 2 and 3 (and randomize) as done conventionally?
+
+I ask because I can see that fsl_anat has created (via FAST) a lot of the segmentations that are produced by step 2, but not the group atlas of course..
+
+ cheers
+
+ martin
+
+########################################################################
+
+Hi,
+
+ I've processed a large dataset of T1-weighted images with fsl_anat and ran a vertex analysis. Results look good/reasonable, but there is one thing I would like to double-check:
+
+In the first_utils command I used the --usereconNative flag and in the statistical design I thus included, as a covariate to account for head size/pose, the "Brain volume in mm^3 (normalised to MNI)" value in the T1_vols.txt file (generated with fsl_anat).
+
+My question is: Is this the right value to use to ensure that any result I find is indeed local displacement rather than head size/pose, etc? 
+
+For context, this is how I ran the analysis itself, before putting the output in randomise.
+first_utils --vertexAnalysis --usebvars -i bvars_${m}.bvars -d design1.mat -o vertex_analysis_design1_${m} --useReconNative --useRigidAlign -v
+
+ thank you
+
+ martin
+
+########################################################################
+
+Niels,
+
+ you were right!!!
+
+It was pretty tough to spot amongst 1000+ subjects (and 15 structures), but indeed there was ONE lonely participant processed with /fsl/rh7/6.0.1/ while all others were processed with /fsl/rh7/5.0.9/ .
+
+Considering I ran this by sending 1 script to a grid engine I'm not sure how it happened in one random participant in the middle of the pack, but well, mystery solved!
+
+I just re-ran concat_bvars and it worked no problem!!
+
+ thank you again
+
+ cheers
+
+ martin
+
+########################################################################
+
+
+Niels,
+
+ thank you, I'll do that an email you (but the couple examples I gave you earlier were taken from the full list where I checked that and couldn't see any difference -- but maybe a more trained eye can spot what I cannot!!)
+
+But did you have to write it in SH?!?! :-p
+
+Re the paths, I only took off/edited the insanely long paths I have for ease of reading; as far as I can tell when I run the command on the full paths it behaves as I described (and does find the files).
+ 
+ More soon -- and again, thank you!
+
+ martin
+
+On Wed, 20 Mar 2024 17:05:58 +0100, Niels Bergsland <npbergsland@BNAC.NET> wrote:
+
+>Hi Martin,
+>Hmm, that's odd. Is it possible that there is a stray bvars that was run
+>with a different FSL installation path? Can you run the following and then
+>send me the bvars_log.txt file for a given structure? Feel free to send it
+>directly to my email rather than posting it on the FSL list.
+>
+>for file in $(ls *_T1_first-${m}_first.bvars); do echo ${file} $(sed -n
+>'2p' ${file}) ; done > bvars_log.txt
+>That said, it's not entirely clear how your glob is working, since each
+>FIRST run is in its own directory, but your original command:
+>
+>concat_bvars bvars_${m}.bvars *_T1_first-${m}_first.bvars
+>
+>makes it seem that they're all in the same directory?
+>
+>You could also consider editing the concat_bvars script. The last line of
+>the script does the following:
+>
+>rm -f ${listfile}.txt
+>
+>
+>
+>It could be useful to do something like this:
+>
+>cat ${listfile}.txt
+>
+>
+>
+>before the rm command so that you can check exactly which files it is
+>trying to concatenate. This might help shed some light as well.
+>
+>
+>(If FSL is installed centrally and you don't have write access to the
+>scripts, just copy the concat_bvars script to somewhere temporary, make the
+>edits, and then run the modified version.)
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Niels,
+
+ thank you for chiming in. When I do what you suggest, I get the expected syntax and a really long list of filenames (with the full path). Here are the first few lines (it's wrapping around in this message but it's all one line of course..).
+
+concat_bvars bvars_R_Amyg.bvars /u/megascratch/m/0001/unprocessed/3T/T1w_MPR1/0001_3T_T1w_MPR1.anat/first_results/T1_first-R_Amyg_first.bvars /u/megascratch/m/0002/unprocessed/3T/T1w_MPR1/0002_3T_T1w_MPR1.anat/first_results/T1_first-R_Amyg_first.bvars /u/megascratch/m/0003/unprocessed/3T/T1w_MPR1/0003_3T_T1w_MPR1.anat/first_results/T1_first-R_Amyg_first.bvars /u/megascratch/m/0004/unprocessed/3T/T1w_MPR1/0004_3T_T1w_MPR1.anat/first_results/T1_first-R_Amyg_first.bvars /u/megascratch/m/0005/unprocessed/3T/T1w_MPR1/0005_3T_T1w_MPR1.anat/first_results/T1_first-R_Amyg_first.bvars /u/megascratch/m/0006/unprocessed/3T/T1w_MPR1/0006_3T_T1w_MPR1.anat/first_results/T1_first-R_Amyg_first.bvars
+
+As far as I can tell the paths look right (if I take any one and "ls" it, it does find the expected file), there is no "pesky" white space or special character beyond underscores, and the command is as I'd expect it to be.
+
+ Where else can I look to try to troubleshoot this?
+
+ thank you
+
+martin
+
+########################################################################
+
+
+Hi Everyone,
+
+ I've been running a high throughput analysis of 1000+ datasets, doing anatomical analysis on T1-weighted images. Though my aim is to run a vertex analysis, I've processed all images with fsl_anat, which I've done by putting to good use the grid on our computer cluster, so that each image might have been processed on a different core/node, whichever was available at any given time. (I'm using a Linux compute cluster through a tcsh shell -- yes, I know, I am a bad person for using tcsh ...)
+
+Now, at the stage of concatenating the bvars for each roi/participant, I am getting the "bvars generated with different model" error that I've seen crop up in a handful of posts on the archive -- but I cannot find a solution (or a difference across bvars).
+
+My concat_bvars command is as vanilla as it gets: concat_bvars bvars_${m}.bvars *_T1_first-${m}_first.bvars
+
+ I have looked at the bvars themselves, as someone suggested previously (with "head -n2 bval_file.bvals"), but across all participants I get the same data -- for example, all the right thalamus, left hipp and right amygdala look as in the example below:
+
+  this is a bvars file /u/project/CCN/apps/fsl/rh7/5.0.9/data/first/models_336_bin/05mm/R_Thal_05mm.bmv
+  this is a bvars file /u/project/CCN/apps/fsl/rh7/5.0.9/data/first/models_336_bin/intref_thal/L_Hipp.bmv
+  this is a bvars file /u/project/CCN/apps/fsl/rh7/5.0.9/data/first/models_336_bin/intref_thal/R_Amyg.bmv
+
+Can anyone please help me understand what causes the bvars_concat issue and how to fix it?
+
+ cheers
+
+ martin
+
+########################################################################
+
+
+Hi Roman,
+
+No, there is no need to associate a reference image with tractogram overlays, as MRtrix3 .tck files are defined with respect to the NIfTI "world" coordinate system, and TrackVis .trk files contain information about the voxel and world coordinate system for the associated image.
+
+https://mrtrix.readthedocs.io/en/latest/getting_started/image_data.html#coordinate-system
+
+https://trackvis.org/docs/?subsect=fileformat
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 29 March 2024 17:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes: piece-wise curve
+ 
+Thank you, Paul !
+
+I see description of Tracks File Format (*.tck), text header followed by binary values.
+
+To load *tck file in fsleyes do I use the same "-s id -r *nii" mechanism to set up coordinate system and attach to refence NIFTI file as done for surfaces? Tranfromation in *.tck is to RAS coordinate system but RAS in qform may differ from RAS in sform.
+
+Thank you,
+
+Roman
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK>
+Sent: Thursday, March 28, 2024 2:51 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsleyes: piece-wise curve
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi Roman,
+
+Not directly, but you might be able to abuse one of the supported tractogram formats to achieve what you want. You can use nibabel to create your own tractogram files: https://nipy.org/nibabel/reference/nibabel.streamlines.html
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 28 March 2024 17:18
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] fsleyes: piece-wise curve
+ 
+Dear FSL developers,
+
+Is it possible to visualize a piece-wise curve in fsleyes? Such curve would be given by an ordered set of triplets of (x,y,z) marking edges of the straight segments. If yes, what is the input format, VTK?
+
+Thank you,
+
+Roman
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hello FSL Community,
+
+I ran eddy_correct and it worked, but I need the motion parameters (translation in x,y and z axis and the rotation in the x, y and z axis) for each volume in each subject. Therefore, I need to run the eddy command to get the output file (eddy_correct_index.txt or the eddy_output.eddy_parameters).
+
+However, I see on this website: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide that this command is no longer available and I have to run the eddy_cuda or eddy_openmp command.
+
+On the server I am using there is an eddy_cuda10.2 executable in the FSL bin directory. But when I run it, it gives the error: "Terminating program".
+
+Could you please provide me with any guidance as to how to solve this problem?
+
+I would highly appreciate it.
+
+Kind regards,
+Pearly
+
+########################################################################
+
+Hello!
+
+I'm a newbie to FSL and I am currently at the stage of running statistical analysis on my data. I hope someone can elucidate my issue.
+
+I want to run FSL's randomise on a set of 154 inputs (3d connectivity maps of shape 97, 115, 97) which I have combined in one 4D image to use as input.
+I have created the design and contrast matrix using a template from a FEAT run (design.mat & contrast.con).
+_____
+design.mat:
+/NumWaves 2
+/NumPoints 154
+/PPheights 1 1
+
+/Matrix
+1   0
+1   0
+...
+0   1
+0   1
+_____
+contrast.con:
+/ContrastName1 Control-Sz
+/ContrastName2 Sz-Control
+/NumWaves 2
+/NumContrasts 2
+/PPheights 1 1
+
+/Matrix
+1   -1
+-1   1
+_____
+I use the below randomise options in the terminal:
+randomise
+ -i 4d_input.nii.gz
+ -o output_folder
+ -d design.mat
+ -t contrast.con
+ -n 500
+ -D
+ -T
+
+and it stalls forever at Permutation 2 with the below output:
+randomise options: -i 4d_inputs.nii.gz -o output_folder -d design.mat -t contrast.con -n 500 -D -T
+Loading Data:
+Data loaded
+Warning: Data demeaning selected, but at least one design column has non-zero mean - therefore invoking automatic demeaning of design matrix
+6.7798e+44 permutations required for exhaustive test of t-test 1
+Doing 500 random permutations
+Starting permutation 1 (Unpermuted data)
+Starting permutation 2
+Warning: tfce has detected a large number of integral steps. This operation may require a great deal of time to complete.
+_____
+
+I have also tried running the same but without the -D option and this worked.
+
+_____
+
+Could someone please clarify why it stalls when trying to run with -D option and how I could fix it? I would like to run with demeaning as well.
+
+I am using FSL Version: 6.0.7.8 which is installed and set up on the Oxford BMRC cluster1.
+
+If you require any other information to kindly help me with this, please let me know and I'm happy to provide it.
+
+Thank you,
+Best wishes,
+Ioana
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Thank you, Paul !
+
+I see description of Tracks File Format (*.tck), text header followed by binary values.
+
+To load *tck file in fsleyes do I use the same "-s id -r *nii" mechanism to set up coordinate system and attach to refence NIFTI file as done for surfaces? Tranfromation in *.tck is to RAS coordinate system but RAS in qform may differ from RAS in sform.
+
+Thank you,
+
+Roman
+
+I am not sure how to create/find the x, y, z positions for XML files in the Glasser atlas as described in the 2016 Nature Paper A Multi-modal Parcellation of Human Cerebral Cortex https://www.nature.com/articles/nature18933 and the Hammersmith atlas described in the April 2017 Macroanatomy and 3D probabilistic atlas of the human insula paper https://www.sciencedirect.com/science/article/pii/S1053811917300964?via%3Dihub#s0160
+
+Macroanatomy and 3D probabilistic atlas of the human insula
+The human insula is implicated in numerous functions. More and more neuroimaging studies focus on this region, however no atlas offers a complete subd…
+www.sciencedirect.com
+
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html#customising-atlases
+
+For the Glasser atlas:
+I was able to find the following data https://balsa.wustl.edu/study/RVVG, but it seems like you need to create an XML file with x, y, and z indices for each label and I am not sure if there was one already created or what those labels would be or which of the nii.gz files corresponds to the Glasser atlas.
+
+So I used the data in the HCP-MMP1 link in https://neuroimaging-core-docs.readthedocs.io/en/latest/pages/atlases.html which has an XML file, but when I plot a point in FSL, they don't seem to correspond to a point on the brain picture.
+
+For the Hammersmith atlas, the paper had a link to https://soundray.org/hammers-n30r95/ and http://www.brain-development.org which if you go to Atlases -> Adult Brain Atlases -> Hammers Atlas Database Adult atlases (30 subjects, 95 regions), but when I download all the data, I never see the x, y, and z coordinate positions for the 95 regions in any of the files.
+Rolf A. Heckemann - Medical imaging - Neuroimaging - Image processing - Morphometric analysis 
+Rolf Heckemann's Website :: Professor of Medical Imaging and Image Analysis :: Medical imaging, neuroimaging, image processing, morphometric analysis
+soundray.org
+Any advice on how to do this or where to get the XML files for FSL?  Do you actually need to compute the centers of gravity to load the atlases into FSL?  I see so many atlases that just have the nii.gz file and no corresponding XML file that you would need to load the atlas into FSL.  If there are no centers of gravity how do people view these atlases in FSL?
+
+Definitely! They are attached below. What's strange is this only occurs when I try to run feat via the terminal. If I use the GUI it works totally fine and runs to completion. Obviously, it would be ideal to run subjects through the terminal so I can run a bunch of them at once.
+
+Best,
+Shannon
+
+On Thu, Mar 28, 2024 at 1:11 PM Matthew Webster <0000bb75d3c794d0-dmarc-request@jiscmail.ac.uk> wrote:
+Hello Shannon! 
+ The script is failing when it tries to create the design matrices from the fsf file - so this may point to a problem in how your script is modifying the “template” fsf file, can you upload the input design.fsf and report_log for one of the subjects which is failing?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 27 Mar 2024, at 22:08, Shannon Cahalan <0000c80717d36cb2-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hello all!
+
+I created a bash script to run a bunch of participants through the 1st level analyses en masse. The script works and creates 1st level fsf files for my participants. However, it can't seem to execute the feat <design.fsf> command in the terminal. When I run participants' FSF file in the GUI, I am able to successfully run the participant through the first level analysis. For whatever reason, whenever I use the feat command I am given the error attached here. Any idea what's going on?
+
+Best,
+Shannon
+
+<Screen Shot 2024-03-27 at 6.07.00 PM.png>
+
+--
+Shannon R. Cahalan (she/her)
+Cognitive Neuroscience Graduate Student
+Department of Psychological & Brain Sciences
+The George Washington University
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Shannon R. Cahalan (she/her)
+Cognitive Neuroscience Graduate Student
+Department of Psychological & Brain Sciences
+The George Washington University
+
+
+Hi Roman,
+
+Not directly, but you might be able to abuse one of the supported tractogram formats to achieve what you want. You can use nibabel to create your own tractogram files: https://nipy.org/nibabel/reference/nibabel.streamlines.html
+
+Paul
+
+Dear FSL developers,
+
+Is it possible to visualize a piece-wise curve in fsleyes? Such curve would be given by an ordered set of triplets of (x,y,z) marking edges of the straight segments. If yes, what is the input format, VTK?
+
+Thank you,
+
+Roman
+
+
+Hello Shannon! 
+ The script is failing when it tries to create the design matrices from the fsf file - so this may point to a problem in how your script is modifying the “template” fsf file, can you upload the input design.fsf and report_log for one of the subjects which is failing?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Dear Patricia,
+
+ 
+
+I think it will work fine if you change the --topup to --topup= topup_AP_PA_b0
+
+ 
+
+There are two outputs from topup that is used by eddy, and if you give the "basename" it will find both (of which the _fieldcoef is one).
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Pamela Patricia Gonzalez Mendez <0000c7ca8df1f972-dmarc-request@JISCMAIL.AC.UK>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Wednesday, 27 March 2024 at 21:07
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Assistance with FSL on Intel Core i9 without GPU - Missing eddy_openmp and eddy Execution Issues
+
+ 
+
+Hi Paul, thank you so much for your reply. I updated fsl to version 6.0.7.9.
+
+ 
+
+I am using this command line:
+
+eddy --imain=dwidata \
+
+     --mask=b0_brain_mask \
+
+     --index=index1.txt \
+
+     --acqp=acqparams.txt \
+
+     --bvecs=dwidata.bvec \
+
+     --bvals=dwidata.bval \
+
+     --fwhm=0 \
+
+     --topup=topup_AP_PA_b0_fieldcoef \
+
+     --flm=quadratic \
+
+     --out=eddy_unwarped_images \
+
+     --data_is_shelled
+
+ 
+
+
+
+
+
+
+
+And now I am obtaining the following warnings and error on the terminal:
+
+
+
+
+Warning: In a future release the first argument will have to be "diffusion" when using eddy on diffusion data, i.e.
+
+eddy diffusion --imain='my_ima' --acqp='my_acqp' ...
+
+ 
+
+Warning: Writing of individual text files will be discontinued in favour of a single .json file in future versions
+
+ 
+
+TopupFileIO::TopupFileReader::MovePar: Index i out of bound
+
+EDDY::: Eddy failed with message EDDY::ECScanClasses.cpp:::  EDDY::ECScanManager::ECScanManager(const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, double, double, EDDY::ECModelType, EDDY::ECModelType, EDDY::LongECModelType, const std::vector<unsigned int> &, const std::vector<unsigned int> &, const EDDY::PolationPara &, EDDY::MultiBandGroups, bool):  Exception thrown
+
+ 
+
+And the output files are just the following:
+
+ 
+
+
+
+
+Thank ypo so much for your help and time.
+
+ 
+
+ 
+
+
+
+
+On 27-03-2024, at 06:33, Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+ 
+
+Hi Pamela,
+
+ 
+
+In recent versions of FSL, the executable is called 'eddy_cpu' not 'eddy_openmp'. But you should be able to just call 'eddy' regardless of whether or not you have a GPU.
+
+ 
+
+Unfortunately calling eddy from the GUI is not possible at the moment, but we will fix this for the next FSL version.
+
+ 
+
+The fact that eddy has crashed suggests that there is something wrong with your input files or arguments. Can you share the command that you are trying to run, and all output that is produced?
+
+ 
+
+In any case, if you can install the latest version of FSL, eddy should crash with a more meaningful error message.
+
+ 
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Pamela Patricia Gonzalez Mendez <0000c7ca8df1f972-dmarc-request@JISCMAIL.AC.UK>
+Sent: 27 March 2024 06:47
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Assistance with FSL on Intel Core i9 without GPU - Missing eddy_openmp and eddy Execution Issues
+
+ 
+
+ 
+
+Dear FSL Support Team,
+
+ 
+
+I am seeking your expertise to address challenges I've encountered with my FSL setup. I am currently running FSL version 6.0.7.3 on a system powered by an Intel Core i9 processor, without access to a GPU. My operating system is macOS Sonoma 14.3.1. 
+
+ 
+
+1. Missing eddy_openmp Executable:
+
+Despite successfully installing FSL 6.0.7.3, the eddy_openmp executable is absent from the bin directory (/usr/local/fsl/bin). This omission hinders my ability to utilize certain functionalities, particularly through the FSL GUI, which results in the following error:
+
+ 
+
+Errors couldn't execute "/usr/local/fsl/bin/eddy_openmp": no such file or directory.
+
+ 
+
+When executing eddy via command line, the process starts but ends prematurely.
+
+ 
+
+In both cases, only generating two files outputs:
+
+eddy_corrected_data.eddy_command_txt
+eddy_corrected_data.eddy_values_of_all_input_parameters
+This issue occurs without generating any error message that could guide further troubleshooting, even using -v in the command line.
+
+ 
+
+ 
+
+Thank you very much for your guidance and support. I look forward to your suggestions and hope to resolve these issues promptly.
+
+Best regards,
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hello all!
+
+I created a bash script to run a bunch of participants through the 1st level analyses en masse. The script works and creates 1st level fsf files for my participants. However, it can't seem to execute the feat <design.fsf> command in the terminal. When I run participants' FSF file in the GUI, I am able to successfully run the participant through the first level analysis. For whatever reason, whenever I use the feat command I am given the error attached here. Any idea what's going on?
+
+Best,
+Shannon
+
+Screen Shot 2024-03-27 at 6.07.00 PM.png
+
+--
+Shannon R. Cahalan (she/her)
+Cognitive Neuroscience Graduate Student
+Department of Psychological & Brain Sciences
+The George Washington University
+
+
+
+Hi all, sorry for the multiple postings, but... 
+Going to Society of Biological Psychiatry (SOBP) annual meeting this May? Want more time to think? Want more time to code? Want more time to collaborate? The SOBP BrainHack is the place to be! May 7th&8th, 2024.
+
+Details at https://www.repronim.org/SOBPHack-052024...
+Registration at https://www.eventbrite.com/e/sobp-brain-...
+
+Space is limited, register soon!
+
+
+
+Hi Paul, thank you so much for your reply. I updated fsl to version 6.0.7.9.
+
+I am using this command line:
+eddy --imain=dwidata \
+
+     --mask=b0_brain_mask \
+
+     --index=index1.txt \
+
+     --acqp=acqparams.txt \
+
+     --bvecs=dwidata.bvec \
+
+     --bvals=dwidata.bval \
+
+     --fwhm=0 \
+
+     --topup=topup_AP_PA_b0_fieldcoef \
+
+     --flm=quadratic \
+
+     --out=eddy_unwarped_images \
+
+     --data_is_shelled
+
+
+
+
+
+
+
+And now I am obtaining the following warnings and error on the terminal:
+
+
+
+Warning: In a future release the first argument will have to be "diffusion" when using eddy on diffusion data, i.e.
+
+eddy diffusion --imain='my_ima' --acqp='my_acqp' ...
+
+
+
+Warning: Writing of individual text files will be discontinued in favour of a single .json file in future versions
+
+
+
+TopupFileIO::TopupFileReader::MovePar: Index i out of bound
+
+EDDY::: Eddy failed with message EDDY::ECScanClasses.cpp:::  EDDY::ECScanManager::ECScanManager(const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, const std::string &, double, double, EDDY::ECModelType, EDDY::ECModelType, EDDY::LongECModelType, const std::vector<unsigned int> &, const std::vector<unsigned int> &, const EDDY::PolationPara &, EDDY::MultiBandGroups, bool):  Exception thrown
+
+
+And the output files are just the following:
+
+
+
+
+
+
+
+
+
+Thank ypo so much for your help and time.
+
+
+
+On 27-03-2024, at 06:33, Paul McCarthy <0000bcc6a697da3a-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Pamela,
+
+In recent versions of FSL, the executable is called 'eddy_cpu' not 'eddy_openmp'. But you should be able to just call 'eddy' regardless of whether or not you have a GPU.
+
+Unfortunately calling eddy from the GUI is not possible at the moment, but we will fix this for the next FSL version.
+
+The fact that eddy has crashed suggests that there is something wrong with your input files or arguments. Can you share the command that you are trying to run, and all output that is produced?
+
+In any case, if you can install the latest version of FSL, eddy should crash with a more meaningful error message.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Pamela Patricia Gonzalez Mendez <0000c7ca8df1f972-dmarc-request@JISCMAIL.AC.UK>
+Sent: 27 March 2024 06:47
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Assistance with FSL on Intel Core i9 without GPU - Missing eddy_openmp and eddy Execution Issues
+ 
+
+Dear FSL Support Team,
+
+I am seeking your expertise to address challenges I've encountered with my FSL setup. I am currently running FSL version 6.0.7.3 on a system powered by an Intel Core i9 processor, without access to a GPU. My operating system is macOS Sonoma 14.3.1. 
+
+1. Missing eddy_openmp Executable:
+Despite successfully installing FSL 6.0.7.3, the eddy_openmp executable is absent from the bin directory (/usr/local/fsl/bin). This omission hinders my ability to utilize certain functionalities, particularly through the FSL GUI, which results in the following error:
+
+Errors couldn't execute "/usr/local/fsl/bin/eddy_openmp": no such file or directory.
+
+When executing eddy via command line, the process starts but ends prematurely.
+
+In both cases, only generating two files outputs:
+eddy_corrected_data.eddy_command_txt
+eddy_corrected_data.eddy_values_of_all_input_parameters
+This issue occurs without generating any error message that could guide further troubleshooting, even using -v in the command line.
+
+
+Thank you very much for your guidance and support. I look forward to your suggestions and hope to resolve these issues promptly.
+Best regards,
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hi,
+    Can you confirm you’re running the latest release of FSL ( 6.0.7.9 ) as asl_gui is working on local OSX and Linux systems with that version?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear Diana,
+I’ve answered inline with the questions below:
+
+
+On 27 Mar 2024, at 13:34, Diana K <dianakancsar99@GMAIL.COM> wrote:
+
+Dear all,
+
+I would like to ask your help in a few matters I encountered.
+1) I have installed the FSL following to the guide. However, I am facing an issue when opening a file directly from a folder. I can only open it from the FSLeyes, files panel. Is there a configuration I can adjust to enable direct file opening from folders, rather than running the FSLeyes and open files from its panel?
+To open files as part of a FSLeyes call, you can just add them to the fsleyes call, e.g.
+
+fsleyes myFileName.nii.gz
+
+2) As I am starting my analysis, I am also concerned about potential deviations if I compare results with analyses conducted in different (older) versions of FSL. Can different versions of FSL analyses cause discrepancies in the results?
+(Since, I have previous results from preliminary studies, that could be used in my analysis as well.)
+Any change in processing environment could _potentially_ change results, but in practical terms most differences will be very minor, although if possible you would want to avoid correlations between versions of software used and your hypothesis ( e.g. a group-difference study where one group was processed with one software pipeline and the second group with another version ).
+
+3) I am in a middle of doing a DTI tractography analysis with a seed ROI. I've completed the preprocessing steps (BET, eddy correction, DTI fitting, bedpostx, and registration in the FDT-diffusion panel). Now, I've started preparing to run the probtrackx command. I had the seed-based ROI, created a seed mask, but I'm stuck at the FNIRT registration step.
+This is the command code I was trying to use:
+"
+fnirt --in=/Volumes/Diana/Preprocessed/DTI/Test_BedpostX/ADDI_016.bedpostX/nodif_brain.nii.gz --aff=/Volumes/Diana/Preprocessed/DTI/Test_BedpostX/ADDI_016.bedpostX/xfms/diff2standard.mat --cout=output_warp_coefficients.mat --ref=$FSLDIR/data/standard/MNI152_T1_1mm --iout=output_registered_image
+
+"
+However, this command just only created a log file, but nothing else. Could you please help me, how should I proceed and finish the tractography analysis?
+Are you running the registration above manually ( as Fnirt can be run as part of the GUI-based pipeline )? A seed-mask based ROI can similarly be passed into the Probtrackx section of the GUI. 
+
+Thanks in advance!
+Regards,
+Diana
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Kind Regards
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+
+Dear all,
+
+I would like to ask your help in a few matters I encountered.
+1) I have installed the FSL following to the guide. However, I am facing an issue when opening a file directly from a folder. I can only open it from the FSLeyes, files panel. Is there a configuration I can adjust to enable direct file opening from folders, rather than running the FSLeyes and open files from its panel?
+
+2) As I am starting my analysis, I am also concerned about potential deviations if I compare results with analyses conducted in different (older) versions of FSL. Can different versions of FSL analyses cause discrepancies in the results?
+(Since, I have previous results from preliminary studies, that could be used in my analysis as well.)
+
+3) I am in a middle of doing a DTI tractography analysis with a seed ROI. I've completed the preprocessing steps (BET, eddy correction, DTI fitting, bedpostx, and registration in the FDT-diffusion panel). Now, I've started preparing to run the probtrackx command. I had the seed-based ROI, created a seed mask, but I'm stuck at the FNIRT registration step.
+This is the command code I was trying to use:
+"
+fnirt --in=/Volumes/Diana/Preprocessed/DTI/Test_BedpostX/ADDI_016.bedpostX/nodif_brain.nii.gz --aff=/Volumes/Diana/Preprocessed/DTI/Test_BedpostX/ADDI_016.bedpostX/xfms/diff2standard.mat --cout=output_warp_coefficients.mat --ref=$FSLDIR/data/standard/MNI152_T1_1mm --iout=output_registered_image
+
+"
+However, this command just only created a log file, but nothing else. Could you please help me, how should I proceed and finish the tractography analysis?
+
+Thanks in advance!
+Regards,
+Diana
+
+########################################################################
+
+
+Hi Pamela,
+
+In recent versions of FSL, the executable is called 'eddy_cpu' not 'eddy_openmp'. But you should be able to just call 'eddy' regardless of whether or not you have a GPU.
+
+Unfortunately calling eddy from the GUI is not possible at the moment, but we will fix this for the next FSL version.
+
+The fact that eddy has crashed suggests that there is something wrong with your input files or arguments. Can you share the command that you are trying to run, and all output that is produced?
+
+In any case, if you can install the latest version of FSL, eddy should crash with a more meaningful error message.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Pamela Patricia Gonzalez Mendez <0000c7ca8df1f972-dmarc-request@JISCMAIL.AC.UK>
+Sent: 27 March 2024 06:47
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Assistance with FSL on Intel Core i9 without GPU - Missing eddy_openmp and eddy Execution Issues
+ 
+
+Dear FSL Support Team,
+
+
+
+I am seeking your expertise to address challenges I've encountered with my FSL setup. I am currently running FSL version 6.0.7.3 on a system powered by an Intel Core i9 processor, without access to a GPU. My operating system is macOS Sonoma 14.3.1. 
+
+
+
+1. Missing eddy_openmp Executable:
+
+Despite successfully installing FSL 6.0.7.3, the eddy_openmp executable is absent from the bin directory (/usr/local/fsl/bin). This omission hinders my ability to utilize certain functionalities, particularly through the FSL GUI, which results in the following error:
+
+
+
+Errors couldn't execute "/usr/local/fsl/bin/eddy_openmp": no such file or directory.
+
+
+
+When executing eddy via command line, the process starts but ends prematurely.
+
+
+
+In both cases, only generating two files outputs:
+
+eddy_corrected_data.eddy_command_txt
+eddy_corrected_data.eddy_values_of_all_input_parameters
+This issue occurs without generating any error message that could guide further troubleshooting, even using -v in the command line.
+
+
+
+
+
+Thank you very much for your guidance and support. I look forward to your suggestions and hope to resolve these issues promptly.
+
+Best regards,
+
+
+
+
+Dear FSL Support Team,
+
+
+
+I am seeking your expertise to address challenges I've encountered with my FSL setup. I am currently running FSL version 6.0.7.3 on a system powered by an Intel Core i9 processor, without access to a GPU. My operating system is macOS Sonoma 14.3.1. 
+
+
+
+1. Missing eddy_openmp Executable:
+
+Despite successfully installing FSL 6.0.7.3, the eddy_openmp executable is absent from the bin directory (/usr/local/fsl/bin). This omission hinders my ability to utilize certain functionalities, particularly through the FSL GUI, which results in the following error:
+
+
+
+Errors couldn't execute "/usr/local/fsl/bin/eddy_openmp": no such file or directory.
+
+
+
+When executing eddy via command line, the process starts but ends prematurely.
+
+
+
+In both cases, only generating two files outputs:
+
+eddy_corrected_data.eddy_command_txt
+eddy_corrected_data.eddy_values_of_all_input_parameters
+This issue occurs without generating any error message that could guide further troubleshooting, even using -v in the command line.
+
+
+
+
+
+Thank you very much for your guidance and support. I look forward to your suggestions and hope to resolve these issues promptly.
+
+Best regards,
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi Matt,
+These boxes just control if the contrasts are included in the HTML report, so I’m not sure why it resolved the issue but glad to hear things are working now!
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 22 Mar 2024, at 06:50, Sherwood, Matt <matt.sherwood@WRIGHT.EDU> wrote:
+
+Matthew,
+
+Ok I think I resolved it by bringing up a fresh model. I’ve never checked these boxes before nor do I see any tutorials or boxes checked on the home page, but the model ran when I checked the boxes next to each contrast on the full model setup -> contrast tab. 
+
+Do you know what these boxes are doing and why that solved the issue? See attached picture. 
+
+
+
+Matt
+
+
+From: Sherwood, Matt <matt.sherwood@wright.edu>
+Sent: Thursday, March 21, 2024 9:35:52 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+ 
+In my log directory, I have:
+ 
+
+feat0    1kb
+feat1    3kb
+feat2_pre         283kb
+feat2_pre.e###            0kb     
+feat2_pre.o###            0kb
+feat9    1kb
+ 
+
+I did just submit another post regarding this issue. It’s weird because my first level folders do not contain reg_standard despite not selected cleanup firstlevel standard space images. 
+ 
+
+I’m including here the feat2_pre, but also report_poststats.html and feat3c_flame from cope1.feat. Also the design.fsf file.
+ 
+
+-Matt
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK>
+Date: Tuesday, March 19, 2024 at 18:25
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+
+Hi Matt, Can you upload the full log file? Kind Regards Matthew -------------------------------- Dr Matthew Webster FMRIB Centre John Radcliffe Hospital University of Oxford On 13 Mar 2024, at 17: 55, Sherwood, Matt <matt. sherwood@ WRIGHT. EDU> 
+ZjQcmQRYFpfptBannerStart
+CAUTION: This Message Is From an External Sender
+Exercise caution when opening attachments or clicking links.
+ 
+
+ZjQcmQRYFpfptBannerEnd
+Hi Matt, 
+Can you upload the full log file?
+ 
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+On 13 Mar 2024, at 17:55, Sherwood, Matt <matt.sherwood@WRIGHT.EDU> wrote:
+ 
+
+I am getting an error when running group feat on the poststats side. The error is saying that it cannot find tmpreport_poststats.html (line 312 of feat). Has anyone encountered this and discovered a solution.
+ 
+
+-Matt
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+<original-67807A3B-2C4F-4866-8BE4-65FC8E82A30E.jpeg>
+
+
+
+
+Hi Aaron,
+
+ 
+
+All of the components are spatially orthogonal.  Each component explains a portion of the timeseries variance that is not explained by other components.  Weaker components explain less of the variance. 
+
+ 
+
+Matt.
+
+Paul,
+I am a bit new to ICA. The statement phrase uniquely explained variance. Does this imply that components that are listed earlier are more apt to have a dot product with another component list earlier to be closer to 0.
+
+Aaron Tanenbaum
+
+
+
+Hi Paul,
+
+You've solved the problem perfectly, thank you very much!
+
+I don't know whether this would be helpful for others or not but the directory of __init__.py was missing the final folder 'mac': 
+$FSLDIR/lib/python3.11/site-packages/send2trash/mac/__init__.py
+
+Thanks again!
+Harry
+ 
+
+Hi,
+
+Yes, this is generally an excellent approach. However, one disadvantage is that your analysis is limited to the skeleton. For many applications this might be fine. However, if you are interested in results outside of the skeleton, you might want to go for a different approach, such as one of:
+1. Registering your diffusion data to a structural scan of the same subject and then registering the structural scan to MNI. This should give you decent alignment for most of the white matter, not just the skeleton (but does require a structural scan).
+2. Run XTRACT to get tracts in individual subjects and then compare the average NODDI value for each tract across subjects. Note that here you are comparing the results in ROIs rather than voxel-wise, so I think you could use the tissue-weighted correction tool you mentioned earlier.
+
+Best wishes,
+
+Michiel
+
+> On 25 Mar 2024, at 15:52, Beatrice Bravi <beatrice.bravi@GMAIL.COM> wrote:
+>
+> Hi Saad,
+> Many thanks for your reply. It confirmed to me the steps that I'm doing. Considering registration, how do you recommend to proceed? At the moment, after preprocessing the data and fitting the NODDI model to each voxel obtaining the voxel-based maps, I run tbss steps on them in order to register them to the FMRIB58_FA standard or the sample-based standard (with -s option in tbss_2_reg and tbss_3_postreg), in order to run randomise with FSL on the skeletonized maps of FA, MD, RD, AD, ODI, NDI, and FFW).
+> I'm not sure this is the best procedure to use process and use NODDI features.
+> Thank you in advance
+>
+> Beatrice
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+
+Hi Vadim,
+
+The MELODIC docs state that "When using single-session ICA the component are ordered in order of decreasing amounts of uniquely explained variance."
+
+https://fsl.fmrib.ox.ac.uk/fsl/docs/#/resting_state/melodic?id=single-session-ica
+
+But I don't understand your comment about whether removing them will have a negligible effect on results. If your analysis consists entirely of single subject ICA, then you are correct, but this is rarely the case as single-subject ICA is typically used as a preprocessing step, and not removing noisy ICs during preprocessing would have a detrimental effect on subsequent analysis steps.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Vadim Axelrod <axel.vadim@GMAIL.COM>
+Sent: 25 March 2024 11:32
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSLeyes: order of ICA components
+ 
+Dear all,
+
+Is the order of ICA components in FSLeyes from most to least explained variance? 
+I am using ICA to remove noise components (multiband artifacts, in particular). So, if I find noisy components only at the end of the list, in such a case their removal will have only negligible effect on the results.
+
+Thank you,
+Vadim
+
+
+Hi all,
+
+We tried running the code after the update, and we still got the same error;
+ModuleNotFoundError: No module named 'oxford_asl'
+
+What should we do?
+
+########################################################################
+
+The Social Memory Lab at Tulane University, directed by Dr. Benjamin Deen, is seeking a Laboratory Research Technician who will contribute to multiple aspects of projects studying social perception, cognition, and memory, using behavioral and neuroimaging (fMRI) methods. The Laboratory Research Technician will work as part of a team comprised of postdoctoral fellows, graduate students, and undergraduate research assistants, and will coordinate day-to-day operations of the lab. Major responsibilities include participant recruitment, collection of behavioral and fMRI data, data analysis using Matlab or Python, and administrative duties. Other tasks will be commensurate with the experience and interests of the technician. The position requires excellent communication and organizational skills, a high degree of independence, and an interest in cognitive neuroscience.
+ 
+REQUIRED EDUCATION AND EXPERIENCE:
+1.    Bachelor’s degree in psychology, neuroscience, computer science, or a related field
+2.    Previous experience working in a research lab
+ 
+REQUIRED KNOWLEDGE, SKILLS, ABILITIES/COMPETENCIES
+1.    Ability to communicate effectively with lab members, university staff, and volunteers
+2.    Ability to perform daily tasks in a highly organized fashion, with attention to detail
+3.    Strong time management skills and ability to effectively manage multiple assignments
+4.    Willingness to work flexible hours, including evenings and weekends as needed
+5.    Desire to acquire new skills and competencies in a dynamic research atmosphere
+6.    Proficiency in computer skills, including Microsoft Office applications
+ 
+PREFERRED QUALIFICATIONS:
+1.    Proficiency coding in Matlab, Python, or R
+2.    Demonstrated interest in cognitive neuroscience research
+ 
+Interested candidates may find more information at https://https://www.socialmemorylab.com/join-the-lab, apply online at https://jobs.tulane.edu/position/IRC29449 or email bdeen@tulane.edu with any questions about the position.
+
+########################################################################
+
+
+Hi Roman,
+ Any set of unique numbers should be fine ( for unconstrained permutation ) and can also be used for the “raw” glm outputs ( as the voxelwise designs are always the ones used in the GLM ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hello Alex,
+  Using a “Empty EV” or “0 0 0” EV file should be equivalent ( the EV file method can be more useful when using a template fsf across subjects ) - Feat will still process all the contrasts but will output an all-zero contrast for all contrasts using these blank EVs. If cope files are missing then I suspect this may be an issue with the HCP pipeline possibly generating a variable number of contrasts?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Saad,
+Many thanks for your reply. It confirmed to me the steps that I'm doing. Considering registration, how do you recommend to proceed? At the moment, after preprocessing the data and fitting the NODDI model to each voxel obtaining the voxel-based maps, I run tbss steps on them in order to register them to the FMRIB58_FA standard or the sample-based standard (with -s option in tbss_2_reg and tbss_3_postreg), in order to run randomise with FSL on the skeletonized maps of FA, MD, RD, AD, ODI, NDI, and FFW).
+I'm not sure this is the best procedure to use process and use NODDI features.
+Thank you in advance
+
+Beatrice
+
+########################################################################
+
+Experienced Postdoctoral Fellow in Infant Developmental Cognitive Neuroscience​
+
+The Foundations of Cognition project is studying the emergence of cognition in infants, and how this is disrupted by brain injury. It has acquired functional MRI in a substantial cohort of 2-and 9-month-old infants (N=134), awake watching pictures and movies. The postholder will work with Professor Cusack and the team to use this rich dataset to characterise infant’s emerging cognition: critically evaluating the literature, developing a hypothesis, implementing the analysis, interpreting the results, and writing the manuscripts(s).
+
+Full time, €50,540-€54,965 per annum, post ends June 2025.
+Benefits include a pension contribution and PRSI social insurance.
+​
+See further details: www.cusacklab.org/vacancies
+
+​Deadline 12 noon on April 22, 2024.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+Two Senior Postdoctoral Researchers in Deep Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or perinatal injury, can be measured with functional MRI (fMRI). Unfortunately, infants move in the scanner and half the images are discarded, precluding clinical application. In recent years, deep neural networks (DNNs) have led to breakthroughs in artificial intelligence and are finding growing application in biomedical imaging. DNNs have considerable potential to correct head motion in fMRI, as they can learn complex mappings, and exploit knowledge of brain structure. The postdoctoral researchers will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas and must be willing to develop skills in the other:
+design and optimisation of deep neural networks
+neuroimaging with fMRI
+Candidates must have a strong level of expertise in programming in python or another language.
+
+Full time, €50,540-€54,965 per annum. Benefits include a pension contribution and PRSI social insurance.
+Theses posts will be for two years but there may arise the opportunity to extend them.
+
+See further details: www.cusacklab.org/vacancies
+
+​Deadline 12 noon on April 22, 2024.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Two PhD Studentships in Deep Neural Networks for Medical Imaging
+
+Brain development in infants and its disruption by preterm birth or perinatal injury, can be measured with functional MRI (fMRI). Unfortunately, infants move in the scanner and half the images are discarded, precluding clinical application. In recent years, deep neural networks (DNNs) have led to breakthroughs in artificial intelligence and are finding growing application in biomedical imaging. DNNs have considerable potential to correct head motion in fMRI, as they can learn complex mappings, and exploit knowledge of brain structure. The PhD Candidates will develop DNNs to motion correct fMRI data.
+
+Candidates must have expertise in at least one of the two following areas and must be willing to develop skills in the other:
+design and optimisation of deep neural networks
+neuroimaging
+Candidates must have expertise in programming in python or another language.
+
+The studentships comprise EU fees, stipend and conference travel.
+
+See further details: www.cusacklab.org/vacancies
+
+​​Deadline 12 noon on April 22, 2024.
+
+########################################################################
+

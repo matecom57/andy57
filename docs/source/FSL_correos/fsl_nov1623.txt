@@ -1,0 +1,1316 @@
+Thanks Paul! I have tried all versions of vcx and it didn't work. But mobaxterm works~! 
+
+This has been great. 
+
+Thank you! 
+
+Warmest regards, 
+
+Swati 
+
+
+Hi there,
+
+I have reinstalled all components of fsl, and I an run glxgears with nil issues. However, when I run fsleyes - I am unable to interact with superimposed windows. For example, when I click on the toolbox -I can't move the arrows/ toolbars/ even close the window. This is on Ubuntu 22 Windows. 
+
+Cheers, 
+
+Swati 
+
+
+Thank you Paul! I managed to work around it by re installing it and it isn't giving me the error any more. 
+
+Cheers, 
+
+Swati 
+
+
+Hi there, 
+
+I am running Ubuntu on Windows. I am getting this error when I run fsleyes
+Error loading command line arguments: An error occurred loading the command-line arguments.
+
+Thank you. 
+
+Warmest regards, 
+
+Swati 
+
+
+Hi again Paul,
+
+  Maybe worth mentioning that I am still unable to test the accuracy of an existing classifier (-C).
+
+   The test directory is produced, but it only contains two hidden files: .train shows that the training file was correctly input, and .fixlist shows that the subject IC directories were correctly input to fix. 
+
+  Any idea why the LOO testing would work, but the -C flag would still be nonfunctional with this version of fix that you sent me?
+
+Mark
+
+Hi Paul,
+
+  Using the file you sent appears to have fixed whatever the problem was. I've attached the training_LOO_results file if you are curious. I kinda wish I knew what the problem was, but I'm glad to be able to move passed it. Thanks for your help.
+
+Mark
+
+Dear Jesper,
+
+Thanks for the response; yes I was using the total readout time input in the fourth column of the parameter acquisition file. Switching to multiply the B0 field by the bandwidth did seem to do the trick in getting direction-specific warp volumes - thanks for your help!
+
+Best,
+
+Maeve
+
+########################################################################
+
+
+Dear FSL users,
+                           We are pleased to announce the release of FSL 6.0.7.5.
+
+The full changelog can be found at:
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/WhatsNew?action=AttachFile&do=view&target=6.0.7.5.md
+
+This update can be downloaded via:
+
+https://fsl.fmrib.ox.ac.uk/fsldownloads_registration
+
+Alternatively there is an experimental script in post-6.0.6 versions of FSL:
+
+$FSLDIR/bin/update_fsl_release
+
+which will try to perform an in-place upgrade, this should be a faster install process, but as script is still in beta please use the link above if you encounter any problems.
+
+Kind Regards
+Matthew
+
+Hello,
+
+    I am trying to create a new trained weights file for IC-based denoising with melodic-FIX. I've run melodic on 40 subjects, hand labeled ICs for half of them, and run fix with the -t and -l options to generate a new Training.RData file as well as a Traning_LOO_results file from leave-one-out testing. NO TRAINING_LOO_RESULTS FILE IS PRODUCED.
+
+  Details of the results:
+1. Command line printout suggests that LOO is successfully performed:
+    - running LOO accuracy testing
+    - leaving-out: <PATH>/sub-01/ses-1/ICA_MELODIC
+    - leaving-out: <PATH>/sub-02/ses-1/ICA_MELODIC
+    - leaving-out: <PATH>/sub-03/ses-1/ICA_MELODIC... etc
+
+2. A Training.RData file is successfully produced.
+
+3. A Traning_LOO_results file is NOT produced.
+
+4. The directory Training_LOO/ contains ONLY the .fixlist showing that all subects melodic directories were successfully loaded.
+
+5. The directory Training/ contains:
+    a. .Rlog1 showing no errors and 14 warnings, which are not displayed due to omission of warnings().
+    b. .fixlist as described in #3 above
+    c. 000##.txt with indices of labeled noise components. (see attached)
+    d. 000##.csv with a line for each component, all lines beginning with the number of highest noise IC (see attached).
+
+   I do not find any errors in:
+- subject .fix.log
+- subject .fix_2b_predict.log
+- subject logMatlab.txt
+
+   Please Note:
+1. I've previously run denoising with ICA-FIX for these same datasets using an existing training file. I then manually deleted the output files from this procedure, and am producing my own training file. The result is that some files e.g., the hidden fix logs for each subject (.fix.log) have remained from the first procedure.
+
+2. I ran into issues with my version of R during the first attempt at training. So the features were generated for all subjects, but the Training.RData file was not produced. I fixed this issue, and successfully generated the Training.RData file using the previously generated features (since these take quite a while to produce).
+
+
+  Due to the absence of informative errors and lack of discussion online addressing this issue, I am down to my last possible solution: purge all FIX-related files and rerun training from the beginning. As this seems likely to just bring me back to where I am now, I would appreciate any ideas you may have, however outlandish they may be. Thanks :)
+
+Mark
+
+
+########################################################################
+
+
+Hi Estephan,
+
+The call to randomise is failing for some reason. I've published a new version of fslnets which will save any randomise output to "<job>.o" and "<job>.e" files in your working directory, so you will be able to see what is going wrong.
+
+It looks like you are using a centrally managed FSL installation, so as an alternative to updating the FSL installation you can install and use your own copy of the new fslnets version by running these commands:
+
+git clone https://git.fmrib.ox.ac.uk/fsl/fslnets.git
+export PYTHONPATH=$(pwd)/fslnets
+fslipython
+# fslnets python code
+
+
+Thanks Paul! I have tried all versions of vcx and it didn't work. But mobaxterm works~! 
+
+This has been great. 
+
+Thank you! 
+
+Warmest regards, 
+
+Swati 
+
+Hi Swati,
+
+This is a known problem with the built-in Windows Wayland/X server - I would recommend using mobaxterm or vcxsrv instead.
+
+Paul
+
+
+Hi FSL friends,
+
+I have a BOLD acquisition sequence for an event-related paradigm with unusual parameters and would like your opinion on what kind of signal to expect. Pictures are presented for 2-3 seconds (jittered) and fixation crosses (2.5s) precede them. There are 78 trials. The task is fairly standard, but the TR is 6.5 seconds.
+
+I've completed numerous subject/group level analysis iterations to assess a main (sanity-check) effect of task (picture>fixation, expecting early visual activation), but to no avail. This made me wonder what the theoretical implications of these very long TRs are. Would any of you know whether one would expect a discernable main effect of task at this TR given the paradigm parameters specified above?
+
+I am worried that events and non-events are subsumed within the long TR periods and that this may be contributing to these apparent null results (results are basically just dots of noise scattered across the brain (both in gm, wm, and csf, albeit the dots tend to group around the posterior cortex in the picture > fixation contrast). I completed a statistical efficiency calculation using FSL's tool for this, but the results were unassuming.
+
+What do you think? Any input is appreciated.
+
+Best,
+Alexander
+
+Hi all,
+I have a bunch of copes (fearful > neutral) faces all in the NonlinAsymC space from fmriprep. I don't have registrations or feat folders. I would like to look at clusters related to individual differences, so I tried to run a higher level FEAT. Unfortunately, I'm running into a registration error. What steps should I take to allow me to do higher-level analysis?
+
+/cm/shared/openmind/fsl/5.0.9/bin/featregapply /net/oms.ib.cluster/om4/group/gablab/data/inside/data/derivatives/levelone/sub-inside7002/face
+Error - registration has not been run for /net/oms.ib.cluster/om4/group/gablab/data/inside/data/derivatives/levelone/sub-inside7002/face
+
+Thanks
+Isaac
+
+Hi, I'm trying to use FSLNets in Python (fsl 6.0.7.2) with my dataset and having an issue loading the data. The dataset details are:
+- Preprocessed data using HCP pipelines: two rest fMRI bold runs per participant (n=52), TR = 0.937, 420 timepoints each run
+- 441 nodes defined from on a modified version of the HCP-MMP1.0 label file (cortical + subcortical parcels)
+
+I extracted the timeseries from each rest fMRI run above using 'wb_command -cifti-transpose' and 'wb_command -cifti-convert -to-text', resulting in 104 text files with 420 rows (timepoints) and 441 columns (ROIs). I then followed the FSLNets practical using python <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html>, and when trying the command for nets.load an error happens - see attached text file with the error.
+
+I did try to run FSLNets using the practical dataset, and it works without an issue. So I believe I have some problem with the way I prepared my dataset for FSLNets. Any ideas on what could be going wrong here? I attached one of the timeseries text files in case it's worth checking it.
+
+Thank you.
+
+Estephan
+
+Hi Michael,
+
+ 
+
+Thanks for your response, its highly appreciated.
+
+ 
+
+I have tested w/wo dispersion and that does not help. It runs as intended with –artoff. And I just tested with –artonly and it run nicely and produced similar results as displayed in Part 6 video.
+
+ 
+
+I also found the issue posted in oxasl github, https://github.com/physimals/oxasl/issues/14.
+
+So one conclusion could be that the data is simply not good enough.
+
+ 
+
+Markus
+
+ 
+
+Hi Swati,
+
+We will have a fix for this out very shortly, but in the meantime a work-around is described here: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;7f1c0a4f.2311
+
+Paul
+
+
+Hi again,
+
+It seems that although I cannot open this cope1_Tstd.nii.gz image, I am able to retrieve mean Tstd's from it when running featquery on a region of interest. Also, when using the fsl gui, I can load a design and select these Tstd cope image from the lower level copes to run higher level statistics on it. So maybe it has gone well anyhow, I'm just still unsure about the interpretation, and why it did not work with the command-line. Hope you can help. 
+
+Annelies
+
+Annelies van't Westeinde | Postdoctoral researcher
+Department of Women's and Children's Health | Karolinska Institutet
+171 76 Stockholm | Karolinskavägen 37A
++46 760967499
+annelies.vant.westeinde@ki.se | ki.se
+
+Hi Mark,
+
+Can you send me the output that was produced when you tried to run fix -C ... with the modified script (i.e. all of the text that was printed to the terminal)?
+
+Paul
+
+
+Hi Keith,
+
+We'll have this fixed as soon as possible. In the meantime, you can work around this by removing the fsleyes-plugin-mrs package with this command:
+
+$FSLDIR/bin/mamba remove -p $FSLDIR fsleyes-plugin-mrs
+
+Paul
+
+Ok. I just restarted the computer and now it is working fine.
+
+Sorry for the posting.
+
+Kind regards,
+
+Rosie
+
+
+Dear FSL experts,
+
+Sorry for this basic posting but I have been looking at the randomise tool and I still do not understand why I am getting this error when I have run randomise thousand of times:
+
+rosalia@rosalia-ThinkStation-P348:~/Desktop/PROHEPIC/TBSS/stats/RANDOMISE_RD/ATTENTION$ randomise -i all_RD_skeletonised -o tbss_RD -m mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2 --uncorrp
+-n: Couldn't set_value! valstr="10000 --T2"!
+try: randomise --help
+rosalia@rosalia-ThinkStation-P348:~/Desktop/PROHEPIC/TBSS/stats/RANDOMISE_RD/ATTENTION$
+
+
+Surely it must be something silly....but I do not see it.
+
+Any help would be really appreciated.
+
+
+
+Kind regards,
+
+
+
+Rosie
+
+
+
+
+Hi,
+
+ 
+
+This page (linked below) has a lot of helpful troubleshooting info. Have you tried checking that your environment is configured correctly using the info there?
+
+ 
+
+https://open.win.ox.ac.uk/pages/fsl/fsleyes//fsleyes/userdoc/troubleshooting.html#running-fsleyes-remotely
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+Hi Matthew,
+
+Thank you for your reply. 
+
+fslhd /Volumes/PreProc_III/Preprocessed_Data/Task_fMRI_spatial/CSE_72/f_spatial/4D.feat_firstlevel/stats/cope1_Tstd
+
+That command results in ERROR: cannot open file.
+
+The higher-level model is simply a group contrast, I have a patient (1) and control (0) group and three covariates (demeaned age, sex and education level). I have a contrast 1 -1 0 0 0 to test the group difference.
+
+It may be so that I am misunderstanding something fundamental about the procedure of estimating the coefficient of variation.
+
+I was interested in whether the patient group displays larger variation in signal during the working memory task compared to healthy controls. I thought I could assess this on a voxel-wise bases from the first-level analyses where I have contrast for encoding experimental > control condition, and decoding experimental > control condition. However, as I understand it the res4d images actually contains the residuals, so that would answer a different question, ie the variation in unexplained variance, instead of the variation in signal related to the task. 
+
+Alternatively, if I understood this correctly, I could also make a mask, or use a contrast mask, and simply get the std and mean per person for this region for each contrast on average using featquery, and then do group analyses on this. However, I thought this answers a slightly different question as opposed to the first approach I tried.
+
+Could you help me understand this? 
+
+I hope I made myself clear. 
+
+Thanks!
+Annelies
+
+
+Dear FSL experts, 
+
+I was trying to use FSLeyes over an SSH/XQuartz session (Xquartz version 2.7.7), however the following error is always displayed and fsleyes does not open.
+
+Skärmavbild 2023-11-14 kl. 16.21.12-1.png
+
+Could you, please, help me with this problem?
+
+Thank you in advance.
+
+Best regards,
+Catarina Domingos
+
+
+Hi Estephan,
+
+The nets.groupmean function expects to be given a (ndatasets, nedges) array, so you shouldn't perform any averaging before hand. If your data comprises multiple runs per subject, you should specify the nruns option when calling nets.load. If all subjects have two runs, then set nruns=2, otherwise if each subject has a different number of runs, set (e.g.) nruns=[2,1,2,2,1,...].
+
+The error you experienced when calculating the Pnetmats group mean is just when setting the plot axis limits - I'll fix this for the next version. If you only wanted to view the plot, then you can ignore the error and, if necessary, adjust the KDE plot limits by hand (click on the crosshairs button at the top, then right click+drag on the plot to zoom in/out, and left click+drag to pan).
+
+If you need the group mean values, then you can call groupmean with plot=False, e.g.:
+
+pzvals, pmean = nets.groupmean(ts, Pnetmats, plot=False)
+
+Paul
+
+
+Hi Mark,
+
+Can you try doing this:
+
+Change into your FIX installation directory and create a backup of the fix executable (e.g. "cp fix fix.backup")
+Replace it with the attached file (e.g. "cp ~/​Downloads/fix.txt ./fix")
+Make it executable ("chmod a+x fix")
+Try to run training and LOO testing, e.g. "fix -t TRaining -l mel1.ica mel2.ica ..."
+The modified script works exactly the same as the original, but will hopefully output more information and will help us to identify where FIX is failing.
+
+On a related note, we have a Python version of FIX which is nearly ready for release, and will hopefully allow us to do away with MATLAB/R problems once and for all in the near future.
+
+Paul
+
+Hi Jenna,
+Demeaning changes the interpretation of “where” ( or at what values ) the effects of the contributing EVs take place. If you were testing ( e.g. ) a sex vs age interaction and neither EV was demeaned then the interpretation of the sex effect would be at age=0 ( and the age effect at sex=0 ). By demeaning the EVs the interpretations would move to average age/average sex which may be more relevant to your data ( almost certainly for age ). I think your posthoc method should be fine for interpretation.
+
+Hope this helps,
+Kind Regards
+Matthew
+---------------------
+
+I tried nets.groupmean using the non-averaged Fnetmats, and it ran without issues. So maybe I should not need to do any averaging of the 2 rest BOLD runs prior to running nets.groupmean?
+
+However trying the same for Pnetmats did not work due to an error "ValueError: Axis limits cannot be NaN or Inf". How do I remove NaN or Inf values from the Pnetmats?
+
+In [26]: Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats, False)
+invalid value encountered in divide
+
+In [27]: Znet_P, Mnet_P = nets.groupmean(ts, Pnetmats, True, 'Partial correlatio
+    ...: n')
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[27], line 1
+----> 1 Znet_P, Mnet_P = nets.groupmean(ts, Pnetmats, True, 'Partial correlation')
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/fsl/nets/groupmean.py:67, in groupmean(ts, netmats, plot, title)
+     64 mean  = mean .reshape((ts.nnodes, ts.nnodes))
+     66 if plot:
+---> 67     plot_groupmean(ts, zvals, mean, netmats, title)
+     69 return zvals, mean
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/fsl/nets/groupmean.py:118, in plot_groupmean(ts, zvals, mean, netmats, title)
+    113 sns.kdeplot({'mean' : mean.flatten(), 'subject' : netmats.flatten()},
+    114             x='subject', y='mean', ax=scatax, fill=True, levels=50,
+    115             thresh=0, cmap='gist_heat_r')
+    117 smin, smax = np.percentile(netmats, (1, 99))
+--> 118 scatax.set_xlim((smin, smax))
+    119 scatax.set_ylim((smin, smax))
+    120 scatax.plot([0, 1], [0, 1], transform=scatax.transAxes,
+    121             c='#000000', linestyle='--')
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/matplotlib/_api/deprecation.py:454, in make_keyword_only.<locals>.wrapper(*args, **kwargs)
+    448 if len(args) > name_idx:
+    449     warn_deprecated(
+    450         since, message="Passing the %(name)s %(obj_type)s "
+    451         "positionally is deprecated since Matplotlib %(since)s; the "
+    452         "parameter will become keyword-only %(removal)s.",
+    453         name=name, obj_type=f"parameter of {func.__name__}()")
+--> 454 return func(*args, **kwargs)
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/matplotlib/axes/_base.py:3650, in _AxesBase.set_xlim(self, left, right, emit, auto, xmin, xmax)
+   3648         raise TypeError("Cannot pass both 'right' and 'xmax'")
+   3649     right = xmax
+-> 3650 return self.xaxis._set_lim(left, right, emit=emit, auto=auto)
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/matplotlib/axis.py:1184, in Axis._set_lim(self, v0, v1, emit, auto)
+   1180 name, = [name for name, axis in self.axes._axis_map.items()
+   1181          if axis is self]  # The axis name.
+   1183 self.axes._process_unit_info([(name, (v0, v1))], convert=False)
+-> 1184 v0 = self.axes._validate_converted_limits(v0, self.convert_units)
+   1185 v1 = self.axes._validate_converted_limits(v1, self.convert_units)
+   1187 if v0 is None or v1 is None:
+   1188     # Axes init calls set_xlim(0, 1) before get_xlim() can be called,
+   1189     # so only grab the limits if we really need them.
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/matplotlib/axes/_base.py:3570, in _AxesBase._validate_converted_limits(self, limit, convert)
+   3567 converted_limit = convert(limit)
+   3568 if (isinstance(converted_limit, Real)
+   3569         and not np.isfinite(converted_limit)):
+-> 3570     raise ValueError("Axis limits cannot be NaN or Inf")
+   3571 return converted_limit
+
+ValueError: Axis limits cannot be NaN or Inf
+
+
+On Tue, 14 Nov 2023 16:32:27 +0000, Estephan J. Moana-Filho <moana004@UMN.EDU> wrote:
+
+>Thanks Paul, following your tip I removed the quotes and it allowed me to move forward.
+>
+>Now I'm having another issue. To put in context, I am following the FSLNets practical as well as the HCP course practical for network modeling, since my data was acquired and processed following HCP methods. Here are the steps I followed:
+>1. Timeseries for both rest BOLD runs for each participant were concatenated as a single text file
+>2. Loaded in all subjects' timeseries data files using nets.load
+>3. Calculated netmats for each participant using nets.mats
+>4. Averaged the netmats from the 2 rest BOLD runs for each participant
+>
+>When I tried to run the simple group-level analysis then the error happened:
+>In [10]: Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats_mean, False)
+>---------------------------------------------------------------------------
+>IndexError                                Traceback (most recent call last)
+>Cell In[10], line 1
+>----> 1 Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats_mean, False)
+>
+>File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/fsl/nets/groupmean.py:43, in groupmean(ts, netmats, plot, title)
+>     41 for subj in range(ts.nsubjects):
+>     42     idxs          = ts.datasets(subj)
+>---> 43     avgmats[subj] = netmats[idxs].mean(axis=0)
+>     45 # one-group t-test
+>     46 dof    = nsubjs - 1
+>
+>IndexError: index 52 is out of bounds for axis 0 with size 52
+>
+>
+>I attached a text file with the fslipython terminal with the commands I used and the respective output. I wonder if the averaging I did using numpy is causing the issue. Any thoughts on this? Thank you.
+>
+>Estephan
+>
+>
+>On Mon, 13 Nov 2023 09:55:52 +0000, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+>
+>>Hi Estephan,
+>>
+>>It looks like you're passing a string with the content 'folder_timeseries', rather than the folder_timeseries variable.
+>>
+>>Paul
+>>________________________________
+>>From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Glasser, Matt <glasserm@WUSTL.EDU>
+>>Sent: 13 November 2023 02:05
+>>To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+>>Subject: Re: [FSL] FSLNets error with nets.load
+>>
+>>I see.  My thoughts were along a Matlab bent, so not so helpful to you.  We are working on IDP pipelines for the HCP Pipelines that are informed by FSLNets, but these are not yet in the public repo.
+>>
+>>Matt.
+>>
+>>﻿On 11/12/23, 8:02 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>> wrote:
+>>
+>>
+>>
+>>Hi Matt, ultimately I want to do a between-group comparison from NxN partial correlation matrices calculated for each study participant. I have three groups (controls=17, case-low=17, case-high=18) as part of the dataset described below. I'm trying to avoid Matlab coding if I can, as I prefer to focus on using R and Python as much as possible. FLSNets now uses python so it is appealing for me, and it also has a fairly straight forward practical that is easy to follow. Do you have any suggestions on alternative ways to do such analysis?
+>>
+>>
+>>Estephan
+>>
+>>
+>>On Sun, 12 Nov 2023 20:19:36 +0000, Glasser, Matt <glasserm@WUSTL.EDU <mailto:glasserm@WUSTL.EDU>> wrote:
+>>
+>>
+>>>HI Estephan,
+>>>
+>>>What are you trying to compute with FSLNets?
+>>>
+>>>Matt.
+>>>
+>>>On 11/12/23, 2:15 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> <mailto:FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK>> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK> <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>>> wrote:
+>>>
+>>>
+>>>
+>>>Hi, I'm trying to use FSLNets in Python (fsl 6.0.7.2) with my dataset and having an issue loading the data. The dataset details are:
+>>>- Preprocessed data using HCP pipelines: two rest fMRI bold runs per participant (n=52), TR = 0.937, 420 timepoints each run
+>>>- 441 nodes defined from on a modified version of the HCP-MMP1.0 label file (cortical + subcortical parcels)
+>>>
+>>>
+>>>I extracted the timeseries from each rest fMRI run above using 'wb_command -cifti-transpose' and 'wb_command -cifti-convert -to-text', resulting in 104 text files with 420 rows (timepoints) and 441 columns (ROIs). I then followed the FSLNets practical using python <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;>, and when trying the command for nets.load an error happens - see attached text file with the error.
+>>>
+>>>
+>>>I did try to run FSLNets using the practical dataset, and it works without an issue. So I believe I have some problem with the way I prepared my dataset for FSLNets. Any ideas on what could be going wrong here? I attached one of the timeseries text files in case it's worth checking it.
+>>>
+>>>
+>>>Thank you.
+>>>
+>>>
+>>>Estephan
+>>>
+>>>
+>>>########################################################################
+>>>
+>>>
+>>>To unsubscribe from the FSL list, click the following link:
+>>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1> <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1> <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1;>
+>>>
+>>>
+>>>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL> <http://www.jiscmail.ac.uk/FSL> <http://www.jiscmail.ac.uk/FSL;>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/> <http://www.jiscmail.ac.uk/> <http://www.jiscmail.ac.uk/;>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/> <https://www.jiscmail.ac.uk/policyandsecurity/> <https://www.jiscmail.ac.uk/policyandsecurity/;>
+>>>
+>>>
+>>>
+>>>
+>>>________________________________
+>>>The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>>>
+>>>########################################################################
+>>>
+>>>To unsubscribe from the FSL list, click the following link:
+>>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>>>
+>>>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+>>
+>>
+>>########################################################################
+>>
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>>
+>>
+>>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+>>
+>>
+>>
+>>
+>>________________________________
+>>The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>>
+>>########################################################################
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>
+>>This message was issued to members of www.jiscmail.ac.uk/FSL<http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by www.jiscmail.ac.uk<http://www.jiscmail.ac.uk>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>>
+>>########################################################################
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>>
+>>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+>agc10:~ moana004$ module load fsl/6.0.7.2
+>agc10:~ moana004$ cd '/home/moanae/shared/project_K99_ChrTMDHCP_qunex02/analysis/FuncConnect_FSLNets'
+>agc10:FuncConnect_FSLNets moana004$ fslipython
+>Python 3.11.4 | packaged by conda-forge | (main, Jun 10 2023, 18:08:17) [GCC 12.2.0]
+>Type 'copyright', 'credits' or 'license' for more information
+>IPython 8.14.0 -- An enhanced Interactive Python. Type '?' for help.
+>
+>In [1]: subjs_grp_main = 'GroupAnalysis_01_restingfMRI-n52'
+>   ...: folder_timeseries = 'data_timeseries_' + subjs_grp_main
+>   ...: folder_netmats = 'data_netmats_' + subjs_grp_main
+>   ...: folder_results = 'Results_' + subjs_grp_main
+>   ...: folder_GLM_files = 'GLM_files'
+>   ...: folder_thumbnails = 'data_thumbnails_' + 'HCP-MMP1.0-SIsubregions_MSA'
+>   ...: TR_value = 0.937
+>
+>In [2]: %matplotlib
+>   ...: from fsl import nets
+>   ...: import numpy as np
+>Installed tk event loop hook.
+>Shell is already running a gui event loop for tk. Call with no arguments to disable the current loop.
+>Using matplotlib backend: TkAgg
+>/common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/file_tree/parse_tree.py:9: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+>  import pkg_resources
+>/common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/pkg_resources/__init__.py:2871: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('mpl_toolkits')`.
+>Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+>  declare_namespace(pkg)
+>Jupyter is migrating its paths to use standard platformdirs
+>given by the platformdirs library.  To remove this warning and
+>see the appropriate new directories, set the environment variable
+>`JUPYTER_PLATFORM_DIRS=1` and then run `jupyter --paths`.
+>The use of platformdirs will be the default in `jupyter_core` v6
+>
+>In [3]: ts = nets.load(folder_timeseries,
+>   ...:                TR_value,
+>   ...:                varnorm=1,
+>   ...:                nruns=2,
+>   ...:                thumbnaildir=folder_thumbnails);
+>
+>In [4]: nets.plot_spectra(ts, ncols=10);
+>unclosed event loop <_UnixSelectorEventLoop running=False closed=False debug=False>
+>
+>In [5]: Fnetmats = nets.netmats(ts, 'corr', do_rtoz=True);
+>
+>In [6]: Pnetmats = nets.netmats(ts, 'ridgep', do_rtoz=True, rho=0.01);
+>invalid value encountered in log
+>
+>In [7]: tmp_Fnet = []
+>   ...: for i in range(0, ts.nsubjects):
+>   ...:     Fnet_row1 = Fnetmats[i:i+1,:]
+>   ...:     Fnet_row2 = Fnetmats[i+1:i+2,:]
+>   ...:     Fnet_averaged = np.mean( np.array([ Fnet_row1, Fnet_row2 ]), axis=0)
+>   ...:
+>   ...:     tmp_Fnet.append(Fnet_averaged)
+>   ...:
+>
+>In [8]: tmp_Pnet = []
+>   ...: for i in range(0, ts.nsubjects):
+>   ...:     Pnet_row1 = Pnetmats[i:i+1,:]
+>   ...:     Pnet_row2 = Pnetmats[i+1:i+2,:]
+>   ...:     Pnet_averaged = np.mean( np.array([ Pnet_row1, Pnet_row2 ]), axis=0)
+>   ...:
+>   ...:     tmp_Pnet.append(Pnet_averaged)
+>   ...:
+>
+>In [9]: Fnetmats_mean = np.concatenate(tmp_Fnet, axis = 0)
+>   ...: Pnetmats_mean = np.concatenate(tmp_Pnet, axis = 0)
+>
+>In [10]: Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats_mean, False)
+>---------------------------------------------------------------------------
+>IndexError                                Traceback (most recent call last)
+>Cell In[10], line 1
+>----> 1 Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats_mean, False)
+>
+>File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/fsl/nets/groupmean.py:43, in groupmean(ts, netmats, plot, title)
+>     41 for subj in range(ts.nsubjects):
+>     42     idxs          = ts.datasets(subj)
+>---> 43     avgmats[subj] = netmats[idxs].mean(axis=0)
+>     45 # one-group t-test
+>     46 dof    = nsubjs - 1
+>
+>IndexError: index 52 is out of bounds for axis 0 with size 52
+>
+>In [11]: Fnetmats_mean.shape
+>Out[11]: (52, 194481)
+>
+>In [12]: ts.nsubjects
+>Out[12]: 52
+>
+>In [13]: ts.ndatasets
+>Out[13]: 104
+>
+>In [14]: ts.nruns(1)
+>Out[14]: 2
+>
+>
+>
+>########################################################################
+>
+
+Thanks Paul, following your tip I removed the quotes and it allowed me to move forward.
+
+Now I'm having another issue. To put in context, I am following the FSLNets practical as well as the HCP course practical for network modeling, since my data was acquired and processed following HCP methods. Here are the steps I followed:
+1. Timeseries for both rest BOLD runs for each participant were concatenated as a single text file
+2. Loaded in all subjects' timeseries data files using nets.load
+3. Calculated netmats for each participant using nets.mats
+4. Averaged the netmats from the 2 rest BOLD runs for each participant
+
+When I tried to run the simple group-level analysis then the error happened:
+In [10]: Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats_mean, False)
+---------------------------------------------------------------------------
+IndexError                                Traceback (most recent call last)
+Cell In[10], line 1
+----> 1 Znet_F, Mnet_F = nets.groupmean(ts, Fnetmats_mean, False)
+
+File /common/software/install/manual/fsl/6.0.7.2/lib/python3.11/site-packages/fsl/nets/groupmean.py:43, in groupmean(ts, netmats, plot, title)
+     41 for subj in range(ts.nsubjects):
+     42     idxs          = ts.datasets(subj)
+---> 43     avgmats[subj] = netmats[idxs].mean(axis=0)
+     45 # one-group t-test
+     46 dof    = nsubjs - 1
+
+IndexError: index 52 is out of bounds for axis 0 with size 52
+
+
+I attached a text file with the fslipython terminal with the commands I used and the respective output. I wonder if the averaging I did using numpy is causing the issue. Any thoughts on this? Thank you.
+
+Estephan
+
+
+On Mon, 13 Nov 2023 09:55:52 +0000, Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK> wrote:
+
+>Hi Estephan,
+>
+>It looks like you're passing a string with the content 'folder_timeseries', rather than the folder_timeseries variable.
+>
+>Paul
+>________________________________
+>From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Glasser, Matt <glasserm@WUSTL.EDU>
+>Sent: 13 November 2023 02:05
+>To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+>Subject: Re: [FSL] FSLNets error with nets.load
+>
+>I see.  My thoughts were along a Matlab bent, so not so helpful to you.  We are working on IDP pipelines for the HCP Pipelines that are informed by FSLNets, but these are not yet in the public repo.
+>
+>Matt.
+>
+>﻿On 11/12/23, 8:02 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>> wrote:
+>
+>
+>
+>Hi Matt, ultimately I want to do a between-group comparison from NxN partial correlation matrices calculated for each study participant. I have three groups (controls=17, case-low=17, case-high=18) as part of the dataset described below. I'm trying to avoid Matlab coding if I can, as I prefer to focus on using R and Python as much as possible. FLSNets now uses python so it is appealing for me, and it also has a fairly straight forward practical that is easy to follow. Do you have any suggestions on alternative ways to do such analysis?
+>
+>
+>Estephan
+>
+>
+>On Sun, 12 Nov 2023 20:19:36 +0000, Glasser, Matt <glasserm@WUSTL.EDU <mailto:glasserm@WUSTL.EDU>> wrote:
+>
+>
+>>HI Estephan,
+>>
+>>What are you trying to compute with FSLNets?
+>>
+>>Matt.
+>>
+>>On 11/12/23, 2:15 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> <mailto:FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK>> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK> <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>>> wrote:
+>>
+>>
+>>
+>>Hi, I'm trying to use FSLNets in Python (fsl 6.0.7.2) with my dataset and having an issue loading the data. The dataset details are:
+>>- Preprocessed data using HCP pipelines: two rest fMRI bold runs per participant (n=52), TR = 0.937, 420 timepoints each run
+>>- 441 nodes defined from on a modified version of the HCP-MMP1.0 label file (cortical + subcortical parcels)
+>>
+>>
+>>I extracted the timeseries from each rest fMRI run above using 'wb_command -cifti-transpose' and 'wb_command -cifti-convert -to-text', resulting in 104 text files with 420 rows (timepoints) and 441 columns (ROIs). I then followed the FSLNets practical using python <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;>, and when trying the command for nets.load an error happens - see attached text file with the error.
+>>
+>>
+>>I did try to run FSLNets using the practical dataset, and it works without an issue. So I believe I have some problem with the way I prepared my dataset for FSLNets. Any ideas on what could be going wrong here? I attached one of the timeseries text files in case it's worth checking it.
+>>
+>>
+>>Thank you.
+>>
+>>
+>>Estephan
+>>
+>>
+>>########################################################################
+>>
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1> <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1> <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1;>
+>>
+>>
+>>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL> <http://www.jiscmail.ac.uk/FSL> <http://www.jiscmail.ac.uk/FSL;>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/> <http://www.jiscmail.ac.uk/> <http://www.jiscmail.ac.uk/;>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/> <https://www.jiscmail.ac.uk/policyandsecurity/> <https://www.jiscmail.ac.uk/policyandsecurity/;>
+>>
+>>
+>>
+>>
+>>________________________________
+>>The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>>
+>>########################################################################
+>>
+>>To unsubscribe from the FSL list, click the following link:
+>>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>>
+>>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+>
+>
+>########################################################################
+>
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>
+>
+>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+>
+>
+>
+>
+>________________________________
+>The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL<http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by www.jiscmail.ac.uk<http://www.jiscmail.ac.uk>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+########################################################################
+
+
+Dear Ann,
+
+ 
+
+there is always a risk of "truncation" of images when doing motion correction. If a part of the brain that is inside the FOV in the first volume is subsequently, due to motion, shifted outside the FOV, then that part was simply not scanned in that later volume. When then registering that image to the first, that part of the brain will be "truncated", i.e. contain zeros since we cannot know what is really should be.
+
+ 
+
+This can get worse when one uses --resamp=lsr, i.e. use "least-squares reconstruction" instead of a more traditional interpolation. In that case eddy uses a whole column along the PE-direction from each of the two acquisitions (with opposing PE) to reconstruct a "correct" column, which becomes that column in the reconstructed image. The problem then becomes: How much of that column can be outside the FOV before I say - "I don't know all of this column, so I cannot reconstruct it". In eddy I err on the side of caution, and perhaps too much so.
+
+ 
+
+I saw in some other mail someone suggested truncating the images, and that may be a good solution in the case when eddy is too cautious.
+
+ 
+
+Jesper
+
+Dear Linda,
+
+ 
+
+here
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/UsersGuide#A--index
+
+is an explanation for what your --index file should contain.
+
+And here
+
+https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/eddy/Faq#How_do_I_know_what_to_put_into_my_--acqp_file
+
+is an explanation for what your --acqp file should contain
+
+ 
+
+Best regards Jesper
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Linda Dolan <lindadolan1990@GMAIL.COM>
+Reply to: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Thursday, 9 November 2023 at 10:08
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] dwi preprocessing without field maps
+
+ 
+
+Thanks, Amir and Holly! I really appreciate your help, I'm sorry for not getting back to you sooner.
+
+ 
+
+Holly, could you please share resources for getting --index and --acqp to run eddy?
+
+ 
+
+Thanks!
+
+ 
+
+best,
+
+Linda
+
+ 
+
+Dear Maeve,
+
+ 
+
+    I am running a test where I an trying to produce a distortion correction warp volume using the B0 map, and am running into an issue when confirming my results against topup. I ran topup using a phase encoding dwell time value of 0.0513
+
+ 
+
+Do you actually mean dwell time here? In topup we expect the total readout time, not the dwell time.
+
+ 
+
+in the parameter acquisition file and output the estimated B0 field and a 3D warp volume. I then divided the topup-estimated B0 field by the dwell time (0.0513) to produce a pixel shift map,
+
+ 
+
+I think this might be where you go wrong. You should _multiply_ the off-resonance field (in Hz) with the total readout time in order to get the voxel-displacement map.
+
+ 
+
+I hope that solves things?
+
+ 
+
+Jesper
+
+ 
+
+and used "convertwarp" to convert the shiftmap into a warp volume using:
+
+   
+
+    "convertwarp  --shiftmap=shiftmap --out=outputwarp --ref=reference volume"
+
+   
+
+    (I also tested the use of  "--shiftdir" to specify the phase encoding direction, which yielded an almost identical output warp as the one produced without a directional specification.)
+
+   
+
+     My assumption was that these would have the same results; however, the y-volume of the shiftmap-produced warp is of a much smaller magnitude than y-volume of the topup-produced warp, and the shiftmap-produced warp had values in the x- and z-volumes whereas the topup-produced warp contained all zeros in the x- and z-volumes. Am I missing a step or making an incorrect assumption when taking the shiftmap approach, or is there something done in topup that I'm not aware of that would make the output warp different in y-magnitude and in x- and z-components?
+
+   
+
+    Thanks!
+
+   
+
+    Best,
+
+    Maeve
+
+Hi Mark,
+
+So there are no other files or sub-directories at all (hidden or otherwise)  within Training_LOO?
+
+Are you running fix locally or on a cluster? The fix script uses "fsl_sub-q short.q" when running LOO testing, so there is a chance that these calls could fail if your cluster is not configured with a "short.q" queue.  If this is the cause, the easiest option is to edit the fix script and replace "-q short.q" with a more appropriate option.
+
+Paul
+
+Hi Cory,
+
+I've just released a new version of FSLeyes (1.10.0) which has support for a "site" configuration directory, in which custom layout files can be saved. You can read more about this on the following pages:
+
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html#customising-fsleyes-site-directory
+https://open.win.ox.ac.uk/pages/fsl/fsleyes/fsleyes/userdoc/customising.html#layouts
+
+Paul
+
+
+Hi Xiyue Zhang,
+
+Unfortunately killing a MELODIC (or FEAT) job which has been started from the GUI is difficult to achieve at the moment.
+
+If you are running on your local system, you can use UNIX commands such as top and ps to identify the unwanted processes, and then use the kill command to kill them.
+
+If you are running jobs on a cluster engine, you can use the cluster commands to list and kill submitted jobs, e.g. qstat/qdel on SGE.
+
+Paul
+
+Hi Cory,
+
+Unfortunately startup time is strongly affected by file system performance. On a machine with a fast (e.g. SSD) drive, FSLeyes starts up just as quickly as FSLView. But FSLeyes needs to load many more files than FSLView at startup (as a byproduct of being written primarily in Python), and so can be slow to start up if e.g. it has been installed on a network file system. 
+
+So if your network and/or file system are causing the slowdown, I'm afraid the only option I can think of is to install FSLeyes closer to the execution environment, or use some sort of local caching mechanism if that is an option for your NFS.
+
+The delay that you experience when starting FSLeyes for the first time is caused by matplotlib building its font cache. I'm  not aware of any way to skip this step, but it should only occur once per user.
+
+Paul
+
+Hi,
+I wonder if anybody has any tips on how to successfully implement an online motion monitoring pipeline in MRI structural scans.
+In our lab we are exploring options on how to send live data from the scanner computer to the presentation computer in order to be able to use this feedback to repeat the block in which the movement was excessive. We are expecting to scan a substantial amount of kids so that might come in handy.
+All the tips, links are much appreciated.
+All the best,
+Pawel
+
+
+Hi Markus, it is possible to get very bad performance if there is numerical instability, the cause is excessive writing of warning messages to the logfile. However this is unusual. Are you able to share a data sample so I can run this locally and determine whether this is the cause or if it's something else going wrong.
+
+Bw
+Martin
+
+The Nathan S. Kline Institute for Psychiatric Research (NKI) is currently seeking a postdoctoral researcher (full-time 2 to 5 years contingent upon satisfactory performance) in the Center for Biomedical Imaging and Neuromodulation to work on the multi-modal characterization of dynamic human brain states (e.g. combined EEG-fMRI, pupillometry, galvanic skin response, cardiac, and respiratory measurements, etc.) and their relevance for ongoing behavior and cognition (e.g. spontaneous cognition and memory consolidation). 
+
+The Nathan Kline Institute fosters a collaborative environment where post-doctoral researchers have the opportunity to gain excellent experience for careers in neuroscience or clinical research. This position provides an ideal training opportunity for post-doctoral researchers seeking to further their research career with an interest in dynamic, multimodal human neuroscience. The candidate will interact with two funded, cutting-edge neuroimaging research programs: the Next Generation Digital Therapeutics Program (NGTD) and CONTE Center for Slow Brain Network Fluctuations. This advanced training position provides the opportunity to lead projects analyzing existing, high-quality multimodal neuroimaging datasets (simultaneous EEG-fMRI, pupillometry, etc.), and novel multimodal data acquisition and experimental designs for funded projects (with support from research staff). Fellows will have the opportunity to lead projects and obtain first-author publications, as well as initial hands-on training on grant writing. The experiences gained under the mentorship will provide excellent skills for the transition into an independent researcher role. 
+
+Reporting to Dr. Tambini, Center for Biomedical Imaging and Neuromodulation (C-BIN), NKI. This is an exempt, full-time position located in Orangeburg, NY. 
+
+Key Responsibilities:
+
+Using measures of neurophysiology to understand brain function.
+Lead projects to analyze existing multimodal, EEG-fMRI data, including the prediction of fMRI-based dynamic brain states from non-fMRI signals
+Support novel data acquisition, management, and quality assessment during ongoing data collection
+Assist in the supervision of junior research staff that are primarily responsible for multimodal data acquisition
+Perform multi-modal characterizations of time-varying brain network fluctuations across a range of experimental task contexts and their link with behavior and ongoing cognition
+Problem-solving for issues with the data processing and analytic tools
+Present outputs from projects at conferences, and prepare manuscripts for publication
+Work in a collaborative research environment that merges expertise in a broad range of disciplines, including multimodal EEG-fMRI data acquisition, neuromodulation, EEG and fMRI data analysis, spontaneous cognitive processes and behavior, and cognitive neuroscience
+ 
+
+Required Skills and Experience:
+
+Completed Ph.D. in cognitive neuroscience, biomedical engineering, computer science, clinical neuroscience, clinical psychology, mathematics, neuropsychology, or related fields
+Advanced neuroimaging skills with one or more imaging modalities (fMRI, DTI, MRI, EEG, MEG) 
+Prior research experience with multimodal data acquisition or analysis is preferred but not required (e.g. EEG-fMRI, fMRI+pupillometry, GSR+EEG, etc.)
+Prior experience working with advanced analytic methods and approaches for MRI or EEG data
+Strong skills in the usage of one or more common functional neuroimaging or EEG packages (e.g., AFNI, FSL, SPM, EEGLAB, Fieldtrip, MNE, etc.)
+Strong programming experience in one or more languages (e.g., Python, R, Matlab, or similar) is required. The candidate must be willing to develop expertise in Python during the first year of the fellowship.
+Strong communication skills in English and work in a collaborative and multidisciplinary environment
+ 
+
+Please contact Dr. Arielle Tambini (arielle.tambini@nki.rfmh.org) or Dr. Karl-Heinz Nenning (karl-heinz.nenning@nki.rfmh.org) for any questions. 
+
+ 
+
+Application site: https://nki.applicantpro.com/jobs/3072284
+
+ 
+
+ 
+
+Equal Opportunity Employment:
+
+The Nathan Kline Institute is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees. We encourage applications from individuals of all races, ethnicities, religions, sexes, sexual orientations, gender identities, national origins, ages, disabilities, veteran statuses, or any other status protected by law.
+
+ 
+
+We strongly encourage women, individuals from underrepresented racial and ethnic groups, individuals with disabilities, and veterans to apply. We believe that diverse perspectives contribute to our research mission and work towards creating a more inclusive and equitable world.
+
+ 
+
+To Whom It May Concern,
+
+ 
+
+We are in the process of migrating users in our lab from fslview to fsleyes for image viewing.
+
+ 
+
+The Medical Imaging Analysts (MIA) have indicated the startup time for fsleyes is a bit longer than with fslview.
+
+ 
+
+I understand most of the performance is on our system administrators and setup, such as the type of disk installed, etc.  However, are there any settings, such as disabling the splash screen, or suggestions that could reduce the startup time?
+
+ 
+
+We have tried changing the -p rendering performance options but those are mostly for once fsleyes is started.
+
+ 
+
+We noted the first time fsleyes starts on a system, it takes a long time to start and then starts quicker following but hoping to reduce the time a bit further.
+
+ 
+
+Regards,
+
+ 
+
+Cory A. Johnson
+
+Lead Analyst/Programmer – Research Application Solutions
+
+Information Technology
+
+Phone: 507-284-0379
+
+Email: johnson.cory@mayo.edu
+
+Hi Annelies,
+                   I would expect the Cope<blah>_Tstd output images to be 3D rather than 4D, so I’m not sure how per-subject modelling would work here - can you expand on the higher-level model and also check the result of running
+
+fslhd /Volumes/PreProc_III/Preprocessed_Data/Task_fMRI_spatial/CSE_72/f_spatial/4D.feat_firstlevel/stats/cope1_Tstd
+
+?
+
+Kind regards
+Matthew
+-------------
+
+Hello and thanks a lot for your answer,
+
+Here is the part of the code I use regarding registration:
+
+
+####################################
+#
+#          REGISTRATION
+#
+####################################
+
+def run_flirt_registration(bedpostx_folder, transformations):
+    xfms_folder = os.path.join(bedpostx_folder, "xfms")
+    if not os.path.exists(xfms_folder):
+        os.makedirs(xfms_folder)
+   
+    for transformation, cost_function, degrees_of_freedom in transformations:
+        # Déterminer l'image d'entrée en fonction du nom de la transformation
+        if transformation.startswith("diff2"):
+            input_image = diff_image
+        elif transformation.startswith("str2"):
+            input_image = str_image
+        elif transformation.startswith("standard2"):
+            input_image = std_image
+        else:
+            raise ValueError(f"Unknown transformation: {transformation}")
+       
+        # Déterminer l'image de référence en fonction du nom de la transformation
+        if "2str" in transformation:
+            ref_image = str_image
+        elif "2standard" in transformation:
+            ref_image = std_image
+        else:
+            ref_image = diff_image
+       
+        output_mat = os.path.join(xfms_folder, transformation)
+       
+        # Commande de registration
+        reg_command = [
+            "flirt",
+            "-in", input_image,
+            "-ref", ref_image,
+            "-omat", output_mat,
+            "-dof", str(degrees_of_freedom),
+            "-cost", cost_function
+        ]
+       
+        try:
+            subprocess.run(reg_command, check=True)
+            print(f"Transformation {transformation} completed successfully.")
+        except subprocess.CalledProcessError as e:
+            print(f"Error during transformation {transformation}: {e}")
+
+# Chemin des images d'entrée
+diff_image = os.path.join(bedpostx_folder, 'nodif_brain.nii.gz')  # Remplacez par le chemin de l'image d'entrée
+
+code_folder = os.path.dirname(os.path.abspath(__file__))
+
+# Rechercher l'image "T1BRAIN.nii.gz" dans le même dossier que le code
+str_image = glob.glob(os.path.join(code_folder, '*anat_nsu.nii.gz'))
+if len(str_image) != 1:
+    raise ValueError("Erreur : Aucune ou plusieurs images anat_nsu.nii.gz trouvées dans le dossier du code.")
+str_image = str_image[0]
+
+# Rechercher l'image commençant par "NMT_" dans le même dossier que le code
+std_image = glob.glob(os.path.join(code_folder, 'NMT_*.nii.gz'))
+if len(std_image) != 1:
+    raise ValueError("Erreur : Aucune ou plusieurs images commençant par 'NMT_' trouvées dans le dossier du code.")
+std_image = std_image[0]
+
+# Liste des transformations et leurs paramètres
+transformations = [
+    ("diff2str.mat", "normmi", 6),
+    ("str2diff.mat", "normmi", 6),
+    ("diff2standard.mat", "corratio", 12),
+    ("standard2diff.mat", "corratio", 12),
+    ("str2standard.mat", "corratio", 12),
+    ("standard2str.mat", "corratio", 12)
+]
+
+run_flirt_registration(bedpostx_folder, transformations)
+
+
+
+I hope it helps, thanks again for your time!
+
+
+Hi Annelies,
+   The cope images are 3D images, so will return a 0 temporal standard deviation. I think the quantity you want to calculate ( assuming you are using FEAT ) is COPE/sqrt(variance of res4d ). It’s probably simplest to calculate the Tstd of res4d first and then loop over the cope images.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+Hi,
+
+I'm interested in BOLD signal variability during a working memory task. For this, I am trying to estimate the coefficient of variation based on all my first-level cope images per person, which I then want to enter into a higher level analyses. However, I don't seem to understand how to do this. What I understand so far is that I can use fslmaths to calculate the Tstd for each cope image, which is then stored as Tstd.nii.gz, but when I run this the resulting images are empty. What am I doing wrong? Or is there a better way of assessing signal variability? Do I need to use varcope's instead?
+
+        # Assuming cope images are named like cope1.nii.gz, cope2.nii.gz, etc.
+        cope_path="${path}/stats/${contrast}.nii.gz"
+
+        # Specify the output path for the Tstd image
+        output_path="${path}/stats/${subject}_${contrast}_Tstd.nii.gz"
+
+        # Calculate Tstd
+        fslmaths "${cope_path}" -Tstd "${output_path}"
+
+
+Thank you!
+
+
+Hi Stan,
+
+If your use-case is to get a cortical mask from MNI space into native diffusion space then I would recommend going with your option 2. The reason being that the FA image doesn't really have any useful contrast in the cortex, and so is unlikely to align that region well (as you have seen). While nodif->T1-MNI is less "elegant", it is nevertheless entirely valid, and a good way to achieve what you're looking for. One final recommendation is that you use boundary-based registration to perform the nodif->T1 alignment (through the epi_reg tool in FSL), as this will be more accurate than standard FLIRT.
+
+Best,
+Rick
+
+
+I see.  My thoughts were along a Matlab bent, so not so helpful to you.  We are working on IDP pipelines for the HCP Pipelines that are informed by FSLNets, but these are not yet in the public repo.
+
+Matt.
+
+﻿On 11/12/23, 8:02 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>> wrote:
+
+
+
+Hi Matt, ultimately I want to do a between-group comparison from NxN partial correlation matrices calculated for each study participant. I have three groups (controls=17, case-low=17, case-high=18) as part of the dataset described below. I'm trying to avoid Matlab coding if I can, as I prefer to focus on using R and Python as much as possible. FLSNets now uses python so it is appealing for me, and it also has a fairly straight forward practical that is easy to follow. Do you have any suggestions on alternative ways to do such analysis?
+
+
+Estephan
+
+Hi Matt, ultimately I want to do a between-group comparison from NxN partial correlation matrices calculated for each study participant. I have three groups (controls=17, case-low=17, case-high=18) as part of the dataset described below. I'm trying to avoid Matlab coding if I can, as I prefer to focus on using R and Python as much as possible. FLSNets now uses python so it is appealing for me, and it also has a fairly straight forward practical that is easy to follow. Do you have any suggestions on alternative ways to do such analysis?
+
+Estephan
+
+On Sun, 12 Nov 2023 20:19:36 +0000, Glasser, Matt <glasserm@WUSTL.EDU> wrote:
+
+>HI Estephan,
+>
+>What are you trying to compute with FSLNets?
+>
+>Matt.
+>
+>﻿On 11/12/23, 2:15 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>> wrote:
+>
+>
+>
+>Hi, I'm trying to use FSLNets in Python (fsl 6.0.7.2) with my dataset and having an issue loading the data. The dataset details are:
+>- Preprocessed data using HCP pipelines: two rest fMRI bold runs per participant (n=52), TR = 0.937, 420 timepoints each run
+>- 441 nodes defined from on a modified version of the HCP-MMP1.0 label file (cortical + subcortical parcels)
+>
+>
+>I extracted the timeseries from each rest fMRI run above using 'wb_command -cifti-transpose' and 'wb_command -cifti-convert -to-text', resulting in 104 text files with 420 rows (timepoints) and 441 columns (ROIs). I then followed the FSLNets practical using python <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;>, and when trying the command for nets.load an error happens - see attached text file with the error.
+>
+>
+>I did try to run FSLNets using the practical dataset, and it works without an issue. So I believe I have some problem with the way I prepared my dataset for FSLNets. Any ideas on what could be going wrong here? I attached one of the timeseries text files in case it's worth checking it.
+>
+>
+>Thank you.
+>
+>
+>Estephan
+>
+>
+>########################################################################
+>
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+>
+>
+>This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+>
+>
+>
+>
+>________________________________
+>The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+>
+>########################################################################
+>
+>To unsubscribe from the FSL list, click the following link:
+>https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+>This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+HI Estephan,
+
+What are you trying to compute with FSLNets?
+
+Matt.
+
+﻿On 11/12/23, 2:15 PM, "FSL - FMRIB's Software Library on behalf of Estephan J. Moana-Filho" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK <mailto:000049e41eaf9c30-dmarc-request@JISCMAIL.AC.UK>> wrote:
+
+
+
+Hi, I'm trying to use FSLNets in Python (fsl 6.0.7.2) with my dataset and having an issue loading the data. The dataset details are:
+- Preprocessed data using HCP pipelines: two rest fMRI bold runs per participant (n=52), TR = 0.937, 420 timepoints each run
+- 441 nodes defined from on a modified version of the HCP-MMP1.0 label file (cortical + subcortical parcels)
+
+
+I extracted the timeseries from each rest fMRI run above using 'wb_command -cifti-transpose' and 'wb_command -cifti-convert -to-text', resulting in 104 text files with 420 rows (timepoints) and 441 columns (ROIs). I then followed the FSLNets practical using python <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html> <https://open.win.ox.ac.uk/pages/fslcourse/practicals/fslnets/index.html;>, and when trying the command for nets.load an error happens - see attached text file with the error.
+
+
+I did try to run FSLNets using the practical dataset, and it works without an issue. So I believe I have some problem with the way I prepared my dataset for FSLNets. Any ideas on what could be going wrong here? I attached one of the timeseries text files in case it's worth checking it.
+
+
+Hi, I'm trying to use FSLNets in Python (fsl 6.0.7.2) with my dataset and having an issue loading the data. The dataset details are:
+- Preprocessed data using HCP pipelines: TR = 0.937
+- Two rest fMRI bold runs per participant (n=52)
+- 441 nodes based on a modified version of the HCP-MMP1.0 label file
+
+I extracted the timeseries from each rest fMRI run above, resulting
+
+

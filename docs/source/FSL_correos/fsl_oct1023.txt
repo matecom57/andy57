@@ -1,0 +1,403 @@
+Apologies for cross-posting listservs
+
+The University of Chicago’s Neurology Department is seeking a data scientist focused on neuroimaging in aging and Alzheimer’s disease. See the full job posting here.
+
+University of Chicago’s new Healthy Aging & Alzheimer’s Research Care Center is focused on SuperAging, a phenotype of successful aging, and atypical Alzheimer’s disease and related dementia syndromes. Prior experience with Alzheimer’s disease or aging is not a requirement.
+
+The primary responsibilities of the positions are to use analytical, statistical, and programming skills to help collect, curate, analyze, and interpret biomedical data, including neuroimaging and biomarker derivatives. The candidate will work alongside investigators and clinicians to develop data-driven solutions and answer scientific questions. See the full list of responsibilities in the job posting for more information.
+
+Candidates should have some prior experience with neuroimaging software libraries, and Python and/or R. Experience with high-performance cluster shell scripting and schedulers, and machine learning libraries are desirable.
+
+Apply through the portal, but feel free to reach out with questions (martersteck@uchicago.edu).
+
+Adam Martersteck, PhD (he/him) Assistant Professor of Neurology | The University of Chicago, Healthy Aging & Alzheimer's Research Care (HAARC) Center Address | 850 East 58th Street | Chicago, IL 60637 Phone | 773-795-1683
+Email | martersteck@uchicago.edu
+
+
+Hello.
+
+I am trying to run eddy_qc with the following command:
+
+eddy_quad dwi_post_eddy \-idx eddy_indices.txt \-par eddy_config.txt \-m nodif_brain_mask \-b bvals \-o eddy_qc \-v
+
+I get the error below:
+
+
+File "/usr/local/software/fsl/6.0.1/bin/eddy_quad", line 53, in <module>
+    from eddy_qc.QUAD.quad import main
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/QUAD/__init__.py", line 1, in <module>
+    from . import quad
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/eddy_qc/QUAD/quad.py", line 9, in <module>
+    import nibabel as nib
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/nibabel/__init__.py", line 38, in <module>
+    from . import analyze as ana
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/nibabel/analyze.py", line 87, in <module>
+    from .volumeutils import (native_code, swapped_code, make_dt_codes,
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/nibabel/volumeutils.py", line 22, in <module>
+    from .casting import (shared_range, type_info, OK_FLOATS)
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/nibabel/casting.py", line 11, in <module>
+    from .testing import setup_test  # noqa
+  File "/usr/local/software/fsl/6.0.1/fslpython/envs/fslpython/lib/python3.7/site-packages/nibabel/testing/__init__.py", line 21, in <module>
+    from numpy.testing.decorators import skipif
+ModuleNotFoundError: No module named 'numpy.testing.decorators'
+
+I have updated numpy and running python/3.8.
+
+Can I please know of possible solutions?
+
+Regards,
+Mariana
+
+
+Hi, again
+
+I have resting state data from individuals with depression. I don't want to separate them into groups, but correlate baseline resting state data (before treatment) with change in Hamilton score (score after treatment - score before treatment). For doing so, I followed all the steps described at https://git.fmrib.ox.ac.uk/fsl/fslnets until # Inspect hierarchical clustering on the full correlation matrix. Then, I included my GLM (attached) in the # Perform a GLM regression using randomise
+
+ p_corr,p_uncorr = nets.glm(ts, Pnetmats, 'design_hdrspercdif_dem_chro_groupplus1_2_nogroup.mat', 'design_hdrspercdif_dem_chro_groupplus1_2_nogroup.con');
+
+I got a significant result (attached), but the graph includes group 1 and group 2, and I don't have two groups. Is there something wrong?
+
+As I have only one group doesn't make sense to # Train a classifier on edge strengths to differentiate your groups, but can I use it for correlating the Hamilton score change and the edge strengths?
+
+I then used the # Display netmats interactively in a web browser - how can I label the nodes?
+
+
+Thanks! I really appreciate your attention
+
+Best,
+Tamires
+
+
+Hi FSL team,
+
+I apply the structural analysis of UK biobank pipeline (bb_struct_init*) to some other datasets,
+aiming at getting linearly registered brains to MNI space, in the end. In some of the datasets it
+works well, but in others (IXI and CamCAN) I end up with very weird results. I dug into the code
+and figured out that it all starts from the flirt command which calculates the affine, which is later
+used in fnirt. Figure saws the result of applying the linear transformation to the original volume.
+This is the code I use:
+
+head_top=`robustfov -i T1_orig_ud | grep -v Final | head -n 1 | awk '{print $5}'`
+fslmaths T1_orig_ud -roi 0 -1 0 -1 $head_top 170 0 1 T1_tmp       
+                                                                                
+#Run a (Recursive) brain extraction on the roi                                  
+bet T1_tmp T1_tmp_brain -R                                        
+                                                                                
+#Reduces the FOV of T1_orig_ud by calculating a registration from T1_tmp_brain to ssref and applies it to T1_orig_ud
+standard_space_roi T1_tmp_brain T1_tmp2 -maskNONE -ssref $FSLDIR/data/standard/MNI152_T1_1mm_brain -altinput T1_orig_ud -d
+                                                                         
+immv T1_tmp2 T1   
+flirt -in T1 -ref T1_orig_ud -omat T1_to_T1_orig_ud.mat -schedule $FSLDIR/etc/flirtsch/xyztrans.sch·
+convert_xfm -omat T1_orig_ud_to_T1.mat -inverse T1_to_T1_orig_ud.mat
+convert_xfm -omat T1_to_MNI_linear.mat -concat T1_tmp2_tmp_to_std.mat T1_to_T1_orig_ud.mat
+                                                                                  
+#Non-linear registration to MNI using the previously calculated alignment       
+fnirt --in=T1 --ref=$FSLDIR/data/standard/MNI152_T1_1mm --aff=T1_to_MNI_linear.mat \
+  --config=$BB_BIN_DIR/bb_data/bb_fnirt.cnf --refmask=$templ/MNI152_T1_1mm_brain_mask_dil_GD7 \
+  --logout=../logs/bb_T1_to_MNI_fnirt.log --cout=T1_to_MNI_warp_coef --fout=T1_to_MNI_warp \
+  --jout=T1_to_MNI_warp_jac --iout=T1_tmp4.nii.gz --interp=spline
+
+Any ideas of how I could to solve this so it works for all datasets?
+
+Thank you in advance for your time and help,
+
+Georgios
+
+* https://git.fmrib.ox.ac.uk/falmagro/UK_biobank_pipeline_v_1/-/blob/master/bb_structural_pipeline/bb_struct_init
+
+
+
+Hi,
+
+How can I solve the error, please?
+ It appears when I try to generate time series from a set of images using stage 1 of dual regression
+
+
+In [4]: subjdata = glob('subject_*_filtered_func_data_standard.nii.gz')
+
+In [5]: melic    = 'groupICA25/melodic_IC.nii.gz'
+
+In [6]: ts       = nets.load_from_images(melic, subjdata, 0.72)
+
+Usage: fslmerge <-x/y/z/t/a/tr> <output> <file1 file2 .......> [tr value in seconds]
+     -t : concatenate images in time
+     -x : concatenate images in the x direction
+     -y : concatenate images in the y direction
+     -z : concatenate images in the z direction
+     -a : auto-choose: single slices -> volume, volumes -> 4D (time series)
+     -tr : concatenate images in time and set the output image tr to the final option value
+     -n <N> : only use volume <N> from each input file (first volume is 0 not 1)
+---------------------------------------------------------------------------
+RuntimeError                              Traceback (most recent call last)
+Cell In[6], line 1
+----> 1 ts       = nets.load_from_images(melic, subjdata, 0.72)
+
+File ~/fsl/lib/python3.11/site-packages/fsl/nets/load.py:154, in load_from_images(spatialmaps, subjfiles, *args, **kwargs)
+    151 timeseries  = []
+    153 with tempdir():
+--> 154     dualreg.create_common_mask(subjfiles, 'mask')
+    156     for i, subjfile in enumerate(subjfiles):
+    157         outfile = f'{i}.txt'
+
+File ~/fsl/lib/python3.11/site-packages/fsl/nets/dualreg.py:67, in create_common_mask(fmri_data, mask, all_mask)
+     65 for i, infile in enumerate(fmri_data):
+     66     fslmaths(infile).Tstd().bin().run(f'{i}_mask')
+---> 67 fslmerge('t', all_mask, *glob('*_mask.*'))
+     68 fslmaths(all_mask).Tmin().run(mask)
+
+File ~/fsl/lib/python3.11/site-packages/fsl/wrappers/avwutils.py:51, in fslmerge(axis, output, *images, **kwargs)
+     48     func   = ft.partial(_fslmerge, axis=axis)
+     50 asrt.assertIsNifti(*images)
+---> 51 return func(axis, output, *images, **kwargs)
+
+File ~/fsl/lib/python3.11/site-packages/fsl/wrappers/wrapperutils.py:1282, in fileOrImage.<locals>.decorator.<locals>.wrapper(*args, **kwargs)
+   1281 def wrapper(*args, **kwargs):
+-> 1282     result = fot(*args, **kwargs)
+   1283     intypes[:] = []
+   1284     return result
+
+File ~/fsl/lib/python3.11/site-packages/fsl/wrappers/wrapperutils.py:921, in FileOrThing.__call__(self, *args, **kwargs)
+    919 # Call the function
+    920 try:
+--> 921     result = func(*args, **kwargs)
+    923 finally:
+    924     # if we're the top-level FileOrThing
+    925     # decorator, remove the attributes we
+    926     # added above.
+    927     if parent:
+
+File ~/fsl/lib/python3.11/site-packages/fsl/wrappers/wrapperutils.py:214, in genxwrapper.<locals>.wrapper(*args, **kwargs)
+    211     with asrt.disabled(cmdonly or (submit not in (None, False))):
+    212         cmd = func(*args, **kwargs)
+--> 214 return runner(cmd,
+    215               stderr=stderr,
+    216               log=logg,
+    217               submit=submit,
+    218               cmdonly=cmdonly,
+    219               stdout=stdout,
+    220               exitcode=exitcode)
+
+File ~/fsl/lib/python3.11/site-packages/fsl/utils/run.py:417, in runfsl(*args, **kwargs)
+    411 # error if the command cannot
+    412 # be found in a FSL directory
+    413 else:
+    414     raise FileNotFoundError('FSL tool {} not found (checked {})'.format(
+    415         args[0], ', '.join(prefixes)))
+--> 417 return run(*args, **kwargs)
+
+File ~/fsl/lib/python3.11/site-packages/fsl/utils/run.py:247, in run(*args, **kwargs)
+    243 stdout, stderr, exitcode = _realrun(
+    244     tee, logStdout, logStderr, logCmd, *args, **kwargs)
+    246 if not returnExitcode and (exitcode != 0):
+--> 247     raise RuntimeError('{} returned non-zero exit code: {}'.format(
+    248         args[0], exitcode))
+    250 results = []
+    251 if returnStdout:   results.append(stdout)
+
+RuntimeError: /Users/tamireszanao/fsl/bin/fslmerge returned non-zero exit code: 1
+
+
+thanks
+
+Ok, so the SVS in the instructions is indicating for you to replace that with the path to your data. What is the full path to your MRS data converted using spec2nii?
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Theuerzeit, Daniëlla (MHENS) <daniella.theuerzeit.guest@MAASTRICHTUNIVERSITY.NL>
+Date: Monday, 9 October 2023 at 11:41
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] RDA files pre-processing steps
+
+Dear Will,
+
+ 
+
+Some of the commands I tried are:
+
+svs_segment -a /home/virtualboxdaniella/Documents/MRS_data/MRS_114/mp2rage_114.anat -o . metab.nii.gz 
+
+svs_segment -a /home/virtualboxdaniella/Documents/MRS_data/MRS_114/mp2rage_114.anat -o . metab.nii.gz SVS
+
+svs_segment -a "/home/virtualboxdaniella/Documents/MRS_data/MRS_114/mp2rage_114.anat" -o . metab.nii.gz 
+
+svs_segment -a "/home/virtualboxdaniella/Documents/MRS_data/MRS_114/mp2rage_114.anat" -o . metab.nii.gz SVS
+
+svs_segment -a "/home/virtualboxdaniella/Documents/MRS_data/MRS_114/mp2rage_114.anat" -o metab.nii.gz 
+
+etc
+
+ 
+
+I drop and drag the path to the anat directory so it should be correct. 
+
+ 
+
+See also screenshot for what the error message may look like.
+
+ 
+
+I have tried this on Ubuntu virtual box and on WSL, both resulting in similar error messages so I believe there is something wrong with my code. 
+
+ 
+
+Thank you so much in advance. 
+
+ 
+
+Kind regards, 
+
+Daniëlla 
+
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens William Clarke <william.clarke@NDCN.OX.AC.UK>
+Verzonden: donderdag 5 oktober 2023 22:39
+Aan: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Onderwerp: Re: [FSL] RDA files pre-processing steps
+
+ 
+
+Hi,
+
+ 
+
+What’s the exact command you are inputting? The svs is probably indicating the path to one of the single voxel spectroscopy (SVS) files you have been processing.
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Theuerzeit, Daniëlla (MHENS) <daniella.theuerzeit.guest@MAASTRICHTUNIVERSITY.NL>
+Date: Thursday, 5 October 2023 at 09:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] RDA files pre-processing steps
+
+Dear Will, 
+
+ 
+
+Thank you for your response, it was very helpful and seems to have worked great! 
+
+ 
+
+However, I have run into another problem with the svs_segment function. 
+
+ 
+
+It seems to either not recognize the path specified after -a, or have trouble with the 'SVS' argument. In -h it is described that the 'SVS' argument at the end of the command line is necessary, and if I don't use it I get an error that it is indeed required. However, when I try to run the command followed by the 'SVS' argument it does not recognize 'SVS'. Do you have any idea what the problem could be? 
+
+ 
+
+Thank you very much in advance. 
+
+ 
+
+Kind regards, 
+
+Daniëlla 
+
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> namens William Clarke <william.clarke@NDCN.OX.AC.UK>
+Verzonden: maandag 2 oktober 2023 15:14:47
+Aan: FSL@JISCMAIL.AC.UK
+Onderwerp: Re: [FSL] RDA files pre-processing steps
+
+ 
+
+Hi Daniëlla,
+
+ 
+
+Yes, you are right that most of the pre-processing is already applied in DICOM and RDA (though the exact amount depends on the exact sequence). I’d suggest potentially running the HLSVD water removal and phase correction steps on this data. See steps #7 and #8 here: https://open.win.ox.ac.uk/pages/fslcourse/practicals/fsl_mrs/index.html#preprocessing
+
+ 
+
+BW
+
+ 
+
+Will
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Theuerzeit, Daniëlla (MHENS) <daniella.theuerzeit.guest@MAASTRICHTUNIVERSITY.NL>
+Date: Monday, 2 October 2023 at 08:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] RDA files pre-processing steps
+
+Hello, 
+
+ 
+
+I am a student who is just starting out with MRS analysis. I am working with .RDA files from Siemens and I would like to know which FSL preprocessing steps I should use on these data files. 
+
+ 
+
+I have tried using fsl_mrs_preproc, however, the .RDA files seem to be averaged already, resulting in an error. 
+
+ 
+
+Thank you very much in advance! 
+
+ 
+
+Kind regards, 
+
+Daniëlla Theuerzeit
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Anna,
+
+
+Would you be able to try running the installer with the --conda option to see if that makes a difference? i.e.
+
+python fslinstaller.py --conda
+
+Given the relatively slow speed of your internet connection, I would still expect the installation to take at least 2.5 hours.
+
+Paul
+
+Hi Mariana,
+
+This issue will be resolved if you update your FSL installation to the latest version.
+
+Paul
+
+
+Hi Georgios,
+
+Do all of the input images have the same voxel orientation? If not, running fslreorient2std on all of your images before any processing (assuming that their anatomical labels are valid) can reduce the likelihood of registration failures.
+
+Paul
+

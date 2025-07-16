@@ -1,0 +1,357 @@
+Hello,
+
+I have processed 630 FA images from an older adult sample through the TBSS pipeline (tbss_1_tbss_1_preproc through tbss_4_prestats). We have found that only 560 of the 630 originally processed data points can be included in the final analysis. Do I need to rerun all of the TBSS steps in the final sample (e.g., 560 subjects)? Or can I exclude 70 subjects following tbss_3_postreg and recompute the skeletonize step (tbss_4_prestats) in the subjects selected for the final analysis?
+
+Thanks in advance,
+Jenna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Please an help is required because we are unable to use FIX.
+The error is listed below.
+Thanks!
+
+
+/usr/local/fix/fix -f output.feat                                  
+FIX Feature extraction for Melodic output directory: output.feat
+ create edge masks
+ run FAST
+ registration of standard space masks
+ extract features
+Unable to find MATLAB Compiler Runtime
+/usr/local/fix/call_matlab.sh [-z <mode>] [-o <options>] [-p <path>] [-h <fix path>]
+        [-c <mcr path>] [-b <binaries path>] [-l <logfile>]
+        {-r <"MATLAB code">|-m <script>|-f <function> [arguments...]}
+
+        -z <mode>:      This overrides the environment variable
+                FSL_FIX_MATLAB_MODE which would otherwise control this.
+                        0 = Use compiled MATLAB function specified by
+                                -m <function name>
+                        1 = Use MATLAB - requires -r or -m option
+                        2 = Use Octave - requires -r or -m option
+        -r <"MATLAB code">: Evaluate the double-quoted MATLAB/Octave
+                code. Equivalent to 'matlab -r "MATLAB code"' or
+                'octave --eval "MATLAB code"'
+                Ensure that any double quotes in this string are escaped
+                with '\'.
+        -m <script>:
+                -z = 0 or not provided, run as -z = 1
+                -z = 1|2 - Run <script> in MATLAB/Octave
+                        Equivalent to 'matlab \< <script>.m' or 'octave <script>.m'
+        -f <function> [arguments]:
+                -z = 0 - Call compiled MATLAB <function>
+                        Arguments to be passed are given in the remainder of the
+                        command line.
+                -z = 1|2 - Run <function> script in MATLAB/Octave
+                        Equivalent to 'matlab -r "<function>([arguments])"' or
+                        'octave --eval "<function>([arguments])"'
+                        Arguments to be passed are given in the remainder of the
+                        command line.
+        -o <options>: Double quoted list of MATLAB/Octave command line
+                options. Defaults to ${FSL_FIX_MLOPTS} or ${FSL_FIX_OCOPTS}
+                respectively
+        -p <path>: Path to MATLAB/Octave startup script/binary.
+                Defaults to: ${FSL_FIX_MATLAB} or ${FSL_FIX_OCTAVE}
+                respectively
+        -h <path>: Path to folder containing the Fix programs
+        -w <path>: Path to FSL MATLAB helper functions, defaults to
+                        /usr/local/fsl/etc/matlab
+        -c <mcr path>: Path to MATLAB Compiler Runtime for the version
+                of MATLAB Fix was compiled under. Defaults to ${FSL_FIX_MCR}
+        -b <compiled path>: Path to the folder containing the compiled MATLAB
+                functions. Defaults to ${FSL_FIX_MLCDIR}
+        -l <logfile>: Append console and error output to <logfile>\n
+
+ echo $FSL_FIX_MCRROOT
+/opt/fmrib/MATLAB/MATLAB_Compiler_Runtime/v96
+
+ echo $FSL_FIX_MATLAB_ROOT
+/Applications/MATLAB_R2022b.app
+
+echo $FSL_FIX_MATLAB
+/Applications/MATLAB_R2022b.app/bin/matlab
+
+echo $FSL_FIX_FSLMATLAB
+echo $FSLDIR
+/usr/local/fsl
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL user group,
+
+We have an open postdoc position in the INI Microstructural imaging Group, in the beautiful city of Los Angeles. Previous experience with MRI data processing and solid understanding on the pathophysiology of Alzheimer’s disease and related dementia is highly desired. The position is funded by NIH.
+
+LINK: https://usccareers.usc.edu/job/los-angeles/postdoctoral-scholar-research-associate/1209/37597291936
+
+I would greatly appreciate it if you could share this ad within your group and broader network, or with individual researchers who you think would be a good fit.
+
+Many thanks.
+
+Best wishes,
+Jeiran 
+
+Jeiran Choupan, PhD, MSCS
+
+Assistant Professor of Research Neurology
+Laboratory of Neuro Imaging
+USC Stevens Neuroimaging and Informatics Institute
+Keck School of Medicine 
+University of Southern California
+
+2025 Zonal Ave, Los Angeles, CA 90033, USA
+(323) 44-BRAIN
+
+  
+
+
+I am new to fsl, I will say high beginner level 
+
+I want to visualize the peak TMS coordinates transformed into MNI coordinates of 20 participants in relationship to the stimulation site. In my case I have the ROIs normalised to the MNI standard space. Now I would like to create a saggital view of my Tms coordinates. My objective is to view the coordinates of all participants on one template brain. 
+
+Reuben A. 
+
+Get Outlook for iOS
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+
+Hi there,
+
+ 
+
+I am doing registration for multiband func data and have found 2 different ways to add a high-contrast alternative reference volume:
+
+ 
+
+One is on the Registration practical of the MRI course, which uploaded the image to ‘registration’ -> ‘Expanded functional image’
+Another one is in the ICA practical of the MRI course, which used ‘Pre-stat’  ‘Alternative reference image’.
+ 
+
+I may misunderstood but they look the same to me. I had a test run for both methods, however had the registration a little bit different.
+
+ 
+
+Please can you suggest?
+
+ 
+
+Thank you!
+
+ 
+
+Best wishes,
+
+Lin
+
+
+
+
+The script option is very helpful, thank you Paul!
+
+########################################################################
+
+
+Hi SPM experts,
+
+I am trying to save the glass brain outputs we get from SPM using the results report batch code. However, when I run the code as a batch with the Export JPEG enabled, it still does not save a JPEG of the glass brain report. Has anyone had this issue before?
+
+The batch runs fine when I run it on one subject, but when running it thru a for loop on multiple subjects, it does not create any JPEG outputs.
+here is my code snippet
+
+    spm('Defaults','fMRI');
+    spm_jobman('initcfg');
+    spm_get_defaults('cmdline',true);
+    matlabbatch{1}.spm.stats.results.spmmat = SPM.mat;
+    matlabbatch{1}.spm.stats.results.conspec.titlestr = 'Pos';
+    matlabbatch{1}.spm.stats.results.conspec.contrasts = 1;
+    matlabbatch{1}.spm.stats.results.conspec.threshdesc = 'none';
+    matlabbatch{1}.spm.stats.results.conspec.thresh = 0.001;
+    matlabbatch{1}.spm.stats.results.conspec.extent = 10;
+    matlabbatch{1}.spm.stats.results.conspec.conjunction = 1;
+    matlabbatch{1}.spm.stats.results.conspec.mask.none = 1;
+    matlabbatch{1}.spm.stats.results.units = 1;
+    matlabbatch{1}.spm.stats.results.export{1}.jpg = true;
+    spm_jobman('run',matlabbatch);
+    clear matlabbatch
+
+Thanks,
+Valay
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+PhD position (4y), University of Twente: Predicting Efficacy of Neuromodulation in Epilepsy (PREDYct)
+ 
+Michel van Putten, Clinical Neurophysiology Group University of Twente, is seeking applications for this PhD project, which is funded by the Dutch epilepsy foundation, EpilepsyNL. The deadline for applications is Monday, February 13, 2023;Informal enquires can be made to m.j.a.m.vanputten@utwente.nl
+ 
+Neuromodulation (i.e. Vagus nerve stimulation and Deep brain stimulation) is a treatment option in pharmacoresistant epilepsy patients. However, about 30-50% of patients do not respond to this treatment. Our group focuses on understanding brain systems of epilepsy patients and the impact of neuromodulation therapy.  Primary research objectives are to improve the selection of patients who may benefit from neuromodulation. 
+
+This project aims to identify novel biomarkers to predict the success of vagus nerve stimulation by combining electrophysiology and functional imaging.
+
+This project is a collaboration between Departments of Neurology, Neurosurgery and Clinical Neurophysiology of the Medisch Spectrum Twente, the epilepsy center SEIN and the  CNPH Group of the University of Twente.
+ 
+More details can be found at:
+https://utwentecareers.nl/en/vacancies/1013/phd-position-predicting-efficacy-of-neuromodulation-in-epilepsy/
+https://www.utwente.nl/en/tnw/cnph/#mission-statement-and-research-lines-clinical-neurophysiology-group-cnph
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear all,
+
+We are looking for a new Postdoc to work in an interdisciplinary and internationally competitive environment at Karolinska Institute, the home for the Nobel Prize in Medicine.
+
+We combine imaging analyses, statistical tools, machine learning algorithms and biofluid assays to study brain aging and the earliest signs of Alzheimer’s and Parkinson’s diseases.
+
+This project will be carried out under the supervision of Associate Professor Joana B. Pereira and Assistant Professor/Neurologist Sara Garcia-Ptacek and it will involve analyzing the effects of different types of medication on brain connectivity in patients at different stages of Alzheimer's disease.
+
+The Postdoctoral fellow will work in the center of Stockholm together with 3 PhD students, 2 Postdocs and 4 affiliated members of Dr. Pereira's group. He/she will help collect data from patients at the local memory clinic using well-established and new imaging sequences as well as perform analyses using already acquired cross-sectional and longitudinal data.
+
+We work in a friendly and inclusive environment, where the future fellow will be involved in many projects, collaborate with group members on different studies, learn new skills, attend conferences, apply for grants and develop a wide network of international collaborations.
+
+The ideal candidate should have at least some of the following qualities:
+
+A PhD in medicine, neuroimaging, computational science, physics, neuropsychology, statistics or a related field.
+Experience in statistical techniques, programming, and scripting in MATLAB, STATA, Python, R or other softwares.
+Experience with structural MRI, DTI, fMRI and/or EEG/MEG imaging analyses.
+Experience with different softwares such as SPM, FSL, FreeSurfer, AFNI, etc.
+Experience or interest in working with aging and/or neurodegenerative disorders, particularly Alzheimer’s and Parkinson’s diseases.
+Good academic record with scientific publications in world-class journals.
+Be independent and willing to supervise students.
+
+The Postdoctoral studies will be performed for 2 years, with possible extension for an additional year.
+To apply please go to: https://ki.varbi.com/en/what:job/jobID:577826/
+(Deadline: 22.Jan.2023)
+
+For further information or general inquiries, please contact Joana B. Pereira at joana.pereira@ki.se.
+
+Best wishes,
+Joana
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi SPM experts,
+
+I am trying to save glass brain outputs via batch code using the Results Report module. When ever I run the code as a .m script, it does not save the results in the selected file type. I have tried both PDF and JPG types. They work fine when going thru the GUI to save reports but the glass brain results do not save when running this thru a script. Any ideas on how I can save the matlab figure that is created as a report with the glass brain and cluster tables?
+
+Here is a snippet of my batch code.
+
+    spm('Defaults','fMRI');
+    spm_jobman('initcfg');
+    spm_get_defaults('cmdline',true);
+    matlabbatch{1}.spm.stats.results.spmmat = SPM.mat;
+    matlabbatch{1}.spm.stats.results.conspec.titlestr = 'pos';
+    matlabbatch{1}.spm.stats.results.conspec.contrasts = 1;
+    matlabbatch{1}.spm.stats.results.conspec.threshdesc = 'none';
+    matlabbatch{1}.spm.stats.results.conspec.thresh = 0.001;
+    matlabbatch{1}.spm.stats.results.conspec.extent = 10;
+    matlabbatch{1}.spm.stats.results.conspec.conjunction = 1;
+    matlabbatch{1}.spm.stats.results.conspec.mask.none = 1;
+    matlabbatch{1}.spm.stats.results.units = 1;
+    matlabbatch{1}.spm.stats.results.export{1}.jpg = true;
+    spm_jobman('run',matlabbatch);
+    clear matlabbatch
+
+Thanks,
+Valay
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Ryo,
+   We’re looking into this issue, but unless a specific older version of FSL is required, we would strongly recommend installing the latest version ( 6.0.6.2 ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 16 Jan 2023, at 05:09, Ryosuke Hayashi <rhayashi@ATR.JP> wrote:
+
+Dear FSL Developers,
+
+I'm trying to build an environment for FSL 6.0.5.2, but it fails no matter how many times I try.
+I think I was successful last month. It always fails at Stage2.
+I'm not sure if it's a network issue. If you have time, could you take a look at the fslpython_miniconda_installer.log?
+ttps://drive.google.com/file/d/1Z6uGciKkPS6EuNzWrQ9fXE-gyuo6SuSi
+
+After decompressing the FSL6.0.5.2 compressed file, I run the following installation command.
+$>fsl/etc/fslconf/fslpython_install.sh -f fsl
+
+Best regards
+ryo
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi,
+
+ 
+
+I am running some analysis on fsleyes and I want to use the cluster function to find the peak activation but I want to restrict it to the motor strip.
+
+ 
+
+Below is the code I use for whole brain
+
+ 
+
+Cluster -i Task_Mri.nii.gz -t 0 -o cluster_index > info.txt
+
+ 
+
+ 
+
+Thanks,
+
+Reuben A.
+
+The information in this e-mail is intended only for the person to whom it is addressed.  If you believe this e-mail was sent to you in error and the e-mail contains patient information, please contact the Mass General Brigham Compliance HelpLine at https://www.massgeneralbrigham.org/complianceline .
+
+
+Please note that this e-mail is not secure (encrypted).  If you do not wish to continue communication over unencrypted e-mail, please notify the sender of this message immediately.  Continuing to send or respond to e-mail after receiving this message means you understand and accept this risk and wish to continue to communicate over unencrypted e-mail. 
+
+
+

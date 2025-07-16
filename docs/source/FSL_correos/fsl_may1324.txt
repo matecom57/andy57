@@ -1,0 +1,169 @@
+We have a 3’5 years PhD position at the University of Edinburgh in neonatal neuroimaging!
+
+The project will investigate the relationship between the neonatal structural connectome and the immune dysregulation in preterm infants. For full details:
+
+https://www.findaphd.com/phds/project/elucidating-the-relationship-between-the-neonatal-cerebral-connectome-and-immune-dysregulation-in-preterm-infants/?p171869
+
+The project will be supervised by Prof James Boardman, Dr Manuel Blesa Cábez (myself) and Prof Riccardo Marioni.
+
+The University of Edinburgh is one of the world’s top universities, consistently ranked in the world top 50 and placed 22nd in the 2024 QS World University Rankings. It has an international reputation for innovative research across a wide range of disciplines.
+
+The salary is £19,237 per year and the application is open worldwide. Closing date 6 of June!
+
+For any informal queris, please don’t heasitate to contact me: manuel.blesa@ed.ac.uk
+
+########################################################################
+
+
+The National Institute on Drug Abuse (NIDA) is seeking a GS-15 Data
+Scientist for the Office of the Director. The incumbent of this
+position will serve as a Data Scientist and Senior Advisor to the NIDA
+Director and other leadership positions, on matters related to health
+informatics and data science, data management, emerging technologies,
+opportunities for collaboration, data standards and policy within the
+scope of the NIDA mission. The incumbent will plan and carry out
+quality control programs and select statistical methods for use in
+quality control analysis and ensure the reliability and consistency of
+the data while measuring the data limitations. Additionally, the
+selectee will provide technical expertise and project leadership
+necessary to advance strategic initiatives in the use and
+effectiveness of data- and knowledge-driven methods in the
+organization; and develop collaborations with researchers and
+administrators applying technical expertise to support a variety of
+use cases related to neuroscience.
+
+Some of the duties include but are not limited to the following:
+
+- Serves as a principal advisor to the NIDA Director and senior
+leadership on health informatics and data science, data management,
+and emerging technologies.
+- Contribute as a recognized expert in the design and implementation
+of computer-based solutions, including tools, techniques and practices
+that broaden the use of NIDA data sets and knowledge bases and ensure
+access to research data throughout its lifecycle.
+- Serve as the Institute's subject matter expert (SME) on issues and
+matters related to new, novel, and/or emerging technologies and areas
+in data analytics and their application to supporting the Institute's
+research portfolio; business process improvements and enhancements;
+data policies related to privacy, accessibility, and interoperability;
+and applied data science.
+- Serve as a member of committees or workgroups at the agency or
+department level as well as on interdepartmental groups. In this
+capacity, the incumbent provides professional expertise as well as
+representing NIDA on matters relating to policy and interpretation of
+resource requirements for data science.
+- Represent the organization at professional meetings and conferences
+where the focus is addiction-related data science and
+neuroinformatics.
+
+The ideal candidate will have a bachelor’s degree or graduate/higher
+level degree in mathematics, statistics, computer science, or data
+science. The successful candidate will also possess extensive
+knowledge of and documented experience working in neuroscience,
+addiction science, and/or substance use disorder research. The
+candidate must be a U.S. Citizen or U.S. National. Foreign nationals
+or legal permanent residents are not eligible for consideration.
+
+https://www.usajobs.gov/job/782086300
+
+########################################################################
+
+
+
+
+ I checked it. Indeed, I do not have the write access on that file. Thank your for your help.
+
+Best,
+Quanjiang
+
+I met a problem when I used FSL tools on the Canada Alliance (https://ccdb.alliancecan.ca/). I wanted to run the BET function of FSL. The terminal command line is below:
+      bet <input> <output> [options]
+
+and below is my command:
+
+      bet /lustre06/project/6087271/CanCam/cc700/mri/pipeline/release004/BIDS_20190411/anat/sub-CC110033/anat/sub-CC110033_T1w.nii.gz /lustre06/project/6087271/CanCam/cc700/mri/pipeline/release004/BIDS_20190411/anat/sub-CC110033/anat/sub-CC110033_T1w_brain
+
+  But it failed and prompted me to:
+terminate called after throwing an instance of 'NiftiIO::NiftiException'
+  what():  Error: cant open file /lustre06/project/6087271/CanCam/cc700/mri/pipeline/release004/BIDS_20190411/anat/sub-CC110033/anat/sub-CC110033_T1w_brain.nii.gz
+/cvmfs/soft.computecanada.ca/easybuild/software/2020/avx2/CUDA/gcc9/cuda11.0/fsl/6.0.4/fsl/bin/bet: line 399: 1969830 Aborted                 (core dumped) ${FSLDIR}/bin/bet2 $IN $OUT $bet2opts
+Finished
+
+  Besides, I am sure that the output file path is correct because os.path.exists('/lustre06/project/6087271/CanCam/cc700/mri/pipeline/release004/BIDS_20190411/anat/sub-CC110033/anat/sub-CC110033_T1w.nii.gz') returns True.
+
+########################################################################
+
+
+Postdoc position available in Marseille France (deadline May 26th)! 
+
+Research in our group concerns the developmental and neural underpinnings of non-verbal communication. We are particularly interested in the interpersonal alignment of actions and emotions, and how this may change at the time of adolescence in relation to changes in the body and in self-perception. We welcome applications for a post-doc position to develop a project along this line, with possible collaboration with other members of ILCB (ilcb.fr). This project could build on Hi Matt,
+
+First, a general warning: you never want to apply any transforms to the bedpostX output, nor any non-linear transforms to the diffusion MRI data.
+
+Fortunately, you don't have to, because any outputs of probtrackx (including --matrix1) will be in the same space as you provide the masks, not the same space as the diffusion data. So, just provide the masks in MNI space and provide probtrackx with the transforms between MNI space and the diffusion space (using the --xfm and --invxfm flags). If you use the same MNI masks across subjects, this will ensure you have comparable matrix results across subjects.
+
+Best wishes,
+
+Michiel
+
+
+an ongoing fMRI study investigating emotion intergenerational emotion processing between adults and adolescents. Interested candidates should send an email and CV to  marie-helene.grosbras@univ-amu.fr. Before May 26th
+
+
+
+
+The National Institute on Drug Abuse (NIDA) is seeking a GS-15 Data
+Scientist for the Office of the Director. The incumbent of this
+position will serve as a Data Scientist and Senior Advisor to the NIDA
+Director and other leadership positions, on matters related to health
+informatics and data science, data management, emerging technologies,
+opportunities for collaboration, data standards and policy within the
+scope of the NIDA mission. The incumbent will plan and carry out
+quality control programs and select statistical methods for use in
+quality control analysis and ensure the reliability and consistency of
+the data while measuring the data limitations. Additionally, the
+selectee will provide technical expertise and project leadership
+necessary to advance strategic initiatives in the use and
+effectiveness of data- and knowledge-driven methods in the
+organization; and develop collaborations with researchers and
+administrators applying technical expertise to support a variety of
+use cases related to neuroscience.
+
+Some of the duties include but are not limited to the following:
+
+- Serves as a principal advisor to the NIDA Director and senior
+leadership on health informatics and data science, data management,
+and emerging technologies.
+- Contribute as a recognized expert in the design and implementation
+of computer-based solutions, including tools, techniques and practices
+that broaden the use of NIDA data sets and knowledge bases and ensure
+access to research data throughout its lifecycle.
+- Serve as the Institute's subject matter expert (SME) on issues and
+matters related to new, novel, and/or emerging technologies and areas
+in data analytics and their application to supporting the Institute's
+research portfolio; business process improvements and enhancements;
+data policies related to privacy, accessibility, and interoperability;
+and applied data science.
+- Serve as a member of committees or workgroups at the agency or
+department level as well as on interdepartmental groups. In this
+capacity, the incumbent provides professional expertise as well as
+representing NIDA on matters relating to policy and interpretation of
+resource requirements for data science.
+- Represent the organization at professional meetings and conferences
+where the focus is addiction-related data science and
+neuroinformatics.
+
+The ideal candidate will have a bachelor’s degree or graduate/higher
+level degree in mathematics, statistics, computer science, or data
+science. The successful candidate will also possess extensive
+knowledge of and documented experience working in neuroscience,
+addiction science, and/or substance use disorder research. The
+candidate must be a U.S. Citizen or U.S. National. Foreign nationals
+or legal permanent residents are not eligible for consideration.
+
+https://www.usajobs.gov/job/782086300
+
+########################################################################
+
+
+

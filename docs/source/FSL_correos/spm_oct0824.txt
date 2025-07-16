@@ -1,0 +1,26 @@
+Dear Ines,
+
+it is indeed good practice to have
+
+spm_jobman('initcfg');
+
+at the beginning of your script. And it is mandatory, if your batch variable construction code contains references to cfg_dep() or any SPM functions, e.g. 
+spm_select() or anything like that. Thanks for explicitly sharing this advice.
+
+Best,
+Volkmar
+
+Dear both,
+
+Just adding a datapoint to this discussion. I experienced the same issue: 2 scripts, one running, the other stopping because of an "undefined cfg_dep" error. I 
+was using the same Matlab installation and GUI (2022b), and was pointing to the same SPM folder.
+
+I managed to solve the issue by adding `spm_jobman('initcfg');` in the beginning of the script, instead of calling it after the matlabbatch variable is defined.
+
+Hope this helps other with the same issue.
+
+All the best,
+
+Inês Pereira
+
+

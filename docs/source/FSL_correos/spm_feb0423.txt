@@ -1,0 +1,224 @@
+Hello!
+For my analysis, I calculated the Gray matter volume from different ROIs. Since the data was from different scanners, I applied a data harmonization technique. I see differences in certain ROIs when I did patient- control analysis. That is, after harmonization.
+
+Is there a way to project those differences on to a brain map? Like we get an output after cat12 analysis( changes overlaid onto a t1 image)?
+
+I hope my question is clear. If anyone of you have any thoughts on this, please let me know.
+
+Thanks,
+A
+
+
+Within a collaboration project between the University of Düsseldorf and Regensburg, for which the German Research Foundation (DFG) funded two PhD positions, we are looking for a candidate to fill the position located in Düsseldorf. The project focuses on connectivity-optimized localization of hotspots for repetitive transcranial magnetic stimulation (TMS) in patients with depression.
+
+
+
+The position is for 3 years and starts when an eligible candidate is found.
+
+
+
+The doctoral researcher will develop a method and toolbox for individualized functional connectivity-guided targeting of hotspots in the prefrontal cortex with TMS. The position provides a unique training opportunity in advanced brain imaging techniques and methods including connectivity modelling and parcellation as well as machine learning. In particular, by combining methods of connectivity-based parcellation (CBP) and machine learning an algorithm will be developed that identifies the optimal hotspot for coil placement in single individuals.
+
+
+
+We offer a position paid up to 100% TVöD 13 (based on the qualification of the candidate).
+
+
+
+The position is in the lab of Simon Eickhoff at the University of Düsseldorf (https://www.uniklinik-duesseldorf.de/en/institute-of-systems-neuroscience) and the Jülich Research Centre (https://www.fz-juelich.de/inm/inm-7/EN). The lab offers an international and interdisciplinary research environment with excellent scientific and technical infrastructure. The University of Düsseldorf as well as the Jülich Research Centre offer structured programs and training courses specifically for doctoral students and the student will have the opportunity to attend (international)
+
+conferences and workshops.
+
+
+
+Requirements:
+
+• Master's degree or a Diploma (or an equivalent degree) in a relevant field, such as neuroscience, informatics, biomedical sciences or psychology
+
+• Strong programming skills
+
+• Strong interest in neurobiological research and software development for clinical applications
+
+• Good writing, communication, interpersonal and organisational skills
+
+• Good command of the English language, both written and spoken
+
+• High degree of independence and commitment
+
+• Experience with neuroimaging analysis is a plus
+
+
+
+Applications can be submitted via email and should include a curriculum vitae along with a letter of motivation, copies of degree certificates and two letters of recommendation.
+
+
+
+Please submit your application or informal inquiries via email to Veronika Müller: v.mueller@fz-juelich.de
+
+
+
+
+
+
+
+===================================
+Univ.-Prof. Dr. med. Simon B. Eickhoff
+
+Director, Institute of Systems Neuroscience
+Heinrich Heine University Düsseldorf
+40225 Düsseldorf, Germany 
+Tel:   +49 211 586729-127
+eMail:  Simon.Eickhoff@uni-duesseldorf.de
+http://www.uniklinik-duesseldorf.de/systemneurowiss
+
+and
+
+Director, Institute of Neuroscience and Medicine (INM-7: Brain and Behaviour )  
+Research Centre Jülich
+52425 Jülich, Germany
+Tel:  +49 2461 61 1791
+eMail:  S.Eickhoff@fz-juelich.de
+http://www.fz-juelich.de/inm/inm-7/EN/Home/home_node.html
+
+
+
+
+Dear friends,
+
+please find attached our congress flyer.  Lots of brain imaging stuff presented there,
+
+Welcome!
+
+Best
+Hasse
+
+Hasse Karlsson, MA, MD, PhD,
+Professor of Integrative Neuroscience and Psychiatry,
+University of Turku.
+Chief Physician, Hospital District of Southwest Finland,
+Department of Psychiatry.
+
+
+Dear colleagues,
+
+Apologies for double posting,
+
+The INSERM-U1253 & University of Tours research unit based in Tours
+(Loire Valley, France) invites applications for a research engineer
+position to begin as soon as possible on cognitive neuroscience
+methodologies.
+
+A good command of written and spoken French is requested of all
+applicants.
+
+Prospective candidates should also contact directly Marie Gomot
+(marie.gomot@univ-tours.fr). Please include the following documents in
+your application (as a single PDF-file): Cover letter and curriculum
+vitae.
+
+For more information, and to apply: Follow this link*
+
+Frederic Briend
+
+*
+https://ibrain.univ-tours.fr/version-francaise/actualites/offres-de-recrutement/recrutement-ingenieur-de-recherche-en-methodologie-des-neurosciences-cognitives
+[RECRUTEMENT] Ingénieur de Recherche en méthodologie des neurosciences cognitives
+L'équipe Autisme d'iBrain recrute un Ingénieur de Recherche en méthodologie des neurosciences cognitives.
+ibrain.univ-tours.fr
+
+
+Dear All,
+I hope you are fine. I am doing VBM analysis using the CAT12 toolbox. I am correlating the grey matter size with clinical scores. However, I cannot get correlation coefficients. Also for linear regression analysis, how to get b-coefficients?
+
+If not available through CAT12, what are other tools?
+
+Kind regards,
+Sara
+
+Hello,
+
+We are VERY new to SPM. Using Brainstorm (MEG group analysis), we generated a scout (region of interest) as a .mat file with vertices data and we also have ICBM152 based whole brain vertices and faces. We need to generate a mask as a NIFTI file of our scout. We need this NIFTI scout to import for whole brain spectroscopy analysis with MINT/MIDAS. How do we use the .mat files generate this NIFTI file with SPM?
+
+Thanks!
+
+Crystal (Baca) Garcia
+Research Scientist 1
+Center for Psychiatry Research
+505-272-9552
+(she/her/hers)
+
+Hello!
+For my analysis, I calculated the Gray matter volume from different ROIs. Since the data was from different scanners, I applied a data harmonization technique. I see differences in certain ROIs when I did patient- control analysis. That is, after harmonization.
+
+Is there a way to project those differences on to a brain map? Like we get an output after cat12 analysis( changes overlaid onto a t1 image)?
+
+I hope my question is clear. If anyone of you have any thoughts on this, please let me know.
+
+Thanks,
+A
+
+Dear all,
+
+I was using the LST longitudinal pipeline and noticed that the output files had different dimensions from the input lesion maps, and different dimensions across different subjects. Why does this happen? And is there any way to prevent this?
+
+Thank you,
+Maria Caranova
+
+As Isabelle said, including an explicit mask in your model should
+control for stray clusters, and you can also lower the threshold
+(maybe not -inf, but perhaps to 0.5).
+Best,
+Leyla
+
+On Fri, Feb 3, 2023 at 2:50 PM SUBSCRIBE SPM Terry Zhang
+<zhangyongfa09@gmail.com> wrote:
+>
+> Dear SPM experts,
+>
+> I'm doing my first task-fMRI study using SPM 12 and am quite confused about masking. I know there are many posts about this issue in the forum, but I still can't come to an accurate conclusion after reading them, so I hope to get some help here.
+>
+> By default, SPM uses an implicit mask with a threshold = 0.8 in the first-level analysis. I have two questions about this:
+> 1. The implicit mask often dropout some important brain areas, such as OFC. Some people strongly suggest using an explicit mask with threshold = -inf, instead of the implicit mask. I’m confused about which method is more accepted in the community.
+> 2. When setting the threshold to 0.8, the implicit mask usually includes a lot of white matter and CSF (in my case, the whole brain is included). So, in the results of first and second-level analyses, there will also be clusters composed of WM, or clusters containing both GM and WM. Should I report these results as significantly activated brain regions? Or should I apply the subject's gray matter (such as the wc1 image from segmentation) as a mask somewhere?
+>
+> Any answer or discussion will be highly appreciated. Thanks in advance.
+>
+> With best wishes,
+> Terry
+
+
+
+--
+
+Leyla Loued-Khenissi, PhD
+Telephone: +41 (0) 78 7344217
+Email: lkhenissi@gmail.com
+@NeuroLeyla
+https://github.com/LLouedKhen/
+www.zeitheist.org
+
+*** If this is a work-related email received outside of your normal
+working hours, please feel free to respond at a time convenient to
+you***
+
+Hi
+what I am doing (I often work on lesioned brains) at the individual level statistical model :
+
+- maintain a implicit mask but set to 0.4 ("functional mask")
+- add an explicit mask = gray matter partition of the anat image of that subject (usually I threshold the GM image to a proba of 50%) (“anatomical mask”)
+
+Isabelle
+
+Dear SPM experts,
+
+I'm doing my first task-fMRI study using SPM 12 and am quite confused about masking. I know there are many posts about this issue in the forum, but I still can't come to an accurate conclusion after reading them, so I hope to get some help here.
+
+By default, SPM uses an implicit mask with a threshold = 0.8 in the first-level analysis. I have two questions about this:
+1. The implicit mask often dropout some important brain areas, such as OFC. Some people strongly suggest using an explicit mask with threshold = -inf, instead of the implicit mask. I’m confused about which method is more accepted in the community.
+2. When setting the threshold to 0.8, the implicit mask usually includes a lot of white matter and CSF (in my case, the whole brain is included). So, in the results of first and second-level analyses, there will also be clusters composed of WM, or clusters containing both GM and WM. Should I report these results as significantly activated brain regions? Or should I apply the subject's gray matter (such as the wc1 image from segmentation) as a mask somewhere?
+
+Any answer or discussion will be highly appreciated. Thanks in advance.
+
+With best wishes,
+Terry
+

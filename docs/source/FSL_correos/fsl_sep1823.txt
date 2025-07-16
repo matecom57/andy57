@@ -1,0 +1,823 @@
+Dear FSL experts, 
+
+I am trying to run seed based connectivity using fsl_sbca; I am using the following code: 
+
+fsl_sbca -i 4Ddata -s 3Dmask -t 4Ddata -o seed -r -v.   
+
+I get a 4 dimensional output seed_corr with the 4th dimension having as many maps as seeds in my 3Dmask.  Is it possible to use fsl_sbca to compute the connectivity of the average time course within the 3D mask to obtain one correlation map?  I do not want a map per each time course in the voxels within the mask.
+
+Thank you
+
+Paul Geha. 
+
+
+Hi,
+
+This can be found in the FSL FAQ: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL%20FAQ#What_image_format_does_FSL_need.3F.
+In summary, dcm2niix does the job:. https://github.com/rordenlab/dcm2niix/.
+Which Numaris version does your scanner use? We just upgraded from VE11 to XA30 (in December to XA60) and have encountered some issues.
+
+Best
+
+Pieter Vandemaele
+
+
+-----Oorspronkelijk bericht-----
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Namens Gonzalo Rojas Costa
+Verzonden: donderdag 14 september 2023 15:53
+Aan: FSL@JISCMAIL.AC.UK
+Onderwerp: [FSL] SIEMENS SOLA MRI equipment PCASL conversion for BASIL...
+
+Hi:
+
+  I have some PCASL images acquired in a Siemens SOLA 1.5 T equipment, and I want to process using BASIL software.  Which software must I use to convert DICOM files to NIFTI? Is it possible to process it using without an mprage isotropic image?
+
+  Sincerely,
+
+
+Gonzalo Rojas Costa
+
+
+Hi:
+
+  I have some PCASL images acquired in a Siemens SOLA 1.5 T equipment, and I want to process using BASIL software.  Which software must I use to convert DICOM files to NIFTI? Is it possible to process it using without an mprage isotropic image?
+
+  Sincerely,
+
+
+Gonzalo Rojas Costa
+
+########################################################################
+
+Dear FSL experts,
+
+ 
+
+I am wondering if this question was missed and if there is any info that could help me out.
+
+Previous post:
+
+ 
+
+ 
+
+I am hoping to seek your assistance regarding some questions involving FSL VBM. I'm currently working on a project, examining GM differences in two cohorts and the relationship with blood biomarkers. 
+
+  
+
+Specifically, I'm seeking clarification regarding the distinction between E1 and E2 as outlined here: (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSLVBM/UserGuide)
+I have performed E1- and originally thought I needed to do both, but wondering if I could get some clarification or resources to read about which one (TFCE or cluster-based thresholding) should be done or both?
+
+
+Additionally, I am hoping to use the Test2Vest tool as we have many participants, but I am unsure how to deal with missing data.
+I could not find anything about missing values here: (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM/CreatingDesignMatricesByHand).
+
+ 
+
+ 
+
+Jessica Archibald Ph.D.
+
+Experimental Medicine
+
+ICORD | Blusson Spinal Cord Center   
+
+818 W 10th Ave Vancouver, BC, Canada.     
+
+Hello,
+
+I am using FEAT to analyze data for a typical On/Off design. The 'Off' period is a 12 s grey screen and the 'On' period is a 12 s color-motion stimulus (one of 6 different conditions). There are 18 stimuli per scan, so the full duration of the scan is 432 s.
+
+In addition to contrasting stimulus conditions with one another (e.g., Con2-Con1), I want to be able to contrast individual stimulus conditions with the grey screen (e.g., Con1-Off), and also to contrast all conditions (grouped together) with the grey screen (e.g., On-Off).
+
+In the Feat GUI, I have used the Custom 3-column format to provide onset time, duration and weighting for each of the stimulus conditions.
+
+My question is this: is it OK to also model the Off period as a stimulus condition?
+
+This would make it easy to set up the contrasts, but I'm not sure if it is good practice or if it is even a valid approach from a statistical point of view.
+
+Best,
+Joel
+
+########################################################################
+
+Hi All,
+
+ 
+
+When calling fsleyes from the commandline, it says “unrecognized arguments” rather than “file not found” if a file is not found.  This is very confusing if you are not typically calling fsleyes from the commandline, as it implies your usage is wrong rather than your path being wrong.
+
+ 
+
+Thanks,
+
+
+Matt.
+
+
+
+Hello FSL experts,
+
+I apologize for reposting this, as there was an error in the original display of the message.
+
+We've been experimenting with the CUDA version of eddy for within-volume motion correction and have observed improvements in SNR. However, we've encountered an issue: several subjects appear to have the top of their heads truncated in the CUDA version of eddy, which wasn't the case with the OpenMP version. I've attached a screenshot for reference (left side is the CUDA eddy, and right is the OpenMP eddy). It's worth noting that the raw data captured the entire brain, though with significant motion.
+
+Has anyone else experienced this, and does anyone have insights into the cause? Additionally, what would be the best solution to address this?
+
+Thank you in advance for your guidance!
+
+Hello,
+
+If you're familiar with python, there is a library that allows reading, modifying and writing  TWIX (.dat) files. You can use it to join the 4 runs.
+
+Best,
+Zakaria
+
+On Sat, Sep 16, 2023, 02:06 Remy Cohan <rcohan@yorku.ca> wrote:
+Hi,
+
+I was wondering if you could guide me through the process required to join 4 runs of Siemens TWIX data (.dat). We collected our data using MEGA-PRESS, and during each scanning session for each patient we acquired 4 runs. How do I join the 4 runs?  In addition, I have one water reference file (.dat) and a T1 (.nii.gz).
+
+Thank you,
+Remy
+
+
+
+Hi Remy
+
+ 
+
+I would recommend converting the files to nifti-mrs using “spec2nii” then you can merge the runs with "mrs_tools merge”
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+Hi,
+
+I was wondering if you could guide me through the process required to join 4 runs of Siemens TWIX data (.dat). We collected our data using MEGA-PRESS, and during each scanning session for each patient we acquired 4 runs. How do I join the 4 runs?  In addition, I have one water reference file (.dat) and a T1 (.nii.gz).
+
+Thank you,
+Remy
+
+Dear FSL experts, 
+
+I am trying to run seed based connectivity using fsl_sbca; I am using the following code: 
+
+fsl_sbca -i 4Ddata -s 3Dmask -t 4Ddata -o seed -r -v.   
+
+I get a 4 dimensional output seed_corr with the 4th dimension having as many maps as seeds in my 3Dmask.  Is it possible to use fsl_sbca to compute the connectivity of the average time course within the 3D mask to obtain one correlation map?  I do not want a map per each time course in the voxels within the mask.
+
+Thank you
+
+Paul Geha. 
+
+Hi Paul,
+
+Thank you for your response.
+
+To follow up on my second question regarding my DTI analysis using FSL tools:
+
+I achieved a significance level between 0.05 and 0.1 through the cluster function on my TBSS results. How can I verify that the p-values viewed in FSLeyes are FWE-corrected?
+
+Also, could you recommend the best practice for visualizing and interpreting ProbtrackX results in FSLeyes?
+
+
+Sincerely,
+Nooshin
+
+Hi,
+
+This can be found in the FSL FAQ: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL%20FAQ#What_image_format_does_FSL_need.3F.
+In summary, dcm2niix does the job:. https://github.com/rordenlab/dcm2niix/.
+Which Numaris version does your scanner use? We just upgraded from VE11 to XA30 (in December to XA60) and have encountered some issues.
+
+Best
+
+Pieter Vandemaele
+
+
+-----Oorspronkelijk bericht-----
+Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Namens Gonzalo Rojas Costa
+Verzonden: donderdag 14 september 2023 15:53
+Aan: FSL@JISCMAIL.AC.UK
+Onderwerp: [FSL] SIEMENS SOLA MRI equipment PCASL conversion for BASIL...
+
+Hi:
+
+  I have some PCASL images acquired in a Siemens SOLA 1.5 T equipment, and I want to process using BASIL software.  Which software must I use to convert DICOM files to NIFTI? Is it possible to process it using without an mprage isotropic image?
+
+  Sincerely,
+
+
+Hi Peter,
+
+which issues did you encounter?
+Cheers,
+Andreas
+
+﻿Am 14.09.23, 16:04 schrieb "FSL - FMRIB's Software Library im Auftrag von Pieter Vandemaele" <FSL@JISCMAIL.AC.UK im Auftrag von 00007379c614fceb-dmarc-request@JISCMAIL.AC.UK>:
+
+    Hi,
+   
+    This can be found in the FSL FAQ: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FSL%20FAQ#What_image_format_does_FSL_need.3F.
+    In summary, dcm2niix does the job:. https://github.com/rordenlab/dcm2niix/.
+    Which Numaris version does your scanner use? We just upgraded from VE11 to XA30 (in December to XA60) and have encountered some issues.
+   
+    Best
+   
+    Pieter Vandemaele
+   
+   
+    -----Oorspronkelijk bericht-----
+    Van: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> Namens Gonzalo Rojas Costa
+    Verzonden: donderdag 14 september 2023 15:53
+    Aan: FSL@JISCMAIL.AC.UK
+    Onderwerp: [FSL] SIEMENS SOLA MRI equipment PCASL conversion for BASIL...
+   
+    Hi:
+   
+      I have some PCASL images acquired in a Siemens SOLA 1.5 T equipment, and I want to process using BASIL software.  Which software must I use to convert DICOM files to NIFTI? Is it possible to process it using without an mprage isotropic image?
+   
+      Sincerely,
+   
+   
+    Gonzalo Rojas Costa
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of http://www.jiscmail.ac.uk/FSL, a mailing list hosted by http://www.jiscmail.ac.uk/, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+I am unfamiliar with scripting, but would like to conduct BET on 50 images using the command line. Can someone please assist me with this?
+
+Best
+Theo
+
+
+Neuroimaging data analyst position:
+
+ 
+
+The Gordon Center for Medical Imaging (GCMI) in the Department of Radiology at Massachusetts General Hospital (MGH) and Harvard Medical School (HMS) in Boston, Massachusetts, has an opening for highly qualified individuals to work as neuroimaging data analyst with Dr. Heidi Jacobs. The Jacobs lab is part of the Gordon Center for Medical Imaging at MGH and focused on improving the early detection and early treatment of Alzheimer’s disease. The lab focuses on the neuromodulatory subcortical nuclei, in particular the locus coeruleus, using a variety of approaches, including 7T MRI, PET imaging, pupil measurements, physiological recording, blood-based markers, cognitive assessments and non-invasive vagus nerve stimulation.
+
+ 
+
+Do you love working with 3T MRI, 7T MRI and PET imaging, do you enjoy the challenge of integrating the acquisition and analyses of imaging data with other modalities (physiology, eye-tracking, neurostimulation,...), do you like to build new methods, imaging pipelines and integrate them with existing ones, and finally: do you have interest in the brainstem and Alzheimer' s disease? Then apply!!!
+
+This position is also open to individuals at the MSc level or at the PhD level.
+
+ 
+
+Most of the work in this project will be performed at the Athinoula A. Martinos Center for Biomedical Imaging, Charlestown Navy Yard. The candidate will be part of ongoing collaborations and be able to work in a stimulating and inspiring environment. The Department of Radiology at MGH is equipped with the first mobile PET/CT, the first brain PET/MRI, the first whole-body PET/MRI in the USA and several MRI scanners, including two 7T ultra-high-field scanner. It is equipped with a large-scale shared memory computing facility for parametric image analysis, tomographic reconstruction, Monte Carlo simulation, and other computationally intensive research applications. Our research group values open communication, motivation, optimism, mutual respect, teamwork, and innovative thinking.
+
+ 
+
+This is a lab-wide position, working in all aspects of acquiring, analyzing data from various projects, including interventions, observational studies and helping collaborators.
+
+ 
+
+More information: shorturl.at/mNVY6
+
+ 
+
+ 
+
+
+
+ 
+
+ 
+
+Dr. Heidi Jacobs
+
+Associate Professor of Radiology
+
+ 
+
+Massachusetts General Hospital 
+
+Harvard Medical School
+
+Department of Radiology
+
+Gordon Center for Medical Imaging
+
+149 13th Street
+
+Charlestown, MA 02129
+
+hjacobs@mgh.harvard.edu
+
+www.heidijacobs.org
+
+twitter: @HeidiJacobsLab
+
+Linkedin: https://www.linkedin.com/in/heidijacobs/
+
+ 
+
+ 
+
+ 
+
+
+
+Well, to be short - I would >not generally< treat the tumor as an exclusion or termination criterion.
+
+However, I would consider a lot of things:
+- do the tracts you are trying to reconstruct pass through the tumor?
+- is the tumor accompanied by perifocal edema?
+- do the tracts pass through the perifocal edema?
+- is the edema less or more after the surgery?
+- how much time has passed after the surgery?
+- does the patient get steroids? does that change pre/post?
+are we talking a neural or glial tumor or metastasis, or all mixed?
+... (tbc)
+
+So yes, this is a methodological question and the answer will also depend what you are after. if you are after remote connectivities distant to the tumor and the potential perifocal edema, you may indeed consider to exclude the tumor / immediately adjacent peritumoral areas.
+
+hth,
+andreas
+
+﻿Am 11.09.23, 17:07 schrieb "FSL - FMRIB's Software Library im Auftrag von Pia Ritter" <FSL@JISCMAIL.AC.UK im Auftrag von pia.ritter@STUD.MEDUNIGRAZ.AT>:
+
+    Hi Andreas,
+   
+    thank you for your answer!
+   
+    we are interested in looking at how structural connectivity changes in tumor patients from pre- to postoperatively (specifically whether, and if so where, there is reduced connectivity). For this we want to create structural connectivity fingerprints where we look at the connectivity of a seed to different targets. The seeds and targets are cortical areas in the ipsilesional hemisphere, and we have created ROIs at the GM/WM border. The target ROIs are broadly distributed across the cortex in frontal, temporal but also parietal areas. The seed ROI is the IFG. In principle, we are interested in the pattern of connections of the IFG with other cortical ROI - HOWEVER we are NOT interested in group-level analyses, but rather want to  look at how structural connectivity changes from pre- to post-OP in each patient individually!!
+   
+    Brief overview of the analysis: We do this by seeding from the seed with probtrackx2, without specifying targets. I then apply the logarithm to the output file, fdt_paths.nii.gz, and then normalize all voxels by dividing them by the highest voxel value in the brain to obtain values between 0 and 1. Following this, I overlay the targets on the modified file (fdt_paths_log_div.nii.gz) to extract the average connectivity value, normalized with respect to the strongest connectivity in the brain, for the voxels within each target.
+    As we are not interested in group-level analysis, our cohort is not very homogeneous in terms of tumor type (i.e. high- and low-grade tumours are included) and also in terms of the tumor localisation  - but all tumors are located in or near speech-relevant areas! It is therefore expected that the structural connectivity is somehow affected by the tumor, however, as we are looking at subject-specific changes in structural connectivity I was wondering whether it makes sense to take the tumor into account somehow. 
+    The longer I write this mail, the more I realise that this is probably more a methodological question than something to do with probtrackx2... but I  would still be grateful for any input, as I am still quite new to the field of structural connectivity analysis.
+   
+    Thanks for your help,
+    Pia
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+Hi Pia,
+
+ 
+
+this will depend on the pathways you are attempting to reconstruct and also on the type of tumors and the spatial relation of the two.
+
+What are you trying to look at, what is your hypothesis?
+
+Cheers,
+
+Andreas
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von "Ritter, Pia" <pia.ritter@STUD.MEDUNIGRAZ.AT>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Freitag, 8. September 2023 um 16:06
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: [FSL] probtrackx2 in tumor patients
+
+ 
+
+Dear Experts, 
+
+I´m currently working on a project where I´m running probtrackx2 from a seed mask (generated by FreeSurfer at the GM/WM border) in patients with a brain tumor. As part of my subsequent analysis, I apply the logarithm to the output file, fdt_paths.nii.gz, and then normalize all voxels by dividing them by the highest voxel value in the brain to obtain values between 0 and 1. Following this, I overlay targets (also generated by FreeSurfer) on the modified file (fdt_paths_log_div.nii.gz) to extract the average connectivity value, normalized with respect to the strongest connectivity in the brain, for the voxels within each target. 
+
+My question: So far, I haven't included a tumor mask or anything similar in my analysis. I'm wondering if, based on your experience, it's necessary to somehow take the tumor into account before running probtrackx, and if so, how would you recommend doing that?
+
+
+Thank you very much for your help, 
+Pia 
+
+Dear colleagues,
+
+ 
+
+I would greatly appreciate if you could forward this job announcement to potentially interested candidates. 
+
+ 
+
+--
+
+My lab invites applications for a fully funded 4-year PhD student position focusing on visual neuroscience. The position includes research as well some (modest) teaching duties. The tools we use include (f)MRI (including ultra-high field MRI), EEG, brain stimulation, gaze tracking and more. The specific focus of the position is open for discussion, but it should fit the lab’s general research topics: https://neurovision.uni-graz.at/en/
+
+ 
+
+To apply, please follow the official job advertisement: https://jobs.uni-graz.at/en/jobs/e5535e3e-e34f-6306-06c3-64edaa8d9568
+
+ 
+
+For informal inquiries, please contact natalia.zaretskaya@uni-graz.at
+
+ 
+
+Best,
+
+Natalia
+
+ 
+
+Hi Matthew,
+
+So are both the "Cannot find a suitable probtrackx2_gpu" and left/right flipping error occurring with FSL 6.0.7.3, or with the older version?
+
+Paul
+
+Thanks, Paul.
+
+Here are the fslinfo reports for the three images:
+
+LESION MASK IMAGE
+data_type       INT16
+dim1            176
+dim2            240
+dim3            256
+dim4            1
+datatype        4
+pixdim1         1.000000
+pixdim2         1.000000
+pixdim3         1.000000
+pixdim4         0.000000
+cal_max         0.000000
+cal_min         0.000000
+file_type       NIFTI-1+
+
+
+T1 IMAGE (IMAGE THAT THE LESION MASK WAS CREATED FROM)
+data_type       INT16
+dim1            176
+dim2            240
+dim3            256
+dim4            1
+datatype        4
+pixdim1         1.000000
+pixdim2         1.000000
+pixdim3         1.000000
+pixdim4         2.300000
+cal_max         0.000000
+cal_min         0.000000
+file_type       NIFTI-1+
+
+B0 IMAGE
+data_type       FLOAT32
+dim1            110
+dim2            110
+dim3            66
+dim4            1
+datatype        16
+pixdim1         2.000000
+pixdim2         2.000000
+pixdim3         2.000000
+pixdim4         3.000000
+cal_max         0.000000
+cal_min         0.000000
+file_type       NIFTI-1+
+
+I'm happy to provide the fslhd info as well. Importantly, the b0 image was acquired on a different scanner than the T1 image and consequently has a different sform and qform_xorient  (Right-to-Left) compared to the T1 (sform and qform_xorient   Left-to-Right). I wondered whether this might be contributing to the issue. I will ask the PI on the project whether they would be happy for me to share this dataset with you (I am just helping out with the analysis).
+
+Thanks very much!
+Carolyn
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: 13 September 2023 17:54
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Lesion mask registration
+ 
+External email to Cardiff University - Take care when replying/opening attachments or links.
+Nid ebost mewnol o Brifysgol Caerdydd yw hwn - Cymerwch ofal wrth ateb/agor atodiadau neu ddolenni.
+
+
+HI Carolyn,
+
+Do your T1 and lesion mask have the same resolution and FOV? Can you run fslinfo on all three images and share the output (or share all of the data if that is possible)?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Carolyn McNabb <mcnabbc1@CARDIFF.AC.UK>
+Sent: 13 September 2023 10:41
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Lesion mask registration
+ 
+Dear Matthew and FSL experts,
+
+I have come across the exact same problem as Adrija, trying to register a lesion (marked on a T1 post gadolinium image) to a b0 image (in diffusion space).
+
+I am able to register the t1 to the b0 with pretty good accuracy (this even looks good in fslview and fsleyes), but this only works with a simple flirt of t1 to b0 and NOT if I try registering the b0 to t1 (using flirt) and then applying the inverse transform (from convert_xfm) to the t1/t1 lesion. Applying the inverse transform, or even the transformation matrix from the single step flirt (t1 to b0) causes both the lesion, and the t1 image to become significantly shifted from the b0 image.
+
+I tried out a few things and I get the same problem no matter how I do it.
+
+I was hoping you may have come across a solution to this problem at some point and would be able to enlighten me.
+
+Thanks very much,
+Carolyn McNabb
+
+
+P.S. happy to share the various versions of code I've tried if this helps.
+
+Hello,
+
+I am currently trying to run probtrackx2_gpu but whenever I try and call it (either by just "probtrackx2_gpu or $FSLDIR/bin/probtrackx2_gpu), both give me the error "Cannot find a suitable probtrackx2_gpu executable in /usr/local/fsl!". However, I can run probtrackx2 and probtrackx2_gpu10.2.
+
+The probtrackx2_gpu10.2 runs and seems to run on the GPU, however, the program seems to have a bug where it disregards the midsagittal exclusion plane we made, and shows connections on the other side of the brain.
+
+I have since reinstalled fsl (v.6.0.7.3) which I see has probtrackx2_gpu built into the original download. The GPU we are using is also running CUDA 11.6.
+
+If anyone can give any direction as to how best to troubleshoot it that would be appreciated!
+
+Best,
+Matthew
+
+Hi Nooshin,
+ 
+1)How can I accurately set a threshold that corresponds to a specific p-value using the slider tool?
+
+Instead of using the brightness/contrast sliders, you can enter the specific values in the Min/Max text fields just to the right:
+
+
+
+2)Are the p-values reflected through the slider tool adjustments FWE-corrected?
+FSLeyes is just an image viewer, so the answer to this question depends on how you generated your p-value image. If you have performed a fMRI FEAT analysis with default settings, then the resulting p-value images will be FWE-corrected using cluster-based thresholding.
+
+Paul
+
+
+HI Carolyn,
+
+Do your T1 and lesion mask have the same resolution and FOV? Can you run fslinfo on all three images and share the output (or share all of the data if that is possible)?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Carolyn McNabb <mcnabbc1@CARDIFF.AC.UK>
+Sent: 13 September 2023 10:41
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Lesion mask registration
+ 
+Dear Matthew and FSL experts,
+
+
+Hi FSL experts,
+
+I am working on setting appropriate visualization thresholds in FSL. While I understand the role of brightness and contrast adjustments, I find myself unclear on setting statistical thresholds appropriately, specifically correlating slider tool adjustments to specific p-values (like p<0.05).
+
+1)How can I accurately set a threshold that corresponds to a specific p-value using the slider tool?
+
+2)Are the p-values reflected through the slider tool adjustments FWE-corrected?
+
+Thank you for your guidance.
+
+Best,
+Nooshin
+
+########################################################################
+
+Dear FSL-experts,
+
+I recently started to work with FSL and I am currently encountering some challenges with our data set, so I'm now hoping for some advice.
+
+We are lacking a magnitude fieldmap, so we wanted to replace that with a structural (T1) image as previously suggested in this mailing list.
+
+When searching the archives, I encountered two suggested approaches:
+1. registering the structural image to the phase map (flirt -in T1 -ref phase -usesqform -applyxfm -out fmap_mag)
+2. registering the phase map to the structural image (flirt -in phase -ref T1 -usesqform -applyxfm -out phase2T1)
+
+I tried both versions but in any case, I lost quite a bit of resolution in the output images , which in turn resulted in some more issues:
+In the first approach, due to the loss in resolution, it became quite cumbersome to get a good brain extraction. Partly, it was even impossible to get rid of all non-brain material. I tried to continue with that anyway and saw that the final phase fieldmap in rads/s (after using fsl_prepare_fieldmap) still looked quite good (no "noisy" voxels, low values, very homogeneous). Can I use this fieldmap now, despite I know, there is some non-brain material left in this map?
+
+In the second approach I observed that the phase fieldmap lost resolution. The edges of the brain became quite blurry. Again, I proceeded with that and the converted phase fieldmap in rads/s looked good. Here, I'm afraid that I will get issues during the distortion correction due to the changes that happened to my original phase fieldmap (i.e. the loss in resolution). Do you know if loosing resolution in the phase fieldmap will cause issues in the distortion correction?
+
+Lastly, I thought about a different approach. As the flit command is using the scanner coordinate system for the alignment, I thought about registering the already brain extracted T1 to the phase map to circumvent the problems described above.
+What do you think about that?
+
+Maybe does someone also know, why I lose resolution in the phase fieldmap when registering to T1? From the FSL course, I remember that the reference image is defining the resolution in the output image. As the T1 has a higher resolution as the phase fieldmap, I would not necessarily expect a loss in resolution after registration. Do you have an idea why this happens anyway?
+
+I am really looking forward to your opinions and hope you can help me with that.
+
+Thanks a lot and all the best
+Madeleine
+
+
+Dear Matthew and FSL experts,
+
+I have come across the exact same problem as Adrija, trying to register a lesion (marked on a T1 post gadolinium image) to a b0 image (in diffusion space).
+
+I am able to register the t1 to the b0 with pretty good accuracy (this even looks good in fslview and fsleyes), but this only works with a simple flirt of t1 to b0 and NOT if I try registering the b0 to t1 (using flirt) and then applying the inverse transform (from convert_xfm) to the t1/t1 lesion. Applying the inverse transform, or even the transformation matrix from the single step flirt (t1 to b0) causes both the lesion, and the t1 image to become significantly shifted from the b0 image.
+
+I tried out a few things and I get the same problem no matter how I do it.
+
+I was hoping you may have come across a solution to this problem at some point and would be able to enlighten me.
+
+Thanks very much,
+Carolyn McNabb
+
+
+P.S. happy to share the various versions of code I've tried if this helps.
+
+
+Hi Cheyenne,
+
+Can you give some more details about your system and data set?
+Operating system and version
+Running locally or remotely (if remotely, how - e.g. SSH / X11, VNC, etc)
+Output of running "fslhd" on the image you are trying to view.
+Paul
+
+Hi Romain,
+
+This is easy to accomplish using the trimesh python library - see the attached script for an example. Trimesh is installed as part of recent FSL releases, so you can run this script with the "fslpython" interpreter.
+
+Paul
+
+Hi Paul,
+
+I updated to the most recent version (1.8.3.) but I am still experiencing the same problem!
+
+Best,
+
+Cheyenne
+
+Dear FSL developers and users,
+
+Is there a tool you can recommend for creating surface (say in VTK format) for a mask stored in a NIFTI file?
+
+Thank you,
+
+Roman
+
+The Pain Research Center at the National Center for Complementary and Integrative Health (NIH, Bethesda, Maryland campus) is accepting applications for a highly motivated full-time Sensory Research Technician.
+
+The Technician will have the opportunity to participate in several aspects of collaborative research studies across the NIH related to somatosensation and pain. Duties include, but are not limited to, the following:
+•       Conduct and perform data analysis of pain-related neuroimaging (e.g., fMRI, EEG, fNIRS), autonomic assessments, and psychophysical and pain-related tests on patients and healthy volunteers.
+•       Work with investigators from multiple institutes and centers to design sensory, autonomic, and imaging testing procedures to best characterize pain conditions associated with individual conditions, treatments, and diseases.
+•       Participate in writing clinical protocols to study pain mechanisms and interventions, and scientific papers and conference abstracts.
+
+Experience in at least one of the following programming languages is preferred but not required: MATLAB or python.
+Previous experience in any of the following techniques is preferred: MRI/fMRI, fNIRS, EEG, PET, TMS, psychophysical testing.
+Experience with the following methods or systems is also preferred: human behavioral, sensory, and autonomic testing including equipment usage (e.g., Medoc Pathways/TSA, QSTLab, Biopac, E-Prime, PsychoPy, Eyelink, tVNS, Digitimer, laser doppler imaging) and neuroimaging programs, including FSL, SPM, and/or AFNI.
+A minimum of a bachelor’s degree in a related field (e.g., neuroscience, psychology, biology) is required, and a master’s is preferred but not required.
+
+The job listing (NCCIH-234696) can found with the following contracting companies:
+•       Guidehouse: https://guidehouse.com/
+•       Kelly Services: https://www.kellyservices.com
+•       22nd Century Technologies: www.tscti.com
+•       GAP Solutions: http://www.gapsi.com
+•       Axle Informatics: https://axleinfo.com/
+
+Hi Cheyenne,
+
+What version of FSLeyes are you using? This issue was resolved several years ago, and recent FSLeyes versions should not have this problem.
+
+Paul
+
+Dear FSL experts,
+I am facing difficulties in creating a configuration file for the trac-all command. My directory looks like this "IXI002-Guys-0828  IXI002-Guys-0828_FS   dmrirc.tracula" IXI002-Guys-0828 has the anat and dwi images and 002-Guys-082_FS has files obtained from recon-all freesurfer.
+
+IXI002-Guys-0828 folder looks like this.
+"IXI002-Guys-0828-T1.nii.gz  bvals                      bvecs                      dwi
+IXI002-Guys-0828-T2.nii.gz  bvals.txt                  bvecs.txt
+anat                        bvals.txt:Zone.Identifier  bvecs.txt:Zone.Identifier"
+
+ I have created a configuration file like this. 
+
+"#T1 Images and Freesurfer segmentations folder here
+setenv SUBJECTS_DIR /home/navi/tracula_input/IXI002-Guys-0828_FS
+#Output directory where trac-all results will be saved
+set dtroot=/home/navi/tracula_input/tracula_output
+set subjlist=(IXI002-Guys-0828)
+set dcmroot=/home/navi/tracula_input
+set dcmlist=(IXI002-Guys-0828/dwi/IXI002-Guys-0828-DTI-00.nii.gz)
+set bveclist=(IXI002-Guys-0828/bvecs)
+set bvallist=(IXI002-Guys-0828/bvals)
+set dob0=0"
+
+Can you please look into this and help me? I am a beginner using FSL and freesurfer.
+
+Thanks and regards
+Naveen Kumar
+
+Hi!
+
+Did anyone figure out how to get around this? I am having the same problem at the moment :)
+
+Best,
+
+Cheyenne
+
+HI Zoe,
+
+Your terminal session is probably located in a different directory from where the standard.nii.gz image is located. You will either need to change to that directory, or refer to the full location of the standard.nii.gz image.
+
+Paul
+
+Hi All,
+
+A position in hyperpolarised MRI applied to Multiple Sclerosis is available at the University of Oxford. Please can you point any MSc/BSc level students toward it? 
+
+Entry is 2024.
+
+Project web page: https://www.rdm.ox.ac.uk/study-with-us/supervisor-profiles/grist-group-development-and-combination-of-advanced-neuroimaging-to-understand-functional-changes-in-multiple-sclerosis
+
+All the best,
+
+James 
+
+
+Postdoctoral Position in Advanced Clinical Neuroimaging of Aging, Dementia, TBI, and PTSD in Veterans
+
+ 
+
+Applicants must be US Citizens
+
+ 
+
+Location: VA Boston Healthcare System, Boston, MA
+
+ 
+
+Affiliated Laboratories and Investigators:
+
+Translational Research Center for TBI and Stress Disorders (TRACTS)
+
+National Center for Post Traumatic Stress Disorder (NCPTSD)
+
+Neuroimaging Research for Veterans Center (NeRVe)
+
+Catherine Fortier, PhD
+
+William Milberg, PhD
+
+Michael Esterman, PhD
+
+David Salat, PhD
+
+ 
+
+Position Type: Full-Time, 2-year contract with potential for renewal.
+
+Hi,  
+
+I have worked on the Practical for the FSL course and encountered an error....
+
+I can directly open standerd.nii.gz by fsleyes, but it didn't work when I typed " fsleyes standard.nii.gz &" in Ubuntu.
+
+Is there any way to deal with this problem?
+
+Hi Andreas,
+
+thank you for your answer!
+
+we are interested in looking at how structural connectivity changes in tumor patients from pre- to postoperatively (specifically whether, and if so where, there is reduced connectivity). For this we want to create structural connectivity fingerprints where we look at the connectivity of a seed to different targets. The seeds and targets are cortical areas in the ipsilesional hemisphere, and we have created ROIs at the GM/WM border. The target ROIs are broadly distributed across the cortex in frontal, temporal but also parietal areas. The seed ROI is the IFG. In principle, we are interested in the pattern of connections of the IFG with other cortical ROI - HOWEVER we are NOT interested in group-level analyses, but rather want to  look at how structural connectivity changes from pre- to post-OP in each patient individually!!
+
+Brief overview of the analysis: We do this by seeding from the seed with probtrackx2, without specifying targets. I then apply the logarithm to the output file, fdt_paths.nii.gz, and then normalize all voxels by dividing them by the highest voxel value in the brain to obtain values between 0 and 1. Following this, I overlay the targets on the modified file (fdt_paths_log_div.nii.gz) to extract the average connectivity value, normalized with respect to the strongest connectivity in the brain, for the voxels within each target.
+As we are not interested in group-level analysis, our cohort is not very homogeneous in terms of tumor type (i.e. high- and low-grade tumours are included) and also in terms of the tumor localisation  - but all tumors are located in or near speech-relevant areas! It is therefore expected that the structural connectivity is somehow affected by the tumor, however, as we are looking at subject-specific changes in structural connectivity I was wondering whether it makes sense to take the tumor into account somehow. 
+The longer I write this mail, the more I realise that this is probably more a methodological question than something to do with probtrackx2... but I  would still be grateful for any input, as I am still quite new to the field of structural connectivity analysis.
+
+Thanks for your help,
+Pia
+
+########################################################################
+
+
+Hello,
+
+I have a dataset with 23 children from whom DWI data were collected. I have preprocessed the data using MRtrix3 (for later analyses) and created *.nii.gz FA-maps afterwards. After preprocessing the FA maps, I ran "tbss_2_reg -n" to create a study-specific template that should take around 44h. Instead, it only took 3h, so I am worried that something might be wrong. I did not use a computing cluster.
+
+During the post-registration (-S) the best target of my dataset is selected and I did get a mean FA skeleton etc.
+
+Is there something I should change?
+
+Thank you so much!
+
+Best,
+
+Cheyenne
+
+########################################################################
+
+

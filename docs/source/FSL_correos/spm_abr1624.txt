@@ -1,0 +1,64 @@
+Dear Marko,
+
+as Torben already mentioned, you need to look at non-resliced NIFTI data. If you are sure that SPM routines have been used to convert the data from DICOM to NIFTI, you can be quite confident that the third dimension of your voxel data array (as returned e.g. by spm_read_vols) is the plane index and the first and second dimension are in-plane row and column indexes. The conversion routine in any recent version of spm_dicom_convert simply stacks DICOM slices on top of each other. It does not re-order voxel data in any way.
+If you look at an image in "voxel space" orientation using Display or CheckReg, the lower left image pane (corresponding to transversal orientation in "world space") will show the planes from the original DICOM data.
+
+Best,
+Volkmar
+
+Hello,
+
+I am trying to find out whether one can extract the "original" image
+orientation as acquired by the scanner (axial, coronal etc.) from NIFTI
+images which were previously converted from DICOM by the SPM routines. I
+do not necessarily have access to the original DICOM files anymore in my
+scenario.
+
+I have already been told that this may not be possible for data from
+some scanners, but if there is a way to derive from a NIFTI file how it
+was acquired for some or most images, I would be grateful for pointers
+in the right direction.
+
+Cheers
+Marko
+
+Postdoc position 2.5 years at the Research Centre Jülich and Heinrich-Heine-University: Build fully reproducible pipelines for image quality control of large scale MRI data and design machine learning models for dataset comparison and harmonization. This project provides a unique opportunity to work flexibly with very large publicly available datasets in a highly collaborative environment using HTC and HPC systems.
+Full description: https://fz-juelich.sciebo.de/s/E2yKO8bGFXbSe7F
+
+Apologies for cross-posting
+
+The University of Chicago's Department of Neurology is recruiting several faculty members at any rank to join the Healthy Aging & Alzheimer’s Research Care (HAARC) Center. We welcome candidates with research interests that align with our mission including topics and methods such as digital biomarkers, blood-based biomarkers, imaging biomarkers (MRI, PET), large-dataset curation, social determinants of health, assessment of cognition, memory, psychosocial wellbeing, functional outcomes, neuropathologic, nonpharmacologic interventions, and implementation science.
+
+We are looking for (1) a tenure track faculty (any rank, with or without tenure), (2) a non-tenure track faculty (any rank), (3) a behavioral neurologist, and (4) a full professor of neuroimmunology to direct a program in neuroinflammation.
+
+Clinical neuropsychologists, behavioral neurologists, and cognitive neuroscientists with an interest in contributing to a collaborative multidisciplinary research center are encouraged to apply. We especially welcome applicants from URM groups, which are African American, Latino, Native American, Pacific Islanders, women, and individuals with disabilities.
+
+For more information see our website: https://haarc.center.uchicago.edu/employment-opportunities
+Tenure track faculty position: https://apply.interfolio.com/141590
+Non-tenure track faculty position: http://apply.interfolio.com/141591
+Behavioral neurologist: https://apply.interfolio.com/119788
+Tenured full professor in neuroimmunology, with endowed chair: https://apply.interfolio.com/140371
+
+--
+Adam Martersteck, PhD (he/him)
+Assistant Professor of Neurology | The University of Chicago,
+Healthy Aging & Alzheimer's Research Care (HAARC) Center
+Address | 850 East 58th Street | Chicago, IL 60637
+Phone | 773-795-1683
+Email | martersteck@uchicago.edu
+
+Hi Marek
+
+I have tried the GitHub developer version on an M2 chip and it works like a charm, and I see no problem why M3 should be any different. You still need to use the troubleshooting tip found here: https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel) to tel macos that the software can be trusted. For additional speedup you may want to use Apple’s implementation of BLAS, see description on Mathworks' homepage https://blogs.mathworks.com/matlab/2023/12/13/life-in-the-fast-lane-making-matlab-even-faster-on-apple-silicon-with-apple-accelerate/
+
+
+Hello everyone,
+
+I am currently conducting an analysis on brain surface-based morphometry using the Full factorial model in CAT12's expert mode. My analysis involves correlating the thickness of various brain surfaces with scores from specific cognitive function tests, and further analyzing the results using Threshold Free Cluster Enhancement (TFCE).
+
+I have encountered a significant difference in results when I resample and smooth surfaces at "32k mesh" compared to "164k mesh". Specifically, the analysis with the 32k mesh tends to detect significantly more correlations. I am wondering if the reason for this could be that using the 164k mesh increases the number of comparisons, thereby making the multiple comparison corrections more stringent, and thus, significant results become less likely?
+
+Could anyone share their insights or experiences regarding the impact of mesh size on the detection of significant correlations in surface-based morphometry? Any advice or suggestions on how to address or interpret this discrepancy would be greatly appreciated.
+
+Thank you!
+

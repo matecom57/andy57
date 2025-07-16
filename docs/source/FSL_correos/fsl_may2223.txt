@@ -1,0 +1,518 @@
+Greetings,
+
+We are having difficulty obtaining a good registration of FLAIR-based white matter hyperintensity lesion maps to the FMRIB space for eventual use with TBSS. I will list below what we have tried and still seem to be getting poor registration:
+
+
+- Using BET'd and Non-BET'd FLAIR brains
+- transforming FLAIR brain to 1mm isotropic to match FMRIB brain both with FLIRT and FNIRT, and a combination of the two
+- Using binarized and non-binarized WMH lesion maps in the applyxfm step
+- Regular warp and inverse warp (flirting from low to high resolution or high to low and doing the inverse xfm step)
+- Reorienting the WMH lesion map to radiological
+- Trying multiple DOF with flirt
+- Trying multiple interpolation methods
+- and as mentioned, various combinations of FLIRT only, FNIRT only, and FLIRT plus FNIRT
+
+Does anyone have a tried and true method for getting a good registration from FLAIR to FMRIB? Below is the fslinfo output from the raw FLAIR data:
+
+dim1            176
+dim2            256
+dim3            60
+dim4            1
+datatype        16
+pixdim1         1.000000
+pixdim2         1.000000
+pixdim3         2.300000
+pixdim4         7.000000
+cal_max         0.000000
+cal_min         0.000000
+file_type       NIFTI-1+
+
+Thanks in advance!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hello FSL experts,
+I'm curious if there is an established way to apply the same motion correction parameters across multiple different EPI datasets. I have acquired 3 separate fMRI scans from a single subject (e.g., Run1-3). I would like to align these 4D data using the motion correction outputs calculated with the first volume of the first EPI data(i.e., Run1). 
+
+This is how I was planning to proceed:
+Apply "mcflirt" to the reference EPI data (i.e., EPI-Run1) with "-mats" argument to obtain volume-specific transformation matrices.
+Use 'fslsplit' to split the other EPI data (i.e., EPI-Run2 and Run3) into 3D volumes. 
+For each of the 3D volumes created from EPI-Run2 and EPI-Run3, use "flirt" + "--applyxfm" to apply their corresponding transformation matrices obtained from Step 1 for EPI-Run1. 
+Use "fslmerge" to reconstruct EPI-Run2 and Run3. 
+The problem is that the output of Step 4 does not reproduce the original input data when I tested this procedure with three identical EPI data. That is, when I applied these transformation matrices calculated from EPI-Run1 to apply motion correction on a copy of EPI-Run1, the results are slightly different. I tried this for QC.
+
+The same degrees of freedom (e.g., -dof 6), cost function (e.g., normcorr) and interpolation method (e.g., trilinear) were used for both "mcflirt" and "flirt+--applyxfm." The reference image was kept the same. Still, the outputs are not the identical- although they are very close. They are different at the first or the second decimal places (All images are floating-point).
+
+While these are slight differences, I'm concerned that there is something wrong or missing in these steps that may distort the results further.  
+Is there anything I can do to faithfully translate and apply the outputs of mcflirt using flirt? 
+
+Any tips or help would be appreciated! 
+Best,
+
+Minwoo
+
+----------
+
+
+
+Lee, Minwoo, PhD, MS.
+
+
+Department of Anthropology
+
+Emory University
+
+
+
+Dear FSL users and experts,
+
+I have an experiment in which I have two groups - a task group and a control, in each I have 29 participants. Both were scanned in two time points (before and after completing a task, or doing nothing) and I'm trying to compare their MD measurements. The goal is to see in which voxels we had a significant decrease of MD in the post scan, but only for the task group. 
+
+I tried using PALM to do it by using the pre scan as a regressor.
+This is the command I'm running:
+-I <post_data_input.nii> (4D data with the post MD scans for each participant. Task group first, and then the control)
+-d <ANCOVA_design.csv>
+-t <ANCOVA_contrast.csv>
+-f <ANCOVA_f_contrast.csv>
+-eb <ANCOVA_eb.csv>
+-n 1000
+-corrmod
+-o test
+-evperdat <pre_data_input.nii> 3 (4D data with the pre MD scans for each participant. Task group first, and then the control)
+-rmethod Manly
+
+I'm attaching the design and contrast files for your input. 
+
+My problem is that it seems PALM either is taking too long (over 3 days, in the last time we tried it, on a relatively strong computer) or there is something wrong with the design/contrast files and it gets stuck while reading the input. So, I wanted to get your input on these files and see if I'm doing something wrong.
+
+thanks for your help!
+Naama
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear FSL users and stats-experts,
+
+Our experiment is a within-subject cross-over design with 2 visits (placebo vs drug) and 2 runs in each visit (evening vs morning) i.e., there are 4 measurements in each subject. We're interested in the main effects of the two factors and their interaction.
+
+The dataset is high-density EEG data (not fMRI), so I'm using PALM (not FEAT or Randomise).
+
+This is the specification of the mixed-effects linear model:
+Y ~ 1 + visit + run + visit*run + (1 | subject)
+Where "(1 | subject)" indicates a random intercept per participant.
+
+The design matrix for the first 3 participants looks like this
+1   -1   -1    1    1    0    0
+1   -1    1   -1    1    0    0
+1    1   -1   -1    1    0    0
+1    1    1     1    1    0    0
+1   -1   -1    1    0    1    0
+1   -1    1   -1    0    1    0
+1    1   -1   -1    0    1    0
+1    1    1     1    0    1    0
+1   -1   -1    1    0    0    1
+1   -1    1   -1    0    0    1
+1    1   -1   -1    0    0    1
+1    1    1     1    0    0    1
+
+The first column is the intercept, the second indicates 'visit', the third is 'run', the fourth is the interaction, and the last three columns are the random intercepts for each subject.
+
+The exchangeability blocks and variance groups are numbered for each subject i.e., [1 1 1 1 2 2 2 2 3 3 3 3]. And I permute within blocks and whole blocks.
+
+When I run the model I get the warning message
+"Warning: Matrix is close to singular or badly scaled. Results may be inaccurate."
+Matrix inversion and the limits of this operation is beyond my understanding of matrix math, please help.
+
+Have I made a critical error in my design matrix?
+
+Thank you very much,
+
+Rick Wassing
+
+School of Psychological Sciences
+Macquarie University, Sydney, Australia
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hi Archith,
+
+I also tried eddy on WSL and the only way it worked was eddy_cpu with no slice-to-volume correction.
+The main issue is the CUDA (on WSL).
+- eddy_cuda failed with outofmemory error, although my GPU has 6GB dedicated VRAM.
+- Slice-to-volume correction is disabled in eddy_cpu because it is computationally too intensive.
+
+Interestingly, it worked when I tried eddy_cuda (with slice-to-volume correction) on an Ubuntu system (no WSL).
+
+Therefore, I conclude that it is due to how the GPU is virtualised in WSL.
+
+Kind regards,
+Tibor
+
+Auer, Tibor M.D. Ph.D.
+Lecturer in Biological Psychology
+School of Psychology, Faculty of Health and Medical Sciences
+University of Surrey, Guildford GU2 7XH
+T.Auer@surrey.ac.uk
+@TiborAuer
+
+-----Original Message-----
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Archith Rajan
+Sent: Friday, May 19, 2023 5:00 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Eddy Failed with message:FSL
+
+Dear Experts,
+
+Edit: Could identify it as(probably) a cuda related issue, since the earlier command had slice to volume correction related options specified. Removing those options and running eddy_cpu seems to be working. However, would like to run these options as well.
+
+Following are the specifications for cuda version:
+
+ dwifslpreproc-tmp-Z2PTDC$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2021 NVIDIA Corporation Built on Sun_Mar_21_19:15:46_PDT_2021 Cuda compilation tools, release 11.3, V11.3.58 Build cuda_11.3.r11.3/compiler.29745058_0
+
+
+Kindly let me know if any additional information would be required.
+
+Regards,
+Archith
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Those don't look like the HCP Pipelines as written, but perhaps you copied lines from them.  The deltaTE is 2.46ms, the echo spacing, or dwell time is typically less than 1ms.  I think you don't have the correct echo spacing.  You should be able to get that from the dcm2niix json sidecar of the fMRI.
+
+Matt.
+
+﻿On 5/18/23, 1:30 PM, "FSL - FMRIB's Software Library on behalf of Juan Sanchez-Pena" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 0000a1c695ec46db-dmarc-request@JISCMAIL.AC.UK <mailto:0000a1c695ec46db-dmarc-request@JISCMAIL.AC.UK>> wrote:
+
+
+
+Dear FSL experts,
+
+
+We are collaborating with a group that has a Siemens Skyra scanner and they acquired their data with B0 field maps for distortion correction. When processing these data through the HCP pipelines poor epi-t1 distortion correction results were poor. Can anyone please help us improve the distortion correction ?
+
+
+link to pdf with overview. script and screenshots:
+https://drive.google.com/file/d/1FWIXnLLAY04TXKLZza3v9e5FhinJXIeb/view?usp=share_link <https://drive.google.com/file/d/1FWIXnLLAY04TXKLZza3v9e5FhinJXIeb/view?usp=share_link>
+
+
+link to unprocessed data:
+https://drive.google.com/file/d/1UpYxNTN97_qRCZ3Bg-nLJh_yiTxwmPK4/view?usp=share_link <https://drive.google.com/file/d/1UpYxNTN97_qRCZ3Bg-nLJh_yiTxwmPK4/view?usp=share_link>
+
+
+Thank you in advance,
+J
+
+
+########################################################################
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+
+
+This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+
+
+
+
+________________________________
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Niklas,
+
+ 
+
+>Even if this 2D registration visually looks "perfect"
+
+ 
+
+A good registration is a good registration😉
+
+ 
+
+Cheers,
+
+Andreas
+
+Hi Matthew,
+
+Thank you for your answer. I double-checked everything you mentioned but I still got the same result. Just to be sure, here are the Matrix and contrast I use after generating them with setup_mask. (It's a "debugging" example with only 6 subjects, normally we have 57, but it takes so much time, we are looking to debug with less subjects)
+Matrix (5 "normal" EVs + the voxelwise one generated with setup_masks)
+Gp   Sex  Age  Scale Up   Mask
+1       1       26      51      0       1       0       0       0       0       0
+1       1       34      38      1       0       1       0       0       0       0
+1       1       21      41      0       0       0       1       0       0       0
+1       0       20      88      1       0       0       0       1       0       0
+1       1       26      85      0       0       0       0       0       1       0
+1       1       19      85      0       0       0       0       0       0       1
+
+Contrast (Once again its a debuging version, normally we have more contrasts)
+0 0 0 -1 0 0 0 0 0 0 0
+
+the vxf option calls a 4D file created from the 6 3D files of inverted quality masks of the patients.
+I call randomise with this command : randomise -i 4D_Ins_debug_wMask.nii.gz -o debug_Ins_mask_results -d debug_Ins_mask.mat -t debug_Ins_mask.con --vxl=-6 --vxf=debug_Ins_mask -n 100 -T
+
+The files created are really strange. The test1 have values from -123824.8 to 1253499 and the corrp_test1 goes from 0 to 0.89 with almost noting in it.
+When I do the exact same analysis with the same matrix and contrast except the part for the masks, I'm getting very different results with tstats file having values from -3.97 to 5.43 and corrp from 0 to 0.98. And it's not only driven by missing values because when I mask the analysis (with the -m mask.nii option) with a very restrictive mask (all the quality masks are multiplied so I only get voxels where each subject has a value), I also get similar results but on a more restrictive space.
+
+If you want to get a better idea here are the files I use (4D input, 4D inverted quality mask, contrast and matrix, same names as in the command I pasted) : https://drive.switch.ch/index.php/s/XuLXh8bSAFpSzxa
+
+Thanks again for your help,
+
+Edgar
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Dr.Tibor,
+
+The last and final edit to this post:
+
+At least for my case, I could narrow it down to one additional blank line in the slsspec.txt, after it was generated with the MATLAB script using the header .json file. Could finally get it to work using WSL.
+
+
+Regards,
+Archith
+
+On Fri, May 19, 2023 at 3:40 PM archith rajan <archith.rajan.phd2018@sitpune.edu.in> wrote:
+Hi Dr.Tibor,
+
+Thank you so much for the prompt response.
+So there wouldn't probably be a workaround to run it on WSL is it? I have several software installed on my Windows as well, and dual boot wouldn't be a feasible option for me.
+
+Regards,
+Archith
+
+On Fri, 19 May, 2023, 1:22 pm Auer, Tibor, <tibor.auer@gmail.com> wrote:
+Hi Archith,
+
+I also tried eddy on WSL and the only way it worked was eddy_cpu with no slice-to-volume correction.
+The main issue is the CUDA (on WSL).
+- eddy_cuda failed with outofmemory error, although my GPU has 6GB dedicated VRAM.
+- Slice-to-volume correction is disabled in eddy_cpu because it is computationally too intensive.
+
+Interestingly, it worked when I tried eddy_cuda (with slice-to-volume correction) on an Ubuntu system (no WSL).
+
+Therefore, I conclude that it is due to how the GPU is virtualised in WSL.
+
+Kind regards,
+Tibor
+
+Auer, Tibor M.D. Ph.D.
+Lecturer in Biological Psychology
+School of Psychology, Faculty of Health and Medical Sciences
+University of Surrey, Guildford GU2 7XH
+T.Auer@surrey.ac.uk
+@TiborAuer
+
+-----Original Message-----
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Archith Rajan
+Sent: Friday, May 19, 2023 5:00 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Eddy Failed with message:FSL
+
+Dear Experts,
+
+Edit: Could identify it as(probably) a cuda related issue, since the earlier command had slice to volume correction related options specified. Removing those options and running eddy_cpu seems to be working. However, would like to run these options as well.
+
+Following are the specifications for cuda version:
+
+ dwifslpreproc-tmp-Z2PTDC$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2021 NVIDIA Corporation Built on Sun_Mar_21_19:15:46_PDT_2021 Cuda compilation tools, release 11.3, V11.3.58 Build cuda_11.3.r11.3/compiler.29745058_0
+
+
+Kindly let me know if any additional information would be required.
+
+Regards,
+Archith
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+--
+Archith Rajan
+Graduate Student
+Symbiosis Centre for Medical Image Analysis
+Symbiosis International(Deemed) University
+Pune, India
+
+
+
+Hi Dr.Tibor,
+
+Thank you so much for the prompt response.
+So there wouldn't probably be a workaround to run it on WSL is it? I have several software installed on my Windows as well, and dual boot wouldn't be a feasible option for me.
+
+Regards,
+Archith
+
+On Fri, 19 May, 2023, 1:22 pm Auer, Tibor, <tibor.auer@gmail.com> wrote:
+Hi Archith,
+
+I also tried eddy on WSL and the only way it worked was eddy_cpu with no slice-to-volume correction.
+The main issue is the CUDA (on WSL).
+- eddy_cuda failed with outofmemory error, although my GPU has 6GB dedicated VRAM.
+- Slice-to-volume correction is disabled in eddy_cpu because it is computationally too intensive.
+
+Interestingly, it worked when I tried eddy_cuda (with slice-to-volume correction) on an Ubuntu system (no WSL).
+
+Therefore, I conclude that it is due to how the GPU is virtualised in WSL.
+
+Kind regards,
+Tibor
+
+Auer, Tibor M.D. Ph.D.
+Lecturer in Biological Psychology
+School of Psychology, Faculty of Health and Medical Sciences
+University of Surrey, Guildford GU2 7XH
+T.Auer@surrey.ac.uk
+@TiborAuer
+
+-----Original Message-----
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Archith Rajan
+Sent: Friday, May 19, 2023 5:00 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Eddy Failed with message:FSL
+
+Dear Experts,
+
+Edit: Could identify it as(probably) a cuda related issue, since the earlier command had slice to volume correction related options specified. Removing those options and running eddy_cpu seems to be working. However, would like to run these options as well.
+
+Following are the specifications for cuda version:
+
+ dwifslpreproc-tmp-Z2PTDC$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2021 NVIDIA Corporation Built on Sun_Mar_21_19:15:46_PDT_2021 Cuda compilation tools, release 11.3, V11.3.58 Build cuda_11.3.r11.3/compiler.29745058_0
+
+
+Kindly let me know if any additional information would be required.
+
+Regards,
+Archith
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear Experts,
+
+Apologies for further edit:
+
+So the issue is not necessarily with the cuda, since removing it worked well when I removed slice to volume correction options:
+
+Command line before:
+ eddy_cuda --imain=eddy_in.nii --mask=eddy_mask.nii --acqp=eddy_config.txt --index=eddy_indices.txt --bvecs=bvecs --bvals=bvals --topup=field --repol --estimate_move_by_susceptibility --data_is_shelled --mporder=6 --slm=linear --slspec=slspec.txt --out=dwi_post_eddy --verbose                                                                                                                                              
+
+ Reading images
+ z�ӀU
+
+
+EDDY::: Eddy failed with message
+
+
+Command line after (which ran successfully):
+$ eddy_cuda --imain=eddy_in.nii --mask=eddy_mask.nii --acqp=eddy_config.txt --index=eddy_indices.txt --bvecs=bvecs --bvals=bvals --topup=field --repol --estimate_move_by_susceptibility --data_is_shelled --out=dwi_post_eddy --verbose
+
+
+
+
+
+
+
+Regards,
+Archith
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Experts,
+
+Edit: Could identify it as(probably) a cuda related issue, since the earlier command had slice to volume correction related options specified. Removing those options and running eddy_cpu seems to be working. However, would like to run these options as well.
+
+Following are the specifications for cuda version:
+
+ dwifslpreproc-tmp-Z2PTDC$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2021 NVIDIA Corporation
+Built on Sun_Mar_21_19:15:46_PDT_2021
+Cuda compilation tools, release 11.3, V11.3.58
+Build cuda_11.3.r11.3/compiler.29745058_0
+
+
+Kindly let me know if any additional information would be required.
+
+Regards,
+Archith
+
+########################################################################
+

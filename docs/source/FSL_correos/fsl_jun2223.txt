@@ -1,0 +1,143 @@
+Hi Sven,
+
+What directory were you running the dual regression call from? Does it work if you change "`cat groupICA.gica/.filelist`" to "`cat /Users/sven/X_2_fRMI/TICA-25-MS.gica/.filelist`"?
+
+Paul
+
+
+Hello,
+
+I'm trying to run probtrackx2 using network mode, and I've been getting some odd results where it seems to scramble the order of the elements in the matrix.
+
+Most of my seeds are surface ROIs (specified as GIFTIs), but I also have two seeds for the left and right hippocampi which are volumes (specified as NIFTIs). The resulting "fdt_network_matrix" looks sensible for the first few surface ROIs, but as soon as it gets to the first volume ROI it starts to go wrong. I've attached a plot of the matrix (left panel, displaying streamline counts normalised by the waytotals) showing what I mean. The hippocampi ROIs themselves suggest some strong interhemispheric connections which seem unlikely. Further surface ROIs also appear scrambled - for instance the pattern between early visual regions in the right hemisphere is almost correct, but every value is shifted one column to the left so the values don't line up with the ROIs properly. I get sensible results if I either transform the surface ROIs to the volume first so that all the seeds are volume based, or if I drop the hippocampus ROIs so that all the seeds are surface based (middle and right panels on the plot). So it seems like the problem is specific to using a mixture of surface and volume seeds in network mode. Is this a known issue? Is there a workaround, or is there something obvious that I'm doing wrong?
+
+A few more details: I'm using FSL version 6.0.5.2. I'm also using a surface mask of the pial surface as a termination mask, a sub-cortical gray matter mask as a "wtstop" termination mask, and a mask of the ventricles as an exclusion mask (removing these doesn't fix the problem though).
+
+My probtrack command looks like:
+
+probtrackx2 --network --samples=Diffusion.bedpostX/merged --mask=Diffusion.bedpostX/nodif_brain_mask.nii.gz --seed=masklist.txt --loopcheck --modeuler --onewaycondition --meshspace=caret --seedref=anat/T1.nii.gz --avoid=exclusion.nii.gz --stop=stop_masks.txt --wtstop=wtstop_masks.txt --opd --dir=$outdir --forcedir
+
+And masklist.txt contains:
+
+V1v_lh.gii
+V1d_lh.gii
+V2v_lh.gii
+V2d_lh.gii
+PPA_lh.gii
+RSC_lh.gii
+OPA_lh.gii
+cIPL_lh.gii
+hippocampus_lh.nii.gz
+V1v_rh.gii
+V1d_rh.gii
+V2v_rh.gii
+V2d_rh.gii
+PPA_rh.gii
+RSC_rh.gii
+OPA_rh.gii
+cIPL_rh.gii
+hippocampus_rh.nii.gz
+
+I can just transform my surface ROIs to the volume and that does seem to solve the problem, but it would be nice to keep them on the surface if possible. I'm happy to provide some example data if that would help.
+
+Best regards,
+David
+
+
+
+Hello,
+
+Curious on how to interpret cluster-base  threshold for randomise.
+
+I've run two examples:
+
+thresh = 0.01
+
+randomise -i Group.nii.gz  -o stats_Group.nii -d design.mat -t design.con  -x -T -c 2.326  --uncorrp
+
+thresh = 0.001
+
+randomise -i Group.nii.gz  -o stats_Group.nii -d design.mat -t design.con  -x -T -c 3.09  --uncorrp
+
+
+What is interesting: when I look at the output  1-p *_clustere_corrp_tstat maps, nothing is significant for the 0.01 threshold. Max value is around 0.945. However, clusters survive from the 0.001 randomise command with a max p-value of 1? How is this possible? I would expect the reverse, no?
+
+When I set the -c 3.09 option in the randomise command, is this for the cluster? What remains from the 1-p map, where p = 0.05, these are corrected voxels that are significant at a corrected FWE p < 0.05? Or does that pertain only to the surviving clusters?
+
+Thank you for your time.
+
+d.m.
+
+
+
+Hello everyone,
+
+I’m attempting to do the motion correction using fsl_motion_outliers and get all motion-related info from it to run just the first-level stats using GUI. Is there a way to edit mcflirt command while running fsl_motion_outliers to generate a file with the motion parameters (6 col’s rot and trans values) along with the confounds matrix (spikes) so I can include both of the information in my GLM design?
+
+This is the command (from the terminal window) it’s attempting to run within the fsl_motion_outliers command but the file with motion parameters is not created as part of the output:
+mcflirt -in $mcf -out ${outdir}_mc/fmri_mcf -mats -plots -refvol $refnum -rmsrel -rmsabs
+
+I could use the previously generated motion (.par) files or rerun mcflirt in GUI, but I wonder if there’s a simpler way to add both motion parameter file and confounds matrix as EVs (with subject-specific timing files as more EVs).
+
+Thanks for the help,
+Suja
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear All,
+
+ 
+
+I have been trying to install an updated release of FSL (v6.0.6.5).
+
+I ran the fslinstaller (v3.5.1) but it remain stuck forever at the “Installing FSL” step at 11%.
+
+ 
+
+I was installing that on a Scientific Linux release 7.9 (Nitrogen)  - (RHEL7 – CentOS7 compatible)
+
+I attached a screenshot and the installation log as well.
+
+ 
+
+Let me know if there is something that can be done.
+
+ 
+
+Thanks for your help.
+
+ 
+
+Brice
+
+ 
+
+Hi Georgios,
+   Can you let me know the dimensions of your functional file and how many timepoints ( e.g. with fslhd ) as well as how much RAM your machine has? I’m afraid these  confounds can’t be “merged” into a single EV - the confounding requires that each EV only contain a single 1 and a merged EV is unlikely to appreciably account for the outliers’ variance.
+
+Kind Regards
+Matthew
+
+Dear Experts,
+
+I recently conducted a study involving two groups: patients and controls. During the study, two types of stimuli, namely distractor and target, were presented interchangeably for both groups within the same run. Each participant completed one run. I would like to generate a design matrix both in order to run second level feat and melodic post stats session/subjects model. The research questions im trying to answer are how the groups differ in relation to every condition and in relation to differences between conditions. Could you please provide guidance on how the design matrix should be structured in these scenarios?
+
+Thank you in advance for your assistance.
+
+Hi Noah,
+Yes - the FIRST User Guide recommends the --T2 option, but the standard -T option should also work.
+
+Kind Regards
+Matthew
+
+Dear Paul,
+ The FIRST user guide ( https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FIRST/UserGuide ) suggests using the --T2 option, but the “normal” TFCE option should be fine as well.
+
+Kind Regards
+Matthew
+

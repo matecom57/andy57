@@ -1,0 +1,1127 @@
+Dear Jesper,
+
+Thanks for the quick reply!
+
+I have back-to-back ep2d_diff acquisitions, which are SE-EPI.
+
+One acquisition is a HARDI or multishell acquisition, axial, with phase encoding in the A>>P direction. I usually set the last volume to be b=0 and use this volume as part of the input to topup.
+
+Immediately afterwards, we run a scan with b=0 only, same slice locations as the other acquisition, with phase encoding in the P>>A direction. I use this volume as the other part of input to topup.
+
+I then feed the topup results into eddy when correcting the HARDI or multishell acquisition.
+
+On quite a few occasions, the subject moves between the back-to-back scans, so the registration is visibly quite a bit off. I'm wondering if it's sane to coregister the P>>A b=0 image to the A>>P b=0 image prior to running topup. Just feeding the two images into topup can cause a lot of blurring.
+
+Thanks
+Ken
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello Linn,
+Looking at these errors as well, I think the best approach is definitely to re-run with the latest version of FSL ( 6.0.6.4 ) as some or all of these problems may have been resolved in newer releases of FSL.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+I am currently preprocessing my ASL data with FSL BASIL using the oxford_asl command. Using “fslutils”, I have created a mask of various brain regions from the participants fsl_anat data. However, when I use ‘fslmaths” to mask the binarized mask onto the ASL data (perfusion.nii but i have also tried others: perfusion_var.nii.gz, perfusion_calib.nii.gz), it says that my two images are different sizes.
+ 
+
+########################################################################
+
+
+Hi,
+
+I am using fsl_anat to correct bias field as follows:
+
+fsl_anat -I T1_image.nii.gz  --noreorient  --nocrop  --noreg --nononlinreg --noseg --nosubcortseg  
+
+I wanted to use --strongbias because the images I have seem to have strong bias field:
+fsl_anat -I T1_image.nii.gz  --strongbias --noreorient  --nocrop  --noreg --nononlinreg --noseg --nosubcortseg  
+
+When I used it I got the following error:
+Starting Single Image Segmentation
+T1-weighted image
+Imagesize : 240 x 240 x 155
+Pixelsize : 1 x 1 x 1
+
+1 0
+2 0
+3 0
+
+Exception: Not enough classes detected to init KMeans
+
+I wanted to turn off the segmentations because I am interested in correcting only bias fields. Any idea how to do this?
+
+BW,
+Gina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Jesper
+Thank for your answer.I looked at the bval file for "MR_dMRI_dir98_AP" and it had 99 volumes. Similarly,"MR_dMRI_dir99_AP" has 100 volumes. That would explain why there are 199 volumes after eddy.
+I'm not sure whether to directly merge these "MR_dMRI_dir98_AP" and "MR_dMRI_dir99_AP", and then merge the corresponding bvals and bvecs. Then, preprocessing is performed.
+
+Best Regards.
+
+---- Replied Message ----
+From	Jesper Andersson<jesper.andersson@NDCN.OX.AC.UK>
+Date	4/5/2023 18:09
+To	<FSL@JISCMAIL.AC.UK>
+Subject	Re: [FSL] dMRI preprocessing
+Dear Zhang,
+
+ 
+
+    Hello everyone，I obtained the dMRI data from the NDA, and there were four files in total: "MR_dMRI_dir98_AP", MR_dMRI_dir98_PA, MR_dMRI_dir99_AP, MR_dMRI_dir99_AP. These files do not have a value of b = 0 in the bvalue file. The smallest value in the bvalue file is b = 5. I don't know how to use these files to perform "TOPUP".
+
+   
+
+it doesn’t matter if it says 5 or 0. 5 is negligible diffusion encoding, and represent that which is caused by the image encoding gradients. Just think of the b=5 volumes as b0.
+
+ 
+
+    Also, do the four files have to be used together to make a single file, or do you have to choose two of them to use them? I looked at similar data files, and after the execution of eddy, it finally became a file with 199 volumes.
+
+ 
+
+Hmm, it is a little hard to see how one can end up with 199 volumes. I would have expected either 197 or 394.
+
+You definitely want to use all 4 files when running eddy. If you end up with 197 or 394 will depend on if you perform an averaging of volumes acquired with the same diffusion gradient but opposing PE or not. In the HCP project we performed such an averaging, simply because it made the next step (bedpost) less time, and computer resource, consuming. If you decide to do the averaging I would recommend doing it be specifying “--resamp=lsr” on the eddy command line. That will perform a “more intelligent” averaging.
+
+ 
+
+Best regards Jesper Andersson
+
+ 
+
+   
+
+    Acquisition rules: Diffusion MRI with 1.5mm isotropic resolution with multi-band acceleration
+
+    factor of 4, 92/93 directions in each shell (b=1500 and 3000 s/mm2) acquired four
+
+    times: twice with AP and twice with PA phase encoding directions. 28 b=0 s/mm 2
+
+    volumes were interspersed in total within all four runs.
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Postdoctoral Fellowship Positions in Brain Development
+
+ 
+
+Growing Up in Singapore Towards Healthy Outcomes (GUSTO) is the most comprehensive birth cohort longitudinal study over the world. The GUSTO mothers were recruited during pregnancy between 2009 and 2010. We have followed the GUSTO family since then. The GUSTO study collects the unique data on cognitive functions, children behaviors, psychopathology, brain imaging, genetic and epigenetic data at multiple points from birth to 8 years of age. For instance, we acquired executive functions and behaviors in the first day, 3, 6, 12, 18, 24, 36, 48, 60, 72, and 84 months of life. The neuroimaging data were acquired at 0, 4, 6, 7, 9 years of age. The GUSTO has become a Singapore national platform to study developmental origins of mental illness and cross-generational transmission of mental illness.
+
+ 
+
+In addition, our laboratory has the public datasets of HCP, ABCD, PNC, ADHD, and Autism. The lab has great computing capacity, including multiple M40 and V100 GPU systems for deep learning, and computing clusters for large data set processing. We have 4000T neuroimage data that allow deep learning and machine learning exploration.
+
+ 
+
+We are looking for postdoctoral fellows who are interested in exploring longitudinal trajectories of brain, cognitive and behavioral development from birth onwards. How do environments and gene regulate such developmental trajectory?
+
+ 
+
+Qualification:
+
+1.     PHD in Neuroimaging, or Cognitive Neuroscience;
+
+2.     Experience with MRI-based neuroimage techniques;
+
+Knowledge in statistical analysis;
+Good communication and writing skills in English.
+ 
+
+If you are interested in the job listed above, please send your CV to Anqi Qiu, 
+
+(bieqa@nus.edu.sg), Deputy Head for Research & Enterprises, Department of Biomedical Engineering, National University of Singapore
+
+Lab Website: https://bieqa.github.io
+
+ 
+
+
+
+Hi Luis,
+
+slices.png shows the output of the 'slices' function applied to the functional image I am trying to transform. I included this because it is recommended in the FLIRT user manual as a sanity check when debugging poor registration (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FLIRT/FAQ#My_FLIRT_registration_doesn.27t_work_well_-_what_can_I_do.3F). This is the relevant line of the manual:  "Check that the input image looks fine and that the voxel size is correct by (a) looking at the images with slices (none of the views should look squashed or stretched) and (b) checking the voxel dimensions (pixdim) with `fslhd (Note: voxel size can be fixed using fslchpixdim)"
+
+
+Hi Lyam:
+What is 'slices.png' supposed to be?
+Best,
+Luis
+
+El jue, 16 jun 2022 a las 15:17, Lyam Bailey (<Lyam.Bailey@dal.ca>) escribió:
+Hi Matthew, 
+
+Here's an update since last post, which might help to solve the problem...
+
+I thought that the error I'm seeing might be problem with resampling. So, I manually resampled the functional image to the resolution of the structural t1 (using the Resample tool in the fsleyes GUI) , and then tried the transformation again using flirt. Unfortunately, this made no difference - I still get the same skewed output. 
+
+I then tried manually transforming the functional image (using the Nudge tool in fsleyes). The transformation matrix that I got from the manual transform looks radically different from the one produced by flirt.
+
+Manual matrix:
+
+0.9206933335 0.0000000000 0.0000000000 0.6442943651
+0.0000000000 0.9406866666 -0.0000000007 -2.7545588490
+0.0000000000 0.0000000007 1.0000000644 26.0669964932
+0.0000000000 0.0000000000 0.0000000000 1.0000000000
+
+Matrix generated by flirt:
+
+-0.3601316576  -0.09417549977  0.9281358112  85.79749761  
+-0.9218417253  0.1886649494  -0.3385460887  220.9184927  
+-0.1432239679  -0.9775155096  -0.1547591246  235.2612522  
+0  0  0  1  
+
+
+I don't understand why flirt is generating such inaccurate transformations? Any advice you can offer would be greatly appreciated!
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lyam Bailey <Lyam.Bailey@DAL.CA>
+Sent: Tuesday, June 14, 2022 5:01 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT unable to transform functional image to structural
+ 
+Dear Matthew,
+
+Thank you for the swift reply, and for this suggestion. I tried using epi_reg, which seemed to run okay (without errors), but the output actually looks worse than what I got with flirt - the alignment/orientation looks about the same, but now there are non-zero values outside the brain (see attached image).
+
+---------------------------------------------------------
+
+Lyam Bailey, B.Sc., M.Sc. 
+
+He / Him
+
+Doctoral student & Lecturer
+
+Department of Psychology & Neuroscience
+
+Dalhousie University
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Tuesday, June 14, 2022 4:26 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] FLIRT unable to transform functional image to structural
+ 
+CAUTION: The Sender of this email is not from within Dalhousie.
+Dear Lyam,
+  It might be worth trying to do this with the epi_reg script rather than solely with flirt ( the script automates some of the steps needed to use the BBR cost-function ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 14 Jun 2022, at 17:30, Lyam Bailey <Lyam.Bailey@DAL.CA> wrote:
+
+Dear users,
+
+I am having trouble transforming a functional image (shown in red in the attached IM1.png) to highres structural space (shown in grey). Both images are from the same subject. I am using the following command:    
+
+flirt -in [FUNC_IMAGE] -ref [T1_STRUCT_IMAGE] -o [OUTPUT_IMAGE] -omat [TRANSFORMATION_MATRIX] -cost corratio -dof 6 -searchrx -90 90 -searchry -90 90 -searchrz -90 90 -interp trilinear.
+
+The transformed functional image (shown in blue in IM2.png) is completely misaligned. I have tried using robustfov and reorient2std prior to transformation, but these steps make very little difference. As far as I can tell, the voxel dimensions in the functional image are as they should be, and the output from slices looks okay (but see the attached slices.png in case I've misinterpreted). I also cannot see any major BET errors. 
+
+Any advice would be greatly appreciated!
+
+Regards
+Lyam
+
+---------------------------------------------------------
+Lyam Bailey, B.Sc., M.Sc. 
+He / Him
+Doctoral student & Lecturer
+Department of Psychology & Neuroscience
+Dalhousie University
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+<IM1.png><IM2.png><slices.png>
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Luis Tuset-Sanchis
+Magnetic Resonance Imaging Unit
+Instituto de Neurociencias (CSIC-UMH)
+Avda D. Santiago Ramón y Cajal S/N
+E-03550 Sant Joan d'Alacant (Alicante)
+Tfno: (+34) 965 91 9223
+Fax: (+34) 965 91 9561
+
+'To succeed in life requires a total inability to do anything that makes you uncomfortable when you look at yourself in the mirror.' Nassim Nicholas Taleb
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi,
+
+We'd like to use PALM to perform group-level analyses on the power-spectral density of high-density EEG data (256 channels).
+
+We have the following files:
+- 'Y.csv' contains power-spectral values (e.g. in the alpha frequency range) of 98 subjects (rows) and 256 channels (columns).
+- 'M.csv' describes the design matrix of 98 rows and 2 columns, the first column contains 1's only (intercept) and the second column codes for group (0's for control and 1's for insomnia).
+- 'C.csv' contains the contrasts.
+
+The following code runs perfectly fine and the output is what we expect it to be:
+>> palm -i Y.csv -d M.csv -t C.csv -ee -twotail -fdr
+
+Now my question. We'd like to apply TFCE correction (adding the '-T' argument to the code above). The PALM documentation states that a surface file must be specified to compute spatial statistics (such as TFCE). Which makes sense, the algorithm must know which observations are "neighbours". We do have this information. In other words, we know which channels are neighbouring channels. So in principle this surface file could be generated. However, I can't find anywhere online if this is at all possible for non-MRI data, and if so, how we could generate this surface file?
+
+If TFCE is not possible using PALM on non-MRI data i.e. because the surface file only applies to MRI data; does anyone know of a toolbox for permutation analysis using general linear models for EEG data including TFCE?
+
+Thank you very much,
+
+Rick Wassing
+Woolcock Institute of Medical Research
+Sydney, Australia
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Thanks a lot for responding to my post.
+I have figured out how to work with Parallel it still takes over 5 hours for each subject even bathing a few by Parallel function.
+Is there any other way to make the processing faster?
+Thanks and looking forward to hearing back from you.
+
+Sincerely,
+Nooshin
+
+########################################################################
+
+
+Dear All,
+
+I am performing a resting state analysis. When I ran the Dual regression script on a newly setup machine with FSL 6.06.4 and Ubuntu 22.04 I constantly get the error shortly after the start and prompting "Creating common masks":
+
+Error submitting job - Errors occured when running array task in shell plugin: Task 1 failed executing: /home/user1/fsl/bin/fslmaths /home/user1/Desktop/RSA/BOLD/ENDOM_02_MRT_BASELINE_cmrr_mbep2d_bold_7_RSA.ica/reg_standard/filtered_func_data -Tstd -bin dualreg_output_verum/mask_00000 -odt char ()
+
+Can anybody help?
+
+Thank you in advance!
+
+Best Lars
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear Michael,
+
+Did you receive my email correctly?
+
+Best regards,
+
+Rosalia
+
+
+
+
+On Wed, Apr 12, 2023 at 8:08 AM Rosalia Dacosta Aguayo <rdacostaa@gmail.com> wrote:
+Dear Michael,
+
+Sorry for the late reply. I was out of the office.
+
+These are the parameters I am using:
+
+oxford_asl -i $DATADIR/${d}_asl.nii.gz --iaf diff --ibf tis --bolus 0.7 --rpts 1 --tis 1.8 --fslanat $STUDYDIR/FSL_ANAT/$d/${d}_T1w.anat -c $DATADIR/${d}_M0_AP.nii.gz --cmethod voxel --tr 6 --cgain 1 --echospacing 0.001 --pedir y --cblip $DATADIR/${d}_M0_PA.nii.gz -o $ASLDIR --bat 0 --t1 1.65 --t1b 1.65 --alpha 0.98 --spatial --fixbolus --mc --pvcorr --artoff --wp
+
+
+About the data I am using, here it is attached.
+
+
+On Thu, Apr 6, 2023 at 5:28 PM Michael Chappell <000079f9f909e19d-dmarc-request@jiscmail.ac.uk> wrote:
+Sounds like your calibration has not worked correctly. Perhaps you can share more information on the data you have and the parameters you are putting in to BASIL?
+
+Michael
+
+On 6 Apr 2023, at 10:02, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+
+Dear FSL's experts,
+
+I do not understand why the values in perfusion_calib.nii.gz from oxford_asl are outside the range of 0 - 80 (as in the tutorial video) and with a maximum of around 10,000.
+
+Any help would be appreciated.
+
+Kind regards,
+Rosalia
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Anna,
+  The results of adding the sign-reversed contrast should be the same as for calculating the reversed difference maps and running separate analyses. The advantage of adding the sign-reversed contrast is that it only requires the difference maps to be calculated once ( and one 4D data-set to be stored ).
+
+For both cases you need to threshold the t-contrasts at the same corrected significance level ( 0.975 ). An alternate approach is to run an f-test on one of the contrasts ( it doesn’t matter which one ) and use the f-test ( thresholded at the standard 0.95 ) to determine significance and the t-contrasts to determine directionality.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+When adding the sign-reversed contrast -1 0 does this yield the same results as when I calculate the difference maps in both directions and perform seperate analyses? Is there any advantages in using the former or latter approach?
+
+In both cases, do I still need to threshold my final results at 0.975 to define statistical significance as p < 0.05 (since I perform one-sided testing) instead of 0.95 when testing 2-sided. Or does randomise already adjusts the p-values when adding the sign-reverse contrast?
+
+Anna
+
+
+On 28 Feb 2023, at 16:36, Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+
+Dear Anna,
+   Your design looks good ( the examples in the wiki cover a number of different ways of constructing a design and command-line call ). Note that for the design below the -D flag should _not_ be used ( as the global mean is already represented by EV1 ). To test both for both +ve and -ve negative changes, you may also want to add the sign-reversed contrast -1 0.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 28 Feb 2023, at 11:11, Anna Kwiatkowski <ankwiatkowsk@UKAACHEN.DE> wrote:
+
+Dear FSL-experts,
+
+I have a question regarding the .mat file for my analysis. For my study, I have DTI data from time1 and time2. I have calculated the difference maps in both ways and performed a one-sample t-test with the -1 option, respectively, to see whether there is any positive or negative changes across the two time points.
+
+To control for age-effects, I would like to add age as a covariate to the model, so I need to create a .mat and .con file. Is the follwing correct (example n=5)?:
+
+EV1= group mean
+EV2= age (demeaned)
+
+design.mat
+EV1  EV2
+1       -1.8
+1        3,2
+1        1,2
+1       -2,8
+1        0,2
+
+design.con
+1 0
+
+I am unsure whether EV1 is needed as it was used in the FEAT, but not in the randomise example in the Glm Guide (Single-Group Average with Additional Covariate).
+
+I am looking foward to your response!
+
+Anna
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Igor,
+FILM internally pre-whitens the data, which is then processed with the GLM, so it’s not possible to reconstruct the _original_ data with the method below.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 10 Apr 2023, at 20:02, Igor <igor.tellez@MDC-BERLIN.DE> wrote:
+
+Dear all,
+
+I have been using the software for first-level analysis, and I am interested in doing an inverse calculation of the GLM analysis. I want to get the original fMRI input file using the FSL FEAT output files and the GLM equation. However, I have found some discrepancies between my results and the original file, and I am not sure if I am using the correct files and equation.
+
+To calculate the equation Y = β0 + Xβ + ε, I have used the desig.mat file for X, PE1 and PE2 as β, the res4D file as the error ε, and the mean voxel value (for each voxel) as β0. Are these the correct files for the calculation? If not, what other files should I use?
+Is the GLM equation Y = β0 + Xβ + ε the correct equation to use for this type of inverse calculation in FSL? If not, what other equation should I use?
+
+
+Thanks in advance.
+
+Best,
+Igor
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Young,
+   This design/contrast looks fine, although if RT is intended _purely_ as a confound you can drop the fourth contrast - this has the potential advantage of reducing the required correction across contrasts.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 11 Apr 2023, at 17:50, Yong J <younghye.kwon@NORTHWESTERN.EDU> wrote:
+
+Dear experts,
+
+I am seeking advice on how to create design and contrast matrices for a contrast analysis while regressing out RT effect. My experiment has 3 conditions, and I am analyzing it within-subject. Currently, my design matrix and contrast matrix are structured as follows:
+
+Design.mat : the first 3 columns represent the 3 conditions, and the 4th column represents RT in ms.
+[1 0 0 890.12
+1 0 0 915.54
+0 1 0 1002.4
+0 1 0 1004.7
+0 0 1 942.56
+0 0 1 1000.20]
+
+Contrast.con: I’d like to compare condition 1&2 (1st row), 1&3 (2nd row), and 2&3 (3rd row), while controlling for the RT covariate (4th row)
+[1 -1 0 0
+1 0 -1 0
+0 1 -1 0
+0 0 0 1]
+
+To run this analysis, I plan to use the following command line in PALM:
+palm -i beta_sess01.mgh -s lh.surf.gii -d design.mat -t contrast.con -n 1000 -tfce2D -twotail -T -corrcon -zstat -logp -ee -ise -o prefix;
+
+Would this be the correct way to create design and contrast matrices for the analysis? Any help would be greatly appreciated. Thank you!
+
+Best,
+Young
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Ken,
+
+it is not clear from the below what the data that you want to apply the fieldmap to is. Is it that you have back-to-back SE-EPI data from which you estimate the fieldmap, and then want to apply the resulting fieldmap to some GE-EPI data (fMRI) applied after a longer time-gap?
+
+Jesper
+
+
+﻿On 12/04/2023, 16:08, "FSL - FMRIB's Software Library on behalf of Ken Sakaie" <FSL@JISCMAIL.AC.UK on behalf of sakaiek@CCF.ORG> wrote:
+
+    We have  some patient data in which the patient moved quite a bit. We ran back-to-back forward and reverse phase-encode scans, so there was only a few seconds' delay between the scans. If you just run topup on the scans, the resulting images are clearly no well registered to the forward phase-encode scans. I could coregister the images prior to running topup, then coregister the resulting maps to the rest of the data. However, it seems like that would mess up the field map because forward and reverse phase encode directions then become somewhat arbitrary. Are there any recommendations besides just not using topup?
+   
+    Thanks,
+    Ken
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Dear colleagues,
+
+We’re pleased to announce a satellite event to the 2023 Organisation for Human Brain Mapping (OHBM) meeting, the Neuroimaging Statistics Workshop, as a means to foster collaboration and generate ideas among statisticians working with brain data.
+
+
+The event will take place at the Montreal Neurological Institute on Thursday 27th July (the day after the close of OHBM).  We are delighted that the Keith Worsley lecture will be delivered by Jonathan Taylor, Keith’s student and author of the seminal text “Random Fields and Geometry” with Robert J. Adler.  Keynote lectures will also be given by Amanda Mejia, Jelle Goeman and Martin Lindquist. We have space for 8 contributed lectures; apply before the end of April as part of registration if you would like to give one of these.
+
+
+The schedule is below.  We're grateful for partial sponsorship from ASA Section on Imaging (but continue to welcome sponsorship offers!).  Registration is free but space is limited: registration form.
+
+
+
+Keep an eye on the website for updates: https://neurodatascience.github.io/events.html and please spread the word!
+
+
+Warmly,
+Jean-Baptiste Poline & Tom Nichols
+
+Neuroimaging Statistics Workshop
+OHBM 2023 satellite event
+
+Venue: De grand pré, Montreal Neurological Institute, McGill University, 3801 Rue University, Montréal, QC H3A 2B4, Canada
+
+
+
+Date: Thursday July 27th, 2023
+
+
+Schedule
+
+9:00-9:30 Registration 
+
+
+
+9:30-10:30 Keith Worsley lecture: Jonathan Taylor, Professor of Statistics, Stanford University
+
+10:30:11:45 Talks (15 min each)
+
+11:45-12:30 Keynote: Mandy Meija, Associate Professor of Statistics, Indiana University Bloomington
+
+
+12:30-1:30 Lunch
+
+
+1:30-2:15 Keynote: Jelle Goeman, Professor of Biostatistics, Leiden University
+
+2:15-3:30 Talks (15 min each)
+
+3:30-4:30 Keynote: Martin Linquist, Professor of Biostatistics, Johns Hopkins University
+
+
+
+4:30 Closing
+
+
+Website: https://neurodatascience.github.io/events.html
+
+Registration: https://forms.gle/YraFS9AVLPozjwZY9
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Michael,
+
+Sorry for the late reply. I was out of the office.
+
+These are the parameters I am using:
+
+oxford_asl -i $DATADIR/${d}_asl.nii.gz --iaf diff --ibf tis --bolus 0.7 --rpts 1 --tis 1.8 --fslanat $STUDYDIR/FSL_ANAT/$d/${d}_T1w.anat -c $DATADIR/${d}_M0_AP.nii.gz --cmethod voxel --tr 6 --cgain 1 --echospacing 0.001 --pedir y --cblip $DATADIR/${d}_M0_PA.nii.gz -o $ASLDIR --bat 0 --t1 1.65 --t1b 1.65 --alpha 0.98 --spatial --fixbolus --mc --pvcorr --artoff --wp
+
+
+About the data I am using, here it is attached.
+
+
+On Thu, Apr 6, 2023 at 5:28 PM Michael Chappell <000079f9f909e19d-dmarc-request@jiscmail.ac.uk> wrote:
+Sounds like your calibration has not worked correctly. Perhaps you can share more information on the data you have and the parameters you are putting in to BASIL?
+
+Michael
+
+On 6 Apr 2023, at 10:02, Rosalia Dacosta Aguayo <rdacostaa@GMAIL.COM> wrote:
+
+Dear FSL's experts,
+
+I do not understand why the values in perfusion_calib.nii.gz from oxford_asl are outside the range of 0 - 80 (as in the tutorial video) and with a maximum of around 10,000.
+
+Any help would be appreciated.
+
+Kind regards,
+Rosalia
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+This message and any attachment are intended solely for the addressee
+and may contain confidential information. If you have received this
+message in error, please contact the sender and delete the email and
+attachment. 
+
+Any views or opinions expressed by the author of this email do not
+necessarily reflect the views of the University of Nottingham. Email
+communications with the University of Nottingham may be monitored 
+where permitted by law.
+
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi all,
+
+Just bumping this one up the list; I am also interested in hearing your opinions.
+Thanks,
+
+Yann
+
+
+> On 7 Apr 2023, at 10:03, Khai Kamarul <00009db3ee858e41-dmarc-request@JISCMAIL.AC.UK> wrote:
+>
+> Hi everyone,
+> I'm currently conducting research with fractional anisotropy (FA). The problem here is that the images that I have acquired after tbss, show patterns of FA outside of white matter tracts (for example, at the anterior part of the brain: see attachment). I was wondering if this is something that is to be expected after preprocessing, or if it is a result of an artifact/noise. I'm concerned if it would interfere with analysing my specific region of interest, once I extract the values from the skeleton.
+>
+> Roughly speaking, here are my preprocessing steps to get to this point:
+> Denoising -> Gibbs ringing removal -> Synb0-Disco topup -> eddy -> dtifit -> tbss
+>
+> I'm new to FSL, so any insights would be appreciated. Thank you!
+>
+> Khai
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+> <Screenshot from 2023-04-06 15-21-38.png>
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Marina, Jesper, Phil, All,
+
+ 
+
+PreQual is a nice pipeline implementation from the same group which includes Synb0 along with other DWI pre-processing steps:
+
+ 
+
+https://github.com/MASILab/PreQual
+
+ 
+
+I hope this might help too?
+
+ 
+
+Best wishes,
+
+ 
+
+Hamied
+
+ 
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Cook, Philip
+Sent: Monday, April 10, 2023 7:47 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Synb0-DISCO
+
+ 
+
+Hi Jesper and Marina,
+
+ 
+
+SynB0 creates a synthetic b0 image as Jesper describes, and by default it will run topup for you. You can then call eddy just as you would if you had run topup directly
+
+ 
+
+https://github.com/MASILab/Synb0-DISCO#after-running
+
+ 
+
+The only time you need a standalone installation of FSL, ANTs, FreeSurfer tools is when you are not running SyNB0 in a container. I have never done this, and would strongly recommend running with Docker or Singularity, so that you don't encounter any issues with different versions of the dependencies.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Jesper Andersson <jesper.andersson@NDCN.OX.AC.UK>
+Date: Wednesday, April 5, 2023 at 5:59 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [External] Re: [FSL] Synb0-DISCO
+
+Dear Marina,
+
+ 
+
+    Dear all,
+
+    I'm performing DTI analysis. My data have been acquired with a single-phase encoding direction, so I cannot run TOPUP. I would like to run Synb0-DISCO. I've read the documentation, but still I have some doubts. So I would like to know which are the main steps to perform in order to apply it. Furthermore, should I download freesurfer and ANTs besides FSL?
+
+ 
+
+I haven’t used Synb0-DISCO myself, but my understanding is that you shouldn’t need either freesurfer or ANTs (someone else might correct me if I am wrong).
+
+ 
+
+As far as I understand, what Synb0-DISCO does is to create for you the “missing” volume for the pair that you need for running topup. It does so by using your structural scan (T1 or T2) to generate a synthetic b0 scan with no distortions. This synthetic scan can then be combined with your actual b0 scan, and passed into topup. After that you can proceed with your analysis exactly as you would if you had had a b0-pair to begin with.
+
+ 
+
+For your acqparams.txt file for running topup you should use a very small value for the readout time for the synthetic b0 image (1e-6 should work), and you should also make sure that the “actual” b0 image comes first, both in your 4D image file and in the acqparams.txt.
+
+ 
+
+Best regards Jesper
+
+ 
+
+   
+
+ 
+
+    Regards,
+
+    Marina
+
+   
+
+    ########################################################################
+
+   
+
+    To unsubscribe from the FSL list, click the following link:
+
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+   
+
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+   
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+          It should be fine to use the JHU tract masks as zero-voxels in the mask won’t contribute to the results. For your fslmeants call it looks like you want the average FA values in the mask, the  --showall flag will output the values for each voxel independently, which may be more data than is helpful. Removing this flag will output the average FA in the mask ( including zero-voxels ) for each subject. If you just want the average for each subject’s _non-zero_ voxels, then a command like
+
+fslstats -t all_FA_skeletonised -k SLF_L -M
+
+may be more useful.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 10 Apr 2023, at 20:43, SUBSCRIBE FSL Anonymous <neurolab792@GMAIL.COM> wrote:
+
+Hello,
+
+I am trying to run a TBSS analysis where I want to analyze FA values in different tracts in relation to behavioral scores. My design matrix has psych. test scores, age, and gender.
+
+My main question is if i'm setting up the tracts with TBSS properly.
+
+I created masks of tracts using the JHU atlas (ex: L SLF and L cingulum) and ran them as masks using two separate randomise commands.
+
+ex:
+randomise -i all_FA_skeletonised -o tbss \
+ -m SLF_L -d design.mat -t design.con --T2
+
+randomise -i all_FA_skeletonised -o tbss \
+ -m Cing_L -d design.mat -t design.con --T2
+
+When I try to extract the FA values from the outputs of these results, I am getting bizarre results. I used this command: fslmeants -i all_FA_skeletonised -m SLF_L --showall -o output.txt
+
+Is this the correct way to analyze using masks, or are we supposed to run randomise using the mean_FA_skeleton_mask, and try to add an ROI when extracting the FA values?
+
+Thank you for the help!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+Dear Neda,
+  Do you remember seeing a message like:
+
+FSL installation failed!
+The log file may contain some more information to help you diagnose the problem: <name of log file>
+
+during the installation process? If so then it would be really useful to know the contents of this file - as it may contain more details on why the installer failed,
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 11 Apr 2023, at 07:02, Neda Mohammadi <n55mohamadi@GMAIL.COM> wrote:
+
+Dear expert,
+
+I'm trying to install FSL on UBUNTU 22.04.2 LTS (VMware machine) but it returns this error:
+
+ERROR occurred during installation!
+    This command returned an error: /usr/local/fsl/bin/mamba env update -n base -f /tmp/tmphlO8N6/fsl-6.0.6.4_linux-64.yml
+
+Removing failed installation directory /usr/local/fsl
+
+
+Would you please advise me, what should I do?
+
+--
+Best Regards,
+Neda
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear expert,
+
+I'm trying to install FSL on UBUNTU 22.04.2 LTS (VMware machine) but it returns this error:
+
+ERROR occurred during installation!
+    This command returned an error: /usr/local/fsl/bin/mamba env update -n base -f /tmp/tmphlO8N6/fsl-6.0.6.4_linux-64.yml
+
+Removing failed installation directory /usr/local/fsl
+
+
+Would you please advise me, what should I do?
+
+--
+Best Regards,
+Neda
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear All,
+
+ 
+
+As an update, I did try running randomise with TFCE (I tested -T and --T2 options) on the upstream data used to generate the voxelwise results. I still got the same error about the voxels with both options. Just as a test, I tried running cluster-based thresholding with the -S option and that did generated an output.
+
+ 
+
+Warm Regards,
+
+Alex
+
+ 
+
+From: Alex Waldman <alex.waldman@sjc.ox.ac.uk>
+Date: Friday, April 7, 2023 at 4:05 PM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: TFCE on Already Generated Stats Image
+
+ 
+
+Dear All,
+
+ 
+
+First and foremost, I appreciate all the help this forum provides! I’m still in the learning phase so forgive me if this question is naïve. I did a search of previous questions and was still not sure of the best way forward.
+
+ 
+
+We have some statistical images already generated from a voxelwise analysis (screenshot of FSLeyes below):
+
+ 
+
+
+
+ 
+
+I wanted to try out TFCE and noted in the randomise documentation that I could use fslmaths to do so.
+
+ 
+
+I tried the following command:
+
+ 
+
+fslmaths Stats_Cervical_fstat1.nii.gz -tfce 2 0.5 26 Cervical_TFCE_test.nii.gz
+
+ 
+
+I then got the following error:
+
+ 
+
+ERROR: TFCE failed, please check your file for valid sizes and voxel values.Error: tfce currently requires an input with at least 3 voxels extent into each dimension.
+
+ 
+
+I was thinking this was because my image is 2D rather than 3D? Is there a potential easy way around this?
+
+ 
+
+As always, thanks for your help!
+
+ 
+
+Warm Regards,
+
+Alex
+
+ 
+
+ 
+
+ 
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hello,
+
+I am trying to run a TBSS analysis where I want to analyze FA values in different tracts in relation to behavioral scores. My design matrix has psych. test scores, age, and gender.
+
+My main question is if i'm setting up the tracts with TBSS properly.
+
+I created masks of tracts using the JHU atlas (ex: L SLF and L cingulum) and ran them as masks using two separate randomise commands.
+
+ex:
+randomise -i all_FA_skeletonised -o tbss \
+  -m SLF_L -d design.mat -t design.con --T2
+
+randomise -i all_FA_skeletonised -o tbss \
+  -m Cing_L -d design.mat -t design.con --T2
+
+When I try to extract the FA values from the outputs of these results, I am getting bizarre results. I used this command: fslmeants -i all_FA_skeletonised -m SLF_L --showall -o output.txt
+
+Is this the correct way to analyze using masks, or are we supposed to run randomise using the mean_FA_skeleton_mask, and try to add an ROI when extracting the FA values?
+
+Thank you for the help!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+

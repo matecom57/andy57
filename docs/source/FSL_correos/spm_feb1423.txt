@@ -1,0 +1,107 @@
+New Zealand Funded PhD with Industry Placement in
+Quantitative Magnetic Resonance Imaging in Mild Cognitive Impairment and Early Alzheimer’s Disease
+Background: With an increasing number of people with Alzheimer's Disease (AD), the physical, emotional, and financial strains placed on individuals, whānau (“extended family”) and society are immense. Most people who develop AD go through an intermediate stage known as mild cognitive impairment (MCI), but not all people with MCI go on to develop dementia. Why some people progress, and others do not is far from understood.
+Project: The overall aim of this project is to identify Magnetic Resonance Imaging (MRI) markers that predict which individuals with MCI will progress to dementia in a New Zealand sample enrolled in the Dementia Prevention Research Clinics. Multi-modal MRI including arterial spin labelling, diffusion weighted, susceptibility weighted, and resting state functional data has been collected. The exact focus of the project can be guided by the skills and interests of the successful candidate and is likely to include image processing (using available toolboxes, or developing new ones), predictive modelling and machine learning. The project will be undertaken in collaboration with Siemens Healthcare Limited.
+The doctoral candidate: Should hold a relevant MSc or BSc Hons degree (e.g. Physics, Psychology, Computer Science, Engineering, Neuroscience etc). Experience in MRI image analysis, coding (e.g. Matlab, Python), and machine learning would be an advantage.
+We can provide: A vibrant and supportive research environment within the School of Psychology and wider Centre for Brain Research at the University of Auckland. The successful candidate will be offered the opportunity of an industry placement, spending up to 6 months at Siemens Healthcare (Australia). A tax-free stipend of at least NZ$33,000 (up to NZ$45,000 dependant on scholarship eligibility), plus tuition fees for three years.
+You will be supervised in this project by Catherine Morgan (Senior Research Fellow and MRI Physicist), Lynette Tippett (Professor of Psychology and Director of the Dementia Prevention Research Clinics, NZ), Kieran O’Brien (Head of Collaborations and Research Aus/NZ, Siemens Healthcare Limited) and Reece Roberts (Lecturer in functional MRI).
+To apply:  Both international and domestic applications will be considered. Māori and Pasifika  applications are encouraged. Please email Catherine Morgan (c.morgan@auckland.ac.nz) a recent CV and transcripts before 1st March 2023.  Informal enquires and visits are welcomed.
+ 
+ 
+ 
+
+
+Hi Michael,
+
+Yes, that's a much better way of putting it! As you put it I want the likelihood that a given participant follows a particular model (or in this case, a family of models)?
+Would I go about extracting this information by seeing BMS results for each individual participant? If so, what is the easiest/best way to do this?
+
+Best wishes,
+Raph
+
+Hi All,
+
+I'm not sure if it is possible to do this, but I'd like to look at an overall exceedance probability (not individual connection weights) for a specific family of models, but to extract this for each participant. I have BMS results for 6 different families, and can see the overall BMS findings (family 5 is the 'winner'). Is there a way to extract exceedance probabilities for each participant for family 5?
+
+Many thanks,
+Raph
+
+Dear Carles,
+
+it's still not clear for me what you really intend. Do you need the voxel value at a specific coordinate or are you interested in getting the data voxel-by-voxel to use it for further analysis?
+
+Anyway, if you are interested in the distribution of your values you can use cat_plot_histogram to compare the overall distribution between different maps.
+
+This is a code snippet to read the values from a nifti file:
+N = nifti(your_file);
+dat = N.dat(:,:,:);
+
+dat is a 3D matrix with the image valuies.
+
+Best,
+
+Christian
+
+On Mon, 13 Feb 2023 12:37:44 +0100, cfalcon <cfalcon@BARCELONABETA.ORG> wrote:
+
+>Dear all,
+>Would it be possible to get the beta-image corresponding to a voxel-wise covariate in cat12? I am planning to use that tool to get R1maps from different flip angles and I would need to know the beta to get T1 parameter voxel-by-voxel
+>
+>Thanks
+>Carles
+>_______________________
+>
+>Carles Falcon
+>Neuroimaging Researcher, Physicist
+>Neuroimaging Platform
+>BarcelonaBeta Brain Research Center (BBRC)
+>cfalcon@barcelonabeta.org <mailto:cfalcon@barcelonabeta.org>
+>T. (+34) 93 316 09 90 <https://barcelonabeta-dot-yamm-track.appspot.com/Redirect?ukey=1s_19_ZGi7b-bwSHj9kfPUVgZCr65-nTeheM_PpAT5KQ-0&key=YAMMID-00590388&link=tel%3A%2B34%2520933%252016%252009%252090>
+>C/ Wellington, 30 <https://barcelonabeta-dot-yamm-track.appspot.com/Redirect?ukey=1s_19_ZGi7b-bwSHj9kfPUVgZCr65-nTeheM_PpAT5KQ-0&key=YAMMID-00590388&link=https%3A%2F%2Fmaps.google.com%2F%3Fq%3DC%2F%2BWellington%2C%2B30%2B08005%2BBarcelona%26entry%3Dgmail%26source%3Dg>
+>08005 Barcelona <https://barcelonabeta-dot-yamm-track.appspot.com/Redirect?ukey=1s_19_ZGi7b-bwSHj9kfPUVgZCr65-nTeheM_PpAT5KQ-0&key=YAMMID-00590388&link=https%3A%2F%2Fmaps.google.com%2F%3Fq%3DC%2F%2BWellington%2C%2B30%2B08005%2BBarcelona%26entry%3Dgmail%26source%3Dg>
+>www.barcelonabeta.org <https://barcelonabeta-dot-yamm-track.appspot.com/Redirect?ukey=1s_19_ZGi7b-bwSHj9kfPUVgZCr65-nTeheM_PpAT5KQ-0&key=YAMMID-00590388&link=http%3A%2F%2Fwww.barcelonabeta.org%2F>
+>www.fpmaragall.org <https://barcelonabeta-dot-yamm-track.appspot.com/Redirect?ukey=1s_19_ZGi7b-bwSHj9kfPUVgZCr65-nTeheM_PpAT5KQ-0&key=YAMMID-00590388&link=http%3A%2F%2Fwww.fpmaragall.org%2F>
+>
+>Basic information about data protection:
+>Responsible for processing: BarcelonaBeta Brain Research Center Foundation for Alzheimer’s. Purpose limitation: communication and management of contacts, participants and collaborators.Legal bases for processing: the user’s authorisation by the acceptance of this data protection policy. Data consignee: will not be communicated to third parties except by legal obligation or service needs. Rights: to exercise your rights of access, rectification and suppression, as other rights presents in the normative, please send an email to gdpr@barcelonabeta.org <mailto:gdpr@barcelonabeta.org>. For further information and how to use your rights, please see our privacy policy <https://www.barcelonabeta.org/en/privacy-policy-web>.
+>E-mail confidentiality BBRC <https://www.barcelonabeta.org/en/privacy-policy-web>.
+>Thanks for saving paper.  
+>
+>
+>
+>
+>
+>
+
+Dear all,
+Would it be possible to get the beta-image corresponding to a voxel-wise covariate in cat12? I am planning to use that tool to get R1maps from different flip angles and I would need to know the beta to get T1 parameter voxel-by-voxel
+
+Thanks
+Carles
+_______________________
+
+Dear Raph and all,
+
+Just for my information, I thought that exceedance probability 'measures
+how likely it is that any given model is more frequent than all other
+models in the comparison set'. If I understand well, what you are
+looking for  is not that, as it's not at the level of the individual;
+but, instead, you are looking for a credible interval on the posterior
+probability that a particular participant follows a given model,
+compared to all others?
+
+Best
+Michael
+
+
+On 2/12/2023 11:41 AM, Raphael Underwood wrote:
+> ⚠ Caution: External sender
+>
+>
+> Hi All,
+>
+> I'm not sure if it is possible to do this, but I'd like to look at an overall exceedance probability (not individual connection weights) for a specific family of models, but to extract this for each participant. I have BMS results for 6 different families, and can see the overall BMS findings (family 5 is the 'winner'). Is there a way to extract exceedance probabilities for each participant for family 5?
+>
+> Many thanks,
+> Raph
+

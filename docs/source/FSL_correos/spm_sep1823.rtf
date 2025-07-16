@@ -1,0 +1,618 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fswiss\fcharset0 Helvetica;\f2\fswiss\fcharset0 Helvetica-Bold;
+\f3\fnil\fcharset0 HelveticaNeue-Bold;\f4\fnil\fcharset0 HelveticaNeue-Italic;\f5\fswiss\fcharset0 Arial-BoldMT;
+\f6\froman\fcharset0 Times-Roman;\f7\froman\fcharset0 TimesNewRomanPSMT;\f8\froman\fcharset0 Times-Bold;
+\f9\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red27\green27\blue27;\red255\green255\blue255;\red0\green0\blue233;
+\red26\green26\blue26;\red16\green60\blue192;\red11\green76\blue180;\red13\green13\blue20;\red58\green85\blue216;
+\red0\green0\blue0;\red31\green39\blue243;\red229\green41\blue44;}
+{\*\expandedcolortbl;;\cssrgb\c14118\c14118\c14118;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c93333;
+\cssrgb\c13333\c13333\c13333;\cssrgb\c6667\c33333\c80000;\cssrgb\c1961\c38824\c75686;\cssrgb\c5490\c6275\c10196;\cssrgb\c29020\c43137\c87843;
+\cssrgb\c0\c0\c0;\cssrgb\c16471\c27843\c96471;\cssrgb\c92941\c25490\c22353;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs30 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Hello SPM users,\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 I'm trying to check out the correlation between subjects' button-press responses and motion correction regressors. In other words, I wanted to quantify the response-correlated motion.\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 So I put timings files with all the button press responses for the 1st level analysis, but not sure what should be the next steps to be able to check out the relationship between button\'a0press and motion regressors.\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\sa300\partightenfactor0
+\cf2 \cb3 It might be a naive question, but can anyone help me with this?\cb1 \
+\cb3 I've only used motion regressors (rp.txt files) for motion correction, but not for any other purposes.\cb1 \
+\cb3 Thank you so much.\'a0\'a0\cb1 \
+\cb3 \'a0\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 Best,\
+Cay\
+\
+\
+\
+Dear Rob,\cb1 \
+\
+\cb3 Attached is a script I use for segmentation and normalization (without DARTEL) of T1 images.\cb1 \
+\cb3 For VBM segmentation, you don't have to use for-loops because batch editor accepts as many t1w images as you want to segment.\cb1 \
+\cb3 Using\'a0spm_jobman would save your time.\cb1 \
+\
+\cb3 If you want to try this script, just save the file in any directory under the matlab path, then type 'vbm_preproc_normalize_batch' in the matlab command window. (You don't have to run\'a0SPM12 beforehand)\cb1 \
+\
+\cb3 This script brings up a\'a0SPM\'a0File selector. After you select T1 images, it brings up\'a0SPM12 and a batch editor. You can check your settings and run the batch. It takes care of segmentation and normalization of all images.\cb1 \
+\
+\cb3 Hope this helps,\cb1 \
+\
+\cb3 Kiyotaka\cb1 \
+\
+\cb3 \
+On Thu, Aug 24, 2023 at 6:59\uc0\u8239 PM Rob Shortman <{\field{\*\fldinst{HYPERLINK "mailto:rmhahor@ucl.ac.uk"}}{\fldrslt \cf4 \cb3 \ul \ulc4 \strokec4 rmhahor@ucl.ac.uk}}> wrote:\cb1 \
+\cb3 I have a simple batch to normalise and segment some T1 MR data, on around 150 subjects, and I would dearly love to create a for loop to cycle through all the subjects in the batch script.\cb1 \
+\
+\cb3 The batch works, but it only looks at the first or the last subject - if anyone has the secret to this I would be very grateful. Ive tried asking chat gpt, and watching Andrew Jahns YouTube video on the subject. I know I've done everything right - but it just won't go.\cb1 \
+\
+\cb3 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 --\
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 Kiyotaka Nemoto, M.D., Ph.D.\cb1 \
+\cb3 Associate Professor\cb1 \
+\cb3 Department of Psychiatry\cb1 \
+\cb3 Division of Clinical Medicine, Institute of Medicine\cb1 \
+\cb3 University of Tsukuba\cb1 \
+\cb3 1-1-1 Tennodai Tsukuba, Ibaraki 305-8575, Japan\cb1 \
+\cb3 E-mail:\'a0{\field{\*\fldinst{HYPERLINK "mailto:kiyotaka@nemotos.net"}}{\fldrslt \cf6 \ul \ulc6 \strokec6 kiyotaka@nemotos.net}}\cf2 \cb1 \strokec2 \
+\
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f1\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Hi Olivia\
+Sorry you had this problem. I previously fixed a similar issue, which I see is not yet in the main\'a0SPM\'a0release \'96 I wonder if this would resolve it for you. Please could you try using the development release of\'a0SPM\'a0from Github to see if that resolves the problem? This version has a higher chance of bugs, but includes all the latest changes and features.\
+\'a0\
+The link to the repository is\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/spm/spm"}}{\fldrslt \cf7 \ul \ulc7 \strokec7 https://github.com/spm/spm}}\'a0and the link to the Zip file is\'a0{\field{\*\fldinst{HYPERLINK "https://github.com/spm/spm/archive/refs/heads/main.zip"}}{\fldrslt \cf7 \ul \ulc7 \strokec7 https://github.com/spm/spm/archive/refs/heads/main.zip}}\'a0. After downloading the zip file, you will need to close matlab, re-open it, remove the old\'a0SPM\'a0from your path and add this one.\
+\'a0\
+Please do let me know whether that resolves the problem.\
+\'a0\
+Best\
+Peter\
+\'a0\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f2\b \cf2 From:
+\f1\b0 \'a0SPM\'a0(Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK>\'a0
+\f2\b On Behalf Of\'a0
+\f1\b0 Olivia Yang\cb1 \uc0\u8232 
+\f2\b \cb3 Sent:
+\f1\b0 \'a014 September 2023 14:59\cb1 \uc0\u8232 
+\f2\b \cb3 To:
+\f1\b0 \'a0SPM@JISCMAIL.AC.UK\cb1 \uc0\u8232 
+\f2\b \cb3 Subject:
+\f1\b0 \'a0[SPM] Error in the iterative estimation of DCM\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b\fs30 \cf8 \cb3 \ul \ulc8 \strokec8 Postdoctoral Research Position in Cognitive Sciences
+\f0\b0 \ulnone \
+Cognitive and Behavioural Neuroscience Lab (CBN Lab),\
+Humanities and Social Sciences Department,\'a0\
+Indian Institute of Technology Bombay (IITB), India\'a0\
+(IITB: QS National Rank = 1, QS World Rank = 149)\
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 PI:
+\f0\b0 \'a0Prof. Rashmi Gupta\
+Email:\'a0{\field{\*\fldinst{HYPERLINK "mailto:r.gupta@iitb.ac.in"}}{\fldrslt \cf4 \ul \ulc4 \strokec4 r.gupta@iitb.ac.in}}\'a0or\'a0{\field{\*\fldinst{HYPERLINK "mailto:rash_cogsci@yahoo.com"}}{\fldrslt \cf4 \ul \ulc4 \strokec4 rash_cogsci@yahoo.com}}\
+Website:\'a0{\field{\*\fldinst{HYPERLINK "https://www.hss.iitb.ac.in/people/faculty/rashmi-gupta"}}{\fldrslt \cf4 \ul \ulc4 \strokec4 https://www.hss.iitb.ac.in/people/faculty/rashmi-gupta}}\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 We seek\'a0
+\f3\b two
+\f0\b0 \'a0highly motivated and independent postdoctoral researchers to join our CBN Lab, specializing in quantitative research methods, including behavioural, EEG, fNIRS, eye-tracker, or fMRI data acquisition and analysis. The successful candidate will have a strong background in neuroimaging research, with a substantial contribution to projects involving EEG, fNIRS, or fMRI. This position offers an excellent opportunity to collaborate on cutting-edge research, contribute to the lab's ongoing projects, and mentor junior lab members.\'a0\
+\pard\pardeftab720\partightenfactor0
+
+\f4\i \cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 PS: If you are looking for a host institution for writing competitive grants (e.g., DST postdoc fellowship, SERB postdoc fellowship, Ramanujan fellowship, IBRO return home fellowship, DST women fellowship, etc.). In that case, candidates are encouraged to approach Prof. Rashmi Gupta.
+\f0\i0 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 \cb3 Eligibility criteria:
+\f0\b0 \
+Fresh PhDs or PhDs with less than 2 years of experience or research scholars who have submitted their thesis and are awaiting examination are eligible to apply. The candidates should be preferably below 32 years of age. International candidates are welcome to apply.\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 \cb3 Qualifications:
+\f0\b0 \
+- A Ph.D. in Cognitive Sciences, Psychology, Neuroscience, or a related field strongly emphasizing EEG, fNIRS, or fMRI research.\
+- Proven experience designing and conducting neuroimaging experiments, including data collection and analysis\
+- Proficiency in EEG, fNIRS, or fMRI data analysis software (e.g., MATLAB, EEGLAB,\'a0SPM, FSL, etc.).\
+- Strong publication (at least 2) in quality peer-reviewed journals and experience presenting research findings at conferences.\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 \cb3 Key Responsibilities:
+\f0\b0 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \ul \ulc8 1. Independent research:\ulnone \'a0The candidate is expected to develop and lead their own research projects within the scope of Cognitive Sciences, focusing on EEG, fNIRS, or fMRI methodologies.\'a0\
+\ul 2. Experimental Design:\ulnone \'a0Design and execute experiments involving behavioural, EEG, fNIRS, or fMRI data collection, ensuring rigorous methodology and adherence to ethical standards.\
+\ul 3. Data Analysis:\'a0\ulnone Data collection and analysis using advanced statistical and computational techniques contribute to developing novel analytical methods when necessary.\
+\ul 4. Publication:\ulnone \'a0Prepare research findings for publication in peer-reviewed journals and present research at national/international conferences and workshops.\
+\ul 5. Collaboration:\'a0\ulnone Excellent communication/interpersonal skills and the ability to collaborate with lab members and experts in the fields of Cognitive Sciences, Computer Science, and related disciplines. Share knowledge and expertise to foster a collaborative research environment.\'a0\
+\ul 6. Mentorship and Teaching:\'a0\ulnone Provide guidance and mentorship to junior lab members, including graduate students. Contribute to lab seminars, workshops, and teaching activities.\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 \cb3 Application Process:
+\f0\b0 \
+1. Interested candidates should submit the following documents to Prof. Rashmi Gupta.\
+- Filled\'a0{\field{\*\fldinst{HYPERLINK "https://www.iitb.ac.in/sites/www.iitb.ac.in/files/Application%20Form%20-%20for%20IPDF.doc"}}{\fldrslt \cf4 \ul \ulc4 \strokec4 application form}}\'a0that is available at\'a0{\field{\*\fldinst{HYPERLINK "https://www.iitb.ac.in/en/careers/institute-post-doctoral-fellows-recruitment"}}{\fldrslt \cf9 \ul \ulc9 \strokec9 https://www.iitb.ac.in/en/careers/institute-post-doctoral-fellows-recruitment}}\
+- Cover Letter\
+- A detailed curriculum vitae (CV) including a list of publications.\
+- A three-page research proposal with the job application\'a0\ul must\ulnone \'a0be submitted, outlining the candidate's proposed research directions and objectives.\
+- Copies of at least two publications\
+- Contact information for two referees, including job title, affiliated institutions, email addresses, and phone numbers.\'a0\
+2. Only selected proposals will be contacted and invited for a 1.5-hour technical interview with an expert panel from the fields of Cognitive Sciences, Computer Science, Neuroscience, etc. Candidates should be prepared with a laptop setup, including necessary data (from their previous projects).\
+3. The next step is a 1-hour open research talk, where experts and researchers from various disciplines will attend and ask questions about the candidate's research.\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f3\b \cf8 \cb3 Salary and Benefits:
+\f0\b0 \
+Details about pay and terms of employment can be found on our website:\'a0{\field{\*\fldinst{HYPERLINK "https://www.iitb.ac.in/en/careers/institute-post-doctoral-fellows-recruitment"}}{\fldrslt \cf4 \ul \ulc4 \strokec4 https://www.iitb.ac.in/en/careers/institute-post-doctoral-fellows-recruitment}}\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 We look forward to welcoming a talented and motivated postdoctoral researcher to our lab, where you will have the opportunity to conduct cutting-edge research, collaborate with experts, and contribute to the growth and development of our team. Join us in advancing our understanding of the human mind through quantitative methods in cognitive neuroscience.\
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf8 \cb3 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 \
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf2 \cb3 \strokec10 Best,\cf0 \cb1 \
+\cf2 \cb3 Rashmi Gupta\cf0 \cb1 \
+\cf2 \cb3 Associate Professor,\cf0 \cb1 \
+\cf2 \cb3 Cognitive and Behavioural Neuroscience (CBN) Laboratory, Department of HSS,\cf0 \cb1 \
+\cf2 \cb3 IIT Bombay (#1st in India, #149 QS international ranking 2024), Mumbai, India\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.hss.iitb.ac.in/people/faculty/rashmi-gupta"}}{\fldrslt \cf4 \cb3 \ul \ulc4 \strokec4 https://www.hss.iitb.ac.in/people/faculty/rashmi-gupta}}\cf2 \cb3 \'a0\cf0 \cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf2 \cb3 \strokec2 Hello, I hope you are doing well.\
+I enjoy using\'a0SPM12 toolboxes for MRI analysis. I would like to know if there is any available toolboxes to conduct analysis on OCT (Optical Coherence Tomography) of the eye.\
+Any help would be much appreciated.\
+Thank you.\
+Sincerely,\
+Amr.\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear all,\cb1 \
+\
+\cb3 My design includes 2 groups (experimental and control) and 2 conditions (intuitive and counter-intuitive). Before running the Anova, I did a double-contrast to see if there was any difference (interaction) between my groups and conditions.\cb1 \
+\
+\cb3 My contrast of interest is to see what is more activated in the counter-intuitive condition (CI) versus the intuitive condition (I) for group 1 versus group 2. So here's the result SPM gives me:\cb1 \
+\
+\
+\
+\
+\
+\cb3 However, I can't determine whether this contrast actually presents the direction of the interaction or not. Is this really what is more activated for group 1 for the counter-intuitive condition? Or can't I determine the direction with this result?\cb1 \
+\
+\cb3 I\'92m in doubt, because when I look at the simple contrasts (e.g. group1CI > group2CI or group1CI > group1I), nothing seems to stand out and, on the contrary, the difference in activation seems to be for the group2I > group2CI contrast. This seems to contradict the double-contrast results. Could you shed some light on this?\cb1 \
+\
+\
+\cb3 Also, why does the matrix sometimes show gray squares, and sometimes black ones? What does this mean?\cb1 \
+\
+\
+\cb3 Many thanks\cb1 \
+\
+\
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f5\b\fs28 \cf2 \cb3 \strokec2 Dear SPM experts,\'a0\'a0
+\f6\b0 \
+
+\f5\b \'a0
+\f6\b0 \
+
+\f5\b I am specifying DCM (without estimation) for each subject and then attempting to estimate DCM models using the iteration method (Full + BMR PEB). However, I am facing an error during the estimation process:
+\f6\b0 \
+\
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f7\fs24 \cf2 13-Sep-2023 03:57:45 - Failed \'a0'DCM estimation'
+\f6\fs28 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 Error using\'a0\cf11 \ul \ulc11 \strokec11 \'a0*
+\f0\fs30 \cf2 \cb3 \ulnone \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 Inner matrix dimensions must agree.
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 In file "H:\\spm12\\spm_log_evidence_reduce.m" (v6849), function "spm_log_evidence_reduce" at line 49.
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 In file "H:\\spm12\\spm_dcm_reduce.m" (v6458), function "spm_dcm_reduce" at line 29.
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 In file "H:\\spm12\\spm_dcm_reduce.m" (v6458), function "spm_dcm_reduce" at line 15.
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 In file "H:\\spm12\\spm_dcm_peb_fit.m" (v7267), function "spm_dcm_peb_fit" at line 182.
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 In file "H:\\spm12\\config\\spm_cfg_dcm_est.m" (v7479), function "spm_run_dcm_est" at line 368.
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 \cb3 \strokec2 The following modules did not run:
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 Failed: DCM estimation
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf12 \cb3 \strokec12 Error using MATLABbatch system
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf12 \cb3 \strokec12 Job execution failed. The full log of this run can be found in MATLAB command window, starting
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf12 \cb3 \strokec12 with the lines (look for the line showing the exact #job as displayed in this error message)
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf12 \cb3 \strokec12 ------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf12 \cb3 \strokec12 Running job #1
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf12 \cb3 \strokec12 ------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f6\fs28 \cf2 \cb3 \strokec2 \
+\
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f8\b \cf2 My code for\'a0specifying DCM for each subject:
+\f6\b0 \
+\
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f7\fs24 \cf2 DCM.xY.Dfile = ['Dfile_subject' num2str(Subject(sb),'%02d') '.mat' ];
+\f6\fs28 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 % Parameters and options used for setting up model
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.analysis = 'ERP'; % analyze evoked responses
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.model \'a0 \'a0= 'ERP'; % ERP model
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.spatial \'a0= 'IMG'; % spatial model
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.trials \'a0 = [1:10]; % index of ERPs within ERP/ERF file
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.Tdcm(1) \'a0= 0; \'a0 \'a0 % start of peri-stimulus time to be modelled
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.Tdcm(2) \'a0= 390; \'a0 % end of peri-stimulus time to be modelled
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.Nmodes \'a0 = 8; \'a0 \'a0 % nr of modes for data selection
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.h \'a0 \'a0 \'a0 \'a0= 1; \'a0 \'a0 % nr of DCT components
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.onset \'a0 \'a0= 64; \'a0 \'a0% selection of onset (prior mean)
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.dur \'a0 \'a0 \'a0= 16;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.han \'a0 \'a0 \'a0= 1;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.D \'a0 \'a0 \'a0 \'a0= 1; \'a0 \'a0 % downsampling
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.lock \'a0 \'a0 = 0;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.multiC \'a0 = 0;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.location = 0;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.options.symmetry = 0;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 % Data and spatial model
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM \'a0= spm_dcm_erp_data(DCM);
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 % Location priors for dipoles
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.Lpos \'a0= [[-40; -20; 7] [46; -10; 8] [-60; -30; 18] [56; -24; 10] [47; 21; 10]];
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.Sname = \{'T1', 'T2', 'T3', 'T5', 'T6'\};
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 Nareas \'a0 \'a0= size(DCM.Lpos,2);
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 % Spatial model
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM = spm_dcm_erp_dipfit(DCM);
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 % Specify connectivity model
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 cd(Panalysis)
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.A=A;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.B=B;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.C =C;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 % Between trial effects
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.xU.X = [ 1 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 -1 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 1 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0-1 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 0 \'a0 \'a0 1 \'a0 \'a0 0 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 0 \'a0 \'a0-1 \'a0 \'a0 0 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 1 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0-1 \'a0 \'a0 0
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 1
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 \'a0 \'a0 \'a00 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0 0 \'a0 \'a0-1];
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 \cb1 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 DCM.xU.name\'a0= \{'C1','C2','C3','C4','C5','C6'\};
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 % Invert
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 %--------------------------------------------------------------------------
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 DCM.name\'a0= ['DCM_subject' num2str(Subject(sb),'%02d') '_full_model' ];
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 \cb3 \strokec2 % DCM \'a0 \'a0 \'a0= spm_dcm_erp(DCM);% no estimation
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\
+\pard\pardeftab720\sa300\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f8\b\fs28 \cf2 \cb3 \strokec2 My code for the\'a0iteration estimation:
+\f6\b0 \
+\
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f7\fs24 \cf2 for sb=1:length(Subject)
+\f6\fs28 \
+\pard\pardeftab720\partightenfactor0
+
+\f7\fs24 \cf2 DCMname=['DCM_subject' num2str(Subject(sb),'%02d') '_full_model' ];
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 matlabbatch\{1\}.spm.dcm.estimate.dcms.model.dcmmat\{s,1\} = [DCMstr '_save.mat'];
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 end
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 matlabbatch\{1\}.spm.dcm.estimate.output.single.dir = \{spath \};
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 matlabbatch\{1\}.spm.dcm.estimate.output.single.name =str;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 matlabbatch\{1\}.spm.dcm.estimate.est_type = 2;
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 matlabbatch\{1\}.spm.dcm.estimate.fmri.analysis = 'time';
+\f0\fs30 \cf2 \cb3 \strokec2 \
+
+\f7\fs24 \cf2 \cb3 \strokec2 spm_jobman('run',matlabbatch);
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\
+\pard\pardeftab720\sa300\partightenfactor0
+\cf2 \
+\pard\pardeftab720\sa0\qj\partightenfactor0
+
+\f8\b\fs28 \cf2 \cb3 \strokec2 I would greatly appreciate your help in resolving this issue.
+\f6\b0 \
+
+\f8\b Thank you.\'a0
+\f6\b0 \
+
+\f8\b Olivia
+\f6\b0 \
+\
+\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f1\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear All\
+We are looking for a PhD student to use both OPM (optically pumped magnetometers) and high-field MR (magnetic resonance) scanners to study the brain and spinal cord.\
+If you know anyone who might be interested please direct them to\
+\pard\pardeftab720\sa0\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://www.findaphd.com/phds/project/phd-studentship-cortico-spinal-interactions-in-humans-from-methods-development-to-clinical-application/?p159985"}}{\fldrslt 
+\f6 \cf7 \cb3 \ul \ulc7 \strokec7 https://www.findaphd.com/phds/project/phd-studentship-cortico-spinal-interactions-in-humans-from-methods-development-to-clinical-application/?p159985}}\
+\pard\pardeftab720\sa0\partightenfactor0
+
+\f6 \cf2 \cb3 \strokec10 best
+\f1 \cf2 \cb3 \strokec2 \
+
+\f6 \cf2 \cb3 \strokec10 Gareth
+\f1 \cf2 \cb3 \strokec2 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f9\fs32 \cf0 \cb3 \strokec10 Hi Lisa,\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 The SPM.mat files contains lots of information that are needed to perform statistical inference.\
+Beyond the full filename of betas, you also have those of any contrast (con*.nii) image that would have already calculated plus the mask.nii (which voxels are considered), resMS.nii (residual map ~= noise variance) and RPV.nii ("resel per voxel" ~= roughness ~= 1/smoothness) images, as well as metadata such as estimated smoothness, variance parameters.,..\
+So all, in all, warping all the images (betas, resMS, mask,...) renaming them, or updating them in the SPM.mat, could work but that's going to be messy.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs30 \cf2 \cb3 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f9\fs32 \cf0 \cb1 \strokec10 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 If you really want to look at your statistical results, estimated in subject space, in MNI-space. A simpler approach could be to\'a0\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 write down the threshold you want to use, i.e. the t-value corresponding to p<.001 unc. or p<.05 FWEcor,\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 warp the spmT*.nii image,\'a0\cb1 \
+\ls1\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 display the warped spmT map and manually threshold it to only look at the "significant voxels"\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 HTH,\cb1 \
+\cb3 Chris\cb1 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs29\fsmilli14667 \cf2 \cb3 \strokec2 Dear all\
+I was asked an interesting question offline this week, which may be helpful for others:\
+\'a0\
+\'93I have a PEB model with two regressors: a column of ones (the intercept) and a regressor for group difference encoded as 0s and 1s. As a sanity check, I flipped the 0s and 1s in the second regressor and looked at how the PEB\'92s parameters and free energy changed. I was surprised to find that some parameters changed in a non-obvious way, and furthermore, the free energy of the PEB model changed. Why?\'94\
+\'a0\
+To answer this, let\'92s imagine that one group of subjects has an average connection strength of b=0.3Hz and the other group has an average connection strength of b=0.7Hz. PEB is simply a GLM, and in this scenario it contains two parameters per connection: the intercept and the effect of group. \'a0If we code the first group as zero (x=0) and the second group as one (x=1), then the regression model that PEB will estimate is:\
+\'a0\
+b = 0.3 + 0.4x + e\
+\'a0\
+Where e is unmodelled error. So our intercept parameter is estimated to be 0.3Hz and the group difference parameter is estimated to be 0.4Hz. As desired, the connection strength for this subject will either be 0.3Hz or 0.3+0.4=0.7Hz depending on the group. Now, let\'92s flip the \{0,1\} group coding, so the 0.3Hz group is now coded as one (1) and the 0.7Hz group is coded as zero (0). The model is now:\
+\'a0\
+b = 0.7 \'96 0.4x + e\
+\'a0\
+So by flipping the group difference regressor, both parameters have changed: the intercept parameter has taken on a new value, and the sign of the group difference has flipped.\
+\'a0\
+Regarding why this changes the free energy. Recall that the free energy is the trade-off between accuracy and complexity, where complexity is measured by how far the parameters have deviated from their prior expectation (zero). The second model will have a greater complexity penalty than the first model, because 0.7Hz is bigger than 0.3Hz. Thus, we would expect the first model to be better, with a higher free energy.\
+\'a0\
+Best\
+Peter\
+\
+\
+}

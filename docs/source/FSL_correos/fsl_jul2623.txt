@@ -1,0 +1,438 @@
+Hi Paul,
+
+I actually have an additional update - I realize in MobaXterm I didn't have the correct X11-forwarding option set, so after fixing that and running FSLeyes, I was able to open it and change the view settings.
+
+Do you have any suggestions/thoughts as to why it might not be working with VcXsrv?
+
+Thank you,
+Jee Won
+
+########################################################################
+
+Hi Alex,
+
+Your internet connection seems to be a little slow (2 minutes to download the 60MB mambaforge installer- based on that, I'd expect the total download (3GB) to take between one and two hours). If you have access to a faster connection (e.g. from your workplace), I'd suggest trying the installation there.
+
+There is a chance that this is simply due to an unreliable internet connection. But there is also a chance that mamba is mis-behaviing. Could you try re-running the installer ilke so?
+
+export MAMBA_NO_LOW_SPEED_LIMIT=1
+[python] fslinstaller.py [other options]
+
+Paul
+
+
+Hi,
+
+I'm trying to install fsl on a new mac with Ventura 13.4 that has a Apple M2 Max chip. 
+
+When I run the python installation script, I get the following error:
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1002)>]!
+
+I looked at the https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json and didn't see an option for macos-M2 and thought that this might be the reason....
+
+Any help is appreciated.
+
+Thanks,
+Melissa
+
+Hi Gordon,
+
+We’ve now opened registration for the course, it'll be fully online and will be held 11th  - 22nd  September. You can find details and registration info here:
+
+https://open.win.ox.ac.uk/pages/fslcourse/website/upcoming.html
+
+ 
+
+Best,
+
+Rezvan
+
+ 
+
+﻿On 09/05/2023, 11:23, "FSL - FMRIB's Software Library on behalf of Gordon Sloan" <FSL@JISCMAIL.AC.UK on behalf of 0000901c251ce1f0-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+ 
+
+    I have been trying to find out some information about the FSL course, I can see that there is preliminary info (https://open.win.ox.ac.uk/pages/fslcourse/website/); however, I was wondering if anyone knew how the course works when it is online?
+
+   
+
+    Is it regular attendance each day, and is there are registration fee?
+
+   
+
+    Also, does anyone know when registration is due?
+
+   
+
+    Many thanks,
+
+    Gordon
+
+Hi Paul,
+
+I actually have an additional update - I realize in MobaXterm I didn't have the correct X11-forwarding option set, so after fixing that and running FSLeyes, I was able to open it and change the view settings.
+
+Do you have any suggestions/thoughts as to why it might not be working with VcXsrv?
+
+Thank you,
+Jee Won
+
+########################################################################
+
+
+Dear Dr. VelasquezUpegui,
+
+I hope this letter finds you well!
+
+I am writing to invite you to join the reviewer team of our journal /Forum for Linguistic Studies/.
+
+/Forum for Linguistic Studies/ is a peer-reviewed international open-access journal published by Academic Publishing Pte. Ltd. Our focus is on publishing cutting-edge research in general and applied linguistics, as well as the philosophy of language.
+
+As a recently SCOPUS-indexed journal, we are actively seeking to expand our team of reviewers. If you hold a Ph.D. and have an interest in reviewing manuscripts related to linguistics, we warmly invite you to join us.
+
+Our journal offers a special publication discount to reviewers. Excellent reviewers can receive the maximum discount for the regular APC (Article Processing Charge).
+
+Additionally, we will issue a certificate of review after you have completed the first round of review and submitted the review report. 
+
+If you are interested or have any questions about our journal, please do not hesitate to contact me. Our team is committed to repaying your trust with professionalism and enthusiasm, and we believe that FLS will become a highly influential academic journal in the field of linguistics with our collective efforts.
+
+Looking forward to your positive reply.
+
+Best wishes,
+April Chow
+
+Academic Publishing Pte. Ltd.
+Address: 73 Upper Paya Lebar Road #07-02B-01 Centro Bianco Singapore 534818
+
+------------------------------------------------------
+FLS Special Issues / Call for papers!
+
+
+
+
+
+Hi team,
+
+New to using randomise and was wondering what would be the best way to run multiple linear regressions on whole-brain FA maps (from TBSS) using randomise? Or is there another tool I should use instead?
+Sorry if I missed that topic somewhere, but would really appreciate any advice here.
+
+Many thanks in advance,
+
+Yann
+########################################################################
+
+
+Hello,
+The two files below should work with fslmaths -  can you upload the two files to a download service ( e.g. Google Drive, Dropbox ) and let me know the link so we can investigate locally? fslmaths ( along with many of our other tools ) can only work with images of identical spatial dimensions - is it possible that the previous 1mm mask may have been used with upsampled data ( or conversely downsampled to match the input )?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 25 Jul 2023, at 17:03, R. Duke <000000a73a131d21-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Sorry, here is the mask I'm using:
+
+sizeof_hdr 348
+data_type FLOAT32
+dim0 3
+dim1 91
+dim2 109
+dim3 91
+dim4 1
+dim5 1
+dim6 1
+dim7 1
+vox_units mm
+time_units s
+datatype 16
+nbyper 4
+bitpix 32
+pixdim0 -1.000000
+pixdim1 2.000000
+pixdim2 2.000000
+pixdim3 2.000000
+pixdim4 1.000000
+pixdim5 1.000000
+pixdim6 1.000000
+pixdim7 1.000000
+vox_offset 352
+cal_max 0.000000
+cal_min 0.000000
+scl_slope 1.000000
+scl_inter 0.000000
+phase_dim 0
+freq_dim 0
+slice_dim 0
+slice_name Unknown
+slice_code 0
+slice_start 0
+slice_end 0
+slice_duration 0.000000
+toffset 0.000000
+intent Unknown
+intent_code 0
+intent_name 
+intent_p1 0.000000
+intent_p2 0.000000
+intent_p3 0.000000
+qform_name MNI_152
+qform_code 4
+qto_xyz:1 -2.000000 0.000000 -0.000000 90.000000
+qto_xyz:2 0.000000 2.000000 -0.000000 -126.000000
+qto_xyz:3 0.000000 0.000000 2.000000 -72.000000
+qto_xyz:4 0.000000 0.000000 0.000000 1.000000
+qform_xorient Right-to-Left
+qform_yorient Posterior-to-Anterior
+qform_zorient Inferior-to-Superior
+sform_name MNI_152
+sform_code 4
+sto_xyz:1 -2.000000 0.000000 0.000000 90.000000
+sto_xyz:2 0.000000 2.000000 0.000000 -126.000000
+sto_xyz:3 0.000000 0.000000 2.000000 -72.000000
+sto_xyz:4 0.000000 0.000000 0.000000 1.000000
+sform_xorient Right-to-Left
+sform_yorient Posterior-to-Anterior
+sform_zorient Inferior-to-Superior
+file_type NIFTI-1+
+file_code 1
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi Melissa,
+                   If you are using the system python ( installed via xcode-select ) then can you try adding the following options:
+
+python3 fslinstaller. py --skip_ssl_verify --conda
+
+If you installed Python via https://www.python.org, can you rry running the "Install Certificates" command? There are more details at this link: https://bugs.python.org/msg388144.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Hi Paul,
+
+I found what went wrong (typo in the bash script).
+Now fsleyes opens without problems. The creation of the new environment for fsleyes seems to be the solution - brilliant. Thanks so much for all your help.
+
+Best,
+Udo
+
+
+
+Hello,
+ Can you let me know the result of running fslhd on both the input and mask images?
+
+Kind Regards
+Matthew
+
+FSL Experts,
+
+*The mask was created from the standard space template (all files are in 2mm space).
+
+In earlier versions of FSL I was able to multiply my zstat file by a left or right hemisphere mask. When attempting to complete the same procedure (fslmaths <filename> -mul <mask name> <output name>), I now get the following error:
+
+
+WARNING:: Inconsistent orientations for individual images in pipeline!
+          Will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Image Exception : #3 :: Attempted to multiply images of different sizes
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Attempted to multiply images of different sizes
+
+
+How might I remedy this error?
+
+Versions of FSL: 6.0.2 and 6.0.6.4
+
+Cheers,
+
+R
+
+########################################################################
+
+
+FSL Experts,
+
+In earlier versions of FSL I was able to multiply my zstat file by a left or right hemisphere mask. When attempting to complete the same procedure (fslmaths <filename> -mul <mask name> <output name>), I now get the following error:
+
+
+WARNING:: Inconsistent orientations for individual images in pipeline!
+          Will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+Image Exception : #3 :: Attempted to multiply images of different sizes
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Attempted to multiply images of different sizes
+
+
+How might I remedy this error?
+
+Versions of FSL: 6.0.2 and 6.0.6.4
+
+Cheers,
+
+R
+
+########################################################################
+
+
+Hi Paul,
+
+you were right, I couldn't downgrade the ffi library (because of my python version). So, I tried your third option but didn't seem to get it right. After running the three commands, when I call fsleyes from the fsl gui I get the following:
+bash-3.2$ fsl
+sh: /Users/udowill/fsl/bin/fsleyes: /Users/udowill/fsl/bin/env: bad interpreter: No such file or directory
+
+I don't seem to see what went wrong.
+
+Best
+Udo
+
+
+
+If downgrading the libffi version in your installation fails (as I suspect it will), a third option could be to install a separate copy of FSLeyes. You should be able to do that as follows:
+
+Run this command to create a separate conda environment that just contains FSLeyes:
+
+$FSLDIR/bin/mamba create -n fsleyes fsleyes "libffi=3.3.*"
+
+Open $FSLDIR/bin/fsleyes in a text editor, and replace its contents with the following:
+
+#!/usr/bin/env bash
+$FSLDIR/envs/fsleyes/bin/fsleyes "$@"
+
+Update $FSLDIR/share/fsl/bin/fsleyes by running:
+
+cp $FSLDIR/bin/fsleyes $FSLDIR/share/fsl/bin/fsleyes
+Then (hopefully) you will be able to run the "fsleyes" command.
+
+Paul
+
+Hi Udo,
+
+This confirms my suspicions. As an interim solution until this problem has been fixed, I think you have two options. Unfortunately neither of these options are guaranteed to work, but hopefully one of them will work for you.
+
+Downgrade the version of libffi in your FSL installation. You can try this by running the following command:
+
+$FSLDIR/bin/mamba install "libffi=3.3.*"
+
+Upgrade to a more recent version of macOS. I think the MacPro 5.1 supports Mojave (10.14) (although this problem has also been reported on that version of macOS).
+Paul
+
+Hi Paul,
+
+this is the terminal output running the two commands:
+
+[MacPro-HighS:~] *% fslpython -c 'import send2trash.mac.modern'
+Segmentation fault
+[MacPro-HighS:~] *% fslpython -c 'import send2trash.mac.legacy'
+Segmentation fault
+[MacPro-HighS:~] *%
+
+Best
+Udo
+
+Dear all (apologies for cross posting),
+ 
+We have an opportunity for 2 postdoctoral fellow positions to work in our lab at the Centre for Cognitive Neuroimaging (CCNi) at the University of Glasgow.
+ 
+These posts have a strong computational cognitive neuroimaging component, requiring advances in 1) theoretical neuroscience – to enable the development of a unified computational framework for integrating perceptual and reward learning and decision making – and 2) multimodal brain imaging – to offer a high spatiotemporal characterisation of the relevant cortical and subcortical pathways. The post holder will have the opportunity to be involved in cutting-edge bespoke neuroimaging technology [7TfMRI-EEG fusion] and advanced data analytics to uncover and predict patterns in large multimodal datasets [e.g. behaviour, simultaneous EEG-fMRI and eye-tracking data].
+ 
+For more details and to apply online, please follow the link:
+my.corehr.com/pls/uogrecruit/erq_jobspec_version_4.jobspec?p_id=122008
+ 
+Closing date: 31 August 2023
+
+
+HI Jee Won,
+
+What happens with the latest version of FSL / FSLeyes under MobaXTerm?
+
+Paul
+
+Hi Udo,
+
+I suspect that this problem is with a third party library. Would you be able to perform a test for me, to see if my suspicions are correct? Could you run these command in a terminal and see if any of them result in a segmentation fault?
+
+fslpython -c 'import send2trash.mac.modern'
+fslpython -c 'import send2trash.mac.legacy'
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Will, Udo <will.51@OSU.EDU>
+Sent: 21 July 2023 17:26
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] calling fsleyes leads to python quitting
+ 
+Thanks Paul, the file is uploaded.
+
+Udo
+
+Hello,
+
+I'm trying to get the connectivity matrix between 50 ROIs and 120 ROIs.
+
+What is the most suitable option, please?
+
+1- Output the ROIs by ROIs matrix (170 x 170) with the -network option, and then select what I'm interested in.
+2- Use the -matrix3 option and then group the voxels by ROIs using the coordinates file.
+
+- I've noticed that the total number of streamlines in matrix1 is different from the total of the network matrix, any explanation, please?
+
+Thanks in advance,
+Zakaria
+
+You may have misspelled the word "list" as "lista" in your script and it couldn't find the text file.
+
+hozelo@lamad-alnilam:~$ /usr/local/fsl/bin/melodic -i lista.txt -o gica20.ica -v --nobet --bgthreshold=10 --tr=2.0 --report -d 20 --mmthresh=0.5 --Ostats -a concat
+
+On Mon, Jul 24, 2023 at 6:42 PM Helka Ozelo <helka.ozelo@gmail.com> wrote:
+Hi Paul,
+
+group melodic is running now...I don't know why but linux was not recognizing my txt file. So I created a new file using "cat > list.txt" e it's worked.
+I leave here my solution to another one who needs.
+
+Thanks for your attention.
+
+Cheers,
+Helka
+
+Thanks, Matthew. That's what I was looking for!
+
+Best,
+Tamires
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Monday, July 24, 2023 2:30 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] resting state - continuum analysis
+ 
+Hi Tamires,
+  You can use any GLM design with dual_regression. If I understand your study correctly, you want to correlate a continuous variable ( severity ) with RSN-differences for a single cohort - in that case this design https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/GLM#Single-Group_Average_with_Additional_Covariate should work - you may want to modify the contrasts for your study ( e.g. drop the group-mean, test the opposite direction for the continuous covariate, and use a F-test to test for significance across those contrasts ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+

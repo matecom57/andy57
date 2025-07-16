@@ -1,0 +1,433 @@
+Hi Paul,
+
+Please see the screenshot below showing symbolic links in $FSLDIR/bin. The screenshot also shows the output from echo $FSLDIR, echo $PATH and errors I receive when trying to run Feat or Feat_gui. The only config file used for FSL is .bash_profle.
+
+
+
+Thanks,
+Eddie
+
+On Mon, Mar 11, 2024 at 12:52 PM Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Eddie,
+
+There should not be any soft/symbolic links in either $FSLDR/bin/ or $FSLDIR/share/fsl/bin/. $FSLDIR/bin/ should contain the actual FSL executables (along with a range of other executable files), and $FSLDIR/share/fsl/bin/ should contain "wrapper" scripts for each of them - this is further described at https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/configuration?id=fsl-executable-directory-fsldirbin-and-fsldirsharefslbin
+
+Can you check that the FSL configuration steps are being applied, by running "echo $FSLDIR" and "echo $PATH"?  Do you have any other shell configuration files, such as ~/.profile or ~/.bashrc, which might be overriding your environment variables?
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Edward Zuniga <eazuniga@VCU.EDU>
+Sent: 08 March 2024 20:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Feat command not found
+ 
+Hello,
+
+I recently installed FSL 6.0.7.7 on Rocky Linux 8. My .bash_profile is set as:
+
+# FSL Setup
+FSLDIR=/usr/local/software/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+When I attempt to run the "Feat" command, it says the command is not found. I noticed that the soft links for Feat and others are only located in $FSLDIR/bin. Why are these soft links not also located in $FSLDIR/share/fsl/bin? Should I also add $FSLDIR/bin to the PATH in order to use these soft links?
+
+Thanks,
+Eddie
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+To unsubscribe from the FSL list, click the following link: https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+--
+Edward A. Zuniga
+Senior Research Analyst/CARI MRI Lab Manager
+Virginia Commonwealth University
+C. Kenneth and Dianne Wright Center for Clinical and Translational Research
+Institute for Drug and Alcohol Studies
+Collaborative Advanced Research Imaging (CARI) Facility
+203 East Cary Street, Suite 202
+Richmond, Virginia 23219
+Phone: (804) 828-4184
+Fax: (804) 827-2565
+eazuniga@vcu.edu
+
+
+
+Matthew,
+
+Ok I think I resolved it by bringing up a fresh model. I’ve never checked these boxes before nor do I see any tutorials or boxes checked on the home page, but the model ran when I checked the boxes next to each contrast on the full model setup -> contrast tab. 
+
+Do you know what these boxes are doing and why that solved the issue? See attached picture. 
+
+
+
+Matt
+
+
+
+From: Sherwood, Matt <matt.sherwood@wright.edu>
+Sent: Thursday, March 21, 2024 9:35:52 AM
+To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+ 
+In my log directory, I have:
+
+ 
+
+feat0    1kb
+
+feat1    3kb
+
+feat2_pre         283kb
+
+feat2_pre.e###            0kb     
+
+feat2_pre.o###            0kb
+
+feat9    1kb
+
+ 
+
+I did just submit another post regarding this issue. It’s weird because my first level folders do not contain reg_standard despite not selected cleanup firstlevel standard space images.
+
+ 
+
+I’m including here the feat2_pre, but also report_poststats.html and feat3c_flame from cope1.feat. Also the design.fsf file.
+
+ 
+
+-Matt
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <0000bb75d3c794d0-dmarc-request@JISCMAIL.AC.UK>
+Date: Tuesday, March 19, 2024 at 18:25
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Group feat error: tmpreport_poststats.html
+
+Hi Matt, Can you upload the full log file? Kind Regards Matthew -------------------------------- Dr Matthew Webster FMRIB Centre John Radcliffe Hospital University of Oxford On 13 Mar 2024, at 17: 55, Sherwood, Matt <matt. sherwood@ WRIGHT. EDU>
+
+ZjQcmQRYFpfptBannerStart
+
+CAUTION: This Message Is From an External Sender
+
+Exercise caution when opening attachments or clicking links.
+
+ 
+
+ZjQcmQRYFpfptBannerEnd
+
+Hi Matt,
+
+Can you upload the full log file?
+
+ 
+
+Kind Regards
+
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+
+On 13 Mar 2024, at 17:55, Sherwood, Matt <matt.sherwood@WRIGHT.EDU> wrote:
+
+ 
+
+I am getting an error when running group feat on the poststats side. The error is saying that it cannot find tmpreport_poststats.html (line 312 of feat). Has anyone encountered this and discovered a solution.
+
+ 
+
+-Matt
+
+ 
+i Harry,
+
+This is due to a problem with a library that is not actually used by FSLeyes, but is being indirectly loaded. The problem only occurs on older versions of macOS  (background information here: https://github.com/arsenetar/send2trash/issues/83).
+
+I can't suggest a straightforward workaround, but you should be able to get FSLeyes working on your system by doing this:
+
+Open $FSLDIR/lib/python3.11/site-packages/send2trash/__init__.py in a text editor
+
+Change line 12 from:
+
+if version_info >= (3, 6) and macos_ver >= (10, 9):
+
+to:
+
+if version_info >= (3, 6) and macos_ver >= (10, 15):
+
+Paul
+
+
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Harry Moore <htamoore@GMAIL.COM>
+Sent: 22 March 2024 10:11
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSLeyes crashes upon opening MAC
+ 
+Dear FSL community,
+
+I'm a new FSL user and after following the installation instructions for Mac have found that FSLeyes crashes when trying to open: the main image/logo of FSLeyes opens briefly before crashing.
+
+The FSL GUI opens fine from the Terminal, but clicking on 'FSLeyes' in the FSL GUI doesn't work, and I get the message 'python3.11 quit unexpectedly' in a pop-up window.
+
+Trying to open FSLeyes directly from the Terminal doesn't work either, and I get the message: /Users/mbpuser/fsl/share/fsl/bin/fsleyes: line 2:   900 Segmentation fault: 11  /Users/mbpuser/fsl/bin/python3.11 -I /Users/mbpuser/fsl/bin/fsleyes "$@"
+
+I'm using an old Mac (late 2011) with macOS High Sierra 10.13.6
+
+Any help would be greatly appreciated.
+
+Regards,
+
+########################################################################
+
+
+Hi Paul,
+
+Please see the screenshot below showing symbolic links in $FSLDIR/bin. The screenshot also shows the output from echo $FSLDIR, echo $PATH and errors I receive when trying to run Feat or Feat_gui. The only config file used for FSL is .bash_profle.
+
+image.png
+
+Thanks,
+Eddie
+
+On Mon, Mar 11, 2024 at 12:52 PM Paul McCarthy <0000bcc6a697da3a-dmarc-request@jiscmail.ac.uk> wrote:
+Hi Eddie,
+
+There should not be any soft/symbolic links in either $FSLDR/bin/ or $FSLDIR/share/fsl/bin/. $FSLDIR/bin/ should contain the actual FSL executables (along with a range of other executable files), and $FSLDIR/share/fsl/bin/ should contain "wrapper" scripts for each of them - this is further described at https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/configuration?id=fsl-executable-directory-fsldirbin-and-fsldirsharefslbin
+
+Can you check that the FSL configuration steps are being applied, by running "echo $FSLDIR" and "echo $PATH"?  Do you have any other shell configuration files, such as ~/.profile or ~/.bashrc, which might be overriding your environment variables?
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Edward Zuniga <eazuniga@VCU.EDU>
+Sent: 08 March 2024 20:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Feat command not found
+ 
+Hello,
+
+I recently installed FSL 6.0.7.7 on Rocky Linux 8. My .bash_profile is set as:
+
+# FSL Setup
+FSLDIR=/usr/local/software/fsl
+PATH=${FSLDIR}/share/fsl/bin:${PATH}
+export FSLDIR PATH
+. ${FSLDIR}/etc/fslconf/fsl.sh
+
+When I attempt to run the "Feat" command, it says the command is not found. I noticed that the soft links for Feat and others are only located in $FSLDIR/bin. Why are these soft links not also located in $FSLDIR/share/fsl/bin? Should I also add $FSLDIR/bin to the PATH in order to use these soft links?
+
+Thanks,
+Eddie
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+--
+Edward A. Zuniga
+Senior Research Analyst/CARI MRI Lab Manager
+Virginia Commonwealth University
+C. Kenneth and Dianne Wright Center for Clinical and Translational Research
+Institute for Drug and Alcohol Studies
+Collaborative Advanced Research Imaging (CARI) Facility
+203 East Cary Street, Suite 202
+Richmond, Virginia 23219
+Phone: (804) 828-4184
+Fax: (804) 827-2565
+eazuniga@vcu.edu
+
+
+Dear all,
+
+Is the order of ICA components in FSLeyes from most to least explained variance? 
+I am using ICA to remove noise components (multiband artifacts, in particular). So, if I find noisy components only at the end of the list, in such a case their removal will have only negligible effect on the results.
+
+Thank you,
+Vadim
+
+
+Hello everyone,
+
+After doing further research I found the option to specify a regressor as empty but I am confused about the use-case of this option. Maybe this is because I use FSL in the context of the HCP task fMRI analysis, if that is the case please let me know and I'll ask the HCP mailing list.
+
+My problem while running the first and the second level for 1 participant is that I have some regressors without values in Run 1 and some regressors without values in Run 2, which is why I played around with a lot of ways to deal with it (providing empty .txt files, providing a .txt file with 0 0 0 and choosing the empty option in FEAT GUI). However, the problem seem to be that at the second level it looks for images that are missing in Run 1 (e.g. cope 9) but doesn't find them and fails. Is that how fsl works or is this a problem how the HCP pipelines uses FSL? If the former, what is the use case for an empty regressor if you can't combine it at the second level?
+
+Here is an error message I get:
+
+Image Exception : #63 :: No image files match: /home1/Jaquent/Datasets/VP00157_HCP/sessions/R0015_7TSESS1/hcp/R0015_7TSESS1/MNINonLinear/Results/tfMRI_OLMe/tfMRI_OLMe_sector_RSA_hp100_s2_level2.feat/GrayordinatesStats/1/cope9
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  No image files match: /home1/Jaquent/Datasets/VP00157_HCP/sessions/R0015_7TSESS1/hcp/R0015_7TSESS1/MNINonLinear/Results/tfMRI_OLMe/tfMRI_OLMe_sector_RSA_hp100_s2_level2.feat/GrayordinatesStats/1/cope9
+/opt/HCP/HCPpipelines/TaskfMRIAnalysis/scripts/TaskfMRILevel2.sh: line 294: 20997 Aborted                 fslmerge -t ${LevelTwoFEATDir}/${Analysis}/cope${copeCounter}.nii.gz $COPEMERGE
+Mon Mar 25 09:23:59 CST 2024:TaskfMRILevel2.sh: While running '/opt/HCP/HCPpipelines/TaskfMRIAnalysis/scripts/TaskfMRILevel2.sh R0015_7TSESS1 /home1/Jaquent/Datasets/VP00157_HCP/sessions/R0015_7TSESS1/hcp/R0015_7TSESS1/MNINonLinear/Results /home1/Jaquent/Datasets/VP00157_HCP/sessions/R0015_7TSESS1/hcp/R0015_7TSESS1/MNINonLinear/fsaverage_LR32k tfMRI_OLMe_RUN1_AP@tfMRI_OLMe_RUN2_AP tfMRI_OLMe_RUN1_AP_sector_RSA@tfMRI_OLMe_RUN2_AP_sector_RSA tfMRI_OLMe tfMRI_OLMe_sector_RSA 32 2 100 NO NONE NONE NONE NONE':
+Mon Mar 25 09:23:59 CST 2024:TaskfMRILevel2.sh: ERROR: 'fslmerge' command failed with return code: 134
+Mon Mar 25 09:23:59 CST 2024:TaskfMRILevel2.sh: ERROR: 'fslmerge' command failed with return code: 134
+
+
+
+Best wishes,
+
+Alex
+
+
+
+
+> -----Original Messages-----
+> From: "J. A. Quent" <00008dd4c15cace3-dmarc-request@JISCMAIL.AC.UK>
+> Send time:Friday, 03/22/2024 18:57:11
+> To: FSL@JISCMAIL.AC.UK
+> Subject: [FSL] What if a participant has no value for a regressor?
+> 
+> Dear FSL community,
+> I have a question that might be potentially very simple but I couldn't find any response to it so my apologies if I ask something obvious. What do you do if a participant doesn't have any event for a regressor? In the analysis that I plan there will be a lot of regressors, which mostly will be shared among all subjects but each subject will have some regressors where they won't have any events and events where this happens will be different from subject to subject. 
+> 
+> For those events, can I simply add empty event files or do I have to create subject-specific .fsf files where the corresponding regressors is not included?
+> 
+> Best wishes,
+> Alex
+> 
+> ########################################################################
+> 
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+> 
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+____________________________________
+Jörn Alexander Quent, PhD
+Post doctoral researcher
+Fudan University, Shanghai China
+Institute of Science and Technology for Brain-inspired Intelligence (ISTBI)
+https://jaquent.me
+https://twitter.com/J_A_Quent
+https://istbi.fudan.edu.cn
+
+Note: If I e-mail you during a time period that coincides with a period 
+where you’re on leave or that is a holiday period in your region, please 
+do not feel obliged to respond to me before you come back. In a global 
+world people do not celebrate the same holidays.
+
+
+DEADLINE APPROACHING
+
+The Faculty of Psychology and Educational Sciences of the University of Coimbra Portugal (FPCE-UC) invites applications from rising and enthusiastic researchers in Cognitive Science and Cognitive Neuroscience for 3 Post-Doctoral positions to work with Alfonso Caramazza and Jorge Almeida.
+
+These positions are part of a transformative ERA Chair grant CogBooster from the European Union to FPCE-UC led by Alfonso Caramazza. The goal of CogBooster is to implement a strong and international line of research in Basic Cognitive Science and Cognitive Neuroscience to contribute to the ongoing renewal of the Psychological Sciences in Portugal over the next decade.
+
+ 
+
+Positions:
+
+As part of this expansion and renewal, we are searching for Post-doctoral applicants with expertise related to the following areas:
+
+· 1 Post-doctoral position in any of the following areas: lexical processing, visual object recognition, reading, or action recognition.
+
+ 
+
+· 1 Post-doctoral position on visual object recognition, in particular on how object knowledge is organized and represented neurally and cognitively, using fMRI (potentially with ultra-high field MRI), and potentially ECoG/sEEG.
+
+ 
+
+· 1 Post-doctoral position on object dimensionality and dimensional mapping, using population receptive field analysis/connective field modeling to work on topics related to the following preprint: https://www.biorxiv.org/content/10.1101/2023.11.29.568856v1
+
+ 
+
+The selected applicants will work directly with Alfonso Caramazza and Jorge Almeida. They will be based in Coimbra, but will have the opportunity to spend some time at Harvard University, at Alfonso Caramazza’s laboratory.
+
+Qualifications:
+
+Applicants should be recent graduates – the date in their PhD diploma should not be before October 2021 (i.e., no more than 3 years from the signing of the contract). They should also have their diploma recognized in Portugal at the time of the signing of the contract (diploma recognition could be requested here). The start date is negotiable (but should be no later than fall 2024).
+
+The successful applicant should have a strong record of research for their career level, and meet, or show promise of meeting, the following qualifications:
+
+· Research potential through publications with impact in the field;
+
+· Proficiency in English, both written and spoken (speaking Portuguese is not necessary);
+
+· Good written and spoken communication skills;
+
+ 
+
+Offer:
+
+The positions do not involve formal teaching. They do involve, however, lab mentoring.
+
+ 
+
+The salary is competitive for Portuguese standards – 1800 euro per month net value. According to Numbeo, 1800 euro in Coimbra correspond to a local purchasing power of about 3230 euro in Paris, 3520 pounds in London (UK), 2685 euro in Brussels, 2385 euro in Rome, 2890 euro in Munich, about 4750 USD in Los Angeles, Boston or Washington, 4830 CAD in Toronto, or 5940 AUD euro in Sydney.
+
+The position will be for a maximum of 3 years, renewable every year.
+
+ 
+
+About FPCE-UC and Coimbra:
+
+
+Hi Beatrice
+
+ 
+
+The recommended pre-processing is the same whether you use noddi or other models down the line. We recommend distortion correction if possible (with Topup) followed by EDDY for eddy current correction.  The brain extraction is not strictly speaking necessary, but can help with downstream analyses (e.g. registration). You should provide the rotated bvecs to any analyses that use eddy corrected data, but that usually has minimal effect on the outcome compared to using the original bvecs.  
+
+ 
+
+Re your question on the tissue weighted mean (which I didn’t know about, so thanks for sharing): my understanding is this is meant to be used for doing ROI-wise averaging, where the averaging favours voxels with less CSF contamination. I don't think you can use this for voxelwise correction. Firstly, parameters like FA, ODI etc. are nonlinear (i.e. adding them in two voxels does not result in the same parameter you would get from averaging the signals from the two voxels). But even if they were linear, multiplying by the tissue fraction does not recover the true value.  You can see that by considering the equation Apparent_FA = f*True_FA + (1-f)*CSF_FA.  Multiplying the Apparent_FA by f does not recover True_FA. If anything, and assuming CSF_FA=0, you should divide by f. But of course FA is nonlinear, so this equation is not valid in the first place.
+
+ 
+
+Cheers
+
+Saad
+
+ 
+
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Beatrice Bravi <beatrice.bravi@GMAIL.COM>
+Date: Thursday, 21 March 2024 at 14:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] FSL preprocessing and NODDI
+
+Dear experts,
+I know that my question is not strictly related to FSL, however I don't find any other forum that could help me (neither DIFFUSION section here in JiscMail nor NODDI forum), so I try here: any help could be useful.
+I'm trying to run NODDI on my multi-shell data for the first time.
+I want to ask if there is an optimal pre- and post-processing pipeline before and after fitting NODDI. Until now I run FSL Eddy and BET for the extraction of the brain mask.
+Are there some specific options for eddy or other steps useful for a better DWI correction? Moreover, do I have to use as NODDI input a skull-stripped image or with the scalp?
+Also, when providing the bvecs for NODDI, do I have to put the original bvecs or the rotated ones produced by eddy?
+Last question: I read about tissue-weighted correction after ROI extraction as a procedure to correct ODI, NDI and other measures for the fraction representing the amount of tissue contained in each voxel. In particular, generate the tissue fraction (TF) map = 1-ISOI; then voxel-wise multiply both the NDI and ODI maps (or FA) by the TF map; finally extract the ROI mean of NDI * TF, ODI * TF and TF and divide mean NDI * TF and mean ODI * TF measures by the mean TF (https://github.com/tdveale/TissueWeightedMean). I was wondering if this could be performed also on voxel-wise data and not for the scalar extracted values, in order to use FA, ODI, (ect...) maps corrected for CSF as a sort of free water correction (so to stop at the second point were ODI (or whatever) map is multiplied by the TF map. Could be feasible or correct?
+Many thanks
+Sincerely
+
+Beatrice
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+

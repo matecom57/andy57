@@ -1,0 +1,2199 @@
+Hi,
+ 
+I am analyzing fMRI data collected by showing participants two videos. 
+Each video lasts 3 minutes. Therefore, each EPI data was recorded for 6 minutes and comprised of 180 volumes.
+I would like to see how watching the first video is different than the second video.
+However, I couldn’t find an appropriate shape for the EV in the GLM because I don’t think it is a regressor. 
+I am planning to extract timeseries of each condition and statistically analyze using a different statistical program.
+I just preprocessed the data without designating any conditions (other than motion parameters and scrubbing). 
+I am trying to extract timeseries from these preprocessed data possibly using ‘fslmeants.’
+Is there a way to extract one average timeseries from volumes 1 through 90 and another from volumes 91 through 180 using this function? 
+Or should I somehow split the fMRI data in half?
+ 
+In addition, after running first-level analysis, all the ‘filtered_func_data’ of participants don’t seem to be aligned in same coordinates.
+Is the registration step used only to calculate the transformation matrix and save it as a .mat file? 
+If so, should I transform ROI masks(in MNI space) to fit each participant’s brain?
+Would the following code be the right step to take?:
+                applywarp -I mask.nii -r reg/example_func.nii.gz -o mask_func –postmat=reg/highres2example-func.mat -w reg/highres2standard_warp_inv
+ 
+Thank you,
+Somin
+ 
+
+Hi FSL Team,
+
+I'm looking to run a VBM on longitudinal data. Simplifying the model a bit, it would be expressed in R-syntax as:
+
+MRIData ~ Protected * Group * TimeFromBaseline + AgeAtBaseline + (1 | Subject)
+
+Protected is a factor with two levels, Yes and No.
+Group is a factor with three levels: A, B, and C.
+
+Inquiry:
+
+I am primarily interested in extracting the T-values associated with assessing the triple interaction being non-zero. May I ask if the design matrix & contrast matrix are appropriately put together for this? I'm particularly confused about the encoding of the subject EVs using the Factor Effects approach to model design.
+
+Notes:
+
+The dataset is not balanced - some subjects are missing later timepoints, as is unfortunately often the case. Will this make FSL incompatible with the analysis? If so, are the alternatives that still implement voxelwise analysis but support missing timepoint data?
+
+Thank you very much in advance,
+Maurice
+
+
+
+########################################################################
+
+Hi Grace,
+                If you are using the system python ( installed via xcode-select ) then can you try adding the following options:
+
+python3 fslinstaller. py --skip_ssl_verify 
+
+If you installed Python via https://www.python.org, can you rry running the "Install Certificates" command? There are more details at this link: https://bugs.python.org/msg388144.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 15 Jan 2024, at 14:09, Grace Blissitt <gblissit@IC.AC.UK> wrote:
+
+Hi, I am trying to download FSL for the first time and I keep getting the following error message saying certificate verify error (please see copied code below)? I am working on a Mac and used the macOS 14 Sonoma. Please could you help resolve this. Many thanks,
+Grace
+
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+ File "/Users/gblissit/Downloads/fslinstaller.py", line 521, in download_manifest
+   download_file(url, 'manifest.json', **kwargs)
+ File "/Users/gblissit/Downloads/fslinstaller.py", line 479, in download_file
+   req = urlrequest.urlopen(url, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+   return opener.open(url, data, timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 515, in open
+   response = self._open(req, data)
+              ^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 532, in _open
+   result = self._call_chain(self.handle_open, protocol, protocol +
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+   result = func(*args)
+            ^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1392, in https_open
+   return self.do_open(http.client.HTTPSConnection, req,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1347, in do_open
+   raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+ File "/Users/gblissit/Downloads/fslinstaller.py", line 2483, in <module>
+   sys.exit(main())
+            ^^^^^^
+ File "/Users/gblissit/Downloads/fslinstaller.py", line 2431, in main
+   self_update(ctx.manifest, args.workdir, not args.no_checksum,
+               ^^^^^^^^^^^^
+ File "/Users/gblissit/Downloads/fslinstaller.py", line 1371, in manifest
+   self.__manifest = download_manifest(
+                     ^^^^^^^^^^^^^^^^^^
+ File "/Users/gblissit/Downloads/fslinstaller.py", line 525, in download_manifest
+   raise Exception('Unable to download FSL release manifest '
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>]!
+gblissit@IC-C6V7VRW77X Downloads %
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Sorry, link for the first MSM paper is here: https://www.sciencedirect.com/science/article/pii/S1053811914004546?via=ihub#s0095
+
+ 
+
+Logan
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Junjun Zhang <xmurio@HOTMAIL.COM>
+Date: Monday, 15 January 2024 at 21:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Align inter-subject functional time-series with MSM function
+
+[You don't often get email from xmurio@hotmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+
+To Whom It May Concern,
+
+        We are currently engaged in the analysis of fMRI data, employing inter-subject functional time-series alignment as outlined in the work by Sabuncu et al. (2010) titled 'Function-based intersubject alignment of human cortical anatomy' (Cerebral Cortex, 20(1), 130–140). Our dataset was acquired while a group of subjects watched the same movie in an fMRI scanner.
+
+Our objective is to warp the cortical surface of one subject to another, optimizing the vertex-wise inter-subject correlation based on the fMRI time-series during movie viewing. We are exploring the possibility of achieving this through multimodal alignments within the MSM (Multimodal Surface Registration) function.
+
+Despite our efforts to find relevant information online, we have not come across a detailed guide on utilizing the MSM function for this purpose. We are therefore seeking assistance from the community and would greatly appreciate any demo codes or guidance on how to perform this task using the MSM function. We really appreciate your help on this. Thank you in advance!
+
+Best,
+Junjun Zhang
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://eur03.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.jis
+
+Hi, I am trying to download FSL for the first time and I keep getting the following error message saying certificate verify error (please see copied code below)? I am working on a Mac and used the macOS 14 Sonoma. Please could you help resolve this. Many thanks,
+Grace
+
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gblissit/Downloads/fslinstaller.py", line 521, in download_manifest
+    download_file(url, 'manifest.json', **kwargs)
+  File "/Users/gblissit/Downloads/fslinstaller.py", line 479, in download_file
+    req = urlrequest.urlopen(url, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1392, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/urllib/request.py", line 1347, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gblissit/Downloads/fslinstaller.py", line 2483, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/gblissit/Downloads/fslinstaller.py", line 2431, in main
+    self_update(ctx.manifest, args.workdir, not args.no_checksum,
+                ^^^^^^^^^^^^
+  File "/Users/gblissit/Downloads/fslinstaller.py", line 1371, in manifest
+    self.__manifest = download_manifest(
+                      ^^^^^^^^^^^^^^^^^^
+  File "/Users/gblissit/Downloads/fslinstaller.py", line 525, in download_manifest
+    raise Exception('Unable to download FSL release manifest '
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>]!
+gblissit@IC-C6V7VRW77X Downloads %
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hi, everyone,
+
+I have a quick confirmation question about the preprocessed output files in the .feat folder.
+
+I have applied B0 unwarping for my data in the preprocessing step and there are different files and folders within this .feat folder.
+
+In the "reg" folder, we have "initial_highres2highres.nii.gz".
+In the "unwarp" folder inside "reg" (i.e., /reg/unwarp), we have "initial_highres_distorted2highrest.nii.gz".
+
+I was wondering which of the images is the corrected image?
+
+My understanding is that the initial_highrest_distorted2highrest.nii.gz is the corrected image and it also looks better aligned with the highres.nii.gz in my case. But in the FSL practicals, it mentions "For example, the uncorrected registration result is in the file unwarp/example_func_distorted2highres.nii.gz......". It seems to be conflicting with my understanding and the results I observed in my case. So, I'm a bit confused as to which one is the corrected image. Thanks!
+
+########################################################################
+
+Hi Junjun,
+
+ 
+
+You can read the first MSM paper to get an idea of how to use MSM for functional alignment:
+
+ 
+
+The parameters for MSM function are given in the supplementary data for this paper (Section 1.3.2. Parameters for Figure 5): https://ars.els-cdn.com/content/image/1-s2.0-S1053811914004546-mmc1.pdf. The MSM function was initialised using MSM-Myelin, which uses a T1w/T2w ratio map to get surfaces into approximate alignment first. If you have a T1w and T2w image, you can create a myelin map using the HCP minimal preprocessing pipeline: https://github.com/Washington-University/HCPpipelines/blob/master/PostFreeSurfer/scripts/CreateMyelinMaps.sh
+
+ 
+
+You could then run spatial ICA on the cleaned timeseries to get components to drive registration. Selecting the optimal number of components etc. is a different matter, and ideally there would be some left-out data that you can use to validate the registration. You should also check the distortion of the cortical meshes to make sure you aren’t getting anything unrealistic (you can have great overlap with biologically implausible distortions)  - this is also covered in the MSM paper.
+
+ 
+
+Best wishes,
+
+ 
+
+Logan
+
+ 
+
+ 
+
+ 
+
+Dear Robert,
+thank you so much for your reply! I highly appreciate it!
+
+My situation is a bit different though. If I had access to the images, I could probably answer all my questions myself by doing exactly what you suggest - I always use that procedure to get the diffusion metrics. The problem is that I am usually given ready, nice and raw diffusion-weighted data with which I work.
+
+Now, on the contrary - I need to dig into these scans and pick up which images are usable myself (I cannot download them but just look at them from one of our clinical systems). Only afterward, I will be allowed to request them and someone who has permission to download them will download them for me. Therefore, I was kind of trying to "understand" what the radiologists did (as I have no idea who they are in order to ask them either). In the system I use, I only see the images with their labels, but I cannot download them and my supervisor expects me to say "which are usable".
+
+That is new to me and I don't understand it very well. That is why I asked those silly questions about dwi to dti conversion. As far as my understanding goes, dwi are the images acquired during the scanning + some diffusion metrics such as the directions + the non-dwi b0 etc images. During the analysis, I apply the DTI model and this turns the dwi data into dti data. Is that correct so?
+
+So, sometimes I see the radiologists have labeled some dwi images and no b-values are around. In that case, I should just assume that this is not usable for DTI analysis.
+In other cases, I see b-values and dwi images, but I have no idea whether directions were acquired. Where to look for that info? How can I understand that by just looking at a list of labels? Is there a separate image that would usually contain that "direction" info? I guess it is best to assume that since there is a b0 image, there shoudl be also something linked to "directions" somewhere and just request the dwi image and hope I will get the bvec and bvals?
+In the best scenario (i.e., 3rd case), the radiologists labeled the images "dti" which is great as I know that all is there. However, that is rare.
+
+Thank you again for your time and trying to help me and apologies for the lengthy reply!
+best wishes,
+Elisabeth M
+
+########################################################################
+
+
+Elizabeth,
+
+Are you able to get the DICOM images from the scanner?
+
+If so, take those images and apply the dcm2niix command to them, see this page 
+
+NITRC: dcm2nii: MainPage
+nitrc.org
+favicon.ico
+
+
+That will convert the dicom images to nifti images. In that process it will also create two text files, one with with a .bval and and the other with .bvec file extensions. 
+
+If you post those two files to the group, it can be determined if the data was sufficiently created to produce a diffusion tensor calculation. 
+
+This paper might help explain some things. 
+
+0471142719.2004.12.issue-1.cover.jpg
+Diffusion Tensor MR Imaging
+onlinelibrary.wiley.com
+
+
+Robert 
+
+On Jan 13, 2024, at 18:48, Elisabeth Maria Galas <0000b9dfa2ca2909-dmarc-request@jiscmail.ac.uk> wrote:
+
+﻿Hello Matt,
+thank you!
+
+Ok, so the b0 is usually clearly visible if there at all. However, how to know about the "lack or availability of the direction information" (if I cannot check the header straight ahead). I only have these sequences called "dwi_axial". So, they are useless?
+
+DWI is the basis of DTI. However, if the specific DTI model was not applied to the DWI image (during the scanning), I should not be able to get that direction info, no matter what I do. I would be surprised if it is otherwise?
+
+What do you mean by computed images? These are all raw images.
+
+Thank you,
+Elisabeth
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Hello Matt,
+thank you!
+
+Ok, so the b0 is usually clearly visible if there at all. However, how to know about the "lack or availability of the direction information" (if I cannot check the header straight ahead). I only have these sequences called "dwi_axial". So, they are useless?
+
+DWI is the basis of DTI. However, if the specific DTI model was not applied to the DWI image (during the scanning), I should not be able to get that direction info, no matter what I do. I would be surprised if it is otherwise?
+
+What do you mean by computed images? These are all raw images.
+
+Thank you,
+Elisabeth
+
+
+Dear FSL team,
+
+I have three general DTI questions:
+
+1) I am going through some clinical scans and see the radiologists only have DWI sequences taken during the scan but nothing labeled "DTI". Can I convert these DWI somehow to DTI-usable images? OR since DTI sequence was not officially part of the scanning protocol, there is no way for me to get a DTI image? I saw the Internet might offer some converters from DWI to DTI, but they look suspicious.
+
+What is your opinion?
+To me, it is more like a "NO", as if the transition from DWI to DTI was so easy, no one would bother having 10+min DTI sequences in their protocols and bother critically ill patients.
+
+
+2) when there is a clear DTI sequence taken, there are also these "adc", "tracew" images. Do I actually need them for anything as I usually get all the tensor data/info from the DTI images themselves?
+
+
+3) sometimes radiologists are labeling my DTI images like "ep2d diff MDDW_DTI". Is that ok (the problem is that I can neither download these images myself to check straight ahead nor to ask anyone as I have no access to these radiologists). Should this label of the ep2d multi-directional diffusion weighting bother me? I don't understand it.
+
+Thank you in advance for your help! I would highly appreciate it!
+Elisabeth
+
+########################################################################
+
+
+You need at least a b0 image and six directions to compute a tensor.  If you want it to be unbiased you need 30 directions.  The computed images are not what you need, you need the raw diffusion data with the individual directions.
+
+Matt.
+
+﻿On 1/13/24, 6:49 PM, "FSL - FMRIB's Software Library on behalf of Elisabeth M Galas" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 0000b9dfa2ca2909-dmarc-request@JISCMAIL.AC.UK <mailto:0000b9dfa2ca2909-dmarc-request@JISCMAIL.AC.UK>> wrote:
+
+
+Dear FSL team,
+
+
+I have three general DTI questions:
+
+
+1) I am going through some clinical scans and see the radiologists only have DWI sequences taken during the scan but nothing labelled "DTI". Can I convert these DWI somehow to DTI-usable images? OR since DTI sequence was not officially part of the scanning protocol, there is no way for me to get a DTI image? I saw the Internet might offer some converters from DWI to DTI, but they look suspicious.
+
+
+What is your opinion?
+To me, it is more like a "NO", as if the transition from DWI to DTI was so easy, no one would bother having 10+min DTI sequences in their protocols and bother critically ill patients.
+
+
+
+
+2) when there is a clear DTI sequence taken, there are also these "adc", "tracew" images. Do I actually need them for anything as I usually get all the tensor data/info from the DTI images themselves?
+
+
+
+
+3) sometimes radiologists are labeling my DTI images like "ep2d diff MDDW_DTI". Is that ok (the problem is that I can neither download these images myself to check straight ahead nor to ask anyone as I have no access to these radiologists). Should this label of the ep2d multi-directional diffusion weighting bother me? I don't understand it.
+
+
+Thank you in advance for your help! I would highly appreciate it!
+Elisabeth
+
+
+Dear FSL team,
+
+I have three general DTI questions:
+
+1) I am going through some clinical scans and see the radiologists only have DWI sequences taken during the scan but nothing labelled "DTI". Can I convert these DWI somehow to DTI-usable images? OR since DTI sequence was not officially part of the scanning protocol, there is no way for me to get a DTI image? I saw the Internet might offer some converters from DWI to DTI, but they look suspicious.
+
+What is your opinion?
+To me, it is more like a "NO", as if the transition from DWI to DTI was so easy, no one would bother having 10+min DTI sequences in their protocols and bother critically ill patients.
+
+
+2) when there is a clear DTI sequence taken, there are also these "adc", "tracew" images. Do I actually need them for anything as I usually get all the tensor data/info from the DTI images themselves?
+
+
+3) sometimes radiologists are labeling my DTI images like "ep2d diff MDDW_DTI". Is that ok (the problem is that I can neither download these images myself to check straight ahead nor to ask anyone as I have no access to these radiologists). Should this label of the ep2d multi-directional diffusion weighting bother me? I don't understand it.
+
+Thank you in advance for your help! I would highly appreciate it!
+Elisabeth
+
+########################################################################
+
+
+Ahh I see okay! That’s perfect thank you so much, I didn’t notice this. At this point I have already un- and re-installed FSL and now everything is working perfectly :) But thank you again for your help!
+
+On Sat 13. Jan 2024 at 17:19, Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+
+Aah - I see what is happening - the update_fsl_package command is not actually updating the package, because the version numbers are the same (only the 'build' number has changed). I'll fix this for the next FSL release.
+
+If you haven't already re-installed FSL, you should be able to run this command instead to update the fsl-fugue package:
+
+$FSLDIR/bin/mamba update -p $FSLDIR fsl-fugue
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Amy Addlesee <amyaddlesee@GMAIL.COM>
+Sent: 12 January 2024 12:27
+
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] GUI and error with fsl_prepare_fieldmap
+ 
+Perfect thank you for helping me out. I'll just go ahead and reinstall the whole thing :)
+
+On Fri, Jan 12, 2024 at 1:26 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+    I’m not sure why fsl-fugue isn’t updating, but it’s probably quickest to go with a full re-install as Paul suggested.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 12 Jan 2024, at 12:22, Amy Addlesee <amyaddlesee@GMAIL.COM> wrote:
+
+It's strange - I have also tried doing:
+
+$FSLDIR/bin/update_fsl_package --all
+
+This showed me a variety of available updates, and I accepted them all.
+
+Then after the updates had run, I ran "$FSLDIR/bin/update_fsl_package --all" again. When I did this, all the other uodates were completed, but the fugue package still showed as being an available update.
+
+On Fri, Jan 12, 2024 at 4:25 AM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+
+Updating the fsl-fugue package should resolve this issue. If you run:
+
+$FSLDIR/bin/update_fsl_package fsl-fugue
+
+it should update fsl-fugue from "2201.4 (build 0)" to " 2201.4 (build 1)".
+
+If this is not working for you, can you share the output that is printed when you run the command?
+
+Another option you could take is to re-install FSL - the fixed version of fsl-fugue should be installed in new installations.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Amy Addlesee <amyaddlesee@GMAIL.COM>
+Sent: 10 January 2024 11:58
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] GUI and error with fsl_prepare_fieldmap
+ 
+Hi,
+
+Unfortunately I am having the exact same issue, and updating the fsl-fugue package has not fixed the problem.
+
+As soon as I run 'fsl_prepare_fieldmap', a '-1' is printed in the terminal. A second, empty, fsl_prepare_fieldmap gui window also appears, whilst the first gui window gets stuck in a loading state, with a message saying "Running script ... please wait" (I have then waited up to 45 minutes and nothing happened). When I then click 'Exit' on the second empty gui window, a message pops up on the first window saying "Output from script: -1". My task manager says that the window is 'not responding'. Typing out the command manually in the terminal also doesn't resolve the problem.
+
+Any ideas? Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hi Andreas,
+
+I suspect that the most recent error was a transient network glitch, so I'd recommend simply trying again.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 12 January 2024 19:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsl on wsl2 / windows 10
+ 
+Hi Matthew,
+
+ 
+
+thanks – I appreciate your guidance.
+
+Ok, when I do:
+
+ 
+
+ wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+ 
+
+I get:
+
+ 
+
+--2024-01-12 19:40:14--  https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Resolving conda.anaconda.org (conda.anaconda.org)... 104.17.15.67, 104.17.16.67, 2606:4700::6811:1043, ...
+
+Connecting to conda.anaconda.org (conda.anaconda.org)|104.17.15.67|:443... connected.
+
+ERROR: cannot verify conda.anaconda.org's certificate, issued by ‘CN=radio-FILESRVR-CA,DC=radio’:
+
+  Self-signed certificate encountered.
+
+To connect to conda.anaconda.org insecurely, use `--no-check-certificate'.
+
+ 
+
+But when I do:
+
+ 
+
+bartsch@ARZT-AB:~$ wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2 --no-check-certificate
+
+ 
+
+It seems to work:
+
+ 
+
+--2024-01-12 19:40:45--  https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Resolving conda.anaconda.org (conda.anaconda.org)... 104.17.15.67, 104.17.16.67, 2606:4700::6811:1043, ...
+
+Connecting to conda.anaconda.org (conda.anaconda.org)|104.17.15.67|:443... connected.
+
+WARNING: cannot verify conda.anaconda.org's certificate, issued by ‘CN=radio-FILESRVR-CA,DC=radio’:
+
+  Self-signed certificate encountered.
+
+HTTP request sent, awaiting response... 200 OK
+
+Length: 4320628 (4.1M) [binary/octet-stream]
+
+Saving to: ‘gettext-0.21.1-h27087fc_0.tar.bz2’
+
+ 
+
+gettext-0.21.1-h27087fc_0.tar.b 100%[=======================================================>]   4.12M  3.40MB/s    in 1.2s
+
+ 
+
+2024-01-12 19:41:02 (3.40 MB/s) - ‘gettext-0.21.1-h27087fc_0.tar.bz2’ saved [4320628/4320628]
+
+ 
+
+bartsch@ARZT-AB:~$
+
+ 
+
+ 
+
+So what is the best way to proceed?
+
+ 
+
+Cheers,
+
+Andreas
+
+Hi Amy,
+
+Aah - I see what is happening - the update_fsl_package command is not actually updating the package, because the version numbers are the same (only the 'build' number has changed). I'll fix this for the next FSL release.
+
+If you haven't already re-installed FSL, you should be able to run this command instead to update the fsl-fugue package:
+
+$FSLDIR/bin/mamba update -p $FSLDIR fsl-fugue
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Amy Addlesee <amyaddlesee@GMAIL.COM>
+Sent: 12 January 2024 12:27
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] GUI and error with fsl_prepare_fieldmap
+ 
+Perfect thank you for helping me out. I'll just go ahead and reinstall the whole thing :)
+
+On Fri, Jan 12, 2024 at 1:26 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+    I’m not sure why fsl-fugue isn’t updating, but it’s probably quickest to go with a full re-install as Paul suggested.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 12 Jan 2024, at 12:22, Amy Addlesee <amyaddlesee@GMAIL.COM> wrote:
+
+It's strange - I have also tried doing:
+
+$FSLDIR/bin/update_fsl_package --all
+
+This showed me a variety of available updates, and I accepted them all.
+
+Then after the updates had run, I ran "$FSLDIR/bin/update_fsl_package --all" again. When I did this, all the other uodates were completed, but the fugue package still showed as being an available update.
+
+On Fri, Jan 12, 2024 at 4:25 AM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+
+Updating the fsl-fugue package should resolve this issue. If you run:
+
+$FSLDIR/bin/update_fsl_package fsl-fugue
+
+it should update fsl-fugue from "2201.4 (build 0)" to " 2201.4 (build 1)".
+
+If this is not working for you, can you share the output that is printed when you run the command?
+
+Another option you could take is to re-install FSL - the fixed version of fsl-fugue should be installed in new installations.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Amy Addlesee <amyaddlesee@GMAIL.COM>
+Sent: 10 January 2024 11:58
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] GUI and error with fsl_prepare_fieldmap
+ 
+Hi,
+
+Unfortunately I am having the exact same issue, and updating the fsl-fugue package has not fixed the problem.
+
+As soon as I run 'fsl_prepare_fieldmap', a '-1' is printed in the terminal. A second, empty, fsl_prepare_fieldmap gui window also appears, whilst the first gui window gets stuck in a loading state, with a message saying "Running script ... please wait" (I have then waited up to 45 minutes and nothing happened). When I then click 'Exit' on the second empty gui window, a message pops up on the first window saying "Output from script: -1". My task manager says that the window is 'not responding'. Typing out the command manually in the terminal also doesn't resolve the problem.
+
+Any ideas? Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+
+Hi,
+
+ 
+
+I am analyzing fMRI data collected by showing participants two videos. 
+
+Each video lasts 3 minutes. Therefore, each EPI data was recorded for 6 minutes and comprised of 180 volumes.
+
+I would like to see how watching the first video is different than the second video.
+
+However, I couldn’t find an appropriate shape for the EV in the GLM because I don’t think it is a regressor. 
+
+I am planning to extract timeseries of each condition and statistically analyze using a different statistical program.
+
+I just preprocessed the data without designating any conditions (other than motion parameters and scrubbing). 
+
+I am trying to extract timeseries from these preprocessed data possibly using ‘fslmeants.’
+
+Is there a way to extract one average timeseries from volumes 1 through 90 and another from volumes 91 through 180 using this function? 
+
+Or should I somehow split the fMRI data in half?
+
+ 
+
+In addition, after running first-level analysis, all the ‘filtered_func_data’ of participants don’t seem to be aligned in same coordinates.
+
+Is the registration step used only to calculate the transformation matrix and save it as a .mat file? 
+
+If so, should I transform ROI masks(in MNI space) to fit each participant’s brain?
+
+Would the following code be the right step to take?:
+
+                applywarp -I mask.nii -r reg/example_func.nii.gz -o mask_func –postmat=reg/highres2example-func.mat -w reg/highres2standard_warp_inv
+
+ 
+
+Thank you,
+
+Somin
+
+ 
+
+
+
+Hi Paul,
+
+Thank you so much for your help
+
+Sincerely
+
+Beatrice
+
+########################################################################
+
+Hi FSL Team,
+
+I'm looking to run a VBM on longitudinal data. Simplifying the model a bit, it would be expressed in R-syntax as:
+
+MRIData ~ Protected * Group * TimeFromBaseline + AgeAtBaseline + (1 | Subject)
+
+Protected is a factor with two levels, Yes and No.
+Group is a factor with three levels: A, B, and C.
+
+Inquiry:
+
+I am primarily interested in extracting the T-values associated with assessing the triple interaction being non-zero. May I ask if the design matrix & contrast matrix are appropriately put together for this? I'm particularly confused about the encoding of the subject EVs using the Factor Effects approach to model design.
+
+Notes:
+
+The dataset is not balanced - some subjects are missing later timepoints, as is unfortunately often the case. Will this make FSL incompatible with the analysis? If so, are the alternatives that still implement voxelwise analysis but support missing timepoint data?
+
+Thank you very much in advance,
+Maurice
+
+
+
+########################################################################
+
+
+To Whom It May Concern,
+
+        We are currently engaged in the analysis of fMRI data, employing inter-subject functional time-series alignment as outlined in the work by Sabuncu et al. (2010) titled 'Function-based intersubject alignment of human cortical anatomy' (Cerebral Cortex, 20(1), 130–140). Our dataset was acquired while a group of subjects watched the same movie in an fMRI scanner.
+
+Our objective is to warp the cortical surface of one subject to another, optimizing the vertex-wise inter-subject correlation based on the fMRI time-series during movie viewing. We are exploring the possibility of achieving this through multimodal alignments within the MSM (Multimodal Surface Registration) function.
+
+Despite our efforts to find relevant information online, we have not come across a detailed guide on utilizing the MSM function for this purpose. We are therefore seeking assistance from the community and would greatly appreciate any demo codes or guidance on how to perform this task using the MSM function. We really appreciate your help on this. Thank you in advance!
+
+Best,
+Junjun Zhang
+
+########################################################################
+
+
+Hi Paul,
+
+ 
+
+unfortunately not:
+
+ 
+
+________
+
+python3 "/mnt/c/Users/nfarzt/Downloads/fslinstaller.py" --skip_ssl_verify
+
+FSL installer version: 3.5.10
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /tmp/fslinstaller_6b3siktx.log
+
+ 
+
+Skipping SSL verification - this is not recommended!
+
+FSL 6.0.7.6 selected for installation
+
+ 
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/home/bartsch/fsl]
+
+ 
+
+FSL installation directory [/home/bartsch/fsl]:
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.6_linux-64.yml...
+
+Skipping SSL verification - this is not recommended!
+
+ 
+
+Installing FSL in /home/bartsch/fsl
+
+ 
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-Linux-x86_64.sh...
+
+Skipping SSL verification - this is not recommended!
+
+[#####################################################################################################] 82.0 / 82.0 MB |
+
+Installing miniconda at /home/bartsch/fsl...
+
+[########################################################################################################] 100 / 100 % /
+
+Configuring conda to skip SSL verification - this is not recommended!
+
+Installing FSL into /home/bartsch/fsl...
+
+[############                                                                                             ] 12 / 100 % -
+
+ 
+
+ERROR occurred during installation!
+
+    This command returned an error: /home/bartsch/fsl/bin/mamba env update -n base -f /tmp/tmptd3oxfme/fsl-6.0.7.6_linux-64.yml
+
+ 
+
+Removing failed installation directory /home/bartsch/fsl
+
+ 
+
+FSL installation failed!
+
+ 
+
+Please check the log file - it may contain some more information to help you diagnose the problem: /home/bartsch/fsl_installation_20240114105531.log
+
+_______________
+
+ 
+
+Please find the logfile attached.
+
+Any suggestion on how to get beyond the error?
+
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Samstag, 13. Januar 2024 um 17:21
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Andreas,
+
+ 
+
+I suspect that the most recent error was a transient network glitch, so I'd recommend simply trying again.
+
+ 
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 12 January 2024 19:06
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Matthew,
+
+ 
+
+thanks – I appreciate your guidance.
+
+Ok, when I do:
+
+ 
+
+ wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+ 
+
+I get:
+
+ 
+
+--2024-01-12 19:40:14--  https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Resolving conda.anaconda.org (conda.anaconda.org)... 104.17.15.67, 104.17.16.67, 2606:4700::6811:1043, ...
+
+Connecting to conda.anaconda.org (conda.anaconda.org)|104.17.15.67|:443... connected.
+
+ERROR: cannot verify conda.anaconda.org's certificate, issued by ‘CN=radio-FILESRVR-CA,DC=radio’:
+
+  Self-signed certificate encountered.
+
+To connect to conda.anaconda.org insecurely, use `--no-check-certificate'.
+
+ 
+
+But when I do:
+
+ 
+
+bartsch@ARZT-AB:~$ wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2 --no-check-certificate
+
+ 
+
+It seems to work:
+
+ 
+
+--2024-01-12 19:40:45--  https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Resolving conda.anaconda.org (conda.anaconda.org)... 104.17.15.67, 104.17.16.67, 2606:4700::6811:1043, ...
+
+Connecting to conda.anaconda.org (conda.anaconda.org)|104.17.15.67|:443... connected.
+
+WARNING: cannot verify conda.anaconda.org's certificate, issued by ‘CN=radio-FILESRVR-CA,DC=radio’:
+
+  Self-signed certificate encountered.
+
+HTTP request sent, awaiting response... 200 OK
+
+Length: 4320628 (4.1M) [binary/octet-stream]
+
+Saving to: ‘gettext-0.21.1-h27087fc_0.tar.bz2’
+
+ 
+
+gettext-0.21.1-h27087fc_0.tar.b 100%[=======================================================>]   4.12M  3.40MB/s    in 1.2s
+
+ 
+
+2024-01-12 19:41:02 (3.40 MB/s) - ‘gettext-0.21.1-h27087fc_0.tar.bz2’ saved [4320628/4320628]
+
+ 
+
+bartsch@ARZT-AB:~$
+
+ 
+
+ 
+
+So what is the best way to proceed?
+
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Freitag, 12. Januar 2024 um 17:56
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Andreas,
+
+   I’ve run the same install command ( with --skip_ssl_verify selected ) locally and all was well. It might be worth checking that you can access the link with other commands, e.g.
+
+ 
+
+wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+ 
+
+Just in case this is a general connectivity issue?
+
+ 
+
+Kind Regards
+
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+ 
+
+On 12 Jan 2024, at 07:05, Andreas Bartsch <bartsch@RADVISORY.NET> wrote:
+
+ 
+
+Good morning Paul & Matthew,
+
+ 
+
+this gets me further but stucked later. Log attached.
+
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+python3 "/mnt/c/Users/nfarzt/Downloads/fslinstaller.py" --skip_ssl_verify
+
+FSL installer version: 3.5.10
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /tmp/fslinstaller_0fc3sv6v.log
+
+ 
+
+Skipping SSL verification - this is not recommended!
+
+FSL 6.0.7.6 selected for installation
+
+ 
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/home/bartsch/fsl]
+
+ 
+
+FSL installation directory [/home/bartsch/fsl]:
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.6_linux-64.yml...
+
+Skipping SSL verification - this is not recommended!
+
+ 
+
+Installing FSL in /home/bartsch/fsl
+
+ 
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-Linux-x86_64.sh...
+
+Skipping SSL verification - this is not recommended!
+
+[#####################################################################################################] 82.0 / 82.0 MB |Installing miniconda at /home/bartsch/fsl...
+
+[########################################################################################################] 100 / 100 % /Configuring conda to skip SSL verification - this is not recommended!
+
+Installing FSL into /home/bartsch/fsl...
+
+[############                                                                                             ] 12 / 100 % -
+
+ERROR occurred during installation!
+
+    This command returned an error: /home/bartsch/fsl/bin/mamba env update -n base -f /tmp/tmp1743b3zy/fsl-6.0.7.6_linux-64.yml
+
+ 
+
+Removing failed installation directory /home/bartsch/fsl
+
+ 
+
+FSL installation failed!
+
+ 
+
+Please check the log file - it may contain some more information to help you diagnose the problem: /home/bartsch/fsl_installation_20240112074933.log
+
+ 
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Freitag, 12. Januar 2024 um 06:12
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Andreas,
+
+ 
+
+Could you try re-running the installer script with the --skip_ssl_verify option? I've made a few updates to the installer (it will self-update when you run it).
+
+ 
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 11 January 2024 18:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Matthew,
+
+unfortunately not. Adding --conda does not help either. 
+It still ends up with:
+
+python3 fslinstaller.py --skip_ssl_verify
+FSL installer version: 3.5.9
+Press CTRL+C at any time to cancel installation
+Installation log file: /tmp/fslinstaller_93bx_soh.log
+
+
+Hi Matthew,
+
+ 
+
+thanks – I appreciate your guidance.
+
+Ok, when I do:
+
+ 
+
+ wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+ 
+
+I get:
+
+ 
+
+--2024-01-12 19:40:14--  https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Resolving conda.anaconda.org (conda.anaconda.org)... 104.17.15.67, 104.17.16.67, 2606:4700::6811:1043, ...
+
+Connecting to conda.anaconda.org (conda.anaconda.org)|104.17.15.67|:443... connected.
+
+ERROR: cannot verify conda.anaconda.org's certificate, issued by ‘CN=radio-FILESRVR-CA,DC=radio’:
+
+  Self-signed certificate encountered.
+
+To connect to conda.anaconda.org insecurely, use `--no-check-certificate'.
+
+ 
+
+But when I do:
+
+ 
+
+bartsch@ARZT-AB:~$ wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2 --no-check-certificate
+
+ 
+
+It seems to work:
+
+ 
+
+--2024-01-12 19:40:45--  https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Resolving conda.anaconda.org (conda.anaconda.org)... 104.17.15.67, 104.17.16.67, 2606:4700::6811:1043, ...
+
+Connecting to conda.anaconda.org (conda.anaconda.org)|104.17.15.67|:443... connected.
+
+WARNING: cannot verify conda.anaconda.org's certificate, issued by ‘CN=radio-FILESRVR-CA,DC=radio’:
+
+  Self-signed certificate encountered.
+
+HTTP request sent, awaiting response... 200 OK
+
+Length: 4320628 (4.1M) [binary/octet-stream]
+
+Saving to: ‘gettext-0.21.1-h27087fc_0.tar.bz2’
+
+ 
+
+gettext-0.21.1-h27087fc_0.tar.b 100%[=======================================================>]   4.12M  3.40MB/s    in 1.2s
+
+ 
+
+2024-01-12 19:41:02 (3.40 MB/s) - ‘gettext-0.21.1-h27087fc_0.tar.bz2’ saved [4320628/4320628]
+
+ 
+
+bartsch@ARZT-AB:~$
+
+ 
+
+ 
+
+So what is the best way to proceed?
+
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Freitag, 12. Januar 2024 um 17:56
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Andreas,
+
+   I’ve run the same install command ( with --skip_ssl_verify selected ) locally and all was well. It might be worth checking that you can access the link with other commands, e.g.
+
+ 
+
+wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+ 
+
+Just in case this is a general connectivity issue?
+
+ 
+
+Kind Regards
+
+Matthew
+
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+
+
+On 12 Jan 2024, at 07:05, Andreas Bartsch <bartsch@RADVISORY.NET> wrote:
+
+ 
+
+Good morning Paul & Matthew,
+
+ 
+
+this gets me further but stucked later. Log attached.
+
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+python3 "/mnt/c/Users/nfarzt/Downloads/fslinstaller.py" --skip_ssl_verify
+
+FSL installer version: 3.5.10
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /tmp/fslinstaller_0fc3sv6v.log
+
+ 
+
+Skipping SSL verification - this is not recommended!
+
+FSL 6.0.7.6 selected for installation
+
+ 
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/home/bartsch/fsl]
+
+ 
+
+FSL installation directory [/home/bartsch/fsl]:
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.6_linux-64.yml...
+
+Skipping SSL verification - this is not recommended!
+
+ 
+
+Installing FSL in /home/bartsch/fsl
+
+ 
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-Linux-x86_64.sh...
+
+Skipping SSL verification - this is not recommended!
+
+[#####################################################################################################] 82.0 / 82.0 MB |Installing miniconda at /home/bartsch/fsl...
+
+[########################################################################################################] 100 / 100 % /Configuring conda to skip SSL verification - this is not recommended!
+
+Installing FSL into /home/bartsch/fsl...
+
+[############                                                                                             ] 12 / 100 % -
+
+ERROR occurred during installation!
+
+    This command returned an error: /home/bartsch/fsl/bin/mamba env update -n base -f /tmp/tmp1743b3zy/fsl-6.0.7.6_linux-64.yml
+
+ 
+
+Removing failed installation directory /home/bartsch/fsl
+
+ 
+
+FSL installation failed!
+
+ 
+
+Please check the log file - it may contain some more information to help you diagnose the problem: /home/bartsch/fsl_installation_20240112074933.log
+
+ 
+
+ 
+
+ 
+
+Good morning Paul & Matthew,
+
+ 
+
+this gets me further but stucked later. Log attached.
+
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+python3 "/mnt/c/Users/nfarzt/Downloads/fslinstaller.py" --skip_ssl_verify
+
+FSL installer version: 3.5.10
+
+Press CTRL+C at any time to cancel installation
+
+Installation log file: /tmp/fslinstaller_0fc3sv6v.log
+
+ 
+
+Skipping SSL verification - this is not recommended!
+
+FSL 6.0.7.6 selected for installation
+
+ 
+
+Where do you want to install FSL?
+
+Press enter to install to the default location [/home/bartsch/fsl]
+
+ 
+
+FSL installation directory [/home/bartsch/fsl]:
+
+Downloading FSL environment specification from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/fsl-6.0.7.6_linux-64.yml...
+
+Skipping SSL verification - this is not recommended!
+
+ 
+
+Installing FSL in /home/bartsch/fsl
+
+ 
+
+Downloading miniconda from https://github.com/conda-forge/miniforge/releases/download/23.1.0-3/Mambaforge-23.1.0-3-Linux-x86_64.sh...
+
+Skipping SSL verification - this is not recommended!
+
+[#####################################################################################################] 82.0 / 82.0 MB |Installing miniconda at /home/bartsch/fsl...
+
+[########################################################################################################] 100 / 100 % /Configuring conda to skip SSL verification - this is not recommended!
+
+Installing FSL into /home/bartsch/fsl...
+
+[############                                                                                             ] 12 / 100 % -
+
+ERROR occurred during installation!
+
+    This command returned an error: /home/bartsch/fsl/bin/mamba env update -n base -f /tmp/tmp1743b3zy/fsl-6.0.7.6_linux-64.yml
+
+ 
+
+Removing failed installation directory /home/bartsch/fsl
+
+ 
+
+FSL installation failed!
+
+ 
+
+Please check the log file - it may contain some more information to help you diagnose the problem: /home/bartsch/fsl_installation_20240112074933.log
+
+ 
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Freitag, 12. Januar 2024 um 06:12
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Andreas,
+
+ 
+
+Could you try re-running the installer script with the --skip_ssl_verify option? I've made a few updates to the installer (it will self-update when you run it).
+
+ 
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 11 January 2024 18:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsl on wsl2 / windows 10
+
+ 
+
+Hi Matthew,
+
+unfortunately not. Adding --conda does not help either.
+It still ends up with:
+
+python3 fslinstaller.py --skip_ssl_verify
+FSL installer version: 3.5.9
+Press CTRL+C at any time to cancel installation
+Installation log file: /tmp/fslinstaller_93bx_soh.log
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/urllib/request.py", line 1354, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.8/http/client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/usr/lib/python3.8/http/client.py", line 1425, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+  File "/usr/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.8/ssl.py", line 1069, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.8/ssl.py", line 1338, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 499, in download_manifest
+    download_file(url, 'manifest.json')
+  File "fslinstaller.py", line 459, in download_file
+    req = urlrequest.urlopen(url, **kwargs)
+  File "/usr/lib/python3.8/urllib/request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.8/urllib/request.py", line 525, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.8/urllib/request.py", line 542, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.8/urllib/request.py", line 502, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.8/urllib/request.py", line 1397, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/usr/lib/python3.8/urllib/request.py", line 1357, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 2453, in <module>
+    sys.exit(main())
+  File "fslinstaller.py", line 2402, in main
+    self_update(ctx.manifest, args.workdir, not args.no_checksum)
+  File "fslinstaller.py", line 1347, in manifest
+    self.__manifest = download_manifest(self.args.manifest,
+  File "fslinstaller.py", line 503, in download_manifest
+    raise Exception('Unable to download FSL release manifest '
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)>]!
+
+﻿Am 11.01.24, 18:00 schrieb "FSL - FMRIB's Software Library im Auftrag von Matthew Webster" <FSL@JISCMAIL.AC.UK im Auftrag von matthew.webster@NDCN.OX.AC.UK>:
+
+
+Hi Matthew,
+
+unfortunately not. Adding --conda does not help either.
+It still ends up with:
+
+python3 fslinstaller.py --skip_ssl_verify
+FSL installer version: 3.5.9
+Press CTRL+C at any time to cancel installation
+Installation log file: /tmp/fslinstaller_93bx_soh.log
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/urllib/request.py", line 1354, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.8/http/client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/usr/lib/python3.8/http/client.py", line 1425, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+  File "/usr/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.8/ssl.py", line 1069, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.8/ssl.py", line 1338, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 499, in download_manifest
+    download_file(url, 'manifest.json')
+  File "fslinstaller.py", line 459, in download_file
+    req = urlrequest.urlopen(url, **kwargs)
+  File "/usr/lib/python3.8/urllib/request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.8/urllib/
+
+I am running eddy_cpu from FSL v6.0.6 but it does not seem to parallelise across CPU cores.
+
+I have already seen this post:
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;c0eba19f.2307
+
+and made sure to set OMP_NUM_THREADS='4', however I still see only one core being used by eddy_cpu.
+Can you please confirm whether, in fact, eddy_cpu is equivalent to eddy_openmp from previous versions?
+If so, could you please help me to understand why is it not working?
+
+Please see below for my OpenMP setup (export  OMP_DISPLAY_ENV="TRUE")
+Thank you.
+
+Best regards,
+Antonio
+
+Hi Matthew,
+
+yes - that resolves the issue.
+
+But now I am getting:
+_____
+python "/mnt/c/Users/nfarzt/Downloads/fslinstaller.py"
+
+Command 'python' not found, did you mean:
+
+  command 'python3' from deb python3
+______
+
+and if I do:
+
+python3 fslinstaller.py
+FSL installer version: 3.5.9
+Press CTRL+C at any time to cancel installation
+Installation log file: /tmp/fslinstaller_1tzbb8il.log
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/urllib/request.py", line 1354, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.8/http/client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.8/http/client.py", line 1011, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.8/http/client.py", line 951, in send
+    self.connect()
+  File "/usr/lib/python3.8/http/client.py", line 1425, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+  File "/usr/lib/python3.8/ssl.py", line 500, in wrap_socket
+    return self.sslsocket_class._create(
+  File "/usr/lib/python3.8/ssl.py", line 1069, in _create
+    self.do_handshake()
+  File "/usr/lib/python3.8/ssl.py", line 1338, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 499, in download_manifest
+    download_file(url, 'manifest.json')
+  File "fslinstaller.py", line 459, in download_file
+    req = urlrequest.urlopen(url, **kwargs)
+  File "/usr/lib/python3.8/urllib/request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.8/urllib/request.py", line 525, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.8/urllib/request.py", line 542, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.8/urllib/request.py", line 502, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.8/urllib/request.py", line 1397, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/usr/lib/python3.8/urllib/request.py", line 1357, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "fslinstaller.py", line 2453, in <module>
+    sys.exit(main())
+  File "fslinstaller.py", line 2402, in main
+    self_update(ctx.manifest, args.workdir, not args.no_checksum)
+  File "fslinstaller.py", line 1347, in manifest
+    self.__manifest = download_manifest(self.args.manifest,
+  File "fslinstaller.py", line 503, in download_manifest
+    raise Exception('Unable to download FSL release manifest '
+Exception: Unable to download FSL release manifest from https://fsl.fmrib.ox.ac.uk/fsldownloads/fslconda/releases/manifest.json [<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self signed certificate in certificate chain (_ssl.c:1131)>]!
+________
+
+Sorry if this has been discussed before. I am fairly new to WSL(2).
+Cheers,
+Andreas
+
+
+﻿Am 11.01.24, 11:37 schrieb "FSL - FMRIB's Software Library im Auftrag von Matthew Webster" <FSL@JISCMAIL.AC.UK im Auftrag von matthew.webster@NDCN.OX.AC.UK>:
+
+    Hi Andreas,
+                      It might be worth testing changing the DISPLAY setting to:
+   
+    DISPLAY=:0
+
+Hi experts,
+
+Recently, I have been running resting-state fMRI data. I noticed that the frontal region has a distortion. So, I wanted to use "topup" function to normalize this distortion. I think topup originally is designed to normalize the distortion in dMRI data (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/topup/ExampleTopupFollowedByApplytopup). So, if I wanted to apply "topup" function to fMRI data, it might be different. For example, before I run "topup", I need to have a file with acquisition parameters, e.g., acq_params.txt (as mentioned in the "topup" instruction). This file includes four columns:
+0 1 0 0.077312
+0 -1 0 0.077312
+
+For the dMRI scan, the fourth column represents the total readout time. But, for the fMRI scan, I guess the parameter in the fourth column should be different from what is used in the dMRI data. So, I googled some docs online to check how to compute this parameter. For example, this web mentioned how to compute this parameter if one wants to apply topup to the fMRI data (https://wiki.biac.duke.edu/biac:analysis:topup_correction). Given that you are the expert on this tool, it would be appreciated if you have any comments on how to compute this parameter in fMRI data.
+
+I also uploaded the fMRI data with AP and PA phase encoding directions, just in case you might test it (https://drive.google.com/drive/folders/1VNnfobUCOn_y_mhC_06U5aUORP-mPdYE?usp=sharing).
+
+Looking forward to your reply. Thank you so much.
+
+Best,
+Cain
+
+########################################################################
+
+
+Hi,
+
+I am trying to install FSL on WSL.
+I have followed the instructions on https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation/Windows#Windows_Subsystem_for_Linux
+and to to point 4.. Trying to run glxgears I get:
+
+glxgears
+No protocol specified
+Error: couldn't open display 172.21.176.1:0 ﻿
+
+VcXsrv rules are not set to block, so I don't know how to get behind this on wsl2 / Ubuntu-20.04.
+Any help / suggestions?
+
+Cheers,
+Andreas
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Hello,
+
+I would like to use robustfov on my data, which consists of about 200 T1-scans. While some of these scans exhibit excessive neck, others are fine and do not require cropping. However, since I am working with a larger dataset, I am wondering whether it would be problematic to apply robustfov to all my participants using a loop. In other words, if the image doesn't need cropping, would applying robustfov still affect the scan?
+
+Best,
+Theo
+
+########################################################################
+
+Hi Annelies, 
+   Can you confirm these new copes are selected in the GUI as “3D images from FEAT directories” rather than “lower-level FEAT directories” as these additional inputs will cause a problem for the latter option?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 5 Jan 2024, at 12:19, Annelies Vant Westeinde <0000ae4b41bd0bc0-dmarc-request@JISCMAIL.AC.UK> wrote:
+
+Hi Matthew,
+
+Thanks for your support. I fixed the indices to 0,2,4,6, and put the output in the stats folder, I also changed the name to start with "cope" so that it finds it correctly.
+It seems that the shape of the files are fine, this is one example, though I am unsure how the std_combined_ev_encoding should look like. 
+
+Processing participant /Volumes/PreProc_III/Preprocessed_Data/Task_fMRI_spatial/CSE_287/f_spatial/4D.feat_firstlevel.feat completed.
+Shape of std_combined_ev_encoding: ()
+Shape of std_combined_ev_decoding: ()
+Shape of std_cope_1: (72, 72, 41)
+Shape of std_cope_3: (72, 72, 41)
+
+However, the output still does not work in the higher level analyses. It now gives the following error:
+
+ /usr/local/fsl/bin/fslmaths mean_func -Tmean mean_func printf '1 ' >> design.lcon printf '1 ' >> design.lcon printf '1 ' >> design.lcon printf '1 ' >> design.lcon Error - not all input FEAT directories have valid and compatible design.con contrast files.
+
+I am confused about that, because if I run the higher level analyses on the other cope images it is working fine. Isn't it supposed to use only the design.con from the higher level analyses?
+
+I attach my code below for clarity. Hoping to get this fixed 🙂
+
+Thanks,
+
+Annelies
+
+
+I am a neuroradiologist.  Clinically we are not looking at the raw diffusion data (b0 and at least six diffusion directions) except in a rare occasion to track down an artifact in the calculated images.  We mainly look at the trace (or "DWI") and the ADC.  On rare occasions a color FA map could be useful.  Sometimes the scanner does not even send the raw diffusion data to the PACS depending upon how it is configured.  In that case, the data may be lost.  Also it is possible to compute trace and ADC with only three diffusion directions and a b0 image.  It would not be possible to use the DTI model on that.  You will have to learn what a b0 looks like and what raw diffusion directions look like to find them in the PACS.  Perhaps look at some of your existing data to figure that out.  You should only state as potentially usable data with at least 1 b0 image and six unique diffusion directions.
+
+There is another problem with using clinical diffusion data for research.  Traditionally MRI data were acquired with very thick slices and gaps between the slices.  This made sense when these data were printed on film and put on a light box, but now can be reformatted in multiple planes after the fact.  Practice has been slow to change.  Research data is typically acquired with isotropic spatial resolution and no gaps.  In my practice, we now acquire isotropic diffusion data clinically when we can, but this is something that I instituted.  Now we can find ALL of the small strokes...
+
+Matt.
+
+﻿On 1/14/24, 11:22 PM, "FSL - FMRIB's Software Library on behalf of Elisabeth Maria Galas" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of 0000b9dfa2ca2909-dmarc-request@JISCMAIL.AC.UK <mailto:0000b9dfa2ca2909-dmarc-request@JISCMAIL.AC.UK>> wrote:
+
+
+Dear Robert,
+thank you so much for your reply! I highly appreciate it!
+
+
+My situation is a bit different though. If I had access to the images, I could probably answer all my questions myself by doing exactly what you suggest - I always use that procedure to get the diffusion metrics. The problem is that I am usually given ready, nice and raw diffusion-weighted data with which I work.
+
+
+Now, on the contrary - I need to dig into these scans and pick up which images are usable myself (I cannot download them but just look at them from one of our clinical systems). Only afterward, I will be allowed to request them and someone who has permission to download them will download them for me. Therefore, I was kind of trying to "understand" what the radiologists did (as I have no idea who they are in order to ask them either). In the system I use, I only see the images with their labels, but I cannot download them and my supervisor expects me to say "which are usable".
+
+
+That is new to me and I don't understand it very well. That is why I asked those silly questions about dwi to dti conversion. As far as my understanding goes, dwi are the images acquired during the scanning + some diffusion metrics such as the directions + the non-dwi b0 etc images. During the analysis, I apply the DTI model and this turns the dwi data into dti data. Is that correct so?
+
+
+So, sometimes I see the radiologists have labeled some dwi images and no b-values are around. In that case, I should just assume that this is not usable for DTI analysis.
+In other cases, I see b-values and dwi images, but I have no idea whether directions were acquired. Where to look for that info? How can I understand that by just looking at a list of labels? Is there a separate image that would usually contain that "direction" info? I guess it is best to assume that since there is a b0 image, there shoudl be also something linked to "directions" somewhere and just request the dwi image and hope I will get the bvec and bvals?
+In the best scenario (i.e., 3rd case), the radiologists labeled the images "dti" which is great as I know that all is there. However, that is rare.
+
+
+Thank you again for your time and trying to help me and apologies for the lengthy reply!
+best wishes,
+Elisabeth M
+
+
+########################################################################
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+
+
+This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+
+
+
+
+________________________________
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+########################################################################
+
+Hi Julien,
+I don’t think Jiscmail has an option to do this, but there is a “digest” option which will reduce the number of incoming list emails ( I think it’s one per day ).
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Hi Andreas,
+   I’ve run the same install command ( with --skip_ssl_verify selected ) locally and all was well. It might be worth checking that you can access the link with other commands, e.g.
+
+wget https://conda.anaconda.org/conda-forge/linux-64/gettext-0.21.1-h27087fc_0.tar.bz2
+
+Just in case this is a general connectivity issue?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+Ok, Thank you! I will check out GIFTI format. I presume fsleyes can read GIFTI and does not need additional switches, or does it?
+
+Is there VTK to GIFTI converter?
+
+Roman
+
+
+Thank you, Paul. To me, image is made of cuboid voxels and so should be its surface... I will think/search more.
+
+Roman
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Friday, January 12, 2024 1:51 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] surface for a mask
+
+hi!
+
+is there a way to get notifications when an answer to my own post is published, without having to subscribe to the entire mailing list?
+
+cheers,
+julien
+
+########################################################################
+
+Hi FSL team!
+
+
+
+I am trying to run dual regression (with FSL version 6.0.7.6), but I am running into an error. Please could you assist me.
+
+My data consists of cleaned, preprocessed, 4D rfMRI images in standard space (MNI152). I first identified 20 components using MELODIC and then used fslcc to identify which of those were most correlated with a given network (default mode network). That component was used as the IC map in dual regression, using the same subject list. Group-mean modelling was used, with no randomise. I tried the code with both $(cat subjects_list.txt) and `cat subjects_list.txt`, but both gave the same problem.
+
+ 
+
+Code:
+
+dual_regression IC_DMN.nii.gz 1 -1 0 output_directory `cat subjects_list.txt`
+
+
+
+It's strange - I have also tried doing:
+
+$FSLDIR/bin/update_fsl_package --all
+
+This showed me a variety of available updates, and I accepted them all.
+
+Then after the updates had run, I ran "$FSLDIR/bin/update_fsl_package --all" again. When I did this, all the other uodates were completed, but the fugue package still showed as being an available update.
+
+On Fri, Jan 12, 2024 at 4:25 AM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+
+Dear Colleagues
+
+We are inviting applications for a postdoctoral position at the Sir Peter Mansfield Imaging Centre at Nottingham, UK to develop innovative technologies for mapping brain circuits using diffusion MRI. 
+
+https://jobs.nottingham.ac.uk/Vacancy.aspx?id=47943
+
+The project builds upon our previous work on cross-species tractography and tractography-based fingerprinting (FSL-XTRACT). The successful candidate will have the opportunity to work with colleagues in the recently launched NIH Centre for Mesoscale Connectomics and develop novel algorithmic frameworks for brain connectivity mapping using cutting-edge imaging infrastructure including chemical tracing, microscopy and Ultra-high Field MRI (10.5T), in the non-human primate and human brain.
+
+Please apply using the link above, I would be very happy to be contacted for any informal inquiries.
+
+Best wishes
+Stam
+ 
+
+
+Stam Sotiropoulos MSc PhD
+Professor of Computational Neuroimaging 
+ERC Consolidator Fellow
+ 
+Sir Peter Mansfield Imaging Centre
+Mental Health & Clinical Neurosciences
+School of Medicine
+University of Nottingham
+ 
++44 (0) 115 82 31027 | conilab.nottingham.ac.uk
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+Hi Paul!
+
+Ah I tried to respond to Matthew yesterday, but the images attached were too large apparently and my mail didn't send. Here is the output I get from running the update command. It is exactly as Matthew suggested (I believe?). If you agree, then I will try reinstalling FSL completely.
+
+Thank you so much!
+
+On Fri, Jan 12, 2024 at 4:25 AM Paul McCarthy <paul.mccarthy@ndcn.ox.ac.uk> wrote:
+Hi Amy,
+
+Updating the fsl-fugue package should resolve this issue. If you run:
+
+$FSLDIR/bin/update_fsl_package fsl-fugue
+
+it should update fsl-fugue from "2201.4 (build 0)" to " 2201.4 (build 1)".
+
+If this is not working for you, can you share the output that is printed when you run the command?
+
+Another option you could take is to re-install FSL - the fixed version of fsl-fugue should be installed in new installations.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Amy Addlesee <amyaddlesee@GMAIL.COM>
+Sent: 10 January 2024 11:58
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] GUI and error with fsl_prepare_fieldmap
+ 
+Hi,
+
+Unfortunately I am having the exact same issue, and updating the fsl-fugue package has not fixed the problem.
+
+As soon as I run 'fsl_prepare_fieldmap', a '-1' is printed in the terminal. A second, empty, fsl_prepare_fieldmap gui window also appears, whilst the first gui window gets stuck in a loading state, with a message saying "Running script ... please wait" (I have then waited up to 45 minutes and nothing happened). When I then click 'Exit' on the second empty gui window, a message pops up on the first window saying "Output from script: -1". My task manager says that the window is 'not responding'. Typing out the command manually in the terminal also doesn't resolve the problem.
+
+Any ideas? Thank you!
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+Hi Roman,
+
+I imagine that this will have something to do with the volume->surface algorithm that is used (marching cubes). I'm not an expert in this matter, but I've found it to work reasonably well for real data.
+
+Paul
+
+Hi Roman,
+
+The VTK format is a legacy format, and I wouldn't recommend using it for neuroimaging data. It is useful for quick and dirty visualisations, as VTK files are very easy to create. I would suggest using GIFTI for any new projects.
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 11 January 2024 21:05
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coordinate system for surface in VTK format
+ 
+Thank you, Paul.
+
+It seems we are headed in the same direction that subsequently led to the development of NIFTI format. Before NIFTI, file format and specifically coordinate system was not well defined/documented and was transmitted as external word of mouth. Here too, coordinate system is not specified in the VTK file. Perhaps comments should be used to save q-form as NIFTI does? Perhaps a new format, close to VTK, should be developed to avoid ambiguity.
+
+Following NIFTI logic, I would mandate surface to be described in "raw voxels" (as I understand i,j,k coordinate system of NIFTI) and rotation matrix based on q-form to be applied to convert them to magnet coordinate system. 
+
+Roman
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Monday, January 8, 2024 7:32 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coordinate system for surface in VTK format
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi Roman,
+
+FSLeyes can load surfaces with vertices defined in a range of coordinate systems, outlined below. Regardless of which coordinate system the vertices are defined in, you need to specify the NIFTI image that the surface is derived from (the surface/mesh "reference image") as I mentioned in the other email thread. 
+
+FSLeyes will try to guess the correct coordinate system for files with standardised names (e.g. FIRST, HCP, etc), but will need to be told which coordinate system to use for other data sets.
+
+Surface vertices can be defined in one of these coordinate systems; you can specify this via the -s command-line option, or the "Mesh coordinate space" setting in the overlay display panel (the gear button).
+
+"-s affine" - World coordinates as defined by the reference image s/qform
+"-s pixdim" - Scaled voxels
+"-s pixdim-flip" - Scaled voxels forced to radiological convention
+"id" - Raw voxels
+"torig" - Freesurfer coordinates
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 08 January 2024 18:16
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] coordinate system for surface in VTK format
+ 
+Dear Paul,
+Dear FSL developers,
+
+This is a follow up question to thread "surface in fsleyes", but I decided to give it a different subject to better reflect the content.
+
+What should be coordinates for surface in VTK format? There are 3 coordinate systems in NIFTI file: q-form, s-form and i,j,k coordinate system attached to the FOV bounding box. Which of them should be used to describe surface in VTK format? How does fsleyes (and perhaps other software) know which coordinate system to use?
+
+Thank you,
+
+Roman
+
+
+
+
+Hi Andreas,
+
+Could you try re-running the installer script with the --skip_ssl_verify option? I've made a few updates to the installer (it will self-update when you run it).
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Andreas Bartsch <bartsch@RADVISORY.NET>
+Sent: 11 January 2024 18:17
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fsl on wsl2 / windows 10
+ 
+Hi Matthew,
+
+unfortunately not. Adding --conda does not help either.
+It still ends up with:
+
+
+Hi Beatrice,
+
+This is not a major problem, as the anatomical labels still appear to be correct. However this type of issue often occurs when mixing tools from different packages. 
+
+Before using any FSL tools (in particular the registration tools), a good practice is to run fslreorient2std on your images to bring them into a "standard" orientation.
+
+Paul
+
+Hi Julien,
+
+Does toggling the "Synchronise movie updates" checkbox in the view settings dialog (the spanner button) change anything?
+
+Paul
+
+
+Hi Amy,
+
+Updating the fsl-fugue package should resolve this issue. If you run:
+
+$FSLDIR/bin/update_fsl_package fsl-fugue
+
+it should update fsl-fugue from "2201.4 (build 0)" to " 2201.4 (build 1)".
+
+If this is not working for you, can you share the output that is printed when you run the command?
+
+Another option you could take is to re-install FSL - the fixed version of fsl-fugue should be installed in new installations.
+
+Paul
+
+Thank you, Paul,  for this python code to generate surface for mask. I finally installed new version of FSL and could test it. When I supply a cube, the surface looks like an octahedron (8 triangles) with vertexes at the centers of the cube's faces. This is not what I would expect. I expect surface of the cube to be just that: 6 squares represented using 12 triangles.
+
+Perhaps I am not familiar with the logic of numerical representation of surfaces. Do you know why octahedron is a proper surface for a cube? Obviously, cuboid also has a strange -looking surface, clearly based on the same principle.
+
+Roman
+
+
+Thank you, Paul.
+
+It seems we are headed in the same direction that subsequently led to the development of NIFTI format. Before NIFTI, file format and specifically coordinate system was not well defined/documented and was transmitted as external word of mouth. Here too, coordinate system is not specified in the VTK file. Perhaps comments should be used to save q-form as NIFTI does? Perhaps a new format, close to VTK, should be developed to avoid ambiguity.
+
+Following NIFTI logic, I would mandate surface to be described in "raw voxels" (as I understand i,j,k coordinate system of NIFTI) and rotation matrix based on q-form to be applied to convert them to magnet coordinate system. 
+
+Roman
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Sent: Monday, January 8, 2024 7:32 PM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] coordinate system for surface in VTK format
+ 
+CAUTION: This email comes from an external source; the attachments and/or links may compromise our secure environment. Do not open or click on suspicious emails. Please click on the “Phish Alert” button on the top right of the Outlook dashboard to report any suspicious emails.
+Hi Roman,
+
+FSLeyes can load surfaces with vertices defined in a range of coordinate systems, outlined below. Regardless of which coordinate system the vertices are defined in, you need to specify the NIFTI image that the surface is derived from (the surface/mesh "reference image") as I mentioned in the other email thread. 
+
+FSLeyes will try to guess the correct coordinate system for files with standardised names (e.g. FIRST, HCP, etc), but will need to be told which coordinate system to use for other data sets.
+
+Surface vertices can be defined in one of these coordinate systems; you can specify this via the -s command-line option, or the "Mesh coordinate space" setting in the overlay display panel (the gear button).
+
+"-s affine" - World coordinates as defined by the reference image s/qform
+"-s pixdim" - Scaled voxels
+"-s pixdim-flip" - Scaled voxels forced to radiological convention
+"id" - Raw voxels
+"torig" - Freesurfer coordinates
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Roman Fleysher <000091d32badfb02-dmarc-request@JISCMAIL.AC.UK>
+Sent: 08 January 2024 18:16
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] coordinate system for surface in VTK format
+ 
+Dear Paul,
+Dear FSL developers,
+
+This is a follow up question to thread "surface in fsleyes", but I decided to give it a different subject to better reflect the content.
+
+What should be coordinates for surface in VTK format? There are 3 coordinate systems in NIFTI file: q-form, s-form and i,j,k coordinate system attached to the FOV bounding box. Which of them should be used to describe surface in VTK format? How does fsleyes (and perhaps other software) know which coordinate system to use?
+
+Thank you,
+
+Roman
+
+
+
+
+Thanks, Jesper.
+
+ 
+
+I corrected the conversion from rad/s to Hz, but the output looks quite similar. How can I ensure that the fieldmap is properly resampled? FSL’s flirt appeared to work just fine; the resolution and matrix size match.
+
+ 
+
+What should the range of values be for my fieldmap?
+
+ 
+
+I do not have experience with SPM, let alone the fielmap toolbox. I am working with a phase map derived from multi-echo GRE. Is SPM suitable for this sequence? Do you have helpful resources?
+
+ 
+
+Many thanks,
+
+Bram
+
+
+
+Dear FSL staff,
+
+I seem to have noticed that the output of eddy_openmp (FSL v6.0.4) is not perfectly reproducible when running the same code identically multiple times.
+I have already seen previous posts about misalignments across re-runs, e.g.
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?REPORT=&z=4&1=FSL&L=FSL&q=eddy+reproducible&J=1&0=S&9=A&d=No+Match%3BMatch%3BMatches&%5fcharset%5f=UTF%2d8&X=E1DB7AB5A45490F91B&Y=antonio.ricciardi%40ucl.ac.uk
+
+and I did encounter the same issues myself on eddy_openmp from version v5+.
+
+When using v6+, the sub-voxel misalignment has disappeared, but there seems still to be numerical instability in the output. That is, output from re-runs using identical inputs are perfectly aligned, but voxel values are different across runs. This happens even while setting --initrand.
+
+The variability is very low (about 0.1%) but I still wonder if this is to be expected or if this is a mistake.
+I also could not find any changelog between v5+ and v6+ that explains the different behaviours of eddy_openmp across the two versions.
+
+Thank you.
+
+Best regards,
+Antonio
+
+########################################################################
+
+Hi Andreas,
+                if you add --skip_ssl_verify to the fslinstaller.py call, does that fix the error?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Hi Andreas,
+                  It might be worth testing changing the DISPLAY setting to:
+
+DISPLAY=:0
+
+And seeing if that improves/changes the error?
+
+Kind Regards
+Matthew
+
+Hello,
+
+I have a short question.
+
+I'm looking for the user guide of eddy_correct. Is it still available online?
+
+Thank you and regards,
+Aleta
+
+########################################################################

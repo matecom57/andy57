@@ -1,0 +1,403 @@
+We are offering 2 post-doc positions in the Department of Radiology at Mayo Clinic Florida. We are seeking candidates to expand ongoing research initiatives in artificial intelligence, ultra-high field MRI, radiochemistry, and quantitative and functional imaging. Applicants should have a strong background in medical imaging research, and those from non-clinical backgrounds that integrate with Radiology (e.g., those holding a Doctoral degree in physics, engineering, computer science, applied mathematics, statistics, etc.) are strongly encouraged to apply. Researchers have access to an on-campus cyclotron, 3T PET/MR system, ultra-high field 7T MRI (Terra.X), photon-counting CT, simulation labs, and other facilities. Details and application can be found at:
+
+https://jobs.mayoclinic.org/job/jacksonville/research-fellow-radiology/33647/64315334784
+
+########################################################################
+
+There are two positions available in my group at the University of Cambridge, based in an interdisciplinary and collaborative research unit at the crossroads between computational neuroscience and machine learning.
+
+1 Postdoc
+• 2 years
+• Cutting-edge neuroimaging
+• Computational methods
+• Focus on statistical/aversive learning
+https://www.jobs.cam.ac.uk/job/46142/
+
+1 Research Assistant
+• 1 year, extendible
+• Behavioral and neuroimaging experiments
+• To be advertised end April, start date asap
+More info: fm456@cam.ac.uk
+
+Many thanks! Best wishes,
+
+Flavia Mancini
+
+Assistant Professor & MRC Career Development Fellow
+Nox Lab / Computational Biological Learning Research Group
+Department of Engineering / University of Cambridge
+
+Fellow, Pembroke College
+
+Dear Jesper,
+
+Thank you so much for the response, this is all extremely helpful and I will definitely look into the paper you linked regarding slice-selection correction for more insight into correction in this direction. Just to make sure I’m completely clear on what can or cannot be done using the Topup-estimated B0 field, from what I understand from your response:
+
+1. A B0 field estimated from Topup using two images with opposite phase-encode polarity, and identical slice-selection and frequency-direction polarity, can in fact be used to correct for distortions in the slice-direction and frequency-direction if you know the bandwidth in each direction.
+
+2. Is it safe to assume that a B0 field estimate calculated using images with opposite slice-selection polarity might be less accurate than one calculated using images with opposite phase-encoding polarity, given that the distortions in the slice-direction are much smaller and therefore more difficult for Topup to detect these distortions?
+
+Apologies for seemingly splitting hairs with specific hypotheticals on this, I just want to make sure I fully understand the appropriate applications of the tool when correcting my data.
+
+Thank you again!
+
+Best,
+Maeve
+
+########################################################################
+
+
+Dear Colleagues,
+ 
+We are recruiting a postdoctoral research scientist to work on model-based analysis of task fMRI and MEG data, and precision neuromodulation with theta burst TMS. Please do apply and/or share with anyone that might be interested!
+ 
+Official job ad/description: https://unm.csod.com/ux/ats/careersite/18/home/requisition/28785?c=unm
+ 
+Cheers,
+Jeremy
+
+
+Hi all,
+
+I have been doing distortion correction on some data and had a few questions regarding the fieldmap estimate output from Topup. After reading on the Wiki that adding “--fout” will produce an estimate of the B0 field map in Hz and that this particular output gives an estimate of the off-resonance field, I wanted to confirm whether the file being output is an estimate of the FULL B0 field from which you can identify areas of off-resonance, or if the output contains JUST the off-resonance components of the field (i.e. equal to zero in areas where the B0 field is estimated to be homogenous). Additionally, I was wondering whether this B0 field is true for all directions or if it is only accurate for estimating distortions in the same plane as the opposite-polarity images used as inputs. So for example, could you in theory produce the B0 field from Topup using images with opposite phase-encoding polarity, and then input this B0 estimate into fugue with parameters for the slice-encode direction and get an accurate correction in the slice-encode direction?
+
+Thanks!
+
+Best,
+Maeve McGowan
+
+
+
+
+Dear FSL experts,
+
+I'm running probtrackx2_gpu with the latest version of Qunex (0.99.2d, FSL 6.0.7.1). I met the following error when running it on Nvidia A100.
+
+...................Allocated GPU 0...................
+Device memory available (MB): 48412 ---- Total device memory(MB): 48685
+Memory required for allocating data (MB): 897
+CUDA Runtime Error: out of memory
+Device memory available after copying data (MB): 47476
+Running 456412 streamlines in parallel using 2 STREAMS
+Total number of streamlines: 577848000
+
+There is clearly enough memory but probtrackx2_gpu reports OOM. I reduced the number of samples but the issue still persists.
+The error occurs on A100 but did not occur on V100. I have also tried multiple versions of CUDA.
+The previous steps of HCP Pipelines, gpu version of eddy and bedpostx, work fine with the same setting (A100, CUDA 10.2).
+I have also tried a potential solution by others (running a concurrent program on the gpu), but it did not work for me.
+
+Any help would be greatly appreciated! Thank you!
+
+Here are other reports of the same issue on the Qunex forum and on this list:
+
+https://forum.qunex.yale.edu/t/resolved-issues-with-dwi-probtrackx-dense-gpu/996
+https://forum.qunex.yale.edu/t/resolved-dwi-probtrackx-dense-gpu-error/881/7
+https://forum.qunex.yale.edu/t/resolved-probtrackx-with-cuda-10-1-and-ubuntu-20-04/773
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind2404&L=FSL&P=R55148
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=ind1902&L=FSL&D=0&P=332507
+
+Best,
+Zhen-Qi Liu
+
+########################################################################
+
+
+Postdoc position in multimodal imaging of brain structural networks within developmental neuropsychiatry
+
+The Danish Research Centre for Magnetic Resonance (DRCMR) at Copenhagen University Hospital Hvidovre (Denmark) is seeking a 3-year postdoc in multimodal imaging and brain structural networks within the field of developmental psychiatry. Together with our strong clinical collaborators at the Child and Adolescent Psychiatry Unit, we are currently running the prospective Danish High Risk and Resilience Study (VIA) (www.drcmr.dk/via). The VIA study longitudinally follows the largest register-based cohort of children (n=522) in the world born to parents with schizophrenia or bipolar disorder or none of these disorders. Studying children with familial high risk offers a unique opportunity to gain insight into the early disease processes and mechanisms. Children were assessed at the ages of 7, 11, and 15 years. Neuroimaging was included at age 11 and onwards. We are currently finalizing the first longitudinal neuroimaging follow-up at age 15 years and the follow-up at age 19 years starts this summer. The postdoc will mainly be working on the longitudinal VIA data, with a focus on structural and diffusion-weighted image processing. The project includes brain network analysis, such as structural covariance and connectivity analyses, and normative modelling. The postdoc position involves a tight collaboration with Prof. Andrew Zalesky (https://people.eng.unimelb.edu.au/azalesky/) with the possibility to visit Prof. Zalesky’s lab at University of Melbourne, Australia.
+
+The project will be carried out at the DRCMR, which is a leading research centre for biomedical MRI in Europe (www.drcmr.dk) focusing on the brain. Approx. 75 researchers from more that 20 countries and a diverse range of disciplines are currently pursuing basic and clinically applied MR research of the human brain and its disorders. The DRCMR has a state-of-the-art research infrastructure for preclinical and human medical imaging, which includes six whole-body MR scanners (one 7T, four 3T and one 1.5T scanners), a preclinical 7T scanner, a High-Performance Computer cluster and several state-of-the-art laboratories for electrophysiology and non-invasive brain stimulation.
+
+We see diversity as strength and encourage all persons regardless of gender, age, ethnicity, disabilities or religion to apply.
+
+Starting date: is expected to be August 1st, 2024.
+
+Application deadline: May 15th, 2024 at 23:59 (CET)
+
+Read more and apply for the position here: https://candidate.hr-manager.net/ApplicationInit.aspx?cid=342&ProjectId=255656&DepartmentId=18051&MediaId=5710
+
+Further information: If you have questions concerning the position, you are more than welcome to contact Senior researcher Kathrine Skak Madsen via e-mail at kathrine@drcmr.dk.
+
+
+
+Hi,
+
+I would try to delay the change of equipment until all the data is collected, but if that's not possible, you can still do tbss, but harmonizing the data (or adding site as a covariate). Combat (https://www.sciencedirect.com/science/article/abs/pii/S1053811917306948?via%3Dihub) is one of the most popular methods to do this, but depending the nature of your data/experiment, maybe there are others better suited.
+
+Best regards,
+
+Manuel
+
+########################################################################
+
+Previously when trying to save a lightbox view image in fsleyes it was relatively easy to set the lowest z slice as an integer e.g. z -10 and then set the slice spacing e.g. 4 or 6 mm to have a series of slices with the overlay to save as a picture using the camera icon.
+In the lastest version of fsleyes the z min and max slider is only able to be set as a fraction of the total z range meaning it is impossible to set the lowest z slice as an integer.
+How can we do this?
+Thanks
+Tony
+
+Dr Tony Goldstone
+Clinical Reader
+Imperial College London
+Email: tony.goldstone@imperial.ac.uk
+
+########################################################################
+
+Dear experts,
+
+I'm trying to run fslmerge to prepare the input for topup using the following files (AP and PA B0s) https://www.dropbox.com/scl/fi/gkv1q34m6y14rgallt69i/Archive.zip?rlkey=k2656ul5rx7u68nxj9jl0o1o1&dl=1
+
+Unfortunately, the terminal indicates
+
+WARNING:: Inconsistent orientations for individual images when attempting to merge.
+          Merge will use voxel-based orientation which is probably incorrect - *PLEASE CHECK*!
+
+
+and indeed while the two files are correctly aligned in fsleyes (with warnings) after the merge using voxel-based orientation they are not anymore. 
+I tried fslcpgeom which also changed the orientation and damaged the alignment.
+
+Any ideas?  
+
+Thanks for your time and solutions.
+Kind regards
+
+
+
+
+Dear FSL Main List Forum Members,
+
+I am encountering an issue with applying a transformation matrix to an ROI in DWI space, and I'm seeking assistance to resolve it. Here's the scenario:
+
+I have successfully skull-stripped DWI b0 images using BET and registered them to a T1 image (also skull-stripped) using the following command:
+
+flirt -in DBS202_7T_dwi_preproc_nodif_brain.nii.gz -ref brain.nii.gz -out dwi2brain.nii.gz -omat dwi2struc.mat -dof 6
+
+This registration appears to have proceeded without errors, as visually confirmed.
+image.png
+
+Subsequently, I possess an ROI that has been registered to the DWI space, as depicted in the image below.
+image.png
+
+However, upon attempting to apply the transformation matrix to this ROI, 
+
+ flirt -in L_dACC.nii.gz -ref brain.nii.gz -interp nearestneighbour -out L_dACC_reg.nii.gz -init dwi2struc.mat -applyxfm
+
+I observe that it is significantly misaligned within the space, as evident in the attached image.
+
+image.png
+I have provided the necessary files for reference 
+
+https://drive.google.com/drive/folders/1UxC6GuEXVUTIu9yiztUnrBsJBbTFrXrA?usp=sharing
+
+Any guidance or insights on how to rectify this issue would be greatly appreciated.
+
+Thank you for your attention and assistance.
+
+Dave
+Davide Momi
+-----------
+Visiting Research Scholar
+Keller's Laboratory for Personalized Neurotherapeutics
+Stanford University
+450 Jane Stanford Way., Stanford, CA 90305
+
+website: https://davi1990.github.io/
+X: @DaveMomi
+
+
+Hello Andreas,  
+
+Thank you for your reply.
+
+Let me ask you further questions if that's ok.
+
+1/ I did it in the time series indeed. Which high pass cut off should i use? time bwtn events x 3? in one case 8 s x 3 = 24? Or do I keep the default which is 60?
+I do get a .mat file which the top looks like that, 2 columns of numbers below what I am pasting.: are the two. waves due to the double gamma hrf? Once I have this file which has two columns, I will essentially delete 304 time points in R. 
+
+/NumWaves 2
+/NumPoints 608
+/PPheights 1.000000e+00 2.914157e-01
+
+The Centre for Brain Research at the Jagiellonian University in Krakow (Poland) is looking for a PhD student to work under the supervision of Prof. Michał Bola and Dr Marek Pedziwiatr. The PhD student will be a part of a research group investigating the role of attention, awareness, and semantics in the visual processing of scenes using psychophysics, EEG-decoding, and TMS. The Centre for Brain Research offers an intellectually stimulating and friendly working environment, multiple cross-disciplinary networking opportunities, and a generous stipend. 
+Further details can be found in the advert: 
+https://www.dropbox.com/scl/fi/gv9bemjqlvtw5ewkhapsw/Doctoral-scholarship-naturalistic-perception.pdf?rlkey=360qrpjgu0czzb1dn5fcy8vpi&dl=0 
+
+Best wishes,
+
+Marek A. Pedziwiatr, PhD
+
+Hi Amy,
+
+The fsl_ents command can accept either component numbers, or classification files produced by FIX. So you can call it either like this:
+
+fsl_ents melodic.ica -o timeseries.txt 1 2 3
+
+which will extract the time series for components 1, 2, and 3, or like this:
+
+fsl_ents melodic.ica -o timeseries.txt fix4melview_thr20.txt
+
+which will extract the time series of all components that were classified as noise.
+
+Paul
+
+Dear FSL team,
+
+ 
+
+we followed this protocol for running a seed-based correlation analysis (SCA) in fsl: https://www.fmrib.ox.ac.uk/primers/rest_primer/4.1_SCA/index.html
+
+ 
+
+Could you tell us how to proceed correctly for conducting group comparisons? Can we use randomize or do we have to use stage 3 of the regression analysis to get group averages. Any help on how to continue the analysis at this point are highly appreciated. Thank you very much in advance.
+
+ 
+
+Kind Regards,
+
+Frieda
+
+Hi Aude,
+
+let's start with 3/
+
+> Can I use the Glm_gui just to create .mat files?
+It will create various files but yes, the *.mat file is what you are after.
+It is this from what you get the model time series, and by deleting the time points for which you have no data recorded you will adjust your model to the sparse sampling.
+Don't you get a *.mat?
+
+If you want to include a temporal derivative in your model, you should model it at this stage.
+
+Temporal filtering is indeed tricky because you want to apply the same temporal hpf to your model and data. If you have alternated read-outs and omitted read-outs in a strictly regular manner, e.g. that after one readout you left out the next but collected the second but next, I would probably hpf the model and
+a) either create a fake time series inserting the previous readout into it to pretend a readout at the time points that were actually left out, then filter that and discard the fake volumes, or
+b) by doubling the TR entry, filter and then reset the TR.
+
+I wouldn't bother too much about the hpf but would would pick the longest temporal period you want to allow.
+
+I hope that gets you a bit further.
+Cheers,
+Andreas
+
+﻿Am 25.04.24, 20:35 schrieb "FSL - FMRIB's Software Library im Auftrag von Aude Cardona" <FSL@JISCMAIL.AC.UK im Auftrag von audemm@UDEL.EDU>:
+
+    Hello there,
+   
+    I am trying to model a matrix for a sparse hybrid sequence (@Andreas Bartsch) in the Glm_gui.
+    The experiment is an event related design. Task A - rest- Task B - rest - Task C - rest - No Task - rest. Each task is 4 sec (task or no task) and each rest is 4 sec.  TRs = 1 sec. I have 76 trials. The Run is 608 time points long and the data acquired constitues 304 time points of these 608.
+    I am trying to model EVs of interest (trial type: A, B, or C) and EVs of non interest (audio and visual task presentations; button press and low frequency derivatives). Hence I have EVs for trials A, B, C, visual task presentation, audio task presentation, button press (random pressing), etc
+    To create a matrix, I went to the Glm-gui first and without entering any other data (i.e., no pre-processed data).
+    In the Timeseries design, I entered 608 time points, TR = 1. My EVs are a series of 1 column that contain 0 or 1 for each timepoints.
+    1/Question: for the high pass filter cutoff, what should I enter? Given I have different EVs with different time periods between trial types, the max time period between similar trials ( A to A) in Evs of interest is 16 sec (should I enter 48?).
+    2/ I also have EVs of non interest in which participants press a button and want to model the pressing, but there is no regularity there. Meaning the time period varies from run to run within participants. Should I model these EVs separately when first building the matrix? Which High pass filter cut off?
+    I proceeded to enter EVs part of the Gui I chose the number of EVs according to those of interest and non interest, Basic shape: Custom (1 entry per volume), double gamma HRF, Phase: 0.
+    3/ When I try to access the file in the directory of the Glm_gui, it does not show my .txt files in the right directory. IS it because I have not entered any pre-processed data? Can I use the Glm_gui just to create .mat files? Why do I not see them?
+    4/ I assume I should not apply the temporal filtering nor the temporal derivative at this stage, correct?
+   
+    After this stage, I intend to delete the time points at which there is no data acquisition and run the actual analysis with pre-processed data.
+   
+    Thank you for taking the time to read and your help!
+   
+    Cheers,
+    Aude.
+   
+    ########################################################################
+   
+    To unsubscribe from the FSL list, click the following link:
+    https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+   
+    This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+   
+
+########################################################################
+
+
+Hello there,
+
+I am trying to model a matrix for a sparse hybrid sequence (@Andreas Bartsch) in the Glm_gui.
+The experiment is an event related design. Task A - rest- Task B - rest - Task C - rest - No Task - rest. Each task is 4 sec (task or no task) and each rest is 4 sec.  TRs = 1 sec. I have 76 trials. The Run is 608 time points long and the data acquired constitues 304 time points of these 608.
+I am trying to model EVs of interest (trial type: A, B, or C) and EVs of non interest (audio and visual task presentations; button press and low frequency derivatives). Hence I have EVs for trials A, B, C, visual task presentation, audio task presentation, button press (random pressing), etc
+To create a matrix, I went to the Glm-gui first and without entering any other data (i.e., no pre-processed data).
+In the Timeseries design, I entered 608 time points, TR = 1. My EVs are a series of 1 column that contain 0 or 1 for each timepoints.
+1/Question: for the high pass filter cutoff, what should I enter? Given I have different EVs with different time periods between trial types, the max time period between similar trials ( A to A) in Evs of interest is 16 sec (should I enter 48?).
+2/ I also have EVs of non interest in which participants press a button and want to model the pressing, but there is no regularity there. Meaning the time period varies from run to run within participants. Should I model these EVs separately when first building the matrix? Which High pass filter cut off?
+I proceeded to enter EVs part of the Gui I chose the number of EVs according to those of interest and non interest, Basic shape: Custom (1 entry per volume), double gamma HRF, Phase: 0.
+3/ When I try to access the file in the directory of the Glm_gui, it does not show my .txt files in the right directory. IS it because I have not entered any pre-processed data? Can I use the Glm_gui just to create .mat files? Why do I not see them?
+4/ I assume I should not apply the temporal filtering nor the temporal derivative at this stage, correct?
+
+After this stage, I intend to delete the time points at which there is no data acquisition and run the actual analysis with pre-processed data.
+
+Thank you for taking the time to read and your help!
+
+Cheers,
+Aude.
+
+########################################################################
+
+
+Hi Sheng,
+
+This looks like an issue with the FSL installation, so I think you should raise this with the system administrators.
+
+Alternatively, I know that on the BMRC cluster there is a newer version of FSL installed which you can access by running these commands:
+
+export MODULEPATH=/well/win/software/modules:$MODULEPATH
+module load fsl
+
+Paul
+
+Can you share the code you were trying to run? You should just pass the full command as a string, e.g.:
+
+call_fsl('fslmaths image.nii.gz -bin mask.nii.gz');
+
+Paul
+
+Hi Graham,
+
+The first error message is saying that FIX cannot find a reg/highres.nii.gz image - the input directory to FIX must have the same structure as a full first-level directory created by the FEAT or MELODIC GUIs, with registration run.
+
+As an aside, I would recommend not using the old MATLAB/R version of FIX, and instead using the new Python-based version that is included with recent versions of FSL, as it is much less of a headache to install and debug.
+
+Paul
+
+We are offering 2 post-doc positions in the Department of Radiology at Mayo Clinic Florida. We are seeking candidates to expand ongoing research initiatives in artificial intelligence, ultra-high field MRI, radiochemistry, and quantitative and functional imaging. Applicants should have a strong background in medical imaging research, and those from non-clinical backgrounds that integrate with Radiology (e.g., those holding a Doctoral degree in physics, engineering, computer science, applied mathematics, statistics, etc.) are strongly encouraged to apply. Researchers have access to an on-campus cyclotron, 3T PET/MR system, ultra-high field 7T MRI (Terra.X), photon-counting CT, simulation labs, and other facilities. Details and application can be found at:
+
+https://jobs.mayoclinic.org/job/jacksonville/research-fellow-radiology/33647/64315334784
+
+
+Hello FSL experts,
+
+I was hoping to be able to create a connectivity matrix between two ROI's, where each index of the matrix corresponds to the # of streamlines between the paired voxels of the two ROI's. Just wanted to clarify things first!
+
+1. Is --omatrix3 the correct choice for this? And if it is the correct choice, how do I specify the targets? Using --target3, do I input a list of ROI's in a textfile, separate them with a comma, or should I add the ROI's together into one? Just a bit confused about how to go about this.
+
+2. I am running tractography between multiple masks - in this case the PFC and PPC (the output of which would be the fdt_paths streamline mask). Do these multiple masks affect the output of --omatrix3? Or is that totally separate?
+
+Thanks so much!
+
+- Matt
+
+Thanks for the feedback, Shaun, very helpful. Following your recommendations I got a much more sensible output for xtract_blueprint, respecting also the laterality of each tract when applicable.
+
+Estephan
+
+On Wed, 24 Apr 2024 08:18:40 +0000, Shaun Warrington <Shaun.Warrington1@NOTTINGHAM.AC.UK> wrote:
+
+>Hi Estephan,
+>
+>Most of the xtract tools are developed using the HCP-YA as a testbed so, in principle, it should work reasonably well in this data.
+>
+
+Dear FSL community,
+
+I have a question regarding selecting a proper threshold value for cluster-forming threshold, and I am confused about one-tail and two-tail analyses.
+
+In my case, I got two contrasts consisting of group A > B and group B < A. As a default setting, palm automatically carried a one-tail statistic for contrast A > B and contrast B > A without the -twotail parameter. However, if I tried it with -twotail option, I observed from Matlab that palm still computed for both contrasts separately but differently in results. I can understand the computing processing that happened to the palm (cause I have two contrasts), but I am not quite sure about the threshold value selection. Should we define value strictly following the statistical t-to-p matrix where t = 1.65 equals p = 0.05 in one-tail tests and t = 1.96 equals p = 0.05 in two-tail tests (or t = 1.96 equals p = 0.025 in one-tail tests)? Is it acceptable to directly use t = 1.96, 2.3, 2.58, 3.1 for the default one-tail palm statistics?
+
+Another question from reading previous emails is that there is no gold-standard rule for a proper threshold. The higher value comes to be better than lower ones (Woo et al., 2014). It seems that t =  3.1 is much more recommended in current software (e.g., Feat and PALM). Can we try using a set of values (1.96, 2.3, 2.58, 3.1, or even higher ones) to detect the sensitive clusters in studies?
+
+Any answer would be greatly appreciated.
+
+Best regards,
+
+Shufei Zhang
+

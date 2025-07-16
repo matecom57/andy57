@@ -1,0 +1,805 @@
+Dear Martin,
+
+Thank you so much for sharing your insights! That makes sense and I can definetly try both approaches and examine if it makes any differences on my results.
+
+I'm still wondering what should be the contrast setting, in case of using paired t-test with covariate (e.g., to examine A-B positively correlated with covariate). If you have any ideas on it, please let me know. Thank you so much!
+
+Best,
+Kyoungeun
+
+On Sun, Mar 31, 2024, 6:38 PM Martin Dietz <martin@cfin.au.dk> wrote:
+Dear Kyoungeun 
+
+When comparing two conditions within a group of subjects, one would usually use a one sample t-test of the contrast A-B from the first level, and include a covariate. This is a simpler design, which is usually preferable. 
+
+Whether the two designs yield identical results is something you can verify by estimating the two models and compare the parameter estimates. 
+
+Best wishes
+Martin
+
+On 1 Apr 2024, at 01.26, Kyoungeun Lee <klee773@utexas.edu> wrote:
+
+﻿
+Dear SPM experts,
+
+I have a question regarding the specification of the 2nd level model when using a paired t-test with covariates.
+
+I'm comparing two within-subject conditions, A and B, and I have one covariate (memory performance). My goal is to determine if the difference between conditions (either A > B or B > A) is positively correlated with the covariate (memory performance). I've attached my design matrix for reference.
+
+Could you advise on what contrast I should use in this scenario?
+
+P.S. I'm aware that I could create A-B and B-A contrasts and then run one-sample t-tests with the covariate. Would this approach yield statistically identical results to my current method?
+
+<image.png>
+
+
+
+Best,
+Kyoungeun
+
+
+Dear SPM experts,
+
+I have a question regarding the specification of the 2nd level model when using a paired t-test with covariates.
+
+I'm comparing two within-subject conditions, A and B, and I have one covariate (memory performance). My goal is to determine if the difference between conditions (either A > B or B > A) is positively correlated with the covariate (memory performance). I've attached my design matrix for reference.
+
+Could you advise on what contrast I should use in this scenario?
+
+P.S. I'm aware that I could create A-B and B-A contrasts and then run one-sample t-tests with the covariate. Would this approach yield statistically identical results to my current method?
+
+
+
+
+Best,
+Kyoungeun
+
+
+Dear SPM Experts,
+
+I hope this email finds you well. As a newcomer to fMRI analysis, I may have some basic questions, and I appreciate your patience and understanding in advance.
+
+I am currently working on a task design which involves listening to emotionally evocative auditory stimuli categorized into pleasant (P), neutral (N), and unpleasant (U). Participants were required to respond if they perceived the sound as P, N, or U.
+
+For the first-level analysis, I computed three contrasts per subject: U>N, P>N, and U+P>N. These contrasts were chosen to model the effect of affective sounds compared to neutral ones.
+
+Now, I am looking to investigate how brain activity in response to affective sounds varies across different groups (4 levels). I intend to employ a flexible factorial model, incorporating subjects as random effects and groups as a fixed effect.
+
+I have a few questions regarding this:
+
+Are the three first-level contrasts I computed sufficient for second-level analysis? Or do I need to compute contrasts representing the effects of pleasant alone (1 0 0), neutral alone (0 1 0), and unpleasant alone (0 0 1) to be used in the second level?
+
+My primary interest lies in examining the main effect of group and the interaction effect of group (4 levels) * condition (3 levels: P, U, N). Which first level contrasts should be included in the factor condition? I am concerned because if I input contrasts like U>N and P>N, neutral is represented twice. Is this a problem?
+
+Could you please direct me to any resources that guide through the implementation of flexible factorial ANOVA in SPM, including setting up contrasts and the subject factor?
+
+Lastly, do you have any recommendations or resources regarding good thresholding practices in SPM?
+
+Thank you very much for your time and assistance. 
+I look forward to your guidance.
+
+Best,
+_____________________________
+Namitha Jain
+PhD student, Speech and Hearing sciences
+University of Illinois, Urbana-Champaign
+
+
+Dear Martin,
+
+Thank you so much for sharing your insights! That makes sense and I can definetly try both approaches and examine if it makes any differences on my results.
+
+I'm still wondering what should be the contrast setting, in case of using paired t-test with covariate (e.g., to examine A-B positively correlated with covariate). If you have any ideas on it, please let me know. Thank you so much!
+
+Best,
+Kyoungeun
+
+On Sun, Mar 31, 2024, 6:38 PM Martin Dietz <martin@cfin.au.dk> wrote:
+Dear Kyoungeun 
+
+When comparing two conditions within a group of subjects, one would usually use a one sample t-test of the contrast A-B from the first level, and include a covariate. This is a simpler design, which is usually preferable. 
+
+Whether the two designs yield identical results is something you can verify by estimating the two models and compare the parameter estimates. 
+
+Best wishes
+Martin
+
+On 1 Apr 2024, at 01.26, Kyoungeun Lee <klee773@utexas.edu> wrote:
+
+﻿
+Dear SPM experts,
+
+I have a question regarding the specification of the 2nd level model when using a paired t-test with covariates.
+
+I'm comparing two within-subject conditions, A and B, and I have one covariate (memory performance). My goal is to determine if the difference between conditions (either A > B or B > A) is positively correlated with the covariate (memory performance). I've attached my design matrix for reference.
+
+Could you advise on what contrast I should use in this scenario?
+
+P.S. I'm aware that I could create A-B and B-A contrasts and then run one-sample t-tests with the covariate. Would this approach yield statistically identical results to my current method?
+
+<image.png>
+
+
+
+Best,
+Kyoungeun
+
+
+Dear SPM experts,
+I have three modulatory inputs and four ROIs (i.e., the B matrix is 4*4*3).  I have fitted the subject-level DCM and conducted the group-level PEB. How can I contrast the three modulations at the group level?
+I look forward to your reply.
+Cheers
+
+
+Dear Christian,
+
+Thank you for your response.
+
+This error actually happens with the last version from https://www.neuro.uni-jena.de/cat12/:
+
+cat12_latest_R2017b_MCR_Linux.zip   2024-03-20 00:30  405M 
+
+Tamir
+
+Dear Tamir,
+
+the last release should already solve that issue. Try to update...
+
+Best,
+
+Christian
+
+On Sat, 30 Mar 2024 15:59:10 +0000, Tamir <eisentamir@GMAIL.COM> wrote:
+
+>Dear all, when running the standalone Linux version of CAT12.9 I get the following error:
+>
+>Invalid MEX-file '/vols/Scratch/fbp163/OPDC/VBM/CAT12.9_R2017b_MCR_Linux/spm12_mcr/home/gaser/gaser/spm/spm12/toolbox/cat12/cat_sanlm.mexa64': /lib64/libm.so.6: version `GLIBC_2.29' not found (required by /vols/Scratch/fbp163/OPDC/VBM/CAT12.9_R2017b_MCR_Linux/spm12_mcr/home/gaser/gaser/spm/spm12/toolbox/cat12/cat_sanlm.mexa64)
+>
+>I am working on the departmental cluster which has CentOS 7 with GLIBC_2.17 - is there a way to make it work somehow?
+>
+>Many thanks!
+>Tamir
+
+Dear all, when running the standalone Linux version of CAT12.9 I get the following error:
+
+Invalid MEX-file '/vols/Scratch/fbp163/OPDC/VBM/CAT12.9_R2017b_MCR_Linux/spm12_mcr/home/gaser/gaser/spm/spm12/toolbox/cat12/cat_sanlm.mexa64': /lib64/libm.so.6: version `GLIBC_2.29' not found (required by /vols/Scratch/fbp163/OPDC/VBM/CAT12.9_R2017b_MCR_Linux/spm12_mcr/home/gaser/gaser/spm/spm12/toolbox/cat12/cat_sanlm.mexa64)
+
+I am working on the departmental cluster which has CentOS 7 with GLIBC_2.17 - is there a way to make it work somehow?
+
+Many thanks!
+Tamir
+
+Please pass the opportunity (below) on to potential candidates. And thanks so much.
+
+The Laboratory of Affective Neurogenetics, headed by Dr. Mbemba Jabbi at the Department of Psychiatry and Behavioral Sciences at the Dell Medical School, the University of Texas at Austin, invites motivated applicants for two 2-year postdoctoral fellowships. The NIH-funded postdoc fellowships will focus on studies of brain-body integration, with emphasis on looking at how specific mechanisms underlying the genetic building blocks of the human brain (e.g., anatomy, physiology, and postmortem gene expression) and related molecular measures in the blood (e.g., gene expression) of study participants are correlatively or causatively linked with adaptive behavioral phenotypes in health and disease across the lifespan. 
+
+ 
+
+The ideal start month is June 2024, but we will consider applications until we fill the positions. Successful applicants will have a DSc, DPhil, Ph.D., MD, or equivalent degree, but strong candidates nearing degree completion will be seriously considered. A candidate with a background in behavioral or clinical neuroscience, integrative or molecular biology, computer science, psychology, bio/health informatics, engineering, physics, or mathematics and related fields and possesses exceptional scientific curiosity, emerging scholarly achievements, and a collaborative spirit are strongly encouraged to apply. 
+
+ 
+
+Dell Medical School is a well-resourced clinical research innovation catalyst focused on finding ways to stay healthy and understand and treat complex and prevalent diseases at the University of Texas at Austin. The University of Texas at Austin, its affiliated Center for Learning and Memory, and the Institute for Neuroscience are internationally recognized research entities in the uniquely vibrant and culturally enriched city of Austin, the fastest-growing technology and knowledge hub in the United States. 
+
+
+
+UT-Austin is home to outstanding research-dedicated facilities, including:
+
+1.     the genome sequencing and analysis core
+
+2.     neuroimaging facilities, including 3T MRI scanners (UT-IRC and UTHealth), a MEG Neuromag at Dell Children's Hospital, and 
+
+3.     the Texas Advanced Computing Cluster (one of the most advanced supercomputing facilities in the world)
+
+ 
+
+Interested candidates can reach out to mbemba.jabbi@austin.utexas.edu.
+
+ 
+
+As an equal-opportunity employer, the University of Texas at Austin complies with all federal and state laws regarding nondiscrimination and affirmative action. 
+
+ 
+
+
+
+Hello all,
+
+After performing DCM inversion for all subjects, I reviewed the results using spm_dcm_fmri_check and encountered numerous warning messages:
+Warning: Imaginary parts of complex X and/or Y arguments ignored
+
+> In spm_plot_ci (line 179)
+
+  In spm_dcm_fmri_check (line 303)
+
+The line 179 in spm_plot_ci is:
+
+  line([k k],[-1 1]*c(k) + E(k),'LineWidth',4,'Color',col,'Parent',ax);
+
+ Variable ‘c’ contains complex numbers.
+
+
+ Additionally, I noticed that the majority of values in DCM.Ep.A are less than 0.01.
+
+However, the variance explained values outputted by spm_dcm_fmri_check are not low (bigger than 25% for all subjects).
+
+Does this suggest a failure in estimation or no connectivity at all among regions?
+
+Thanks a lot!
+
+I wish you good.
+
+Ling
+
+
+
+
+
+
+
+
+
+
+
+Hi everyone
+
+Instats is pleased to be offering a 3-day seminar on Monte Carlo Simulations: Power Analysis and Beyond by professor Timothy Bednall, running April 2 - 4. This hands-on workshop offers a comprehensive understanding of Monte Carlo simulations and power analysis using Mplus and R. Tailored for PhD students and researchers across various disciplines, the workshop covers a range of topics from introducing Monte Carlo simulations and principles of power analysis, to more advanced methods for running simulations with dozens of examples, equipping participants with practical skills and a deep understanding of these statistical tools and their hands-on applications.
+
+Sign up today for this unique workshop and please feel free to tell your friends and colleagues!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+Dear SPM experts,
+I would like to perform a bayesian contrast between two PEBs. Briefly, I performed a PEB between two groups (using 1 and -1 as covariates) during rest and a PEB between the same two groups during music listening. Then, I got the pp of each parameter in each PEB (review_pebresults.m) and now I would like to perform a difference between the parameters with a pp>0.95 during music and the rest.
+I looked at spm_dcm_peb_con.m but, if I'm not wrong, it considers only one PEB model. Conversely, I have two PEBs. How can I compare the two models by considering Ep and Cp?
+I look forward to your reply.
+Cheers
+
+Dear SPM experts,
+I would like to perform a bayesian contrast between two PEBs. Briefly, I performed a PEB between two groups (using 1 and -1 as covariates) during rest and a PEB between the same two groups during music listening. Then, I got the pp of each parameter in each PEB (review_pebresults.m) and now I would like to perform a difference between the parameters with a pp>0.95 during music and the rest. 
+I looked at spm_dcm_peb_con.m but, if I'm not wrong, it considers only one PEB model. Conversely, I have two PEBs. How can I compare the two models by considering Ep and Cp? 
+I look forward to your reply.
+Cheers
+
+--
+
+Dear SPM Experts,
+
+I am reaching out to seek your guidance on a matter pertaining to my fMRI experiment.
+
+I want to analyse data with the following structure:
+
+
+  Event related design, within subject, 40 subjects
+  two blocks with 15 min. duration, no break in between
+  21 events A in block 1 (pseudrandomly distributed within the block)
+  21 events B in block 2 (pseudrandomly distributed within the block)
+  duration of all events between 0.2-4 seconds (dependent on participant response time)
+I want to contrast condition A and B in the context of a general linear model.
+
+My questions are the following:
+
+ I am aware that scanner drift rate can make problems in this setup. What effect would I observe in my results? Can I estimate how strong the effects of scanner drift rate on my results are?
+Due to the somewhat block-like nature: How problematic would a high-pass filter as part of my analysis be? I currently have a filter with a cutoff of 4320 seconds.
+How much trust would you put in any results of this analysis?
+Is there a different analysis approach that would lead to more trustworthy results.
+Thank you in advance and warm regards,
+
+Negin Javaheri
+
+-- 
+Negin Javaheri
+PhD Candidate
+Department of Neuropsychology and Behavioral Neurobiology
+University of Bremen | Cognium Building
+Hochschulring 18 | D-28359 Bremen
+Phone: +49-421-218-68750
+E-Mail: javaheri@uni-bremen.de
+Web: www.neuropsychologie.uni-bremen.de
+
+
+Actually, you do not need additional jitter to optimise fMRI efficiency with such long and varied SOAs – your HRF-convolved regressors will already be reasonably decorrelated. Jitter becomes more important when you have a short minimal SOA, and needs to be over a much larger range than 1-2 seconds to have any effect on correlation between regressors (eg 2-12 seconds)*. And even then, such jitter is only needed if you want to estimate the response versus inter-event baseline; if you only care about differences between two types of events, you do not need to jitter, but you do need to randomise the order of those event-types (in which case, the shortest SOA possible is optimal, assuming no nonlinear saturation of the HRF). So if you don’t care about contrasts versus baseline (and are happy to assume a fixed canonical HRF), then I would ask why you are using such long SOAs (unless you have a limited number of stimuli, since more TRs is nearly always more efficient)?
+
+ 
+
+With 6 conditions (event-types) and such long SOAs (assuming they need to be long for psychological reasons), some orders of event-types can more optimal than others, to avoid too much signal (for your contrasts of interest) being lost in the low-frequency fMRI noise (eg if you highpass filter). That optimal order depends on which contrasts (effects) in your 2x3 design are most important – you want such contrasts to have the highest frequency (ie vary fastest).
+
+ 
+
+This webpage is probably easiest to start with for a conceptual overview: https://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency, then if you want to simulate efficiencies of different designs, try this function: https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2013/09/fMRI_GLM_efficiency.m, which accompanies this more technical paper: https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2015/03/Henson_EN_15_Efficiency.pdf.  
+
+ 
+
+Hope this helps
+
+Rik
+
+ 
+
+* If you have a long TR>2s, and your SOAs are multiples of your TR, you could jitter by 0-TR/2 secs to ensure a higher effective sampling rate, but that is a different reason – see above webpage.
+
+ 
+
+---------------------------------------------------------------
+
+ 
+
+Prof Richard Henson, MA, MSc, PhD, FBA
+
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+
+President-Past, British Neuroscience Association
+
+Fellow of the British Academy
+
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+
+ 
+
+What is credible neuroscience?
+
+---------------------------------------------------------------
+
+ 
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Frank VAN OVERWALLE
+Sent: 28 March 2024 08:49
+To: SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Luna,
+
+ 
+
+I do not understand entirely your question.
+
+ 
+
+In principle, you build your experiment as you normally would do for a behavioral psychological experiment, with the addition of jittering (a random addition between say 1-2 seconds) in the inter trial/stimulus intervals for better estimation of the BOLD function.
+
+ 
+
+In SPM, you determine for each condition a regressor with as onset times of the stimulus onsets in each condition, and the duration of the stimulus (which you can interpret as a single peak, hence duration = 0; or for the whole length of the stimulus, hence duration = 2 s)
+
+ 
+
+I hope this answers your question,
+
+ 
+
+Frank
+
+ 
+
+Van: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> Namens Luna Sato
+Verzonden: woensdag 27 maart 2024 20:38
+Aan: SPM@JISCMAIL.AC.UK
+Onderwerp: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Hi all,
+
+ 
+
+In my experiment, there are six conditions belong to two independent variables (2x3).
+
+ 
+
+We are interested into the interaction effect of 2x3 ANOVA on activation (beta values) of six conditions.
+
+ 
+
+A slow event design will be used: each event lasting two seconds, with intervals between events ranging from 8 to 14 seconds. Each session comprises 32 events.
+
+ 
+
+Are there any tools or MATLAB codes available to help determine the best stimulus sequence for this slow event design?
+
+ 
+
+Thank you!
+
+Best,
+
+Luna
+
+Hi Hannah,
+
+ 
+
+It seems that the SPM contrasts of the clusters were not very strong, significant only at p<.05. Hence, selecting specific data/voxel from each cluster might have weakened that contrast, e.g., by a larger variation around the mean, an effect that might be smoothed by using a larger amount of voxels (Note, I am not a statistical or SPM expert, so take this interpretation with some salt).
+
+ 
+
+In our lab, we never single out a single voxel from the clusters, but usually take a larger ROI using Marsbar (e.g., a sphere with radius 5, 10, 15 depending on the volume of the clusters), and that typically confirms the SPM contrast.
+
+ 
+
+Hope this helps, Frank
+
+ 
+
+Van: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> Namens Doyle, Hannah
+Verzonden: dinsdag 26 maart 2024 21:39
+Aan: SPM@JISCMAIL.AC.UK
+Onderwerp: [SPM] 2nd level covariate t contrast vs. biased ROI t test
+
+ 
+
+Hi all,
+
+ 
+
+I am running into some confusion in my analyses that I'm hoping someone can shed light on. I have two groups of participants. I specify the groups as a 2nd level covariate, and then specify t contrasts as follows: group1>group2 = [1 -1] and group2>group1 = [-1 1]. I see FWE cluster corrected activity at p<0.05 in both contrasts. 
+
+ 
+
+However, when I take a biased ROI from one of those contrasts, pull beta values from that ROI separately for each group, and then run a t test on those values, it does not come out significant. To verify I was pulling values correctly, I took a peak voxel of activity from that ROI and recorded the exact beta value for each participant in each group, and the t test still was not significant. I expected based on contrast maps that one group would be significantly greater than the other in a biased ROI analysis. I tried this for different peak voxels and the closest result was marginally greater for one group over the other. This also occurs if I pull T values rather than beta values.
+
+ 
+
+I was under the impression when those t contrasts are calculated by SPM that a t test is performed, and therefore I should have similar results from both types of analyses, but maybe I am misunderstanding how t contrasts for 2nd level covariates are handled by SPM? Does anyone have insight into this?
+
+ 
+
+Thank you in advance!
+
+ 
+
+Best,
+
+Hannah
+
+ 
+
+--
+
+Hannah Doyle
+
+Neuroscience PhD candidate
+
+Brown University
+
+The Desrochers Lab
+
+(414) 469-4393
+
+Luna,
+
+ 
+
+I do not understand entirely your question.
+
+ 
+
+In principle, you build your experiment as you normally would do for a behavioral psychological experiment, with the addition of jittering (a random addition between say 1-2 seconds) in the inter trial/stimulus intervals for better estimation of the BOLD function.
+
+ 
+
+In SPM, you determine for each condition a regressor with as onset times of the stimulus onsets in each condition, and the duration of the stimulus (which you can interpret as a single peak, hence duration = 0; or for the whole length of the stimulus, hence duration = 2 s)
+
+ 
+
+I hope this answers your question,
+
+ 
+
+Frank
+
+ 
+
+Van: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> Namens Luna Sato
+Verzonden: woensdag 27 maart 2024 20:38
+Aan: SPM@JISCMAIL.AC.UK
+Onderwerp: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Hi all,
+
+ 
+
+In my experiment, there are six conditions belong to two independent variables (2x3).
+
+ 
+
+We are interested into the interaction effect of 2x3 ANOVA on activation (beta values) of six conditions.
+
+ 
+
+A slow event design will be used: each event lasting two seconds, with intervals between events ranging from 8 to 14 seconds. Each session comprises 32 events.
+
+ 
+
+Are there any tools or MATLAB codes available to help determine the best stimulus sequence for this slow event design?
+
+ 
+
+Thank you!
+
+Best,
+
+Luna
+
+
+
+Hi all, sorry for the multiple postings, but... 
+Going to Society of Biological Psychiatry (SOBP) annual meeting this May? Want more time to think? Want more time to code? Want more time to collaborate? The SOBP BrainHack is the place to be! May 7th&8th, 2024.
+
+Details at https://www.repronim.org/SOBPHack-052024...
+Registration at https://www.eventbrite.com/e/sobp-brain-...
+
+Space is limited, register soon!
+
+Hi all,
+
+In my experiment, there are six conditions belong to two independent variables (2x3).
+
+We are interested into the interaction effect of 2x3 ANOVA on activation (beta values) of six conditions.
+
+A slow event design will be used: each event lasting two seconds, with intervals between events ranging from 8 to 14 seconds. Each session comprises 32 events.
+
+Are there any tools or MATLAB codes available to help determine the best stimulus sequence for this slow event design?
+
+Thank you!
+Best,
+Luna
+
+Hi Debora
+
+It depends on the models in your comparison. In general, Bayesian model comparison will favour the simplest model, if there’s no useful information in the data. So including subjects without experimental effects could increase the evidence for models with few experimental effects (e.g. in the limit, if you include a null model that has no modulations).
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: Veronica Debora TORO <veronicadebora.toro@studenti.unipr.it>
+Sent: 22 March 2024 10:48
+To: Zeidman, Peter <peter.zeidman@ucl.ac.uk>; SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] Subjects with less than 10% explained variance in DCM_PEB
+
+ 
+
+Dear Peter,
+
+Thank you for your quick reply!
+
+And in your experience, does the exclusion of these subjects impact the model comparison result? For example: I assumed two alternative models to the full One, can the posterior probability of compared models increase and/or decrease as a result of excluding these subjects?
+
+ 
+
+Best
+
+Debora 
+
+ 
+
+Inviato da Outlook per Android
+
+From: Zeidman, Peter <peter.zeidman@ucl.ac.uk>
+Sent: Friday, March 22, 2024 11:39:03 AM
+To: Veronica Debora TORO <veronicadebora.toro@studenti.unipr.it>; SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: RE: [SPM] Subjects with less than 10% explained variance in DCM_PEB
+
+ 
+
+Dear Debora
+I'm assuming the subjects with low explained variance had little or no activation in their SPM analyses (particularly in the region(s) that receive driving input).
+
+You can either include the subjects with little or no activation - acknowledging that a representative sample of the population will include some people for whom experimental effects couldn't be detected - or you can exclude them, focussing your results on just those who do show activation. Both approaches have been used and can reasonably be justified.
+
+All the best
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Debora Toro
+Sent: 22 March 2024 09:28
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Subjects with less than 10% explained variance in DCM_PEB
+
+⚠ Caution: External sender
+
+
+Dear SPM and DCM experts,
+I'm running a DCM analysis. While checking diagnostics I noticed the presence of some subjects with poor explained variance (less than 10%). After checking their single-subject First level SPM Maps, am I entitled to esclude these subjects from the 2nd level DCM analysis? Does the esclusion of these subjects affect the results obtained from the model comparison?
+
+
+Best regards
+Debora
+
+All,
+We are using mouse brain MR images.
+The normalize function in SPM8 converts our neurological nifti images into radiological orientation. 
+
+Can we remove that from the processing algorithm? Or change the headers so that the images are consistently in the neurological format?
+
+We cannot find the relevant command that is doing this conversion during nonlinear alignment.
+
+Thank you
+
+Elaine L. Bearer, MD-PhD, FAAAS, FCAP
+The Harvey Family Professor, Dept of Pathology
+Professor, Department of Music (secondary)
+University of New Mexico Health Sciences Center
+Albuquerque, NM 87131
+https://hsc.unm.edu/medicine/departments/pathology/research/labs/bearer.html
+https://en.wikipedia.org/wiki/Elaine_Bearer
+
+Also, Visitor
+California Institute of Technology
+
+
+Dear SPM experts,
+
+I am encountering several difficulties in understanding how to set up my analyses with SPM, as I am unable to find appropriate information for what I'd like to do in the manual or other documents. I am working with scalp x time EEG data.
+
+I have four conditions (A, B, C, D) and four regressors, one for each condition (A1, B1, C1, D1), which are trial-by-trial learning estimates.
+
+WHAT I WANT TO DO: I want to investigate if the EEG signal of a given condition covaries with its own regressor (e.g., if A covaries with A1, B with B1, and so on). It would also be useful to then make some contrasts (e.g., A+A1 vs. B+B1).
+
+WHAT I HAVE DONE:
+So far, I have performed single subject one-way ANOVA, populating the "Cells" field with four cells, one per condition that I've populated with my scalp x time maps, and loading the file with the vector of learning estimates (following the order of the single trial maps loaded in Cells) under "Multiple covariates", selecting "Interaction with Factor 1". This gives me 8 Beta maps per subject. Have I proceeded correctly so far?
+
+GROUP ANALYSIS: I am not clear on how I should proceed, meaning that I don't know what data should I use (all 8 beta maps? And how should I populate the fields then?) nor how to specify any contrasts, in the sense that I am not sure how to choose the weights when setting a contrast (likewise for visualizing the results on single subjects).
+
+SUMMARY OF REQUESTS:
+
+Is the single subject analysis correct?
+How do I set up the group analysis?
+How do I assign weights to contrasts (e.g., if I wanted to visualize, precisely, if A covaries with A1)?
+
+I realize I am asking a lot, but your help would be truly valuable to me.
+With very best wishes,
+
+Levi
+
+Hi experts,
+
+gPPI is a commonly used analysis method. However, the SPM manual does not provide the code for gPPI. Therefore, I'm wondering if we can utilize existing batch modules related to PPI within SPM to conduct gPPI analysis.
+
+Suppose an experiment involves four conditions ('cond1', 'cond2', 'cond3', 'cond4'), and the psychological effect of interest is: cond1 + cond2 - cond3 + cond4. In this case, the gPPI analysis code for this experiment would be as follows:
+
+conditionstr={'cond1','cond2','cond3','cond4'};
+% generate PPI regressers
+for con=1:length(conditionstr)
+   weight_matrix=[];
+   weight_matrix(:,1)=1:length(conditionstr);
+   weight_matrix(:,2)=1;
+   weight_matrix(con,3)=1;
+   matlabbatch{1}.spm.stats.ppi.spmmat =    {[  GLMpath '\SPM.mat']};
+   matlabbatch{1}.spm.stats.ppi.type.ppi.voi = {[   GLMpath '\VOI_seed_1.mat']};%voi of seed region
+   matlabbatch{1}.spm.stats.ppi.type.ppi.u = weight_matrix;
+   matlabbatch{1}.spm.stats.ppi.name =[ 'seed_con' num2str(con)];
+   matlabbatch{1}.spm.stats.ppi.disp = 0;   
+   spm_jobman('run', matlabbatch);clear matlabbatch
+end
+
+% GLM spec
+matlabbatch{1}.spm.stats.fmri_spec.dir = dirpath;
+matlabbatch{1}.spm.stats.fmri_spec.timing.units = 'secs';
+matlabbatch{1}.spm.stats.fmri_spec.timing.RT = TR;
+matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t = nslice;
+matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t0 =referenceslice;
+matlabbatch{1}.spm.stats.fmri_spec.sess.scans = filenames;
+matlabbatch{1}.spm.stats.fmri_spec.sess.cond = struct('name', {}, 'onset', {}, 'duration', {}, 'tmod', {}, 'pmod', {}, 'orth', {});
+matlabbatch{1}.spm.stats.fmri_spec.sess.multi = {''};
+
+% interaction terms
+for con=1:length(conditionstr)
+load([   GLMpath '\PPI_seed_con'  num2str(con) '.mat']);
+matlabbatch{1}.spm.stats.fmri_spec.sess.regress(con).name = ['PPI_Interaction'  conditionstr{con}];
+matlabbatch{1}.spm.stats.fmri_spec.sess.regress(con).val = PPI.ppi;
+end
+
+% psychological terms
+  for con=1:length(conditionstr)
+load([   GLMpath '\PPI_seed_con'  num2str(con)  '.mat']);
+matlabbatch{1}.spm.stats.fmri_spec.sess.regress(end+1).name = ['Psy'   conditionstr{con}];
+matlabbatch{1}.spm.stats.fmri_spec.sess.regress(end).val = PPI.P;
+  end
+
+  % physiological
+matlabbatch{1}.spm.stats.fmri_spec.sess.regress(end+1).name =['Phys'];
+matlabbatch{1}.spm.stats.fmri_spec.sess.regress(end).val = PPI.Y;
+matlabbatch{1}.spm.stats.fmri_spec.sess.multi_reg = headmotionfile;
+matlabbatch{1}.spm.stats.fmri_spec.sess.hpf = 128;
+matlabbatch{1}.spm.stats.fmri_spec.fact = struct('name', {}, 'levels', {});
+matlabbatch{1}.spm.stats.fmri_spec.bases.hrf.derivs = [0 0];
+matlabbatch{1}.spm.stats.fmri_spec.volt = 1;
+matlabbatch{1}.spm.stats.fmri_spec.global = 'None';
+matlabbatch{1}.spm.stats.fmri_spec.mthresh = 0.8;
+matlabbatch{1}.spm.stats.fmri_spec.mask = {''};
+matlabbatch{1}.spm.stats.fmri_spec.cvi = 'AR(1)';
+spm('defaults', 'FMRI');
+spm_jobman('run', matlabbatch);clear matlabbatch
+
+% estimation
+matlabbatch{1}.spm.stats.fmri_est.spmmat =  {[dirpath '\SPM.mat']};
+matlabbatch{1}.spm.stats.fmri_est.method.Classical = 1;
+spm('defaults', 'FMRI');
+spm_jobman('run', matlabbatch);clear matlabbatch
+
+%contrast
+matlabbatch{1}.spm.stats.con.spmmat = {[dirpath '\SPM.mat']};
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.name = 'ppi_interaction_difference';
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.weights = [1 1 -1 -1];
+matlabbatch{1}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
+matlabbatch{1}.spm.stats.con.delete = 1;
+spm('defaults', 'FMRI');
+spm_jobman('run', matlabbatch);clear matlabbatch
+
+The spmT_0001.nii file generated by this contrast represents the gPPI result for the participant, while the con_0001.nii file can be used for group analysis in GLM.
+
+Please correct my mistakes.
+Best,
+
+Zach
+
+Lena,
+
+The field of fmri statistical analysis is a bit controversial, so you may get replies that disagree with mine, but here goes!
+
+I think the reviewer is concerned that you are selectively reporting the most active part of the cluster by limiting the analysis to the data surrounding the peak voxel. That introduces bias into the results. Lots of early fmri papers did this, and people are more careful about it now.
+
+Strictly speaking, decisions about analysis should be made before the data is acquired, i.e. the statistical threshold that will be used, and the regions of interest that will be analyzed.
+
+Two methods that avoid bias are:
+
+1) choosing the spherical region (or regions) for analysis before you look at the data, based on previous publications.
+
+2) run two identical tasks on each patient, and use one of the datasets, at a chosen statistical threshold, to generate masks that are then used to limit the analysis of the second set of data.
+
+The data-generated mask can also be combined with a previously-chosen anatomic mask so that you analyze the most active part of the chosen anatomic mask. This way the experiment itself limits the region of interest, so there is no operator bias.
+
+Hope this helps!
+
+Jim
+
+
+On Sat, Mar 23, 2024 at 9:21 AM Lena Lim <000063c14c8ef627-dmarc-request@jiscmail.ac.uk> wrote:
+Dear SPM Experts,
+
+Is it okay to extract beta values of sig clusters/regions using MarsBaR, defined using spherical masks with a radius of 8mm around the peak coordinates? I have seen many earlier papers extracting beta values using spherical masks around peak coordinates too, but a reviewer commented that a sphere centered at the peak coordinate is not representative of the whole cluster, and that I should use the whole SPM clusters in their original form instead... could you please kindly advise if  the latter approach is the better one please?
+
+
+
+
+
+Many thanks,
+
+
+
+Lena
+
+
+

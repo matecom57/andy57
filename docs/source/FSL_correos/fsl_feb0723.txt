@@ -1,0 +1,142 @@
+Hi Olga,
+
+It is not unusual for a small number of voxels within the brain mask to be negative, as long as the brain mask is reasonable, and there are only a small number of negative voxels. You may need to use a more conservative mask for your tSnR calculations.
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Olga Kepinska <olga.kepinska@UNIVIE.AC.AT>
+Sent: 07 February 2023 07:40
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] filtered_func_data not masked?
+ 
+Dear FSL experts,
+I'm reaching out again regarding the below issue with single-level FEAT preprocessing.
+Your input will be much appreciated.
+Many thanks,
+Olga Kepinska
+
+
+
+Hi Gina,
+
+This is probably due to a change in recent versions of macOS - you should be able to follow the instructions from this post to fix this on your system: https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;d24328c4.2301
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Gina-Isabelle Henze <gina.henze@UR.DE>
+Sent: 07 February 2023 11:15
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Dual Regression Error
+ 
+Dear experts,
+
+I am trying to do a dual regression and unfortunately I keep getting error messages. After I was able to run the group_ica successfully (groupICA_REST1.ica), my command looks like this (using the identical subject_list-file from group_ica):
+
+dual_regression groupICA_REST1/melodic_IC.nii.gz 1 design/GLM_cort_REST1.mat design/GLM_cort_REST1.con 5000 groupICA_REST1_cort.dr `cat subjects_REST1.txt`
+
+When I run this command, I immediately get the error:
+creating common mask
+Fatal error: cannot open file: -
+    Function: (main)
+
+I saw in the archive that it might be the quotation marks around the `cat ...` part.
+If I change this to "cat ...", the result is:
+/Users/fsl/bin/dual_regression: line 138: [: too many arguments
+creating common mask
+Error submitting job - Array task definition file fault: Unable to read 'test/scripts+logs/drA'.
+
+When I try the following command: dual_regression groupICA_REST1/melodic_IC.nii.gz 1 -1 5000 groupICA_REST1.dr "cat subjects_REST1.txt"
+
+... then I get this error message:
+creating common mask
+doing the dual regressions
+Error submitting job - Array task definition file fault: Unable to read 'groupICA_REST1_cort.dr/scripts+logs/drC'
+sorting maps and running randomise
+
+Fatal error: cannot open file: -
+    Function: (main)
+
+There is no drC in the scripts+logs folder. Instead there are the following files: drA, drB and drE.
+
+
+I am totally lost! What is the problem here?
+Thanks in advance!
+Gina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+Dear experts,
+
+I am trying to do a dual regression and unfortunately I keep getting error messages. After I was able to run the group_ica successfully (groupICA_REST1.ica), my command looks like this (using the identical subject_list-file from group_ica):
+
+dual_regression groupICA_REST1/melodic_IC.nii.gz 1 design/GLM_cort_REST1.mat design/GLM_cort_REST1.con 5000 groupICA_REST1_cort.dr `cat subjects_REST1.txt`
+
+When I run this command, I immediately get the error:
+creating common mask
+Fatal error: cannot open file: -
+    Function: (main)
+
+I saw in the archive that it might be the quotation marks around the `cat ...` part.
+If I change this to "cat ...", the result is:
+/Users/fsl/bin/dual_regression: line 138: [: too many arguments
+creating common mask
+Error submitting job - Array task definition file fault: Unable to read 'test/scripts+logs/drA'.
+
+When I try the following command: dual_regression groupICA_REST1/melodic_IC.nii.gz 1 -1 5000 groupICA_REST1.dr "cat subjects_REST1.txt"
+
+... then I get this error message:
+creating common mask
+doing the dual regressions
+Error submitting job - Array task definition file fault: Unable to read 'groupICA_REST1_cort.dr/scripts+logs/drC'
+sorting maps and running randomise
+
+Fatal error: cannot open file: -
+    Function: (main)
+
+There is no drC in the scripts+logs folder. Instead there are the following files: drA, drB and drE.
+
+
+I am totally lost! What is the problem here?
+Thanks in advance!
+Gina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+We want to perform a regression y ~ age + group where group
+is (ASD|TDC) in a cohort containing subjects diagnosed with 
+autism and typically developing controls.
+
+however the two groups have statistically significant differences in variance as determined by
+an F test. The difference does not appear to be related to age, i.e. does not appear to be an example 
+of heteroscedasticity.
+
+
+the data would thus seem to violate the linear model assumption of homogeneity.
+
+Looking at the documentation for PALM it is stated that PALM can produce valid results in the presence of heteroscedasticity,
+but there is no mention regarding if PALM can gives valid results if the data groups exhibit heterogeneity ?
+
+so im asking if I can use PALM for data that has this more general form of differences in
+variance between the diagnostic groups and for any specific procedure to be implemented
+to ensure valid results of a statistical inference for main effect of group and interactions group*age
+
+I hope my question is clear enough
+
+thank you in advance
+
+Greg
+
+
+
+

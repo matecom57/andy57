@@ -1,0 +1,613 @@
+Hi Matthew,
+
+This is not a repeated design. EVs 14-18 are used to correct for the different sites in the study.
+
+Thank you,
+Jenna
+
+########################################################################
+
+
+Hello，
+
+There always is a long waiting time （10 hours this time）even it finished installation, when I  am trying to install FSL on my Windows 11 WSL2 system with the FSL version 6.0.7.4 (Ubuntu 22). 
+
+Thanks,
+Chloe
+
+
+	
+fucong666
+fucong666@yeah.net
+
+
+	
+fucong666
+fucong666@yeah.net
+---- Replied Message ----
+From	Paul McCarthy<paul.mccarthy@NDCN.OX.AC.UK>
+Date	10/18/2023 16:35
+To	<FSL@JISCMAIL.AC.UK>
+Subject	Re: [FSL] install failed on macOS 14
+Hi Chloe,
+
+How long have you waited for the installation to complete? Are you able to share the fslinstaller output and the log file?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of fucong666 <fucong666@YEAH.NET>
+Sent: 17 October 2023 12:36
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] install failed on macOS 14
+ 
+
+Hello，
+
+There always is a long waiting time even it finished installation, when I  am trying to install FSL on my macOS 14 Sonoma system with the latest FSL version (macOS 13 Ventura). The fsl install step without stopping as shown in the shoot screen. 
+
+Thanks,
+Chloe
+
+	
+fucong666
+fucong666@yeah.net
+
+Hello，
+
+There always is a long waiting time （10 hours this time）even it finished installation, when I  am trying to install FSL on my Windows 11 WSL2 system with the FSL version 6.0.7.4 (Ubuntu 22). The fsl install step without stopping as shown in the shoot screen. 
+
+Thanks,
+Chloe
+
+
+	
+fucong666
+fucong666@yeah.net
+
+
+
+Dear Paul,
+
+
+
+You are right! I somehow assumed -and obviously I was wrong- that fslreorient2std was writing over the input file, therefore never worked.
+
+Excuse me for this naive mistake and thank you once again for your help and time.
+
+
+
+Best regards,
+Georgios
+
+
+
+On 10/17/23 11:03, Paul McCarthy wrote:
+Hi Georgio,
+
+I was able to get good results by running fslreorient2std before any of your other commands. I also noticed that, in your robustfov call, you are assuming that the third voxel dimension is inferior-superior, which is not the case for your image (but would be if you were to run fslreorient2std beforehand).
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Georgios Antonopoulos <g.antonopoulos@FZ-JUELICH.DE>
+Sent: 16 October 2023 21:53
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Flirt fails in some datasets
+ 
+Dear Paul, 
+
+
+
+Thank you once again for helping me to solve the problem.
+
+
+
+Please find in the following link one of the subjects https://fz-juelich.sciebo.de/s/UGaOW46k4KpPfwK
+It s from the IXI dataset so I can share without problems.
+
+
+
+And here is the code.
+
+
+
+#!/bin/sh   
+
+# Change dir
+cd $1/T1                                                                         
+
+# read T1w file in the current folder
+file_name=`ls *T1w.nii.gz`                                                                                                                                    
+cp $file_name T1_orig_ud.nii.gz                                              
+
+#Calculate where does the brain start in the z dimension and then extract the roi
+head_top=`${FSLDIR}/bin/robustfov -i T1_orig_ud | grep -v Final | head -n 1 | awk '{print $5}'`
+${FSLDIR}/bin/fslmaths T1_orig_ud -roi 0 -1 0 -1 $head_top 170 0 1 T1_tmp        
+
+#Run a (Recursive) brain extraction on the roi                                   
+${FSLDIR}/bin/bet T1_tmp T1_tmp_brain -R
+
+#Reduces the FOV of T1_orig_ud by calculating a registration from T1_tmp_brain to ssref and applies it to T1_orig_ud
+${FSLDIR}/bin/standard_space_roi T1_tmp_brain T1_tmp2 -maskNONE -ssref $FSLDIR/data/standard/MNI152_T1_1mm_brain -altinput T1_orig_ud -d          
+
+
+
+
+Best regards,
+
+
+
+Georgios
+
+
+
+
+
+On 10/16/23 11:44, Paul McCarthy wrote:
+Hi Georgios,
+
+Would you be able to share one of your problematic data sets, along with the specific command that is failing, so I can try and reproduce the issue?
+
+Paul
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Georgios <g.antonopoulos@FZ-JUELICH.DE>
+Sent: 11 October 2023 11:32
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Flirt fails in some datasets
+ 
+Dear Paul,
+Thank you for your very fast response and excuse me for late reply. I was making further tests, including fslreorient2std as you recommended. Images have the same voxel orientation and fslreorient2std did not change the results. I figured out though, that the problem does not starts from flirt but from
+standard_space_roi T1_tmp_brain_reor.nii.gz T1_tmp2 -maskNONE -ssref $FSLDIR/data/standard/MNI152_T1_1mm_brain -altinput T1_orig_ud -d
+
+which is creating an affine used later in flirt command.
+
+The attached figure shows all involved volumes and the output of this command.
+
+Any idea of why is this happening?
+
+Best regards,
+Georgios
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+-- 
+Georgios ANTONOPOULOS
+
+Postdoctoral Researcher
+
+Institute of Systems Neuroscience
+Heinrich Heine University Düsseldorf
+40225 Düsseldorf, Germany
+email: Georgios.Antonopoulos@med.uni-duesseldorf.de
+&
+Applied Machine Learning
+Institute of Neuroscience and Medicine 
+(INM-7: Brain and Behaviour)  
+Research Centre Jülich
+52425 Jülich, Germany
+email: g.antonopoulos@fz-juelich.de
+
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+Forschungszentrum Jülich GmbH
+52425 Jülich
+Sitz der Gesellschaft: Jülich
+Eingetragen im Handelsregister des Amtsgerichts Düren Nr. HR B 3498
+Vorsitzender des Aufsichtsrats: MinDir Stefan Müller
+Geschäftsführung: Prof. Dr. Astrid Lambrecht (Vorsitzende),
+Karsten Beneke (stellv. Vorsitzender), Dr. Ir. Pieter Jansens
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+-- 
+Georgios ANTONOPOULOS
+
+Postdoctoral Researcher
+
+Institute of Systems Neuroscience
+Heinrich Heine University Düsseldorf
+40225 Düsseldorf, Germany
+email: Georgios.Antonopoulos@med.uni-duesseldorf.de
+&
+Applied Machine Learning
+Institute of Neuroscience and Medicine 
+(INM-7: Brain and Behaviour)  
+Research Centre Jülich
+52425 Jülich, Germany
+email: g.antonopoulos@fz-juelich.de
+
+
+------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------
+Forschungszentrum Jülich GmbH
+52425 Jülich
+Sitz der Gesellschaft: Jülich
+Eingetragen im Handelsregister des Amtsgerichts Düren Nr. HR B 3498
+Vorsitzender des Aufsichtsrats: MinDir Stefan Müller
+Geschäftsführung: Prof. Dr. Astrid Lambrecht (Vorsitzende),
+Karsten Beneke (stellv. Vorsitzender), Dr. Ir. Pieter Jansens
+------------------------------
+
+Hi,
+
+I was trying to read the source code for the newest version of eddy. And I was wondering how you managed to do the motion correction. Is there a specific function or chunk of code responsible for the motion correction?
+
+I issued several test runs. The command I used is as follows: ./eddy_cpu --imain=…/test_data/test05_sbmot.nii.gz --mask=…/test_data/test05_sbmot_mask.nii.gz --acqp=…/test_data/acqparams.txt --index=…/test_data/index.txt --bvecs=…/test_data/test05_sbmot.bvec --bvals=…/test_data/test05_sbmot.bval --out=…/test_data/test05_sbmot_eddy.nii.gz
+
+And I printed out the parameters and found out the place where we changed the parameters are at the volume to volume section and entered the following if statement. I was wondering if you could give me some hint on how you conduct the motion correction in the code. Like I could find where you estimate the difference, but what is the specific function/class the code uses to handle and correct the parameter and update the data stored in sm class? What’s your high-level workflow when doing the motion correction?
+
+image.png
+
+Thanks for your help!
+
+Best regards,
+
+Charlotte.
+
+
+
+Hello，
+
+There always is a long waiting time even it finished installation, when I  am trying to install FSL on my macOS 14 Sonoma system with the latest FSL version (macOS 13 Ventura). The fsl install step without stopping as shown in the shoot screen. 
+
+Thanks,
+Chloe
+
+
+Dear Paul, 
+
+
+
+Thank you once again for helping me to solve the problem.
+
+
+
+Please find in the following link one of the subjects https://fz-juelich.sciebo.de/s/UGaOW46k4KpPfwK
+It s from the IXI dataset so I can share without problems.
+
+
+
+And here is the code.
+
+
+
+#!/bin/sh   
+
+# Change dir
+cd $1/T1                                                                         
+
+# read T1w file in the current folder
+file_name=`ls *T1w.nii.gz`                                                                                                                                    
+cp $file_name T1_orig_ud.nii.gz                                              
+
+#Calculate where does the brain start in the z dimension and then extract the roi
+head_top=`${FSLDIR}/bin/robustfov -i T1_orig_ud | grep -v Final | head -n 1 | awk '{print $5}'`
+${FSLDIR}/bin/fslmaths T1_orig_ud -roi 0 -1 0 -1 $head_top 170 0 1 T1_tmp        
+
+#Run a (Recursive) brain extraction on the roi                                   
+${FSLDIR}/bin/bet T1_tmp T1_tmp_brain -R
+
+#Reduces the FOV of T1_orig_ud by calculating a registration from T1_tmp_brain to ssref and applies it to T1_orig_ud
+${FSLDIR}/bin/standard_space_roi T1_tmp_brain T1_tmp2 -maskNONE -ssref $FSLDIR/data/standard/MNI152_T1_1mm_brain -altinput T1_orig_ud -d          
+
+
+
+
+Best regards,
+
+
+
+Georgios
+
+
+
+
+
+On 10/16/23 11:44, Paul McCarthy wrote:
+Hi Georgios,
+
+After updating my Mac software to Sonoma 14.0, fsleyes just isn't opening and is giving me the error:
+
+/usr/local/fsl/fslpython/envs/fslpython/bin/pythonw: line 3: 14399 Segmentation fault: 11  /usr/local/fsl/fslpython/envs/fslpython/python.app/Contents/MacOS/python "$@"
+
+If anyone else has faced this too, is there a solution to this?
+
+########################################################################
+
+
+Hi Sarah,
+
+Could you please share a code snippet of how you are generating and applying the matrices?
+
+BW,
+Rick
+
+Hi,
+
+ 
+
+It seems like the file is corrupt. Can you try opening the file with FSLeyes (or using nibabel in a python interpreter).
+
+ 
+
+Taylor Hanayik, PhD
+
+Research Software Engineer
+
+Wellcome Centre for Integrative Neuroimaging
+
+University of Oxford
+
+ 
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Shannon Cahalan <scahalan@GWMAIL.GWU.EDU>
+Date: Sunday, 5 November 2023 at 23:36
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Truncated file??
+
+Hi all,
+
+ 
+
+I was trying to run one of my participants through the first-level and I ran into a strange error early on in the initialization process. This participant's inputs are really no different than any of the other participants' and I double-checked that the stats were all input correctly. I haven't unzipped the nii file and just input fmriprep's AROMA output file as usual for the 4D image. What's especially strange is this subject's data for the other condition ran through the first level perfectly fine. Has anyone encountered this before? I'm not sure what could be going wrong because the I haven't really done anything initial to my nii image.
+
+ 
+
+/usr/local/fsl/bin/fslmaths /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold prefiltered_func_data -odt float Image Exception : #22 :: Failed to read volume /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold Error : Error: short read, file may be truncated libc++abi: terminating with uncaught exception of type std::runtime_error: Failed to read volume /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold Error : Error: short read, file may be truncated FATAL ERROR ENCOUNTERED: COMMAND: /usr/local/fsl/bin/fslmaths /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold prefiltered_func_data -odt float ERROR MESSAGE: child killed: SIGABRT END OF ERROR MESSAGE
+
+ 
+
+--
+
+Shannon R. Cahalan (she/her)
+
+Cognitive Neuroscience Graduate Student
+
+Department of Psychological & Brain Sciences
+
+The George Washington University
+
+Hi all,
+
+I was trying to run one of my participants through the first-level and I ran into a strange error early on in the initialization process. This participant's inputs are really no different than any of the other participants' and I double-checked that the stats were all input correctly. I haven't unzipped the nii file and just input fmriprep's AROMA output file as usual for the 4D image. What's especially strange is this subject's data for the other condition ran through the first level perfectly fine. Has anyone encountered this before? I'm not sure what could be going wrong because the I haven't really done anything initial to my nii image.
+
+/usr/local/fsl/bin/fslmaths /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold prefiltered_func_data -odt float Image Exception : #22 :: Failed to read volume /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold Error : Error: short read, file may be truncated libc++abi: terminating with uncaught exception of type std::runtime_error: Failed to read volume /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold Error : Error: short read, file may be truncated FATAL ERROR ENCOUNTERED: COMMAND: /usr/local/fsl/bin/fslmaths /Users/scahalan/Documents/mri_analysis/fmri_images/simons/derivatives/sub-CC218/func/sub-CC218_task-learningOdd_space-MNI152NLin6Asym_desc-smoothAROMAnonaggr_bold prefiltered_func_data -odt float ERROR MESSAGE: child killed: SIGABRT END OF ERROR MESSAGE
+
+--
+Shannon R. Cahalan (she/her)
+Cognitive Neuroscience Graduate Student
+Department of Psychological & Brain Sciences
+The George Washington University
+
+Hello FSL’ers,
+
+
+
+I hope this email finds you well.  I am seeking your guidance regarding the exclusion criterion for fsl Motion Outliers to exclude high motion runs. 
+
+
+
+I tested my database to exclude runs in which 25% of volumes exceed a 0.5 mm threshold of framewise displacement. However, almost 20% of the runs ( involving 40% of the participants) are excluded by this criterion. Could you please help me by recommending an exclusion criterion which is acceptable in this field that would allow me to retain as many participants as possible? 
+
+
+
+Sincerely, 
+
+
+
+Ming
+
+Hi everyone!
+
+I'm a beginner with both FSL and Python, working on diffusion images of monkey brains. I'm trying to code in Python a pipeline for processing my images with FSL commands. Everything seems to work fine until I get to the registration. I can generate the transformation matrices, but when I apply, for example, my diff2str matrix on my diffusion image, the result is not aligned with the structural image.
+I thought it was coming from my code, so I tried with the GUI, and I got exactly the same thing.
+Thinking it might be coming from the images, I generated and applied transformation matrices with MATLAB/spm, and everything's working properly.
+So I don't understand what I need to do differently with FSL... Do you have any hypotheses?
+
+
+
+As for the parameters used: diff2str: 6 DOF, mutual information, normal search str2std: 12 DOF, correlation ratio, normal search
+
+Thanks for your help!
+
+
+
+
+Sarah Marchand
+PhD student - CerCo (SV3M)
+Student representative - CLESCO doctoral school thesis committee
+Student representative - CerCo lab council
+Student representative - Toulouse Mind and Brain Institute (TMBI)
+Centre de Recherche Cerveau Cognition (CerCo)
+Place du Docteur Baylac, Pavillon Baudot
+31059 Toulouse
+mobile: +336 66 51 36 32
+sarah.marchand@cnrs.fr
+cerco.cnrs.fr
+LinkedIn icon  Twitter icon  
+Logo
+Affe vor Skelett - Gabriel von Max
+
+
+
+Hi Jenna,
+Is this a repeated-measures design ( e.g. is "acquisition X vs. acquisition Y” trying to correct for a subject’s multiple scans ) or are they “site/scanner” EVs to correct for different locations/protocols?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Manuel,
+Note that for Taylor’s suggestion ( using fslreorient2std ) the _contents_ of the other imags are unimportant ( unlike “normal” registration ) as the transformation is based on the s/q-form information. However if fslreorient2std cannot be used for some reason, then if the other modalities are perfectly aligned to the T2 ( i.e. same image dimensions, FOV etc ) a command of the form:
+
+applywarp -I <alignedOtherModality> -r T2-skullstripped-fsl.nii.gz --premat=reorientation_2_fslstd.txt  -o <output_alinged>
+
+should work - the image values will technically be trilinear-interpolated but on test images the outputs are identical - you could always add
+
+ --interp=nn
+
+to reduce the chance of interpolation-driven changes.
+
+Hope this helps,
+Kind Regards
+Matthew
+
+
+Hi Lin,
+
+Are you sure the relative file path "reg/example_func2highres.mat" is valid"? It looks to like it should perhaps be "030_clean_1dot5smooth.feat/reg/example_func2highres.mat".
+
+It also looks like you might be running low on RAM. Given that you are working within FMRIB, and are performing a task which is relatively expensive in terms of both computation and memory requirements (transforming a 4D image), you should probably be submitting this as a cluster job (and requesting how much RAM you expect to need), or running it on a different computer - jalapeno is intended to be used for submitting and monitoring jobs, not for running them.
+
+Paul
+
+
+Hi Paul,
+
+ 
+
+Thank you for spotting that. However this was only one error I made when I wrote my last email.
+
+ 
+
+Please kindly see a screenshot of the error appearing again when I just run one subject in the .feat directory.
+
+ 
+
+Oddly enough, when I ran one single subject again, I got a different error message:
+
+ 
+
+139 qiulin@jalapeno $ applywarp -r 030_clean_1dot5smooth.feat/reg/standard.nii.gz -i 030_clean_1dot5smooth.feat/stats/res4d.nii.gz -o 030_clean_1dot5smooth.feat/rest_test.nii.gz --premat=reg/example_func2highres.mat -w 030_clean_1dot5smooth.feat/reg/highres2standard_warp.nii.gz 
+
+Could not open matrix file reg/example_func2highres.mat
+
+Image Exception : #22 :: Failed to read volume 030_clean_1dot5smooth.feat/stats/res4d.nii.gz
+
+Error : std::bad_alloc
+
+terminate called after throwing an instance of 'std::runtime_error'
+
+  what():  Failed to read volume 030_clean_1dot5smooth.feat/stats/res4d.nii.gz
+
+Error : std::bad_alloc
+
+Aborted
+
+ 
+
+I am also quite sure I have enough space on my scratch.
+
+ 
+
+Best wishes,
+
+Lin
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Paul McCarthy <paul.mccarthy@NDCN.OX.AC.UK>
+Date: Friday, 3 November 2023 at 15:44
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] Applywarp could not open /reg/example_func2highres.mat
+
+Hi Lin,
+
+ 
+
+This looks like a scripting error - the variable ${j} is either undefined or empty.
+
+ 
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Lin Qiu <lin.qiu@SPC.OX.AC.UK>
+Sent: 03 November 2023 15:37
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Applywarp could not open /reg/example_func2highres.mat
+
+ 
+
+Hi experts,
+
+ 
+
+I am transforming a func 4d image to the MNI space, however received an error message immediately after running ‘applywarp’:
+
+ 
+
+Could not open matrix file /reg/example_func2highres.mat
+
+ 
+
+My registration was fine. Please can you kindly advise?  
+
+ 
+
+FYI: my command inside of the .feat directory was: fsl_sub -q long.q applywarp -r reg/standard.nii.gz -i stats/res4d.nii.gz -o rest4d_test_standard.nii.gz --premat=${j}/reg/example_func2highres.mat -w reg/highres2standard_warp.nii.gz
+
+ 
+
+Thank you so much!
+
+ 
+
+Best wishes,
+
+Lin
+Hi Lin,
+
+This looks like a scripting error - the variable ${j} is either undefined or empty.
+
+Paul
+
+
+Hi experts,
+
+ 
+
+I am transforming a func 4d image to the MNI space, however received an error message immediately after running ‘applywarp’:
+
+ 
+
+Could not open matrix file /reg/example_func2highres.mat
+
+ 
+
+My registration was fine. Please can you kindly advise?  
+
+ 
+
+FYI: my command inside of the .feat directory was: fsl_sub -q long.q applywarp -r reg/standard.nii.gz -i stats/res4d.nii.gz -o rest4d_test_standard.nii.gz --premat=${j}/reg/example_func2highres.mat -w reg/highres2standard_warp.nii.gz
+
+ 
+
+Thank you so much!
+
+ 
+
+Best wishes,
+
+Lin
+
+ 
+

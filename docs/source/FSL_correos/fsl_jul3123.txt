@@ -1,0 +1,309 @@
+Hello everyone, 
+
+I am running eddy on cam_can data but is not even running and I got this error: 
+
+Failed to open outlier report file camcan/sub-CC110037/dwi/dwi_preprocessed/04_eddy/sub-CC110037_dwi_denoised_eddy.eddy_outlier_report
+
+Error: cant open file camcan/sub-CC110037/dwi/dwi_preprocessed/04_eddy/sub-CC110037_dwi_denoised_eddy.nii.gz
+
+EDDY:::  ECScanClasses.cpp:::  void EDDY::ECScanManager::write_jac_registered_images(const string&, const string&, bool, EDDY::ScanType) const:  Exception thrown
+
+EDDY::: Eddy failed with message EDDY:::  ECScanClasses.h:::  void EDDY::ECScanManager::WriteRegisteredImages(const string&, const string&, EDDY::FinalResampling, double, bool, EDDY::ScanType):  Exception thrown
+
+Any idea and what is going on? I fit the dti model on it and it worked perfectly 
+
+thanks 
+
+Dave
+
+
+
+Postdoc position in locus coeruleus connectomics of resilience
+at Massachusetts General Hospital / Harvard Medical School
+The Gordon Center for Medical Imaging (GCMI) in the Department of Radiology at Massachusetts General Hospital (MGH) and Harvard Medical School (HMS) in Boston, Massachusetts, has an opening for highly qualified individuals at the post-doctoral level to work with Dr. Heidi Jacobs and Dr. Sepulcre. The Jacobs lab is part of the Gordon Center for Medical Imaging at MGH and focused on improving the early detection and early treatment of Alzheimer’s disease. The lab focuses on the neuromodulatory subcortical nuclei, in particular the locus coeruleus, using a variety of approaches, including 7T MRI, PET imaging, pupil measurements, physiological recording, blood-based markers, cognitive assessments and non-invasive vagus nerve stimulation. The Sepulcre lab is focused on connectomics, brain organization methods and the integration with genomics in neurodegenerative diseases. This project is focused on identifying locus coeruleus functional network properties conferring resilience against Alzheimer’s disease-cognitive decline in the face of pathology and identifying network properties indicating risk of Alzheimer’s disease. This project will require pulling and harmonizing large imaging datasets together to investigate locus coeruleus function across the disease continuum (e.g. ADNI, HABS, A4, 7T lifespan dataset,..). The Jacobs Lab consists of a multidisciplinary team of one instructor, five postdocs, three PhD-students, three clinical research coordinators and one project manager. The Sepulcre lab consists of one Assistant Professor, three postdocs and several students.
+Most of the work in this project will be performed at the Athinoula A. Martinos Center for Biomedical Imaging, Charlestown Navy Yard. The candidate will be part of ongoing collaborations and be able to work in a stimulating and inspiring environment. The Department of Radiology at MGH is equipped with the first mobile PET/CT, the first brain PET/MRI, the first whole-body PET/MRI in the USA and several MRI scanners, including two 7T ultra-high-field scanner. It is equipped with a large-scale shared memory computing facility for parametric image analysis, tomographic reconstruction, Monte Carlo simulation, and other computationally intensive research applications.
+Our research group values open communication, motivation, optimism, mutual respect, teamwork, and innovative thinking. Dr. Jacobs and Dr. Sepulcre are highly committed to individualized mentoring to help trainees achieve the most out of their postdoctoral candidature and to move forward in their career. At a minimum, the training environment will include professional development, one-on-one meetings, group lab meetings, frequent seminars and journal clubs, opportunities to present their work at national and international scientific conferences (i.e. Human Amyloid Imaging, Alzheimer’s Association International Conference, OHBM), collaboration with partners within and outside MGH, and manuscript preparation for publication in high impact journals. In addition, both Dr. Jacobs and Dr. Sepulcre have a strong funding record and will strongly encourage and provide mentorship in grant applications.
+ 
+Requirements: Candidates should have a Ph.D. in Cognitive Neuroscience, Computational Neuroscience, Neuroimaging, Psychology (Biological) or related disciplines. Strong analytical, quantitative and programming skills and experience in fMRI are essential. Experience in connectomics or graph theory and physiological modeling would be beneficial. The candidate should be highly motivated, a strong communicator, possess internal drive to learn independently, but also be comfortable with working as part of a larger collaborative team. A real necessity is a passion for science, strong scientific writing and organizational skills, and a positive attitude. Experience in Alzheimer’s disease dementia or aging would be beneficial.
+
+MGH & HMS are equal-opportunity, affirmative action employers. Women and minority candidates are encouraged to apply.
+ 
+
+Apply: The successful candidate will have joint appointments at MGH and HMS. If interested, please send your CV, letter describing interests, background, major achievements, skills, goals and contact information for three professional references. Please send application materials to Dr. Heidi Jacobs, Associate Professor of Radiology, at hjacobs@mgh.harvard.edu
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Dr. Heidi Jacobs
+Associate Professor of Radiology
+ 
+Massachusetts General Hospital 
+Harvard Medical School
+Department of Radiology
+Gordon Center for Medical Imaging
+149 13th Street
+Charlestown, MA 02129
+hjacobs@mgh.harvard.edu
+www.heidijacobs.org
+twitter: @HeidiJacobsLab
+Linkedin: https://www.linkedin.com/in/heidijacobs/
+
+
+The department of Psychology at Bangor University are currently hiring for a research track Lecturer.
+Please share the following job posting with post-docs and other ECRs that are in the market for a permanent, research-track faculty position. This opportunity is particularly fitting for those with interests/expertise in neurodegenerative disorders/trauma, neurodevelopment (broadly construed, and including rehab), mental health and related translational/applied disciplines, but the department also welcomes applications from researchers who have basic science interests in psychology/neuroscience.
+
+More details below:
+
+Bangor University, UK
+
+Faculty Position (Research and Teaching)
+
+The Department of Psychology at Bangor University seeks to make a permanent, full-time appointment of a research-active Lecturer (Grade 7 Teaching & Research; equivalent to research-track Assistant Professor). Whilst we welcome applications from all areas of Psychology/Neuroscience, we particularly encourage applications from candidates with clinically focused research expertise, including translational neuroscience (neurodevelopmental, neurodegenerative and acquired disorders).
+
+The School has a rich history of internationally-renowned research, steering theoretical advancement in cognitive science and cognitive neuroscience, as well as applied research on wellbeing, health, and resilience. The appointed person will sit within the Institute of Cognitive Neuroscience or the Institute of Wellbeing Research and will be expected build upon the excellence in research and teaching that already exists. Our research is supported by state-of-the-art neuroscience facilities, including a recently upgraded, in-house, research-dedicated Phillips 3T MRI, multiple eye-tracking labs; high-density EEG systems, MRI-guided stimulation techniques including TMS and tDCS, and access to computational resources for modelling approaches, as well as specialised participant panels including neurological and dyslexia panels.
+
+We seek an individual with an emergent international profile of scholarly activity; they should be able to demonstrate a record of high-quality publications in peer-reviewed journals, evidence of successful grant capture and / or the potential to attract research and enterprise funding. The candidate should have a desire to promote the School’s activity through outreach and public engagement activity. Candidates should ideally possess relevant teaching qualifications or experience, or be willing to complete these in the first years of the appointment.
+
+The Closing Date for applications is 13/08/2023. The successful candidate will be expected to commence 09/10/2023 (or as soon as possible thereafter).
+
+For inquiries, interest individuals are welcome to have a confidential conversation with the Head of School, Professor Dave Richardson (d.richardson@bangor.ac.uk) and / or Professor Manon Jones, Director of Research (manon.jones@bangor.ac.uk).
+
+For more information, see: https://jobs.bangor.ac.uk/details.php.en?id=QLYFK026203F3VBQB7V68LOTX&nPostingID=7619&nPostingTargetID=8169&mask=stdext&lg=UK
+
+
+Actually, these are not additional EVs; my research is about epileptic spikes, and I should consider every spike as a regressor, so if I have like 500 spikes in my data, I am going to create a GLM with 500 regressors that each of them has only one value (onset time in a text file) when I did that for all of my runs I am going to look at the average (second level analysis). I tried different ways to create my GLM in the first level analysis since adding them manually is time consuming and not possible, but I have not found a practical way yet.
+
+Really appreciate your help,
+
+Best,
+Yusra
+
+Get Outlook for Android
+
+
+Sorry to take so long to reply.
+There are not obvious things to tune in robustfov, but in the past it has done well on a wide range of images, however, it does make a few assumptions and it sounds like your image domain PI might be breaking them.  It is definitely possible that lost of exactly zero voxels could cause a problem, but it does depend on how they are distributed.  The main assumption that robustfov makes is that there is only noise above the head and not any strong artefacts or highly non-Gaussian distributions (though it should ignore the zeros).  It then determines the first slice containing head by the fact that the intensities associated with the head are a long way into the tail of the distribution.
+
+So it is certainly possible that this is a problem but seeing some pictures would be helpful - both some axial slices and some sagittal and coronal slices.  You can’t attach things to emails on the list, so it is better to just provide a link to a place where you can host the pictures.
+
+One workaround that might work (or not, as I can’t really tell without seeing the images) is just to add a very small amount of noise to the image, as that can often make robustfov happier, although it obviously slightly degrades the quality.  So you could just add noise to the problem ones, run robustfov on the noisy version, apply the same crop to the original (without noise added), and then feed this result into fsl_anat with the —nocrop option.  This would probably work for all of your images (assuming it works for these unusual cases).
+
+So do send us some pictures and I’ll take a look.
+All the best,
+        Mark
+
+Hello everyone,
+
+There is an exciting postdoc opportunity at the University of Southern California, Los Angeles for a candidate interested to pursue research at the intersection of AI, imaging informatics and Alzheimer’s disease. Please share this opportunity in your networks.
+ 
+Here is the link to job description:  The position has been posted thru 8/14/2023. The link to the requisition is below.https://usc.wd5.myworkdayjobs.com/ExternalUSCCareers/job/Los-Angeles-CA---Health-Sciences-Campus/Postdoc-Research-Associate_REQ20136846
+
+Short project summary below. Anyone interested can contact me directly at bino.varghese@med.usc.edu
+ 
+The University of Southern California is seeking to appoint a Post-Doctoral Research Associate within the Department of Radiology at the Keck School of Medicine. This position is funded by the NIH for 5 yrs through an R01, “Large-scale harmonization and integration of multi-modal ADNI data for the early detection of Alzheimer's disease and related dementias”, led by Dr Bino A. Varghese (https://sites.google.com/view/radiomicslabatusc/home).  The project is a mulitPI-driven interdisciplinary collaboration with Dr Nasim Shiekh-Bahai, Dr. Jeiran Choupan at USC and Dr. Gaurav Pandey  at the Icahn School of Medicine at Mt. Sinai(https://icahn.mssm.edu/profiles/gaurav-pandey) focused on preparing robust implementation of predictive modeling algorithms in a big data environment, especially large high-performance computing clusters.
+This project calls for an enthusiastic and self-motivated early career researcher interested in working at the intersection of the computational and biomedical sciences. Candidates should have, or expect to soon obtain, a PhD in a relevant discipline and experience in imaging, image processing, machine/deep learning. They must also have strong mathematical and coding skills, and preferably some experience in open-source software development. Specific experience in Alzheimer’s is preferred but not required.
+As the successful candidate, you will join a diverse team with interests in imaging, machine learning, and multiomics across different diseases. Your project will be focused on quantitative imaging and AI to develop predictive models for Alzheimer's Disease (AD) and AD-related dementia (ADRD) using imaging scans (MRI & PET), clinical biomarkers, and genetics.  You will review currently reported AD predictive models and associated ML approaches and compare them against each other to identify the best suited combination for  classification. As an interdisciplinary project, you will also work closely with colleagues from the clinical and AD informatics community to develop tools for a high-throughput assessment. In addition to the AD/ADRD project, the selected candidate will be able to contribute to others ongoing in the lab, as well as define their own projects. In this appointment, you will have the opportunity to disseminate your research via peer-reviewed journals or abstracts and you will be supported in your continuing professional development via access to one-on-one mentoring , courses on grant writing, project management, supervision, and leadership. You will also be provided with opportunities to teach and supervise students at undergraduate and graduate levels.
+For informal enquiries about the project, please contact the Principal Investigator, Dr Bino A. Varghese (bino.varghese@med.usc.edu).
+The annual base salary range for this position is $54,080 - $75,770.04. When extending an offer of employment, the University of Southern California considers factors such as (but not limited to) the scope and responsibilities of the position, the candidate’s work experience, education/training, key skills, internal peer equity, federal, state, and local laws, contractual stipulations, grant funding, as well as external market and organizational considerations.
+Minimum Education: Ph.D. or equivalent doctorate
+Minimum Experience: 1 year
+Minimum Field of Expertise: Directly related education and experience in research specialization with advanced
+knowledge of equipment, procedures and analysis methods.
+
+
+Jeiran Choupan, PhD, MSCS
+
+Assistant Professor of Research Neurology
+Laboratory of Neuro Imaging
+USC Stevens Neuroimaging and Informatics Institute
+Keck School of Medicine 
+University of Southern California
+
+2025 Zonal Ave, Los Angeles, CA 90033, USA
+(323) 44-BRAIN
+
+
+Hi,
+
+I've got a resting state dataset where each participant was scanned twice within the same session. I'm looking for a way to analyse this resting state data using both scans as one entry, so to speak, for that individual. I realise I can't use MELODIC for this, as the scans can't just be concatenated or entered as individual entries without causing issues wit the analysis. Is there a way to set FEAT up to analyse resting state? I've had a go, but I'm really not sure how the FILM model should look & I'm getting odd results due to this.
+Thanks for any advice!
+Rachel
+
+########################################################################
+
+Hi Tom,
+
+I can't reproduce this problem - can you share the output of running this command in a terminal?
+
+ls -l /Users/tomeek/fsl/data_nii_gz/control/201/
+
+Paul
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Tom Eek <00009a22cadcbcab-dmarc-request@JISCMAIL.AC.UK>
+Sent: 29 July 2023 16:00
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Nonlinear Registration
+ 
+Dear Experts,
+
+I am running MELODIC, and I would like to perform a nonlinear registration as part of the preprocessing pipeline. The name of the brain-extracted image file is '201_t1_brain.nii.gz'. In the same folder, I have the non-extracted whole brain image '201_t1.nii.gz'. However, when trying to perform MELODIC with nonlinear registration, the following message appears:
+
+"Warning: Nonlinear registration is turned on, but FEAT cannot automatically find the whole-head image related to the selected brain-extracted structural image... If this is not changed, the nonlinear registration will use brain-extracted images instead of whole-head images; this is suboptimal." (for the whole message, see the attached image).
+
+Can someone please help me resolve this issue?
+
+Best wishes, Tom Eek
+
+
+Hello,
+
+No, it is for the first level analysis, that is why I have difficulty finding a way; I tried to add all my regressors into design .fsf file and then run it through Linux but it is not practical and then I should do the higher(second) level analysis for all runs across the subject.
+
+Best,
+Yusra
+
+Get Outlook for Android
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Matthew Webster <matthew.webster@NDCN.OX.AC.UK>
+Sent: Sunday, July 30, 2023 7:11:17 AM
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] fMRI analysis with multiple regressors using FSL
+
+
+Hello Yusra,
+   Is this for a higher-level analysis? If so then you can use the “Paste” Button to enter a full matrix ( make sure the “Number of EVs” is set correctly first ) into the GUI.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 20 Jul 2023, at 18:00, Yusra Jamiliyan <yosra.jamiliyan1@ucalgary.ca> wrote:
+
+Hello,
+I have a problem with my research, I want to create a GLM with many regressors (more than 100) for all of my runs in a subject. Is there any way not to create txt files manually and add them in FSL not using Gui? I can create my regressors using MATLAB, but I am not sure how could I use it through FSL. I used text2vest command to create design. mat file, but I do not know how to use it exactly. If you have a suggestion, I would really appreciate it if you could email me back.
+
+Best,
+Yusra
+
+
+Hi all,
+
+I'm currently running command line Melodic on human connectome data (the preprocessed fMRI data comes as 2D CIFTI .dtseries why I can't use the MELODIC GUI). From what I understand the command line only performs ICA decomposition, not standard space co-registration. What would be the best way to perform this co-registration manually?
+
+Best and thank you in advance,
+Pelle
+
+########################################################################
+
+Dear Experts,
+
+I am running MELODIC, and I would like to perform a nonlinear registration as part of the preprocessing pipeline. The name of the brain-extracted image file is '201_t1_brain.nii.gz'. In the same folder, I have the non-extracted whole brain image '201_t1.nii.gz'. However, when trying to perform MELODIC with nonlinear registration, the following message appears:
+
+"Warning: Nonlinear registration is turned on, but FEAT cannot automatically find the whole-head image related to the selected brain-extracted structural image... If this is not changed, the nonlinear registration will use brain-extracted images instead of whole-head images; this is suboptimal." (for the whole message, see the attached image).
+
+Can someone please help me resolve this issue?
+
+Best wishes, Tom Eek
+
+
+########################################################################
+
+Hi Zakaria,
+
+Any output from probtrackX will only include the count of valid streamlines. If you want to get an ROIxROI matrix you should really be using the --network flag (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FDT/UserGuide#ROI_by_ROI_connectivity_matrix), not --omatrix1.
+
+Best wishes,
+
+Michiel
+
+
+
+Hello,
+
+Thanks for the feedback.
+Is there a way to filter matrix1 and have only a valid streamline matrix?
+
+My goal was to use matrix1 to get an ROI by ROI matrix of all valid streamlines (using the coordinates file).
+I tried to do this, but as you said, the total number of streamlines is much greater.
+
+Best regards,
+
+Hi Zakaria,
+
+The total number of streamlines generated for --omatrix1 will be exactly Number of vertices (or voxels) * nsamples. However, not all of those streamlines will be valid (depending on the other flags you set in the probtrackx2 run), so the number of valid streamlines will indeed by <= number of vertices * nsampels. You can find this number of valid streamlines in the "waytotal" file. As noted before, the number you get when you sum --omatrix1 will be much higher (namely "number of valid streamlines" * "number of vertices hit on average by each valid streamline").
+
+I think that for --sampvox any number between 0 and the typical distance between vertices would make sense.
+
+Best wishes,
+
+Michiel
+
+> On 28 Jul 2023, at 13:43, Z.Z <zakariazariry@GMAIL.COM> wrote:
+>
+> Hello Michiel,
+>
+> Thanks for your help, I now understand the differences better. I was about to spend much time trying to figure this out.
+>
+> I think the best option for what I want is --omatrix1.
+> In this case, the total number of streamlines will be <= Number of vertices * nsamples, right?
+>
+> One last question, what do you recommend for the --sampvox option when using surfaces as seeds? (For volumes, I've tried the radius of the sphere enclosed by the voxel).
+>
+> Thanks a lot,
+> Zakaria
+
+Dr. David Perry (https://perrylab.ucsf.edu/) is now inviting applications for a NIH-funded postdoctoral fellowship position in his lab at the University of California, San Francisco (UCSF) Memory and Aging Center. The goal of our lab’s research is to elucidate brain-behavior relationships in neurodegenerative disease in order to improve diagnostic certainty and identify therapeutic targets.
+
+The UCSF Memory and Aging Center (memory.ucsf.edu) is part of the Department of Neurology and Weill Institute for Neurosciences. It has an extensive research infrastructure, with over 250 full-time research faculty and staff. The postdoctoral fellow will have the opportunity to participate in our innovative, interdisciplinary research environment. We are looking for candidates who have a background in neuroimaging, strong statistical training, and programming experience. The start date is flexible; review of applications is ongoing. Applicants should send a brief cover letter describing interests and relevant prior experience, CV, and contact information for three references to (david.perry@ucsf.edu).
+
+The postdoctoral fellow will work on our lab's study investigating abnormalities in reward processing in neurodegenerative diseases and mood disorders. Reward processing involves a determination of what an individual will work for or pursue, such as food, money, or social approval. Patients with neurodegenerative and mood disorders have profound changes in their reward valuation. We propose that a greater understanding of reward-seeking behavior in these illnesses and their underlying neural mechanisms will improve diagnostic accuracy and lead to therapeutic targets for behavioral symptoms that currently have no adequate treatment. Our studies of reward processing use behavioral paradigms with tools such as psychophysiology, as well as structural and functional neuroimaging.
+
+########################################################################
+
+
+Hello Michiel,
+
+Thanks for your help, I now understand the differences better. I was about to spend much time trying to figure this out.
+
+I think the best option for what I want is --omatrix1.
+In this case, the total number of streamlines will be <= Number of vertices * nsamples, right?
+
+One last question, what do you recommend for the --sampvox option when using surfaces as seeds? (For volumes, I've tried the radius of the sphere enclosed by the voxel).
+
+Thanks a lot,
+Zakaria
+
+########################################################################
+
+Another potential cause of the issue is available RAM - it looks like a call to FAST was killed, which usually means that it ran out of memory. Would you be able to follow the instructions in this post, to make sure that your WSL system has enough RAM:
+
+https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;2ae9ad31.2205
+
+Paul
+
+Hi Alice,
+
+Sorry, now I see you actually mentioned that conversion to rad/s in your original email.
+
+I'm not clear on how you altered the epi_reg. You say you do not register to the structural, but you still use flirt with a BBR cost function. However, the BBR cost function requires a tissue segmentation (from FSL FAST), which you can really only get from the structural image. Perhaps, you can send the edited epi_reg script so that we can have a look.
+
+Best wishes,
+
+Michiel
+
+> On 27 Jul 2023, at 16:54, Alice Giubergia <alice.giubergia@GMAIL.COM> wrote:
+>
+> Hi Michiel,
+> thanks for replying. Yes I converted the topup fieldmap from --fout into rad/s multiplying by 2pi!
+>
+> ########################################################################
+>
+

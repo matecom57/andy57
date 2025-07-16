@@ -1,0 +1,288 @@
+Child Mind Institute is recruiting a Post Doctoral Fellowship interested in the study of brain structure and function connectome 
+using multimodal neuroimaging techniques. Particular focus will be placed on brain development and cross-species comparison between 
+human and nonhuman primates based on both in vivo and ex vivo MRI imaging data.
+
+This is an exempt full-time position (2-3 years) located in our New York headquarters office.
+
+Responsibilities:
+•       Development, application, and refinement of analytic approaches for multimodal data, including, but not limited to, 
+functional and structural imaging data.
+•       Preprocess of functional and diffusion MRI datasets in human and nonhuman primates on high-performance computing 
+infrastructures. Develop scientific-quality tests for evaluating the results of cutting-edge brain imaging analysis pipelines
+•       Extend processing techniques used in analyzing brain imaging data and evaluate/compare novel approaches to the 
+state-of-the-art in brain imaging research.
+•       Preparation of manuscripts for publication in peer-reviewed scientific journals and assistance in grant applications in a 
+timely fashion
+•       Preparing data to be shared with research collaborators for experimentation and publication.
+•       Assistance in the supervision of junior research staff (e.g., research assistants, data analysts)
+
+Qualifications:
+
+•       Completed PhD in neuroscience, biomedical engineering, computer science, mathematics, biophysics, neuropsychology or related 
+fields.
+•       Significant prior neuroimaging experience with one or more imaging modalities (fMRI, DTI, MRI, EEG, MEG)
+•       Strong skills in using one or more common functional neuroimaging packages (e.g., AFNI, FSL, FreeSurfer, SPM, etc.)
+•       Strong programming experience in one or more languages (e.g., Python, R, Matlab etc.).
+•       Ability to work as a member of a team as well as independently
+•       Ability to work in a fast-paced environment
+•       Interpersonal skills, as well as written and oral communication
+•       A passion for the Child Mind Institute's mission
+
+For more information and apply, please visit: 
+https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1b50a554-ed4a-4219-a358-aa3cbeea1e70&ccId=19000101_000001&jobId=534828&source=CC2&lang=en_US
+
+If any questions, please reach out to the PI, Ting Xu (ting.xu@childmind.org).
+
+########################################################################
+
+
+Hi
+
+I'm trying to run oxford_asl on a pASL perfusion image. While it completes the process without any error, the perfusion images in the 
+structural space, and thus the standard space, are completely off coordinate-wise. The problem seem to be due to incorrect 
+registration of the native space to the structural space. I was wondering if anyone have had a similar problem and a solution for it. 
+Here is the command line output:
+
+--------------------------------------------------
+
+Thank you so much for your insights. I will try to apply the smoothing to the PV estimates and see if this helps. This is keeping me 
+from progressing with the project, since accurate CBF measurements are necessary. 
+
+Best wishes, 
+Miguel Hernandez
+
+El lun, 23 sept 2024 a las 6:27, Michael Chappell (<000079f9f909e19d-dmarc-request@jiscmail.ac.uk>) escribió:
+
+Hi Andraws,
+
+I'm not particularly familiar with the ASL GUI, but I think the Run button will only be enabled once you have entered all of the 
+required information. There are a number of examples in the documentation at 
+https://asl-docs.readthedocs.io/en/latest/gui_tutorial.html
+
+Paul
+
+Child Mind Institute is recruiting a Post Doctoral Fellowship interested in the study of brain structure and function connectome 
+using multimodal neuroimaging techniques. Particular focus will be placed on brain development and cross-species comparison between 
+human and nonhuman primates based on both in vivo and ex vivo MRI imaging data.
+
+This is an exempt full-time position (2-3 years) located in our New York headquarters office.
+
+Responsibilities:
+•       Development, application, and refinement of analytic approaches for multimodal data, including, but not limited to, 
+functional and structural imaging data.
+•       Preprocess of functional and diffusion MRI datasets in human and nonhuman primates on high-performance computing 
+infrastructures. Develop scientific-quality tests for evaluating the results of cutting-edge brain imaging analysis pipelines
+•       Extend processing techniques used in analyzing brain imaging data and evaluate/compare novel approaches to the 
+state-of-the-art in brain imaging research.
+•       Preparation of manuscripts for publication in peer-reviewed scientific journals and assistance in grant applications in a 
+timely fashion
+•       Preparing data to be shared with research collaborators for experimentation and publication.
+•       Assistance in the supervision of junior research staff (e.g., research assistants, data analysts)
+
+Qualifications:
+
+•       Completed PhD in neuroscience, biomedical engineering, computer science, mathematics, biophysics, neuropsychology or related 
+fields.
+•       Significant prior neuroimaging experience with one or more imaging modalities (fMRI, DTI, MRI, EEG, MEG)
+•       Strong skills in using one or more common functional neuroimaging packages (e.g., AFNI, FSL, FreeSurfer, SPM, etc.)
+•       Strong programming experience in one or more languages (e.g., Python, R, Matlab etc.).
+•       Ability to work as a member of a team as well as independently
+•       Ability to work in a fast-paced environment
+•       Interpersonal skills, as well as written and oral communication
+•       A passion for the Child Mind Institute's mission
+
+For more information and apply, please visit: 
+https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=1b50a554-ed4a-4219-a358-aa3cbeea1e70&ccId=19000101_000001&jobId=534828&source=CC2&lang=en_US
+
+If any questions, please reach out to the PI, Ting Xu (ting.xu@childmind.org).
+
+
+Dear Matthew,
+
+Thanks for the quick reply. I was going to try the commands you suggested, but a clean reinstall of 6.0.7.13 (i.e. uninstalling FSL, 
+Ubuntu-20.04, and all 3rd party X-clients, followed by installing FSL with the https://fsl.fmrib.ox.ac.uk/fsl/docs/#/install/windows 
+instructions) seems to have fixed the issue (the output of "echo $DISPLAY" after reinstalling was indeed ":0"). All GUIs are working. 
+I'm going to try this on the other PC (maybe a bug/error occurred during "update_fsl_release"? Although in the terminal everything 
+seemed fine). In case the outputs of the commands you listed are still of your interest, here they are:
+
+a) ls -la /tmp/.X11-unix
+total 4
+drwxrwxrwx  2 root     root       60 Oct  7 19:31 .
+drwxrwxrwt 11 root     root     4096 Oct  7 19:37 ..
+srwxrwxrwx  1 emiliano emiliano    0 Oct  7 19:31 X0
+
+b) ls -la /tmp/.X11-unix/
+total 4
+drwxrwxrwx  2 root     root       60 Oct  7 19:31 .
+drwxrwxrwt 11 root     root     4096 Oct  7 19:37 ..
+srwxrwxrwx  1 emiliano emiliano    0 Oct  7 19:31 X0
+
+Thank you!
+
+Emiliano.
+
+Dear Emiliano,
+On one of the machines running 6.0.7.13, can you make sure no 3rd party X-client is running ( e.g Vcxsrc, Xming ) and in the WSL 
+terminal run
+
+echo $DISPLAY
+
+If the output isn’t “:0”
+
+then can you run
+
+export DISPLAY=:0
+
+and retry a GUI ( e.g. fsleyes )
+
+next, can you let me know the output from the following commands:
+
+ls -la /tmp/.X11-unix
+ls -la /tmp/.X11-unix/
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Dear all,
+
+Some problems with FSLeyes have recently appeared on two Windows 11 PCs (WSL 2). Originally, both of them had FSL 6.0.7.10 (Ubuntu 
+20.04) correctly installed and everything worked, including FSLeyes. Sadly, after some Windows updates the "Unable to access the X 
+Display, is $DISPLAY set properly?" error appeared, even though I had VcXsrv running as always. I tried several things that I found 
+on this email list, including updating to the 6.0.7.13 version, trying Xming, and using the built-in X/Wayland server in the newer 
+versions (following the instructions of https://www.jiscmail.ac.uk/cgi-bin/wa-jisc.exe?A2=FSL;f002806.2407). I can't pinpoint which 
+Windows update caused the problem (assuming this is what actually caused the problem) because I had not used FSL in some months. 
+Oddly, I have access to two other Windows PCs (one with Windows 10 and the other with Windows 11) that have installed the FSL 6.0.4.5 
+version and everything is working correctly, including FSLeyes (WSL 2 with Xming). I have tried removing the 6.0.7.13 version using 
+the "rm -rf $FSLDIR" command and Ubuntu 20.04 with the "wsl --unregister Ubuntu-20.04" (in a PowerShell) command. Additionally, I 
+tried installing the 6.0.4.6 version of FSL in an Ubuntu 18.04 terminal with the legacy fslinstaller.py, and everything works fine 
+except FSLeyes (including glxgears and all other FSL GUIs). When I type FSLeyes in the terminal, nothing happens, not even an error 
+is produced in the terminal. During the 6.0.4.6 installation, an error ocurred (log file attached). It seems as if the Python version 
+is not recognized in pip, as it requests a version >3.8, so I installed the 3.8.1 python (and python3) version but the same error 
+happens, including detecting that the system's Python version is 3.7.6 when that version was never installed (previous version before 
+updating was 3.6.9). Any help would be greatly appreciated!
+
+Thanks,
+Emiliano Rodríguez.
+
+########################################################################
+
+
+Hi Paul,
+
+The ASL GUI is more stable now,
+
+But the run command cannot be viewed at all on the GUI window.
+
+Thanks ,
+
+Andraws
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> On Behalf Of Paul McCarthy
+Sent: Monday, October 7, 2024 4:48 PM
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Asl gui errors
+
+ 
+
+Hi Andraws,
+
+ 
+
+A better option, which will allow you to use asl_gui without the --matplotlib option,  is to run this command:
+
+ 
+
+export GDK_BACKEND=x11
+
+Hi Andraws,
+
+A better option, which will allow you to use asl_gui without the --matplotlib option,  is to run this command:
+
+export GDK_BACKEND=x11
+
+Then you should be able to run "asl_gui". If this works for you, then you can make the change permanent by running this command, 
+which will add it to your shell profile:
+
+echo -e "\nexport GDK_BACKEND=x11\n" >> ~/.profile
+
+Regarding the ZeroDivisionError issue, I suspect that you are trying to load a 3D image, where the ASL GUI needs to be provided with 
+a 4D image.
+
+Paul
+
+Hi,
+
+After running the codes and writing asl_gui in the terminal , the GUI doesn’t run and the output is :
+
+/home/andrwas/fsl/lib/python3.11/site-packages/wx/lib/pubsub/__init__.py:23: wxPyDeprecationWarning: wx.lib.pubsub has been 
+deprecated, please migrate your code to use pypubsub, available on PyPI.
+
+  warnings.warn('wx.lib.pubsub has been deprecated, please migrate your '
+
+16:35:05: Debug: Adding duplicate image handler for 'Windows bitmap file'
+
+16:35:05: Debug: Adding duplicate animation handler for '1' type
+
+16:35:05: Debug: Adding duplicate animation handler for '2' type
+
+ 
+
+(asl_gui:931): Gtk-CRITICAL **: 16:35:08.378: gtk_window_resize: assertion 'width > 0' failed
+
+/home/andrwas/fsl/share/fsl/bin/asl_gui: line 2:   931 Segmentation fault      /home/andrwas/fsl/bin/python -I 
+/home/andrwas/fsl/bin/asl_gui "$@"
+
+ 
+
+Regards,
+
+Andraws
+
+Hi,
+
+If you include the --cnr_maps you will have the following benefits:
+- eddy will produce an SNR and CNR map of your data (this will happen whether you run eddy_qc or not)
+- In its single-subject pdf report QUAD will include images of this SNR and CNR map.
+- In its group pdf report SQUAD will include a comparison of the average SNR and CNR across subjects. This is probably the most 
+useful in large studies as it allows you to identify subjects that have a high noise level even after running eddy.
+
+SQUAD will already contain a lot of other metrics that can be used to identify outlier subjects, so it is up to you whether it is 
+worth rerunning eddy just to get this SNR/CNR information.
+
+Best wishes,
+
+Michiel
+
+> On 1 Oct 2024, at 16:44, SUBSCRIBE FSL Anonymous <mirsz762@STUDENT.LIU.SE> wrote:
+>
+> Dear FSL experts,
+>
+> I plan to run QUAD and SQUAD as part of the quality control (QC) process post Eddy. The wiki recommends using flags --cnr_maps in 
+conjunction with --repol and --mporder when the latter is greater than 0. While I've used --repol and --mporder, I omitted 
+--cnr_maps.
+>
+> I understand that --cnr_maps is not strictly necessary. However, I'm curious about the potential benefits of including it. Will the 
+4D image file generated by EddyQC be more informative for assessing my dataset?
+>
+> Thank you for your insights.
+>
+> Best regards!
+>
+> ########################################################################
+>
+> To unsubscribe from the FSL list, click the following link:
+> https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+>
+> This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are 
+available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+########################################################################
+
+
+

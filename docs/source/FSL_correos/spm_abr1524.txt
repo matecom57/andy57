@@ -1,0 +1,1998 @@
+The brain is a complex network that underlies our thoughts and actions. Disruption of brain network has been associated with neurological and psychiatric disorders, such as Alzheimer's disease. Understanding how brain network operates in supporting cognitive functions is fundamental for improving performance, treating disorders and developing next generation of artificial intelligence. 
+
+Recent works from Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs that are causal for memory formation. We are developing imaging, modelling and interventional techniques to define and modulate this memory network in rodent models and humans. These techniques will have potential for enhancing memory and the diagnosis and treatment of cognitive impairment and dementia.
+
+This PhD project will develop a computational brain model based on The Virtual Brain platform to simulate memory formation and predict the effects of network modulation. The model will be validated by cell-type specific neuronal recordings, targeted neuromodulation and brain network imaging using simultaneous calcium photometry, optogenetic neuromodulation and fMRI in rodents. 
+
+We welcome highly motivated individuals with backgrounds in biomedical/electrical engineering, computer science, biological science, medicine or relevant fields to join this challenging project. Experiences with neural modelling, neuroimaging and programming language are desirable.
+For enquiry: A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+
+
+
+Postdoctoral studies in Neuroimaging of Bodily Self (deadline April 22)
+
+ 
+
+Brain, Body, and Self Laboratory, Department of Neuroscience, Karolinska Institutet
+
+ 
+
+ 
+
+The Brain, Body, and Self Laboratory (Group Ehrsson) uses neuroimaging and behavioral methods to study how we perceive our own bodies as unique objects distinct from the external environment (www.ehrssonlab.se). We aim to characterize the perceptual rules and brain mechanisms whereby a central representation of one's own body is constructed by integrating signals from the different sensory modalities (e.g., vision, touch, and proprioception). We also investigate how central body representation influences how we think, feel, and remember ourselves and how the external world looks to us. Our laboratory has expertise in functional magnetic resonance imaging (fMRI), electroencephalography (EEG), transcranial magnetic stimulation (TMS), psychophysics, and other behavioral approaches (including virtual reality technology and robotically controlled bodily illusion setups). We have local access to two state-of-the-art 3T MRI scanners, one 7T scanner, and one MEG scanner.
+
+ 
+
+We are seeking a highly talented, innovative, and enthusiastic researcher who has been awarded a Ph.D. in cognitive neuroscience or a related field within the past two years. The successful candidate will work on projects focused on body representation, bodily illusions, multisensory integration, embodied cognition, or processes related to bodily self-awareness, including the sense of body ownership.
+
+ 
+
+The ideal candidate should possess expertise in experimental psychology or cognitive neuroscience, with a preference for skills in psychophysics and computational modeling, and/or proficiency in neuroimaging methods, especially multivoxel pattern analyses, and/or experience with human electrophysiology (EEG, MEG) or brain stimulation methods (e.g., TMS). The candidate will be expected to work within the framework of our research program (www.ehrssonlab.se), yet will have considerable freedom to develop their own ideas and project proposals. The ability to work independently, initiate and lead novel research projects, and prepare high-quality draft manuscripts for research articles is crucial. Applicants must demonstrate an excellent academic track record, including high-quality publications in international peer-reviewed journals.
+
+ 
+
+The application must me uploaded via the Karolinska job recruitment portal: http://ki.varbi.com/what:job/jobID:687736/
+
+ 
+
+An application must contain the following documents in English or Swedish:
+
+A complete curriculum vitae, including date of the thesis defence, title of the thesis, previous academic positions, academic title, current position, academic distinctions, and committee work
+A complete list of publications
+A summary of current work (no more than one page)
+ 
+
+Deadline: April 22nd, 2024
+
+ 
+
+/Henrik Ehrsson
+
+ 
+
+ 
+
+The brain is a complex network that underlies our thoughts and actions. Disruption of brain network has been associated with neurological and psychiatric disorders, such as Alzheimer's disease. Understanding how brain network operates in supporting cognitive functions is fundamental for improving performance, treating disorders and developing next generation of artificial intelligence. 
+
+Recent works from Associate Professor Kai-Hsiang Chuang’s lab at the University of Queensland, Brisbane, Australia, have demonstrated the potential of resting-state functional magnetic resonance imaging (fMRI) in locating network hubs that are causal for memory formation. We are developing imaging, modelling and interventional techniques to define and modulate this memory network in rodent models and humans. These techniques will have potential for enhancing memory and the diagnosis and treatment of cognitive impairment and dementia.
+
+This PhD project will develop a computational brain model based on The Virtual Brain platform to simulate memory formation and predict the effects of network modulation. The model will be validated by cell-type specific neuronal recordings, targeted neuromodulation and brain network imaging using simultaneous calcium photometry, optogenetic neuromodulation and fMRI in rodents. 
+
+We welcome highly motivated individuals with backgrounds in biomedical/electrical engineering, computer science, biological science, medicine or relevant fields to join this challenging project. Experiences with neural modelling, neuroimaging and programming language are desirable.
+For enquiry: A/Prof Kai-Hsiang Chuang, kaichuang@gmail.com or k.chuang@uq.edu.au
+
+
+
+Dear friends and colleagues,
+
+I am pleased to announce two summer schools on neural data analysis, in the alluring Bucharest (Romania).
+
+There are two separate week-long courses on neuroscience data analysis: One about time-frequency/synchronization/statistics (*note: this same course is offered twice due to popular demand*), and one about linear algebra and dimension-reduction/source-separation. Both courses include discussions and demos on ethically incorporating generative AI into coding, writing, analysis, and hypothesis-generation.
+
+Below is the direct link to the course pages with application information. Please pass this link around to your colleagues/students who might be interested in one or both of these courses.
+https://sincxpress.com/summerschool.html
+
+Analyzing neural time series data
+(29 July - 2 August *and* 12-16 August). Fourier transform, convolution, time-frequency analysis, synchronization, nonparametric statistics, simulating time series data. (Note: the second session is recommended for people taking both courses.)
+
+Linear algebra for neuroscientists
+(19-23 August). Matrix algebra, least-squares model fitting, eigendecomposition, multivariate source separation, simulating multicomponent and multichannel time series data.
+
+https://sincxpress.com/summerschool.html
+
+Please note that applications, if accepted, are selected on a first-come-first-serve basis, and that the number of participants for each course is limited to 30.
+
+If you have questions about the courses, please feel free to contact me.
+
+I look forward to welcoming you to Bucharest this summer!
+
+
+--
+Mike X Cohen, PhD
+Fresh look: mikexcohen.com
+
+
+
+Hello,
+
+I'm currently analysing an fMRI dataset of awake and sedated participants hearing some sounds. 
+
+We wanted to run an ROI analysis, with ROIs being (left and right) Heschl's gyrus, A2 and some subthalamic nuclei.
+
+At first we thought of applying small volume correction at the first level, but for 3/40 awake participants we found no significant voxels in any of these ROIs individually or combined together. The error was:
+
+"Error using spm_est_non_sphericity. Please check your data: There are no significant voxels"
+
+Now, the fact that awake, healthy participants who were played sounds for 15 minutes do not have A1, A2 or the thalamus activated is rather strange.. We therefore thought that perhaps we should perform a whole-brain analysis at the first level and then extract the ROI activity from the contrast images of the first level by applying our masks.
+
+Do you think this is appropriate? If anyone has any ideas or suggestions, please let us know 🙂
+
+Thanks a lot in advance,
+
+Benedetts
+
+
+
+Dear colleagues,
+
+
+On behalf of the Molecular Connectivity Working Group, I am delighted to invite you to our next symposium with the title “What is brain connectivity?”, bringing together leading experts in the field of fMRI, DWI, EEG, and molecular imaging. Registration is free and travel bursaries for early-career researchers are available (apply before March 31st!). 
+
+
+📅 Date: May 3, 2024
+🕒 Time: 9:00 am - 1:00 pm CEST
+
+ 📍   Virtually + @TranslaTUM, University Hospital “Klinikum rechts der Isar”, Ismaninger Str. 22, Munich 
+
+
+Key Highlights:
+
+·   🌐 Recognized experts
+
+·   🤝 Networking opportunities
+
+·   🎓 Virtual and on-site hybrid event 
+
+·   📋  No registration fees
+
+·   🚂 Travel bursaries for PhD students/Post-Docs
+
+
+Goal
+
+ 
+
+The symposium aims to identify a common denominator across modalities in the definition of macroscale brain connectivity. The event is supposed to provide a baseline for follow-up debates on standardized nomenclature for molecular connectivity.
+
+
+🌐 For more information visit: tinyurl.com/MCWGMunich2024
+
+
+Registration:
+
+
+Registration for the symposium is open and free but obligatory. Places are limited so do not miss out on the opportunity to be a part of this event by securing your spot here .
+
+
+Travel bursaries:
+
+
+Travel bursaries of up to 500€ will be awarded to eight early career researchers outside Bavaria to attend in person. Bursaries are reserved to researchers pursuing doctoral degree or having a doctoral degree obtained after May 2019. We encourage all eligible persons to apply, the deadline is March 31, 2024, 23:59 CEST. Winners will be announced at the beginning of April.
+
+
+📝 For more information about the bursaries and to apply, please visit: https://molecularconnectivity.com/events/nomenclature-symposium-2024/#travelbursaries
+
+
+Thanks to the sponsors Deutsche Forschungsgemeinschaft (DFG) - German Research Foundation, Bruker (PMOD), Curium Pharma, Technical University of Munich for the support.
+
+
+Who we are
+
+The Molecular Connectivity Working Group is an initiative of an international and interdisciplinary group of neuroimaging experts with background in biomedicine, health sciences, neuroscience, and physics. Our ultimate aim is to establish Molecular imaging as a tool to study brain Connectivity.
+
+PhD Position in Neuropsychology at the Hertie Institute for Clinical Brain Research in Tübingen, Germany
+
+We are looking for an enthusiastic candidate with excellent German language skills to join our research group (https://homepages.uni-tuebingen.de//karnath/Sektion.html).
+
+ 
+Wir suchen für das Zentrum für Neurologie zum 01.05.2024 eine/einen
+PhD Studierende/n (w/m/d)
+in der Sektion für Neuropsychologie in Teilzeit (65 %) und befristet.
+ 
+Das DFG-geförderte Projekt wird den Zusammenhang von Sprache und Zahlenprozessen durch Forschung in zwei Sprachen − Deutsch und Französisch − bei typischen und beeinträchtigten Sprachfunktionen bei Kindern, Erwachsenen und älteren Erwachsenen untersuchen. Dazu nutzen wir die individuelle Zahlenwortsyntax jeder Sprache, um (cross-)linguistische Einflüsse auf die verschiedenen Ebenen der Stellenwertverarbeitung zu ermitteln. In dem Projekt werden neurologische Patientinnen und Patienten mit neuropsychologischen Auffälligkeiten nach Schlaganfall untersucht; diese werden ergänzt um Studien zur funktionelle Neuroanatomie an gesunden Erwachsenen mittels fMRT. Unser Forschungsprojekt befindet sich somit an der Schnittfläche von Neuropsychologie und kognitiver Neurowissenschaft.
+ 
+Ihre Aufgaben:
+Die Mitarbeiterin bzw. der Mitarbeiter wird Techniken dieser Teildisziplinen kennenlernen (fMRI, Lesion symptom mapping, Neuropsychologische Testverfahren, etc.) und Mitglied in einem Team aus engagiertern Forschern und Forscherinnen werden.
+ 
+Ihr Profil:
+Voraussetzungen für eine Bewerbung sind ein Hochschulabschluss (z. B. im Fach Psychologie, Biologie, Kognitionswissenschaften, etc.), Freude am Arbeiten mit neurologischen Patientinnen und Patienten, sehr gute Deutschkenntnisse, gute organisatorische und kommunikative Fertigkeiten sowie eine im hohen Maße selbständige Arbeitsweise mit gleichzeitiger Teamfähigkeit.
+ 
+Ihre Vorteile bei uns:
+Die Promotion kann im Rahmen des Doktorandenprogramms der Internationalen Graduate School of Neural and Behavioural Sciences an der Eberhard Karls Universität erfolgen: https://www.neuroschool-tuebingen.de/doctoral/
+ 
+Wir wenden den Tarifvertrag für den öffentlichen Dienst der Länder (TV-L) an, Schwerbehinderte werden bei gleicher Eignung vorrangig berücksichtigt. Da die Universität Tübingen eine Erhöhung des Anteils von Frauen beim wissenschaftlichen Personal anstrebt, werden Frauen nachdrücklich aufgefordert, sich zu bewerben. Vorstellungskosten können leider nicht übernommen werden. Wir bitten um Beachtung der geltenden Impfregelungen. Die Anstellung erfolgt auf Grundlage der einschlägigen hochschulrechtlichen Bestimmungen.
+ 
+Kontakt:
+
+Herr Prof. Dr. Dr. Hans-Otto Karnath
+ 
+Karnath@uni-tuebingen.de
+ 
+Bewerbungsfrist: 21.04.2024
+ 
+Wir freuen uns auf die Bewerbung an Herrn Prof. Dr. Dr. Hans-Otto Karnath mit Lebenslauf und Motivationsschreiben.
+
+
+With best regards,
+---
+Sofia Wöhrstein, MSc.
+Akademische Mitarbeiterin
+Sektion Neuropsychologie
+Zentrum für Neurologie
+Universitätsklinikum Tübingen
+Hoppe-Seyler-Straße 3
+DE - 72076 Tübingen
+ 
+Tel.: +49 (0) 7071 - 29 84080
+
+Hi everyone
+
+Last chance for Machine Learning and AI for Research in Python with professor Giovanni Cerulli, running April 16 - 17. This seminar is an introduction to Machine Learning and Artificial Intelligence methods for the social, economic, and health sciences using Python. After introducing the subject, the seminar will cover the following methods: (i) model selection and regularization (Lasso, Ridge, Elastic-net); (ii) discriminant analysis and nearest-neighbor classification; and (iii) artificial neural networks. The course will offer various instructional examples using real datasets in Python. An Instats certificate of completion is provided at the end of the seminar, and 2 ECTS equivalent points are offered.
+
+Sign up today to secure your spot, and please feel free to share this with your students, colleagues, and friends!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+
+Postdoctoral Position, 80-100% at the Faculty of Science and Medicine at the University of Fribourg, Switzerland. 
+The research of Prof. Dr. med. Selma Aybek and her team focusses on Functional Neurological Disorders (FND). The team is working interdisciplinary, involving neurologists, engineers, psychologists and neuroscientists in order to merge our expertise in conducting clinical research, aiming to better understand this disabling disorder and ultimately help the numerous patients suffering from FND. We design studies to investigate pathoethiological risk factors, pathophysiological mechanisms and study potential treatment options. 
+
+We are looking for an enthusiastic candidate with excellent technical skills and track record (i.e., publications in high ranking journals) to join our research group. 
+
+Your responsibilities 
+
+Independently plan and conduct scientific studies (e.g., ethical application, elaboration of study design, recruitment, collection and storage of data). 
+Work in direct contact with patients and healthy participants. 
+Autonomous data analysis and critical interpretation. 
+Presenting results in national and international conference and publish in peer-reviewed journals. 
+Supervision of junior team members. 
+Your profile 
+
+You have a PhD in psychology, neuroscience, neurobiology, biomedical engineering or similar. 
+Expert knowledge in MRI/fMRI analysis is required. 
+Experience in EEG, TMS and/or augmented/virtual reality is an advantage.
+You are experienced with Matlab and neuroimaging analysis tools (SPM, FSL, EEGLAB, Cartool, Ragu or similar) and statistical tools (R, Stata or similar).
+You have a strong interest in neuroscientific methods as well as in elaborating potential treatment options for neuropsychiatric disorders. 
+You are fluent in English and have a good knowledge of German or French. 
+You demonstrate good communication, organizational and teamwork skills. 
+What we offer 
+We offer a postdoctoral position in a dynamic work environment starting July 2024 (or as agreed), which will be remunerated according to the guidelines of the University of Fribourg.
+
+Application 
+Please send your application documents (including your CV, cover letter, list of publications, references) as a single PDF file to Francine Neuhaus and Janine Bühler (francine.neuhaus@h-fr.ch; janine.buehler@unifr.ch).  
+
+In case of questions, please feel free to contact Janine Bühler.
+Applications will be reviewed until the position has been filled. 
+
+With best regards, 
+
+
+Janine Bühler, PhD
+Postdoctoral Researcher (Neurosciences) 
+Functional Neurological Disorder (FND) Research Group
+
+Faculty of Science and Medicine
+University of Fribourg
+Chemin du Musée 5
+1700-Fribourg
+Switzerland
+
+
+Mailto: janine.buehler@unifr.ch 
+Weblink: FND Research Group
+
+
+Apologies for multiple/repeated posting.
+
+This is a REMINDER for the open positions described below.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+IMPORTANT: 
+
+The initial evaluation of PhD candidates will start soon. 
+
+
+
+Please ensure that you submit your application, along with all the necessary documents, through the online platform. 
+
+Should you anticipate any delays or require clarification regarding the project, do not hesitate to contact me.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PROJECT DESCRIPTION:
+
+A project, funded by the Swiss National Science Foundation as part of a Starting Grant (Principal Investigator: David Pascucci, CHUV/Unil/The Sense Innovation Center), is currently seeking:
+
+ 
+
+-          1 PhD candidate (4 years, starting in 2024)
+
+-          2 Postdoctoral researchers (2 years each, starting late 2024 – early-mid 2025 preferred)
+
+ 
+
+Project aim: To understand the relationship between individual-specific temporal structures of neural activity—particularly focusing on alpha-band neuronal oscillations—and variability in perceptual and cognitive functions.
+Specific segments of the project will explore temporal structures of neural activity linked to inter-individual variability in contextual effects in perception.
+
+ 
+
+Project methods: The project involves the collection of large-scale datasets comprising resting-state and event-related electroencephalography (EEG) data, recorded alongside behavioral performance in a wide range of visual tasks. The analysis will combine human psychophysics, EEG and EEG inverse modeling with advanced multivariate statistical and predictive modeling techniques.
+
+ 
+
+PhD position (starting as of 2024):
+
+Main tasks:
+
+1.     Recruitment of study participants, collection, and analysis of EEG+behavioral data.
+
+2.     Dissemination of research through conference presentations and peer-reviewed publications.
+
+Requirements and ideal skills:
+
+-         Master’s degree in Cognitive Psychology / Vision Science / Neuroscience / Bioengineering / Physiology.
+
+-         Strong motivation and commitment to data collection and analysis.
+
+-         Previous experience with psychophysics and EEG/signal processing (a plus, not mandatory).
+
+ 
+
+Postdoc positions (starting late 2024 – early-mid 2025 preferred):
+
+Main tasks:
+
+1.     Analysis and modeling of EEG+behavioral data.
+
+2.     Leading sub-projects (from experimental design to data analysis).
+
+3.     Development and validation of codes and toolboxes for public release (Matlab, Python, R).
+
+4.     Dissemination of research through conference presentations and peer-reviewed publications.
+
+Requirements and ideal skills:
+
+-          Proficiency in neuroimaging techniques (EEG, inverse solution) and signal processing (ERP, spectral analysis), as well as psychophysics.
+
+-          Good/strong statistical, computational, and programming skills.
+
+ 
+
+The project involves collaboration with a broad network of partners both within and outside Switzerland.
+
+ 
+
+More information and the application form can be found here (click on the links): PhD – PostDoc.
+
+ 
+
+Please apply via the online recruitment system, with all documents requested, including reference letters.
+
+For further details, please contact:
+
+psc.dav@gmail.com
+
+david.pascucci@chuv.ch
+
+
+
+Hi Marko
+
+It would depend on whether it is the first image after dicom to nifti conversion of if it has been resliced to some other space. In the first case the transformation matrix M=spm_get_space('yourfilename.nii'). Subsequently you can use P=spm_imatrix(M) to find out around which axis the original images were rotated (compared to an axial orientation), images which were acquired in strictly axial orientation (with respect to the scanner coordinate system) will have zeros at P(4:6) coronal images will be rotated around x, P(4), and sagittal images have been rotated around y, P(5).
+
+Best
+Torben
+
+
+FORMAT [A] = spm_matrix(P [,order])
+  P(1)  - x translation
+  P(2)  - y translation
+  P(3)  - z translation
+  P(4)  - x rotation about - {pitch} (radians)
+  P(5)  - y rotation about - {roll}  (radians)
+  P(6)  - z rotation about - {yaw}   (radians)
+  P(7)  - x scaling
+  P(8)  - y scaling
+  P(9)  - z scaling
+  P(10) - x affine
+  P(11) - y affine
+  P(12) - z affine
+
+
+
+
+
+
+> Den 11. apr. 2024 kl. 15.31 skrev Prof. Dr. Marko Wilke <Marko.Wilke@MED.UNI-TUEBINGEN.DE>:
+>
+> Hello,
+>
+> I am trying to find out whether one can extract the "original" image
+> orientation as acquired by the scanner (axial, coronal etc.) from NIFTI
+> images which were previously converted from DICOM by the SPM routines. I
+> do not necessarily have access to the original DICOM files anymore in my
+> scenario.
+>
+> I have already been told that this may not be possible for data from
+> some scanners, but if there is a way to derive from a NIFTI file how it
+> was acquired for some or most images, I would be grateful for pointers
+> in the right direction.
+>
+> Cheers
+> Marko
+>
+> --
+> ____________________________________________________
+> Prof. Dr. med. Marko Wilke
+>   Facharzt für Kinder- & Jugendmedizin, Neuropädiater
+>   Leiter, Experimentelle Pädiatrische Neurobildgebung
+>   Geschäftsführender Oberarzt der Abt. Neuropädiatrie
+>   Universitäts-Kinderklinik
+>
+> Marko Wilke, MD, PhD
+>   Pediatrician and Pediatric Neurologist
+>   Head, Experimental Pediatric Neuroimaging
+>   Senior Consultant in Pediatric Neurology
+>   University Children's Hospital
+>
+> Hoppe-Seyler-Str. 1
+>   D - 72076 Tübingen, Germany
+>   Tel. +49 7071 29-83416
+>   Fax  +49 7071 29-5473
+>   marko.wilke@med.uni-tuebingen.de
+>
+>   http://www.medizin.uni-tuebingen.de/kinder/epn/
+> ____________________________________________________
+>
+
+Hi Marek
+
+I have tried the GitHub developer version on an M2 chip and it works like a charm, and I see no problem why M3 should be any different. You still need to use the troubleshooting tip found here: https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel) to tel macos that the software can be trusted. For additional speedup you may want to use Apple’s implementation of BLAS, see description on Mathworks' homepage https://blogs.mathworks.com/matlab/2023/12/13/life-in-the-fast-lane-making-matlab-even-faster-on-apple-silicon-with-apple-accelerate/
+
+
+Best
+Torben
+
+
+Hi,
+do you know if this would work also for Matlab R2024a on mac with M3 chip?
+
+thank you
+
+Marek
+
+
+
+On 15-Jan-24 22:14, Julie Boyer wrote:
+It works like this for me too! Thank you very much 
+Julie
+
+
+Le 15 janv. 2024 à 21:57, Xiaohe Cao <xiaohe.cao@stonybrook.edu> a écrit :
+
+Hey I had same issues and I downloaded the developer package from GitHub. Now it works just fine for my data. Hope that helps you too 
+
+
+On Mon, Jan 15, 2024 at 12:48 Julie Boyer <juliechezboyer@wanadoo.fr> wrote:
+Hello,
+
+I am having issues installing spm; here are my settings:
+- spm12
+- Matlab2023b
+- MacOS Sonoma 14.2.1
+
+The error is as follows:
+
+"Error using spm_check_installation>check_basic
+SPM uses a number of MEX files, which are compiled functions.
+These need to be compiled for the various platforms on which SPM
+is run. It seems that the compiled files for your computer platform
+are missing or not compatible. See
+   https://en.wikibooks.org/wiki/SPM/Installation_on_64bit_Mac_OS_(Intel)
+for information about how to compile MEX files for MACI64
+in MATLAB 23.2.0.2459199 (R2023b) Update 5.
+
+Error in spm_check_installation (line 28)
+        check_basic;
+
+Error in spm (line 290)
+spm_check_installation('basic’);"
+
+I tried what is advised on Wikibooks but it didn’t work and according to some forum discussions I found, it is not adapted to M1 chips.
+Can you help me ?
+
+Thank you very much for your time,
+
+Julie Boyer, MD, PHD student
+Université Paris Cité - INCC laboratory
+
+-- 
+Marek Wypych PhD, DSc
+Laboratory of Brain Imaging (LOBI)
+Nencki Institute of Experimental Biology
+Pasteur 3, 02-093 Warsaw, Poland
+Tel.: +48 22 5892 550
+https://lobi.nencki.edu.pl/
+https://orcid.org/0000-0002-8710-0244
+https://scholar.google.com/citations?user=mYXWPgIAAAAJ
+
+
+Hi all, 
+
+I try to apply a correction with the fieldmap images (2 magnitude images, 1 phase diff image) but I get the following error:
+Error using sqrtm (line 35)
+Expected input to be finite.
+I saw on a previous post that you could apply a constant to tissue probabilities images, but I don't know exactly how to do it.
+Could someone help me?
+Or is there another solution?
+
+Thanks, 
+
+Alex
+
+
+FAME Flagship of Advanced Mathematics for Sensing, Imaging and Modelling is looking for Doctoral Researchers.
+
+
+This collaborative and multidisciplinary flagship is focused on advancing applied mathematics and physics to meet societal demands, including medical diagnostics, monitoring of industrial processes, non-destructive evaluation of structures, and analysis of satellite imagery. Its foundation in the universality of mathematics facilitates the adaptation and application of methods across various fields. Rooted in innovative research into inverse problems, the Flagship collaborates extensively with both industrial and societal partners. Its industrial collaborators, spanning the healthcare, clean technology, and sustainability sectors, engage with the Flagship's scientists to jointly develop innovative solutions for their technological challenges. Moreover, these collaborations with industry are expected to generate new scientific inquiries.
+
+
+
+Job description
+
+
+
+We are looking for eight (8) to ten (10) Doctoral Researchers for the thematic area of FAME Flagship of Advanced Mathematics for Sensing, Imaging and Modelling.
+
+Successful candidates will pursue a doctoral degree at Tampere University. The positions are full-time and for three years, during which doctoral studies are expected to be completed.
+
+
+
+Requirements
+
+
+
+You need to have a Master’s degree in an applicable field Mathematics, Physics, Engineering Sciences, Computer Science, or other applicable field and have demonstrated (during your studies towards the Master’s degree or otherwise) the competence and motivation to pursue postgraduate studies. Please be prepared to provide proof of your merits when requested.
+
+
+
+Note! You can apply even if you have not yet graduated, but you need to have graduated by 30 June 2024, at the latest.
+
+
+
+Successful candidates must be pursuing or need be accepted (within the trial period) to study towards a doctoral degree in the doctoral programme of the discipline. If you already have a study right for a doctoral degree at Tampere University, it needs to be awarded 1 November 2023 or thereafter in order for you to be eligible for these positions.
+
+
+
+The position requires working full-time in Tampere, Finland for the time of the employment. The chosen candidate needs to have the required permits for working in Finland before starting the employment (depending on the nationality of the candidate, e.g. residence permit in Finland).
+
+The position requires fluent written and spoken skills in English.
+
+
+
+The now open positions are divided into three themes and 10 possible topics. The preferred theme and topic should be mentioned in the application. One may also choose two most interesting topics in the preferred order.
+
+
+
+Link to the job announcement: https://tuni.rekrytointi.com/paikat/index.php?jid=2293&key=&o=A_RJ&rspvt=j08psgb3yvc44csck8og400s4ows04o
+
+Link to theme description page: https://www.tuni.fi/en/research/doctoral-education-pilot-advanced-mathematics-sensing-imaging-and-modelling-fame-themes
+
+
+With kind regads, 
+
+Sampsa Pursiainen
+
+
+Professor of Applied Mathematics
+Mathematics and Statistics
+Faculty of Information Technology 
+and Communication Sciences
+Tampere University
+
+Office SC310 (Sähkötalo-Building) 
+P.O. Box 1001 (Korkeakoulunkatu 3)
+33014 Tampere University
+Finland
+Phone: +358 40 750 5677
+Email: sampsa.pursiainen@tuni.fi
+
+
+Hi everyone
+
+Instats is pleased to present a new seminar on Time Series Analysis & Forecasting: Foundations and Applications, by former LIGO physicist and senior data scientist Dr Jayanti Prasad, running April 22 - 26. This 5-day workshop offers a comprehensive exploration of time series analysis and forecasting, equipping participants with the skills to apply these techniques in their own research across various disciplines. The seminar provides hands-on Python experience, advanced techniques, case studies, and a deep understanding of the principles and applications of time series analysis. An official Instats certificate of completion and ECTS Equivalent points are provided at the conclusion of the seminar.
+
+Sign up today to secure your spot and please feel free to tell your friends and colleagues!
+
+
+Best wishes
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+
+Dear SPM community,
+
+ 
+
+There are only 5 places left on the upcoming SPM course for fMRI and VBM in London – please join us! The course will take place 13th-15th May, and is run by the developers of SPM. The course is suitable for both beginners and more experienced users, with a new format that balances practical workshops and lectures.
+
+ 
+
+More information is available here: https://www.fil.ion.ucl.ac.uk/spm/docs/courses/fmri_vbm/
+
+ 
+
+Direct link to registration page is here: https://onlinestore.ucl.ac.uk/conferences-and-events/faculty-of-brain-sciences-c07/ucl-institute-of-neurology-d07/d07-statistical-parametric-mapping-for-fmri-and-mrivbm-2024.
+
+ 
+
+Register now to secure your spot!
+
+ 
+
+Best
+
+Peter and Olivia @ the FIL
+
+ 
+
+Peter Zeidman, PhD
+
+Group Leader, Neurovascular Modelling Group
+
+Chair, Methods Group
+
+Wellcome Centre for Human Neuroimaging
+
+UCL Queen Square Institute of Neurology
+
+12 Queen Square, London, UK. WC1N 3AR
+
+ 
+
+ 
+Or you can change the datatype to one which can handle a larger range of values e.g. float32 or double.
+
+Best
+Torben
+
+> Den 5. apr. 2024 kl. 13.02 skrev Chris Lambert <clambert.spm@GMAIL.COM>:
+>
+> Zeros in the background - Try either
+>
+> (i1(i2>0))./(i2(i2>0))
+>
+> Where i1=T1, i2=t2
+>
+> That could be a bit messy depending on distribution of values in t2 (i.e. you may still get some v.big values) so imho probably better to make a mask (i3) using gm, wm (+/- csf) segmentations and doing same trick but using i3>0 instead of i2.
+>
+>> On 4 Apr 2024, at 16:15, Varun Arunachalam Chandran <varunchandran28@gmail.com> wrote:
+>>
+>> ﻿Hi everyone,
+>>
+>> I used the imcal (i1./i2) function to generate a T1/T2 myelin map. However, the output generated using i1./i2 equation displayed a white background (please see the attachment) with some infinite values and not the myelin map. Please could someone shed light on this question?
+>>
+>>                                                               thanks,
+>>
+>> kind regards,
+>> Varun
+>>
+>> <HCD110411_T1T2ratio.jpg>
+
+”you do need to randomise the order of those event-types“
+
+ 
+
+Regarding the event order, would it be advisable to generate a new random order for each subject, or should we create one random sequence and have all participants follow this identical order?
+
+ 
+
+If you only care about the average over participants, then it is arguably better to control for possible order effects, ie vary orders randomly or counterbalance some feature of the order. However, if you care about individual differences between participants (eg age), then better to have a fixed order, ie minimise any other sources of between-participant variance.
+
+ 
+
+ 
+
+”I would ask why you are using such long SOAs“
+
+ 
+
+After each event is presented, participants are required to make a subjective rating on the stimuli by pressing a key. We think that the extended SOAs will allow brain activity induced by the key press to return to baseline levels.
+
+ 
+
+I’m afraid this indicates that you have not understood the efficiency of fMRI designs. Under linear assumptions (and for comparisons between event-types), you do not need to extend SOAs to allow activity to return to baseline – please consult https://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency
+
+ 
+
+ 
+
+ 
+
+Furthermore, if I wish to generate an optimal sequence, I understand that I should randomly produce several sequences, say 1000, and then use the helpful function fMRI_GLM_efficiency.m you provided to calculate the efficiency degree of each sequence. The sequence with the highest efficiency degree would be considered the optimal one, correct?
+
+ 
+
+Yes
+
+ 
+
+ 
+
+Rik
+
+ 
+
+---------------------------------------------------------------
+
+ 
+
+Prof Richard Henson, MA, MSc, PhD, FBA
+
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+
+President-Past, British Neuroscience Association
+
+Fellow of the British Academy
+
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+
+ 
+
+What is credible neuroscience?
+
+---------------------------------------------------------------
+
+ 
+
+ 
+
+ 
+
+From: Rik Henson 
+
+Date: Thu, 28 Mar 2024 11:28:13 +0000
+
+ 
+
+Actually, you do not need additional jitter to optimise fMRI efficiency with such long and varied SOAs – your HRF-convolved regressors will already be reasonably decorrelated. Jitter becomes more important when you have a short minimal SOA, and needs to be over a much larger range than 1-2 seconds to have any effect on correlation between regressors (eg 2-12 seconds)*. And even then, such jitter is only needed if you want to estimate the response versus inter-event baseline; if you only care about differences between two types of events, you do not need to jitter, but you do need to randomise the order of those event-types (in which case, the shortest SOA possible is optimal, assuming no nonlinear saturation of the HRF). So if you don’t care about contrasts versus baseline (and are happy to assume a fixed canonical HRF), then I would ask why you are using such long SOAs (unless you have a limited number of stimuli, since more TRs is nearly always more efficient)?
+
+ 
+
+With 6 conditions (event-types) and such long SOAs (assuming they need to be long for psychological reasons), some orders of event-types can more optimal than others, to avoid too much signal (for your contrasts of interest) being lost in the low-frequency fMRI noise (eg if you highpass filter). That optimal order depends on which contrasts (effects) in your 2x3 design are most important – you want such contrasts to have the highest frequency (ie vary fastest).
+
+ 
+
+This webpage is probably easiest to start with for a conceptual overview: https://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency, then if you want to simulate efficiencies of different designs, try this function: https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2013/09/fMRI_GLM_efficiency.m, which accompanies this more technical paper: https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2015/03/Henson_EN_15_Efficiency.pdf.  
+
+ 
+
+Hope this helps
+
+Rik
+
+ 
+
+* If you have a long TR>2s, and your SOAs are multiples of your TR, you could jitter by 0-TR/2 secs to ensure a higher effective sampling rate, but that is a different reason – see above webpage.
+
+ 
+
+---------------------------------------------------------------
+
+ 
+
+Prof Richard Henson, MA, MSc, PhD, FBA
+
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+
+President-Past, British Neuroscience Association
+
+Fellow of the British Academy
+
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+
+EMAIL:  [log in to unmask]
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+
+ 
+
+What is credible neuroscience?
+
+---------------------------------------------------------------
+
+ 
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <[log in to unmask]> On Behalf Of Frank VAN OVERWALLE
+Sent: 28 March 2024 08:49
+To: [log in to unmask]
+Subject: Re: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Luna,
+
+ 
+
+I do not understand entirely your question.
+
+ 
+
+In principle, you build your experiment as you normally would do for a behavioral psychological experiment, with the addition of jittering (a random addition between say 1-2 seconds) in the inter trial/stimulus intervals for better estimation of the BOLD function.
+
+ 
+
+In SPM, you determine for each condition a regressor with as onset times of the stimulus onsets in each condition, and the duration of the stimulus (which you can interpret as a single peak, hence duration = 0; or for the whole length of the stimulus, hence duration = 2 s)
+
+ 
+
+I hope this answers your question,
+
+ 
+
+Frank
+
+ 
+
+Van: SPM (Statistical Parametric Mapping) <[log in to unmask]> Namens Luna Sato
+Verzonden: woensdag 27 maart 2024 20:38
+Aan: [log in to unmask]
+Onderwerp: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Hi all,
+
+ 
+
+In my experiment, there are six conditions belong to two independent variables (2x3).
+
+ 
+
+We are interested into the interaction effect of 2x3 ANOVA on activation (beta values) of six conditions.
+
+ 
+
+A slow event design will be used: each event lasting two seconds, with intervals between events ranging from 8 to 14 seconds. Each session comprises 32 events.
+
+ 
+
+Are there any tools or MATLAB codes available to help determine the best stimulus sequence for this slow event design?
+
+ 
+
+Thank you!
+
+Best,
+
+Luna
+
+ 
+
+Dear Professor Henson,
+
+
+Thank you very much for your detailed response. So additional jitter is not required for the long and varied Stimulus Onset Asynchronies (SOAs) we’re using.
+
+”you do need to randomise the order of those event-types“
+
+Regarding the event order, would it be advisable to generate a new random order for each subject, or should we create one random sequence and have all participants follow this identical order?
+
+”I would ask why you are using such long SOAs“
+
+After each event is presented, participants are required to make a subjective rating on the stimuli by pressing a key. We think that the extended SOAs will allow brain activity induced by the key press to return to baseline levels. Additionally, we aim to observe the trend of signal change over time under each experimental condition; thus, the longer SOAs should enhance the visibility of these signal changes.
+
+Furthermore, if I wish to generate an optimal sequence, I understand that I should randomly produce several sequences, say 1000, and then use the helpful function fMRI_GLM_efficiency.m you provided to calculate the efficiency degree of each sequence. The sequence with the highest efficiency degree would be considered the optimal one, correct?
+
+Thank you once again for your assistance.
+
+Best regards,
+Luna
+
+
+
+
+From: Rik Henson 
+Date: Thu, 28 Mar 2024 11:28:13 +0000
+
+Actually, you do not need additional jitter to optimise fMRI efficiency with such long and varied SOAs – your HRF-convolved regressors will already be reasonably decorrelated. Jitter becomes more important when you have a short minimal SOA, and needs to be over a much larger range than 1-2 seconds to have any effect on correlation between regressors (eg 2-12 seconds)*. And even then, such jitter is only needed if you want to estimate the response versus inter-event baseline; if you only care about differences between two types of events, you do not need to jitter, but you do need to randomise the order of those event-types (in which case, the shortest SOA possible is optimal, assuming no nonlinear saturation of the HRF). So if you don’t care about contrasts versus baseline (and are happy to assume a fixed canonical HRF), then I would ask why you are using such long SOAs (unless you have a limited number of stimuli, since more TRs is nearly always more efficient)?
+ 
+
+With 6 conditions (event-types) and such long SOAs (assuming they need to be long for psychological reasons), some orders of event-types can more optimal than others, to avoid too much signal (for your contrasts of interest) being lost in the low-frequency fMRI noise (eg if you highpass filter). That optimal order depends on which contrasts (effects) in your 2x3 design are most important – you want such contrasts to have the highest frequency (ie vary fastest).
+
+ 
+
+This webpage is probably easiest to start with for a conceptual overview: https://imaging.mrc-cbu.cam.ac.uk/imaging/DesignEfficiency, then if you want to simulate efficiencies of different designs, try this function: https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2013/09/fMRI_GLM_efficiency.m, which accompanies this more technical paper: https://www.mrc-cbu.cam.ac.uk/wp-content/uploads/www/sites/3/2015/03/Henson_EN_15_Efficiency.pdf.  
+
+ 
+
+Hope this helps
+
+Rik
+
+ 
+
+* If you have a long TR>2s, and your SOAs are multiples of your TR, you could jitter by 0-TR/2 secs to ensure a higher effective sampling rate, but that is a different reason – see above webpage.
+
+ 
+
+---------------------------------------------------------------
+
+ 
+
+Prof Richard Henson, MA, MSc, PhD, FBA
+
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+
+President-Past, British Neuroscience Association
+
+Fellow of the British Academy
+
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+
+EMAIL:  [log in to unmask]
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+
+ 
+
+What is credible neuroscience?
+
+---------------------------------------------------------------
+
+ 
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <[log in to unmask]> On Behalf Of Frank VAN OVERWALLE
+Sent: 28 March 2024 08:49
+To: [log in to unmask]
+Subject: Re: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Luna,
+
+ 
+
+I do not understand entirely your question.
+
+ 
+
+In principle, you build your experiment as you normally would do for a behavioral psychological experiment, with the addition of jittering (a random addition between say 1-2 seconds) in the inter trial/stimulus intervals for better estimation of the BOLD function.
+
+ 
+
+In SPM, you determine for each condition a regressor with as onset times of the stimulus onsets in each condition, and the duration of the stimulus (which you can interpret as a single peak, hence duration = 0; or for the whole length of the stimulus, hence duration = 2 s)
+
+ 
+
+I hope this answers your question,
+
+ 
+
+Frank
+
+ 
+
+Van: SPM (Statistical Parametric Mapping) <[log in to unmask]> Namens Luna Sato
+Verzonden: woensdag 27 maart 2024 20:38
+Aan: [log in to unmask]
+Onderwerp: [SPM] How to determine the optimal stimulus sequence for a slow-event fMRI experiment?
+
+ 
+
+Hi all,
+
+ 
+
+In my experiment, there are six conditions belong to two independent variables (2x3).
+
+ 
+
+We are interested into the interaction effect of 2x3 ANOVA on activation (beta values) of six conditions.
+
+ 
+
+A slow event design will be used: each event lasting two seconds, with intervals between events ranging from 8 to 14 seconds. Each session comprises 32 events.
+
+ 
+
+Are there any tools or MATLAB codes available to help determine the best stimulus sequence for this slow event design?
+
+ 
+
+Thank you!
+
+Best,
+
+Luna
+
+Dear Peter,
+thank you for your reply. We implemented a PEB-of-PEBs approach as suggested. However, we seem to be encountering an issue. I'll briefly outline our design to provide context:
+Our study involved a group of subjects who participated in an fMRI experiment consisting of 2 sessions. During session 1 they didn't take LSD and undertook a rest run and a run in which they only listened to music. In session 2 they took LSD and they undertook a rest run and a music run.
+
+For the DCM analysis, we included 8 regions and we modelled A-matrix since no task was performed in either the music or in rest runs.
+Subsequently, we conducted 2 separeted PEB analyses: one for the rest condition and one for the music condition.  In both analyses, we included a covariate representing the LSD condition (coded as 1 for LSD and -1 for no LSD).
+Following your suggestion, we attempted a third-level PEB analysis using the command:
+
+PEBofPEBs = spm_dcm_peb(PEBs, X3)
+
+where PEBs is a vertical cell array containing musicPEB and restPEB and X3 is a column with 1 -1.
+However, upon running the code, we encountered an error regarding the absence of the "pC" parameter. The error message reads:
+
+Error in spm_find_pC (line 52)
+if isstruct(pC)
+
+Error in spm_dcm_peb (line 149)
+   q = spm_find_pC(DCM,field);
+
+We also attempted to conduct subject-specific PEB analyses first, using the following code:
+PEB_subject1 = spm_dcm_peb([‘GCM_subject1_session1.mat’; ‘GCM_subject1_session2.mat’],X2)
+
+However, we encountered the same issue when attempting the third-level PEB analysis.
+What am I missing? Could you please advise on what might be causing this problem?
+
+Thank you.
+Best,
+
+Maria Giulia
+
+
+
+
+On Thu, 4 Apr 2024 13:19:27 +0000, Zeidman, Peter <peter.zeidman@UCL.AC.UK> wrote:
+
+>Dear Maria
+>Yes, you certainly can do this (you’ll see this referred to in previous posts as a “PEB-of-PEBs” approach). However, in your case, I wonder if there’s a more statistically efficient way, by including all the experimental conditions at the first level (within each subject’s DCM). To clarify, did each subject undergo both the rest and music listening condition? Were these conditions within the same scanning session? Are there any other experimental factors? And what kind of DCMs are these?
+>
+>Best
+>Peter
+>
+>From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Maria Giulia Tullo
+>Sent: 28 March 2024 17:37
+>To: SPM@JISCMAIL.AC.UK
+>Subject: [SPM] Bayesian contrasts between two PEBs
+>
+>
+>⚠ Caution: External sender
+>
+>Dear SPM experts,
+>I would like to perform a bayesian contrast between two PEBs. Briefly, I performed a PEB between two groups (using 1 and -1 as covariates) during rest and a PEB between the same two groups during music listening. Then, I got the pp of each parameter in each PEB (review_pebresults.m) and now I would like to perform a difference between the parameters with a pp>0.95 during music and the rest.
+>I looked at spm_dcm_peb_con.m but, if I'm not wrong, it considers only one PEB model. Conversely, I have two PEBs. How can I compare the two models by considering Ep and Cp?
+>I look forward to your reply.
+>Cheers
+>
+>--
+>Maria Giulia
+
+
+Dear SPM Experts,
+
+I hope this email finds you well. I am reaching out for assistance with setting up flexible factorial designs.
+
+I am currently working on a task design which involves listening to auditory stimuli. The participants were required to categorize the sounds into pleasant (P), neutral (N), and unpleasant (U).
+
+For the first-level analysis, I computed three contrasts per subject: U>N, P>N, and U+P>N. These contrasts were chosen to model the effect of affective sounds compared to neutral ones.
+
+Now, I am looking to investigate how brain activity in response to affective sounds varies across different groups (4 levels). I intend to employ a flexible factorial model, incorporating subjects as random effects and groups as a fixed effect.
+
+I have a few questions regarding this:
+
+Are the three first-level contrasts I computed sufficient for second-level analysis? Or do I need to compute contrasts representing the effects of pleasant alone (1 0 0), neutral alone (0 1 0), and unpleasant alone (0 0 1) to be used in the second level?
+
+My primary interest lies in examining the main effect of group and the interaction effect of group (4 levels) * condition (3 levels: P, U, N). Which first level contrasts should be included in the factor condition? I am concerned because if I input contrasts like U>N and P>N, neutral is represented twice. Is this a problem?
+
+Could you please direct me to any resources that guide through the implementation of flexible factorial ANOVA in SPM, including setting up contrasts and the subject factor?
+
+Thank you very much for your time and assistance.
+I look forward to your guidance.
+
+Best,
+_____________________________
+Namitha Jain
+PhD student, Speech and Hearing sciences
+University of Illinois, Urbana-Champaign
+
+Hello
+
+I am trying to build a GLM that contains several regressors of interest, some of which may lack in certain sessions (= runs), depending on the participant’s answers (for example when a participant doesn’t chose a given audibility rating during a whole session).
+
+This causes my timing files to contain empty vectors in the ‘durations’ and ‘onsets’ cell arrays for the given regressor, and sum returns an error.
+
+I saw on a forum that one can put an onset that is larger than the scan length, eg 1000s; I tried this band it seems fine to me (here is an example design matrix for a given run; I entered 1000secs onsets / 0s durations for the regressors shown in the 7th and 13th columns, which appear empty in the matrix).
+
+Can you confirm it is correct?
+
+Thank you for your help,
+Best
+
+Julie Boyer
+PHD student
+Université Paris Cité
+
+
+
+
+Zeros in the background - Try either
+
+(i1(i2>0))./(i2(i2>0))
+
+Where i1=T1, i2=t2
+
+That could be a bit messy depending on distribution of values in t2 (i.e. you may still get some v.big values) so imho probably better to make a mask (i3) using gm, wm (+/- csf) segmentations and doing same trick but using i3>0 instead of i2.
+
+> On 4 Apr 2024, at 16:15, Varun Arunachalam Chandran <varunchandran28@gmail.com> wrote:
+>
+> ﻿Hi everyone,
+>
+> I used the imcal (i1./i2) function to generate a T1/T2 myelin map. However, the output generated using i1./i2 equation displayed a white background (please see the attachment) with some infinite values and not the myelin map. Please could someone shed light on this question?
+>
+>                                                                thanks,
+>
+> kind regards,
+> Varun
+>
+> <HCD110411_T1T2ratio.jpg>
+
+
+Dear SPM Experts,
+
+I am reaching out to seek your guidance on a matter pertaining to my fMRI experiment.
+
+I want to analyse data with the following structure:
+
+
+  Event related design, within subject, 40 subjects
+  two blocks with 15 min. duration, no break in between
+  21 events A in block 1 (pseudrandomly distributed within the block)
+  21 events B in block 2 (pseudrandomly distributed within the block)
+  duration of all events between 0.2-4 seconds (dependent on participant response time)
+I want to contrast condition A and B in the context of a general linear model.
+
+My questions are the following:
+
+ I am aware that scanner drift rate can make problems in this setup. What effect would I observe in my results? Can I estimate how strong the effects of scanner drift rate on my results are?
+Due to the somewhat block-like nature: How problematic would a high-pass filter as part of my analysis be? I currently have a filter with a cutoff of 4320 seconds.
+How much trust would you put in any results of this analysis?
+Is there a different analysis approach that would lead to more trustworthy results.
+Thank you in advance and warm regards,
+
+Negin Javaheri
+
+-- 
+Negin Javaheri
+PhD Candidate
+Department of Neuropsychology and Behavioral Neurobiology
+University of Bremen | Cognium Building
+Hochschulring 18 | D-28359 Bremen
+Phone: +49-421-218-68750
+E-Mail: javaheri@uni-bremen.de
+Web: www.neuropsychologie.uni-bremen.de
+
+
+Hi everyone,
+
+I used the imcal (i1./i2) function to generate a T1/T2 myelin map. However, the output generated using i1./i2 equation displayed a white background (please see the attachment) with some infinite values and not the myelin map. Please could someone shed light on this question?
+
+                                                                thanks,
+
+kind regards,
+Varun
+
+
+Hello all,
+
+I have a question regarding the exact workings of SPM12's first level analysis.
+
+For our experiment, we record four blocks of our participants performing a task with 8 different conditions. I then perform a first level analysis on the single participant level, contrasting these 8 conditions. I then continue my analysis outside of SPM12, using the beta weights from this first level analysis.
+
+What I have noticed is that, when I perform this procedure, not every voxel is assigned a beta weight, and the amount of voxels with beta weights vary between participant. Crucially, when I overlay the beta weights onto a standardised brain, mostly the outermost voxels within the brain are not always assigned beta weights. This is inconvenient as it involves voxels that are within my pre-established ROI.
+
+I have examined my preprocessing pipeline and this appears to have been done correctly (specifically the normalisation and setting of the origin). Is it to be expected that not all voxels within the normalised brains are assigned a beta weight by the first level analysis? Is there a solution to this?
+
+Any insights would be highly appreciated.
+
+Best regards,
+
+Jules Erkens
+
+Dear Ling
+
+It seems that either the parameters or their estimated variance are complex numbers, rather than real numbers, which is a bit weird. I expect your results are fine, because you’ve got non-trivial explained variance for all subjects, but I’d like to check… What kind of DCMs are these? Feel free to send me one subject’s DCM (zipped) so I can reproduce the issue.
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Ling Quan
+Sent: 29 March 2024 14:01
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Warning messages from spm_dcm_fmri_check
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Hello all,
+
+ 
+
+After performing DCM inversion for all subjects, I reviewed the results using spm_dcm_fmri_check and encountered numerous warning messages:
+
+Warning: Imaginary parts of complex X and/or Y arguments ignored
+
+> In spm_plot_ci (line 179)
+
+  In spm_dcm_fmri_check (line 303)
+
+The line 179 in spm_plot_ci is:
+
+  line([k k],[-1 1]*c(k) + E(k),'LineWidth',4,'Color',col,'Parent',ax);
+
+ Variable ‘c’ contains complex numbers.
+
+ 
+
+ Additionally, I noticed that the majority of values in DCM.Ep.A are less than 0.01.
+
+However, the variance explained values outputted by spm_dcm_fmri_check are not low (bigger than 25% for all subjects).
+
+Does this suggest a failure in estimation or no connectivity at all among regions?
+
+Thanks a lot!
+
+ 
+
+I wish you good.
+
+ 
+
+Ling
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Dear Shuaicheng Liu
+To contrast the conditions, you would ideally have modulatory inputs that correspond to the difference between conditions within each DCM. E.g. you would have a modulator for [condition 1 - condition 2], rather than separate modulators for condition 1 and condition 2. Is that possible in this case? Feel free to share more about the experimental design if you'd like guidance on how to implement that.
+
+Alternatively, you can compare parameters from the PEB model using a function called spm_dcm_peb_con.m . But that's not ideal - better to have the differences between conditions explicitly included in the DCM.
+
+Best
+Peter
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Shuaicheng Liu
+Sent: 30 March 2024 14:51
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] A question about how to contrast the different modulatory inputs after conducted PEB
+
+⚠ Caution: External sender
+
+
+Dear SPM experts,
+I have three modulatory inputs and four ROIs (i.e., the B matrix is 4*4*3).  I have fitted the subject-level DCM and conducted the group-level PEB. How can I contrast the three modulations at the group level?
+I look forward to your reply.
+Cheers
+
+
+Dear Maria
+
+Yes, you certainly can do this (you’ll see this referred to in previous posts as a “PEB-of-PEBs” approach). However, in your case, I wonder if there’s a more statistically efficient way, by including all the experimental conditions at the first level (within each subject’s DCM). To clarify, did each subject undergo both the rest and music listening condition? Were these conditions within the same scanning session? Are there any other experimental factors? And what kind of DCMs are these?
+
+ 
+
+Best
+
+Peter
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Maria Giulia Tullo
+Sent: 28 March 2024 17:37
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] Bayesian contrasts between two PEBs
+
+ 
+
+⚠ Caution: External sender
+
+ 
+
+Dear SPM experts,
+
+I would like to perform a bayesian contrast between two PEBs. Briefly, I performed a PEB between two groups (using 1 and -1 as covariates) during rest and a PEB between the same two groups during music listening. Then, I got the pp of each parameter in each PEB (review_pebresults.m) and now I would like to perform a difference between the parameters with a pp>0.95 during music and the rest. 
+
+I looked at spm_dcm_peb_con.m but, if I'm not wrong, it considers only one PEB model. Conversely, I have two PEBs. How can I compare the two models by considering Ep and Cp? 
+
+I look forward to your reply.
+
+Cheers
+
+ 
+
+--
+
+Maria Giulia
+
+
+Dear Michael and list,
+
+we have recently published a paper that compares regulations in several jurisdictions and provide some practical hints for data sharing for people in the EU.
+
+Reer, A., Wiebe, A., Wang, X., & Rieger, J. W. (2023). FAIR human neuroscientific data sharing to advance AI driven research and applications: Legal frameworks and missing metadata standards. Frontiers in Genetics, 14, 1086802.
+
+The short version is:
+
+Note that the GDPR does no apply to anonymous data. Therefore destroy the coding list as soon as possible. In case you have identifiable information like images that include external features such as faces remove the external features (see e.g. re-facing tools if you are worried about data quality). For eye tracking share the tracking data but not the videos etc. Add some noise to metadata that potentially provide personal  information that make identification easier (e.g. age etc).
+
+The GDPR has a risk based approach to re-identification. Meaning not all possible re-identification approaches are relevant for the assessment of re-identification. In the EEG-data request internal anatomical brain patterns do not play a role. And if even when T1 scans are shared it remains questionable if the internal features (like gyral patterns) really play a role for the risk assessment.
+
+More important: You should get your sharing plan and the informed consent you want to get from your participants through your IRB or institutional legal assessment before you acquire the data. This is where (unfortunately) assessments can differ between boards. However, you'll never know before trying.
+
+As it was noted previously: Informed consent is key. You need to inform your participants about what type of data you are going to share and with whom. If the data go outside the EU jurisdiction you need to get their consent. As soon as you pseudonymize data correctly the participants will loose their right for data correction/deletion. You need to get their consent for that step. 
+
+If you want to add an additional control layer get a data usage agreement (DUA) that excludes unwanted uses from your collaboration partners.
+
+The great thing is that you don't have to develop all these forms from scratch. The open science community already developed very useful drafts that can be found here: https://open-brain-consent.readthedocs.io/en/stable/ 
+
+If that all does not work for you, you may consider providing your collaborators access to your local servers to do the computations there.
+
+Best regards,
+
+   Jochem
+
+
+
+
+-------- Weitergeleitete Nachricht --------
+Betreff:	Re: [SPM] Anonymous EEG data for GDPR purposes
+Datum:	Thu, 4 Apr 2024 13:08:48 +0200
+Von:	Torben Lund <000022a342fab3b5-dmarc-request@JISCMAIL.AC.UK>
+Antwort an:	Torben Lund <torbenelund@ME.COM>
+An:	SPM@JISCMAIL.AC.UK
+
+
+ACHTUNG! Diese E-Mail kommt von Extern! WARNING! This email originated off-campus.
+
+In cases where a key (in the widest sense) exist between data with personal information, and the public version of these data, they can, under GDPR, only be considered pseudonomised. And thus can only be shared via a data processor agreement. Part of such an agreement is an obligation to perform audits of the data processors whom you have given acces to the data, this would be outside my budget both time- and money-wise. In addition, under GDPR, the subject has the right for his/her data to be withdrawn/erased. This is quite challenging to ensure if data are spread across the world. So I am, unfortunately, not sure that consent saves the day, although it would be nice.
+
+Anonymisation is, as pointed out tricky. An important point is, that it is only at the time of anonymisation that a key between shared data and personal data should not exist. Hence we only need to take into account already available data, not brain scans from the future. But what do we do with the consent form, depending on the number of subjects in a study this could itself become a key.
+
+Does everybody’s legal departments in UK and EU think that datasharing is easy, in DK it is not the case?
+
+
+Best
+Torben
+
+
+
+
+Den 4. apr. 2024 kl. 01.57 skrev Rik Henson <Rik.Henson@MRC-CBU.CAM.AC.UK>:
+
+ 
+I think it’s all about consent. My understanding of GDPR is that, if participants consent to sharing their data, then even personal data can be shared (and as long as the risks are explained to participants when they consent). Removing as much identifiable information from the data before sharing will reduce the risk and hence increase the likelihood that participants will consent. However, it is very hard to truly anonymise imaging data (e.g, defacing a T1 is not sufficient, since their brain shape is still unique to them).
+ 
+ 
+---------------------------------------------------------------
+ 
+Prof Richard Henson, MA, MSc, PhD, FBA
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+President-Past, British Neuroscience Association
+Fellow of the British Academy
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+15 Chaucer Road
+Cambridge, CB2 7EF
+England 
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+ 
+What is credible neuroscience?
+---------------------------------------------------------------
+ 
+ 
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Robert Cadman
+Sent: 03 April 2024 15:55
+To: SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] Anonymous EEG data for GDPR purposes
+ 
+This seems like a question for UCL legal counsel, not for this mailing list. I know at my institution, if anyone asked questions I would not be covered by saying that someone outside the university and perhaps even outside my country told me that some procedure was adequate to anonymize data for sharing.
+ 
+Robert
+ 
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Moutoussis, Michael <m.moutoussis@UCL.AC.UK>
+Date: Wednesday, April 3, 2024 at 8:34 AM
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Anonymous EEG data for GDPR purposes
+
+Dear SPMers,
+ 
+I would like to share EEG data with US colleagues as 'anonymous data' for GDPR purposes.
+Of course a data set which is rich enough will always have some risk of re-identification, either through malicious breaking into UCL computing resources, or – at least in theory – advanced data analyses against non-anonymized datasets, etc. However it is very well known that risk elimination in any sector is not a viable policy - appropriate risk management is.
+ 
+What is the minimum 'anonymization process' for EEG data to be treated as anonymous for GDPR purposes?
+ 
+Sincerely,
+Michael
+ 
+Dr. Michael Moutoussis
+Mental Health working group co-lead, IoN EDI committee, Institute of Neurology, UCL
+ 
+Neurocomputation in Psychotherapy Research, Dept. of Imaging Neuroscience, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH : mmoutoussis@nhs.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- 
+--
+Jochem Rieger
+Prof. Dr. rer. nat. habil.
+Applied Neurocognitive Psychology
+DFG Center for Open and Reproducible Neuroscience Tools 
+NFDI sections ELSA and metadata
+DFG Cluster of Excellence Hearing4All
+
+Carl-von-Ossietzky University Oldenburg
+Phone: +49 (0)441 798 4533
+Web: https://uol.de/en/applied-neurocognitive-psychology
+github: https://github.com/ANCPLabOldenburg
+
+
+In cases where a key (in the widest sense) exist between data with personal information, and the public version of these data, they can, under GDPR, only be considered pseudonomised. And thus can only be shared via a data processor agreement. Part of such an agreement is an obligation to perform audits of the data processors whom you have given acces to the data, this would be outside my budget both time- and money-wise. In addition, under GDPR, the subject has the right for his/her data to be withdrawn/erased. This is quite challenging to ensure if data are spread across the world. So I am, unfortunately, not sure that consent saves the day, although it would be nice.
+
+Anonymisation is, as pointed out tricky. An important point is, that it is only at the time of anonymisation that a key between shared data and personal data should not exist. Hence we only need to take into account already available data, not brain scans from the future. But what do we do with the consent form, depending on the number of subjects in a study this could itself become a key.
+
+Does everybody’s legal departments in UK and EU think that datasharing is easy, in DK it is not the case?
+
+
+Best
+Torben
+
+
+
+
+Den 4. apr. 2024 kl. 01.57 skrev Rik Henson <Rik.Henson@MRC-CBU.CAM.AC.UK>:
+
+ 
+I think it’s all about consent. My understanding of GDPR is that, if participants consent to sharing their data, then even personal data can be shared (and as long as the risks are explained to participants when they consent). Removing as much identifiable information from the data before sharing will reduce the risk and hence increase the likelihood that participants will consent. However, it is very hard to truly anonymise imaging data (e.g, defacing a T1 is not sufficient, since their brain shape is still unique to them).
+ 
+ 
+---------------------------------------------------------------
+ 
+Prof Richard Henson, MA, MSc, PhD, FBA
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+President-Past, British Neuroscience Association
+Fellow of the British Academy
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+15 Chaucer Road
+Cambridge, CB2 7EF
+England 
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+ 
+What is credible neuroscience?
+---------------------------------------------------------------
+ 
+ 
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Robert Cadman
+Sent: 03 April 2024 15:55
+To: SPM@JISCMAIL.AC.UK
+Subject: Re: [SPM] Anonymous EEG data for GDPR purposes
+ 
+This seems like a question for UCL legal counsel, not for this mailing list. I know at my institution, if anyone asked questions I would not be covered by saying that someone outside the university and perhaps even outside my country told me that some procedure was adequate to anonymize data for sharing.
+ 
+Robert
+ 
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Moutoussis, Michael <m.moutoussis@UCL.AC.UK>
+Date: Wednesday, April 3, 2024 at 8:34 AM
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Anonymous EEG data for GDPR purposes
+
+Dear SPMers,
+ 
+I would like to share EEG data with US colleagues as 'anonymous data' for GDPR purposes.
+Of course a data set which is rich enough will always have some risk of re-identification, either through malicious breaking into UCL computing resources, or – at least in theory – advanced data analyses against non-anonymized datasets, etc. However it is very well known that risk elimination in any sector is not a viable policy - appropriate risk management is.
+ 
+What is the minimum 'anonymization process' for EEG data to be treated as anonymous for GDPR purposes?
+ 
+Sincerely,
+Michael
+ 
+Dr. Michael Moutoussis
+Mental Health working group co-lead, IoN EDI committee, Institute of Neurology, UCL
+ 
+Neurocomputation in Psychotherapy Research, Dept. of Imaging Neuroscience, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH : mmoutoussis@nhs.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ILCB POST-DOC CALL
+
+(2-year postdoc position, deadline May, 15, 2024)
+
+The ILCB offers two two-year postdoc positions starting in 2024 on any topic that falls within the area of language, communication and the brain. The ILCB assembles several top research laboratories in linguistics, psychology, cognitive neuroscience, medicine/neurology, computer science, and mathematics that are located in Aix-en-Provence, Avignon and Marseille (https://www.ilcb.fr/about/partner-laboratories/).
+
+Candidates can propose their own project or respond to a pre-proposal made by ILCB members. In both cases, it is strongly recommended that the candidate contacts one or more potential collaborators amongst the members of the ILCB to contextualize the project as a collaboration within the ILCB (for an updated list of potential collaborators, see https://www.ilcb.fr/pre-proposals/ or check the ILCB member directory for a list of all members https://www.ilcb.fr/members/directory/). Interdisciplinary projects involving several ILCB members are preferred.
+
+Note that ILCB postdocs benefit from an excellent research environment that includes free access to neuroimaging and experimental platforms (MRI, MEG, EEG, eye tracking, speech lab, baby lab, virtual reality, primatology….), research support from a team of engineers (https://www.ilcb.fr/about/crex/), scientific activities (annual retreats, seminars, workshops), and funding opportunities for experiments, publications, and conferences.
+
+Further information on the application and selection procedure can be found here (https://www.ilcb.fr/application-and-selection-procedure/)
+
+A complete application should contain:
+
+A full description of the research project (~ 5 pages):
+Title
+Host Laboratory, Collaborator(s)
+Short Summary
+Scientific context/state of the art
+Objectives
+Methodology
+Expected results
+Brief statement about the relevance of the project for the ILCB
+Proposed Timeline
+CV with complete list of publications
+Cover letter stating the candidate’s motivation
+ At least one letter of recommendation
+Duration: 2 years
+Monthly net salary: ~2000 € (depending on experience)
+Deadline for project submissions: may, 15 2024
+Audition of selected candidates:
+Starting position date: september, 1 2024
+Address for application : https://applications.ilcb.fr/postdoc-positions/
+
+Applications should be sent to: nadera.bureau@univ-amu.fr
+
+For enquiries contact: Johannes.Ziegler@univ-amu.fr
+
+ 
+
+I think it’s all about consent. My understanding of GDPR is that, if participants consent to sharing their data, then even personal data can be shared (and as long as the risks are explained to participants when they consent). Removing as much identifiable information from the data before sharing will reduce the risk and hence increase the likelihood that participants will consent. However, it is very hard to truly anonymise imaging data (e.g, defacing a T1 is not sufficient, since their brain shape is still unique to them).
+
+ 
+
+Apologies but we had to remove that FTP site. The data are however still available on OpenNeuro: https://openneuro.org/datasets/ds000117 though now in BIDS format, so you might have to do some wrangling to match up filenames.
+
+
+---------------------------------------------------------------
+ 
+Prof Richard Henson, MA, MSc, PhD, FBA
+Professor of Cognitive Neuroscience, Department of Psychiatry, University of Cambridge
+Director, Cambridge Centre for Ageing and Neuroscience (CamCAN)
+President-Past, British Neuroscience Association
+Fellow of the British Academy
+
+MRC Cognition and Brain Sciences Unit
+University of Cambridge
+15 Chaucer Road
+Cambridge, CB2 7EF
+England
+EMAIL:  rik.henson@mrc-cbu.cam.ac.uk
+URL:    http://www.mrc-cbu.cam.ac.uk/people/rik.henson/personal
+DIRECT: +44 (0)1223 767 591
+RECEPT: +44 (0)1223 355 294
+MOBILE: +44 (0)794 1377 345
+ 
+What is credible neuroscience?
+---------------------------------------------------------------
+ 
+
+-----Original Message-----
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> On Behalf Of Erfan Vajdi
+Sent: 03 April 2024 16:37
+To: SPM@JISCMAIL.AC.UK
+Subject: [SPM] SPM12 example dataset
+
+Dear SPM users,
+I want to download an example dataset related to the SPM manual and got the following link that was found in the manual chapter 43.1 but I can't open the link below, is there still such a link to download the data?
+
+ftp://ftp.mrc-cbu.cam.ac.uk/personal/rik.henson/SPMScripts/
+
+Thank you,
+
+Dear all,
+
+I am performing a DCM on an fMRI experiment, but I have a problem with the timeseries extraction. The idea is to identify a subject-specific peak in a sphere of 9mm radius, and then extract from a 5mm-radius sphere centered on the peak. The script runs, but I receive the warning "No voxel survived. Default to user-specified centre". Having not set a threshold (matlabbatch{1}.spm.util.voi.roi{1}.spm.thresh=1), I do not understand why this is occurring. How can I fix the problem?
+Attached are the script and the warning displayed in the MATLAB command window.
+
+Here is the warning:
+Warning: No voxel survived. Default to user-specified centre.
+> In spm_run_voi>get_centre (line 220)
+In spm_run_voi>roi_estim (line 112)
+In spm_run_voi (line 37)
+In cfg_run_cm (line 29)
+In cfg_util>local_runcj (line 1717)
+In cfg_util (line 972)
+In spm_jobman>fill_run_job (line 469)
+In spm_jobman (line 247)
+In ROI_timeSeriesExtraction (line 61) 
+
+And here is the script:
+clear variables
+close all
+
+global_dir = "/storages/LOCAL/DISK1/GRPPAGNONI/PFE/exp3/DCM/mPFE3_DCM_faceNeg";
+
+% Subjects
+subjects = 1:31;
+
+% VOI names and peak coordinates
+nameregions_nonBilat = ["rV2" "lFFA" "rFFA" "lIntraPar" "rIntraPar" "lInsula" "rInsula" "PMC" ];
+coordinates_nonBilat =  [
+    7.5 -97.5 16.5; % rV2
+    -42 -55 -19; % lFFA
+    42 -55 -19 ; % rFFA
+    -37.5 -58.5 52.5 ; % lIntraPar
+    31.5 -70.5 49.5; % rIntraPar
+    -55.5 13.5 -4.5; % lInsula
+    49.5 13.5 -4.5; % rInsula
+    1.5 25.5 55.5; %PMC
+    ];
+
+for subject = subjects
+    percorsoSPM = fullfile(global_dir, sprintf("mPFE3_%02d/anl_mPFE3_%02d_VOI", subject, subject));
+    cd(percorsoSPM);
+   
+     % Extraction from contrast 1 for all ROI
+    for i = 1 : 8
+   
+        % Start batch
+        clear matlabbatch;
+        matlabbatch{1}.spm.util.voi.spmmat = cellstr('SPM.mat');
+        matlabbatch{1}.spm.util.voi.adjust  = 4; % F-contrast index = 4
+        matlabbatch{1}.spm.util.voi.session = 1;
+        matlabbatch{1}.spm.util.voi.name = nameregions_nonBilat{i};
+
+        % Define thresholded SPM for finding the subject's local peak response
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.spmmat      = {''};
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.contrast    = 1; % T-contrast of interest index = 1
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.conjunction = 1;
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.threshdesc  = 'none';
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.thresh      = 1;
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.extent      = 0;
+        matlabbatch{1}.spm.util.voi.roi{1}.spm.mask ...
+            = struct('contrast', {}, 'thresh', {}, 'mtype', {});
+
+        % Define large fixed outer sphere
+        matlabbatch{1}.spm.util.voi.roi{2}.sphere.centre     = coordinates_nonBilat(i,:);
+        matlabbatch{1}.spm.util.voi.roi{2}.sphere.radius     = 9;
+        matlabbatch{1}.spm.util.voi.roi{2}.sphere.move.fixed = 1;
+
+        % Define smaller inner sphere which jumps to the peak of the outer sphere
+        matlabbatch{1}.spm.util.voi.roi{3}.sphere.centre           = [0 0 0];
+        matlabbatch{1}.spm.util.voi.roi{3}.sphere.radius           = 5;
+        matlabbatch{1}.spm.util.voi.roi{3}.sphere.move.global.spm  = 1; 
+        matlabbatch{1}.spm.util.voi.roi{3}.sphere.move.global.mask = 'i2';
+
+        % Include voxels in the thresholded SPM (i1) and the mobile inner sphere (i3)
+        matlabbatch{1}.spm.util.voi.expression = 'i1 & i3';
+
+        % Run the batch
+        spm_jobman('run',matlabbatch);
+    end
+
+Kind regards,
+Riccardo Maramotti
+
+--
+Riccardo Maramotti
+Dipartimento di Scienze Biomediche, Metaboliche e Neuroscienze
+Dipartimento di Scienze Fisiche, Informatiche e Matematiche
+Università di Modena e Reggio Emilia
+Tel +39 059 3962154
+
+Dear Michael
+
+I agree that you should talk to the legal office of the institution.
+Here some general remarks:
+- under GDPR, anonymization is effective only if everyone deletes the key linking the research data to the subjects, so this would be pseudonymization
+- every country has its own declination of GDPR, there was a website detailing this but could not find it, but guess it's easy to find the one for UK
+- moreover, any institution has their own rules, which might overcome other conditions
+- usually data sharing under GDPR implies that the subjects have signed an agreement for their data to be shared upon a research agreement, and that a research agreement is drawn between the institutions (so again this is a matter from the legal offices of both institutions).
+
+More info
+https://onlinelibrary.wiley.com/doi/10.1002/hbm.25351
+https://open-brain-consent.readthedocs.io/en/stable/gdpr/index.html
+https://www.ohbmbrainmappingblog.com/blog/a-conversation-about-the-general-data-protection-regulation-gdpr
+
+cheers
+
+
+On Wed, 3 Apr 2024 at 17:11, M Moutoussis <m.moutoussis@ucl.ac.uk> wrote:
+Hi Robert,
+
+Thanks for this. It looks as if you are writing from the US, where I understand that the definition of 'anonymizing' is institution dependent. However I asked about GDPR (the 'General Data Protection Regulations'), because my institution asks in various forms whether my data is anonymous as per GDPR. GDPR is an international legal framework also binding in the UK (despite Brexit).
+
+So any GDPR specific info from our colleagues would be very useful.
+
+Best
+Michael
+
+On 03-04-2024 15:55, Robert Cadman wrote:
+⚠ Caution: External sender
+
+
+This seems like a question for UCL legal counsel, not for this mailing list. I know at my institution, if anyone asked questions I would not be covered by saying that someone outside the university and perhaps even outside my country told me that some procedure was adequate to anonymize data for sharing.
+
+ 
+
+Robert
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Moutoussis, Michael <m.moutoussis@UCL.AC.UK>
+Date: Wednesday, April 3, 2024 at 8:34 AM
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Anonymous EEG data for GDPR purposes
+
+Dear SPMers,
+
+ 
+
+I would like to share EEG data with US colleagues as 'anonymous data' for GDPR purposes.
+
+Of course a data set which is rich enough will always have some risk of re-identification, either through malicious breaking into UCL computing resources, or – at least in theory – advanced data analyses against non-anonymized datasets, etc. However it is very well known that risk elimination in any sector is not a viable policy - appropriate risk management is.
+
+ 
+
+What is the minimum 'anonymization process' for EEG data to be treated as anonymous for GDPR purposes?
+
+ 
+
+Sincerely,
+
+Michael
+ 
+Dr. Michael Moutoussis
+Mental Health working group co-lead, IoN EDI committee, Institute of Neurology, UCL
+ 
+Neurocomputation in Psychotherapy Research, Dept. of Imaging Neuroscience, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH : mmoutoussis@nhs.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+
+
+--
+Sincerely,
+Michael
+Dr. Michael Moutoussis
+Neurocomputation in Psychotherapy Research, Wellcome Centre for Human Neuroimaging, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH: mmoutoussis@nhs.net
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ https://eireni.gn.apc.org/psych/ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Dear SPM users,
+I want to download an example dataset related to the SPM manual and got the following link that was found in the manual chapter 43.1 but I can't open the link below, is there still such a link to download the data?
+
+ftp://ftp.mrc-cbu.cam.ac.uk/personal/rik.henson/SPMScripts/
+
+Thank you,
+
+Hi Robert,
+
+Thanks for this. It looks as if you are writing from the US, where I understand that the definition of 'anonymizing' is institution dependent. However I asked about GDPR (the 'General Data Protection Regulations'), because my institution asks in various forms whether my data is anonymous as per GDPR. GDPR is an international legal framework also binding in the UK (despite Brexit).
+
+So any GDPR specific info from our colleagues would be very useful.
+
+Best
+Michael
+
+On 03-04-2024 15:55, Robert Cadman wrote:
+⚠ Caution: External sender
+
+
+This seems like a question for UCL legal counsel, not for this mailing list. I know at my institution, if anyone asked questions I would not be covered by saying that someone outside the university and perhaps even outside my country told me that some procedure was adequate to anonymize data for sharing.
+
+ 
+
+Robert
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Moutoussis, Michael <m.moutoussis@UCL.AC.UK>
+Date: Wednesday, April 3, 2024 at 8:34 AM
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Anonymous EEG data for GDPR purposes
+
+Dear SPMers,
+
+ 
+
+I would like to share EEG data with US colleagues as 'anonymous data' for GDPR purposes.
+
+Of course a data set which is rich enough will always have some risk of re-identification, either through malicious breaking into UCL computing resources, or – at least in theory – advanced data analyses against non-anonymized datasets, etc. However it is very well known that risk elimination in any sector is not a viable policy - appropriate risk management is.
+
+ 
+
+What is the minimum 'anonymization process' for EEG data to be treated as anonymous for GDPR purposes?
+
+ 
+
+Sincerely,
+
+Michael
+ 
+Dr. Michael Moutoussis
+Mental Health working group co-lead, IoN EDI committee, Institute of Neurology, UCL
+ 
+Neurocomputation in Psychotherapy Research, Dept. of Imaging Neuroscience, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH : mmoutoussis@nhs.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+
+
+--
+Sincerely,
+Michael
+Dr. Michael Moutoussis
+Neurocomputation in Psychotherapy Research, Wellcome Centre for Human Neuroimaging, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH: mmoutoussis@nhs.net
+
+~~~~~~~~~~~~~~~~
+
+This seems like a question for UCL legal counsel, not for this mailing list. I know at my institution, if anyone asked questions I would not be covered by saying that someone outside the university and perhaps even outside my country told me that some procedure was adequate to anonymize data for sharing.
+
+ 
+
+Robert
+
+ 
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Moutoussis, Michael <m.moutoussis@UCL.AC.UK>
+Date: Wednesday, April 3, 2024 at 8:34 AM
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Anonymous EEG data for GDPR purposes
+
+Dear SPMers,
+
+ 
+
+I would like to share EEG data with US colleagues as 'anonymous data' for GDPR purposes.
+
+Of course a data set which is rich enough will always have some risk of re-identification, either through malicious breaking into UCL computing resources, or – at least in theory – advanced data analyses against non-anonymized datasets, etc. However it is very well known that risk elimination in any sector is not a viable policy - appropriate risk management is.
+
+ 
+
+What is the minimum 'anonymization process' for EEG data to be treated as anonymous for GDPR purposes?
+
+ 
+
+Sincerely,
+
+Michael
+ 
+Dr. Michael Moutoussis
+Mental Health working group co-lead, IoN EDI committee, Institute of Neurology, UCL
+ 
+Neurocomputation in Psychotherapy Research, Dept. of Imaging Neuroscience, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH : mmoutoussis@nhs.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+
+
+
+Dear SPMers,
+
+I would like to share EEG data with US colleagues as 'anonymous data' for GDPR purposes.
+Of course a data set which is rich enough will always have some risk of re-identification, either through malicious breaking into UCL computing resources, or – at least in theory – advanced data analyses against non-anonymized datasets, etc. However it is very well known that risk elimination in any sector is not a viable policy - appropriate risk management is.
+
+What is the minimum 'anonymization process' for EEG data to be treated as anonymous for GDPR purposes?
+
+Sincerely,
+Michael
+
+Dr. Michael Moutoussis
+Mental Health working group co-lead, IoN EDI committee, Institute of Neurology, UCL
+
+Neurocomputation in Psychotherapy Research, Dept. of Imaging Neuroscience, UCL: m.moutoussis@ucl.ac.uk
+Honorary consultant psychiatrist in psychotherapy, Neuropsychiatry dept., NHNN, UCLH : mmoutoussis@nhs.net
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Dear Experts,
+
+We have approximately 1000 images at 2 time points and have pre-processed them in CAT12 "Segment longitudinal". Because of the large number of images, we would like to do a longitudinal analysis using difference images.
+In this case, I am not sure what the appropriate threshold value is when I try to use implicit masking.
+Is it better to use explicit masking?
+
+Any suggestion would be highly appreciated.
+
+
+Thank you so much,
+Naoki Hirabayashi
+
+Esteemed SPM Community,
+
+I am encountering an issue with masking in my fMRI analysis and would greatly appreciate some assistance or insights. I am using the SPM12 toolbox in my fMRI analyses, and while reviewing the results of the 1st level analysis, I have noticed issues indicating a masking error. Previously, we were using the 3T Siemens Magnetom Trio MRI scanner, and we have been conducting our analyses using the raw data obtained from this scanner. Now, we have transitioned to a new laboratory and are using the 3T Siemens Magnetom Prisma MRI scanner. However, the raw data we obtain from this scanner is in multi-frame DICOM format, and even though SPM gives a warning during the conversion to the Nifti format, it still proceeds with the conversion. Subsequently, when we continue to use the preprocessing and individual analysis batches we used before, upon examining the results of the individual analysis, we see activations extending beyond the brain in some of the contrasts we have created. Could the issue stem from the conversion of multi-frame DICOM files to NIfTI? Are there specific parameters within SPM for masking multi-frame DICOM files that should be adjusted? Any insights on potential sources of this masking error would be greatly appreciated.
+
+Any guidance, suggestions, or similar experiences from the community would be incredibly helpful.
+
+Thank you in advance for your time and assistance.
+
+Best regards,
+
+Burcu Sırmatel
+
+--
+Burcu Sırmatel
+
+
+
+PhD Candidate
+
+Interdisciplinary Neuroscience Graduate Program
+
+
+
+Ankara University
+Ankara, Turkey
+
+Phone: +90 312 595 8060
+
+E-mail: burcusirmatel@gmail.com, sirmatel@ankara.edu.tr 
+

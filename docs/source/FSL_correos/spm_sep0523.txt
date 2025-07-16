@@ -1,0 +1,184 @@
+Research Assistant Professor/Postdoctoral Fellow Positions in Brain Development and Aging
+ 
+The laboratory of Artificial Intelligence in Medicine at the Hong Kong Polytechnic University is searching for postdoctoral scholars. The lab focuses on cutting-edge research at the intersection of medical images and genetics, developing and applying AI technology to large medical images and genetic data for understanding brain development and aging, and precision psychiatry.
+ 
+In the past years, the lab has conducted various human studies on brain and cognitive development in children from birth to adulthood as well as brain aging. The lab has collected brain scans, cognitive and genetic data, as well as deep phenotypes of the environment of 60,000 subjects across multiple time points. 
+ 
+Our research center and laboratory have great computing capacity, including multiple H100 and A100 GPU systems for deep learning, and computing clusters for large data set processing. In addition, we have more than 4000T medical data, including medical records, medical images, and pathological images. Wepublished more than 170 peer-reviewed journal papers. Among them, 87% were published in the top 10% of peer-reviewed journals, such as Nature, Nature Genetics, Nature Mental Health, PNAS, the American Journal of Psychiatry, Biological Psychiatry, Neuroimage, Cerebral Cortex, etc. 
+ 
+We seek researchers who are interested in the discovery of environmental and genetic risks that shape brain development and understanding their impact on children’s behaviors and mental health. We work with an international consortium on brain development in early life, where researchers in the field of brain development in the world are engaged. With multiple cohorts across the world, we believe that our scientific discovery will shed light on the optimization of child brain development and mental health.
+ 
+The position offers a competitive salary (up to HKD 540,000 annually) and benefits. We will apply for VISA for applicants. 
+The position will start at any time from 1 Oct, 2023.
+Requirements:
+1.     PHD in Cognitive Neuroscience, Psychology, Neuroscience, Data Science, or relevant fields;
+2.     Experience with neuroimage analysis techniques;
+	3	Good communication and writing skills in English.
+	4	
+
+
+
+Dear colleagues,
+
+ 
+
+We have one 2-year full-time research associate position open at either the Ph.D. or postdoc level.
+
+I’d be most appreciative if you could circulate the position announcement (below) in your department/institute.  With best regards, …. Shu-Chen Li
+
+ 
+
+2-year 100% research associate position in developmental cognitive neuroscience and EEG research at TU Dresden, Germany
+
+At the Faculty of Psychology, the Chair of Lifespan Developmental Neuroscience offers a position as
+
+Research Associate (m/f/x) (subject to personal qualification employees are remunerated according to salary group E 13 TV-L), starting as soon as possible. The position is initially limited until September 30, 2025 with the option for extension. The period of employment is governed by the Fixed Term Research Contracts Act (Wissenschaftszeitvertragsgesetz - WissZeitVG). The position offers the chance to obtain further academic qualification.
+
+ 
+
+The Chair of Lifespan Developmental Neuroscience investigates neurocognitive mechanisms underlying perceptual, cognitive, and motivational development across the lifespan. The main themes of our research are neurofunctional mechanisms underlying lifespan development of memory, cognitive control, reward processing, decision making, and multisensory perception. We also pursue applied research to study effects of behavioral intervention, non-invasive brain stimulation, or digital technologies in enhancing functional plasticity for individuals of difference ages. We utilize a broad range of neurocognitive (e.g., EEG, fNIRs, fMRI, tDCS) and computational methods. The lab has several testing rooms and is equipped with multiple EEG (64-channel and 32-channel) and fNIRs systems, as well as eye-tracking and virtual-reality devices. The MRI scanner (3T) and TMS-device can be accessed through the university’s NeuroImaging Center. TUD is a university of excellence supported by the DFG, which offers outstanding research opportunities. Researchers in this chair are involved in large research consortium and cluster, such as the DFG SFB 940 „Volition and Cognitive Control“ and DFG EXC 2050 „Tactile Internet with Human-in-the-Loop“.
+
+Tasks: research in the field of lifespan developmental cognitive neuroscience. The research topics are subject to the fits between the candidate’s research interests, expertise, and ongoing projects in the chair, particularly the DFG-funded research project Tec4Tic; scientific teaching (1 bachelor- or master-level seminar per semester for students majoring psychology). Topics for the seminars should cover neurocognitive mechanism of cognitive, motivation, or perceptual development.
+
+Requirements: at least university degree (Diploma/Master) in Psychology, Cognitive Neuroscience, or Cognitive Science (applicants with PhD degrees are also welcome); experiences with cognitive neuroscience methods (EEG, fNRIs, MRT); excellent language skills in German and in English.
+
+Please contact Shu-Chen Li (shu-chen.li@tu-dresden.de) for questions about the position.
+
+ 
+
+TUD strives to employ more women in academia and research. We therefore expressly encourage women to apply. The University is a certified family-friendly university and offers a Dual Career Service. We welcome applications from candidates with disabilities. If multiple candidates prove to be equally qualified, those with disabilities or with equivalent status pursuant to the German Social Code IX (SGB IX) will receive priority for employment.
+
+Please submit your detailed application (cover letter, research interests, CV, degree certificates and names of 2 referees) by October 12, 2023 (stamped arrival date of the university central mail service applies) to: TU Dresden, Fakultät Psychologie, Professur für Entwicklungspsychologie und Neurowissenschaft der Lebensspanne, Frau Prof. Dr. Shu-Chen Li, Helmholtzstr. 10, 01069 Dresden, Germany or via the TUD SecureMail Portal https://securemail.tu-dresden.de by sending it as a single pdf file (with the subject heading: Research Associate w23-306) to shu-chen.li@tu-dresden.de. Please submit copies only, as your application will not be returned to you. Expenses incurred in attending interviews cannot be reimbursed.
+
+ 
+
+_______________________________________________________________________________________________________________________
+
+Prof. Shu-Chen Li, Ph.D.
+
+Lehrstuhl Entwicklungspsychologie und Neurowissenschaft der Lebensspanne
+
+(Chair of Lifespan Developmental Neuroscience)
+
+Fakultät Psychologie (Faculty of Psychology) 
+
+Zellescher Weg 17, Rm. A233
+
+D-01062 Dresden, Germany
+
+E-mail: Shu-Chen.Li@tu-dresden.de
+
+URL: http://tu-dresden.de/mn/psy/epsy
+
+Tel.: +49-351-46334162/Fax:+49-351-46342194
+
+ 
+
+Excellence Cluster – Centre for Tactile Internet with Human-in-the-Loop
+
+URL: https://www.ceti.one
+
+ 
+
+Technische Universität Dresden (TU Dresden)
+
+_____________________________________________
+
+Dear Rob,
+
+Attached is a script I use for segmentation and normalization (without DARTEL) of T1 images.
+For VBM segmentation, you don't have to use for-loops because batch editor accepts as many t1w images as you want to segment.
+Using spm_jobman would save your time.
+
+If you want to try this script, just save the file in any directory under the matlab path, then type 'vbm_preproc_normalize_batch' in the matlab command window. (You don't have to run SPM12 beforehand)
+
+This script brings up a SPM File selector. After you select T1 images, it brings up SPM12 and a batch editor. You can check your settings and run the batch. It takes care of segmentation and normalization of all images.
+
+Hope this helps,
+
+Kiyotaka
+
+
+On Thu, Aug 24, 2023 at 6:59 PM Rob Shortman <rmhahor@ucl.ac.uk> wrote:
+I have a simple batch to normalise and segment some T1 MR data, on around 150 subjects, and I would dearly love to create a for loop to cycle through all the subjects in the batch script.
+
+The batch works, but it only looks at the first or the last subject - if anyone has the secret to this I would be very grateful. Ive tried asking chat gpt, and watching Andrew Jahns YouTube video on the subject. I know I've done everything right - but it just won't go.
+
+
+
+
+Dear CAT12/SPM12 experts,
+
+When plotting cortical thickness values for a resulting cluster (via the "plot mean data inside cluster" option in the "Surface Overlay" module), what is the difference between the predicted, adjusted, raw, and adjusted raw values in the context of a multiple regression with nuisance covariates?
+
+Hi Batel,
+Itk-SNAP should do the work. However, as there are different standards and, as far as I kmow, there has not been maintenance of the focusDET package, I would suggest to be cautious and to verify it in some way. For instance checking you get the very same overlap of focus to SPECT basal image in both formats
+
+Best
+Carles
+
+El dl., 4 de set. 2023, 10:53, Batel Yifrah <batel.yifrah1@gmail.com> va escriure:
+Thank you for your assistance!
+I really appreciate it if you could also answer this question for me. I use FocusDET to calculate subtraction images from post-treatment and pre-treatmentscans of individuals. I would like to export my co-registered subtraction images for further analysis in SPM and MATLAB. To do this, I need to convert the default save format from VTK to NII. Is it acceptable to upload it in ITK-SNAP and simply save it as NII, or could this potentially cause issues?
+
+Hi everyone
+
+Instats is pleased to present two upcoming seminars introducing machine learning and AI for researchers in R and Python:
+
+Introduction to Machine Learning and AI for Research in R (Sept 28 - 29)
+
+Introduction to Machine Learning and AI for Research in Python (Oct 30 - 31)
+
+These seminars are being led by professor Giovanni Cerulli who has extensive experience teaching this material, and will follow along with the core topics in his new book Fundamentals of Supervised Machine Learning: With Applications in Python, R, and Stata. Both seminars provide a comprehensive introduction to Machine Learning and Artificial Intelligence methods for the social, economic, and health sciences using R and Python. After introducing the subject, the seminar will cover the following methods: (i) model selection and regularization (Lasso, Ridge, Elastic-net); (ii) discriminant analysis and nearest-neighbor classification; and (iii) artificial neural networks. The course will offer various instructional examples using real datasets in R and Python. An Instats certificate of completion is provided at the end of the seminar, and 2 ECTS equivalent points are offered.
+
+
+Best wishes and we hope to see you there!
+
+Michael Zyphur
+Director
+Institute for Statistical and Data Science
+instats.org
+
+This is because of the subsampling used by the segmentation to save time, where voxels are (by default) sampled every 3 mm.  This gives a small deformation field that is zoomed up at the end of the processing.  Sometimes this zooming misses the end voxels.  For 1 mm voxels and a dimension of 256, this is fine because max(1:3:256) is 256.  However, in a case such as max(1:3:150), the answer is 148.  This means that the last few voxels fall outside the field of view when zoomed up, and the settings are such that attempts to sample voxels outside the field of view gives NaNs (used to denote unknown values).
+
+The generative model used by the segmentation algorithm is parameterised by a displacement field that gives a mapping from individual to template.  This gives the iy_*.nii deformation (because spatially normalising typically uses a mapping from template to individual). This is why the iy_*.nii has the NaNs.
+
+NaNs don't appear in the y_*.nii deformation that is constructed by inverting this deformation because there's a bit of extra code (spm_extrapolate_def.m) used to remove any NaNs.
+
+I've just pushed a fix that involves making a change around line 511 of spm_preproc_write8.m to include the following:
+
+x1  = min(max(x1,1),size(sol{1},1));
+y1  = min(max(y1,1),size(sol{1},2));
+z1  = min(max(z1,1),size(sol{1},3));
+
+Best regards,
+-John
+
+
+From: SPM (Statistical Parametric Mapping) <SPM@JISCMAIL.AC.UK> on behalf of Pratik Jain <pj44@NJIT.EDU>
+Sent: 01 September 2023 21:03
+To: SPM@JISCMAIL.AC.UK <SPM@JISCMAIL.AC.UK>
+Subject: [SPM] Getting NAN values in the inverse deformation (iy_*.nii) file
+ 
+⚠ Caution: External sender
+
+
+Hey Everyone,
+
+I am getting NAN values in the inverse deformation file (iy_*.nii) when I perform Segmentation in SPM. Note, that the deformation field (y_*.nii) file does not contain any NAN values but the iy_*.nii file does. When I tried to find the source of this problem, I realized the spm_bsplins function (at line 473 of the function spm_preproc_write8.m) gives NAN values at 3 rightmost columns and 3 bottom rows. I checked none of the inputs given to the spm_bsplins function have NAN values, it's something in this function that gives the output as NANs. This function may use a C compiler, hence the code for this function is not present in the MATLAB file. Can anyone help me understand why am I getting these NAN values in the iy_*.nii file.
+
+Thank you in advance.
+
+Best,
+Pratik Jain
+
+
+Hello everyone, I'm attempting to normalize my SPECT images to a SPECT template, similar to what was available in previous versions of SPM. Could someone guide me on how to accomplish this in the current SPM12 version?
+
+Thank you all for your assistance!
+Batel
+
+Thank you for your assistance!
+I really appreciate it if you could also answer this question for me. I use FocusDET to calculate subtraction images from post-treatment and pre-treatmentscans of individuals. I would like to export my co-registered subtraction images for further analysis in SPM and MATLAB. To do this, I need to convert the default save format from VTK to NII. Is it acceptable to upload it in ITK-SNAP and simply save it as NII, or could this potentially cause issues?
+
+

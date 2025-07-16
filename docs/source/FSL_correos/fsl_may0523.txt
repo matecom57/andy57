@@ -1,0 +1,989 @@
+The SLAM (Speech, Language, and Music) Lab at the University of Texas at Dallas (PI: Yune S. Lee) is seeking to fill a 2-year postdoctoral position (with possible extension). The SLAM Lab aims to understand the connections between Speech, Language, and Music in the context of communication disorders with the goal of developing music-based intervention programs. Our multidisciplinary studies involve extensive behavioral testing, multimodal MRI/EEG studies, genotyping assays, and non-invasive brain stimulation studies for several funded projects. See our lab website for more information about the lab.
+
+The applicant must have research experience and publications on neuroimaging studies and strong data analytic background (e.g., statistics, signal processing, machine-learning).
+Interested candidates should contact Dr. Yune S. Lee at yune.lee@utdallas.edu with a CV describing prior/current research, relevant skills, and a list of 3 referees. The starting date is flexible.
+
+Hi Kristian,
+
+Unfortunately I don't have much experience with the dualecho model. I think the design matrices should have 320 rows which looks right. The mask also seems to being applied correctly. 
+
+If you're able to share a simple test case I can run it through a debug version of the code and should be able to identify the cause - let me know if you'd like to try this.
+
+Best wishes,
+Martin
+
+Hi
+
+We are doing a DTI foot project where we assess diffusion in the tibial nerve at the ankle. We run 2x(b0+12grad), one blip up, one blip down, 25 slices, 1mm no gaps, on a 3T GE scanner.
+
+The foot is fixated using sand-bags and at least the strucural images show no visible movement.
+
+However, after top-up, the downmost and uppermost slices are blanked (the second uppermost is almost blanked, only a part of the structure shows) in the unwarped B0 images, and they are a bit more dissimilar than I expected (as compared to what I am used to from unwarped brain B0 images). By dissimilar, I mean that the unwarped B0-blip-down is more dissimilar to the unwarped B0-blip-up than I expected. On the other hand, a brain has a clear structure even on DTI B0 images and I know what to expect in a DTI brain regarding distortions related to blip up/down, whereas one would not know that this is a B0 image of an ankle; hence, I have no real reference on how blip-up/down effects the images, and cannot really for sure tell that top-up does a good job.
+
+The blanking, could that be related to the volumes being misaligned despite the fact that the volumes are transfered 1:1 from the blip down protocol to the blip up protocol? Or slight movement of the foot?
+
+The sandbags are of course non-magnetic and entirely dry, but is it nevertheless possible that if there is a slight water component in them (I mean , nothing is truly devoid of every single water molecule) that this could play a part? Anyone here who has experience of using sandbags during DTI?
+
+My intention is/was nevertheless not to analyze the end-slices, I will only analyze the 10 centered slizes, but I still found this observation a slight concern, and therefore a put it to this fora for someone to comment upon.
+
+Best,
+
+Nick
+
+With Regards,
+
+
+
+Niklas Lenfeldt, PhD, MSc E.P, MAJ SWE A
+
+Inst. of Clinical Science
+
+Dep. of Clinical Neuroscience
+
+Norrlands University Hospital
+Umeå University
+
+Umeå, Sweden
+Phone: +46706096687
+
+Email: niklas.lenfeldt@umu.se
+
+Hi Tanja,
+
+Yes, I confirm that this is an issue that we saw happening in some cases.
+
+ 
+
+The exclusion mask is not very strict around the edge of the brain and the cerebellum, as it counts on the fact that most of the false positives in those areas will be removed by the other component of the exclusion mask, which is the eroded CSF map derived at the single subject level.
+
+
+If this happens consistently in your sample, you could modify the exclusion mask provided (either manually or by masking out the cerebellum from one of the atlases available in FSL/FSLeyes) or apply a further cleaning step to your results by registering a cerebellum mask from the atlas to your subject and mask out the false positive lesions from there.
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+ 
+
+Thank you for your reply, the mask is the same size as the input images and is generated using fslmaths -bin, so it should be binary. 
+
+Kristian
+
+fre. 5. maj 2023 kl. 12.44 skrev Michael Chappell <000079f9f909e19d-dmarc-request_at_JISCMAIL_AC_UK_9p9g59tnt87673_0950d6fb@icloud.com>:
+Kristian,
+
+ 
+
+Nothing leaps out at me that is wrong with your command line call here, but I will admit that the dual echo part of fabber is not something I have used recently. What size if your mask image and it is binary values?
+
+ 
+
+Michael
+
+Kristian,
+
+ 
+
+Nothing leaps out at me that is wrong with your command line call here, but I will admit that the dual echo part of fabber is not something I have used recently. What size if your mask image and it is binary values?
+
+ 
+
+Michael
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Kristian Nygaard Mortensen <00009ff400366d22-dmarc-request@JISCMAIL.AC.UK>
+Date: Tuesday, 2 May 2023 at 13:31
+To: FSL@JISCMAIL.AC.UK <FSL@JISCMAIL.AC.UK>
+Subject: [FSL] Dual echo pCASL using FABBER
+
+Dear FSL experts,
+
+I'm trying to use fabber to analyse dual echo pCASL. My design matrices were generated using feat, and have 320 time points. The dual echo pCASL was acquired with 160 tag/control-pairs.  My command is:
+
+fabber_dualecho --method=vb --model=pcasl-dualecho --bold-basis=design_bold.mat --cbf-basis=design_asl.mat --statmag-basis=design_static.mat --data1=asl_echo_1.nii.gz --data2=asl_echo_2.nii.gz  --num-echoes=2 --noise=ar --mask=mask.nii
+
+which outputs:
+
+The SLAM (Speech, Language, and Music) Lab at the University of Texas at Dallas (PI: Yune S. Lee) is seeking to fill a 2-year postdoctoral position (with possible extension). The SLAM Lab aims to understand the connections between Speech, Language, and Music in the context of communication disorders with the goal of developing music-based intervention programs. Our multidisciplinary studies involve extensive behavioral testing, multimodal MRI/EEG studies, genotyping assays, and non-invasive brain stimulation studies for several funded projects. See our lab website for more information about the lab.
+
+The applicant must have research experience and publications on neuroimaging studies and strong data analytic background (e.g., statistics, signal processing, machine-learning).
+Interested candidates should contact Dr. Yune S. Lee at yune.lee@utdallas.edu with a CV describing prior/current research, relevant skills, and a list of 3 referees. The starting date is flexible.
+
+
+Hi Aude,
+
+ 
+
+> You had a continuous sequence
+
+Not quite. When the read-outs were omitted, obviously no scans were recorded.
+
+So the logic is quite transferable.
+
+ 
+
+Do I get it right that the TR is 1 secs? Task presentation blocks of 4 TRs ( 4 secs) alternate with periods of no image recording for also  4 secs [singing], correct?
+
+ 
+
+Then, what you do is to model the full experiment using Glm(_gui) at a TR of 1 sec over the entire period of time, convolving the time course with, for example, the double gamma HRF. Let’s say you have 5 blocks of task alternating with 4 blocks of singing.
+
+Then you would enter 36 time points at a TR of 1 sec. Model your HRF according to how you want / expect it. Save the design, e.g. with the prefix “aude”.
+
+Now open the file aude.mat .
+
+Let’s say singing is you baseline which you don’t model explicitly. Then, unless you do something more fancy like FLOBS, you only have one EV which is task (EV1) and possibly a temporal derivative as the EV of no interest (EV2). So you will find two columns in your aude.mat. Strip the header and read your columns into excel, matlab, octave, R – whatever.
+
+Now you delete the timepoints you don’t have scans for, i.e. in the example above the 16 timepoints for singing.
+
+Save both EVs into plain textfiles.
+
+Generate a new design using the GLM(_gui), TR again 1 sec but this time only with as many timepoints as you have scans for, i.e. in the example above 20 timepoints.
+
+Specify your new EVs with basic shape -> custom (1 entry per volume) – this time with no convolution (because you have convolved before!). Read in both your main EV as well as the temporal derivative, both being stripped off the time points you don’t have scans for. Save the design, and there you go – apply that to the analysis of your data.
+
+You just have to decide when / where to apply the temporal filtering (i.e. if you filter for the virtual [including the time points you don’t have data for] or the “real” expected time course).
+
+ 
+
+So this is pretty much what I did with my scans where we didn’t read-out all scans (the difference being only that it was just the read-out sound itself that we had modeled).
+
+ 
+
+Hope this helps,
+
+Andreas
+
+ 
+
+ 
+
+Von: Aude Cardona <audemm@udel.edu>
+Datum: Donnerstag, 4. Mai 2023 um 06:05
+An: Andreas Bartsch <bartsch@radvisory.net>
+Betreff: Re: [FSL] Hybrid Sparse Sequence
+
+ 
+
+Dear Andreas,
+
+ 
+
+Thank you again for sending me your paper.
+
+ 
+
+Forgive my ignorance but I am new to MRI analysis.
+
+ 
+
+You had a continuous sequence vs mine which is a hybrid sparse, so the transfer of logic is complex for me.
+
+ 
+
+Given I have not acquired images during the low gradient excitation period, how do I censor/count out read outs that don’t exist?
+
+My sequence goes like this:
+
+TA 4s = 4 x 1s TR [task presentation] ; low gradient/no images 4s = 0 TR [singing]
+
+ 
+
+If the matrix has 0 for the time points that correspond to the low gradient images/no data acquisition then there is nothing to remove… 
+
+ 
+
+I am not sure how to about it.
+
+ 
+
+With gratitude.
+
+ 
+
+Kind regards,
+
+ 
+
+Aude
+
+ 
+
+ 
+
+
+
+
+On May 3, 2023, at 10:04 AM, Aude Cardona <audemm@udel.edu> wrote:
+
+﻿Hello Andreas,
+
+ 
+
+Thank you very much for your reply.
+
+Yes, the overall magnetization is stable. I will eagerly look at what you sent.
+
+ 
+
+Cheers,
+
+Aude.
+
+ 
+
+Doctoral Student
+Communication Sciences and Disorders, Voice Sciences
+University of Delaware
+Academic Advisors: Dr. Katherine Verdolini Abbott
+https://sites.udel.edu/cscd/research/voice-lab/
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
+On May 3, 2023, at 9:59 AM, Andreas Bartsch <bartsch@RADVISORY.NET> wrote:
+
+ 
+
+Hi,
+
+ 
+
+ist he overall magnetization stable?
+
+You can model the full time courses using the Glm(_gui) in FSL, including the time points where no images where recorded, and later discard these time points from your *.mat file.
+
+See, for example, https://doi.org/10.1016/j.neuroimage.2006.11.026
+
+Cheers,
+
+Andreas
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Aude Cardona <audemm@UDEL.EDU>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Dienstag, 2. Mai 2023 um 21:52
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: [FSL] Hybrid Sparse Sequence
+
+ 
+
+Hello Everyone,
+
+ 
+
+I have a hybrid sparse sequence in which I acquire 4 images every one sec (TA = 4 x 1s TR) then 4 sec silent with no data acquisition (so called silent period).
+
+Is there a better way to analyze my data than include a 4 time points dummy scan as a confound variable (to make up for the 4 secs silent period)?
+
+ 
+
+Thank you in advance!
+
+ 
+
+Cheers,
+
+Aude.
+
+ 
+
+Doctoral Student
+Communication Sciences and Disorders, Voice Sciences
+University of Delaware
+Academic Advisors: Dr. Katherine Verdolini Abbott
+https://sites.udel.edu/cscd/research/voice-lab/
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+Hi,
+
+ 
+
+ist he overall magnetization stable?
+
+You can model the full time courses using the Glm(_gui) in FSL, including the time points where no images where recorded, and later discard these time points from your *.mat file.
+
+See, for example, https://doi.org/10.1016/j.neuroimage.2006.11.026
+
+Cheers,
+
+Andreas
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Aude Cardona <audemm@UDEL.EDU>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Dienstag, 2. Mai 2023 um 21:52
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: [FSL] Hybrid Sparse Sequence
+
+ 
+
+Hello Everyone,
+
+ 
+
+I have a hybrid sparse sequence in which I acquire 4 images every one sec (TA = 4 x 1s TR) then 4 sec silent with no data acquisition (so called silent period).
+
+Is there a better way to analyze my data than include a 4 time points dummy scan as a confound variable (to make up for the 4 secs silent period)?
+
+ 
+
+Thank you in advance!
+
+ 
+
+Cheers,
+
+Aude.
+
+ 
+
+Doctoral Student
+Communication Sciences and Disorders, Voice Sciences
+University of Delaware
+Academic Advisors: Dr. Katherine Verdolini Abbott
+https://sites.udel.edu/cscd/research/voice-lab/
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Applications for Sept 2023/24 are now OPEN. Apply now to meet 26th May 2023 deadline.
+
+The i4health CDT will train the UK’s future leaders in next-generation medical imaging research, development and enterprise, to produce intelligent, radical healthcare innovations focused on either imaging or imaging-enabled systems.
+
+Our centre will provide the vital doctoral training to supply a pipeline of world-leading innovators in future medical-imaging technologies equipped with the philosophy and the technical tools to deliver next-generation context-aware imaging and image analysis techniques through to integrated patient-centred therapeutic platforms.
+
+UCL’s internationally leading positions in medical imaging and devices, data science and AI, robotics, and human-centred design, together with unique access to healthcare data and equipment, ideally place our centre to lead this transformation. We are looking for ambitious individuals to join our world-leading PhD programme in this exciting endeavour.
+
+Please visit http://ucl.ac.uk/i4health for details on PhD studentships on offer and how to apply.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+Yes, this is fMRI (in fact, SMS GE-EPI) but:
+
+EPI can be GE- or SE-EPI.
+Matt’s reservations for GE-EPI are valid.
+ 
+
+Cheers,
+
+Andreas
+
+ 
+
+ 
+
+Von: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> im Auftrag von Keith Schneider <keithas@UDEL.EDU>
+Antworten an: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Datum: Sonntag, 30. April 2023 um 16:26
+An: <FSL@JISCMAIL.AC.UK>
+Betreff: Re: [FSL] unwarping EPI data via updatefeatreg?
+
+ 
+
+Hi Matt, oh sorry the EPI paper I was thinking about was this one: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4662423/
+
+ 
+
+Anyway I think I will try hacking the updatefeatreg script to also insert a example_func2highres_warp transformation and see what happens.
+
+ 
+
+Thanks,
+
+ 
+
+Keith
+
+
+
+
+On Apr 29, 2023, at 5:53 PM, Glasser, Matt <glasserm@WUSTL.EDU> wrote:
+
+ 
+
+That paper is for spin echo data, where there is some evidence that fieldmap-less distortion correction is workable. 
+
+ 
+
+You asked about fMRI data, which additionally has the issue with signal loss.  In general, what I have recommended is that folks compare their fieldmap-less distortion correction approach to gold standard corrections and show that they get closer to gold standard than doing no correction.  Just looking at the images is a lot harder to determine whether they are properly correcting for the geometric distortion versus just making the signal loss region smaller.
+
+
+Matt.
+
+ 
+
+From: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK> on behalf of Keith Schneider <keithas@UDEL.EDU>
+Reply-To: FSL - FMRIB's Software Library <FSL@JISCMAIL.AC.UK>
+Date: Saturday, April 29, 2023 at 4:24 PM
+To: "FSL@JISCMAIL.AC.UK" <FSL@JISCMAIL.AC.UK>
+Subject: Re: [FSL] unwarping EPI data via updatefeatreg?
+
+ 
+
+ 
+
+Hi Matt, I did not do the comparison myself, but I was referring to this paper for DTI that I found with a quick search: https://pubmed.ncbi.nlm.nih.gov/28270762/
+
+ 
+
+Anyway, in my case I don’t have field maps, and the nonlinear registration does fix some of the distortions.  However it also seems to have caused some subtle artifacts for some reason, so I was wanting to try applying the nonlinear correction to the stats rather than the preprocessed functional data (which is where FEAT applies the field map unwarping).
+
+ 
+
+Are you thinking that nonlinear registration of the mean functional image to the highres image is worse than doing nothing?  I had not considered your point.
+
+ 
+
+keith
+
+
+
+
+
+On Apr 29, 2023, at 2:32 PM, Glasser, Matt <glasserm@WUSTL.EDU> wrote:
+
+ 
+
+That definitely is not true.  Nonlinear registration cannot tell the difference between dropout and distortion.  There are a variety of claims out there, but the best evidence I have seen applies to spin echo images (where the dropout issue is not a concern).
+
+Matt.
+
+On 4/29/23, 12:18 PM, "FSL - FMRIB's Software Library on behalf of Keith Schneider" <FSL@JISCMAIL.AC.UK <mailto:FSL@JISCMAIL.AC.UK> on behalf of keithas@UDEL.EDU <mailto:keithas@UDEL.EDU>> wrote:
+
+
+
+Hello, I have some functional data that was acquired without fieldmaps. The literature suggests that applying a nonlinear registration of the functional images to the highres achieves approximately the same results as using a fieldmap to unwarp the EPI distortions.
+
+
+I’m wondering if there is some way to apply a functional warp to the statistical results only, rather than applying it to the functional data directly, before any processing (as this is cumbersome).
+
+
+I’d like to calculate an example_funct2highres_warp transformation, as well as a highres2standard_warp transformation (using ANTS, converted to the fnirt format), and have them introduced via updatefeatreg. Is this possible within the FEAT pipeline? As is, updatefeatreg allows you to specify a new highres2standard_warp, but there is no mechanism to introduce a new example_func2highres_warp transformation (this transformation seems to be used in FEAT during the field map correction, applying it directly to the functional data, and is not used later to transform the statistical results, as are the other transformations). Would it be possible to add this?
+
+
+Thanks,
+
+
+Keith
+
+
+########################################################################
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1 <https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1>
+
+
+This message was issued to members of http://www.jiscmail.ac.uk/FSL <http://www.jiscmail.ac.uk/FSL>, a mailing list hosted by http://www.jiscmail.ac.uk/ <http://www.jiscmail.ac.uk/>, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/ <https://www.jiscmail.ac.uk/policyandsecurity/>
+
+
+
+
+________________________________
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+ 
+
+The materials in this message are private and may contain Protected Healthcare Information or other information of a sensitive nature. If you are not the intended recipient, be advised that any unauthorized use, disclosure, copying or the taking of any action in reliance on the contents of this information is strictly prohibited. If you have received this email in error, please immediately notify the sender via telephone or return mail.
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+
+ 
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Hi Matthew, 
+ 
+When I view the images with FLSeyes the anatomical labels are correct. However, the center of the coordinate system is on the right hand side because when I move the mouse cursor from right to left it start from 0 and goes to -240 (which is the dimension of the x - coordinate). 
+ 
+BW,
+Gina
+ 
+ 
+Sent: Monday, April 24, 2023 at 6:55 PM
+From: "Matthew Webster" <matthew.webster@NDCN.OX.AC.UK>
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Convert a 3D MR image to RAS system
+Hi Gina,
+    Can you confirm if the anatomical labels ( e.g. when viewed with FSLeyes ) are correct and you just want to change the underlying neuro/radiological property of the image, or if the labels are incorrect so you want to swap ( either ) the header or the voxel data to fix them?
+ 
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+ 
+On 24 Apr 2023, at 12:10, Georgina Carts <g_na@MAIL.COM> wrote:
+ 
+ 
+I saw the fslswapdim function but I am not sure how to use that.
+ 
+The anterior superior correction is correct. I need to change the left/right orientation only. Can I specify that to fslswapdim function?
+ 
+Sent: Monday, April 24, 2023 at 1:59 PM
+From: "Matthew Webster" <matthew.webster@NDCN.OX.AC.UK>
+To: FSL@JISCMAIL.AC.UK
+Subject: Re: [FSL] Convert a 3D MR image to RAS system
+Hi Gina,
+You can use a combination of the fslorient and fslswapdim commands to do this, but some care is required to make sure the anatomical labels remain “correct” ( unless this change is needed to fix the labels ) - the link https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Orientation%20Explained has some details on how to use these commands.
+ 
+Kind Regards
+Matthew
+ 
+ 
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+ 
+On 24 Apr 2023, at 11:27, Georgina Carts <g_na@MAIL.COM> wrote:
+ 
+Hi,
+
+I have a 3D MRI volume and I would like to change its coordinate system to RAS (right-anterior-superior). Is there any way to do that using fsl?
+
+Thank you,
+Gina
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+ 
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+ 
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Cameron,
+
+ 
+
+From your screenshot I am not sure why this has happened, but my best guess is that close to that area there is also some CSF (either from the ventricles or near the midline - you can check that by overlapping the pve_0 map) that gets eroded, removing also a bit of the white matter.
+
+ 
+
+If this is the case and it’s limited to this small area (as opposed to the whole splenium of the corpus callosum) it’s unfortunately the balance between reducing false positives at the expenses of some (hopefully very few) false negatives. This is also the reason why the exclusion mask would also lead to missing lesions that are very close to the cortex.
+
+ 
+
+Hope it helps,
+
+Ludovica
+
+ 
+
+-- 
+
+Ludovica Griffanti, PhD
+Alzheimer's Association Research Fellow
+Wellcome Centre for Integrative Neuroimaging (WIN)
+Department of Psychiatry | Nuffield Department of Clinical Neurosciences
+University of Oxford
+email: ludovica.griffanti@psych.ox.ac.uk
+Please don’t feel obliged to read or respond to my email outside your own working hours
+
+Hi Christine,
+   The figure is very clear - the slice numbers can be “read” by moving along the x(time)-axis. The second custom ordering is correct for an interleave down sequence with no sub-regions.
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 1 May 2023, at 14:31, C Law <cslaw@STANFORD.EDU> wrote:
+
+Hi Matthew
+Thank you for your reply. When I first saw your answer, I didn't understand but I think I got it now.
+I have attached a figure that shows the concept (I hope you can see it).
+The critical points are: 1. the most inferior slice is named slice 1 (voxel position 0). 2. The "--ocustom file" should list slice number starting with the one being acquired first in time.
+
+Let's see if my understanding is correct:
+If I change my acquisition order to interleave down (basically ignoring the facts that I have two regions)
+i.e. starting collecting top of brain slice first, then my "--ocustom file" should be 9 7 5 3 1 8 6 4 2.  Am I correct?
+
+Thank you,
+Christine
+
+
+Thank you for the quick response, Matthew!
+
+Have a nice day!
+
+Best,
+max
+
+########################################################################
+
+
+Dear Max,
+ The 6th generation, non-linear, asymmetric should match the FSL template ( at least the one downloadable from https://www.templateflow.org/archive/ does ).
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 3 May 2023, at 10:48, Maximilian Kathofer <maximilian.kathofer@UNIVIE.AC.AT> wrote:
+
+Dear experts,
+
+I want to use the Schäffer&Tian whole-brain parcellation and it offers 2 templates:
+
+MNI152NLin6Asym_1mm
+MNI152NLin2009cAsym_1mm
+
+They slightly differ in their tilt and even if I overlay them on the standard MNI152_T1_1mm_brain provided by FSL, I am not sure which one I have to use...
+
+Can anyone please provide the information which MNI template the FSL  MNI152_T1_1mm_brain is derived from?
+
+Thanks!
+
+BR,
+max
+
+########################################################################
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+This message was issued to members of www.jiscmail.ac.uk/FSL, a mailing list hosted by www.jiscmail.ac.uk, terms & conditions are available at https://www.jiscmail.ac.uk/policyandsecurity/
+
+
+
+Hi Tal,
+  The mask image ( 20210726HD516_funcVox_50.nii.gz ) does not appear to be fully binarised ( potentially due to resampling or similar operations? ) if thresholded/rebinarised with fslmaths then both calls will give the same outputs. The current difference is due to tools using slightly different floating-point thresholds to determine masked voxels.
+
+Hope this helps,
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+
+Yes,
+It is uploaded :)
+Thanks!
+
+On Wed, May 3, 2023 at 1:06 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Tal,
+         As the fslmeants and featquery outputs are the same, can you upload My_ZscoreMap_contrast1 and My_ROI_Bin_Mask to:
+
+https://oxfile.ox.ac.uk/oxfile/work/extBox?id=700839B35190E48BF
+
+So I can test locally?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+
+Hi Tal,
+         As the fslmeants and featquery outputs are the same, can you upload My_ZscoreMap_contrast1 and My_ROI_Bin_Mask to:
+
+https://oxfile.ox.ac.uk/oxfile/work/extBox?id=700839B35190E48BF
+
+So I can test locally?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Dear experts,
+
+I want to use the Schäffer&Tian whole-brain parcellation and it offers 2 templates:
+
+MNI152NLin6Asym_1mm
+MNI152NLin2009cAsym_1mm
+
+They slightly differ in their tilt and even if I overlay them on the standard MNI152_T1_1mm_brain provided by FSL, I am not sure which one I have to use...
+
+Can anyone please provide the information which MNI template the FSL  MNI152_T1_1mm_brain is derived from?
+
+Thanks!
+
+BR,
+max
+
+########################################################################
+
+Hi FSL experts,
+
+I'm trying to run fsl feat first level analysis for a seed-based connectivity analysis on a preprocessed and preregistered dataset leaving unchecked all the options both in the pre-stats and registration tab, all but smoothing.
+
+However, I repeatedly encounter the following error "FILM did not complete - it probably run out of memory". I assume it's not a problem of disk space, nor incorrect input naming. I tried to check the forum for solutions but did not find anything.
+could anyone help me?
+
+Alberto
+
+########################################################################
+
+Hi Matthew,
+
+Yes, The mask is binarized. I do not know if the fslstats command is equivalent to the one used to generate the featquery outputs, this is what I would like to find out. Both ways were suggested online to acquire a mean z score in an ROI, and I would like to know what the difference is between them, which explains the different values I get for each command (even though both, theoretically, should give the same).
+
+And the following question is, which of the two is more relatable (which should I use to calculate the mean Z score value)?
+Thank you,
+Tal
+
+On Tue, May 2, 2023 at 6:33 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Tal,
+  Can you confirm your mask ( My_ROI_Bin_Mask ) is definitely 0/1 binarised? The fslstats call below should be equivalent to the one used to generate the featquery outputs?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Dear all,
+
+I am fairly new to FSL, and am a clinician by training.
+
+I have performed FSL VBM analysis, according to the various user guides. However, I am struggling when I get to the reporting of the data.
+
+For example, the GM_mod_merg_s3_clustere_corrp_tstat8 in FSLeyes appears to show various voxels lighting up (min-0 and max-0.95); however, when I use the following code: cluster -i GM_mod_merg_s3_clustere_corrp_tstat8 -t 0.95 --scalarname="1-p" > cluster_corrp8.txt there is nothing in the file other than the titles for the columns.
+
+I wonder if anyone can indicate where I might be going wrong??
+
+Thanks,
+Gordon
+
+########################################################################
+
+
+Hello Everyone,
+
+I have a hybrid sparse sequence in which I acquire 4 images every one sec (TA = 4 x 1s TR) then 4 sec silent with no data acquisition (so called silent period).
+Is there a better way to analyze my data than include a 4 time points dummy scan as a confound variable (to make up for the 4 secs silent period)?
+
+Thank you in advance!
+
+Cheers,
+Aude.
+
+Doctoral Student
+Communication Sciences and Disorders, Voice Sciences
+University of Delaware
+Academic Advisors: Dr. Katherine Verdolini Abbott
+https://sites.udel.edu/cscd/research/voice-lab/
+
+
+Hi Tal,
+  Can you confirm your mask ( My_ROI_Bin_Mask ) is definitely 0/1 binarised? The fslstats call below should be equivalent to the one used to generate the featquery outputs?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre
+John Radcliffe Hospital
+University of Oxford
+
+Dear FSL experts,
+
+I'm trying to use fabber to analyse dual echo pCASL. My design matrices were generated using feat, and have 320 time points. The dual echo pCASL was acquired with 160 tag/control-pairs.  My command is:
+
+fabber_dualecho --method=vb --model=pcasl-dualecho --bold-basis=design_bold.mat --cbf-basis=design_asl.mat --statmag-basis=design_static.mat --data1=asl_echo_1.nii.gz --data2=asl_echo_2.nii.gz  --num-echoes=2 --noise=ar --mask=mask.nii
+
+which outputs:
+
+----------------------
+Welcome to FABBER 4.0.11-12-g99c29e6-dirty
+----------------------
+Last commit: Wed May 11 08:38:41 2022
+Logfile started: ./logfile
+ 0%Exception caught in fabber:
+  Mat::operator(): index out of bounds
+
+Final logfile: ./logfile
+
+I've tried to use 640 and 160 time points but get the same error.
+
+
+Hi Matthew,
+
+I am not sure that you have seen my response, so I am sending this email :)
+
+Thanks,
+Tal
+
+On Wed, Apr 26, 2023 at 6:57 PM Tal Finkelman <finkelman93@gmail.com> wrote:
+Hi Matthew,
+
+These are the commands I used:
+
+for featquery:
+featquery 1 sub_1st_level.Feat 2  stats/cope1 stats/zstat1 output_Name -s My_ROI_Bin_Mask
+
+for fslmeants: (gives same mean zscore as in featquery)
+fslmeants -i My_ZscoreMap_contrast1 -m My_ROI_Bin_Mask
+
+for fslstats: 
+fslstats -i My_ZscoreMap_contrast1 -k My_ROI_Bin_Mask -m
+
+Thank you,
+Tal
+
+On Tue, Apr 25, 2023 at 10:07 PM Matthew Webster <matthew.webster@ndcn.ox.ac.uk> wrote:
+Hi Tal,
+  Can you let me know the exact commands/options used?
+
+Kind Regards
+Matthew
+--------------------------------
+Dr Matthew Webster
+FMRIB Centre 
+John Radcliffe Hospital
+University of Oxford
+
+On 24 Apr 2023, at 13:25, Tal Finkelman <finkelman93@GMAIL.COM> wrote:
+
+Hi FSL developers,
+
+I wanted to know the difference between the mean Cpoe/Z value I get from an ROI using featquery, fslmeants, and fslstats. Both fslmeants and featquery give the same value, but fslstats gives a different value. Which one is more reliable to compare with physiological parameters across subjects? 
+
+Thank you,
+Tal
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+
+To unsubscribe from the FSL list, click the following link:
+https://www.jiscmail.ac.uk/cgi-bin/WA-JISC.exe?SUBED1=FSL&A=1
+
+Dear Noelia,
+
+I think the error is due to passing the input arguments incorrectly. You should use the format:
+
+--in=<some_input>
+
+rather than:
+
+-in <some_input>
+
+On a separate note, from your description is sounds like you are trying to register a B0 image to an FA image using FNIRT, which will not give you the correct result even if it runs correctly. FNIRT can only register between images of the same modality, so you should either register two B0 images, or two FA images.
+
+Cheers,
+Rick
+
