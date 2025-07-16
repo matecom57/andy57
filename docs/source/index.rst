@@ -271,6 +271,10 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     20/01/2022: ¡Ya hay un DOI para el Libro del Cerebro de Andy! Si desea citarlo, utilice la siguiente plantilla: "Seguimos el proceso de preprocesamiento de AFNI como se describe en el Libro del Cerebro de Andy (Jahn, 2022. doi:10.5281/zenodo.5879293)".
 
      
-    
+.. toctree::
+   :maxdepth: 1
+   :caption: Analisis de Datos Resumida
+
+   analisis_img_fMRI    
    
 
