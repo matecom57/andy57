@@ -194,6 +194,105 @@ primera columna, escriba las siguientes cuatro líneas:
    Class HC
    Class CB
 
+Creando el archivo de contraste
+
+Nuestro siguiente paso es crear un archivo de contraste que especifique los pesos de contraste para cada regresor de nuestro modelo. Las variables "Clase" que especificamos en el archivo FSGD son regresores de grupo: uno para el grupo de cannabis y otro para el grupo de control. Dado que solo tenemos dos regresores, solo necesitamos especificar dos pesos de contraste.
+
+Para especificar estos pesos, navegue hasta el Contrastsdirectorio y luego escriba:
+
+.. code:: Bash
+
+   echo "1 -1" > HC-CB.mtx
+
+Ahora crea otro archivo de contraste para el contraste opuesto, es decir:
+
+.. code:: Bash
+
+   echo "-1 1" > CB-HC.mtx
+
+Ceremonias
+
+Tutorial de FreeSurfer n.° 8: Análisis de grupo
+
+Creando un archivo de grupo con mris_preproc
+
+Para hacer el comando más compacto y adaptable a cualquier estudio que desee analizar, utilizaremos bucles for anidados:
+
+.. code:: Bash
+
+   #!/bin/tcsh
+
+   setenv study $argv[1]
+
+   for each hemi (lh rh)
+     foreach smoothing (10)
+       foreach meas (volume thickness)
+         mris_preproc --fsgd FSGD/{$study}.fsgd \
+           --cache-in {$meas}.fwhm{$smoothing}.fsaverage \
+           --target fsaverage \
+           --hemi {$hemi} \
+           --out {$hemi}.{$meas}.{$study}.{$smoothing}.mgh
+       end
+     end
+   end
+
+
+Ajuste del modelo lineal general con mri_glmfit
+
+Ahora que todos los sujetos están concatenados en un único conjunto de datos, podemos ajustar un modelo lineal general con mri_glmfitel comando FreeSurfer. En este ejemplo, utilizaremos las siguientes entradas:
+
+    1. El conjunto de datos concatenados que contiene todos los mapas estructurales de los sujetos ( --y);
+
+    2. El archivo FSGD ( --fsgd);
+
+    3. Una lista de contrastes (cada contraste especificado por una línea diferente que contiene --C);
+
+    4. El hemisferio de la plantilla a analizar ( --surf);
+
+    5. Una máscara para restringir nuestro análisis sólo a la corteza ( --cortex);
+
+    6. Una etiqueta de salida para el directorio que contiene los resultados ( --glmdir).
+
+.. code:: Bash
+
+   #!/bin/tcsh
+
+   set study = $argv[1]
+
+   foreach hemi (lh rh)
+     foreach smoothness (10)
+       foreach meas (volume thickness)
+           mri_glmfit \
+           --y {$hemi}.{$meas}.{$study}.{$smoothness}.mgh \
+           --fsgd FSGD/{$study}.fsgd \
+           --C Contrasts/CB-HC.mtx \
+           --C Contrasts/HC-CB.mtx \
+           --surf fsaverage {$hemi}  \
+           --cortex  \
+           --glmdir {$hemi}.{$meas}.{$study}.{$smoothness}.glmdir
+       end
+     end
+   end
+
+Revisando la salida
+
+
+
+Si los scripts se ejecutan sin errores, debería ver los siguientes directorios en su directorio actual:
+
+.. code:: Bash
+
+   lh.thickness.CannabisStudy.10.glmdir
+   lh.volume.CannabisStudy.10.glmdir
+   rh.thickness.CannabisStudy.10.glmdir
+   rh.volume.CannabisStudy.10.glmdir
+
+
+
+
+
+
+
 
 
 
