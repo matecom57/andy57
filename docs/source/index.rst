@@ -277,5 +277,6 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
 
    analisis_img_fMRI    
    analisis_img_freesurfer
+   analisis_img_mrtrix
    
 
