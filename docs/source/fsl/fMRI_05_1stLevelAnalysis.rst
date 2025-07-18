@@ -1,37 +1,43 @@
+.. _fMRI_05_1stLevelAnalysis:
 
-
-.. _fMRI_05_Análisis de primer nivel:
-
-Tutorial de fMRI n.º 5: Estadística y modelado
+fMRI Tutorial #5: Statistics and Modeling
 ===============
 
 -----------
 
-Descripción general
+Overview
 ********
 
-Ahora que la primera ejecución funcional ha sido preprocesada, podemos **ajustar un modelo** a los datos. Para comprender cómo funciona el ajuste de modelos, necesitamos repasar algunos fundamentos como el Modelo Lineal General, la respuesta BOLD y qué es una serie temporal. Cada uno de estos temas se aborda en el siguiente índice.
+Now that the first functional run has been preprocessed, we can **fit a model** to the data. To understand how model fitting works, we need to review 
+some fundamentals such as the General Linear Model, the BOLD response, and what a time-series is. Each of these topics are discussed in the following 
+table of contents.
 
-Tras revisar estos conceptos, estará listo para ejecutar un análisis de primer nivel con FEAT. La figura a continuación ilustra cómo ajustaremos un modelo a los datos.
+After you have reviewed those concepts, you are then ready to run a first-level analysis using FEAT. The figure below illustrates how we will be 
+fitting a model to the data.
 
 .. figure:: 1stLevelAnalysis_Pipeline.png
 
-   Tras construir un modelo que indica cómo debería ser la respuesta BOLD (A), dicho modelo se ajusta a la serie temporal en cada vóxel (B). El grado de ajuste del modelo (también conocido como **bondad de ajuste**) se puede representar en el cerebro mediante mapas estadísticos, donde las intensidades más brillantes indican un mejor ajuste. Estos mapas estadísticos se pueden umbralizar para mostrar solo los vóxeles con un ajuste estadísticamente significativo (C).
+   After a model has been constructed indicating what the BOLD response should look like (A), that model is then fit to the time-series at each voxel 
+(B). How well the model fits (also known as the **goodness of fit**) can then be represented on the brain with statistical maps, with brighter 
+intensities signifying a better model fit. These statistical maps can then be thresholded to show only the voxels with a statistically significant 
+model fit (C).
 
-.. árbol de toc::
-   :profundidad máxima: 1
-   :caption: Análisis de primer nivel
+.. toctree::
+   :maxdepth: 1
+   :caption: First-Level Analysis
 
-   Estadísticas/01_Estadísticas_Series_Tiempo
-   Estadísticas/02_Estadísticas_Historial_HRF
-   Estadísticas/03_Estadísticas_HRF_Resumen
-   Estadísticas/04_Estadísticas_General_Modelo_Lineal
-   Estadísticas/05_Creación_de_Archivos_de_Cronometraje
-   Estadísticas/06_Estadísticas_Ejecución_Análisis_de_1er_Nivel
-   Estadísticas/07_Estadísticas_1er_Nivel_Punto_de_Control
+   Statistics/01_Stats_TimeSeries
+   Statistics/02_Stats_HRF_History
+   Statistics/03_Stats_HRF_Overview
+   Statistics/04_Stats_General_Linear_Model
+   Statistics/05_Creating_Timing_Files
+   Statistics/06_Stats_Running_1stLevel_Analysis
+   Statistics/07_Stats_1stLevel_Checkpoint
 
 
-.. nota::
+.. note::
 
-   Comprender el ajuste de modelos y el análisis de primer nivel puede ser un desafío. No se desanime si no comprende todo la primera vez que lea los capítulos; persevere y los conceptos se aclararán con el tiempo y la práctica.
+   Understanding model fitting and first-level analysis can be challenging. Don't be discouraged if you don't understand everything the first time you 
+read the chapters; keep at it, and the concepts will become clearer with time and practice.
+
 

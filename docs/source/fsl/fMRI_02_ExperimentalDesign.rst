@@ -1,31 +1,43 @@
-
-
-.. _fMRI_02_Diseño experimental:
+.. _fMRI_02_ExperimentalDesign:
 
 ==============
-Tutorial de fMRI n.º 2: Descripción general de la tarea Flanker
+fMRI Tutorial #2: Overview of The Flanker Task
 ==============
 
-El conjunto de datos que descargaste utiliza la tarea Flanker, diseñada para aprovechar un proceso mental conocido como control cognitivo. En este curso, definiremos el control cognitivo como la capacidad de ignorar estímulos irrelevantes para realizar la tarea correctamente.
+The dataset you downloaded uses the Flanker task, which is designed to tap into a mental process known as cognitive control. For this course, we’re 
+going to define cognitive control as the ability to ignore irrelevant stimuli in order to do the task correctly.
 
-En la tarea Flanker, las flechas apuntan a la izquierda o a la derecha, y se le indica al sujeto que presione uno de los dos botones que indican la dirección de la flecha central. Si apunta a la izquierda, el sujeto presiona el botón "izquierda"; si apunta a la derecha, el botón "derecha". La flecha central está flanqueada por otras flechas que apuntan en la misma dirección o en la dirección opuesta.
+In the Flanker task, arrows point either to the left or the right, and the subject is instructed to press one of two buttons indicating the direction 
+of the arrow in the middle. If it’s pointing to the left, the subject presses the “left” button; if it’s pointing to the right, the subject presses the 
+“right” button. The middle arrow is flanked by other arrows which either point in the same direction as the middle arrow, or point in the opposite 
+direction from the middle arrow.
 
 .. figure:: Flanker_Example.png
 
-	Un ejemplo de las dos condiciones de la tarea Flanqueador. En la condición Incongruente, la flecha central (en la que se centra el sujeto) apunta en dirección opuesta a las flechas flanqueantes; en la condición Congruente, la flecha central apunta en la misma dirección que las flechas flanqueantes. En este ejemplo, la respuesta correcta en la condición Incongruente sería pulsar el botón "izquierda", y la respuesta correcta en la condición Congruente sería pulsar el botón "derecha". Para realizar una versión de la tarea Flanqueador, haga clic aquí.`__.
+	An example of the two conditions of the Flanker task. In the Incongruent condition, the central arrow (which the subject is focusing on) points 
+in the opposite direction as the flanking arrows; in the Congruent condition, the central arrow points in the same direction as the flanking arrows. In 
+this example the correct response in the Incongruent condition would be to push the "left" button, and the correct response in the Congruent condition 
+would be to push the "right" button. To run through a version of the Flanker task yourself, click `here <http://cognitivefun.net/test/6>`__.
 
-Como puede imaginar, la tarea es más fácil si la flecha central apunta en la misma dirección que la flecha lateral, y más difícil si apunta en la dirección opuesta. Llamaremos a la primera condición "Congruente" y a la segunda "Incongruente". Los sujetos suelen ser más lentos y menos precisos en la condición Incongruente, y más rápidos y precisos en la condición Congruente. Dado que la diferencia en los tiempos de reacción es robusta y fiable, en nuestros datos de fMRI deberíamos observar una diferencia notable en la señal :ref:`BOLD.
-    " también.
+You can imagine that the task is easier if the central arrow points in the same direction as the flanking arrow, and more difficult if it points in the 
+opposite direction. We’ll call the former condition the “Congruent” condition and the latter the “Incongruent” condition. Subjects are typically slower 
+and less accurate in the Incongruent condition, and faster and more accurate in the Congruent condition. Since the difference in reaction times is 
+robust and reliable, it follows that in our fMRI data we should see a noticeable difference in the :ref:`BOLD signal <BOLD_Response>` as well.
 
 .. figure:: Flanker_Design.png
 
-	Ilustración de la tarea de Flanker para este estudio, adaptada de Kelly et al. (2008). Se muestra al sujeto una cruz de fijación para que enfoque el centro de la pantalla, y luego se presenta una prueba de Flanker congruente o incongruente de 2000 ms. Durante la prueba, el sujeto presiona el botón izquierdo o derecho. A continuación, se produce un intervalo de fluctuación que dura entre 8000 ms y 14 000 ms. (Tenga en cuenta que los intervalos de fluctuación suelen incrementarse en segundos; en este caso, la fluctuación para una prueba dada sería una selección aleatoria de uno de los siguientes: 8000 ms, 9000 ms, 10 000 ms, 11 000 ms, 12 000 ms, 13 000 ms y 14 000 ms). Se presenta otra cruz de fijación para comenzar la siguiente prueba.
+	Illustration of the Flanker task for this study, adapted from Kelly et al. (2008). The subject is shown a fixation cross in order to focus on 
+the center of the screen, and then either a Congruent or Incongruent Flanker trial is presented for 2000ms. During the trial the subject presses either 
+the left or right button. A jittered interval follows which lasts anywhere from 8,000ms to 14,000ms. (Note that jittered intervals typically increment 
+in seconds; in this case, the jitter for a given trial would be a random selection of one of the following: 8,000ms, 9,000ms, 10,000ms, 11,000ms, 
+12,000ms, 13,000ms, and 14,000ms) Another fixation cross is presented to begin the next trial.
 
-Nuestro objetivo es estimar la magnitud de la señal BOLD para cada condición y luego **contrastar** (es decir, tomar la diferencia de) las dos condiciones para ver si son significativamente diferentes entre sí.
+Our goal is to estimate the magnitude of the BOLD signal to each condition, and then **contrast** (i.e., take the difference of) the two conditions to 
+see whether they are significantly different from each other.
 
-.. nota::
-	Esta descripción de la tarea plantea un punto importante sobre las buenas prácticas para diseñar estudios de fMRI: si puede diseñar una tarea conductual que produzca un efecto fuerte y confiable, aumentará sus probabilidades de encontrar un efecto en sus datos de imágenes. Los datos de fMRI son notoriamente ruidosos: si no ve un efecto conductual en su estudio, lo más probable es que tampoco encuentre un efecto en sus datos de imágenes.
+.. note::
+	This description of the task brings up an important point about good practice for designing fMRI studies: If you can design a behavioral task 
+that produces a strong and reliable effect, you will increase your odds of finding an effect in your imaging data. fMRI data is notoriously noisy - if 
+you don’t see a behavioral effect in your study, you most likely will not find an effect in your imaging data either.
 
-    
-   
 

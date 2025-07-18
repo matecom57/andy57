@@ -1,25 +1,33 @@
-
-
 .. _FEAT_GUI.rst
 
-Capítulo 2: La GUI de FEAT y la carga de datos funcionales
+Chapter 2: The FEAT GUI and loading the functional data
 ^^^^^^^^^^^
 
-El resto de los pasos de preprocesamiento (corrección de movimiento mediante normalización) se realizarán en la interfaz gráfica de FEAT. El botón FEAT se encuentra en el centro del menú de la interfaz gráfica de FSL; al hacer clic en él, se abrirá una ventana con varias pestañas.
+The rest of the preprocessing steps (motion correction through normalization) will be carried out in the FEAT GUI. The FEAT button is located the 
+middle of the FSL GUI menu, and clicking on it will open up a window with several tabs.
 
-.. figura:: FEAT_GUI.png
+.. figure:: FEAT_GUI.png
 
-  Al hacer clic en el botón de análisis FEAT FMRI (A), se abre la interfaz gráfica de usuario de FEAT. Por ahora, nos centraremos en las pestañas «Datos», «Preestadísticas» y «Registro», que preprocesan los datos. En el menú desplegable superior derecho (B), seleccione «Preprocesamiento». Esto desactivará las pestañas «Estadísticas» y «Postestadísticas», permitiéndonos centrarnos únicamente en el preprocesamiento. Haga clic en el botón «Seleccionar datos 4D» (C) para cargar los datos de imágenes (en este ejemplo, «sub-08_task-flanker_run-1_bold.nii.gz», que se encuentra en el directorio «func»). Se abrirá una nueva ventana (D), con un icono de carpeta que permite seleccionar una ejecución de imágenes funcionales (E).
+  Clicking on the FEAT FMRI analysis button (A) opens up the FEAT GUI. For now we will focus on the ``Data``, ``Pre-stats``, and ``Registration`` tabs, 
+which preprocess the data. From the upper-right dropdown menu (B), select ``Preprocessing``. This will grey out the Stats and Post-stats tabs, and 
+allow us to focus only on preprocessing. Click on the ``Select 4D data`` button (C) to load your imaging data (in this example, 
+``sub-08_task-flanker_run-1_bold.nii.gz``, which is in the ``func`` directory). This will open up a new window (D), which has a folder icon that allows 
+you to select a functional imaging run (E).
 
-Al cargar una imagen funcional, FSL lee la información del **encabezado** de dicha imagen. Imagine la imagen como una matriz tridimensional de números, donde los números más altos se representan como más brillantes que los más bajos. Este contraste nos permite distinguir diferentes estructuras dentro de la imagen. El encabezado, por otro lado, contiene información que no se ve directamente en la imagen, pero que es necesaria para visualizarla; por ejemplo, la orientación. El encabezado de datos tetradimensionales (es decir, conjuntos de datos individuales que contienen varios volúmenes) también contiene números que indican la :ref:`TR" y número de volúmenes.
+When you load a functional image, FSL reads information from the **header** of that image. Think of the image itself as a three-dimensional matrix of 
+numbers, with higher numbers represented as brighter than lower numbers. This contrast allows us to distinguish different structures within the image. 
+The header, on the other hand, contains information that you don't see directly in the image, but which is necessary in order to display it - for 
+example, the orientation. The header of four-dimensional data (i.e., single datasets that contain multiple volumes) also contains numbers indicating 
+the :ref:`TR <Repetition_Time>` and number of volumes.
 
-Después de cargar los datos de entrada, estos campos se ingresarán automáticamente en los campos correspondientes de la GUI de FEAT, como se muestra en el siguiente video:
+After loading the Input data these fields will be automatically entered into the corresponding fields of the FEAT GUI, as shown in the following video:
 
-.. figura:: FEAT_GUI_Demonstration.gif
+.. figure:: FEAT_GUI_Demonstration.gif
 
-  Asegúrese de verificar que el TR y el número de volúmenes coincidan con los adquiridos en el escáner. Si tiene alguna pregunta sobre los parámetros utilizados, consulte a su técnico de escaneo.
+  Make sure to check whether the TR and number of volumes matches what you acquired at the scanner. If you have any questions about the parameters you 
+used, ask your scan technician.
 
-Las dos pestañas siguientes, Preestadísticas y Registro, se analizarán en los siguientes capítulos. Para continuar con el tutorial sobre los pasos de preprocesamiento, haga clic en el botón Siguiente.
+The next two tabs, Pre-stats and Registration, will be discussed in the following chapters. To resume the tutorial on the preprocessing steps, click 
+the Next button.
 
-   
 

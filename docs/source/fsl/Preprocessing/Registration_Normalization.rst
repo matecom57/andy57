@@ -1,84 +1,120 @@
+.. _Registration_Normalization:
 
-
-.._Normalización_del_Registro:
-
-Capítulo 6: Registro y normalización
+Chapter 6: Registration and Normalization
 ^^^^^^^^^^
 
 --------
 
-Descripción general
+Overview
 ***************
 
-Aunque el cerebro de la mayoría de las personas es similar (por ejemplo, todos tenemos una circunvolución cingulada y un cuerpo calloso), también existen diferencias en el tamaño y la forma cerebrales. Por lo tanto, si queremos realizar un análisis grupal, debemos asegurarnos de que cada vóxel de cada sujeto corresponda a la misma parte del cerebro. Si medimos un vóxel en la corteza visual, por ejemplo, debemos asegurarnos de que la corteza visual de cada sujeto esté alineada.
+Although most people's brains are similar - everyone has a cingulate gyrus and a corpus callosum, for instance - there are also differences in brain 
+size and shape. As a consequence, if we want to do a group analysis we need to ensure that each voxel for each subject corresponds to the same part of 
+the brain. If we are measuring a voxel in the visual cortex, for example, we would want to make sure that every subject's visual cortex is in alignment 
+with each other.
 
-Esto se hace **Registrando** y **Normalizando** las imágenes. Tal como doblarías la ropa para que quepa dentro de una maleta, cada cerebro necesita ser transformado para tener el mismo tamaño, forma y dimensiones. Hacemos esto normalizando (o **deformando**) a una **plantilla**. Una plantilla es un cerebro que tiene dimensiones y coordenadas estándar; estándar, porque la mayoría de los investigadores han acordado usarlas al informar sus resultados. De esa manera, si normalizas tus datos a esa plantilla y encuentras un efecto en las coordenadas X=3, Y=20, Z=42, alguien más que haya deformado sus datos a la misma plantilla puede comparar sus resultados con los tuyos. Las dimensiones y coordenadas del cerebro plantilla también se conocen como **espacio estandarizado**.
+This is done by **Registering** and **Normalizing** the images. Just as you would fold clothes to fit them inside of a suitcase, each brain needs to be 
+transformed to have the same size, shape, and dimensions. We do this by normalizing (or **warping**) to a **template**. A template is a brain that has 
+standard dimensions and coordinates - standard, because most researchers have agreed to use them when reporting their results. That way, if you 
+normalize your data to that template and find an effect at coordinates X=3, Y=20, Z=42, someone else who has warped their data to the same template can 
+check their results against yours. The dimensions and coordinates of the template brain are also referred to as **standardized space**.
 
-.. figura:: MNI_Template.png
+.. figure:: MNI_Template.png
 
-  Un ejemplo de una plantilla de uso común, el cerebro :ref:`MNI152`. Este es un promedio de 152 cerebros adultos sanos, que representan la población de la que se extraen la mayoría de los estudios. Si está estudiando otra población, como niños o ancianos, por ejemplo, considere usar una plantilla creada con representantes de esa población. (Pregunta: ¿Por qué está borrosa esta plantilla? Revise el capítulo anterior sobre suavizado para obtener una pista).
+  An example of a commonly used template, the :ref:`MNI152 brain <MNI>`. This is an average of 152 healthy adult brains, which represent the population 
+that most studies draw from. If you are studying another population - such as children or the elderly, for example - consider using a template created 
+from representatives of that population. (Question: Why is this template blurry? Review the previous chapter on smoothing for a hint.)
   
   
-Transformaciones afines
+Affine Transformations
 ****************
 
-Para deformar las imágenes según una plantilla, usaremos una **transformación afín**. Esta es similar a la transformación de cuerpo rígido descrita anteriormente en Corrección de movimiento, pero añade dos transformaciones más: **zooms** y **cortes**. Mientras que las traslaciones y rotaciones son fáciles de realizar con un objeto cotidiano como un bolígrafo, los zooms y los cortes son más inusuales: los zooms reducen o amplían la imagen, mientras que los cortes toman las esquinas diagonalmente opuestas de la imagen y las estiran. La animación a continuación resume estos cuatro tipos de **transformaciones lineales**.
+To warp the images to a template, we will use an **affine transformation**. This is similar to the rigid-body transformation described above in Motion 
+Correction, but it adds two more transformations: **zooms** and **shears**. Whereas translations and rotations are easy enough to do with an everyday 
+object such as a pen, zooms and shears are more unusual - zooms either shrink or enlarge the image, while shears take the diagonally opposite corners 
+of the image and stretch them away from each other. The animation below summarizes these four types of **linear transformations**.
 
-.. figura:: AffineTransformations.gif
+.. figure:: AffineTransformations.gif
 
-.. nota:: Al igual que con las transformaciones de cuerpo rígido, los zooms y los cortes tienen tres grados de libertad: puede hacer zoom o cortar una imagen a lo largo del eje x, y o z. En total, entonces, las transformaciones afines tienen doce grados de libertad. Estas también se llaman transformaciones lineales porque una transformación aplicada en una dirección a lo largo de un eje está acompañada por una transformación de igual magnitud en la dirección opuesta. Una traslación de un milímetro *a* la izquierda, por ejemplo, implica que la imagen se ha movido un milímetro *desde* la derecha. Del mismo modo, si una imagen se amplía un milímetro a lo largo del eje z, se amplía un milímetro en ambas direcciones a lo largo de ese eje. Las transformaciones sin estas restricciones se llaman **transformaciones no lineales**. Por ejemplo, una transformación no lineal puede ampliar la imagen en una dirección mientras la encoge en la otra dirección, como cuando se aprieta una esponja. Estos tipos de transformaciones se tratarán más adelante.
+.. note:: As with rigid-body transformations, zooms and shears each have three degrees of freedom: You can zoom or shear an image along the x-, y-, or 
+z-axis. In total, then, affine transformations have twelve degrees of freedom. These are also called linear transformations because a transformation 
+applied in one direction along an axis is accompanied by a transformation of equal magnitude in the opposite direction. A translation of one millimeter 
+*to* the left, for example, implies that the image has been moved one millimeter *from* the right. Likewise, if an image is enlarged by one millimeter 
+along the z-axis, it is enlarged by one millimeter in both directions along that axis. Transformations without these constraints are called **nonlinear 
+transformations**. For example, a nonlinear transformation can enlarge the image in one direction while shrinking it in the other direction, as when 
+squeezing a sponge. These types of transformations will be discussed later.
 
-Registro y Normalización
+Registration and Normalization
 ***************
 
-Recuerde que nuestro conjunto de datos incluye imágenes anatómicas y funcionales. Nuestro objetivo es adaptar las imágenes funcionales a la plantilla para realizar un análisis grupal de todos los sujetos. Si bien parece razonable adaptar las imágenes funcionales directamente a la plantilla, en la práctica esto no funciona bien: las imágenes tienen baja resolución y, por lo tanto, es menos probable que coincidan con los detalles anatómicos de la plantilla. La imagen anatómica es una mejor opción.
+Recall that we have both anatomical and functional images in our dataset. Our goal is to warp the functional images to the template so that we can do a 
+group-level analysis across all of our subjects. Although it may seem reasonable to simply warp the functional images directly to the template, in 
+practice that doesn't work very well - the images are low-resolution, and therefore less likely to match up with the anatomical details of the 
+template. The anatomical image is a better candidate.
 
-Aunque esto parezca no ayudarnos a alcanzar nuestro objetivo, de hecho, deformar la imagen anatómica puede ayudar a estandarizar las imágenes funcionales. Recuerde que las exploraciones anatómicas y funcionales suelen adquirirse en la misma sesión, y que la cabeza del sujeto se mueve poco o nada entre las exploraciones. Si ya hemos normalizado nuestra imagen anatómica a una plantilla y registrado las transformaciones realizadas, podemos aplicar las mismas transformaciones a las imágenes funcionales, siempre que comiencen en el mismo lugar que la imagen anatómica.
+Although this may not seem to help us towards our goal, in fact warping the anatomical image can assist with bringing the functional images into 
+standardized space. Remember that the anatomical and functional scans are typically acquired in the same session, and that the subject's head moves 
+little, if at all, between the scans. If we have already normalized our anatomical image to a template and recorded what transformations were done, we 
+can apply the same transformations to the functional images - provided they start in the same place as the anatomical image.
 
-Esta alineación entre las imágenes funcionales y anatómicas se denomina **Registro**. La mayoría de los algoritmos de registro utilizan los siguientes pasos:
+This alignment between the functional and anatomical images is called **Registration**. Most registration algorithms use the following steps:
 
-1. Suponga que las imágenes funcionales y anatómicas están prácticamente en la misma ubicación. De no ser así, alinee los contornos de las imágenes.
+1. Assume that the functional and anatomical images are in roughly the same location. If they are not, align the outlines of the images.
 
-2. Aproveche que las imágenes anatómicas y funcionales tienen diferentes ponderaciones de contraste; es decir, las áreas oscuras en la imagen anatómica (como el líquido cefalorraquídeo) aparecerán brillantes en la imagen funcional, y viceversa. Esto se denomina **información mutua**. El algoritmo de registro desplaza las imágenes para probar diferentes superposiciones de las imágenes anatómicas y funcionales, haciendo coincidir los vóxeles brillantes de una imagen con los oscuros de otra, y los oscuros con los brillantes, hasta encontrar una coincidencia irreprochable.
+2. Take advantage of the fact that the anatomical and functional images have different contrast weightings - that is, areas where the image is dark on 
+the anatomical image (such as cerebrospinal fluid) will appear bright on the functional image, and vice versa. This is called **mutual information**. 
+The registration algorithm moves the images around to test different overlays of the anatomical and functional images, matching the bright voxels on 
+one image with the dark voxels of another image, and the dark with the bright, until it finds a match that cannot be improved upon.
 
-3. Una vez que se encuentra la mejor coincidencia, se aplican a las imágenes funcionales las mismas transformaciones que se utilizaron para deformar la imagen anatómica a la plantilla.
+3. Once the best match has been found, then the same transformations that were used to warp the anatomical image to the template are applied to the 
+functional images.
 
 
-.. figura:: Registro_Normalización_Demo.gif
+.. figure:: Registration_Normalization_Demo.gif
 
 
-Normalización, suavizado y potencia estadística
+Normalization, Smoothing, and Statistical Power
 *******
 
-Como leíste en la página anterior
-    `__, el suavizado tiende a cancelar el ruido y mejorar la señal. Esto también aplica a los análisis de grupo, en los que todas las imágenes de los sujetos se han normalizado según una plantilla. Si bien las imágenes funcionales de cada sujeto se transformarán para que coincidan con la forma general y las características anatómicas generales de la plantilla, habrá variaciones en la alineación de las regiones anatómicas más pequeñas entre las imágenes funcionales normalizadas. Si las imágenes se suavizan, habrá mayor solapamiento entre los grupos de señal y, por lo tanto, mayor probabilidad de detectar un efecto significativo.
+As you read on the `previous page <Smoothing>`__, smoothing tends to cancel out noise and enhance signal. This applies to group analyses as well, in 
+which all of the subjects' images have been normalized to a template. Although each subjects' functional images will be transformed to match the 
+general shape and large anatomical features of the template, there will be variations in how smaller anatomical regions align among the normalized 
+functional images. If the images are smoothed, there will be more overlap between clusters of signal, and therefore greater likelihood of detecting a 
+significant effect.
 
 -----
 
-La pestaña de registro
+The Registration Tab
 *******
 
-El registro y la normalización, aunque son distintos, se integran en un solo paso en la pestaña "Registro" de la interfaz gráfica de usuario de FEAT. Una vez seleccionada esta pestaña, haga clic en el botón junto a "Imagen estructural principal" para expandir el campo de entrada. A continuación, seleccione la imagen del cráneo del sujeto sin hueso; en este caso, la que creamos con un umbral de intensidad fraccionaria de 0,2.
+Registration and Normalization, although distinct, are packaged together as a single step in the FEAT GUI's ``Registration`` tab. Once you have 
+selected this tab, click on the button next to ``Main structural image`` to expand the input field. Then select the subject's skull-stripped image - in 
+this case, the one that we created using a fractional intensity threshold of 0.2.
 
-Observará que hay menús desplegables debajo de los campos "Imagen estructural principal" y "Espacio estándar". Los menús del campo "Imagen estructural principal" corresponden a las opciones para registrar la imagen funcional con la anatómica. Los menús del campo "Espacio estándar" son opciones para normalizar la imagen anatómica con respecto a la imagen de plantilla. Dentro de estos conjuntos de menús, el menú desplegable de la izquierda corresponde a la ventana "Buscar" y el de la derecha a la ventana "Grados de libertad".
+You will notice that there are dropdown menus below both the ``Main structural image`` and ``Standard space`` fields. The menus under the Main 
+structural image field correspond to options for registering the functional to the anatomical image. The menus under the Standard space field are 
+options for normalizing the anatomical image to the template image. Within these sets of menus, the dropdown menu on the left is the ``Search`` window, 
+and the dropdown menu on the right is the ``Degrees of Freedom`` window.
 
-En la ventana "Buscar", hay tres opciones: 1) Sin búsqueda; 2) Búsqueda normal; y 3) Búsqueda completa. Esto le indica a FSL el grado de búsqueda necesario para lograr una buena alineación inicial entre las imágenes funcionales y anatómicas (para el registro) y entre las imágenes anatómicas y las plantillas (para la normalización). La opción "Búsqueda completa" es más larga, pero más exhaustiva y, por lo tanto, más propensa a producir un mejor registro y normalización.
+In the ``Search`` window, there are three options: 1) No search; 2) Normal search; and 3) Full search. This signifies to FSL how much to search for a 
+good initial alignment between the functional and anatomical images (for registration) and between the anatomical and template images (for 
+normalization). The Full search option takes longer, but is more thorough and therefore more likely to produce better registration and normalization.
 
-En la ventana "Grados de libertad", puede usar 3, 6 o 12 grados de libertad para transformar las imágenes. El registro cuenta con una opción adicional, "BBR", que significa Registro de Límites Cerebrales. Esta técnica de registro más avanzada utiliza los límites tisulares para ajustar la alineación entre las imágenes funcionales y anatómicas. Al igual que la opción de búsqueda completa mencionada anteriormente, esta opción tarda más, pero suele ofrecer una mejor alineación.
+In the ``Degrees of Freedom`` window, you can use 3, 6, or 12 degrees of freedom to transform the images. Registration has an additional option, 
+``BBR``, which stands for Brain-Boundary Registration. This is a more advanced registration technique that uses the tissue boundaries to fine-tune the 
+alignment between the functional and anatomical images. Similar to the Full search option above, it takes longer, but often gives a better alignment.
 
-Por ahora, configure las opciones de búsqueda en Búsqueda completa y los grados de libertad en 12 grados de libertad. Si ya ha cargado sus imágenes funcionales en la pestaña Datos, haga clic en el botón Ir para ejecutar todos los pasos de preprocesamiento.
+For now, set both Search options to Full search and both Degrees of Freedom options to 12 DOF. If you have already loaded your functional images in the 
+Data tab, click on the Go button to run all of the preprocessing steps.
 
-.. figura:: Registration_Setup.gif
+.. figure:: Registration_Setup.gif
 
 
 
 Video
 ********
 
-El registro y la normalización son el último paso del proceso de preprocesamiento para un solo sujeto. Para ver un video de captura de pantalla que muestra cómo configurar todo el preprocesamiento a través de la interfaz gráfica de FEAT, haga clic aquí.
-     `__.
+Registration and Normalization is the last step of the preprocessing pipeline for a single subject. To see a screencast video demonstrating how to set 
+up all of your preprocessing through the FEAT GUI, click `here <https://www.youtube.com/watch?v=nETfSWPKSes>`__.
 
-     
-    
-   
 

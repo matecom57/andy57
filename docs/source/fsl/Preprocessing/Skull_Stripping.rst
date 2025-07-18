@@ -1,78 +1,109 @@
+.. _Skull_Stripping:
 
-
-.. _Desnudar el cráneo:
-
-Capítulo 1: Extracción cerebral (también conocida como "skullstripping")
+Chapter 1: Brain Extraction (also known as "skullstripping")
 ==============================
 
 --------------------
 
-Dado que los estudios de fMRI se centran en el tejido cerebral, el primer paso es eliminar el cráneo y las áreas no cerebrales de la imagen. FSL cuenta con una herramienta para esto llamada **bet**, o Herramienta de Extracción Cerebral. Es el primer botón que aparece en la interfaz gráfica de usuario de FSL (indicado con una "A" en la figura siguiente). Al hacer clic en este botón, se abre otra ventana que permite especificar la imagen de entrada que se va a eliminar del cráneo y cómo etiquetar la imagen de salida eliminada (B), así como una subventana expandible que permite especificar opciones avanzadas (C).
+Since fMRI studies focus on brain tissue, our first step is to remove the skull and non-brain areas from the image. FSL has a tool for this called 
+**bet**, or the Brain Extraction Tool. It is the first button listed on the FSL GUI (indicated by "A" in the figure below). If you click on this 
+button, another window opens that allows you to specify the Input image to skullstrip and what to label the Output image that has been skullstripped 
+(B), and an expandable sub-window that allows you to specify advanced options (C).
 
-.. figura:: FSL_BET_GUI.png
+.. figure:: FSL_BET_GUI.png
 
 
-.. nota::
-  Para BET y muchas otras herramientas FSL, es necesario especificar una imagen de entrada y una etiqueta para la imagen de salida: se realiza una operación en la imagen de entrada (por ejemplo, la eliminación de cráneos) y la imagen de salida es el resultado de dicha operación. Normalmente, las demás opciones se configuran con valores predeterminados que funcionan bien para la mayoría de los conjuntos de datos, pero se pueden anular si se desea.
+.. note::
+  For BET and many of the other FSL tools, you are required to specify an input image and a label for the output image: Some operation is performed on 
+the input image (skullstripping, for example) and the output image is the result of that operation. Usually the other options are set to defaults that 
+work well for the majority of datasets, but you can override them if you want.
   
 
-Abra la interfaz gráfica de FSL desde el directorio ``sub-08``, haga clic en el icono de carpeta junto al campo ``Imagen de entrada`` y navegue hasta el directorio ``anat``. Seleccione el archivo ``sub-08_T1w.nii.gz`` y haga clic en el botón Aceptar. Observe que el campo ``Imagen de salida`` se completa automáticamente con la palabra ``brain`` adjunta a la imagen de entrada, que es la opción predeterminada de FSL. Puede cambiar el nombre si lo desea, pero en este tutorial lo dejaremos como está.
+Open the FSL GUI from the ``sub-08`` directory, click on the Folder icon next to the ``Input image`` field, and navigate to the ``anat`` directory. 
+Select the file ``sub-08_T1w.nii.gz`` and click the OK button. Notice that the ``Output image`` field is automatically filled in with the word 
+``brain`` appended to your Input image, which is FSL's default. You can change the name if you like, but for this tutorial we will leave it as is.
 
-Ahora haz clic en el botón "Ir" en la parte inferior de la ventana. Verás un texto en tu terminal que muestra los comandos que se utilizan para ejecutar el comando "bet2". Observa cómo la interfaz gráfica de usuario (GUI) se corresponde con la terminal. Más adelante, aprovecharemos esta ventaja creando una plantilla a través de la GUI y modificándola en la terminal para preprocesar automáticamente todos los sujetos de nuestro conjunto de datos.
+Now click the ``Go`` button at the bottom of the window. You will see some text written to your Terminal showing which commands are being used to run a 
+command called ``bet2``. Take a moment to see how the GUI corresponds to the Terminal - later on we will take advantage of this by creating a template 
+through the GUI and then modifying it in the Terminal to automatically preprocess all of the subjects in our dataset.
 
-Mirando los datos
+Looking at the data
 ********
 
-Cuando la terminal indique "Finalizado", la apuesta 2 estará lista. Dado que ha creado una nueva imagen, debería revisar sus datos, lo cual haremos después de cada paso de preprocesamiento.
+When the Terminal says "Finished", ``bet2`` is done. Since you have created a new image you should **look at your data**, which we will do after each 
+preprocessing step.
 
-.. nota::
-  Los principiantes suelen escuchar la frase "Mira tus datos" como un mantra. Sin saber *cómo* mirar los datos, estas palabras pierden sentido en el mejor de los casos y, en el peor, resultan un falso consuelo. Cada paso de preprocesamiento de este capítulo irá seguido de recomendaciones sobre qué buscar y ejemplos concretos de qué es correcto y qué constituye un problema, y qué hacer al respecto. Aunque no podemos abarcar todos los ejemplos posibles, a medida que adquiera experiencia, desarrollará su criterio para distinguir qué imágenes son de buena calidad y cuáles deben corregirse o eliminarse.
+.. note::
+  Newcomers often hear the phrase "Look at your data" intoned like a mantra. Without knowing *how* to look at one's data, the words become meaningless 
+at best, a false comforter at worst. Each of the preprocessing steps in this chapter will be followed by recommendations of what to look for and 
+concrete examples of what is OK and what is a problem - and what to do about it. Although we cannot cover every possible example, as you gain 
+experience you will develop your judgment of what images are of good quality, and which ones need to be either fixed or removed.
   
 
-Haz clic en el botón "FSLeyes" en la parte inferior de la interfaz gráfica. Cuando se abra, haz clic en "Archivo -> Agregar desde archivo" y mantén presionada la tecla Mayús para seleccionar tanto la imagen anatómica original como la imagen con el cráneo despojado que acabas de crear. Como viste en un capítulo anterior."Querrás cambiar el contraste para distinguir claramente la materia gris de la materia blanca.
+Click on the ``FSLeyes`` button at the bottom of the GUI. When it opens, click on ``File -> Add from File`` and hold shift to select both the original 
+anatomical image and the skullstripped image you just created. As you saw in a :ref:`previous chapter <fMRI_03_LookingAtTheData>`, you will want to 
+change the contrast to clearly distinguish the grey matter from the white matter.
 
-Al cargar ambas imágenes, puede comparar la imagen antes y después de extraer el cráneo. En el panel "Lista de superposiciones", en la esquina inferior izquierda de FSLeyes, haga clic en el icono del ojo para ocultar la imagen correspondiente. Por ejemplo, si hace clic en el icono del ojo junto a "sub-08_T1w", la imagen anatómica original en T1 se volverá invisible y solo verá el cerebro sin cráneo. Si vuelve a hacer clic en el ojo, verá el T1 original. Para que las diferencias entre los cerebros sean más evidentes, resalte la imagen sin cráneo en el panel "Lista de superposiciones" y cambie el contraste de "Escala de grises" a "Azul-azul claro". La siguiente animación muestra cómo hacerlo.
+By loading both images you can compare the image before and after the skull was removed. In the ``Overlay List`` panel in the lower left corner of 
+FSLeyes, click the "eye" icon to hide the corresponding image. For example, if you click on the eye icon next to ``sub-08_T1w``, the original T1 
+anatomical image will become invisible, and you will only see the skullstripped brain. If you click on the eye again, you will see the original T1. To 
+make the differences between the brains more apparent, highlight the skullstripped image in the Overlay List panel, then change the contrast from 
+``Greyscale`` to ``Blue-Light blue``. The animation below shows you how to do this.
 
-.. advertencia::
+.. warning::
 
-  Con la versión de fsleyes de noviembre de 2019, algunos usuarios se encuentran con el siguiente mensaje de error al intentar cargar una imagen generada por cualquiera de los comandos FSL: "Error al cargar la superposición: No parece un archivo BIDS". Si recibe este mensaje de error, intente mover los archivos .json de los directorios anat y func a una carpeta independiente y vuelva a intentar cargar las imágenes.
+  With the November 2019 release of fsleyes, some users encounter the following error message when they try to load an image generated by any of the 
+FSL commands: "Error loading overlay: Does not look like a BIDS file." If you get this error message, try moving the .json files in the anat and func 
+directories into a separate folder, and then try to load the images again.
 
-Haga clic en la imagen con el ratón y observe dónde se extrajo demasiado cerebro o muy poco cráneo. Recuerde que intentamos crear una imagen en la que se ha eliminado completamente el cráneo y la cara, dejando solo el cerebro (por ejemplo, corteza, estructuras subcorticales, tronco encefálico y cerebelo).
+Click around the image with your mouse and observe where there is either too much brain or too little skull that was removed. Remember that we are 
+trying to create an image that has had the skull and face stripped clean away, with only the brain (e.g., cortex, subcortical structures, brainstem, 
+and cerebellum) remaining.
 
-.. figura:: BET_Demonstration.gif
+.. figure:: BET_Demonstration.gif
 
-  Demostración de cómo usar la BET para examinar la imagen anatómica antes y después de la extracción del cráneo. Observe que en la corteza frontal se ha extirpado parte del cerebro. Asegúrese de revisar los tres paneles de visualización para detectar problemas.
+  A demonstration of how to use BET to examine the anatomical image before and after skullstripping. Note that in the frontal cortex, part of the brain 
+has been stripped away. Make sure to check all three viewing panes to see where there are problems.
 
-Arreglando una tira de cráneo defectuosa
+Fixing a bad skullstrip
 ***********
 
-Si no está satisfecho con la extracción del cráneo, ¿qué puede hacer al respecto? Recuerde que la ventana BET contiene opciones que podemos modificar si lo desea. Uno de los campos, denominado "Umbral de intensidad fraccional", está configurado en 0,5 por defecto. El texto contiguo explica que valores más bajos dan estimaciones más altas del contorno cerebral (y, a la inversa, valores más altos dan estimaciones más bajas). En otras palabras, si consideramos que se ha extraído demasiado cerebro, debemos establecer un valor menor, y viceversa si consideramos que se ha extraído muy poco cráneo.
+If you're not happy with the skullstripping, what can you do about it? Recall that the BET window contains options that we could change if we liked. 
+One of the fields, labeled ``Fractional intensity threshold``, is set to 0.5 as a default. The neighboring text explains that smaller values give 
+larger brain outline estimates (and, conversely, larger values give smaller brain outline estimates). In other words, if we think that too much brain 
+has been removed, we should set this to a smaller number, and vice versa if we think too little skull has been removed.
 
-Dado que parece que BET ha extraído demasiado cerebro, intente reducir el umbral de intensidad fraccional a 0,2. Asegúrese también de cambiar el nombre de la salida a algo que le ayude a recordar lo que hizo; por ejemplo, ``sub-08_T1w_brain_f02``. Haga clic en el botón ``Ir`` para volver a ejecutar la extracción de cráneo.
+Since it appears that BET has removed too much brain, try lowering the fractional intensity threshold to 0.2. Also make sure to change the output name 
+to something that will help you remember what you did - for example, ``sub-08_T1w_brain_f02``. Click the ``Go`` button to re-run skullstripping.
 
-.. figura:: BET_f02_GUI.png
+.. figure:: BET_f02_GUI.png
 
 
-Una vez finalizado, cargue la imagen más reciente del cráneo en FSLeyes. Haga clic en el icono del ojo junto a la imagen anatómica original y, a continuación, en el icono del ojo junto a la imagen más reciente que acabamos de crear. Observe dónde se ha conservado más corteza, especialmente en la corteza frontal y la corteza parietal. También habrá notado que en esta imagen aún queda más duramadre y fragmentos de cráneo. Por regla general, es mejor optar por dejar demasiado cráneo que por eliminar demasiada corteza; la presencia de fragmentos de cráneo no provocará fallos en futuros pasos de preprocesamiento (como la normalización), pero una vez eliminada la corteza, no podrá recuperarla.
+When it has finished, load the newest skullstripped image in FSLeyes. Click on the eye icon next to the original anatomical image, and also click on 
+the eye icon next to the newest skullstripped image that we have just created. Note where more cortex has been preserved, especially in the frontal 
+cortex and parietal cortex. You may also have noticed that more dura mater and bits of skull remain in this image. As a general rule, it is better to 
+err on the side of leaving too much skull, as opposed to removing too much cortex - bits of skull here and there won't cause future preprocessing steps 
+to fail (such as normalization), but once cortex is removed, you cannot recover it.
 
 
 --------------
 
-Ceremonias
+Exercises
 ***********
 
-1. Cambie el umbral de intensidad fraccional a 0,1 y vuelva a ejecutar BET, asegurándose de elegir un nombre de salida adecuado para mantener los archivos organizados. Vea el resultado en FSLeyes. Repita estos pasos con un umbral de intensidad fraccional de 0,9. ¿Qué observa? ¿Cuál parece ser un umbral adecuado?
+1. Change the fractional intensity threshold to 0.1 and rerun BET, making sure to choose an appropriate output name to keep your files organized. View 
+the result in FSLeyes. Repeat these steps with a fractional intensity threshold of 0.9. What do you notice? What seems to be a good threshold?
 
-2. Experimenta con diferentes colores de contraste para la imagen superpuesta en FSLeyes para ver cuál te gusta más. Usa el control deslizante de Zoom (junto al icono de la lupa) para enfocar una zona que creas que no se ha eliminado bien. Toma una foto del montaje (es decir, de los tres paneles de visualización) haciendo clic en el icono de la cámara en la barra de herramientas sobre el montaje.
+2. Experiment with different contrast colors for the overlay image in FSLeyes to see which one you like the best. Use the Zoom slider (next to the 
+magnifying glass icon) to focus on a region you think hasn't been stripped well. Take a photo of the montage (i.e., all three viewing panes) by 
+clicking on the Camera icon in the toolbar above the montage.
 
 ---------
 
 Video
 *******
 
-Para ver una captura de pantalla que muestra cómo verificar la imagen de su cráneo despojado, haga clic aquí
-    `__. Esto puede ayudarte con los ejercicios anteriores.
+To see a screencast demonstrating how to check your skullstripped image, click `here <https://youtu.be/VobRXk3ccNQ>`__. This may help you with the 
+exercises above.
 
-    
-   
 

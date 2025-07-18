@@ -1,27 +1,34 @@
-
-
-.. _Suavizado.primero:
+.. _Smoothing.rst:
   
-Capítulo 5: Suavizado
+Chapter 5: Smoothing
 =============
 
 ------
 
-¿Por qué Smooth?
+Why Smooth?
 -----------
 
-Es común suavizar los datos funcionales o reemplazar la señal de cada vóxel con un promedio ponderado de sus vecinos. Esto puede parecer extraño al principio: ¿por qué querríamos que las imágenes fueran más borrosas de lo que ya son?
+It is common to **smooth** the functional data, or replace the signal at each voxel with a weighted average of that voxel's neighbors. This may seem 
+strange at first - why would we want to make the images blurrier than they already are?
 
-Es cierto que el suavizado disminuye la resolución espacial de los datos funcionales, y no buscamos una menor resolución. Sin embargo, el suavizado también ofrece ventajas que pueden compensar las desventajas. Por ejemplo, sabemos que los datos de fMRI contienen mucho ruido, y que este suele ser mayor que la señal. Al promediar sobre vóxeles cercanos, podemos cancelar el ruido y mejorar la señal.
+It is true that smoothing does decrease the spatial resolution of your functional data, and we don't want less resolution. But there are benefits to 
+smoothing as well, and these benefits can outweigh the drawbacks. For example, we know that fMRI data contain a lot of noise, and that the noise is 
+frequently greater than the signal. By averaging over nearby voxels we can cancel out the noise and enhance the signal.
 
 
-.. figura:: Smoothing_Demo.gif
+.. figure:: Smoothing_Demo.gif
 
-  En esta animación, se aplican dos núcleos de suavizado diferentes (4 mm y 10 mm) a una resonancia magnética funcional. Observe que, al usar núcleos de suavizado más grandes, las imágenes se vuelven más borrosas y los detalles anatómicos se vuelven menos nítidos. También tenga en cuenta que, para simplificar, esta animación utiliza un corte 2D del cerebro para mostrar este paso de preprocesamiento. En datos reales de resonancia magnética funcional, el núcleo se aplicaría en las tres dimensiones.
+  In this animation, two different smoothing kernels (4mm and 10mm) are applied to an fMRI scan. Notice that as we use larger smoothing kernels, the 
+images become blurrier and the anatomical details become less distinct. Also note that, for the sake of simplicity, this animation uses a 2D slice of 
+the brain to demonstrate this preprocessing step. In actual fMRI data, the kernel would be applied in all three dimensions.
 
-.. (¿Habla aquí de un ejemplo de cómo funciona el promedio para dar lugar a una señal verdadera? Estoy pensando en el ejemplo en el que se les pregunta a diez estudiantes la población de la ciudad en la que están; ninguna estimación individual es correcta, pero si se promedia en conjunto, está bastante cerca de la población real).
+.. (Talk about an example here of how averaging works to give rise to a true signal? I'm thinking about the example in which ten students are asked the 
+population of the city they are in; no individual estimate is right, but averaged together it is pretty close to the true population.)
 
-El suavizado ofrece otra ventaja. Como verá en el siguiente capítulo, nuestro objetivo es **normalizar** el cerebro de cada sujeto a un cerebro modelo con coordenadas estandarizadas. Haga clic en el botón Siguiente para obtener más información sobre la normalización y cómo el suavizado puede ayudar a mejorar la potencia estadística.
+There is another benefit to smoothing. As you will see in the next chapter, our goal is to **normalize** every subject's brain to a template brain 
+which has standardized coordinates. Click on the Next button to learn more about Normalization, and how smoothing can help improve statistical power.
+
+
 
 
 

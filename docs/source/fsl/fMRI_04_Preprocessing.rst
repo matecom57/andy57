@@ -1,39 +1,44 @@
-
-
-.. _fMRI_04_Preprocesamiento:
+.. _fMRI_04_Preprocessing:
 
 
 =============
-Tutorial de fMRI n.° 4: Preprocesamiento
+fMRI Tutorial #4: Preprocessing
 =============
 
 
-.. nota::
-  Muchos de los ejemplos se ejecutan desde el directorio ``Flanker/sub-08``; recomiendo navegar a ese directorio con su Terminal antes de leer el resto del capítulo.
+.. note::
+  Many of the examples are run from the ``Flanker/sub-08`` directory; I recommend navigating to that directory with your Terminal before reading the 
+rest of the chapter.
   
    
-Descripción general
+Overview
 -------------
 
-Ahora que sabemos dónde están nuestros datos y cómo se ven, realizaremos el primer paso del análisis fMRI: **Preprocesamiento**.
+Now that we know where our data is and what it looks like, we will do the first step of fMRI analysis: **Preprocessing**.
 
-Piensa en el preprocesamiento como la limpieza de las imágenes. Al tomar una foto con una cámara, por ejemplo, hay varias cosas que puedes hacer para mejorarla:
+Think of preprocessing as cleaning up the images. When you take a photo with a camera, for example, there are several things you can do to make the 
+image look better:
 
-* Eliminar los ojos rojos;
-* Aumentar la saturación del color;
-*Eliminar sombras.
+* Remove red eye;
+* Increase color saturation;
+* Remove shadows.
 
-.. figure:: Antes_Después_De_Edición.png
+.. figure:: Before_After_Editing.png
 
-  Una foto que tomamos con una cámara puede ser oscura, borrosa o con ruido (panel izquierdo). Tras editar la imagen mejorando el contraste, reduciendo el desenfoque y aumentando el brillo, obtenemos una imagen más definida y nítida.
+  A picture we take with a camera may be dark, blurry, or noisy (left panel). After editing the image by enhancing contrast, reducing blur, and 
+increasing brightness, we end up with a more defined and clearer picture.
 
-De manera similar, cuando preprocesamos datos fMRI, limpiamos las imágenes tridimensionales que adquirimos cada :ref:`TRUn volumen fMRI contiene no solo la señal que nos interesa (cambios en la sangre oxigenada), sino también fluctuaciones que no nos interesan, como el movimiento de la cabeza, las desviaciones aleatorias, la respiración y los latidos del corazón. A estas fluctuaciones las llamamos **ruido**, ya que queremos separarlas de la señal que nos interesa. Algunas de estas fluctuaciones pueden eliminarse de los datos mediante su modelado (lo cual se explica en el capítulo sobre ajuste de modelos), y otras pueden reducirse o eliminarse mediante preprocesamiento.
+Similarly, when we preprocess fMRI data we are cleaning up the three-dimensional images that we acquire every :ref:`TR <Repetition_Time>`. An fMRI 
+volume contains not only the signal that we are interested in - changes in oxygenated blood - but also fluctuations that we are not interested in, such 
+as head motion, random drifts, breathing, and heartbeats. We call these other fluctuations **noise**, since we want to separate them from the signal 
+that we are interested in. Some of these can be regressed out of the data by modeling them (which is discussed in the chapter on modeling fitting), and 
+others can be reduced or removed by preprocessing.
 
-Para comenzar a preprocesar los datos del sub-08, lea las siguientes descripciones de cada paso.
+To begin preprocessing sub-08's data, read the following descriptions of each step.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Pasos de preprocesamiento
+   :caption: Preprocessing Steps
 
    Preprocessing/Skull_Stripping
    Preprocessing/FEAT_GUI
@@ -44,20 +49,19 @@ Para comenzar a preprocesar los datos del sub-08, lea las siguientes descripcion
    Preprocessing/Checking_Preprocessing
    Preprocessing/Checkpoint
 
-
 ---------
 
 Video
 *********
 
-Cuando hayas terminado todos los capítulos, haz clic aquí
-    `__ para una lista de reproducción que contiene todos los videos utilizados para demostrar los pasos de preprocesamiento.
+When you have finished all of the chapters, click `here <https://www.youtube.com/watch?v=VobRXk3ccNQ&list=PLIQIswOrUH6-rpwcmo2ewY2wi4Yoym9ft>`__ for a 
+playlist containing all of the videos used to demonstrate the preprocessing steps.
 
-.. nota::
-  Los distintos paquetes de software realizan estos pasos en un orden ligeramente distinto; por ejemplo, FSL normaliza los mapas estadísticos tras el ajuste del modelo. También existen análisis que omiten ciertos pasos; por ejemplo, quienes realizan análisis de patrones multivóxel no suavizan sus datos. En cualquier caso, la lista anterior representa los pasos más comunes que se realizan en un conjunto de datos típico.
+.. note::
+  Different software packages will do these steps in slightly different order - for example, FSL will normalize the statistical maps after model 
+fitting. There are also analyses which omit certain steps - for example, some people who do multi-voxel pattern analyses don't smooth their data. In 
+any case, the list above represents the most common steps that are performed on a typical dataset.
   
   
 
-    
-   
 

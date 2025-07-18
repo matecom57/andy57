@@ -1,23 +1,36 @@
-Introducción
+.. _fMRI_Intro:
+
+============
+Introduction
 ============
 
-Este curso le mostrará cómo analizar un conjunto de datos de fMRI de principio a fin. Comenzaremos **descargando un conjunto de datos de muestra** e inspeccionando las imágenes anatómicas y funcionales de cada sujeto. A continuación, **preprocesaremos los datos**, lo que elimina el ruido y mejora la señal en las imágenes. Una vez preprocesadas las imágenes, crearemos un modelo que represente lo que creemos que es la señal :ref:`BOLD`, una medida de la actividad neuronal, debería verse así en nuestras imágenes. Durante el **ajuste del modelo**, comparamos este modelo con la señal en diferentes áreas de la imagen. Este ajuste del modelo mide la intensidad de la señal en diferentes condiciones; por ejemplo, podemos tomar la diferencia de la señal entre las condiciones A y B del experimento para ver qué condición produce una respuesta BOLD mayor.
+This course will show you how to analyze an fMRI dataset from start to finish. We will begin by **downloading a sample dataset** and inspecting the 
+anatomical and functional images for each subject. We will then **preprocess the data**, which removes noise and enhances the signal in the images. 
+Once the images have been preprocessed, we will create a model representing what we think the :ref:`BOLD signal <BOLD_Response>`, a measure of neural 
+activity, should look like in our images. During **model fitting** we compare this model with the signal in different areas of the image. This model 
+fit is a measure of the strength of the signal under different conditions - for example, we can take the difference of the signal between conditions A 
+and B of the experiment to see which condition leads to a larger BOLD response.
 
-Una vez creado un modelo para cada sujeto y estimada la respuesta BOLD para cada condición, podemos realizar cualquier tipo de análisis de grupo: pruebas t pareadas, pruebas t intergrupales, interacciones, etc. El objetivo de este curso es calcular un contraste intrasujeto simple entre dos condiciones y comprobar su significancia entre sujetos. También aprenderá a crear figuras que muestren análisis de cerebro completo similares a los publicados en revistas de neuroimagen, y a realizar un análisis de región de interés (ROI).
+Once a model has been created for each subject and the BOLD response has been estimated for each condition, we can do any kind of group analysis we 
+like: Paired t-tests, between-group t-tests, interactions, and so on. The goal of this course is to calculate a simple within-subjects contrast between 
+two conditions, and test whether it is significant across subjects. You will also learn how to create figures showing whole-brain analyses similar to 
+what you see published in the neuroimaging journals, and how to do a region of interest (ROI) analysis.
 
 .. figure:: Final_Map.png
 
-    Una figura que muestra los resultados a nivel de grupo de los datos utilizados en este curso, representados como un mapa estadístico z. Los colores más brillantes indican puntuaciones z más altas. Comenzará preprocesando los datos sin procesar y terminará creando un mapa estadístico como este.
+    A figure showing group-level results from the data used in this course, represented as a z-statistic map. Brighter colors indicate larger z-scores. 
+You will begin by preprocessing the raw data and end with creating a statistical map like this one.
     
 
-Este curso está diseñado para desarrollar su confianza al trabajar con datos de fMRI, mejorar su dominio de los términos básicos del análisis de fMRI y ayudarle a tomar decisiones informadas en cada paso. Algunos capítulos incluyen ejercicios para practicar lo aprendido y prepararlo para el siguiente capítulo. Una vez que domine los fundamentos de este curso, podrá aplicarlos a otros conjuntos de datos de su elección.
+This course is designed to build your confidence in working with fMRI data, increase your fluency with the basic terms of fMRI analysis, and help you 
+make educated choices during each step. Some chapters have exercises for practicing what you've learned and to prepare you for the next chapter. Once 
+you have mastered the fundamentals of this course, you will be able to apply them to other datasets of your choosing.
 
 
-.. nota::
-    No profundizaremos en la física de la resonancia magnética. Para una revisión de este tema, recomiendo los capítulos 1 a 5 del libro *Functional Magnetic Resonance Imaging*, de Huettel, Song y McCarthy (3.ª edición). Véase también el excelente libro de Allen Elster, "MRI Questions".
-    `__ sitio web para ilustraciones útiles de conceptos de resonancia magnética.
+.. note::
+    We will not be covering MRI physics in depth. For a review of that topic, I recommend chapters 1-5 of the book *Functional Magnetic Resonance 
+Imaging*, by Huettel, Song, & McCarthy (3rd Edition). Also see Allen Elster's excellent `MRI Questions <http://mriquestions.com/index.html>`__ website 
+for useful illustrations of MRI concepts.
 
 
-    
-   
 

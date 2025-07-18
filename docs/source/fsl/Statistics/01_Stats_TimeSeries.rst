@@ -1,24 +1,34 @@
-Capítulo 1: Las series temporales
+.. _01_Stats_TimeSeries.rst
+
+Chapter 1: The Time-Series
 ***********
 
-Para comprender cómo funciona el ajuste de modelos, primero debemos revisar la composición de los datos de fMRI. Recuerde que los conjuntos de datos de fMRI contienen varios **volúmenes** unidos como cuentas en un collar; a esta cadena concatenada de volúmenes la llamamos **serie** de datos. La señal que se mide en cada vóxel a lo largo de toda la serie se denomina **serie temporal**.
+To understanding how model fitting works, first we need to review the composition of fMRI data. Remember that fMRI datasets contain several **volumes** 
+strung together like beads on a string - we call this concatenated string of volumes a **run** of data. The signal that is measured at each voxel 
+across the entire run is called a **time-series**.
 
-.. nota::
+.. note::
 
-  En SPM, una ejecución se denomina **sesión**. Algunos términos no se han estandarizado en los paquetes de análisis, pero para los fines de este curso, seguiré con la definición de ejecución anterior.
+  In SPM, a run is called a **session**. Some terms have not been standardized across the analysis packages, but for the purporses of this course I 
+will continue with the above definition of a run.
 
-Para ilustrar cómo se ve esto, abra el visor fsleyes y cargue el conjunto de datos ``filtered_func_data.nii.gz``. En la esquina inferior derecha se encuentra una ventana denominada ``Ubicación``, con un campo llamado ``Volumen``. Este indica el volumen actual en la serie temporal que se muestra en la ventana de visualización. Haga clic en la flecha hacia arriba junto al campo para mostrar el siguiente volumen de la serie temporal, observando cómo hay cambios pequeños pero perceptibles de un volumen a otro.
+To illustrate what this looks like, open up the fsleyes viewer and load the dataset ``filtered_func_data.nii.gz``. In the lower right corner is a 
+window labeled ``Location``, with a field called ``Volume``. This indicates the current volume in the time-series that is displayed in the viewing 
+window. Click up the up arrow next to the field to display the next volume in the time-series, noting how there are small but noticeable changes from 
+one volume to the next.
 
-.. nota::
-  Para ver la actualización de la serie temporal de forma más rápida y continua, haga clic en el icono del carrete de película. Puede modificar la velocidad de actualización haciendo clic en el icono de la llave inglesa.
+.. note::
+  To see the time-series update at a quicker, continuous pace, click on the Movie Reel icon. The update rate can be changed by clicking on the Wrench 
+icon.
 
-A continuación, haga clic en el menú "Ver" en la parte superior de la pantalla y seleccione "Series temporales". Se abrirá otra ventana que muestra los cambios en la señal a lo largo de toda la serie temporal, con el número de volumen en el eje x. El eje y se mide en unidades arbitrarias de la señal fMRI que captura el escáner; estas unidades serán interpretables después de normalizarlas para cada exploración y comparar esta señal normalizada entre las condiciones.
+Then, click on the ``View`` menu at the top of the screen and select ``Time series``. This opens up another window that displays changes in signal 
+across the entire time-series, with the volume number on the x-axis. The y-axis is measured in arbitrary units of fMRI signal that are collected by the 
+scanner; these units will be interpretable after we normalize them for each scan and compare this normalized signal between conditions.
 
-.. figura:: TimeSeriesDemo.gif
+.. figure:: TimeSeriesDemo.gif
 
 
-La serie temporal representa la señal que se mide en cada vóxel, pero ¿de dónde proviene? En el siguiente capítulo, repasaremos brevemente la historia de la fMRI y cómo generamos la señal que se ve en el visor.
-
-
+The time-series represents the signal that is measured at each voxel, but where does that signal come from? In the next chapter we will briefly review 
+the history of fMRI and how we generate the signal you see in the viewer.
 
 

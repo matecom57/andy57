@@ -1,52 +1,60 @@
+.. _Checkpoint.rst
 
 
-.. _Punto de control.rst
-
-
-Punto de control: preprocesamiento
+Checkpoint: Preprocessing
 ==========
 
-Ahora es un buen momento para repasar lo que hemos hecho hasta ahora:
+Now is a good time to review what we have done so far:
 
-1. Descargamos un conjunto de datos fMRI que tiene imágenes anatómicas y funcionales;
+1. We downloaded an fMRI dataset that has anatomical and functional images;
 
-2. Miramos los datos en FSLeyes, el visor de datos de FSL;
+2. We looked at the data in FSLeyes, FSL's data viewer;
 
-3. Preprocesamos los datos utilizando FEAT, la herramienta de preprocesamiento de FSL.
-
-
-Durante el proceso, aprendiste a revisar las imágenes antes y después de cada paso de preprocesamiento. Al aplicar los mismos controles de calidad a diferentes conjuntos de datos, te encontrarás con imágenes difíciles de evaluar; pueden parecer estar en el límite entre lo aceptable y lo inaceptable.
-
-Al principio puede resultar confuso. Pero con el tiempo, desarrollarás tu criterio sobre qué imágenes son claramente buenas, cuáles son obviamente malas y cuáles debes considerar cuidadosamente antes de conservarlas o descartarlas. Cuanto más pienses en por qué los resultados de un preprocesamiento se ven bien o mal, más fácil te resultará tomar decisiones con mayor rapidez y precisión.
+3. We preprocessed the data using FEAT, FSL's preprocessing tool.
 
 
-Pruebe los siguientes ejercicios para aumentar su fluidez con FSL y mejorar su juicio sobre el resultado de cada paso.
+Along the way you learned how to check the images before and after each preprocessing step. As you apply the same quality checks to different datasets, 
+you will come across images that are difficult to judge - they may seem to be on the border of being acceptable or unacceptable.
+
+It may be confusing at first. But over time you will develop your judgment about what images are clearly good, which ones are obviously bad, and which 
+ones you will need to think carefully about either keeping or discarding. The more you think about why the results of a preprocessing step look good or 
+bad, the easier it will become to make your judgments quicker and more accurately.
+
+
+Try the following exercises in order to increase your fluency with FSL and to improve your judgment about the output from each step.
 
 -----------
 
-Ceremonias
+Exercises
 ********
 
-1. Ejecute BET en la imagen anatómica ``sub-08_T1w.nii.gz`` con dos umbrales de intensidad fraccional: 0,1 y 0,9. Tome una instantánea de cada imagen de salida con FSLeyes usando el botón de la cámara (ubicado en la parte superior central del visor). Observe las diferencias entre ambas. ¿El resultado es el esperado? Si tuviera que usar una u otra imagen, ¿cuál elegiría?
+1. Run BET on the anatomical image ``sub-08_T1w.nii.gz`` with two separate fractional intensity thresholds: 0.1 and 0.9. Take a snapshot of each output 
+image with FSLeyes using the camera button (it is located in the upper middle part of the viewer). Note the differences between the two. Is the output 
+what you expected? If you had to use one image or the other, which one would you choose?
 
-2. Preprocese la segunda ejecución de los datos funcionales mediante la interfaz gráfica de usuario de FEAT. Para ello, seleccione ``sub-08_task-flanker_run2.nii.gz`` en el directorio ``func``, cambie el directorio de salida a ``run2`` y asegúrese de que ``Preprocesamiento`` esté seleccionado en el menú desplegable. Mantenga los demás ajustes como en el análisis de la primera ejecución. Realice las mismas comprobaciones de calidad que para la primera ejecución.
+2. Preprocess run 2 of the functional data using the FEAT GUI. To do this, select ``sub-08_task-flanker_run2.nii.gz`` from the ``func`` directory, 
+change the output directory to ``run2``, and make sure ``Preprocessing`` is selected from the dropdown menu. Keep the other settings the same as when 
+you analyzed run 1. Do the same quality checks that you did for run 1.
 
-3. Preprocese la primera ejecución con un kernel de suavizado de 3 mm, manteniendo las demás opciones de preprocesamiento iguales. (Asegúrese, sin embargo, de cambiar el nombre del directorio de salida para mantener la salida organizada). Antes de examinar la salida, ejecute otro análisis con un kernel de suavizado de 12 mm. Piense en cómo esperaría que se vieran los datos funcionales preprocesados y luego cargue las imágenes ``filtered_func_data.nii.gz`` de cada análisis en FSLeyes. ¿Cómo se comparan con sus predicciones?
+3. Preprocess run 1 using a 3mm smoothing kernel, keeping the other preprocessing options the same. (Make sure, however, to change the output directory 
+to a new name in order to keep the output organized.) Before you look at the output, run another analysis with a 12mm smoothing kernel. Think about 
+what you would expect the preprocessed functional data to look like, and then load the ``filtered_func_data.nii.gz`` images from each analysis into 
+FSLeyes. How do they compare to your predictions?
 
-4. Preprocese la ejecución 1 con ``3DOF`` para el registro y la normalización. ¿En qué se diferencia el resultado del preprocesamiento con ``12DOF``? ¿Por qué? (Sugerencia: Revise el registro y la normalización)` página para conocer las posibles razones).
+4. Preprocess run 1 using ``3DOF`` for registration and normalization. How is the output different from what you saw when you ran the preprocessing 
+with ``12DOF``? Why? (Hint: Review the :ref:`Registration and Normalization <Registration_Normalization>` page for possible reasons.)
 
-5. Vuelva a ejecutar el registro para la primera ejecución usando ``BBR`` en lugar de ``12DOF``. ¿Qué diferencia hay? ¿Cómo argumentaría a alguien que debería usar uno en lugar del otro?
+5. Rerun registration for run 1 using ``BBR`` instead of ``12DOF``. What difference does it make? How would you make a case to someone that you should 
+use one instead of the other?
 
 
 --------------
 
-Cuando haya terminado de realizar los ejercicios, haga clic en el botón Siguiente para comenzar el módulo sobre Estadística y Modelado.
+When you have finished doing the exercises, click on the Next button to begin the module on Statistics and Modeling.
 
-.. advertencia::
+.. warning::
 
-  Asegúrese de haber preprocesado tanto ``run1`` como ``run2`` antes de continuar; necesitará ambos para ejecutar un análisis de nivel superior y utilizar los scripts que se proporcionan en ``Github``.
-    `__.
+  Make sure you have preprocessed both ``run1`` and ``run2`` before proceeding; you will need both of them in order to run a higher-level analysis and 
+use the scripts that are provided on `Github <https://github.com/andrewjahn/FSL_Scripts>`__.
 
-    
-   
 

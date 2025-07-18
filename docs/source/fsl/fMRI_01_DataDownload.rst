@@ -1,53 +1,53 @@
-
-
-.. _fMRI_01_Descarga de datos:
+.. _fMRI_01_DataDownload:
 
 ==============
-Tutorial de fMRI n.° 1: Descarga de datos
+fMRI Tutorial #1: Downloading the Data
 ==============
 
 
-Descripción general
+Overview
 --------------
 
-En este curso, analizaremos un conjunto de datos de fMRI que utilizó la tarea Flanker. El conjunto de datos se puede encontrar aquí.`__ en el `OpenNeuro 
-    `__ sitio web, un repositorio en línea de datos de neuroimagen. (En caso de que el enlace de descarga en esa página web no funcione, vaya `aquí 
-     `__ y haga clic en el enlace "todos los datos de los sujetos").
+For this course we will be analyzing an fMRI dataset that used the Flanker task. The dataset can be found `here 
+<https://openneuro.org/datasets/ds000102/versions/00001>`__ on the `OpenNeuro <https://openneuro.org>`__ website, an online repository for neuroimaging 
+data. (In case the download link on that webpage doesn't work, go `here <https://legacy.openfmri.org/dataset/ds000102/>`__ and click on the "all data 
+for subjects" link.)
 
 
 .. figure:: OpenNeuro_Flanker.png
 
-    La página de OpenNeuro para el conjunto de datos Flanker incluye un árbol de archivos del conjunto de datos, que incluye las carpetas «anat» (que contiene la imagen anatómica) y «func» (que contiene las imágenes funcionales y las horas de inicio de cada ejecución). Hay archivos adicionales que contienen datos del sujeto, como sexo y edad («participants.tsv») y parámetros de escaneo («task-flanker_bold.json»). Un árbol de directorios estandarizado como este facilita enormemente la creación de scripts, como veremos en un tutorial posterior.
+    The OpenNeuro page for the Flanker dataset includes a Dataset File Tree, which includes the folders ``anat`` (containing the anatomical image) and 
+``func`` (containing the functional images and onset times for each run). There are additional files containing subject data such as sex and age 
+(``participants.tsv``) and scanning parameters (``task-flanker_bold.json``). A standardized directory tree such as this makes scripting much easier, as 
+we will see in a later tutorial.
     
     
-Descargue el conjunto de datos haciendo clic en el botón "Descargar" en la parte superior de la página. El conjunto de datos ocupa aproximadamente 2 GB y viene en una carpeta comprimida. Extráigalo haciendo doble clic en la carpeta y luego muévalo a su escritorio.
+Download the dataset by clicking on the "Download" button at the top of the page. The dataset is about 2 Gigabytes, and comes in a zipped folder. 
+Extract it by double-clicking on the folder, and then move it to your Desktop.
 
 .. figure:: OpenNeuro_DownloadButton.png
 
 
-Después de haber descargado y descomprimido el conjunto de datos, haga clic en el botón Siguiente para obtener una descripción general de la tarea experimental utilizada en este estudio.
+After you have downloaded and unzipped the dataset, click on the Next button for an overview of the experimental task used in this study.
 
-Opciones de descarga alternativas
+Alternative Download Options
 ****************************
 
-Si el botón de descarga no funciona, intente utilizar `Amazon Web Services (AWS)
-     Opción `__. Ir a `esta página 
-     `__ y descargue el cliente de AWS adecuado para su sistema operativo. Una vez instalado, abra una terminal, vaya al escritorio y escriba lo siguiente:
+If the download button doesn't work, try using the `Amazon Web Services (AWS) <https://aws.amazon.com/>`__ option. Go to `this page 
+<https://aws.amazon.com/cli/>`__ and download the appropriate AWS client for your operating system. Once it has been installed, open a Terminal, 
+navigate to the Desktop, and type the following:
 
 ::
 
-    sincronización de aws s3: sin solicitud de firma s3://openneuro.org/ds000102 ds000102-download/
+    aws s3 sync --no-sign-request s3://openneuro.org/ds000102 ds000102-download/
 
-La descarga debería tardar aproximadamente media hora.
+It should take about half an hour to download.
 
 
 Video
 ******
 
-Para ver un video tutorial sobre cómo descargar los datos, haga clic aquí
-     `__. (El video se titula "Tutorial AFNI n.° 1", pero como es básicamente lo mismo que harás para FSL, decidí usar el mismo video para ambos tutoriales).
+For a video tutorial of how to download the data, click `here <https://www.youtube.com/watch?v=4Y0LfKNj8Ns>`__. (The video has the title "AFNI Tutorial 
+#1", but since it's essentially the same thing as what you'll be doing for FSL, I've decided to use the same video for both tutorials.)
 
-     
-    
-   
 
