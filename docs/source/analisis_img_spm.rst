@@ -1,102 +1,220 @@
 Analisis imagenes con SPM
 =========================
 
-Introducción a SPM
-
-Descarga e instalación de SPM
-
-Después de haber establecido la ruta, escriba lo siguiente desde la terminal de Matlab:
+Una vez descargado el paquete SPM, colóquelo en su directorio personal. Abra Matlab, haga clic en la pestaña "Inicio" y 
+luego en el botón "Establecer ruta". Seleccione el spm12directorio y haga clic en "Agregar con subcarpetas". Haga clic en 
+el botón "Guardar" para asegurarse de que la ruta se configure cada vez que abra Matlab y cierre la ventana.
 
 .. code:: Bash
 
    spm
 
-Tutorial de SPM n.° 1: Descarga de datos
-
-
-
-Tutorial de SPM n.º 2: La tarea de flanqueo
-
-
-
-Tutorial de SPM n.º 3: Análisis de los datos
-
-Primero, renombremos el conjunto de datos con un nombre claro e informativo. Si el conjunto de datos se ha descargado en el directorio de Descargas, 
-use la terminal de Matlab para navegar al Escritorio y escriba lo siguiente:
+SPM Tutorial #3: Looking at the Data
+------------------------------------
 
 .. code:: Bash
 
-   movefile('~/Descargas/ds000102_0001/', 'Flanker')
+   movefile('~/Downloads/ds000102_0001/', 'Flanker')
 
-Inspección de la imagen anatómica
+Inspecting the Anatomical Image
+-------------------------------
 
-Para empezar, veamos la imagen anatómica en la carpeta “anat” para “sub-08”. Si aún no ha abierto SPM, navegue a la carpeta sub-08 y escriba
+To begin, let’s take a look at the anatomical image in the anat folder for sub-08. If you haven’t already opened SPM, 
+navigate to the sub-08 folder and then type
 
 .. code:: Bash
 
    spm fmri
 
+SPM can read any image that are in NIFTI format, but they cannot be compressed - that is, if the datasets end with a .gz 
+extension, you will first need to unzip them by navigating to the directory containing the images and then type
+
 .. code:: Bash
 
    gunzip('*.gz')
 
-SPM lee la información del encabezado al cargar un archivo. La versión de línea de comandos se llama spm_vol. Desde la terminal de Matlab, navegue al 
-directorio sub-01/func, asegúrese de que los datos estén descomprimidos y escriba lo siguiente:
+SPM Tutorial #4: Preprocessing
+------------------------------
 
-.. code:: Bash
-
-   run1 = spm_vol('sub-01_task-flanker_run-1_bold.nii')
-   run1.fname
-
-Tutorial de SPM n.° 4: Preprocesamiento
-
-Para comenzar a preprocesar los datos de sub-08, lea los siguientes capítulos. Comenzaremos con la Realineación y la Corrección de la Temporización de 
-Corte , que corrigen desalineaciones y errores de sincronización en las imágenes funcionales, antes de pasar al Corregistro y la Normalización , que 
-alinean las imágenes funcionales y estructurales y las trasladan a un espacio estandarizado. Finalmente, las imágenes se suavizan para aumentar la 
-señal y eliminar el ruido. La secuencia típica de pasos de preprocesamiento se muestra en la imagen a continuación:
+To begin preprocessing sub-08’s data, read through the following chapters. We will begin with Realignment and Slice-Timing 
+Correction, which correct misalignments and timing errors in the functional images, before moving on to Coregistration and 
+Normalization, which align the functional and structural images and move them both to a standardized space. Finally, the 
+images are Smoothed in order to increase signal and cancel out noise. The typical sequence of preprocessing steps is 
+numbered in the image below:
 
 
 Capítulo 1: Realinear y corregir la distorsión de los datos
+-----------------------------------------------------------
 
-El primer paso del preprocesamiento es realinear las imágenes funcionales.
+Al hacer clic en el botón , se abre una ventana con las opciones para realinear y redividir los datos. Esta sección se 
+refiere a la estimación del grado de desalineación de cada volumen con respecto a un volumen de referencia e indica que 
+estas estimaciones se utilizarán para ajustar cada volumen a su nivel de referencia. El volumen de referencia se define en 
+el campo "Número de pasadas", que permite especificar si los volúmenes se alinearán con la media de todos los volúmenes o 
+con el primero. Para este tutorial, deje este valor predeterminado y los demás valores predeterminados sin 
+modificar.Realign (Estimate & Reslice)EstimateReslice
 
-El volumen de referencia se define en el campo "Número de pasadas", que permite especificar si los volúmenes se alinearán con la media de todos los 
-volúmenes o con el primero. Para este tutorial, deje este valor predeterminado y los demás valores predeterminados sin modificar.Realign (Estimate & 
-Reslice)EstimateReslice
+Loading the Images
+------------------
 
-Cargando las imágenes
+In this experiment, there were two runs of data per subject (SPM refers to each run as a session). If you click on the Data 
+field, you will see an option to add more sessions. Click on New: Session to add another session. You will see an <-X to 
+the right of each Session field, indicating that this field needs to be filled in before the program can be run.
 
-En este experimento, se realizaron dos ejecuciones de datos por sujeto (SPM se refiere a cada ejecución como una sesión ). Si hace clic en el 
-Datacampo, verá una opción para agregar más sesiones. Haga clic en para agregar otra sesión. Verá un a la derecha de cada campo de sesión, lo que 
-indica que debe completarse antes de ejecutar el programa.New: Session<-X
-
-Haga doble clic en la primera sesión para abrir la ventana de selección de imágenes. Navegue hasta el funcdirectorio y seleccione el archivo 
-sub-08_task-flanker_run-1_bold.nii,1. El símbolo ,1al final del nombre del archivo indica que solo se puede seleccionar el primer fotograma o volumen. 
-Para seleccionar todos los volúmenes de esa sesión, necesitaremos aumentar el número de fotogramas disponibles. En el Framescampo (debajo del 
-Filtercampo), escriba 1:146y presione Intro.
-
-Capítulo 2: Corrección de la sincronización de segmentos
-
-A diferencia de una fotografía, donde la imagen completa se toma en un solo instante, el volumen de fMRI se adquiere en cortes. Cada uno de estos 
-cortes tarda en adquirirse, desde decenas hasta cientos de milisegundos.
-
-Corrección de tiempos de corte en SPM
-
-Similar a lo que hicimos con Realignment , primero haremos clic en el botón en la interfaz gráfica de usuario de SPM. Haga clic en el campo y cree dos 
-nuevas sesiones. Haga doble clic en la primera sesión y, en la columna Filtro, escriba . En el campo Fotogramas, presione Intro; seleccione todos los 
-fotogramas que se muestran y haga clic en . Repita el mismo procedimiento para los archivos de ejecución 2 de la segunda sesión.Slice 
-TimingData^rsub-08_task-flanker_run-1.*1:146Done
+Double-click on the first session to open up the Image Selection window. Navigate to the func directory and select the file 
+sub-08_task-flanker_run-1_bold.nii,1. The ,1 at the end of the file name indicates that only the first frame, or volume, is 
+available for selection. In order to select all of the volumes for that run, we will need to expand the number of frames 
+available for selection. In the Frames field (underneath the Filter field), type 1:146 and press enter.
 
 
-Para el campo, necesitamos averiguar cuántas porciones hay en cada volumen de nuestro conjunto de datos. Desde la terminal de Matlab, navegue al 
-directorio y escriba:Number of Slicessub-08/func
+
+If you don’t know how many frames are in the current dataset, you can set the upper bound to an arbitrarily high number - 
+e.g., 1:10000. The list of files will max out at the number of available frames, and so will ensure that you do not miss 
+any.
+
+When you are finished, click Done. Do the same procedure for the second session, using the Filter field to restrict your 
+search to frames containing the string run-2.
+
+Chapter 2: Slice-Timing Correction
+----------------------------------
+
+Doing Slice-Timing Correction in SPM
+------------------------------------
+
+Similar to what we did with Realignment, we will first click on the Slice Timing button in the SPM GUI. Click on the Data 
+field and create two new Sessions. Double-click on the first Session, and in the Filter column type 
+^rsub-08_task-flanker_run-1.*. In the Frames field, enter 1:146 and press enter; select all of the frames that are 
+displayed, and click Done. Do the same procedure for the run-2 files for the second session.
+
+For the Number of Slices field, we will need to find out how many slices there are in each of the volumes in our dataset. 
+From the Matlab terminal navigate to the directory sub-08/func and type:
 
 .. code:: Bash
 
    V = spm_vol('sub-08_task-flanker_run-1_bold.nii')
 
-Esto cargará el encabezado de la imagen en una variable llamada V. Si escribe Vy pulsa Intro, verá que contiene los siguientes campos:
+Chapter 3: Coregistration
+-------------------------
 
-Capítulo 3: Corregistro
+Co-registration with SPM
+------------------------
+
+To co-register the functional and anatomical images, go back to the SPM GUI and click on Coregister (Estimate & Reslice). 
+This will open up a batch editor window with only two fields that need to be filled in - a Reference Image and a Source 
+Image.
+
+Double-click on the Reference Image, and select the meansub-08_task-flanker_run-1_bold.nii. For the source image, navigate 
+to the anat directory and select the file sub-08_T1w.nii. Then click the green Go button. This step should only take a few 
+moments.
+
+Chapter 4: Segmentation
+-----------------------
+
+Setting up the Segmentation step only requires the coregistered anatomical file as input. Click on the Segmentation button 
+from the SPM GUI, and double-click the Volumes field. Select the file rsub-08_T1w.nii, and then set the Save Bias Corrected 
+field from Save Nothing to Save Bias Corrected. Lastly, at the very bottom of the menu, change Deformation Fields to 
+Forward. Then click the green Go button.
+
+Chapter 5: Normalization
+------------------------
+
+Chapter 6: Smoothing
+--------------------
+
+How to Smooth in SPM
+--------------------
+
+In the SPM GUI, click on the Smooth button and double-click on Images to Smooth. Select the warped functional images, and 
+expand them to include all 146 frames for each run. (See the previous chapters for examples on how to use the Filter and 
+Frames fields to select the images that you want.) Leave the other defaults as they are, and then click on the green Go 
+button.
+
+SPM Tutorial #5: Statistics and Modeling
+----------------------------------------
+
+Chapter 1: The Time-Series
+
+Chapter 2: History of the BOLD Signal
+
+Chapter 3: The Hemodynamic Response Function (HRF)
+
+Chapter 4: The General Linear Model
+-----------------------------------
+
+Chapter 5: Creating Timing Files
+--------------------------------
+
+Chapter 6: Running the First-Level Analysis
+-------------------------------------------
+
+Specifying the Model
+--------------------
+
+Having created the timing files in the previous chapter, we can use them in conjunction with our imaging data to create 
+statistical parametric maps. These maps indicate the strength of the correlation between our ideal time-series (which 
+consists of our onset times convolved with the HRF) and the time-series that we collected during the experiment. The amount 
+of modulation of the HRF is represented by a beta weight, and this in turn is converted into a t-statistic when we create 
+contrasts using the SPM contrast manager.
+
+To begin, from the SPM GUI click on Specify 1st-Level. Note that the first field that needs to be filled in is the 
+Directory field. To keep our results organized, go to the Matlab terminal, navigate to the sub-08 directory, and type mkdir 
+1stLevel. Then double-click on Directory and select the 1stLevel directory you just created. All of the output of the 
+1st-level analysis will go into this folder.
+
+
+Next, we will fill in the Timing parameters section. Under Units for design, select Seconds, and enter a value of 2 for 
+Interscan Interval. Then click on Data & Design, and click twice on New: Subject/Session to create two new sessions. For 
+the Scans of the first session, go to the func directory and use the Filter and Frames fields to select all 146 volumes of 
+the warped functional data (i.e., those files beginning with swar). Do the same for the volumes in the second session.
+
+Go back to the field for the first session. There are two conditions in the experiment, and both conditions occur in each 
+run. Click on Conditions and then New: Condition twice to create two new Condition fields. For the first condition, 
+double-click on Name and type Inc.
+
+We will now need the onset times for each occurrence of the Incongruent condition. From the Matlab terminal, navigate to 
+the func directory and type:
+
+.. code:: Bash
+
+   IncRun1 = importdata('incongruent_run1.txt');
+   IncRun1(:,1)
+
+Which will return the onset times for the Incongruent condition of run 1. Double-click on the Onsets field, and copy and 
+paste the onset times into the window. Click Done.
+
+In this experiment each trial lasted for 2 seconds. We can therefore enter the number 2 in the Durations field, and SPM 
+will assume that it is the same duration for every trial.
+
+Now do the same procedure for the Congruent condition for run 1, and the Incongruent and Congruent conditions for run 2, 
+remembering to enter a duration value of 2 for all of them. Here is the code to display the onset times for each of the 
+remaining onset times that you will need:
+
+.. code:: Bash
+
+   ConRun1 = importdata('congruent_run1.txt');
+   ConRun1(:,1)
+   IncRun2 = importdata('incongruent_run2.txt');
+   IncRun2(:,1) 
+   ConRun2 = importdata('congruent_run2.txt');
+   ConRun2(:,1)
+
+Estimating the Model
+---------------------
+
+Now that we have created our GLM, we will need to estimate the beta weights for each condition. From the SPM GUI click 
+Estimate, and then double-click on the field Select SPM.mat. Change the Write residuals option to Yes. Navigate to the 
+1stLevel directory and select the SPM.mat file, and then click the green Go button. This will take a few minutes to run.
+
+The Contrast Manager
+--------------------
+
+To create these contrasts, click on the Results button of the SPM GUI, and select the SPM.mat file that was generated after 
+estimating the model. You will see the design matrix on the right side of the panel. Click on Define New Contrast, and in 
+the Name field type Inc-Con. In the contrast vector window, type 0.5 -0.5 0.5 -0.5, and then click submit. If the contrast 
+is valid, you should see green text at the bottom of the window saying “name defined, contrast defined”. Make sure that 
+your contrast manager looks like the figure below, and then click OK to create the contrast.
+
+Examining the Output
+--------------------
+
 
 
