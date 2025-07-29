@@ -5,7 +5,11 @@ Analisis de datos con freesurfer
 
    ls sub-112/ses-BL/anat
 
-Tutorial n.º 3 de FreeSurfer: Reconocimiento total
+FreeSurfer Tutorial #3: Recon-all
+---------------------------------
+
+Using the Recon-all command
+---------------------------
 
 .. code:: Bash
 
@@ -15,30 +19,36 @@ Tutorial n.º 3 de FreeSurfer: Reconocimiento total
    
    recon-all -s <subjectName> -qcache
 
-Tutorial de FreeSurfer n.° 4: Ejecución de recon-all en paralelo
+FreeSurfer Tutorial #4: Running recon-all in Parallel
+-----------------------------------------------------
 
-
-Descarga del comando paralelo
+Downloading the Parallel Command
+--------------------------------
 
 Volviendo a FreeSurfer, normalmente solo se usa un núcleo cada vez que se ejecuta recon-all. Con un comando 
 llamado parallel , cada instancia de recon-all se puede asignar a un núcleo diferente. Si usa una computadora 
 Macintosh, puede ver el número de núcleos escribiendo lo siguiente:
 
+.. code:: Bash
 
-Uso del comando paralelo
+   sysctl hw.physicalcpu hw.logicalcpu
 
 
-Parallel se ejecuta canalizando la salida del lscomando hacia el comando paralelo. Por ejemplo, si tiene seis 
-imágenes anatómicas etiquetadas como sub1.nii, sub2.nii y sub6.nii, puede analizarlas en paralelo escribiendo 
-lo siguiente:
+Using the Parallel Command
+--------------------------
 
+If you want to store the results of recon-all in the directory from which you run parallel, type export ``SUBJECTS_DIR=`pwd```.
+
+Parallel is run by piping the output of the ls command into the parallel command. For example, if you have six anatomical images 
+labeled sub1.nii, sub2.nii … sub6.nii, you can analyze them in parallel by typing the following:
 
 .. code:: Bash
 
    ls *.nii | parallel --jobs 8 recon-all -s {.} -i {} -all -qcache
- 
-Análisis del conjunto de datos sobre el cannabis
 
+Analyzing the Cannabis Dataset
+------------------------------
+ 
 .. code:: Bash
 
    ls .. | grep ^sub- > subjList.txt
@@ -59,10 +69,16 @@ Análisis del conjunto de datos sobre el cannabis
      mv ${sub}_ses-BL_T1w.nii ${sub}
    done
 
+The next tutorial will show you another way to batching your recon-all processes by using a supercomputer: The Open Science Grid.
 
-Tutorial n.º 5 de FreeSurfer: Cómo usar la cuadrícula de ciencia abierta
+FreeSurfer Tutorial #5: Using the Open Science Grid
+---------------------------------------------------
 
-Preparación de sus datos para la Red de Ciencia Abierta
+Preparing Your Data for the Open Science Grid
+---------------------------------------------
+
+You will also need a command called fsurf to submit recon-all jobs to the Open Science Grid supercomputer. To download this command, 
+type:
 
 .. code:: Bash
 
@@ -73,19 +89,19 @@ Preparación de sus datos para la Red de Ciencia Abierta
 
    sudo mv fsurf /bin
 
+Next, create a list of all of the subjects by typing the following code:
 
 .. code:: Bash
 
    ls | grep sub- > subjList.txt
 
-Envío de trabajos de Recon-All
 
-Primero deberá ejecutar recon-all en sus imágenes anatómicas, omitiendo la -allopción. Esto creará una serie 
-de directorios y luego convertirá la imagen anatómica al formato .mgz y la colocará en el mri/origdirectorio. 
-El siguiente código puede copiarse y pegarse en la terminal o copiarse en un script de shell y ejecutarse con 
-tcsh:
+Submitting Recon-All Jobs
+-------------------------
 
-
+First you will need to run recon-all on your anatomical images, omitting the -all option. This will create a series of directories, 
+and then convert the anatomical image to .mgz format and place it in the mri/orig directory. The following code can be either copied 
+and pasted into the Terminal, or you can copy it into a shell script and run it with tcsh:
 
 .. code:: Bash
 
@@ -102,9 +118,7 @@ tcsh:
       endif
   end
 
-
-Una vez finalizado, puedes enviar los trabajos usando fsurf. En este ejemplo, he incluido fsurfun bucle for:
-
+Once that has finished, you can submit the jobs using fsurf. In this example, I’ve placed fsurf in a for-loop:
 
 .. code:: Bash
 
@@ -114,7 +128,13 @@ Una vez finalizado, puedes enviar los trabajos usando fsurf. En este ejemplo, he
       cd ../../..
    end
 
-Descargar o eliminar trabajos
+The status of the jobs can then be checked by typing fsurf list, which will print several columns to the screen. The first column is 
+the subject name, the second column is the subject ID assigned by the Open Science Grid supercomputer, and the second-to-last column 
+specifies whether the job is running, completed, or has failed. Periodically check the status of these jobs to see which ones can be 
+downloaded.
+
+Downloading or Removing Jobs
+----------------------------
 
 .. code:: Bash
 
@@ -124,68 +144,58 @@ Descargar o eliminar trabajos
 
    fsurf remove --id <subjID>
 
-Tutorial de FreeSurfer n.º 6: Freeview
+FreeSurfer Tutorial #6: Freeview
 
-Opciones de Freeview desde la línea de comandos
-
+Freeview Options from the Command Line
 
 .. code:: Bash
 
    freeview -v mri/orig.mgz mri/aseg.mgz:colormap=LUT -f surf/lh.pial:edgecolor=yellow
 
+FreeSurfer Tutorial #7: The FSGD File
+-------------------------------------
 
-Tutorial de FreeSurfer n.° 7: El archivo FSGD
+Before starting this tutorial, create a directory called FS within the Cannabis directory. The FS directory should contain all of the 
+directories that have been generated by recon-all. Either run the recon-all commands from that directory, or move them into the FS 
+directory with the mv command.
 
+Comparing Groups
+----------------
 
-Antes de comenzar este tutorial, cree un directorio llamado FSdentro del Cannabisdirectorio. Este 
-FSdirectorio debe contener todos los directorios generados por recon-all. Ejecute los comandos recon-all 
-desde ese directorio o muévalos al directorio FS con el mvcomando.
+Organizing the Directories
 
-Organizando los directorios
+First, we will copy the fsaverage template into our current directory. Navigate to the Cannabis directory which contains all of the 
+subjects (i.e., Cannabis/FS), and then type:
+
 
 .. code:: Bash
 
    cp -R $FREESURFER_HOME/subjects/fsaverage .
 
-Para copiar la plantilla fsaverage. Una vez hecho esto, establezca la variable SUBJECTS_DIR en el directorio 
-actual escribiendo . Esto colocará la salida de cualquier comando recon-all o de análisis de grupo en el 
-directorio actual:export SUBJECTS_DIR=`pwd`
+to copy the fsaverage template. When that is done, set the SUBJECTS_DIR variable to the current directory by typing export 
+SUBJECTS_DIR=`pwd`. This will place the output of any recon-all or group analysis commands into the current directory:
 
 .. code:: Bash
 
    setenv SUBJECTS_DIR `pwd`
 
-
-También crearemos dos directorios llamados FSGDy Contrasts, que contendrán los archivos de texto necesarios 
-para ejecutar nuestro análisis:
-
+We will also create two directories called FSGD and Contrasts, which will contain the text files needed to run our analysis:
 
 .. code:: Bash
 
    mkdir FSGD Contrasts
 
-Creación del archivo FSGD
+Creating the FSGD File
+----------------------
 
-El conjunto de datos de cannabis incluye un archivo llamado " participants.tsvque contiene etiquetas y 
-covariables para cada sujeto: grupo, género, edad, inicio del consumo de cannabis, etc.". Para crear un 
-archivo de descriptor de grupo de FreeSurfer (FSGD), extraemos las covariables o etiquetas de grupo que nos 
-interesan y las formateamos de forma que FreeSurfer las comprenda. El archivo FSGD contendrá las covariables 
-que queremos contrastar y un archivo de contraste independiente indicará qué covariables contrastar y qué 
-ponderaciones asignarles.
-
-
-Para mantener nuestros archivos organizados, copie el archivo candidates.tsv en el directorio FSGD y cámbiele 
-el nombre CannabisStudy.tsv:
-
+To keep our files organized, copy the participants.tsv file into the FSGD directory, and rename it CannabisStudy.tsv:
 
 .. code:: Bash
 
    cp ../participants.tsv FSGD/CannabisStudy.tsv.
 
-Ahora, abra el archivo CannabisStudy.tsven Excel. Lo reformatearemos como un archivo FSGD, organizado de 
-forma que sea comprensible para los comandos de análisis de grupos que ejecutaremos más adelante. En la 
-primera columna, escriba las siguientes cuatro líneas:
-
+Now, open the file CannabisStudy.tsv in Excel. We will reformat it into an FSGD file, which is organized in such a way that can be 
+understood by the group analysis commands we will run later. In the first column, type the following four lines:
 
 .. code:: Bash
 
@@ -194,29 +204,55 @@ primera columna, escriba las siguientes cuatro líneas:
    Class HC
    Class CB
 
-Creando el archivo de contraste
+For now, save the spreadsheet as a Tab Delimited Text file by clicking on File -> Save As, and selecting “Tab Delimited Text” from 
+the File Format field. This will create a file called CannabisStudy.txt. Make sure this is saved into the FSGD directory. Then open a 
+Terminal, navigate to the FSGD directory, and type the following:
 
-Nuestro siguiente paso es crear un archivo de contraste que especifique los pesos de contraste para cada regresor de nuestro modelo. Las variables "Clase" que especificamos en el archivo FSGD son regresores de grupo: uno para el grupo de cannabis y otro para el grupo de control. Dado que solo tenemos dos regresores, solo necesitamos especificar dos pesos de contraste.
+.. code:: Bash
 
-Para especificar estos pesos, navegue hasta el Contrastsdirectorio y luego escriba:
+   tr '\r' '\n' < CannabisStudy.txt > CannabisStudy.fsgd
+
+
+Creating the Contrast file
+--------------------------
+
+
+To specify these weights, navigate to the Contrasts directory and then type:
 
 .. code:: Bash
 
    echo "1 -1" > HC-CB.mtx
 
-Ahora crea otro archivo de contraste para el contraste opuesto, es decir:
+Now create another contrast file for the opposite contrast, namely:
 
 .. code:: Bash
 
    echo "-1 1" > CB-HC.mtx
 
-Ceremonias
+Exercises
 
-Tutorial de FreeSurfer n.° 8: Análisis de grupo
+Now that we have created the files necessary for a group analysis, the next step is to run the group analysis itself. Before you 
+proceed, try the following exercises to test your understanding of what you just read.
 
-Creando un archivo de grupo con mris_preproc
 
-Para hacer el comando más compacto y adaptable a cualquier estudio que desee analizar, utilizaremos bucles for anidados:
+
+FreeSurfer Tutorial #8: Group Analysis
+--------------------------------------
+
+Creating a group file with mris_preproc
+---------------------------------------
+
+We will perform all of these steps with a single command: mris_preproc. The command requires the following arguments:
+
+1. An FSGD file (indicated by the --fsgd option);
+
+2. A template to resample to (--target);
+
+3. An indication of which hemisphere to resample (--hemi);
+
+4. A label for the output file (--out).
+
+To make the command more compact and to make it adaptable to any study you wish to analyze, we will use nested for-loops:
 
 .. code:: Bash
 
@@ -224,7 +260,7 @@ Para hacer el comando más compacto y adaptable a cualquier estudio que desee an
 
    setenv study $argv[1]
 
-   for each hemi (lh rh)
+   foreach hemi (lh rh)
      foreach smoothing (10)
        foreach meas (volume thickness)
          mris_preproc --fsgd FSGD/{$study}.fsgd \
@@ -236,22 +272,40 @@ Para hacer el comando más compacto y adaptable a cualquier estudio que desee an
      end
    end
 
+Copy this code into a shell script and save it as runMrisPreproc.sh. This code is also available for download here. Make sure the 
+script is in the directory containing all of the subject directories (in this case, Cannabis/FS), and then run it by typing tcsh 
+runMrisPreproc.sh.
 
-Ajuste del modelo lineal general con mri_glmfit
+If you haven’t used the -qcache option during recon-all, you can still smooth the data without having to rerun all of the 
+preprocessing steps; e.g.,
 
-Ahora que todos los sujetos están concatenados en un único conjunto de datos, podemos ajustar un modelo lineal general con mri_glmfitel comando FreeSurfer. En este ejemplo, utilizaremos las siguientes entradas:
+.. code:: Bash
 
-    1. El conjunto de datos concatenados que contiene todos los mapas estructurales de los sujetos ( --y);
+   recon-all -s <subjName> -qcache
 
-    2. El archivo FSGD ( --fsgd);
+To smooth at a specific level, you can add it after the -fwhm option, e.g.:
 
-    3. Una lista de contrastes (cada contraste especificado por una línea diferente que contiene --C);
+.. code:: Bash
 
-    4. El hemisferio de la plantilla a analizar ( --surf);
+   recon-all -s <subjName> -qcache -fwhm 10
 
-    5. Una máscara para restringir nuestro análisis sólo a la corteza ( --cortex);
+Fitting the general linear model with mri_glmfit
+------------------------------------------------
 
-    6. Una etiqueta de salida para el directorio que contiene los resultados ( --glmdir).
+Now that all of the subjects are concatenated into a single dataset, we can fit a general linear model with FreeSurfer’s mri_glmfit 
+command. In this example we will use the following inputs:
+
+1. The concatenated dataset containing all of the subjects’ structural maps (--y);
+
+2. The FSGD file (--fsgd);
+
+3. A list of contrasts (each contrast specified by a different line containing --C);
+
+4. The hemisphere of the template to analyze (--surf);
+
+5. A mask to restrict our analysis only to the cortex (--cortex);
+
+6. An output label for the directory containing the results (--glmdir).
 
 .. code:: Bash
 
@@ -274,11 +328,13 @@ Ahora que todos los sujetos están concatenados en un único conjunto de datos, 
      end
    end
 
-Revisando la salida
+Copy this code into a shell script and save it as runGLMs.sh. This code is also available for download here. Run the script from the 
+subject directory by typing tcsh runGLMs.sh.
 
+Reviewing the Output
+--------------------
 
-
-Si los scripts se ejecutan sin errores, debería ver los siguientes directorios en su directorio actual:
+If the scripts run without any errors, you should see the following directories in your current directory:
 
 .. code:: Bash
 
@@ -287,13 +343,63 @@ Si los scripts se ejecutan sin errores, debería ver los siguientes directorios 
    rh.thickness.CannabisStudy.10.glmdir
    rh.volume.CannabisStudy.10.glmdir
 
+To render the statistical maps on the fsaverage template, navigate to any of the contrast directories (e.g., HC-CB) and type:
 
+.. code::
 
+   freeview -f $SUBJECTS_DIR/fsaverage/surf/lh.inflated:overlay=sig.mgh
 
+FreeSurfer Tutorial #9: Cluster Correction
+------------------------------------------
 
+Overview
+--------
 
+After you have run your general linear model and created group-level contrast maps, you will need to correct for the amount of tests 
+that you have run. For a more detailed overview of how cluster-correction works, see this page. Although it uses fMRI data to 
+illustrate the concept, the same idea applies to the vertices that we analyze in structural data.
 
+Cluster Correction with mri_glmfit-sim
+--------------------------------------
 
+.. code:: Bash
+
+   #!/bin/tcsh
+
+   setenv study $argv[1]
+
+   foreach meas (thickness volume)
+     foreach hemi (lh rh)
+       foreach smoothness (10)
+         foreach dir ({$hemi}.{$meas}.{$study}.{$smoothness}.glmdir)
+           mri_glmfit-sim \
+             --glmdir {$dir} \
+             --cache 1.3 pos \
+             --cwp 0.05  \
+             --2spaces
+         end
+       end
+     end
+  end
+
+The options for mri_glmfit_sim specify the following:
+
+1. The directory that is being corrected for multiple comparisons (--glmdir);
+
+2. The vertex-wise cluster threshold (--cache);
+
+3. The cluster-wise p-threshold (--cwp, always set to 0.05 unless you have reasons for doing otherwise);
+
+4. Correction for analyzing both hemispheres (--2spaces)
+
+These clusters can then be rendered on the fsaverage template by typing the following from the cluster-corrected directory:
+
+.. code::
+
+   freeview -f $SUBJECTS_DIR/fsaverage/surf/lh.inflated:overlay=cache.th13.pos.sig.cluster.mgh
+
+FreeSurfer Tutorial #10: Correlation Analysis
+---------------------------------------------
 
 
 
