@@ -1,0 +1,37 @@
+https://manpages.ubuntu.com/manpages/noble/man1/sge_submit.1.html
+=====================================================
+Downloading the Parallel Command
+
+sysctl hw.physicalcpu hw.logicalcpu
+
+hw.physicalcpu: 4
+hw.logicalcpu: 8
+
+brew install parallel
+
+ls *.nii | parallel --jobs 8 recon-all -s {.} -i {} -all -qcache
+
+Analyzing the Cannabis Dataset
+If you have set up the directory correctly, all of the subjects should be in a folder called Cannabis. Create 
+another directory called FS, and navigate into that directory. From a bash shell (see the note above), type the 
+following code to run all of these subjects through the parallel command:
+
+ls .. | grep ^sub- > subjList.txt
+
+for sub in `cat subjList.txt`; do
+cp ../${sub}/ses-BL/anat/*.gz .
+done
+
+gunzip *.gz
+
+SUBJECTS_DIR=`pwd`
+
+ls *.nii | parallel --jobs 8 recon-all -s {.} -i {} -all -qcache
+
+rm *.nii
+
+for sub in `cat subjList.txt`; do
+mv ${sub}_ses-BL_T1w.nii ${sub}
+done
+
+
