@@ -2,6 +2,7 @@ Chapter #1: Functional Connectivity Demonstration
 ==================================================
 
 Overview
+========
 
 Before we begin using the CONN toolbox, a short demonstration of functional connectivity using a simpler, easy-to-understand 
 method may help prepare you for using a more sophisticated package. I prefer to use the fMRI analysis package FSL for this 
@@ -10,23 +11,47 @@ I recommend that you work through the FSL tutorials to familiarize yourself with
 how to extract data from regions of interest (ROIs). If you already know how to do a functional connectivity analysis in FSL 
 and simply want to get started with the CONN toolbox, click the Next button down below.
 
+Antes de comenzar a usar la caja de herramientas CONN, una breve demostración de conectividad funcional mediante un método 
+sencillo y fácil de entender puede ayudarle a prepararse para usar un paquete más sofisticado. Prefiero usar el paquete de 
+análisis de fMRI FSL para este tipo de demostración, aunque tanto AFNI como SPM también permiten realizar análisis de 
+conectividad funcional. Antes de continuar, le recomiendo que revise los tutoriales de FSL para familiarizarse con su 
+funcionamiento, qué es una serie temporal y cómo extraer datos de las regiones de interés (ROI). Si ya sabe cómo realizar un 
+análisis de conectividad funcional en FSL y simplemente desea comenzar a usar la caja de herramientas CONN, haga clic en el 
+botón Siguiente a continuación.
+
 Functional Connectivity Analysis with FSL
+
 As you saw in the FSL tutorial, each voxel of an fMRI dataset contains a time-series, or sequence of BOLD activation 
 measurements that are concatenated together. The sampling rate of the time-series is the Time to Repetition (TR), which for 
 most fMRI studies is around 2-3 seconds. For each voxel, therefore, the BOLD activation is measured at each TR, and this 
 continues for a period of time specified by the user. This period of time when the scanner is measuring the BOLD signal is 
 called a run (or session, in SPM), and a typical experiment is composed of several runs.
 
+Como se vio en el tutorial de FSL, cada vóxel de un conjunto de datos de fMRI contiene una serie temporal, o secuencia de 
+mediciones de activación BOLD que se concatenan. La frecuencia de muestreo de la serie temporal es el tiempo de repetición 
+(TR), que para la mayoría de los estudios de fMRI es de aproximadamente 2-3 segundos. Por lo tanto, para cada vóxel, la 
+activación BOLD se mide en cada TR, y esto continúa durante un período de tiempo especificado por el usuario. Este período 
+de tiempo durante el cual el escáner mide la señal BOLD se denomina ejecución (o sesión, en SPM), y un experimento típico se 
+compone de varias ejecuciones.
+
+
 To examine the time-series of the sample dataset, navigate to where you downloaded the TimeSeries_ExampleData.nii.gz file, 
 and type:
 
+Para examinar la serie temporal del conjunto de datos de muestra, navegue hasta donde descargó el archivo 
+TimeSeries_ExampleData.nii.gz y escriba:
+
 fsleyes TimeSeries_ExampleData.nii.gz
+
 This will open the file in the fsleyes viewer. From the menu at the top of your window, click on View -> Time series. This 
 will open a time-series panel at the bottom of the fsleyes viewer. To make the numbers easier to understand, and to enable 
 us to compare time-series from distant voxels, click on the “Plotting mode” dropdown menu and select “Normalised”. This will 
 scale the time-series relative to a mean of 0.
 
-
+Esto abrirá el archivo en el visor fsleyes. En el menú superior de la ventana, haga clic en Ver -> Series temporales. Esto 
+abrirá un panel de series temporales en la parte inferior del visor fsleyes. Para facilitar la comprensión de los datos y 
+permitirnos comparar series temporales de vóxeles distantes, haga clic en el menú desplegable "Modo de representación 
+gráfica" y seleccione "Normalizado". Esto escalará la serie temporal con respecto a una media de 0.
 
 Now, click on a random voxel, and then from the menu at the top of the screen select Tools -> Seed correlation (Pearson). 
 The voxel you have currently selected will be a seed voxel; the time-series of this seed voxel will be used as a reference. 
@@ -34,25 +59,53 @@ This will generate a connectivity map between your seed voxel and every other vo
 more intense shades of red and yellow) representing greater correlation. Cooler colors (i.e., shades of blue), by contrast, 
 represent where there is negative correlation.
 
+Ahora, haz clic en un vóxel cualquiera y, a continuación, en el menú superior, selecciona Herramientas -> Correlación de 
+semillas (Pearson). El vóxel seleccionado servirá como vóxel semilla; su serie temporal se utilizará como referencia. Esto 
+generará un mapa de conectividad entre el vóxel semilla y todos los demás vóxeles del cerebro, donde los colores más cálidos 
+(es decir, tonos más intensos de rojo y amarillo) representan una mayor correlación. Por el contrario, los colores más fríos 
+(es decir, tonos de azul) representan una correlación negativa.
+
 You will also notice that this has created a new file in the Overlay list, TimeSeries_ExampleData/correlation. If you 
 highlight this image by clicking on it, you can then set the “Min.” and “Max.” thresholds to only show those voxels that 
 correlate with the seed region at or higher than a certain level. Set the “Min” field to 0.4, and take a look at which 
 voxels remain after this threshold.
 
+También observará que se ha creado un nuevo archivo en la lista de superposiciones: TimeSeries_ExampleData/correlation. Si 
+selecciona esta imagen haciendo clic sobre ella, podrá configurar los umbrales "Mín." y "Máx." para mostrar únicamente los 
+vóxeles que se correlacionan con la región semilla a un nivel igual o superior a un valor determinado. Establezca el valor 
+"Mín." en 0,4 y observe qué vóxeles permanecen después de aplicar este umbral.
+
 The functional connectivity map after thresholding at r > 0.4. Note that the voxel we used as our seed region will have a 
 perfect r=1.0 correlation with itself, and that neighboring voxels are also highly correlated with it. There are a couple of 
 smaller clusters farther away from the dACC that correlate with the seed region, but they are relatively weak.
 
+Mapa de conectividad funcional tras aplicar un umbral de r > 0,4. Nótese que el vóxel que utilizamos como región semilla 
+presenta una correlación perfecta de r = 1,0 consigo mismo, y que los vóxeles vecinos también están altamente 
+correlacionados con él. Existen un par de grupos más pequeños, más alejados de la corteza cingulada anterior dorsal (dACC), 
+que se correlacionan con la región semilla, pero su correlación es relativamente débil.
+
 Note
+----
 
 If you’ve read the Cluster Correction appendix, you will remember that one of the justifications for cluster correction is 
 that a given voxel is not completely independent from its neighbors. How do you see that principle being reflected in this 
 correlation map?
 
+Si has leído el apéndice sobre la corrección de clústeres, recordarás que una de las justificaciones para dicha corrección 
+es que un vóxel no es completamente independiente de sus vecinos. ¿Cómo ves reflejado este principio en este mapa de 
+correlación?
+
+
 Now let’s see whether we can replicate one of the most well-known functional connectivity networks, the so-called Default 
 Mode Network. This network is a pattern of correlated regions, primarily the ventromedial prefrontal cortex and the 
 posterior cingulate cortex. Use the “Voxel location” fields to enter values of X=32, Y=53, and Z=16, and use this voxel as a 
 seed for another functional connectivity analysis. What do you notice about the resulting correlation map?
+
+Ahora veamos si podemos replicar una de las redes de conectividad funcional más conocidas, la denominada Red Neuronal por 
+Defecto (RND). Esta red es un patrón de regiones correlacionadas, principalmente la corteza prefrontal ventromedial y la 
+corteza cingulada posterior. Utilice los campos "Ubicación del vóxel" para introducir los valores X=32, Y=53 y Z=16, y use 
+este vóxel como semilla para otro análisis de conectividad funcional. ¿Qué observa en el mapa de correlación resultante?
+
 
 The Default Mode Network, showing high correlation between the ventromedial prefrontal cortex and posterior cingulate cortex 
 nodes. This map can be saved as its own image by clicking on the disk icon next to the correlation map that has been 
@@ -60,11 +113,26 @@ generated. You can then convert this to a z-score using Fisher’s r-to-z transf
 into a group-level analysis. The reasons for this transform, which is done automatically in the CONN toolbox, will be 
 discussed in a later chapter on 1st-level analysis.
 
+La red neuronal por defecto muestra una alta correlación entre la corteza prefrontal ventromedial y los nodos de la corteza 
+cingulada posterior. Este mapa se puede guardar como una imagen independiente haciendo clic en el icono del disco junto al 
+mapa de correlación generado. A continuación, se puede convertir a una puntuación z mediante la transformación r-a-z de 
+Fisher y utilizar las imágenes transformadas como entrada para un análisis a nivel de grupo. Las razones de esta 
+transformación, que se realiza automáticamente en la caja de herramientas CONN, se explicarán en un capítulo posterior sobre 
+análisis de primer nivel.
+
 Functional Connectivity Analysis with Neurosynth
+
 Another useful tool for understanding functional connectivity is Neurosynth. Neurosynth is primarily a meta-analysis tool, 
 but it can also be used to quickly generate functional connectivity maps for seed regions in a template brain. If you click 
 on the “Locations” tab, a new window opens that says “Functional connectivity and coactivation maps”. Click on any 
 coordinate in the brain, and then click on “What’s here?” After a few moments, a correlation map will be generated.
+
+Otra herramienta útil para comprender la conectividad funcional es Neurosynth. Neurosynth es principalmente una herramienta 
+de metaanálisis, pero también puede utilizarse para generar rápidamente mapas de conectividad funcional para regiones 
+semilla en un cerebro modelo. Al hacer clic en la pestaña "Ubicaciones", se abre una nueva ventana con el título "Mapas de 
+conectividad funcional y coactivación". Haga clic en cualquier coordenada del cerebro y, a continuación, en "¿Qué hay 
+aquí?". Tras unos instantes, se generará un mapa de correlación.
+
 
 For example, let’s say that we wanted to generate a functional connectivity map for the default mode network (described 
 above). If you click on the coordinates [0, 44, -14] and click the “What’s here?” button, you should see significant 
@@ -72,23 +140,44 @@ clusters in both the region that you clicked, and also in the posterior cingulat
 a sample of a thousand subjects collected by Yeo et al. (2011), and contain the typical networks you would see in any 
 sample.
 
+Por ejemplo, supongamos que queremos generar un mapa de conectividad funcional para la red neuronal por defecto (descrita 
+anteriormente). Si hace clic en las coordenadas [0, 44, -14] y luego en el botón "¿Qué hay aquí?", debería ver grupos 
+significativos tanto en la región donde hizo clic como en la corteza cingulada posterior. Estos mapas se generan a partir de 
+una muestra de mil sujetos recopilada por Yeo et al. (2011) y contienen las redes típicas que se observan en cualquier 
+muestra.
+
 As an exercise, try setting the coordinates to one of the nodes of the salience network, for example - [0 26 32], which is 
 roughly within the anterior cingulate cortex - and see whether it correlates with the bilateral insula. Try setting the seed 
 in other regions, such as the motor cortex or auditory cortex. What other regions would you expect would correlate with 
 those seed regions? Why?
 
-
+Como ejercicio, intente establecer las coordenadas en uno de los nodos de la red de prominencia, por ejemplo, [0 26 32], que 
+se encuentra aproximadamente dentro de la corteza cingulada anterior, y observe si se correlaciona con la ínsula bilateral. 
+Intente establecer la semilla en otras regiones, como la corteza motora o la corteza auditiva. ¿Qué otras regiones esperaría 
+que se correlacionaran con esas regiones semilla? ¿Por qué?
 
 Demonstration of how to generate functional connectivity maps with Neurosynth. Note that you can threshold the image to only 
 show correlations above a certain value, and you can also download the correlation map to use as a mask.
 
+Demostración de cómo generar mapas de conectividad funcional con Neurosynth. Tenga en cuenta que puede aplicar un umbral a 
+la imagen para mostrar solo las correlaciones superiores a un valor determinado, y también puede descargar el mapa de 
+correlación para usarlo como máscara.
+
 Video
+
 Click here for a brief overview of the history of functional connectivity, and how to do a simple functional connectivity 
 analysis in FSL.
 
+Haga clic aquí para obtener una breve descripción general de la historia de la conectividad funcional y cómo realizar un 
+análisis sencillo de conectividad funcional en FSL.
+
 Next Steps
+
 Now that you have an idea of what functional connectivity is and how we generate correlation maps, you are ready to begin 
 learning about the CONN toolbox. Click Next to learn about how to first download the data we will be analyzing with CONN.
 
+Ahora que ya sabes qué es la conectividad funcional y cómo generamos mapas de correlación, estás listo para empezar a 
+aprender sobre la caja de herramientas CONN. Haz clic en Siguiente para aprender a descargar los datos que analizaremos con 
+CONN.
 
 

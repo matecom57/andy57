@@ -8,9 +8,16 @@ click on Dashboard, which will load all of the available datasets. Select the da
 task”, which should be listed in the first page that comes up. If you are unable to find it, use the search bar to look for 
 the string “arithmetic”; it should be the first result that is returned.
 
+Los datos que utilizaremos en este tutorial provienen del repositorio de acceso abierto Openneuro.org. Desde la página 
+principal de Openneuro, haga clic en «Panel de control» para cargar todos los conjuntos de datos disponibles. Seleccione el 
+conjunto de datos «fMRI: estado de reposo y tarea aritmética», que debería aparecer en la primera página. Si no lo 
+encuentra, utilice la barra de búsqueda para introducir la cadena «arithmetic»; debería ser el primer resultado.
+
 Click on the sub-01 folder, and then click on anat. Click the Download button next to the file “sub-01_T1w.nii”, which will 
 begin downloading the file. Next, click on the func folder to look at its contents, and download the file 
 “sub-01_task-rest_bold.nii.gz”.
+
+
 
 If these files have been downloaded to your Downloads folder, open a Matlab terminal and type the following:
 
