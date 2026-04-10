@@ -31,6 +31,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
     :maxdepth: 1   
     :caption: Unix para neuroimagenólogos
 
+    Functional_Connectivity_and_the_CONN_Toolbox/index2
     linux/index-linux
     
 .. toctree::
