@@ -56,6 +56,10 @@ que es 8.
 * El comando paralelo no viene de serie con el sistema operativo Macintosh; deberá descargarlo. Es necesario 
 descargar la aplicación Xcode, disponible en la App Store de Macintosh.
 
+
+ sysctl -n hw.ncpu
+
+
 **Uso del comando paralelo**
 
 Por ejemplo, si tiene seis imágenes anatómicas etiquetadas como sub1.nii, sub2.nii … sub6.nii, puede analizarlas en 
