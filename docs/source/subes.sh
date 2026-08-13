@@ -4,9 +4,7 @@ pwd1=`pwd`
 
 cd ../../
 
-./sube_git.sh
-
-open p1.html
+./copila.sh
 
 cd $pwd1
 
