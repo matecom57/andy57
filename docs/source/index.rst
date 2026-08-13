@@ -33,6 +33,7 @@ Si no tienes experiencia en el análisis fMRI, te recomiendo comenzar con la pá
 
     Functional_Connectivity_and_the_CONN_Toolbox/index2
     linux/index-linux
+    conn/index_conn
     
 .. toctree::
     :maxdepth: 1
