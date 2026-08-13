@@ -3,7 +3,7 @@ CONN
 
 .. toctree::
     :maxdepth: 1   
-    :caption: Unix para neuroimagenólogos
+    :caption: CONN-2
 
     c01
     c02
