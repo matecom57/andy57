@@ -34,6 +34,13 @@ toolbox.
 
 **Start to Finish Analysis with CONN**
 
+.. toctree::
+    :maxdepth: 1
+    :caption: CONN-3
+
+    historia
+
+
 History of Functional Connectivity
 Chapter #1: Functional Connectivity Demonstration
 Chapter #2: Downloading the Data

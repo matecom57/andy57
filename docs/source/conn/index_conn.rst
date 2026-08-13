@@ -5,5 +5,4 @@ CONN
     :maxdepth: 1   
     :caption: CONN-2
 
-    c01
-    c02
+    intro
