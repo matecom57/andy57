@@ -18,5 +18,5 @@ https://andysbrainbook-readthedocs-io.translate.goog/en/latest/index.html?_x_tr_
     :caption: Unix para neuroimagenólogos
 
     linux/index-linux
-    conn/index_conn
+    conn/CONN_Overview
     afni/index_afni    
