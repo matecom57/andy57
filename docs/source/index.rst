@@ -19,5 +19,5 @@ https://andysbrainbook-readthedocs-io.translate.goog/en/latest/index.html?_x_tr_
 
     linux/index-linux
     conn/CONN_Overview
-    afni/index_afni    
+    afni/AFNI_Overview
     spm/SPM_Overview
