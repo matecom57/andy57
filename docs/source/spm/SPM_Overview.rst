@@ -1,5 +1,3 @@
-
-
 .. _SPM_Descripción general:
 
 ============
