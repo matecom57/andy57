@@ -1,5 +1,8 @@
 Chapter #2: Downloading the Data
-Overview
+================================
+
+**Overview**
+
 The data we will use for this tutorial comes from the open-access repository Openneuro.org. From the 
 Openneuro homepage, click on Dashboard, which will load all of the available datasets. Select the 
 dataset “fMRI: resting state and arithmetic task”, which should be listed in the first page that 
@@ -13,25 +16,35 @@ its contents, and download the file “sub-01_task-rest_bold.nii.gz”.
 If these files have been downloaded to your Downloads folder, open a Matlab terminal and type the 
 following:
 
-cd ~/Desktop
-mkdir CONN_Demo
+.. code:: Bash
+
+   cd ~/Desktop
+   mkdir CONN_Demo
+
 This navigates to your Desktop and creates a new folder called CONN_Demo. This is where we will 
 store our data and do our analyses. To organize the data into two folders within the CONN_Demo 
 directory, type the following from your Matlab terminal:
 
-cd CONN_Demo
-mkdir sub-01/func
-mkdir sub-01/anat
+.. code:: Bash
+
+   cd CONN_Demo
+   mkdir sub-01/func
+   mkdir sub-01/anat
+
 Which will create the folders func and anat within a folder called sub-01. To move your downloaded 
 files into their corresponding directories, type the following:
 
-movefile('~/Downloads/sub-01_task-rest_bold.nii.gz', 'sub-01/func')
-movefile('~/Downloads/sub-01_T1w.nii', 'sub-01/anat')
+.. code:: Bash
+
+   movefile('~/Downloads/sub-01_task-rest_bold.nii.gz', 'sub-01/func')
+   movefile('~/Downloads/sub-01_T1w.nii', 'sub-01/anat')
+
 Type ls sub-01/anat and ls sub-01/func to make sure that the functional data is now located in the 
 func directory, and that the anatomical data is located in the anat directory. If so, you are now 
 ready to begin using the CONN toolbox, which we now turn to.
 
-Video
+**Video**
+
 Click here for a video demonstration of how to download the data.
 
 
