@@ -44,7 +44,7 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
     :maxdepth: 1
     :caption: fMRI Short Course with FSL
     
-    fMRI_Short_Course/fMRI_Intro
+    fsl/fMRI_Short_Course/fMRI_Intro
     fMRI_Short_Course/fMRI_01_DataDownload
     fMRI_Short_Course/fMRI_02_ExperimentalDesign
     fMRI_Short_Course/fMRI_03_LookingAtTheData
