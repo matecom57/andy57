@@ -44,18 +44,18 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
     :maxdepth: 1
     :caption: fMRI Short Course with FSL
     
-    fsl/fMRI_Short_Course/fMRI_Intro
-    fMRI_Short_Course/fMRI_01_DataDownload
-    fMRI_Short_Course/fMRI_02_ExperimentalDesign
-    fMRI_Short_Course/fMRI_03_LookingAtTheData
-    fMRI_Short_Course/fMRI_04_Preprocessing
-    fMRI_Short_Course/fMRI_05_1stLevelAnalysis
-    fMRI_Short_Course/fMRI_06_Scripting
-    fMRI_Short_Course/fMRI_07_2ndLevelAnalysis
-    fMRI_Short_Course/fMRI_08_3rdLevelAnalysis
-    fMRI_Short_Course/fMRI_09_ROIAnalysis
-    fMRI_Short_Course/fMRI_10_Summary
-    fMRI_Short_Course/fMRI_Appendices
+    fsl/fMRI_Intro
+    fsl//fMRI_01_DataDownload
+    fsl/fMRI_02_ExperimentalDesign
+    fsl/fMRI_03_LookingAtTheData
+    fsl/fMRI_04_Preprocessing
+    fsl/fMRI_05_1stLevelAnalysis
+    fsl/fMRI_06_Scripting
+    fsl/fMRI_07_2ndLevelAnalysis
+    fsl/fMRI_08_3rdLevelAnalysis
+    fsl/fMRI_09_ROIAnalysis
+    fsl/fMRI_10_Summary
+    fsl/fMRI_Appendices
     
     
 .. toctree::
