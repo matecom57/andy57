@@ -1,14 +1,14 @@
 Welcome to Andy's Brain Book!
-=============================
+==================================================
 
-.. figure:: ABB_Logo.png
+.. figure:: ABB_logo_book.png
 
     This resource is sponsored by the `University of Michigan <https://umich.edu/>`__.
 
-Hello! This book, *Andy's Brain Book*, is the ReadTheDocs companion
+This book, *Andy's Brain Book*, is the ReadTheDocs companion
 to `Andy's Brain Blog <https://www.andysbrainblog.com>`__. It is intended for fMRI beginners, with more advanced imaging techniques being added later on. If this is your first time here, watch `this video <https://www.youtube.com/watch?v=zUxOdq3sAFU>`__ for a quick overview of the website.
 
-Andy's Brain Book is intended for fMRI beginners, with more advanced imaging techniques being added later on.
+This book, *Andy's Brain Book*, is intended for fMRI beginners, with more advanced imaging techniques being added later on.
 
 If you are completely new to fMRI analysis, I recommend starting with the :ref:`installation page <fsl_mac_install>`. Good luck!
 
@@ -44,18 +44,18 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
     :maxdepth: 1
     :caption: fMRI Short Course with FSL
     
-    fsl/fMRI_Intro
-    fsl//fMRI_01_DataDownload
-    fsl/fMRI_02_ExperimentalDesign
-    fsl/fMRI_03_LookingAtTheData
-    fsl/fMRI_04_Preprocessing
-    fsl/fMRI_05_1stLevelAnalysis
-    fsl/fMRI_06_Scripting
-    fsl/fMRI_07_2ndLevelAnalysis
-    fsl/fMRI_08_3rdLevelAnalysis
-    fsl/fMRI_09_ROIAnalysis
-    fsl/fMRI_10_Summary
-    fsl/fMRI_Appendices
+    fMRI_Short_Course/fMRI_Intro
+    fMRI_Short_Course/fMRI_01_DataDownload
+    fMRI_Short_Course/fMRI_02_ExperimentalDesign
+    fMRI_Short_Course/fMRI_03_LookingAtTheData
+    fMRI_Short_Course/fMRI_04_Preprocessing
+    fMRI_Short_Course/fMRI_05_1stLevelAnalysis
+    fMRI_Short_Course/fMRI_06_Scripting
+    fMRI_Short_Course/fMRI_07_2ndLevelAnalysis
+    fMRI_Short_Course/fMRI_08_3rdLevelAnalysis
+    fMRI_Short_Course/fMRI_09_ROIAnalysis
+    fMRI_Short_Course/fMRI_10_Summary
+    fMRI_Short_Course/fMRI_Appendices
     
     
 .. toctree::
@@ -94,22 +94,10 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
     
     PM/PM_Overview
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Finite Impulse Response (FIR) Models
-   
-   FIR/FIR_Overview
-
 .. note::
 
     The following modules are under construction. Check back soon for more updates!
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Scanner Harmonization
-   
-   ScannerHarmonization/ScanHarm_Overview
-
+    
 .. toctree::
    :maxdepth: 1
    :caption: Image Visualization with MRIcroGL
@@ -118,9 +106,15 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
    
 .. toctree::
    :maxdepth: 1
-   :caption: Introduction to the Human Connectome Project (HCP)
+   :caption: Introduction to the Human Connectome Project
    
    HCP/HCP_Overview
+    
+.. toctree::
+   :maxdepth: 1
+   :caption: Finite Impulse Response (FIR) Models
+   
+   FIR/FIR_Overview
 
 .. toctree::
    :maxdepth: 1
@@ -207,50 +201,6 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
     :caption: Slicer
     
     Slicer/Slicer_Overview
-    
-.. toctree::
-    :maxdepth: 1
-    :caption: CAT12
-    
-    CAT12/CAT12_Overview
-    
-.. toctree::
-    :maxdepth: 1
-    :caption: Using the Supercomputer
-    
-    Supercomputer/Supercomputer_Overview
-    
-    
-.. toctree::
-    :maxdepth: 1
-    :caption: Matlab for Neuroimagers
-    
-    Matlab/Matlab_Overview
-    
-    
-.. toctree::
-    :maxdepth: 1
-    :caption: ITK-Snap
-    
-    ITK-Snap/ITK-Snap_Overview
-    
-.. toctree::
-    :maxdepth: 1
-    :caption: Python for Neuroimagers
-    
-    PythonForNeuroimagers/PythonForNeuroimagers_Overview
-
-.. toctree::
-    :maxdepth: 1
-    :caption: Meta-Analysis for fMRI
-    
-    MetaAnalysis/MetaAnalysis_Overview
-
-.. toctree::
-    :maxdepth: 1
-    :caption: Introduction to Neurodesk
-    
-    Neurodesk/Neurodesk_Overview
 
 
 .. Glossary
@@ -260,3 +210,25 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
 
 .. note::
     This book is under construction. More chapters will be added in the coming weeks; my goal is to have a complete draft of the fMRI Short Course by the first week of June.
+    
+    4.24.2019: Finished the sections Unix Tutorial #4, fMRI Short Course chapters on smoothing and quality checking FEAT output, and added a playlist covering all of the sections done in the Preprocessing module.
+    
+    5.06.2019: Added sections to FAQ about resampling, biased analyses, and flipped orientations. Wrote the chapters for the Statistics part of the short course; videos coming soon.
+    
+    5.25.2019: Finished the Unix Module, and added videos for 2nd and 3rd level analysis in the fMRI short course.
+    
+    5.31.2019: First draft of the Unix and fMRI courses are complete.
+    
+    10.14.2019: E-Prime module is complete.
+
+    10.16.2019: FreeSurfer module complete.
+    
+    1.13.2020: SPM written module complete (videos not up yet)
+    
+    4.13.2020: SPM videos uploaded
+
+    5.21.2020: CONN Tutorials complete
+    
+    12.08.2020: First part of MVPA tutorial complete, from preprocessing to group-level analysis. Later on, will add other statistical analyses, such as prevalence analysis.
+
+
