@@ -28,3 +28,5 @@ If you are completely new to fMRI analysis, I recommend starting with the :ref:`
    :caption: Install
 
    unix/index-linux
+   conn/index_conn
+
