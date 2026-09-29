@@ -57,11 +57,7 @@ parecidos incluso en estado de reposo.
 
 .. Note::
 
-   In this example, Biswal had used the left motor cortex as a seed region, which was then correlated 
-with all of the other voxels in the brain - also called a whole-brain analysis. This type of 
-correlation analysis is common, although some researchers may choose to restrict their correlation 
-analysis between the seed region and a region of interest. For more information about regions of 
-interest and how to extract data from them, see either the AFNI, FSL, or SPM tutorials.
+   In this example, Biswal had used the left motor cortex as a seed region, which was then correlated with all of the other voxels in the brain - also called a whole-brain analysis. This type of correlation analysis is common, although some researchers may choose to restrict their correlation analysis between the seed region and a region of interest. For more information about regions of interest and how to extract data from them, see either the AFNI, FSL, or SPM tutorials.
 
 ../../_images/00_Biswal_1995.png
  
