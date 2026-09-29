@@ -12,6 +12,15 @@ and how to extract data from regions of interest (ROIs). If you already know how
 connectivity analysis in FSL and simply want to get started with the CONN toolbox, click the Next 
 button down below.
 
+Antes de empezar a utilizar la caja de herramientas CONN, una breve demostración de la conectividad funcional 
+mediante un método más sencillo y fácil de comprender puede ayudarle a prepararse para usar un paquete más 
+sofisticado. Para este tipo de demostración, prefiero utilizar FSL —un paquete de análisis de fMRI—, aunque tanto 
+AFNI como SPM también permiten realizar análisis de conectividad funcional. Antes de continuar, le recomiendo que 
+realice los tutoriales de FSL para familiarizarse con su funcionamiento, así como con los conceptos de serie 
+temporal y extracción de datos de regiones de interés (ROI). Si ya sabe realizar un análisis de conectividad 
+funcional en FSL y simplemente desea comenzar a utilizar la caja de herramientas CONN, haga clic en el botón 
+«Siguiente» que aparece más abajo.
+
 .. Note::
 
    This tutorial will use a sample dataset that you can download here. The file size is about 20MB.
@@ -24,6 +33,14 @@ the Time to Repetition (TR), which for most fMRI studies is around 2-3 seconds. 
 therefore, the BOLD activation is measured at each TR, and this continues for a period of time 
 specified by the user. This period of time when the scanner is measuring the BOLD signal is called a 
 run (or session, in SPM), and a typical experiment is composed of several runs.
+
+Como vio en el tutorial de FSL, cada vóxel de un conjunto de datos de fMRI contiene una serie temporal o secuencia 
+de mediciones de activación BOLD que están concatenadas. La frecuencia de muestreo de la serie temporal es el tiempo 
+de repetición (TR), que para la mayoría de los estudios de resonancia magnética funcional es de alrededor de 2 a 3 
+segundos. Por lo tanto, para cada vóxel, la activación BOLD se mide en cada TR, y esto continúa durante un período 
+de tiempo especificado por el usuario. Este período de tiempo en el que el escáner mide la señal BOLD se denomina 
+ejecución (o sesión, en SPM) y un experimento típico se compone de varias ejecuciones.
+
 
 To examine the time-series of the sample dataset, navigate to where you downloaded the 
 ``TimeSeries_ExampleData.nii.gz`` file, and type:
@@ -38,9 +55,17 @@ the numbers easier to understand, and to enable us to compare time-series from d
 on the “Plotting mode” dropdown menu and select “Normalised”. This will scale the time-series 
 relative to a mean of 0.
 
+Esto abrirá el archivo en el visor FSLeyes. En el menú situado en la parte superior de la ventana, haga clic en 
+**View** > **Time series**. Esto abrirá un panel de series temporales en la parte inferior del visor FSLeyes. Para 
+facilitar la interpretación de los valores y permitir la comparación de series temporales de vóxeles distantes, haga 
+clic en el menú desplegable **Plotting mode** y seleccione **Normalised**. Esto ajustará la escala de las series 
+temporales con respecto a una media de 0.
+
 ../../_images/01_FSL_Timeseries.png
 
 A sample time-series from a voxel in the dorsal anterior cingulate cortex.
+
+Una muestra de serie temporal de un vóxel en la corteza cingulada anterior dorsal.
 
 Now, click on a random voxel, and then from the menu at the top of the screen select Tools -> Seed 
 correlation (Pearson). The voxel you have currently selected will be a seed voxel; the time-series 
@@ -49,11 +74,24 @@ seed voxel and every other voxel in the brain, with hotter colors (i.e., more in
 and yellow) representing greater correlation. Cooler colors (i.e., shades of blue), by contrast, 
 represent where there is negative correlation.
 
+Ahora, haga clic en un vóxel cualquiera y, en el menú situado en la parte superior de la pantalla, seleccione 
+*Tools* -> *Seed correlation (Pearson)*. El vóxel que ha seleccionado actuará como vóxel semilla; la serie temporal 
+de este vóxel se utilizará como referencia. Esto generará un mapa de conectividad entre el vóxel semilla y el resto 
+de los vóxeles del cerebro, donde los colores cálidos (es decir, tonos más intensos de rojo y amarillo) indican una 
+mayor correlación. Por el contrario, los colores fríos (es decir, tonos de azul) representan las zonas con 
+correlación negativa.
+
 You will also notice that this has created a new file in the Overlay list, 
 TimeSeries_ExampleData/correlation. If you highlight this image by clicking on it, you can then set 
 the “Min.” and “Max.” thresholds to only show those voxels that correlate with the seed region at or 
 higher than a certain level. Set the “Min” field to 0.4, and take a look at which voxels remain 
 after this threshold.
+
+También observará que esto ha creado un nuevo archivo en la lista de superposiciones (*Overlay list*): 
+`TimeSeries_ExampleData/correlation`. Si selecciona esta imagen haciendo clic en ella, podrá establecer los umbrales 
+«Mín.» y «Máx.» para mostrar únicamente aquellos vóxeles que presenten una correlación con la región semilla igual o 
+superior a un nivel determinado. Ajuste el campo «Mín.» a 0,4 y observe qué vóxeles permanecen tras aplicar este 
+umbral.
 
 ../../_images/01_FSL_dACC_Corr.png
 
@@ -62,12 +100,16 @@ seed region will have a perfect r=1.0 correlation with itself, and that neighbor
 highly correlated with it. There are a couple of smaller clusters farther away from the dACC that 
 correlate with the seed region, but they are relatively weak.
 
+Mapa de conectividad funcional tras aplicar un umbral de r > 0,4. Obsérvese que el vóxel utilizado como región 
+semilla presentará una correlación perfecta (r = 1,0) consigo mismo y que los vóxeles adyacentes también muestran 
+una alta correlación con él. Existen algunos cúmulos de menor tamaño, situados a mayor distancia de la dACC, que 
+correlacionan con la región semilla, aunque dicha correlación es relativamente débil.
+
 .. Note::
 
-   If you’ve read the Cluster Correction appendix, you will remember that one of the justifications 
-for 
-cluster correction is that a given voxel is not completely independent from its neighbors. How do 
-you see that principle being reflected in this correlation map?
+   If you’ve read the Cluster Correction appendix, you will remember that one of the justifications for cluster correction is that a given voxel is not completely independent from its neighbors. How do you see that principle being reflected in this correlation map?
+
+
 
 Now let’s see whether we can replicate one of the most well-known functional connectivity networks, 
 the so-called Default Mode Network. This network is a pattern of correlated regions, primarily the 
