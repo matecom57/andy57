@@ -13,6 +13,13 @@ checkerboard, for example, was noted early on (Kwong et al., 1992), as was the p
 to auditory stimuli, tactile stimuli, and finger presses. These experiments were simple, but 
 necessary for demonstrating the validity of fMRI as a non-invasive imaging technique.
 
+A medida que la neuroimagen se generalizó a principios de la década de 1990, los experimentos con fMRI se centraron 
+principalmente en mapear la respuesta BOLD ante estímulos sensoriales y motores. Por ejemplo, se observó 
+tempranamente la respuesta de la corteza visual a un patrón de tablero de ajedrez parpadeante (Kwong et al., 1992), 
+así como la de las áreas sensoriales primarias ante estímulos auditivos, táctiles y la presión con los dedos. Estos 
+experimentos eran sencillos, pero necesarios para demostrar la validez de la fMRI como técnica de imagen no 
+invasiva.
+
 With these basic results already documented, researchers began investigating both the source of the 
 BOLD signal and the sources of noise. It was understood that the signal that was being acquired from 
 the BOLD response was relatively small compared to the noise that surrounded it; not only noise 
@@ -21,6 +28,14 @@ physiological sources such as respiration and the pulsation of blood throughout 
 closely examine these physiological sources of noise, in 1995 Bharat Biswal scanned subjects both 
 when they were doing a task - in this case, pressing buttons at a certain rhythm - and when they 
 were doing nothing at all.
+
+Una vez documentados estos resultados básicos, los investigadores comenzaron a estudiar tanto el origen de la señal 
+BOLD como las fuentes de ruido. Se comprendió que la señal obtenida mediante la respuesta BOLD era relativamente 
+débil en comparación con el ruido circundante; no solo el ruido generado por el propio escáner (en forma de lo que 
+se conoce como «deriva del escáner»), sino también el proveniente de fuentes fisiológicas, como la respiración y la 
+pulsación sanguínea en el cerebro. Para examinar más detenidamente estas fuentes fisiológicas de ruido, en 1995 
+Bharat Biswal realizó escaneos a sujetos tanto mientras realizaban una tarea —en este caso, pulsar botones siguiendo 
+un ritmo determinado— como cuando no hacían absolutamente nada.
 
 To his surprise, even after regressing out the physiological sources of noise from the resting-state 
 data, they did not explain all of the variance in the BOLD response. Observing what appeared to be 
@@ -31,10 +46,18 @@ there was a strong correlation with the time-series of the opposite hemisphere�
 suggesting that these two functionally similar regions, although physically distant from each other, 
 generated similar patterns of activity even at rest.
 
+Para su sorpresa, incluso tras eliminar mediante regresión las fuentes fisiológicas de ruido de los datos de estado 
+de reposo, estas no explicaban la totalidad de la varianza en la respuesta BOLD. Al observar lo que parecían ser 
+correlaciones temporales entre distintas regiones de vóxeles, Biswal extrajo la serie temporal de la corteza motora 
+izquierda y correlacionó dicha señal con las series temporales de todos los demás vóxeles. En lugar de las 
+correlaciones aleatorias que cabría esperar si no existieran fluctuaciones sistemáticas de la señal BOLD en reposo, 
+se observó una fuerte correlación con la serie temporal de la corteza motora del hemisferio opuesto; esto sugería 
+que ambas regiones, funcionalmente similares aunque físicamente distantes entre sí, generaban patrones de actividad 
+parecidos incluso en estado de reposo.
+
 .. Note::
 
-   In this example, Biswal had used the left motor cortex as a seed region, which was then 
-correlated 
+   In this example, Biswal had used the left motor cortex as a seed region, which was then correlated 
 with all of the other voxels in the brain - also called a whole-brain analysis. This type of 
 correlation analysis is common, although some researchers may choose to restrict their correlation 
 analysis between the seed region and a region of interest. For more information about regions of 
