@@ -5,11 +5,28 @@ Chapter #4: The CONN GUI
 
 One of CONN’s major advantages is its graphical user interface (GUI). Virtually everything that you will need to do can be done from the GUI, and CONN’s layout is straightforward and clear.
 
+Una de las principales ventajas de CONN es su interfaz gráfica de usuario (GUI). Prácticamente todo lo 
+que necesite hacer puede realizarse desde la GUI, y la disposición de CONN es sencilla y clara.
+
 As with an fMRI package like SPM, though, the reliance on the GUI comes at the expense of flexibility. In a later module on scripting we will see how to write Matlab code that allows you to batch certain analyses and access data that isn’t available from the interface. Regardless, for most purposes the CONN GUI works very well, and newcomers will find it easy to learn.
+
+Sin embargo, al igual que ocurre con paquetes de fMRI como SPM, la dependencia de la interfaz gráfica 
+(GUI) conlleva una menor flexibilidad. En un módulo posterior dedicado a la programación de scripts, 
+veremos cómo escribir código en Matlab que permita automatizar ciertos análisis por lotes y acceder a 
+datos no disponibles a través de la interfaz. En cualquier caso, para la mayoría de los usos, la 
+interfaz de CONN funciona muy bien y resulta fácil de aprender para los usuarios principiantes.
 
 **Creating a New Project**
 
 The first step of any CONN analysis is to create a new project. This generates a Matlab structure that contains fields reflecting all aspects of the experiment that have been changed from the GUI, such as options, names of files, and what data has been loaded. Let’s say, for example, that we click on the New button and name our project conn_Arithmetic_Project. Save it into the CONN_Demo folder, and then go back to the Matlab terminal. Navigate to that folder, and notice that it now contains a .mat file called conn_Arithmetic_Project.mat. You can load this file in the Matlab terminal by typing:
+
+El primer paso de cualquier análisis en CONN consiste en crear un nuevo proyecto. Esto genera una 
+estructura de Matlab que contiene campos que reflejan todos los aspectos del experimento modificados 
+desde la interfaz gráfica (GUI), tales como las opciones, los nombres de los archivos y los datos 
+cargados. Supongamos, por ejemplo, que hacemos clic en el botón «New» y llamamos a nuestro proyecto 
+`conn_Arithmetic_Project`. Guárdelo en la carpeta `CONN_Demo` y, a continuación, vuelva a la terminal de 
+Matlab. Desplácese hasta dicha carpeta y observe que ahora contiene un archivo `.mat` llamado 
+`conn_Arithmetic_Project.mat`. Puede cargar este archivo en la terminal de Matlab escribiendo:
 
 .. code:: Bash
 
@@ -18,11 +35,18 @@ The first step of any CONN analysis is to create a new project. This generates a
 There is now a new variable in your workspace called CONN_x. This is a structure file that contains all of the fields of your experiment, similar to how a job file in SPM contains information on all of the changes you made in the GUI. In the figure below, I have already filled in a few of the fields in the GUI, such as the RT, number of subjects, and FWHM:
 ../../_images/04_CONN_MatFile.png
 
+
 .. Note::
 
    Those with experience using SPM may find it useful to review the chapter on scripting in SPM. The concepts are similar, and the newcomer to CONN may find it easier to understand what the .mat file does once he reviews how the same idea is carried out in SPM.
 
+Quienes tengan experiencia en el uso de SPM podrían encontrar útil revisar el capítulo sobre *scripting* 
+en SPM. Los conceptos son similares, y a los usuarios nuevos en CONN les resultará más fácil comprender 
+la función del archivo .mat una vez que hayan revisado cómo se implementa la misma idea en SPM.
+
 As you make changes to the project during preprocessing and certain analyses, you can overwrite the project file at any time by hovering your cursor over the “Project” menu and selecting “Save As”. You can then close the CONN GUI if you need to, re-open it at a later time, and load your project by clicking the “Open” button and selecting the project file that you created.
+
+
 **The Help Menu**
 
 As you use the CONN toolbox more, you will encounter errors that are specific to your analysis. The “Help” menu contains links to the CONN Manual (which can also be found here) and other web resources to help you troubleshoot the problem.
@@ -36,7 +60,16 @@ It can take some time to become familiar with both the CONN toolbox and function
 
 The default appearance of the CONN toolbox is a black background with white text, and most of the buttons in darker shades. If you prefer another layout, you can change the appearance of the GUI in order to make it easier to read. Hover your mouse over the “Tools” menu, and select “GUI options.” This will open a window that allows you to do things like increase the font size or change the color scheme. A couple of other commonly used options are:
 
+La apariencia predeterminada de la caja de herramientas CONN consiste en un fondo negro con texto blanco 
+y la mayoría de los botones en tonos más oscuros. Si prefiere otra configuración, puede modificar el 
+aspecto de la interfaz gráfica (GUI) para facilitar su lectura. Coloque el cursor sobre el menú «Tools» 
+(Herramientas) y seleccione «GUI options» (Opciones de la GUI). Se abrirá una ventana que le permitirá 
+realizar ajustes como aumentar el tamaño de la fuente o cambiar la combinación de colores. Otras 
+opciones de uso frecuente son:
+
     1. “Enable help tips”, which allows you to choose whether to have CONN automatically display help text when you hover your mouse over certain options. This is useful for displaying all of the options that are associated with a particular step, but if you find the help bubble distracting, you can hide it.
+
+
 
     2. The “Background anatomical image” and “Background reference atlas” options allow you to specify the template that is used to project your results onto; you will see how the results are displayed once we cover 1st-level analysis, and if you don’t like the default reference volume, you can choose a different one.
 
@@ -59,6 +92,13 @@ The tabs at the top of the window, from left to right, represent each of the ste
     4. Results (2nd-level)
 
 To begin our tour of the CONN GUI we will focus on the Setup tab, which is where you will enter the scanning parameters for the study - such as the number of runs and the TR. There are also buttons for loading the structural and functional images. Once these images are loaded, we can then begin to preprocess the data, which we will discuss in the next chapter.
+
+Para comenzar nuestro recorrido por la interfaz gráfica de usuario (GUI) de CONN, nos centraremos en la 
+pestaña *Setup* (Configuración), donde se introducen los parámetros de escaneo del estudio, tales como 
+el número de series (*runs*) y el TR. También hay botones para cargar las imágenes estructurales y 
+funcionales. Una vez cargadas estas imágenes, podremos iniciar el preprocesamiento de los datos, tema 
+que abordaremos en el siguiente capítulo.
+
 
 In this experiment there was one resting-state scan and one anatomical scan per subject; since we are beginning by analyzing just one subject, we enter 1 for the “Number of subjects” field, and 1 for the “Number of sessions or runs” field. From the sub-01_task-rest_bold.json on the Openneuro data download page, we learn that the Repetition Time (i.e., the TR) was 3.56 seconds; enter this number in the “Repetition Time (seconds)” field.
 
